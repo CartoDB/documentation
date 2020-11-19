@@ -1,0 +1,525 @@
+{{$data := .CTX.Site.Data.navbar}}
+
+<nav class="navbar container grid u-justify-center">
+  <div class="u-flex u-align-center grid-cell grid-cell--col10">
+    <a class="navbar__logo navbar__logo--negative u-mr40 u-mr24--desktop-s" href="https://carto.com/">
+      <svg height="100%" viewBox="0 0 92 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Logo-Scale-Negative" transform="translate(-162.000000, -282.000000)" fill="#FFFFFF">
+            <g id="logo_carto_n_36" transform="translate(162.000000, 282.000000)">
+              <path d="M74,36 C83.9411255,36 92,27.9411255 92,18 C92,8.0588745 83.9411255,0 74,0 C64.0588745,0 56,8.0588745 56,18 C56,27.9411255 64.0588745,36 74,36 Z" id="halo" fill-opacity="0.200000018"></path>
+              <path d="M6.25280899,23.981602 C8.76747566,23.981602 10.220757,22.882802 11.2984713,21.390402 L8.9144367,19.684802 C8.22861851,20.521202 7.52647133,21.078802 6.33445401,21.078802 C4.73421159,21.078802 3.60751029,19.734002 3.60751029,18.012002 L3.60751029,17.979202 C3.60751029,16.306402 4.73421159,14.928802 6.33445401,14.928802 C7.4284973,14.928802 8.1796315,15.470002 8.83279168,16.273602 L11.2168263,14.420402 C10.204428,13.026402 8.70215964,12.042402 6.36711202,12.042402 C2.9053631,12.042402 0.358038428,14.666402 0.358038428,18.012002 L0.358038428,18.044802 C0.358038428,21.472402 2.98700813,23.981602 6.25280899,23.981602 L6.25280899,23.981602 Z M16.732047,23.752002 L20.0468349,23.752002 L20.8632851,21.685602 L25.2884453,21.685602 L26.1048955,23.752002 L29.5013284,23.752002 L24.6352851,12.190002 L21.5817613,12.190002 L16.732047,23.752002 Z M21.7940384,19.209202 L23.0840297,15.962002 L24.357692,19.209202 L21.7940384,19.209202 Z M35.6697093,23.752002 L38.8375361,23.752002 L38.8375361,20.275202 L40.2418305,20.275202 L42.5442201,23.752002 L46.1855881,23.752002 L43.4586443,19.750402 C44.8792677,19.143602 45.810021,17.979202 45.810021,16.208002 L45.810021,16.175202 C45.810021,15.043602 45.4671119,14.174402 44.7976227,13.502002 C44.0301595,12.731202 42.8218132,12.272002 41.0746097,12.272002 L35.6697093,12.272002 L35.6697093,23.752002 Z M38.8375361,17.782402 L38.8375361,15.010802 L40.9276487,15.010802 C41.9727049,15.010802 42.6421941,15.470002 42.6421941,16.388402 L42.6421941,16.421202 C42.6421941,17.257602 42.005363,17.782402 40.9439777,17.782402 L38.8375361,17.782402 Z M55.2605317,23.752002 L58.4283585,23.752002 L58.4283585,15.060002 L61.8574495,15.060002 L61.8574495,12.272002 L51.8477698,12.272002 L51.8477698,15.060002 L55.2605317,15.060002 L55.2605317,23.752002 Z M74,24 C77.3137085,24 80,21.3137085 80,18 C80,14.6862915 77.3137085,12 74,12 C70.6862915,12 68,14.6862915 68,18 C68,21.3137085 70.6862915,24 74,24 Z" id="logotype"></path>
+            </g>
+          </g>
+        </g>
+      </svg>      
+      <!-- <img src="https://carto.com/img/logo/pride-logo.png" class="pride-logo" alt="CARTO"/> -->
+    </a>
+    <a class="navbar__logo navbar__logo--positive u-mr40 u-mr24--desktop-s" href="https://carto.com/">
+      <svg height="100%" viewBox="0 0 92 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Logo-Scale-Positive" transform="translate(-162.000000, -282.000000)" fill="#162945">
+            <g id="logo_carto_p_36" transform="translate(162.000000, 282.000000)">
+                <path d="M74,36 C83.9411255,36 92,27.9411255 92,18 C92,8.0588745 83.9411255,0 74,0 C64.0588745,0 56,8.0588745 56,18 C56,27.9411255 64.0588745,36 74,36 Z" id="halo" fill-opacity="0.100000001"></path>
+                <path d="M6.25280899,23.981602 C8.76747566,23.981602 10.220757,22.882802 11.2984713,21.390402 L8.9144367,19.684802 C8.22861851,20.521202 7.52647133,21.078802 6.33445401,21.078802 C4.73421159,21.078802 3.60751029,19.734002 3.60751029,18.012002 L3.60751029,17.979202 C3.60751029,16.306402 4.73421159,14.928802 6.33445401,14.928802 C7.4284973,14.928802 8.1796315,15.470002 8.83279168,16.273602 L11.2168263,14.420402 C10.204428,13.026402 8.70215964,12.042402 6.36711202,12.042402 C2.9053631,12.042402 0.358038428,14.666402 0.358038428,18.012002 L0.358038428,18.044802 C0.358038428,21.472402 2.98700813,23.981602 6.25280899,23.981602 L6.25280899,23.981602 Z M16.732047,23.752002 L20.0468349,23.752002 L20.8632851,21.685602 L25.2884453,21.685602 L26.1048955,23.752002 L29.5013284,23.752002 L24.6352851,12.190002 L21.5817613,12.190002 L16.732047,23.752002 Z M21.7940384,19.209202 L23.0840297,15.962002 L24.357692,19.209202 L21.7940384,19.209202 Z M35.6697093,23.752002 L38.8375361,23.752002 L38.8375361,20.275202 L40.2418305,20.275202 L42.5442201,23.752002 L46.1855881,23.752002 L43.4586443,19.750402 C44.8792677,19.143602 45.810021,17.979202 45.810021,16.208002 L45.810021,16.175202 C45.810021,15.043602 45.4671119,14.174402 44.7976227,13.502002 C44.0301595,12.731202 42.8218132,12.272002 41.0746097,12.272002 L35.6697093,12.272002 L35.6697093,23.752002 Z M38.8375361,17.782402 L38.8375361,15.010802 L40.9276487,15.010802 C41.9727049,15.010802 42.6421941,15.470002 42.6421941,16.388402 L42.6421941,16.421202 C42.6421941,17.257602 42.005363,17.782402 40.9439777,17.782402 L38.8375361,17.782402 Z M55.2605317,23.752002 L58.4283585,23.752002 L58.4283585,15.060002 L61.8574495,15.060002 L61.8574495,12.272002 L51.8477698,12.272002 L51.8477698,15.060002 L55.2605317,15.060002 L55.2605317,23.752002 Z M74,24 C77.3137085,24 80,21.3137085 80,18 C80,14.6862915 77.3137085,12 74,12 C70.6862915,12 68,14.6862915 68,18 C68,21.3137085 70.6862915,24 74,24 Z" id="logotype"></path>
+            </g>
+          </g>
+        </g>
+      </svg>
+      <!-- <img src="https://carto.com/img/logo/pride-logo-positive.png" class="pride-logo" alt="CARTO"/> -->
+    </a>
+
+    <ul class="navbar__elements">
+      <!-- PLATFORM -->
+      <li class="navbar__element">
+        <div class="title f12 navbar__text">Platform</div>
+        {{$platformElement := $data.platform}}
+        <div class="navbar__dropdown">
+          <div class="navbar__section">
+            <ul class="dropdown-list title f12">
+              {{range $element := $platformElement.elements}}
+                <li class="u-mb12">
+                  <a class="js-Action--platform{{$element.name | urlize}} parent-underlined" href="{{$element.url}}">
+                    <div class="icon u-mr12">
+                      {{$element.icon | safeHTML}}
+                    </div>
+                    <span class="underlined-link underlined-small is-txtNavyBlue">
+                      {{$element.name}}
+                    </span>
+                  </a>
+                </li>
+              {{end}}
+            </ul>
+          </div>
+          <div class="navbar__section">
+            <span class="text f12 is-txtNavyBlue">Popular features</span>
+            <ul class="grid title f12">
+              {{range $feature := $platformElement.features}}
+                <li class="navbar__tag"><a class="underlined-link underlined-small is-txtNavyBlue js-Action--platform{{$feature.name | urlize}}" href="{{$feature.url}}">{{$feature.name}}</a></li>
+              {{end}}
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <!-- SOLUTIONS -->
+      <li class="navbar__element">
+        <div class="title f12 navbar__text">Solutions</div>
+        {{$industryElement := $data.industry}}
+        {{$useCaseElement := $data.useCase}}
+        <div class="navbar__dropdown navbar__dropdown--large">
+          <!-- TABS -->
+          <div class="tab-container">
+            <div class="js-Tabs tag-list">
+              <ul class="tab-navigation is-navy-red border-white">
+                  <li class="tab-navigationItem title is-txtNavyBlue">
+                    <a class="tab-navigationAction js-Tab text is-active f12" href="#nav-industry">
+                      <span class="is-regular is-txtTypo2">By</span> <span class="is-semibold">Industry</span>
+                    </a>
+                  </li>
+                  <li class="tab-navigationItem title is-txtNavyBlue">
+                    <a class="tab-navigationAction js-Tab text f12" href="#nav-usecase">
+                      <span class="is-regular is-txtTypo2">By</span> <span class="is-semibold">Use Case</span>
+                    </a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+          <!-- ENDTABS -->
+          <div id="nav-industry" class="navbar__section navbar__section--noborder tab-content js-tab-content is-active">
+            <ul class="dropdown-list grid title f12">
+              {{range $element := $industryElement.elements}}
+                <li class="u-mb12 grid-cell--col6">
+                  <a class="js-Action--industries{{$element.name | urlize}} parent-underlined" href="{{$element.url}}">
+                    <div class="icon u-mr12">
+                      {{$element.icon | safeHTML}}
+                    </div>
+                    <span class="underlined-link underlined-small is-txtNavyBlue">
+                      {{$element.name}}
+                    </span>
+                  </a>
+                </li>
+              {{end}}
+            </ul>
+            <a class="is-txtCartoRed underlined-link title f12 u-tupper u-mt8 js-Action--industrieslearnmore" href="{{$industryElement.learn_more}}">
+              <span>
+                All industries
+                <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"><path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#EA140F" fill-rule="evenodd"></path></svg>
+              </span>
+            </a>
+          </div>
+
+          <div id="nav-usecase" class="navbar__section navbar__section--noborder tab-content js-tab-content">
+            <ul class="dropdown-list grid title f12">
+              {{range $element := $useCaseElement.elements}}
+                <li class="u-mb12 grid-cell--col6">
+                  <a class="js-Action--solutions{{$element.name | urlize}} parent-underlined" href="{{$element.url}}">
+                    <div class="icon u-mr12">
+                      {{$element.icon | safeHTML}}
+                    </div>
+                    <span class="underlined-link underlined-small is-txtNavyBlue">
+                      {{$element.name}}
+                    </span>
+                  </a>
+                </li>
+              {{end}}
+            </ul>
+            <a class="is-txtCartoRed underlined-link title f12 u-tupper u-mt8 js-Action--solutionsreadmore" href="{{$useCaseElement.learn_more}}">
+              <span>
+                All Use Cases
+                <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"><path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#EA140F" fill-rule="evenodd"></path></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </li>
+
+      <!-- DOCUMENTATION -->
+      <li class="navbar__element">
+        <div class="title f12 navbar__text">Documentation</div>
+        {{$documentationElement := $data.documentation}}
+        <div class="navbar__dropdown">
+          <div class="navbar__section">
+            <ul class="dropdown-list title f12">
+              {{range $element := $documentationElement.elements}}
+                <li class="u-mb12 no-align">
+                  <a class="js-Action--documentation{{$element.name | urlize}} parent-underlined" href="{{$element.url}}">
+                    <div class="icon u-mr12">
+                      {{$element.icon | safeHTML}}
+                    </div>
+                    <div>
+                      <span class="underlined-link underlined-small is-txtNavyBlue u-mt12">
+                        {{$element.name}}
+                      </span>
+                      <p class="text f12 is-txtTypo2">{{$element.description}}</p>
+                    </div>
+                  </a>
+                </li>
+              {{end}}
+            </ul>
+          </div>
+          <div class="navbar__section">
+            <span class="text f12 is-txtNavyBlue">Popular resources</span>
+            <ul class="grid title f12">
+              {{range $resource := $documentationElement.resources}}
+                <li class="navbar__tag"><a class="underlined-link underlined-small is-txtNavyBlue js-Action--documentation{{$resource.name | urlize}}" href="{{$resource.url}}">{{$resource.name}}</a></li>
+              {{end}}
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <!-- PRICING -->
+      <li class="navbar__element">
+        <a class="title f12 navbar__text underlined-link" href="/pricing/">Pricing</a>
+      </li>
+
+      <!-- COMPANY -->
+      <li class="navbar__element">
+        <div class="title f12 navbar__text">Company</div>
+        {{$companyElement := $data.company}}
+        <div class="navbar__dropdown">
+          <div class="navbar__section">
+            <ul class="dropdown-list title f12">
+              {{range $element := $companyElement.elements}}
+                <li class="u-mb12">
+                  <a class="js-Action--company{{$element.name | urlize}} parent-underlined" href="{{$element.url}}">
+                    <div class="icon u-mr12">
+                      {{$element.icon | safeHTML}}
+                    </div>
+                    <span class="underlined-link underlined-small is-txtNavyBlue">
+                      {{$element.name}}
+                    </span>
+                  </a>
+                </li>
+              {{end}}
+            </ul>
+            <div class="title f12 is-txtTypo2 u-tupper u-mt24">Featured content</div>
+            <ul class="dropdown-list title f12 u-mt12">
+              {{range $element := $companyElement.featured}}
+                <li class="u-mb12">
+                  <a class="js-Action--company{{$element.name | urlize}} parent-underlined" href="{{$element.url}}">
+                    <div class="icon u-mr12">
+                      {{$element.icon | safeHTML}}
+                    </div>
+                    <span class="underlined-link underlined-small is-txtNavyBlue">
+                      {{$element.name}}
+                    </span>
+                  </a>
+                </li>
+              {{end}}
+            </ul>
+          </div>
+          <div class="navbar__section">
+            <span class="text f12 is-txtNavyBlue">More</span>
+            <ul class="grid title f12">
+              {{range $more := $companyElement.more}}
+                <li class="navbar__tag"><a class="underlined-link underlined-small is-txtNavyBlue js-Action--company{{$more.name | urlize}}" href="{{$more.url}}">{{$more.name}}</a></li>
+              {{end}}
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+
+    <!-- USER PROFILE / LINKS-->
+    <div class="navbar__user u-mlauto">
+      <ul class="u-flex u-align-center js-User--hideConnected user-element--hide">
+        <li class="u-mr32 u-mr20--desktop-s">
+          <a href="/login" class="button button--small is-white js-Action--NAVlogin">
+            <span>Login</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="/signup/" class="button button--small is-emerald js-Action--NAVdemo">
+            <span>Try for free</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="user-element--hide js-User--showConnected u-flex u-align-center">
+        <li class="navbar__element u-flex">
+          <a class="title f12 navbar__text js-Action--NAVdashboard js-user-information button button--small is-white" data-addBaselink="dashboard">
+            <span>My Dashboard</span>
+          </a>
+        </li>
+        <li class="navbar__element navbar__element--no-margin">
+          <div class="navbar__user-avatar u-mt16 u-mb16">
+            <img class="js-user-information" data-addUserImage="avatar_url" src=""/>
+          </div>
+          <div class="navbar__dropdown navbar__dropdown--right">
+            <ul class="grid navbar__section">
+              <li class="Dropdown-item grid-cell--col12 u-flex u-mb36 u-flex">
+                <div class="navbar__user-avatar u-mr12">
+                  <img class="js-user-information" data-addUserImage="avatar_url" src=""/>
+                </div>
+                <ul>
+                  <li class="is-txtBaseGrey text is-semibold is-caption is-txtBaseGrey js-user-information" data-addUserText="username"></li>
+                  <li class="text is-small is-txtBaseGrey u-mt4 js-user-information" data-addUserText="email"></li>
+                </ul>
+              </li>
+              <li class="grid-cell--col12 u-flex u-align-center u-mb20">
+                <svg width="24" height="24" viewBox="0 0 24 18" xmlns="http://www.w3.org/2000/svg">
+                  <g fill="#2E51E8" fill-rule="nonzero">
+                    <circle cx="9" cy="9" r="2.4"/>
+                    <path d="M16 0H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 10.09h-1.79a4.343 4.343 0 0 1-.431 1.053l1.13 1.13-1.636 1.635-1.131-1.13a4.193 4.193 0 0 1-1.053.43V15H7.908v-1.791a4.201 4.201 0 0 1-1.052-.43l-1.131 1.13-1.635-1.635 1.131-1.13a4.36 4.36 0 0 1-.431-1.053H3V7.909h1.79c.098-.373.244-.723.431-1.053L4.09 5.726 5.727 4.09l1.131 1.13a4.24 4.24 0 0 1 1.052-.43V2.999h2.181V4.79a4.23 4.23 0 0 1 1.053.43l1.131-1.13 1.636 1.636-1.13 1.13c.187.33.333.679.431 1.053H15v2.181z"/>
+                  </g>
+                </svg>
+                <a class="title f12 is-txtBaseGrey u-ml12 js-user-information underlined-link" data-addBaselink="profile">Settings</a>
+              </li>
+              <li class="grid-cell--col12 u-flex u-align-center u-mb20">
+                <svg width="24" height="24" viewBox="0 0 24 19" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.723 10.579l2.121-2.121-1.414-1.414 1.414-1.415 1.415 1.415 1.414-1.414-1.415-1.415 1.415-1.414 1.415 1.414 1.414-1.414-2.828-2.83L7.896 7.75l-.707-.707c-.781-.782-2.048-.782-2.828 0L.825 10.578c-.78.781-.78 2.047.001 2.828l4.242 4.242c.781.781 2.047.781 2.828 0l3.535-3.535c.782-.781.782-2.047 0-2.828l-.708-.706zM6.834 13.76c-.586.586-1.535.586-2.121 0-.586-.586-.586-1.535 0-2.121.586-.587 1.535-.587 2.121 0 .586.586.586 1.535 0 2.121z" fill="#2E51E8" fill-rule="nonzero"/>
+                </svg>
+                <a class="title f12 is-txtBaseGrey u-ml12 js-user-information underlined-link" data-addBaselink="your_apps">API Keys</a>
+              </li>
+              <li class="grid-cell--col12 u-flex u-align-center u-mb20">
+                <svg width="24" height="24" viewBox="0 0 24 17" xmlns="http://www.w3.org/2000/svg">
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M-4-4h24v24H-4z"/>
+                    <g fill="#2E51E8" fill-rule="nonzero">
+                      <path d="M8 8a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 9c-4.7 0-8 2.47-8 6v1h16v-1c0-3.53-3.29-6-8-6z"/>
+                    </g>
+                  </g>
+                </svg>
+                <a class="title f12 is-txtBaseGrey u-ml12 js-user-information underlined-link" data-addBaselink="me">Public Profile</a>
+              </li>
+              <li class="grid-cell--col12 u-flex u-align-center u-mb20">
+                <svg width="24" height="24" viewBox="0 0 24 13" xmlns="http://www.w3.org/2000/svg">
+                  <g fill="none" fill-rule="evenodd">
+                    <path d="M-2-5h24v24H-2z"/>
+                    <g fill="#2E51E8" fill-rule="nonzero">
+                      <path d="M10 5.82L18.96.26A1.98 1.98 0 0 0 18 0H2c-.35 0-.68.1-.97.26L10 5.82z"/>
+                      <path d="M10.53 7.85a1 1 0 0 1-1.06 0L0 1.97V11c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V2v-.03l-9.47 5.88z"/>
+                    </g>
+                  </g>
+                </svg>
+                <a class="title f12 is-txtBaseGrey u-ml12 js-user-information underlined-link" href="mailto:support@carto.com">Contact Support</a>
+              </li>
+              <li class="grid-cell--col12">
+                <a class="is-txtCartoRed underlined-link title f12 u-tupper u-mt8 js-Action--logout js-user-information" data-addBaselink="logout">
+                  <span>
+                    Log out
+                    <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"><path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#EA140F" fill-rule="evenodd"></path></svg>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="navbar__mobile-button js-toggle-mobile-nav u-mlauto">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="navbar__mobile js-navbar-mobile">
+      <ul class="navbar__mobile-modules">
+
+        <!-- PLATFORM MOBILE -->
+        <li class="grid u-justify-center">
+          <div class="grid-cell grid-cell--col10 navbar__collapsed">
+            <div class="u-flex u-align-center js-collapsable-click">
+              <span class="title f20 is-txtWhite">Platform</span>
+              <div class="u-mlauto collapsable-icon">
+                <svg width="14" height="9" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg"><path d="M12.35.15L7.06 5.44 1.76.14.37 1.57l6.7 6.7 6.7-6.7z" fill="#FFF" fill-rule="evenodd"/></svg>
+              </div>
+            </div>
+
+            <div class="collapsable-element">
+              <ul class="u-mt24 dropdown-list title f16">
+                {{range $i, $element := $platformElement.elements}}
+                  <li class="{{if not $i}}u-mb16{{end}}">
+                    <div class="icon u-mr16">
+                      {{$element.icon_mobile | safeHTML}}
+                    </div>
+                    <a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$element.name | urlize}}" href="{{$element.url}}">
+                      {{$element.name}}
+                    </a>
+                  </li>
+                {{end}}
+              </ul>
+              <div class="featues u-mt20">
+                <span class="features__title f12 title">
+                  Popular features
+                </span>
+                <ul class="grid title f12">
+                  {{range $feature := $platformElement.features}}
+                    <li class="navbar__tag"><a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$feature.name | urlize}}" href="{{$feature.url}}">{{$feature.name}}</a></li>
+                  {{end}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- SOLUTIONS MOBILE -->
+        <li class="grid u-justify-center">
+          <div class="grid-cell grid-cell--col10 navbar__collapsed">
+            <div class="u-flex u-align-center js-collapsable-click">
+              <span class="title f20 is-txtWhite">Solutions</span>
+              <div class="u-mlauto collapsable-icon">
+                <svg width="14" height="9" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg"><path d="M12.35.15L7.06 5.44 1.76.14.37 1.57l6.7 6.7 6.7-6.7z" fill="#FFF" fill-rule="evenodd"/></svg>
+              </div>
+            </div>
+            <div class="collapsable-element scroll-gradient">
+              <div class="mobile-tabs u-mt16">
+                <div class="mobile-tab title f16 is-txtWhite js-tab-mobile" data-target="industry-mobile" data-name="Industries" data-url="/industries/">
+                  by Industry
+                </div>
+                <div class="mobile-tab title f16 is-txtWhite js-tab-mobile" data-target="usecase-mobile" data-name="Use Cases" data-url="/solutions/">
+                  by Use Case
+                </div>
+                <div class="navbar-position-bar is-bgCartoRed js-line-tab"></div>
+              </div>
+
+              <div class="scrollable-mobile js-scroll-mobile">
+                <ul id="industry-mobile" class="grid u-mt24 dropdown-list title f16 js-tab-element">
+                  {{range $element := $industryElement.elements}}
+                    <li class="grid-cell grid-cell--col6 u-mb16">
+                      <div class="icon u-mr16">
+                        {{$element.icon_mobile | safeHTML}}
+                      </div>
+                      <a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$element.name | urlize}}" href="{{$element.url}}">
+                        {{$element.name}}
+                      </a>
+                    </li>
+                  {{end}}
+                </ul>
+                <ul id="usecase-mobile" class="grid u-mt24 dropdown-list title f16 js-tab-element">
+                  {{range $element := $useCaseElement.elements}}
+                    <li class="grid-cell grid-cell--col6 u-mb16">
+                      <div class="icon u-mr16">
+                        {{$element.icon_mobile | safeHTML}}
+                      </div>
+                      <a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$element.name | urlize}}" href="{{$element.url}}">
+                        {{$element.name}}
+                      </a>
+                    </li>
+                  {{end}}
+                </ul>
+                <div class="space-filler"></div>
+              </div>
+              <a class="is-txtCartoRed underlined-link underlined-small title f12 u-tupper js-Action--solutions-more u-mt16 js-solutions-tab-link" href="/industries/">
+                <span>
+                  All <span class="js-tab-name">Industries</span>
+                  <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"><path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#EA140F" fill-rule="evenodd"></path></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- DOCUMENTATION MOBILE -->
+        <li class="grid u-justify-center">
+          <div class="grid-cell grid-cell--col10 navbar__collapsed">
+            <div class="u-flex u-align-center js-collapsable-click">
+              <span class="title f20 is-txtWhite">Documentation</span>
+              <div class="u-mlauto collapsable-icon">
+                <svg width="14" height="9" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg"><path d="M12.35.15L7.06 5.44 1.76.14.37 1.57l6.7 6.7 6.7-6.7z" fill="#FFF" fill-rule="evenodd"/></svg>
+              </div>
+            </div>
+
+            <div class="collapsable-element">
+              <ul class="u-mt24 dropdown-list title f16">
+                {{range $i, $element := $documentationElement.elements}}
+                  <li class="{{if not $i}}u-mb16{{end}}">
+                    <div class="icon u-mr16">
+                      {{$element.icon_mobile | safeHTML}}
+                    </div>
+                    <a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$element.name | urlize}}" href="{{$element.url}}">
+                      {{$element.name}}
+                    </a>
+                  </li>
+                {{end}}
+              </ul>
+              <div class="featues u-mt20">
+                <span class="features__title f12 title">
+                  Popular resources
+                </span>
+                <ul class="grid title f12">
+                  {{range $feature := $documentationElement.resources}}
+                    <li class="navbar__tag"><a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$feature.name | urlize}}" href="{{$feature.url}}">{{$feature.name}}</a></li>
+                  {{end}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <!-- COMPANY MOBILE -->
+        <li class="grid u-justify-center">
+          <div class="grid-cell grid-cell--col10 navbar__collapsed">
+            <div class="u-flex u-align-center js-collapsable-click">
+              <span class="title f20 is-txtWhite">Company</span>
+              <div class="u-mlauto collapsable-icon">
+                <svg width="14" height="9" viewBox="0 0 14 9" xmlns="http://www.w3.org/2000/svg"><path d="M12.35.15L7.06 5.44 1.76.14.37 1.57l6.7 6.7 6.7-6.7z" fill="#FFF" fill-rule="evenodd"/></svg>
+              </div>
+            </div>
+
+            <div class="collapsable-element">
+              <ul class="u-mt24 dropdown-list title f16">
+                {{range $i, $element := $companyElement.elements}}
+                  <li class="{{if not $i}}u-mb16{{end}}">
+                    <div class="icon u-mr16">
+                      {{$element.icon_mobile | safeHTML}}
+                    </div>
+                    <a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$element.name | urlize}}" href="{{$element.url}}">
+                      {{$element.name}}
+                    </a>
+                  </li>
+                {{end}}
+              </ul>
+
+              <div class="u-mt36">
+                <span class="title f12 is-txtSoftBlue u-tupper">Featured content</span>
+                <ul class="u-mt24 u-mb4 dropdown-list title f16">
+                  {{range $i, $element :=  $companyElement.featured}}
+                    <li class="{{if not $i}}u-mb16{{end}}">
+                      <div class="icon u-mr16">
+                        {{$element.icon_mobile | safeHTML}}
+                      </div>
+                      <a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$element.name | urlize}}" href="{{$element.url}}">
+                        {{$element.name}}
+                      </a>
+                    </li>
+                  {{end}}
+                </ul>
+
+              </div>
+              <div class="featues u-mt20">
+                <span class="features__title f12 title">
+                  More
+                </span>
+                <ul class="grid title f12">
+                  {{range $more := $companyElement.more}}
+                    <li class="navbar__tag"><a class="underlined-link underlined-small is-txtWhite js-Action--platform{{$more.name | urlize}}" href="{{$more.url}}">{{$more.name}}</a></li>
+                  {{end}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="navbar__account-links u-flex u-justify-center u-align-center">
+        <li class="u-mr32">
+          <a href="/login" class="button is-white js-Action--NAVlogin">
+            <span>Login</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="/signup/" class="button is-cartoRed js-Action--NAVdemo">
+            <span>Try for free</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

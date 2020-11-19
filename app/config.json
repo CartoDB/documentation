@@ -1,0 +1,32 @@
+{
+  "baseURL": "https://carto.com/documentation/",
+  "languageCode": "en-us",
+  "title": "CARTO Documentation",
+  "disableKinds": ["taxonomy", "section", "term", "RSS", "robotsTXT", "404"],
+  "assetDir": "assets",
+  "contentDir": "content",
+  "layoutDir": "layouts",
+  "dataDir": "data",
+  "staticDir": "static",
+  "publishDir": "_site",
+  "sitemap": {
+    "changefreq": "monthly",
+    "filename": "doc-sitemap.xml",
+    "priority": 0.8
+  },
+  "minify": {
+    "disableSVG": true,
+    "tdewolff": {
+      "html": {
+        "keepDefaultAttrVals": true
+      }
+    }
+  },
+  "markup": {
+    "goldmark": {
+       "renderer": {
+          "unsafe": true
+       }
+    }
+ }
+}

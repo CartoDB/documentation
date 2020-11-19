@@ -1,0 +1,55 @@
+<head>
+  <!-- Google Tag Manager -->
+  <!-- Anti-flicker snippet (recommended)  -->
+  <style>.async-hide { opacity: 0 !important} </style>
+  <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+  })(window,document.documentElement,'async-hide','dataLayer',4000,
+  {'GTM-WGSN6JK':true});</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WGSN6JK');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="canonical" href="{{.Permalink}}">
+  <link rel="mask-icon" href="/img/logo/icon-carto.svg" color="#162945">
+
+  <title>{{.Params.title}}{{" | "}}{{ .Site.Title }}</title>
+  <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta name="author" content="CARTO">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:400,600" rel=stylesheet>
+
+  {{ $styles := resources.Get "scss/main.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+
+
+  <!-- Twitter cards -->
+  <meta name=twitter:site content=@carto>
+  <meta name=twitter:title content="{{.Params.title}}">
+  <meta name=twitter:description content="{{.Params.description}}">
+  {{if .Params.twitterImage}}
+    <meta name=twitter:card content="summary_large_image">
+    <meta name=twitter:image content={{.Params.twitterImage}}>
+  {{else}}
+    <meta name=twitter:card content="summary">
+    <meta name=twitter:image content=https://carto.com/img/logo/carto-for-twitter.png>
+  {{end}}
+
+  <!-- OG cards -->
+  <meta property=og:title content="{{.Params.title}}">
+  <meta property=og:description content="{{.Params.description}}">
+  <meta property=og:type content="website">
+  <meta property=og:url content="{{.Permalink}}">
+  {{if .Params.facebookImage}}
+    <meta property=og:image content={{.Params.facebookImage}}>
+  {{else}}
+    <meta property=og:image content=https://carto.com/img/logo/media-default.png>
+  {{end}}
+
+  <script defer charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+</head>

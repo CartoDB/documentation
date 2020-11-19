@@ -1,0 +1,170 @@
+{{ define "main" }}
+{{$data := .Site.Data.homeData}}
+{{$baseUrl := .Site.BaseURL}}
+<header class="is-bgBaseGrey is-txtWhite home-header">
+  <div class="container grid u-justify-center">
+    <div class="navbar grid-cell--col12">
+      {{ partial "navbar.html" (dict "CTX" .) }}
+    </div>
+    <div class="grid-cell grid-cell--col6 u-mt32 u-mb96">
+      <h1 class="title f64 is-txtWhite">Documentation</h1>
+      <p class="text f20 is-txtWhite u-mt16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo.</p>
+    </div>
+    <div class="grid-cell--col1"></div>
+    <div class="grid-cell--col3 header-image u-mt32">
+      <img src="{{$baseUrl}}/img/header-image.png">
+    </div>
+  </div>
+</header>
+
+<section class="is-bgWhite">
+  <div class="container grid u-justify-center u-mt120 u-mb120">
+    <div class="grid-cell grid-cell--col7">
+      <h2 class="title f48 is-txtBaseGrey">Get started with CARTO</h2>
+      <p class="text f20 is-txtBaseGrey u-mt24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.</p>
+      <a href="#" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt32 underlined-link">
+        <span>CARTO in a nutshell
+          <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
+        </span>
+      </a>
+    </div>
+    <div class="grid-cell--col3"></div>
+    <ul class="grid-cell--col10 grid u-mt64">
+      {{range $elem := $data.getStarted}}
+        <li class="grid-cell grid-cell--col6 grid-cell--col12--tablet u-mb20">
+          <a href="{{$elem.url}}" class="clickable-card">
+            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <h4 class="title f12 is-txtBaseGrey u-tupper u-mt24">CARTO for</h4>
+            <h3 class="title f24 is-txtBaseGrey">{{$elem.title}}</h3>
+            <p class="text f16 is-txtTypo2 u-mt24">{{$elem.description}}</p>
+            <ul class="grid u-mt24">
+              {{range $tag := $elem.related}}
+                <li class="tag u-mr12">
+                  <object><a class="f12 title is-txtNavyBlue" href="{{$tag.url}}">{{$tag.name}}</a></object>
+                </li>
+              {{end}}
+            </ul>
+          </a>
+        </li>
+      {{end}}
+    </ul>
+  </div>
+</section>
+
+<section class="is-bgWhite">
+  <div class="container grid u-justify-center u-mt120 u-mb32">
+    <div class="grid-cell grid-cell--col7">
+      <h2 class="title f48 is-txtBaseGrey">CARTO Products</h2>
+      <p class="text f20 is-txtBaseGrey u-mt24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.</p>
+    </div>
+    <div class="grid-cell--col3"></div>
+    <ul class="grid-cell--col10 grid u-mt64">
+      {{range $elem := $data.products}}
+        <li class="grid-cell grid-cell--col6 grid-cell--col12--mobile u-mb20">
+          <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
+            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <h3 class="title f20 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
+            <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
+          </a>
+        </li>
+      {{end}}
+    </ul>
+  </div>
+
+  <div class="container grid u-justify-center u-mb32">
+    <div class="grid-cell grid-cell--col10">
+      <h2 class="title f20 is-txtBaseGrey">Development tools</h2>
+    </div>
+    <ul class="grid-cell--col10 grid u-mt24">
+      {{range $elem := $data.developmentTools}}
+        <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
+          <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
+            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
+            <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
+          </a>
+        </li>
+      {{end}}
+    </ul>
+  </div>
+
+  <div class="container grid u-justify-center u-mb120">
+    <div class="grid-cell grid-cell--col10">
+      <h2 class="title f20 is-txtBaseGrey">APIs</h2>
+    </div>
+    <ul class="grid-cell--col10 grid u-mt24">
+      {{range $elem := $data.apis}}
+        <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
+          <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
+            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
+            <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
+          </a>
+        </li>
+      {{end}}
+    </ul>
+  </div>
+</section>
+
+<section class="is-bgSoftGrey">
+  <div class="container grid u-justify-center">
+    <div class="grid-cell grid-cell--col9 u-mt120">
+      <h2 class="title f20 is-txtBaseGrey">Previous libraries and components</h2>
+      <p class="text f20 is-txtBaseGrey u-mt8">The following libraries and components are still under support by CARTO but we don’t recommend starting new projects with them as they will eventually become deprecated.</p>
+    </div>
+    <div class="grid-cell--col1"></div>
+    <ul class="grid-cell--col10 grid u-mt48 u-mb120">
+      {{range $elem := $data.deprecated}}
+        <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
+          <a href="{{$elem.url}}" class="clickable-card clickable-card--deprecated">
+            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <h3 class="title f16 is-txtBaseGrey u-ml20">{{$elem.title}}</h3>
+          </a>
+        </li>
+      {{end}}
+    </ul>
+  </div>
+</section>
+
+<section class="is-bgSoftGrey">
+  <div class="container grid u-justify-center">
+    <div class="grid-cell grid-cell--col9 u-mt120">
+      <h2 class="title f20 is-txtBaseGrey">Previous libraries and components</h2>
+      <p class="text f20 is-txtBaseGrey u-mt8">The following libraries and components are still under support by CARTO but we don’t recommend starting new projects with them as they will eventually become deprecated.</p>
+    </div>
+    <div class="grid-cell--col1"></div>
+    <ul class="grid-cell--col10 grid u-mt48 u-mb120">
+      <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20 u-flex u-flex-column">
+        <h3 class="title f20 is-txtBaseGrey">FAQs</h3>
+        <p class="text f16 is-txtTypo2 u-mt8 u-mbauto">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="#" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt24 underlined-link">
+          <span>Read FAQs
+            <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
+          </span>
+        </a>
+      </li>
+
+      <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20 u-flex u-flex-column">
+        <h3 class="title f20 is-txtBaseGrey">Academy</h3>
+        <p class="text f16 is-txtTypo2 u-mt8 u-mbauto">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <a href="#" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt24 underlined-link">
+          <span>LEARN in carto academy
+            <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
+          </span>
+        </a>
+      </li>
+
+      <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20 u-flex u-flex-column">
+        <h3 class="title f20 is-txtBaseGrey">Support</h3>
+        <p class="text f16 is-txtTypo2 u-mt8 u-mbauto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh.</p>
+        <a href="#" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt24 underlined-link">
+          <span>Contact support
+            <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+{{end}}

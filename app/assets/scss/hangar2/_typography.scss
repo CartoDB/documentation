@@ -1,0 +1,128 @@
+// (font-size, line-height, letter-spacing)
+$fontSizes: (
+  (84, 96, -1),
+  (64, 72, -0.5),
+  (48, 56, -0.3),
+  (36, 44, -0.2),
+  (32, 40, -0.1),
+  (24, 32, 0),
+  (20, 28, 0),
+  (16, 24, 0),
+  (12, 16, 0)
+);
+
+@each $fontSize in $fontSizes {
+  .f#{nth($fontSize, 1)} {
+    font-size: #{nth($fontSize, 1)}px;
+    line-height: #{nth($fontSize, 2)}px;
+    letter-spacing: #{nth($fontSize, 3)}px;
+  }
+}
+
+@media (max-width: $layout-mobile) {
+  @each $fontSize in $fontSizes {
+    .f#{nth($fontSize, 1)}--mobile {
+      font-size: #{nth($fontSize, 1)}px;
+      line-height: #{nth($fontSize, 2)}px;
+      letter-spacing: #{nth($fontSize, 3)}px;
+    }
+  }
+}
+
+@media (max-width: $layout-tablet) {
+  @each $fontSize in $fontSizes {
+    .f#{nth($fontSize, 1)}--tablet {
+      font-size: #{nth($fontSize, 1)}px;
+      line-height: #{nth($fontSize, 2)}px;
+      letter-spacing: #{nth($fontSize, 3)}px;
+    }
+  }
+}
+
+@media (max-width: $layout-desktop) {
+  @each $fontSize in $fontSizes {
+    .f#{nth($fontSize, 1)}--desktop-s {
+      font-size: #{nth($fontSize, 1)}px;
+      line-height: #{nth($fontSize, 2)}px;
+      letter-spacing: #{nth($fontSize, 3)}px;
+    }
+  }
+}
+
+@media (min-width: $layout-desktop-l) {
+  @each $fontSize in $fontSizes {
+    .f#{nth($fontSize, 1)}--desktop-l {
+      font-size: #{nth($fontSize, 1)}px;
+      line-height: #{nth($fontSize, 2)}px;
+      letter-spacing: #{nth($fontSize, 3)}px;
+    }
+  }
+}
+
+@mixin text() {
+  font-family: $font-family-base;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+
+@mixin title() {
+  font-family: $font-family-titles;
+  font-weight: 600;
+}
+
+.text {
+  @include text();
+}
+
+.title {
+  @include title();
+}
+
+.is-regular {
+  font-weight: 400;
+}
+
+.is-semibold,
+strong {
+  font-weight: 600;
+}
+
+.is-bold {
+  font-weight: 700;
+}
+
+.is-extrabold {
+  font-weight: 800;
+}
+
+.is-italic {
+  font-style: italic;
+}
+
+.is-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-centered {
+  text-align: center;
+}
+
+.is-centered--tablet {
+  @media (max-width: $layout-tablet) {
+    text-align: center;
+  }
+}
+
+.is-left--mobile {
+  @media (max-width: $layout-mobile) {
+    text-align: left;
+  }
+}
+
+.is-left--tablet {
+  @media (max-width: $layout-tablet) {
+    text-align: left;
+  }
+}

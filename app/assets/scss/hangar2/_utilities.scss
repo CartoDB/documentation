@@ -1,0 +1,328 @@
+// Margins
+$sizes: (0, 4, 6, 8, 10, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 80, 96, 120, 128, 148);
+
+@each $size in $sizes {
+  .u-mt#{$size} {
+    margin-top: #{$size}px;
+  }
+  .u-mr#{$size} {
+    margin-right: #{$size}px;
+  }
+  .u-mb#{$size} {
+    margin-bottom: #{$size}px;
+  }
+  .u-ml#{$size} {
+    margin-left: #{$size}px;
+  }
+}
+.u-mtauto {
+  margin-top: auto;
+}
+.u-mrauto {
+  margin-right: auto;
+}
+.u-mbauto {
+  margin-bottom: auto;
+}
+.u-mlauto {
+  margin-left: auto;
+}
+
+@media (max-width: $layout-mobile) {
+  @each $size in $sizes {
+    .u-mt#{$size}--mobile {
+      margin-top: #{$size}px;
+    }
+    .u-mr#{$size}--mobile {
+      margin-right: #{$size}px;
+    }
+    .u-mb#{$size}--mobile {
+      margin-bottom: #{$size}px;
+    }
+    .u-ml#{$size}--mobile {
+      margin-left: #{$size}px;
+    }
+  }
+  .u-mtauto--mobile {
+    margin-top: auto;
+  }
+  .u-mrauto--mobile {
+    margin-right: auto;
+  }
+  .u-mbauto--mobile {
+    margin-bottom: auto;
+  }
+  .u-mlauto--mobile {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: $layout-tablet) {
+  @each $size in $sizes {
+    .u-mt#{$size}--tablet {
+      margin-top: #{$size}px;
+    }
+    .u-mr#{$size}--tablet {
+      margin-right: #{$size}px;
+    }
+    .u-mb#{$size}--tablet {
+      margin-bottom: #{$size}px;
+    }
+    .u-ml#{$size}--tablet {
+      margin-left: #{$size}px;
+    }
+  }
+  .u-mtauto--tablet {
+    margin-top: auto;
+  }
+  .u-mrauto--tablet {
+    margin-right: auto;
+  }
+  .u-mbauto--tablet {
+    margin-bottom: auto;
+  }
+  .u-mlauto--tablet {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: $layout-desktop) {
+  @each $size in $sizes {
+    .u-mt#{$size}--desktop-s {
+      margin-top: #{$size}px;
+    }
+    .u-mr#{$size}--desktop-s {
+      margin-right: #{$size}px;
+    }
+    .u-mb#{$size}--desktop-s {
+      margin-bottom: #{$size}px;
+    }
+    .u-ml#{$size}--desktop-s {
+      margin-left: #{$size}px;
+    }
+  }
+  .u-mtauto--desktop-s {
+    margin-top: auto;
+  }
+  .u-mrauto--desktop-s {
+    margin-right: auto;
+  }
+  .u-mbauto--desktop-s {
+    margin-bottom: auto;
+  }
+  .u-mlauto--desktop-s {
+    margin-left: auto;
+  }
+}
+
+//As we're desktop first, this one is not necessary. If we want this size we will use the default without modifiers
+// @media (min-width: $layout-desktop) {
+//   @each $size in $sizes {
+//     .u-mt#{$size}--desktop {
+//       margin-top: #{$size}px;
+//     }
+//     .u-mr#{$size}--desktop {
+//       margin-right: #{$size}px;
+//     }
+//     .u-mb#{$size}--desktop {
+//       margin-bottom: #{$size}px;
+//     }
+//     .u-ml#{$size}--desktop {
+//       margin-left: #{$size}px;
+//     }
+//   }
+// }
+
+@media (min-width: $layout-desktop-l) {
+  @each $size in $sizes {
+    .u-mt#{$size}--desktop-l {
+      margin-top: #{$size}px;
+    }
+    .u-mr#{$size}--desktop-l {
+      margin-right: #{$size}px;
+    }
+    .u-mb#{$size}--desktop-l {
+      margin-bottom: #{$size}px;
+    }
+    .u-ml#{$size}--desktop-l {
+      margin-left: #{$size}px;
+    }
+  }
+  .u-mtauto--desktop-l {
+    margin-top: auto;
+  }
+  .u-mrauto--desktop-l {
+    margin-right: auto;
+  }
+  .u-mbauto--desktop-l {
+    margin-bottom: auto;
+  }
+  .u-mlauto--desktop-l {
+    margin-left: auto;
+  }
+}
+
+.u-flex {
+  display: flex;
+}
+
+//Hiding tools
+.mobile {
+  display: none;
+
+  @media (max-width: $layout-mobile) {
+    display: block;
+  }
+}
+
+.tablet {
+  display: none;
+
+  @media (max-width: $layout-tablet) {
+    display: block;
+  }
+}
+
+.desktop-s {
+  display: block;
+
+  @media (max-width: $layout-tablet) {
+    display: none;
+  }
+}
+
+.desktop {
+  display: block;
+
+  @media (max-width: $layout-desktop) {
+    display: none;
+  }
+}
+
+.desktop-l {
+  display: block;
+
+  @media (max-width: $layout-desktop-l) {
+    display: none;
+  }
+}
+
+
+.mobile--flex {
+  display: none;
+
+  @media (max-width: $layout-mobile) {
+    display: flex;
+  }
+}
+
+.tablet--flex {
+  display: none;
+
+  @media (max-width: $layout-tablet) {
+    display: flex;
+  }
+}
+
+.desktop-s--flex {
+  display: flex;
+
+  @media (max-width: $layout-tablet) {
+    display: none;
+  }
+}
+
+.desktop--flex {
+  display: flex;
+
+  @media (max-width: $layout-desktop) {
+    display: none;
+  }
+}
+
+.mobile--inline {
+  display: none;
+
+  @media (max-width: $layout-mobile) {
+    display: inline;
+  }
+}
+
+.tablet--inline {
+  display: none;
+
+  @media (max-width: $layout-tablet) {
+    display: inline;
+  }
+}
+
+.desktop-s--inline {
+  display: inline;
+
+  @media (max-width: $layout-tablet) {
+    display: none;
+  }
+}
+
+.desktop--inline {
+  display: inline;
+
+  @media (max-width: $layout-desktop) {
+    display: none;
+  }
+}
+
+//Others
+
+.u-pr {
+  position: relative;
+}
+
+.u-pa {
+  position: absolute;
+}
+
+.u-flex-column {
+  flex-direction: column;
+}
+
+.u-align-center {
+  align-items: center;
+}
+
+.u-justify-center {
+  justify-content: center;
+}
+
+.u-justify-space {
+  justify-content: space-between;
+}
+
+.u-flex-wrap {
+  flex-wrap: wrap;
+}
+
+.u-tupper {
+  text-transform: uppercase;
+}
+
+.u-default {
+  cursor: default;
+}
+
+.u-pointer {
+  cursor: pointer;
+}
+
+.u-overflow {
+  overflow: hidden;
+}
+
+.u-icon48 {
+  width: 48px;
+  height: 48px;
+}
+
+.u-underlined {
+  text-decoration: underline;
+}

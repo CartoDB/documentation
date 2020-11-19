@@ -1,0 +1,31 @@
+.footer-element {
+  padding-bottom: 24px;
+}
+
+.footer-line {
+  border-color: rgba($navyBlue, 0.24);
+  border-top: 0;
+}
+
+.footer__recognition {
+  color: #6F777C;
+
+  .g2-badge {
+    max-width: 61px;
+  }
+
+  img {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%); 
+    filter: grayscale(100%);
+    transition: all 0.1s linear;
+
+    &:hover {
+      -webkit-filter: grayscale(0%);
+      -moz-filter: grayscale(0%);
+      -ms-filter: grayscale(0%);   
+      filter: grayscale(0%);
+    }
+  }
+}

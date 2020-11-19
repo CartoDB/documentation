@@ -1,0 +1,143 @@
+// Hangar Tab bars
+
+
+.tab-navigation {
+  display: flex;
+  border-bottom: 1px solid rgba($base-grey, 0.16);
+  &.no-border{
+    border-bottom: none;
+  }
+  &.border-white{
+    border-bottom: 1px solid rgba($white, 0.48);
+  }
+
+  &.is-purple .tab-navigationAction {
+    color: $opal;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 4px solid $opal;
+    }
+    &.is-active {
+      border-bottom: 4px solid $docs-purple;
+      color: $base-grey;
+    }
+    &.no-underline{
+      border-bottom: unset;
+    }
+  }
+
+  &.is-red .tab-navigationAction {
+    color: $jade;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 4px solid $jade;
+    }
+    &.is-active {
+      border-bottom: 4px solid $solutions-red;
+      color: $base-grey;
+    }
+    &.no-underline{
+      border-bottom: unset;
+    }
+  }
+
+  &.is-white .tab-navigationAction {
+    color: $white;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 4px solid $white;
+    }
+    &.is-active {
+      border-bottom: 4px solid $white;
+      color: $white;
+    }
+    &.no-underline{
+      border-bottom: unset;
+    }
+  }
+
+  &.is-white-red .tab-navigationAction {
+    color: $white;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 4px solid $white;
+    }
+    &.is-active {
+      border-bottom: 4px solid $carto-red;
+      color: $white;
+    }
+    &.no-underline{
+      border-bottom: unset;
+    }
+  }
+
+  &.is-navy-red .tab-navigationAction {
+    color: $navyBlue;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 4px solid #E7E9EC;
+    }
+    &.is-active {
+      border-bottom: 4px solid $carto-red;
+      color: $navyBlue;
+    }
+    &.no-underline{
+      border-bottom: unset;
+    }
+  }
+
+  &.is-emerald .tab-navigationAction {
+    color: $emerald;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 4px solid $emerald;
+    }
+    &.is-active {
+      border-bottom: 4px solid $guides-purple;
+      color: $base-grey;
+    }
+    &.no-underline{
+      border-bottom: unset;
+    }
+  }
+}
+
+.tab-navigationItem {
+  margin-right: 24px;
+  font: 400 16px/24px 'Montserrat' ;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.tab-navigationAction {
+  display: block;
+  padding-bottom: 12px;
+  margin-bottom: -1px;
+  border-bottom: 4px solid transparent;
+  transition: border 300ms ease-in;
+}
+
+.tab-content {
+  display: none;
+  &.is-active {
+    display: block;
+  }
+}
+
+.tab-content--flex {
+  display: none;
+  &.is-active {
+    display: flex;
+  }
+}
+
+.tab-content--grid {
+  display: none;
+  &.is-active {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+

@@ -1,0 +1,124 @@
+.container {
+  max-width: $grid-desktop-s;
+  margin: 0 auto;
+}
+
+.grid-cell {
+  padding-right: $desktop-s-grid-spacing;
+  padding-left: $desktop-s-grid-spacing;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  &.grid--column {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: $layout-desktop) {
+  .container {
+    max-width: $grid-desktop-s;
+  }
+
+  .grid-cell {
+    padding-right: $desktop-s-grid-spacing;
+    padding-left: $desktop-s-grid-spacing;
+  }
+}
+
+@media (max-width: $layout-mobile) {
+  .grid-cell {
+    padding-right: $mobile-grid-spacing;
+    padding-left: $mobile-grid-spacing;
+  }
+}
+
+@media (min-width: $layout-desktop) {
+  .container {
+    max-width: $grid-desktop;
+  }
+
+  .grid-cell {
+    padding-right: $desktop-grid-spacing;
+    padding-left: $desktop-grid-spacing;
+  }
+}
+
+@media (min-width: $layout-desktop-l) {
+  .container {
+    max-width: $grid-desktop-l;
+  }
+
+  .grid-cell {
+    padding-right: $desktop-l-grid-spacing;
+    padding-left: $desktop-l-grid-spacing;
+  }
+}
+
+@mixin grid($value) {
+  flex: 0 0 $value;
+  max-width: $value;
+}
+
+@for $i from 0 through 12{
+  .grid-cell--col#{$i} {
+    @include grid(($i / 12)*100#{"%"});
+  }
+}
+
+@media (max-width: $layout-desktop) {
+  @for $i from 0 through 12{
+    .grid-cell--col#{$i}--desktop-s {
+      @include grid(($i / 12)*100#{"%"});
+    }
+  }
+  .grid-cell--col0--desktop-s {
+    padding: 0;
+  }
+}
+
+@media (max-width: $layout-tablet) {
+  @for $i from 0 through 12{
+    .grid-cell--col#{$i}--tablet {
+      @include grid(($i / 12)*100#{"%"});
+    }
+  }
+  .grid-cell--col0--tablet {
+    padding: 0;
+  }
+}
+
+@media (max-width: $layout-mobile) {
+  @for $i from 0 through 12{
+    .grid-cell--col#{$i}--mobile {
+      @include grid(($i / 12)*100#{"%"});
+    }
+  }
+  .grid-cell--col0--mobile {
+    padding: 0;
+  }
+}
+
+@media (min-width: $layout-desktop) {
+  @for $i from 0 through 12{
+    .grid-cell--col#{$i}--desktop {
+      @include grid(($i / 12)*100#{"%"});
+    }
+  }
+  .grid-cell--col0--desktop {
+    padding: 0;
+  }
+}
+
+@media (min-width: $layout-desktop-l) {
+  @for $i from 0 through 12{
+    .grid-cell--col#{$i}--desktop-l {
+      @include grid(($i / 12)*100#{"%"});
+    }
+  }
+  .grid-cell--col0--desktop-l {
+    padding: 0;
+  }
+}

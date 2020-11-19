@@ -1,0 +1,33 @@
+$colors: (
+  'CartoRed': $carto-red,
+  'NavyBlue': $navyBlue,
+  'SolutionsRed': $solutions-red,
+  'UsecaseRed': $usecase-red,
+  'Jade': $jade,
+  'BuilderBlue': $builder-blue,
+  'EngineBlue': $engine-blue,
+  'LDSBlue': $lds-blue,
+  // 'GuidesPurple': $guides-purple,
+  // 'TutorialsPurple': $tutorials-purple,
+  'DocsPurple': $docs-purple,
+  'Emerald': $emerald,
+  'BaseGrey': $base-grey,
+  'White': $white,
+  'Opal': $opal,
+  // 'Typo1': $typo1,
+  'Typo2': $typo2,
+  // 'Typo3': $typo3,
+  // 'Typo4': $typo4,
+  // 'LightGrey': $light-grey,
+  'SoftBlue': $softblue,
+  'SoftGrey': $softgrey,
+);
+
+@each $name, $color in $colors {
+  .is-bg#{$name} {
+    background: #{$color};
+  }
+  .is-txt#{$name} {
+    color: #{$color};
+  }
+}
