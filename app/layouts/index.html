@@ -6,21 +6,21 @@
     <div class="navbar grid-cell--col12">
       {{ partial "navbar.html" (dict "CTX" .) }}
     </div>
-    <div class="grid-cell grid-cell--col6 u-mt32 u-mb96">
-      <h1 class="title f64 is-txtWhite">Documentation</h1>
+    <div class="grid-cell grid-cell--col6 grid-cell--col8--mobile u-mt32 u-mb96 header__text">
+      <h1 class="title f64 f48--tablet f36--mobile is-txtWhite">Documentation</h1>
       <p class="text f20 is-txtWhite u-mt16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo.</p>
     </div>
     <div class="grid-cell--col1"></div>
-    <div class="grid-cell--col3 header-image u-mt32">
-      <img src="{{$baseUrl}}/img/header-image.png">
+    <div class="grid-cell--col3 grid-cell--col1--mobile header__image u-mt32">
+      <img src="{{$baseUrl}}img/header-image.png">
     </div>
   </div>
 </header>
 
-<section class="is-bgWhite">
-  <div class="container grid u-justify-center u-mt120 u-mb120">
-    <div class="grid-cell grid-cell--col7">
-      <h2 class="title f48 is-txtBaseGrey">Get started with CARTO</h2>
+<section class="is-bgWhite section-border">
+  <div class="container grid u-justify-center u-mt120 u-mb120 u-mt48--tablet u-mb48--tablet">
+    <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet">
+      <h2 class="title f48 f32--tablet is-txtBaseGrey">Get started with CARTO</h2>
       <p class="text f20 is-txtBaseGrey u-mt24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.</p>
       <a href="#" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt32 underlined-link">
         <span>CARTO in a nutshell
@@ -52,9 +52,9 @@
 </section>
 
 <section class="is-bgWhite">
-  <div class="container grid u-justify-center u-mt120 u-mb32">
-    <div class="grid-cell grid-cell--col7">
-      <h2 class="title f48 is-txtBaseGrey">CARTO Products</h2>
+  <div class="container grid u-justify-center u-mt120 u-mb32 u-mt48--tablet">
+    <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet">
+      <h2 class="title f48 f32--tablet is-txtBaseGrey">CARTO Products</h2>
       <p class="text f20 is-txtBaseGrey u-mt24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.</p>
     </div>
     <div class="grid-cell--col3"></div>
@@ -78,7 +78,7 @@
     <ul class="grid-cell--col10 grid u-mt24">
       {{range $elem := $data.developmentTools}}
         <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
-          <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
+          <a href="{{$elem.url}}" class="clickable-card clickable-card--small {{if $elem.highlighted}}clickable-card--highlighted{{end}}">
             <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
             <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
             <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
@@ -88,7 +88,7 @@
     </ul>
   </div>
 
-  <div class="container grid u-justify-center u-mb120">
+  <div class="container grid u-justify-center u-mb120 u-mb48--tablet">
     <div class="grid-cell grid-cell--col10">
       <h2 class="title f20 is-txtBaseGrey">APIs</h2>
     </div>
@@ -106,14 +106,14 @@
   </div>
 </section>
 
-<section class="is-bgSoftGrey">
+<section class="is-bgSoftGrey section-border">
   <div class="container grid u-justify-center">
-    <div class="grid-cell grid-cell--col9 u-mt120">
+    <div class="grid-cell grid-cell--col9 grid-cell--col10--tablet u-mt120 u-mt48--tablet">
       <h2 class="title f20 is-txtBaseGrey">Previous libraries and components</h2>
       <p class="text f20 is-txtBaseGrey u-mt8">The following libraries and components are still under support by CARTO but we don’t recommend starting new projects with them as they will eventually become deprecated.</p>
     </div>
-    <div class="grid-cell--col1"></div>
-    <ul class="grid-cell--col10 grid u-mt48 u-mb120">
+    <div class="grid-cell--col1 grid-cell--col0--tablet"></div>
+    <ul class="grid-cell--col10 grid u-mt48 u-mb120 u-mb48--tablet">
       {{range $elem := $data.deprecated}}
         <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
           <a href="{{$elem.url}}" class="clickable-card clickable-card--deprecated">
@@ -128,12 +128,7 @@
 
 <section class="is-bgSoftGrey">
   <div class="container grid u-justify-center">
-    <div class="grid-cell grid-cell--col9 u-mt120">
-      <h2 class="title f20 is-txtBaseGrey">Previous libraries and components</h2>
-      <p class="text f20 is-txtBaseGrey u-mt8">The following libraries and components are still under support by CARTO but we don’t recommend starting new projects with them as they will eventually become deprecated.</p>
-    </div>
-    <div class="grid-cell--col1"></div>
-    <ul class="grid-cell--col10 grid u-mt48 u-mb120">
+    <ul class="grid-cell--col10 grid u-mt120 u-mb120 u-mt48--tablet u-mb48--tablet">
       <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20 u-flex u-flex-column">
         <h3 class="title f20 is-txtBaseGrey">FAQs</h3>
         <p class="text f16 is-txtTypo2 u-mt8 u-mbauto">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

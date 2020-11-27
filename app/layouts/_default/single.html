@@ -1,3 +1,26 @@
 {{ define "main" }}
-  {{.Content}}
+  <header class="is-bgBaseGrey is-txtWhite">
+    <div class="container grid u-justify-center">
+      <div class="navbar grid-cell--col12">
+        {{ partial "navbar.html" (dict "CTX" .) }}
+      </div>
+      <div class="grid-cell grid-cell--col10 u-mt64 u-mb120">
+        <h1 class="title f64 f48--tablet f36--mobile is-txtWhite">{{.Params.title}}</h1>
+        <p class="text f20 is-txtWhite u-mt16">{{.Params.description}}</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="is-bgWhite is-txtBaseGrey">
+    <div class="container grid u-justify-center u-mt96 u-mb96 u-mt48--tablet u-mb48--tablet">
+      <aside class="grid-cell grid-cell--col2 title f12 js-toc-sidebar desktop-s">
+        <div class="toc-sidebar__container js-toc-sidebar-container">
+          {{.TableOfContents}}
+        </div>
+      </aside>
+      <div class="grid-cell grid-cell--col8 grid-cell--col10--tablet content__default js-content">
+        {{.Content}}
+      </div>
+    </div>
+  </div>
 {{end}}

@@ -1,0 +1,5 @@
+<div class="tutorial__step {{if eq .Ordinal 0}}is-active{{end}} js-tutorial-step"
+      data-name="{{.Params.stepName}}"
+      data-elem="{{.Params.stepName | urlize}}">
+  {{.Inner}}
+</div>

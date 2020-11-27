@@ -2,8 +2,9 @@
   overflow: hidden;
 }
 
-.header-image {
+.header__image {
   position: relative;
+  z-index: 0;
 
   img {
     position: absolute;
@@ -11,6 +12,11 @@
     max-width: unset;
     width: 518px;
   }
+}
+
+.header__text {
+  position: relative;
+  z-index: 1;
 }
 
 .clickable-card {
@@ -44,9 +50,29 @@
   padding: 24px;
 }
 
+.clickable-card--highlighted {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    top: -1px;
+    right: -1px;
+    background-image: url("/documentation/img/icons/featured-icon.svg");
+    background-repeat: no-repeat;
+    background-position: top right;
+  }
+}
+
 .tag {
   background-color: $softblue;
   padding: 4px 12px;
   border-radius: 4px;
   margin-top: 12px;
+}
+
+.section-border {
+  border-bottom: 2px solid #efefef;
 }

@@ -1,0 +1,61 @@
+//Navbar Search
+.navbar__search {
+  position: relative;
+  width: 20px;
+  height: 40px;
+}
+
+.navbar__search-form {
+  position: absolute;
+  right: 0;
+}
+
+.navbar__search-input {
+  width: 0px;
+  padding: 10px 20px 10px 0;
+  opacity: 0;
+  background-color: transparent;
+  border: none;
+  transition: all 0.2s linear;
+  cursor: pointer;
+
+  &:focus {
+    opacity: 1;
+    width: 300px;
+    border-bottom: 1px solid $white;
+    cursor: text;
+  }
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.32);
+  }
+}
+
+.navbar__search-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.navbar__elements {
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: $layout-desktop){
+  .navbar__elements {
+    display: none;
+  }
+
+  .navbar__mobile-button {
+    display: block;
+  }
+
+  .navbar__mobile {
+    display: flex;
+  }
+}

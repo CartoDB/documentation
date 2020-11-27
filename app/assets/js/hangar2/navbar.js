@@ -23,7 +23,10 @@ var mobileTabs = document.querySelectorAll('.js-tab-mobile');
 var mobileElements = document.querySelectorAll('.js-tab-element');
 var scrollMobile = document.querySelector('.js-scroll-mobile');
 var solutionsLink = document.querySelector('.js-solutions-tab-link');
-var solutionsName = solutionsLink.querySelector('.js-tab-name');
+var solutionsName = null;
+if(solutionsLink) {
+  solutionsName = solutionsLink.querySelector('.js-tab-name');
+}
 
 for (var i = 0; i < mobileTabs.length; i++) {
   mobileTabs[i].addEventListener("click", tabClicked);
@@ -53,15 +56,17 @@ function scrollToContainer(scrollDestination) {
   });
 }
 
-scrollMobile.addEventListener('scroll', function(e) {
-  if (!ticking) {
-    window.requestAnimationFrame(function() {
-      scrollDetection();
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
+if(scrollMobile) {
+  scrollMobile.addEventListener('scroll', function(e) {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        scrollDetection();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
 
 function scrollDetection() {
   var containerLeft = scrollMobile.getBoundingClientRect().left;

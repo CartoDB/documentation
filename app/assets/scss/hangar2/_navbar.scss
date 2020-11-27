@@ -178,10 +178,99 @@ a.navbar__text {
 
 .navbar__mobile-button {
   display: none;
+
+  z-index: 2;
+  width: 46px;
+  height: 40px;
+  position: relative;
+  transform: rotate(0);
+  transition: 250ms ease-in-out;
+  cursor: pointer;
+  border: 12px solid transparent;
+  margin-right: -12px;
+
+  span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0);
+    transition: 250ms ease-in-out;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      top: 50%;
+      margin-top: -1px;
+    }
+
+    &:nth-child(4) {
+      top: 100%;
+      margin-top: -1px;
+    }
+  }
+
+  &.open span:nth-child(1),
+  &.open span:nth-child(4) {
+    top: 50%;
+    width: 0%;
+    left: 50%;
+    margin-top: -1px;
+  }
+
+  &.open span:nth-child(2){
+    transform: rotate(45deg);
+  }
+  
+  &.open span:nth-child(3){
+    transform: rotate(-45deg);
+  }
+}
+
+.navbar--positive {
+  .navbar__mobile-button{
+    span {
+      background-color: $navyBlue;
+    }
+  }
+}
+
+.navbar--open.navbar--positive {
+  .navbar__mobile-button {
+    span {
+      background-color: $white;
+    }
+  }
 }
 
 .navbar__mobile {
   display: none;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  top: 120%;
+  left: 0;
+  background-color: $navyBlue;
+  transform: translateY(0);
+  transition: transform 0.2s linear ;
+  opacity: 0;
+  pointer-events: none;
+  
+  &.is-active {
+    transform: translateY(-100%);
+    top: 100%;
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 @media (max-width: $layout-tablet){
@@ -195,98 +284,10 @@ a.navbar__text {
 
   .navbar__mobile-button {
     display: block;
-    z-index: 2;
-    width: 46px;
-    height: 40px;
-    position: relative;
-    transform: rotate(0);
-    transition: 250ms ease-in-out;
-    cursor: pointer;
-    border: 12px solid transparent;
-    margin-right: -12px;
-
-    span {
-      display: block;
-      position: absolute;
-      height: 2px;
-      width: 100%;
-      background: #fff;
-      border-radius: 2px;
-      opacity: 1;
-      left: 0;
-      transform: rotate(0);
-      transition: 250ms ease-in-out;
-
-      &:nth-child(1) {
-        top: 0;
-      }
-
-      &:nth-child(2),
-      &:nth-child(3) {
-        top: 50%;
-        margin-top: -1px;
-      }
-
-      &:nth-child(4) {
-        top: 100%;
-        margin-top: -1px;
-      }
-    }
-
-    &.open span:nth-child(1),
-    &.open span:nth-child(4) {
-      top: 50%;
-      width: 0%;
-      left: 50%;
-      margin-top: -1px;
-    }
-
-    &.open span:nth-child(2){
-      transform: rotate(45deg);
-    }
-    
-    &.open span:nth-child(3){
-      transform: rotate(-45deg);
-    }
-  }
-
-  .navbar--positive {
-    .navbar__mobile-button{
-      span {
-        background-color: $navyBlue;
-      }
-    }
-  }
-
-  .navbar--open.navbar--positive {
-    .navbar__mobile-button {
-      span {
-        background-color: $white;
-      }
-    }
   }
 
   .navbar__mobile {
     display: flex;
-    flex-direction: column;
-    position: fixed;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    top: 120%;
-    left: 0;
-    background-color: $navyBlue;
-    transform: translateY(0);
-    transition: transform 0.2s linear ;
-    opacity: 0;
-    pointer-events: none;
-    
-    &.is-active {
-      transform: translateY(-100%);
-      top: 100%;
-      opacity: 1;
-      pointer-events: all;
-    }
   }
 }
 
