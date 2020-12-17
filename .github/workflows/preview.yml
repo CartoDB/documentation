@@ -16,6 +16,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.78.2-ext'
+          extended: true
 
       - name: Hugo Build
         working-directory: app
