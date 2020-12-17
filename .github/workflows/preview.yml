@@ -23,6 +23,7 @@ jobs:
         run: hugo
 
       - name: Deploy to firebase
+        working-directory: app/_site
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
