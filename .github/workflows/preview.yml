@@ -17,10 +17,12 @@ jobs:
         with:
           hugo-version: '0.78.2-ext'
 
-      - name: Build
+      - name: Hugo Build
+        working-directory: app
         run: hugo
-          working-directory: app
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Deploy to firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
