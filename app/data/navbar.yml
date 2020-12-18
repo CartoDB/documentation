@@ -27,9 +27,9 @@ navbar:
     subelements:
       - name: Auth API
         url: /documentation/bq-tiler/
-      - name: SQL Api
+      - name: SQL API
         url: /documentation/deck-gl/
-      - name: Maps Api
+      - name: Maps API
         url: /documentation/bq-tiler/
       - name: Import API
         url: /documentation/bq-tiler/
