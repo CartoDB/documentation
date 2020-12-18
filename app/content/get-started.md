@@ -6,11 +6,22 @@ url: "/get-started/"
 
 ## CARTO in a nutshell
 
-CARTO is a location intelligence platform to help you build applications for spatial analysis using location data. CARTO connects to your database or data sources and exposes them as a set of APIs and libraries. On top of that we provide a catalog of common spatial datasets that can be used within your maps, spatial analysis or applications.
+CARTO is a leading Location Intelligence platform. It enables organizations to use spatial data and analysis for more efficient delivery routes, better behavioural marketing, strategic store placements, and much more. 
+
+Data Scientists, Developers and Analysts use CARTO to optimize business processes, and predict future outcomes through the power of Spatial Data Science.
+
+Our platform helps you visualize, analyze and build applications using location data. It is available for both individual users and enterprises. 
+
+
+
 
 #### Intro to Products
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam.
+Through our dashboard, users can connect to multiple data sources, including local or remote files, cloud data warehouses or BI solutions. We also provide seamless access to a wealth of vetted datasets to enhance your geospatial analysis. 
+
+CARTO Builder offers powerful map making, data visualization and pre-packaged analytics. And for the Data Scientist, CARTOframes provides more complex analytical functionality, fully integrated with Jupyter notebooks.
+
+For the Developer community, we have created a complete library of APIs, frameworks, connectors and development tools to accelerate the spatial app development process.
 
 ## CARTO for Spatial Analysis
 
