@@ -1,5 +1,5 @@
 {
-  "baseURL": "https://cartodb-fb-documentation--pr1-adding-ci-cd-tyadz90n.web.app/",
+  "baseURL": "https://docs.carto.com/",
   "languageCode": "en-us",
   "title": "CARTO Documentation",
   "disableKinds": ["taxonomy", "section", "term", "RSS", "robotsTXT", "404"],
