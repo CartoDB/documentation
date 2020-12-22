@@ -1,2 +1,117 @@
+{{$data := .Site.Data.footer2020}}
+
+<footer class="footer-element text f12 is-txtNavyBlue">
+  <div class="grid footer container">
+    <div class="grid-cell--col1"></div>
+    <div class="grid-cell grid-cell--col2 desktop-s--flex u-flex-column">
+      <img src="/img/footer/carto_logo.svg" class="u-mrauto">
+
+      <div class="footer__recognition u-mtauto">
+        <p class="u-mb16">Recognized as</p>
+        <a href="https://www.g2.com/products/carto/reviews?utm_source=rewards-badge" target="_blank">
+          <img class="g2-badge u-mb16" src="/img/footer/g2-badge.svg" alt="CARTO is a leader in for Location Intelligence on G2"/>
+        </a>
+      </div>
+    </div>
+
+    <ul class="grid-cell grid-cell--col2 grid-cell grid-cell--col5--tablet">
+      <li class="title f16 u-mb24">Platform</li>
+      <li class="u-mb16 is-semibold">CARTO Platform</li>
+      {{range $item := $data.platform }}
+        {{ if $item.spacing }}
+          <li class="u-mb16 f12">&nbsp;</li>
+        {{else}}
+          <li class="u-mb16"><a href="{{ $item.url }}" class="js-Action--Footerlinks is-txtNavyBlue">{{ $item.title }}</a></li>
+        {{end}}
+      {{end}}
+
+      <li class="title f16 u-mb24 u-mt64">Documentation</li>
+      {{ range $item := $data.documentation }}
+        {{if $item.spacing}}
+          <li class="u-mb16 f12">&nbsp;</li>
+        {{else}}
+          <li class="u-mb16"><a href="{{ $item.url }}" class="js-Action--Footerlinks is-txtNavyBlue">{{ $item.title }}</a></li>
+        {{end}}
+      {{ end }}
+    </ul>
+    
+    <ul class="grid-cell grid-cell--col2 grid-cell grid-cell--col5--tablet">
+      <li class=" title f16 u-mb24">Solutions</li>
+      <li class="u-mb16 is-semibold">by Industry</li>
+      {{ range $item := $data.solutions }}
+        {{if $item.spacing}}
+          <li class="u-mb16 f12">&nbsp;</li>
+        {{else}}
+          <li class="u-mb16"><a href="{{ $item.url }}" class="js-Action--Footerlinks is-txtNavyBlue">{{ $item.title }}</a></li>
+        {{end}}
+      {{ end }}
+    </ul>
+
+    <div class="grid-cell--col1--tablet"></div>
+    <div class="grid-cell--col1--tablet"></div>
+
+    <ul class="grid-cell grid-cell--col2 grid-cell grid-cell--col5--tablet u-mt40--tablet">
+      <li class="title f16 u-mb24">__</li>
+      <li class="u-mb16 is-semibold">by Use Case</li>
+      {{ range $item := $data.useCase }}
+        {{if $item.spacing}}
+          <li class="u-mb16 f12">&nbsp;</li>
+        {{else}}
+          <li class="u-mb16"><a href="{{ $item.url }}" class="js-Action--Footerlinks is-txtNavyBlue">{{ $item.title }}</a></li>
+        {{end}}
+      {{ end }}
+    </ul>
+
+    <ul class="grid-cell grid-cell--col2 grid-cell grid-cell--col5--tablet u-mt40--tablet">
+      <li class="FooterElement title f16 u-mb24">Company</li>
+      {{ range $item := $data.company }}
+        {{if $item.spacing}}
+          <li class="u-mb16 f12">&nbsp;</li>
+        {{else}}
+          <li class="u-mb16"><a href="{{ $item.url }}" class="js-Action--Footerlinks is-txtNavyBlue">{{ $item.title }}</a></li>
+        {{end}}
+      {{ end }}
+    </ul>
+    <hr class="footer-line grid-cell grid-cell--col10 u-mt40 u-mb40"/>
+  </div>
+  
+  <div class="grid u-align-center container">
+    <div class="grid-cell--col1"></div>
+    <div class="grid-cell grid-cell--col2 grid-cell--col5--tablet">
+      <p class="text f12">© CARTO {{ now.Year }}</p>
+    </div>
+    <div class="grid-cell grid-cell--col6 desktop-s">
+      <p class="title f16">Unlock the power of spatial analysis.</p>
+    </div>
+    <div class="grid-cell grid-cell--col2 grid-cell--col5--tablet u-flex u-align-center">
+      <!-- Youtube -->
+      <a href="{{ $data.social.youtube }}" target="_blank" rel="nofollow" class="u-mr16">
+        <img src="/img/footer/youtube-logo.svg" alt="Youtube">
+      </a>
+
+      <!-- Facebook -->
+      <a href="{{ $data.social.facebook }}" target="_blank" rel="nofollow" class="u-mr16">
+        <img src="/img/footer/fb-logo.svg" alt="Facebook">
+      </a>
+
+      <!-- Twitter -->
+      <a href="{{ $data.social.twitter }}" target="_blank" rel="nofollow" class="u-mr16">
+        <img src="/img/footer/twitter-logo.svg" alt="Twitter">
+      </a>
+
+      <!-- Linkedin -->
+      <a href="{{ $data.social.linkedin }}" target="_blank" rel="nofollow" class="u-mr16">
+        <img src="/img/footer/linkedin-logo.svg" alt="Linkedin">
+      </a>
+
+    </div>
+    <div class="grid-cell--col1--tablet"></div>
+    <div class="grid-cell--col1--tablet"></div>
+    <div class="grid-cell grid-cell--col8 u-mt48 tablet">
+      <p class="title f16">Unlock the power of spatial analysis.</p>
+    </div>
+  </div>
+</footer>
+
 {{ $script := resources.Get "js/main.js" | js.Build "js/hugo/main.js" | minify}}
 <script src="{{ $script.RelPermalink }}"></script>

@@ -41,7 +41,7 @@ Builder is our drag & drop tool to design, build and publish interactive web map
 
 In this guide, you will learn how to upload a .csv file and create your first dataset, create a simple map, and publish it.
 
-![Builder image](/documentation/img/get-started/build-map-intro.png)
+![Builder image](/img/get-started/build-map-intro.png)
   {{%/ tutorialStep %}}
 
   {{% tutorialStep stepName="Import your data"%}}
@@ -49,7 +49,7 @@ In this guide, you will learn how to upload a .csv file and create your first da
 
 This is just a test. I repeat. This is just a test
 
-![Builder image](/documentation/img/get-started/build-map-intro.png)
+![Builder image](/img/get-started/build-map-intro.png)
   {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
@@ -61,7 +61,38 @@ This is just a test. I repeat. This is just a test
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Mauris malesuada nisi sit amet augue accumsan tincidunt. Maecenas tincidunt, velit ac porttitor pulvinar, tortor eros facilisis libero, vitae commodo nunc quam et ligula.
 
-![Builder image](/documentation/img/get-started/build-map-intro.png)
+```python
+import geopandas as gdp
+from cartoframes.auth import set_default_credentials
+from cartoframes.data.observatory import Enrichment
+
+set_default_credentials('creds.json')
+enrichment = Enrichment()
+
+enriched_df = enrichment.enrich_points(
+    df,
+    variables=['total_pop_3cf008b3']
+)
+from cartoframes.auth import set_default_credentials
+from cartoframes.data.observatory import Enrichment
+
+set_default_credentials('creds.json')
+enrichment = Enrichment()
+
+enriched_df = enrichment.enrich_points(
+    df,
+    variables=['total_pop_3cf008b3']
+)
+```
+
+|  Table sample |  My table                                   | One more column  |
+|---------------|---------------------------------------------|------------------|
+|  1            | <span style="color: #f00;">4</span>         | 3                |
+|  2            | 5                                           | 8                |
+|  2            | 6                                           | 9                |
+
+
+![Builder image](/img/get-started/build-map-intro.png)
   {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 

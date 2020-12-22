@@ -1,5 +1,11 @@
 .footer-element {
+  padding-top: 120px;
   padding-bottom: 24px;
+  border-top: 2px solid rgba($typo3, 0.24);
+
+  @media (max-width: $layout-tablet){
+    padding-top: 56px;
+  }
 }
 
 .footer-line {

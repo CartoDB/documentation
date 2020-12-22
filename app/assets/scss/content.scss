@@ -45,6 +45,30 @@
     margin-bottom: 12px;
     margin-top: 48px;
   }
+
+  .highlight {
+    margin-bottom: 24px;
+  }
+
+  table:not(.lntable) { //Excludes the tables created in the code
+    width: 100%;
+    margin-bottom: 24px;
+
+    th {
+      @include title();
+      font-size: 16px;
+      line-height: 24px;
+      text-align: left;
+      padding: 12px;
+      background-color: $softgrey;
+      border: 1px solid #C5CCD5;
+    }
+
+    td {
+      padding: 12px;
+      border: 1px solid #C5CCD5;
+    }
+  }
 }
 
 .toc-sidebar__container {

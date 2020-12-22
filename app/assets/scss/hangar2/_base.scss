@@ -61,35 +61,35 @@ iframe {
   }
 }
 
-pre,
-code {
-  border: 1px solid rgba($base-grey, 0.10);
-  border-radius: 4px;
-  font-family: 'PT Mono', monospace;
-}
+// pre,
+// code {
+//   border: 1px solid rgba($base-grey, 0.10);
+//   border-radius: 4px;
+//   font-family: 'PT Mono', monospace;
+// }
 
 code {
   padding: 1px 5px;
 }
 
-pre {
-  font-size: 14px;
-  line-height: 24px;
-  overflow-x: auto;
-  padding: 16px;
-  tab-size: 2;
-  white-space: pre-wrap;
+// pre {
+//   font-size: 14px;
+//   line-height: 24px;
+//   overflow-x: auto;
+//   padding: 16px;
+//   tab-size: 2;
+//   white-space: pre-wrap;
 
-  @media (max-width: $layout-mobile) {
-    font-size: 16px;
-  }
+//   @media (max-width: $layout-mobile) {
+//     font-size: 16px;
+//   }
 
-  > code {
-    border: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
+//   > code {
+//     border: 0;
+//     padding-left: 0;
+//     padding-right: 0;
+//   }
+// }
 
 input {
   outline: none;

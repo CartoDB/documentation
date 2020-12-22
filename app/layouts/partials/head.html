@@ -19,7 +19,11 @@
   <link rel="canonical" href="{{.Permalink}}">
   <link rel="mask-icon" href="/img/logo/icon-carto.svg" color="#162945">
 
-  <title>{{.Params.title}}{{" | "}}{{ .Site.Title }}</title>
+  {{if .Params.title}}
+    <title>{{.Params.title}}{{" | "}}{{ .Site.Title }}</title>
+  {{else}}
+    <title>{{ .Site.Title }}</title>
+  {{end}}
   <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta name="author" content="CARTO">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:400,600" rel=stylesheet>
