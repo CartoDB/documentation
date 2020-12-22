@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{$data := .Site.Data.homeData}}
-{{$baseUrl := .Site.BaseURL}}
+
 <header class="is-bgBaseGrey is-txtWhite home-header">
   <div class="container grid u-justify-center">
     <div class="navbar grid-cell--col12">
@@ -12,7 +12,7 @@
     </div>
     <div class="grid-cell--col1"></div>
     <div class="grid-cell--col3 grid-cell--col1--mobile header__image u-mt32">
-      <img src="{{$baseUrl}}img/header-image.png">
+      <img src="/img/header-image.png">
     </div>
   </div>
 </header>
