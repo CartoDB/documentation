@@ -27,6 +27,13 @@
        "renderer": {
           "unsafe": true
        }
+    },
+    "highlight": {
+      "lineNos": true,
+      "lineNumbersInTable": true,
+      "noClasses": false,
+      "style": "monokai",
+      "tabWidth": 4
     }
  }
 }

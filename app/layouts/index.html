@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{$data := .Site.Data.homeData}}
-{{$baseUrl := .Site.BaseURL}}
+
 <header class="is-bgBaseGrey is-txtWhite home-header">
   <div class="container grid u-justify-center">
     <div class="navbar grid-cell--col12">
@@ -12,7 +12,7 @@
     </div>
     <div class="grid-cell--col1"></div>
     <div class="grid-cell--col3 grid-cell--col1--mobile header__image u-mt32">
-      <img src="{{$baseUrl}}img/header-image.png">
+      <img src="/img/header-image.png">
     </div>
   </div>
 </header>
@@ -33,7 +33,7 @@
       {{range $elem := $data.getStarted}}
         <li class="grid-cell grid-cell--col6 grid-cell--col12--tablet u-mb20">
           <a href="{{$elem.url}}" class="clickable-card">
-            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <img src="/img/icons/{{$elem.image}}"/>
             <h4 class="title f12 is-txtBaseGrey u-tupper u-mt24">CARTO for</h4>
             <h3 class="title f24 is-txtBaseGrey">{{$elem.title}}</h3>
             <p class="text f16 is-txtTypo2 u-mt24">{{$elem.description}}</p>
@@ -62,7 +62,7 @@
       {{range $elem := $data.products}}
         <li class="grid-cell grid-cell--col6 grid-cell--col12--mobile u-mb20">
           <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
-            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <img src="/img/icons/{{$elem.image}}"/>
             <h3 class="title f20 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
             <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
           </a>
@@ -79,7 +79,7 @@
       {{range $elem := $data.developmentTools}}
         <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
           <a href="{{$elem.url}}" class="clickable-card clickable-card--small {{if $elem.highlighted}}clickable-card--highlighted{{end}}">
-            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <img src="/img/icons/{{$elem.image}}"/>
             <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
             <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
           </a>
@@ -96,7 +96,7 @@
       {{range $elem := $data.apis}}
         <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
           <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
-            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <img src="/img/icons/{{$elem.image}}"/>
             <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
             <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
           </a>
@@ -117,7 +117,7 @@
       {{range $elem := $data.deprecated}}
         <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
           <a href="{{$elem.url}}" class="clickable-card clickable-card--deprecated">
-            <img src="{{$baseUrl}}/img/icons/{{$elem.image}}"/>
+            <img src="/img/icons/{{$elem.image}}"/>
             <h3 class="title f16 is-txtBaseGrey u-ml20">{{$elem.title}}</h3>
           </a>
         </li>

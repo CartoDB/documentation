@@ -1,0 +1,125 @@
+# Footer menu
+platform:
+  - title: Technology
+    url: '/platform/'
+  - title: Data
+    url: '/spatial-data-catalog/'
+  - title: Services
+    url: '/professional-services/'
+
+  - spacing: true
+
+  - title: Builder
+    url: '/builder/'
+  - title: CARTOframes
+    url: '/cartoframes/'
+  - title: Connectivity
+    url: '/connect/'
+
+documentation:
+  - title: Help Center
+    url: '/help/'
+  - title: Developer Center
+    url: '/developers/'
+
+solutions:
+  - title: 'AEC'
+    url: '/industries/architecture-engineering-construction/'
+  - title: 'Cities & Government'
+    url: '/industries/cities-government/'
+  - title: 'Financial Services'
+    url: '/industries/financial-services/'
+  - title: 'CPG'
+    url: '/industries/consumer-packaged-goods/'
+  - title: 'Environmental'
+    url: '/industries/environmental-and-natural-resources/'
+  - title: 'Health & Pharma'
+    url: '/industries/healthcare-and-pharma/'
+  - title: 'Logistics'
+    url: '/industries/logistics/'
+  - title: 'Marketing & Advertising'
+    url: '/industries/marketing-and-advertising/'
+  - title: 'Real Estate'
+    url: '/industries/real-estate/'
+  - title: 'Retail'
+    url: '/industries/retail/'
+  - title: 'Sports & Entertainment'
+    url: '/industries/sports-entertainment/'
+  - title: 'Telecoms'
+    url: '/industries/telecommunications/'
+  - title: 'Transport'
+    url: '/industries/transport/'
+  - title: 'Utilities'
+    url: '/industries/utilities/'
+
+useCase:
+  - title: 'Catastrophe Modeling'
+    url: '/solutions/catastrophe-modeling/'
+  - title: 'Data Monetization'
+    url: '/solutions/data-monetization/'
+  - title: 'Environmental Management'
+    url: '/solutions/environmental-management/'
+  - title: 'Fraud Detection'
+    url: '/solutions/fraud-detection-machine-learning/'
+  - title: 'Geomarketing'
+    url: '/solutions/geomarketing/'
+  - title: 'Healthcare Analytics'
+    url: '/solutions/healthcare-analytics/'
+  - title: 'IoT Analytics'
+    url: '/solutions/iot-analytics/'
+  - title: 'Indoor Mapping'
+    url: '/solutions/indoor-mapping/'
+  - title: 'Supply Chain Optimization'
+    url: '/solutions/supply-chain-optimization/'
+  - title: 'Site Selection'
+    url: '/solutions/site-selection/'
+  - title: 'Transportation Planning'
+    url: '/solutions/mobility-planning/'
+  - title: 'Network Deployment'
+    url: '/solutions/network-deployment/'
+  - title: 'Risk Analysis'
+    url: '/solutions/portfolio-risk-analysis/'
+  - title: 'Market Analysis'
+    url: '/solutions/real-estate-market-analysis/'
+  - title: 'Territory Planning'
+    url: '/solutions/territory-planning/'
+
+company:
+  - title: Blog
+    url: '/blog/'
+  - title: About Us
+    url: '/about-us/'
+  - title: Customer Stories
+    url: '/customer-stories/'
+  - title: Partners
+    url: '/partners/'
+  - title: Webinars
+    url: '/webinars/'
+  - title: Events
+    url: '/resources/events/'
+  - title: Careers
+    url: '/careers/'
+  - title: Brand
+    url: '/brand/'
+
+  - spacing: true
+
+  - title: Location Intelligence
+    url: '/location-intelligence/'
+  - title: Spatial Data Science
+    url: '/what-is-spatial-data-science/'
+
+  - spacing: true
+
+  - title: Terms of Service
+    url: '/legal/'
+  - title: Privacy Notice
+    url: '/privacy/'
+  
+
+social:
+  github: 'https://github.com/CartoDB/carto'
+  twitter: 'https://twitter.com/CARTO'
+  facebook: 'https://www.facebook.com/CartoDB'
+  linkedin: 'https://www.linkedin.com/company/carto'
+  youtube: 'https://www.youtube.com/user/CartoDB/'
