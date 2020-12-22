@@ -108,22 +108,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor 
   {{<productCard
       name="CARTO for deck.gl"
       description="Build apps using deck.gl advanced framework for data visualization. This is our recommended library."
-      image="img/icons/carto-deck.png"
+      image="/img/icons/carto-deck.png"
       url="/documentation/carto-deck/"
       highlighted="true">}}
   {{<productCard
       name="CARTO BigQuery Tiler"
       description="Visualize Big Data without having to move data outside BigQuery."
-      image="img/icons/bq-tiler.png"
+      image="/img/icons/bq-tiler.png"
       url="/documentation/bq-tiler/">}}
   {{<productCard
       name="SQL API"
       description="Interact with your tables and data inside CARTO, as if you were running SQL statements."
-      image="img/icons/sql-api.png"
+      image="/img/icons/sql-api.png"
       url="/documentation/sql-api/">}}
   {{<productCard
       name="Maps API"
       description="Generate maps based on data hosted in your CARTO account."
-      image="img/icons/maps-api.png"
+      image="/img/icons/maps-api.png"
       url="/documentation/maps-api/">}}
 {{</grid>}}
