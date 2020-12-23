@@ -79,8 +79,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor 
 
 ### Spatial Analysis with Builder
 
+
 {{<interactiveTutorial>}}
   {{% tutorialStep stepName="Intro"%}}
+
 ##### Build a map with our drag & drop editor
 
 Builder is our drag & drop tool to design, build and publish interactive web maps with your location data. Maps can be easily shared or embedded on any website or blog.
@@ -88,15 +90,83 @@ Builder is our drag & drop tool to design, build and publish interactive web map
 In this guide, you will learn how to upload a .csv file and create your first dataset, create a simple map, and publish it.
 
 ![Builder image](/img/get-started/build-map-intro.png)
-  {{%/ tutorialStep %}}
+  
 
-  {{% tutorialStep stepName="Import your data"%}}
-##### Importing your data to Builder 
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Import your data"%}}
 
-This is just a test. I repeat. This is just a test
 
-![Builder image](/img/get-started/build-map-intro.png)
-  {{%/ tutorialStep %}}
+
+##### Download and upload a comma-separated values (CSV) file to create your first dataset.
+
+Download the following dataset:
+
+          
+
+|  World Ports |  3,669 rows                                   | 708 kB  | <a href="https://public.carto.com/api/v2/sql?q=select%20*%20from%20public.world_ports&format=csv&filename=world_ports"> Download</a> |
+|---------------|---------------------------------------------|------------------| --------------|
+
+
+
+
+In the Connect dataset section click “Browse”, select the file, and click “Connect dataset”
+
+Builder is our drag & drop tool to design, build and publish interactive web maps with your location data. Maps can be easily shared or embedded on any website or blog.
+
+In this guide, you will learn how to upload a .csv file and create your first dataset, create a simple map, and publish it.
+
+![Builder image](/img/get-started/builder_step2@2x.png)
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Explore your new dataset and learn how to manipulate it"%}}
+
+##### Explore your new dataset and learn how to manipulate it.
+
+Once the upload has finished and the new dataset has been created, you will be redirected to the Dataset view. Here, you can explore your data.
+
+![Builder image2](/img/get-started/builder_step3@2x.png)
+  
+
+  Double-click on any cell to edit it.
+Click on any of the columns to change the order, rename it, change its data type, remove it, or even add new columns.
+You can also add new rows and export your data in different formats.
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Create a map using your new dataset"%}}
+
+##### Create a map using your new dataset.
+
+From the dataset view, click “CREATE MAP” (on the bottom right of your screen).
+Your map will be created and you will be redirected to Builder, CARTO’s map editor:
+
+![Builder image2](/img/get-started/builder_step4@2x.png)
+
+Double click on the name of the map (Untitled Map) and rename it to “My first map”. This will be the name that you will see on your dashboard as well.
+
+Change the style of the features on the map (eg: point size, point color, strike size, strike color) by clicking on the layer name and playing with the styling options.
+
+![Builder image2](/img/get-started/builder_step4b@2x.png)
+ 
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Publish and share your map with the world"%}}
+
+##### Publish and share your map with the world
+
+
+1.- Click “Publish” to publish your map.
+
+2.- Click on the red privacy button to make your map “Public”.
+
+3.- Click “Publish” to publish this version of your map.
+
+Your map has now been published and you can use the link or embed code to share your map.
+
+![Builder image2](/img/get-started/builder_step5@2x.png)
+
+
+
+{{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
 ### Spatial Analysis with CARTOframes
@@ -142,9 +212,14 @@ enriched_df = enrichment.enrich_points(
   {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
-## CARTO for Development
+## CARTO for Developers
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.
+CARTO’s goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+
+Our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
+
+Check out our full range of resources for geospatial application development including,  user authentication, data import, storage and enhancement, cartography, tiling, app user interface styling, and much more.
+
 
 #### Lorem ipsum
 
