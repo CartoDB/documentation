@@ -66,6 +66,12 @@
       padding: 12px;
       background-color: $softgrey;
       border: 1px solid #C5CCD5;
+
+      &:empty {
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+      }
     }
 
     td {
