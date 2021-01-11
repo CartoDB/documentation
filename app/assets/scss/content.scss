@@ -50,6 +50,10 @@
     margin-bottom: 24px;
   }
 
+  em {
+    font-style: italic;
+  }
+
   table:not(.lntable) { //Excludes the tables created in the code
     width: 100%;
     margin-bottom: 24px;
