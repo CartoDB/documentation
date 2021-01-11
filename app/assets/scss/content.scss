@@ -163,6 +163,14 @@
 
     &:last-of-type {
       margin-bottom: 0;
+
+      .expansion-line {
+        height: calc(100% - 12px) !important;
+        background-color: $white;
+        top: 11px;
+        width: 3px;
+        transform: translateX(-1px);
+      }
     }
 
     &:before {
