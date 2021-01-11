@@ -50,6 +50,10 @@
     margin-bottom: 24px;
   }
 
+  em {
+    font-style: italic;
+  }
+
   table:not(.lntable) { //Excludes the tables created in the code
     width: 100%;
     margin-bottom: 24px;
@@ -62,6 +66,12 @@
       padding: 12px;
       background-color: $softgrey;
       border: 1px solid #C5CCD5;
+
+      &:empty {
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+      }
     }
 
     td {
@@ -153,6 +163,14 @@
 
     &:last-of-type {
       margin-bottom: 0;
+
+      .expansion-line {
+        height: calc(100% - 12px) !important;
+        background-color: $white;
+        top: 11px;
+        width: 3px;
+        transform: translateX(-1px);
+      }
     }
 
     &:before {
