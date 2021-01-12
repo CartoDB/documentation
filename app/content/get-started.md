@@ -24,35 +24,6 @@ Through our dashboard, users can connect to multiple data sources, including loc
 
 <img src="/img/get-started/dashboard.png" alt="Dasbhoard" width="320"/>
 
-```sql
-CALL cartobq.tiler.CreatePointAggregationTileset(
---SQL to use as the source (uses geom as the name for the geography)
-'''(SELECT ST_GEOGPOINT(longitude, latitude) as geom, * FROM `bigquery-public-data.new_york_trees.tree_census_2015`)''',
-
--- Name and location where the Tileset will be stored.
--- Replace MYORGANIZATIONNAME.maps.nyc_tress_tileset with
--- YOUR destination where to store the Tileset.
-  '`MYORGANIZATIONNAME.MYDATASETID.nyc_trees_tileset`',
-  
---Options on how to generate the Tileset
-  '''{
-      "zoom_max": 14,
-      "type": "quadkey",
-      "resolution": 8,
-      "placement": "features-centroid",
-      "properties":{
-        "aggregated_total": {
-          "formula": "count(*)",
-          "type": "Number"
-        }
-      },
-      "single_point_properties": {
-           "tree_id": "Number",
-           "address": "String"
-      }
- }''');
-```
-
 <a href="https://carto.com/signup" target="_blank">Login or create an account</a>
 
 
@@ -115,9 +86,9 @@ In this guide, you will learn how to upload a .csv file and create your first da
 
 Download the following dataset:
 
-|  World Ports |  3,669 rows                                   | 708 kB  | <a href="https://public.carto.com/api/v2/sql?q=select%20*%20from%20public.world_ports&format=csv&filename=world_ports"> Download</a> |
-|---------------|---------------------------------------------|------------------| --------------|
-
+|       |       |       |       |
+|-------|-------|-------|-------|
+| World Ports | 3,669 rows | 708 kB | <a href="https://public.carto.com/api/v2/sql?q=select%20*%20from%20public.world_ports&format=csv&filename=world_ports"> Download</a> |
 
 In the "Connect dataset" tab, click on “Browse”, select the file, and then click on “Connect dataset”
 
@@ -180,8 +151,6 @@ This guide is intended for those who want to start augmenting their data using C
 We define *enrichment* as the process of augmenting your data with new variables by means of a spatial join between your data and a dataset aggregated at a given spatial resolution in the CARTO Data Observatory.
 
 The enrichment process can be performed using CARTOframes following a few simple steps. In this guide, we'll show you how to find out how many people live in the 
-
-<iframe src="/cartoframes_maps/test.html" style="height:500px;width:600px;" title="Iframe Example"></iframe>
 
 First, we need to set the credentials of the CARTO account that will be used to perform these operations.
 
