@@ -2,7 +2,7 @@ getStarted:
   - title: "Spatial Analysis"
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh. Consectetur adipiscing elit. Maecenas varius tortor nibh."
     image: "spatial-analysis.png"
-    url: "#"
+    url: "/get-started/#carto-for-spatial-analysis"
     related:
       - name: "Builder"
         url: "#"
@@ -11,11 +11,11 @@ getStarted:
       - name: "CARTOframes"
         url: "#"
       - name: "Data Observatory"
-        url: "#"
+        url: ""
   - title: "Development"
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius. Consectetur adipiscing elit. Maecenas varius tortor."
     image: "development.png"
-    url: "#"
+    url: "/get-started/#carto-for-development"
     related:
       - name: "CARTO for deck.gl"
         url: "#"
