@@ -179,6 +179,15 @@
   .tutorial__steps {
     padding-left: 28px;
     border-left: 1px solid rgba(0, 0, 0, 0.12);
+
+    @media(max-width: $layout-tablet) {
+      padding-left: 0;
+      border-left: none;
+    }
+  }
+
+  @media(max-width: $layout-tablet) {
+    width: 100%;
   }
 }
 
@@ -196,6 +205,15 @@
   p {
     font-size: 16px;
     line-height: 24px;
+  }
+
+  @media(max-width: $layout-tablet) {
+    display: block;
+    margin-bottom: 32px;
+    
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -308,8 +326,22 @@
 
 .side-image__image {
   padding-right: 20px;
+
+  @media(max-width: $layout-mobile) {
+    padding-right: 0;
+    margin-bottom: 32px;
+    text-align: center;
+
+    img {
+      max-width: 320px;
+    }
+  }
 }
 
 .side-image__info {
   padding-left: 20px;
+
+  @media(max-width: $layout-mobile) {
+    padding-left: 0;
+  }
 }
