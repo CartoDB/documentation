@@ -67,40 +67,6 @@
   a {
     color: $emerald;
   }
-  
-  a:only-child:not([class]) {
-    @include title();
-    font-size: 12px;
-    line-height: 16px;
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    padding-right: 28px;
-    background-image: url("/img/resources/link-arrow.png");
-    background-size: 20px;
-    background-position: right center;
-    background-repeat: no-repeat;
-
-    &:before {
-      content: '';
-      position: absolute;
-      transition: transform .3s ease;
-      left: -1px;
-      bottom: 0;
-      width: 100%;
-      height: 2px;
-      background: currentColor;
-      transform:  translateX(-100%);
-    }
-    
-    &:hover:before {
-      transform:  translateX(0);
-    }
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
 
   table:not(.lntable) { //Excludes the tables created in the code
     width: 100%;
@@ -344,5 +310,39 @@
 
   @media(max-width: $layout-mobile) {
     padding-left: 0;
+  }
+}
+
+a.arrow-link {
+  @include title();
+  font-size: 12px;
+  line-height: 16px;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding-right: 28px;
+  background-image: url("/img/resources/link-arrow.png");
+  background-size: 20px;
+  background-position: right center;
+  background-repeat: no-repeat;
+
+  &:before {
+    content: '';
+    position: absolute;
+    transition: transform .3s ease;
+    left: -1px;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform:  translateX(-100%);
+  }
+  
+  &:hover:before {
+    transform:  translateX(0);
+  }
+
+  &:hover {
+    text-decoration: none;
   }
 }
