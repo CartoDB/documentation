@@ -150,7 +150,10 @@ This guide is intended for those who want to start augmenting their data using C
 
 We define *enrichment* as the process of augmenting your data with new variables by means of a spatial join between your data and a dataset aggregated at a given spatial resolution in the CARTO Data Observatory.
 
-The enrichment process can be performed using CARTOframes following a few simple steps. In this guide, we'll show you how to find out how many people live in the 
+The enrichment process can be performed using CARTOframes following a few simple steps. In this guide, we'll show you how to find out how many people live in the areas of influence that can be covered during an 8-minute walk around each of these stores: 
+
+<iframe src="https://public.carto.com/kuviz/9adba148-be95-4dcd-b479-c9754a6a9bcc" style="border: 1px solid #cfcfcf;
+    width: 100%;height:500px" title="Iframe Example"></iframe>
 
 First, we need to set the credentials of the CARTO account that will be used to perform these operations.
 
@@ -159,6 +162,31 @@ from cartoframes.auth import set_default_credentials
 
 set_default_credentials('creds.json')
 ```
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Get areas of influence"%}}
+
+Let's read the file where we have our areas of influence stored and check out the first few records:
+
+``` python
+aoi_gdf = read_file('http://libs.cartocdn.com/cartoframes/files/starbucks_brooklyn_isolines.geojson')
+aoi_gdf.head()
+```
+| data_range | geometry |
+| -----: | ------: |
+| 8 min.   | MULTIPOLYGON (((-73.95959 40.67571, -73.95971 ... |
+| 17 min.   | POLYGON ((-73.95988 40.68110, -73.95863 40.681 ... |
+| 25 min.   | POLYGON ((-73.95986 40.68815, -73.95711 40.688 ... |
+| 8 min.   | MULTIPOLYGON (((-73.96185 40.58321, -73.96231 ... |
+| 17 min.   | MULTIPOLYGON (((-73.96684 40.57483, -73.96830 ... |
+
+Let's keep only the 8-minute range:
+
+``` python
+aoi_gdf_8 = aoi_gdf[aoi_gdf['range_label']=='8 min.']
+```
+
+
 {{%/ tutorialStep %}}
 {{% tutorialStep stepName="Get population data from the Data Observatory"%}}
 
@@ -167,7 +195,7 @@ After browsing the [Data Catalog](https://carto.com/spatial-data-catalog/browser
 We can then list the variables available in this dataset with just a couple of lines of code:
 
 ```python
-from cartoframes.data.observatory import Dataset
+from cartoframes.data.observatory import *
 
 dataset = Dataset.get('ags_sociodemogr_a7e14220')
 variables = dataset.variables
@@ -181,80 +209,52 @@ variables
  <Variable.get('POPCYGRPI_1e42899')> #'Institutional Group Quarters Population (2019A)',
  <Variable.get('AGECY0004_aaae373a')> #'Population age 0-4 (2019A)',
  <Variable.get('AGECY0509_d2d4896c')> #'Population age 5-9 (2019A)',
- <Variable.get('AGECY1014_b09611e')> #'Population age 10-14 (2019A)',
- <Variable.get('AGECY1519_7373df48')> #'Population age 15-19 (2019A)',
- <Variable.get('AGECY2024_32919d33')> #'Population age 20-24 (2019A)',
- <Variable.get('AGECY2529_4aeb2365')> #'Population age 25-29 (2019A)',
- <Variable.get('AGECY3034_9336cb17')> #'Population age 30-34 (2019A)',
- <Variable.get('AGECY3539_eb4c7541')> #'Population age 35-39 (2019A)',
  ...]
  ```
 
-```python
-import geopandas as gdp
-from cartoframes.auth import set_default_credentials
-from cartoframes.data.observatory import Enrichment
+Let's visualise the total population variable, `POPCY_4534fac4` in the context of one of our stores and its area of influence:
 
-set_default_credentials('creds.json')
-enrichment = Enrichment()
+<iframe src="https://public.carto.com/kuviz/a8ae5b01-83c8-4db7-8ccc-9d738b2e69c6" style="border: 1px solid #cfcfcf;
+    width: 100%;height:500px" title="Iframe Example"></iframe>
 
-enriched_df = enrichment.enrich_points(
-    df,
-    variables=['total_pop_3cf008b3']
-)
-from cartoframes.auth import set_default_credentials
-from cartoframes.data.observatory import Enrichment
+  
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Enrich areas of influence"%}}
 
-set_default_credentials('creds.json')
-enrichment = Enrichment()
-
-enriched_df = enrichment.enrich_points(
-    df,
-    variables=['total_pop_3cf008b3']
-)
+To enrich our areas of influence, we first have to select the variable that we are going to use for the enrichment (total population):
+``` python
+variable = Variable.get('POPCY_4534fac4')
 ```
+Next, we run the enrichmenth of our areas of influence with this simple command:
 
-|  Table sample |  My table                                   | One more column  |
-|---------------|---------------------------------------------|------------------|
-|  1            | <span style="color: #f00;">4</span>         | 3                |
-|  2            | 5                                           | 8                |
-|  2            | 6                                           | 9                |
-
-
-![Builder image](/img/get-started/build-map-intro.png)
-  {{%/ tutorialStep %}}
-
-  {{% tutorialStep stepName="Table"%}}
-##### Table
-
-| table | example | nueva columna |
-| :-----: | :------: | :-----------: |
-| asd   | asdad   | asd           |
-
-| h1     | h2     | h3     |
-|--------|--------|--------|
-| data-1 | data-2 | data-3 |
-
-
-  {{%/ tutorialStep %}}
-
-  {{% tutorialStep stepName="Snippet"%}}
-##### Snippet
-
-###### WITH LINE NUMBER
-```python {linenos=table}
-  from cartoframes import read_data
-
-  read_data('ejemplo').to_carto()
+``` python
+enriched_aoi_gdf = Enrichment().enrich_polygons(aoi_gdf_8, [variable])
+enriched_aoi_gdf.head()
 ```
-<br>
+As a result, we get a new column added to our dataset, containing the total population that lives inside each the areas of influence:
 
-###### WITHOUT LINE NUMBER
-```python
-  from cartoframes import read_data
+| data_range | geometry | POPCY
+| -----: | ------: | ------: |
+| 8 min.   | MULTIPOLYGON (((-73.95959 40.67571, -73.95971 ... | 21893.52 |
+| 8 min.   | MULTIPOLYGON (((-73.96185 40.58321, -73.96231 ... | 23118.11 |
+| 8 min.   | MULTIPOLYGON (((-73.99010 40.62280, -73.99067 ... | 18204.30 |
+| 8 min.   | MULTIPOLYGON (((-74.02791 40.63631, -74.02809 ... | 17606.95 |
+| 8 min.   | MULTIPOLYGON (((-74.00100 40.59815, -74.00141 ... | 2517.66 |
 
-  read_data('ejemplo').to_carto()
-```
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Visualize the result"%}}
+
+Map visualizations can be created very easily using CARTOframes. In fact, all the maps that you've seen so far in this guide have been created with it. 
+
+Let's create a map where we can see the result of our enrichment, this is, the areas of influence coloured according to the number of people who live in it. We can do it with a really simple single line of code:
+
+``` python
+Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
+``` 
+
+<iframe src="https://public.carto.com/kuviz/8775af20-9e27-40b5-a235-94403f5b058b" style="border: 1px solid #cfcfcf;
+    width: 100%;height:500px" title="Iframe Example"></iframe>
+
 
 
   {{%/ tutorialStep %}}
