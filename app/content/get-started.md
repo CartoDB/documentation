@@ -17,51 +17,45 @@ Our platform helps you visualize, analyze and build applications using location 
 
 Depending on your usage of the CARTO platform, whether it’s for visualization, analysis or application development, you will be using different components of the platform.
 
-
+{{%sideImage image="/img/get-started/dashboard.png" alt="Dasbhoard"%}}
 #### Dashboard
 
 Through our dashboard, users can connect to multiple data sources, including local or remote files, cloud data warehouses and BI solutions. We also provide seamless access to a wealth of vetted datasets to enhance your geospatial analysis.
 
-<img src="/img/get-started/dashboard.png" alt="Dasbhoard" width="320"/>
-
 <a href="https://carto.com/signup" target="_blank">Login or create an account</a>
+{{%/sideImage%}}
 
-
+{{%sideImage image="/img/get-started/builder.png" alt="Builder"%}}
 #### Builder
 
 CARTO Builder offers powerful map making, data visualization and pre-packaged analytics.
 
-<img src="/img/get-started/builder.png" alt="Builder" width="320"/>
- 
 <a href="https://carto.com/builder" target="_blank">Learn more</a>
+{{%/sideImage%}}
 
-
+{{%sideImage image="/img/get-started/engine-api.png" alt="Platfrom APIs and libraries"%}}
 #### Platform APIs and libraries
 
 For the Developer community, we have created a complete library of APIs, frameworks, connectors and development tools to accelerate the spatial app development process.
 
-<img src="/img/get-started/engine-api.png" alt="Platfrom APIs and libraries" width="320"/>
-
 <a href="https://docs.carto.com" target="_blank">View all libraries and APIs</a>
+{{%/sideImage%}}
 
-
+{{%sideImage image="/img/get-started/data-observatory.png" alt="Data Observatory"%}}
 #### Data Observatory
 
 We catalog and distribute thousands of vetted public and premium spatial datasets, covering most global markets. These datasets are available across the different components of CARTO, so you can use them for data enrichment or as additional data layers for your spatial apps and analyses.
 
-<img src="/img/get-started/data-observatory.png" alt="Data Observatory" width="320"/>
-
 <a href="https://carto.com/spatial-data-catalog" target="_blank">Explore the Data Observatory</a>
+{{%/sideImage%}}
 
-
+{{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
 #### CARTOframes
 
 CARTOframes is a Python package for integrating CARTO maps, spatial analytics, and data services into your data science workflows.
 
-<img src="/img/get-started/cartoframes.png" alt="CARTOframes" width="320"/>
-
 <a href="https://carto.com/cartoframes" target="_blank">Learn more</a>
-
+{{%/sideImage%}}
 
 ## CARTO for Spatial Analysis
 
