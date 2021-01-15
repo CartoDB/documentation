@@ -2,6 +2,7 @@
 title: Get started with CARTO
 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet"
 url: "/get-started/"
+tocName: "Get started"
 ---
 
 ## CARTO in a nutshell
