@@ -143,7 +143,7 @@ Your map has now been published and you can use the link or embed code to share 
 
 ### Spatial Analysis with CARTOframes
 
-This guide is intended for those who want to start augmenting their data using CARTOframes. You can find full guides and examples in the [documentation page](https://carto.com/developers/cartoframes/).
+This guide is intended for those who want to start augmenting their data using CARTOframes, our Python library. You can find full guides and examples in the [documentation page](https://carto.com/developers/cartoframes/).
 
 {{<interactiveTutorial>}}
   {{% tutorialStep stepName="Intro"%}}
