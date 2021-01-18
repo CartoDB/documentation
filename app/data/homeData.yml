@@ -72,7 +72,7 @@ developmentTools:
   - title: "CARTO + Amazon Location"
     description: "Integrate CARTO layers in an application built using Amazon Location Service."
     url: "https://carto.com/developers/amazon-location"
-    image: "python-sdk.png"
+    image: "aws.svg"
   - title: "Mobile SDK"
     description: "Create custom map applications on Android, iOS, and Windows mobile platforms."
     url: "https://carto.com/developers/mobile-sdk"
