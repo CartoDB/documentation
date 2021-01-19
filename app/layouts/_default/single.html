@@ -4,9 +4,25 @@
       <div class="navbar grid-cell--col12">
         {{ partial "navbar.html" (dict "CTX" .) }}
       </div>
-      <div class="grid-cell grid-cell--col10 u-mt64 u-mb120">
-        <h1 class="title f64 f48--tablet f36--mobile is-txtWhite">{{.Params.title}}</h1>
+      <div class="grid-cell grid-cell--col10 u-mt64 u-mb64 u-pr">
+        <div class="u-flex u-align-center">
+          <img class="header__icon u-mr24" src="{{.Params.icon}}" alt="{{.Params.title}}">
+          <h1 class="title f48 f36--mobile is-txtWhite">{{.Params.title}}</h1>
+        </div>
         <p class="text f20 is-txtWhite u-mt16">{{.Params.description}}</p>
+        <div class="u-flex u-mt20">
+          {{if .Params.repoUrl}}
+            <a href="{{.Params.repoUrl}}" class="button button--small is-outline is-white u-flex u-mr8" target="_blank">
+              <img class="u-mr8" src="/img/documentation/github.svg" alt="Github">
+              <span>Code</span>
+            </a>
+          {{end}}
+          {{if .Params.changelog}}
+            <a href="{{.Params.changelog}}" class="button button--small is-outline is-white" target="_blank">
+              <span>Changelog</span>
+            </a>
+          {{end}}
+        </div>
       </div>
     </div>
   </header>
@@ -15,8 +31,38 @@
     <div class="container grid u-justify-center u-mt96 u-mb96 u-mt48--tablet u-mb48--tablet">
       <aside class="grid-cell grid-cell--col2 title f12 js-toc-sidebar desktop-s">
         <div class="toc-sidebar__container js-toc-sidebar-container">
-          <h3 class="title f16 is-txtNavyBlue u-mb8">{{.Params.tocName}}</h3>
-          {{.TableOfContents}}
+          <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.title}}</h3>
+          {{$overview := printf "%s%s" .File.Dir "overview.md"}}
+          {{$guides := printf "%s%s" .File.Dir "guide.md"}}
+          {{$examples := printf "%s%s" .File.Dir "example.md"}}
+          <div class="product-toc">
+            {{if fileExists $overview}}
+              {{$isActive := eq (printf "%s%s" .File.Dir "overview.md") .File.Path}}
+              {{if $isActive}}
+                {{.TableOfContents}}
+              {{else}}
+                <a class="product-toc__link">Overview</a>
+              {{end}}
+            {{end}}
+
+            {{if fileExists $guides}}
+              {{$isActive := eq (printf "%s%s" .File.Dir "guides.md") .File.Path}}
+              {{if $isActive}}
+                {{.TableOfContents}}
+              {{else}}
+                <a class="product-toc__link">Guides</a>
+              {{end}}
+            {{end}}
+
+            {{if fileExists $examples}}
+              {{$isActive := eq (printf "%s%s" .File.Dir "examples.md") .File.Path}}
+              {{if $isActive}}
+                {{.TableOfContents}}
+              {{else}}
+                <a class="product-toc__link">Examples</a>
+              {{end}}
+            {{end}}
+          </div>
         </div>
       </aside>
       <div class="grid-cell grid-cell--col8 grid-cell--col10--tablet content__default u-mb96 js-content">

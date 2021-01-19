@@ -110,10 +110,13 @@
   }
 }
 
-#TableOfContents {
-  border-top: 1px solid #E7E9EC;
-  padding-top: 16px;
+.toc-title {
+  border-bottom: 1px solid #E7E9EC;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
 
+#TableOfContents {
   &> ul > li {
     a {
       display: block;
@@ -136,6 +139,26 @@
       padding: 8px 8px 8px 20px;
     }
   }
+}
+
+.product-toc {
+  .product-toc__link {
+    @include title();
+    display: block;
+    color: rgba($base-grey, 0.48);
+    text-transform: uppercase;
+    padding: 8px;
+
+    &:hover {
+      color: $base-grey;
+      background-color: $softblue;
+      text-decoration: none;
+    }
+  }
+
+  // #TableOfContents {
+  //   padding-left: 8px;
+  // }
 }
 
 .tutorial {
