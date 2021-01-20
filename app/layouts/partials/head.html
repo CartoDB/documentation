@@ -26,7 +26,8 @@
   {{end}}
   <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary | plainify }}{{ else }}{{ .Site.Params.description }}{{ end }}">
   <meta name="author" content="CARTO">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:400,600" rel=stylesheet>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&family=Overpass+Mono&display=swap" rel="stylesheet">
 
   {{ $styles := resources.Get "scss/main.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
