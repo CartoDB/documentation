@@ -1,8 +1,8 @@
 ---
 title: Get started with CARTO
 description: "Helpful resources to get you up and running."
-url: "/get-started/"
 tocName: "Get started"
+type: single-page
 ---
 
 ## CARTO in a nutshell

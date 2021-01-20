@@ -1,0 +1,32 @@
+.header__icon {
+  width: 48px;
+  height: 48px;
+}
+
+.banner-note {
+  background-color: $softgrey;
+  padding: 24px 36px 40px 36px;
+  box-shadow: inset 6px 0 0 0 $engine-blue;
+  border-radius: 6px;
+
+  p {
+    color: #6F777C;
+    margin-top: 16px;
+  }
+
+  &.banner-note--tip{
+    box-shadow: inset 6px 0 0 0 #FFC300;
+  }
+
+  &.banner-note--warning {
+    box-shadow: inset 6px 0 0 0 $opal;
+  }
+
+  &::before {
+    content: attr(data-title);
+    @include title();
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+  }
+}

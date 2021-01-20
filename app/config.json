@@ -35,5 +35,8 @@
       "style": "monokai",
       "tabWidth": 4
     }
- }
+ },
+ "permalinks": {
+    "documentation": "/:sections/:filename/"
+  }
 }

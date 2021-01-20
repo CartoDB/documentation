@@ -1,0 +1,13 @@
+{{$title := .Get "title" | default "Note"}}
+
+{{if eq (upper $title) "TIP"}}
+  {{.Scratch.Set "class" "banner-note--tip"}}
+{{else if eq (upper $title) "WARNING"}}
+  {{.Scratch.Set "class" "banner-note--warning"}}
+{{end}}
+
+{{$className := .Scratch.Get "class"}}
+
+<div class="banner-note {{$className}} u-mb32" data-title="{{$title}}">
+  <p>{{.Inner}}</p>
+</div>
