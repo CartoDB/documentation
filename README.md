@@ -12,7 +12,7 @@ We have created a docker-compose to make it simpler to run. In the terminal, jus
 docker-compose up server
 ```
 
-This will start the server locally and you can see the page in http://localhost:1313/documentation/
+This will start the server locally and you can see the page in http://localhost:1313/
 
 You can also build the page and generate the static files running 
 

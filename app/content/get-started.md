@@ -1,6 +1,6 @@
 ---
 title: Get started with CARTO
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet"
+description: "Helpful resources to get you up and running."
 url: "/get-started/"
 tocName: "Get started"
 ---
@@ -21,7 +21,7 @@ Depending on your usage of the CARTO platform, whether it’s for visualization,
 {{%sideImage image="/img/get-started/dashboard.png" alt="Dasbhoard"%}}
 #### Dashboard
 
-Through our dashboard, users can connect to multiple data sources, including local or remote files, cloud data warehouses and BI solutions. We also provide seamless access to a wealth of vetted datasets to enhance your geospatial analysis.
+Connect to multiple data sources, including local or remote files, cloud data warehouses and BI solutions. Seamlessly access a wealth of vetted datasets to enhance your geospatial analysis.
 
 {{<link href="https://carto.com/signup" target="_blank">}}
   Login or create an account
@@ -54,7 +54,7 @@ For the Developer community, we have created a complete library of APIs, framewo
 We catalog and distribute thousands of vetted public and premium spatial datasets, covering most global markets. These datasets are available across the different components of CARTO, so you can use them for data enrichment or as additional data layers for your spatial apps and analyses.
 
 {{<link href="https://carto.com/spatial-data-catalog" target="_blank">}}
-  Explore the Data Observatory
+  Explore our Spatial Data Catalog
 {{</link>}}
 {{%/sideImage%}}
 
@@ -148,7 +148,7 @@ Your map has now been published and you can use the link or embed code to share 
 
 ### Spatial Analysis with CARTOframes
 
-This guide is intended for those who want to start augmenting their data using CARTOframes. You can find full guides and examples in the [documentation page](https://carto.com/developers/cartoframes/).
+This guide is intended for those who want to start augmenting their data using CARTOframes, our Python library. You can find full guides and examples in the [documentation page](https://carto.com/developers/cartoframes/).
 
 {{<interactiveTutorial>}}
   {{% tutorialStep stepName="Intro"%}}
