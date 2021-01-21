@@ -1,7 +1,7 @@
 .content__default {
   @include text();
 
-  p {
+  p, td {
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 32px;
@@ -91,6 +91,22 @@
     td {
       padding: 12px;
       border: 1px solid #C5CCD5;
+    }
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 32px;
+    list-style-position: inside;
+  }
+
+  li {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 32px;
     }
   }
 }
@@ -218,6 +234,7 @@
   li {
     position: relative;
     margin-bottom: 24px;
+    list-style: none;
     cursor: pointer;
 
     &:last-of-type {

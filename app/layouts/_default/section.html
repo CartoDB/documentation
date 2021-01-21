@@ -1,0 +1,32 @@
+{{$overview := printf "%s%s" .File.Dir "overview.md"}}
+{{$guides := printf "%s%s" .File.Dir "guide.md"}}
+{{$reference := printf "%s%s" .File.Dir "reference.md"}}
+{{$examples := printf "%s%s" .File.Dir "example.md"}}
+
+{{.Scratch.Set "url" "/"}}
+{{if fileExists $overview}}
+  {{.Scratch.Set "url" (.GetPage $overview).Permalink}}
+{{else if fileExists $guides}}
+  {{.Scratch.Set "url" (.GetPage $guides).Permalink}}
+{{else if fileExists $reference}}
+  {{.Scratch.Set "url" (.GetPage $reference).Permalink}}
+{{else if fileExists $examples}}
+  {{.Scratch.Set "url" (.GetPage $examples).Permalink}}
+{{end}}
+
+{{$url := .Scratch.Get "url"}}
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url={{$url}}">
+    <script type="text/javascript">
+      window.location.href = "{{$url}}"
+    </script>
+    <title>Page Redirection</title>
+  </head>
+  <body>
+    If you are not redirected automatically, follow this <a href='{{$url}}'>link</a>.
+  </body>
+</html>

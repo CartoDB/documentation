@@ -16,9 +16,9 @@ We currently provide two procedures to tilify a dataset: _CreateSimpleTileset_ a
 
 
 
-{{<bannerNote title="tip">}}
+{{% bannerNote title="tip" %}}
 To avoid issues in the process when building the queries that will be executed internally against BigQuery, it is highly recommended to use [raw strings](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#string_and_bytes_literals) when passing long queries that might contain special characters.
-{{</bannerNote>}}
+{{%/ bannerNote %}}
 
 For example:
 ```sql

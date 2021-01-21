@@ -23,14 +23,14 @@ WHERE is_test = true;
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Lorem ipsum dolor sit amet, consectetur adipiscing.
 
-{{<bannerNote>}}
+{{% bannerNote %}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu enim justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam hendrerit molestie. 
-{{</bannerNote>}}
+{{%/ bannerNote %}}
 
-{{<bannerNote title="tip">}}
+{{% bannerNote title="tip" %}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu enim justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam hendrerit molestie. 
-{{</bannerNote>}}
+{{%/ bannerNote %}}
 
-{{<bannerNote title="warning">}}
+{{% bannerNote title="warning" %}}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu enim justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas aliquam hendrerit molestie. 
-{{</bannerNote>}}
+{{%/ bannerNote %}}
