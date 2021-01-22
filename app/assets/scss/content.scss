@@ -3,7 +3,7 @@
 
   p, td {
     font-size: 16px;
-    line-height: 26px;
+    line-height: 24px;
     margin-bottom: 32px;
 
     &:last-child {
@@ -94,20 +94,20 @@
     }
   }
 
-  ul {
+  > ul {
     list-style: disc;
     margin-left: 32px;
     list-style-position: inside;
     margin-top: 12px;
-  }
 
-  li {
-    font-size: 16px;
-    line-height: 26px;
-    margin-bottom: 16px;
-
-    &:last-child {
-      margin-bottom: 32px;
+    li {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 12px;
+  
+      &:last-child {
+        margin-bottom: 32px;
+      }
     }
   }
 }
@@ -186,12 +186,13 @@
   margin-top: 48px;
 
   .tutorial__index {
-    padding-right: 24px;
+    padding: 16px 24px 16px 16px;
+    background-color: $softgrey;
+    border-radius: 4px;
   }
 
   .tutorial__steps {
     padding-left: 28px;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
 
     @media(max-width: $layout-tablet) {
       padding-left: 0;
