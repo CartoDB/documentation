@@ -3,7 +3,7 @@
 
   p, td {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 26px;
     margin-bottom: 32px;
 
     &:last-child {
@@ -103,8 +103,8 @@
 
   li {
     font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 12px;
+    line-height: 26px;
+    margin-bottom: 16px;
 
     &:last-child {
       margin-bottom: 32px;
@@ -187,11 +187,12 @@
 
   .tutorial__index {
     padding-right: 24px;
+    background-color: $softgrey;
   }
 
   .tutorial__steps {
     padding-left: 28px;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    
 
     @media(max-width: $layout-tablet) {
       padding-left: 0;

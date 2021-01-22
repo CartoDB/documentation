@@ -5,7 +5,7 @@
 
 We currently provide two procedures to tilify a dataset: _CreateSimpleTileset_ and _CreatePointAggregationTileset_, the former to visualize features individually and the latter to generate aggregated point visualizations.
 
-#### tiler.CreatePointAggregationTileset
+#### tiler.CreateSimpleTileset
 
 `tiler.CreatePointAggregationTileset (source_table, target_table, options)`
 
@@ -28,7 +28,7 @@ We currently provide two procedures to tilify a dataset: _CreateSimpleTileset_ a
 |`max_tile_features`| Default: 0 (disabled). A `NUMBER` defining setting the max number of features a tile might contain. This limit is applied before `max_tile_size_kb`, i.e., the tiler will first drop as many features as needed to keep this amount, and then continue with the size limits (if required). To configure in which order are features kept, use in conjunction with `tile_feature_order`|
 |`tile_feature_order`| Default: "" (disabled). A `STRING` defining the order in which properties are added to a tile. This expects the SQL ORDER BY keyword definition, such as "aggregated_total DESC", the "ORDER BY" part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. **This is an expensive operation, so it's recommended to only use it when necessary.**|
 |`drop_duplicates`| Default: false. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
-|`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). In aggregation tilesets you also need to define which formula to use to generate the properties from all the values of the points that fall under the cell.|
+|`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). In aggregation tilesets you also need to define which formula to use to generate the properties from all the values of the points that fall under the cell.`"properties": { "source_column_name": "Number", "source_column_name_2": "String"}`|
 
 
 {{% bannerNote title="tip" %}}
