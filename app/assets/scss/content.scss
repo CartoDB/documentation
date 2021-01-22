@@ -138,6 +138,8 @@
     a {
       display: block;
       color: rgba($base-grey, 0.48);
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &:hover,
       &.is-active {
@@ -152,8 +154,13 @@
       padding: 8px;
     }
 
-    & > ul > li > a {
-      padding: 8px 8px 8px 20px;
+    & > ul > li {
+      & > a {
+        padding: 8px 8px 8px 20px;
+      }
+      & > ul > li > a {
+        padding: 8px 8px 8px 32px;
+      }
     }
   }
 }
@@ -172,10 +179,6 @@
       text-decoration: none;
     }
   }
-
-  // #TableOfContents {
-  //   padding-left: 8px;
-  // }
 }
 
 .tutorial {

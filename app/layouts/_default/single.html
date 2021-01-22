@@ -46,6 +46,19 @@
               {{end}}
             {{end}}
 
+            {{if .Params.extra_sections}}
+              {{$context := .}}
+              {{range $elem := .Params.extra_sections}}
+                {{$file := printf "%s%s%s" $context.File.Dir (urlize $elem) ".md"}}
+                {{$isActive := eq $file $context.File.Path}}
+                {{if $isActive}}
+                  {{$context.TableOfContents}}
+                {{else}}
+                  <a href="{{($context.GetPage $elem).Permalink}}" class="product-toc__link">{{$elem}}</a>
+                {{end}}
+              {{end}}
+            {{end}}
+
             {{if fileExists $guides}}
               {{$isActive := eq (printf "%s%s" .File.Dir "guides.md") .File.Path}}
               {{if $isActive}}
