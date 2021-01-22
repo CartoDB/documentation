@@ -98,6 +98,7 @@
     list-style: disc;
     margin-left: 32px;
     list-style-position: inside;
+    margin-top: 12px;
   }
 
   li {
@@ -392,7 +393,8 @@ a.arrow-link {
 
 p,
 td,
-th {
+th,
+li {
   > code {
     font-family: 'Overpass Mono', monospace;
     background-color: $softblue;
