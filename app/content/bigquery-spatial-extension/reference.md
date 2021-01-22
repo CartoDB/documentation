@@ -15,6 +15,19 @@ We currently provide two procedures to tilify a dataset: _CreateSimpleTileset_ a
 
 Valid options are:
 
+| Option | Description |
+| :----- | :------ |
+|`geom_column`| Default: `"geom"`. A STRING that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
+|`zoom_min`| Default: `0`. A NUMBER that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
+|`zoom_max`| Default: `0`. A NUMBER that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`zoom_step`| Default: `1`. A NUMBER that defines the zoom level step. Only the zoom levels that match zoom_min + zoom_step * N, with N being a positive integer will be generated. For example, with `{ zoom_min: 10, zoom_max: 15, zoom_step : 2 }` only the tiles in zoom levels [10, 12, 14] will be generated.|
+|`target_partitions`| Default: `4000`. Max: `4000`. A NUMBER that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
+|`target_tilestats`| Default: `true`. A BOOLEAN to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:<br/><ul><li>Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).</li>String / Boolean: List of the top 10 most common values and their count.<li>String / Boolean: List of the top 10 most common values and their count.</li></ul>Note that for aggregation tilesets, these statistics refer to the cells at the maximum zoom generated. In simple tilesets, they are based on the source data.|
+
+
+
+
+
 * `geom_column`: Default: `"geom"`. A STRING that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`.
 * `zoom_min`: Default: `0`. A NUMBER that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.
 * `zoom_max`: Default: `0`. A NUMBER that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.
@@ -22,7 +35,7 @@ Valid options are:
 * `target_partitions`: Default: `4000`. Max: `4000`. A NUMBER that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.
 * `target_tilestats`: Default: `true`. A BOOLEAN to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:
     * Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).
-    * String / Boolean: List of the top 10 most common values and their count.<br/><br/> Note that for aggregation tilesets, these statistics refer to the cells at the maximum zoom generated. In simple tilesets, they are based on the source data.|
+    * String / Boolean: List of the top 10 most common values and their count.<br/><br/> Note that for aggregation tilesets, these statistics refer to the cells at the maximum zoom generated. In simple tilesets, they are based on the source data.
 * `tile_extent`: Default: 4096. A `NUMBER` defining the extent of the tile in integer coordinates as defined by the MVT spec.
 * `tile_buffer`: Default: 16 (0 in aggregation). A `NUMBER` defining the additional buffer added around the tiles in extent units, which is useful to facilitate geometry stitching across tiles in the renderers. In aggregation tilesets, this property is currently not available and always 0 as no geometries go across tile boundaries.
 * `max_tile_size_kb`: Default: 1024. A `NUMBER` defining setting the approximate max size for a tile.
