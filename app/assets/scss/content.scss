@@ -94,20 +94,20 @@
     }
   }
 
-  ul {
+  > ul {
     list-style: disc;
     margin-left: 32px;
     list-style-position: inside;
     margin-top: 12px;
-  }
 
-  li {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 12px;
-
-    &:last-child {
-      margin-bottom: 32px;
+    li {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 12px;
+  
+      &:last-child {
+        margin-bottom: 32px;
+      }
     }
   }
 }
