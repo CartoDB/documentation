@@ -1,6 +1,6 @@
 getStarted:
   - title: "Spatial Analysis"
-    description: "CARTO's Location Intelligence platform lets you store, enrich, analyze & visualize spatial data to make insightful decisions."
+    description: "CARTO's platform lets you store, enrich, analyze & visualize spatial data to make insightful location-based decisions."
     image: "spatial-analysis.png"
     url: "/get-started/#carto-for-spatial-analysis"
     related:
@@ -13,7 +13,7 @@ getStarted:
       - name: "Data Observatory"
         url: "https://carto.com/help/working-with-data/#data-observatory"
   - title: "Development"
-    description: "Build the most innovative Location Intelligence applications using our comprehensive developer toolkit."
+    description: "Build the most innovative spatial analytics apps using our comprehensive developer toolkit."
     image: "development.png"
     url: "/get-started/#carto-for-development"
     related:
@@ -52,7 +52,7 @@ developmentTools:
     url: "#"
     image: "bq-tiler.png"
   - title: "CARTO for React"
-    description: "Build compelling Location Intelligence Apps using CARTO, React and deck.gl."
+    description: "Build compelling spatial apps using CARTO, React and deck.gl."
     url: "#"
     image: "carto-react.png"
     highlighted: true
