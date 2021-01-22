@@ -187,12 +187,11 @@
 
   .tutorial__index {
     padding-right: 24px;
-    background-color: $softgrey;
   }
 
   .tutorial__steps {
     padding-left: 28px;
-    
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
 
     @media(max-width: $layout-tablet) {
       padding-left: 0;
