@@ -1,9 +1,12 @@
-{{$title := .Get "title" | default "Note"}}
+{{$title := .Get "title" | default ""}}
+{{$type := .Get "type" | default "note"}}
 
-{{if eq (upper $title) "TIP"}}
+{{if eq (upper $type) "TIP"}}
   {{.Scratch.Set "class" "banner-note--tip"}}
-{{else if eq (upper $title) "WARNING"}}
+{{else if eq (upper $type) "WARNING"}}
   {{.Scratch.Set "class" "banner-note--warning"}}
+{{else if eq (upper $type) "CODE"}}
+  {{.Scratch.Set "class" "banner-note--code"}}
 {{end}}
 
 {{$className := .Scratch.Get "class"}}

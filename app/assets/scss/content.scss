@@ -3,7 +3,7 @@
 
   p, td {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 26px;
     margin-bottom: 32px;
 
     &:last-child {
@@ -94,7 +94,7 @@
     }
   }
 
-  > ul {
+  ul {
     list-style: disc;
     margin-left: 32px;
     list-style-position: inside;
@@ -102,8 +102,8 @@
 
     li {
       font-size: 16px;
-      line-height: 24px;
-      margin-bottom: 12px;
+      line-height: 26px;
+      margin-bottom: 16px;
   
       &:last-child {
         margin-bottom: 32px;
