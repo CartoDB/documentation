@@ -3,12 +3,12 @@
 
 ### Tiler
 
-We currently provide two procedures to tilify a dataset: _CreateSimpleTileset_ and _CreatePointAggregationTileset_, the former to visualize features individually and the latter to generate aggregated point visualizations.
+We currently provide two procedures to tilify a dataset: _CREATE_SIMPLE_TILESET_ and _CREATE_POINT_AGGREGATION_TILESET_, the former to visualize features individually and the latter to generate aggregated point visualizations.
 
-#### tiler.CreateSimpleTileset
+#### tiler.CREATE_SIMPLE_TILESET
 
 {{% bannerNote type="code" %}}
-tiler.CreateSimpleTileset (source_table, target_table, options)
+tiler.CREATE_SIMPLE_TILESET (source_table, target_table, options)
 {{%/ bannerNote %}}
 
 * `source_table`: `STRING` that can either be a quoted qualified table name (e.g. ``projectID.dataset.tablename``) or a full query contained by parentheses (e.g.<code>(Select * FROM \`projectID.dataset.tablename`)</code>).
@@ -79,10 +79,10 @@ R'''
 ```
 
 
-#### tiler.CreatePointAggregationTileset
+#### tiler.CREATE_POINT_AGGREGATION_TILESET
 
 {{% bannerNote type="code" %}}
-tiler.CreatePointAggregationTileset (source_table, target_table, options)
+tiler.CREATE_POINT_AGGREGATION_TILESET (source_table, target_table, options)
 {{%/ bannerNote %}}
 
 * `source_table`: `STRING` that can either be a quoted qualified table name (e.g. ``projectID.dataset.tablename``) or a full query contained by parentheses (e.g.<code>(Select * FROM \`projectID.dataset.tablename`)</code>).
