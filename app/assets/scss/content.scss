@@ -94,7 +94,7 @@
     }
   }
 
-  > ul {
+  ul:not([class]) {
     list-style: disc;
     margin-left: 32px;
     list-style-position: inside;
