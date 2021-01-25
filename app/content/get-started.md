@@ -70,8 +70,7 @@ CARTOframes is a Python package for integrating CARTO maps, spatial analytics, a
 
 ## CARTO for Spatial Analysis
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.
-
+CARTO's Location Intelligence platform lets you store, enrich, analyze & visualize spatial data to make insightful decisions.
 
 ### Spatial Analysis with Builder
 
@@ -265,18 +264,17 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
   {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
-## CARTO for Development
+## CARTO for Developers
 
-CARTO’s goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
 Our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
 
-Check out our full range of resources for geospatial application development including,  user authentication, data import, storage and enhancement, cartography, tiling, app user interface styling, and much more.
+
+#### CARTO Developer Resources
 
 
-#### Lorem ipsum
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam.
+Check out our full range of resources for geospatial application development including, user authentication, data import, storage and enhancement, cartography, tiling, app user interface styling, and much more.
 
 {{<grid>}}
   {{<productCard
