@@ -19,7 +19,7 @@ Our platform helps you visualize, analyze and build applications using location 
 Depending on your usage of the CARTO platform, whether it’s for visualization, analysis or application development, you will be using different components of the platform.
 
 {{%sideImage image="/img/get-started/dashboard.png" alt="Dasbhoard"%}}
-#### Dashboard
+##### Dashboard
 
 Connect to multiple data sources, including local or remote files, cloud data warehouses and BI solutions. Seamlessly access a wealth of vetted datasets to enhance your geospatial analysis.
 
@@ -29,7 +29,7 @@ Connect to multiple data sources, including local or remote files, cloud data wa
 {{%/sideImage%}}
 
 {{%sideImage image="/img/get-started/builder.png" alt="Builder"%}}
-#### Builder
+##### Builder
 
 CARTO Builder offers powerful map making, data visualization and pre-packaged analytics.
 
@@ -39,7 +39,7 @@ CARTO Builder offers powerful map making, data visualization and pre-packaged an
 {{%/sideImage%}}
 
 {{%sideImage image="/img/get-started/engine-api.png" alt="Platfrom APIs and libraries"%}}
-#### Platform APIs and libraries
+##### Platform APIs and libraries
 
 For the Developer community, we have created a complete library of APIs, frameworks, connectors and development tools to accelerate the spatial app development process.
 
@@ -49,7 +49,7 @@ For the Developer community, we have created a complete library of APIs, framewo
 {{%/sideImage%}}
 
 {{%sideImage image="/img/get-started/data-observatory.png" alt="Data Observatory"%}}
-#### Data Observatory
+##### Data Observatory
 
 We catalog and distribute thousands of vetted public and premium spatial datasets, covering most global markets. These datasets are available across the different components of CARTO, so you can use them for data enrichment or as additional data layers for your spatial apps and analyses.
 
@@ -59,7 +59,7 @@ We catalog and distribute thousands of vetted public and premium spatial dataset
 {{%/sideImage%}}
 
 {{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
-#### CARTOframes
+##### CARTOframes
 
 CARTOframes is a Python package for integrating CARTO maps, spatial analytics, and data services into your data science workflows.
 
