@@ -34,6 +34,7 @@
           <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.title}}</h3>
           {{$overview := printf "%s%s" .File.Dir "overview.md"}}
           {{$guides := printf "%s%s" .File.Dir "guide.md"}}
+          {{$reference := printf "%s%s" .File.Dir "reference.md"}}
           {{$examples := printf "%s%s" .File.Dir "example.md"}}
           <div class="product-toc">
             {{if fileExists $overview}}
@@ -41,7 +42,20 @@
               {{if $isActive}}
                 {{.TableOfContents}}
               {{else}}
-                <a class="product-toc__link">Overview</a>
+                <a href="{{(.GetPage $overview).Permalink}}" class="product-toc__link">Overview</a>
+              {{end}}
+            {{end}}
+
+            {{if .Params.extra_sections}}
+              {{$context := .}}
+              {{range $elem := .Params.extra_sections}}
+                {{$file := printf "%s%s%s" $context.File.Dir (urlize $elem) ".md"}}
+                {{$isActive := eq $file $context.File.Path}}
+                {{if $isActive}}
+                  {{$context.TableOfContents}}
+                {{else}}
+                  <a href="{{($context.GetPage $elem).Permalink}}" class="product-toc__link">{{$elem}}</a>
+                {{end}}
               {{end}}
             {{end}}
 
@@ -50,7 +64,16 @@
               {{if $isActive}}
                 {{.TableOfContents}}
               {{else}}
-                <a class="product-toc__link">Guides</a>
+                <a href="{{(.GetPage $guides).Permalink}}" class="product-toc__link">Guides</a>
+              {{end}}
+            {{end}}
+
+            {{if fileExists $reference}}
+              {{$isActive := eq (printf "%s%s" .File.Dir "reference.md") .File.Path}}
+              {{if $isActive}}
+                {{.TableOfContents}}
+              {{else}}
+                <a href="{{(.GetPage $reference).Permalink}}" class="product-toc__link">Reference</a>
               {{end}}
             {{end}}
 
@@ -59,7 +82,7 @@
               {{if $isActive}}
                 {{.TableOfContents}}
               {{else}}
-                <a class="product-toc__link">Examples</a>
+                <a href="{{(.GetPage $examples).Permalink}}" class="product-toc__link">Examples</a>
               {{end}}
             {{end}}
           </div>
