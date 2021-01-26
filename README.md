@@ -26,6 +26,10 @@ To deploy into staging you just need to create a Pull Request. Once the Github A
 
 Once you're happy with the result, simply merge your branch into master and it will do the deploy to production automatically
 
+## How to create new documentation
+
+The process for creating new documentation is documented in (this document)[ADDING-DOCUMENTATION.md]
+
 ## Extra information
 
 This is hosted in firebase, under the project named `cartodb-fb-documentation`
