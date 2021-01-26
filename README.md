@@ -28,7 +28,7 @@ Once you're happy with the result, simply merge your branch into master and it w
 
 ## How to create new documentation
 
-The process for creating new documentation is documented in (this document)[ADDING-DOCUMENTATION.md]
+The process for creating new documentation is documented in [this document](ADDING-DOCUMENTATION.md)
 
 ## Extra information
 
