@@ -37,9 +37,7 @@ We are using the [generic cell rate algorithm](https://en.wikipedia.org/wiki/Gen
 The main keys to keep in mind about this algorithm and our implementation are:
 
 * We allow a request every a certain time period. _If an endpoint has a limit of 5 requests per second, you will have a request available every 200ms and when you spend all the available requests, you will need to wait 200ms to have another available request, instead of 1 second._
-
 * Most of the endpoints are limited per second. _If an endpoint has a limit of 5 requests per second, after a second without requests, you will have at least 5 available requests._
-
 * Most of the endpoints allow an initial burst equal to the number of requests per second. _If an endpoint has a limit of 5 requests per second, initially you will have 5 available requests._
 
 #### HTTP headers and response codes
@@ -49,11 +47,8 @@ When an application exceeds the rate limit for a given API endpoint, the API wil
 Use the HTTP headers in order to understand where the application is at for a given rate limit, on the method that was just utilized. Note that the HTTP headers are contextual. That is, they indicate the rate limit for the user context. If you have multiple apps (maps) accessing to their resources with the same user, HTTP headers are related to that user.
 
 * **Carto-Rate-Limit-Limit**: total allowed requests
-
 * **Carto-Rate-Limit-Remaining**: remaining requests
-
 * **Retry-After**: seconds until next available request (returns `-1` if the current request is allowed)
-
 * **Carto-Rate-Limit-Reset**: seconds until the limit will reset to its maximum capacity
 
 **Tip:** If you receive a rate limit error, you must wait for the number of seconds indicated by the `Retry-After` HTTP header (normally 1 second) before retrying.

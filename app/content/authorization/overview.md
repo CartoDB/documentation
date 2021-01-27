@@ -112,7 +112,8 @@ Also, you will be able to revoke the access of any of them to your account by cl
 ##### 1. Redirect your users to the OAuth Flow
 
 Redirect your users to this URL:
-```
+
+```txt
 https://carto.com/oauth2/authorize?client_id=...
 ```
 
@@ -162,7 +163,8 @@ https://example.com/callback?code=fd17b6af-fde8-401e-9891-a6d430f9e456
 Together with the `client_id` and `client_secret`, the given code can be used to retrieve the API key for the authenticated user. This code expires after 60 seconds.
 
 App must submit a POST request to the following URL:
-```
+
+```txt
 https://carto.com/oauth2/token
 ```
 
@@ -177,12 +179,14 @@ The following is the list of parameters that must be included (all of them are r
 | `grant_type`    | Must be `authorization_code`.                                                                                                                        |
 
 Here’s an example using curl:
-```
+
+```javascript
 curl -d "code=VY_Qlm4Rd3WunvHZ&state=foo&client_id=3wmcayz5Dgmy&grant_type=authorization_code&client_secret=GM7IwH-srhPvM3KtUv9eztMo" -X POST https://carto.com/oauth2/token
 ```
 
 The response should look like:
-```
+
+```json
 {
   "access_token": "GkWAiR5UpKTUUj6m_1D1eQ",
   "token_type": "bearer",
@@ -193,7 +197,8 @@ The response should look like:
 **2.2 Implicit Grant**
 
 If you are developing a single-page application (SPA), you can use this grant type so that your app can get an access token directly, without having to make the `client_secret` public. Instead of receiving a code that should then be exchanged for an access token, the browser will be redirected to the specified `redirect_uri`, and include the access_token in the URL:
-```
+
+```txt
 https://example.com/callback#access_token=Lhpe_LBm7GsEuDqnRNdMEw&token_type=Bearer&expires_in=3599.926442147
 ```
 
@@ -206,6 +211,7 @@ You can put any state information in the `state` parameter so you keep the conte
 *B) Reauthenticate silently*
 
 There is a way to re-authenticate without redirecting the user. The trick is to use an invisible iframe in order to redirect the browser to the OAuth flow. In order to better support this, CARTO supports the `prompt=none`. With this parameter, the application will get an error in case the user is not logged in or authorized, so you can handle the error and redirect the user to the flow with a redirection (so the user can interact with the consent screen). The flow would be like:
+
 1. Create an invisible iframe with a location like: `https://carto.com/oauth2/authorize?client_id=...?response_code=token&prompt=none`.
 2. Poll the location of the iframe after a while (`iframe.contentWindow.location`). If you get a browser error it’s because the iframe URL is not under your domain (i.e: CARTO has not yet redirected back).
 3. Once you can read the iframe URL, parse it. It can either include the new token or an error. In the first case, you can start using it. In the second, you should redirect the user to the full OAuth flow (without the prompt parameter).
@@ -216,7 +222,8 @@ There is a way to re-authenticate without redirecting the user. The trick is to 
 Your app should be able to use the provided API Key to communicate with CARTO’s APIs :)
 
 To do it, you just have to include an `api_key` parameter to the available endpoints. For example:
-```
+
+```txt
  {BASE_URL}/api/v4/me?api_key=bdda6efbfd71ae4f619018efb8883a85cdbe30fe
 ```
 
@@ -228,7 +235,8 @@ The access token will be valid during 60 minutes. After that, you will have to r
 ##### 4. Refresh the token
 
 Specifying the `offline` scope will return a `refresh_token` that can be used to request a new `access_token`. Here is a sample response when using the Code Authorization Grant type with the `offline` scope:
-```
+
+```json
 {
   "access_token": "EcUa5bebggy2QZzjf1j_yA",
   "token_type": "bearer",
@@ -239,8 +247,10 @@ Specifying the `offline` scope will return a `refresh_token` that can be used to
 ```
 
 Notice that the response now includes a `refresh_token` that can be used to request another (just one) token:
-```
+
+```txt
 curl -d "refresh_token=886k3JZOcZENljK6fGeJ&client_id=3wmcayz5Dgmy&grant_type=refresh_token&client_secret=GM7IwH-srhPvM3KtUv9eztMo" -X POST http://carto.com/oauth2/token
 ```
-
-**Warning:** The Implicit Grant doesn’t support the offline scope, hence refresh tokens are also unsupported. Redirect your users to the authorization flow again to get a new access token in this case.
+{{% bannerNote type="warning" title="warning"%}}
+The Implicit Grant doesn’t support the offline scope, hence refresh tokens are also unsupported. Redirect your users to the authorization flow again to get a new access token in this case.
+{{%/ bannerNote %}}
