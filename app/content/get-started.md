@@ -274,29 +274,10 @@ Our developer toolkit includes industry-leading visualization, mapping and appli
 
 #### CARTO Developer Resources
 
+If you are building a web-based spatial application, we recommend you to use CARTO for deck.gl, the most advanced geospatial visualization library. Go to the [Getting Started](https://carto.com/developers/deck-gl/guides/getting-started/) guide to begin creating awesome applications.
 
-Check out our full range of resources for geospatial application development including, user authentication, data import, storage and enhancement, cartography, tiling, app user interface styling, and much more.
+CARTO is an open ecosystem that does not force you to use a specific technology or library. Please read the following guides if you want to work with CARTO and [Google Maps](https://carto.com/developers/gmaps/guides/getting-started/), [Mapbox](https://carto.com/developers/mapbox/guides/getting-started/) or [Amazon Location](https://carto.com/developers/amazon-location/guides/getting-started/).
 
-{{<grid>}}
-  {{<productCard
-      name="CARTO for deck.gl"
-      description="Build apps using deck.gl advanced framework for data visualization. This is our recommended library."
-      image="/img/icons/carto-deck.png"
-      url="#"
-      highlighted="true">}}
-  {{<productCard
-      name="CARTO BigQuery Tiler"
-      description="Visualize Big Data without having to move data outside BigQuery."
-      image="/img/icons/spatial-extension-bq.png"
-      url="#">}}
-  {{<productCard
-      name="SQL API"
-      description="Interact with your tables and data inside CARTO, as if you were running SQL statements."
-      image="/img/icons/sql-api.png"
-      url="#">}}
-  {{<productCard
-      name="Maps API"
-      description="Generate maps based on data hosted in your CARTO account."
-      image="/img/icons/maps-api.png"
-      url="#">}}
-{{</grid>}}
+Your application probably provide access to datasets stored in the CARTO database. Please read this [article](authorization/overview) to understand how authorization is handled and how you can take advantage of CARTO support for the OAuth 2.0 protocol.
+
+When you are interacting with the CARTO platform, you can reach some limits that we put in place to guarantee the performance and prevent abuse. Please read this [article](limits/overview) to know more about this.
