@@ -48,6 +48,16 @@ For the Developer community, we have created a complete library of APIs, framewo
 {{</link>}}
 {{%/sideImage%}}
 
+{{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
+##### CARTOframes
+
+CARTOframes is a Python package for integrating CARTO maps, spatial analytics, and data services into your data science workflows.
+
+{{<link href="https://carto.com/cartoframes" target="_blank">}}
+  Learn more
+{{</link>}}
+{{%/sideImage%}}
+
 {{%sideImage image="/img/get-started/data-observatory.png" alt="Data Observatory"%}}
 ##### Data Observatory
 
@@ -58,15 +68,6 @@ We catalog and distribute thousands of vetted public and premium spatial dataset
 {{</link>}}
 {{%/sideImage%}}
 
-{{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
-##### CARTOframes
-
-CARTOframes is a Python package for integrating CARTO maps, spatial analytics, and data services into your data science workflows.
-
-{{<link href="https://carto.com/cartoframes" target="_blank">}}
-  Learn more
-{{</link>}}
-{{%/sideImage%}}
 
 ## CARTO for Spatial Analysis
 
@@ -264,7 +265,7 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
   {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
-## CARTO for Developers
+## CARTO for Development
 
 Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
@@ -281,21 +282,21 @@ Check out our full range of resources for geospatial application development inc
       name="CARTO for deck.gl"
       description="Build apps using deck.gl advanced framework for data visualization. This is our recommended library."
       image="/img/icons/carto-deck.png"
-      url="/documentation/carto-deck/"
+      url="#"
       highlighted="true">}}
   {{<productCard
       name="CARTO BigQuery Tiler"
       description="Visualize Big Data without having to move data outside BigQuery."
-      image="/img/icons/bq-tiler.png"
-      url="/documentation/bq-tiler/">}}
+      image="/img/icons/spatial-extension-bq.png"
+      url="#">}}
   {{<productCard
       name="SQL API"
       description="Interact with your tables and data inside CARTO, as if you were running SQL statements."
       image="/img/icons/sql-api.png"
-      url="/documentation/sql-api/">}}
+      url="#">}}
   {{<productCard
       name="Maps API"
       description="Generate maps based on data hosted in your CARTO account."
       image="/img/icons/maps-api.png"
-      url="/documentation/maps-api/">}}
+      url="#">}}
 {{</grid>}}
