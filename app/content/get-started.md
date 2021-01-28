@@ -93,7 +93,7 @@ Download the following dataset:
 
 |       |       |       |       |
 |-------|-------|-------|-------|
-| World Ports | 3,669 rows | 708 kB | <a href="https://public.carto.com/api/v2/sql?q=select%20*%20from%20public.world_ports&format=csv&filename=world_ports"> Download</a> |
+| World Ports | 3,669 rows | 708 kB | <a href="https://public.carto.com/api/v2/sql?q=select%20*%20from%20public.world_ports&format=csv&filename=worldports"> Download</a> |
 
 In the "Connect dataset" tab, click on “Browse”, select the file, and then click on “Connect dataset”
 
