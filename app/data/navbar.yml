@@ -9,10 +9,8 @@ navbar:
   #  url: 
   - name: Dev tools
     subelements:
-      - name: BigQuery Tiler
-        url: /documentation/bq-tiler/
-      - name: CARTO for React
-        url: /documentation/bq-tiler/
+      #- name: CARTO for React
+      #  url: 
       - name: CARTO for deck.gl
         url: https://carto.com/developers/deck-gl
       - name: CARTO + Google Maps
