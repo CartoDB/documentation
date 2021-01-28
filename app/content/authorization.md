@@ -1,3 +1,10 @@
+---
+title: Authorization
+description: "Understand how to authorize access to CARTO resources"
+tocName: "Authorization"
+type: single-page
+---
+
 ## Overview
 
 Every call to CARTO's APIs must be authorized, the only exception to that rule being some API calls that retrieve public user data. Once an API call has proven to be legitimate, by confirming the API key is valid, it still needs to be authorized to actually perform the requested operations on the selected resources.

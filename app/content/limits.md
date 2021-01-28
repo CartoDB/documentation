@@ -1,3 +1,10 @@
+---
+title: Limits
+description: "Understand API limits"
+tocName: "Limits"
+type: single-page
+---
+
 ## Overview
 
 Developers interact with CARTO platform through our APIs. Either directly or via any of our libraries and SDKs, APIs give access to data, maps and everything that is required to build geospatial applications with CARTO. Therefore, APIs play a fundamental role in our platform.
