@@ -43,7 +43,7 @@ CARTO Builder offers powerful map making, data visualization and pre-packaged an
 
 For the Developer community, we have created a complete library of APIs, frameworks, connectors and development tools to accelerate the spatial app development process.
 
-{{<link href="https://docs.carto.com" target="_blank">}}
+{{<link href="https://docs.carto.com/#dev-tools">}}
   View all libraries and APIs
 {{</link>}}
 {{%/sideImage%}}
