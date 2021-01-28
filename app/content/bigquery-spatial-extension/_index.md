@@ -5,4 +5,8 @@ cascade:
   icon: "/img/icons/bq-tiler.png"
   extra_sections:
     - "Tiler"
+  guides:
+    - "Introduction"
+    - "Quickstart"
+    - "Data Observatory"
 ---
