@@ -65,11 +65,11 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,.12);
+  background-color: $base-grey;
   z-index: 99999;
   animation-name: sticky;
-  animation-duration: 0.5s;
+  animation-duration: 0.25s;
+  animation-timing-function: ease;
 }
 
 @keyframes sticky {
