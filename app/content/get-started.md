@@ -48,6 +48,16 @@ For the Developer community, we have created a complete library of APIs, framewo
 {{</link>}}
 {{%/sideImage%}}
 
+{{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
+##### CARTOframes
+
+CARTOframes is a Python package for integrating CARTO maps, spatial analytics, and data services into your data science workflows.
+
+{{<link href="https://carto.com/cartoframes" target="_blank">}}
+  Learn more
+{{</link>}}
+{{%/sideImage%}}
+
 {{%sideImage image="/img/get-started/data-observatory.png" alt="Data Observatory"%}}
 ##### Data Observatory
 
@@ -58,15 +68,6 @@ We catalog and distribute thousands of vetted public and premium spatial dataset
 {{</link>}}
 {{%/sideImage%}}
 
-{{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
-##### CARTOframes
-
-CARTOframes is a Python package for integrating CARTO maps, spatial analytics, and data services into your data science workflows.
-
-{{<link href="https://carto.com/cartoframes" target="_blank">}}
-  Learn more
-{{</link>}}
-{{%/sideImage%}}
 
 ## CARTO for Spatial Analysis
 
@@ -264,7 +265,7 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
   {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
-## CARTO for Developers
+## CARTO for Development
 
 Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
@@ -273,29 +274,10 @@ Our developer toolkit includes industry-leading visualization, mapping and appli
 
 #### CARTO Developer Resources
 
+If you are building a web-based spatial application, we recommend you to use CARTO for deck.gl, the most advanced geospatial visualization library. Go to the [Getting Started](https://carto.com/developers/deck-gl/guides/getting-started/) guide to begin creating awesome applications.
 
-Check out our full range of resources for geospatial application development including, user authentication, data import, storage and enhancement, cartography, tiling, app user interface styling, and much more.
+CARTO is an open ecosystem that does not force you to use a specific technology or library. Please read the following guides if you want to work with CARTO and [Google Maps](https://carto.com/developers/gmaps/guides/getting-started/), [Mapbox](https://carto.com/developers/mapbox/guides/getting-started/) or [Amazon Location](https://carto.com/developers/amazon-location/guides/getting-started/).
 
-{{<grid>}}
-  {{<productCard
-      name="CARTO for deck.gl"
-      description="Build apps using deck.gl advanced framework for data visualization. This is our recommended library."
-      image="/img/icons/carto-deck.png"
-      url="/documentation/carto-deck/"
-      highlighted="true">}}
-  {{<productCard
-      name="CARTO BigQuery Tiler"
-      description="Visualize Big Data without having to move data outside BigQuery."
-      image="/img/icons/bq-tiler.png"
-      url="/documentation/bq-tiler/">}}
-  {{<productCard
-      name="SQL API"
-      description="Interact with your tables and data inside CARTO, as if you were running SQL statements."
-      image="/img/icons/sql-api.png"
-      url="/documentation/sql-api/">}}
-  {{<productCard
-      name="Maps API"
-      description="Generate maps based on data hosted in your CARTO account."
-      image="/img/icons/maps-api.png"
-      url="/documentation/maps-api/">}}
-{{</grid>}}
+Your application probably provide access to datasets stored in the CARTO database. Please read this [article](/authorization/overview) to understand how authorization is handled and how you can take advantage of CARTO support for the OAuth 2.0 protocol.
+
+When you are interacting with the CARTO platform, you can reach some limits that we put in place to guarantee the performance and prevent abuse. Please read this [article](/limits/overview) to know more about this.
