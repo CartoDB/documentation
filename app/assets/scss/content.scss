@@ -177,7 +177,7 @@
     & > ul > li > ul > li > a {
       padding: 8px 8px 8px 36px;
       font-family: $font-family-base;
-      color: $navyBlue;
+      font-weight: normal;
     }
   }
 
@@ -335,6 +335,7 @@
     padding-left: 36px;
     position: relative;
     color: rgba($navyBlue, 0.48);
+
     &:before {
       content: '';
       position: absolute;
