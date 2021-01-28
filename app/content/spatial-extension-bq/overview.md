@@ -22,7 +22,7 @@ If your organization has the "Login with Google" option enabled and you signed u
 
 Once you have created your CARTO account (ideally using your Google Account for sign up and login) the next step is **creating a BigQuery connection**. Check out [the documentation](WIP:add.link.to.actual.docs) about connections to get familiar with the process. 
 
-**WIP: Add screenshot**
+**WIP: Add screenshot and actual link**
 
 Now that we're set on the CARTO side, let's open the BigQuery console and check that we have access to the extension functions:
 
@@ -36,9 +36,18 @@ If you need to use the extension from the **EU** multi-region, use `SELECT carto
 
 **WIP: Update with actual function**
 
-If you get a version number, you're all set! If you get a permission error, please make sure that your account's email address matches your Google Account. If 
+If you get a version number, you're all set! Take a look at the tiler's [**Quickstart**](https://docs.carto.com/spatial-extension-bq/tiler/#quickstart) section to get started using some of the extension's more advanced functionalities.
+
+If you get a permission error, please make sure that your account's email address matches your Google Account and create the BigQuery connection again. If you still can't access, get in touch at [support@carto.com](mailto:support@carto.com)
 
 ### Usage limits
 
-sdfasdf
-a
+Each CARTO account has their own usage limits for the Spatial Extension. Aligned with BigQuery billing system, we'll control the amount of data processed by the extension's procedures.
+
+Depending on the account type, the limit on the data processed by the extension can go from 10GB in Free accounts to _unlimited_ in the highest Enterprise tier. 
+
+| Plan | Data processed limit|
+|------|--------------------|
+|Free | 10GB       |
+|Individual | 200GB |
+|Enterprise | Starting at 500GB
