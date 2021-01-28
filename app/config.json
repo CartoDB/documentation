@@ -2,7 +2,7 @@
   "baseURL": "https://docs.carto.com/",
   "languageCode": "en-us",
   "title": "CARTO Documentation",
-  "disableKinds": ["taxonomy", "section", "term", "RSS", "robotsTXT", "404"],
+  "disableKinds": ["taxonomy", "term", "RSS", "robotsTXT", "404"],
   "assetDir": "assets",
   "contentDir": "content",
   "layoutDir": "layouts",
@@ -34,6 +34,11 @@
       "noClasses": false,
       "style": "monokai",
       "tabWidth": 4
+    },
+    "tableOfContents": {
+      "endLevel": 4,
+      "ordered": false,
+      "startLevel": 2
     }
  },
  "permalinks": {
