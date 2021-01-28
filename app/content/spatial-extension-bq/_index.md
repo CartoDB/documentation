@@ -5,8 +5,4 @@ cascade:
   icon: "/img/icons/spatial-extension-bq.png"
   extra_sections:
     - "Tiler"
-  guides:
-    - "Introduction"
-    - "Quickstart"
-    - "Data Observatory"
 ---
