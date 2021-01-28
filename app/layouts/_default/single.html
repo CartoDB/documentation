@@ -32,57 +32,69 @@
       <aside class="grid-cell grid-cell--col2 title f12 js-toc-sidebar desktop-s">
         <div class="toc-sidebar__container js-toc-sidebar-container">
           <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.title}}</h3>
-          {{$overview := printf "%s%s" .File.Dir "overview.md"}}
-          {{$guides := printf "%s%s" .File.Dir "guide.md"}}
-          {{$reference := printf "%s%s" .File.Dir "reference.md"}}
-          {{$examples := printf "%s%s" .File.Dir "example.md"}}
-          <div class="product-toc">
+          {{$projectDirectory := replace .File.Dir "/guides/" "/"}}
+          {{$overview := printf "%s%s" $projectDirectory "overview.md"}}
+          {{$reference := printf "%s%s" $projectDirectory "reference.md"}}
+
+          <div class="page-toc">
             {{if fileExists $overview}}
-              {{$isActive := eq (printf "%s%s" .File.Dir "overview.md") .File.Path}}
+              {{$isActive := eq (printf "%s%s" $projectDirectory "overview.md") .File.Path}}
               {{if $isActive}}
                 {{.TableOfContents}}
               {{else}}
-                <a href="{{(.GetPage $overview).Permalink}}" class="product-toc__link">Overview</a>
+                <a href="{{(.GetPage $overview).Permalink}}" class="toc__link">Overview</a>
               {{end}}
             {{end}}
 
             {{if .Params.extra_sections}}
               {{$context := .}}
               {{range $elem := .Params.extra_sections}}
-                {{$file := printf "%s%s%s" $context.File.Dir (urlize $elem) ".md"}}
+                {{$file := printf "%s%s%s" $projectDirectory (urlize $elem) ".md"}}
                 {{$isActive := eq $file $context.File.Path}}
                 {{if $isActive}}
                   {{$context.TableOfContents}}
                 {{else}}
-                  <a href="{{($context.GetPage $elem).Permalink}}" class="product-toc__link">{{$elem}}</a>
+                  <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc__link">{{$elem}}</a>
                 {{end}}
               {{end}}
             {{end}}
 
-            {{if fileExists $guides}}
-              {{$isActive := eq (printf "%s%s" .File.Dir "guides.md") .File.Path}}
-              {{if $isActive}}
-                {{.TableOfContents}}
-              {{else}}
-                <a href="{{(.GetPage $guides).Permalink}}" class="product-toc__link">Guides</a>
+            {{if .Params.folders}}
+              {{$context := .}}
+              {{range $folder := .Params.folders}}
+                {{$firstFileName := urlize (index $folder.elements 0)}}
+                {{$folderName := urlize $folder.name}}
+                {{$firstFile := printf "%s%s%s%s%s" $projectDirectory $folderName "/" $firstFileName ".md"}}
+                <ul>
+                  <li>
+                    <a href="{{($context.GetPage $firstFile).Permalink}}" class="toc__link">{{$folder.name}}</a>
+                    {{$isCurrent := strings.HasSuffix $context.File.Dir (printf "%s%s%s" "/" $folderName "/")}}
+                    {{if $isCurrent}}
+                      {{range $elem := $folder.elements}}
+                        {{$file := printf "%s%s%s%s%s" $projectDirectory $folderName "/" (urlize $elem) ".md"}}
+                        {{$isActive := eq $file $context.File.Path}}
+                        {{if $isActive}}
+                          {{$context.TableOfContents}}
+                        {{else}}
+                        <ul>
+                          <li>
+                            <a href="{{($context.GetPage (urlize $elem)).Permalink}}" class="">{{$elem}}</a>
+                          </li>
+                        </ul>
+                        {{end}}
+                      {{end}}
+                    {{end}}
+                  </li>
+                </ul>
               {{end}}
             {{end}}
 
             {{if fileExists $reference}}
-              {{$isActive := eq (printf "%s%s" .File.Dir "reference.md") .File.Path}}
+              {{$isActive := eq (printf "%s%s" $projectDirectory "reference.md") .File.Path}}
               {{if $isActive}}
                 {{.TableOfContents}}
               {{else}}
-                <a href="{{(.GetPage $reference).Permalink}}" class="product-toc__link">Reference</a>
-              {{end}}
-            {{end}}
-
-            {{if fileExists $examples}}
-              {{$isActive := eq (printf "%s%s" .File.Dir "examples.md") .File.Path}}
-              {{if $isActive}}
-                {{.TableOfContents}}
-              {{else}}
-                <a href="{{(.GetPage $examples).Permalink}}" class="product-toc__link">Examples</a>
+                <a href="{{(.GetPage $reference).Permalink}}" class="toc__link">Reference</a>
               {{end}}
             {{end}}
           </div>
