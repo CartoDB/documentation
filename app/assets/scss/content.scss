@@ -1,9 +1,9 @@
 .content__default {
   @include text();
 
-  p {
+  p, td {
     font-size: 16px;
-    line-height: 24px;
+    line-height: 26px;
     margin-bottom: 32px;
 
     &:last-child {
@@ -93,6 +93,32 @@
       border: 1px solid #C5CCD5;
     }
   }
+
+  ul:not([class]),
+  ol:not([class]) {
+    list-style: disc;
+    margin-left: 32px;
+    list-style-position: inside;
+    margin-top: 12px;
+
+    li {
+      font-size: 16px;
+      line-height: 26px;
+      margin-bottom: 16px;
+  
+      &:last-child {
+        margin-bottom: 32px;
+      }
+    }
+  }
+
+  ul:not([class]) {
+    list-style: disc;
+  }
+
+  ol:not([class]) {
+    list-style: decimal;
+  }
 }
 
 .toc-sidebar__container {
@@ -116,12 +142,16 @@
   margin-bottom: 16px;
 }
 
-#TableOfContents {
-  &> ul > li {
+.page-toc {
+  li {
     a {
       display: block;
       color: rgba($base-grey, 0.48);
       transition: color 0.15s ease, background-color 0.15s ease, ;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+      padding: 8px;
 
       &:hover,
       &.is-active {
@@ -131,13 +161,17 @@
       }
     }
 
-    & > a {
-      text-transform: uppercase;
-      padding: 8px;
-    }
+    li {
+      a {
+        padding: 8px 8px 8px 20px;
+        text-transform: unset;
+      }
 
-    & > ul > li > a {
-      padding: 8px 8px 8px 20px;
+      li {
+        a {
+          padding: 8px 8px 8px 32px;
+        }
+      }
     }
     
     & > ul > li > ul > li > a {
@@ -146,10 +180,8 @@
       color: $navyBlue;
     }
   }
-}
 
-.product-toc {
-  .product-toc__link {
+  .toc__link {
     @include title();
     display: block;
     color: rgba($base-grey, 0.48);
@@ -162,10 +194,6 @@
       text-decoration: none;
     }
   }
-
-  // #TableOfContents {
-  //   padding-left: 8px;
-  // }
 }
 
 .tutorial {
@@ -173,12 +201,13 @@
   margin-top: 48px;
 
   .tutorial__index {
-    padding-right: 24px;
+    padding: 16px 24px 16px 16px;
+    background-color: $softgrey;
+    border-radius: 4px;
   }
 
   .tutorial__steps {
     padding-left: 28px;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
 
     @media(max-width: $layout-tablet) {
       padding-left: 0;
@@ -225,6 +254,7 @@
   li {
     position: relative;
     margin-bottom: 24px;
+    list-style: none;
     cursor: pointer;
 
     &:last-of-type {
@@ -232,7 +262,7 @@
 
       .expansion-line {
         height: calc(100% - 12px) !important;
-        background-color: $white;
+        background-color: $softgrey;
         top: 11px;
         width: 3px;
         transform: translateX(-1px);
@@ -382,11 +412,12 @@ a.arrow-link {
 
 p,
 td,
-th {
+th,
+li {
   > code {
     font-family: 'Overpass Mono', monospace;
     background-color: $softblue;
     border-radius: 2px;
-    padding: 4px 6px;
+    padding: 1px 4px;
   }
 }

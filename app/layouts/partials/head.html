@@ -37,24 +37,15 @@
   <meta name=twitter:site content=@carto>
   <meta name=twitter:title content="{{.Params.title}}">
   <meta name=twitter:description content="{{.Params.description}}">
-  {{if .Params.twitterImage}}
-    <meta name=twitter:card content="summary_large_image">
-    <meta name=twitter:image content={{.Params.twitterImage}}>
-  {{else}}
-    <meta name=twitter:card content="summary">
-    <meta name=twitter:image content=https://carto.com/img/logo/carto-for-twitter.png>
-  {{end}}
+  <meta name=twitter:card content="summary_large_image">
+  <meta name=twitter:image content="/img/social-twitter.png">
 
   <!-- OG cards -->
   <meta property=og:title content="{{.Params.title}}">
   <meta property=og:description content="{{.Params.description}}">
   <meta property=og:type content="website">
   <meta property=og:url content="{{.Permalink}}">
-  {{if .Params.facebookImage}}
-    <meta property=og:image content={{.Params.facebookImage}}>
-  {{else}}
-    <meta property=og:image content=https://carto.com/img/logo/media-default.png>
-  {{end}}
+  <meta property=og:image content="/img/social-og.png">
 
   <script defer charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
 </head>

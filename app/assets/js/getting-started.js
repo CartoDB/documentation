@@ -48,7 +48,7 @@ selectCurrentTocCategory();
 
 function selectCurrentTocCategory() {
   var tocContainer = document.querySelector("#TableOfContents")
-  var sections = document.querySelectorAll(".js-content>h2, .js-content>h3");
+  var sections = document.querySelectorAll(".js-content>h2, .js-content>h3, .js-content>h4");
   var selectedElement = tocContainer.querySelector(".is-active");
   var currentIndex = 0;
   for (var i = 0; i < sections.length; i++) {

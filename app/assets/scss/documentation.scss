@@ -5,7 +5,7 @@
 
 .banner-note {
   background-color: $softgrey;
-  padding: 24px 36px 40px 36px;
+  padding: 24px 36px 24px 36px;
   box-shadow: inset 6px 0 0 0 $engine-blue;
   border-radius: 6px;
 
@@ -20,6 +20,18 @@
 
   &.banner-note--warning {
     box-shadow: inset 6px 0 0 0 $opal;
+  }
+
+  &.banner-note--code {
+    background-color: $softblue;
+    padding: 12px 36px 12px 36px;
+    box-shadow: inset 6px 0 0 0 #c4ccd5;
+
+    p {
+      color: $base-grey;
+      margin-top: 0px;
+      font-family: 'Overpass Mono', monospace;
+    }
   }
 
   &::before {
