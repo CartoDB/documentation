@@ -59,3 +59,20 @@
     display: flex;
   }
 }
+
+// Sticky navbar
+.navbar_sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+  z-index: 99999;
+  animation-name: sticky;
+  animation-duration: 0.5s;
+}
+
+@keyframes sticky {
+  from { top: -76px }
+  to { top: 0; }
+}
