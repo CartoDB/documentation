@@ -1,5 +1,5 @@
 ---
-title: Get started with CARTO
+title: Getting started with CARTO
 description: "Helpful resources to get you up and running."
 tocName: "Get started"
 type: single-page

@@ -44,10 +44,10 @@ If you get a permission error, please make sure that your account's email addres
 
 Each CARTO account has their own usage limits for the Spatial Extension. Aligned with BigQuery billing system, we'll control the amount of data processed by the extension's procedures.
 
-Depending on the account type, the limit on the data processed by the extension can go from 10GB in Free accounts to _unlimited_ in the highest Enterprise tier. 
+Depending on the account type, the limit on the data processed by the extension ranges from 10GB in Free accounts to _unlimited_ in the highest Enterprise tier. 
 
 | Plan | Data processed limit|
-|------|--------------------|
-|Free | 10GB       |
+|------|---------------------|
+|Free | 10GB |
 |Individual | 200GB |
-|Enterprise | Starting at 500GB
+|Enterprise | Starting at 500GB |
