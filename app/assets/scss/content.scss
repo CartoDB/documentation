@@ -133,13 +133,15 @@
   margin-bottom: 16px;
 }
 
-#TableOfContents {
-  &> ul > li {
+.page-toc {
+  li {
     a {
       display: block;
       color: rgba($base-grey, 0.48);
       overflow: hidden;
       text-overflow: ellipsis;
+      text-transform: uppercase;
+      padding: 8px;
 
       &:hover,
       &.is-active {
@@ -149,24 +151,21 @@
       }
     }
 
-    & > a {
-      text-transform: uppercase;
-      padding: 8px;
-    }
-
-    & > ul > li {
-      & > a {
+    li {
+      a {
         padding: 8px 8px 8px 20px;
+        text-transform: unset;
       }
-      & > ul > li > a {
-        padding: 8px 8px 8px 32px;
+
+      li {
+        a {
+          padding: 8px 8px 8px 32px;
+        }
       }
     }
   }
-}
 
-.product-toc {
-  .product-toc__link {
+  .toc__link {
     @include title();
     display: block;
     color: rgba($base-grey, 0.48);

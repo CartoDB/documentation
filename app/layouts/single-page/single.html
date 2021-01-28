@@ -16,7 +16,9 @@
       <aside class="grid-cell grid-cell--col2 title f12 js-toc-sidebar desktop-s">
         <div class="toc-sidebar__container js-toc-sidebar-container">
           <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.tocName}}</h3>
-          {{.TableOfContents}}
+          <div class="page-toc">
+            {{.TableOfContents}}
+          </div>
         </div>
       </aside>
       <div class="grid-cell grid-cell--col8 grid-cell--col10--tablet content__default u-mb96 js-content">
