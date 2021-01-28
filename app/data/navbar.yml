@@ -5,6 +5,8 @@ navbar:
     url: https://carto.com/help/tutorials/using-builder
   - name: CARTOframes
     url: https://carto.com/developers/cartoframes
+  - name: Data Observatory
+    url: https://carto.com/help/working-with-data/intro_data_observatory
   #- name: Spatial Extension
   #  url: 
   - name: Dev tools
