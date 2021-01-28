@@ -121,10 +121,11 @@
     a {
       display: block;
       color: rgba($base-grey, 0.48);
+      transition: color 0.15s ease, background-color 0.15s ease, ;
 
       &:hover,
       &.is-active {
-        color: $base-grey;
+        color: $navyBlue;
         background-color: $softblue;
         text-decoration: none;
       }
@@ -137,6 +138,12 @@
 
     & > ul > li > a {
       padding: 8px 8px 8px 20px;
+    }
+    
+    & > ul > li > ul > li > a {
+      padding: 8px 8px 8px 36px;
+      font-family: $font-family-base;
+      color: $navyBlue;
     }
   }
 }
