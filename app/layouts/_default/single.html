@@ -29,7 +29,7 @@
 
   <div class="is-bgWhite is-txtBaseGrey">
     <div class="container grid u-justify-center u-mt96 u-mb96 u-mt48--tablet u-mb48--tablet">
-      <aside class="grid-cell grid-cell--col2 title f12 js-toc-sidebar desktop-s">
+      <aside class="grid-cell grid-cell--col3 title f12 js-toc-sidebar desktop-s">
         <div class="toc-sidebar__container js-toc-sidebar-container">
           <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.title}}</h3>
           {{$overview := printf "%s%s" .File.Dir "overview.md"}}
@@ -65,7 +65,7 @@
           </div>
         </div>
       </aside>
-      <div class="grid-cell grid-cell--col8 grid-cell--col10--tablet content__default u-mb96 js-content">
+      <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
         {{.Content}}
       </div>
     </div>
