@@ -48,9 +48,10 @@ selectCurrentTocCategory();
 
 function selectCurrentTocCategory() {
   var tocContainer = document.querySelector("#TableOfContents")
-  var sections = document.querySelectorAll(".js-content>h2, .js-content>h3, .js-content>h4");
+  var sections = document.querySelectorAll(".js-content > h2, .js-content > h3, .js-content > h4");
   var selectedElement = tocContainer.querySelector(".is-active");
   var currentIndex = 0;
+
   for (var i = 0; i < sections.length; i++) {
     if(sections[i].getBoundingClientRect().top < 200) {
       currentIndex = i;
@@ -60,10 +61,28 @@ function selectCurrentTocCategory() {
     }
   }
   var newElement = tocContainer.querySelector('a[href="#'+ sections[currentIndex].id +'"]');
-  console.log(newElement);
   newElement.classList.add("is-active");
-  if((newElement != selectedElement) && selectedElement)
+  if ((newElement != selectedElement) && selectedElement) {
     selectedElement.classList.remove("is-active");
+  }
 
   // selectCategoryId(sections[currentIndex].id);
 }
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    var href = this.getAttribute('href');
+    var element = document.querySelector(href);
+    var y = element.offsetTop - 136;
+
+    element.scrollIntoView({ behavior: 'smooth' });
+    
+    window.scrollTo({top: y, behavior: 'smooth'});
+
+    window.setTimeout(function () {
+      window.location.hash = href;
+    }, 550);
+  });
+});
