@@ -221,10 +221,16 @@
 }
 
 .tutorial__step {
-  display: none;
-
+  display: block;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  
   &.is-active {
-    display: block;
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s;
   }
 
   h5 {
