@@ -27,11 +27,13 @@ Inside the cartoframes's folder, we need to add the first mandatory element. It'
 * `icon`: The icon url of the product.
 * `changelog` (optional): The changelog url where so it can be linked in the header of the page
 * `extra_sections` (optional): An array of extra sections to be shown on the left sidebar. Keep in mind, that the name you put there should correspond, after "slugification", to the file name. So if we put for example "Tiler" as name, there should be in the same folder a file called `tiler.md`. Or if we put the section name "Sample Test" there should be a file called `sample-test.md`
-* `guides` (optional): An array of guides. All the guides need to be inside the /guides folder. In here, we should put the name of the guide itself. The file that contain the guides should have the same name as if we convert to slug that guide. So for example, if we add a guide called "Getting started" for cartoframes, we should create a file under /app/content/cartoframes/guides/getting-started.md
+* `folders` (optional): An array of folders with content. Inside that array, two parameters that need to be set up for each element. `name` which will indicate the name of the section (the folder's name will be the slug of it) and the `elements` which will contain an array with the name of the subsections (which should have a file with the slug name inside the folder)
 
-Once we have the `_index.md` file properly set up, it's time to create the files. By default, it can accept the files `overview.md`, `reference.md`, and `example.md`. If you wish to add any extra file and that it appears in the sidebar table of contents, you should add it in the `_index.md` file, under the `extra_sections` variable.
+All the guides need to be inside the /guides folder. In here, we should put the name of the guide itself. The file that contain the guides should have the same name as if we convert to slug that guide. So for example, if we add a guide called "Getting started" for cartoframes, we should create a file under /app/content/cartoframes/guides/getting-started.md
 
-For how to set up the guides, refer to the point about the `guides` option in the _index.md
+Once we have the `_index.md` file properly set up, it's time to create the files. By default, it can accept the files `overview.md` and `reference.md`. If you wish to add any extra file and that it appears in the sidebar table of contents, you should add it in the `_index.md` file, under the `extra_sections` variable.
+
+For how to set up the folders (for guides, examples and others), refer to the point about the `folders` option in the _index.md
 
 Each of the `.md` files don't have any special configuration. You don't need to overwrite or set up anything as all the configuration should have been done under `_index.md`. Just write the content in markdown format and it will be ready to publish
 
