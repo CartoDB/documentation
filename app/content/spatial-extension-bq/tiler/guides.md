@@ -70,22 +70,23 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 
 ### Visualizing a tileset
 
-After connecting your CARTO account to BigQuery, a new _'Your Tilesets'_ tab will appear in the Data section in your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
+After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
-Click in one the tilesets to access the Map Viewer: a new tool to explore different visualization options for your tileset maps. 
+Click in one the tilesets to access the Map Viewer: a new tool to visualize and publish your tileset maps. 
 
 ![Tileset Viewer](/img/bq-spatial-extension/tiler/guides-viewer-1.png)
 
-Map Viewer uses [CARTO for deck.gl](https://carto.com/developers/deck-gl/)'s declarative styling language, that allows creating compelling visualizations. 
+Map Viewer uses [CARTO for deck.gl](https://carto.com/developers/deck-gl/)'s declarative styling language, that makes it easier to create data-driven visualizations. 
 
 Creating color ramps for data-drive visualizations is straight-forward, using helper functions for different types of classifications. Take a look at the [documentation](https://github.com/visgl/deck.gl/blob/master/docs/api-reference/carto/styles.md) for more information.
 
 Let's create a binned ramp visualization with the `colorBins()` helper function:
 
 ```javascript
-      getFillColor:  colorBins({
-        attr: 'total_pop',
-        domain: [
+      "getFillColor": {
+        "@@function": "colorBins",
+        "attr": "total_pop",
+        "domain": [
           729,
           937,
           1154,
@@ -93,8 +94,7 @@ Let's create a binned ramp visualization with the `colorBins()` helper function:
           1712,
           2235
         ],
-        colors: 'Emrld'
-      })
+        "colors": "Emrld"
 ```
 
 * `attr`: name of the data attribute in your tileset. 
@@ -117,4 +117,4 @@ Clicking on _Publish_ will grant permission in BigQuery to the CARTO Maps API se
 
 Copy the link or the embed code to share or publish the visualization.
 
-<iframe height=480px width=100% src="https://viewer.carto.com/user/ernestomb/bigquery?config=eyJkZXNjcmlwdGlvbiI6IkNhcnRvQlFUaWxlckxheWVyIGRlY2xhcmF0aXZlIGV4YW1wbGUiLCJpbml0aWFsVmlld1N0YXRlIjp7ImxhdGl0dWRlIjozMS4zMjgxMDcwODQzNjYyMDYsImxvbmdpdHVkZSI6LTg3LjU2MDUyMDkzMDY1MDMsInpvb20iOjMsInBpdGNoIjowLCJiZWFyaW5nIjowLCJkcmFnUm90YXRlIjpmYWxzZSwid2lkdGgiOjcwNCwiaGVpZ2h0Ijo3MDksImFsdGl0dWRlIjoxLjUsIm1heFpvb20iOjIwLCJtaW5ab29tIjowLCJtYXhQaXRjaCI6NjAsIm1pblBpdGNoIjowLCJ0cmFuc2l0aW9uRHVyYXRpb24iOjAsInRyYW5zaXRpb25JbnRlcnBvbGF0b3IiOnsiX3Byb3BzVG9Db21wYXJlIjpbImxvbmdpdHVkZSIsImxhdGl0dWRlIiwiem9vbSIsImJlYXJpbmciLCJwaXRjaCJdLCJfcHJvcHNUb0V4dHJhY3QiOlsibG9uZ2l0dWRlIiwibGF0aXR1ZGUiLCJ6b29tIiwiYmVhcmluZyIsInBpdGNoIl0sIl9yZXF1aXJlZFByb3BzIjpbImxvbmdpdHVkZSIsImxhdGl0dWRlIiwiem9vbSJdLCJvcHRzIjp7ImFyb3VuZCI6WzIzNSwzNzldfX0sInRyYW5zaXRpb25JbnRlcnJ1cHRpb24iOjF9LCJ2aWV3cyI6W3siQEB0eXBlIjoiTWFwVmlldyIsImNvbnRyb2xsZXIiOnRydWUsIm1hcFN0eWxlIjoiQEAjQ0FSVE9fQkFTRU1BUC5QT1NJVFJPTiJ9XSwibGF5ZXJzIjpbeyJAQHR5cGUiOiJDYXJ0b0JRVGlsZXJMYXllciIsImRhdGEiOiJjYXJ0b2JxLm1hcHMuYmxvY2tncm91cF9wb3AiLCJjcmVkZW50aWFscyI6eyJ1c2VybmFtZSI6ImVybmVzdG9tYiIsImFwaUtleSI6ImRlZmF1bHRfcHVibGljIn0sImdldEZpbGxDb2xvciI6eyJAQGZ1bmN0aW9uIjoiY29sb3JCaW5zIiwiYXR0ciI6InRvdGFsX3BvcCIsImRvbWFpbiI6WzcyOSw5MzcsMTE1NCwxMzk0LDE3MTIsMjIzNV0sImNvbG9ycyI6IkVtcmxkIn0sInBvaW50UmFkaXVzTWluUGl4ZWxzIjoyLCJzdHJva2VkIjpmYWxzZSwicGlja2FibGUiOnRydWV9XSwiZ29vZ2xlIjp0cnVlfQ%3D%3D&embed=true" title="CARTO BigQuery Tiler map"/>
+<iframe height=480px width=100% src="https://viewer.carto.com/user/ernestomb/bigquery?config=eyJkZXNjcmlwdGlvbiI6IkNhcnRvQlFUaWxlckxheWVyIGRlY2xhcmF0aXZlIGV4YW1wbGUiLCJpbml0aWFsVmlld1N0YXRlIjp7ImxhdGl0dWRlIjozOC4wNDE4NTQ4Njc1NTk4OCwibG9uZ2l0dWRlIjotOTYuNTI1MzY0NjgwNjUwMywiem9vbSI6MywicGl0Y2giOjAsImJlYXJpbmciOjAsImRyYWdSb3RhdGUiOmZhbHNlLCJ3aWR0aCI6NzA0LCJoZWlnaHQiOjcwOSwiYWx0aXR1ZGUiOjEuNSwibWF4Wm9vbSI6MjAsIm1pblpvb20iOjAsIm1heFBpdGNoIjo2MCwibWluUGl0Y2giOjAsInRyYW5zaXRpb25EdXJhdGlvbiI6MCwidHJhbnNpdGlvbkludGVycG9sYXRvciI6eyJfcHJvcHNUb0NvbXBhcmUiOlsibG9uZ2l0dWRlIiwibGF0aXR1ZGUiLCJ6b29tIiwiYmVhcmluZyIsInBpdGNoIl0sIl9wcm9wc1RvRXh0cmFjdCI6WyJsb25naXR1ZGUiLCJsYXRpdHVkZSIsInpvb20iLCJiZWFyaW5nIiwicGl0Y2giXSwiX3JlcXVpcmVkUHJvcHMiOlsibG9uZ2l0dWRlIiwibGF0aXR1ZGUiLCJ6b29tIl0sIm9wdHMiOnsiYXJvdW5kIjpbMjM1LDM3OV19fSwidHJhbnNpdGlvbkludGVycnVwdGlvbiI6MX0sInZpZXdzIjpbeyJAQHR5cGUiOiJNYXBWaWV3IiwiY29udHJvbGxlciI6dHJ1ZSwibWFwU3R5bGUiOiJAQCNDQVJUT19CQVNFTUFQLlBPU0lUUk9OIn1dLCJsYXllcnMiOlt7IkBAdHlwZSI6IkNhcnRvQlFUaWxlckxheWVyIiwiZGF0YSI6ImNhcnRvYnEubWFwcy5ibG9ja2dyb3VwX3BvcCIsImNyZWRlbnRpYWxzIjp7InVzZXJuYW1lIjoiZXJuZXN0b21iIiwiYXBpS2V5IjoiZGVmYXVsdF9wdWJsaWMifSwiZ2V0RmlsbENvbG9yIjp7IkBAZnVuY3Rpb24iOiJjb2xvckJpbnMiLCJhdHRyIjoidG90YWxfcG9wIiwiZG9tYWluIjpbNzI5LDkzNywxMTU0LDEzOTQsMTcxMiwyMjM1XSwiY29sb3JzIjoiRW1ybGQifSwicG9pbnRSYWRpdXNNaW5QaXhlbHMiOjIsInN0cm9rZWQiOmZhbHNlLCJwaWNrYWJsZSI6dHJ1ZX1dLCJnb29nbGUiOnRydWV9&embed=true" title="CARTO BigQuery Tiler map"/>

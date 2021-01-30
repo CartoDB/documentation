@@ -38,7 +38,7 @@ If you need to use the extension from GCP's **EU** multi-region, use `SELECT bqc
 
 **WIP: Update with actual function**
 
-If you get a version number, you're all set! Take a look at the tiler's [**Quickstart**](https://docs.carto.com/spatial-extension-bq/tiler/#quickstart) section to get started using some of the extension's more advanced functionalities.
+If you get a version number, you're all set! Take a look at the tiler's [**Quickstart**](../tiler/guides#quickstart) section to get started using some of the extension's more advanced functionalities.
 
 If you get a permission error, please make sure that your account's email address matches your Google Account and create the BigQuery connection again. If you still can't access, get in touch at [support@carto.com](mailto:support@carto.com)
 
