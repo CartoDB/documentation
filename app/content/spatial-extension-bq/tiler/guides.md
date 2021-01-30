@@ -37,9 +37,36 @@ Creating the tileset is as easy as opening your BigQuery console and running the
 * Signing up in CARTO using your Google account.
 * Adding a new BigQuery connection from your CARTO Dashboard.
 
-![Tileset Viewer III](/img/bq-spatial-extension/tiler/bq-console.png)
+```sql
+--Use bqcartoeu if using the Spatial Extension in Europe's region
+CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
+  R'''
+(
+  SELECT
+    d.geoid,
+    d.total_pop,
+    g.geom 
+  FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
+  JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
+    ON d.geoid = g.geoid
+) _input
+  ''',
+  R'''`cartobq.maps.blockgroup_pop`''',
+  R'''
+  {
+      "zoom_min": 0,
+      "zoom_max": 14,
+      "max_tile_size_kb": 3072,
+      "properties":{
+          "geoid": "String",
+          "total_pop": "Number"
+       }
+  }'''
+);
+```
 
-**WIP: Update with screenshot with actual function name**
+<!--![Tileset Viewer III](/img/bq-spatial-extension/tiler/bq-console.png)-->
+
 
 ### Visualizing a tileset
 
