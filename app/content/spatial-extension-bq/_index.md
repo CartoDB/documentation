@@ -1,7 +1,7 @@
 ---
 cascade:
   title: Spatial Extension for BigQuery
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet"
+  description: "Leverage advanced geospatial capabalities as BigQuery SQL commands."
   icon: "/img/icons/spatial-extension-bq.png"
   #extra_sections:
   #  - "Tiler"

@@ -1,6 +1,8 @@
 ## Overview
 
-CARTO's Spatial Extension for BigQuery...Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.
+CARTO's Spatial Extension for BigQuery leverages advanced geospatial capabilities through SQL commands. 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam hendrerit molestie. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et.
 
 Aenean eu enim justo. Vestibulum aliquam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim justo. Vestibulum aliquam.
 
@@ -24,14 +26,14 @@ Once you have created your CARTO account (ideally using your Google Account for 
 
 **WIP: Add screenshot and actual link**
 
-Now that we're set on the CARTO side, let's open the BigQuery console and check that we have access to the extension functions:
+Now that we're set on the CARTO side, let's open the BigQuery console and check that we have access to the extension modules:
 
 ```sql
 SELECT bqcarto.tiler.Version()
 ```
 
 {{% bannerNote title="tip" %}}
-If you need to use the extension from the **EU** multi-region, use `SELECT bqcartoeu.tiler_eu.Version()` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
+If you need to use the extension from GCP's **EU** multi-region, use `SELECT bqcartoeu.tiler_eu.Version()` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
 {{%/ bannerNote %}}
 
 **WIP: Update with actual function**
