@@ -4,6 +4,8 @@ CARTO BigQuery Tiler is a solution to visualize very large spatial datasets from
 
 If you have small datasets (few megabytes), there are solutions available on BigQuery, such as [GeoVizQuery](https://cloud.google.com/bigquery/docs/gis-visualize), to visualize them; but if you have millions, or even billions of rows, you will need a system to load them progressively on a map. CARTO BigQuery Tiler allows you to do that without having to move your data out of BigQuery. 
 
+CARTO BigQuery Tiler will process your data and create a complete tileset out of it: all the map tiles for a specific zoom range will be stored in a BigQuery table, then fetched and served directly from there. 
+
 CARTO BigQuery Tiler is:
 
 * **Convenient** -- It can run through our UI or directly as SQL commands in BigQuery. The data never leaves BigQuery so you won't have to worry about security and additional ETLs.

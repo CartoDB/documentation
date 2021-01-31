@@ -7,7 +7,8 @@ We want are going to create a Point Aggregation Tileset to visualise all the fea
 The extra column, `aggregated_total`, is adding a count of the number of buildings that are aggregated into a cell, which in this case are quadkeys made of `z + resolution` tiles, that is, each tile will be subdivided into 4^7 (16384) cells.
 
 ```sql
---Use bqcartoeu if using the Spatial Extension in Europe's region
+-- Use bqcartoeu.tiler.Version() if your BigQuery account is in GCP's EU multi-region
+
 CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
         SELECT
@@ -43,7 +44,7 @@ In this case we want to visualize an aggregation of the tree census of NYC. Sinc
 We also want to have access to the status and health of each aggregated cell, so we add some extra properties around that. Finally, as it is a more localized dataset, we want to generate higher zoom levels (16) and when we see individual points we want access to both their official id and their address.
 
 ```sql
---Use bqcartoeu if using the Spatial Extension in Europe's region
+-- Use bqcartoeu.tiler.Version() if your BigQuery account is in GCP's EU multi-region
 CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
         SELECT
@@ -89,7 +90,7 @@ Then we can style our visualization using the properties that we have added:
 For this example we are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_172b5dfd) to visualize the 2020 world population. We are going to use the already aggregated 1km * 1km grid cells:
 
 ```sql
---Use bqcartoeu if using the Spatial Extension in Europe's region
+-- Use bqcartoeu.tiler.Version() if your BigQuery account is in GCP's EU multi-region
 CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
         SELECT ST_Centroid(b.geom) as geom, population
@@ -126,7 +127,7 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
 We are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/geography/ne_roads_9ff89987) to visualize the world's road netowork. We are going to use the already aggregated 1km * 1km grids cells:
 
 ```sql
---Use bqcartoeu if using the Spatial Extension in Europe's region
+-- Use bqcartoeu.tiler.Version() if your BigQuery account is in GCP's EU multi-region
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''
 (
@@ -156,7 +157,7 @@ The result is a worldwide map with the requested tiles, including the type of ea
 We are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9) to visualize the block groups of the US including its population.
 
 ```sql
---Use bqcartoeu if using the Spatial Extension in Europe's region
+-- Use bqcartoeu.tiler.Version() if your BigQuery account is in GCP's EU multi-region
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''
 (

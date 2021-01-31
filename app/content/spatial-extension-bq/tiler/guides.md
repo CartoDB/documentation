@@ -2,7 +2,7 @@
 
 ### Quickstart
 
-As a CARTO Spatial Extension module, the Tiler's capabilities should be available as SQL procedures that can be executed directly from your [BigQuery console](https://console.cloud.google.com/bigquery) or client of choice after connecting your CARTO account to BigQuery.
+As a CARTO Spatial Extension module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [BigQuery console](https://console.cloud.google.com/bigquery) or client of choice after connecting your CARTO account to BigQuery.
 
 To check that your Google account has access to the Tiler, try running this query:
 
@@ -38,7 +38,7 @@ Creating the tileset is as easy as opening your BigQuery console and running the
 * Adding a new BigQuery connection from your CARTO Dashboard.
 
 ```sql
---Use bqcartoeu if using the Spatial Extension in Europe's region
+-- Use bqcartoeu.tiler.CREATE_SIMPLE_TILESET() if your BigQuery account is in GCP's EU multi-region
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''
 (
@@ -72,7 +72,7 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 
 After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
-Click in one the tilesets to access the Map Viewer: a new tool to visualize and publish your tileset maps. 
+Click in one the tilesets to access the **Map Viewer**: a new tool to visualize and publish your tileset maps. 
 
 ![Tileset Viewer](/img/bq-spatial-extension/tiler/guides-viewer-1.png)
 
@@ -111,7 +111,7 @@ Using Google Maps as a basemap is also  possible with this tool. Add `"google": 
 
 Tilesets can be used as data layers with many web mapping libraries. Take a look at the **Development tools** section in our [documentation](https://docs.carto.com) to learn about different options.
 
-For quick sharing and publishing on the web, use the options from the _Share_ menu in Map Viewer. s
+For quick sharing and publishing on the web, use the options from the _Share_ menu in Map Viewer.
 
 Clicking on _Publish_ will grant permission in BigQuery to the CARTO Maps API service account, to it can directly fetch and serve the map tiles. Use the _Unpublish_ toggle to revoke the access.
 
