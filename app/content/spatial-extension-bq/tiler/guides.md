@@ -33,7 +33,7 @@ Once you are all set getting access to the tiler, the first step is to create a 
 
 Take a look at the [examples](../examples) and the complete [reference](../../reference#tiler) if you need help with the SQL query specifics.
 
-Creating the tileset is as easy as opening your BigQuery console and running the query there. Remember that you will have permission to call the Tiler's functions with your Google account after:
+Creating a tileset is as easy as opening your BigQuery console and running the query there. Remember that you will have permission to call the Tiler's functions with your Google account after:
 * Signing up in CARTO using your Google account.
 * Adding a new BigQuery connection from your CARTO Dashboard.
 
@@ -76,7 +76,7 @@ Click in one the tilesets to access the **Map Viewer**: a new tool to visualize 
 
 ![Tileset Viewer](/img/bq-spatial-extension/tiler/guides-viewer-1.png)
 
-Map Viewer uses [CARTO for deck.gl](https://carto.com/developers/deck-gl/)'s declarative styling language, that makes it easier to create data-driven visualizations. 
+Map Viewer uses [CARTO for deck.gl](https://carto.com/developers/deck-gl/)'s declarative styling language, which makes it easier to create data-driven visualizations. 
 
 Creating color ramps for data-drive visualizations is straight-forward, using helper functions for different types of classifications. Take a look at the [documentation](https://github.com/visgl/deck.gl/blob/master/docs/api-reference/carto/styles.md) for more information.
 
