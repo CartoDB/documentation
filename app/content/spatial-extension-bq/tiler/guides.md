@@ -43,7 +43,7 @@ Creating a tileset is as easy as opening your BigQuery console and running the q
 * Signing up in CARTO using your Google account.
 * Adding a new BigQuery connection from your CARTO Dashboard.
 
-```sql
+```javascript
 -- Use bqcartoeu.tiler.CREATE_SIMPLE_TILESET() if your BigQuery account is in GCP's EU multi-region
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''
