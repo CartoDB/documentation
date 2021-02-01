@@ -169,15 +169,11 @@
 
       li {
         a {
-          padding: 8px 8px 8px 32px;
+          padding: 8px 8px 8px 36px;
+          // @include text();
+          font-family: $font-family-base;
         }
       }
-    }
-    
-    & > ul > li > ul > li > a {
-      padding: 8px 8px 8px 36px;
-      font-family: $font-family-base;
-      font-weight: normal;
     }
   }
 

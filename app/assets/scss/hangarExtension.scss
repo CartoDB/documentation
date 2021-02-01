@@ -1,3 +1,8 @@
+// Hangar improvements
+.u-align-start {
+  align-items: start;
+}
+
 //Navbar Search
 .navbar__search {
   position: relative;
@@ -79,7 +84,7 @@
 
 // Sticky sidebar
 
-.js-toc-sidebar {
+.toc-sidebar__container {
   align-self: flex-start;  // FIX position sticky into a flex-box container
   position: sticky;
   top: 136px;
