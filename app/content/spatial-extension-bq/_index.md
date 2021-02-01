@@ -1,10 +1,8 @@
 ---
 cascade:
   title: Spatial Extension for BigQuery
-  description: "Extend BigQuery's geospatial capabilities with CARTO"
+  description: "Extend the geospatial capabilities of BigQuery with CARTO"
   icon: "/img/icons/spatial-extension-bq.png"
-  #extra_sections:
-  #  - "Tiler"
   folders:
     - name: "Tiler"
       elements:
