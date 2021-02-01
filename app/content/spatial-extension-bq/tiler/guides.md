@@ -7,8 +7,8 @@ As a CARTO Spatial Extension module, the Tiler's capabilities will be available 
 To check that your Google account has access to the Tiler, try running this query:
 
 ```sql
-SELECT bqcarto.tiler.Version()
--- Use bqcartoeu.tiler.Version() if your BigQuery account is in GCP's EU multi-region
+SELECT bqcarto.tiler.VERSION()
+-- Use bqcartoeu.tiler.VERSION() if your BigQuery account is in GCP's EU multi-region
 ``` 
 
 Check the [Getting Access](../../overview#getting-access) section if you run into any error when running the query below.
@@ -16,6 +16,12 @@ Check the [Getting Access](../../overview#getting-access) section if you run int
 The Tiler works processing data directly in BigQuery and creating a table that contains the whole tileset. Each individual tile is stored as a row in this table, with the tile coordinates and the encoded MVT stored in different columns. 
 
 Visualizing the tileset is straight-forward with CARTO Maps API, which will connect to BigQuery using your connection's Service Account credentials to fetch and serve the tiles in a standard format, so they can be used with any webmapping library or desktop GIS application.
+
+### Authentication
+
+#### User email and Google Account name
+
+#### BigQuery connection Service Account
 
 ### Creating a tileset
 
@@ -72,6 +78,8 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 
 After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
+![Your Tilesets](/img/bq-spatial-extension/tiler/guides-your-tilesets.png)
+
 Click in one the tilesets to access the **Map Viewer**: a new tool to visualize and publish your tileset maps. 
 
 ![Tileset Viewer](/img/bq-spatial-extension/tiler/guides-viewer-1.png)
@@ -114,6 +122,8 @@ Tilesets can be used as data layers with many web mapping libraries. Take a look
 For quick sharing and publishing on the web, use the options from the _Share_ menu in Map Viewer.
 
 Clicking on _Publish_ will grant permission in BigQuery to the CARTO Maps API service account, to it can directly fetch and serve the map tiles. Use the _Unpublish_ toggle to revoke the access.
+
+![Tileset Viewer sharing menu](/img/bq-spatial-extension/tiler/guides-sharing.png)
 
 Copy the link or the embed code to share or publish the visualization.
 

@@ -29,14 +29,12 @@ Once you have created your CARTO account (ideally using your Google Account for 
 Now that we're set on the CARTO side, let's open the BigQuery console and check that we have access to the extension modules:
 
 ```sql
-SELECT bqcarto.tiler.Version()
+SELECT bqcarto.tiler.VERSION()
 ```
 
 {{% bannerNote title="tip" %}}
-If you need to use the extension from GCP's **EU** multi-region, use `SELECT bqcartoeu.tiler_eu.Version()` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
+If you need to use the extension from GCP's **EU** multi-region, use `SELECT bqcartoeu.tiler.VERSION()` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
 {{%/ bannerNote %}}
-
-**WIP: Update with actual function**
 
 If you get a version number, you're all set! Take a look at the tiler's [**Quickstart**](../tiler/guides#quickstart) section to get started using some of the extension's more advanced functionalities.
 
