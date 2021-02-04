@@ -21,8 +21,8 @@ getStarted:
         url: "https://carto.com/developers/deck-gl"
       #- name: "CARTO for React"
       #  url: "#"
-      #- name: "Spatial Extension"
-      #  url: "#"
+      - name: "Spatial Extension"
+        url: "./spatial-extension-bq"
       - name: "SQL API"
         url: "https://carto.com/developers/sql-api"
       - name: "Maps API"
@@ -33,6 +33,10 @@ products:
     description: "Manage your datasets and maps, access your account settings, manage your API keys, and access your public profile."
     url: "https://carto.com/help/tutorials/your-dashboard-overview"
     image: "dashboard.png"
+  - title: "Spatial Extension for BigQuery"
+    description: "Unlock Spatial Analytics on your BigQuery"
+    url: "./spatial-extension-bq"
+    image: "spatial-extension-bq.png"
   - title: "Builder"
     description: "CARTO Builder® allows you to create maps in minutes & share them with your organization."
     url: "https://carto.com/help/tutorials/using-builder"
@@ -45,10 +49,7 @@ products:
     description: "Gain access to thousands of public & premium spatial datasets and save time on gathering, cleaning and analysing data."
     url: "https://carto.com/help/working-with-data/intro_data_observatory"
     image: "data-observatory.png"
-  #- title: "Spatial Extension for BigQuery"
-  #  description: "Visualize Big Data without having to move data outside BigQuery."
-  #  url: "#"
-  #  image: "spatial-extension-bq.png"
+
 
 
 developmentTools:

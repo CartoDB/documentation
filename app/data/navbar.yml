@@ -7,8 +7,8 @@ navbar:
     url: https://carto.com/developers/cartoframes
   - name: Data Observatory
     url: https://carto.com/help/working-with-data/intro_data_observatory
-  #- name: Spatial Extension
-  #  url: 
+  - name: Spatial Extension
+    url: ./spatial-extension-bq
   - name: Dev tools
     subelements:
       #- name: CARTO for React

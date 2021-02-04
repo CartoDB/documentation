@@ -86,7 +86,7 @@ Click in one the tilesets to access the **Map Viewer**: a new tool to visualize 
 
 Map Viewer uses [CARTO for deck.gl](https://carto.com/developers/deck-gl/)'s declarative styling language, which makes it easier to create data-driven visualizations. 
 
-Creating color ramps for data-drive visualizations is straight-forward, using helper functions for different types of classifications. Take a look at the [documentation](https://github.com/visgl/deck.gl/blob/master/docs/api-reference/carto/styles.md) for more information.
+Creating color ramps for data-drive visualizations is straight-forward, using helper functions for different types of classifications. Take a look at the [documentation](https://deck.gl/docs/api-reference/carto/styles) for more information.
 
 Let's create a binned ramp visualization with the `colorBins()` helper function:
 
