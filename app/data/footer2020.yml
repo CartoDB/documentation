@@ -17,10 +17,10 @@ platform:
     url: '/connect/'
 
 documentation:
+  - title: Documentation
+    url: 'https://docs.carto.com/'
   - title: Help Center
     url: '/help/'
-  - title: Developer Center
-    url: '/developers/'
 
 solutions:
   - title: 'AEC'
