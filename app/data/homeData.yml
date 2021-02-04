@@ -18,7 +18,7 @@ getStarted:
     url: "/get-started/#carto-for-development"
     related:
       - name: "CARTO for deck.gl"
-        url: "https://carto.com/developers/deck-gl"
+        url: "/deck-gl"
       #- name: "CARTO for React"
       #  url: "#"
       #- name: "Spatial Extension"
@@ -59,7 +59,7 @@ developmentTools:
   #  highlighted: true
   - title: "CARTO for deck.gl"
     description: "Build apps using deck.gl advanced framework for data visualization. This is our recommended library."
-    url: "https://carto.com/developers/deck-gl"
+    url: "/deck-gl"
     image: "carto-deck.png"
     highlighted: true
   - title: "CARTO + Google Maps"
