@@ -64,11 +64,11 @@ developmentTools:
     highlighted: true
   - title: "CARTO + Google Maps"
     description: "Integrate CARTO layers with Google Maps API and basemaps."
-    url: "https://carto.com/developers/gmaps/guides/getting-started"
+    url: "/google-maps"
     image: "carto-google.png"
   - title: "CARTO + Mapbox GL"
     description: "Visualize our CARTO layers within your Mapbox GL applications."
-    url: "https://carto.com/developers/mapbox/guides/getting-started"
+    url: "/mapbox-gl"
     image: "carto-mapbox.png"
   - title: "CARTO + Amazon Location"
     description: "Integrate CARTO layers in an application built using Amazon Location Service."
