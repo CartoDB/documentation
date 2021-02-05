@@ -11,18 +11,18 @@ SELECT bqcarto.tiler.VERSION()
 --Use bqcartoeu.tiler.VERSION() if your BigQuery account is in GCP's EU multi-region
 ``` 
 
-Check the [Getting Access](../../overview#getting-access) section if you run into any error when running the query below.
+Check the [Getting Access](../../overview#getting-access) section if you run into any error when running the query above.
 
-The Tiler works processing data directly in BigQuery and creating a table that contains the whole tileset. Each individual tile is stored as a row in this table, with the tile coordinates and the encoded MVT stored in different columns:
+The Tiler works processing data directly in BigQuery and creating a table that contains the whole tileset. Each individual tile is stored as a row in this table,  with the tile coordinates and the encoded MVT stored in different columns:
 
 | Row | z | x | y | carto_partition | data |
 |-----|---|---|---|-----------------|------|
 | 1   | 16 | 45340 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JPdt3eyCLEwM (...) |
 | 2   | 16 | 45292 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JjLM0pEZLgWL (...) |
 
-Visualizing the tileset is straight-forward with Map Viewer, wh
+Visualizing the tileset is straight-forward with Map Viewer: a new tool available from the Dashboard to visualize and publish your tileset maps.
 
-CARTO Maps API, which will connect to BigQuery using your connection's Service Account credentials to fetch and serve the tiles in a standard format, so they can be used with any webmapping library or desktop GIS application.
+The integration of tilesets with custom web map applications is also possible with CARTO Maps API, which will connect to BigQuery using your connection's Service Account credentials to fetch and serve the tiles in a standard format, so they can be used with any webmapping library or desktop GIS application.
 
 
 ### Creating a tileset
@@ -41,9 +41,11 @@ Once you are all set getting access to the tiler, the first step is to create a 
 
 Take a look at the [examples](../examples) and the complete [reference](../../reference#tiler) if you need help with the SQL query specifics.
 
-Creating a tileset is as easy as opening your BigQuery console and running the query there:
+Creating a tileset is as easy as opening your BigQuery console and running the query there. In this case, we are going to create a tileset from a couple of joined tables; one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
 
-```javascript
+The result will be a tileset with the geometry and total population per blockgroup:
+
+```sql
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''
 (
@@ -79,11 +81,11 @@ After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will 
 
 ![Your Tilesets](/img/bq-spatial-extension/tiler/guides-your-tilesets.png)
 
-Click in one the tilesets to access the **Map Viewer**: a new tool to visualize and publish your tileset maps. 
+Click in one the tilesets to visualize it using **Map Viewer**. 
 
 ![Tileset Viewer](/img/bq-spatial-extension/tiler/guides-viewer-1.png)
 
-Map Viewer uses [CARTO for deck.gl](https://carto.com/developers/deck-gl/)'s declarative styling language, which makes it easier to create data-driven visualizations. 
+Map Viewer uses CARTO for deck.gl's [declarative styling language](../../../deck-gl/guides/declarative), which makes it easier to create data-driven visualizations. 
 
 Creating color ramps for data-drive visualizations is straight-forward, using helper functions for different types of classifications. Take a look at the [documentation](https://deck.gl/docs/api-reference/carto/styles) for more information.
 

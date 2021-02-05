@@ -41,9 +41,7 @@ Once you have created your CARTO account, you can go to _Data_, click on _Your C
 
 From the list of available connections, choose BigQuery and complete the connection steps.
 
-Once you have connected successfully, a new _Your Tilesets_ section appears, where the tilesets created with the Tiler module of the Spatial Extension will be listed.
-
-Now you can go to your [BigQuery console](https://console.cloud.google.com/bigquery) and check that you have access to the extension, running this query should return the Tiler module version.
+Now you can go to your [BigQuery console](https://console.cloud.google.com/bigquery) and check that you have access to the extension. Running this query should return the Tiler module version.
 
 ```sql
 SELECT bqcarto.tiler.VERSION()
@@ -83,4 +81,4 @@ When you are using CARTO Spatial Extension you will incur in 2 different types o
 * BigQuery data processing: You will be charged for the amount of data processed. There are On-demand and Flat-rate options available. [Know more](https://cloud.google.com/bigquery/pricing)
 * CARTO Spatial Extension Processing: We will keep track of the amount of data processed using the extension and enforce different limits based on your account pricing plan. These limits range from 10GB for  Free accounts to _unlimited_ in the highest Enterprise tier.
 
-[Contact us](https://carto.com/request-live-demo/) if you have any questions around pricing and plans.
+[Contact us](https://carto.com/contact/) if you have any questions around pricing and plans.
