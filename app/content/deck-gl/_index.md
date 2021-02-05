@@ -10,4 +10,10 @@ cascade:
     - name: "Examples"
       elements:
         - "Hello World"
+        - "BigQuery Tileset Layer"
+        - "CARTO Basemap"
+        - "Icon Layer"
+        - "Interactivity"
+        - "Point Style"
+        - "Polygon Style"
 ---
