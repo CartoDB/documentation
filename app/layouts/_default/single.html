@@ -32,7 +32,16 @@
       <aside class="grid-cell grid-cell--col2 title f12 js-toc-sidebar desktop-s">
         <div class="toc-sidebar__container js-toc-sidebar-container">
           <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.title}}</h3>
-          {{$projectDirectory := replace .File.Dir "/guides/" "/"}}
+          {{$context := .}}
+          {{.Scratch.Set "projectDirectory" .File.Dir}}
+          {{range $elem := .Params.folders}}
+            {{$folderName := printf "%s%s%s" "/" (urlize $elem.name) "/"}}
+            {{if in $context.File.Dir $folderName}}
+              {{$context.Scratch.Set "projectDirectory" (replace $context.File.Dir $folderName "/")}}
+            {{end}}
+          {{end}}
+
+          {{$projectDirectory := .Scratch.Get "projectDirectory"}}
           {{$overview := printf "%s%s" $projectDirectory "overview.md"}}
           {{$reference := printf "%s%s" $projectDirectory "reference.md"}}
 
@@ -47,7 +56,6 @@
             {{end}}
 
             {{if .Params.extra_sections}}
-              {{$context := .}}
               {{range $elem := .Params.extra_sections}}
                 {{$file := printf "%s%s%s" $projectDirectory (urlize $elem) ".md"}}
                 {{$isActive := eq $file $context.File.Path}}
@@ -60,7 +68,6 @@
             {{end}}
 
             {{if .Params.folders}}
-              {{$context := .}}
               {{range $folder := .Params.folders}}
                 {{$firstFileName := urlize (index $folder.elements 0)}}
                 {{$folderName := urlize $folder.name}}
