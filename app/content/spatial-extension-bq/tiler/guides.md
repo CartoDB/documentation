@@ -8,20 +8,22 @@ To check that your Google account has access to the Tiler, try running this quer
 
 ```sql
 SELECT bqcarto.tiler.VERSION()
--- Use bqcartoeu.tiler.VERSION() if your BigQuery account is in GCP's EU multi-region
+--Use bqcartoeu.tiler.VERSION() if your BigQuery account is in GCP's EU multi-region
 ``` 
 
 Check the [Getting Access](../../overview#getting-access) section if you run into any error when running the query below.
 
-The Tiler works processing data directly in BigQuery and creating a table that contains the whole tileset. Each individual tile is stored as a row in this table, with the tile coordinates and the encoded MVT stored in different columns. 
+The Tiler works processing data directly in BigQuery and creating a table that contains the whole tileset. Each individual tile is stored as a row in this table, with the tile coordinates and the encoded MVT stored in different columns:
 
-Visualizing the tileset is straight-forward with CARTO Maps API, which will connect to BigQuery using your connection's Service Account credentials to fetch and serve the tiles in a standard format, so they can be used with any webmapping library or desktop GIS application.
+| Row | z | x | y | carto_partition | data |
+|-----|---|---|---|-----------------|------|
+| 1   | 16 | 45340 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JPdt3eyCLEwM (...) |
+| 2   | 16 | 45292 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JjLM0pEZLgWL (...) |
 
-### Authentication
+Visualizing the tileset is straight-forward with Map Viewer, wh
 
-#### User email and Google Account name
+CARTO Maps API, which will connect to BigQuery using your connection's Service Account credentials to fetch and serve the tiles in a standard format, so they can be used with any webmapping library or desktop GIS application.
 
-#### BigQuery connection Service Account
 
 ### Creating a tileset
 
@@ -39,12 +41,9 @@ Once you are all set getting access to the tiler, the first step is to create a 
 
 Take a look at the [examples](../examples) and the complete [reference](../../reference#tiler) if you need help with the SQL query specifics.
 
-Creating a tileset is as easy as opening your BigQuery console and running the query there. Remember that you will have permission to call the Tiler's functions with your Google account after:
-* Signing up in CARTO using your Google account.
-* Adding a new BigQuery connection from your CARTO Dashboard.
+Creating a tileset is as easy as opening your BigQuery console and running the query there:
 
 ```javascript
--- Use bqcartoeu.tiler.CREATE_SIMPLE_TILESET() if your BigQuery account is in GCP's EU multi-region
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''
 (
