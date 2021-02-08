@@ -5,5 +5,5 @@ This example shows how to apply extrusion to a layer for generating 3D visualiza
 <iframe src="../extrusion.html" style="border: 1px solid #cfcfcf; width: 100%;height:500px" title="Extrusion"></iframe>
 
 ```html
-{{readFile "extrusion.html"}}
+{{<codeHighlight src="extrusion.html" lang="html">}}
 ```
