@@ -70,17 +70,6 @@
       apiKey: "default_public",
     });
 
-    // Color breaks
-    const POLYGON_COLORS = {
-      COLOR_1: [225, 83, 131],
-      COLOR_2: [241, 109, 122],
-      COLOR_3: [250, 138, 118],
-      COLOR_4: [255, 166, 121],
-      COLOR_5: [255, 194, 133],
-      COLOR_6: [255, 221, 154],
-      OTHER: [254, 246, 181],
-    };
-
     const deckgl = new deck.DeckGL({
       container: "map",
       mapStyle: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
@@ -96,23 +85,11 @@
         new deck.carto.CartoSQLLayer({
           id: "higher_edu_by_county",
           data: `SELECT the_geom_webmercator, pct_higher_ed FROM higher_edu_by_county`,
-          getFillColor: (object) => {
-            if (object.properties.pct_higher_ed > 70) {
-              return POLYGON_COLORS.COLOR_1;
-            } else if (object.properties.pct_higher_ed > 60) {
-              return POLYGON_COLORS.COLOR_2;
-            } else if (object.properties.pct_higher_ed > 50) {
-              return POLYGON_COLORS.COLOR_3;
-            } else if (object.properties.pct_higher_ed > 40) {
-              return POLYGON_COLORS.COLOR_4;
-            } else if (object.properties.pct_higher_ed > 30) {
-              return POLYGON_COLORS.COLOR_5;
-            } else if (object.properties.pct_higher_ed > 20) {
-              return POLYGON_COLORS.COLOR_6;
-            } else {
-              return POLYGON_COLORS.OTHER;
-            }
-          },
+          getFillColor: deck.carto.colorBins({
+            attr: 'pct_higher_ed',
+            domain: [0, 20, 30, 40, 50, 60, 70],
+            colors: 'PinkYl'
+          }),
           getLineColor: [0, 0, 0, 100],
           lineWidthMinPixels: 0.5,
           pickable: true,
