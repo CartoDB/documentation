@@ -15,13 +15,13 @@
   <script type="text/javascript">
 
     deck.carto.setDefaultCredentials({
-      username: "public",
-      apiKey: "default_public",
+      username: 'public',
+      apiKey: 'default_public',
     });
 
     const deckgl = new deck.DeckGL({
-      container: "map",
-      mapStyle: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+      container: 'map',
+      mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
 
       initialViewState: {
         latitude: 0,
@@ -36,7 +36,7 @@
         new deck.carto.CartoSQLLayer({
           // For better performance select the_geom_webmercator as the source of the geometry
           // and only retrieve the fields needed  
-          data: `SELECT the_geom_webmercator, name FROM populated_places`, 
+          data: 'SELECT the_geom_webmercator, name FROM populated_places', 
           getFillColor: [238, 77, 90],
           pointRadiusMinPixels: 2.5
         }),

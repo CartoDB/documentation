@@ -19,13 +19,13 @@
 
   <script type="text/javascript">
     deck.carto.setDefaultCredentials({
-      username: "public",
-      apiKey: "default_public",
+      username: 'public',
+      apiKey: 'default_public',
     });
 
     const deckgl = new deck.DeckGL({
-      container: "map",
-      mapStyle: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+      container: 'map',
+      mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
 
       initialViewState: {
         latitude: 0,
@@ -38,7 +38,7 @@
 
       layers: [
         new deck.carto.CartoSQLLayer({
-          data: `SELECT the_geom_webmercator, country_name FROM world_population_2015`,
+          data: 'SELECT the_geom_webmercator, country_name FROM world_population_2015',
           getFillColor: [238, 77, 90],
           pointRadiusMinPixels: 4,
           pickable: true,

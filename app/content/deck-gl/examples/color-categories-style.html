@@ -19,13 +19,13 @@
 
   <script type="text/javascript">
     deck.carto.setDefaultCredentials({
-      username: "public",
-      apiKey: "default_public",
+      username: 'public',
+      apiKey: 'default_public',
     });
 
     const deckgl = new deck.DeckGL({
-      container: "map",
-      mapStyle: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
+      container: 'map',
+      mapStyle: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
 
       initialViewState: {
         latitude: 40.715,
@@ -36,22 +36,22 @@
 
       layers: [
         new deck.carto.CartoSQLLayer({
-          id: "higher_edu_by_county",
-          data: `SELECT the_geom_webmercator, landuse_type FROM wburg_parcels`,
+          id: 'wburg_parcels',
+          data: 'SELECT the_geom_webmercator, landuse_type FROM wburg_parcels',
           getFillColor: deck.carto.colorCategories({
             attr: 'landuse_type',
             domain: [
-              "Multi-Family Walk-Up Buildings",
-              "Multi-Family Elevator Buildings",
-              "Mixed Residential And Commercial Buildings",
-              "Parking Facilities",
-              "1 and 2 Family Buildings",
-              "Commercial and Office Buildings",
-              "Vacant Land",
-              "Public Facilities and Institutions",
-              "Transportation and Utility",
-              "Open Space and Outdoor Recreation",
-              "Industrial and Manufacturing"
+              'Multi-Family Walk-Up Buildings',
+              'Multi-Family Elevator Buildings',
+              'Mixed Residential And Commercial Buildings',
+              'Parking Facilities',
+              '1 and 2 Family Buildings',
+              'Commercial and Office Buildings',
+              'Vacant Land',
+              'Public Facilities and Institutions',
+              'Transportation and Utility',
+              'Open Space and Outdoor Recreation',
+              'Industrial and Manufacturing'
             ],
             colors: 'Bold'
           }),

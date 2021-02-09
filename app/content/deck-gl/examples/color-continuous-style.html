@@ -60,13 +60,13 @@
 
   <script type="text/javascript">
     deck.carto.setDefaultCredentials({
-      username: "public",
-      apiKey: "default_public",
+      username: 'public',
+      apiKey: 'default_public',
     });
 
     const deckgl = new deck.DeckGL({
-      container: "map",
-      mapStyle: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
+      container: 'map',
+      mapStyle: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
 
       initialViewState: {
         latitude: 34,
@@ -77,8 +77,8 @@
 
       layers: [
         new deck.carto.CartoSQLLayer({
-          id: "temps",
-          data: `SELECT the_geom_webmercator, value FROM temps`,
+          id: 'temps',
+          data: 'SELECT the_geom_webmercator, value FROM temps',
           getFillColor: deck.carto.colorContinuous({
             attr: 'value',
             domain: [70, 75, 80, 85, 90, 95, 100],
