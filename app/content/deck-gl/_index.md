@@ -7,7 +7,7 @@ cascade:
     - name: "Guides"
       elements:
         - "Getting Started"
-        - "Declarative"
+        - "Style Language"
     - name: "Examples"
       elements:
         - "Hello World"

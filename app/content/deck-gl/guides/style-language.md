@@ -1,4 +1,4 @@
-## Declarative
+## Style Language
 
 deck.gl supports a declarative system for describing layers and their props. This feature can be used to generate powerful visualizations directly from a JSON document. You can describe a visualization in abstract terms and you can view the results without needing to write JavaScript code.
 
@@ -7,6 +7,19 @@ This declarative system is used in deck.gl [playground](https://deck.gl/playgrou
 The declarative language allows you to define the style and cartography of your visualization and set other general map options. Technically this language is based on JSON that gets transformed into Javascript objects and functions. Check out the [official documentation](https://deck.gl/docs/api-reference/json/json-converter) on the JSON format for further technical details.
 
 In this guide we are going to focus more on providing a guide to the different options the language provides and document most common visualizations.
+
+### API reference
+
+The declarative system creates deck.gl objects from a JSON representation. For instance, the `initialViewState` element in the JSON representation (declarative way) corresponds to a [view state](https://deck.gl/docs/api-reference/core/map-view#view-state) object when you are working with deck.gl in a programmatic way. 
+
+Usually the name-value pairs in the JSON representation correspond to object properties in deck.gl objects and the arrays correspond to JavaScript arrays. There are a couple of specific name-value pairs that are very useful:
+
+- `@@type`. It is used to indicate the class of the object we want to create; for instance, for specifying the type of layer we want to use.
+
+- `@@function`. It is used to specify a function to be executed to evaluate a data accessor; for instance, for using helpers to specify the color that we want to assign to features.
+
+In the sections below we have included links to the deck.gl documentation.
+
 
 ### General parameters
 
@@ -82,6 +95,9 @@ Description: Layers to overlay on the map. It is an array so you can compose mul
 | [credentials](https://deck.gl/docs/api-reference/carto/overview#carto-credentials)  | object       | CARTO authentication credentials  |  
 |     credentials.username  | object       | CARTO username  |  
 |     credentials.apiKey  | object       | CARTO API Key. In the case of a private map you add here the api key, for a public map you can use default_public.  |  
+|     credentials.region  | object       | Default: `us`. Region wher the user database is located; possible values are `us` or `eu`. Only need to be specified if you've specifically requested an account in the `eu` region.  |  
+|     credentials.mapsUrl  | object       | Default: "https://{user}.carto.com/api/v1/map". If you're an on-premise user or you're running CARTO from Google's Market place, you need to set the URL to point to your instance.  |  
+|     credentials.sqlUrl  | object       | Default: "https://{user}.carto.com/api/v2/sql". If you're an on-premise user or you're running CARTO from Google's Market place, you need to set the URL to point to your instance.  |  
 | [pickable](https://deck.gl/docs/api-reference/core/layer#visible)         | boolean      | Default: false. Indicates whether the layer responds to mouse pointer picking events. |
 | [uniqueIdProperty](https://deck.gl/docs/api-reference/carto/carto-sql-layer#uniqueidproperty) | string | Default: `cartodb_id`. Needed for highlighting a feature split across two or more tiles if no feature id is provided. An string pointing to a tile attribute containing a unique identifier for features across tiles. |
 | [visible](https://deck.gl/docs/api-reference/core/layer#visible)          | boolean      | Default: true. Indicates whether the layer is visible. Under most circumstances, using visible prop to control the visibility of layers is recommended over doing conditional rendering. |
