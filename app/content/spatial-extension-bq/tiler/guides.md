@@ -85,7 +85,7 @@ Click in one the tilesets to visualize it using **Map Viewer**.
 
 ![Tileset Viewer](/img/bq-spatial-extension/tiler/guides-viewer-1.png)
 
-Map Viewer uses CARTO for deck.gl's [declarative styling language](../../../deck-gl/guides/declarative), which makes it easier to create data-driven visualizations. 
+Map Viewer uses CARTO for deck.gl's [declarative styling language](../../../deck-gl/guides/style-language), which makes it easier to create data-driven visualizations. 
 
 Creating color ramps for data-drive visualizations is straight-forward, using helper functions for different types of classifications. Take a look at the [documentation](https://deck.gl/docs/api-reference/carto/styles) for more information.
 

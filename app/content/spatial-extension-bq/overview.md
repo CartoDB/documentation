@@ -27,9 +27,12 @@ Please make sure that your account has the `bigquery.jobs.list` permission on yo
 
 * A **Google service account** with the following roles:
   * **BigQuery Data Viewer** (`bigquery.dataViewer`) for visualizing your tilesets privately from Map Viewer or in a custom application.
-  * **BigQuery Data Owner** (`bigquery.dataOwner`) for changing permission on the tilesets from Map Viewer. This is needed for publishing maps with tileset layers on the web, available to anyone with the link. This permission is also required for unpublishing a public map. 
-  Learn more about creating public maps out of tilesets [here](../tiler/map-viewer/#share).
+  * **BigQuery Data Owner** (`bigquery.dataOwner`) for changing permission on the tilesets from Map Viewer. 
+    * This is needed for publishing maps with tileset layers on the web, available to anyone with the link. That means editing the tileset's permissions to grant CARTO APIs reading access to the tileset. 
+    * This role is also required for unpublishing a public map. 
+    * Learn more about creating public maps out of tilesets [here](../tiler/map-viewer/#share).
   * **BigQuery Job User** (`bigquery.jobUser`) for listing your projects, datasets and tilesets in the Dashboard.
+  * **BigQuery Read Session User** (`bigquery.readSessionUser`) for importing data from BigQuery, as tables in CARTO embedded database.
 
 Take a look at the BigQuery [documentation](https://cloud.google.com/bigquery/docs/access-control#bq-permissions) for more information about roles and permissions.
 
@@ -39,7 +42,7 @@ Once you have created your CARTO account, you can go to _Data_, click on _Your C
 
 ![New Connection](/img/bq-spatial-extension/overview-new-connection.png)
 
-From the list of available connections, choose BigQuery and complete the connection steps.
+From the list of available connections, choose BigQuery and complete the connection steps. It will ask you to upload a service account key in JSON format. It should have all the permissions described before.
 
 Now you can go to your [BigQuery console](https://console.cloud.google.com/bigquery) and check that you have access to the extension. Running this query should return the Tiler module version.
 
@@ -48,7 +51,7 @@ SELECT bqcarto.tiler.VERSION()
 ```
 
 {{% bannerNote title="tip" %}}
-If you need to use the extension from GCP's **EU** multi-region, use `SELECT bqcartoeu.tiler.VERSION()` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
+If you need to use the extension from GCP's EU multi-region, use `SELECT bqcartoeu.tiler.VERSION()` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
 {{%/ bannerNote %}}
 
 If you get a version number, you are all set! Take a look at the Tiler's [**Quickstart**](../tiler/guides#quickstart) section to start using some of the extension's more advanced functionalities.
@@ -58,25 +61,24 @@ If you get a permission error, please make sure that your account's email addres
 
 ### Deployment options
 
-You can use the Spatial Extension calling the procedures directly from our projects, or install it on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls). 
+You can use the Spatial Extension calling the procedures directly from our BigQuery projects, or install it on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls). 
 
-We make the extension available in different projects for different locations. The following queries should return the version number for the Tiler module for each region.
+We make the extension available in different projects for different locations. As an example, he following queries should return the version number for the Tiler module for each region.
 
 ```sql
 SELECT bqcarto.tiler.VERSION() -- US multi-region
 SELECT bqcartoeu.tiler.VERSION() -- EU multi-region
 ```
 
-
 Different types of capabilities belong to different modules of the Spatial Extension. Each of these modules is available on a different dataset.
 
-For example, all the tiling functions to process and visualize large datasets are inside the `tiler` dataset. 
+For example, all the tiling functions to process and visualize large amounts of data are inside the `tiler` dataset. 
 
 As we continue adding capabilities to the extension, we will release new modules organized in different datasets.
 
 ### Pricing and cost
 
-When you are using CARTO Spatial Extension you will incur in 2 different types of cost:
+When you are using CARTO Spatial Extension for BigQuery you will incur in 2 different types of cost:
 
 * BigQuery data processing: You will be charged for the amount of data processed. There are On-demand and Flat-rate options available. [Know more](https://cloud.google.com/bigquery/pricing)
 * CARTO Spatial Extension Processing: We will keep track of the amount of data processed using the extension and enforce different limits based on your account pricing plan. These limits range from 10GB for  Free accounts to _unlimited_ in the highest Enterprise tier.
