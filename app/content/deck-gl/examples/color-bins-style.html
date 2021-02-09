@@ -6,8 +6,8 @@
       rel="stylesheet"
     />
 
-    <script src="https://unpkg.com/deck.gl@^8.3.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.3.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
       .layer-selector .layout {
         display: table;
         width: 100%;
-        margin-top: 8px;
+        margin: 8px 0;
       }
       .layer-selector .layout > * {
         display: table-cell;
@@ -44,7 +44,7 @@
     </style>
   </head>
 
-  <body style="margin: 0; padding: 0; font-family: 'Open Sans, Helvetica, sans-serif';">
+  <body style="margin: 0; padding: 0; font-family: 'Open Sans', Helvetica, sans-serif;">
     <div id="map" style="width: 100vw; height: 100vh;"></div>
     <div class="layer-selector">
       <h3>Higher education by county</h3>
@@ -75,8 +75,8 @@
       mapStyle: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
 
       initialViewState: {
-        latitude: 31.80289258670676,
-        longitude: -103.0078125,
+        latitude: 38,
+        longitude: -98,
         zoom: 3,
       },
       controller: true,

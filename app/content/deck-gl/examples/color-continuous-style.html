@@ -6,8 +6,8 @@
       rel="stylesheet"
     />
 
-    <script src="https://unpkg.com/deck.gl@^8.3.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.3.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -32,7 +32,7 @@
       .layer-selector .layout {
         display: table;
         width: 100%;
-        margin-top: 8px;
+        margin: 8px 0;
       }
       .layer-selector .layout > * {
         display: table-cell;
@@ -44,21 +44,12 @@
     </style>
   </head>
 
-  <body style="margin: 0; padding: 0; font-family: 'Open Sans, Helvetica, sans-serif';">
+  <body style="margin: 0; padding: 0; font-family: 'Open Sans', Helvetica, sans-serif;">
     <div id="map" style="width: 100vw; height: 100vh;"></div>
     <div class="layer-selector">
       <h3>Temperature</h3>
       <div class="layout">
-        <div class="legend" style="background: rgb(247, 254, 174)"></div>
-        <div class="legend" style="background: rgb(205, 238, 168)"></div>
-        <div class="legend" style="background: rgb(164, 221, 164)"></div>
-        <div class="legend" style="background: rgb(124, 203, 162)"></div>
-        <div class="legend" style="background: rgb(90, 184, 161)"></div>
-        <div class="legend" style="background: rgb(56, 164, 158)"></div>
-        <div class="legend" style="background: rgb(8, 144, 153)"></div>
-        <div class="legend" style="background: rgb(4, 123, 144)"></div>
-        <div class="legend" style="background: rgb(3, 102, 132)"></div>
-        <div class="legend" style="background: rgb(4, 82, 117)"></div>
+        <div class="legend" style="background: linear-gradient(to right, rgb(247, 254, 174), rgb(4, 82, 117))"></div>
       </div>
       <p class="layout">
         <span>Lower</span>
@@ -78,8 +69,8 @@
       mapStyle: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
 
       initialViewState: {
-        latitude: 31.80289258670676,
-        longitude: -103.0078125,
+        latitude: 34,
+        longitude: -98,
         zoom: 3,
       },
       controller: true,
@@ -88,10 +79,9 @@
         new deck.carto.CartoSQLLayer({
           id: "temps",
           data: `SELECT the_geom_webmercator, value FROM temps`,
-          getFillColor: 
-          deck.carto.colorContinuous({
+          getFillColor: deck.carto.colorContinuous({
             attr: 'value',
-            domain: [84, 86],
+            domain: [70, 75, 80, 85, 90, 95, 100],
             colors: 'BluYl'
           }),
           pointRadiusMinPixels: 2,
