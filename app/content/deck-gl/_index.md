@@ -15,6 +15,9 @@ cascade:
         - "CARTO Basemap"
         - "Icon Layer"
         - "Interactivity"
-        - "Point Style"
-        - "Polygon Style"
+        - "Color continuous style"
+        - "Color bins style"
+        - "Color categories style"
+        - "Extrusion"
+        - "Clustering"
 ---
