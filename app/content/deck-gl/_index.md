@@ -18,4 +18,5 @@ cascade:
         - "Color continuous style"
         - "Color bins style"
         - "Color categories style"
+        - "Extrusion"
 ---
