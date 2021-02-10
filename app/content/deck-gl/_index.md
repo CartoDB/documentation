@@ -19,4 +19,5 @@ cascade:
         - "Color bins style"
         - "Color categories style"
         - "Extrusion"
+        - "Clustering"
 ---
