@@ -64,19 +64,6 @@
           }
         }
 
-        getPickingInfo({info, mode}) {
-          const pickedObject = info.object && info.object.properties;
-          if (pickedObject) {
-            if (pickedObject.cluster && mode !== 'hover') {
-              info.objects = this.state.index
-                .getLeaves(pickedObject.cluster_id, 25)
-                .map(f => f.properties);
-            }
-            info.object = pickedObject;
-          }
-          return info;
-        }
-
         renderLayers() {
           const {data} = this.state;
           const {iconAtlas, iconMapping, sizeScale} = this.props;
@@ -111,15 +98,12 @@
           longitude: 0,
           zoom: 1
         },
-        controller: {
-          scrollZoom: false
-        },
+        controller: true,
 
         layers: [
           new IconClusterLayer({
             id: 'icon-cluster',
             data: data.features,
-            pickable: true,
             getPosition: d => d.geometry.coordinates,
             iconAtlas: 'https://raw.githubusercontent.com/visgl/deck.gl/8.4-release/examples/website/icon/data/location-icon-atlas.png',
             iconMapping: 'https://raw.githubusercontent.com/visgl/deck.gl/8.4-release/examples/website/icon/data/location-icon-mapping.json',
