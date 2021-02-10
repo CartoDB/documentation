@@ -13,7 +13,6 @@ cascade:
         - "Hello World"
         - "BigQuery Tileset Layer"
         - "CARTO Basemap"
-        - "Icon Layer"
         - "Interactivity"
         - "Color continuous style"
         - "Color bins style"
