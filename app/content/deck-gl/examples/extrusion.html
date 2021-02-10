@@ -17,14 +17,6 @@
       apiKey: "8l-WraD-0s4A5FJj9W7uIg",
     });
 
-    const viewState = {
-      latitude: 40.7368521,
-      longitude: -73.9936065,
-      zoom: 11,
-      pitch: 60,
-      bearing: 0
-    };
-
     const POLYGON_COLORS = [
       [128, 0, 32],
       [190, 1, 31],
@@ -38,9 +30,16 @@
     // Create Deck.GL map
     const deckgl = new deck.DeckGL({
       container: 'map',
-      controller: true,
       mapStyle: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-      viewState,
+
+      initialViewState: {
+        latitude: 40.7368521,
+        longitude: -73.9936065,
+        zoom: 11,
+        pitch: 60
+      },
+      controller: true,
+
       layers: [
         new deck.carto.CartoSQLLayer({
           id: 'mrli',
@@ -54,7 +53,6 @@
           }),
           getLineColor: [0, 0, 0, 0],
           lineWidthMinPixels: 0,
-          pickable: true,
           filled: true,
           extruded: true,
           wireframe: true,
