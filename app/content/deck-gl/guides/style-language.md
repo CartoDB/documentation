@@ -96,8 +96,8 @@ Description: Layers to overlay on the map. It is an array so you can compose mul
 |     credentials.username  | object       | CARTO username  |  
 |     credentials.apiKey  | object       | CARTO API Key. In the case of a private map you add here the api key, for a public map you can use default_public.  |  
 |     credentials.region  | object       | Default: `us`. Region wher the user database is located; possible values are `us` or `eu`. Only need to be specified if you've specifically requested an account in the `eu` region.  |  
-|     credentials.mapsUrl  | object       | Default: "https://{user}.carto.com/api/v1/map". If you're an on-premise user or you're running CARTO from Google's Market place, you need to set the URL to point to your instance.  |  
-|     credentials.sqlUrl  | object       | Default: "https://{user}.carto.com/api/v2/sql". If you're an on-premise user or you're running CARTO from Google's Market place, you need to set the URL to point to your instance.  |  
+|     credentials.mapsUrl  | object       | Default: `https://{user}.carto.com/api/v1/map`. If you're an on-premise user or you're running CARTO from Google's marketplace, you need to set the URL to point to your instance.  |  
+|     credentials.sqlUrl  | object       | Default: `https://{user}.carto.com/api/v2/sql`. If you're an on-premise user or you're running CARTO from Google's marketplace, you need to set the URL to point to your instance.  |  
 | [pickable](https://deck.gl/docs/api-reference/core/layer#visible)         | boolean      | Default: false. Indicates whether the layer responds to mouse pointer picking events. |
 | [uniqueIdProperty](https://deck.gl/docs/api-reference/carto/carto-sql-layer#uniqueidproperty) | string | Default: `cartodb_id`. Needed for highlighting a feature split across two or more tiles if no feature id is provided. An string pointing to a tile attribute containing a unique identifier for features across tiles. |
 | [visible](https://deck.gl/docs/api-reference/core/layer#visible)          | boolean      | Default: true. Indicates whether the layer is visible. Under most circumstances, using visible prop to control the visibility of layers is recommended over doing conditional rendering. |
@@ -147,7 +147,57 @@ In this section we describe the styling properties for layers that can be used w
 | [pointRadiusMinPixels](https://deck.gl/docs/api-reference/layers/geojson-layer#pointradiusminpixels) | number               | The minimum radius in pixels. |
 | [stroked](https://deck.gl/docs/api-reference/layers/geojson-layer#stroked)              | boolean              | Default: true. Indicates whether to draw an outline around the polygon (solid fill). Note that both the outer polygon as well the outlines of any holes will be drawn. |
 
-### Creating advanced visualizations
+### Creating visualizations
+
+If you click in any of the following examples, you will be redirected to CARTO Viewer where you can inspect what is the JSON needed for configuring each visualization. Below the examples you will find additional information regarding how you can use the style helper functions to create advanced visualizations.
+
+{{<grid>}}
+
+{{<imageCard 
+  url="https://viewer.carto.com/user/public/bigquery?data=cartobq.maps.osm_buildings&color_by_value=aggregated_total"
+  target="_blank"
+  image="/img/get-started/builder.png" 
+  title="Simple Point" 
+  description="Simple example with a point layer.">}}
+
+{{<imageCard 
+  url="https://viewer.carto.com/user/public/bigquery?data=cartobq.maps.osm_buildings&color_by_value=aggregated_total"
+  target="_blank"
+  image="/img/get-started/builder.png" 
+  title="Simple Line" 
+  description="Simple example with a line layer.">}}
+
+{{<imageCard 
+  url="https://viewer.carto.com/user/public/bigquery?data=cartobq.maps.osm_buildings&color_by_value=aggregated_total"
+  target="_blank"
+  image="/img/get-started/builder.png" 
+  title="Simple Polygon" 
+  description="Simple example with a polygon layer.">}}
+
+{{<imageCard 
+  url="https://viewer.carto.com/user/public/bigquery?data=cartobq.maps.osm_buildings&color_by_value=aggregated_total"
+  target="_blank"
+  image="/img/get-started/builder.png" 
+  title="Color Bins" 
+  description="Assigning colors to bins.">}}
+
+{{<imageCard 
+  url="https://viewer.carto.com/user/bmunoz/bigquery?config=eyJkZXNjcmlwdGlvbiI6IkNhcnRvQlFUaWxlckxheWVyIGRlY2xhcmF0aXZlIGV4YW1wbGUiLCJpbml0aWFsVmlld1N0YXRlIjp7ImxhdGl0dWRlIjo0MCwibG9uZ2l0dWRlIjotOTYsInpvb20iOjQsInBpdGNoIjowLCJiZWFyaW5nIjowLCJkcmFnUm90YXRlIjpmYWxzZSwid2lkdGgiOjEzNDQsImhlaWdodCI6OTUzLCJhbHRpdHVkZSI6MS41LCJtYXhab29tIjoyMCwibWluWm9vbSI6MCwibWF4UGl0Y2giOjYwLCJtaW5QaXRjaCI6MCwidHJhbnNpdGlvbkR1cmF0aW9uIjowLCJ0cmFuc2l0aW9uSW50ZXJwb2xhdG9yIjp7Il9wcm9wc1RvQ29tcGFyZSI6WyJsb25naXR1ZGUiLCJsYXRpdHVkZSIsInpvb20iLCJiZWFyaW5nIiwicGl0Y2giXSwiX3Byb3BzVG9FeHRyYWN0IjpbImxvbmdpdHVkZSIsImxhdGl0dWRlIiwiem9vbSIsImJlYXJpbmciLCJwaXRjaCJdLCJfcmVxdWlyZWRQcm9wcyI6WyJsb25naXR1ZGUiLCJsYXRpdHVkZSIsInpvb20iXSwib3B0cyI6eyJhcm91bmQiOls1MjYsNTgxXX19LCJ0cmFuc2l0aW9uSW50ZXJydXB0aW9uIjoxfSwidmlld3MiOlt7IkBAdHlwZSI6Ik1hcFZpZXciLCJjb250cm9sbGVyIjp0cnVlLCJtYXBTdHlsZSI6IkBAI0NBUlRPX0JBU0VNQVAuUE9TSVRST04ifV0sImxheWVycyI6W3siQEB0eXBlIjoiQ2FydG9CUVRpbGVyTGF5ZXIiLCJkYXRhIjoiY2FydG9kYi1nY3AtYmFja2VuZC1kYXRhLXRlYW0uYWxhc2Fyci51c2FfY291bnR5XzIwMTVfdGlsZXNldCIsImNyZWRlbnRpYWxzIjp7InVzZXJuYW1lIjoicHVibGljIiwiYXBpS2V5IjoiZGVmYXVsdF9wdWJsaWMifSwiZ2V0RmlsbENvbG9yIjp7IkBAZnVuY3Rpb24iOiJjb2xvckNhdGVnb3JpZXMiLCJhdHRyIjoicG9wX2NhdCIsImRvbWFpbiI6WyJsb3ciLCJtZWRpdW0iLCJoaWdoIl0sImNvbG9ycyI6IlJlZE9yIn0sInBvaW50UmFkaXVzTWluUGl4ZWxzIjoyLCJzdHJva2VkIjpmYWxzZSwicGlja2FibGUiOnRydWV9XX0%3D"
+  target="_blank"
+  image="/img/get-started/builder.png" 
+  title="Color Categories" 
+  description="Assigning colors to categories.">}}
+
+{{<imageCard 
+  url="https://viewer.carto.com/user/public/bigquery?config=eyJkZXNjcmlwdGlvbiI6IkNhcnRvQlFUaWxlckxheWVyIGRlY2xhcmF0aXZlIGV4YW1wbGUiLCJpbml0aWFsVmlld1N0YXRlIjp7ImxhdGl0dWRlIjozMCwibG9uZ2l0dWRlIjotMTAwLCJ6b29tIjozLCJwaXRjaCI6MCwiYmVhcmluZyI6MCwiZHJhZ1JvdGF0ZSI6ZmFsc2UsIndpZHRoIjo4NjQsImhlaWdodCI6NzczLCJhbHRpdHVkZSI6MS41LCJtYXhab29tIjoyMCwibWluWm9vbSI6MCwibWF4UGl0Y2giOjYwLCJtaW5QaXRjaCI6MCwidHJhbnNpdGlvbkR1cmF0aW9uIjowfSwidmlld3MiOlt7IkBAdHlwZSI6Ik1hcFZpZXciLCJjb250cm9sbGVyIjp0cnVlLCJtYXBTdHlsZSI6IkBAI0NBUlRPX0JBU0VNQVAuUE9TSVRST04ifV0sImxheWVycyI6W3siQEB0eXBlIjoiQ2FydG9CUVRpbGVyTGF5ZXIiLCJkYXRhIjoiY2FydG9icS5tYXBzLmFpc190aWxlc2V0IiwiY3JlZGVudGlhbHMiOnsidXNlcm5hbWUiOiJwdWJsaWMiLCJhcGlLZXkiOiJkZWZhdWx0X3B1YmxpYyJ9LCJnZXRGaWxsQ29sb3IiOnsiQEBmdW5jdGlvbiI6ImNvbG9yQ29udGludW91cyIsImF0dHIiOiJhZ2dyZWdhdGVkX3RvdGFsIiwiZG9tYWluIjpbMSwxMDAsMTAwMCwxMDAwMCw1MDAwMDBdLCJjb2xvcnMiOiJQZWFjaCJ9LCJwb2ludFJhZGl1c01pblBpeGVscyI6Miwic3Ryb2tlZCI6ZmFsc2UsInBpY2thYmxlIjp0cnVlfV19"
+  target="_blank"
+  image="/img/get-started/builder.png" 
+  title="Color Continuous" 
+  description="Assigning a continuous color ramp.">}}
+
+{{</grid>}}
+
+#### Style helpers
 
 A common type of map visualization is assigning a color to each feature based on a property. When working with the CARTO viewer to visualize a BQTilerLayer or a CartoSQLLayer, you can use the available helper layers:
 
