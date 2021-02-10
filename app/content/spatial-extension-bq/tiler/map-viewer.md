@@ -4,7 +4,7 @@ Map Viewer is a new tool for visualizing tilesets directly from the Dashboard. T
 
 Map Viewer provides some defaults to help you explore your data, but it's possible to customize the cartography using the [deck.gl styling language](../../../deck-gl/guides/style-language).
 
-For this guide, we will use a tileset that contains every european river. It's available in the CARTO Data Observatory public data project in BigQuery. To visualize it, just type the `carto-do-public-data` in the project selector and find the `tilesets` dataset.
+For this guide, we will use a tileset that contains every european river. It's available in the CARTO Data Observatory public data project in BigQuery. To visualize it, just type the `bqcartodemos` in the project selector and find the `tilesets` dataset.
 
 ![eurivers tileset](/img/bq-spatial-extension/tiler/guides-eurivers.png)
 
@@ -71,11 +71,31 @@ Take a look at the result. Can you appreciate how the hydrographic basins stand 
 
 #### Open TileJSON
 
-At the bottom of the _Map Style_ section you will find an _Open TileJSON_ button. It will open a new tab with a TileJSON request. The response contains the TileJSON description of the tileset: 
-* URL pattern to request tiles
-* 
+At the bottom of the _Map Style_ section you will find an _Open TileJSON_ button. It will open a new tab with a TileJSON request. The response contains a description of the tileset in TileJSON format, with metadata about: 
+* The URL pattern to retrieve the tiles. 
+* Zoom range, bounds and center of the features in the tileset.
+* Information about the layers contained in the tileset.
+* Tilestats with statistic information such as maximum, minimum, average, count and sum. It also includes a section called `quantiles` that contains the quantile breaks for the properties included, as well as the top 10 categories and their frequency. 
 
-#### Copy XYZ
+#### Copy XYZ URL
+
+Also at the bottom of the _Map Style_ section there is a _Copy XYZ URL_ that copies directly in your clipboard the tiles URL following the XYZ convention:
+
+{{% bannerNote type="code" %}}
+https://maps-api-v2.us.carto.com/user/USERNAME/bigquery/tileset/{z}/{x}/{y}?source=project.dataset.tileset(...)&api_key=API_KEY
+{{%/ bannerNote %}}
+
+This is most useful for loading the tileset with any webmapping library or desktop application, like QGIS.
 
 ### Share
+
+The _Share_ section allows publishing a tileset. By publishing, we grant **CARTO BigQuery Data Viewer** (`bigquery/dataViewer`) permissions to the associated tileset. Doing so, this map becomes public on the web and anybody with the URL will be able to see it.
+
+By unpublishing the tileset, we will revoke the permission mentioned above and disable the sharing links. 
+
+{{% bannerNote title="Note" %}}
+It can take up to 5 minutes to remove the map from the CDN cache.
+{{%/ bannerNote %}}
+
+Once published, you will find different options to publish the map URL in social networks, as well as the HTML code to embed the map on a website. 
 
