@@ -13,8 +13,8 @@ navbar:
         url: https://docs.carto.com/spatial-extension-bq
   - name: Dev tools
     subelements:
-      #- name: CARTO for React
-      #  url: 
+      - name: CARTO for React
+        url: https://docs.carto.com/react
       - name: CARTO for deck.gl
         url: https://docs.carto.com/deck-gl
       - name: CARTO + Google Maps

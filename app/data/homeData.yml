@@ -17,10 +17,10 @@ getStarted:
     image: "development.png"
     url: "/get-started/#carto-for-development"
     related:
+      - name: "CARTO for React"
+        url: "/react"
       - name: "CARTO for deck.gl"
         url: "/deck-gl"
-      #- name: "CARTO for React"
-      #  url: "#"
       - name: "Spatial Extension"
         url: "./spatial-extension-bq"
       - name: "SQL API"
@@ -53,11 +53,11 @@ products:
 
 
 developmentTools:
-  #- title: "CARTO for React"
-  #  description: "Build compelling spatial apps using CARTO, React and deck.gl."
-  #  url: "#"
-  #  image: "carto-react.png"
-  #  highlighted: true
+  - title: "CARTO for React (Beta)"
+    description: "Build compelling spatial apps using CARTO, React and deck.gl."
+    url: "/react"
+    image: "carto-react.png"
+    highlighted: true
   - title: "CARTO for deck.gl"
     description: "Build apps using deck.gl advanced framework for data visualization. This is our recommended library."
     url: "/deck-gl"

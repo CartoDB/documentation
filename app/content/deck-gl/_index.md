@@ -14,9 +14,10 @@ cascade:
         - "BigQuery Tileset Layer"
         - "CARTO Basemap"
         - "Interactivity"
-        - "Color continuous style"
-        - "Color bins style"
-        - "Color categories style"
+        - "Color Continuous Style"
+        - "Color Bins Style"
+        - "Color Categories Style"
         - "Extrusion"
+        - "Icon Layer"
         - "Clustering"
 ---
