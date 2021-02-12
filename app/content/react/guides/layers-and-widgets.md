@@ -212,7 +212,7 @@ Then, in the same file, you need to replace the `Hello World` text with:
     id='totalRevenue'
     title='Total revenue'
     dataSource={storesSource.id}
-    column={STORES_SOURCE_COLUMNS.REVENUE}
+    column='revenue'
     operation={AggregationTypes.SUM}
     formatter={currencyFormatter}
     viewportFilter
@@ -224,8 +224,8 @@ Then, in the same file, you need to replace the `Hello World` text with:
     id='revenueByStoreType'
     title='Revenue by store type'
     dataSource={storesSource.id}
-    column={STORES_SOURCE_COLUMNS.STORE_TYPE}
-    operationColumn={STORES_SOURCE_COLUMNS.REVENUE}
+    column='storetype'
+    operationColumn='revenue'
     operation={AggregationTypes.SUM}
     formatter={currencyFormatter}
     viewportFilter
