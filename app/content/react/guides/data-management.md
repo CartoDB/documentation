@@ -34,6 +34,10 @@ If you want to force authentication in your application so no unauthenticated us
 
 ![oauth-login](/img/react/oauth-login.png 'OAuth Login')
 
+{{% bannerNote title="note" %}}
+If your dataset is private and you want other users in your organization to be able to access it, you need to share it with them using the [`Share with colleagues`](https://carto.com/help/your-account/users/#sharing-private-maps-and-datasets-within-your-organization) option in the dashboard.
+{{%/ bannerNote %}}
+
 When your users click on the `Login with CARTO` button, the OAuth protocol flow will start and your users will be asked to allow access to their CARTO account.
 
 If you just want to restrict access to some application features, you can use the [`OAuthLogin`](../../library-reference/oauth#oauthlogin) component. This will display a popup with the implicit OAuth flow.
