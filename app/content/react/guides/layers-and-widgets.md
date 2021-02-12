@@ -40,8 +40,6 @@ The code generator will perform three different actions:
 
 - Create a new file for the view with the following filename: `src/components/views/Stores.js`
 
-### Testing your new view
-
 Now you're ready to start the local development server using the following command:
 
 ```bash
@@ -53,13 +51,9 @@ You should see the map component with a `Hello World` text on the left sidebar a
 
 ### Creating a source
 
-A source is a key piece in a CARTO for React application. Both layers and widgets depend on sources. CARTO for React is designed in such a way that sources and models should be the only pieces that connects to the backend, whether it is the CARTO platform or your own backend/API. These are the main differences between them:
-
-- A **source** exports a plain object with a certain structure that will be understood by the CARTO for React library to feed layers or widgets using the CARTO SQL and/or Maps APIs.
-
-- A **model** exports simple functions that receive parameters and make a request to receive the values that feed a view. That request can be against the CARTO SQL API or your own backend.
+A source is a key piece in a CARTO for React application. Both layers and widgets depend on sources. A source exports a plain object with a certain structure that will be understood by the CARTO for React library to feed layers or widgets using the CARTO SQL and/or Maps APIs.
    
-Both model and source folders can be found inside the `/data` folder. The goal of the `/data` folder is to easily differentiate the parts of the application that have a communication with external services, like CARTO APIs, your own backend, GeoJSON files...
+The different sources are stored inside the `/data/sources` folder. The goal of the `/data` folder is to easily differentiate the parts of the application that have a communication with external services, like CARTO APIs, your own backend, GeoJSON files...
 
 To create a source, the easiest way is again to use the [code generator](../code-generator):
 
@@ -90,31 +84,6 @@ const source = {
 
 export default source;
 ```
-
-If you are going to use this source for widgets, you can add here code to expose the columns that will be used by the widget. In order to do that, you can create a constant. For instance, we can create a constant called `STORES_SOURCE_COLUMNS` exposing the `revenue` and `storyType` columns and modify the SQL query to use the constant members:
-
-```javascript
-export const STORES_SOURCE_COLUMNS = {
-  REVENUE: 'revenue',
-  STORE_TYPE: 'storeType',
-} 
-
-export default {
-  id: STORES_SOURCE_ID,
-  data: `
-    select
-      store_id,
-      storetype as ${STORES_SOURCE_COLUMNS.STORE_TYPE},
-      revenue as ${STORES_SOURCE_COLUMNS.REVENUE},
-      address,
-      the_geom_webmercator
-    from retail_stores
-  `,
-  type: 'sql',
-};
-```
-
-This can increase code maintainability to accommodate future changes in the model of the database. You can use the `revenue` constant and don't care about how revenue is retrieved or what is the column that contain that value. It is a specially recommended solution for teams with specialized roles: the backend engineer takes the responsability to define the models and sources and the frontend engineer just consume them in a safe way using constants defined by the backend.
 
 ### Creating a layer
 
@@ -266,20 +235,6 @@ Then, in the same file, you need to replace the `Hello World` text with:
 
 {{% bannerNote title="note" %}}
 As you can see, we are using here the `STORES_SOURCE_COLUMNS` that we created before. It is very important to use constants and avoid to hardcode column names.
-{{%/ bannerNote %}}
-
-#### Widgets source data
-
-When you are working with widgets, you can use two different source data types:
-
-- **Server-side data**. Widgets will consume `global` data, without listening to the viewport changes. `viewportFilter` prop must be false. The widgets will show data corresponding to the whole dataset.
-
-- **Client-side data**. Widgets will consume `viewport features` data, listening to the viewport changes. `viewportFilter` prop must be true. The viewport is part of the store so any time it changes, the widget is refreshed to include only data corresponding to the current viewport.
-
-{{% bannerNote title="warning" %}}
-* Setting `viewportFilter={false}` is the same as not specifying the property, because the default value is false.
-  
-* BigQuery tileset layers work only with client-side data so it requires `viewportFilter` prop set to true. Otherwise, you will get an error.
 {{%/ bannerNote %}}
 
 ### Understanding how the pieces work together
