@@ -23,4 +23,5 @@ cascade:
         - "Globe View"
         - "Heatmap"
         - "H3 Cluster Layer"
+        - "Contour"
 ---
