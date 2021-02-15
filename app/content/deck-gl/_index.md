@@ -28,4 +28,6 @@ cascade:
         - "Hexagon Layer"
         - "Icon Layer"
         - "S2 Layer"
+        - "Clustering"
+        - "ArcLayer"
 ---
