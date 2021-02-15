@@ -29,5 +29,5 @@ cascade:
         - "Icon Layer"
         - "S2 Layer"
         - "Clustering"
-        - "ArcLayer"
+        - "Arc Layer"
 ---
