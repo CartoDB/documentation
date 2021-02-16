@@ -14,8 +14,8 @@
   <script type="text/javascript">
     async function initialize() {
       deck.carto.setDefaultCredentials({
-        username: "public",
-        apiKey: "ZhR0JyCnE9l9ZRV84_Ng7g",
+        username: 'public',
+        apiKey: 'default_public',
       });
 
       // Fetch Data from CARTO
@@ -27,7 +27,6 @@
       const deckgl = new deck.DeckGL({
         container: 'map',
         mapStyle: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-
         initialViewState: {
           longitude: -73.95,
           latitude: 40.73,
@@ -35,7 +34,6 @@
           maxZoom: 16
         },
         controller: true,
-
         layers: [
           new deck.HeatmapLayer({
             id: 'heatmap-layer',
