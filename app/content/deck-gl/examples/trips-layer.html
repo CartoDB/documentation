@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0;">
+    <div id="map" style="width: 100vw; height: 100vh"></div>
+  </body>
+
+  <script type="text/javascript">
+    const ambientLight = new deck.AmbientLight({
+      color: [255, 255, 255],
+      intensity: 1.0
+    });
+
+    const pointLight = new deck.PointLight({
+      color: [255, 255, 255],
+      intensity: 2.0,
+      position: [-74.05, 40.7, 8000]
+    });
+
+    const lightingEffect = new deck.LightingEffect({ambientLight, pointLight});
+
+    const material = {
+      ambient: 0.1,
+      diffuse: 0.6,
+      shininess: 32,
+      specularColor: [60, 64, 70]
+    };
+
+    const theme = {
+      buildingColor: [74, 80, 87],
+      trailColor0: [253, 128, 93],
+      trailColor1: [23, 184, 190],
+      material,
+      effects: [lightingEffect]
+    };
+
+    const LOOP_LENGTH = 1800;
+    const ANIMATION_SPEED = 0.4;
+
+    async function initialize() {
+      deck.carto.setDefaultCredentials({
+        username: 'public',
+        apiKey: 'default_public',
+      });
+
+      // Fetch Data from CARTO
+      // Notice that you can use any Deck.gl layer with CARTO datasets getting GeoJSON data from CARTO's API. This method is recommended for complex layers with datasets below 50Mb
+      const tripsUrl = 'https://public.carto.com/api/v2/sql?q=SELECT the_geom, vendor, timestamps FROM sf_trips_v7&format=geojson';
+      const geojsonTripsData = await fetch(tripsUrl).then(response => response.json());
+      // TripsLayer needs data in the following format
+      const layerData = geojsonTripsData.features.map(f => ({
+        vendor: f.properties.vendor,
+        timestamps: f.properties.timestamps,
+        path: f.geometry.coordinates[0]
+      }));
+
+      const staticLayers = [
+        // This is only needed when using shadow effects
+        new deck.PolygonLayer({
+          id: 'ground-layer',
+          data: [[[-74.0, 40.7], [-74.02, 40.7], [-74.02, 40.72], [-74.0, 40.72]]],
+          getPolygon: f => f,
+          stroked: false,
+          getFillColor: [0, 0, 0, 0]
+        }),
+        new deck.carto.CartoSQLLayer({
+          id: 'buildings-layer',
+          data: 'SELECT the_geom_webmercator, height FROM sf_buildings',
+          extruded: true,
+          wireframe: true,
+          opacity: 0.5,
+          getElevation: f => f.properties.height,
+          getFillColor: [74, 80, 87],
+          material: theme.material
+        })
+      ];
+
+      // Create Deck.GL map
+      const deckgl = new deck.DeckGL({
+        container: 'map',
+        mapStyle: 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json',
+        initialViewState: {
+          longitude: -74,
+          latitude: 40.73,
+          zoom: 12,
+          pitch: 45,
+          bearing: 0
+        },
+        controller: true,
+        layers: staticLayers,
+        effects: theme.effects
+      });
+
+      let time = 0;
+
+      function animate() {
+        time = (time + ANIMATION_SPEED) % LOOP_LENGTH;
+        window.requestAnimationFrame(animate);
+      }
+
+      setInterval(() => {
+        deckgl.setProps({
+          layers: [
+            ...staticLayers,
+            new deck.TripsLayer({
+              id: 'trips-layer',
+              data: layerData,
+              getPath: d => d.path,
+              getTimestamps: d => d.timestamps,
+              getColor: d => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
+              opacity: 0.3,
+              widthMinPixels: 2,
+              rounded: true,
+              trailLength: 180,
+              currentTime: time,
+              shadowEnabled: false
+            })
+          ]
+        });
+      }, 50);
+
+      window.requestAnimationFrame(animate);
+    }
+
+    initialize();    
+  </script>
+</html>
