@@ -29,9 +29,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&family=Overpass+Mono&display=swap" rel="stylesheet">
 
+
   {{ $styles := resources.Get "scss/main.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
 
+  {{ $styleAsciinema := resources.Get "scss/libraries/asciinema-player.css" | toCSS "css/hugo/asiinema-player.css" | minify | fingerprint}}
+  <link rel="preload" href="{{ $styleAsciinema.RelPermalink }}" integrity="{{ $styleAsciinema.Data.Integrity }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ $styleAsciinema.RelPermalink }}" integrity="{{ $styleAsciinema.Data.Integrity }}" media="screen"></noscript>
 
   <!-- Twitter cards -->
   <meta name=twitter:site content=@carto>
