@@ -2,6 +2,10 @@
 
 This guide shows how you can create a CARTO for React application. You will learn about the main files that compose the application and how to configure it to use datasets from your own CARTO account.
 
+It is a really straightforward process as you can see in the following video that also shows how to add views and layers to your application:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G_BeSZPD2EQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
+
 ### Creating an application
 
 The basic prerequisite for using Create React App is to have a package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)) previously installed.

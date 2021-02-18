@@ -2,9 +2,9 @@
 
 CARTO for React is the best way to develop Location Intelligence (LI) Apps using the CARTO platform + React + deck.gl.
 
-You can see for yourself how easy it is to create an application in this video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G_BeSZPD2EQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
+<asciinema-player src="/cast/react-basic-usage.cast" autoplay loop></asciinema-player>
+
 
 It is based on [Create React App](https://github.com/facebook/create-react-app), the most popular toolchain, and it will allow you to start with a well designed structure following the best practices for modern frontend development and an integrated toolchain for testing, building and deploying your application.
 
