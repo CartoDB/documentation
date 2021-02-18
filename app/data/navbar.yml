@@ -13,16 +13,16 @@ navbar:
         url: https://docs.carto.com/spatial-extension-bq
   - name: Dev tools
     subelements:
-      #- name: CARTO for React
-      #  url: 
+      - name: CARTO for React
+        url: https://docs.carto.com/react
       - name: CARTO for deck.gl
-        url: https://carto.com/developers/deck-gl
+        url: https://docs.carto.com/deck-gl
       - name: CARTO + Google Maps
-        url: https://carto.com/developers/gmaps/guides/getting-started
+        url: https://docs.carto.com/google-maps
       - name: CARTO + Mapbox GL
-        url: https://carto.com/developers/mapbox/guides/getting-started
+        url: https://docs.carto.com/mapbox-gl
       - name: CARTO + Amazon Location
-        url: https://carto.com/developers/amazon-location
+        url: https://docs.carto.com/amazon-location
       - name: Mobile SDK
         url: https://carto.com/developers/mobile-sdk
   # - name: APIs
