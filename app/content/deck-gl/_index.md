@@ -26,4 +26,5 @@ cascade:
         - "Contour"
         - "Hexagon Layer"
         - "Grid Layer"
+        - "H3 Hexagon Layer"
 ---
