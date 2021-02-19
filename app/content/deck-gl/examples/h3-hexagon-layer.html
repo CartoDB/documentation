@@ -26,7 +26,6 @@
       });
 
       // Fetch Data from CARTO
-      // Notice that you can use any Deck.gl layer with CARTO datasets getting GeoJSON data from CARTO's API. This method is recommended for complex layers with datasets below 50Mb
       const url = 'https://public.carto.com/api/v2/sql?q=SELECT hex, count FROM sf_h3_cells&format=json';
       const jsonData = await fetch(url).then(response => response.json());
 
