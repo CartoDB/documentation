@@ -20,6 +20,7 @@ cascade:
         - "Extrusion"
         - "Icon Layer"
         - "Clustering"
+<<<<<<< HEAD
         - "Globe View"
         - "Heatmap"
         - "H3 Cluster Layer"
@@ -27,4 +28,7 @@ cascade:
         - "Hexagon Layer"
         - "Grid Layer"
         - "H3 Hexagon Layer"
+=======
+        - "S2 Layer"
+>>>>>>> docs: add S2 Layer example
 ---
