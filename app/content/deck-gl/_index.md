@@ -20,4 +20,5 @@ cascade:
         - "Extrusion"
         - "Icon Layer"
         - "Clustering"
+        - "Globe View"
 ---
