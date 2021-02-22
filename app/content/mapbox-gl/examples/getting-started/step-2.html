@@ -1,92 +1,166 @@
 <!DOCTYPE html>
 <html>
-  
   <head>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
-    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
   </head>
-
   <body style="margin: 0; padding: 0;">
     <div id="map" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
   </body>
-  
   <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRyaTJjIiwiYSI6ImNqZXF1cHVtbTEwNGkyd2x2OHppam1sd3MifQ.vW5s7lwz5b_SRaIVLbqv1w';
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
-      center: [0, 0],
-      zoom: 1
+      style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+      center: [-112.125, 36.12],
+      zoom: 12,
+      pitch: 70,
+      bearing: 180
     });
+
+    function initialize() {
+      map.on('load', async () => {
+        map.addSource('mapbox-dem', {
+          'type': 'raster-dem',
+          'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+          'tileSize': 512,
+          'maxzoom': 14
+        });
+
+        // add the DEM source as a terrain layer with exaggerated height
+        map.setTerrain({
+          'source': 'mapbox-dem',
+          'exaggeration': 1.5
+        });
+        
+        // add a sky layer that will show when the map is highly pitched
+        map.addLayer({
+          'id': 'sky',
+          'type': 'sky',
+          'paint': {
+            'sky-type': 'atmosphere',
+            'sky-atmosphere-sun': [0.0, 0.0],
+            'sky-atmosphere-sun-intensity': 15
+          }
+        });
+
+        // get CARTO MVT sources from Maps API v2
+        const source = await getTileSources();
+
+        // add a CARTO layer
+        map.addSource('grca-trail-source', {
+          'type': 'vector',
+          'tiles': source.tiles
+        });
+        map.addLayer({
+          'id': 'grca-trail-layer',
+          'type': 'line',
+          'source': 'grca-trail-source',
+          'source-layer': source.sourceLayer,
+          'paint': {
+            'line-color': 'orange',
+            'line-width': 3
+          }
+        });
+      });
+
+      // wait for the terrain and sky to load before starting animations
+      map.on('idle', animate);
+    }
+
+    initialize();
 
     const REQUEST_GET_MAX_URL_LENGTH = 2048;
 
-    addCartoLayer();
-
-    async function addCartoLayer() {
-      const tileSourceURLs = await getTileSources();
-      map.addLayer(
-        {
-          id: 'populated_places',
-          type: 'circle',
-          source: {
-            type: 'vector',
-            tiles: tileSourceURLs
-          },
-          'source-layer': 'layer0',
-          paint: {
-            'circle-color': '#EE4D5A',
-            'circle-stroke-color': '#FFF',
-            'circle-stroke-width': 1
-          }
-        }
-      );
-    }
-
     async function getTileSources() {
-      const mapConfig = JSON.stringify({
-        version: '1.3.1',
-        buffersize: {mvt: 1},
-        layers: [
-          {
-            type: 'mapnik',
-            options: {
-              sql: 'SELECT the_geom_webmercator, name FROM populated_places',
-              vector_extent: 4096,
-              bufferSize: 1,
-              version: '1.3.1'
-            }
-          }
-        ]
+      const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
+      const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public`;
+
+      const request = new Request(tilejsonUrl, {
+        method: tilejsonUrl.length < REQUEST_GET_MAX_URL_LENGTH ? 'GET' : 'POST',
+        headers: {
+          Accept: 'application/json'
+        }
       });
-      const url = `https://public.carto.com/api/v1/map?apikey=default_public}`;
-      const getUrl = `${url}&config=${encodeURIComponent(mapConfig)}`;
-      let request;
-
-      if (getUrl.length < REQUEST_GET_MAX_URL_LENGTH) {
-        request = new Request(getUrl, {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json'
-          }
-        });
-
-      } else {
-        request = new Request(url, {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: mapConfig
-        });
-      }
 
       const response = await fetch(request);
-      return (await response.json()).metadata.tilejson.vector.tiles
+      const {
+        tiles,
+        tilestats: {
+          layers: [{ id }]
+        }
+      } = await response.json();
+
+      return {
+        sourceLayer: id,
+        tiles
+      };
     }
 
-  </script>
+    function updateCameraPosition(position, altitude, target) {
+      const camera = map.getFreeCameraOptions();
+      camera.position = mapboxgl.MercatorCoordinate.fromLngLat(
+        position,
+        altitude
+      );
+      camera.lookAtPoint(target);
+      
+      map.setFreeCameraOptions(camera);
+    }
 
+    // linearly interpolate between two positions based on time
+    function lerp(a, b, t) {
+      if (Array.isArray(a) && Array.isArray(b)) {
+        const result = [];
+        for (let i = 0; i < Math.min(a.length, b.length); i++) {
+          result[i] = a[i] * (1 - t) + b[i] * t;
+        }
+        return result;
+      } else {
+        return a * (1 - t) + b * t;
+      }
+    }
+
+    let animationTime = 0.0;
+
+    function animate() {
+      const animationConfig = {
+        duration: 1000,
+        animate: (phase) => {
+          const start = [-112.125, 36.3];
+          const end = [-112.125, 36.05];
+            
+          // interpolate camera position while keeping focus on a target lat/lng
+          const position = lerp(start, end, phase);
+          const altitude = 5000;
+          const target = [-112.065, 36.147];
+            
+          updateCameraPosition(position, altitude, target);
+        }
+      };
+      
+      let lastTime = 0.0;
+      let frameReq;
+      function frame(time) {
+        if (animationTime < animationConfig.duration) {
+          animationConfig.animate(animationTime / animationConfig.duration);
+        }
+        
+        // allow requestAnimationFrame to control the speed of the animation
+        animationTime += 100 / (time - lastTime);
+        lastTime = time;
+        
+        if (animationTime > animationConfig.duration) {
+          window.cancelAnimationFrame(frameReq);
+          return;
+        }
+        
+        frameReq = window.requestAnimationFrame(frame);
+      }
+      
+      frameReq = window.requestAnimationFrame(frame);
+    };
+  </script>
 </html>
