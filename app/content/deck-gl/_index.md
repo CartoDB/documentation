@@ -20,4 +20,5 @@ cascade:
         - "Extrusion"
         - "Icon Layer"
         - "Clustering"
+        - "3D Tiles"
 ---

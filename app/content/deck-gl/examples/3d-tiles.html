@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@loaders.gl/3d-tiles@2.3.11/dist/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 0.8rem;
+      }
+      #map {
+        width: 100vw;
+        height: 100vh;
+      }
+      .attributions {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: #fff;
+        padding: 0.5rem;
+        border-radius: 0.25rem;
+        opacity: 0.9;
+      }
+      .attributions > div:first-child {
+        text-align: center;
+        border-style: groove;
+        border-radius: 0.25rem;
+        padding: 0.25rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+    <div class="attributions">
+      <div>
+        <b>Tileset Credentials</b>
+          <div>
+            <span>
+              <a href="https://cesium.com/" target="_blank">
+                <img alt="Cesium ion" src="https://assets.cesium.com/ion-credit.png" />
+              </a>
+            </span>
+          </div>
+          <div>
+            <a href="https://cesium.com/pricing/" target="_blank">
+              Upgrade for commercial use.
+            </a>
+          </div>
+          <div>
+            <span>
+              Modified from
+              <a href="https://data.melbourne.vic.gov.au/Property-Planning/City-of-Melbourne-3D-Point-Cloud-2018/2dqj-9ydd" target="_blank">
+                City of Melbourne 3D Point Cloud
+              </a>
+              <a href="https://creativecommons.org/licenses/by/4.0/legalcode" target="_blank">
+                CC BY 4.0
+              </a>
+            </span>
+          </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    const ION_ASSET_ID = 43978;
+    const ION_TOKEN =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWMxMzcyYy0zZjJkLTQwODctODNlNi01MDRkZmMzMjIxOWIiLCJpZCI6OTYyMCwic2NvcGVzIjpbImFzbCIsImFzciIsImdjIl0sImlhdCI6MTU2Mjg2NjI3M30.1FNiClUyk00YH_nWfSGpiQAjR5V2OvREDq1PJ5QMjWQ';
+    const TILESET_URL = `https://assets.cesium.com/${ION_ASSET_ID}/tileset.json`;
+
+    let viewState = {
+      latitude: 40,
+      longitude: -75,
+      pitch: 45,
+      maxPitch: 60,
+      bearing: 0,
+      minZoom: 2,
+      maxZoom: 30,
+      zoom: 17
+    };
+
+    function initialize() {
+      // Create Deck.GL map
+      const deckgl = new deck.DeckGL({
+        container: 'map',
+        mapStyle: 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json',
+        initialViewState: viewState,
+        controller: true,
+        layers: [
+          new deck.Tile3DLayer({
+            id: 'tile-3d-layer',
+            pointSize: 2,
+            data: TILESET_URL,
+            loader: loaders.CesiumIonLoader,
+            loadOptions: { 'cesium-ion': { accessToken: ION_TOKEN } },
+            onTilesetLoad: (tileset) => {
+              const { cartographicCenter, zoom } = tileset;
+
+              viewState = {
+                ...viewState,
+                longitude: cartographicCenter[0],
+                latitude: cartographicCenter[1],
+                zoom
+              }
+
+              deckgl.setProps({
+                initialViewState: viewState
+              });
+            }
+          })
+        ]
+      });
+    }
+
+    initialize();
+  </script>
+</html>
