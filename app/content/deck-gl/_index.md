@@ -17,18 +17,15 @@ cascade:
         - "Color Continuous Style"
         - "Color Bins Style"
         - "Color Categories Style"
-        - "Extrusion"
-        - "Icon Layer"
         - "Clustering"
-<<<<<<< HEAD
+        - "Extrusion"
+        - "Contour Layer"
         - "Globe View"
-        - "Heatmap"
-        - "H3 Cluster Layer"
-        - "Contour"
-        - "Hexagon Layer"
         - "Grid Layer"
+        - "H3 Cluster Layer"
         - "H3 Hexagon Layer"
-=======
+        - "Heatmap Layer"
+        - "Hexagon Layer"
+        - "Icon Layer"
         - "S2 Layer"
->>>>>>> docs: add S2 Layer example
 ---
