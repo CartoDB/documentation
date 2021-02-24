@@ -25,4 +25,5 @@ cascade:
         - "H3 Cluster Layer"
         - "Contour"
         - "Hexagon Layer"
+        - "Grid Layer"
 ---
