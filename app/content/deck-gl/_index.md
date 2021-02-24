@@ -21,4 +21,5 @@ cascade:
         - "Icon Layer"
         - "Clustering"
         - "Globe View"
+        - "Heatmap"
 ---
