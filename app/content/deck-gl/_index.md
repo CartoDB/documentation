@@ -19,6 +19,7 @@ cascade:
         - "Color Categories Style"
         - "Clustering"
         - "Extrusion"
+        - "Arc Layer"
         - "Contour Layer"
         - "Globe View"
         - "Grid Layer"
