@@ -24,4 +24,5 @@ cascade:
         - "Heatmap"
         - "H3 Cluster Layer"
         - "Contour"
+        - "Hexagon Layer"
 ---
