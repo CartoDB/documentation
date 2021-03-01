@@ -30,4 +30,5 @@ cascade:
         - "Icon Layer"
         - "S2 Layer"
         - "Trips Layer"
+        - "Lighting"
 ---
