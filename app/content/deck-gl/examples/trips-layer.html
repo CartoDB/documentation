@@ -22,7 +22,6 @@
       });
 
       // Fetch Data from CARTO
-      // Notice that you can use any Deck.gl layer with CARTO datasets getting GeoJSON data from CARTO's API.
       const query = 'SELECT the_geom, vendor, timestamps FROM new_york_trips';
       const url = `https://public.carto.com/api/v2/sql?q=${query}&format=geojson`;
       const geojsonData = await fetch(url).then(response => response.json());
@@ -33,7 +32,6 @@
         path: f.geometry.coordinates[0]
       }));
 
-      // Create Deck.GL map
       const deckgl = new deck.DeckGL({
         container: 'map',
         mapStyle: 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json',

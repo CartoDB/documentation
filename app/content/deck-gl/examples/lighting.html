@@ -46,7 +46,6 @@
         apiKey: 'default_public',
       });
 
-      // Create Deck.GL map
       const deckgl = new deck.DeckGL({
         container: 'map',
         mapStyle: 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json',
@@ -71,7 +70,6 @@
             id: 'buildings-layer',
             data: 'SELECT the_geom_webmercator, height FROM lower_manhattan_buildings',
             extruded: true,
-            opacity: 0.5,
             getElevation: f => f.properties.height,
             getFillColor: theme.buildingColor
           })
