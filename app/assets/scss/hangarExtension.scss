@@ -1,3 +1,8 @@
+// Hangar improvements
+.u-align-start {
+  align-items: start;
+}
+
 //Navbar Search
 .navbar__search {
   position: relative;
@@ -58,4 +63,29 @@
   .navbar__mobile {
     display: flex;
   }
+}
+
+// Sticky navbar
+.navbar_sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: $base-grey;
+  z-index: 99999;
+  animation-name: sticky;
+  animation-duration: 0.25s;
+  animation-timing-function: ease;
+}
+
+@keyframes sticky {
+  from { top: -76px }
+  to { top: 0; }
+}
+
+// Sticky sidebar
+
+.toc-sidebar__container {
+  align-self: flex-start;  // FIX position sticky into a flex-box container
+  position: sticky;
+  top: 136px;
 }

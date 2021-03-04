@@ -272,7 +272,7 @@ Our goal is to make the development of web-based spatial applications as easy as
 Our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
 
 
-#### CARTO Developer Resources
+### CARTO Developer Resources
 
 If you are building a web-based spatial application, we recommend you to use CARTO for deck.gl, the most advanced geospatial visualization library. Go to the [Getting Started](https://carto.com/developers/deck-gl/guides/getting-started/) guide to begin creating awesome applications.
 
