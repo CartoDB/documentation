@@ -69,20 +69,22 @@ function selectCurrentTocCategory() {
   // selectCategoryId(sections[currentIndex].id);
 }
 
+var to = null;
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (event) {
     event.preventDefault();
+
+    to = null;
 
     var href = this.getAttribute('href');
     var element = document.querySelector(href);
     var y = element.offsetTop - 136;
 
-    element.scrollIntoView({ behavior: 'smooth' });
-    
-    window.scrollTo({top: y, behavior: 'smooth'});
+    // element.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({ top: y, behavior: 'smooth' });
 
-    window.setTimeout(function () {
+    to = window.setTimeout(function () {
       window.location.hash = href;
-    }, 550);
+    }, 250);
   });
 });
