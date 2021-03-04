@@ -21,19 +21,17 @@ function showElements() {
 }
 
 // Sticky nav
-window.addEventListener('scroll', onWindowScrollHandler, { passive: true });
-
-var navbar = document.querySelector('.navbar')
-var parent = navbar.parentElement
-var parentHeight = parent.getBoundingClientRect().height
+window.addEventListener('scroll', onWindowScrollHandler, { pasive: true });
+var navbar = document.querySelector('.navbar');
+var parent = navbar.parentElement;
+var parentHeight = parent.getBoundingClientRect().height;
 
 function onWindowScrollHandler(event) {
   const scrollPosition = document.documentElement.scrollTop;
-
-  if (scrollPosition > parentHeight + 10 && !navbar.classList.contains("navbar_sticky")) {
+  if (scrollPosition > parentHeight + 10) {
     parent.style.height = parentHeight + 'px';  // NOTE: to fix blinking
     navbar.classList.add("navbar_sticky");
-  } else if (scrollPosition < parentHeight + 10 && navbar.classList.contains("navbar_sticky")) {
+  } else {
     navbar.classList.remove("navbar_sticky");
   }
 }

@@ -99,3 +99,42 @@ div.chroma {
 /* GenericTraceback */ .chroma .gt {  }
 /* GenericUnderline */ .chroma .gl {  }
 /* TextWhitespace */ .chroma .w {  }
+
+
+.language-js {
+  color: #6eacff;
+
+  .keyword {
+    color: #c382eb;
+  }
+
+  .punctuation,
+  .operator {
+    color: #d6d5d4;
+  }
+
+  .parameter {
+    color: #5cd3ad;
+  }
+
+  .class-name {
+    color: #3196e9;
+  }
+
+  .function {
+    color: #5f98fc;
+  }
+
+  .string,
+  .template-string {
+    color: #c5eb8c;
+  }
+
+  .comment {
+    color: #babec0;
+  }
+}
+
+.language-json {
+  color: #d6d5d4;
+}
