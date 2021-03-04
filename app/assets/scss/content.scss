@@ -147,6 +147,7 @@
     a {
       display: block;
       color: rgba($base-grey, 0.48);
+      transition: color 0.15s ease, background-color 0.15s ease, ;
       overflow: hidden;
       text-overflow: ellipsis;
       text-transform: uppercase;
@@ -154,7 +155,7 @@
 
       &:hover,
       &.is-active {
-        color: $base-grey;
+        color: $navyBlue;
         background-color: $softblue;
         text-decoration: none;
       }
@@ -168,7 +169,9 @@
 
       li {
         a {
-          padding: 8px 8px 8px 32px;
+          padding: 8px 8px 8px 36px;
+          // @include text();
+          font-family: $font-family-base;
         }
       }
     }
@@ -328,6 +331,7 @@
     padding-left: 36px;
     position: relative;
     color: rgba($navyBlue, 0.48);
+
     &:before {
       content: '';
       position: absolute;

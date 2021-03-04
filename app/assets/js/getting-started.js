@@ -33,28 +33,14 @@ function changeExample(elemName, container) {
   elem.classList.add("is-active");
 }
 
+// NOTE: Migrated position logic to CSS sticky position
 //Sidebar
-
 var sidebar = document.querySelector(".js-toc-sidebar");
 var sidebarContainer = sidebar.querySelector(".js-toc-sidebar-container");
-var distanceTop = 48;
 
 if (sidebarContainer) {
   window.addEventListener('scroll', function(e) {
-    if(sidebar.getBoundingClientRect().top < distanceTop) {
-      sidebarContainer.classList.add("is-fixed");
-      if (sidebar.getBoundingClientRect().bottom <= (sidebarContainer.getBoundingClientRect().height + distanceTop))
-      {
-          sidebarContainer.style.top = sidebar.getBoundingClientRect().bottom - sidebarContainer.getBoundingClientRect().height + "px";
-      } else {
-          sidebarContainer.style.top = distanceTop + "px";
-          selectCurrentTocCategory();
-      }
-    }
-    else {
-      sidebarContainer.classList.remove("is-fixed");
-      selectCurrentTocCategory();
-    }
+    selectCurrentTocCategory();
   })
 }
 
@@ -69,13 +55,15 @@ function selectCurrentTocCategory() {
     if(sections[i].getBoundingClientRect().top < 200) {
       currentIndex = i;
     }
-    else
+    else {
       break;
+    }
   }
   var newElement = tocContainer.querySelector('a[href="#'+ sections[currentIndex].id +'"]');
   newElement.classList.add("is-active");
-  if((newElement != selectedElement) && selectedElement)
+  if((newElement != selectedElement) && selectedElement) {
     selectedElement.classList.remove("is-active");
+  }
 
   // selectCategoryId(sections[currentIndex].id);
 }
