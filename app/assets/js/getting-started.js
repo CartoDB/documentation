@@ -60,10 +60,14 @@ function selectCurrentTocCategory() {
     }
   }
   var newElement = tocContainer.querySelector('a[href="#'+ sections[currentIndex].id +'"]');
-  console.log(newElement);
   newElement.classList.add("is-active");
-  if((newElement != selectedElement) && selectedElement)
+  if((newElement != selectedElement) && selectedElement) {
     selectedElement.classList.remove("is-active");
+
+    window.setTimeout(function () {
+      window.location.hash = sections[currentIndex].id;
+    }, 300);
+  }
 
   // selectCategoryId(sections[currentIndex].id);
 }

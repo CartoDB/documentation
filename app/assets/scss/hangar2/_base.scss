@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;
@@ -15,7 +19,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -webkit-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
-
 }
 
 a {
