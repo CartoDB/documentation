@@ -63,10 +63,6 @@ function selectCurrentTocCategory() {
   newElement.classList.add("is-active");
   if((newElement != selectedElement) && selectedElement) {
     selectedElement.classList.remove("is-active");
-
-    window.setTimeout(function () {
-      window.location.hash = sections[currentIndex].id;
-    }, 300);
   }
 
   // selectCategoryId(sections[currentIndex].id);
