@@ -1,40 +1,42 @@
 navbar:
   - name: Dashboard
     url: https://carto.com/help/tutorials/your-dashboard-overview
-  - name: Builder
-    url: https://carto.com/help/tutorials/using-builder
-  - name: CARTOframes
-    url: https://carto.com/developers/cartoframes
+  # - name: Builder
+  #   url: https://carto.com/help/tutorials/using-builder
   - name: Data Observatory
     url: https://carto.com/help/working-with-data/intro_data_observatory
-  #- name: Spatial Extension
-  #  url: 
+  - name: CARTOframes
+    url: https://carto.com/developers/cartoframes
+  - name: Spatial Extensions
+    subelements:
+      - name: Spatial Extension for BigQuery
+        url: https://docs.carto.com/spatial-extension-bq
   - name: Dev tools
     subelements:
-      #- name: CARTO for React
-      #  url: 
+      - name: CARTO for React
+        url: https://docs.carto.com/react
       - name: CARTO for deck.gl
-        url: https://carto.com/developers/deck-gl
+        url: https://docs.carto.com/deck-gl
       - name: CARTO + Google Maps
-        url: https://carto.com/developers/gmaps/guides/getting-started
+        url: https://docs.carto.com/google-maps
       - name: CARTO + Mapbox GL
-        url: https://carto.com/developers/mapbox/guides/getting-started
+        url: https://docs.carto.com/mapbox-gl
       - name: CARTO + Amazon Location
-        url: https://carto.com/developers/amazon-location
+        url: https://docs.carto.com/amazon-location
       - name: Mobile SDK
         url: https://carto.com/developers/mobile-sdk
-  - name: APIs
-    subelements:
-      - name: SQL API
-        url: https://carto.com/developers/sql-api
-      - name: Maps API
-        url: https://carto.com/developers/maps-api
-      - name: Import API
-        url: https://carto.com/developers/import-api
-      - name: Data Services API
-        url: https://carto.com/developers/data-services-api
-      - name: Auth API
-        url: https://carto.com/developers/auth-api
-      - name: Federated Tables API
-        url: https://carto.com/developers/federated-tables-api
+  # - name: APIs
+  #   subelements:
+  #     - name: SQL API
+  #       url: https://carto.com/developers/sql-api
+  #     - name: Maps API
+  #       url: https://carto.com/developers/maps-api
+  #     - name: Import API
+  #       url: https://carto.com/developers/import-api
+  #     - name: Data Services API
+  #       url: https://carto.com/developers/data-services-api
+  #     - name: Auth API
+  #       url: https://carto.com/developers/auth-api
+  #     - name: Federated Tables API
+  #       url: https://carto.com/developers/federated-tables-api
     

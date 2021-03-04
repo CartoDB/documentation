@@ -1,12 +1,12 @@
 <head>
   <!-- Google Tag Manager -->
   <!-- Anti-flicker snippet (recommended)  -->
-  <style>.async-hide { opacity: 0 !important} </style>
+  <!-- <style>.async-hide { opacity: 0 !important} </style>
   <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
   h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
   (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
   })(window,document.documentElement,'async-hide','dataLayer',4000,
-  {'GTM-WGSN6JK':true});</script>
+  {'GTM-WGSN6JK':true});</script> -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -29,9 +29,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&family=Overpass+Mono&display=swap" rel="stylesheet">
 
+
   {{ $styles := resources.Get "scss/main.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
 
+  {{ $styleAsciinema := resources.Get "scss/libraries/asciinema-player.css" | toCSS "css/hugo/asiinema-player.css" | minify | fingerprint}}
+  <link rel="preload" href="{{ $styleAsciinema.RelPermalink }}" integrity="{{ $styleAsciinema.Data.Integrity }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ $styleAsciinema.RelPermalink }}" integrity="{{ $styleAsciinema.Data.Integrity }}" media="screen"></noscript>
 
   <!-- Twitter cards -->
   <meta name=twitter:site content=@carto>

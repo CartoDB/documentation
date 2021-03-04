@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+
+    <style type="text/css">
+      .layer-selector {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: #fff;
+        width: 240px;
+        margin: 24px;
+        padding: 10 24px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        border-radius: 4px;
+      }
+      .layer-selector h3 {
+        font-size: 16px;
+        margin: 8px 0;
+      }
+      .layer-selector .layout {
+        display: table;
+        width: 100%;
+        margin: 8px 0;
+      }
+      .layer-selector .layout > * {
+        display: table-cell;
+        height: 12px;
+      }
+      .right-align {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body style="margin: 0; padding: 0; font-family: 'Open Sans', Helvetica, sans-serif;">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+    <div class="layer-selector">
+      <h3>Temperature</h3>
+      <div class="layout">
+        <div class="legend" style="background: linear-gradient(to right, rgb(247, 254, 174), rgb(4, 82, 117))"></div>
+      </div>
+      <p class="layout">
+        <span>Lower</span>
+        <span class="right-align">Higher</span>
+      </p>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    deck.carto.setDefaultCredentials({
+      username: 'public',
+      apiKey: 'default_public',
+    });
+
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+
+      initialViewState: {
+        latitude: 34,
+        longitude: -98,
+        zoom: 3,
+      },
+      controller: true,
+
+      layers: [
+        new deck.carto.CartoSQLLayer({
+          id: 'temps',
+          data: 'SELECT the_geom_webmercator, value FROM temps',
+          getFillColor: deck.carto.colorContinuous({
+            attr: 'value',
+            domain: [70, 75, 80, 85, 90, 95, 100],
+            colors: 'BluYl'
+          }),
+          pointRadiusMinPixels: 2,
+          pickable: true,
+        })
+      ],
+
+      getTooltip: ({ object }) => {
+        if (!object) return false;
+        return {
+          html: `${object.properties.value.toFixed(2)}ºF`
+        }
+      }
+
+    });
+
+  </script>
+</html>

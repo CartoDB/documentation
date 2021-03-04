@@ -274,9 +274,9 @@ Our developer toolkit includes industry-leading visualization, mapping and appli
 
 ### CARTO Developer Resources
 
-If you are building a web-based spatial application, we recommend you to use CARTO for deck.gl, the most advanced geospatial visualization library. Go to the [Getting Started](https://carto.com/developers/deck-gl/guides/getting-started/) guide to begin creating awesome applications.
+If you are building a web-based spatial application, we recommend you to use CARTO for deck.gl, the most advanced geospatial visualization library. Go to the [Getting Started](/deck-gl/guides/getting-started/) guide to begin creating awesome applications.
 
-CARTO is an open ecosystem that does not force you to use a specific technology or library. Please read the following guides if you want to work with CARTO and [Google Maps](https://carto.com/developers/gmaps/guides/getting-started/), [Mapbox](https://carto.com/developers/mapbox/guides/getting-started/) or [Amazon Location](https://carto.com/developers/amazon-location/guides/getting-started/).
+CARTO is an open ecosystem that does not force you to use a specific technology or library. Please read the following guides if you want to work with CARTO and [Google Maps](/google-maps), [Mapbox](/mapbox-gl) or [Amazon Location](/amazon-location).
 
 Your application probably provides access to datasets stored in the CARTO database. Please read this [article](/authorization) to understand how authorization is handled and how you can take advantage of CARTO support for the OAuth 2.0 protocol.
 
