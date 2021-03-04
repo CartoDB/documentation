@@ -83,8 +83,9 @@
 }
 
 // Sticky sidebar
+// Sticky sidebar
 
-.toc-sidebar__container {
+.js-toc-sidebar {
   align-self: flex-start;  // FIX position sticky into a flex-box container
   position: sticky;
   top: 136px;

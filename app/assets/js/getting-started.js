@@ -48,9 +48,10 @@ selectCurrentTocCategory();
 
 function selectCurrentTocCategory() {
   var tocContainer = document.querySelector("#TableOfContents")
-  var sections = document.querySelectorAll(".js-content>h2, .js-content>h3, .js-content>h4");
+  var sections = document.querySelectorAll(".js-content > h2, .js-content > h3, .js-content > h4");
   var selectedElement = tocContainer.querySelector(".is-active");
   var currentIndex = 0;
+
   for (var i = 0; i < sections.length; i++) {
     if(sections[i].getBoundingClientRect().top < 200) {
       currentIndex = i;
@@ -67,3 +68,23 @@ function selectCurrentTocCategory() {
 
   // selectCategoryId(sections[currentIndex].id);
 }
+
+var to = null;
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    to = null;
+
+    var href = this.getAttribute('href');
+    var element = document.querySelector(href);
+    var y = element.offsetTop - 136;
+
+    // element.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({ top: y, behavior: 'smooth' });
+
+    to = window.setTimeout(function () {
+      window.location.hash = href;
+    }, 250);
+  });
+});

@@ -175,6 +175,12 @@
         }
       }
     }
+    
+    & > ul > li > ul > li > a {
+      padding: 8px 8px 8px 36px;
+      font-family: $font-family-base;
+      font-weight: normal;
+    }
   }
 
   .toc__link {
@@ -217,10 +223,16 @@
 }
 
 .tutorial__step {
-  display: none;
-
+  display: block;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  
   &.is-active {
-    display: block;
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s;
   }
 
   h5 {
