@@ -1,8 +1,14 @@
 ---
 cascade:
   title: Spatial Extension for BigQuery
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet"
+  description: "Unlock Spatial Analytics on BigQuery"
   icon: "/img/icons/spatial-extension-bq.png"
-  extra_sections:
-    - "Tiler"
+  folders:
+    - name: "Tiler"
+      elements:
+        - "Overview"
+        - "Guides"
+        - "Map Viewer"
+        - "CLI tool" 
+        - "Examples"
 ---

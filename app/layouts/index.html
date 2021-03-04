@@ -22,7 +22,7 @@
     <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet">
       <h2 class="title f48 f32--tablet is-txtBaseGrey">Getting started with CARTO</h2>
       <p class="text f20 is-txtBaseGrey u-mt24">New to CARTO? Check out the following links and kick start your Location Intelligence project using our platform.</p>
-      <a href="/get-started" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt32 underlined-link">
+      <a href="/get-started" class="title f12 is-txtEmerald u-tupper u-mt32 underlined-link">
         <span>CARTO in a nutshell
           <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
         </span>
@@ -73,7 +73,7 @@
 
   <div class="container grid u-justify-center u-mb32">
     <div class="grid-cell grid-cell--col10">
-      <h2 class="title f20 is-txtBaseGrey">Development tools</h2>
+      <h2 id="dev-tools" class="title f20 is-txtBaseGrey">Development tools</h2>
     </div>
     <ul class="grid-cell--col10 grid u-mt24">
       {{range $elem := $data.developmentTools}}
@@ -131,22 +131,26 @@
     <ul class="grid-cell--col10 grid u-mt120 u-mb120 u-mt48--tablet u-mb48--tablet">
       <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20 u-flex u-flex-column u-align-start">
         <h3 class="title f20 is-txtBaseGrey">Help Center</h3>
-        <p class="text f16 is-txtTypo2 u-mt8 u-mbauto">Check out the most common responses to queries raised by the CARTO user community.</p>
-        <a href="#" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt24 underlined-link">
-          <span>Go to Help Center
-            <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
-          </span>
-        </a>
+        <p class="text f16 is-txtTypo2 u-mt8 u-mbauto">Check out the most common answers to queries raised by the CARTO user community.</p>
+        <div class="u-mt24">
+          <a href="https://carto.com/help" target="_blank" class="title f12 is-txtEmerald u-tupper underlined-link">
+            <span>Go to Help Center
+              <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
+            </span>
+          </a>
+        </div>
       </li>
 
       <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20 u-flex u-flex-column u-align-start">
         <h3 class="title f20 is-txtBaseGrey">Support</h3>
         <p class="text f16 is-txtTypo2 u-mt8 u-mbauto"> Find out how our support packages can help you make the most of CARTO.</p>
-        <a href="https://carto.com/help/getting-started/support-packages" target="_blank" class="title f12 is-txtEmerald u-tupper u-mt24 underlined-link">
-          <span>Learn more
-            <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
-          </span>
-        </a>
+        <div class="u-mt24">
+          <a href="https://carto.com/help/getting-started/support-packages" target="_blank" class="title f12 is-txtEmerald u-tupper underlined-link">
+            <span>Learn more
+              <svg class="u-ml8" width="20" height="10" viewBox="0 0 20 10" xmlns="http://www.w3.org/2000/svg"> <path d="M14.7.3l-1.4 1.4L15.58 4H0v2h15.59l-2.3 2.3 1.42 1.4L19.4 5z" fill="#2aac02" fill-rule="evenodd"></path> </svg>
+            </span>
+          </a>
+        </div>
       </li>
     </ul>
   </div>
