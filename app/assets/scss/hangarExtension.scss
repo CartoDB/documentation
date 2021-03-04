@@ -1,3 +1,8 @@
+// Hangar improvements
+.u-align-start {
+  align-items: start;
+}
+
 //Navbar Search
 .navbar__search {
   position: relative;
@@ -77,6 +82,7 @@
   to { top: 0; }
 }
 
+// Sticky sidebar
 // Sticky sidebar
 
 .js-toc-sidebar {

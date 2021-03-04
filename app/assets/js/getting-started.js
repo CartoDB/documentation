@@ -62,7 +62,7 @@ function selectCurrentTocCategory() {
   }
   var newElement = tocContainer.querySelector('a[href="#'+ sections[currentIndex].id +'"]');
   newElement.classList.add("is-active");
-  if ((newElement != selectedElement) && selectedElement) {
+  if((newElement != selectedElement) && selectedElement) {
     selectedElement.classList.remove("is-active");
   }
 

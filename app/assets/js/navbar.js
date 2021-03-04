@@ -22,9 +22,9 @@ function showElements() {
 
 // Sticky nav
 window.addEventListener('scroll', onWindowScrollHandler, { pasive: true });
-var navbar = document.querySelector('.navbar')
-var parent = navbar.parentElement
-var parentHeight = parent.getBoundingClientRect().height
+var navbar = document.querySelector('.navbar');
+var parent = navbar.parentElement;
+var parentHeight = parent.getBoundingClientRect().height;
 
 function onWindowScrollHandler(event) {
   const scrollPosition = document.documentElement.scrollTop;
