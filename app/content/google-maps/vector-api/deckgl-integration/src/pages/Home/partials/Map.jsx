@@ -36,35 +36,31 @@ function Map() {
     window.requestAnimationFrame(animate);
   }, []);
 
-  function handleOverlay(overlay) {
-    (async () => {
-      const geojsonData = await fetch(url).then((response) => response.json());
-      // TripsLayer needs data in the following format
-      const layerData = geojsonData.features.map((f) => ({
-        vendor: f.properties.vendor,
-        timestamps: f.properties.timestamps,
-        path: f.geometry.coordinates[0],
-      }));
+  async function handleOverlay(webGLOverlay) {
+    const geojsonData = await fetch(url).then((response) => response.json());
+    // TripsLayer needs data in the following format
+    const layerData = geojsonData.features.map((f) => ({
+      vendor: f.properties.vendor,
+      timestamps: f.properties.timestamps,
+      path: f.geometry.coordinates[0],
+    }));
 
-      setInterval(() => {
-        overlay.setProps({
-          layers: [
-            new TripsLayer({
-              id: 'trips-layer',
-              data: layerData,
-              getPath: (d) => d.path,
-              getTimestamps: (d) => d.timestamps,
-              getColor: (d) => (d.vendor === 0 ? [253, 128, 93] : [23, 184, 190]),
-              widthMinPixels: 4,
-              rounded: true,
-              trailLength: 180,
-              currentTime: time,
-              shadowEnabled: false,
-            }),
-          ],
-        });
-      }, 50);
-    })();
+    setInterval(() => {
+      webGLOverlay.setProps({
+        layers: new TripsLayer({
+          id: 'trips-layer',
+          data: layerData,
+          getPath: (d) => d.path,
+          getTimestamps: (d) => d.timestamps,
+          getColor: (d) => (d.vendor === 0 ? [253, 128, 93] : [23, 184, 190]),
+          widthMinPixels: 4,
+          rounded: true,
+          trailLength: 180,
+          currentTime: time,
+          shadowEnabled: false,
+        }),
+      });
+    }, 50);
   }
 
   return (

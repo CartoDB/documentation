@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 export const INITIAL_VIEW_STATE = {
   latitude: 40.715,
   longitude: -74,
-  zoom: 15,
+  zoom: 17,
   pitch: 60,
   bearing: 0,
 };

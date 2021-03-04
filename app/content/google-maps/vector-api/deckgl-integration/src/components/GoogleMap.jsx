@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef } from 'react';
-import GoogleMapsOverlay from 'GoogleMapsOverlay/google-maps-overlay';
 import { debounce } from 'utils/debounce';
 
 const GOOGLE_MAPS_ID = process.env.REACT_APP_GOOGLE_MAP_ID;
@@ -37,7 +36,7 @@ export default function GoogleMap({ viewState, onViewStateChange, onOverlayLoade
     }
   }, [mapRef, onViewStateChange]);
 
-  function onScripLoaded() {
+  async function onScripLoaded() {
     const { latitude, longitude, zoom, bearing, pitch } = viewState;
 
     const map = new window.google.maps.Map(containerRef.current, {
@@ -49,12 +48,14 @@ export default function GoogleMap({ viewState, onViewStateChange, onOverlayLoade
       tilt: pitch,
       heading: bearing,
       mapId: GOOGLE_MAPS_ID,
-      useStaticMap: true,
     });
 
-    const overlay = new GoogleMapsOverlay();
-    overlay.setMap(map);
-    onOverlayLoaded(overlay);
+    const { default: DeckGLOverlay } = await import('WebglOverlayView/google-maps-overlay');
+
+    const webGLOverlay = new DeckGLOverlay(containerRef.current, [], {});
+    webGLOverlay.setMap(map);
+
+    onOverlayLoaded(webGLOverlay);
 
     mapRef.current = map;
 
@@ -62,7 +63,7 @@ export default function GoogleMap({ viewState, onViewStateChange, onOverlayLoade
 
     setInterval(() => {
       bearingCopy = bearingCopy + 0.25;
-      map.setHeading(bearingCopy);
+      map.moveCamera({ center: { lat: latitude, lng: longitude }, heading: bearingCopy });
     }, 50);
 
     const handleViewportChangeDebounced = debounce(handleViewportChange, 200);
