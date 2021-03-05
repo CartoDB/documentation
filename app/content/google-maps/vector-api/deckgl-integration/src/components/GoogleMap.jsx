@@ -1,42 +1,25 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { debounce } from 'utils/debounce';
+import { useAppContext } from 'context/AppContext';
 
 const GOOGLE_MAPS_ID = process.env.REACT_APP_GOOGLE_MAP_ID;
 const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_KEY;
-const GOOGLE_MAPS_API_URL = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=&v=beta&map_ids=${GOOGLE_MAPS_ID}`;
+const GOOGLE_MAPS_API_URL = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=&v=3.42.10a&map_ids=${GOOGLE_MAPS_ID}`;
 
-export default function GoogleMap({ viewState, onViewStateChange, onOverlayLoaded }) {
+const CONTAINER_STYLE = {
+  position: 'absolute',
+  zIndex: 0,
+  left: 0,
+  top: 0,
+  width: '100%',
+  height: '100%',
+};
+
+export default function GoogleMap({ onOverlayLoaded = () => {} }) {
+  const { viewState } = useAppContext();
   const mapRef = useRef();
   const containerRef = useRef();
 
-  let containerStyle = {
-    position: 'absolute',
-    zIndex: 0,
-    left: 0,
-    top: 0,
-    width: '100%',
-    height: '100%',
-  };
-
-  const handleViewportChange = useCallback(() => {
-    const map = mapRef.current;
-
-    if (map) {
-      const center = map.getCenter();
-
-      const viewState = {
-        longitude: center.lng(),
-        latitude: center.lat(),
-        zoom: Math.max(map.getZoom() - 1, 1),
-        pitch: map.getTilt(),
-        bearing: map.getHeading(),
-      };
-
-      onViewStateChange(viewState);
-    }
-  }, [mapRef, onViewStateChange]);
-
-  async function onScripLoaded() {
+  const onScripLoaded = useCallback(async () => {
     const { latitude, longitude, zoom, bearing, pitch } = viewState;
 
     const map = new window.google.maps.Map(containerRef.current, {
@@ -59,16 +42,13 @@ export default function GoogleMap({ viewState, onViewStateChange, onOverlayLoade
 
     mapRef.current = map;
 
-    let bearingCopy = bearing;
+    /* let bearingCopy = bearing;
 
     setInterval(() => {
       bearingCopy = bearingCopy + 0.25;
       map.moveCamera({ center: { lat: latitude, lng: longitude }, heading: bearingCopy });
-    }, 50);
-
-    const handleViewportChangeDebounced = debounce(handleViewportChange, 200);
-    map.addListener('bounds_changed', handleViewportChangeDebounced);
-  }
+    }, 50); */
+  }, [onOverlayLoaded, viewState]);
 
   useEffect(() => {
     if (!document.querySelector('#gmaps')) {
@@ -85,5 +65,5 @@ export default function GoogleMap({ viewState, onViewStateChange, onOverlayLoade
     }
   }, [onScripLoaded]);
 
-  return <div ref={containerRef} style={containerStyle}></div>;
+  return <div ref={containerRef} style={CONTAINER_STYLE}></div>;
 }

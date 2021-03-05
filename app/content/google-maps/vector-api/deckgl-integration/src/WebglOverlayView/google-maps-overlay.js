@@ -1,5 +1,6 @@
 /* global google */
 import { Deck } from '@deck.gl/core';
+import { getFrustumPlanes } from './utils';
 
 const eventListeners = {
   click: null,
@@ -31,9 +32,7 @@ export default class DeckGLOverlay extends google.maps.WebglOverlayView {
     }
   }
 
-  onAdd() {
-    this.requestRedraw();
-  }
+  onAdd() {}
 
   onRemove() {}
 
@@ -104,6 +103,8 @@ export default class DeckGLOverlay extends google.maps.WebglOverlayView {
     gl.disable(gl.CULL_FACE);
     gl.depthFunc(gl.LEQUAL);
     gl.depthMask(true);
+
+    deck.needsRedraw({ clearRedrawFlags: true });
 
     deck._drawLayers('google-map-repaint', {
       clearCanvas: false,

@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from 'react';
 
 export const INITIAL_VIEW_STATE = {
-  latitude: 40.715,
-  longitude: -74,
-  zoom: 17,
+  latitude: 40.707,
+  longitude: -74.005,
+  zoom: 16,
   pitch: 60,
   bearing: 0,
 };
