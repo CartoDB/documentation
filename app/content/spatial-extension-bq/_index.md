@@ -11,4 +11,8 @@ cascade:
         - "Map Viewer"
         - "CLI tool" 
         - "Examples"
+    - name: "Spatial Indexes"
+      elements:
+        - "Overview"
+        - "Examples"
 ---
