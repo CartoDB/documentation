@@ -1,8 +1,6 @@
 ## Overview
 
-CARTO's Spatial Extension provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are The full list of functions is available in the [Reference](/spatial-extension-bq/reference). If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor. 
-
-Hierarchical grid systems, such as Quadkeys, H3 and S2 are an essential tool for analysing large spatial datasets, especially when dealing with data sources in different spatial aggregations. These systems are based on geospatial indexes that provide a direct relationship between grid cells at different resolutions, enabling extremely performant spatial operations.
+Hierarchical grid systems, such as Quadkeys, H3 and S2, are an essential tool for analysing large spatial datasets, especially when dealing with data sources in different spatial aggregations. These systems are based on geospatial indexes that provide a direct relationship between grid cells at different resolutions, enabling extremely performant spatial operations.
 
 <div class="row" style="display:flex">
   <div class="column" style="flex-grow:1;flex-shrink:0;flex-basis:300px;">
@@ -31,11 +29,12 @@ Hierarchical grid systems, such as Quadkeys, H3 and S2 are an essential tool for
   </div>
 </div>
 
-CARTO's Spatial Extension provides access to the most popular spatial indexes systems through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). The full list of available functions is available in the [Reference](/spatial-extension-bq/reference). If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor. 
+CARTO's Spatial Extension provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are public to everyone and ready to be used on your regular SQL on BigQuery. The full list of functions is available in the [Reference](/spatial-extension-bq/reference). If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor. 
+
 
 ### Quadkeys
 
-Quadkeys enable to uniquely identify by a single value any of the grid cells that result from uniformly subdividing a map in Mercator projection in rows and columns at different zoom levels.
+Quadkeys uniquely identify any of the grid cells (or map tiles) that result from uniformly subdividing a map in Mercator projection in rows and columns at different levels of detail. A quadkey is a single value whose length is equal to the level of detail of the tile it identifies, ranging from one digit (lowest level of detail) to 23 digits (highest level of detail). Moreover, a quadkey is composed by the quadkey of its parent tile (containing tile at the previous level of detail) plus an extra digit. 
 
 <div>
     <figure>
@@ -50,7 +49,11 @@ Quadkeys were developed by Microsoft to provide interactive mapping solutions. Y
 
 ### H3
 
-H3 is a multiresolution hexagonal global grid system with hierarchical indexing. 
+H3 is a multiresolution hexagonal global grid system with hierarchical indexing. It supports sixteen resolutions, each of them composed by cells with one seventh the area of the lower resolution containing cell. Each hexagon cell at a particular resolution is uniquely identified, and these identifiers can be easily truncated to find the coarser containing cell. However, since an hexagon cannot be exactly subdivided into seven hexagons, this process results in a fixed amount of shape distortion.  
+
+
+One of the most powerful properties of H3 is that all neighboring hexagons of a particular cell are at an equal distance. This enables fast computation of grid distances between hexagons and neighbouring areas around an index using the [DISTANCE](/spatial-extension-bq/reference/#h3kring) and [KRING](/spatial-extension-bq/reference/#h3distance) functions, respectively. 
+
 
 ### S2
 
