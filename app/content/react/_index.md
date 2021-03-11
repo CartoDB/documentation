@@ -17,8 +17,9 @@ cascade:
     - name: "Library Reference"
       elements:
         - "API"
+        - "Auth"
         - "Basemaps"
-        - "OAuth"
+        - "Core"
         - "Redux"
         - "Widgets"
 ---
