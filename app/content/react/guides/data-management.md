@@ -45,19 +45,17 @@ If you just want to restrict access to some application features, you can use th
 Once the OAuth flow has been completed and the user has given consent to your application to access their CARTO account, you can get the user credentials like this:
 
 ```javascript
-import { selectOAuthCredentials } from '@carto/react/redux';
+import { selectOAuthCredentials } from '@carto/react-redux';
 const credentials = useSelector(selectOAuthCredentials);
 ```
 
-This credentials can be used, for instance, when adding a new data source:
+This credentials object can be used, for instance, when using a data source from a view:
 
 ```javascript
+import aSource from 'data/sources/aSource';
+
 dispatch(
-  addSource({
-    id: '<your_dataset_id>',
-    data: '<your_sql_query>',
-    credentials,
-  })
+  addSource({ ...aSource, credentials })
 );
 ```
 

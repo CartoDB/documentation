@@ -18,7 +18,8 @@ cascade:
       elements:
         - "API"
         - "Basemaps"
-        - "OAuth"
+        - "Auth"
+        - "Core"
         - "Redux"
         - "Widgets"
 ---

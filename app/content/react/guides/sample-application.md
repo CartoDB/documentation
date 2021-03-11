@@ -10,7 +10,7 @@ cd my-app
 yarn start
 ```
 
-This application uses a dataset with retail locations and another related dataset with the monthly revenue information for each location. It includes the following views/pages:
+This application uses a dataset with retail locations, another related dataset with the monthly revenue information for each location and a tileset with buildings coming from OpenStreetMap. It includes the following views/pages:
 
 - **Stores view**. This view demostrates how to:
   
@@ -46,3 +46,9 @@ This application uses a dataset with retail locations and another related datase
     - Category widget showing the total revenue per area
     
     - Histogram widget showing the total revenue per month
+
+- **Tileset view**. This view shows a layer connected to an aggregated tileset dataset, and it allows to see how widgets can connect also to this different type of source. It includes:
+    
+    - Formula widget with the total aggregated sum of buildings
+
+    - Histogram widget showing the building count per aggregation unit
