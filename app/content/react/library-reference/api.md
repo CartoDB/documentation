@@ -23,7 +23,7 @@ Executes a SQL query against [CARTO SQL API](https://carto.com/developers/sql-ap
 Returns required default props for layers. It manages filtering and viewport changes.
 
 | Param                               | Type                          | Description                                                               |
-| ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------- |
+| ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
 | props                               | <code>Object</code>           | Required default props for layers                                         |
 | props.uniqueIdProperty              | <code>string</code>           | Unique id property for the layer, default to `cartodb_id`                 |
 | props.onViewportLoad                | <code>function</code>         | Function that is called when all tiles in the current viewport are loaded |
