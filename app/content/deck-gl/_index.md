@@ -3,6 +3,7 @@ cascade:
   title: CARTO for deck.gl
   description: "Build applications using CARTO & deck.gl advanced framework for data visualization"
   icon: "/img/icons/carto-deck.png"
+  repoUrl: https://github.com/visgl/deck.gl/tree/master/modules/carto
   folders:
     - name: "Guides"
       elements:
