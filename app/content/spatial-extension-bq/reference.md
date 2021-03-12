@@ -141,97 +141,97 @@ In the example above, for all features we would get a property `"new_column_name
 #### quadkey.VERSION
 
 {{% bannerNote type="code" %}}
-quadkey.VERSION () -> INT64
+quadkey.VERSION()
 {{%/ bannerNote %}}
 
-Returns the current version of the quadkey library.
+Returns the current version of the quadkey library in `INT64`.
 
 #### quadkey.QUADINT_FROMZXY
 
 {{% bannerNote type="code" %}}
-quadkey.QUADINT_FROMZXY(z INT64, x INT64, y INT64) -> INT64
+quadkey.QUADINT_FROMZXY(z, x, y)
 {{%/ bannerNote %}}
 
-* `z`: `INT64` Level of zoom.
+* `z`: `INT64` zoom level.
 * `x`: `INT64` horizontal position of a tile.
 * `y`: `INT64` vertical position of a tile.
 
-Returns the quadint representation for tile x, y and a zoom z.
+Returns the `INT64` quadint representation for tile `x`, `y` and a zoom `z`.
 
 #### quadkey.ZXY_FROMQUADINT
 
 {{% bannerNote type="code" %}}
-quadkey.ZXY_FROMQUADINT(quadint INT64) -> STRUCT< z INT64, x INT64, y INT64 >
+quadkey.ZXY_FROMQUADINT(quadint INT64)
 {{%/ bannerNote %}}
 
 * `quadint`: `INT64` quadint we want to extract tile information from.
 
-Returns the level of zoom z and coordinates x, y for a given quadint.
+Returns a `STRUCT` with the level of zoom `z` and coordinates `x`, `y` for a given quadint, all as `INT64`.
 
 #### quadkey.LONGLAT_ASQUADINT
 
 {{% bannerNote type="code" %}}
-quadkey.LONGLAT_ASQUADINT(longitude FLOAT64, latitude FLOAT64, resolution INT64) -> INT64
+quadkey.LONGLAT_ASQUADINT(longitude, latitude, resolution)
 {{%/ bannerNote %}}
 
 * `longitude`: `FLOAT64` horizontal coordinate of the map.
 * `latitude`: `FLOAT64` vertical coordinate of the map.
-* `resolution`: `INT64` Level of detail or zoom.
+* `resolution`: `INT64` level of detail or zoom.
 
-Returns the quadint representation for a given level of detail and geographic coordinates.
+Returns the `INT64` quadint representation for a given level of detail and geographic coordinates.
 
 #### quadkey.QUADINT_FROMQUADKEY
 
 {{% bannerNote type="code" %}}
-quadkey.QUADINT_FROMQUADKEY(quadkey STRING) -> INT64
+quadkey.QUADINT_FROMQUADKEY(quadkey)
 {{%/ bannerNote %}}
 
-* `quadkey`: `STRING` quadkey we want to convert to quadint.
+* `quadkey`: `STRING` quadkey to be converted to quadint.
 
-Transform a quadkey index to an equivalent quadint.
+Returns the `INT64` quadint equivalent to the input quadkey.
 
 #### quadkey.QUADKEY_FROMQUADINT
 
 {{% bannerNote type="code" %}}
-quadkey.QUADKEY_FROMQUADINT(quadint INT64) -> STRING
+quadkey.QUADKEY_FROMQUADINT(quadint)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64` quadint we want to convert to quadkey.
+* `quadint`: `INT64` quadint to be converted to quadkey.
 
-Transform a quadint index to an equivalent quadkey.
+Returns the `STRING` quadkey equivalent to the input quadint.
 
 #### quadkey.TOPARENT
 
 {{% bannerNote type="code" %}}
-quadkey.TOPARENT(quadint INT64, resolution INT64) -> INT64
+quadkey.TOPARENT(quadint, resolution)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64`    quadint we want to get the parent from.
+* `quadint`: `INT64` quadint to get the parent from.
 * `resolution`: `INT64` resolution of the desired parent.
 
-Returns the parent quadint of a given quadint for a specific resolution. A parent quadint is a quadint of smaller level of detail which contains the current quadint.
+Returns the parent `IN64` quadint of a given quadint for a specific resolution. A parent quadint is the smaller resolution containing quadint.
 
 #### quadkey.TOCHILDREN
 
 {{% bannerNote type="code" %}}
-quadkey.TOCHILDREN(quadint INT64, resolution INT64) -> ARRAY<INT64>
+quadkey.TOCHILDREN(quadint, resolution)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64` quadint we want to get the children from.
+* `quadint`: `INT64` quadint to get the children from.
 * `resolution`: `INT64` resolution of the desired children.
 
-Returns an array with the children quadint of a given quadint for a specific resolution. A children quadint is a quadint of bigger level of detail which is contained by the current quadint. Each quadint has 4 children.
+Returns an `ARRAY` with the children `INT64` quadints of a given quadint for a specific resolution. A children quadint is a quadint of higher level of detail that is contained by the current quadint. Each quadint has four children by definition.
 
 #### quadkey.SIBLING
 
 {{% bannerNote type="code" %}}
-quadkey.SIBLING(quadint INT64, direction STRING) -> INT64
+quadkey.SIBLING(quadint, direction)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64` quadint we want to get the sibling from.
-* `direction`: `STRING` <code>'right'|'left'|'up'|'down'</code> direction where we want to move to extract the next sibling. 
+* `quadint`: `INT64` quadint to get the sibling from.
+* `direction`: `STRING` <code>'right'|'left'|'up'|'down'</code> direction to move in to extract the next sibling. 
 
-Returns the quadint directly next to the given quadint at the same level of zoom. The direction must be sent as argument and currently horizontal/vertical movements are allowed.
+Returns the `INT64` quadint directly next to the given quadint at the same zoom level. The direction must be sent as argument and currently only horizontal/vertical movements are allowed.
 
 #### quadkey.KRING
 
