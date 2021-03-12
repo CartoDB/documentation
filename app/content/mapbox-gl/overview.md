@@ -142,7 +142,7 @@ In order to have the better performance, we recommend you to retrieve only the f
     <div id="map" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
   </body>
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiYWRyaTJjIiwiYSI6ImNqZXF1cHVtbTEwNGkyd2x2OHppam1sd3MifQ.vW5s7lwz5b_SRaIVLbqv1w';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2FydG9kYmluYyIsImEiOiJja202bHN2OXMwcGYzMnFrbmNkMzVwMG5rIn0.Zb3J4JTdJS-oYNXlR3nvnQ';
 
     async function initialize() {
       const map = new mapboxgl.Map({
