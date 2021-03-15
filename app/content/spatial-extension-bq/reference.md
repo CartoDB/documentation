@@ -236,22 +236,23 @@ Returns the `INT64` quadint directly next to the given quadint at the same zoom 
 #### quadkey.KRING
 
 {{% bannerNote type="code" %}}
-quadkey.KRING(quadint INT64) -> ARRAY<INT64>
+quadkey.KRING(quadint, distance)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64` quadint we want to get the KRING from.
+* `quadint`: `INT64` quadint to get the KRING from.
+* `distance`: `INT64` distance (in cells) to the source.
 
-Returns an array with all the quadints directly next to the given quadint at the same level of zoom. We consider diagonal, horizontal and vertical nearby quadints and the current quadint so KRING should always return 9 quadints.
+Returns an `ARRAY` containing all the `INT64` quadints directly next to the given quadint at the same level of zoom. Diagonal, horizontal and vertical nearby quadints plus the current quadint are considered, so KRING always returns `(distance*2 + 1)^2` quadints.
 
 #### quadkey.BBOX
 
 {{% bannerNote type="code" %}}
-quadkey.BBOX(quadint INT64) -> ARRAY<FLOAT64>
+quadkey.BBOX(quadint INT64)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64` quadint we want to get the bbox from.
+* `quadint`: `INT64` quadint to get the bbox from.
 
-Returns the boundary box of a given quadint. This boundary box contains the minimum and maximum longitude and latitude.
+Returns an `ARRAY` with the boundary box of a given quadint. This boundary box contains the minimum and maximum longitude and latitude as `FLOAT64`. The output format is [West-South, East-North] or [min long, min lat, max long, max lat].
 
 #### quadkey.ST_ASQUADINT
 
@@ -260,7 +261,7 @@ quadkey.ST_ASQUADINT(point GEOGRAPHY, resolution INT64)  -> INT64
 {{%/ bannerNote %}}
 
 * `point`: `GEOGRAPHY` point we want to get the quadint from.
-* `resolution`: `INT64` Level of detail or zoom.
+* `resolution`: `INT64` level of detail or zoom.
 
 Converts a given point at given level of detail to a quadint.
 

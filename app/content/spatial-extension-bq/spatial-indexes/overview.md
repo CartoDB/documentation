@@ -34,6 +34,14 @@ Quadkeys uniquely identify any of the grid cells (or map tiles) that result from
 
 Quadkeys were developed by Microsoft to provide interactive mapping solutions. You can learn more in its documentation, the [Bings Maps Tile System](https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
 
+##### Quadints
+
+Quadkeys have as many digits as the zoom level to which they belong, which can lead to a lot of storage waste for high zoom levels and prevents fast comparison as they are internally treated as `STRING`, requiring a digit-by-digit evaluation. To overcome this limitation, on this module we use Quadints, our own version of [Quadkeys](https://wiki.openstreetmap.org/wiki/QuadTiles) that are stored in an `INT64`. Quadints offer faster comparision as the whole number is compared all at once.
+
+To encode a Quadkey into a Quadint we transform into an `INT64` the bits referring to the tile Y, then the ones concerning tile Y and finally we reserve 5 bits for storing the zoom level, i.e., `[ Bits Tile Y | Bits Tile X | 5 Bits for zoom ]`. This encoding introduces the limitation of not being able to encode tiles for zoom levels higher than 29, as they cannot be stored in 64 bits. 
+
+On this module, we also provide the functions necessary to convert Quadints into Quadkeys and viceversa.
+
 
 ### H3
 
