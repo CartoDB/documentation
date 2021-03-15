@@ -1,5 +1,5 @@
 ## API
-npm package: *@carto/react-api*
+**npm package: @carto/react-api**
 
 Set of functions that allow to work with CARTO APIs.
 
