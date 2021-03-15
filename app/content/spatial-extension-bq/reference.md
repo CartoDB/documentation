@@ -136,15 +136,9 @@ In the example above, for all features we would get a property `"new_column_name
 
 
 
-### QuadKey
+### Quadkey
 
-#### quadkey.VERSION
-
-{{% bannerNote type="code" %}}
-quadkey.VERSION()
-{{%/ bannerNote %}}
-
-Returns the current version of the quadkey library in `INT64`.
+You can learn more about quadkeys in the [documentation](/spatial-extension-bq/spatial-indexes/overview/#quadkeys). 
 
 #### quadkey.QUADINT_FROMZXY
 
@@ -257,36 +251,36 @@ Returns an `ARRAY` with the boundary box of a given quadint. This boundary box c
 #### quadkey.ST_ASQUADINT
 
 {{% bannerNote type="code" %}}
-quadkey.ST_ASQUADINT(point GEOGRAPHY, resolution INT64)  -> INT64
+quadkey.ST_ASQUADINT(point, resolution)
 {{%/ bannerNote %}}
 
-* `point`: `GEOGRAPHY` point we want to get the quadint from.
+* `point`: `GEOGRAPHY` POINT to get the quadint from.
 * `resolution`: `INT64` level of detail or zoom.
 
-Converts a given point at given level of detail to a quadint.
+Returns the `INT64` quadint of a given point at a given level of detail.
 
 #### quadkey.ST_ASQUADINT_POLYFILL
 
 {{% bannerNote type="code" %}}
-quadkey.ST_ASQUADINT_POLYFILL(geo GEOGRAPHY, resolution INT64) -> ARRAY<INT64>
+quadkey.ST_ASQUADINT_POLYFILL(geo, resolution)
 {{%/ bannerNote %}}
 
-* `geo`: `GEOGRAPHY` geography we want to extract the quadints from.
-* `resolution`: `INT64` Level of detail or zoom.
+* `geo`: `GEOGRAPHY` geography to extract the quadints from.
+* `resolution`: `INT64` level of detail or zoom.
 
-Returns an array of quadints contained by the given geography at a given level of detail.
+Returns an `ARRAY` of `INT64` quadints fully contained by the given geography at a given level of detail.
 
 #### quadkey.ST_GEOGFROMQUADINT_BOUNDARY
 
 {{% bannerNote type="code" %}}
-quadkey.ST_GEOGFROMQUADINT_BOUNDARY(quadint INT64) -> GEOGRAPHY
+quadkey.ST_GEOGFROMQUADINT_BOUNDARY(quadint)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64` quadint we want to get the boundary geography from.
+* `quadint`: `INT64` quadint to get the boundary geography from.
 
-Returns the geography boundary for a given quadint. We extract the boundary the same way as when we calculate the bbox, then enclose it in a GEOJSON and finally transform it to geography.
+Returns the `GEOGRAPHY` boundary for a given quadint. We extract the boundary in the same way as when we calculate its [bbox](/spatial-extension-bq/reference/#quadkeybbox), then enclose it in a GeoJSON and finally transform it into a geography.
 
-### quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION
+#### quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION
 
 {{% bannerNote type="code" %}}
 quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(longitude FLOAT64, latitude FLOAT64, __zoom_min INT64, __zoom_max INT64, __zoom_step INT64, __resolution INT64) -> ARRAY< STRUCT < id INT64, z INT64, x INT64, y INT64 > >
@@ -294,13 +288,20 @@ quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(longitude FLOAT64, latitude FLOAT64, __
 
 * `longitude`: `FLOAT64` horizontal coordinate of the map.
 * `latitude`: `FLOAT64` vertical coordinate of the map.
-* `__zoom_min`: `INT64` minimum zoom to get the quadints from.
-* `__zoom_max`: `INT64` maximum zoom to get the quadints from.
-* `__zoom_step`: `INT64` used for skipping levels of zoom
-* `__resolution`: `INT64` resolution added to the current zoom to extract the quadints.
+* `zoom_min`: `INT64` minimum zoom to get the quadints from.
+* `zoom_max`: `INT64` maximum zoom to get the quadints from.
+* `zoom_step`: `INT64` used for skipping levels of zoom.
+* `resolution`: `INT64` resolution added to the current zoom to extract the quadints.
 
-Returns the Quadint indexes of each level of zoom requested for a position. Then these indexes are used for grouping and generating aggregations of points in all the zoom range requested. Notice that we use an additional variable "resolution" for adjusting the level of granularity we want for a level of zoom.
+Returns the quadint index for the given point for each zoom level requested, at the specified resolution (computed as the current zoom level + the value of `resolution`). The output is an `ARRAY` of `STRUCT` with the following elements: quadint `id`, zoom level (`z`), and horizontal (`x`) and vertical (`y`) position of the tile. These quadint indexes can be used for grouping and generating aggregations of points throughout the zoom range requested. Notice the use of an additional variable `resolution` for adjusting the desired level of granularity.
 
+#### quadkey.VERSION
+
+{{% bannerNote type="code" %}}
+quadkey.VERSION()
+{{%/ bannerNote %}}
+
+Returns the current version of the quadkey library as a `INT64`.
 
 
 ### H3
@@ -310,71 +311,70 @@ Returns the Quadint indexes of each level of zoom requested for a position. Then
 #### h3.ST_ASH3
 
 {{% bannerNote type="code" %}}
-h3.ST_ASH3(geog, resolution) -> INT64
+h3.ST_ASH3(geog, resolution)
 {{%/ bannerNote %}}
 
-* `geog`: `GEOGRAPHY` A **POINT** geography.
-* `resolution`: `INT64` A number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
+* `geog`: POINT `GEOGRAPHY`.
+* `resolution`: `INT64` number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
 
 Returns an H3 cell index where the point is placed in the required `resolution` as an `INT64` number. It will return `NULL` on error (invalid geography type or resolution out of bounds).
 
 {{% bannerNote type="note" title="tip"%}}
-If you want the HEX representation of the cell, you can call [H3_ASHEX](#h3.H3_ASHEX) with the output integer.
+If you want the HEX representation of the cell, you can call [H3_ASHEX](#h3h3_ashex) with the output integer.
 {{%/ bannerNote %}}
 
 {{% bannerNote type="note" title="tip"%}}
-If you want the cells covered by a POLYGON see [ST_ASH3_POLYFILL](#h3.ST_ASH3_POLYFILL).
+If you want the cells covered by a POLYGON see [ST_ASH3_POLYFILL](#h3st_ash3_polyfill).
 {{%/ bannerNote %}}
 
 #### h3.LONGLAT_ASH3
 
 {{% bannerNote type="code" %}}
-h3.LONGLAT_ASH3(longitude, latitude, resolution) -> INT64
+h3.LONGLAT_ASH3(longitude, latitude, resolution)
 {{%/ bannerNote %}}
 
-* `latitude`: `FLOAT64` The point latitude in **degrees**.
-* `longitude`: `FLOAT64` The point latitude in **degrees**.
-* `resolution`: `INT64` A number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
+* `latitude`: `FLOAT64` point latitude in degrees.
+* `longitude`: `FLOAT64` point latitude in degrees.
+* `resolution`: `INT64` number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
 
-Returns an H3 cell index where the point is placed in the required `resolution` as an `INT64` number. It will return `NULL` on error (resolution out of bounds).
+Returns an `INT64` H3 cell index where the point is placed in the required `resolution` as an `INT64` number. It will return `NULL` on error (resolution out of bounds).
 
 #### h3.H3_ASHEX
 
 {{% bannerNote type="code" %}}
-h3.H3_ASHEX(index) -> STRING
+h3.H3_ASHEX(index)
 {{%/ bannerNote %}}
 
-* `index`: `INT64` The H3 cell index.
+* `index`: `INT64` H3 cell index.
 
-Returns a `STRING` representing the H3 index as a hexadecimal number (8 characters). It doesn't do any extra validation checks.
+Returns a `STRING` representing the H3 index as a hexadecimal number. It doesn't do any extra validation checks.
 
 #### h3.H3_FROMHEX
 
 {{% bannerNote type="code" %}}
-h3.H3_FROMHEX(index) -> STRING
+h3.H3_FROMHEX(index)
 {{%/ bannerNote %}}
 
-* `index`: `INT64` The H3 cell index.
+* `index`: `STRING` H3 cell index as hexadecimal. 
 
-Generates the `INT64` representation of a H3 index from the `STRING` (generated by [H3_ASHEX](#h3.H3_ASHEX)) . It doesn't do any extra validation checks.
+Returns the `INT64` representation of a H3 index from the `STRING` (generated by [H3_ASHEX](#h3h3_ashex)). It doesn't do any extra validation checks.
 
 
 #### h3.ST_ASH3_POLYFILL
 
 {{% bannerNote type="code" %}}
-h3.ST_ASH3_POLYFILL(geography, resolution) -> ARRAY<INT64>
+h3.ST_ASH3_POLYFILL(geography, resolution)
 {{%/ bannerNote %}}
 
-* `geography`: `GEOGRAPHY` A **POLYGON** or **MULTIPOLYGON** representing the area to cover.
-* `longitude`: `FLOAT64` The point latitude in **degrees**.
-* `resolution`: `INT64` A number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
+* `geography`: `GEOGRAPHY` **POLYGON** or **MULTIPOLYGON** representing the area to cover.
+* `resolution`: `INT64` number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
 
-Returns all hexagons **with centers** contained in a given polygon. It will return `NULL` on error (invalid geography type or resolution out of bounds).
+Returns an `ARRAY` with all the `INT64` H3 cell indexes **with centers** contained in a given polygon. It will return `NULL` on error (invalid geography type or resolution out of bounds).
 
 #### h3.ST_BOUNDARY
 
 {{% bannerNote type="code" %}}
-h3.ST_BOUNDARY(index) -> GEOGRAPHY
+h3.ST_BOUNDARY(index)
 {{%/ bannerNote %}}
 
 * `index`: `INT64` The H3 cell index.
@@ -384,99 +384,102 @@ Returns a `GEOGRAPHY` representing the H3 cell. It will return `NULL` on error (
 #### h3.ISVALID
 
 {{% bannerNote type="code" %}}
-h3.ISVALID(index) -> BOOLEAN
+h3.ISVALID(index)
 {{%/ bannerNote %}}
 
 * `index`: `INT64` The H3 cell index.
+
+Returns a `BOOLEAN` of value `true` when the given index is valid, `false` otherwise.
 
 #### h3.COMPACT
 
 {{% bannerNote type="code" %}}
-h3.COMPACT(indexArray) -> ARRAY<INT64>
+h3.COMPACT(indexArray)
 {{%/ bannerNote %}}
 
-* `indexArray`: `ARRAY<INT64>` An array of H3 cell indices.
+* `indexArray`: `ARRAY<INT64>` of H3 cell indices of the same resolution.
 
-Compact a set of hexagons of the same resolution into a set of hexagons across multiple levels that represents the same area.
+Returns an `ARRAY` with the `INT64` indexes of a set of hexagons across multiple resolutions that represent the same area as the input set of hexagons.
+
 
 #### h3.UNCOMPACT
 
 {{% bannerNote type="code" %}}
-h3.UNCOMPACT(indexArray, resolution)) -> ARRAY<INT64>
+h3.UNCOMPACT(indexArray, resolution)
 {{%/ bannerNote %}}
 
-* `indexArray`: `ARRAY<INT64>` An array of H3 cell indices.
-* `resolution`: `INT64` A number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
+* `indexArray`: `ARRAY<INT64>` of H3 cell indices.
+* `resolution`: `INT64` number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
 
-Uncompact a compacted set of hexagons to hexagons of the same resolution.
+Returns an `ARRAY` with the `INT64` indexes of a set of hexagons of the same `resolution` that represent the same area as the [compacted](#h3compact) input hexagons.
 
 #### h3.TOPARENT
 
 {{% bannerNote type="code" %}}
-h3.TOPARENT(index, resolution) -> INT64
+h3.TOPARENT(index, resolution)
 {{%/ bannerNote %}}
 
-* `index`: `INT64` The H3 cell index.
-* `resolution`: `INT64` A number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
+* `index`: `INT64` H3 cell index.
+* `resolution`: `INT64` number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
 
-Get the parent of the given hexagon at a particular resolution.
+Returns the `INT64` H3 cell index of the parent of the given hexagon at the given resolution.
 
 #### h3.TOCHILDREN
 
 {{% bannerNote type="code" %}}
-h3.TOCHILDREN(index, resolution) -> ARRAY<INT64>
+h3.TOCHILDREN(index, resolution)
 {{%/ bannerNote %}}
 
-* `index`: `INT64` The H3 cell index.
-* `resolution`: `INT64` A number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
+* `index`: `INT64` H3 cell index.
+* `resolution`: `INT64` number between 0 and 15 with the [H3 resolution](https://h3geo.org/docs/core-library/restable).
 
-Get the children/descendents of the given hexagon at a particular resolution.
+Returns an `ARRAY` with the `INT64` indexes of the children/descendents of the given hexagon at the given resolution.
 
 #### h3.ISPENTAGON
 
 {{% bannerNote type="code" %}}
-h3.ISPENTAGON(index) -> BOOLEAN
+h3.ISPENTAGON(index)
 {{%/ bannerNote %}}
 
 * `index`: `INT64` The H3 cell index.
 
-Whether the given H3 index is a pentagon. Returns false on invalid input.
+Returns a `BOOLEAN` determining whether the given H3 index is a pentagon. Returns `false` on invalid input.
 
 #### h3.DISTANCE
 
 {{% bannerNote type="code" %}}
-h3.DISTANCE(origin, destination) -> INT64
+h3.DISTANCE(origin, destination)
 {{%/ bannerNote %}}
 
-* `origin`: `INT64` The origin H3 cell index.
-* `destination`: `INT64` The destination H3 cell index.
+* `origin`: `INT64` origin H3 cell index.
+* `destination`: `INT64` destination H3 cell index.
 
-Get the **grid distance** between two hex indexes. This function may fail to find the distance between two indexes if they are very far apart or on opposite sides of a pentagon.
+Returns the `INT64` **grid distance** between two hexagon indexes. This function may fail to find the distance between two indexes if they are very far apart or on opposite sides of a pentagon.
 Returns null on failure or invalid input.
 
 {{% bannerNote type="note" title="tip"%}}
-If you want the distance in meters use [ST_DISTANCE](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_distance) between the cells ([ST_BOUNDARY](#h3.h3.ST_BOUNDARY)) or their centroid.
+If you want the distance in meters use [ST_DISTANCE](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions#st_distance) between the cells ([ST_BOUNDARY](#h3st_boundary)) or their centroid.
 {{%/ bannerNote %}}
 
 #### h3.KRING
 
 {{% bannerNote type="code" %}}
-h3.KRING(index, resolution) -> ARRAY<INT64>
+h3.KRING(index, distance)
 {{%/ bannerNote %}}
 
-* `index`: `INT64` The H3 cell index.
-* `distance`: `INT64` Distance (in cells) to the source.
+* `index`: `INT64` H3 cell index.
+* `distance`: `INT64` distance (in number of cells) to the source.
 
-Get all hexagons in a k-ring around a given center. The order of the hexagons is undefined. Returns NULL on invalid input.
+Returns an `ARRAY` with the `INT64` indexes of all hexagons within `distance` of the given input hexagon. The order of the hexagons is undefined. Returns NULL on invalid input.
 
 #### h3.HEXRING
 
 {{% bannerNote type="code" %}}
-h3.HEXRING(index, resolution) -> ARRAY<INT64>
+h3.HEXRING(index, distance) -> ARRAY<INT64>
 {{%/ bannerNote %}}
 
-* `index`: `INT64` The H3 cell index.
-* `distance`: `INT64` Distance (in cells) to the source.
+* `index`: `INT64` H3 cell index.
+* `distance`: `INT64` distance (in cells) to the source.
 
 Get all hexagons in a **hollow hexagonal ring** centered at origin with sides of a given length. Unlike kRing, this function will return NULL if there is a pentagon anywhere in the ring.
 
@@ -486,111 +489,112 @@ Get all hexagons in a **hollow hexagonal ring** centered at origin with sides of
 h3.VERSION()
 {{%/ bannerNote %}}
 
-Returns a `STRING` with the current version of the h3 library.
+Returns a `STRING` with the current version of the H3 library.
 
 
 
 ### S2
 
-Our S2 module, is based on a port of the official s2 geometry library created by Google. Check this [website](http://s2geometry.io/) for more information about S2.
-
-#### s2.VERSION
-
-{{% bannerNote type="code" %}}
-s2.VERSION() -> STRING
-{{%/ bannerNote %}}
-
-Returns the current version of the s2 library.
+Our S2 module is based on a port of the official s2 geometry library created by Google. Check this [website](http://s2geometry.io/) for more information about S2.
 
 #### s2.ID_FROMHILBERTQUADKEY
 
 {{% bannerNote type="code" %}}
-s2.ID_FROMHILBERTQUADKEY(quadkey STRING) -> INT64
+s2.ID_FROMHILBERTQUADKEY(quadkey)
 {{%/ bannerNote %}}
 
 * `quadkey`: `STRING` quadkey to be converted.
 
-Convert from hilbert quadtree id to s2 cell id.
+Returns the conversion of a `STRING` Hilbert quadtree into an `INT64` S2 cell id.
 
 #### s2.HILBERTQUADKEY_FROMID
 
 {{% bannerNote type="code" %}}
-s2.HILBERTQUADKEY_FROMID(id INT64) -> STRING
+s2.HILBERTQUADKEY_FROMID(id)
 {{%/ bannerNote %}}
 
-* `id`: `INT64` s2 cell id to be converted.
+* `id`: `INT64` S2 cell id to be converted.
 
-Convert from s2 cell id to hilbert quadtree id.
+Returns the conversion of an `INT64` S2 cell id into a `STRING` Hilbert quadtree.
+
 
 #### s2.LONGLAT_ASID
 
 {{% bannerNote type="code" %}}
-s2.LONGLAT_ASID(longitude FLOAT64, latitude FLOAT64, level INT64) -> INT64
+s2.LONGLAT_ASID(longitude, latitude, level)
 {{%/ bannerNote %}}
 
 * `longitude`: `FLOAT64` horizontal coordinate on the map.
 * `latitude`: `FLOAT64` vertical coordinate on the map.
-* `level`: `INT64` Level of detail or zoom.
+* `level`: `INT64` level of detail or zoom.
 
-Generate the s2 cell id for a given longitude, latitude and zoom level.
+Returns the `INT64` S2 cell id for a given longitude, latitude and zoom level.
 
 #### s2.ST_ASID
 
 {{% bannerNote type="code" %}}
-s2.ST_ASID(point GEOGRAPHY, resolution INT64) -> INT64
+s2.ST_ASID(point, resolution)
 {{%/ bannerNote %}}
 
-* `point`: `GEOGRAPHY` point we want to get the quadint from.
-* `level`: `INT64` Level of detail or zoom.
+* `point`: `GEOGRAPHY` point to get the quadint from.
+* `level`: `INT64` level of detail or zoom.
 
-Converts a given point at given level of detail to a s2 cell id.
+Returns the `INT64` S2 cell id of a given point at a given level of detail.
 
 #### s2.ST_GEOGFROMID_BOUNDARY
 
 {{% bannerNote type="code" %}}
-s2.ST_GEOGFROMID_BOUNDARY(id INT64) -> GEOGRAPHY
+s2.ST_GEOGFROMID_BOUNDARY(id)
 {{%/ bannerNote %}}
 
-* `id`: `INT64` s2 cell id we want to get the boundary geography from.
+* `id`: `INT64` S2 cell id to get the boundary geography from.
 
-Returns the geography boundary for a given s2 cell id. We extract the boundary by getting the corner longitudes and latitudes, then enclose it in a GeoJSON and finally transform it to geography.
+Returns the `GEOGRAPHY` boundary for a given S2 cell id. We extract the boundary by getting the corner longitudes and latitudes, then enclose it in a GeoJSON and finally transform it into geography.
 
+#### s2.VERSION
 
+{{% bannerNote type="code" %}}
+s2.VERSION()
+{{%/ bannerNote %}}
+
+Returns the current version of the S2 module as a `STRING`.
 
 ### Placekey
 
-[Placekey](https://www.placekey.io/faq) is a free and open universal standard identifier for any physical place, so that the data pertaining to those places can be shared across organizations easily. Since Placekey is based on H3, here we offer a way to transform to and from that index and delegate any extra functionality to the H3 itself.
+[Placekey](https://www.placekey.io/faq) is a free and open universal standard identifier for any physical place, so that the data pertaining to those places can be shared across organizations easily. Since Placekey is based on H3, here we offer a way to transform to and from that index and delegate any extra functionality to H3 itself.
 
 #### placekey.H3_ASPLACEKEY
 
 {{% bannerNote type="code" %}}
-placekey.H3_ASPLACEKEY(h3index INT64) -> STRING
+placekey.H3_ASPLACEKEY(h3index)
 {{%/ bannerNote %}}
 
 * `h3index`: `INT64` H3 identifier.
 
-Transforms a h3 index to the equivalent placekey.
+Returns the `STRING` Placekey equivalent to the given H3 index.
 
 
 #### placekey.PLACEKEY_ASH3
 
 {{% bannerNote type="code" %}}
-placekey.PLACEKEY_ASH3(placekey STRING) -> INT64
+placekey.PLACEKEY_ASH3(placekey)
 {{%/ bannerNote %}}
 
-* `placekey`: `STRING` Place identifier.
+* `placekey`: `STRING` Placekey identifier.
 
-Transform a placekey identifier to the equivalent H3 index.
+Returns the `INT64` H3 index equivalent to the given Placekey.
+
 
 #### placekey.ISVALID
 
 {{% bannerNote type="code" %}}
-placekey.ISVALID(placekey STRING) -> BOOLEAN
+placekey.ISVALID(placekey)
 {{%/ bannerNote %}}
 
-* `placekey`: `STRING` Place identifier.
+* `placekey`: `STRING` Placekey identifier.
 
-Returns whether a given string represents a valid H3 index.
+Returns a `BOOLEAN` of value `true` when the given string represents a valid Placekey, `false` otherwise.
+
 
 #### placekey.VERSION
 
@@ -598,4 +602,4 @@ Returns whether a given string represents a valid H3 index.
 placekey.VERSION() -> STRING
 {{%/ bannerNote %}}
 
-Returns the current version of the placekey library.
+Returns the current version of the Placekey module as a `STRING`.
