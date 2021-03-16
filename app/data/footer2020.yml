@@ -20,7 +20,7 @@ documentation:
   - title: Documentation
     url: 'https://docs.carto.com/'
   - title: Help Center
-    url: '/help/'
+    url: 'https://carto.com/help'
 
 solutions:
   - title: 'AEC'
