@@ -1,52 +1,96 @@
 ## Core
+**npm package: @carto/react-core**
 
+Set of common functions, to be used mostly by other packages. You won't usually consume this package directly, but when using `AggregationTypes` for widgets.
 ### aggregationFunctions ⇒ <code>Object</code>
 
-Contains aggregation functions for widgets and layers, see [AggregationTypes](#aggregationtypes)
+Contains a set of basic aggregation functions (count, min, max, sum and average), used automatically for widgets and layers, see [AggregationTypes](#aggregationtypes). Functions are applicable to numbers and also objects using a numeric property
 
-**Returns**: <code>Object</code> - Aggregation functions
+- **Input**:
+    | Param                      | Type                | Description                                                                        |
+    | -------------------------- | ------------------- | -----------------------------------------------------------------------------------|
+    | values                     | <code>Array</code>  | Array of numbers or objects with a numerical property                              |
+    | key                        | <code>string</code> | (Optional). When using objects, name of the property to use for calculations       |
 
+- **Returns**: <code>Object</code> - An object with Aggregation functions, which keys are every `AggregationTypes` values
+
+- **Example**:
+    ```js
+        import { aggregationFunctions, AggregationTypes } from '@carto/react-core';
+
+        const values = [{f: 1}, {f: 2}, {f: 3}, {f: 4}, {f: 5}];
+        const avgFn = aggregationFunctions[AggregationTypes.AVG];        
+
+        console.log(avgFn(values, 'f')); // 3
+    ```
 ### groupValuesByColumn ⇒ <code>Array</code>
 
-Makes groups from features based in a operation
+Makes groups from features based in a column (`keysColumn`) and applying an `operation` to the numeric values in a predefined column (`valuesColumn`). 
 
-**Returns**: <code>Array</code> - Grouped values
+- **Input**:
+    | Param   | Type                | Default   | Description                          |
+    | ------- | ------------------- | --------- | ------------------------------------ |
+    | data | <code>Array</code> |         | Features for calculations (plain objects with properties)              |
+    | valuesColumn | <code>string</code> |         | Quantitative column for grouping (the name of a numeric property in the object)             |
+    | keysColumn | <code>string</code> |         | Qualitative column for grouping (the name of a string property in the object)             |
+    | operation | <code>string</code> |         | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)              |
 
-| Param   | Type                | Default   | Description                          |
-| ------- | ------------------- | --------- | ------------------------------------ |
-| data | <code>Array</code> |         | Features for calculations              |
-| valuesColumn | <code>string</code> |         | Quantitative column for grouping             |
-| keysColumn | <code>string</code> |         | Qualitative column for grouping             |
-| operation | <code>string</code> |         | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)              |
+- **Returns**: <code>Array</code> - Grouped values
 
+- **Example**: 
+    ```js
+    import { groupValuesByColumn, AggregationTypes } from '@carto/react-core';
+
+    const data = [
+        { category: 'A', population: 100 },
+        { category: 'A', population: 200 },
+        { category: 'B', population: 50 }
+    ];
+
+    const groups = groupValuesByColumn(data, 'population', 'category', AggregationTypes.SUM);
+
+    console.log(groups); // output: [ { name: 'A', value: 300 }, { name: 'B', value: 50 }] 
+    ```
 ### histogram ⇒ <code>Array</code>
 
 Makes an array of numeric values as histogram data from features
 
-**Returns**: <code>Array</code> - Histogram data
+- **Input**:
+    | Param   | Type                | Default   | Description                          |
+    | ------- | ------------------- | --------- | ------------------------------------ |
+    | features | <code>Array</code> |           | Features for calculations (plain objects with properties)                |
+    | columnName | <code>string</code> |        | Quantitative column for calculations (the name of a number property in the object)              |
+    | ticks | <code>Array</code>    |           | Array of numbers to build intervals (eg 1, 5, 10 --> defines 4 intervals: <1, 1 to 5, 5 to 10 and >10   | operation | <code>string</code> |         | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)              |
 
-| Param   | Type                | Default   | Description                          |
-| ------- | ------------------- | --------- | ------------------------------------ |
-| features | <code>Array</code> |         | Features for calculations               |
-| columnName | <code>string</code> |         | Qualitative column for grouping             |
-| ticks | <code>Array</code> |         | Array of numeric intervals              |
-| operation | <code>string</code> |         | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)              |
+- **Returns**: <code>Array</code> - Histogram data for each bin, derived from ticks
 
-### viewportFeatures ⇒ <code>Array</code>
+- **Example**:
+    ```js
+        import { histogram, AggregationTypes } from '@carto/react-core';
 
-Handles all tiles features and returns the current viewport ones
+        const features = [
+            { field: 1 },
+            { field: 2 }, { field: 2 },
+            { field: 3 }, { field: 3 }, { field: 3 },
+            { field: 4 }, { field: 4 },
+            { field: 5 }            
+        ];
 
-**Returns**: <code>Array</code> - Features in viewport
+        const ticks = [2, 4, 6];
 
-| Param   | Type                | Default   | Description                          |
-| ------- | ------------------- | --------- | ------------------------------------ |
-| tiles | <code>Array</code> |         | deck.gl tiles              |
-| viewport | <code>Array</code> |         | Viewport bounds            |
-| uniqueIdProperty | <code>string</code> |         | Unique feature id property              |
-
+        const h = histogram(features, 'field', ticks, AggregationTypes.COUNT);        
+        console.log(h); // [1, 5, 3, 0]
+        /* 
+            histogram results as:
+            <2          --> 1 item
+            >=2 to <4   --> 5 items
+            >=4 to <6   --> 3 items
+            >=6         --> 0 items
+        */
+    ```
 ### AggregationTypes
 
-Enum for the different types of aggregations available for widgets
+Enum for the different types of aggregations, available for widgets
 
 **Kind**: global enum  
 **Read only**: true
@@ -68,3 +112,12 @@ Enum for the different types of aggregations available for widgets
 <dd><p>Sum</p>
 </dd>
 </dl>
+
+- **Example**:
+
+    ```js
+        import { AggregationTypes } from '@carto/react-core';
+
+        console.log(AggregationTypes.COUNT);
+
+    ```
