@@ -1,82 +1,153 @@
 ## Redux
+**npm package: @carto/react-redux**
+
+Functions to ease the management of CARTO within a react-redux application. The cra-template makes extensive use of redux, to provide complex features in an easy way.
 
 ### CARTO Slice
 
+A [slice](https://redux-toolkit.js.org/api/createSlice) to manage the main redux blocks of a CARTO for React application, like basemap, viewState, sources, layers and filters.
 #### createCartoSlice
 
-A function that accepts an initialState, setup the state and creates
+A function that accepts an `initialState`, setups the state and creates
 the CARTO reducers that support CARTO for React achitecture.
 
-```javascript
-export const initialState = {
-  viewState: {
-    latitude: 31.802892,
-    longitude: -103.007813,
-    zoom: 2,
-    pitch: 0,
-    bearing: 0,
-    dragRotate: false
-  },
-  basemap: POSITRON,
-  credentials: {
-    username: 'public',
-    apiKey: 'default_public',
-    serverUrlTemplate: 'https://{user}.carto.com'
-  },
-  googleApiKey: ''
-};
-```
+- **Input**:
+  | Param        | Type                | Description       |
+  | ------------ | ------------------- | ----------------- |
+  | initialState | <code>object</code> | the initial state |
 
-| Param        | Type                | Description       |
-| ------------ | ------------------- | ----------------- |
-| initialState | <code>object</code> | the initial state |
+  An initial state object might look like:
+
+  ```js
+    import { POSITRON } from '@carto/react-basemaps';
+    
+    export const initialState = {
+      viewState: {
+        latitude: 31.802892,
+        longitude: -103.007813,
+        zoom: 2,
+        pitch: 0,
+        bearing: 0,
+        dragRotate: false
+      },
+      basemap: POSITRON,
+      credentials: {
+        username: 'public',
+        apiKey: 'default_public',
+        serverUrlTemplate: 'https://{user}.carto.com'
+      },
+      googleApiKey: ''
+    };
+  ```
+
+
 
 #### addSource
 
-Action to add a source to the store
+Action to add a **source** to the store.
 
-Parameters are in the form of destructuring arguments.
+- **Input**:
+  | Param  | Type                | Description                                                                                           |
+  | ------ | ------------------- | ----------------------------------------------------------------------------------------------------- |
+  | source   | <code>object</code> | A valid CARTO source, expressed as `{ id, data, type }`                                                 |
+  | source.id   | <code>string</code> | unique id for the source                                                                              |
+  | source.data | <code>string</code> | data definition for the source. Either a Query for SQL dataset or the name of the tileset for BigQuery Tileset |
+  | source.type | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                |
 
-| Param  | Type                | Description                                                                                           |
-| ------ | ------------------- | ----------------------------------------------------------------------------------------------------- |
-| {id}   | <code>string</code> | unique id for the source                                                                              |
-| {data} | <code>string</code> | data definition for the source. Query for SQL dataset or the name of the tileset for BigQuery Tileset |
-| {type} | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                |
+- **Example**:
+  ```js
+  import { addSource } from '@carto/react-redux';
+
+  const source = {
+    id: 'sourceOne',
+    type: 'sql',
+    data: 'SELECT * FROM my_table'
+  }
+  
+  const action = addSource(source);
+  // dispatch(action);
+  ```
 
 #### removeSource
 
 Action to remove a source from the store
 
-| Param    | Type                | Description                |
-| -------- | ------------------- | -------------------------- |
-| sourceId | <code>string</code> | id of the source to remove |
+- **Input**:
+  | Param    | Type                | Description                |
+  | -------- | ------------------- | -------------------------- |
+  | sourceId | <code>string</code> | id of the source to remove |
+
+- **Example**:
+  ```js
+  import { removeSource } from '@carto/react-redux';
+  
+  const action = removeSource('sourceOne');
+  // dispatch(action);
+  ```
 
 #### addLayer
 
-Action to add a Layer to the store
+Action to add a Layer to the store. 
 
-| Param           | Type                | Description                                       |
-| --------------- | ------------------- | ------------------------------------------------- |
-| id              | <code>string</code> | unique id for the layer                           |
-| source          | <code>string</code> | id of the source of the layer                     |
-| layerAttributes | <code>object</code> | (optional) custom attributes to pass to the layer |
+IMPORTANT: This doesn't imply adding a whole deck.gl layer to the redux store, just a "pointer" to it, by using an `id` shared with a Layer file + linking it to a `source`
+
+- **Input**:
+  | Param           | Type                | Description                                       |
+  | --------------- | ------------------- | ------------------------------------------------- |
+  | layer   | <code>object</code> | A valid CARTO layer, expressed as `{ id, source, layerAttributes }` 
+  | layer.id              | <code>string</code> | unique id for the layer                           |
+  | layer.source          | <code>string</code> | id of the source of the layer                     |
+  | layer.layerAttributes | <code>object</code> | (optional) custom attributes to pass to the layer |
+
+- **Example**:
+  ```js
+    const action = addLayer({ 
+      id: 'layerOne', 
+      source: 'sourceOne', 
+      layerAttributes: { 
+        extraAttribute: 1 
+      }
+    });
+    // dispatch(action);
+    // extraAttribute will be available inside the Layer, for custom operations inside it (eg. custom styling)
+  ```
 
 #### updateLayer
 
 Action to update a Layer in the store
 
-| Param           | Type                | Description                            |
-| --------------- | ------------------- | -------------------------------------- |
-| id              | <code>string</code> | unique id for the layer                |
-| layerAttributes | <code>object</code> | custom attributes to pass to the layer |
+- **Input**:
+  | Param           | Type                | Description                            |
+  | --------------- | ------------------- | -------------------------------------- |
+  | layer   | <code>object</code> | Update expressed as `{ id, layerAttributes }` 
+  | layer.id              | <code>string</code> | unique id for the CARTO layer already in the store               |
+  | layer.layerAttributes | <code>object</code> | custom attributes to update in the layer |
+
+- **Example**:
+  ```js
+    const action = updateLayer({ 
+      id: 'layerOne', 
+      layerAttributes: { 
+        extraAttribute: 100 
+      }
+    });
+    // dispatch(action);
+    // extraAttribute will be updated to the new value
+  ```
 
 #### removeLayer
 
 Action to remove a layer from the store
+- **Input**:
+  | Param | Type                | Description               |
+  | ----- | ------------------- | ------------------------- |
+  | id    | <code>string</code> | id of the layer to remove |
 
-| Param | Type                | Description               |
-| ----- | ------------------- | ------------------------- |
-| id    | <code>string</code> | id of the layer to remove |
+- **Example**:
+  ```js
+    const action = removeLayer('layerOne');
+    // dispatch(action);
+  ```
 
 #### setBasemap
 
