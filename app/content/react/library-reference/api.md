@@ -8,6 +8,7 @@ Set of functions that allow to work with CARTO APIs.
 Async function that executes a SQL query against [CARTO SQL API](https://carto.com/developers/sql-api/)
 
 - **Input**:
+
     | Param                         | Type                | Description                                                           |
     | ----------------------------- | ------------------- | ----------------------------------------------------------------------|
     | credentials                   | <code>Object</code> | CARTO user credentials                                                |
@@ -21,6 +22,7 @@ Async function that executes a SQL query against [CARTO SQL API](https://carto.c
 - **Returns**: <code>Object</code> - Data returned from the SQL query execution
 
 - **Example**:
+
     ```js
     import { executeSQL } from '@carto/react-api';
 
@@ -45,6 +47,7 @@ Async function that executes a SQL query against [CARTO SQL API](https://carto.c
 React hook that allows a more powerful use of CARTO deck.gl layers, creating a set of layer props (see [@deck.gl/carto module](https://deck.gl/docs/api-reference/carto/overview)). It manages automatically filtering and viewport-related calculations, for common use cases.
 
 - **Input**:
+
     | Param                               | Type                          | Description                                                               |
     | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
     | source                              | <code>Object</code>           | Required source. { id, type, data }                                       |
@@ -52,6 +55,7 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
 
 
 - **Returns**: a set of props for the layer.
+
     | Param                               | Type                          | Description                                                               |
     | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
     | props                               | <code>Object</code>           | Default props required for layers                                         |
@@ -64,6 +68,7 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
     | props.updateTriggers.getFilterValue | <code>Object</code>           | Updating `getFilterValue` accessor when new filters are applied to source |
 
 - **Example**:
+
     ```js
     import { useCartoLayerProps } from '@carto/react-api';
     

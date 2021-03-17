@@ -8,6 +8,7 @@ OAuth functions
 React component to attend OAuth callbacks on `/oauthCallback`. Ensure you include that specific route in your application.
 
 - **Example**:
+
     ```js
     import { OAuthCallback } from '@carto/react-auth';
 
@@ -23,6 +24,7 @@ React component to attend OAuth callbacks on `/oauthCallback`. Ensure you includ
 Hook to perform login against CARTO, with OAuth implicit flow and using a popup.
 
 - **Input**:
+
     | Param                      | Type                              | Description                                |
     | -------------------------- | --------------------------------- | ------------------------------------------ |
     | oauthApp                   | <code>Object</code>               | OAuth parameters                           |
@@ -34,6 +36,7 @@ Hook to perform login against CARTO, with OAuth implicit flow and using a popup.
 - **Returns**: <code>function</code> - A function to trigger oauth with a popup
 
 - **Example**:
+
     ```js
     import { useOAuthLogin } from '@carto/react-auth';
     

@@ -7,6 +7,7 @@ Set of common functions, to be used mostly by other packages. You won't usually 
 Contains a set of basic aggregation functions (count, min, max, sum and average), used automatically for widgets and layers, see [AggregationTypes](#aggregationtypes). Functions are applicable to numbers and also objects using a numeric property
 
 - **Input**:
+
     | Param                      | Type                | Description                                                                        |
     | -------------------------- | ------------------- | -----------------------------------------------------------------------------------|
     | values                     | <code>Array</code>  | Array of numbers or objects with a numerical property                              |
@@ -15,6 +16,7 @@ Contains a set of basic aggregation functions (count, min, max, sum and average)
 - **Returns**: <code>Object</code> - An object with Aggregation functions, which keys are every `AggregationTypes` values
 
 - **Example**:
+
     ```js
         import { aggregationFunctions, AggregationTypes } from '@carto/react-core';
 
@@ -28,6 +30,7 @@ Contains a set of basic aggregation functions (count, min, max, sum and average)
 Makes groups from features based in a column (`keysColumn`) and applying an `operation` to the numeric values in a predefined column (`valuesColumn`). 
 
 - **Input**:
+
     | Param   | Type                | Default   | Description                          |
     | ------- | ------------------- | --------- | ------------------------------------ |
     | data | <code>Array</code> |         | Features for calculations (plain objects with properties)              |
@@ -38,6 +41,7 @@ Makes groups from features based in a column (`keysColumn`) and applying an `ope
 - **Returns**: <code>Array</code> - Grouped values
 
 - **Example**: 
+
     ```js
     import { groupValuesByColumn, AggregationTypes } from '@carto/react-core';
 
@@ -56,6 +60,7 @@ Makes groups from features based in a column (`keysColumn`) and applying an `ope
 Makes an array of numeric values as histogram data from features
 
 - **Input**:
+
     | Param   | Type                | Default   | Description                          |
     | ------- | ------------------- | --------- | ------------------------------------ |
     | features | <code>Array</code> |           | Features for calculations (plain objects with properties)                |
@@ -65,6 +70,7 @@ Makes an array of numeric values as histogram data from features
 - **Returns**: <code>Array</code> - Histogram data for each bin, derived from ticks
 
 - **Example**:
+
     ```js
         import { histogram, AggregationTypes } from '@carto/react-core';
 

@@ -12,6 +12,7 @@ Basemaps constants and Google Maps component
 - GOOGLE_HYBRID: <code>string</code>
 
 - **Example**:
+
     ```js
     import { VOYAGER } from '@carto/react-basemaps';
 
@@ -34,6 +35,7 @@ React component for working with Google Maps API and [deck.gl](https://deck.gl),
     | props.apiKey     | <code>string</code>              | Google Maps API Key              |
 
 - **Example**:
+
     ```js
         import { GOOGLE_SATELLITE, GoogleMap } from '@carto/react-basemaps';
 
