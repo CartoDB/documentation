@@ -270,7 +270,7 @@ quadkey.ST_ASQUADINT_POLYFILL(geo, resolution)
 
 Returns an `ARRAY` of `INT64` quadints fully contained by the given geography at a given level of detail.
 
-#### quadkey.ST_GEOGFROMQUADINT_BOUNDARY
+#### quadkey.ST_BOUNDARY
 
 {{% bannerNote type="code" %}}
 quadkey.ST_GEOGFROMQUADINT_BOUNDARY(quadint)
@@ -541,7 +541,7 @@ s2.ST_ASID(point, resolution)
 
 Returns the `INT64` S2 cell id of a given point at a given level of detail.
 
-#### s2.ST_GEOGFROMID_BOUNDARY
+#### s2.ST_BOUNDARY
 
 {{% bannerNote type="code" %}}
 s2.ST_GEOGFROMID_BOUNDARY(id)
