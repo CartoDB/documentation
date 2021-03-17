@@ -268,7 +268,7 @@ quadkey.ST_ASQUADINT_POLYFILL(geo, resolution)
 * `geo`: `GEOGRAPHY` geography to extract the quadints from.
 * `resolution`: `INT64` level of detail or zoom.
 
-Returns an `ARRAY` of `INT64` quadints fully contained by the given geography at a given level of detail.
+Returns an `ARRAY` of `INT64` quadints that intersect with the given geography at a given level of detail.
 
 #### quadkey.ST_BOUNDARY
 
