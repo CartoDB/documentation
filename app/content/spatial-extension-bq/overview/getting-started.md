@@ -1,10 +1,4 @@
-## Overview
-
-The CARTO Spatial Extension adds advanced capabilities to BigQuery on top its existing GIS functions. It includes UDFs and routines for visualization, spatial analysis and spatial data management. 
-
-Complemented with CARTO´s Tools, Developers APIs and Libraries, you will extract all the value of your location data in BigQuery. Your data stays in BigQuery and you can run it from the BigQuery console or using CARTO UIs. 
-
-Continue reading this documentation to learn about its different components and functionalities. Check the complete reference if you need help with a specific function or parameter.
+## Getting started
 
 ### Getting access
 
@@ -57,7 +51,6 @@ If you need to use the extension from GCP's EU multi-region, use `SELECT bqcarto
 If you get a version number, you are all set! Take a look at the Tiler's [**Quickstart**](../tiler/guides#quickstart) section to start using some of the extension's more advanced functionalities.
 
 If you get a permission error, please make sure that your account's email address matches your Google Account and create the BigQuery connection again. If you still can't access, get in touch at [support@carto.com](mailto:support@carto.com)
-
 
 ### Deployment options
 

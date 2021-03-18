@@ -5,15 +5,24 @@ cascade:
   icon: "/img/icons/spatial-extension-bq.png"
   repoUrl: https://github.com/CartoDB/carto-spatial-extension
   folders:
-    - name: "Tiler"
+    - name: "Overview"
       elements:
-        - "Overview"
-        - "Guides"
-        - "Map Viewer"
-        - "CLI tool" 
-        - "Examples"
-    - name: "Spatial Indexes"
+        - "Getting started"
+        - "Tilesets" 
+        - "Spatial indexes"
+    - name: "Guides"
       elements:
-        - "Overview"
-        - "Examples"
+        - "Tilesets"
+        - "Spatial indexes"
+    - name: "Reference"
+      elements:
+        - "tiler"
+        - "quadkey"
+        - "h3"
+        - "s2"
+        - "placekey"
+    - name: "Samples"
+      elements:
+        - "Tilesets"
+        - "Spatial indexes"
 ---

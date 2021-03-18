@@ -1,4 +1,4 @@
-## Overview
+## Spatial indexes
 
 Hierarchical grid systems, such as Quadkeys, H3 and S2, are an essential tool for analysing large spatial datasets, especially when dealing with data sources in different spatial aggregations. These systems are based on geospatial indexes that provide a direct relationship between grid cells at different resolutions, enabling extremely performant spatial operations.
 
@@ -56,7 +56,5 @@ H3 is a multiresolution hexagonal global grid system with hierarchical indexing.
 
 One of the most powerful properties of H3 is that all neighboring hexagons of a particular cell are at an equal distance. This enables fast computation of grid distances between hexagons and neighbouring areas around an index using the [DISTANCE](/spatial-extension-bq/reference/#h3kring) and [KRING](/spatial-extension-bq/reference/#h3distance) functions, respectively. 
 
-
 ### S2
-
 ### Placekey

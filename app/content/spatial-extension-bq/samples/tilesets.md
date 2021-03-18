@@ -1,4 +1,4 @@
-## Examples
+## Tilesets
 
 ### OSM buildings (aggregation)
 

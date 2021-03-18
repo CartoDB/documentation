@@ -1,4 +1,4 @@
-## Overview
+## Tilesets
 
 CARTO BigQuery Tiler is a module of the Spatial Extension for BigQuery, that allows to process and visualize very large spatial datasets from BigQuery.
 
