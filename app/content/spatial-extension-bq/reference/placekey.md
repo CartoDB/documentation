@@ -12,6 +12,7 @@ bqcarto.placekey.H3_ASPLACEKEY(h3index)
 
 Returns the `STRING` Placekey equivalent to the given H3 index.
 
+
 ### PLACEKEY_ASH3
 
 {{% bannerNote type="code" %}}
@@ -20,7 +21,7 @@ bqcarto.placekey.PLACEKEY_ASH3(placekey)
 
 * `placekey`: `STRING` Placekey identifier.
 
-Returns the `INT64` H3 index equivalent to the given Placekey.
+Returns the `INT64` H3 index equivalent to the given bqcarto.placekey.
 
 ### ISVALID
 

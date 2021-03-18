@@ -79,13 +79,12 @@ R'''
 ### CREATE_POINT_AGGREGATION_TILESET
 
 {{% bannerNote type="code" %}}
-bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET (source_table, target_table, options)
+bqcarto.CREATE_POINT_AGGREGATION_TILESET (source_table, target_table, options)
 {{%/ bannerNote %}}
 
 * `source_table`: `STRING` that can either be a quoted qualified table name (e.g. ``projectID.dataset.tablename``) or a full query contained by parentheses (e.g.<code>(Select * FROM \`projectID.dataset.tablename`)</code>).
 * `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form ``projectID.dataset.tablename``. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
 * `options`: `STRING` containing a valid JSON with the different options. Valid options are described the table below.
-
 
 | Option | Description |
 | :----- | :------ |
@@ -120,9 +119,9 @@ Here is an example of valid `properties` for a Point Aggregation Tileset:
             "type":"String"
         },
         "has_other_ethnicities": {
-            "formula": "countif(ethnicity = 'other_race') > 0",
+            "formula":"countif(ethnicity = 'other_race') > 0",
             "type":"Boolean"
-        }
+        } 
     },
     "single_point_properties": {
         "name":"String",

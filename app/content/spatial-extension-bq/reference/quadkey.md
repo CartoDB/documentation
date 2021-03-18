@@ -1,6 +1,6 @@
 ## quadkey
 
-You can learn more about quadkeys in the [documentation](/spatial-extension-bq/spatial-indexes/overview/spatial-indexes/#quadkeys). 
+You can learn more about quadkey in the [documentation](/spatial-extension-bq/spatial-indexes/overview/spatial-indexes/#quadkey). 
 ### QUADINT_FROMZXY
 
 {{% bannerNote type="code" %}}
@@ -45,11 +45,10 @@ Computes zoom level `z` and coordinates `x`, `y` for a given quadint.
 **Examples**
 
 ```sql
-SELECT bqcarto.quadkey.ZXY_FROMQUADINT(193);
+SELECT bqcartost.quadkey.ZXY_FROMQUADINT(193);
 -- z  x  y
 -- 1  0  3
 ```
-
 ### LONGLAT_ASQUADINT
 
 {{% bannerNote type="code" %}}
@@ -70,7 +69,7 @@ bqcarto.quadkey.QUADINT_FROMQUADKEY(quadkey)
 
 * `quadkey`: `STRING` quadkey to be converted to quadint.
 
-Returns the `INT64` quadint equivalent to the input bqcarto.quadkey.
+Returns the `INT64` quadint equivalent to the input quadkey.
 
 ### QUADKEY_FROMQUADINT
 
@@ -78,11 +77,11 @@ Returns the `INT64` quadint equivalent to the input bqcarto.quadkey.
 bqcarto.quadkey.QUADKEY_FROMQUADINT(quadint)
 {{%/ bannerNote %}}
 
-* `quadint`: `INT64` quadint to be converted to bqcarto.quadkey.
+* `quadint`: `INT64` quadint to be converted to quadkey.
 
 Returns the `STRING` quadkey equivalent to the input quadint.
 
-### TOPARENT
+### quadkey.TOPARENT
 
 {{% bannerNote type="code" %}}
 bqcarto.quadkey.TOPARENT(quadint, resolution)
@@ -156,9 +155,9 @@ bqcarto.quadkey.ST_ASQUADINT_POLYFILL(geo, resolution)
 * `geo`: `GEOGRAPHY` geography to extract the quadints from.
 * `resolution`: `INT64` level of detail or zoom.
 
-Returns an `ARRAY` of `INT64` quadints fully contained by the given geography at a given level of detail.
+Returns an `ARRAY` of `INT64` quadints that intersect with the given geography at a given level of detail.
 
-### ST_GEOGFROMQUADINT_BOUNDARY
+### ST_BOUNDARY
 
 {{% bannerNote type="code" %}}
 bqcarto.quadkey.ST_GEOGFROMQUADINT_BOUNDARY(quadint)
