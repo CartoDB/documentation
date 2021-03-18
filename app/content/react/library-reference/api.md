@@ -48,11 +48,17 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
 
 - **Input**:
 
-    | Param                               | Type                          | Description                                                               |
-    | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
-    | source                              | <code>Object</code>           | Required source. { id, type, data }                                       |
-    | uniqueIdProperty                    | <code>string</code>           | Optional. *Default* = 'cartodb_id'. Name of the column for identity. To be used by widget computations                                     |
+    | Param                               | Type                          | Description                                                                     |
+    | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------------- |
+    | source                              | <code>Object</code>           | Required source. { id, type, data }                                             |
+    | uniqueIdProperty                    | <code>string</code>           | (optional) Name of the column for identity. To be used by widget computations     |
 
+    **Important note about uniqueIdProperty**. The uniqueIdProperty allows to identify a feature unequivocally. When using tiles, it allows to detect portions of a same feature present in different tiles (think about a road segment crossing 2 tiles) and apply correct calculations (eg. avoid counting the same feature more than once). These are the rules used internally, in this precise order:
+    
+    1. if user indicates a particular property, it will be honoured.
+    2. if `cartodb_id` is present, it will be used (all features coming from a `CartoSQLLayer` have this field, just be sure to include it in the SQL you use)
+    3. if `geoid` is present, it will be used. Some datasets used inside `CartoBQTilerLayer` have this identifier.
+    4. finally, if a value isn't set for this param and none `cartodb_id` or `geoid` are found, every feature (or portion of a feature), will be treated as a unique feature.
 
 - **Returns**: a set of props for the layer.
 
