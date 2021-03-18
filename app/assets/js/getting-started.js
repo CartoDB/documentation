@@ -36,7 +36,7 @@ function changeExample(elemName, container) {
 // NOTE: Migrated position logic to CSS sticky position
 //Sidebar
 var sidebar = document.querySelector(".js-toc-sidebar");
-var sidebarContainer = sidebar.querySelector(".js-toc-sidebar-container");
+var sidebarContainer = sidebar && sidebar.querySelector(".js-toc-sidebar-container");
 
 if (sidebarContainer) {
   window.addEventListener('scroll', function(e) {
@@ -46,12 +46,13 @@ if (sidebarContainer) {
 
 selectCurrentTocCategory();
 
+var selectedElement;
+
 function selectCurrentTocCategory() {
   var tocContainer = document.querySelector("#TableOfContents")
   var sections = document.querySelectorAll(".js-content > h2, .js-content > h3, .js-content > h4");
-  var selectedElement = tocContainer.querySelector(".is-active");
-  var currentIndex = 0;
 
+  var currentIndex = 0;
   for (var i = 0; i < sections.length; i++) {
     if(sections[i].getBoundingClientRect().top < 200) {
       currentIndex = i;
@@ -60,13 +61,32 @@ function selectCurrentTocCategory() {
       break;
     }
   }
-  var newElement = tocContainer.querySelector('a[href="#'+ sections[currentIndex].id +'"]');
-  newElement.classList.add("is-active");
-  if((newElement != selectedElement) && selectedElement) {
-    selectedElement.classList.remove("is-active");
-  }
 
-  // selectCategoryId(sections[currentIndex].id);
+  // Activate node items recursively
+  var newElement = tocContainer && tocContainer.querySelector('a[href="#'+ sections[currentIndex].id +'"]');
+  if (selectedElement !== newElement) {
+    selectedElement = newElement;
+    deactivateNodes(tocContainer);
+    activateNodes(selectedElement);
+  }
+}
+
+function deactivateNodes(tocContainer) {
+  tocContainer && tocContainer.querySelectorAll(".is-active").forEach(function (item) {
+    item.classList.remove("is-active");
+  });
+}
+
+function activateNodes(el) {
+  if (el) {
+    var fe = el.firstElementChild;
+    if (fe && fe.tagName === 'A') {
+      fe.classList.add('is-active');
+    }
+    if (!(fe && fe.classList.contains('toc__link'))) {
+      activateNodes(el.parentElement);
+    }
+  }
 }
 
 var to = null;
@@ -78,7 +98,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
     var href = this.getAttribute('href');
     var element = document.querySelector(href);
-    var y = element.offsetTop - 136;
+    var y = element.offsetTop - 100;
 
     // element.scrollIntoView({ behavior: 'smooth' });
     window.scrollTo({ top: y, behavior: 'smooth' });
