@@ -1,6 +1,6 @@
 ## Getting Started
 
-Deck.gl is the preferred library for building web applications with CARTO. We recommend you to use deck.gl if you want to create custom apps faster and better using our APIs. Starting with version 8.3, deck.gl includes a submodule @deck.gl/carto for working with CARTO datasets and tilesets in a very easy and straightforward way. 
+deck.gl is the preferred library for building web applications with CARTO. We recommend you to use deck.gl if you want to create custom apps faster and better using our APIs. Starting with version 8.3, deck.gl includes a submodule @deck.gl/carto for working with CARTO datasets and tilesets in a very easy and straightforward way. 
 
 With deck.gl you can choose between different basemaps for your visualizations. CARTO provides a set of free basemaps from OpenStreetMap, but you can also use Google Maps, Mapbox or any other provider with MVT support.
 

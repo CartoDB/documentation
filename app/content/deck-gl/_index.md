@@ -8,6 +8,7 @@ cascade:
       elements:
         - "Getting Started"
         - "Style Language"
+        - "Angular Integration"
     - name: "Examples"
       elements:
         - "Hello World"
