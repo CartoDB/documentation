@@ -51,7 +51,7 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
     | Param                               | Type                          | Description                                                                     |
     | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------------- |
     | source                              | <code>Object</code>           | Required source. { id, type, data }                                             |
-    | uniqueIdProperty                    | <code>string</code>           | (optional) Name of the column for identity. To be used by widget computations     |
+    | [uniqueIdProperty]                    | <code>string</code>           | (optional) Name of the column for identity. To be used internally when getting viewportFeatures (used by widget computations)     |
 
     **Important note about uniqueIdProperty**. The uniqueIdProperty allows to identify a feature unequivocally. When using tiles, it allows to detect portions of a same feature present in different tiles (think about a road segment crossing 2 tiles) and apply correct calculations (eg. avoid counting the same feature more than once). These are the rules used internally, in this precise order:
     
@@ -65,7 +65,7 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
     | Param                               | Type                          | Description                                                               |
     | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
     | props                               | <code>Object</code>           | Default props required for layers                                         |
-    | props.uniqueIdProperty              | <code>string</code>           | Unique id property for the layer, default to `cartodb_id`                 |
+    | props.uniqueIdProperty              | <code>string</code>           | Return same unique id property for the layer as the input one             |
     | props.onViewportLoad                | <code>function</code>         | Function that is called when all tiles in the current viewport are loaded |
     | props.getFilterValue                | <code>function</code>         | Accessor to the filterable value of each data object                      |
     | props.filterRange                   | <code>[number, number]</code> | The [min, max] bounds of the filter values to display                     |

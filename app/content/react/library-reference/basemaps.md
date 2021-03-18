@@ -58,4 +58,4 @@ React component for working with Google Maps API and [deck.gl](https://deck.gl),
         );
     ```
 
-    Note: if you use *cra template**, there is a generic `<Map>` component that abstracts away the use of GoogleMap or a Mapbox basemap, and manages its state within Redux, in a very easy to use way.
+    Note: if you use *cra template*, there is a generic `<Map>` component that abstracts away the use of a GoogleMap or a Mapbox basemap, and manages its state within Redux, in a very easy to use way.

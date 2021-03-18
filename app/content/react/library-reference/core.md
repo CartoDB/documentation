@@ -11,7 +11,7 @@ Contains a set of basic aggregation functions (count, min, max, sum and average)
     | Param                      | Type                | Description                                                                        |
     | -------------------------- | ------------------- | -----------------------------------------------------------------------------------|
     | values                     | <code>Array</code>  | Array of numbers or objects with a numerical property                              |
-    | key                        | <code>string</code> | (Optional). When using objects, name of the property to use for calculations       |
+    | [key]                        | <code>string</code> | (optional). When using objects, name of the property to use for calculations       |
 
 - **Returns**: <code>Object</code> - An object with Aggregation functions, which keys are every `AggregationTypes` values
 

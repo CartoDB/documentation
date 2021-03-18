@@ -9,7 +9,7 @@ A [slice](https://redux-toolkit.js.org/api/createSlice) to manage the main redux
 #### createCartoSlice
 
 A function that accepts an `initialState`, setups the state and creates
-the CARTO reducers that support CARTO for React achitecture.
+the reducers that support CARTO for React achitecture.
 
 - **Input**:
 
@@ -103,7 +103,7 @@ Important! This doesn't imply adding a whole deck.gl layer to the redux store, j
   | props   | <code>Object</code> | { id, source, layerAttributes } 
   | props.id              | <code>string</code> | unique id for the layer                           |
   | props.source          | <code>string</code> | id of the source of the layer                     |
-  | props.layerAttributes | <code>Object</code> | (optional) custom attributes to pass to the layer |
+  | [props.layerAttributes] | <code>Object</code> | (optional) custom attributes to pass to the layer |
 
 - **Example**:
 
@@ -194,7 +194,7 @@ Action to add a filter on a given `source` by a `column`. This is done internall
   | props.column | <code>string</code> | column from the source to use by the filter |
   | props.type   | <code>FilterType</code> | 'in' or 'between' |
   | props.values   | <code>array</code> |  Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between') |
-  | props.owner   | <code>FilterType</code> | (optional) id of the widget triggering the filter (to be excluded) |
+  | [props.owner]   | <code>FilterType</code> | (optional) id of the widget triggering the filter (to be excluded) |
 
 - **Example**:
 
@@ -405,7 +405,7 @@ Action to set the OAuthApp
 
 #### setTokenAndUserInfoAsync
 
-Action to set the userInfo in the redux store, once there is a valid token (and set them both into state).
+Action to set the userInfo in the redux store, once there is a valid token (and set them both in state).
 
 - **Input**:
 
