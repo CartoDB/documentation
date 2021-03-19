@@ -1,8 +1,22 @@
 ## Tilesets
 
-CARTO BigQuery Tiler is a module of the Spatial Extension for BigQuery, that allows to process and visualize very large spatial datasets from BigQuery.
+CARTO BigQuery Tiler is a module of the Spatial Extension for BigQuery that allows to process and visualize very large spatial datasets stored in BigQuery.
 
-If you have small datasets (few megabytes), there are solutions available on BigQuery, such as [GeoVizQuery](https://cloud.google.com/bigquery/docs/gis-visualize), to visualize them; but if you have millions, or even billions of rows, you will need a system to load them progressively on a map. CARTO BigQuery Tiler allows you to do that without having to move your data out of BigQuery. 
+If you have small datasets in BigQuery (few megabytes), there are solutions such as [GeoVizQuery](https://cloud.google.com/bigquery/docs/gis-visualize) to visualize them; but if you have millions, or even billions of rows, you will need a system to load them progressively on a map. CARTO BigQuery Tiler allows you to do that without having to move your data out of BigQuery. 
+
+
+### How it works
+
+The Tiler will process your data and create a complete tileset out of it: all the map tiles for a specific zoom range will be stored in a BigQuery table in [MVT format](https://docs.mapbox.com/vector-tiles/specification/). Each individual tile is stored as a row in this table, with the tile coordinates and the encoded MVT stored in different columns:
+
+| Row | z | x | y | carto_partition | data |
+|-----|---|---|---|-----------------|------|
+| 1   | 16 | 45340 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JPdt3eyCLEwM (...) |
+| 2   | 16 | 45292 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JjLM0pEZLgWL (...) |
+
+Visualizing the tileset is straight-forward with Map Viewer: a new tool available from the Dashboard to visualize and publish your tileset maps.
+
+The integration of tilesets with custom web map applications is also possible with CARTO Maps API, which will connect to BigQuery using your connection's Service Account credentials to fetch and serve the tiles in a standard format, so they can be used with any webmapping library or desktop GIS application.
 
 CARTO BigQuery Tiler will process your data and create a complete tileset out of it: all the map tiles for a specific zoom range will be stored in a BigQuery table, then fetched and served directly from there. 
 

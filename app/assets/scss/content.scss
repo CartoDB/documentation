@@ -49,13 +49,13 @@
     line-height: 24px;
     margin-bottom: 8px;
     margin-top: 24px;
-    font-style: italic;
   }
 
   h6 {
     @include text();
+    font-family:'Open sans';
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
     margin-bottom: 8px;
     margin-top: 24px;

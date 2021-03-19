@@ -11,7 +11,7 @@ Access to the Spatial Extension for BigQuery is granted to every CARTO account w
 
 Some of the extension's capabilities are leveraged directly as SQL queries from the BigQuery console. In order to enable this, we'll grant access to the extension’s functions and procedures in BigQuery using the email address associated with your CARTO account.
 
-#### Authorization
+##### Authorization
 
 CARTO will require two different authorization elements for configuring access to the Spatial Extension:
 
@@ -30,7 +30,7 @@ Please make sure that your account has the `bigquery.jobs.list` permission on yo
 
 Take a look at the BigQuery [documentation](https://cloud.google.com/bigquery/docs/access-control#bq-permissions) for more information about roles and permissions.
 
-#### Connecting to BigQuery
+##### Connecting to BigQuery
 
 Once you have created your CARTO account, you can go to _Data_, click on _Your Connections_ and create a _New connection_. 
 

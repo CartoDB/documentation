@@ -1,5 +1,6 @@
 ## Tilesets
-### Quickstart
+
+### Creating a tileset
 
 As a CARTO Spatial Extension module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [BigQuery console](https://console.cloud.google.com/bigquery) or client of choice after connecting your CARTO account to BigQuery.
 
@@ -11,19 +12,6 @@ SELECT bqcarto.tiler.VERSION()
 ``` 
 
 Check the [Getting Access](../../overview#getting-access) section if you run into any error when running the query above.
-
-The Tiler works processing data directly in BigQuery and creating a table that contains the whole tileset. Each individual tile is stored as a row in this table,  with the tile coordinates and the encoded MVT stored in different columns:
-
-| Row | z | x | y | carto_partition | data |
-|-----|---|---|---|-----------------|------|
-| 1   | 16 | 45340 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JPdt3eyCLEwM (...) |
-| 2   | 16 | 45292 | 24576 | 3605 | H4sIAAAAAAAA/5Py52JjLM0pEZLgWL (...) |
-
-Visualizing the tileset is straight-forward with Map Viewer: a new tool available from the Dashboard to visualize and publish your tileset maps.
-
-The integration of tilesets with custom web map applications is also possible with CARTO Maps API, which will connect to BigQuery using your connection's Service Account credentials to fetch and serve the tiles in a standard format, so they can be used with any webmapping library or desktop GIS application.
-
-### Creating a tileset
 
 Once you are all set getting access to the tiler, the first step is to create a tileset using one of the procedures available, depending on the nature of the original data, and the type of tileset to be created:
 
@@ -70,7 +58,7 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 );
 ```
 
-### Visualizing a tileset
+##### Visualizing a tileset
 
 After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
@@ -111,7 +99,7 @@ Using Google Maps as a basemap is also  possible with this tool. Add `"google": 
 
 ![Tileset Viewer III](/img/bq-spatial-extension/tiler/guides-viewer-3.png)
 
-### Sharing a visualization
+##### Sharing a visualization
 
 Tilesets can be used as data layers with many web mapping libraries. Take a look at the **Development tools** section in our [documentation](https://docs.carto.com) to learn about different options.
 
@@ -135,7 +123,7 @@ For this guide, we will use a tileset that contains every european river. It's a
 
 ![eurivers tileset](/img/bq-spatial-extension/tiler/guides-eurivers.png)
 
-#### Map Style
+##### Map Style
 
 By clicking on the icon on the left bar, the Map Style panel will appear, showing a text editor with a predefined style.
 
@@ -214,7 +202,7 @@ https://maps-api-v2.us.carto.com/user/USERNAME/bigquery/tileset/{z}/{x}/{y}?sour
 
 This is most useful for loading the tileset with any webmapping library or desktop application, like QGIS.
 
-#### Share
+##### Share
 
 The _Share_ section allows publishing a tileset. By publishing, we grant **CARTO BigQuery Data Viewer** (`bigquery/dataViewer`) permissions to the associated tileset. Doing so, this map becomes public on the web and anybody with the URL will be able to see it.
 
@@ -235,7 +223,7 @@ We provide a Python Command Line tool called `carto-bq-tiler`. Think of it as a 
 * Upload Tilesets generated using other tools in MBTiles format
 * Download a tileset from BigQuery into a set of vector files or a MBTiles file to host your Tilesets somewhere else
 
-#### Installation
+##### Installation
 
 You need to have the Google [bq command line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool) already installed and [working](https://cloud.google.com/shell/docs/using-cloud-shell). So check if this command works for you:
 
@@ -259,7 +247,7 @@ Finally, to check that the tool is working just type:
 carto-bq-tiler --help
 ```
 
-#### Authentication
+##### Authentication
 
 `carto-bq-tiler` uses the credentials created by the [bq command line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool), and it will use the default project configured for it. If you want to use another project you can use the `-p` (`--project`) option, like for listing the tilests:
 
@@ -273,7 +261,7 @@ Also, if you have a service account JSON file you can use it instead with `-c` (
 carto-bq-tiler -c CREDENTIALS_JSON_PATH list
 ```
 
-#### List your tilesets
+##### List your tilesets
 
 List the Tilesets in your Google Cloud project with:
 
@@ -281,7 +269,7 @@ List the Tilesets in your Google Cloud project with:
 carto-bq-tiler list
 ```
 
-#### Upload a tileset
+##### Upload a tileset
 
 You can upload MBTiles files that contain tiles in MVT format. The only constraint is that the features must have an `id` integer property.
 
@@ -291,7 +279,7 @@ carto-bq-tiler load MBTILES_PATH TILESET_NAME
 
 `TILESET_NAME` is the tileset destination in BigQuery, and it's composed by the dataset and the table as `dataset.table`.
 
-#### Delete a tileset
+##### Delete a tileset
 
 You can simply delete a dataset from BigQuery with:
 
@@ -299,7 +287,7 @@ You can simply delete a dataset from BigQuery with:
 carto-bq-tileset remove TILESET_NAME
 ```
 
-#### Export a tileset
+##### Export a tileset
 
 Tilesets can be exported to your computer in two formats:
 
@@ -315,7 +303,7 @@ Directory tree:
 carto-bq-tiler export-tiles TILESET_NAME
 ```
 
-#### View a tileset
+##### View a tileset
 
 Tilesets can be viewed and explored in multiple ways:
 
