@@ -14,15 +14,15 @@ cascade:
       elements:
         - "Tilesets"
         - "Spatial indexes"
-    - name: "Reference"
+    - name: "Examples"
+      elements:
+        - "Tilesets"
+        - "Spatial indexes"
+    - name: "SQL Reference"
       elements:
         - "tiler"
         - "quadkey"
         - "h3"
         - "s2"
-        - "placekey"
-    - name: "Samples"
-      elements:
-        - "Tilesets"
-        - "Spatial indexes"
+        - "placekey"        
 ---

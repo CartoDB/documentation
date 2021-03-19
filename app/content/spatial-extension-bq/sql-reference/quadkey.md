@@ -1,6 +1,6 @@
 ## quadkey
 
-You can learn more about quadkey in the [documentation](/spatial-extension-bq/spatial-indexes/overview/spatial-indexes/#quadkey). 
+You can learn more about quadkeys and quandints in the [Overview section](/spatial-extension-bq/overview/spatial-indexes/#quadkey) of the documentation.
 
 ### QUADINT_FROMZXY
 
@@ -24,7 +24,7 @@ Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates,
 
 `INT64`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.QUADINT_FROMZXY(5, 4, 203);
@@ -47,7 +47,7 @@ Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
 
 `STRUCT<INT64, INT64, INT64>`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.ZXY_FROMQUADINT(208005);
@@ -73,7 +73,7 @@ Returns the quadint representation for a given level of detail and geographic co
 
 `INT64`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
@@ -96,7 +96,7 @@ Returns the quadint equivalent to the input quadkey.
 
 `INT64`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.QUADINT_FROMQUADKEY("3001");
@@ -119,7 +119,7 @@ Returns the quadkey equivalent to the input quadint.
 
 `STRING`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.QUADKEY_FROMQUADINT(4388);
@@ -143,7 +143,7 @@ Returns the parent quadint of a given quadint for a specific resolution. A paren
 
 `INT64`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.TOPARENT(4388, 3);
@@ -167,7 +167,7 @@ Returns an array with the children quadints of a given quadint for a specific re
 
 `ARRAY<INT64>`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.TOCHILDREN(1155, 4);
@@ -195,7 +195,7 @@ Returns the quadint directly next to the given quadint at the same zoom level. T
 
 `INT64`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.SIBLING(4388, 'up');
@@ -219,7 +219,7 @@ Returns an array containing all the quadints directly next to the given quadint 
 
 `ARRAY<INT64>`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.KRING(4388, 1);
@@ -251,7 +251,7 @@ Returns an array with the boundary box of a given quadint. This boundary box con
 
 `ARRAY<FLOAT64>`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.BBOX(4388);
@@ -279,7 +279,7 @@ Returns the quadint of a given point at a given level of detail.
 
 `INT64`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
@@ -303,16 +303,20 @@ Returns an array of quadints that intersect with the given geography at a given 
 
 `ARRAY<INT64>`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.ST_ASQUADINT_POLYFILL(
-    ST_MAKELINE(ST_GEOGPOINT(40.4168, -3.7038), ST_GEOGPOINT(40.7128, -74.0060)),
-    4);
+    ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(-363.71219873428345, 40.413365349070865), ST_GEOGPOINT(-363.7144088745117, 40.40965661286395), ST_GEOGPOINT(-363.70659828186035, 40.409525904775634), ST_GEOGPOINT(-363.71219873428345, 40.413365349070865)])), 
+    17);
 -- row  
--- 1    515
---      1027
---      1539
+-- 1    
+--      207301334801
+--      207305529105
+--      207305529073
+--      207305529137
+--      207305529169
+--      207301334833
 ```
 
 ### ST_BOUNDARY
@@ -323,7 +327,7 @@ bqcarto.quadkey.ST_BOUNDARY(quadint)
 
 **Description**
 
-Returns the boundary for a given quadint. We extract the boundary in the same way as when we calculate its [bbox](/spatial-extension-bq/reference/#quadkeybbox), then enclose it in a GeoJSON and finally transform it into a geography.
+Returns the boundary for a given quadint. We extract the boundary in the same way as when we calculate its [BBOX](#bbox), then enclose it in a GeoJSON and finally transform it into a geography.
 
 * `quadint`: `INT64` quadint to get the boundary geography from.
 
@@ -331,7 +335,7 @@ Returns the boundary for a given quadint. We extract the boundary in the same wa
 
 `GEOGRAPHY`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.ST_BOUNDARY(4388);
@@ -346,7 +350,7 @@ bqcarto.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(longitude, latitude, zoom_min, 
 
 **Description**
 
-Returns the quadint index for the given point for each zoom level requested, at the specified resolution (computed as the current zoom level + the value of `resolution`). The output is an array of struct with the following elements: quadint `id`, zoom level (`z`), and horizontal (`x`) and vertical (`y`) position of the tile. These quadint indexes can be used for grouping and generating aggregations of points throughout the zoom range requested. Notice the use of an additional variable `resolution` for adjusting the desired level of granularity.
+Returns the quadint index for the given point for each zoom level requested, at the specified resolution (computed as the current zoom level + the value of `resolution`). The output is an array of structs with the following elements: quadint `id`, zoom level (`z`), and horizontal (`x`) and vertical (`y`) position of the tile. These quadint indexes can be used for grouping and generating aggregations of points throughout the zoom range requested. Notice the use of an additional variable `resolution` for adjusting the desired level of granularity.
 
 * `longitude`: `FLOAT64` horizontal coordinate of the map.
 * `latitude`: `FLOAT64` vertical coordinate of the map.
@@ -359,7 +363,7 @@ Returns the quadint index for the given point for each zoom level requested, at 
 
 `ARRAY<STRUCT<INT64, INT64, INT64>>`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(
@@ -383,9 +387,9 @@ Returns the current version of the quadkey module.
 
 **Return type**
 
-`INT64` (FIXME `STRING`)
+`STRING`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.quadkey.VERSION();
