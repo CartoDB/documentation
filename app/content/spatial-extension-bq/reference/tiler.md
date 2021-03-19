@@ -5,8 +5,12 @@ We currently provide two procedures to tilify a dataset: _CREATE_SIMPLE_TILESET_
 ### CREATE_SIMPLE_TILESET
 
 {{% bannerNote type="code" %}}
-bqcarto.tiler.CREATE_SIMPLE_TILESET (source_table, target_table, options)
+bqcarto.tiler.CREATE_SIMPLE_TILESET(source_table, target_table, options)
 {{%/ bannerNote %}}
+
+**Description**
+
+Generates a simple tileset.
 
 * `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`projectID.dataset.tablename\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`projectID.dataset.tablename\`)</code>).
 * `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectID.dataset.tablename\`</code>. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
@@ -33,6 +37,24 @@ To avoid issues in the process when building the queries that will be executed i
 |`drop_duplicates`| Default: `false`. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
 
+**Examples**
+
+```sql
+CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
+  R'''(
+    SELECT geom, type
+    FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
+  ) _input
+  ''',
+  R'''`cartobq.maps.natural_earth_roads`''',
+  R'''
+  {
+    "properties":{
+      "type": "String"
+    }
+  }'''
+);
+```
 
 In Simple Tilesets, the `properties` are defined by the source data itself. You only have to write the name of the column (as defined in the source query or table) and its type. It doesn't support any extra transformations or formulae since those can be applied to the source query directly.
 
@@ -79,8 +101,12 @@ R'''
 ### CREATE_POINT_AGGREGATION_TILESET
 
 {{% bannerNote type="code" %}}
-bqcarto.CREATE_POINT_AGGREGATION_TILESET (source_table, target_table, options)
+bqcarto.CREATE_POINT_AGGREGATION_TILESET(source_table, target_table, options)
 {{%/ bannerNote %}}
+
+**Description**
+
+Generates a point aggregation tileset.
 
 * `source_table`: `STRING` that can either be a quoted qualified table name (e.g. ``projectID.dataset.tablename``) or a full query contained by parentheses (e.g.<code>(Select * FROM \`projectID.dataset.tablename`)</code>).
 * `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form ``projectID.dataset.tablename``. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
@@ -104,6 +130,33 @@ bqcarto.CREATE_POINT_AGGREGATION_TILESET (source_table, target_table, options)
 |`aggregation_resolution`| Default: `6`. A `NUMBER` that specifies the resolution of the spatial aggregation.<br/><br/>For quadkey the aggregation for zoom `z` is done at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells.<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
 |`aggregation_placement`| Default: `"cell-centroid"`. A `STRING` that defines what type of geometry will be used for the cells generated in the aggregation. For a quadkey aggregation, there are currently four options:<br/><ul><li>`"cell-centroid"`: Each feature will be defined as the centroid of the cell, that is, all points that are aggregated together into the cell will be represented in the tile by a single point.</li><li>`"cell"`: Each feature will be defined as the whole cell, thus the final representation in the tile will be a polygon. This gives more precise coordinates but takes more space in the tile and requires more CPU to process it in the renderer.</li><li>`"features-any"`: The point representing a feature will be any random point from the source data, that is, if 10 points fall inside a cell it will use the location of one of them to represent the cell itself</li><li>`"features-centroid"`: The feature will be defined as the centroid (point) of the points that fall into the cell. Note that this only takes into account the points aggregated under a cell, and not the cell shape (as "cell-centroid" does).</li></ul>|
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. In Point Aggregation Tilesets we have two kinds of `properties`: the main ones, `"properties"`, which are the result of an aggregate function, and `"single_point_properties"`, which are properties that are only applied when there is a single point in the cell, therefore, they are columns from the source data points themselves, not an aggregation.<br/><br/>Each main `property` is defined by its name, type (Number, Boolean or String) and formula (any formula that uses an [aggregate function]((https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#aggregate_functions)) supported by BigQuery and returns the expected type) to generate the properties from all the values of the points that fall under the cell. Only name and type are necessary for `"single_point_properties"`. Check out the examples included below. |
+
+**Examples**
+
+```sql
+CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
+  R'''(
+    SELECT ST_CENTROID(geometry) as geom
+    FROM `bigquery-public-data.geo_openstreetmap.planet_features`
+    WHERE 'building' IN (SELECT key FROM UNNEST(all_tags)) AND geometry IS NOT NULL
+  )''',
+  '`your-project.your-dataset.osm_buildings_14_7`',
+  R'''
+    {
+      "zoom_min": 0,
+      "zoom_max": 14,
+      "aggregation_type": "quadkey",
+      "aggregation_resolution": 7,
+      "aggregation_placement": "cell-centroid",
+      "properties":{
+        "aggregated_total": {
+          "formula":"count(*)",
+          "type":"Number"
+        }
+      }
+    }
+  ''');
+```
 
 Here is an example of valid `properties` for a Point Aggregation Tileset: 
 
