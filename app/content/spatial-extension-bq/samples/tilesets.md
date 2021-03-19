@@ -31,7 +31,7 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
       }
     }
   ''');
-  ```
+```
 
 This process will take the over 300M buildings in the source table, aggregate them into cells and generate a table containing more than 4M tiles around the world.
 

@@ -26,7 +26,7 @@
   h2 {
     font-size: 32px;
     line-height: 36px;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     margin-top: 54px;
   }
 
@@ -71,7 +71,7 @@
 
   .highlight, img {
     border-radius: 4px;
-    margin: 20px 4px;
+    margin-bottom: 20px;
   }
 
   table:not(.lntable) { //Excludes the tables created in the code
@@ -113,7 +113,7 @@
       margin-bottom: 8px;
   
       &:last-child {
-        margin-bottom: 16px;
+        margin-bottom: 12px;
       }
     }
   }
