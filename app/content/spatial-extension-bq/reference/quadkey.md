@@ -1,6 +1,7 @@
 ## quadkey
 
 You can learn more about quadkey in the [documentation](/spatial-extension-bq/spatial-indexes/overview/spatial-indexes/#quadkey). 
+
 ### QUADINT_FROMZXY
 
 {{% bannerNote type="code" %}}
@@ -53,6 +54,7 @@ SELECT bqcartost.quadkey.ZXY_FROMQUADINT(208005);
 -- z  x  y
 -- 5  4  203
 ```
+
 ### LONGLAT_ASQUADINT
 
 {{% bannerNote type="code" %}}
@@ -77,6 +79,7 @@ Returns the quadint representation for a given level of detail and geographic co
 SELECT bqcartost.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
 -- 4388
 ```
+
 ### QUADINT_FROMQUADKEY
 
 {{% bannerNote type="code" %}}
@@ -99,6 +102,7 @@ Returns the quadint equivalent to the input quadkey.
 SELECT bqcartost.quadkey.QUADINT_FROMQUADKEY("3001");
 -- 4388
 ```
+
 ### QUADKEY_FROMQUADINT
 
 {{% bannerNote type="code" %}}
@@ -167,10 +171,11 @@ Returns an array with the children quadints of a given quadint for a specific re
 
 ```sql
 SELECT bqcartost.quadkey.TOCHILDREN(1155, 4);
--- 4356
--- 4868
--- 4388
--- 4900
+-- row  
+-- 1    4356
+--      4868
+--      4388
+--      4900
 ```
 
 ### SIBLING
@@ -218,15 +223,16 @@ Returns an array containing all the quadints directly next to the given quadint 
 
 ```sql
 SELECT bqcartost.quadkey.KRING(4388, 1);
--- 3844
--- 3876
--- 3908
--- 4356
--- 4388
--- 4420
--- 4868
--- 4900
--- 4932
+-- row  
+-- 1    3844
+--      3876
+--      3908
+--      4356
+--      4388
+--      4420
+--      4868
+--      4900
+--      4932
 ```
 
 ### BBOX
@@ -249,10 +255,11 @@ Returns an array with the boundary box of a given quadint. This boundary box con
 
 ```sql
 SELECT bqcartost.quadkey.BBOX(4388);
--- 22.5
--- -21.943045533438177
--- 45.0
--- 0.0
+-- row  
+-- 1    22.5
+--      -21.943045533438177
+--      45.0
+--      0.0
 ```
 
 ### ST_ASQUADINT
@@ -265,7 +272,7 @@ bqcarto.quadkey.ST_ASQUADINT(point, resolution)
 
 Returns the quadint of a given point at a given level of detail.
 
-* `point`: `GEOGRAPHY` POINT to get the quadint from.
+* `point`: `GEOGRAPHY` point to get the quadint from.
 * `resolution`: `INT64` level of detail or zoom.
 
 **Return type**
@@ -302,9 +309,10 @@ Returns an array of quadints that intersect with the given geography at a given 
 SELECT bqcartost.quadkey.ST_ASQUADINT_POLYFILL(
     ST_MAKELINE(ST_GEOGPOINT(40.4168, -3.7038), ST_GEOGPOINT(40.7128, -74.0060)),
     4);
--- 515
--- 1027
--- 1539
+-- row  
+-- 1    515
+--      1027
+--      1539
 ```
 
 ### ST_BOUNDARY
