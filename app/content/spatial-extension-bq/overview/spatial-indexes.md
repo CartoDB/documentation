@@ -45,12 +45,12 @@ On this module, we also provide the functions necessary to convert Quadints into
 
 ### H3
 
-H3 is a multiresolution hexagonal global grid system with hierarchical indexing. It supports sixteen resolutions, each of them composed by cells with one seventh the area of the lower resolution containing cell. Each hexagon cell at a particular resolution is uniquely identified, and these identifiers can be easily truncated to find the coarser containing cell. However, since an hexagon cannot be exactly subdivided into seven hexagons, this process always results in a fixed amount of shape distortion.  
+[H3](https://h3geo.org/) is a multiresolution hexagonal global grid system with hierarchical indexing developed by Uber. It supports sixteen resolutions, each of them composed by cells with one seventh the area of the lower resolution containing cell. Each hexagon cell at a particular resolution is uniquely identified, and these identifiers can be easily truncated to find the coarser containing cell. However, since an hexagon cannot be exactly subdivided into seven hexagons, this process always results in a fixed amount of shape distortion.  
 
 <div class="figures-table">
     <figure class="figure">
         <img src="/img/bq-spatial-extension/spatial-indexes/h3-multilevel-uber.png" alt="Multiresolution quadkeys">
-        <figcaption class="figcaption" style="text-align:center">Multiple levels of H3 grids (<a href="https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system">source</a>)</figcaption>
+        <figcaption class="figcaption" style="text-align:center">Multiple levels of H3 grids (<a href="https://eng.uber.com/h3">source</a>)</figcaption>
     </figure>
 </div>
 
@@ -66,4 +66,32 @@ One of the most powerful properties of H3 is that all neighboring hexagons of a 
 </div>
 
 ### S2
+
+[S2](https://s2geometry.io), developed by Google, works exclusively with spherical projections. By mapping points on the Earth's surface to a sphere, S2 minimises distortion and avoids discontinuities such as the discontinuity along the 180-degree meridian present in the Mercator projection.
+
+S2 enables the decomposition of the unit sphere into a hierarchy of cells, each of which is a quadrilateral formed by four geodesics. The cell hierarchy starts at level 0 and goes all the way down to 30, where cells represent approximately 1 squared cm. Level 0 is composed of six cells and lower levels are computed by subdividing each cell into four. 
+
+<div class="figures-table">
+    <figure class="figure">
+        <img src="/img/bq-spatial-extension/spatial-indexes/s2-multilevel-google.gif" alt="Multiresolution quadkeys">
+        <figcaption class="figcaption" style="text-align:center">S2 cell hierarchy (<a href="https://s2geometry.io/devguide/s2cell_hierarchy">source</a>)</figcaption>
+    </figure>
+</div>
+
+S2 cells are uniquely identified by a 64-bit ID, following a numbering system optimized for spatial indexing: two S2 cells whose IDs are close together will also be close together in the space. To learn more about the properties of S2 cells, refer to the library's [official documentation](https://s2geometry.io/devguide/s2cell_hierarchy).
+
+
 ### Placekey
+
+[Placekey](https://www.placekey.io) is a universal identifier for any physical place built upon H3. A placekey is composed of a *What* and a *Where* part (`What@Where`), the former capturing the descriptive element of a place and the latter its geospatial position.  
+
+<div class="figures-table" style="text-align:center">
+    <figure>
+        <img src="/img/bq-spatial-extension/spatial-indexes/placekey-components.png" alt="Multiresolution quadkeys" style="width:60%">
+        <figcaption class="figcaption" style="text-align:center">Placekey components (<a href="https://www.placekey.io">source</a>)</figcaption>
+    </figure>
+</div>
+
+The *What* part of a placekey is composed of two sets of three characters encoding the address and the POI, to account for the fact that multiple places can share the same address. For example, a Starbucks and a Subway in 555 Main Street will share the first three characters but differ on the other three, therefore having different *What* parts. 
+
+Finally, the *Where* part encodes the H3 hexagonal cell where the place is located. To learn more about Placekey, visit the [project's website](https://www.placekey.io).
