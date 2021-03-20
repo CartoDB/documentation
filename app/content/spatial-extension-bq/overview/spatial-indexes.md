@@ -45,7 +45,7 @@ On this module, we also provide the functions necessary to convert Quadints into
 
 ### H3
 
-H3 is a multiresolution hexagonal global grid system with hierarchical indexing. It supports sixteen resolutions, each of them composed by cells with one seventh the area of the lower resolution containing cell. Each hexagon cell at a particular resolution is uniquely identified, and these identifiers can be easily truncated to find the coarser containing cell. However, since an hexagon cannot be exactly subdivided into seven hexagons, this process results in a fixed amount of shape distortion.  
+H3 is a multiresolution hexagonal global grid system with hierarchical indexing. It supports sixteen resolutions, each of them composed by cells with one seventh the area of the lower resolution containing cell. Each hexagon cell at a particular resolution is uniquely identified, and these identifiers can be easily truncated to find the coarser containing cell. However, since an hexagon cannot be exactly subdivided into seven hexagons, this process always results in a fixed amount of shape distortion.  
 
 <div class="figures-table">
     <figure class="figure">
@@ -54,7 +54,16 @@ H3 is a multiresolution hexagonal global grid system with hierarchical indexing.
     </figure>
 </div>
 
-One of the most powerful properties of H3 is that all neighboring hexagons of a particular cell are at an equal distance. This enables fast computation of grid distances between hexagons and neighbouring areas around an index using the [DISTANCE](/spatial-extension-bq/reference/#h3kring) and [KRING](/spatial-extension-bq/reference/#h3distance) functions, respectively. 
+Instead of constructing a grid over a planar projection like Quadkey, H3 projects from Earth like a sphere to a regular icosahedron, and then lays out hexagonal grid cells on each of its faces.
+
+One of the most powerful properties of H3 is that all neighboring hexagons of a particular cell are at an equal distance. This enables fast computation of grid distances between hexagons and neighbouring areas around an index using the [DISTANCE](/spatial-extension-bq/reference/#h3kring) and [KRING](/spatial-extension-bq/reference/#h3distance) functions, respectively.
+
+<div class="figures-table">
+    <figure class="figure">
+        <img src="/img/bq-spatial-extension/spatial-indexes/h3_kring_comparison.png" alt="Multiresolution quadkeys">
+        <figcaption class="figcaption" style="text-align:center">kRings of distance 1, 2 and 3 around an H3 index of resolution 11.</figcaption>
+    </figure>
+</div>
 
 ### S2
 ### Placekey
