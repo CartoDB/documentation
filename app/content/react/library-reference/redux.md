@@ -9,7 +9,7 @@ Functions to ease the management of CARTO within a react-redux application. This
 - `cartoSlice`: to deal with basemap, viewState, sources, layers and filters on sources.
 - `oauthSlice`: to use an OAuth app.
 
-**Tip:** The cra-template already makes extensive use of these slices for redux out of the box, to provide several features in an easy way.
+**Tip:** The CARTO for React template already makes extensive use of these slices for redux out of the box, to provide several features in an easy way.
 ### CARTO Slice
 
 #### createCartoSlice

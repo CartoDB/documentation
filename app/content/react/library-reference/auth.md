@@ -66,4 +66,4 @@ Hook to perform login against CARTO, with OAuth implicit flow and using a popup.
   // handleLogin function should be later handled from UI to trigger the flow
   ```
 
-  **Tip:** Check login components at https://github.com/CartoDB/carto-react-template/ for a full example using this hook, where oauthApp data is managed within Redux store.
+  **Tip:** Check CARTO for React templates for examples using this hook, where oauthApp data is managed within Redux store. For example, this is the [Login page](https://github.com/CartoDB/carto-react-template/blob/master/template-skeleton/template/src/components/views/login/Login.js).

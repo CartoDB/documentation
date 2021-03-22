@@ -10,7 +10,7 @@ Basemaps constants and a GoogleMaps component
 
 #### GoogleMap
 
-React component for working with Google Maps API and [deck.gl](https://deck.gl), by using `GoogleMapsOverlay`, from _@deck.gl/google-maps\_ module;. It tries to offer a basic googlemaps basemap, with an interface very similar to the one presented by `react-map-gl` for Mabpox, thus allowing an easier change between them in your app.
+React component for working with Google Maps API and [deck.gl](https://deck.gl), by using `GoogleMapsOverlay`, from _@deck.gl/google-maps\_ module;. It offers a basic googlemaps basemap with an interface similar to the one presented by `react-map-gl` for Mabpox, thus allowing an easier change between them in your app.
 
 - **Input**:
 
@@ -47,7 +47,7 @@ React component for working with Google Maps API and [deck.gl](https://deck.gl),
   );
   ```
 
-  **Tip:** if you use _cra template_, there is a generic `<Map>` component that abstracts away the use of a `GoogleMap` or a Mapbox basemap, and manages its state within Redux, in a very easy to use way.
+  **Tip:** if you use CARTO for React template, there is a generic `<Map>` component that abstracts away the use of a `GoogleMap` or a Mapbox basemap, and manages its state within Redux, in a very easy to use way.
 
 ### Constants & enums
 

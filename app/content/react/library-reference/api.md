@@ -68,7 +68,8 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
   | Param                               | Type                          | Description                                                               |
   | ----------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
   | props                               | <code>Object</code>           | Default props required for layers                                         |
-  | props.uniqueIdProperty              | <code>string</code>           | Return same unique id property for the layer as the input one             |
+  | props.binary                        | <code>boolean</code>          | Returns true. The internal viewportFeatures calculation requires MVT property set to true             |
+  | props.uniqueIdProperty              | <code>string</code>           | Returns same unique id property for the layer as the input one             |
   | props.onViewportLoad                | <code>function</code>         | Function that is called when all tiles in the current viewport are loaded |
   | props.getFilterValue                | <code>function</code>         | Accessor to the filterable value of each data object                      |
   | props.filterRange                   | <code>[number, number]</code> | The [min, max] bounds of the filter values to display                     |
@@ -92,7 +93,7 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
   }
   ```
 
-  **Tip:** if you're using cra-template, you would usually get the `source` from Redux. It is recommended to use the hook as the latest prop; and you might need to apply destructuring on its properties for more advanced use cases.
+  **Tip:** if you're using CARTO for React templates, you would usually get the `source` from Redux. It is recommended to use the hook as the latest prop; and you might need to apply destructuring on its properties for more advanced use cases.
 
 ### Constants & enums
 
