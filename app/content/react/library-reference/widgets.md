@@ -31,7 +31,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
     ```js
         import { CategoryWidget } from '@carto/react-widgets';
 
-        const customFormatter = (value) => `{value} people`;
+        const customFormatter = (value) => `${value} people`;
 
         return (    
             <CategoryWidget
@@ -73,7 +73,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
     ```js
         import { FormulaWidget } from '@carto/react-widgets';
 
-        const customFormatter = (value) => `{value} $`;
+        const customFormatter = (value) => `${value} $`;
 
         return (    
             <FormulaWidget
@@ -128,7 +128,7 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
     ```js
         import { HistogramWidget } from '@carto/react-widgets';
 
-        const customFormatter = (value) => `{value} $`;
+        const customFormatter = (value) => `${value} $`;
 
         return (
             <HistogramWidget
