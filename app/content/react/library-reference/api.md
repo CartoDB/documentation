@@ -17,7 +17,6 @@ Async function that executes a SQL query against [CARTO SQL API](https://carto.c
   | credentials                   | <code>Object</code> | CARTO user credentials                                     |
   | credentials.username          | <code>string</code> | CARTO username                                             |
   | credentials.apiKey            | <code>string</code> | CARTO API Key                                              |
-  | credentials.serverUrlTemplate | <code>string</code> | CARTO server URL template (eg: _https://{user}.carto.com_) |
   | query                         | <code>string</code> | SQL query to be executed                                   |
   | opts                          | <code>Object</code> | Optional. Additional options for the HTTP request          |
   | opts.format                   | <code>string</code> | Output format (i.e. 'geojson')                             |
@@ -31,8 +30,7 @@ Async function that executes a SQL query against [CARTO SQL API](https://carto.c
 
   const credentials = {
     username: "public",
-    apiKey: "default_public",
-    serverUrlTemplate: "https://{user}.carto.com",
+    apiKey: "default_public"
   };
   const query = `SELECT COUNT(cartodb_id) FROM populated_places`;
 

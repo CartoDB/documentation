@@ -1,6 +1,8 @@
 ## Basemaps
 
-Basemaps constants and Google Maps component
+**npm package: @carto/react-basemaps**
+
+Basemaps constants and a GoogleMaps component
 
 ### Components
 

@@ -310,31 +310,9 @@ Action to set the current ViewState of the map
   // dispatch(action)
   ```
 
-#### setViewportFeatures
-
-Action to set the viewport features to a specific source
-
-- **Input**:
-
-  | Param          | Type                | Description            |
-  | -------------- | ------------------- | ---------------------- |
-  | props          | <code>Object</code> | { sourceId, features } |
-  | props.sourceId | <code>string</code> | id of the source       |
-  | props.features | <code>Array</code>  | viewport features      |
-
-#### removeViewportFeatures
-
-Action to remove the viewport features from a specific source
-
-- **Input**:
-
-  | Param    | Type                | Description      |
-  | -------- | ------------------- | ---------------- |
-  | sourceId | <code>string</code> | id of the source |
-
 #### setWidgetLoadingState
 
-Action to set the widget loading state to a specific one
+Action to set the loading state to a specific widget. It can be useful when creating custom widgets.
 
 - **Input**:
 
@@ -395,19 +373,6 @@ reducers to manage OAuth with CARTO platform.
       }
     };
   ```
-
-#### setOAuthApp
-
-Action to set the OAuthApp
-
-- **Input**:
-
-  | Param                   | Type                | Description                                                                                                   |
-  | ----------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------- |
-  | props                   | <code>Object</code> | { clientId, scopes, authorizeEndPoint }                                                                       |
-  | props.clientId          | <code>string</code> | unique OAuth App identifier                                                                                   |
-  | props.scopes            | <code>array</code>  | array of valid scopes for the App.                                                                            |
-  | props.authorizeEndPoint | <code>string</code> | URL of CARTO authorization endpoint. Except for on-premise, it should be 'https://carto.com/oauth2/authorize' |
 
 #### setTokenAndUserInfoAsync
 

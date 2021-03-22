@@ -2,7 +2,9 @@
 
 **npm package: @carto/react-core**
 
-Set of common functions, to be used mostly by other packages. You won't usually consume this package directly, but when using `AggregationTypes` for widgets.
+Set of common functions, to be used mostly by other packages. You won't usually consume this package directly, but when using `AggregationTypes` for widgets or when creating custom widgets.
+
+**Tip:** The computations performed internally by widgets use these functions. They can be useful in the context of new custom widgets (for example using a different charting library) 
 
 ### Functions
 
