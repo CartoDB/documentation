@@ -21,5 +21,6 @@ cascade:
         - "Basemaps"
         - "Core"
         - "Redux"
+        - "UI"
         - "Widgets"
 ---
