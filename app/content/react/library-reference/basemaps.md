@@ -1,6 +1,8 @@
 ## Basemaps
 
-**npm package: @carto/react-basemaps**
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| @carto/react-basemaps  | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/v/@carto/react-basemaps.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/dt/@carto/react-basemaps.svg?style=flat-square" alt="downloads" /></a>
 
 Basemaps constants and a GoogleMaps component
 

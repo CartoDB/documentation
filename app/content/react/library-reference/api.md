@@ -1,6 +1,8 @@
 ## API
 
-**npm package: @carto/react-api**
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| @carto/react-api  | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/v/@carto/react-api.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/dt/@carto/react-api.svg?style=flat-square" alt="downloads" /></a>
 
 Set of functions that allow to work with CARTO APIs.
 

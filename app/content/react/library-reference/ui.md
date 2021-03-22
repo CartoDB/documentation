@@ -1,6 +1,8 @@
 ## UI
 
-**npm package: @carto/react-ui**
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| @carto/react-ui  | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/v/@carto/react-ui.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/dt/@carto/react-ui.svg?style=flat-square" alt="downloads" /></a>
 
 A set of UI elements to build CARTO for React applications.
 

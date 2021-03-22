@@ -1,6 +1,9 @@
 ## Auth
 
-**npm package: @carto/react-auth**
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" /></a>
+
 
 OAuth utilities
 
