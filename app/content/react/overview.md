@@ -36,6 +36,7 @@ The *NPM* packages are available here:
     | @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a> |
     | @carto/react-ui  | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/v/@carto/react-ui.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/dt/@carto/react-ui.svg?style=flat-square" alt="downloads" /></a> |
     | @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-workers  | <a href="https://npmjs.org/package/@carto/react-workers">  <img src="https://img.shields.io/npm/v/@carto/react-workers.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-workers">  <img src="https://img.shields.io/npm/dt/@carto/react-workers.svg?style=flat-square" alt="downloads" /></a> |
 
 ### Architecture
 
