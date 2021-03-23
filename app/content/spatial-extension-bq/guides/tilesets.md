@@ -20,26 +20,26 @@ The result will be a tileset with the geometry and total population per blockgro
 ```sql
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''
-(
-  SELECT
-    d.geoid,
-    d.total_pop,
-    g.geom 
-  FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
-  JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
-    ON d.geoid = g.geoid
-) _input
+  (
+    SELECT
+      d.geoid,
+      d.total_pop,
+      g.geom 
+    FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
+    JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
+      ON d.geoid = g.geoid
+  ) _input
   ''',
   R'''`cartobq.maps.blockgroup_pop`''',
   R'''
   {
-      "zoom_min": 0,
-      "zoom_max": 14,
-      "max_tile_size_kb": 3072,
-      "properties":{
-          "geoid": "String",
-          "total_pop": "Number"
-       }
+    "zoom_min": 0,
+    "zoom_max": 14,
+    "max_tile_size_kb": 3072,
+    "properties":{
+      "geoid": "String",
+      "total_pop": "Number"
+    }
   }'''
 );
 ```
@@ -60,19 +60,20 @@ Creating color ramps for data-drive visualizations is straight-forward, using he
 
 Let's create a binned ramp visualization with the `colorBins()` helper function:
 
-```javascript
-      "getFillColor": {
-        "@@function": "colorBins",
-        "attr": "total_pop",
-        "domain": [
-          729,
-          937,
-          1154,
-          1394,
-          1712,
-          2235
-        ],
-        "colors": "Emrld"
+```js
+"getFillColor": {
+  "@@function": "colorBins",
+  "attr": "total_pop",
+  "domain": [
+    729,
+    937,
+    1154,
+    1394,
+    1712,
+    2235
+  ],
+  "colors": "Emrld"
+}
 ```
 
 * `attr`: name of the data attribute in your tileset. 
@@ -141,21 +142,21 @@ Basic styles might be a good option for the most basic maps, but creating more s
 
 Replace the `getLineColor` property with the following block to style the rivers depending on their bearing. 
 
-```javascript
-  "getLineColor": {
-    "@@function": "colorContinuous",
-    "attr": "bearing",
-    "domain": [
-      0,
-      60,
-      120,
-      180,
-      240,
-      300,
-      360
-    ],
-    "colors": "Earth"
-  }
+```js
+"getLineColor": {
+  "@@function": "colorContinuous",
+  "attr": "bearing",
+  "domain": [
+    0,
+    60,
+    120,
+    180,
+    240,
+    300,
+    360
+  ],
+  "colors": "Earth"
+}
 ```
 
 Let's explain a bit how this function works:
@@ -213,7 +214,7 @@ We provide a Python Command Line tool called `carto-bq-tiler`. Think of it as a 
 
 You need to have the Google [bq command line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool) already installed and [working](https://cloud.google.com/shell/docs/using-cloud-shell). So check if this command works for you:
 
-```python
+```bash
 bq query "SELECT 1"
 ```
 
@@ -223,13 +224,13 @@ If you get something like this:
 
 you are good to go and you should install `carto-bq-tiler` like this:
 
-```python
+```bash
 pip3 install carto-bq-tiler
 ```
 
 Finally, to check that the tool is working just type:
 
-```python
+```bash
 carto-bq-tiler --help
 ```
 
@@ -237,13 +238,13 @@ carto-bq-tiler --help
 
 `carto-bq-tiler` uses the credentials created by the [bq command line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool), and it will use the default project configured for it. If you want to use another project you can use the `-p` (`--project`) option, like for listing the tilests:
 
-```python
+```bash
 carto-bq-tiler -p PROJECT list
 ```
 
 Also, if you have a service account JSON file you can use it instead with `-c` (`--credentials`):
 
-```python
+```bash
 carto-bq-tiler -c CREDENTIALS_JSON_PATH list
 ```
 
@@ -251,7 +252,7 @@ carto-bq-tiler -c CREDENTIALS_JSON_PATH list
 
 List the Tilesets in your Google Cloud project with:
 
-```python
+```bash
 carto-bq-tiler list
 ```
 
@@ -259,7 +260,7 @@ carto-bq-tiler list
 
 You can upload MBTiles files that contain tiles in MVT format. The only constraint is that the features must have an `id` integer property.
 
-```python
+```bash
 carto-bq-tiler load MBTILES_PATH TILESET_NAME
 ```
 
@@ -269,7 +270,7 @@ carto-bq-tiler load MBTILES_PATH TILESET_NAME
 
 You can simply delete a dataset from BigQuery with:
 
-```python
+```bash
 carto-bq-tileset remove TILESET_NAME
 ```
 
@@ -279,13 +280,13 @@ Tilesets can be exported to your computer in two formats:
 
 MBTiles files:
 
-```python
+```bash
 carto-bq-tiler export-mbtiles TILESET_NAME
 ```
 
 Directory tree:
 
-```python
+```bash
 carto-bq-tiler export-tiles TILESET_NAME
 ```
 
@@ -295,25 +296,25 @@ Tilesets can be viewed and explored in multiple ways:
 
 A downloaded directory tree:
 
-```python
+```bash
 carto-bq-tiler view-local TILESET_DIRECTORY
 ```
 
 A tileset in BigQuery:
 
-```python
+```bash
 carto-bq-tiler view TILESET_NAME
 ```
 
 A tileset in BigQuery in comparative mode:
 
-```python
+```bash
 carto-bq-tiler view TILESET_NAME -c
 ```
 
 An empty viewer:
 
-```python
+```bash
 carto-bq-tiler view -e
 ```
 
