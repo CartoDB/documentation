@@ -36,6 +36,7 @@ The *NPM* packages are available here:
     | @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a> |
     | @carto/react-ui  | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/v/@carto/react-ui.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/dt/@carto/react-ui.svg?style=flat-square" alt="downloads" /></a> |
     | @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-workers  | <a href="https://npmjs.org/package/@carto/react-workers">  <img src="https://img.shields.io/npm/v/@carto/react-workers.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-workers">  <img src="https://img.shields.io/npm/dt/@carto/react-workers.svg?style=flat-square" alt="downloads" /></a> |
 
 ### Architecture
 
@@ -97,4 +98,4 @@ If your application is not so complex and does not need the benefits added by th
 
 **I’m using Vue or Angular for building my applications, what are my options?**
 
-At this moment, we only provide a complete solutions with templates and widgets for React. If you are building an application using Vue, Angular or other JavaScript framework, you don’t have to worry, it is completely feasible and you just need to use the CARTO for deck.gl pure JavaScript flavor. Please check the [example](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js).
+At this moment, we only provide a complete solution with templates and widgets for React. If you are building an application using Vue, Angular or other JavaScript framework, you don’t have to worry, it is completely feasible and you just need to use the CARTO for deck.gl pure JavaScript flavor. Please check the [examples](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js).
