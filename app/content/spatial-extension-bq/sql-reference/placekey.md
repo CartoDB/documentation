@@ -7,7 +7,7 @@ You can learn more about Placekey on [their website](https://www.placekey.io/) o
 ### H3_ASPLACEKEY
 
 {{% bannerNote type="code" %}}
-bqcarto.placekey.H3_ASPLACEKEY(h3index)
+placekey.H3_ASPLACEKEY(h3index)
 {{%/ bannerNote %}}
 
 **Description**
@@ -20,7 +20,7 @@ Returns the placekey equivalent to the given H3 index.
 
 `STRING`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.placekey.H3_ASPLACEKEY(596645165859340287);
@@ -30,7 +30,7 @@ SELECT bqcartost.placekey.H3_ASPLACEKEY(596645165859340287);
 ### PLACEKEY_ASH3
 
 {{% bannerNote type="code" %}}
-bqcarto.placekey.PLACEKEY_ASH3(placekey)
+placekey.PLACEKEY_ASH3(placekey)
 {{%/ bannerNote %}}
 
 **Description**
@@ -43,17 +43,17 @@ Returns the H3 index equivalent to the given placekey.
 
 `INT64`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.placekey.PLACEKEY_ASH3("@ff7-swh-m49");
--- 623666763623563263? FIXME!
+-- 623666763623563263
 ```
 
 ### ISVALID
 
 {{% bannerNote type="code" %}}
-bqcarto.placekey.ISVALID(placekey)
+placekey.ISVALID(placekey)
 {{%/ bannerNote %}}
 
 **Description**
@@ -86,7 +86,7 @@ SELECT bqcartost.placekey.ISVALID("x");
 ### VERSION
 
 {{% bannerNote type="code" %}}
-bqcarto.placekey.VERSION()
+placekey.VERSION()
 {{%/ bannerNote %}}
 
 **Description**
@@ -97,7 +97,7 @@ Returns the current version of the placekey module.
 
 `STRING`
 
-**Examples**
+**Example**
 
 ```sql
 SELECT bqcartost.placekey.VERSION();

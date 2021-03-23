@@ -5,7 +5,7 @@ We currently provide two procedures to tilify a dataset: _CREATE_SIMPLE_TILESET_
 ### CREATE_SIMPLE_TILESET
 
 {{% bannerNote type="code" %}}
-bqcarto.tiler.CREATE_SIMPLE_TILESET(source_table, target_table, options)
+tiler.CREATE_SIMPLE_TILESET(source_table, target_table, options)
 {{%/ bannerNote %}}
 
 **Description**
@@ -101,7 +101,7 @@ R'''
 ### CREATE_POINT_AGGREGATION_TILESET
 
 {{% bannerNote type="code" %}}
-bqcarto.CREATE_POINT_AGGREGATION_TILESET(source_table, target_table, options)
+tiler.CREATE_POINT_AGGREGATION_TILESET(source_table, target_table, options)
 {{%/ bannerNote %}}
 
 **Description**

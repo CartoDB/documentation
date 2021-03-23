@@ -5,7 +5,7 @@ You can learn more about quadkeys and quandints in the [Overview section](/spati
 ### QUADINT_FROMZXY
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.QUADINT_FROMZXY(z, x, y)
+quadkey.QUADINT_FROMZXY(z, x, y)
 {{%/ bannerNote %}}
 
 **Description**
@@ -16,7 +16,7 @@ Returns a quadint from `z`, `x`, `y` coordinates.
 * `x`: `INT64` horizontal position of a tile.
 * `y`: `INT64` vertical position of a tile.
 
-**Contstraints**
+**Constraints**
 
 Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates, the minimum value is 0, and the maximum value is two to the power of `z`, minus one (`2^z - 1`).
 
@@ -27,14 +27,14 @@ Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates,
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.QUADINT_FROMZXY(5, 4, 203);
--- 208005
+SELECT bqcartost.quadkey.QUADINT_FROMZXY(4, 9, 8);
+-- 4388
 ```
 
 ### ZXY_FROMQUADINT
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.ZXY_FROMQUADINT(quadint)
+quadkey.ZXY_FROMQUADINT(quadint)
 {{%/ bannerNote %}}
 
 **Description**
@@ -50,15 +50,15 @@ Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.ZXY_FROMQUADINT(208005);
+SELECT bqcartost.quadkey.ZXY_FROMQUADINT(4388);
 -- z  x  y
--- 5  4  203
+-- 4  9  8
 ```
 
 ### LONGLAT_ASQUADINT
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.LONGLAT_ASQUADINT(longitude, latitude, resolution)
+quadkey.LONGLAT_ASQUADINT(longitude, latitude, resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -83,7 +83,7 @@ SELECT bqcartost.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
 ### QUADINT_FROMQUADKEY
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.QUADINT_FROMQUADKEY(quadkey)
+quadkey.QUADINT_FROMQUADKEY(quadkey)
 {{%/ bannerNote %}}
 
 **Description**
@@ -106,7 +106,7 @@ SELECT bqcartost.quadkey.QUADINT_FROMQUADKEY("3001");
 ### QUADKEY_FROMQUADINT
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.QUADKEY_FROMQUADINT(quadint)
+quadkey.QUADKEY_FROMQUADINT(quadint)
 {{%/ bannerNote %}}
 
 **Description**
@@ -129,7 +129,7 @@ SELECT bqcartost.quadkey.QUADKEY_FROMQUADINT(4388);
 ### TOPARENT
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.TOPARENT(quadint, resolution)
+quadkey.TOPARENT(quadint, resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -153,7 +153,7 @@ SELECT bqcartost.quadkey.TOPARENT(4388, 3);
 ### TOCHILDREN
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.TOCHILDREN(quadint, resolution)
+quadkey.TOCHILDREN(quadint, resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -171,17 +171,16 @@ Returns an array with the children quadints of a given quadint for a specific re
 
 ```sql
 SELECT bqcartost.quadkey.TOCHILDREN(1155, 4);
--- row  
--- 1    4356
---      4868
---      4388
---      4900
+-- 4356
+-- 4868
+-- 4388
+-- 4900
 ```
 
 ### SIBLING
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.SIBLING(quadint, direction)
+quadkey.SIBLING(quadint, direction)
 {{%/ bannerNote %}}
 
 **Description**
@@ -205,7 +204,7 @@ SELECT bqcartost.quadkey.SIBLING(4388, 'up');
 ### KRING
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.KRING(quadint, distance)
+quadkey.KRING(quadint, distance)
 {{%/ bannerNote %}}
 
 **Description**
@@ -223,22 +222,21 @@ Returns an array containing all the quadints directly next to the given quadint 
 
 ```sql
 SELECT bqcartost.quadkey.KRING(4388, 1);
--- row  
--- 1    3844
---      3876
---      3908
---      4356
---      4388
---      4420
---      4868
---      4900
---      4932
+-- 3844
+-- 3876
+-- 3908
+-- 4356
+-- 4388
+-- 4420
+-- 4868
+-- 4900
+-- 4932
 ```
 
 ### BBOX
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.BBOX(quadint)
+quadkey.BBOX(quadint)
 {{%/ bannerNote %}}
 
 **Description**
@@ -255,17 +253,16 @@ Returns an array with the boundary box of a given quadint. This boundary box con
 
 ```sql
 SELECT bqcartost.quadkey.BBOX(4388);
--- row  
--- 1    22.5
---      -21.943045533438177
---      45.0
---      0.0
+-- 22.5
+-- -21.943045533438177
+-- 45.0
+-- 0.0
 ```
 
 ### ST_ASQUADINT
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.ST_ASQUADINT(point, resolution)
+quadkey.ST_ASQUADINT(point, resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -289,7 +286,7 @@ SELECT bqcartost.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
 ### ST_ASQUADINT_POLYFILL
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.ST_ASQUADINT_POLYFILL(geography, resolution)
+quadkey.ST_ASQUADINT_POLYFILL(geography, resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -309,20 +306,18 @@ Returns an array of quadints that intersect with the given geography at a given 
 SELECT bqcartost.quadkey.ST_ASQUADINT_POLYFILL(
     ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(-363.71219873428345, 40.413365349070865), ST_GEOGPOINT(-363.7144088745117, 40.40965661286395), ST_GEOGPOINT(-363.70659828186035, 40.409525904775634), ST_GEOGPOINT(-363.71219873428345, 40.413365349070865)])), 
     17);
--- row  
--- 1    
---      207301334801
---      207305529105
---      207305529073
---      207305529137
---      207305529169
---      207301334833
+-- 207301334801
+-- 207305529105
+-- 207305529073
+-- 207305529137
+-- 207305529169
+-- 207301334833
 ```
 
 ### ST_BOUNDARY
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.ST_BOUNDARY(quadint)
+quadkey.ST_BOUNDARY(quadint)
 {{%/ bannerNote %}}
 
 **Description**
@@ -345,7 +340,7 @@ SELECT bqcartost.quadkey.ST_BOUNDARY(4388);
 ### LONGLAT_ASQUADINTLIST_RESOLUTION
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(longitude, latitude, zoom_min, zoom_max, zoom_step, resolution)
+quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(longitude, latitude, zoom_min, zoom_max, zoom_step, resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -366,19 +361,18 @@ Returns the quadint index for the given point for each zoom level requested, at 
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(
-    40.4168, -3.7038, 3, 6, 1, 4);
--- row  id        z  x   y
--- 1    268743    3  4   4
---      1069960   4  9   8
---      4286249   5  19  16
---      17124938  6  39  32
+SELECT bqcartost.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
+-- id        z  x   y
+-- 268743    3  4   4
+-- 1069960   4  9   8
+-- 4286249   5  19  16
+-- 17124938  6  39  32
 ```
 
 ### VERSION
 
 {{% bannerNote type="code" %}}
-bqcarto.quadkey.VERSION()
+quadkey.VERSION()
 {{%/ bannerNote %}}
 
 **Description**
