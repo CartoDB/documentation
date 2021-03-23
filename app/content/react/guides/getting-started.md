@@ -4,7 +4,7 @@ This guide shows how you can create a CARTO for React application. You will lear
 
 It is a really straightforward process as you can see in the following video that also shows how to add views and layers to your application:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G_BeSZPD2EQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GVyiUZoxL_U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
 
 ### Creating an application
 
