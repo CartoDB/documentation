@@ -13,7 +13,6 @@ cascade:
     - name: "Guides"
       elements:
         - "Tilesets"
-        - "Spatial indexes"
     - name: "Examples"
       elements:
         - "Tilesets"
