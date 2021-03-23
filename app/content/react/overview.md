@@ -12,15 +12,30 @@ The code is open source and is available in the following repositories:
 
 * Templates for Create React App: https://github.com/CartoDB/carto-react-template
 
-* Library: https://github.com/CartoDB/carto-react-lib
+* Library: https://github.com/CartoDB/carto-react
+
 
 The *NPM* packages are available here:
 
-| Package | Version | Downloads |
-| ------- | ------- | --------- |
-| @carto/cra-template (skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template">  <img src="https://img.shields.io/npm/v/@carto/cra-template.svg?style=flat-square" alt="version" /> </a> | <a href="https://npmjs.org/package/@carto/cra-template"> <img src="https://img.shields.io/npm/dt/@carto/cra-template.svg?style=flat-square" alt="downloads" /></a> |
-| @carto/cra-template-sample-app (sample app template) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app.svg?style=flat-square" alt="downloads" /></a> |
-| @carto/react (library) | <a href="https://npmjs.org/package/@carto/react">  <img src="https://img.shields.io/npm/v/@carto/react.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react">  <img src="https://img.shields.io/npm/dt/@carto/react.svg?style=flat-square" alt="downloads" /></a> |
+- Templates:
+
+    | Package | Version | Downloads |
+    | ------- | ------- | --------- |
+    | @carto/cra-template (skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template">  <img src="https://img.shields.io/npm/v/@carto/cra-template.svg?style=flat-square" alt="version" /> </a> | <a href="https://npmjs.org/package/@carto/cra-template"> <img src="https://img.shields.io/npm/dt/@carto/cra-template.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/cra-template-sample-app (sample app template) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app.svg?style=flat-square" alt="downloads" /></a> |
+
+
+- Lib packages:
+
+    | Package | Version | Downloads |
+    | ------- | ------- | --------- |
+    | @carto/react-api  | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/v/@carto/react-api.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/dt/@carto/react-api.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-basemaps  | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/v/@carto/react-basemaps.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/dt/@carto/react-basemaps.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-core  | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/v/@carto/react-core.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/dt/@carto/react-core.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-ui  | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/v/@carto/react-ui.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/dt/@carto/react-ui.svg?style=flat-square" alt="downloads" /></a> |
+    | @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a> |
 
 ### Architecture
 
@@ -31,7 +46,7 @@ CARTO for React is based on the following libraries:
 - [CARTO for deck.gl](https://carto.com/developers/deck-gl) as the library to visualize maps. For the basemaps you can use either Google Maps or CARTO basemaps.
 - [React](https://reactjs.org/) as the JavaScript library for building user interfaces and [Redux](https://redux.js.org/) for managing global state for the application. We use [React-Redux](https://react-redux.js.org/) for managing the interactions between the React components with the Redux store.
 - [Material-UI](https://material-ui.com/): UI React components for faster and easier web development.
-- [@carto/react](https://www.npmjs.com/package/@carto/react): A library created to make easy integration with CARTO platform and its APIs, geospatial widgets and a custom theme for [Material-UI](https://material-ui.com/).
+- [@carto/react-*]: A set of packages created to make easy integration with CARTO platform and its APIs, geospatial widgets and a custom theme for [Material-UI](https://material-ui.com/).
 
 **Why React?**
 
@@ -47,7 +62,7 @@ Yes, it's a new paradigm, but once you learn it, you'll love it.
 
 CARTO for React includes two different Create React App templates for kickstarting your application:
 
-- The skeleton template that creates a simple application with just a map and a search widget. This is the template you are usually going to choose when you are creating a new app.
+- The skeleton template that creates a simple application with just a map. This is the template you are usually going to choose when you are creating a new app.
 
 - The sample app template that creates a more complex application with several views, layers and widgets. The purpose of this template is demonstrating how you can implement common LI functionalities in a CARTO for React app.
 

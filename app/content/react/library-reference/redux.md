@@ -41,7 +41,7 @@ Parameters are in the form of destructuring arguments.
 | ------ | ------------------- | ----------------------------------------------------------------------------------------------------- |
 | {id}   | <code>string</code> | unique id for the source                                                                              |
 | {data} | <code>string</code> | data definition for the source. Query for SQL dataset or the name of the tileset for BigQuery Tileset |
-| {type} | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                          |
+| {type} | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                |
 
 #### removeSource
 
@@ -141,6 +141,31 @@ Action to remove the viewport features to a specific source
 | Param      | Type                | Description                                           |
 | ---------- | ------------------- | ----------------------------------------------------- |
 | {sourceId} | <code>string</code> | id of the source to remove the viewport features from |
+
+#### setWidgetLoadingState
+
+Action to set the widget loading state to a specific one
+
+| Param      | Type                | Description       |
+| ---------- | ------------------- | ----------------- |
+| {widgetId} | <code>string</code> | id of the widget  |
+| {isLoading} | <code>boolean</code>  | loading state |
+
+#### removeWidgetLoadingState
+
+Action to remove a specific widget loading state
+
+| Param      | Type                | Description       |
+| ---------- | ------------------- | ----------------- |
+| {widgetId} | <code>string</code> | id of the widget  |
+
+#### setAllWidgetsLoadingStates
+
+Action to set the all the widgets loading state at once
+
+| Param      | Type                | Description       |
+| ---------- | ------------------- | ----------------- |
+| {areLoading} | <code>boolean</code> | loading state  |
 
 ### OAuth Slice
 
