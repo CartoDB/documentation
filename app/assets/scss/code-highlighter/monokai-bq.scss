@@ -1,8 +1,9 @@
 
-/* Background */ .chroma { color: #2e3c43; background-color: #f2f6f9; font-size: 13px; line-height: 24px; font-family: "PT Mono", monospace;}
+/* Background */ .chroma { color: #2e3c43; background-color: #ffffff; font-size: 13px; line-height: 24px; font-family: "PT Mono", monospace;}
 div.chroma {
   padding: 8px;
   border-radius: 4px;
+  border: 1px solid #d3d3d3;
 }
 /* Other */ .chroma .x {  }
 /* Error */ .chroma .err { color: #960050; background-color: #1e0010 }
