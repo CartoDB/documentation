@@ -97,4 +97,4 @@ If your application is not so complex and does not need the benefits added by th
 
 **I’m using Vue or Angular for building my applications, what are my options?**
 
-At this moment, we only provide a complete solutions with templates and widgets for React. If you are building an application using Vue, Angular or other JavaScript framework, you don’t have to worry, it is completely feasible and you just need to use the CARTO for deck.gl pure JavaScript flavor. Please check the [example](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js).
+At this moment, we only provide a complete solution with templates and widgets for React. If you are building an application using Vue, Angular or other JavaScript framework, you don’t have to worry, it is completely feasible and you just need to use the CARTO for deck.gl pure JavaScript flavor. Please check the [examples](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js).
