@@ -127,18 +127,21 @@
   }
 }
 
-.toc-sidebar__container {
-  &.is-fixed {
-    position: fixed;
-    width: 180px;
+.js-toc-sidebar {
+  --offset-top: 136px;
+  --offset-bottom: 20px;
+  align-self: flex-start;
+  position: sticky;
+  top: var(--offset-top);
 
-    @media (min-width: $layout-desktop-l) {
-      width: 240px;
-    }
+  .toc-sidebar__container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    max-height: calc(100vh - var(--offset-top) - var(--offset-bottom));
+  }
 
-    @media (max-width: $layout-desktop) {
-      width: 136px;
-    }
+  .page-toc {
+    overflow-y: auto;
   }
 }
 
@@ -149,8 +152,6 @@
 }
 
 .page-toc {
-  height: 55vh;
-  overflow-y: auto;
   li {
     a {
       display: block;
