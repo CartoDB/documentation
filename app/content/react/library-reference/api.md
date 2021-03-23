@@ -20,8 +20,9 @@ Async function that executes a SQL query against [CARTO SQL API](https://carto.c
   | credentials.username          | <code>string</code> | CARTO username                                             |
   | credentials.apiKey            | <code>string</code> | CARTO API Key                                              |
   | query                         | <code>string</code> | SQL query to be executed                                   |
-  | opts                          | <code>Object</code> | Optional. Additional options for the HTTP request          |
-  | opts.format                   | <code>string</code> | Output format (i.e. 'geojson')                             |
+  | opts                          | <code>Object</code> | Optional. Additional options for the HTTP request, following the [Request](https://developer.mozilla.org/es/docs/Web/API/Request) interface |
+  | opts.abortController          | <code>AbortController</code>       | To cancel the network request using [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) |
+  | opts.format                   | <code>string</code> | Output format to be passed to SQL API (i.e. 'geojson')                             |
 
 - **Returns**: <code>Object</code> - Data returned from the SQL query execution
 
