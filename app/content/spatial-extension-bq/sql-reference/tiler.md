@@ -58,13 +58,15 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 
 In Simple Tilesets, the `properties` are defined by the source data itself. You only have to write the name of the column (as defined in the source query or table) and its type. It doesn't support any extra transformations or formulae since those can be applied to the source query directly.
 
-```json
+```sql
+R'''
 {
     "properties": {
         "source_column_name": "Number",
         "source_column_name_2": "String"
     }
 }
+'''
 ```
 
 Here is an example of a valid JSON for the `options` parameter:
@@ -160,7 +162,8 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
 
 Here is an example of valid `properties` for a Point Aggregation Tileset: 
 
-```json
+```sql
+R'''
 {
     "properties": {
         "new_column_name": {
@@ -181,6 +184,7 @@ Here is an example of valid `properties` for a Point Aggregation Tileset:
         "address":"String"
     }
 }
+'''
 ```
 
 In the example above, for all features we would get a property `"new_column_name"` with the number of points that fall in it, the `"most_common_ethnicity"` of those rows and whether there are points whose ethnicity value matches one specific value (`"has_other_ethnicities"`). In addition to this, when there is only one point that belongs to this property (and only in that case) we will also get the column values from the source data: `"name"` and `"address"`.
