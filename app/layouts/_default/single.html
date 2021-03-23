@@ -77,20 +77,18 @@
                 <ul>
                   <li>
                     <a href="{{($context.GetPage $firstFile).Permalink}}" class="toc__link">{{$folder.name}}</a>
-                    {{$isCurrent := strings.HasSuffix $context.File.Dir (printf "%s%s%s" "/" $folderName "/")}}
-                    {{if $isCurrent}}
-                      {{range $elem := $folder.elements}}
-                        {{$file := printf "%s%s%s%s%s" $projectDirectory $folderName "/" (urlize $elem) ".md"}}
-                        {{$isActive := eq $file $context.File.Path}}
-                        {{if $isActive}}
-                          {{$context.TableOfContents}}
-                        {{else}}
+                    {{range $elem := $folder.elements}}
+                      {{$file := printf "%s%s%s%s%s" $projectDirectory $folderName "/" (urlize $elem) ".md"}}
+                      {{$isActive := eq $file $context.File.Path}}
+
+                      {{if $isActive}}
+                        {{$context.TableOfContents}}
+                      {{else}}
                         <ul>
                           <li>
-                            <a href="{{($context.GetPage (urlize $elem)).Permalink}}" class="">{{$elem}}</a>
+                            <a href="{{($context.GetPage (urlize $file)).Permalink}}" class="">{{$elem}}</a>
                           </li>
                         </ul>
-                        {{end}}
                       {{end}}
                     {{end}}
                   </li>
