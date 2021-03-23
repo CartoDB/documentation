@@ -1,5 +1,0 @@
-## Spatial indexes
-
-### Quickstart
-
-...
