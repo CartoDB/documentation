@@ -31,6 +31,49 @@ FROM
 
 This query adds two new columns to our dataset: `geom`, with the boundary of each of the H3 grid cells where there's at least one Starbucks, and `agg_total`, with the total number of locations that fall within each cell. Finally, we can visualize the result. 
 
-<iframe height=480px width=100% src="https://team.carto.com/u/mtejera/builder/66728606-22e4-4137-8fa5-150fb3727142/layers#/" title="Starbucks locations in the US aggregated in an H3 grid of resolution 4."></iframe>
+<iframe height=480px width=100% src="https://public.carto.com/builder/8b512dff-114a-495d-8277-4588c9b66300" title="Starbucks locations in the US aggregated in an H3 grid of resolution 4."></iframe>
 
 Note: this visualization is made using Builder, where you can easily import your BigQuery data using our connector, but you can also create a quick visualization using [BigQuery Geo Viz](https://bigquerygeoviz.appspot.com). 
+
+
+
+### Finer resolution H3 for simple cannibalization analysis
+
+In this example we will continue working with the dataset introduced in [*An H3 grid of Starbucks locations*](#an-h3-grid-of-starbucks-locations) example. In particular, we will analyse in finer detail the grid cell that we have identified contains the highest concentration of Starbucks locations, with ID `595215130728333311`. 
+
+<div class="figures-table" style="text-align:center">
+    <figure>
+        <img src="/img/bq-spatial-extension/spatial-indexes/h3-most-starbucks.png" alt="Multiresolution quadkeys">
+        <figcaption class="figcaption" style="text-align:center">H3 grid of resolution 4 with 319 Starbucks locations.</figcaption>
+    </figure>
+</div>
+
+```sql
+WITH
+  DATA AS (
+  SELECT
+    bqcartost.h3.LONGLAT_ASH3(longitude,
+      latitude,
+      9) AS h3id,
+    COUNT(*) AS agg_total
+  FROM
+    `cartodb-on-gcp-pm-team.margara.starbucks-locations-usa-kaggle`
+  WHERE
+    ST_INTERSECTS(ST_GEOGPOINT(longitude,
+        latitude),
+      bqcartost.h3.ST_BOUNDARY(595215130728333311))
+  GROUP BY
+    h3id)
+SELECT
+  h3id,
+  agg_total,
+  bqcartost.h3.ST_BOUNDARY(h3id) AS geom
+FROM
+  DATA
+WHERE
+  h3id IN UNNEST(bqcartost.h3.TOCHILDREN(595215130728333311,
+      9))
+```
+
+<iframe height=480px width=100% src="https://public.carto.com/builder/88be8c7a-64bd-4fad-a24d-bd2db960606e" title="Starbucks locations around New York aggregated in an H3 grid of resolution 9."></iframe>
+
