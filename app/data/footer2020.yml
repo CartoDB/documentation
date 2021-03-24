@@ -1,120 +1,120 @@
 # Footer menu
 platform:
   - title: Technology
-    url: '/platform/'
+    url: 'https://carto.com/platform/'
   - title: Data
-    url: '/spatial-data-catalog/'
+    url: 'https://carto.com/spatial-data-catalog/'
   - title: Services
-    url: '/professional-services/'
+    url: 'https://carto.com/professional-services/'
 
   - spacing: true
 
   - title: Builder
-    url: '/builder/'
+    url: 'https://carto.com/builder/'
   - title: CARTOframes
-    url: '/cartoframes/'
+    url: 'https://carto.com/cartoframes/'
   - title: Connectivity
-    url: '/connect/'
+    url: 'https://carto.com/connect/'
 
 documentation:
   - title: Documentation
     url: 'https://docs.carto.com/'
   - title: Help Center
-    url: '/help/'
+    url: 'https://carto.com/help'
 
 solutions:
   - title: 'AEC'
-    url: '/industries/architecture-engineering-construction/'
+    url: 'https://carto.com/industries/architecture-engineering-construction/'
   - title: 'Cities & Government'
-    url: '/industries/cities-government/'
+    url: 'https://carto.com/industries/cities-government/'
   - title: 'Financial Services'
-    url: '/industries/financial-services/'
+    url: 'https://carto.com/industries/financial-services/'
   - title: 'CPG'
-    url: '/industries/consumer-packaged-goods/'
+    url: 'https://carto.com/industries/consumer-packaged-goods/'
   - title: 'Environmental'
-    url: '/industries/environmental-and-natural-resources/'
+    url: 'https://carto.com/industries/environmental-and-natural-resources/'
   - title: 'Health & Pharma'
-    url: '/industries/healthcare-and-pharma/'
+    url: 'https://carto.com/industries/healthcare-and-pharma/'
   - title: 'Logistics'
-    url: '/industries/logistics/'
+    url: 'https://carto.com/industries/logistics/'
   - title: 'Marketing & Advertising'
-    url: '/industries/marketing-and-advertising/'
+    url: 'https://carto.com/industries/marketing-and-advertising/'
   - title: 'Real Estate'
-    url: '/industries/real-estate/'
+    url: 'https://carto.com/industries/real-estate/'
   - title: 'Retail'
-    url: '/industries/retail/'
+    url: 'https://carto.com/industries/retail/'
   - title: 'Sports & Entertainment'
-    url: '/industries/sports-entertainment/'
+    url: 'https://carto.com/industries/sports-entertainment/'
   - title: 'Telecoms'
-    url: '/industries/telecommunications/'
+    url: 'https://carto.com/industries/telecommunications/'
   - title: 'Transport'
-    url: '/industries/transport/'
+    url: 'https://carto.com/industries/transport/'
   - title: 'Utilities'
-    url: '/industries/utilities/'
+    url: 'https://carto.com/industries/utilities/'
 
 useCase:
   - title: 'Catastrophe Modeling'
-    url: '/solutions/catastrophe-modeling/'
+    url: 'https://carto.com/solutions/catastrophe-modeling/'
   - title: 'Data Monetization'
-    url: '/solutions/data-monetization/'
+    url: 'https://carto.com/solutions/data-monetization/'
   - title: 'Environmental Management'
-    url: '/solutions/environmental-management/'
+    url: 'https://carto.com/solutions/environmental-management/'
   - title: 'Fraud Detection'
-    url: '/solutions/fraud-detection-machine-learning/'
+    url: 'https://carto.com/solutions/fraud-detection-machine-learning/'
   - title: 'Geomarketing'
-    url: '/solutions/geomarketing/'
+    url: 'https://carto.com/solutions/geomarketing/'
   - title: 'Healthcare Analytics'
-    url: '/solutions/healthcare-analytics/'
+    url: 'https://carto.com/solutions/healthcare-analytics/'
   - title: 'IoT Analytics'
-    url: '/solutions/iot-analytics/'
+    url: 'https://carto.com/solutions/iot-analytics/'
   - title: 'Indoor Mapping'
-    url: '/solutions/indoor-mapping/'
+    url: 'https://carto.com/solutions/indoor-mapping/'
   - title: 'Supply Chain Optimization'
-    url: '/solutions/supply-chain-optimization/'
+    url: 'https://carto.com/solutions/supply-chain-optimization/'
   - title: 'Site Selection'
-    url: '/solutions/site-selection/'
+    url: 'https://carto.com/solutions/site-selection/'
   - title: 'Transportation Planning'
-    url: '/solutions/mobility-planning/'
+    url: 'https://carto.com/solutions/mobility-planning/'
   - title: 'Network Deployment'
-    url: '/solutions/network-deployment/'
+    url: 'https://carto.com/solutions/network-deployment/'
   - title: 'Risk Analysis'
-    url: '/solutions/portfolio-risk-analysis/'
+    url: 'https://carto.com/solutions/portfolio-risk-analysis/'
   - title: 'Market Analysis'
-    url: '/solutions/real-estate-market-analysis/'
+    url: 'https://carto.com/solutions/real-estate-market-analysis/'
   - title: 'Territory Planning'
-    url: '/solutions/territory-planning/'
+    url: 'https://carto.com/solutions/territory-planning/'
 
 company:
   - title: Blog
-    url: '/blog/'
+    url: 'https://carto.com/blog/'
   - title: About Us
-    url: '/about-us/'
+    url: 'https://carto.com/about-us/'
   - title: Customer Stories
-    url: '/customer-stories/'
+    url: 'https://carto.com/customer-stories/'
   - title: Partners
-    url: '/partners/'
+    url: 'https://carto.com/partners/'
   - title: Webinars
-    url: '/webinars/'
+    url: 'https://carto.com/webinars/'
   - title: Events
-    url: '/resources/events/'
+    url: 'https://carto.com/resources/events/'
   - title: Careers
-    url: '/careers/'
+    url: 'https://carto.com/careers/'
   - title: Brand
-    url: '/brand/'
+    url: 'https://carto.com/brand/'
 
   - spacing: true
 
   - title: Location Intelligence
-    url: '/location-intelligence/'
+    url: 'https://carto.com/location-intelligence/'
   - title: Spatial Data Science
-    url: '/what-is-spatial-data-science/'
+    url: 'https://carto.com/what-is-spatial-data-science/'
 
   - spacing: true
 
   - title: Terms of Service
-    url: '/legal/'
+    url: 'https://carto.com/legal/'
   - title: Privacy Notice
-    url: '/privacy/'
+    url: 'https://carto.com/privacy/'
   
 
 social:

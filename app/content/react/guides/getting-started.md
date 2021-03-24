@@ -4,7 +4,7 @@ This guide shows how you can create a CARTO for React application. You will lear
 
 It is a really straightforward process as you can see in the following video that also shows how to add views and layers to your application:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G_BeSZPD2EQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GVyiUZoxL_U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
 
 ### Creating an application
 
@@ -30,8 +30,6 @@ yarn start
 
 These are the main folders:
 
-* **src/config**: configuration of the application.
-
 * **src/components/common**: common components as Header, Footer, Menus, etc
 
 * **src/components/layers**: deck.gl layers that area available to the Map component.
@@ -40,7 +38,7 @@ These are the main folders:
 
 * **src/data**: sources and models.
 
-* **src/models**: async functions to connect with external APIs.
+* **src/store**: slice configuration.
 
 * **src/utils**: general utils.
 
@@ -75,9 +73,9 @@ You need to edit the `src/store/initialStateSlice.js` file and add your own cred
 
 The API KEY could be set to `default_public` if you're dealing with public datasets and you don't need to use dataservices (geocoding, routing or isochrones).
 
-If you're dealing with private data and/or data services you need to provide a valid [API KEY](https://carto.com/developers/auth-api/guides/CARTO-Authorization/).
+If you're dealing with private data and/or data services, you need to provide a valid [API KEY](https://carto.com/developers/auth-api/guides/CARTO-Authorization/).
 
-OAuth Apps are available for more complex use cases, we'll cover this later on [Permissions and user management](04_permissions_user_management.md).
+OAuth Apps are available for more complex use cases, we'll cover this later on the [Data Management](../data-management) guide.
 
 Once you've connected your account, you can jump to the next guide:
 

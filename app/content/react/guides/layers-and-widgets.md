@@ -164,17 +164,17 @@ export default function StoresLayer() {
   const source = useSelector((state) => selectSourceById(state, storesLayer?.source));
   // set required CARTO filter props, they manage the viewport changes and filters
   // we'll explain what are the filters later in this guide with the widgets
-  const cartoFilterProps = useCartoLayerFilterProps(source);
+  const cartoLayerProps = useCartoLayerProps(source);
 
   if (storesLayer && source) {
     // if the layer and the source are defined in the store
     return new CartoSQLLayer({
-      ...cartoFilterProps,
       id: STORES_LAYER_ID,
       data: source.data,
       credentials: source.credentials,
       getFillColor: [241, 109, 122],
-      pointRadiusMinPixels: 2
+      pointRadiusMinPixels: 2,
+      ...cartoLayerProps
     });
   }
 }
@@ -190,7 +190,7 @@ This is the summary:
 
 - You need to add the source and the layer to the store.
 
-- You need to add `cartoFilterProps` if required.
+- You need to add `cartoLayerProps` if required.
 
 ### Adding widgets
 
@@ -200,7 +200,8 @@ The first thing you need to do is to add the following imports at the top of the
 
 ```javascript
 import { Divider } from '@material-ui/core';
-import { AggregationTypes, FormulaWidget, CategoryWidget, HistogramWidget } from '@carto/react/widgets';
+import { AggregationTypes } from '@carto/react-core';
+import { FormulaWidget, CategoryWidget, HistogramWidget } from '@carto/react-widgets';
 import { currencyFormatter } from 'utils/formatter';
 ```
 
@@ -215,8 +216,7 @@ Then, in the same file, you need to replace the `Hello World` text with:
     column='revenue'
     operation={AggregationTypes.SUM}
     formatter={currencyFormatter}
-    viewportFilter
-  ></FormulaWidget>
+  />
 
   <Divider />
 
@@ -228,13 +228,16 @@ Then, in the same file, you need to replace the `Hello World` text with:
     operationColumn='revenue'
     operation={AggregationTypes.SUM}
     formatter={currencyFormatter}
-    viewportFilter
   />
 </div>
 ```
 
 {{% bannerNote title="note" %}}
-As you can see, we are using here the `STORES_SOURCE_COLUMNS` that we created before. It is very important to use constants and avoid to hardcode column names.
+The widgets work with client-side features from the vector tiles, whether the source is a CARTO dataset or a BigQuery Tiler tileset. To avoid counting the same feature two or more times when it is near or crosses a tile border, we need to know what's the name of the feature property that allows us to identify the features. By default it tries to find a property with the name `cartodb_id` or `geoid` (default property name for CARTO datasets and Data Observatory tilesets) but if your source does not contain any of these properties, you can indicate what property to use with the `uniqueIdProperty` parameter in the [`useCartoLayerProps`](../../library-reference/api/#usecartolayerprops--codeobjectcode) function. 
+{{%/ bannerNote %}}
+
+{{% bannerNote title="warning" %}}
+If your source is a simple tileset that you have generated with the `dropFeatures` strategy, widget calculations at some zoom levels can be inaccurate due to features being dropped from the tiles. 
 {{%/ bannerNote %}}
 
 ### Understanding how the pieces work together
