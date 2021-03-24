@@ -23,7 +23,7 @@ Or you can use the scripting API:
 
 ### Running the React and pure JavaScript examples
 
-In the [Examples]({{site.baseurl}}/deck-gl/examples) section you can find interactive examples using the scripting API. Here we show how you can download and run the React and pure JavaScript examples. These are small, standalone examples that could be a good starting point for your application showing how to integrate CARTO for deck.gl in a React application or how to use it with webpack and pure JavaScript.
+In the [Examples](../examples) section you can find interactive examples using the scripting API. Here we show how you can download and run the React and pure JavaScript examples. These are small, standalone examples that could be a good starting point for your application showing how to integrate CARTO for deck.gl in a React application or how to use it with webpack and pure JavaScript.
 
 You should be able to copy these folders to your preferred locations, and get them running simply as follows:
 

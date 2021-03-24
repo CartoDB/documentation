@@ -1,5 +1,4 @@
 {
-  "baseURL": "https://docs.carto.com/",
   "languageCode": "en-us",
   "title": "CARTO Documentation",
   "disableKinds": ["taxonomy", "term", "RSS", "robotsTXT", "404"],
