@@ -74,9 +74,10 @@
 }
 
 .badge {
-  position: absolute;  
-  top: 0;
-  right: 24px;
+  position: relative;
+  margin-left: auto;
+  width: fit-content;
+  top: -58px;
   padding: 4px 12px;
   border-radius: 4px;
   text-transform: uppercase;
