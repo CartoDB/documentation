@@ -1,5 +1,7 @@
 ## tiler
 
+<div class="badge advanced"></div>
+
 We currently provide two procedures to tilify a dataset: _CREATE_SIMPLE_TILESET_ and _CREATE_POINT_AGGREGATION_TILESET_, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview](../../overview/tilesets/#tileset-types) section to learn more about tileset types. 
 
 ### CREATE_SIMPLE_TILESET

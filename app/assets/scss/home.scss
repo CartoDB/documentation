@@ -73,6 +73,32 @@
   margin-top: 12px;
 }
 
+.badge {
+  position: absolute;  
+  top: 0;
+  right: 24px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font: 600 12px/20px 'Montserrat';
+
+  &.core {
+    color: #1785fb;
+    border: 1px solid #1785fb;
+    &:before {
+      content: 'core';
+    }
+  }
+
+  &.advanced {
+    color: #6e00dc;
+    border: 1px solid #6e00dc;
+    &:before {
+      content: 'advanced';
+    }
+  }
+}
+
 .section-border {
   border-bottom: 2px solid #efefef;
 }

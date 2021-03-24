@@ -44,7 +44,7 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 );
 ```
 
-##### Visualizing a tileset
+### Visualizing a tileset
 
 After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
@@ -86,7 +86,7 @@ Using Google Maps as a basemap is also  possible with this tool. Add `"google": 
 
 ![Tileset Viewer III](/img/bq-spatial-extension/tiler/guides-viewer-3.png)
 
-##### Sharing a visualization
+### Sharing a visualization
 
 Tilesets can be used as data layers with many web mapping libraries. Take a look at the **Development tools** section in our [documentation](https://docs.carto.com) to learn about different options.
 
@@ -110,7 +110,7 @@ For this guide, we will use a tileset that contains every european river. It's a
 
 ![eurivers tileset](/img/bq-spatial-extension/tiler/guides-eurivers.png)
 
-##### Map Style
+#### Map Style
 
 By clicking on the icon on the left bar, the Map Style panel will appear, showing a text editor with a predefined style.
 
@@ -118,7 +118,7 @@ As mentioned before, Map Viewer uses deck.gl's style language. For more detailed
 
 ![Map Style](/img/bq-spatial-extension/tiler/guides-mapstyle.png)
 
-##### Basemaps
+#### Basemaps
 
 Map Viewer offers different basemaps for your visualizations. Click on the icon in the top-left corner to show the basemap selector. 
 
@@ -128,11 +128,11 @@ You can also use Google Maps as basemaps, selecting *Roads* or *Satellite*
 
 ![Map Style basemap selector](/img/bq-spatial-extension/tiler/guides-basemap-selector.png).
 
-##### Basic styles
+#### Basic styles
 
 You can quickly change some of the properties, like `getFillColor` for changing the fill colors of points and polygons, or `getLineColor` for lines. The property expects a color defined as an `[r,g,b,[a]]` array. Simple visualization properties are detailed [here](../../../deck-gl/guides/style-language/#layers-basic-properties).
 
-##### Color ramps
+#### Color ramps
 
 Basic styles might be a good option for the most basic maps, but creating more sophisticated, data-driven visualizations is also possible using [helper functions](../../../deck-gl/guides/style-language/#creating-advanced-visualizations) for three different types of visualization: 
 
@@ -171,7 +171,7 @@ Take a look at the result. Can you appreciate how the hydrographic basins stand 
 ![Map Style ramp](/img/bq-spatial-extension/tiler/guides-ramp.png)
 
 
-##### Open TileJSON
+#### Open TileJSON
 
 At the bottom of the _Map Style_ section you will find an _Open TileJSON_ button. It will open a new tab with a TileJSON request. The response contains a description of the tileset in TileJSON format, with metadata about: 
 * The URL pattern to retrieve the tiles. 
@@ -179,7 +179,7 @@ At the bottom of the _Map Style_ section you will find an _Open TileJSON_ button
 * Information about the layers contained in the tileset.
 * Tilestats with statistic information such as maximum, minimum, average, count and sum. It also includes a section called `quantiles` that contains the quantile breaks for the properties included, as well as the top 10 categories and their frequency. 
 
-##### Copy XYZ URL
+#### Copy XYZ URL
 
 Also at the bottom of the _Map Style_ section there is a _Copy XYZ URL_ that copies directly in your clipboard the tiles URL following the XYZ convention:
 
@@ -189,7 +189,7 @@ https://maps-api-v2.us.carto.com/user/USERNAME/bigquery/tileset/{z}/{x}/{y}?sour
 
 This is most useful for loading the tileset with any webmapping library or desktop application, like QGIS.
 
-##### Share
+#### Share
 
 The _Share_ section allows publishing a tileset. By publishing, we grant **CARTO BigQuery Data Viewer** (`bigquery/dataViewer`) permissions to the associated tileset. Doing so, this map becomes public on the web and anybody with the URL will be able to see it.
 
@@ -210,7 +210,7 @@ We provide a Python Command Line tool called `carto-bq-tiler`. Think of it as a 
 * Upload Tilesets generated using other tools in MBTiles format
 * Download a tileset from BigQuery into a set of vector files or a MBTiles file to host your Tilesets somewhere else
 
-##### Installation
+#### Installation
 
 You need to have the Google [bq command line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool) already installed and [working](https://cloud.google.com/shell/docs/using-cloud-shell). So check if this command works for you:
 
@@ -234,7 +234,7 @@ Finally, to check that the tool is working just type:
 carto-bq-tiler --help
 ```
 
-##### Authentication
+#### Authentication
 
 `carto-bq-tiler` uses the credentials created by the [bq command line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool), and it will use the default project configured for it. If you want to use another project you can use the `-p` (`--project`) option, like for listing the tilests:
 
@@ -248,7 +248,7 @@ Also, if you have a service account JSON file you can use it instead with `-c` (
 carto-bq-tiler -c CREDENTIALS_JSON_PATH list
 ```
 
-##### List your tilesets
+#### List your tilesets
 
 List the Tilesets in your Google Cloud project with:
 
@@ -256,7 +256,7 @@ List the Tilesets in your Google Cloud project with:
 carto-bq-tiler list
 ```
 
-##### Upload a tileset
+#### Upload a tileset
 
 You can upload MBTiles files that contain tiles in MVT format. The only constraint is that the features must have an `id` integer property.
 
@@ -266,7 +266,7 @@ carto-bq-tiler load MBTILES_PATH TILESET_NAME
 
 `TILESET_NAME` is the tileset destination in BigQuery, and it's composed by the dataset and the table as `dataset.table`.
 
-##### Delete a tileset
+#### Delete a tileset
 
 You can simply delete a dataset from BigQuery with:
 
@@ -274,7 +274,7 @@ You can simply delete a dataset from BigQuery with:
 carto-bq-tileset remove TILESET_NAME
 ```
 
-##### Export a tileset
+#### Export a tileset
 
 Tilesets can be exported to your computer in two formats:
 
@@ -290,7 +290,7 @@ Directory tree:
 carto-bq-tiler export-tiles TILESET_NAME
 ```
 
-##### View a tileset
+#### View a tileset
 
 Tilesets can be viewed and explored in multiple ways:
 
