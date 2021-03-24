@@ -87,7 +87,7 @@ S2 cells are uniquely identified by a 64-bit ID, following a numbering system op
 
 <div class="figures-table" style="text-align:center">
     <figure>
-        <img src="/img/bq-spatial-extension/spatial-indexes/placekey-components.png" alt="Multiresolution quadkeys" style="width:60%">
+        <img src="/img/bq-spatial-extension/spatial-indexes/placekey-components.png" alt="Placekey components" style="width:60%">
         <figcaption class="figcaption" style="text-align:center">Placekey components (<a href="https://www.placekey.io">source</a>)</figcaption>
     </figure>
 </div>
