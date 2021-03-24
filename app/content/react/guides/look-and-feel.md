@@ -4,7 +4,7 @@ This guides shows how you can adapt your application look and feel.
 
 When you are building your own application, you usually want to adapt the look & feel to use a different typography or define your own primary and secondary colors.
 
-The user interface components are based on [Material-UI](https://material-ui.com). We have created a default CARTO theme that you can further customize by changing the theme configuration variables. You can find the variables defined for the CARTO theme in the `carto-theme.js` file in the @carto/react package.
+The user interface components are based on [Material-UI](https://material-ui.com). We have created a default CARTO theme that you can further customize by changing the theme configuration variables. You can find the variables defined for the CARTO theme in the `carto-theme.js` file in the @carto/react-ui package.
 
 There are lots of properties that you can adapt to your needs. Some of the main configuration properties are:
 
@@ -18,7 +18,7 @@ For instance, if you want to change the main color (used for the navigation bar 
 
 ```javascript
 ...
-import { cartoThemeOptions } from '@carto/react/ui';
+import { cartoThemeOptions } from '@carto/react-ui';
 ...
 cartoThemeOptions.palette.primary.main = "#800000";
 let theme = createMuiTheme(cartoThemeOptions);
@@ -29,7 +29,7 @@ If you want to change the font family for the application title (`subtitle-1`), 
 
 ```javascript
 ...
-import { cartoThemeOptions } from '@carto/react/ui';
+import { cartoThemeOptions } from '@carto/react-ui';
 ...
 cartoThemeOptions.typography.subtitle1.fontFamily = "'Times New Roman'";
 let theme = createMuiTheme(cartoThemeOptions);

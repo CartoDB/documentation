@@ -1,146 +1,350 @@
 ## Redux
 
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a>
+
+Functions to ease the management of CARTO within a react-redux application. This package includes 2 slices to manage the main redux blocks of a CARTO for React application. A [slice](https://redux-toolkit.js.org/api/createSlice) is a way to manage a "portion" or _slice_ of the redux store with a module:
+
+- `cartoSlice`: to deal with basemap, viewState, sources, layers and filters on sources.
+- `oauthSlice`: to use an OAuth app.
+
+**Tip:** The CARTO for React template already makes extensive use of these slices for redux out of the box, to provide several features in an easy way.
 ### CARTO Slice
 
 #### createCartoSlice
 
-A function that accepts an initialState, setup the state and creates
-the CARTO reducers that support CARTO for React achitecture.
+A function that accepts an `initialState`, setups the state and creates
+the reducers that support CARTO for React achitecture.
 
-```javascript
-export const initialState = {
-  viewState: {
-    latitude: 31.802892,
-    longitude: -103.007813,
-    zoom: 2,
-    pitch: 0,
-    bearing: 0,
-    dragRotate: false
-  },
-  basemap: POSITRON,
-  credentials: {
-    username: 'public',
-    apiKey: 'default_public',
-    serverUrlTemplate: 'https://{user}.carto.com'
-  },
-  googleApiKey: ''
-};
-```
+- **Input**:
 
-| Param        | Type                | Description       |
-| ------------ | ------------------- | ----------------- |
-| initialState | <code>object</code> | the initial state |
+  | Param        | Type                | Description       |
+  | ------------ | ------------------- | ----------------- |
+  | initialState | <code>Object</code> | the initial state |
+
+  An initial state object might look like:
+
+  ```js
+  import { POSITRON } from "@carto/react-basemaps";
+
+  export const initialState = {
+    viewState: {
+      latitude: 31.802892,
+      longitude: -103.007813,
+      zoom: 2,
+      pitch: 0,
+      bearing: 0,
+      dragRotate: false,
+    },
+    basemap: POSITRON,
+    credentials: {
+      username: "public",
+      apiKey: "default_public",
+      serverUrlTemplate: "https://{user}.carto.com",
+    },
+    googleApiKey: "",
+  };
+  ```
 
 #### addSource
 
-Action to add a source to the store
+Action to add a **source** to the store.
 
-Parameters are in the form of destructuring arguments.
+- **Input**:
 
-| Param  | Type                | Description                                                                                           |
-| ------ | ------------------- | ----------------------------------------------------------------------------------------------------- |
-| {id}   | <code>string</code> | unique id for the source                                                                              |
-| {data} | <code>string</code> | data definition for the source. Query for SQL dataset or the name of the tileset for BigQuery Tileset |
-| {type} | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                          |
+  | Param      | Type                | Description                                                                                                    |
+  | ---------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
+  | props      | <code>Object</code> | { id, data, type }                                                                                             |
+  | props.id   | <code>string</code> | unique id for the source                                                                                       |
+  | props.data | <code>string</code> | data definition for the source. Either a Query for SQL dataset or the name of the tileset for BigQuery Tileset |
+  | props.type | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                         |
+
+- **Example**:
+
+  ```js
+  import { addSource } from "@carto/react-redux";
+
+  const source = {
+    id: "sourceOne",
+    type: "sql",
+    data: "SELECT * FROM my_table",
+  };
+
+  const action = addSource(source);
+  // dispatch(action);
+  ```
 
 #### removeSource
 
 Action to remove a source from the store
 
-| Param    | Type                | Description                |
-| -------- | ------------------- | -------------------------- |
-| sourceId | <code>string</code> | id of the source to remove |
+- **Input**:
+
+  | Param    | Type                | Description                |
+  | -------- | ------------------- | -------------------------- |
+  | sourceId | <code>string</code> | id of the source to remove |
+
+- **Example**:
+
+  ```js
+  import { removeSource } from "@carto/react-redux";
+
+  const action = removeSource("sourceOne");
+  // dispatch(action);
+  ```
 
 #### addLayer
 
-Action to add a Layer to the store
+Action to add a Layer to the store.
 
-| Param           | Type                | Description                                       |
-| --------------- | ------------------- | ------------------------------------------------- |
-| id              | <code>string</code> | unique id for the layer                           |
-| source          | <code>string</code> | id of the source of the layer                     |
-| layerAttributes | <code>object</code> | (optional) custom attributes to pass to the layer |
+Important! This doesn't imply adding a whole deck.gl layer to the redux store, just a "pointer" to it, by using an `id` shared with a Layer file + linking it to a `source`. See code generated by hygen assistants in the create-react-app template projects.
+
+- **Input**:
+
+  | Param                   | Type                | Description                                       |
+  | ----------------------- | ------------------- | ------------------------------------------------- |
+  | props                   | <code>Object</code> | { id, source, layerAttributes }                   |
+  | props.id                | <code>string</code> | unique id for the layer                           |
+  | props.source            | <code>string</code> | id of the source of the layer                     |
+  | [props.layerAttributes] | <code>Object</code> | (optional) custom attributes to pass to the layer |
+
+- **Example**:
+
+  ```js
+  const action = addLayer({
+    id: "layerOne",
+    source: "sourceOne",
+    layerAttributes: {
+      extraAttribute: 1,
+    },
+  });
+  // dispatch(action);
+  // extraAttribute will be available inside the Layer, for custom operations inside it (eg. styling)
+  ```
 
 #### updateLayer
 
 Action to update a Layer in the store
 
-| Param           | Type                | Description                            |
-| --------------- | ------------------- | -------------------------------------- |
-| id              | <code>string</code> | unique id for the layer                |
-| layerAttributes | <code>object</code> | custom attributes to pass to the layer |
+- **Input**:
+
+  | Param                 | Type                | Description                                        |
+  | --------------------- | ------------------- | -------------------------------------------------- |
+  | props                 | <code>Object</code> | { id, layerAttributes }                            |
+  | props.id              | <code>string</code> | unique id for the CARTO layer already in the store |
+  | props.layerAttributes | <code>Object</code> | custom attributes to update in the layer           |
+
+- **Example**:
+
+  ```js
+  const action = updateLayer({
+    id: "layerOne",
+    layerAttributes: {
+      extraAttribute: 100,
+    },
+  });
+  // dispatch(action);
+  // extraAttribute will be updated to the new value
+  ```
 
 #### removeLayer
 
 Action to remove a layer from the store
 
-| Param | Type                | Description               |
-| ----- | ------------------- | ------------------------- |
-| id    | <code>string</code> | id of the layer to remove |
+- **Input**:
+
+  | Param | Type                | Description               |
+  | ----- | ------------------- | ------------------------- |
+  | id    | <code>string</code> | id of the layer to remove |
+
+- **Example**:
+
+  ```js
+  const action = removeLayer("layerOne");
+  // dispatch(action);
+  ```
 
 #### setBasemap
 
-Action to set a basemap
+Action to set a basemap. To see available maps, check the reference for `@carto/react-basemaps`. If you use a googlemaps basemap, you would need to manage its api_key properly.
 
-| Param   | Type                | Description            |
-| ------- | ------------------- | ---------------------- |
-| basemap | <code>String</code> | the new basemap to add |
+- **Input**:
+
+  | Param   | Type                | Description            |
+  | ------- | ------------------- | ---------------------- |
+  | basemap | <code>String</code> | the new basemap to add |
+
+- **Example**:
+
+  ```js
+  import { DARK_MATTER } from "@carto/react-basemaps";
+  import { setBasemap } from "@carto/react-redux";
+
+  const action = setBasemap(DARK_MATTER);
+  // dispatch(action);
+  ```
 
 #### addFilter
 
-Action to add a filter on a given source and column
+Action to add a filter on a given `source` by a `column`. This is done internally (and in a transparent way) by widgets.
 
-| Param    | Type                    | Description                                |
-| -------- | ----------------------- | ------------------------------------------ |
-| {id}     | <code>string</code>     | sourceId of the source to apply the filter |
-| {column} | <code>string</code>     | column to filter at the source             |
-| {type}   | <code>FilterType</code> | `FilterTypes.IN` and `FilterTypes.BETWEEN` |
+- **Input**:
+
+  | Param         | Type                    | Description                                                               |
+  | ------------- | ----------------------- | ------------------------------------------------------------------------- |
+  | props         | <code>Object</code>     | { id, column, type, values, [owner]}                                      |
+  | props.id      | <code>string</code>     | sourceId of the source to apply the filter on                             |
+  | props.column  | <code>string</code>     | column from the source to use by the filter                               |
+  | props.type    | <code>FilterType</code> | 'in' or 'between'                                                         |
+  | props.values  | <code>array</code>      | Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between') |
+  | [props.owner] | <code>FilterType</code> | (optional) id of the widget triggering the filter (to be excluded)        |
+
+- **Example**:
+
+  This would apply a filter equivalent to a 'WHERE country IN ('Spain')' to the source. It is important to notice that a source can have multiple filters at the same type.
+
+  ```js
+  import { addFilter } from "@carto/react-redux";
+
+  const action = addFilter({
+    id: "sourceOne", // a valid sourceId
+    column: "country",
+    type: "in",
+    values: ["Spain"],
+  });
+
+  // dispatch(action)
+  ```
 
 #### removeFilter
 
 Action to remove a column filter from a source
 
-| Type                | Description                      |
-| ------------------- | -------------------------------- |
-| <code>id</code>     | sourceId of the filter to remove |
-| <code>column</code> | column of the filter to remove   |
+- **Input**:
+
+  | Param        | Type                | Description                                      |
+  | ------------ | ------------------- | ------------------------------------------------ |
+  | props        | <code>Object</code> | { id, column }                                   |
+  | props.id     | <code>string</code> | sourceId of the source to remove the filter from |
+  | props.column | <code>string</code> | column of the filter to remove                   |
+
+- **Example**:
+
+  This would remove a filter (the previous example on addFilter)
+
+  ```js
+  import { removeFilter } from "@carto/react-redux";
+
+  const action = removeFilter({
+    id: "sourceOne",
+    column: "country",
+  });
+
+  // dispatch(action)
+  ```
 
 #### clearFilters
 
 Action to remove all filters from a source
 
-| Type            | Description                                       |
-| --------------- | ------------------------------------------------- |
-| <code>id</code> | sourceId of the source to remove all filters from |
+- **Input**:
+
+  | Type            | Description                                       |
+  | --------------- | ------------------------------------------------- |
+  | <code>id</code> | sourceId of the source to remove all filters from |
+
+- **Example**:
+
+  This would remove all filters from a source with id 'sourceOne'
+
+  ```js
+  import { clearFilters } from "@carto/react-redux";
+
+  const action = clearFilters({ id: "sourceOne" });
+
+  // dispatch(action)
+  ```
 
 #### selectSourceById
 
 Redux selector to get a source by ID
 
+- **Input**:
+
+  | Param    | Type                | Description                            |
+  | -------- | ------------------- | -------------------------------------- |
+  | state    | <code>Object</code> | root redux state                       |
+  | sourceId | <code>string</code> | id of the source to recover from redux |
+
+- **Example**:
+
+  ```js
+  import { useSelector } from "react-redux";
+  import { selectSourceById } from "@carto/react-redux";
+
+  const source = useSelector((state) => selectSourceById(state, "sourceOne") || {});
+
+  // source is now available, for further operations
+  ```
+
 #### setViewState
 
-Action to set the current ViewState
+Action to set the current ViewState of the map
 
-| Param     | Type                |
-| --------- | ------------------- |
-| viewState | <code>Object</code> |
+- **Input**:
 
-#### setViewportFeatures
+  | Param     | Type                | Description                      |
+  | --------- | ------------------- | -------------------------------- |
+  | viewState | <code>Object</code> | ViewState, as defined by deck.gl |
 
-Action to set the viewport features to a specific source
+- **Example**:
 
-| Param      | Type                | Description       |
-| ---------- | ------------------- | ----------------- |
-| {sourceId} | <code>string</code> | id of the source  |
-| {features} | <code>Array</code>  | viewport features |
+  Example to increase the zoom level
 
-#### removeViewportFeatures
+  ```js
+  import { useSelector } from "react-redux";
+  import { setViewState } from "@carto/react-redux";
 
-Action to remove the viewport features to a specific source
+  const zoomLevel = useSelector((state) => state.carto.viewState.zoom);
+  const action = setViewState({ zoom: zoomLevel + 1 });
 
-| Param      | Type                | Description                                           |
-| ---------- | ------------------- | ----------------------------------------------------- |
-| {sourceId} | <code>string</code> | id of the source to remove the viewport features from |
+  // dispatch(action)
+  ```
+
+#### setWidgetLoadingState
+
+Action to set the loading state to a specific widget. It can be useful when creating custom widgets.
+
+- **Input**:
+
+  | Param           | Type                 | Description            |
+  | --------------- | -------------------- | ---------------------- |
+  | props           | <code>Object</code>  | { widgetId, isLoading} |
+  | props.widgetId  | <code>string</code>  | id of the widget       |
+  | props.isLoading | <code>boolean</code> | loading state          |
+
+#### removeWidgetLoadingState
+
+Action to remove a specific widget loading state
+
+- **Input**:
+
+  | Param    | Type                | Description      |
+  | -------- | ------------------- | ---------------- |
+  | widgetId | <code>string</code> | id of the widget |
+
+#### setAllWidgetsLoadingStates
+
+Action to set the all the widgets loading state at once
+
+- **Input**:
+
+  | Param      | Type                 | Description   |
+  | ---------- | -------------------- | ------------- |
+  | areLoading | <code>boolean</code> | loading state |
+
+---
 
 ### OAuth Slice
 
@@ -149,43 +353,98 @@ Action to remove the viewport features to a specific source
 A function that accepts an initialState, setup the state and creates
 reducers to manage OAuth with CARTO platform.
 
-```javascript
-export const oauthInitialState = {
-  oauthApp: {
-    clientId: 'CARTO OAUTH APP clienID'
-    scopes: [
-      'user:profile', // to load avatar photo
-      'datasets:metadata', // to list all your datasets,
-      'dataservices:geocoding', // to use geocoding through Data Services API
-      'dataservices:isolines', // to launch isochrones or isodistances through Data Services API
-    ],
-    authorizeEndPoint: 'https://carto.com/oauth2/authorize',
-  }
-};
-```
+- **Input**:
 
-| Param        | Type                | Description       |
-| ------------ | ------------------- | ----------------- |
-| initialState | <code>object</code> | the initial state |
+  | Param        | Type                | Description       |
+  | ------------ | ------------------- | ----------------- |
+  | initialState | <code>Object</code> | the initial state |
 
-#### setOAuthApp
+  An initial state object might look like:
 
-Action to set the OAuthApp
-
-| Param             | Type                | Description                                                                                                   |
-| ----------------- | ------------------- | ------------------------------------------------------------------------------------------------------------- |
-| clientId          | <code>string</code> | unique OAuth App identifier                                                                                   |
-| scopes            | <code>array</code>  | array of valid scopes for the App.                                                                            |
-| authorizeEndPoint | <code>string</code> | URL of CARTO authorization endpoint. Except for on-premise, it should be 'https://carto.com/oauth2/authorize' |
+  ```js
+    export const oauthInitialState = {
+      oauthApp: {
+        clientId: 'YOUR-CARTO-OAUTH-APP-CLIENTID'
+        scopes: [
+          'user:profile', // to load avatar photo
+          'datasets:metadata', // to list all your datasets,
+          'dataservices:geocoding', // to use geocoding through Data Services API
+          'dataservices:isolines', // to launch isochrones or isodistances through Data Services API
+        ],
+        authorizeEndPoint: 'https://carto.com/oauth2/authorize',
+      }
+    };
+  ```
 
 #### setTokenAndUserInfoAsync
 
-Action to get the userInfo once there is a valid token, and set them both into state
+Action to set the userInfo in the redux store, once there is a valid token (and set them both in state).
+
+- **Input**:
+
+  | Param | Type                | Description                                                                                    |
+  | ----- | ------------------- | ---------------------------------------------------------------------------------------------- |
+  | props | <code>Object</code> | oauthParams, as returned by `useOAuthLogin` hook ({ accessToken, expirationDate, userInfoUrl}) |
+
+- **Example**:
+
+  ```js
+  import { setTokenAndUserInfoAsync } from "@carto/react-redux";
+
+  // const oauthApp = { whatever your app requires... }
+
+  const onParamsRefreshed = (oauthParams) => {
+    if (oauthParams.error) {
+      console.error(`OAuth error: ${oauthParams.error}`);
+    } else {
+      const action = setTokenAndUserInfoAsync(oauthParams);
+      dispatch(action);
+    }
+  };
+
+  const [handleLogin] = useOAuthLogin(oauthApp, onParamsRefreshed);
+
+  /* 
+      oauthParams look something like:
+      { 
+        accessToken: "xxxxxxxxx", 
+        expirationDate: 1616013732973.8652, 
+        userInfoUrl: "https://a-certain-user.carto.com/api/v4/me"
+      }
+    */
+  ```
 
 #### logout
 
-Action to logout an user
+Action to logout, removing user info & token from redux store
+
+- **Example**:
+
+  ```js
+  import { logout } from "@carto/react-redux";
+
+  const action = logout();
+  // dispatch(action)
+  ```
 
 #### selectOAuthCredentials
 
-Selector to fetch the current OAuth credentials from the storage
+Selector to fetch the current OAuth credentials from the redux store
+
+- **Returns**:
+
+  | Param                         | Type                | Description                             |
+  | ----------------------------- | ------------------- | --------------------------------------- |
+  | credentials                   | <code>Object</code> | { username, apiKey, serverUrlTemplate } |
+  | credentials.username          | <code>string</code> | CARTO username                          |
+  | credentials.apiKey            | <code>string</code> | apiKey coming from OAuth                |
+  | credentials.serverUrlTemplate | <code>string</code> | required for further api requests       |
+
+- **Example**:
+
+  ```js
+  import { useSelector } from "react-redux";
+  import { selectOAuthCredentials } from "@carto/react-redux";
+
+  const oauthCredentials = useSelector(selectOAuthCredentials);
+  ```
