@@ -23,7 +23,7 @@ Returns the placekey equivalent to the given H3 index.
 **Example**
 
 ```sql
-SELECT bqcartost.placekey.H3_ASPLACEKEY(596645165859340287);
+SELECT bqcarto.placekey.H3_ASPLACEKEY(596645165859340287);
 -- @ff7-swh-m49
 ```
 
@@ -46,7 +46,7 @@ Returns the H3 index equivalent to the given placekey.
 **Example**
 
 ```sql
-SELECT bqcartost.placekey.PLACEKEY_ASH3("@ff7-swh-m49");
+SELECT bqcarto.placekey.PLACEKEY_ASH3("@ff7-swh-m49");
 -- 623666763623563263
 ```
 
@@ -69,17 +69,17 @@ Returns a boolean value `true` when the given string represents a valid Placekey
 **Examples**
 
 ```sql
-SELECT bqcartost.placekey.ISVALID("@ff7-swh-m49");
+SELECT bqcarto.placekey.ISVALID("@ff7-swh-m49");
 -- true
 ```
 
 ```sql
-SELECT bqcartost.placekey.ISVALID("ff7-swh-m49");
+SELECT bqcarto.placekey.ISVALID("ff7-swh-m49");
 -- true
 ```
 
 ```sql
-SELECT bqcartost.placekey.ISVALID("x");
+SELECT bqcarto.placekey.ISVALID("x");
 -- false
 ```
 
@@ -100,5 +100,5 @@ Returns the current version of the placekey module.
 **Example**
 
 ```sql
-SELECT bqcartost.placekey.VERSION();
+SELECT bqcarto.placekey.VERSION();
 -- 1.0.1
