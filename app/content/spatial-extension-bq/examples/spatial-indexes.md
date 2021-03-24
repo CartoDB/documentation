@@ -6,7 +6,7 @@ We are going to demonstrate how fast and easy it is to make a visualization of a
 
 The first step is to get the Starbucks locations into BigQuery by [importing](https://cloud.google.com/bigquery/docs/batch-loading-data#loading_data_from_local_files) [this dataset](https://www.kaggle.com/starbucks/store-locations) in a table called `starbucks-locations-usa` (note: keep US locations only). Although this dataset contains many attributes for each store, for the moment we are only going to be interested in their latitude and longitude. 
 
-Now, with a single query, we are going to calculate how many Starbucks locations fall within each H3 grid cell of resolution 4. For the purpose of this example, let's assume this table is part of the `examples` dataset inside `carto-docs` project.
+Now, with a single query, we are going to calculate how many Starbucks locations fall within each H3 grid cell of resolution 4. For this example, let's assume this table is part of the `examples` dataset inside `carto-docs` project.
 
 ```sql
 WITH
