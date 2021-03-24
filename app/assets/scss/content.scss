@@ -196,14 +196,50 @@
     }
   }
 
-  .toc__link {
+  .dropdown-menu {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 0;
+  }
+
+  .dropdown-on {
+    > .dropdown-button .caret {
+      transform: rotate(180deg);
+    }
+
+    > .dropdown-menu {
+      max-height: 1000px;
+    }
+  }
+
+  .dropdown-button {
+    font-size: unset;
+    width: 100%;
+    text-align: left;
+    background-color: transparent;
+
+    > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .caret {
+      margin-left: auto;
+      width: 15px;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .toc__link,
+  .dropdown-button {
     @include title();
     display: block;
     color: rgba($base-grey, 0.48);
     text-transform: uppercase;
     padding: 8px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: $base-grey;
       background-color: $softblue;
       text-decoration: none;
