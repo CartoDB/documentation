@@ -103,7 +103,7 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
       "aggregation_type": "quadkey",
       "aggregation_resolution": 7,
       "aggregation_placement": "cell",
-      "columns":{
+      "properties":{
         "population": {
           "formula": "sum(population)",
           "type": "Number"
