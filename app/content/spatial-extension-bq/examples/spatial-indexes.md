@@ -10,21 +10,19 @@ Now, with a single query, we are going to calculate how many Starbucks locations
 
 ```sql
 WITH
-  DATA AS (
+  data AS (
   SELECT
-    bqcarto.h3.ST_ASH3(geog,
-      4) AS h3id,
+    bqcarto.h3.ST_ASH3(geog, 4) AS h3id,
     COUNT(*) AS agg_total
-  FROM
-    `carto-docs.examples.starbucks-locations-usa`
-  GROUP BY
-    h3id)
+  FROM `carto-docs.examples.starbucks-locations-usa`
+  GROUP BY h3id
+  )
 SELECT
-  h3id,
+  h3id, 
   agg_total,
   bqcarto.h3.ST_BOUNDARY(h3id) AS geom
 FROM
-  DATA
+  data
 ```
 
 
@@ -38,7 +36,7 @@ Note: this visualization is made using Builder, where you can easily import your
 
 ### Finer resolution H3 for simple cannibalization analysis
 
-In this example we will continue working with the dataset introduced in [*An H3 grid of Starbucks locations*](#an-h3-grid-of-starbucks-locations) example. In particular, we will analyse in finer detail the grid cell that we have identified contains the highest concentration of Starbucks locations, with ID `595193501273030655`. 
+In this example we will continue working with the dataset introduced in [*An H3 grid of Starbucks locations*](#an-h3-grid-of-starbucks-locations) example. In particular, we will analyze in finer detail the grid cell that we have identified contains the highest concentration of Starbucks locations, with ID `595193501273030655`. 
 
 <div class="figures-table" style="text-align:center">
     <figure>
@@ -49,51 +47,44 @@ In this example we will continue working with the dataset introduced in [*An H3 
 
 ```sql
 WITH
-  DATA AS (
+  data AS (
   SELECT
-    bqcarto.h3.ST_ASH3(geog,
-      9) AS h3id,
+    bqcarto.h3.ST_ASH3(geog, 9) AS h3id,
     COUNT(*) AS agg_total
-  FROM
-    `carto-docs.examples.starbucks-locations-usa`
+  FROM `carto-docs.examples.starbucks-locations-usa`
   WHERE
     ST_INTERSECTS(geog,
       bqcarto.h3.ST_BOUNDARY(595193501273030655))
-  GROUP BY
-    h3id)
+  GROUP BY h3id
+  )
 SELECT
   h3id,
   agg_total,
   bqcarto.h3.ST_BOUNDARY(h3id) AS geom
 FROM
-  DATA
+  data
 ```
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/38bcfc88-d53c-4d1b-b399-28bea935fa18" title="Starbucks locations around Seattle aggregated in an H3 grid of resolution 9."></iframe>
 
-We can clearly identify there are two H3 cells with the highest concentration of Starbucks locations, and therefore at risk of suffering cannibalisation. These are cells with IDs `617711491567058943` and `617711491559718911` respectively. Finally, to complete our analysis, we can calculate how many locations are within one cell distance of the last cell:
+We can clearly identify that there are two H3 cells with the highest concentration of Starbucks locations, and therefore at risk of suffering cannibalisation. These are cells with IDs `617711491567058943` and `617711491559718911` respectively. Finally, to complete our analysis, we can calculate how many locations are within one cell distance of the last cell:
 
 ```sql
 WITH
-  DATA AS (
+  data AS (
   SELECT
-    bqcarto.h3.ST_ASH3(geog,
-      9) AS h3id,
+    bqcarto.h3.ST_ASH3(geog, 9) AS h3id,
     COUNT(*) AS agg_total
-  FROM
-    `carto-docs.examples.starbucks-locations-usa`
+  FROM `carto-docs.examples.starbucks-locations-usa`
   WHERE
     ST_INTERSECTS(geog,
       bqcarto.h3.ST_BOUNDARY(595193501273030655))
-  GROUP BY
-    h3id)
-SELECT
-  SUM(agg_total)
-FROM
-  DATA
-WHERE
-  h3id IN UNNEST(bqcarto.h3.KRING(617711491559718911,
-      1))
+  GROUP BY h3id
+  )
+SELECT 
+SUM(agg_total)
+FROM data
+WHERE h3id IN UNNEST(bqcarto.h3.KRING(617711491559718911, 1))
 -- 13
 ```
 
@@ -105,9 +96,7 @@ The pains of working with data in different spatial aggregations can be greately
 The query performs three main tasks:
 * Filtering the OSM dataset to keep only the ones of type `supermarket`.
 * Creating a quadkey grid of resolution 15 with the total number of supermarkets that fall within each grid cell (`agg_total`).
-* Enriching each cell of the grid with its population. As the Spatial Features dataset is also in resolution 15, this enrichment is done simply by performing a join between these two tables. Please note that the Spatial Features dataset uses quadkeys as a grid identifier, so we have to convert these to quadints by using the appropriate function from the Spatial Extension.
-
-
+* Enriching each grid cell with its population. As the Spatial Features dataset is also available inresolution 15, this enrichment is done simply by performing a join between these two tables. Please note that the Spatial Features dataset uses quadkeys as a grid identifier, so we have to convert these to quadints by using the appropriate function from the Spatial Extension.
 
 ```sql
 SELECT
@@ -117,26 +106,19 @@ FROM
   `carto-do-public-data.carto.derived_spatialfeatures_usa_quadgrid15_v1_yearly_2020` p
 JOIN (
   WITH
-    DATA AS (
+    data AS (
     SELECT
       d.*,
       g.geom
-    FROM
-      `carto-do-public-data.openstreetmap.pointsofinterest_nodes_usa_latlon_v1_quarterly_v1` d
-    INNER JOIN
-      `carto-do-public-data.openstreetmap.geography_usa_latlon_v1` g
-    ON
-      d.geoid = g.geoid
-    WHERE
-      shop = 'supermarket' )
+    FROM `carto-do-public-data.openstreetmap.pointsofinterest_nodes_usa_latlon_v1_quarterly_v1` d
+    INNER JOIN `carto-do-public-data.openstreetmap.geography_usa_latlon_v1` g
+    ON d.geoid = g.geoid
+    WHERE shop = 'supermarket' )
   SELECT
-    bqcartost.quadkey.ST_ASQUADINT(geom,
-      15) AS qid,
+    bqcartost.quadkey.ST_ASQUADINT(geom, 15) AS qid,
     COUNT(*) AS agg_total
-  FROM
-    DATA
-  GROUP BY
-    qid ) d
-ON
-  qid = bqcarto.quadkey.QUADINT_FROMQUADKEY(geoid)
+  FROM data
+  GROUP BY qid 
+  ) d
+ON qid = bqcarto.quadkey.QUADINT_FROMQUADKEY(geoid)
 ```

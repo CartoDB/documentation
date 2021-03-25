@@ -1,8 +1,8 @@
 ## Getting started
 
-The CARTO Spatial Extension for BigQuery is composed of a set of user-defined functions and procedures organized in a set of modules according to the functionality they offer. Some of these modules are open source and free to use for anyone with a BigQuery account, while the rest are *premium* and require a CARTO account. 
+The CARTO Spatial Extension for BigQuery is composed of a set of user-defined functions and procedures organized in a set of modules according to the functionality they offer. There are two types of modules: _core_ modules, that are [open source](https://github.com/CartoDB/carto-spatial-extension) and free to use for anyone with a BigQuery account, and _extended_ modules, only available to CARTO account holders. 
 
-Visit the [SQL Reference](../../sql-reference/tiler) to see the full list of available modules. Please keep reading to learn how you can access the *premium* modules.
+Visit the [SQL Reference](../../sql-reference/tiler) to see the full list of available modules. If you already have a CARTO account, please keep reading to learn how you can access the *extended* modules.
 
 ### Getting access to premium modules
 

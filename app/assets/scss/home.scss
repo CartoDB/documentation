@@ -91,11 +91,11 @@
     }
   }
 
-  &.advanced {
+  &.extended {
     color: #6e00dc;
     border: 1px solid #6e00dc;
     &:before {
-      content: 'advanced';
+      content: 'extended';
     }
   }
 }
