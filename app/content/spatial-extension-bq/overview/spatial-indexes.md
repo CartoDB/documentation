@@ -2,6 +2,8 @@
 
 Hierarchical grid systems, such as Quadkey, H3, and S2, are an essential tool for analysing large spatial datasets, especially when dealing with data sources in different spatial aggregations. These systems are based on geospatial indexes that provide a direct relationship between grid cells at different resolutions, enabling extremely performant spatial operations.
 
+CARTO's Spatial Extension provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are public to everyone and ready to be used on your regular SQL on BigQuery.
+
 <div class="figures-table">
     <figure class="figure">
         <img src="/img/bq-spatial-extension/spatial-indexes/quadkeys-microsoft.jpg" alt="Microsoft Quadkeys">
@@ -17,7 +19,7 @@ Hierarchical grid systems, such as Quadkey, H3, and S2, are an essential tool fo
     </figure>
 </div>
 
-CARTO's Spatial Extension provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are public to everyone and ready to be used on your regular SQL on BigQuery. Visit the [reference](../../sql-reference/quadkey) for the full list of available functions and the [Examples](../../examples/spatial-indexes) to access sample code. If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor. 
+Visit the [reference](../../sql-reference/quadkey) for the full list of available functions and the [Examples](../../examples/spatial-indexes) to access sample code. If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor. 
 
 
 ### Quadkey
@@ -27,7 +29,7 @@ Quadkey uniquely identifies any of the grid cells (or map tiles) that result fro
 <div class="figures-table">
     <figure class="figure">
         <img src="/img/bq-spatial-extension/spatial-indexes/quadkeys-multilevel-microsoft.jpg" alt="Multiresolution quadkeys">
-        <figcaption class="figcaption" style="text-align:center">Multiple levels of quadkey (<a href="https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system">source</a>)</figcaption>
+        <figcaption class="figcaption" style="text-align:center">Multiple levels of quadkeys (<a href="https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system">source</a>)</figcaption>
     </figure>
 </div>
 
@@ -37,11 +39,11 @@ Quadkeys were developed by Microsoft to provide interactive mapping solutions. Y
 
 ##### Quadint
 
-Quadkeys have as many digits as the zoom level to which they belong, which can lead to a lot of storage waste for high zoom levels and prevents fast comparison as they are internally treated as `STRING`, requiring a digit-by-digit evaluation. To overcome this limitation, in this module we use Quadints, our version of [Quadkeys](https://wiki.openstreetmap.org/wiki/QuadTiles) that are stored in an `INT64`. Quadints offer faster comparison as the whole number is compared all at once.
+Quadkeys have as many digits as the zoom level to which they belong, which can lead to a lot of storage waste for high zoom levels and prevents fast comparison as they are internally treated as `STRING`, requiring a digit-by-digit evaluation. To overcome this limitation, in this module we use quadints, an encoded version of [quadkeys](https://wiki.openstreetmap.org/wiki/QuadTiles) stored in an `INT64`. Quadints offer faster comparison as the whole number is compared all at once.
 
-To encode a Quadkey into a Quadint we transform into an `INT64` the bits referring to the tile Y, then the ones concerning tile Y and finally we reserve 5 bits for storing the zoom level, i.e., `[ Bits Tile Y | Bits Tile X | 5 Bits for zoom ]`. This encoding introduces the limitation of not being able to encode tiles for zoom levels higher than 29, as they cannot be stored in 64 bits. 
+To encode a quadkey into a quadint we transform into an `INT64` the bits referring to the tile Y, then the ones concerning tile Y and finally we reserve 5 bits for storing the zoom level, i.e., `[ Bits Tile Y | Bits Tile X | 5 Bits for zoom ]`. This encoding introduces the limitation of not being able to encode tiles for zoom levels higher than 29, as they cannot be stored in 64 bits. 
 
-In this module, we also provide the functions necessary to convert Quadints into Quadkeys and vice-versa.
+In this module, we also provide the functions necessary to convert quadints into quadkeys and vice-versa.
 
 
 ### H3
@@ -55,13 +57,13 @@ In this module, we also provide the functions necessary to convert Quadints into
     </figure>
 </div>
 
-Instead of constructing a grid over a planar projection like Quadkey, H3 projects from Earth like a sphere to a regular icosahedron, and then lays out hexagonal grid cells on each of its faces.
+Instead of constructing a grid over a planar projection like Quadkey does, H3 projects from Earth like a sphere to a regular icosahedron, and then lays out hexagonal grid cells on each of its faces.
 
 One of the most powerful properties of H3 is that all neighboring hexagons of a particular cell are at an equal distance. This enables fast computation of grid distances between hexagons and neighbouring areas around an index using the [DISTANCE](../../sql-reference/h3/#distance) and [KRING](../../sql-reference/h3/#kring) functions, respectively.
 
 <div class="figures-table">
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/h3_kring_comparison.png" alt="Multiresolution quadkeys">
+        <img src="/img/bq-spatial-extension/spatial-indexes/h3_kring_comparison.png" alt="H3 KRing">
         <figcaption class="figcaption" style="text-align:center">kRings of distance 1, 2 and 3 around an H3 index of resolution 11.</figcaption>
     </figure>
 </div>
