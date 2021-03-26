@@ -1,5 +1,7 @@
 ## quadkey
 
+<div class="badge core"></div>
+
 You can learn more about quadkeys and quandints in the [Overview section](/spatial-extension-bq/overview/spatial-indexes/#quadkey) of the documentation.
 
 ### QUADINT_FROMZXY
@@ -27,7 +29,7 @@ Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates,
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.QUADINT_FROMZXY(4, 9, 8);
+SELECT bqcarto.quadkey.QUADINT_FROMZXY(4, 9, 8);
 -- 4388
 ```
 
@@ -50,7 +52,7 @@ Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.ZXY_FROMQUADINT(4388);
+SELECT bqcarto.quadkey.ZXY_FROMQUADINT(4388);
 -- z  x  y
 -- 4  9  8
 ```
@@ -76,7 +78,7 @@ Returns the quadint representation for a given level of detail and geographic co
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
+SELECT bqcarto.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
 -- 4388
 ```
 
@@ -99,7 +101,7 @@ Returns the quadint equivalent to the input quadkey.
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.QUADINT_FROMQUADKEY("3001");
+SELECT bqcarto.quadkey.QUADINT_FROMQUADKEY("3001");
 -- 4388
 ```
 
@@ -122,7 +124,7 @@ Returns the quadkey equivalent to the input quadint.
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.QUADKEY_FROMQUADINT(4388);
+SELECT bqcarto.quadkey.QUADKEY_FROMQUADINT(4388);
 -- 3001
 ```
 
@@ -146,7 +148,7 @@ Returns the parent quadint of a given quadint for a specific resolution. A paren
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.TOPARENT(4388, 3);
+SELECT bqcarto.quadkey.TOPARENT(4388, 3);
 -- 1155
 ```
 
@@ -170,7 +172,7 @@ Returns an array with the children quadints of a given quadint for a specific re
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.TOCHILDREN(1155, 4);
+SELECT bqcarto.quadkey.TOCHILDREN(1155, 4);
 -- 4356
 -- 4868
 -- 4388
@@ -197,7 +199,7 @@ Returns the quadint directly next to the given quadint at the same zoom level. T
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.SIBLING(4388, 'up');
+SELECT bqcarto.quadkey.SIBLING(4388, 'up');
 -- 3876
 ```
 
@@ -221,7 +223,7 @@ Returns an array containing all the quadints directly next to the given quadint 
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.KRING(4388, 1);
+SELECT bqcarto.quadkey.KRING(4388, 1);
 -- 3844
 -- 3876
 -- 3908
@@ -252,7 +254,7 @@ Returns an array with the boundary box of a given quadint. This boundary box con
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.BBOX(4388);
+SELECT bqcarto.quadkey.BBOX(4388);
 -- 22.5
 -- -21.943045533438177
 -- 45.0
@@ -279,7 +281,7 @@ Returns the quadint of a given point at a given level of detail.
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
+SELECT bqcarto.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
 -- 4388
 ```
 
@@ -303,7 +305,7 @@ Returns an array of quadints that intersect with the given geography at a given 
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.ST_ASQUADINT_POLYFILL(
+SELECT bqcarto.quadkey.ST_ASQUADINT_POLYFILL(
     ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(-363.71219873428345, 40.413365349070865), ST_GEOGPOINT(-363.7144088745117, 40.40965661286395), ST_GEOGPOINT(-363.70659828186035, 40.409525904775634), ST_GEOGPOINT(-363.71219873428345, 40.413365349070865)])), 
     17);
 -- 207301334801
@@ -333,7 +335,7 @@ Returns the boundary for a given quadint. We extract the boundary in the same wa
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.ST_BOUNDARY(4388);
+SELECT bqcarto.quadkey.ST_BOUNDARY(4388);
 -- POLYGON((22.5 0, 22.5 -21.9430455334382, 22.67578125 ...
 ```
 
@@ -361,7 +363,7 @@ Returns the quadint index for the given point for each zoom level requested, at 
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
+SELECT bqcarto.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
 -- id        z  x   y
 -- 268743    3  4   4
 -- 1069960   4  9   8
@@ -386,6 +388,6 @@ Returns the current version of the quadkey module.
 **Example**
 
 ```sql
-SELECT bqcartost.quadkey.VERSION();
+SELECT bqcarto.quadkey.VERSION();
 -- 1
 ```

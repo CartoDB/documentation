@@ -37,7 +37,7 @@ This process will take the over 300M buildings in the source table, aggregate th
 
 ### New York City trees (aggregation)
 
-In this case we want to visualize an aggregation of the tree census of NYC. Since the table doesn't have a geography column, we are going to create it on the fly using the latitude and longitude columns.
+In this case, we want to visualize an aggregation of the tree census of NYC. Since the table doesn't have a geography column, we are going to create it on the fly using the latitude and longitude columns.
 
 We also want to have access to the status and health of each aggregated cell, so we add some extra properties around that. Finally, as it is a more localized dataset, we want to generate higher zoom levels (16) and when we see individual points we want access to both their official id and their address.
 
@@ -84,7 +84,7 @@ Then we can style our visualization using the properties that we have added:
 
 ### 2020 world population (aggregation)
 
-For this example we are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_172b5dfd) to visualize the 2020 world population. We are going to use the already aggregated 1km * 1km grid cells:
+For this example, we are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_172b5dfd) to visualize the 2020 world population. We are going to use the already aggregated 1km * 1km grid cells:
 
 ```sql
 CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
@@ -103,7 +103,7 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
       "aggregation_type": "quadkey",
       "aggregation_resolution": 7,
       "aggregation_placement": "cell",
-      "columns":{
+      "properties":{
         "population": {
           "formula": "sum(population)",
           "type": "Number"
@@ -113,14 +113,14 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
   ''');
   ```
 
-  Note that since this dataset contains already aggregated data, it doesn't make sense to visualize it at very high zoom levels, but visualize the data at country scale.
+  Note that since this dataset contains already aggregated data, it doesn't make sense to visualize it at very high zoom levels, but visualize the data at a country scale.
 
 ![2020 worldpop](/img/bq-spatial-extension/tiler/examples-worldpop2020.png)
 
 
 ### World's road network (lines)
 
-We are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/geography/ne_roads_9ff89987) to visualize the world's road netowork. We are going to use the already aggregated 1km * 1km grids cells:
+We are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/geography/ne_roads_9ff89987) to visualize the world's road network. We are going to use the already aggregated 1km * 1km grids cells:
 
 ```sql
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(

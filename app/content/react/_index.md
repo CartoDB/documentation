@@ -1,6 +1,6 @@
 ---
 cascade:
-  title: CARTO for React (Beta)
+  title: CARTO for React
   description: "Build compelling spatial apps using CARTO, React and deck.gl."
   icon: "/img/icons/carto-react.png"
   repoUrl: https://github.com/CartoDB/carto-react-template
@@ -18,8 +18,10 @@ cascade:
     - name: "Library Reference"
       elements:
         - "API"
+        - "Auth"
         - "Basemaps"
-        - "OAuth"
+        - "Core"
         - "Redux"
+        - "UI"
         - "Widgets"
 ---
