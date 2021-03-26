@@ -17,7 +17,7 @@ Hierarchical grid systems, such as Quadkey, H3, and S2, are an essential tool fo
     </figure>
 </div>
 
-CARTO's Spatial Extension provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are public to everyone and ready to be used on your regular SQL on BigQuery. The full list of functions is available in the [reference](../../sql-reference/quadkey). If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor. 
+CARTO's Spatial Extension provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are public to everyone and ready to be used on your regular SQL on BigQuery. Visit the [reference](../../sql-reference/quadkey) for the full list of available functions and the [Examples](../../examples/spatial-indexes) to access sample code. If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor. 
 
 
 ### Quadkey
@@ -33,6 +33,7 @@ Quadkey uniquely identifies any of the grid cells (or map tiles) that result fro
 
 
 Quadkeys were developed by Microsoft to provide interactive mapping solutions. You can learn more in its documentation, the [Bings Maps Tile System](https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system).
+
 
 ##### Quadint
 
