@@ -96,7 +96,7 @@ The pains of working with data in different spatial aggregations can be greately
 The query performs three main tasks:
 * Filtering the OSM dataset to keep only the ones of type `supermarket`.
 * Creating a quadkey grid of resolution 15 with the total number of supermarkets that fall within each grid cell (`agg_total`).
-* Enriching each grid cell with its population. As the Spatial Features dataset is also available inresolution 15, this enrichment is done simply by performing a join between these two tables. Please note that the Spatial Features dataset uses quadkeys as a grid identifier, so we have to convert these to quadints by using the appropriate function from the Spatial Extension.
+* Enriching each grid cell with its population. As the Spatial Features dataset is also available in resolution 15, this enrichment is done simply by performing a join between these two tables. Please note that the Spatial Features dataset uses quadkeys as a grid identifier, so we have to convert these to quadints by using the appropriate function from the Spatial Extension.
 
 ```sql
 SELECT
