@@ -31,9 +31,9 @@
 
   <div class="is-bgWhite is-txtBaseGrey">
     <div class="container grid u-justify-center u-mt64 u-mb96 u-mt48--tablet u-mb48--tablet">
-      <aside class="grid-cell grid-cell--col3 title f12 js-toc-sidebar desktop-s">
-        <div class="toc-sidebar__container js-toc-sidebar-container">
-          <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.title}}</h3>
+      <aside class="grid-cell grid-cell--col3 title f12 desktop-s toc--sidebar js-toc-sidebar">
+        <div class="toc--container js-toc-sidebar-container">
+          <h3 class="title f16 is-txtNavyBlue toc--title">{{.Params.title}}</h3>
           {{$context := .}}
           {{.Scratch.Set "projectDirectory" .File.Dir}}
           {{range $elem := .Params.folders}}
@@ -47,13 +47,15 @@
           {{$overview := printf "%s%s" $projectDirectory "overview.md"}}
           {{$reference := printf "%s%s" $projectDirectory "reference.md"}}
 
-          <div class="page-toc">
+          <div class="toc--links">
             {{if fileExists $overview}}
               {{$isActive := eq (printf "%s%s" $projectDirectory "overview.md") .File.Path}}
               {{if $isActive}}
-                {{.TableOfContents}}
+                <div class="toc--hugo-parent">
+                  {{.TableOfContents}}
+                </div>
               {{else}}
-                <a href="{{(.GetPage $overview).Permalink}}" class="toc__link">Overview</a>
+                <a href="{{(.GetPage $overview).Permalink}}" class="toc--link level-one">Overview</a>
               {{end}}
             {{end}}
 
@@ -62,9 +64,11 @@
                 {{$file := printf "%s%s%s" $projectDirectory (urlize $elem) ".md"}}
                 {{$isActive := eq $file $context.File.Path}}
                 {{if $isActive}}
-                  {{$context.TableOfContents}}
+                  <div class="toc--hugo-parent">
+                    {{.TableOfContents}}
+                  </div>
                 {{else}}
-                  <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc__link">{{$elem}}</a>
+                  <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
                 {{end}}
               {{end}}
             {{end}}
@@ -76,29 +80,31 @@
                 {{$firstFile := printf "%s%s%s%s%s" $projectDirectory $folderName "/" $firstFileName ".md"}}
                 <ul>
                   <li>
-                    <button class="dropdown-button" data-toggle="dropdown" {{ if in $context.File.Dir $folderName  }}data-start-open="true"{{ end }}>
+                    <button class="toc--link level-one dropdown-button" data-toggle="dropdown" {{ if in $context.File.Dir $folderName  }}data-start-open="true"{{ end }}>
                       <div><!-- Safari doesn't allow flex directly in button-->
                         <span>{{$folder.name}}</span>
-                        <svg class="caret" stroke="currentColor" viewBox="0 0 15 7" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-                          <path fill="none" d="M1 0l6.5 6.563L14 0"></path>
+                        <svg class="caret" stroke="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                          <path fill="#162945" fill-rule="evenodd" d="M11.569 5.431L8.04 8.96 4.511 5.431l-.942.943 4.471 4.471 4.471-4.471z"/>
                         </svg>
                       </div>
                     </button>
                     <div class="dropdown-menu">
                       {{range $elem := $folder.elements}}
-                      {{$file := printf "%s%s%s%s%s" $projectDirectory $folderName "/" (urlize $elem) ".md"}}
-                      {{$isActive := eq $file $context.File.Path}}
-
-                      {{if $isActive}}
-                        {{$context.TableOfContents}}
-                      {{else}}
-                        <ul>
-                          <li>
-                            <a href="{{($context.GetPage (urlize $file)).Permalink}}" class="">{{$elem}}</a>
-                          </li>
-                        </ul>
+                        {{$file := printf "%s%s%s%s%s" $projectDirectory $folderName "/" (urlize $elem) ".md"}}
+                        {{$isActive := eq $file $context.File.Path}}
+    
+                        {{if $isActive}}
+                          <div class="toc--hugo-child">
+                            {{$context.TableOfContents}}
+                          </div>
+                        {{else}}
+                          <ul>
+                            <li>
+                              <a href="{{($context.GetPage (urlize $file)).Permalink}}" class="toc--link level-two">{{$elem}}</a>
+                            </li>
+                          </ul>
+                        {{end}}
                       {{end}}
-                    {{end}}
                     </div>
                   </li>
                 </ul>
@@ -108,9 +114,11 @@
             {{if fileExists $reference}}
               {{$isActive := eq (printf "%s%s" $projectDirectory "reference.md") .File.Path}}
               {{if $isActive}}
-                {{.TableOfContents}}
+                <div class="toc--hugo-parent">
+                  {{.TableOfContents}}
+                </div>
               {{else}}
-                <a href="{{(.GetPage $reference).Permalink}}" class="toc__link">Reference</a>
+                <a href="{{(.GetPage $reference).Permalink}}" class="toc--link level-one">Reference</a>
               {{end}}
             {{end}}
           </div>

@@ -13,10 +13,10 @@
 
   <div class="is-bgWhite is-txtBaseGrey">
     <div class="container grid u-justify-center u-mt64 u-mb96 u-mt48--tablet u-mb48--tablet">
-      <aside class="grid-cell grid-cell--col3 title f12 js-toc-sidebar desktop-s">
-        <div class="toc-sidebar__container js-toc-sidebar-container">
-          <h3 class="title f16 is-txtNavyBlue toc-title">{{.Params.tocName}}</h3>
-          <div class="page-toc">
+      <aside class="grid-cell grid-cell--col3 title f12 desktop-s toc--sidebar js-toc-sidebar">
+        <div class="toc--container js-toc-sidebar-container">
+          <h3 class="title f16 is-txtNavyBlue toc--title">{{.Params.tocName}}</h3>
+          <div class="toc--links toc--hugo-parent">
             {{.TableOfContents}}
           </div>
         </div>
