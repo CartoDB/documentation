@@ -181,22 +181,23 @@
   }
 
   .toc--link.level-one,
-  .toc--hugo-parent > nav > ul > li > a {
+  .toc-hugo__folder-one > nav > ul > li > a {
     @include title();
     text-transform: uppercase;
     padding: 8px 8px 8px 16px;
   }
 
   .toc--link.level-two,
-  .toc--hugo-parent > nav > ul > li > ul > li > a,
-  .toc--hugo-child > nav > ul > li > a {
+  .toc-hugo__folder-one > nav > ul > li > ul > li > a,
+  .toc-hugo__folder-two > nav > ul > li > a {
     @include title();
     padding: 8px 8px 8px 32px;
   }
 
   .toc--link.level-three,
-  .toc--hugo-parent > nav > ul > li > ul > li > ul > li > a,
-  .toc--hugo-child > nav > ul > li > ul > li > a {
+  .toc-hugo__folder-one > nav > ul > li > ul > li > ul > li > a,
+  .toc-hugo__folder-two > nav > ul > li > ul > li > a,
+  .toc-hugo__folder-three > nav > ul > li > a {
     @include text();
     padding: 8px 8px 8px 48px;
 
@@ -206,7 +207,8 @@
   }
 
   .toc--link.level-four,
-  .toc--hugo-child > nav > ul > li > ul > li > ul > li > a {
+  .toc-hugo__folder-two > nav > ul > li > ul > li > ul > li > a,
+  .toc-hugo__folder-three > nav > ul > li > ul > li > a {
     @include text();
     padding: 8px 8px 8px 64px;
 

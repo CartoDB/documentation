@@ -1,29 +1,35 @@
 {{ define "main" }}
-  <header class="is-bgBaseGrey is-txtWhite">
-    <div class="container grid u-justify-center">
-      <div class="navbar grid-cell--col12">
-        {{ partial "navbar.html" (dict "CTX" .) }}
-      </div>
-      <div class="grid-cell grid-cell--col10 u-mt64 u-mb64">
-        <h1 class="title f64 f48--tablet f36--mobile is-txtWhite">{{.Params.title}}</h1>
-        <p class="text f20 is-txtWhite u-mt16">{{.Params.description}}</p>
-      </div>
+<header class="is-bgBaseGrey is-txtWhite">
+  <div class="container grid u-justify-center">
+    <div class="navbar grid-cell--col12">
+      {{ partial "navbar.html" (dict "CTX" .) }}
     </div>
-  </header>
-
-  <div class="is-bgWhite is-txtBaseGrey">
-    <div class="container grid u-justify-center u-mt64 u-mb96 u-mt48--tablet u-mb48--tablet">
-      <aside class="grid-cell grid-cell--col3 title f12 desktop-s toc--sidebar js-toc-sidebar">
-        <div class="toc--container js-toc-sidebar-container">
-          <h3 class="title f16 is-txtNavyBlue toc--title">{{.Params.tocName}}</h3>
-          <div class="toc--links toc--hugo-parent">
-            {{.TableOfContents}}
-          </div>
-        </div>
-      </aside>
-      <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
-        {{.Content}}
-      </div>
+    <div class="grid-cell grid-cell--col10 u-mt64 u-mb64">
+      <h1 class="title f64 f48--tablet f36--mobile is-txtWhite">
+        {{.Params.title}}
+      </h1>
+      <p class="text f20 is-txtWhite u-mt16">{{.Params.description}}</p>
     </div>
   </div>
+</header>
+
+<div class="is-bgWhite is-txtBaseGrey">
+  <div
+    class="container grid u-justify-center u-mt64 u-mb96 u-mt48--tablet u-mb48--tablet"
+  >
+    <aside
+      class="grid-cell grid-cell--col3 title f12 desktop-s toc--sidebar js-toc-sidebar"
+    >
+      <div class="toc--container js-toc-sidebar-container">
+        <h3 class="title f16 is-txtNavyBlue toc--title">{{.Params.tocName}}</h3>
+        <div class="toc--links toc-hugo__folder-one">{{.TableOfContents}}</div>
+      </div>
+    </aside>
+    <div
+      class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content"
+    >
+      {{.Content}}
+    </div>
+  </div>
+</div>
 {{end}}

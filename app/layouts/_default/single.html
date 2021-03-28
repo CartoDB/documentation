@@ -35,15 +35,15 @@
         <div class="toc--container js-toc-sidebar-container">
           <h3 class="title f16 is-txtNavyBlue toc--title">{{.Params.title}}</h3>
           {{$context := .}}
-          {{$folderZeroName := printf "%s%s" (urlize .Params.name) "/"}}
-          {{$overview := printf "%s%s" $folderZeroName "overview.md"}}
-          {{$reference := printf "%s%s" $folderZeroName "reference.md"}}
+          {{$folderOneName := printf "%s%s" (urlize .Params.name) "/"}}
+          {{$overview := printf "%s%s" $folderOneName "overview.md"}}
+          {{$reference := printf "%s%s" $folderOneName "reference.md"}}
 
           <div class="toc--links">
             {{if fileExists $overview}}
               {{$isActive := eq $overview .File.Path}}
               {{if $isActive}}
-                <div class="toc--hugo-parent">
+                <div class="toc-hugo__folder-one">
                   {{.TableOfContents}}
                 </div>
               {{else}}
@@ -53,10 +53,10 @@
 
             {{if .Params.extra_sections}}
               {{range $elem := .Params.extra_sections}}
-                {{$file := printf "%s%s%s" $folderZeroName (urlize $elem) ".md"}}
+                {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
                 {{$isActive := eq $file $context.File.Path}}
                 {{if $isActive}}
-                  <div class="toc--hugo-parent">
+                  <div class="toc-hugo__folder-one">
                     {{.TableOfContents}}
                   </div>
                 {{else}}
@@ -66,65 +66,65 @@
             {{end}}
 
             {{if .Params.folders}}
-              {{range $folderOne := .Params.folders}}
-                {{$folderOneName := printf "%s%s" (urlize $folderOne.name) "/"}}
+              {{range $folderTwo := .Params.folders}}
+                {{$folderTwoName := printf "%s%s" (urlize $folderTwo.name) "/"}}
                 <ul>
                   <li>
-                    <button class="toc--link level-one dropdown-button" data-toggle="dropdown" {{ if in $context.File.Dir $folderOneName }} data-start-open="true" {{ end }}>
+                    <button class="toc--link level-one dropdown-button" data-toggle="dropdown" {{ if in $context.File.Dir $folderTwoName }} data-start-open="true" {{ end }}>
                       <div>
                         <!-- Safari doesn't allow flex directly in button-->
-                        <span>{{$folderOne.name}}</span>
+                        <span>{{$folderTwo.name}}</span>
                         <svg class="caret" stroke="currentColor" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
                           <path fill="#162945" fill-rule="evenodd" d="M11.569 5.431L8.04 8.96 4.511 5.431l-.942.943 4.471 4.471 4.471-4.471z"/>
                         </svg>
                       </div>
                     </button>
                     <div class="dropdown-menu">
-                      {{range $elemFolderOne := $folderOne.elements}}
-                        {{$fileFolderOne := printf "%s%s%s%s" $folderZeroName $folderOneName (urlize $elemFolderOne) ".md"}}
-                        {{$isActive := eq $fileFolderOne $context.File.Path}}
+                      {{range $elemFolderTwo := $folderTwo.elements}}
+                        {{$fileFolderTwo := printf "%s%s%s%s" $folderOneName $folderTwoName (urlize $elemFolderTwo) ".md"}}
+                        {{$isActive := eq $fileFolderTwo $context.File.Path}}
 
                         {{if $isActive}}
-                          <div class="toc--hugo-child">
+                          <div class="toc-hugo__folder-two">
                             {{$context.TableOfContents}}
                           </div>
                         {{else}}
                           <ul>
                             <li>
-                              <a href="{{($context.GetPage (urlize $fileFolderOne)).Permalink}}" class="toc--link level-two">{{$elemFolderOne}}</a>
+                              <a href="{{($context.GetPage (urlize $fileFolderTwo)).Permalink}}" class="toc--link level-two">{{$elemFolderTwo}}</a>
                             </li>
                           </ul>
                         {{end}}
                       {{end}}
 
                       <!-- Start SubFolder -->
-                      {{if $folderOne.folders }}
-                        {{range $folderTwo := $folderOne.folders}}
-                          {{$folderTwoName := printf "%s%s" (urlize $folderTwo.name) "/"}}
+                      {{if $folderTwo.folders }}
+                        {{range $folderThree := $folderTwo.folders}}
+                          {{$folderThreeName := printf "%s%s" (urlize $folderThree.name) "/"}}
                           <ul>
                             <li>
-                              <button class="toc--link level-two dropdown-button" data-toggle="dropdown" {{ if in $context.File.Dir $folderTwoName }} data-start-open="true" {{ end }}>
+                              <button class="toc--link level-two dropdown-button" data-toggle="dropdown" {{ if in $context.File.Dir $folderThreeName }} data-start-open="true" {{ end }}>
                                 <div>
                                   <!-- Safari doesn't allow flex directly in button-->
-                                  <span>{{$folderTwo.name}}</span>
+                                  <span>{{$folderThree.name}}</span>
                                   <svg class="caret" stroke="currentColor" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
                                     <path fill="#162945" fill-rule="evenodd" d="M11.569 5.431L8.04 8.96 4.511 5.431l-.942.943 4.471 4.471 4.471-4.471z"/>
                                   </svg>
                                 </div>
                               </button>
                               <div class="dropdown-menu">
-                                {{range $elemFolderTwo := $folderTwo.elements}}
-                                  {{$fileFolderTwo := printf "%s%s%s%s%s" $folderZeroName $folderOneName $folderTwoName (urlize $elemFolderTwo) ".md"}}
-                                  {{$isActiveChild := eq $fileFolderTwo $context.File.Path}}
+                                {{range $elemFolderThree := $folderThree.elements}}
+                                  {{$fileFolderThree := printf "%s%s%s%s%s" $folderOneName $folderTwoName $folderThreeName (urlize $elemFolderThree) ".md"}}
+                                  {{$isActiveChild := eq $fileFolderThree $context.File.Path}}
 
                                   {{if $isActiveChild}}
-                                    <div class="toc--hugo-child">
+                                    <div class="toc-hugo__folder-three">
                                       {{$context.TableOfContents}}
                                     </div>
                                   {{else}}
                                     <ul>
                                       <li>
-                                        <a href="{{($context.GetPage (urlize $fileFolderTwo)).Permalink}}" class="toc--link level-three">{{$elemFolderTwo}}</a>
+                                        <a href="{{($context.GetPage (urlize $fileFolderThree)).Permalink}}" class="toc--link level-three">{{$elemFolderThree}}</a>
                                       </li>
                                     </ul>
                                   {{end}}
@@ -141,9 +141,9 @@
               {{end}}
             {{end}}
             {{if fileExists $reference}}
-              {{$isActive := eq (printf "%s%s" $folderZeroName "reference.md") .File.Path}}
+              {{$isActive := eq (printf "%s%s" $folderOneName "reference.md") .File.Path}}
               {{if $isActive}}
-                <div class="toc--hugo-parent">
+                <div class="toc-hugo__folder-one">
                   {{.TableOfContents}}
                 </div>
               {{else}}
