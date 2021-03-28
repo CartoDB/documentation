@@ -1,5 +1,6 @@
 ---
 cascade:
+  name: "Deck GL"
   title: CARTO for deck.gl
   description: "Build applications using CARTO & deck.gl advanced framework for data visualization"
   icon: "/img/icons/carto-deck.png"
@@ -12,25 +13,34 @@ cascade:
         - "Angular Integration"
     - name: "Examples"
       elements:
-        - "Hello World"
-        - "BigQuery Tileset Layer"
-        - "CARTO Basemap"
-        - "Interactivity"
-        - "Color Continuous Style"
-        - "Color Bins Style"
-        - "Color Categories Style"
-        - "Clustering"
-        - "Extrusion"
-        - "Lighting"
-        - "Arc Layer"
-        - "Contour Layer"
-        - "Globe View"
-        - "Grid Layer"
-        - "H3 Cluster Layer"
-        - "H3 Hexagon Layer"
-        - "Heatmap Layer"
-        - "Hexagon Layer"
-        - "Icon Layer"
-        - "S2 Layer"
         - "Trips Layer"
+        - "Lighting"
+      folders:
+        - name: "Basic examples"
+          elements:
+            - "Hello World"
+            - "BigQuery Tileset Layer"
+            - "CARTO Basemap"
+            - "Interactivity"
+            - "Icon Layer"
+        - name: "Styling"
+          elements:
+            - "Color Continuous Style"
+            - "Color Bins Style"
+            - "Color Categories Style"
+        - name: "Clustering and Aggregation"
+          elements:
+            - "Clustering"
+            - "Grid Layer"
+            - "H3 Cluster Layer"
+            - "H3 Hexagon Layer"
+            - "Heatmap Layer"
+            - "Hexagon Layer"
+            - "S2 Layer"
+        - name: "Advanced examples"
+          elements:
+            - "Extrusion"
+            - "Arc Layer"
+            - "Contour Layer"
+            - "Globe View"
 ---
