@@ -61,7 +61,7 @@
                     {{.TableOfContents}}
                   </div>
                 {{else}}
-                  <a href="{{($context.GetPage (printf " %s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
+                  <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
                 {{end}}
               {{end}}
             {{end}}
@@ -69,9 +69,9 @@
             {{if .Params.folders}}
               {{range $folderTwo := .Params.folders}}
                 {{$folderTwoName := printf "%s%s" (urlize $folderTwo.name) "/"}}
-                <ul>
+                <ul class="toc-hugo__folder-one">
                   <li>
-                    <button class="toc--link level-one dropdown-button" data-toggle="dropdown" {{ if in $context.File.Dir $folderTwoName }} data-start-open="true" {{ end }}>
+                    <button class="toc--link level-one dropdown-button end-check-active" data-toggle="dropdown" {{ if in $context.File.Dir $folderTwoName }} data-start-open="true" {{ end }}>
                       <div>
                         <!-- Safari doesn't allow flex directly in button-->
                         <span>{{$folderTwo.name}}</span>

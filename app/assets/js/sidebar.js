@@ -42,23 +42,31 @@ function deactivateNodes({ el }) {
   el &&
     el.querySelectorAll(".is-active, .is-current").forEach(function (item) {
       item.classList.remove("is-active");
-      item.classList.remove( "is-current");
+      item.classList.remove("is-current");
     });
 }
 
 function activateNodes({ isCurrent, el }) {
-  if (el) {
-    var fe = el.firstElementChild;
-    if (fe) {
-      if (fe.tagName === "A" || fe.tagName === "BUTTON") {
-        fe.classList.add(isCurrent ? "is-current" : "is-active");
-      }
-      if (!fe.classList.contains("toc--link")) {
-        activateNodes({ el: el.parentElement, isCurrent: false });
-      }
-    } else {
-      activateNodes({ el: el.parentElement, isCurrent: true });
+  const stop = !el || el.classList.contains("toc-hugo__folder-one");
+
+  if (stop) {
+    return;
+  }
+
+  var firstChild = el.firstElementChild;
+  var hasFirstChild = !!firstChild;
+
+  if (hasFirstChild) {
+    var firstChildIsLink =
+      firstChild.tagName === "A" || firstChild.tagName === "BUTTON";
+
+    if (firstChildIsLink) {
+      firstChild.classList.add(isCurrent ? "is-current" : "is-active");
     }
+
+    activateNodes({ el: el.parentElement, isCurrent: false });
+  } else {
+    activateNodes({ el: el.parentElement, isCurrent: true });
   }
 }
 
