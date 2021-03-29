@@ -1,4 +1,4 @@
-require('./navbar');
-
-require('./getting-started');
-// require('./hangar2/user');
+require("./navbar");
+require("./sidebar");
+require("./dropdown");
+require("./tutorial");
