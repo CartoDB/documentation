@@ -11,9 +11,6 @@ cascade:
         - "Style Language"
         - "Angular Integration"
     - name: "Examples"
-      elements:
-        - "Trips Layer"
-        - "Lighting"
       folders:
         - name: "Basic examples"
           elements:
@@ -42,4 +39,6 @@ cascade:
             - "Arc Layer"
             - "Contour Layer"
             - "Globe View"
+            - "Trips Layer"
+            - "Lighting"
 ---
