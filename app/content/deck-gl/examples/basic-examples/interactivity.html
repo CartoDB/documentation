@@ -44,7 +44,11 @@
       ],
       getTooltip: ({ object }) =>
         object && {
-          html: `<strong>Country</strong>: ${object.properties.country_name}`
+          html: `
+            <strong>Country</strong>: ${object.properties.country_name}<br/>
+            <strong>Longitude</strong>: ${object.geometry.coordinates[0].toFixed(6)}<br/>
+            <strong>Latitude</strong>: ${object.geometry.coordinates[1].toFixed(6)}
+          `
         },
     });
   </script>
