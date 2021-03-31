@@ -1,9 +1,10 @@
 .content__default {
   @include text();
 
-  p, td {
+  p,
+  td {
     font-size: 16px;
-    line-height: 26px;
+    line-height: 24px;
     margin-bottom: 32px;
 
     &:last-child {
@@ -11,7 +12,15 @@
     }
   }
 
-  h1, h2, h3, h4, h5 {
+  p {
+    margin-bottom: 12px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     @include title();
 
     &:first-child {
@@ -20,44 +29,41 @@
   }
 
   h2 {
-    font-size: 36px;
-    line-height: 44px;
-    margin-bottom: 36px;
-    margin-top: 120px;
+    font-size: 32px;
+    line-height: 36px;
+    margin-bottom: 24px;
+    margin-top: 54px;
   }
 
   h3 {
-    font-size: 24px;
-    line-height: 36px;
-    margin-bottom: 16px;
-    margin-top: 56px;
-  }
-
-  h4 {
     font-size: 20px;
     line-height: 32px;
     margin-bottom: 12px;
-    margin-top: 48px;
+    margin-top: 40px;
+  }
+
+  h4 {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 12px;
+    margin-top: 32px;
   }
 
   h5 {
     font-size: 16px;
     line-height: 24px;
-    margin-bottom: 12px;
-    margin-top: 32px;
+    margin-bottom: 8px;
+    margin-top: 24px;
   }
 
   h6 {
     @include text();
+    font-family: "Open sans";
     font-weight: 600;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 20px;
     margin-bottom: 8px;
-    margin-top: 32px;
-  }
-
-  .highlight {
-    margin-bottom: 24px;
+    margin-top: 24px;
   }
 
   em {
@@ -68,7 +74,14 @@
     color: $emerald;
   }
 
-  table:not(.lntable) { //Excludes the tables created in the code
+  .highlight,
+  img {
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  table:not(.lntable) {
+    //Excludes the tables created in the code
     width: 100%;
     margin-bottom: 24px;
 
@@ -79,7 +92,7 @@
       text-align: left;
       padding: 12px;
       background-color: $softgrey;
-      border: 1px solid #C5CCD5;
+      border: 1px solid #c5ccd5;
 
       &:empty {
         padding: 0;
@@ -90,7 +103,7 @@
 
     td {
       padding: 12px;
-      border: 1px solid #C5CCD5;
+      border: 1px solid #c5ccd5;
     }
   }
 
@@ -104,10 +117,10 @@
     li {
       font-size: 16px;
       line-height: 26px;
-      margin-bottom: 16px;
-  
+      margin-bottom: 8px;
+
       &:last-child {
-        margin-bottom: 32px;
+        margin-bottom: 12px;
       }
     }
   }
@@ -121,80 +134,121 @@
   }
 }
 
-.toc-sidebar__container {
-  &.is-fixed {
-    position: fixed;
-    width: 180px;
+.toc--sidebar {
+  --offset-top: 136px;
+  --offset-bottom: 20px;
+  align-self: flex-start;
+  position: sticky;
+  top: var(--offset-top);
 
-    @media (min-width: $layout-desktop-l) {
-      width: 240px;
-    }
-
-    @media (max-width: $layout-desktop) {
-      width: 136px;
-    }
+  .toc--container {
+    border-radius: 4px;
+    border: solid 1px #e7e9ec;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    max-height: calc(100vh - var(--offset-top) - var(--offset-bottom));
   }
-}
 
-.toc-title {
-  border-bottom: 1px solid #E7E9EC;
-  padding-bottom: 8px;
-  margin-bottom: 16px;
-}
+  .toc--title {
+    border-bottom: 1px solid #e7e9ec;
+    padding: 8px 16px;
+  }
 
-.page-toc {
-  li {
-    a {
+  .toc--links {
+    overflow-y: auto;
+    padding: 8px 0;
+
+    a,
+    .toc--link {
+      transition: color 0.15s ease, background-color 0.15s ease;
       display: block;
-      color: rgba($base-grey, 0.48);
-      transition: color 0.15s ease, background-color 0.15s ease, ;
       overflow: hidden;
       text-overflow: ellipsis;
-      text-transform: uppercase;
-      padding: 8px;
+      color: #6f777c;
 
       &:hover,
-      &.is-active {
+      &.is-active,
+      &.is-current {
         color: $navyBlue;
-        background-color: $softblue;
+      }
+
+      &:hover,
+      &.is-current {
         text-decoration: none;
+        background-color: $softblue;
       }
-    }
-
-    li {
-      a {
-        padding: 8px 8px 8px 20px;
-        text-transform: unset;
-      }
-
-      li {
-        a {
-          padding: 8px 8px 8px 36px;
-          // @include text();
-          font-family: $font-family-base;
-        }
-      }
-    }
-    
-    & > ul > li > ul > li > a {
-      padding: 8px 8px 8px 36px;
-      font-family: $font-family-base;
-      font-weight: normal;
     }
   }
 
-  .toc__link {
+  .toc--link.level-one,
+  .toc-hugo__folder-one > nav > ul > li > a {
     @include title();
-    display: block;
-    color: rgba($base-grey, 0.48);
     text-transform: uppercase;
-    padding: 8px;
+    padding: 8px 8px 8px 16px;
+  }
 
-    &:hover {
-      color: $base-grey;
-      background-color: $softblue;
-      text-decoration: none;
+  .toc--link.level-two,
+  .toc-hugo__folder-one > nav > ul > li > ul > li > a,
+  .toc-hugo__folder-two > nav > ul > li > a {
+    @include title();
+    padding: 8px 8px 8px 32px;
+  }
+
+  .toc--link.level-three,
+  .toc-hugo__folder-one > nav > ul > li > ul > li > ul > li > a,
+  .toc-hugo__folder-two > nav > ul > li > ul > li > a,
+  .toc-hugo__folder-three > nav > ul > li > a {
+    @include text();
+    padding: 8px 8px 8px 48px;
+
+    &.is-current {
+      font-weight: 600;
     }
+  }
+
+  .toc--link.level-four,
+  .toc-hugo__folder-two > nav > ul > li > ul > li > ul > li > a,
+  .toc-hugo__folder-three > nav > ul > li > ul > li > a {
+    @include text();
+    padding: 8px 8px 8px 64px;
+
+    &.is-current {
+      font-weight: 600;
+    }
+  }
+}
+
+.dropdown-menu {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
+}
+
+.dropdown-on {
+  > .dropdown-button .caret {
+    transform: rotate(180deg);
+  }
+
+  > .dropdown-menu {
+    max-height: 1000px;
+  }
+}
+
+.dropdown-button {
+  font-size: unset;
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  .caret {
+    margin-left: auto;
+    width: 15px;
+    transition: transform 0.3s ease;
   }
 }
 
@@ -211,13 +265,13 @@
   .tutorial__steps {
     padding-left: 28px;
 
-    @media(max-width: $layout-tablet) {
+    @media (max-width: $layout-tablet) {
       padding-left: 0;
       border-left: none;
     }
   }
 
-  @media(max-width: $layout-tablet) {
+  @media (max-width: $layout-tablet) {
     width: 100%;
   }
 }
@@ -227,7 +281,7 @@
   height: 0;
   visibility: hidden;
   opacity: 0;
-  
+
   &.is-active {
     height: auto;
     visibility: visible;
@@ -244,10 +298,10 @@
     line-height: 24px;
   }
 
-  @media(max-width: $layout-tablet) {
+  @media (max-width: $layout-tablet) {
     display: block;
     margin-bottom: 32px;
-    
+
     &:last-of-type {
       margin-bottom: 0;
     }
@@ -278,7 +332,7 @@
     }
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       width: 7px;
       height: 7px;
@@ -327,7 +381,7 @@
         }
       }
     }
-    
+
     .expansion-line {
       height: calc(100% + 24px);
       width: 1px;
@@ -345,7 +399,7 @@
     color: rgba($navyBlue, 0.48);
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       height: calc(100% - 24px);
       border-right: 1px solid #c5ccd5;
@@ -360,13 +414,13 @@
 
 .side-image {
   padding-bottom: 24px;
-  border-bottom: 1px solid #E3E8EE;
+  border-bottom: 1px solid #e3e8ee;
 }
 
 .side-image__image {
   padding-right: 20px;
 
-  @media(max-width: $layout-mobile) {
+  @media (max-width: $layout-mobile) {
     padding-right: 0;
     margin-bottom: 32px;
     text-align: center;
@@ -380,7 +434,7 @@
 .side-image__info {
   padding-left: 20px;
 
-  @media(max-width: $layout-mobile) {
+  @media (max-width: $layout-mobile) {
     padding-left: 0;
   }
 }
@@ -399,19 +453,19 @@ a.arrow-link {
   background-repeat: no-repeat;
 
   &:before {
-    content: '';
+    content: "";
     position: absolute;
-    transition: transform .3s ease;
+    transition: transform 0.3s ease;
     left: -1px;
     bottom: 0;
     width: 100%;
     height: 2px;
     background: currentColor;
-    transform:  translateX(-100%);
+    transform: translateX(-100%);
   }
-  
+
   &:hover:before {
-    transform:  translateX(0);
+    transform: translateX(0);
   }
 
   &:hover {
@@ -424,7 +478,7 @@ td,
 th,
 li {
   > code {
-    font-family: 'Overpass Mono', monospace;
+    font-family: "Overpass Mono", monospace;
     background-color: $softblue;
     border-radius: 2px;
     padding: 1px 4px;
@@ -433,7 +487,7 @@ li {
 
 .image-card {
   display: block;
-  border: 1px solid #C5CCD5;
+  border: 1px solid #c5ccd5;
   border-radius: 4px;
   height: 100%;
   transition: box-shadow 0.1s;
@@ -449,7 +503,7 @@ li {
 }
 
 .image-card__image {
-  border-bottom: 1px solid #C5CCD5;
+  border-bottom: 1px solid #c5ccd5;
   height: 240px;
   background-color: $softgrey;
 

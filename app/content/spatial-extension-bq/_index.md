@@ -3,12 +3,25 @@ cascade:
   title: Spatial Extension for BigQuery
   description: "Unlock Spatial Analytics on BigQuery"
   icon: "/img/icons/spatial-extension-bq.png"
+  repoUrl: https://github.com/CartoDB/carto-spatial-extension
   folders:
-    - name: "Tiler"
+    - name: "Overview"
       elements:
-        - "Overview"
-        - "Guides"
-        - "Map Viewer"
-        - "CLI tool" 
-        - "Examples"
+        - "Getting started"
+        - "Tilesets" 
+        - "Spatial indexes"
+    - name: "Guides"
+      elements:
+        - "Tilesets"
+    - name: "Examples"
+      elements:
+        - "Tilesets"
+        - "Spatial indexes"
+    - name: "SQL Reference"
+      elements:
+        - "tiler"
+        - "quadkey"
+        - "h3"
+        - "s2"
+        - "placekey"        
 ---
