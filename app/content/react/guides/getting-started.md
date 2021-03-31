@@ -1,8 +1,8 @@
 ## Getting Started
 
-This guide shows how you can create a CARTO for React application. You will learn about the main files that compose the application and how to configure it to use datasets from your own CARTO account.
+This guide shows how you can create a basic CARTO for React application with layers and widgets. You will learn about the main files that compose the application and how to configure it to use datasets from your own CARTO account.
 
-It is a really straightforward process as you can see in the following video that also shows how to add views and layers to your application:
+It is a really straightforward process as you can see in the following video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/GVyiUZoxL_U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
 
@@ -54,9 +54,19 @@ And these are the main files:
 
 * **store/appSlice.js**: general slice of the app to include/extend with custom app functionality.
 
+### Uploading the sample dataset to your CARTO account
+
+We are going to start by uploading the sample dataset to your account. Go to your dashboard and click on `New Dataset`. In the `Add new dataset` dialog select the `URL` option within the `Cloud Files` section.
+
+![add-new-dataset](/img/react/add-new-dataset.png 'Add new dataset')
+
+Copy the following URL and click on `Submit`:
+
+`https://public.carto.com/api/v2/sql?filename=retail_stores&q=select+*+from+public.retail_stores&format=shp`
+
 ### Connecting your CARTO account
 
-When you create the application using the Create React Template, the first thing you need to do is to include your credentials, so you can access datasets from your account.
+Now that you have uploaded the dataset, you need to decide if you want to keep it public or private. If you want to keep it private, you need to create an [API KEY](https://carto.com/developers/auth-api/guides/CARTO-Authorization/) with read (SELECT) access to the dataset. OAuth Apps are available for more complex use cases, we'll cover this later on the [Data Management](../data-management) guide.
 
 You need to edit the `src/store/initialStateSlice.js` file and add your own credentials.
 
@@ -71,14 +81,124 @@ You need to edit the `src/store/initialStateSlice.js` file and add your own cred
   },
 ```
 
-The API KEY could be set to `default_public` if you're dealing with public datasets and you don't need to use dataservices (geocoding, routing or isochrones).
+If you have made your dataset public and you don't need to use dataservices (geocoding, routing or isochrones), you can use the `default_public` API key.
 
-If you're dealing with private data and/or data services, you need to provide a valid [API KEY](https://carto.com/developers/auth-api/guides/CARTO-Authorization/).
+### Creating a view
 
-OAuth Apps are available for more complex use cases, we'll cover this later on the [Data Management](../data-management) guide.
+We're going to create a view called `Stores` that will be accesible in the `/stores` path. When this view is loaded, the layer will be displayed.
 
-Once you've connected your account, you can jump to the next guide:
+The easiest way to create a new view in the application is to use the [code generator](../code-generator). You need to enter the following command:
 
-{{<link href="../layers-and-widgets">}}
-  Adding layers and widgets
-{{</link>}}
+```shell
+yarn hygen view new
+```
+
+and select these options:
+
+```shell
+✔ Name: Stores
+✔ Route path: /stores
+✔ Do you want a link in the menu? (y/N) y
+```
+
+Now you're ready to start the local development server using the following command:
+
+```bash
+yarn
+yarn start
+```
+
+You should see the map component with a `Hello World` text on the left sidebar and a link to the new view in the top navigation bar.
+
+### Creating a source
+
+A source is a key piece in a CARTO for React application. Both layers and widgets depend on sources. A source exports a plain object with a certain structure that will be understood by the CARTO for React library to feed layers or widgets using the CARTO SQL and/or Maps APIs.
+   
+The different sources are stored inside the `/data/sources` folder. The goal of the `/data` folder is to easily differentiate the parts of the application that have a communication with external services, like CARTO APIs, your own backend, GeoJSON files...
+
+To create a source, the easiest way is again to use the [code generator](../code-generator):
+
+```shell
+yarn hygen source new
+```
+
+In this case, we're creating a new source that can feed a layers & widgets with the dataset we uploaded before. It is going to be called `StoresSource` to follow a convention ("Source" will be added to the name you provide). You need to choose the following options:
+
+```shell
+✔ Name: Stores
+✔ Choose type: SQL dataset
+✔ Type a query: select cartodb_id, store_id, storetype, revenue, address, the_geom_webmercator from retail_stores
+```
+
+### Creating a layer
+
+Once we have defined the source, we can add now the layer the map. 
+
+We create the layer by using the [code generator](../code-generator) again:
+
+```shell
+yarn hygen layer new
+```
+
+We select the following options:
+
+```shell
+✔ Name: Stores
+✔ Choose a source: StoresSource
+✔ Do you want to attach to some view (y/N) y
+✔ Choose a view: Stores
+```
+
+If you reload the page, you will see the new layer in the map.
+
+### Adding widgets
+
+Finally we are ready to create a Formula and a Category Widget inside the View.
+
+The first thing you need to do is to add the following imports at the top of the `src/components/views/Stores.js` file:
+
+```javascript
+import { Divider } from '@material-ui/core';
+import { AggregationTypes } from '@carto/react-core';
+import { FormulaWidget, CategoryWidget, HistogramWidget } from '@carto/react-widgets';
+import { currencyFormatter } from 'utils/formatter';
+```
+
+Then, in the same file, you need to replace the `Hello World` text with:
+
+```javascript
+<div>
+  <FormulaWidget
+    id='totalRevenue'
+    title='Total revenue'
+    dataSource={storesSource.id}
+    column='revenue'
+    operation={AggregationTypes.SUM}
+    formatter={currencyFormatter}
+  />
+
+  <Divider />
+
+  <CategoryWidget
+    id='revenueByStoreType'
+    title='Revenue by store type'
+    dataSource={storesSource.id}
+    column='storetype'
+    operationColumn='revenue'
+    operation={AggregationTypes.SUM}
+    formatter={currencyFormatter}
+  />
+</div>
+```
+
+### Understanding how the pieces work together
+
+There are two main elements in the store: the source and the viewport. When we change these elements, the following actions are triggered:
+
+- The layer is filtered when the source changes.
+
+- The widget is re-rendered when the source or viewport changes.
+
+- Any time we change the map extent (pan or zoom), the viewport changes and all the widgets (with the `viewportFilter` prop) are refreshed.
+
+- Any time a widget applies a filter (for example clicking on a widget category), the filter is dispatched to the store. When we add a filter, we are changing the source, so all the components depending on the source are updated: the widgets are re-rendered and the layers are filtered. The map applies the filters using the `DataFilterExtension` from deck.gl.
