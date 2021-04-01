@@ -76,11 +76,12 @@
 .badge {
   position: relative;
   margin-left: auto;
-  width: fit-content;
+  width: 100px;
   top: -58px;
   padding: 4px 12px;
   border-radius: 4px;
   text-transform: uppercase;
+  text-align: center;
   font: 600 12px/20px 'Montserrat';
 
   &.core {
@@ -91,11 +92,11 @@
     }
   }
 
-  &.extended {
+  &.advanced {
     color: #6e00dc;
     border: 1px solid #6e00dc;
     &:before {
-      content: 'extended';
+      content: 'advanced';
     }
   }
 }

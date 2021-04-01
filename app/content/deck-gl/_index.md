@@ -11,9 +11,6 @@ cascade:
         - "Style Language"
         - "Angular Integration"
     - name: "Examples"
-      elements:
-        - "Trips Layer"
-        - "Lighting"
       folders:
         - name: "Basic examples"
           elements:
@@ -24,9 +21,9 @@ cascade:
             - "Icon Layer"
         - name: "Styling"
           elements:
-            - "Color Continuous Style"
             - "Color Bins Style"
             - "Color Categories Style"
+            - "Color Continuous Style"
         - name: "Clustering and Aggregation"
           elements:
             - "Clustering"
@@ -38,8 +35,10 @@ cascade:
             - "S2 Layer"
         - name: "Advanced examples"
           elements:
-            - "Extrusion"
             - "Arc Layer"
             - "Contour Layer"
+            - "Extrusion"
             - "Globe View"
+            - "Lighting"
+            - "Trips Layer"
 ---
