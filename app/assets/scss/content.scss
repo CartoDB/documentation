@@ -229,6 +229,14 @@
     transform: rotate(180deg);
   }
 
+  > .dropdown-button .fold {
+    display: none;
+  }
+
+  > .dropdown-button .unfold {
+    display: initial;
+  }
+
   > .dropdown-menu {
     max-height: 1000px;
   }
@@ -249,6 +257,10 @@
     margin-left: auto;
     width: 15px;
     transition: transform 0.3s ease;
+  }
+  
+  .unfold {
+    display: none;
   }
 }
 
@@ -521,18 +533,26 @@ li {
   border-radius: 4px;
   box-shadow: 0 2px 8px 0 #c8d2da;
   background-color: $white;
+  padding-bottom: 20px;
 
   .floating-panel__title {
     padding: 20px 20px 0 20px;
+
+    .icon {
+      right: 0;
+      top: 0;
+      margin: 6px;
+    }
   }
 
+  
   .floating-panel__content {
     padding: 0 20px 20px 20px;
   }
 
   .floating-panel__action {
     border-top: 1px solid rgba($typo3, 0.24);
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 
     a {
       display: flex;
