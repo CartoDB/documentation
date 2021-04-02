@@ -513,3 +513,35 @@ li {
     height: 100%;
   }
 }
+
+.floating-panel {
+  top: 0;
+  right: 12px;
+  width: 240px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px 0 #c8d2da;
+  background-color: $white;
+
+  .floating-panel__title {
+    padding: 20px 20px 0 20px;
+  }
+
+  .floating-panel__content {
+    padding: 0 20px 20px 20px;
+  }
+
+  .floating-panel__action {
+    border-top: 1px solid rgba($typo3, 0.24);
+    padding: 20px;
+
+    a {
+      display: flex;
+      align-items: center;
+      color: #036fe2;
+
+      svg {
+        fill: #036fe2;
+      }
+    }
+  }
+}
