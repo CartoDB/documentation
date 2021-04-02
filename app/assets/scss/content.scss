@@ -545,3 +545,11 @@ li {
     }
   }
 }
+
+.example-layout {
+  > h2,
+  > h3,
+  > h4 {
+    display: none;
+  }
+}

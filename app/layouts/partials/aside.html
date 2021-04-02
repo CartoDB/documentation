@@ -85,14 +85,14 @@
                             {{$fileFolderThree := printf "%s%s%s%s%s" $folderOneName $folderTwoName $folderThreeName (urlize $elemFolderThree) ".md"}}
                             {{$isActiveChild := eq $fileFolderThree $context.File.Path}}
                      
-                            {{if and (ge (len $context.TableOfContents) 100) $isActiveChild }}
+                            {{if $isActiveChild }}
                               <div class="toc-hugo__folder-three">
                                 {{$context.TableOfContents}}
                               </div>
                             {{else}}
                               <ul>
                                 <li>
-                                  <a href="{{($context.GetPage (urlize $fileFolderThree)).Permalink}}" class="toc--link level-three {{ if $isActiveChild }}is-current{{ end }}">{{$elemFolderThree}}</a>
+                                  <a href="{{($context.GetPage (urlize $fileFolderThree)).Permalink}}" class="toc--link level-three">{{$elemFolderThree}}</a>
                                 </li>
                               </ul>
                             {{end}}

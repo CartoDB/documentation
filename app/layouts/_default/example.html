@@ -5,7 +5,8 @@
     <div class="container grid u-justify-center u-mt64 u-mb96 u-mt48--tablet u-mb48--tablet">
       {{- partial "aside.html" . -}}
 
-      <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet u-mb96 js-content u-pr">
+      <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet u-mb96 js-content u-pr example-layout">
+        {{.Content}}
         <div class="u-pa is-bgWhite u-mt32 u-mr32 floating-panel">
           <h4 class="floating-panel__title title f12 is-txtNavyBlue u-mb4">{{.Params.floatingPanelTitle}}</h4>
           <div >
