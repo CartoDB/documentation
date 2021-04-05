@@ -1,4 +1,4 @@
-## Index
+## Overview
 
 The CARTO Spatial Extension's pocedures and functions are organized in modules based on the functionality they offer. In this page you will find the full list with direct links to their definition.
 
