@@ -10,6 +10,7 @@ cascade:
         - "Getting Started"
         - "Style Language"
         - "Angular Integration"
+        - "Vue Integration"
     - name: "Examples"
       folders:
         - name: "Basic examples"
