@@ -32,7 +32,7 @@ And you will be able to access the application in the following URL:
 
 ### Creating your application
 
-We are going to start by creating a new Angular application using the Angular CLI. If you haven't installed it already, you need to execute the following command:
+We are going to start by creating a new Vue.js application using the Vue CLI. If you haven't installed it already, you need to execute the following command:
 
 ```bash
 yarn global add @vue/cli
