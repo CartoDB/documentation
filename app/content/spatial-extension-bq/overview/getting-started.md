@@ -1,6 +1,6 @@
 ## Getting started
 
-The CARTO Spatial Extension for BigQuery is composed of a set of user-defined functions and procedures organized in a set of modules according to the functionality they offer. There are two types of modules: _core_ modules, that are [open source](https://github.com/CartoDB/carto-spatial-extension) and free to use for anyone with a BigQuery account, and _advanced_ modules, only available to CARTO account holders. 
+The CARTO Spatial Extension for BigQuery is composed of a set of user-defined functions and procedures organized in a set of modules based on the functionality they offer. There are two types of modules: _core_ modules, that are [open source](https://github.com/CartoDB/carto-spatial-extension) and free to use for anyone with a BigQuery account, and _advanced_ modules, only available to CARTO account holders. 
 
 Visit the [SQL Reference](../../sql-reference/tiler) to see the full list of available modules. If you already have a CARTO account, please keep reading to learn how you can access the *advanced* modules.
 
@@ -17,18 +17,22 @@ Some of the extension's capabilities are leveraged directly as SQL queries from 
 
 #### Authorization
 
-CARTO will require two different authorization elements for configuring access to the Spatial Extension:
+CARTO connects to BigQuery and runs some queries for actions such as listing projects, datasets and tables or publishing maps on the web.
+This connection can be established using your GCP account via **OAuth** authentication or using a Google Cloud **service account**.
 
-* A **Google Account email address**: The email address you use for your CARTO and Google BigQuery accounts should be the same. This happens automatically when you sign in to CARTO using your Google Account. Please make sure that your account has the `bigquery.jobs.list` permission on your project. This is needed to get metadata about the execution of the extension’s procedures.
+The email address you use for your CARTO and Google BigQuery accounts should be the same. This happens automatically when you sign in to CARTO using your Google Account.
 
-* A **Google service account** with the following roles:
-  * *BigQuery Data Viewer* (`bigquery.dataViewer`) for visualizing your tilesets privately from Map Viewer or in a custom application.
-  * *BigQuery Data Owner* (`bigquery.dataOwner`) for changing permission on the tilesets from Map Viewer. 
-    * This is needed for publishing maps with tileset layers on the web, available to anyone with the link. That means editing the tileset's permissions to grant CARTO APIs reading access to the tileset. 
-    * This role is also required for unpublishing a public map. 
-    * Learn more about creating public maps out of tilesets [here](../../guides/tilesets/#share).
-  * *BigQuery Job User* (`bigquery.jobUser`) for listing your projects, datasets and tilesets in the Dashboard.
-  * *BigQuery Read Session User* (`bigquery.readSessionUser`) for importing data from BigQuery, as tables in CARTO embedded database.
+Please make sure that your account has the `bigquery.jobs.list` permission on your project. This is needed to get metadata about the execution of the extension’s procedures.
+
+Additionally, the following predefined roles need to be granted to your account or service account:
+
+* **BigQuery Data Viewer** (`bigquery.dataViewer`) role for visualizing your tilesets privately from Map Viewer or in a custom application.
+* **BigQuery Data Owner** (`bigquery.dataOwner`) role for changing permission on the tilesets from Map Viewer. 
+  * This is needed for publishing maps with tileset layers on the web, available to anyone with the link. That means editing the tileset's permissions to grant CARTO APIs reading access to the tileset. 
+  * This role is also required for unpublishing a public map. 
+  * Learn more about creating public maps out of tilesets [here](../tiler/map-viewer/#share).
+* **BigQuery Job User** (`bigquery.jobUser`) role for listing your projects, datasets and tilesets in the Dashboard.
+* **BigQuery Read Session User** (`bigquery.readSessionUser`) role for importing data from BigQuery, as tables in CARTO embedded database.
 
 Take a look at the BigQuery [documentation](https://cloud.google.com/bigquery/docs/access-control#bq-permissions) for more information about roles and permissions.
 

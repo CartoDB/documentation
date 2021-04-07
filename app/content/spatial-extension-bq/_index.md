@@ -19,6 +19,7 @@ cascade:
         - "Spatial indexes"
     - name: "SQL Reference"
       elements:
+        - "Overview"
         - "tiler"
         - "quadkey"
         - "h3"
