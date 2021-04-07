@@ -63,7 +63,7 @@ yarn add -D sass
 yarn add -D sass-loader@^10
 ```
 
-In the example, the header component includes a logo and a title. It also includes custom CSS styles. Please take a look at the [HTML template](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/app-header/app-header.html) and [component styles](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/app/components/app-header/app-header.scss) definition.
+In the example, the header component includes a logo and a title. It also includes custom CSS styles. Please take a look at the [HTML template](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/app-header/app-header.html) and [component styles](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/app-header/app-header.scss) definition.
 
 Now we are going to create the components for the sidebar and the map. Initially we are going to create empty components and we will be adding the contents in the next sections. We will create the `HomeSidebar` in the `src/components/home-sidebar` folder and the `MapComponent` in the `src/components/map-component` folder.
 
@@ -235,7 +235,7 @@ const DEFAULT_MAP_PROPS = {
 }
 ```
 
-In the `DeckMap` constructor, we are going to create initialize the `props` and create the canvases:
+In the `DeckMap` constructor, we are going to initialize the `props` and create the canvases:
 
 ```javascript
 export default class DeckMap extends Deck {
