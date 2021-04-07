@@ -276,17 +276,54 @@
   }
 }
 
-.tutorial__step {
-  display: block;
-  height: 0;
-  visibility: hidden;
-  opacity: 0;
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #babec0;
+    transition: all 0.2s linear;
+  }
 
   &.is-active {
-    height: auto;
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.5s;
+    background-color: rgba($emerald, 0.2);
+
+    &:after {
+      background-color: $emerald;
+    }
+  }
+}
+
+.mobile-title .title {
+  margin-top: 2px;
+}
+
+.tutorial__step {
+  @media (min-width: $layout-tablet) {
+    display: block;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+  
+    &.is-active {
+      height: auto;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s;
+    }
+
+    .mobile-title {
+      display: none;
+    }
   }
 
   h5 {
