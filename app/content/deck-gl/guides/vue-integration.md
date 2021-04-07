@@ -50,11 +50,11 @@ The tool will ask us to pick a preset. We choose the `Default ([Vue 2] babel, es
 
 At this point we have the default Vue.js project structure. Now we start by defining our application layout. We will have a simple but versatile layout with a header, a left sidebar and a map area.
 
-The first thing we are going to do is to generate a header component in the `src/components/header-component` folder. In this example we using single-file (.vue) components but we include the template and style content from separate files:
+The first thing we are going to do is to generate a header component in the `src/components/app-header` folder. In this example we using single-file (.vue) components but we include the template and style content from separate files:
 
-- header.component.html. This is the HTML template file for the component.
-- header.component.scss. This is the style file for the component.
-- header.component.vue. This file includes the component logic and the content of the two other files through the `<template>` and `<style>` tags.
+- app-header.html. This is the HTML template file for the component.
+- app-header.scss. This is the style file for the component.
+- AppHeader.vue. This file includes the component logic and the content of the two other files through the `<template>` and `<style>` tags.
 
 We are going to use SASS as the CSS Preprocessor, so we need to add the following packages:
 
@@ -63,11 +63,11 @@ yarn add -D sass
 yarn add -D sass-loader@^10
 ```
 
-In the example, the header component includes a logo and a title. It also includes custom CSS styles. Please take a look at the [HTML template](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/header-component/header.component.html) and [component styles](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/app/components/header-component/header.component.scss) definition.
+In the example, the header component includes a logo and a title. It also includes custom CSS styles. Please take a look at the [HTML template](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/app-header/app-header.html) and [component styles](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/app/components/app-header/app-header.scss) definition.
 
-Now we are going to create the components for the sidebar and the map. Initially we are going to create empty components and we will be adding the contents in the next sections. We will create the `SidebarComponent` in the `src/components/sidebar-component` folder and the `MapComponent` in the `src/components/map-component` folder.
+Now we are going to create the components for the sidebar and the map. Initially we are going to create empty components and we will be adding the contents in the next sections. We will create the `HomeSidebar` in the `src/components/home-sidebar` folder and the `MapComponent` in the `src/components/map-component` folder.
 
-We are going to define our layout in a `<TemplateComponent>`. This component is going to include the header, a sidebar component and a map component. We want to use Material Design for our user interface, so we need to start by adding [Vue Material](https://vuematerial.io) to our project:
+We are going to define our layout in a `<ViewTemplate>`. This component is going to include the header, a sidebar component and a map component. We want to use Material Design for our user interface, so we need to start by adding [Vue Material](https://vuematerial.io) to our project:
 
 ```shell
 yarn add vue-material
@@ -86,13 +86,13 @@ Now we can create our template component in the `src/components/template-compone
 <div class="template-container">
   <div class="md-layout header">
     <div class="md-layout-item">
-      <HeaderComponent></HeaderComponent>
+      <AppHeader></AppHeader>
     </div>
   </div>
 
   <div class="md-layout content">
     <div class="md-layout-item">
-      <SidebarComponent></SidebarComponent>
+      <HomeSidebar></HomeSidebar>
     </div>
     <div class="md-layout-item">
       <MapComponent></MapComponent>
@@ -101,18 +101,18 @@ Now we can create our template component in the `src/components/template-compone
 </div>
 ```
 
-The [style file](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/template-component/template.component.scss) will include the required styling properties and the component file will just include the different components used in the template:
+The [style file](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/view-template/view-template.scss) will include the required styling properties and the component file will just include the different components used in the template:
 
 ```javascript
-import HeaderComponent from '../header-component/HeaderComponent.vue';
-import SidebarComponent from '../sidebar-component/SidebarComponent.vue';
+import AppHeader from '../app-header/AppHeader.vue';
+import HomeSidebar from '../home-sidebar/HomeSidebar.vue';
 import MapComponent from '../map-component/MapComponent.vue';
 
 export default {
   name: 'TemplateComponent',
   components: {
-    HeaderComponent,
-    SidebarComponent,
+    AppHeader,
+    HomeSidebar,
     MapComponent
   }
 }
@@ -122,19 +122,19 @@ We are going to have one default view called `Home`. We will create this view in
 
 ```html
 <div class="home-container">
-  <TemplateComponent></TemplateComponent>
+  <ViewTemplate></ViewTemplate>
 </div>
 ```
 
 The style file will include the styles to ensure the view takes the full width and height. Finally, the Vue file will include the template component:
 
 ```javascript
-import TemplateComponent from '@/components/template-component/TemplateComponent.vue';
+import ViewTemplate from '@/components/view-template/ViewTemplate.vue';
 
 export default {
   name: 'app-home',
   components: {
-    TemplateComponent
+    ViewTemplate
   },
 }
 ```
@@ -295,7 +295,6 @@ export default class DeckMap extends Deck {
           bearing: viewport.bearing,
           pitch: viewport.pitch
         })
-        // TODO: only redraw when viewport has changed
         this.redrawMapbox()
       }
     }
@@ -329,7 +328,7 @@ At this point, if you launch the development server by executing `yarn serve` in
 
 ### Layers
 
-Now we are ready to start adding deck.gl layers on top of the basemap. In location intelligence apps there usually are a set of functions for implementing common operations like adding, removing, retrieving, hiding or showing a layer. We are going to encapsulate all this functionality in a new module that we are going to include in a file named [`layerService`](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/services/layerService.ts) within the `src/services` folder. Most of the functions in that module are pretty simple but really useful for building spatial apps.
+Now we are ready to start adding deck.gl layers on top of the basemap. In location intelligence apps there usually are a set of functions for implementing common layer operations like adding, removing, retrieving, hiding or showing a layer. We are going to encapsulate all this functionality in a new object that we are going to include in a file named [`layerManager`](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/map-component/map-utils/layerManager.js) within the `src/components/map-component/map-utils` folder. Most of the functions in that module are pretty simple but really useful for building spatial apps.
 
 Instead of managing the `Deck` instance from the `MapComponent`, we are going to manage the instance from this module. We are going to add an `init` function that will take care of instantiating the object:
 
@@ -346,7 +345,7 @@ export default {
 }
 ```
 
-Every time we make a modification to a layer (add, remove, update, hide, show...), we will call a `updateDeckInstance` function that will take care of updating the layers in the `Deck` instance. This function includes also functionality for ordering the layers by `zIndex`:
+Every time we make a modification to a layer (add, remove, update, hide, show...), we will call a `updateDeckInstance` function that will take care of updating the layers in the `Deck` instance:
 
 ```javascript
 export default {
@@ -355,9 +354,7 @@ export default {
     if (!this.deckInstance) {
       return
     }
-    const layers = Object.values(this.layers)
-      .sort((l1, l2) => ((l1.zIndex || 0) - (l2.zIndex || 0)))
-      .map(({ layerType: LayerClass, ...props }) => new LayerClass(props))
+    const layers = [...Object.values(this.layers)];
     if (this.deckInstance) {
       this.deckInstance.setProps({ layers })
     }
@@ -366,10 +363,10 @@ export default {
 }
 ```
 
-Now we need to go back to the `MapComponent` and initialize the `Deck` instance through the `layerService`:
+Now we need to go back to the `MapComponent` and initialize the `Deck` instance through the `layerManager`:
 
 ```javascript
-import layerService from '@/services/layerService'
+import layerService from '@/services/layerManager'
 
 export default {
   name: 'MapComponent',
@@ -396,7 +393,7 @@ We have everything in place to add our own layers. We are going to add three dif
 
 For working with CARTO datasets, you need to provide the credentials (username and API key) for the dataset that will be the source for your layer. In this case, the three layers we are going to use are public datasets accessible in the `public` user with the `default_public` API key. If you want to use your own datasets, public or private, you will need to provide your own credentials.
 
-One common pattern in spatial apps is adding your layers when the view is accessed. So we are going to add our layers when the `Home` view is mounted. After we configure the credentials, we will call the `addLayer` function from the `layerService` module providing the `props` required by deck.gl:
+One common pattern in spatial apps is adding your layers when the view is accessed. So we are going to add our layers when the `Home` view is mounted. After we configure the credentials, we will call the `addLayer` function from the `layerManager` object with our deck.gl layer:
 
 ```javascript
 import { GeoJsonLayer } from '@deck.gl/layers'
@@ -407,7 +404,7 @@ import layerService from '@/services/layerService'
 export default {
   name: 'app-home',
   components: {
-    TemplateComponent
+    ViewTemplate
   },
   mounted () {
     setDefaultCredentials({
@@ -415,51 +412,53 @@ export default {
       apiKey: 'default_public'
     });
 
-    layerService.addLayer({
-      id: 'roads',
-      layerType: CartoSQLLayer,
-      data: 'SELECT cartodb_id, the_geom_webmercator, scalerank FROM ne_10m_railroads_public',
-      pickable: true,
-      lineWidthScale: 20,
-      lineWidthMinPixels: 2,
-      autoHighlight: true,
-      highlightColor: [0, 255, 0],
-      getLineColor: colorContinuous({
-        attr: 'scalerank',
-        domain: [1, 2, 3, 4, 5, 10],
-        colors: 'BluYl'
+    layerManager.addLayer(
+      new CartoSQLLayer({
+        id: 'roads',
+        data: 'SELECT cartodb_id, the_geom_webmercator, scalerank FROM ne_10m_railroads_public',
+        pickable: true,
+        lineWidthScale: 20,
+        lineWidthMinPixels: 2,
+        autoHighlight: true,
+        highlightColor: [0, 255, 0],
+        getLineColor: colorContinuous({
+          attr: 'scalerank',
+          domain: [1, 2, 3, 4, 5, 10],
+          colors: 'BluYl'
+        })
       })
-    })
+    )
 
     const storesQuery = 'SELECT * FROM retail_stores';
     const storesUrl = `https://public.carto.com/api/v2/sql?q=${storesQuery}&format=geojson`;
-    layerService.addLayer({
-      id: 'stores',
-      layerType: GeoJsonLayer,
-      data: storesUrl,
-      pointRadiusUnits: 'pixels',
-      lineWidthUnits: 'pixels',
-      pickable: true,
-      getRadius: 3,
-      autoHighlight: true,
-      highlightColor: [0, 255, 0],
-      getFillColor: colorCategories({
-        attr: 'storetype',
-        domain: ['Supermarket', 'Discount Store', 'Hypermarket', 'Drugstore', 'Department Store'],
-        colors: 'Pastel'
-      }),
-      onDataLoad: data => this.storesData = data.features
-    })
+    layerManager.addLayer(
+      new GeoJsonLayer({
+        id: 'stores',
+        data: storesUrl,
+        pointRadiusUnits: 'pixels',
+        lineWidthUnits: 'pixels',
+        pickable: true,
+        getRadius: 3,
+        autoHighlight: true,
+        highlightColor: [0, 255, 0],
+        getFillColor: colorCategories({
+          attr: 'storetype',
+          domain: ['Supermarket', 'Discount Store', 'Hypermarket', 'Drugstore', 'Department Store'],
+          colors: 'Pastel'
+        }),
+        onDataLoad: data => this.storesData = data.features
+      })
+    )
 
-    layerService.addLayer({
-      id: 'buildings',
-      layerType: CartoBQTilerLayer,
-      data: 'cartobq.maps.msft_buildings',
-      visible: false,
-      pointRadiusUnits: 'pixels',
-      getFillColor: [240, 142, 240]
-    })
-    */
+    layerManager.addLayer(
+      new CartoBQTilerLayer({
+        id: 'buildings',
+        data: 'cartobq.maps.msft_buildings',
+        visible: false,
+        pointRadiusUnits: 'pixels',
+        getFillColor: [240, 142, 240]
+      })
+    )
   },
   ...
 }
@@ -469,7 +468,7 @@ If you reload the application now, you should see the railroads and stores layer
 
 ### Managing application state
 
-One of the most difficult problems when designing a location intelligence app is coming up with a good design for managing the application global state. In spatial apps we usually have different components that have to be kept in sync. For instance, we have the map component and widgets like a layer selector or a chart. For instance, when we show or hide a layer using the layer selector, the map component needs to add or remove the corresponding layer from the map. In the case of charts, sometimes we want to show information only for the features in the current viewport, this means we need to listen to map viewport changes and update the chart accordingly.
+One of the most difficult problems when designing a location intelligence app is coming up with a good design for managing the application global state. In spatial apps we usually have different components that have to be kept in sync. For instance, we have the map component and widgets like a layer selector or a chart. When we show or hide a layer using the layer selector, the map component needs to add or remove the corresponding layer from the map. In the case of charts, sometimes we want to show information only for the features in the current viewport, this means we need to listen to map viewport changes and update the chart accordingly.
 
 We can have components listening directly to events generated by other components but it is very possible that our app will be difficult to maintain when the number of components and views grows. In modern Vue.js applications, we can take advantage of libraries like [Vuex](https://vuex.vuejs.org/) that provide state management functionality with a centralized store.
 
@@ -507,7 +506,7 @@ export const state = {
 
 The first thing we are going to do with this state is remove the initializations we have added in the `DeckMap` class (`initialViewState` and `mapStyle`). If we want to access the state from a component, the simplest way is to return some store state from within a [computed property](https://vuejs.org/guide/computed.html). In the `MapComponent` we are going to retrieve both the `viewstate` and the `basemap` state variables.  
 
-We have two different options for retrieving state: the [`mapState`](https://vuex.vuejs.org/guide/state.html#the-mapstate-helper) helper and [`getters`](https://vuex.vuejs.org/guide/getters.html#getters)). We can use the `mapState` helper for directly retrieving state properties and we can define getters we want to compute derived state based on the store state to avoid repeating the same computation in multiple components. As we want to retrieve more than one state variable, we must use the object spread operator to combine the different objects:
+For retrieving state within a component we are going to use the [`mapState`](https://vuex.vuejs.org/guide/state.html#the-mapstate-helper) helper. We can use the `mapState` helper for directly retrieving state properties passing an array with the property names. As we want to retrieve more than one state variable, we must use the object spread operator to combine the different objects:
 
 ```javascript
 import { mapState, mapGetters } from 'vuex'
@@ -517,26 +516,19 @@ export default {
   name: 'MapComponent',
   ...
   computed: {
-    ...mapState(MODULE_NAME, ['viewState']),
-    ...mapGetters(MODULE_NAME, {
-      mapStyle: GETTERS.GET_BASEMAP
-    })
+    ...mapState(MODULE_NAME, ['viewState', 'basemap'])
   },
   methods: {
     setupDeck () {
       layerService.init({
         container: '#map',
-        mapStyle: this.mapStyle,
+        mapStyle: this.basemap,
         viewState: this.viewState
       });
     }
   }
 }
 ```
-
-{{% bannerNote title="note" %}}
-Here we are using a getter for retrieving the basemap from the state just for learning purposes, because this getter is just retrieving the object from the store without any further computation. 
-{{%/ bannerNote %}}
 
 Before being able to use the store, we need to add it in the `main.js` file:
 
@@ -550,7 +542,7 @@ new Vue({
 }).$mount('#app')
 ```
 
-Now we should see our application with the railroads and stores layers but with the state initialized from the store. Before we end this section, we are going to discuss how we can update the state using mutations. We are going to focus in the case of updating the viewstate when there is a change in the viewstate but you can look at the code to see how we have implemented other mutations. 
+Now we should see our application with the railroads and stores layers but with the state initialized from the store. Before we end this section, we are going to discuss how we can update the state using mutations. We are going to focus in the case of updating the viewstate property when there is a change in the map viewstate but you can look at the code to see how we have implemented other mutations. 
 
 We are going to start by defining the mutation. For convenience, we declare constants for each mutation in the `src/store/map/constants.js` file. In this case the constant is called `SET_VIEWSTATE`:
 
@@ -563,11 +555,12 @@ export const MUTATIONS = {
 }
 ```
 
-Then we define the mutation in the `src/store/map/mutations.js` file that will update the state's `viewstate` property. For performance errors we do a debounce to avoid updating the viewstate too many times in a continuous zoom or pan operation:
+Then we define the mutation in the `src/store/map/mutations.js` file that will update the state's `viewState` property. For performance errors we do a debounce to avoid updating the viewstate too many times in a continuous zoom or pan operation:
 
 ```javascript
 import { MUTATIONS } from './constants'
 import layerService from '@/services/layerService'
+import { debounce } from '@/utils/debounce';
 
 export const mutations = {
   ...,
@@ -583,7 +576,7 @@ const setDelayedViewState = debounce((state, v) => {
 }, 500)
 ```
 
-Finally we need to commit the mutation when the viewstate changes. We can track viewstate changes in the deck.gl instance through the `onViewStateChange` event callback. We are going to add the code for commiting the mutation when we are initializing our `Deck` instance in the `MapComponent`:
+Finally we need to commit the mutation when the map viewstate changes. We can track map viewstate changes in the deck.gl instance through the `onViewStateChange` event callback. We are going to add the code for commiting the mutation when we are initializing our `Deck` instance in the `MapComponent`:
 
 ```javascript
 export default {
@@ -596,7 +589,7 @@ export default {
     setupDeck () {
       layerService.init({
         container: '#map',
-        mapStyle: this.mapStyle,
+        mapStyle: this.basemap,
         viewState: this.viewState,
         onViewStateChange: ({ viewState }) => {
           this[MUTATIONS.SET_VIEWSTATE](viewState)
@@ -609,7 +602,7 @@ export default {
 
 ### Manage layer visibility
 
-Now that we have a way for syncing components through a centralized state using the Vuex store, we can start adding useful functionality. In location intelligence applications, one basic feature is the ability to show or hide layers on demand. We are going to create a new component called `SwitchComponent` to control the visibility of layers in the `src/components/switch-component` folder.
+Now that we have a way for syncing components through a centralized state using the Vuex store, we can start adding useful functionality. In location intelligence applications, one basic feature is the ability to show or hide layers on demand. We are going to create a new component called `LayerSelector` to control the visibility of layers in the `src/components/layer-selector` folder.
 
 In the HTML template for the component we are going to use the [`<md-switch>`](https://vuematerial.io/components/switch/) component from Vue Material. The first thing we need to do is import it in the `main.js` file and tell Vue to use it. The component will read the data from an array called `layersData`. We will use the `change` event to update the layer visibility when the user interacts with the toggle.
 
@@ -633,10 +626,10 @@ In the `.vue` file we will implement the component logic. The component will be 
 ```javascript
 import { mapState } from 'vuex'
 import { MODULE_NAME } from '@/store/map'
-import layerService from '@/services/layerService'
+import layerManager from '@/components/map-component/map-utils/layerManager'
 
 export default {
-  name: 'SwitchComponent',
+  name: 'LayerSelector',
   components: {},
   data: () => ({
     mapLoaded_: false,
@@ -654,36 +647,36 @@ export default {
   watch: {
     mapLoaded(isLoaded) {
       const layers = Object.entries(layerService.getLayers());
-      this.layersData = layers.map(([id, props]) =>
-        ({ id, isVisible: 'visible' in props ? props.visible : true, label: id || '' }))
+      this.layersData = layers.map(([id, layer]) =>
+        ({ id, isVisible: 'visible' in layer.props ? layer.props.visible : true, label: id || '' }))
       this.mapLoaded_ = isLoaded
     },
   }
 }
 ```
 
-When we have our component ready, we must add it to the `SidebarComponent` HTML template:
+When we have our component ready, we must add it to the `HomeSidebar` HTML template:
 
 ```html
 <div class="sidebar-container">
-  <SwitchComponent></SwitchComponent>
+  <LayerSelector></LayerSelector>
 </div>
 ```
 
-And we need to include it in the `SidebarComponent.vue` file as well:
+And we need to include it in the `HomeSidebar.vue` file as well:
 
 ```javascript
-import SwitchComponent from '../switch-component/SwitchComponent.vue';
+import LayerSelector from '../layer-selector/LayerSelector.vue';
 
 export default {
-  name: 'SidebarComponent',
+  name: 'HomeSidebar',
   components: {
-    SwitchComponent
+    LayerSelector
   }
 }
 ```
 
-If we load the application now, we will see the layer selector with the switch component in the sidebar. The switch for the building layer will we switched off when initializing the map and the switches for the other two layers will be on. If we use the switches, the layers will be hidden or shown.
+If we load the application now, we will see the layer selector with the layer selector in the sidebar. The switch for the building layer will we switched off when initializing the map and the switches for the other two layers will be on. If we use the switches, the layers will be hidden or shown.
 
 ### Interactivity
 
@@ -715,6 +708,15 @@ const DEFAULT_MAP_PROPS = {
 The `getTooltip` function must first check if we have picked any object. If that's the case, the function must return the picked object and two properties: `html` and `style`, that define the content and style for the tooltip. We have made a generic implementation that shows all the properties from the object except for the `layerName` and `cartodb_id`:
 
 ```javascript
+const TOOLTIP_STYLE = {
+  color: '#fff',
+  opacity: '0.9',
+  borderRadius: '0.25rem',
+  textTransform: 'capitalize',
+  fontFamily: 'Montserrat, "Open Sans", sans-serif',
+  fontSize: '0.7rem'         
+};
+...
 function getTooltip(pickingInfo) {
   if (pickingInfo.object) {
     let html = `<div style="font-size: 0.9rem;"><strong>${pickingInfo.layer.id}</strong></div>`;
@@ -743,7 +745,7 @@ We have implemented a common tooltip that is applied to all the different layers
 
 We are going to finish this guide adding a chart to our application. This is another functionality that we usually see in location intelligence apps that allows users to better analyze the information displayed in the map.
 
-In the example we have created a component that shows a bar chart with the number of the stores layer features by store type in the current viewport. To implement the chart we are using the [Apache ECharts](https://echarts.apache.org/en/index.html) library. 
+In the example we have created a component that shows a bar chart with the revenue by store type for stores in the current viewport. To implement the chart we are using the [Apache ECharts](https://echarts.apache.org/en/index.html) library. 
 
 First we must add the `echarts` package and the `vue-echarts` package, that facilitates the use of ECharts with Vue, to our project. We also need to add the `@vue/composition-api` package as a dev dependency because it is a requirement for using `vue-echarts` in Vue 2:
 
@@ -753,7 +755,7 @@ yarn add vue-echarts
 yarn add -D @vue/composition-api
 ```
 
-We are going to start by creating a `BarChartComponent` in the `src/components/bar-chart-component` folder. The HTML template file will take advantage of the `<v-chart>` component from Vue Echarts:
+We are going to start by creating a `BarChart` component in the `src/components/bar-chart` folder. The HTML template file will take advantage of the `<v-chart>` component from Vue Echarts:
 
 ```html
 <div class="bar-chart-container">
@@ -790,7 +792,7 @@ function getViewport(viewState) {
 }
 ```
 
-To update the `viewportFeatures` property in the store's state, we need to watch for changes in the `viewState` property in the `Home` view, calculate the features in the current viewport with the function above and commit the `SET_VIEWPORT_FEATURES` mutation. 
+To update the `viewportFeatures` property in the store's state, we need to watch for changes in the `viewState` state property in the `Home` view, calculate the features in the current viewport with the function above and commit the `SET_VIEWPORT_FEATURES` mutation. 
 
 ```javascript
 export default {
@@ -834,9 +836,9 @@ export default {
 };
 ```
 
-The features are grouped by store type and counted using the `groupValuesByColumn` method. This method returns an array of key-value properties with the store type (category) as the key and the number of stores as the value. We call this method using the store type as the keys column and the store revenue as the values column.
+The features are grouped by store type and the revenue is summed up using the `groupValuesByColumn` method. This method returns an array of key-value properties with the store type (category) as the key and the revenue per store type as the value. We call this method using the store type as the keys column and the store revenue as the values column.
 
-This method uses a map-reduce approach: in the map stage, we assign the store to its category (store type) and in the reduce stage we accumulate the store revenue. Finally we sum up the revenues for each of the store types. 
+This method uses a map-reduce approach: in the map stage, we assign each store to its category (store type) and in the reduce stage we accumulate the store revenue. Finally we sum up the revenues for each of the store types. 
 
 ```javascript
 export function groupValuesByColumn(data, valuesColumn, keysColumn) {
@@ -870,23 +872,23 @@ const sum = (values, key) => {
 };
 ```
 
-The last thing left is adding the chart component to the `SidebarComponent` HTML template and `.vue` files:
+The last thing left is adding the chart component to the `HomeSidebar` HTML template and `.vue` files:
 
 ```html
 <div class="sidebar-container">
-  <SwitchComponent></SwitchComponent>
-  <BarChartComponent></BarChartComponent>
+  <LayerSelector></LayerSelector>
+  <BarChart></BarChart>
 </div>
 ```
 
 ```javascript
-import BarChartComponent from '../bar-chart-component/BarChartComponent.vue';
+import BarChart from '../bar-chart/BarChart.vue';
 
 export default {
-  name: 'SidebarComponent',
+  name: 'HomeSidebar',
   components: {
     ...,
-    BarChartComponent
+    BarChart
   }
 }
 ```
