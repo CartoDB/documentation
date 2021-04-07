@@ -303,6 +303,10 @@
   }
 }
 
+.mobile-title .title {
+  margin-top: 2px;
+}
+
 .tutorial__step {
   @media (min-width: $layout-tablet) {
     display: block;
