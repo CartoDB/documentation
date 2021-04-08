@@ -1,6 +1,6 @@
 ## Overview
 
-The CARTO Spatial Extension's pocedures and functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.
+The CARTO Spatial Extension's pocedures and functions are organized in modules based on the functionality they offer. Here is the full list with direct links to their definition.
 
 | Module | Function or Procedure |
 | :----- | :------ |
@@ -9,3 +9,21 @@ The CARTO Spatial Extension's pocedures and functions are organized in modules b
 | H3 | <ul style="list-style:none"><li><a href="../h3/#st_ash3">ST_ASH3</a></li><li><a href="../h3/#longlat_ash3">LONGLAT_ASH3</a></li><li><a href="../h3/#h3_ashex">H3_ASHEX</a></li><li><a href="../h3/#h3_fromhex">H3_FROMHEX</a></li><li><a href="../h3/#st_ash3_polyfill">ST_ASH3_POLYFILL</a></li><li><a href="../h3/#st_boundary">ST_BOUNDARY</a></li><li><a href="../h3/#isvalid">ISVALID</a></li><li><a href="../h3/#compact">COMPACT</a></li><li><a href="../h3/#uncompact">UNCOMPACT</a></li><li><a href="../h3/#toparent">TOPARENT</a></li><li><a href="../h3/#tochildren">TOCHILDREN</a></li><li><a href="../h3/#ispentagon">ISPENTAGON</a></li><li><a href="../h3/#distance">DISTANCE</a></li><li><a href="../h3/#kring">KRING</a></li><li><a href="../h3/#hexring">HEXRING</a></li><li><a href="../h3/#version">VERSION</a></li></ul>|
 | S2 | <ul style="list-style:none"><li><a href="../s2/#id_fromhilbertquadkey">ID_FROMHILBERTQUADKEY</a></li><li><a href="../s2/#hilbertquadkey_fromid">HILBERTQUADKEY_FROMID</a></li><li><a href="../s2/#longlat_asid">LONGLAT_ASID</a></li><li><a href="../s2/#st_asid">ST_ASID</a></li><li><a href="../s2/#st_boundary">ST_BOUNDARY</a></li><li><a href="../s2/#version">VERSION</a></li></ul>|
 | Placekey | <ul style="list-style:none"><li><a href="../placekey/#h3_asplacekey">H3_ASPLACEKEY</a></li><li><a href="../placekey/#placekey_ash3">PLACEKEY_ASH3</a></li><li><a href="../placekey/#isvalid">ISVALID</a></li><li><a href="../placekey/#version">VERSION</a></li></ul>|
+
+### Release notes
+
+#### 2021-03-31 - Version 2
+
+* Initial setup of the CARTO Spatial Extension.
+* Update core modules to v1:
+    * Initial setup of the CARTO Spatial Extension.
+    * Add the skel module (1)
+    * Add the h3 module (3.7.0.0)
+    * Add the placekey module (1.0.1)
+    * Add the quadkey module (1)
+    * Add the s2 module (1.2.10)
+* Update tiler to v9
+
+#### 2021-02-10 - Version 1
+
+* Tiler: v8.
