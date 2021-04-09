@@ -184,6 +184,69 @@ Check the result:
 
 
 
-### Zoom-dependant tileset for USA administrative units
+### Zoom-dependant tileset for USA administrative units
 
-You can create a tileset that uses a different data sources depending on the zoom level. In this example, we are making use of the Data Observatory's public datasets offering to create a visualization of the different administrative units: the higher the zoom level, the higher is the granularity of the administrative unit being shown.
+You can create a tileset that uses different data sources depending on the zoom level. In this example, we are making use of the Data Observatory's public datasets offering to create a visualization of the different administrative units in the US: the higher the zoom level, the higher is the granularity of the administrative unit being shown.
+
+
+```sql
+CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
+R'''(
+    SELECT
+    14 as zoom_min,
+    15 as zoom_max,
+    geoid,
+    geom
+    FROM `carto-do-public-data.carto.geography_usa_block_2019`
+    UNION ALL
+    SELECT
+    13 as zoom_min,
+    13 as zoom_max,
+    geoid,
+    geom
+    FROM `carto-do-public-data.carto.geography_usa_blockgroup_2019`
+    UNION ALL
+    SELECT
+    12 as zoom_min,
+    12 as zoom_max,
+    geoid,
+    geom
+    FROM `carto-do-public-data.carto.geography_usa_censustract_2019`
+    UNION ALL
+    SELECT
+    10 as zoom_min,
+    11 as zoom_max,
+    geoid,
+    geom
+    FROM `carto-do-public-data.carto.geography_usa_zcta5_2019`
+    UNION ALL
+    SELECT
+    6 as zoom_min,
+    9 as zoom_max,
+    geoid,
+    geom
+    FROM `carto-do-public-data.carto.geography_usa_county_2019`
+    UNION ALL
+    SELECT
+    0 as zoom_min,
+    5 as zoom_max,
+    geoid,
+    geom
+    FROM `carto-do-public-data.carto.geography_usa_state_2019`
+) _a''',
+R'''`bqcartodemos.tilesets.usa_acs_multisource_example`''',
+'''
+    {
+        "zoom_min": 0,
+        "zoom_max": 15,
+        "zoom_min_column": "zoom_min",
+        "zoom_max_column": "zoom_max",
+        "max_tile_size_kb": 2048,
+        "skip_validation" : true,
+        "properties":
+        {
+            "geoid": "String"
+        }
+    }
+''');
+```
