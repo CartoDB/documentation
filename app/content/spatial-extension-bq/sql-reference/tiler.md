@@ -22,12 +22,16 @@ Generates a simple tileset.
 To avoid issues in the process when building the queries that will be executed internally against BigQuery, it is highly recommended to use [raw strings](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#string_and_bytes_literals) when passing long queries in the `source_table` that might contain special characters.
 {{%/ bannerNote %}}
 
+zoom_min_column is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between zoom_min and zoom_max.
+zoom_max_column is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between zoom_min and zoom_max.
+
 | Option | Description |
 | :----- | :------ |
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
-|`zoom_step`| Default: `1`. A `NUMBER` that defines the zoom level step. Only the zoom levels that match `zoom_min + zoom_step * N`, with `N` being a positive integer will be generated. For example, with `{ zoom_min: 10, zoom_max: 15, zoom_step : 2 }` only the tiles in zoom levels [10, 12, 14] will be generated.|
+|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
+|`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`target_partitions`| Default: `4000`. Max: `4000`. A `NUMBER` that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
 |`target_tilestats`| Default: `true`. A `BOOLEAN` to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:<br/><ul><li>Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).</li><li>String / Boolean: List of the top 10 most common values and their count.</li></ul>In Simple Tilesets, these statistics are based on the source data.|
 |`tile_extent`| Default: `4096`. A `NUMBER` defining the extent of the tile in integer coordinates as defined by the MVT spec.
@@ -81,7 +85,6 @@ R'''
 
     "zoom_min": 0,
     "zoom_max": 0,
-    "zoom_step": 1,
 
     "tile_extent": 4096,
     "tile_buffer": 0,
@@ -122,7 +125,8 @@ Generates a point aggregation tileset.
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
-|`zoom_step`| Default: `1`. A `NUMBER` that defines the zoom level step. Only the zoom levels that match `zoom_min + zoom_step * N`, with `N` being a positive integer will be generated. For example, with `{ zoom_min: 10, zoom_max: 15, zoom_step : 2 }` only the tiles in zoom levels [10, 12, 14] will be generated.|
+|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
+|`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`target_partitions`| Default: `4000`. Max: `4000`. A `NUMBER` that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
 |`target_tilestats`| Default: `true`. A `BOOLEAN` to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:<br/><ul><li>Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).</li><li>String / Boolean: List of the top 10 most common values and their count.</li></ul>For aggregation tilesets, these statistics refer to the cells at the maximum zoom generated.|
 |`tile_extent`| Default: `4096`. A `NUMBER` defining the extent of the tile in integer coordinates as defined by the MVT spec.

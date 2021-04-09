@@ -24,5 +24,6 @@ cascade:
         - "quadkey"
         - "h3"
         - "s2"
-        - "placekey"        
+        - "placekey"
+        - "random"
 ---
