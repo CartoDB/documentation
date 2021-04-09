@@ -5,6 +5,11 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "redirects": [{
+      "source": "/spatial-extension-bq/tiler/map-viewer/",
+      "destination": "/spatial-extension-bq",
+      "type": 302
+    }]
   }
 }
