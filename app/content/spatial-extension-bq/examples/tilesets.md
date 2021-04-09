@@ -181,3 +181,9 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 Check the result:
 
 ![US Blockgroup population](/img/bq-spatial-extension/tiler/examples-blockgroup_pop.png)
+
+
+
+### Zoom-dependant tileset for USA administrative units
+
+You can create a tileset that uses a different data sources depending on the zoom level. In this example, we are making use of the Data Observatory's public datasets offering to create a visualization of the different administrative units: the higher the zoom level, the higher is the granularity of the administrative unit being shown.

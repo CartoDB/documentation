@@ -1,6 +1,8 @@
 ## Overview
 
-The CARTO Spatial Extension's pocedures and functions are organized in modules based on the functionality they offer. Here is the full list with direct links to their definition.
+The CARTO Spatial Extension's pocedures and functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition and the Release Notes.
+
+### Index
 
 | Module | Function or Procedure |
 | :----- | :------ |
@@ -12,18 +14,22 @@ The CARTO Spatial Extension's pocedures and functions are organized in modules b
 
 ### Release notes
 
-#### 2021-03-31 - Version 2
+**April 9, 2021**
 
-* Initial setup of the CARTO Spatial Extension.
-* Update core modules to v1:
-    * Initial setup of the CARTO Spatial Extension.
-    * Add the skel module (1)
-    * Add the h3 module (3.7.0.0)
-    * Add the placekey module (1.0.1)
-    * Add the quadkey module (1)
-    * Add the s2 module (1.2.10)
-* Update tiler to v9
+**March 31, 2021**
 
-#### 2021-02-10 - Version 1
+Features:
+* New Quadkey module.
+* New H3 module.
+* New S2 module.
+* New Placekey module.
+* Tiler module: added support for zoom-dependant source layers for the both tiling procedure.
 
-* Tiler: v8.
+Changed: 
+* Tiler module: removed `zoom_step` option.
+
+
+**February 10, 2021**
+
+Features:
+* New Tiler module with two procedures: CREATE_SIMPLE_TILESET and CREATE_AGGREGATION_TILESET.
