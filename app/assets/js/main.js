@@ -3,3 +3,4 @@ require("./sidebar");
 require("./dropdown");
 require("./tutorial");
 require("./codeHighlight");
+require("./fullscreen");

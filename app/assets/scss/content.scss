@@ -575,7 +575,9 @@ li {
   .floating-panel__title {
     padding: 20px 20px 0 20px;
 
-    .icon {
+    button {
+      background-color: transparent;
+      padding: 0;
       right: 0;
       top: 0;
       margin: 6px;
