@@ -1,8 +1,8 @@
 <header class="is-bgBaseGrey is-txtWhite">
+  <div class="navbar navbar__container grid-cell--col12">
+    {{ partial "navbar.html" (dict "CTX" .) }}
+  </div>
   <div class="container grid u-justify-center">
-    <div class="navbar grid-cell--col12">
-      {{ partial "navbar.html" (dict "CTX" .) }}
-    </div>
     <div class="grid-cell grid-cell--col10 grid u-justify-space u-mt24 u-mb24 u-pr">
       <div class="u-flex u-align-center grid-cell--col12--mobile">
         <img class="header__icon u-mr8" src="{{.Params.icon}}" alt="{{.Params.title}}">

@@ -17,16 +17,16 @@
 
 .navbar__search-input {
   width: 0px;
-  padding: 10px 20px 10px 0;
+  padding: 16px 20px 10px 0;
   opacity: 0;
-  background-color: transparent;
   border: none;
   transition: all 0.2s linear;
   cursor: pointer;
 
   &:focus {
     opacity: 1;
-    width: 300px;
+    width: 250px;
+
     border-bottom: 1px solid $white;
     cursor: text;
   }
@@ -51,7 +51,7 @@
   }
 }
 
-@media (max-width: $layout-desktop){
+@media (max-width: $layout-desktop) {
   .navbar__elements {
     display: none;
   }
@@ -78,8 +78,12 @@
 }
 
 @keyframes sticky {
-  from { top: -76px }
-  to { top: 0; }
+  from {
+    top: -76px;
+  }
+  to {
+    top: 0;
+  }
 }
 
 .hidden {

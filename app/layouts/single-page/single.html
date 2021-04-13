@@ -1,9 +1,9 @@
 {{ define "main" }}
 <header class="is-bgBaseGrey is-txtWhite">
+  <div class="navbar navbar__container grid-cell--col12">
+    {{ partial "navbar.html" (dict "CTX" .) }}
+  </div>
   <div class="container grid u-justify-center">
-    <div class="navbar grid-cell--col12">
-      {{ partial "navbar.html" (dict "CTX" .) }}
-    </div>
     <div class="grid-cell grid-cell--col10 u-mt64 u-mb64">
       <h1 class="title f64 f48--tablet f36--mobile is-txtWhite">
         {{.Params.title}}
