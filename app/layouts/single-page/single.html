@@ -15,7 +15,7 @@
 
 <div class="is-bgWhite is-txtBaseGrey">
   <div
-    class="container grid u-justify-center u-mt64 u-mb96 u-mt48--tablet u-mb48--tablet"
+    class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet"
   >
     <aside
       class="grid-cell grid-cell--col3 title f12 desktop-s toc--sidebar js-toc-sidebar"
@@ -25,6 +25,26 @@
         <div class="toc--links toc-hugo__folder-one">{{.TableOfContents}}</div>
       </div>
     </aside>
+
+    <aside class="title toc--sidebar tablet">
+      <div class="toc--container">
+        <button class="toc--link level-one dropdown-button" data-toggle="dropdown" data-start-open="false" data-close-when-click-outside="true">
+          <div>
+            <!-- Safari doesn't allow flex directly in button-->
+            <h3 class="title f16 is-txtNavyBlue">Content</h3>
+            <svg class="caret" stroke="currentColor" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-hidden="true">
+              <path fill="#162945" fill-rule="evenodd"
+                d="M11.569 5.431L8.04 8.96 4.511 5.431l-.942.943 4.471 4.471 4.471-4.471z" />
+            </svg>
+          </div>
+        </button>
+        <div class="dropdown-menu">
+          <div class="toc--links toc-hugo__folder-one">{{.TableOfContents}}</div>
+        </div>
+      </div>
+    </aside>
+
     <div
       class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content"
     >
