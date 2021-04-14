@@ -45,25 +45,23 @@
             'sky-atmosphere-sun-intensity': 15
           }
         });
-
-        // get CARTO MVT sources from Maps API v2
-        const source = await getTileSources();
-
-        // add a CARTO layer
-        map.addSource('grca-trail-source', {
-          'type': 'vector',
-          'tiles': source.tiles
-        });
+        
+        const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
+        const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public&rand=3435334`;
         map.addLayer({
           'id': 'grca-trail-layer',
           'type': 'line',
-          'source': 'grca-trail-source',
-          'source-layer': source.sourceLayer,
+          'source': {
+            'type': 'vector',
+            url: tilejsonUrl
+          },
+          'source-layer': 'default',
           'paint': {
             'line-color': 'orange',
             'line-width': 3
           }
         });
+        
       });
 
       // wait for the terrain and sky to load before starting animations
@@ -71,33 +69,6 @@
     }
 
     initialize();
-
-    const REQUEST_GET_MAX_URL_LENGTH = 2048;
-
-    async function getTileSources() {
-      const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
-      const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public`;
-
-      const request = new Request(tilejsonUrl, {
-        method: tilejsonUrl.length < REQUEST_GET_MAX_URL_LENGTH ? 'GET' : 'POST',
-        headers: {
-          Accept: 'application/json'
-        }
-      });
-
-      const response = await fetch(request);
-      const {
-        tiles,
-        tilestats: {
-          layers: [{ id }]
-        }
-      } = await response.json();
-
-      return {
-        sourceLayer: id,
-        tiles
-      };
-    }
 
     function updateCameraPosition(position, altitude, target) {
       const camera = map.getFreeCameraOptions();

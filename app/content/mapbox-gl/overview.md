@@ -8,7 +8,7 @@ The following example is built on top of Mapbox GL JS v2. It enables 3D mapping 
 
 This example adds 3D terrain to a map using setTerrain with a raster-dem source.
 
-It uses exaggeration to exaggerate the height of the terrain. It also adds a sky layer that shows when the map is highly pitched.
+It uses exaggeration to exaggerate the height of the terrain. It also adds a sky layer that is shown when the map is highly pitched.
 
 <div class="example-map">
   <iframe
@@ -60,11 +60,11 @@ Once you have a `div` for your map, you can use the [`mapboxgl.Map`](https://doc
 ```js
 const map = new mapboxgl.Map({
   container: 'map',
-  zoom: 13.1,
-  center: [-114.34411, 32.6141],
-  pitch: 85,
-  bearing: 80,
-  style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y'
+  style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+  center: [-112.125, 36.12],
+  zoom: 12,
+  pitch: 70,
+  bearing: 180
 });
 ```
 
@@ -82,14 +82,19 @@ At this point you will have a basic 3D map with terrain:
 
 ### Add layer
 
-In order to visualize a CARTO dataset, we need to provide vector tiles source URLs through the [`source.tiles`](https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/) property while calling the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
+In order to visualize a CARTO dataset, you just need to provide a [TileJSON](https://github.com/mapbox/tilejson-spec) URL using the Maps API within a source of type vector while you are creating your layer using the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
 
 ```js
+const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
+const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public&rand=3435334`;
 map.addLayer({
   'id': 'grca-trail-layer',
   'type': 'line',
-  'source': 'grca-trail-source',
-  'source-layer': source.sourceLayer,
+  'source': {
+    'type': 'vector',
+    url: tilejsonUrl
+  },
+  'source-layer': 'default',
   'paint': {
     'line-color': 'orange',
     'line-width': 3
@@ -97,23 +102,11 @@ map.addLayer({
 });
 ```
 
-The tiles source URLs need to be retrieved using the [Maps API](https://carto.com/developers/maps-api/). You can go to the docs if you want to know more about the possibilities of the Maps API but, for this example, we will focus on the basic functionality.
+In order to have the best performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (SELECT *). If you select all the fields from the dataset, the vector tiles will be bigger than needed and would take more time to encode, download and decode.
 
-#### TileJSON
+### Camera and animation
 
-We will get the tiles source URLs fetching a CARTO [TileJSON](https://github.com/mapbox/tilejson-spec), that's an open standard for representing map metadata.
-
-```js
-const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
-const tilejsonUrl = `
-  https://maps-api-v2.us.carto.com/user/public/carto/sql?
-    source=${query}&
-    format=tilejson&
-    api_key=default_public
-`;
-```
-
-In order to have the better performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (SELECT *). If you select all the fields from the dataset, the vector tiles will be bigger than needed and would take more time to encode, download and decode.
+The example uses the new Free Camera API in Mapbox GL JS v2 and features an initial animation that updates the camera position using linear interpolation between two locations.
 
 ### All together
 
@@ -176,19 +169,17 @@ In order to have the better performance, we recommend you to retrieve only the f
           }
         });
 
-        // get CARTO MVT sources from Maps API v2
-        const source = await getTileSources();
-
-        // add a CARTO layer
-        map.addSource('grca-trail-source', {
-          'type': 'vector',
-          'tiles': source.tiles
-        });
+        // Add CARTO layer
+        const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
+        const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public&rand=3435334`;
         map.addLayer({
           'id': 'grca-trail-layer',
           'type': 'line',
-          'source': 'grca-trail-source',
-          'source-layer': source.sourceLayer,
+          'source': {
+            'type': 'vector',
+            url: tilejsonUrl
+          },
+          'source-layer': 'default',
           'paint': {
             'line-color': 'orange',
             'line-width': 3
@@ -199,32 +190,69 @@ In order to have the better performance, we recommend you to retrieve only the f
 
     initialize();
 
-    const REQUEST_GET_MAX_URL_LENGTH = 2048;
-
-    async function getTileSources() {
-      const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
-      const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public`;
-
-      const request = new Request(tilejsonUrl, {
-        method: tilejsonUrl.length < REQUEST_GET_MAX_URL_LENGTH ? 'GET' : 'POST',
-        headers: {
-          Accept: 'application/json'
-        }
-      });
-
-      const response = await fetch(request);
-      const {
-        tiles,
-        tilestats: {
-          layers: [{ id }]
-        }
-      } = await response.json();
-
-      return {
-        sourceLayer: id,
-        tiles
-      };
+    function updateCameraPosition(position, altitude, target) {
+      const camera = map.getFreeCameraOptions();
+      camera.position = mapboxgl.MercatorCoordinate.fromLngLat(
+        position,
+        altitude
+      );
+      camera.lookAtPoint(target);
+      
+      map.setFreeCameraOptions(camera);
     }
+
+    // linearly interpolate between two positions based on time
+    function lerp(a, b, t) {
+      if (Array.isArray(a) && Array.isArray(b)) {
+        const result = [];
+        for (let i = 0; i < Math.min(a.length, b.length); i++) {
+          result[i] = a[i] * (1 - t) + b[i] * t;
+        }
+        return result;
+      } else {
+        return a * (1 - t) + b * t;
+      }
+    }
+
+    let animationTime = 0.0;
+
+    function animate() {
+      const animationConfig = {
+        duration: 1000,
+        animate: (phase) => {
+          const start = [-112.125, 36.3];
+          const end = [-112.125, 36.05];
+            
+          // interpolate camera position while keeping focus on a target lat/lng
+          const position = lerp(start, end, phase);
+          const altitude = 5000;
+          const target = [-112.065, 36.147];
+            
+          updateCameraPosition(position, altitude, target);
+        }
+      };
+      
+      let lastTime = 0.0;
+      let frameReq;
+      function frame(time) {
+        if (animationTime < animationConfig.duration) {
+          animationConfig.animate(animationTime / animationConfig.duration);
+        }
+        
+        // allow requestAnimationFrame to control the speed of the animation
+        animationTime += 100 / (time - lastTime);
+        lastTime = time;
+        
+        if (animationTime > animationConfig.duration) {
+          window.cancelAnimationFrame(frameReq);
+          return;
+        }
+        
+        frameReq = window.requestAnimationFrame(frame);
+      }
+      
+      frameReq = window.requestAnimationFrame(frame);
+    };
   </script>
 </html>
 ```
