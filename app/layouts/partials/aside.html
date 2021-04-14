@@ -35,11 +35,13 @@
   
         {{if .Params.folders}}
           {{range $folderTwo := .Params.folders}}
-            {{$folderTwoName := printf "%s%s" (urlize $folderTwo.name) "/"}}
-            {{$elemFolderTwo := printf "%s" (index $folderTwo.elements 0) }}            
-            {{$url := printf "%s%s%s%s" $folderOneName $folderTwoName (urlize $elemFolderTwo) ".md"}}
-            {{$isActive := eq $url $context.File.Path}}
-            <a href="{{($context.GetPage (urlize $url)).Permalink}}" class="toc--link level-one {{ if $isActive }}is-current{{ end }}">{{$folderTwo.name}}</a>
+            {{ if $folderTwo.elements }}
+              {{$folderTwoName := printf "%s%s" (urlize $folderTwo.name) "/"}}
+              {{$elemFolderTwo := printf "%s" (index $folderTwo.elements 0) }}     
+              {{$url := printf "%s%s%s%s" $folderOneName $folderTwoName (urlize $elemFolderTwo) ".md"}}
+              {{$isActive := eq $url $context.File.Path}}
+              <a href="{{($context.GetPage (urlize $url)).Permalink}}" class="toc--link level-one {{ if $isActive }}is-current{{ end }}">{{$folderTwo.name}}</a>
+            {{ end }}
           {{end}}
         {{end}}
         {{if fileExists $reference}}
