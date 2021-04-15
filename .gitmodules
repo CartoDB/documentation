@@ -1,0 +1,3 @@
+[submodule "repos/carto-advanced-spatial-extension"]
+	path = repos/carto-advanced-spatial-extension
+	url = git@github.com:CartoDB/carto-advanced-spatial-extension.git
