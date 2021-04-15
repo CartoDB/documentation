@@ -8,6 +8,7 @@ echo "Fetch latest changes"
 BRANCH=chore/ch147621/reference-documentation-synchronization # TODO: master
 git checkout $BRANCH
 git pull origin $BRANCH
+git submodule init
 git submodule update
 
 echo "Copy SQL reference files: bq"
