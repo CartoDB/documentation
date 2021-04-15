@@ -389,5 +389,5 @@ Returns the current version of the quadkey module.
 
 ```sql
 SELECT bqcarto.quadkey.VERSION();
--- 1
+-- 1.0.0
 ```
