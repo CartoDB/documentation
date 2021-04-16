@@ -15,10 +15,19 @@ The CARTO Spatial Extension's pocedures and functions are organized in modules b
 
 ### Release notes
 
+##### April 16, 2021
+
+**Features**
+* Add Data module.
+* Add Transformation module.
+
+**Changed** 
+* Improve TOPARENT implementation in quadkey module.
+
 ##### April 9, 2021
 
 **Features**
-* Add new Random module.
+* Add Random module.
 
 **Changed** 
 * H3 indexes are now in hexadecimal format instead of integer.
