@@ -15,14 +15,17 @@ If the `gcloud` CLI tool is already installed, it will be configured with the cr
 CARTO will provide a single package that contains specific configuration, credentials and license files required to run the installation. Once you have received the package, follow the instructions below to get your CARTO installation up and running.
 
 - Unzip your customer package in the location where you want to store all files and configurations.
-- Navigate to your installation folder and run `sh install.sh`
+- Navigate to your installation folder and run 
 
+	```text
+	sh install.sh
+	```
 The installation script will take care of configuring access credentials, pulling the images, initializing the database and license and everything else that's necessary before spinning up the rest of services.
 
 Once it's finished, there are a couple of things that need to be configured to have CARTO running securely on your own domain.
 
 - add your SSL certificates (certificate and private key in `PEM` format) to the `certs` folder. Use `carto.crt` and `carto.key` names for the files. Alternatively, you can use any other name, but remember to update them afterwards in `.env` file.
-- edit `.env` file
+- edit `.env` file to setup the domain name where your CARTO instance will be accessible:
     ```text
     CARTO_DOMAIN=carto.yourdomain.com
     ```
@@ -33,7 +36,11 @@ Once it's finished, there are a couple of things that need to be configured to h
 	CARTO_NGINX_SSL_CERT_PATH=/etc/nginx/ssl/your-cert-name.crt
 	CARTO_NGINX_SSL_KEY_PATH=/etc/nginx/ssl/your-key-name.key
 	```
-- Run `docker-compose up -d` to spin up all the services.
+- Run the following to spin up all the services
+    
+    ```text
+    docker-compose up -d
+    ```
 - The first time it runs, it will need to create the user account, validate the credentials with our servers and other operations that might take up to 5-10 minutes. 
 
 {{% bannerNote title="note" %}}
