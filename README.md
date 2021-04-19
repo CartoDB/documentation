@@ -20,6 +20,22 @@ You can also build the page and generate the static files running
 docker-compose up build
 ```
 
+## How to fetch
+
+Some projects have external files to be included in the documentation. Those files, generally the reference files, live in the main source code repository. We have included those repositories as submodules in the `repos` directory.
+
+To pull the latest changes run
+
+```
+./scripts/pull.sh
+```
+
+and to update the corresponding files run
+
+```
+docker-compose up update
+```
+
 ## How to deploy
 
 To deploy into staging you just need to create a Pull Request. Once the Github Action finishes, it will add a comment with the result and the staging url (the url will be valid for 7 days). Each new commit into the PR, will regenerate the staging page.
