@@ -6,7 +6,6 @@ cascade:
   folders:
     - name: "Overview"
       elements:
-        - "Getting started"
         - "Get an account"
         - "Compliance"
     - name: "SaaS"
