@@ -6,5 +6,6 @@ cascade:
   folders:
     - name: "Overview"
       elements:
-        - "Fundamentals"
+        - "Introduction"
+        - "Main components"
 ---
