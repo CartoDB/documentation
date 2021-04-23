@@ -12,13 +12,24 @@ The CARTO Spatial Extension's pocedures and functions are organized in modules b
 | S2 | Core | <ul style="list-style:none"><li><a href="../s2/#id_fromhilbertquadkey">ID_FROMHILBERTQUADKEY</a></li><li><a href="../s2/#hilbertquadkey_fromid">HILBERTQUADKEY_FROMID</a></li><li><a href="../s2/#longlat_asid">LONGLAT_ASID</a></li><li><a href="../s2/#st_asid">ST_ASID</a></li><li><a href="../s2/#st_boundary">ST_BOUNDARY</a></li><li><a href="../s2/#version">VERSION</a></li></ul>|
 | Placekey | Core | <ul style="list-style:none"><li><a href="../placekey/#h3_asplacekey">H3_ASPLACEKEY</a></li><li><a href="../placekey/#placekey_ash3">PLACEKEY_ASH3</a></li><li><a href="../placekey/#isvalid">ISVALID</a></li><li><a href="../placekey/#version">VERSION</a></li></ul>|
 | Random | Advanced | <ul style="list-style:none"><li><a href="../random/#st_generatepoints">ST_GENERATEPOINTS</a></li></li><li><a href="../random/#version">VERSION</a></li></ul>|
+| Data | Advanced | <ul style="list-style:none"><li><a href="../data/#st_getpopulationdensity">ST_GETPOPULATIONDENSITY</a></li></li><li><a href="../data/#version">VERSION</a></li></ul>|
+| Transformation | Core | <ul style="list-style:none"><li><a href="../transformation/#st_buffer">ST_BUFFER</a></li></li><li><a href="../transformation/#version">VERSION</a></li></ul>|
 
 ### Release notes
+
+##### April 16, 2021
+
+**Features**
+* New Data module including function `ST_GETPOPULATIONDENSITY`.
+* New Transformation module including function `ST_BUFFER`.
+
+**Changes**
+* Improved performance of `quadint.TOPARENT`.
 
 ##### April 9, 2021
 
 **Features**
-* Add new Random module.
+* New Random module.
 
 **Changed** 
 * H3 indexes are now in hexadecimal format instead of integer.
