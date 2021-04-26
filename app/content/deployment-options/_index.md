@@ -7,7 +7,6 @@ cascade:
     - name: "Overview"
       elements:
         - "Getting Started"
-        - "Get an account"
         - "Compliance"
     - name: "SaaS"
       elements:
