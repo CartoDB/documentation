@@ -1,6 +1,21 @@
 ## Operations
 
+### Stop CARTO
+
+Stopping
+
+
+### Upgrading
+
+Upgrading the installation requires a new installer package provided by the CARTO team. Follow these steps to have your instance updated
+
+
+
+
 ### Installing a new license
+
+Installing a new license will be necessary after a renewal of the contract, or after a trial period has ended.
+Make sure that your new license file (provided by our team) is in `license/acme-onprem.lic` and run:
 
 ```bash
 source .env && docker run --rm \
