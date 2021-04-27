@@ -1,7 +1,7 @@
 ---
 cascade:
   title: Spatial Extension for BigQuery
-  description: "Unlock Spatial Analytics on BigQuery"
+  description: "Unlock Spatial Analytics in BigQuery"
   icon: "/img/icons/spatial-extension-bq.png"
   repoUrl: https://github.com/CartoDB/carto-spatial-extension
   folders:

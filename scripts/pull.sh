@@ -11,3 +11,4 @@ cd ../carto-advanced-spatial-extension
 BRANCH=master
 git checkout $BRANCH
 git pull --ff-only origin $BRANCH
+git submodule update --init
