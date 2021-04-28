@@ -7,7 +7,7 @@ cascade:
   folders:
     - name: "Overview"
       elements:
-        - "Introduction"
+        - "Getting started"
         - "Spatial indexes"
     - name: "SQL Reference"
       elements:
