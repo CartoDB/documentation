@@ -7,5 +7,10 @@ cascade:
     - name: "Overview"
       elements:
         - "Introduction"
-        - "Main components"
+        - "Terminology"
+    - name: "Guides"
+      elements:
+        - "Accessing and browsing the Spatial Data Catalog"
+        - "Subscribing to public and premium datasets"
+        - "Managing your subscriptions"
 ---
