@@ -13,9 +13,24 @@ The CARTO Spatial Extension's procedures and functions are organized in modules 
 | Placekey | Core | <ul style="list-style:none"><li><a href="../placekey/#h3_asplacekey">H3_ASPLACEKEY</a></li><li><a href="../placekey/#placekey_ash3">PLACEKEY_ASH3</a></li><li><a href="../placekey/#isvalid">ISVALID</a></li><li><a href="../placekey/#version">VERSION</a></li></ul>|
 | Random | Advanced | <ul style="list-style:none"><li><a href="../random/#st_generatepoints">ST_GENERATEPOINTS</a></li></li><li><a href="../random/#version">VERSION</a></li></ul>|
 | Data | Advanced | <ul style="list-style:none"><li><a href="../data/#st_getpopulationdensity">ST_GETPOPULATIONDENSITY</a></li></li><li><a href="../data/#version">VERSION</a></li></ul>|
-| Transformations | Core | <ul style="list-style:none"><li><a href="../transformations/#st_buffer">ST_BUFFER</a></li></li><li><a href="../transformations/#version">VERSION</a></li></ul>|
+| Transformations | Core | <ul style="list-style:none"><li><a href="../transformations/#st_buffer">ST_BUFFER</a></li><li><a href="../transformations/#st_centermean">ST_CENTERMEAN</a></li><li><a href="../transformations/#st_centermedian">ST_CENTERMEDIAN</a></li><li><a href="../transformations/#st_centerofmass">ST_CENTEROFMASS</a></li><li><a href="../transformations/#st_destination">ST_DESTINATION</a></li><li><a href="../transformations/#st_greatcircle">ST_GREATCIRCLE</a></li><li><a href="../transformations/#st_line_interpolate_point">ST_INTERPOLATE_POINT</a></li><li><a href="../transformations/#version">VERSION</a></li></ul>|
+| Constructors | Core | <ul style="list-style:none"><li><a href="../constructors/#st_bezierspline">ST_BEZIERSPLINE</a></li><li><a href="../constructors/#st_makeellipse">ST_MAKEELLIPSE</a></li><li><a href="../constructors/#st_makeenvelope">ST_MAKEENVELOPE</a></li><li><a href="../constructors/#st_tileenvelope">ST_TILEENVELOPE</a></li><li><a href="../constructors/#version">VERSION</a></li></ul>|
+| Measurements | Core | <ul style="list-style:none"><li><a href="../measurements/#st_angle">ST_ANGLE</a></li><li><a href="../measurements/#st_azimuth">ST_AZIMUTH</a></li><li><a href="../measurements/#st_minkowskidistance">ST_MINKOWSKIDISTANCE</a></li><li><a href="../measurements/#version">VERSION</a></li></ul>|
+| Clustering | Advanced | <ul style="list-style:none"><li><a href="../clustering/#st_clusterkmeans">ST_CLUSTERKMEANS</a></li><li><a href="../clustering/#version">VERSION</a></li></ul>|
 
 ### Release notes
+
+##### April 30, 2021
+
+**Features**
+* New Clustering module including function `ST_CLUSTERKMEANS`.
+
+##### April 29, 2021
+
+**Features**
+* New functions included in Transformations module: `ST_CENTERMEAN`, `ST_CENTERMEDIAN`, `ST_CENTEROFMASS`, `ST_DESTINATION`, `ST_GREATCIRCLE` and `ST_INTERPOLATE_POINT`.
+* New Constructors module including functions `ST_BEZIERSPLINE`, `ST_MAKEELLIPSE`, `ST_MAKEENVELOPE` and `ST_TILEENVELOPE`.
+* New Measurements module including functions `ST_ANGLE`, `ST_AZIMUTH` and `ST_MINKOWSKIDISTANCE`.
 
 ##### April 16, 2021
 
