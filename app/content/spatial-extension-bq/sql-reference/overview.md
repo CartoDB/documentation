@@ -20,6 +20,18 @@ The CARTO Spatial Extension's procedures and functions are organized in modules 
 
 ### Release notes
 
+##### April 30, 2021
+
+**Features**
+* New Clustering module including function `ST_CLUSTERKMEANS`.
+
+##### April 29, 2021
+
+**Features**
+* New functions included in Transformations module: `ST_CENTERMEAN`, `ST_CENTERMEDIAN`, `ST_CENTEROFMASS`, `ST_DESTINATION`, `ST_GREATCIRCLE` and `ST_INTERPOLATE_POINT`.
+* New Constructors module including functions `ST_BEZIERSPLINE`, `ST_MAKEELLIPSE`, `ST_MAKEENVELOPE` and `ST_TILEENVELOPE`.
+* New Measurements module including functions `ST_ANGLE`, `ST_AZIMUTH` and `ST_MINKOWSKIDISTANCE`.
+
 ##### April 16, 2021
 
 **Features**
