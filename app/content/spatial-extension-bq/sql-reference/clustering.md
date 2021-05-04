@@ -1,6 +1,6 @@
 ## clustering
 
-<div class="badge advanced"></div>
+<div class="badge core"></div>
 
 ### ST_CLUSTERKMEANS
 
