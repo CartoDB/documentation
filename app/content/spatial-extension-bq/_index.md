@@ -17,7 +17,8 @@ cascade:
       elements:
         - "Tilesets"
         - "Spatial indexes"
-        - "US Airports"
+        - "US airports"
+        - "Chicago crime"
     - name: "SQL Reference"
       elements:
         - "Overview"
