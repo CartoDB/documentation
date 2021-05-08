@@ -17,6 +17,10 @@ cascade:
       elements:
         - "Tilesets"
         - "Spatial indexes"
+        - "Voronoi"
+        - "Delaunay"
+        - "Tile envelope"
+        - "Constructor and polygonize"
     - name: "SQL Reference"
       elements:
         - "Overview"
