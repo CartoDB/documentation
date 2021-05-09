@@ -1,6 +1,6 @@
 ## US Airports
 
-### Generating routes (ST_GREATCIRCLE)
+### Generating connections (ST_GREATCIRCLE)
 
 We are going to show how easy could be displaying the different paths that can be taken in order to go between different locations. In this case we are going to illustrate this example with four of the main US airports.
 
