@@ -1,6 +1,6 @@
 ## Overview
 
-The CARTO platform can be installed on-premises. Our installer for custom deploymens is based on Docker, and all services are containerized. 
+The CARTO platform can be installed on-premises. Our installer for custom deployments is based on Docker, and all services are containerized. 
 
 A custom installation of CARTO consist on the following components, running on the same host: 
 
