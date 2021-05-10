@@ -1,4 +1,4 @@
-## Tilesets
+## Creating simple and aggregation tilesets
 
 ### OSM buildings (aggregation)
 
@@ -120,7 +120,7 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
 
 ### World's road network (lines)
 
-We are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/geography/ne_roads_9ff89987) to visualize the world's road network. We are going to use the already aggregated 1km * 1km grids cells:
+We are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/geography/ne_roads_9ff89987) to visualize the world's road network:
 
 ```sql
 CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
