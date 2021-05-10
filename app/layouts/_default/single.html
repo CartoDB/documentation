@@ -52,20 +52,6 @@
               {{end}}
             {{end}}
 
-            {{if .Params.extra_sections}}
-              {{range $elem := .Params.extra_sections}}
-                {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
-                {{$isActive := eq $file $context.File.Path}}
-                {{if $isActive}}
-                  <div class="toc-hugo__folder-one">
-                    {{.TableOfContents}}
-                  </div>
-                {{else}}
-                  <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
-                {{end}}
-              {{end}}
-            {{end}}
-
             {{if .Params.folders}}
               {{range $folderTwo := .Params.folders}}
                 {{$folderTwoName := printf "%s%s" (urlize $folderTwo.name) "/"}}
@@ -141,6 +127,15 @@
                 </ul>
               {{end}}
             {{end}}
+
+            {{if .Params.extra_sections}}
+              {{range $elem := .Params.extra_sections}}
+                {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
+                {{$isActive := eq $file $context.File.Path}}
+                <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
+              {{end}}
+            {{end}}
+            
             {{if fileExists $reference}}
               {{$isActive := eq (printf "%s%s" $folderOneName "reference.md") .File.Path}}
               {{if $isActive}}
