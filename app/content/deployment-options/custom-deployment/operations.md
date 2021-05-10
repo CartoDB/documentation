@@ -1,8 +1,10 @@
 ## Operations
 
-### Stop CARTO
+### Stopping CARTO services
 
 Stopping
+
+Warning about `docker-compose down -v`
 
 
 ### Upgrading
@@ -25,3 +27,8 @@ source .env && docker run --rm \
     gcr.io/cartodb-onprem-artifacts/cartoctl:latest \
     license install
 ```
+
+### Installing and configuring SSL certificates
+
+### Configuring a new domain 
+

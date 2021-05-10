@@ -1,6 +1,6 @@
 ## Getting Started
 
-CARTO is a [Location Intelligence platform](https://carto.com/platform/), where Data Scientists, Analysts, and Developers create competitive advantage, optimize business processes, and predict future outcomes by using CARTO’s technology, data, and services.
+CARTO is a cloud native [Location Intelligence platform](https://carto.com/platform/), where Data Scientists, Analysts, and Developers create competitive advantage, optimize business processes, and predict future outcomes by using CARTO’s technology, data, and services.
 
 ## Get an account
 
