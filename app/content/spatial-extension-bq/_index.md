@@ -19,7 +19,7 @@ cascade:
         - "Spatial indexes"
         - "US airports"
         - "Chicago crime"
-        - "San Francisco Buffer"
+        - "San Francisco buffer"
     - name: "SQL Reference"
       elements:
         - "Overview"

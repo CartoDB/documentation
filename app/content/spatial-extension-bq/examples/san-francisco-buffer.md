@@ -1,4 +1,4 @@
-## San Francisco Buffer
+## San Francisco buffer
 
 ### Creating buffer (ST_Buffer)
 
