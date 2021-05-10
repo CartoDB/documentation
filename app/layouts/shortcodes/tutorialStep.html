@@ -1,5 +1,11 @@
-<div class="tutorial__step {{if eq .Ordinal 0}}is-active{{end}} js-tutorial-step"
-      data-name="{{.Params.stepName}}"
-      data-elem="{{.Params.stepName | urlize}}">
+<div
+  class="tutorial__step {{if eq .Ordinal 0}}is-active{{end}} js-tutorial-step"
+  data-name="{{.Params.stepName}}"
+  data-elem="{{.Params.stepName | urlize}}"
+>
+  <div class="mobile-title u-flex u-mb12">
+    <span class="dot is-active"></span>
+    <span class="title f12 is-txtTypo2 u-ml4">{{.Params.stepName}}</span>
+  </div>
   {{.Inner}}
 </div>
