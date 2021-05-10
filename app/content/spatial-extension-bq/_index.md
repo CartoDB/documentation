@@ -15,8 +15,12 @@ cascade:
         - "Tilesets"
     - name: "Examples"
       elements:
-        - "Tilesets"
-        - "Spatial indexes"
+        - "Creating simple and aggregation tilesets"
+        - "An H3 grid of Starbucks locations and simple cannibalization analysis"
+        - "Enriching a quadkey grid with population data from the Data Observatory"
+        - "Analyzing weather stations coverage using a Voronoi diagram"
+        - "A NYC subway connection graph using Delaunay triangulation"
+        - "Identifying earthquake-prone areas in the state of California"
     - name: "SQL Reference"
       elements:
         - "Overview"
