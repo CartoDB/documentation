@@ -18,7 +18,8 @@ CARTO will provide a single package that contains specific configuration, creden
 - Navigate to your installation folder and run 
 
 	```bash
-	sh install.sh
+	chmod +x install.sh
+	./install.sh
 	```
 The installation script will take care of configuring access credentials, pulling the images, initializing the database and license and everything else that's necessary before spinning up the rest of services.
 

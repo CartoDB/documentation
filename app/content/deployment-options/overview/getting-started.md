@@ -47,8 +47,8 @@ Enterprise accounts can be provisioned in the [SaaS platform](../../saas/overvie
 
 If you’re looking to get a quote for an enterprise plan, then you can drop us a message [here](https://carto.com/contact/). 
 
-### Cloud Marketplaces
+<!-- ### Cloud Marketplaces
 
 #### GCP
 
-#### AWS
+#### AWS -->
