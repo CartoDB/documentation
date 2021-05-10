@@ -17,10 +17,14 @@ cascade:
         - "Tilesets"
     - name: "Examples"
       elements:
-        - "Tilesets"
-        - "Spatial indexes"
-        - "Computing US Airports connections and routes interpolations"
+        - "Creating simple and aggregation tilesets"
+        - "An H3 grid of Starbucks locations and simple cannibalization analysis"
+        - "Enriching a quadkey grid with population data from the Data Observatory"
         - "New police stations based on Chicago crime locations"
+        - "Analyzing weather stations coverage using a Voronoi diagram"
+        - "A NYC subway connection graph using Delaunay triangulation"
+        - "Computing US Airports connections and routes interpolations"
+        - "Identifying earthquake-prone areas in the state of California"
         - "Bikeshare stations within a San Francisco buffer"
     - name: "SQL Reference"
       elements:
