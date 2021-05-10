@@ -19,6 +19,7 @@ cascade:
         - "Spatial indexes"
         - "Computing US Airports connections and routes interpolations"
         - "New police stations based on Chicago crime locations"
+        - "San Francisco buffer"
     - name: "SQL Reference"
       elements:
         - "Overview"
