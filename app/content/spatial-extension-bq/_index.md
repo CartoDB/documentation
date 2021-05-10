@@ -17,8 +17,8 @@ cascade:
       elements:
         - "Tilesets"
         - "Spatial indexes"
-        - "US airports"
-        - "Chicago crime"
+        - "Computing US Airports connections and routes interpolations"
+        - "New police stations based on Chicago crime locations"
     - name: "SQL Reference"
       elements:
         - "Overview"
