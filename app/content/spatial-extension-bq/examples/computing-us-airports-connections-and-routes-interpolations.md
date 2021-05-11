@@ -18,7 +18,7 @@ WHERE t1.abbrev != t2.abbrev
 
 This query first creates all the possible combinations between airports and then generates the paths between them using the `ST_GREATCIRCLE` function. The resulting paths contain 25 points, but you can set the number of points in order to make the lines smoother if needed.
 
-The result is displayed in this visualization, where you'll notice we are not using stright lines to interconnect the different airports, but rather great circles.
+The result is displayed in this visualization, where you'll notice we are not using straight lines to interconnect the different airports, but rather great circles.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/f54fe4b8-fee3-4e2d-a9d1-4f8a632eba71" title="US airports connections."></iframe> 
 
