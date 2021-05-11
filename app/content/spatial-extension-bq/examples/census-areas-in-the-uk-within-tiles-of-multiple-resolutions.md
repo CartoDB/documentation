@@ -1,10 +1,8 @@
-## Tile envelope
+## Census areas in the UK within tiles of multiple resolutions
 
-### Census areas by tile resolution
+In this example we are going to use the `ST_TILEENVELOPE` function, which returns the bounding geometry of quadkey tile given its 3D coordinates (x, y and resolution), to showcase the extent of quadkey tiles at different resolutions. For this purpose we are using the [United Kingdom census areas dataset](https://carto.com/spatial-data-catalog/browser/geography/drd_output_area_73f0b4a3/) from CARTO's Data Observatory. 
 
-Determining census areas is important to keep an easy demography track of cities. Spatial indexes are interesting tools to efficiently work with spatial aggregations. For a further description of their capabilities and types please, go to their reference page (link).
-
-In this example, we show the use of the `ST_TILEENVELOPE` function that returns the bounding geometry of a given quadkey (link to quadkey) 3D tile index. For this purpose, we are using the United Kingdom census areas obtained from the CARTO dataset [Output Area - United Kigdom](https://carto.com/spatial-data-catalog/browser/geography/drd_output_area_73f0b4a3/). Taking as input the longitude and latitude from a geographic point in the city of London, the map depicts the belonging census areas for different tile resolutions (from 11 to 15 zoom levels).
+Taking as input the longitude and latitude from a geographic point in the city of London, the resulting map depicts the belonging census areas for different tile resolutions (from 11 to 15 zoom levels).
 
 ```sql
 WITH census_data AS (
