@@ -267,17 +267,118 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
 
 ## CARTO for Development
 
-Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
 
-Our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
+### App Development with CARTO for React
 
+{{<interactiveTutorial>}}
 
-### CARTO Developer Resources
+{{% tutorialStep stepName="Intro"%}}
 
-If you are building a web-based spatial application, we recommend you to use CARTO for deck.gl, the most advanced geospatial visualization library. Go to the [Getting Started](/deck-gl/guides/getting-started/) guide to begin creating awesome applications.
+CARTO for React is our product for building faster and better spatial apps. Kickstart your development environment with our templates for Create React App and take advantage of our advanced widgets and the custom theme for Material-UI user interface components.
+
+In this guide we will show you how easy it is to create a great looking spatial app from scratch to visualize a dataset and filter it with an interactive widget.
+
+ToDo: include screenshot of final application here  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Kickstart your app"%}}
+
+CARTO for React provides templates for Create React App. To create a new app in a folder called `my-app` using the skeleton (blank) template, you need to execute the following command in your terminal (requires Node.js installed):
+
+```shell
+~ npx create-react-app my-app --template @carto
+```
+
+Then, if you have the yarn package manager installed, you can start a development server by changing the current directory and the following yarn command:
+
+```shell
+~ cd my-app
+~ yarn start
+```
+
+You should see the following app in your browser with a default header, a sidebar and an area dedicated to the map:
+
+ToDo: include screenshot of blank app here  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Adding a layer"%}}
+
+Now we are going to add a layer to visualize data from a source that will be displayed in a new view. These are the three main components for working with CARTO for React and we provide a code generation tool based on Hygen to make it really easy to create them.
+
+We first start by creating a new view with "Stores" as the name and including the link in the header:
+
+```shell
+~ yarn hygen view new
+$ hygen view new
+✔ Name: · Stores
+✔ Route path: · stores
+✔ Do you want a link in the menu? (y/N) · true
+```
+
+Then we create a source pointing to a dataset in the CARTO `public` account:
+
+```shell
+~ yarn hygen source new
+$ hygen source new
+✔ Name: · Stores
+✔ Choose type · SQL dataset
+✔ Type a query · SELECT * FROM retail_stores
+```
+
+Finally we create a layer using the source and view created in the previous steps:
+
+```shell
+~ yarn hygen layer new
+✔ Name: · Stores
+✔ Choose a source · storesSource
+✔ Do you want to attach to some view (y/N) · true
+✔ Choose a view · Stores (views/Stores.js)
+```
+
+If we look at our browser, we should see a new link "Stores" in the header. If we click on this link, the stores layer will be displayed on top of the basemap:
+
+ToDo: include screenshot of app with layer here 
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Adding a widget"%}}
+
+Now we are going to add a widget to show the revenue by store type for stores in the current viewport. To do that, we are going to use the Category widget.
+
+We need to open the `src/components/views/Stores.js` folder, remove the "Hello World" text and add the following JSX code for the widget:
+
+```javascript
+<CategoryWidget
+  id='revenueByStoreType'
+  title='Revenue by store type'
+  dataSource={storesSource.id}
+  column='storetype'
+  operationColumn='revenue'
+  operation={AggregationTypes.SUM}
+/>
+```
+
+In addition to giving the widget a unique ID and a title, we link it with the layer through the `dataSource` property. The Category widget groups the features by the attribute specified in the `column` parameter and executes the aggregation operation specified in the `operation` parameter over the attribute specified in the `operationColumn` parameter.
+
+If you go to your browser, you will see the widget in the sidebar and if you click on any of the store types, you will see how the map is filtered.
+
+ToDo: include final screenshot of app here 
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Additional resources"%}}
+
+In this documentation center you will find comprehensive [documentation](/react) on CARTO for React. For visualization CARTO for React uses our [module](/deck-gl) for deck.gl. You can also use deck.gl with other frontend frameworks like [Angular](/deck-gl/guides/angular-integration) or [Vue.js](/deck-gl/guides/vue-integration).
 
 CARTO is an open ecosystem that does not force you to use a specific technology or library. Please read the following guides if you want to work with CARTO and [Google Maps](/google-maps), [Mapbox](/mapbox-gl) or [Amazon Location](/amazon-location).
 
 Your application probably provides access to datasets stored in the CARTO database. Please read this [article](/authorization) to understand how authorization is handled and how you can take advantage of CARTO support for the OAuth 2.0 protocol.
 
 When you are interacting with the CARTO platform, you can reach some limits that we put in place to guarantee the performance and prevent abuse. Please read this [article](/limits) to know more about this.
+
+{{%/ tutorialStep %}}
+
+{{</interactiveTutorial>}}
