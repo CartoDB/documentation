@@ -1,25 +1,19 @@
 ## Release notes
 
-### May 18, 2021
+### May 19, 2021
 
-#### Module random v1.0.0
+#### Module tiler v1.11.0
 
-Feature
-- Create random module.
-- Add VERSION function.
-
-#### Module tiler v1.0.0
-
-Feature
-- Create tiler module.
-- Add VERSION function.
+Changed
+- Use semantic versioning.
+- Add `count` and `geometry` labels to the tilesets.
 
 ### May 6, 2021
 
 #### Module clustering v1.0.1
 
 Changed
-* Change ST_CLUSTERKMEANS returning cluster and geom
+- Change ST_CLUSTERKMEANS returning cluster and geom
 
 ### May 4, 2021
 
@@ -120,6 +114,13 @@ Fixed
 
 Changed
 - Placekey conversions works with hexadecimal h3 indexes instead of int.
+
+#### Module random v1.0.0
+
+Feature
+- Create random module.
+- Add ST_GENERATEPOINTS function.
+- Add VERSION function.
 
 ### March 31, 2021
 

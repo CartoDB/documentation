@@ -215,5 +215,5 @@ Returns the current version of the tiler module.
 
 ```sql
 SELECT bqcarto.tiler.VERSION();
--- 1.0.0
+-- 1.11.0
 ```
