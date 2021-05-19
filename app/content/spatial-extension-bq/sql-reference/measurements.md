@@ -78,7 +78,6 @@ SELECT bqcarto.measurements.ST_MINKOWSKIDISTANCE([ST_GEOGPOINT(10,10),ST_GEOGPOI
 -- ["0,0.3333333333333333","0.3333333333333333,0"]
 ```
 
-
 ### VERSION
 
 {{% bannerNote type="code" %}}
