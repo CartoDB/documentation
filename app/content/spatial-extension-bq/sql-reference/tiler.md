@@ -1,6 +1,6 @@
 ## tiler
 
-<div class="badge advanced"></div>
+<div class="badges"><div class="advanced"></div></div>
 
 We currently provide two procedures to tilify a dataset: _CREATE_SIMPLE_TILESET_ and _CREATE_POINT_AGGREGATION_TILESET_, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview](/spatial-extension-bq/overview/tilesets/#tileset-types) section to learn more about tileset types.
 
