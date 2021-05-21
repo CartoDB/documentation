@@ -6,7 +6,7 @@
 
 Changed
 - Use semantic versioning.
-- Add `count` and `geometry` labels to the tilesets.
+- Add `features_count` and `geometry` labels to the tilesets.
 
 ### May 6, 2021
 

@@ -1,5 +1,48 @@
 ## Release notes
 
+### May 21, 2021
+
+#### Module accessors v1.0.0
+
+Feature
+- Create accessors module.
+- Add ST_ENVELOPE function.
+- Add VERSION function.
+
+### May 20, 2021
+
+#### Module constructors v1.0.0
+
+Feature
+- Create constructors module.
+- Add ST_BEZIERSPLINE function.
+- Add ST_MAKEELLIPSE function.
+- Add ST_MAKEENVELOPE function.
+- Add ST_TILEENVELOPE function.
+- Add VERSION function.
+
+#### Module measurements v1.0.0
+
+Feature
+- Create measurements module.
+- Add ST_ANGLE function.
+- Add ST_AZIMUTH function.
+- Add ST_MINKOWSKIDISTANCE function.
+- Add VERSION function.
+
+#### Module transformations v1.0.0
+
+Feature
+- Create transformations module.
+- Add ST_CENTERMEAN function.
+- Add ST_CENTERMEDIAN function.
+- Add ST_CENTEROFMASS function.
+- Add ST_CONCAVEHULL function.
+- Add ST_DESTINATION function.
+- Add ST_GREATCIRCLE function.
+- Add ST_LINE_INTERPOLATE_POINT function.
+- Add VERSION function.
+
 ### April 16, 2021
 
 #### Module placekey v1.0.0
