@@ -4,6 +4,8 @@ cascade:
   description: "Unlock Spatial Analytics in Snowflake"
   icon: "/img/icons/snowflake.png"
   repoUrl: https://github.com/CartoDB/carto-spatial-extension
+  extra_sections:
+    - "Release notes"
   folders:
     - name: "Overview"
       elements:
@@ -12,8 +14,12 @@ cascade:
     - name: "SQL Reference"
       elements:
         - "Overview"
-        - "quadkey"
+        - "accessors"
+        - "constructors"
         - "h3"
-        - "s2"
+        - "measurements"
         - "placekey"
+        - "quadkey"
+        - "s2"
+        - "transformations"
 ---
