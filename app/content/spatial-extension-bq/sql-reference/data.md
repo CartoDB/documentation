@@ -1,6 +1,6 @@
 ## data
 
-<div class="badge advanced"></div>
+<div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
 
 This module contains functions which make use of CARTO DO data.
 

@@ -7,14 +7,14 @@ This module contains functions that provide information or transform internal ge
 ### ST_ENVELOPE
 
 {{% bannerNote type="code" %}}
-accessors.ST_ENVELOPE(geog)
+accessors.ST_ENVELOPE(geojsons)
 {{%/ bannerNote %}}
 
 **Description**
 
 Takes any number of features and returns a rectangular Polygon that encompasses all vertices. https://turfjs.org/docs/#envelope
 
-* `geog`: `ARRAY<GEOGRAPHY>` input features.
+* `geojsons`: `ARRAY` array of features in GeoJSON format casted to STRING.
 
 **Return type**
 
@@ -23,8 +23,8 @@ Takes any number of features and returns a rectangular Polygon that encompasses 
 **Example**
 
 ``` sql
-SELECT bqcarto.accessors.ST_ENVELOPE([ST_GEOGPOINT(-75.833, 39.284), ST_GEOGPOINT(-75.6, 39.984), ST_GEOGPOINT(-75.221, 39.125)]);
--- POLYGON((-75.833 39.125, -75.68 39.125 ...
+SELECT sfcarto.accessors.ST_ENVELOPE(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING));
+-- { "coordinates": [ [ [ -75.833, 39.125 ], [ -75.221, 39.125 ], [ -75.221, 39.984 ], ...
 ```
 
 ### VERSION
@@ -44,6 +44,6 @@ Returns the current version of the accessors module.
 **Example**
 
 ```sql
-SELECT bqcarto.accessors.VERSION();
+SELECT sfcarto.accessors.VERSION();
 -- 1.0.0
 ```

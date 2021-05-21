@@ -30,10 +30,10 @@ To pull the latest changes run
 ./scripts/pull.sh
 ```
 
-and to update the corresponding files run
+and to update the reference files run
 
 ```
-docker-compose up update
+./scripts/update.sh
 ```
 
 ## How to deploy

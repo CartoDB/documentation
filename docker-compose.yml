@@ -12,10 +12,3 @@ services:
     image: klakegg/hugo:0.78.2-ext
     volumes:
       - "./app:/src"
-  update:
-    image: alpine
-    volumes:
-      - "./app:/src"
-      - "./repos:/repos"
-      - "./scripts:/scripts"
-    entrypoint: "/scripts/update.sh"
