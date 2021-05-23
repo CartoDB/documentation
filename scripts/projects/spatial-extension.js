@@ -50,8 +50,12 @@ The CARTO Spatial Extension's functions are organized in modules based on the fu
 | Module | Type | Function or Procedure |
 | :----- | :------ | :------ |
 `;
-
-    index.forEach(({ module, type, functions }) => {
+    const indexSorted = index.sort((a, b) => {
+        if (a.module < b.module) return -1;
+        if (a.module > b.module) return 1;
+        return 0;
+    });
+    indexSorted.forEach(({ module, type, functions }) => {
         content += `| ${module} | ${type} |<ul style="list-style:none">${functions.map(f => `<li><a href="../${module}/#${f.toLowerCase()}">${f.toUpperCase()}</a></li>`).join('')}</ul>|\n`;
     });
 
