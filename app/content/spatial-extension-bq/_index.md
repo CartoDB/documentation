@@ -31,8 +31,8 @@ cascade:
       elements:
         - "Overview"
         - "accessors"
-        - "constructors"
         - "clustering"
+        - "constructors"
         - "data"
         - "h3"
         - "measurements"
