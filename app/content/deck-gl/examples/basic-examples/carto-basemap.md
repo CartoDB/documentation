@@ -1,7 +1,10 @@
+---
+layout: example
+title: "CARTO Basemap"
+code: "carto-basemap.html"
+exampleDescription: "This example shows how to use CARTO basemaps."
+exampleExtraCode: ""
+exampleGithub: "https://github.com/CartoDB/documentation"
+---
+
 ## CARTO Basemap
-
-This example shows how to use CARTO basemaps.
-
-<iframe src="../carto-basemap.html" style="border: 1px solid #cfcfcf; width: 100%;height:500px" title="CARTO Basemap"></iframe>
-
-{{<codeHighlight src="carto-basemap.html" lang="html">}}

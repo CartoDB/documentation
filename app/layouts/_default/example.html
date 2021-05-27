@@ -19,10 +19,6 @@
         </div>
 
         <div class="u-mt24">
-          <!--{{$lang := (index (split .Params.code ".") 1) }}
-          {{$src := printf "%s%s" .Page.Dir .Params.code}}
-          {{$code := readFile ($src)}}
-          {{highlight $code $lang ""}}-->
           {{- partial "code-highlight.html" . -}}
         </div>
       </div>

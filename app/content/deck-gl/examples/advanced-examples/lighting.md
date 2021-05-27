@@ -1,7 +1,10 @@
+---
+layout: example
+title: "Lighting"
+code: "lighting.html"
+exampleDescription: "This example shows how to apply <a href='https://deck.gl/docs/api-reference/core/lighting-effect'>Lighting Effects</a> to your visualizations."
+exampleExtraCode: ""
+exampleGithub: "https://github.com/CartoDB/documentation"
+---
 ## Lighting
 
-This example shows how to apply <a href="https://deck.gl/docs/api-reference/core/lighting-effect">Lighting Effects</a> to your visualizations.
-
-<iframe src="../lighting.html" style="border: 1px solid #cfcfcf; width: 100%; height: 500px" title="Lighting"></iframe>
-
-{{<codeHighlight src="lighting.html" lang="html">}}
