@@ -586,13 +586,15 @@ li {
 }
 
 .floating-panel {
-  top: 0;
-  right: 12px;
+  position: absolute;
+  top: 24px;
+  right: 40px;
   width: 240px;
   border-radius: 4px;
   box-shadow: 0 2px 8px 0 #c8d2da;
   background-color: $white;
   padding-bottom: 20px;
+  z-index: 2;
 
   .floating-panel__title {
     padding: 20px 20px 0 20px;
@@ -655,9 +657,21 @@ li {
 }
 
 .example-layout {
+  position: relative;
+
   > h2,
   > h3,
   > h4 {
     display: none;
+  }
+
+  .iframe-wrapper {
+    position: relative;
+    
+    .fullscreen-button {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+    }
   }
 }
