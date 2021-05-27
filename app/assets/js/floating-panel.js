@@ -1,13 +1,13 @@
 document.querySelectorAll("[data-toggle~=panel]").forEach(setupDropdown);
 
 function setupDropdown(dropdownToggle) {
-  console.log(dropdownToggle);
   var startOpen = dropdownToggle.dataset.startOpen === "true";
-  dropdownToggle.setAttribute("aria-haspopup", "true");
-  dropdownToggle.setAttribute("aria-expanded", "true");
-
   var dropdownMenu = dropdownToggle.parentNode.querySelector(".floating-panel__dropdown");
 
+  dropdownToggle.setAttribute("aria-haspopup", "true");
+  dropdownToggle.setAttribute("aria-expanded", "true");
+  dropdownToggle.querySelector(".panel-trigger").addEventListener("click", toggleDropdown, false);
+  
   dropdownMenu.setAttribute("aria-hidden", "false");
 
   function isOpen() {
@@ -34,8 +34,6 @@ function setupDropdown(dropdownToggle) {
       openDropdown();
     }
   }
-
-  dropdownToggle.onclick = toggleDropdown;
 
   if (startOpen) {
     openDropdown();
