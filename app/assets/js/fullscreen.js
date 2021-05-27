@@ -9,21 +9,22 @@ function fullscreenSupported() {
   );
 }
 
-function fullscreen(iframe) {
-  if (iframe.requestFullscreen) {
-    iframe.requestFullscreen();
-  } else if (iframe.webkitRequestFullscreen) {
-    iframe.webkitRequestFullscreen();
-  } else if (iframe.mozRequestFullScreen) {
-    iframe.mozRequestFullScreen();
-  } else if (iframe.msRequestFullscreen) {
-    iframe.msRequestFullscreen();
+function fullscreen(element) {
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen();
   }
 }
 
 function setupFullscreen(button) {
+  var isFullscreen = false;
   var targetId = button.dataset.target || "";
-  var iframe = document.querySelectorAll(
+  var element = document.querySelectorAll(
     `[data-fullscreen-target-id=${targetId}]`
   )[0];
 
@@ -32,7 +33,7 @@ function setupFullscreen(button) {
     return;
   }
 
-  if (!iframe) {
+  if (!element) {
     console.error(`Fullscreen target ${targetId} not found.`);
     button.style.display = "none";
     return;
@@ -45,6 +46,11 @@ function setupFullscreen(button) {
   }
 
   button.addEventListener("click", function () {
-    fullscreen(iframe);
+    isFullscreen = !isFullscreen;
+    if (isFullscreen) {
+      fullscreen(element);
+    } else {
+      document.exitFullscreen()
+    }
   });
 }
