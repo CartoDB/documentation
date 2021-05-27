@@ -7,7 +7,7 @@
 
       <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet u-mb96 js-content u-pr example-layout">
         {{.Content}}
-        
+
         {{- partial "floating-panel.html" . -}}
 
         <div class="iframe-wrapper">
@@ -20,7 +20,6 @@
         </div>
 
         <div class="u-mt24">
-          <button clas></button>
           {{$lang := (index (split .Params.code ".") 1) }}
           {{$src := printf "%s%s" .Page.Dir .Params.code}}
           {{$code := readFile ($src)}}

@@ -585,50 +585,6 @@ li {
   }
 }
 
-.floating-panel {
-  position: absolute;
-  top: 24px;
-  right: 40px;
-  width: 240px;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px 0 #c8d2da;
-  background-color: $white;
-  padding-bottom: 20px;
-  z-index: 2;
-
-  .floating-panel__title {
-    padding: 20px 20px 0 20px;
-
-    button {
-      background-color: transparent;
-      padding: 0;
-      right: 0;
-      top: 0;
-      margin: 6px;
-    }
-  }
-
-  
-  .floating-panel__content {
-    padding: 0 20px 20px 20px;
-  }
-
-  .floating-panel__action {
-    border-top: 1px solid rgba($typo3, 0.24);
-    padding: 20px 20px 0 20px;
-
-    a {
-      display: flex;
-      align-items: center;
-      color: #036fe2;
-
-      svg {
-        fill: #036fe2;
-      }
-    }
-  }
-}
-
 .highlight-container {
   position: relative;
 
