@@ -4,7 +4,7 @@
 
 We are going to demonstrate how fast and easy it is to make a visualization of an H3 grid to identify the concentration of Starbucks locations in the US.
 
-The first step is to [import](https://cloud.google.com/bigquery/docs/batch-loading-data#loading_data_from_local_files) the Starbucks locations [dataset](https://libs.cartocdn.com/spatial-extension/samples/starbucks-locations-usa.csv) into a BigQuery table called `starbucks-locations-usa`. Then, with a single query, we are going to calculate how many Starbucks locations fall within each H3 grid cell of resolution 4. For this example, let's assume this table is part of the `examples` dataset inside `carto-docs` project.
+The first step is to [import](https://cloud.google.com/bigquery/docs/batch-loading-data#loading_data_from_local_files) the Starbucks locations [dataset](https://libs.cartocdn.com/spatial-extension/samples/starbucks-locations-usa.csv) into a BigQuery table called `starbucks_locations_usa`. Then, with a single query, we are going to calculate how many Starbucks locations fall within each H3 grid cell of resolution 4.
 
 ```sql
 WITH
@@ -12,7 +12,7 @@ WITH
   SELECT
     bqcarto.h3.ST_ASH3(geog, 4) AS h3id,
     COUNT(*) AS agg_total
-  FROM `carto-docs.examples.starbucks-locations-usa`
+  FROM `cartobq.docs.starbucks_locations_usa`
   GROUP BY h3id
   )
 SELECT
@@ -49,7 +49,7 @@ WITH
   SELECT
     bqcarto.h3.ST_ASH3(geog, 9) AS h3id,
     COUNT(*) AS agg_total
-  FROM `carto-docs.examples.starbucks-locations-usa`
+  FROM `cartobq.docs.starbucks_locations_usa`
   WHERE
     ST_INTERSECTS(geog,
       bqcarto.h3.ST_BOUNDARY(595193501273030655))
@@ -73,7 +73,7 @@ WITH
   SELECT
     bqcarto.h3.ST_ASH3(geog, 9) AS h3id,
     COUNT(*) AS agg_total
-  FROM `carto-docs.examples.starbucks-locations-usa`
+  FROM `cartobq.docs.starbucks_locations_usa`
   WHERE
     ST_INTERSECTS(geog,
       bqcarto.h3.ST_BOUNDARY(595193501273030655))
