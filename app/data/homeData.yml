@@ -49,6 +49,10 @@ products:
     description: "Gain access to thousands of public & premium spatial datasets and save time on gathering, cleaning and analysing data."
     url: "https://carto.com/help/working-with-data/intro_data_observatory"
     image: "data-observatory.png"
+  - title: "Deployment options"
+    description: "CARTO is available as a fully managed multi-tenant SaaS platform, or as a custom installation: On-premises or in your own cloud."
+    url: "./deployment-options"
+    image: "deployment.png"
 
 
 
