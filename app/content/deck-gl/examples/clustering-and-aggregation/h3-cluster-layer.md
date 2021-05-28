@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "H3 Cluster Layer"
+exampleTitle: "H3 Cluster Layer"
 code: "h3-cluster-layer.html"
 exampleDescription: "This example shows how to use the <a href='https://deck.gl/docs/api-reference/geo-layers/h3-cluster-layer'>H3ClusterLayer</a> to render regions represented by hexagon sets from the H3 geospatial indexing system."
 exampleExtraCode: ""

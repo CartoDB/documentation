@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "Interactivity"
+exampleTitle: "Interactivity"
 code: "interactivity.html"
 exampleDescription: "This example shows how to add a tooltip to features."
 exampleExtraCode: ""

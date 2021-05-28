@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "Heatmap Layer"
+exampleTitle: "Heatmap Layer"
 code: "heatmap-layer.html"
 exampleDescription: "This example shows how to use the <a href='https://deck.gl/docs/api-reference/aggregation-layers/heatmap-layer'>HeatmapLayer</a> to visualize the spatial distribution of data. "
 exampleExtraCode: ""

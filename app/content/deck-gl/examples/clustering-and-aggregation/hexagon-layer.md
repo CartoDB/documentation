@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "Hexagon Layer"
+exampleTitle: "Hexagon Layer"
 code: "hexagon-layer.html"
 exampleDescription: "This examples shows how to use the <a href='https://deck.gl/docs/api-reference/aggregation-layers/hexagon-layer'>HexagonLayer</a> to render a hexagon heatmap based on an array of inputs."
 exampleExtraCode: ""

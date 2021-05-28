@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "Icon Layer"
+exampleTitle: "Icon Layer"
 code: "icon-layer.html"
 exampleDescription: "This example shows how to use icons for visualizing point layers."
 exampleExtraCode: ""

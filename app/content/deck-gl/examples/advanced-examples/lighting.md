@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "Lighting"
+exampleTitle: "Lighting"
 code: "lighting.html"
 exampleDescription: "This example shows how to apply <a href='https://deck.gl/docs/api-reference/core/lighting-effect'>Lighting Effects</a> to your visualizations."
 exampleExtraCode: ""

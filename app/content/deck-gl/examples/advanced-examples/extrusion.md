@@ -1,6 +1,6 @@
 ---
 layout: example
-title: "Extrusion"
+exampleTitle: "Extrusion"
 code: "extrusion.html"
 exampleDescription: "This example shows how to apply extrusion to a layer for generating 3D visualizations."
 exampleExtraCode: ""
