@@ -15,10 +15,12 @@ cascade:
       elements:
         - "Overview"
         - "accessors"
+        - "clustering"
         - "constructors"
         - "h3"
         - "measurements"
         - "placekey"
+        - "processing"
         - "quadkey"
         - "s2"
         - "transformations"

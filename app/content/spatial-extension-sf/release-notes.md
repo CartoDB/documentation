@@ -1,5 +1,27 @@
 ## Release notes
 
+### May 26, 2021
+
+#### Module processing v1.0.0
+
+Feature
+- Create processing module.
+- Add ST_VORONOIPOLYGONS function.
+- Add ST_VORONOILINES function.
+- Add ST_DELAUNAYPOLYGONS function.
+- Add ST_DELAUNAYLINES function.
+- Add ST_POLYGONIZE function.
+- Add VERSION function.
+
+### May 24, 2021
+
+#### Module clustering v1.0.0
+
+Feature
+- Create clustering module.
+- Add VERSION function.
+- Add ST_CLUSTERKMEANS function.
+
 ### May 21, 2021
 
 #### Module accessors v1.0.0
