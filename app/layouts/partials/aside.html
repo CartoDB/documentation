@@ -163,7 +163,7 @@
         {{$isActive := eq (printf "%s%s" $folderOneName "reference.md") .File.Path}}
         {{if $isActive}}
           <div class="toc-hugo__folder-one">
-            {{.TableOfContents}}
+            {{$context.TableOfContents}}
           </div>
         {{else}}
           <a href="{{(.GetPage $reference).Permalink}}" class="toc--link level-one">Reference</a>
