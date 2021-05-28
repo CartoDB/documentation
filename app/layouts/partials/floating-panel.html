@@ -12,7 +12,7 @@
     <div class="floating-panel__content u-mt4">
       <p class="text f12 is-txtTypo2">{{.Params.exampleDescription | markdownify}}</p>
       {{if .Params.exampleExtraCode}}
-        {{$extraSrc := printf "%s%s" .Page.Dir .Params.exampleExtraCode}}
+        {{$extraSrc := printf "%s%s" .File.Dir .Params.exampleExtraCode}}
         {{$extraCode := readFile ($extraSrc)}}
         <div class="u-mt32">{{ .RenderString $extraCode}}</div>
       {{end}}

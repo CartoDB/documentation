@@ -1,4 +1,4 @@
-{{$src := printf "%s%s" .Page.Dir .Params.code}}
+{{$src := printf "%s%s" .File.Dir .Params.code}}
 {{$code := readFile ($src)}}
 {{$lang := (index (split .Params.code ".") 1)}}
 {{$isHtml := eq $lang "html"}}
