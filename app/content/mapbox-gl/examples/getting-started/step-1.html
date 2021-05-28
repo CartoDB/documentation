@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
-  
   <head>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
-    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
   </head>
-
   <body style="margin: 0; padding: 0;">
     <div id="map" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
   </body>
-  
   <script>
+    // Token valid for docs.carto.com
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2FydG9kYmluYyIsImEiOiJja202bHN2OXMwcGYzMnFrbmNkMzVwMG5rIn0.Zb3J4JTdJS-oYNXlR3nvnQ';
 
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
-      center: [0, 0],
-      zoom: 1
+      style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+      center: [-112.125, 36.12],
+      zoom: 12,
+      pitch: 70,
+      bearing: 180
     });
-
   </script>
-
 </html>

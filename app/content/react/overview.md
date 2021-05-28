@@ -76,6 +76,14 @@ npx create-react-app [application_name] --template [template_name]
 - `application_name` is the name of the folder that will be created for your application
 - `template_name` is the name of the template to use (`@carto` for the skeleton template or `@carto/sample-app` for the sample app template)
 
+{{% bannerNote title="note" %}}
+In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the skeleton template:
+
+```shell
+npx create-react-app my-app --template '@carto'
+```
+{{%/ bannerNote %}}
+
 ### Library
 
 In addition to the Create React App templates, we have created a library to:

@@ -1,206 +1,33 @@
 ## quadkey
 
-<div class="badge core"></div>
+<div class="badges"><div class="core"></div></div>
 
 You can learn more about quadkeys and quandints in the [Overview section](/spatial-extension-bq/overview/spatial-indexes/#quadkey) of the documentation.
 
-### QUADINT_FROMZXY
+### BBOX
 
 {{% bannerNote type="code" %}}
-quadkey.QUADINT_FROMZXY(z, x, y)
+quadkey.BBOX(quadint)
 {{%/ bannerNote %}}
 
 **Description**
 
-Returns a quadint from `z`, `x`, `y` coordinates.
+Returns an array with the boundary box of a given quadint. This boundary box contains the minimum and maximum longitude and latitude. The output format is [West-South, East-North] or [min long, min lat, max long, max lat].
 
-* `z`: `INT64` zoom level.
-* `x`: `INT64` horizontal position of a tile.
-* `y`: `INT64` vertical position of a tile.
-
-**Constraints**
-
-Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates, the minimum value is 0, and the maximum value is two to the power of `z`, minus one (`2^z - 1`).
+* `quadint`: `INT64` quadint to get the bbox from.
 
 **Return type**
 
-`INT64`
+`ARRAY<FLOAT64>`
 
 **Example**
 
 ```sql
-SELECT bqcarto.quadkey.QUADINT_FROMZXY(4, 9, 8);
--- 4388
-```
-
-### ZXY_FROMQUADINT
-
-{{% bannerNote type="code" %}}
-quadkey.ZXY_FROMQUADINT(quadint)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
-
-* `quadint`: `INT64` quadint we want to extract tile information from.
-
-**Return type**
-
-`STRUCT<INT64, INT64, INT64>`
-
-**Example**
-
-```sql
-SELECT bqcarto.quadkey.ZXY_FROMQUADINT(4388);
--- z  x  y
--- 4  9  8
-```
-
-### LONGLAT_ASQUADINT
-
-{{% bannerNote type="code" %}}
-quadkey.LONGLAT_ASQUADINT(longitude, latitude, resolution)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the quadint representation for a given level of detail and geographic coordinates.
-
-* `longitude`: `FLOAT64` horizontal coordinate of the map.
-* `latitude`: `FLOAT64` vertical coordinate of the map.
-* `resolution`: `INT64` level of detail or zoom.
-
-**Return type**
-
-`INT64`
-
-**Example**
-
-```sql
-SELECT bqcarto.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
--- 4388
-```
-
-### QUADINT_FROMQUADKEY
-
-{{% bannerNote type="code" %}}
-quadkey.QUADINT_FROMQUADKEY(quadkey)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the quadint equivalent to the input quadkey.
-
-* `quadkey`: `STRING` quadkey to be converted to quadint.
-
-**Return type**
-
-`INT64`
-
-**Example**
-
-```sql
-SELECT bqcarto.quadkey.QUADINT_FROMQUADKEY("3001");
--- 4388
-```
-
-### QUADKEY_FROMQUADINT
-
-{{% bannerNote type="code" %}}
-quadkey.QUADKEY_FROMQUADINT(quadint)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the quadkey equivalent to the input quadint.
-
-* `quadint`: `INT64` quadint to be converted to quadkey.
-
-**Return type**
-
-`STRING`
-
-**Example**
-
-```sql
-SELECT bqcarto.quadkey.QUADKEY_FROMQUADINT(4388);
--- 3001
-```
-
-### TOPARENT
-
-{{% bannerNote type="code" %}}
-quadkey.TOPARENT(quadint, resolution)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the parent quadint of a given quadint for a specific resolution. A parent quadint is the smaller resolution containing quadint.
-
-* `quadint`: `INT64` quadint to get the parent from.
-* `resolution`: `INT64` resolution of the desired parent.
-
-**Return type**
-
-`INT64`
-
-**Example**
-
-```sql
-SELECT bqcarto.quadkey.TOPARENT(4388, 3);
--- 1155
-```
-
-### TOCHILDREN
-
-{{% bannerNote type="code" %}}
-quadkey.TOCHILDREN(quadint, resolution)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns an array with the children quadints of a given quadint for a specific resolution. A children quadint is a quadint of higher level of detail that is contained by the current quadint. Each quadint has four children by definition.
-
-* `quadint`: `INT64` quadint to get the children from.
-* `resolution`: `INT64` resolution of the desired children.
-
-**Return type**
-
-`ARRAY<INT64>`
-
-**Example**
-
-```sql
-SELECT bqcarto.quadkey.TOCHILDREN(1155, 4);
--- 4356
--- 4868
--- 4388
--- 4900
-```
-
-### SIBLING
-
-{{% bannerNote type="code" %}}
-quadkey.SIBLING(quadint, direction)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the quadint directly next to the given quadint at the same zoom level. The direction must be sent as argument and currently only horizontal/vertical movements are allowed.
-
-* `quadint`: `INT64` quadint to get the sibling from.
-* `direction`: `STRING` <code>'right'|'left'|'up'|'down'</code> direction to move in to extract the next sibling. 
-
-**Return type**
-
-`INT64`
-
-**Example**
-
-```sql
-SELECT bqcarto.quadkey.SIBLING(4388, 'up');
--- 3876
+SELECT bqcarto.quadkey.BBOX(4388);
+-- 22.5
+-- -21.943045533438177
+-- 45.0
+-- 0.0
 ```
 
 ### KRING
@@ -235,30 +62,160 @@ SELECT bqcarto.quadkey.KRING(4388, 1);
 -- 4932
 ```
 
-### BBOX
+### LONGLAT_ASQUADINT
 
 {{% bannerNote type="code" %}}
-quadkey.BBOX(quadint)
+quadkey.LONGLAT_ASQUADINT(longitude, latitude, resolution)
 {{%/ bannerNote %}}
 
 **Description**
 
-Returns an array with the boundary box of a given quadint. This boundary box contains the minimum and maximum longitude and latitude. The output format is [West-South, East-North] or [min long, min lat, max long, max lat].
+Returns the quadint representation for a given level of detail and geographic coordinates.
 
-* `quadint`: `INT64` quadint to get the bbox from.
+* `longitude`: `FLOAT64` horizontal coordinate of the map.
+* `latitude`: `FLOAT64` vertical coordinate of the map.
+* `resolution`: `INT64` level of detail or zoom.
 
 **Return type**
 
-`ARRAY<FLOAT64>`
+`INT64`
 
 **Example**
 
 ```sql
-SELECT bqcarto.quadkey.BBOX(4388);
--- 22.5
--- -21.943045533438177
--- 45.0
--- 0.0
+SELECT bqcarto.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
+-- 4388
+```
+
+### LONGLAT_ASQUADINTLIST_RESOLUTION
+
+{{% bannerNote type="code" %}}
+quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(longitude, latitude, zoom_min, zoom_max, zoom_step, resolution)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the quadint index for the given point for each zoom level requested, at the specified resolution (computed as the current zoom level + the value of `resolution`). The output is an array of structs with the following elements: quadint `id`, zoom level (`z`), and horizontal (`x`) and vertical (`y`) position of the tile. These quadint indexes can be used for grouping and generating aggregations of points throughout the zoom range requested. Notice the use of an additional variable `resolution` for adjusting the desired level of granularity.
+
+* `longitude`: `FLOAT64` horizontal coordinate of the map.
+* `latitude`: `FLOAT64` vertical coordinate of the map.
+* `zoom_min`: `INT64` minimum zoom to get the quadints from.
+* `zoom_max`: `INT64` maximum zoom to get the quadints from.
+* `zoom_step`: `INT64` used for skipping levels of zoom.
+* `resolution`: `INT64` resolution added to the current zoom to extract the quadints.
+
+**Return type**
+
+`ARRAY<STRUCT<INT64, INT64, INT64>>`
+
+**Example**
+
+```sql
+SELECT bqcarto.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
+-- id        z  x   y
+-- 268743    3  4   4
+-- 1069960   4  9   8
+-- 4286249   5  19  16
+-- 17124938  6  39  32
+```
+
+### QUADINT_FROMQUADKEY
+
+{{% bannerNote type="code" %}}
+quadkey.QUADINT_FROMQUADKEY(quadkey)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the quadint equivalent to the input quadkey.
+
+* `quadkey`: `STRING` quadkey to be converted to quadint.
+
+**Return type**
+
+`INT64`
+
+**Example**
+
+```sql
+SELECT bqcarto.quadkey.QUADINT_FROMQUADKEY("3001");
+-- 4388
+```
+
+### QUADINT_FROMZXY
+
+{{% bannerNote type="code" %}}
+quadkey.QUADINT_FROMZXY(z, x, y)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns a quadint from `z`, `x`, `y` coordinates.
+
+* `z`: `INT64` zoom level.
+* `x`: `INT64` horizontal position of a tile.
+* `y`: `INT64` vertical position of a tile.
+
+**Constraints**
+
+Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates, the minimum value is 0, and the maximum value is two to the power of `z`, minus one (`2^z - 1`).
+
+**Return type**
+
+`INT64`
+
+**Example**
+
+```sql
+SELECT bqcarto.quadkey.QUADINT_FROMZXY(4, 9, 8);
+-- 4388
+```
+
+### QUADKEY_FROMQUADINT
+
+{{% bannerNote type="code" %}}
+quadkey.QUADKEY_FROMQUADINT(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the quadkey equivalent to the input quadint.
+
+* `quadint`: `INT64` quadint to be converted to quadkey.
+
+**Return type**
+
+`STRING`
+
+**Example**
+
+```sql
+SELECT bqcarto.quadkey.QUADKEY_FROMQUADINT(4388);
+-- 3001
+```
+
+### SIBLING
+
+{{% bannerNote type="code" %}}
+quadkey.SIBLING(quadint, direction)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the quadint directly next to the given quadint at the same zoom level. The direction must be sent as argument and currently only horizontal/vertical movements are allowed.
+
+* `quadint`: `INT64` quadint to get the sibling from.
+* `direction`: `STRING` <code>'right'|'left'|'up'|'down'</code> direction to move in to extract the next sibling. 
+
+**Return type**
+
+`INT64`
+
+**Example**
+
+```sql
+SELECT bqcarto.quadkey.SIBLING(4388, 'up');
+-- 3876
 ```
 
 ### ST_ASQUADINT
@@ -339,36 +296,55 @@ SELECT bqcarto.quadkey.ST_BOUNDARY(4388);
 -- POLYGON((22.5 0, 22.5 -21.9430455334382, 22.67578125 ...
 ```
 
-### LONGLAT_ASQUADINTLIST_RESOLUTION
+### TOCHILDREN
 
 {{% bannerNote type="code" %}}
-quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(longitude, latitude, zoom_min, zoom_max, zoom_step, resolution)
+quadkey.TOCHILDREN(quadint, resolution)
 {{%/ bannerNote %}}
 
 **Description**
 
-Returns the quadint index for the given point for each zoom level requested, at the specified resolution (computed as the current zoom level + the value of `resolution`). The output is an array of structs with the following elements: quadint `id`, zoom level (`z`), and horizontal (`x`) and vertical (`y`) position of the tile. These quadint indexes can be used for grouping and generating aggregations of points throughout the zoom range requested. Notice the use of an additional variable `resolution` for adjusting the desired level of granularity.
+Returns an array with the children quadints of a given quadint for a specific resolution. A children quadint is a quadint of higher level of detail that is contained by the current quadint. Each quadint has four children by definition.
 
-* `longitude`: `FLOAT64` horizontal coordinate of the map.
-* `latitude`: `FLOAT64` vertical coordinate of the map.
-* `zoom_min`: `INT64` minimum zoom to get the quadints from.
-* `zoom_max`: `INT64` maximum zoom to get the quadints from.
-* `zoom_step`: `INT64` used for skipping levels of zoom.
-* `resolution`: `INT64` resolution added to the current zoom to extract the quadints.
+* `quadint`: `INT64` quadint to get the children from.
+* `resolution`: `INT64` resolution of the desired children.
 
 **Return type**
 
-`ARRAY<STRUCT<INT64, INT64, INT64>>`
+`ARRAY<INT64>`
 
 **Example**
 
 ```sql
-SELECT bqcarto.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
--- id        z  x   y
--- 268743    3  4   4
--- 1069960   4  9   8
--- 4286249   5  19  16
--- 17124938  6  39  32
+SELECT bqcarto.quadkey.TOCHILDREN(1155, 4);
+-- 4356
+-- 4868
+-- 4388
+-- 4900
+```
+
+### TOPARENT
+
+{{% bannerNote type="code" %}}
+quadkey.TOPARENT(quadint, resolution)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the parent quadint of a given quadint for a specific resolution. A parent quadint is the smaller resolution containing quadint.
+
+* `quadint`: `INT64` quadint to get the parent from.
+* `resolution`: `INT64` resolution of the desired parent.
+
+**Return type**
+
+`INT64`
+
+**Example**
+
+```sql
+SELECT bqcarto.quadkey.TOPARENT(4388, 3);
+-- 1155
 ```
 
 ### VERSION
@@ -389,5 +365,29 @@ Returns the current version of the quadkey module.
 
 ```sql
 SELECT bqcarto.quadkey.VERSION();
--- 1
+-- 1.0.1
+```
+
+### ZXY_FROMQUADINT
+
+{{% bannerNote type="code" %}}
+quadkey.ZXY_FROMQUADINT(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
+
+* `quadint`: `INT64` quadint we want to extract tile information from.
+
+**Return type**
+
+`STRUCT<INT64, INT64, INT64>`
+
+**Example**
+
+```sql
+SELECT bqcarto.quadkey.ZXY_FROMQUADINT(4388);
+-- z  x  y
+-- 4  9  8
 ```
