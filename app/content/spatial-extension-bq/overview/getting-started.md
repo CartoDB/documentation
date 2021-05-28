@@ -2,7 +2,7 @@
 
 The CARTO Spatial Extension for BigQuery is a set of UDFs and Stored Procedures to unlock Spatial Analytics. It is organized in a set of modules based on the functionality they offer. There are two types of modules: _core_ modules, that are [open source](https://github.com/CartoDB/carto-spatial-extension) and free to use for anyone with a BigQuery account, and _advanced_ modules, only available with a CARTO account. 
 
-![Spatial Extension modules diagram](/img/bq-spatial-extension/se-modules-diagram.png)
+![Spatial Extension modules diagram](/img/bq-spatial-extension/se-modules-diagram-new-icon.png)
 
 Visit the [SQL Reference](../../sql-reference/) to see the full list of available modules and functions. If you already have a CARTO account, please keep reading to learn how you can access the *advanced* modules.
 
