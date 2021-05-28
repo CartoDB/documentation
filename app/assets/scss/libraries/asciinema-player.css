@@ -124,11 +124,14 @@
   -webkit-box-sizing: content-box;
   overflow: hidden;
   max-width: 100%;
+  width: 100%;
 }
 .asciinema-terminal {
   box-sizing: content-box;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
+  max-width: 100%;
+  min-width: 100%;
   overflow: hidden;
   padding: 0;
   margin: 0px;
