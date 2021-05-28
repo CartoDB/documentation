@@ -76,7 +76,7 @@
           {{$isActive := eq $file $context.File.Path}}
           {{if $isActive}}
             <div class="toc-hugo__folder-one">
-              {{.TableOfContents}}
+              {{$context.TableOfContents}}
             </div>
           {{else}}
             <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
