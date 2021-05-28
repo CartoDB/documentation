@@ -9,16 +9,24 @@
   background-color: $white;
   padding-bottom: 20px;
   z-index: 2;
-
-  .floating-panel__title {
+    
+  .floating-panel__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
     padding: 20px 20px 0 20px;
+    background-color: transparent;
 
-    button {
-      background-color: transparent;
-      padding: 0;
-      right: 0;
-      top: 0;
-      margin: 6px;
+    &.panel-open .icon {
+      transform: rotate(0deg);
+    }
+
+    .icon {
+      transform: rotate(180deg);
+      transform-origin: center;
+      transition: transform 0.25s ease;
     }
   }
 
