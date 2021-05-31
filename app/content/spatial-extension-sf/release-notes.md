@@ -22,6 +22,13 @@ Feature
 - Add VERSION function.
 - Add ST_CLUSTERKMEANS function.
 
+#### Module random v1.0.0
+
+Feature
+- Create random module.
+- Add ST_GENERATEPOINTS function.
+- Add VERSION function.
+
 ### May 21, 2021
 
 #### Module accessors v1.0.0
