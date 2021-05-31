@@ -19,26 +19,24 @@ It never generates more than the requested number of points, but there is a smal
 {{%/ bannerNote %}}
 
 * `geog`: `GEOGRAPHY` a polygon; the random points generated will be inside this polygon.
-* `npoints`: `INT64` number of points to generate.
+* `npoints`: `INT` number of points to generate.
+
+**Constraints**
+
+`npoints` must not exceed 100000.
 
 **Return type**
 
-`ARRAY<GEOGRAPHY>`
+`ARRAY`
 
 **Example**
 
 ```sql
-WITH blocks AS (
-  SELECT d.total_pop, g.blockgroup_geom
-  FROM `bigquery-public-data.geo_census_blockgroups.us_blockgroups_national` AS g
-  INNER JOIN `bigquery-public-data.census_bureau_acs.blockgroup_2018_5yr` AS d ON g.geo_id = d.geo_id
-  WHERE g.county_name = 'Sonoma County'
-),
-point_lists AS (
-  SELECT bqcarto.random.ST_GENERATEPOINTS(blockgroup_geom, CAST(total_pop AS INT64)) AS points
-  FROM blocks
-)
-SELECT points FROM point_lists CROSS JOIN point_lists.points
+SELECT sfcarto.random.ST_GENERATEPOINTS(TO_GEOGRAPHY('POLYGON((0 0, 10 0, 10 10, 0 0))'),100);
+-- "{\"coordinates\":[6.781385759749447e+00,9.240795947965740e-01],\"type\":\"Point\"}"
+-- "{\"coordinates\":[9.993805698147805e+00,5.083022246239731e+00],\"type\":\"Point\"}"
+-- "{\"coordinates\":[3.228015360947772e+00,5.353450085600810e-01],\"type\":\"Point\"}"
+-- ...
 ```
 
 ### VERSION
@@ -58,6 +56,6 @@ Returns the current version of the random module.
 **Example**
 
 ```sql
-SELECT bqcarto.random.VERSION();
+SELECT sfcarto.random.VERSION();
 -- 1.0.0
 ```
