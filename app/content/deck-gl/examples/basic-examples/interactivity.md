@@ -1,7 +1,10 @@
+---
+layout: example
+exampleTitle: "Interactivity"
+code: "interactivity.html"
+exampleDescription: "This example shows how to add a tooltip to features."
+exampleExtraCode: ""
+exampleGithub: "https://github.com/CartoDB/documentation/blob/master/app/content/deck-gl/examples/basic-examples/interactivity.html"
+---
+
 ## Interactivity
-
-This example shows how to add a tooltip to features.
-
-<iframe src="../interactivity.html" style="border: 1px solid #cfcfcf; width: 100%;height:500px" title="Interactivity"></iframe>
-
-{{<codeHighlight src="interactivity.html" lang="html">}}

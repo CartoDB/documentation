@@ -11,57 +11,10 @@
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
-
-    <style type="text/css">
-      .layer-selector {
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        right: 0;
-        background-color: #fff;
-        width: 240px;
-        margin: 24px;
-        padding: 10 24px;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-        border-radius: 4px;
-      }
-      .layer-selector h3 {
-        font-size: 16px;
-        margin: 8px 0;
-      }
-      .layer-selector .layout {
-        display: table;
-        width: 100%;
-        margin: 8px 0;
-      }
-      .layer-selector .layout > * {
-        display: table-cell;
-        height: 12px;
-      }
-      .right-align {
-        text-align: right;
-      }
-    </style>
   </head>
 
   <body style="margin: 0; padding: 0; font-family: 'Open Sans', Helvetica, sans-serif;">
     <div id="map" style="width: 100vw; height: 100vh;"></div>
-    <div class="layer-selector">
-      <h3>Higher education by county</h3>
-      <div class="layout">
-        <div class="legend" style="background: rgb(254, 246, 181)"></div>
-        <div class="legend" style="background: rgb(255, 221, 154)"></div>
-        <div class="legend" style="background: rgb(255, 194, 133)"></div>
-        <div class="legend" style="background: rgb(255, 166, 121)"></div>
-        <div class="legend" style="background: rgb(250, 138, 118)"></div>
-        <div class="legend" style="background: rgb(241, 109, 122)"></div>
-        <div class="legend" style="background: rgb(225, 83, 131)"></div>
-      </div>
-      <p class="layout">
-        <span>Lower</span>
-        <span class="right-align">Higher</span>
-      </p>
-    </div>
   </body>
 
   <script type="text/javascript">

@@ -1,7 +1,7 @@
-{{$src := printf "%s%s" .Page.Dir .Params.src}}
+{{$src := printf "%s%s" .File.Dir .Params.code}}
 {{$code := readFile ($src)}}
-{{$language := (default "html" .Params.lang) }}
-{{$isHtml := eq $language "html"}}
+{{$lang := (index (split .Params.code ".") 1)}}
+{{$isHtml := eq $lang "html"}}
 
 <div class="highlight-container" data-highlight>
   <div class="highlight-buttons">
@@ -35,5 +35,5 @@
     </button>
   </div>
 
-  {{highlight $code $language ""}}
+  {{highlight $code $lang ""}}
 </div>

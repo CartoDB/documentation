@@ -1,0 +1,28 @@
+<header class="is-bgBaseGrey is-txtWhite">
+  <div class="navbar navbar__container grid-cell--col12">
+    {{ partial "navbar.html" (dict "CTX" .) }}
+  </div>
+  <div class="container grid u-justify-center">
+    <div class="grid-cell grid-cell--col10 grid u-justify-space u-mt24 u-mb24 u-pr">
+      <div class="u-flex u-align-center grid-cell--col12--mobile">
+        <img class="header__icon u-mr8" src="{{.Params.icon}}" alt="{{.Params.title}}">
+        <h1 class="title f24 f20--mobile is-txtWhite">{{.Params.title}}</h1>
+      </div>
+      <div class="u-flex u-align-center u-mt8--mobile u-ml40">
+        <div class="u-flex u-ml-auto">
+          {{if .Params.repoUrl}}
+            <a href="{{.Params.repoUrl}}" class="button button--small is-outline is-white u-flex u-mr8" target="_blank">
+              <img class="u-mr8" src="/img/documentation/github.svg" alt="Github">
+              <span>Code</span>
+            </a>
+          {{end}}
+          {{if .Params.changelog}}
+            <a href="{{.Params.changelog}}" class="button button--small is-outline is-white" target="_blank">
+              <span>Changelog</span>
+            </a>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
