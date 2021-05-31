@@ -20,13 +20,13 @@
     background-color: transparent;
 
     &.panel-open .icon {
-      transform: rotate(0deg);
-    }
-
-    .icon {
       transform: rotate(180deg);
       transform-origin: center;
       transition: transform 0.25s ease;
+    }
+
+    .icon {
+      transform: rotate(0deg);
     }
   }
 
