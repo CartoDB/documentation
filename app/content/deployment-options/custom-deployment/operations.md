@@ -27,7 +27,7 @@ Upgrading the installation requires a new installer package provided by the CART
 Using `.env.customer` file to persist configuration
 -->
 
-### Escalation of services
+### Configuring for server resources
 
 In cases of high concurrency, increasing the server's number of CPUs and/or memory, and raising the number of instances of a specific service can help to improve performance. Follow the next steps for configuring the number of instances for a specific service:
 
