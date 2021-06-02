@@ -1,5 +1,15 @@
 ## Release notes
 
+### June 1, 2021
+
+#### Module s2 v1.1.0
+
+Feature
+- Add TOKEN_FROMID function.
+- Add ID_FROMTOKEN function.
+- Add ID_FROM_UINT64REPR function.
+- Add UINT64REPR_FROM_ID function.
+
 ### May 19, 2021
 
 #### Module tiler v1.11.0
