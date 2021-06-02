@@ -252,7 +252,7 @@ As a result, we get a new column added to our dataset, containing the total popu
 | 8 min.   | MULTIPOLYGON (((-73.99010 40.62280, -73.99067 ... | 18204.30 |
 | 8 min.   | MULTIPOLYGON (((-74.02791 40.63631, -74.02809 ... | 17606.95 |
 | 8 min.   | MULTIPOLYGON (((-74.00100 40.59815, -74.00141 ... | 2517.66 |
-{{%/ tableWrapper %}}
+{{% /tableWrapper %}}
 {{%/ tutorialStep %}}
 
 {{% tutorialStep stepName="Visualize the result"%}}

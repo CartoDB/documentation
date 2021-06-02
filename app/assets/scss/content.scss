@@ -378,10 +378,6 @@
       margin-bottom: 0;
     }
   }
-
-  .table__wrapper {
-    overflow-x: auto;
-  }
 }
 
 .tutorial__index {
@@ -634,5 +630,13 @@ li {
       right: 24px;
       bottom: 24px;
     }
+  }
+}
+
+.table__wrapper {
+  overflow-x: auto;
+
+  &.tab {
+    margin-left: 32px;
   }
 }

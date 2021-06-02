@@ -1,3 +1,5 @@
-<div class="table__wrapper">
+{{$tab := .Get "tab" | default ""}}
+
+<div class="table__wrapper {{if $tab}}tab{{end}}">
   {{.Inner}}
 </div>

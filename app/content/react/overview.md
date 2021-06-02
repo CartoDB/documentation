@@ -17,27 +17,27 @@ The code is open source and is available in the following repositories:
 
 The *NPM* packages are available here:
 
-- Templates:
-
-    | Package | Version | Downloads |
-    | ------- | ------- | --------- |
-    | @carto/cra-template (skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template">  <img src="https://img.shields.io/npm/v/@carto/cra-template.svg?style=flat-square" alt="version" /> </a> | <a href="https://npmjs.org/package/@carto/cra-template"> <img src="https://img.shields.io/npm/dt/@carto/cra-template.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/cra-template-sample-app (sample app template) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app.svg?style=flat-square" alt="downloads" /></a> |
-
+- Templates: 
+{{% tableWrapper tab="true" %}}
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| @carto/cra-template (skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template"><img src="https://img.shields.io/npm/v/@carto/cra-template.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template"> <img src="https://img.shields.io/npm/dt/@carto/cra-template.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/cra-template-sample-app (sample app template) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app"><img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app"><img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app.svg?style=flat-square" alt="downloads" /></a> |
+{{% /tableWrapper %}}
 
 - Lib packages:
-
-    | Package | Version | Downloads |
-    | ------- | ------- | --------- |
-    | @carto/react-api  | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/v/@carto/react-api.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/dt/@carto/react-api.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/react-basemaps  | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/v/@carto/react-basemaps.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/dt/@carto/react-basemaps.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/react-core  | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/v/@carto/react-core.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/dt/@carto/react-core.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/react-ui  | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/v/@carto/react-ui.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-ui">  <img src="https://img.shields.io/npm/dt/@carto/react-ui.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a> |
-    | @carto/react-workers  | <a href="https://npmjs.org/package/@carto/react-workers">  <img src="https://img.shields.io/npm/v/@carto/react-workers.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-workers">  <img src="https://img.shields.io/npm/dt/@carto/react-workers.svg?style=flat-square" alt="downloads" /></a> |
-
+{{% tableWrapper tab="true" %}}
+| Package | Version | Downloads |
+| ------- | ------- | --------- |
+| @carto/react-api  | <a href="https://npmjs.org/package/@carto/react-api"><img src="https://img.shields.io/npm/v/@carto/react-api.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-api"><img src="https://img.shields.io/npm/dt/@carto/react-api.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth"><img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-auth"><img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/react-basemaps  | <a href="https://npmjs.org/package/@carto/react-basemaps"><img src="https://img.shields.io/npm/v/@carto/react-basemaps.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-basemaps"><img src="https://img.shields.io/npm/dt/@carto/react-basemaps.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/react-core  | <a href="https://npmjs.org/package/@carto/react-core"><img src="https://img.shields.io/npm/v/@carto/react-core.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-core"><img src="https://img.shields.io/npm/dt/@carto/react-core.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux"><img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux"><img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/react-ui  | <a href="https://npmjs.org/package/@carto/react-ui"><img src="https://img.shields.io/npm/v/@carto/react-ui.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-ui"><img src="https://img.shields.io/npm/dt/@carto/react-ui.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets"><img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets"><img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/react-workers  | <a href="https://npmjs.org/package/@carto/react-workers"><img src="https://img.shields.io/npm/v/@carto/react-workers.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-workers"><img src="https://img.shields.io/npm/dt/@carto/react-workers.svg?style=flat-square" alt="downloads" /></a> |
+{{% /tableWrapper %}}
 ### Architecture
 
 ![architecture](/img/react/architecture.png 'Architecture')
