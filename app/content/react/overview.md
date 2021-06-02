@@ -38,6 +38,7 @@ The *NPM* packages are available here:
 | @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets"><img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets"><img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a> |
 | @carto/react-workers  | <a href="https://npmjs.org/package/@carto/react-workers"><img src="https://img.shields.io/npm/v/@carto/react-workers.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-workers"><img src="https://img.shields.io/npm/dt/@carto/react-workers.svg?style=flat-square" alt="downloads" /></a> |
 {{% /tableWrapper %}}
+
 ### Architecture
 
 ![architecture](/img/react/architecture.png 'Architecture')
