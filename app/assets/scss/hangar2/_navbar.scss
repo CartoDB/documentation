@@ -90,7 +90,7 @@ a.navbar__text {
   .navbar__dropdown {
     display: none;
     position: absolute;
-    width: 282px;
+    width: auto;
     border-radius: 8px;
     background-color: $white;
     top: 100%;
@@ -148,6 +148,10 @@ a.navbar__text {
 
     &.navbar__section--noborder {
       border-bottom: 0;
+    }
+
+    .underlined-link {
+      white-space: nowrap;
     }
   }
 
