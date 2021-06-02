@@ -298,6 +298,7 @@
 
   .tutorial__steps {
     padding-left: 28px;
+    overflow: hidden;
 
     @media (max-width: $layout-tablet) {
       padding-left: 0;
@@ -376,6 +377,10 @@
     &:last-of-type {
       margin-bottom: 0;
     }
+  }
+
+  .table__wrapper {
+    overflow-x: auto;
   }
 }
 
