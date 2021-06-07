@@ -1,4 +1,4 @@
-## Vue Integration
+## Getting started
 
 This guide describes an approach for integrating CARTO for deck.gl within applications developed using the [Vue.js](https://vuejs.org/) framework.
 

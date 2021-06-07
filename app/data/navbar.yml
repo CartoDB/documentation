@@ -23,6 +23,10 @@ navbar:
         url: /mapbox-gl
       - name: CARTO + Amazon Location
         url: /amazon-location
+      - name: CARTO + Angular
+        url: /angular
+      - name: CARTO + Vue.js
+        url: /vue
       - name: Mobile SDK
         url: https://carto.com/developers/mobile-sdk
   # - name: APIs
