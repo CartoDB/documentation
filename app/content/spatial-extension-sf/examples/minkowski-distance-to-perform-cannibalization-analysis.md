@@ -32,6 +32,6 @@ INNER JOIN business_impact t2
 ON t1.id = t2.t1_id
 ```
 
-In this example the size of the dot represents the size of the Starbuck store and the color represents how much could be cannibalize by other stores.
+In this example the size of the dot represents the size of the Starbuck store and the color represents how much could be cannibalize by other stores. You can appreciate at first sight how those stores that are placed in the surroundings of another big stores appear in darker color than the isolated ones.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/325572b5-62d3-4062-af9f-5c5af8249bb1" title="Starbucks locations in the US aggregated in an quadkey grid of resolution 10."></iframe>

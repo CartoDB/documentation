@@ -26,6 +26,7 @@ SELECT TO_GEOGRAPHY(VALUE) AS geom, ST_AREA(geom) AS area FROM voronoi_array, la
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://team.carto.com/u/agraciano/builder/44a8ae78-3443-4471-96a2-888c5dd1d9c8/layers#/" title="Starbucks stores coverage visualization by means of a Voronoi diagram."></iframe>
 
+Prior to the calculation of the Voronoi diagrams, we use `ST_ENVELOPE` in order to calculate a boundary that covers all the Starbucks stores in our selection. This boundary is used to clip the resulting Voronoi polygons: since if the bbox parameter is not passed to `ST_VORONOIPOLYGONS` the polygons would extend all over the map.
 
 With this simple analysis we can identify at a glance areas where the coverage could be improved and therefore new stores could be placed.
 
