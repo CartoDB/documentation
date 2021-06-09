@@ -27,6 +27,8 @@ When the instance is going to be installed behind a `proxy` it is necessary to:
 		}
 	}
 	```
+
+* Configure `http-proxy` for Docker:
 	```bash
 	# /etc/systemd/system/docker.service.d/http-proxy.conf
 	[Service]
@@ -35,7 +37,7 @@ When the instance is going to be installed behind a `proxy` it is necessary to:
 	Environment="NO_PROXY=127.0.0.1,localhost"
 	``` 
 
-* Host redirection
+* Redirect host to the proper domain:
 	```bash
 	# /etc/hosts
 	127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 <CARTO_DOMAIN>
