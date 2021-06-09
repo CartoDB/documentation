@@ -4,14 +4,9 @@
 
 When the instance is going to be installed behind a `proxy` it is necessary to:
 
-* Configure the `noProxy` policy for Docker
-Set
+* Configure the `noProxy` policy for Docker:
 	```bash
-	/root/.docker/config.json
-	```
-
-as	
-	```bash
+	# cat /root/.docker/config.json
 	{
 		"auths": {},
 		"credHelpers":
@@ -33,13 +28,8 @@ as
 	}
 	```
 
-Set
 	```bash
-	/etc/systemd/system/docker.service.d/http-proxy.conf
-	```
-
-as
-	```bash
+	# cat /etc/systemd/system/docker.service.d/http-proxy.conf
 	[Service]
 	Environment="HTTP_PROXY=<PROXY_ADDRESS>"
 	Environment="HTTPS_PROXY=<PROXY_ADDRESS>"
@@ -47,13 +37,8 @@ as
 	``` 
 
 * Host redirection
-Set
 	```bash
-	/etc/hosts
-	```
-
-as
-	```bash
+	# cat /etc/hosts
 	127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 <CARTO_DOMAIN>
 	::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 <CARTO_DOMAIN>
 	```
