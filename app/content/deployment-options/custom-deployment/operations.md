@@ -7,13 +7,11 @@ When the instance is going to be installed behind a `proxy` it is necessary to:
 * Configure the `noProxy` policy for Docker
 
 	Set
-
 		```bash
 		/root/.docker/config.json
 		```
 
 	as	
-
 		```bash
 		{
     			"auths": {},
@@ -37,13 +35,11 @@ When the instance is going to be installed behind a `proxy` it is necessary to:
 		```
 
 	Set
-
 		```bash
 		/etc/systemd/system/docker.service.d/http-proxy.conf
 		```
 
 	as
-
 		```bash
 		[Service]
 		Environment="HTTP_PROXY=<PROXY_ADDRESS>"
@@ -54,13 +50,11 @@ When the instance is going to be installed behind a `proxy` it is necessary to:
 * Host redirection
 
 	Set
-
 		```bash
 		/etc/hosts
 		```
 
 	as
-
 		```bash
 		127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 <CARTO_DOMAIN>
 		::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 <CARTO_DOMAIN>
