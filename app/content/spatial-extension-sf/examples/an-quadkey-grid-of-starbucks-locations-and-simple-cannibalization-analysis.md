@@ -7,12 +7,12 @@ With a single query, we are going to calculate how many Starbucks locations fall
 
 ```sql
 WITH data AS (
-    SELECT sfcarto.quadkey.ST_ASQUADINT(geog, 10) AS qk,
-    COUNT(*) as agg_total
-    FROM sfcarto.public.starbucks_locations_usa
-    WHERE geog IS NOT null
-    GROUP BY qk
-  )
+  SELECT sfcarto.quadkey.ST_ASQUADINT(geog, 10) AS qk,
+  COUNT(*) as agg_total
+  FROM sfcarto.public.starbucks_locations_usa
+  WHERE geog IS NOT null
+  GROUP BY qk
+)
 SELECT
   qk, 
   agg_total,
@@ -33,10 +33,10 @@ On the first one we will use `KRING` with distance 1 to aggregate the quadkey in
 
 ```sql
 WITH data AS (
-    SELECT sfcarto.quadkey.KRING(
-    sfcarto.quadkey.ST_ASQUADINT(geog, 15), 1) AS qk
-    FROM sfcarto.public.starbucks_locations_usa
-    WHERE city = 'Las Vegas' AND geog IS NOT null
+  SELECT sfcarto.quadkey.KRING(
+  sfcarto.quadkey.ST_ASQUADINT(geog, 15), 1) AS qk
+  FROM sfcarto.public.starbucks_locations_usa
+  WHERE city = 'Las Vegas' AND geog IS NOT null
 ),
 flat_qks AS(
   SELECT VALUE::BIGINT as qk,
@@ -54,10 +54,10 @@ On the other approach, we are going to calculate how many Starbucks falls within
 
 ```sql
 WITH data AS (
-    SELECT sfcarto.quadkey.ST_ASQUADINT_POLYFILL(
-    sfcarto.constructors.ST_MAKEELLIPSE(geog, 3, 3, 0, 'kilometers', 12), 15) AS qk
-    FROM sfcarto.public.starbucks_locations_usa
-    WHERE city = 'Las Vegas' AND geog IS NOT null
+  SELECT sfcarto.quadkey.ST_ASQUADINT_POLYFILL(
+  sfcarto.constructors.ST_MAKEELLIPSE(geog, 3, 3, 0, 'kilometers', 12), 15) AS qk
+  FROM sfcarto.public.starbucks_locations_usa
+  WHERE city = 'Las Vegas' AND geog IS NOT null
 ),
 flat_qks AS(
   SELECT VALUE::BIGINT as qk,
