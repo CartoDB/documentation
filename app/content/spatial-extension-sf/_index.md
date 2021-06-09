@@ -14,6 +14,7 @@ cascade:
     - name: "Examples"
       elements:
         - "An Quadkey grid of Starbucks locations and simple cannibalization analysis"
+        - "Minkowski distance to perform cannibalization analysis"
     - name: "SQL Reference"
       elements:
         - "Overview"

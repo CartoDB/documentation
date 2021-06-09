@@ -3,15 +3,15 @@
 ### Bulding the Quadkey grid
 
 We are going to demonstrate how fast and easy it is to make a visualization of an Quadkey grid to identify the concentration of Starbucks locations in the US.
-With a single query, we are going to calculate how many Starbucks locations fall within each quadkey grid cell of resolution 15.
+With a single query, we are going to calculate how many Starbucks locations fall within each quadkey grid cell of resolution 10.
 
 ```sql
 WITH data AS (
-  SELECT sfcarto.quadkey.ST_ASQUADINT(geog, 14) AS qk,
-  COUNT(*) as agg_total
-  FROM sfcarto.public.starbucks_locations_usa
-  WHERE city = 'Las Vegas' AND geog IS NOT null
-  GROUP BY qk
+    SELECT sfcarto.quadkey.ST_ASQUADINT(geog, 10) AS qk,
+    COUNT(*) as agg_total
+    FROM sfcarto.public.starbucks_locations_usa
+    WHERE geog IS NOT null
+    GROUP BY qk
   )
 SELECT
   qk, 
