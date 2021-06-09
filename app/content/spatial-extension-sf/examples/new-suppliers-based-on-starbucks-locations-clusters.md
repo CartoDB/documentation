@@ -1,4 +1,4 @@
-## New supplier offices based on Starbucks locations clusters
+## New suppliers offices based on Starbucks locations clusters
 
 In this example we are going to use points clustering to analyze where to locate ten new supplier offices in US based on Starbucks locations.
 

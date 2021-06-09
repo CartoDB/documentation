@@ -16,7 +16,7 @@ cascade:
         - "An Quadkey grid of Starbucks locations and simple cannibalization analysis"
         - "Minkowski distance to perform cannibalization analysis"
         - "Computing US Airports connections and routes interpolations"
-        - "New supplier offices based on Starbucks locations clusters"
+        - "New suppliers offices based on Starbucks locations clusters"
         - "Analyzing Starbucks stores coverage using a Voronoi diagram"
     - name: "SQL Reference"
       elements:
