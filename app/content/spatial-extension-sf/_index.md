@@ -11,6 +11,9 @@ cascade:
       elements:
         - "Getting started"
         - "Spatial indexes"
+    - name: "Examples"
+      elements:
+        - "An Quadkey grid of Starbucks locations and simple cannibalization analysis"
     - name: "SQL Reference"
       elements:
         - "Overview"
