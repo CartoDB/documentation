@@ -82,7 +82,7 @@ function updateReleaseNotes () {
 }
 
 function parseChangelog (module, content) {
-    const pattern = /\[(?<version>\d+\.\d+\.\d+)\] - (?<date>[\d\.-]+)(?<changes>[^\[]+)/g;
+    const pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>[^\[]+)/g;
     const output = [];
     const matches = [ ...content.matchAll(pattern) ];
     for (const match of matches) {
