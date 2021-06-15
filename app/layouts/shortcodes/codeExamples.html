@@ -1,0 +1,76 @@
+{{$title := "Example"}}
+{{$examples := split .Inner "---"}}
+{{if gt (len $examples) 1}}{{$title = "Examples"}}{{end}}
+
+<div style="display: flex; justify-content: space-between;">
+  <p><strong>{{$title}}</strong></p>
+  <select class="carto-se-bq-pp" onchange="cartoSEBQPPChanged();">
+  </select>
+</div>
+
+<script>
+  domReady(cartoSEBQPPInitialize);
+
+  function cartoSEBQPPInitialize () {
+    const isAdvanced = cartoSEBQIsAdvanced();
+    const selectors = document.getElementsByClassName('carto-se-bq-pp');
+    Array.from(selectors).forEach(selector => {
+      if (selector.options.length === 0) {
+        if (!isAdvanced) {
+          // carto-os project does not contain advanced modules
+          selector.options[selector.options.length] = new Option('carto-os', 'os');
+        }
+        selector.options[selector.options.length] = new Option('carto-st', 'st');
+        selector.options[selector.options.length] = new Option('carto-sm', 'sm');
+        selector.options[selector.options.length] = new Option('carto-me', 'me');
+        selector.options[selector.options.length] = new Option('carto-la', 'la');
+        selector.options[selector.options.length] = new Option('carto-un', 'un');
+      }
+    });
+
+    let value = localStorage.getItem('cartoSEBQPP') || 'os';
+    if (value === 'os' && isAdvanced) {
+      // carto-os project does not contain advanced modules
+      value = 'st';
+    }
+    cartoSEBQPPUpdate(value);
+  }
+
+  function cartoSEBQPPChanged () {
+    const value = event.target.value;
+    localStorage.setItem('cartoSEBQPP', value);
+    cartoSEBQPPUpdate(value);
+  }
+
+  function cartoSEBQPPUpdate (value) {
+    const examples = document.getElementsByClassName('language-sql');
+    const selectors = document.getElementsByClassName('carto-se-bq-pp');
+
+    Array.from(examples).forEach(example => {
+      example.innerHTML = example.innerHTML.replace(
+        /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/,
+        `<span class="n">carto</span><span class="o">-</span><span class="n">${value}</span>`
+      );
+    });
+
+    Array.from(selectors).forEach(selector => {
+      selector.value = value;
+    });
+  }
+
+  function cartoSEBQIsAdvanced () {
+    const advanced = document.querySelectorAll('.badges .advanced');
+    return advanced.length > 0;
+  }
+
+  function domReady (fn) {
+    document.addEventListener("DOMContentLoaded", fn);
+    if (document.readyState === "interactive" || document.readyState === "complete") {
+      fn();
+    }
+  }
+</script>
+
+{{range $examples}}
+```sql{{.}}```
+{{end}}

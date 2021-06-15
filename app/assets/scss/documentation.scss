@@ -42,3 +42,16 @@
     text-transform: uppercase;
   }
 }
+
+.carto-se-bq-pp {
+  height: 26px;
+  border: none;
+  appearance: none;
+  background: white;
+  cursor: pointer;
+  color: #2aac02;
+
+  &:focus {
+    outline: none;
+ }
+}
