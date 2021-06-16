@@ -18,6 +18,14 @@ cd my-app
 yarn start
 ```
 
+{{% bannerNote title="note" %}}
+In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the skeleton template:
+
+```shell
+npx create-react-app my-app --template '@carto'
+```
+{{%/ bannerNote %}}
+
 A full [Sample Application](#sample-application) with the most common functionality is available at https://sample-app-react.carto.com. If you want to create a new application based on the sample app template, just type the following:
 
 ```bash

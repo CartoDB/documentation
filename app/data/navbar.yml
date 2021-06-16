@@ -10,19 +10,23 @@ navbar:
   - name: Spatial Extensions
     subelements:
       - name: Spatial Extension for BigQuery
-        url: https://docs.carto.com/spatial-extension-bq
+        url: /spatial-extension-bq
   - name: Dev tools
     subelements:
       - name: CARTO for React
-        url: https://docs.carto.com/react
+        url: /react
       - name: CARTO for deck.gl
-        url: https://docs.carto.com/deck-gl
+        url: /deck-gl
       - name: CARTO + Google Maps
-        url: https://docs.carto.com/google-maps
+        url: /google-maps
       - name: CARTO + Mapbox GL
-        url: https://docs.carto.com/mapbox-gl
+        url: /mapbox-gl
       - name: CARTO + Amazon Location
-        url: https://docs.carto.com/amazon-location
+        url: /amazon-location
+      - name: CARTO + Angular
+        url: /angular
+      - name: CARTO + Vue.js
+        url: /vue
       - name: Mobile SDK
         url: https://carto.com/developers/mobile-sdk
   # - name: APIs

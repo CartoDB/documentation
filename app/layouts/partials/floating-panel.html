@@ -1,0 +1,31 @@
+<div class="u-pa is-bgWhite floating-panel" data-toggle="panel" data-start-open="true">
+  <button class="u-pa floating-panel__trigger">
+    <h4 class="title f12 is-txtNavyBlue">{{.Params.exampleTitle}}</h4>
+    <svg class="icon unfold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24">
+      <path fill="#2E3C43" d="M8.22 5L6.767 6.414 11.479 11 6.766 15.587 8.219 17.001 14.383 11z" transform="translate(-42 -303) translate(20 115) translate(0 -520) translate(0 687) rotate(90 10.774 34.5)"/>
+    </svg>
+  </button>
+
+  <div class="floating-panel__dropdown">
+    <div class="floating-panel__content u-mt12">
+      <p class="text f12 is-txtTypo2">{{.Params.exampleDescription | markdownify}}</p>
+      {{if .Params.exampleExtraCode}}
+        {{$extraSrc := printf "%s%s" .File.Dir .Params.exampleExtraCode}}
+        {{$extraCode := readFile ($extraSrc)}}
+        <div class="u-mt32">{{ .RenderString $extraCode}}</div>
+      {{end}}
+    </div>
+    {{if .Params.exampleGithub}}
+      <div class="floating-panel__action">
+        <a href="{{.Params.exampleGithub}}" target="_blank" class="title f12 is-text">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" class="u-mr4">
+            <g fill="none" fill-rule="evenodd" transform="translate(0 -6)">
+              <path fill="#036fe2" d="M10 11v2H4v12h12v-6h2v6c0 1.103-.897 2-2 2H4c-1.103 0-2-.897-2-2V13c0-1.103.897-2 2-2h6zm11-3v7h-2v-3.586L7.707 22.707l-1.414-1.414L17.586 10H14V8h7z"/>
+            </g>
+          </svg>
+          Open in Github
+        </a>
+      </div>
+    {{end}}
+  </div>
+</div>

@@ -1,5 +1,0 @@
-{{$src := printf "%s%s" .Page.Dir .Params.src}}
-
-{{$code := readFile ($src)}}
-
-{{highlight $code (default "html" .Params.lang) ""}}

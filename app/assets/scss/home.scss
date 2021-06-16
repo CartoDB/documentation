@@ -73,6 +73,60 @@
   margin-top: 12px;
 }
 
+.badges {
+  position: relative;
+  display: flex;
+  top: -58px;
+  text-align: center;
+  text-transform: uppercase;
+  font: 600 12px/20px 'Montserrat';
+
+  .core {
+    margin-left: 16px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    line-height: 22px;
+    color: #3969ac;
+    background-color: #cbd6e1;
+    &:before {
+      content: 'core';
+    }
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+
+  .advanced {
+    margin-left: 16px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    line-height: 22px;
+    color: #e68310;
+    background-color: #eee3d3;
+    &:before {
+      content: 'advanced';
+    }
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+
+  .experimental {
+    margin-left: 16px;
+    padding: 4px 12px;
+    border-radius: 12px;
+    line-height: 22px;
+    color: #707070;
+    background-color: #E0E0E0;
+    &:before {
+      content: 'experimental';
+    }
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+}
+
 .section-border {
   border-bottom: 2px solid #efefef;
 }

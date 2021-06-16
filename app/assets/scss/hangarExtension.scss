@@ -17,16 +17,16 @@
 
 .navbar__search-input {
   width: 0px;
-  padding: 10px 20px 10px 0;
+  padding: 16px 20px 10px 0;
   opacity: 0;
-  background-color: transparent;
   border: none;
   transition: all 0.2s linear;
   cursor: pointer;
 
   &:focus {
     opacity: 1;
-    width: 300px;
+    width: 250px;
+
     border-bottom: 1px solid $white;
     cursor: text;
   }
@@ -51,7 +51,7 @@
   }
 }
 
-@media (max-width: $layout-desktop){
+@media (max-width: $layout-desktop) {
   .navbar__elements {
     display: none;
   }
@@ -77,16 +77,26 @@
   animation-timing-function: ease;
 }
 
-@keyframes sticky {
-  from { top: -76px }
-  to { top: 0; }
+.button--map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 1px -1px rgba(0, 0, 0, 0.04), 0 1px 1px 0 rgba(0, 0, 0, 0.08);
 }
 
-// Sticky sidebar
-// Sticky sidebar
+@keyframes sticky {
+  from {
+    top: -76px;
+  }
+  to {
+    top: 0;
+  }
+}
 
-.js-toc-sidebar {
-  align-self: flex-start;  // FIX position sticky into a flex-box container
-  position: sticky;
-  top: 136px;
+.hidden {
+  display: none;
 }

@@ -29,9 +29,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&family=Overpass+Mono&display=swap" rel="stylesheet">
 
-
-  {{ $styles := resources.Get "scss/main.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
-  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  {{if eq .Params.title "Spatial Extension for BigQuery"}}
+    {{ $styles := resources.Get "scss/main-bq.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  {{else if eq .Params.title "Spatial Extension for Snowflake"}}
+    {{ $styles := resources.Get "scss/main-sf.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  {{else}}
+    {{ $styles := resources.Get "scss/main.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  {{end}}
 
   {{ $styleAsciinema := resources.Get "scss/libraries/asciinema-player.css" | toCSS "css/hugo/asiinema-player.css" | minify | fingerprint}}
   <link rel="preload" href="{{ $styleAsciinema.RelPermalink }}" integrity="{{ $styleAsciinema.Data.Integrity }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
