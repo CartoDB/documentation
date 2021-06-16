@@ -1,20 +1,20 @@
-{{$title := "Example"}}
-{{$examples := split .Inner "---"}}
+{{$type := .Get "type" | default "bigquery"}}
 {{$id := delimit (shuffle (seq 1 9)) ""}}
-{{if gt (len $examples) 1}}{{$title = "Examples"}}{{end}}
 
 <div class="code-examples">
-  <p><strong>{{$title}}</strong></p>
+  {{.Inner}}
   <select class="custom-select id{{$id}}"></select>
 </div>
-
-{{range $examples}}
-```sql{{.}}```
-{{end}}
 
 <!-- TODO: move JS code to a common place -->
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script>
+  if ('{{$type}}' === 'bigquery') {
+    domReady(() => {
+      initializeCustomSelector('id{{$id}}'); 
+    });
+  };
+
   localStorageKey = 'cartoSEBQPP';
   options = {
     os: 'carto-os',
@@ -24,10 +24,6 @@
     la: 'carto-la',
     un: 'carto-un'
   };
-
-  domReady(() => {
-    initializeCustomSelector('id{{$id}}'); 
-  });
 
   function initializeCustomSelector (id) {
     const isAdvanced = moduleIsAdvanced();
