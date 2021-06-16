@@ -138,7 +138,7 @@ This is the summary:
 
 - To create a layer you need to:
     1. Define a function that returns a deck.gl layer.
-    2. Exports the ID as a constant.
+    2. Export the layer ID as a constant.
    
 - The layer must be added to the map component layers array.
 

@@ -58,7 +58,7 @@ And these are the main files:
 
 * **views/Main.js**: the general component that defines the layout of the application.
 
-* **store/initialStateSlice.js**: the file that define the configuration of CARTO as default values for the slices. Set your CARTO account, apiKeys, basemap, OAuth apps, etc...
+* **store/initialStateSlice.js**: the file that defines the configuration of CARTO as default values for the slices. Set your CARTO account, apiKeys, basemap, OAuth apps, etc...
 
 * **store/appSlice.js**: general slice of the app to include/extend with custom app functionality.
 
@@ -130,7 +130,7 @@ To create a source, the easiest way is again to use the [code generator](../code
 yarn hygen source new
 ```
 
-In this case, we're creating a new source that can feed a layers & widgets with the dataset we uploaded before. It is going to be called `StoresSource` to follow a convention ("Source" will be added to the name you provide). You need to choose the following options:
+In this case, we're creating a new source that can feed layers and widgets with the dataset we uploaded before. It is going to be called `StoresSource` to follow a convention ("Source" will be added to the name you provide). You need to choose the following options:
 
 ```shell
 ✔ Name: Stores
@@ -140,7 +140,7 @@ In this case, we're creating a new source that can feed a layers & widgets with 
 
 ### Creating a layer
 
-Once we have defined the source, we can add now the layer the map. 
+Once we have defined the source, we can add now the layer to the map. 
 
 We create the layer by using the [code generator](../code-generator) again:
 
@@ -161,14 +161,14 @@ If you reload the page, you will see the new layer in the map.
 
 ### Adding widgets
 
-Finally we are ready to create a Formula and a Category Widget inside the View.
+Finally we are ready to add some widgets to the view. We will add a Formula and a Category Widget.
 
 The first thing you need to do is to add the following imports at the top of the `src/components/views/Stores.js` file:
 
 ```javascript
 import { Divider } from '@material-ui/core';
 import { AggregationTypes } from '@carto/react-core';
-import { FormulaWidget, CategoryWidget, HistogramWidget } from '@carto/react-widgets';
+import { FormulaWidget, CategoryWidget } from '@carto/react-widgets';
 import { currencyFormatter } from 'utils/formatter';
 ```
 
@@ -201,12 +201,12 @@ Then, in the same file, you need to replace the `Hello World` text with:
 
 ### Understanding how the pieces work together
 
-There are two main elements in the store: the source and the viewport. When we change these elements, the following actions are triggered:
+There are two main elements in the store: the source and the viewport. When we change any of these elements, the following actions are triggered:
 
 - The layer is filtered when the source changes.
 
 - The widget is re-rendered when the source or viewport changes.
 
-- Any time we change the map extent (pan or zoom), the viewport changes and all the widgets (with the `viewportFilter` prop) are refreshed.
+- Any time we change the map extent (pan or zoom), the viewport changes and all the widgets are refreshed.
 
-- Any time a widget applies a filter (for example clicking on a widget category), the filter is dispatched to the store. When we add a filter, we are changing the source, so all the components depending on the source are updated: the widgets are re-rendered and the layers are filtered. The map applies the filters using the `DataFilterExtension` from deck.gl.
+- Any time a widget applies a filter (for example selecting a widget category), the filter is dispatched to the store. When we add a filter, we are changing the source, so all the components depending on the source are updated: the widgets are re-rendered and the layers are filtered. The map applies the filters using the `DataFilterExtension` from deck.gl.
