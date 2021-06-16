@@ -14,7 +14,7 @@
     margin-top: 16px;
   }
 
-  &.banner-note--tip{
+  &.banner-note--tip {
     box-shadow: inset 6px 0 0 0 #FFC300;
   }
 
@@ -41,17 +41,4 @@
     line-height: 16px;
     text-transform: uppercase;
   }
-}
-
-.carto-se-bq-pp {
-  height: 26px;
-  border: none;
-  appearance: none;
-  background: white;
-  cursor: pointer;
-  color: #2aac02;
-
-  &:focus {
-    outline: none;
- }
 }

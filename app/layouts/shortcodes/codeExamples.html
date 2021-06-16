@@ -1,50 +1,63 @@
 {{$title := "Example"}}
 {{$examples := split .Inner "---"}}
+{{$id := delimit (shuffle (seq 1 9)) ""}}
 {{if gt (len $examples) 1}}{{$title = "Examples"}}{{end}}
 
-<div style="display: flex; justify-content: space-between;">
+<div class="code-examples">
   <p><strong>{{$title}}</strong></p>
-  <select class="carto-se-bq-pp" onchange="cartoSEBQPPChanged();">
-  </select>
+  <select class="custom-select id{{$id}}"></select>
 </div>
 
-<script>
-  domReady(cartoSEBQPPInitialize);
+{{range $examples}}
+```sql{{.}}```
+{{end}}
 
-  function cartoSEBQPPInitialize () {
-    const isAdvanced = cartoSEBQIsAdvanced();
-    const selectors = document.getElementsByClassName('carto-se-bq-pp');
-    Array.from(selectors).forEach(selector => {
-      if (selector.options.length === 0) {
+<!-- TODO: move JS code to a common place -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script>
+  localStorageKey = 'cartoSEBQPP';
+  options = {
+    os: 'carto-os',
+    st: 'carto-st',
+    sm: 'carto-sm',
+    me: 'carto-me',
+    la: 'carto-la',
+    un: 'carto-un'
+  };
+
+  domReady(() => {
+    initializeCustomSelector('id{{$id}}'); 
+  });
+
+  function initializeCustomSelector (id) {
+    const isAdvanced = moduleIsAdvanced();
+    const selectors = document.querySelectorAll(`select.custom-select.${id}`);
+    if (selectors.length > 0) {
+      const selector = selectors[0];
+      if (selector.options && selector.options.length === 0) {
         if (!isAdvanced) {
           // carto-os project does not contain advanced modules
-          selector.options[selector.options.length] = new Option('carto-os', 'os');
+          selector.options[selector.options.length] = new Option(options['os'], 'os');
         }
-        selector.options[selector.options.length] = new Option('carto-st', 'st');
-        selector.options[selector.options.length] = new Option('carto-sm', 'sm');
-        selector.options[selector.options.length] = new Option('carto-me', 'me');
-        selector.options[selector.options.length] = new Option('carto-la', 'la');
-        selector.options[selector.options.length] = new Option('carto-un', 'un');
+        selector.options[selector.options.length] = new Option(options['st'], 'st');
+        selector.options[selector.options.length] = new Option(options['sm'], 'sm');
+        selector.options[selector.options.length] = new Option(options['me'], 'me');
+        selector.options[selector.options.length] = new Option(options['la'], 'la');
+        selector.options[selector.options.length] = new Option(options['un'], 'un');
       }
-    });
-
-    let value = localStorage.getItem('cartoSEBQPP') || 'os';
+    }
+    createCustomSelector(id);
+    let value = localStorage.getItem(localStorageKey) || 'os';
     if (value === 'os' && isAdvanced) {
       // carto-os project does not contain advanced modules
       value = 'st';
     }
-    cartoSEBQPPUpdate(value);
+    updateCustomSelector(value);
   }
 
-  function cartoSEBQPPChanged () {
-    const value = event.target.value;
-    localStorage.setItem('cartoSEBQPP', value);
-    cartoSEBQPPUpdate(value);
-  }
-
-  function cartoSEBQPPUpdate (value) {
+  function updateCustomSelector (value) {
     const examples = document.getElementsByClassName('language-sql');
-    const selectors = document.getElementsByClassName('carto-se-bq-pp');
+    const selectors = document.getElementsByClassName(`custom-select-trigger`);
 
     Array.from(examples).forEach(example => {
       example.innerHTML = example.innerHTML.replace(
@@ -54,23 +67,44 @@
     });
 
     Array.from(selectors).forEach(selector => {
-      selector.value = value;
+      selector.innerHTML = options[value];
     });
   }
 
-  function cartoSEBQIsAdvanced () {
+  function moduleIsAdvanced () {
     const advanced = document.querySelectorAll('.badges .advanced');
     return advanced.length > 0;
   }
 
   function domReady (fn) {
-    document.addEventListener("DOMContentLoaded", fn);
-    if (document.readyState === "interactive" || document.readyState === "complete") {
+    document.addEventListener('DOMContentLoaded', fn);
+    if (document.readyState === 'interactive' || document.readyState === 'complete') {
       fn();
     }
   }
-</script>
 
-{{range $examples}}
-```sql{{.}}```
-{{end}}
+  function createCustomSelector (id) {
+    // Original source: https://codepen.io/yy/pen/vOYqYV
+    $(`.custom-select.${id}`).each(function() {
+      let template =  `<div class="${$(this).attr('class')}">`;
+      template +=  `<span class="custom-select-trigger ${id}"></span>`;
+      template += `<div class="custom-options ${id}">`;
+      $(this).find('option').each(function() {
+        template += `<span class="custom-option ${id}" data-value="${$(this).attr('value')}">${$(this).html()}</span>`;
+      });
+      template += '</div></div>';
+      $(this).wrap(`<div class="custom-select-wrapper ${id}"></div>`);
+      $(this).hide();
+      $(this).after(template);
+    });
+    $(`.custom-select-trigger.${id}`).on('click', function() {
+      $(this).parents(`.custom-select.${id}`).toggleClass('opened');
+    });
+    $(`.custom-option.${id}`).on('click', function() {
+      $(this).parents(`.custom-select.${id}`).removeClass('opened');
+      const value = $(this).data('value');
+      localStorage.setItem(localStorageKey, value);
+      updateCustomSelector(value);
+    });
+  }
+</script>
