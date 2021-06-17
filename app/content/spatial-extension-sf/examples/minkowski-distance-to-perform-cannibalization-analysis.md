@@ -1,8 +1,8 @@
 ## Minkowski distance to perform cannibalization analysis
 
-In this example we are going to see how we can use Minkowski distance to evaluate cannibalization across Starbucks stores in Los Ángeles. In this case we will consider that the ratio of cannibalization depends on the nearby stores sizes and the distance to them. As we don’t have data concerning how one store influences the others we are going to simplify this problem by using a random generated value, starbucks_size.
+In this example we are going to showcase how to use the Minkowski distance to evaluate cannibalization across Starbucks stores in Los Ángeles, assuming that the ratio of cannibalization depends on the nearby store sizes and the distance to them. As we do not have real data concerning of the store, for the sake of simplicity we are going to use a randomly generated value: `starbucks_size`.
 
-First of all we cross join de data in order to extract the different Starbucks combinations. As `ST_MINKOWSKIDISTANCE` returns a matrix with the distances between the different geometries compared we are using GET to get the position [0, 1] from the matrix.
+The first step consists of cross joining the data in order to extract the different Starbucks combinations. Then, we use `ST_MINKOWSKIDISTANCE` to compute the distances between the different geometries. Notice that since this function returns a matrix, we are using `GET` to get the position [0, 1] from this matrix.
 
 ```sql
 WITH starbucks AS
@@ -32,6 +32,6 @@ INNER JOIN business_impact t2
 ON t1.id = t2.t1_id
 ```
 
-In this example the size of the dot represents the size of the Starbuck store and the color represents how much could be cannibalize by other stores. You can appreciate at first sight how those stores that are placed in the surroundings of another big stores appear in darker color than the isolated ones.
+In the following visualization the size of the dots represent the size of the Starbucks stores and the color represents the level of cannibalization by other stores. It can be identified at first sight how those stores that are surrounded by other big stores appear in darker color than the isolated ones.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/325572b5-62d3-4062-af9f-5c5af8249bb1" title="Starbucks locations in the US aggregated in an quadkey grid of resolution 10."></iframe>

@@ -1,6 +1,6 @@
-## New suppliers offices based on Starbucks locations clusters
+## New suppliers offices based on store locations clusters
 
-In this example we are going to use points clustering to analyze where to locate ten new supplier offices in US based on Starbucks locations.
+In this example we are going to use points clustering to analyze where to locate 10 new supplier offices in US so they can best serve all Starbucks locations.
 
 ### Generating the clusters
 
@@ -22,13 +22,15 @@ SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geo
 FROM clustered_points, lateral FLATTEN(input => cluster_arr)
 ```
 
-This query takes the Starbucks samples data, gathers their geometries in order to establish clusters and then groups the different geometry clusters. In the following visualization we can easily identify the different clusters by colors.
+This query gathers the geometries of the Starbucks locations in order to establish clusters and then groups the different geometry clusters. Each of them is represented in a different colour in the following visualization.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/f5aea541-c0d8-476c-9533-dbbe99f07152" title="Starbucks locations clusters."></iframe>
 
 ### Calculating the clusters' centers
 
-Once we have split the sample of points into clusters, we can easily work with them to calculate their centers, envelopes, concave/convex hulls and other different transformations. In this particular example we are interested in finding the center of the clusters, since that is where we are going to place the offices. The Spatial Extension offers different functions for this task: `ST_CENTERMEAN`, `ST_CENTERMEDIAN` and `ST_CENTEROFMASS`. In this case let’s use `ST_CENTEROFMASS` to calculate the location of the new offices:
+Once we have split the sample of points into clusters, we can easily work with them to calculate their centers, envelopes, concave/convex hulls and other different transformations. In this particular example we are interested in finding the center of the clusters, since that is where we are going to place the offices. The Spatial Extension offers different functions for this task, for example `ST_CENTERMEAN`, `ST_CENTERMEDIAN` and `ST_CENTEROFMASS`. 
+
+In this case we are going to use `ST_CENTEROFMASS` to calculate the location of the new offices:
 
 ```sql
 WITH data AS(
