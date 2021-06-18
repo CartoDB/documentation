@@ -24,7 +24,7 @@ FROM
 ```
 
 
-This query adds two new columns to our dataset: `geom`, with the boundary of each of the H3 grid cells where there's at least one Starbucks, and `agg_total`, with the total number of locations that fall within each cell. Finally, we can visualize the result. 
+This query adds two new columns to our dataset: `geom`, representing the boundary of each of the H3 grid cells where there's at least one Starbucks, and `agg_total`, containing the total number of locations that fall within each cell. Finally, we can visualize the result. 
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/e88dc8a5-522b-4e62-8998-adbf8348174e" title="Starbucks locations in the US aggregated in an H3 grid of resolution 4."></iframe>
 
