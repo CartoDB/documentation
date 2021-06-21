@@ -1,7 +1,9 @@
+---
+layout: example
+exampleTitle: "Extrusion"
+code: "extrusion.html"
+exampleDescription: "This example shows how to apply extrusion to a layer for generating 3D visualizations."
+exampleExtraCode: ""
+exampleGithub: "https://github.com/CartoDB/documentation/blob/master/app/content/deck-gl/examples/advanced-examples/extrusion.html"
+---
 ## Extrusion
-
-This example shows how to apply extrusion to a layer for generating 3D visualizations.
-
-<iframe src="../extrusion.html" style="border: 1px solid #cfcfcf; width: 100%;height:500px" title="Extrusion"></iframe>
-
-{{<codeHighlight src="extrusion.html" lang="html">}}

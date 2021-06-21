@@ -1,7 +1,10 @@
+---
+layout: example
+exampleTitle: "Icon Layer"
+code: "icon-layer.html"
+exampleDescription: "This example shows how to use icons for visualizing point layers."
+exampleExtraCode: ""
+exampleGithub: "https://github.com/CartoDB/documentation/blob/master/app/content/deck-gl/examples/basic-examples/icon-layer.html"
+---
+
 ## Icon Layer
-
-This example shows how to use icons for visualizing point layers.
-
-<iframe src="../icon-layer.html" style="border: 1px solid #cfcfcf; width: 100%;height:500px" title="Icon Layer"></iframe>
-
-{{<codeHighlight src="icon-layer.html" lang="html">}}

@@ -1,7 +1,9 @@
+---
+layout: example
+exampleTitle: "BigQuery Tileset Layer"
+code: "bigquery-tileset-layer.html"
+exampleDescription: "This example shows how to visualize a tileset created with the CARTO Spatial Extension for BigQuery."
+exampleExtraCode: ""
+exampleGithub: "https://github.com/CartoDB/documentation/blob/master/app/content/deck-gl/examples/basic-examples/bigquery-tileset-layer.html"
+---
 ## BigQuery Tileset Layer
-
-This example shows how to visualize a tileset created with the CARTO Spatial Extension for BigQuery.
-
-<iframe src="../bigquery-tileset-layer.html" style="border: 1px solid #cfcfcf; width: 100%;height:500px" title="BigQuery Tileset Layer"></iframe>
-
-{{<codeHighlight src="bigquery-tileset-layer.html" lang="html">}}

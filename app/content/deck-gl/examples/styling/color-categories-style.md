@@ -1,7 +1,9 @@
-## Color categories style
-
-This example shows how to apply different fill colors to polygon features depending on attribute values.
-
-<iframe src="../color-categories-style.html" style="border: 1px solid #cfcfcf; width: 100%;height:500px" title="Color categories style"></iframe>
-
-{{<codeHighlight src="color-categories-style.html" lang="html">}}
+---
+layout: example
+exampleTitle: "Color Categories Style"
+code: "color-categories-style.html"
+exampleDescription: "This example shows how to apply different fill colors to polygon features depending on attribute values."
+exampleExtraCode: ""
+exampleGithub: "https://github.com/CartoDB/documentation/blob/master/app/content/deck-gl/examples/styling/color-categories-style.html"
+---
+## Color Categories Style

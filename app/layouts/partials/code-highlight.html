@@ -1,0 +1,39 @@
+{{$src := printf "%s%s" .File.Dir .Params.code}}
+{{$code := readFile ($src)}}
+{{$lang := (index (split .Params.code ".") 1)}}
+{{$isHtml := eq $lang "html"}}
+
+<div class="highlight-container" data-highlight>
+  <div class="highlight-buttons">
+    {{if $isHtml}}
+      <form method="post" action="https://jsfiddle.net/api/post/library/pure/" target="top">
+        <input type="hidden" name="wrap" value="b"/>
+        <input type="hidden" name="panel_js" value="0"/>
+        <input type="hidden" name="panel_html" value="0"/>
+        <input type="hidden" name="panel_css" value="0"/>
+        <input type="hidden" name="resources" value=""/>
+        <textarea class="hidden" name="html">{{$code}}</textarea>
+        <textarea class="hidden" name="css"></textarea>
+        <textarea class="hidden" name="js"></textarea>
+        <button data-type="fiddle" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20">
+            <defs/>
+            <path fill="#FFF" fill-rule="evenodd" d="M16.787 9.395c.01-.134.02-.267.02-.403 0-2.895-2.347-5.242-5.241-5.242-2.114 0-3.932 1.255-4.76 3.058-.437-.309-.97-.493-1.547-.493-1.479 0-2.677 1.198-2.677 2.678 0 .221.03.435.08.642-1.09.595-1.829 1.75-1.829 3.079 0 1.936 1.57 3.506 3.506 3.506H15.66c1.936 0 3.506-1.57 3.506-3.506 0-1.543-.996-2.85-2.38-3.319zm-.204 2.99c-.12 1.267-1.002 2.624-3.115 2.624-1.599 0-3.119-1.698-3.782-2.64-.002-.002-1.239-1.913-2.608-1.863-1.34.048-1.692.752-1.753 1.384-.06.63.3 1.28.877 1.578.724.371 1.626.143 2.539-.649l.896 1.037c-.883.764-1.824 1.156-2.716 1.157-.467 0-.921-.108-1.347-.327-1.077-.556-1.726-1.73-1.612-2.924.12-1.27 1.002-2.626 3.115-2.626 1.887 0 3.212 1.716 3.643 2.315.715.995 1.962 2.188 2.747 2.188 1.34 0 1.692-.753 1.753-1.384.06-.63-.3-1.28-.877-1.578-.723-.371-1.625-.143-2.538.649l-.896-1.036c1.346-1.164 2.826-1.467 4.062-.83 1.078.556 1.726 1.73 1.612 2.924z"/>
+          </svg>
+        </button>
+      </form>
+    {{end}}
+
+    <button data-type="copy">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20">
+        <defs/>
+        <g fill="none" fill-rule="evenodd">
+          <path d="M0 0h20v20H0z"/>
+          <path fill="#FFF" d="M4.167 4.166V17.5h10v1.666h-10c-.892 0-1.622-.703-1.665-1.583L2.5 17.5V4.166h1.667zM13.678.833L17.5 4.655v9.511c0 .892-.703 1.622-1.584 1.665l-.083.002H7.5c-.891 0-1.621-.703-1.665-1.584l-.002-.083V2.5c0-.89.703-1.621 1.584-1.665L7.5.833h6.178zM12.5 2.5h-5v11.666h8.334V5.833H12.5V2.5z"/>
+        </g>
+      </svg>
+    </button>
+  </div>
+
+  {{highlight $code $lang ""}}
+</div>

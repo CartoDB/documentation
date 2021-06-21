@@ -1,6 +1,8 @@
 ## measurements
 
-<div class="badge core"></div>
+<div class="badges"><div class="core"></div></div>
+
+This module contains functions that compute measurements of distance, area and angles. There are also functions to compute geometry values determined by measurements.
 
 ### ST_ANGLE
 
@@ -75,7 +77,6 @@ Calculate the Minkowski p-norm distance between two features. https://github.com
 SELECT bqcarto.measurements.ST_MINKOWSKIDISTANCE([ST_GEOGPOINT(10,10),ST_GEOGPOINT(13,10)],2);
 -- ["0,0.3333333333333333","0.3333333333333333,0"]
 ```
-
 
 ### VERSION
 

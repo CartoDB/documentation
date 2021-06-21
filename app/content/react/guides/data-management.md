@@ -30,7 +30,7 @@ The first thing you need to do is go to your CARTO dashboard and create a new OA
 
 Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauthInitialState` object. You can also modify the `scopes` property to specify what permissions you want to give the application.
 
-If you want to force authentication in your application so no unauthenticated users can access, you need to set the `forceOAuthLogin` to `true` in the initialState object within the `src/store/appSlice.js` file. When you activate this flag, the first screen for your application will be the following:
+If you want to force authentication in your application so no unauthenticated users can access, you need to set the `forceOAuthLogin` property to `true` in the initialState object within the `src/store/appSlice.js` file. When you activate this flag, the first screen for your application will be the following:
 
 ![oauth-login](/img/react/oauth-login.png 'OAuth Login')
 
