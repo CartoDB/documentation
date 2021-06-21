@@ -18,6 +18,7 @@ cascade:
         - "Computing US airports connections and routes interpolations"
         - "New suppliers offices based on store locations clusters"
         - "Analyzing store locations coverage using a Voronoi diagram"
+        - "Enrichment of catchment areas for store characterization"
     - name: "SQL Reference"
       elements:
         - "Overview"

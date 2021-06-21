@@ -115,7 +115,7 @@ apis:
     image: "auth-api.png"
   - title: "Federated Tables API"
     description: "The Federated Tables API allows you to perform live queries to a remote database."
-    url: "https://carto.com/developers/federated-tables"
+    url: "https://carto.com/developers/federated-tables-api/"
     image: "federated-tables-api.png"
 
 deprecated:
