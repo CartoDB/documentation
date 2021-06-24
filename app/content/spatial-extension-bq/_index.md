@@ -18,6 +18,7 @@ cascade:
     - name: "Examples"
       elements:
         - "Creating simple and aggregation tilesets"
+        - "Creating simple tilesets without specifying parameters"
         - "An H3 grid of Starbucks locations and simple cannibalization analysis"
         - "Enriching a quadkey grid with population data from the Data Observatory"
         - "New police stations based on Chicago crime locations clusters"
