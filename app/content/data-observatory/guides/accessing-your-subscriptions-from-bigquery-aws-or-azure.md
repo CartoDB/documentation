@@ -65,7 +65,7 @@ Alternatively, you can access this option directly from the dataset page.
 <img src="/img/data-observatory/access-in-aws-menu-2.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
 </div>
 
-The following screen will be shown, where you can confirm your request by clickin on the _Request extended license_ button. You will receive a confirmation email.
+The following screen will be shown, where you can confirm your request by clickin on the _Request access_ button. You will receive a confirmation email.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/access-in-aws-request.png" alt="Access in BigQuery from the Dataset page." style="width:90%">

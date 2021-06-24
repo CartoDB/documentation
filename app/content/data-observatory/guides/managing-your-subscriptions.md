@@ -18,6 +18,10 @@ Or you can simply retrieve the ID needed to [access the dataset](https://carto.c
 
 ![Access Data Observatory dataset with CARTOframes](/img/data-observatory/do-slug-id-cartoframes.png)
 
+{{% bannerNote type="note" title="note" %}}
+Additionally, CARTOframes offers Data Enrichment methods for augmenting both point-based and polygon-based data with variables from datasets licensed via the Data Observatory. The results of the enrichment process can then be uploaded back into a user’s CARTO account as a table if users want to work with that enriched data in Builder. Learn more in the [Data Enrichment guide](https://carto.com/developers/cartoframes/guides/Data-Observatory/#data-enrichment).
+{{%/ bannerNote %}}
+
 ### Unsubscribing
 
 You can unsubscribe from a public dataset by accessing its detail page and clicking on the *Unsubscribe* button and confirming your decision. Premium data subscriptions expire as per the terms defined in the acquired premium license.
@@ -27,6 +31,3 @@ You can unsubscribe from a public dataset by accessing its detail page and click
 ![Confirm unsubscription from a Data Observatory dataset](/img/data-observatory/do-dataset-unsubscribe-confirm.png)
 
 
-{{% bannerNote type="note" title="note" %}}
-Additionally, CARTOframes offers Data Enrichment methods for augmenting both point-based and polygon-based data with variables from datasets licensed via the Data Observatory. The results of the enrichment process can then be uploaded back into a user’s CARTO account as a table if users want to work with that enriched data in Builder. Learn more in the [Data Enrichment guide](https://carto.com/developers/cartoframes/guides/Data-Observatory/#data-enrichment).
-{{%/ bannerNote %}}

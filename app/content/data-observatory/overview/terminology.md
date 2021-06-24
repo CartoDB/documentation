@@ -1,6 +1,6 @@
 ## Terminology
 
-The Data Observatory is a spatial data platform enabling CARTO users to access and enrich their own data with thousands of external spatial datasets from curated public and premium sources. In this section we will describe the terminology surrounding the Data Observatory to get help you better navigate the documentation pages.
+The Data Observatory is a spatial data platform enabling CARTO users to access and enrich their own data with thousands of external spatial datasets from curated public and premium sources. In this section we will describe the terminology surrounding the Data Observatory to help you better navigate these documentation pages.
 
 ### Dataset
 
@@ -14,7 +14,7 @@ A dataset is composed of two separate tables: the Data table and the Geography t
 
 ![Data Observatory tables](/img/data-observatory/do_data_geography_tables.png)
 
-This operation is most of the times managed automatically by CARTO interfaces (eg. Builder, CARTOframes, etc.); but it should be carried out manually by the user when a Dataset is accessed directly via the user's data warehouse connected to CARTO.
+ Most of the times this operation is managed automatically by CARTO interfaces (eg. Builder, CARTOframes, etc.); but it should be carried out manually by the user [when a Dataset is accessed directly via the user's data warehouse connected to CARTO](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure).
 
 #### Data vs Geography tables
 
@@ -22,7 +22,7 @@ This operation is most of the times managed automatically by CARTO interfaces (e
 
 * The Geography table contains the data for each unique geometry (e.g. point, polygon, line).
 
-As mentioned above, the data and geography tables can be joined by the `geoid`. This operation is most of the times managed automatically by CARTO interfaces (eg. Builder, CARTOframes, etc.), but it should be carried out manually by the user when a Dataset is accessed directly via the user's data warehouse connected to CARTO.
+As mentioned above, the data and geography tables can be joined by the `geoid`. Most of the times this operation is managed automatically by CARTO interfaces (eg. Builder, CARTOframes, etc.); but it should be carried out manually by the user [when a Dataset is accessed directly via the user's data warehouse connected to CARTO](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure).
 
 
 
@@ -37,16 +37,16 @@ Any variable in a Dataset has its own unique identifier, the Variable ID, which 
 
 ### Premium Datasets
 
-It is a specific subset of the Datasets available via the Data Observatory which require the purchasing of a specific license so the user can access and work with the data. These premium datasets are normally products from data providers, such as Mastercard, Experian, SafeGraph, etc.
+It is a specific subset of the Datasets available via the Data Observatory which require the purchasing of a specific license so the user can access and work with the data. These premium datasets are normally products from third-party data providers, such as Mastercard, Experian, SafeGraph, etc.
 
 #### Extended license
 
-For some Premium datasets, in order for the user to be able to access the data outside the CARTO platform, such as within the data warehouses environment (e.g. BigQuery, Snowflake, etc.), it is necessary to have an *extended license*. This license grants the user the rights to export and use the subscribed dataset in any other platform beyond CARTO. This type of license usually comes with a premium over the license with CARTO-only access.
+For some Premium datasets, [in order for the user to be able to access the data outside the CARTO platform](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure)., such as within the data warehouses environment (e.g. BigQuery, Snowflake, etc.), it is necessary to have an *extended license*. This license grants the user the rights to export and use the subscribed dataset in any other platform beyond CARTO. This type of license usually comes with a premium over the license with CARTO-only access.
 
 
 ### Public Datasets
 
-The Public Datasets available via the Data Observatory are data products, usually from public sources. Anyuser with the Data Observatory enabled in their CARTO account can subscribe to these datasets at no additional cost.
+The Public Datasets available via the Data Observatory are data products, usually from public sources. Any user with the Data Observatory enabled in their CARTO account can subscribe to these datasets at no additional cost.
 
 
 ### Subscriptions
@@ -64,9 +64,9 @@ You can check the status of your subscriptions in the Subscription page of the C
 
 ### Spatial Data Catalog
 
-The Spatial Data Catalog is a listing of every dataset that is available for subscription via CARTO’s Data Observatory, including both public and premium data. In the Catalog you'll find, among others, a description of every dataset, its provider, the available countries with data coverage, the spatial and temporal aggregations of the data, the update frequency, the data dictionary (layout), a 10-row sample of the dataset and a preview map.
+The Spatial Data Catalog is a listing of every dataset that is available for subscription via CARTO’s Data Observatory, including both public and premium data. In the Catalog you will find, among others, a description of every dataset, its provider, the available countries with data coverage, the spatial and temporal aggregations of the data, the update frequency, the data dictionary (layout), a 10-row sample of the dataset and a preview map.
 
-You'll find the Spatial Data Catalog in the Data section of your CARTO dashboard. From there, you can subscribe to public datasets, request subscriptions to premium datasets and access data samples. Please visit the Guides section for more details on how to perform each of these actions.
+You will find the Spatial Data Catalog in the Data section of your CARTO dashboard. From there, you can subscribe to public datasets, request subscriptions to premium datasets and access data samples. Please visit the [Guides section](../../guides) for more details on how to perform each of these actions.
 
 ![Spatial Data Catalog](/img/data-observatory/spatial-data-catalog.png)
 
@@ -91,7 +91,7 @@ Every dataset of the Data Observatory belongs to a specific category. These cate
 
 * **Behavorial** -- Also called geosocial, these datasets are built using data from different social networks and defines audiences and segments of people by their interests and likeness. That can help companies target the right audience. 
 
-* **Derived data** -- Datasets created from different sources, curated  delivered in a common geographic support system curated by CARTO’s data scientists and providing an added value to the users. 
+* **Derived data** -- Datasets created from different sources, delivered in a common geographic support system curated by CARTO’s data scientists and providing an added value to the users. 
 
 * **Covid-19** -- CARTO is trying to help governments, administrations, and businesses to make more informed decisions when adapting to the new status quo and optimising resources for the fastest possible recovery. This category allows all CARTO clients to access covid-19 related data to help overcome its impact. 
 
