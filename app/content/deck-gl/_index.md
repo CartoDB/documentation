@@ -18,6 +18,9 @@ cascade:
             - "CARTO Basemap"
             - "Interactivity"
             - "Icon Layer"
+        - name: "Cloud Native"
+          elements:
+            - "Hello World Cloud Native"
         - name: "Styling"
           elements:
             - "Color Bins Style"

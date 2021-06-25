@@ -4,13 +4,13 @@ This guide explains how to work with layers in a CARTO for React application.
 
 ### Layer types
 
-CARTO for React uses deck.gl for visualization, so you can use any [deck.gl layer](https://deck.gl/docs/api-reference/layers), not only the specific CARTO submodule layers ([CartoSQLLayer](https://deck.gl/docs/api-reference/carto/carto-sql-layer) and [CartoBQTilerLayer](https://deck.gl/docs/api-reference/carto/carto-bqtiler-layer)). 
+CARTO for React uses deck.gl for visualization, so you can use any [deck.gl layer](https://deck.gl/docs/api-reference/layers), not only the specific CARTO submodule layers ([CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer), [CartoSQLLayer](https://deck.gl/docs/api-reference/carto/carto-sql-layer) and [CartoBQTilerLayer](https://deck.gl/docs/api-reference/carto/carto-bqtiler-layer)). 
 
-If you use the code generator for adding your layers (see [below](#creating-a-layer)), it will create one of the specific CARTO submodule layers depending on the associated source. 
+If you use the code generator for adding your layers (see [below](#creating-a-layer)), it will always create a `CartoLayer` because it supports all the different data sources and the other layers will be removed in a future deck.gl version. 
 
 ### Layer sources
 
-If you are working with a CARTO for deck.gl layer, you can associate it with a source (CARTO dataset or BigQuery tileset). The source provides `data` and, optionally, `credentials` properties that are used by CARTO for deck.gl to retrieve the vector tiles.
+If you are working with a CARTO for deck.gl layer, you can associate it with a source (CARTO dataset or BigQuery tileset). The source provides `data`, `type`, `connection` and, optionally, `credentials` properties that are used by CARTO for deck.gl to retrieve the vector tiles.
 
 If you need to use a different deck.gl layer (i.e. TripsLayer), you can't associate the layer with a source and you need to take care of providing the data for the layer in the expected format.
 
@@ -26,7 +26,7 @@ yarn hygen layer new
 
 When you execute this command, you will need to select the name and source for your layer and you need to decide if you want to attach the layer to a view, so the layer is displayed in the map when the view is selected and is removed when the user switches to another view.
 
-It creates a new file that exports a function with the name of the layer. This functions returns a CARTO for deck.gl layer with default styling properties. The function retrieves the associated source from the store and use the source `data` and `credentials` properties.
+It creates a new file that exports a function with the name of the layer. This functions returns a CARTO for deck.gl layer with default styling properties. The function retrieves the associated source from the store and use the source `type`, `connection`, `data` and `credentials` properties.
 
 If we introduce `Stores` as the name in the code generator, a file named `StoresLayer.js` will be created in the `src/components/layers` folder with the following content:
 
@@ -44,8 +44,10 @@ export default function StoresLayer() {
 
   if (storesLayer && source) {
     // if the layer and the source are defined in the store
-    return new CartoSQLLayer({
+    return new CartoLayer({
       id: STORES_LAYER_ID,
+      type: source.type,
+      connection: source.connection,
       data: source.data,
       credentials: source.credentials,
       getFillColor: [241, 109, 122],
@@ -122,7 +124,7 @@ const cartoLayerProps = useCartoLayerProps(source, 'uniqueIdProperty');
 If you need to override any of the properties configured by the hook, you must include them in the layer constructor after `...cartoLayerProps`. For instance, if you want to add your own [`updateTriggers`](https://deck.gl/docs/api-reference/core/layer#updatetriggers) property, you could add the following code to maintain the current behaviour and add your own update trigger for a given accessor (`getFillColor`, `getRadius`...):
 
 ```javascript
-return new CartoSQLLayer({
+return new CartoLayer({
   ...,
   ...cartoLayerProps,
   updateTriggers: { // below the cartoLayerProps hook, otherwise it will be overwritten
