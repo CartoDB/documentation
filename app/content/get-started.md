@@ -279,19 +279,19 @@ CARTO for React is our product for building faster and better spatial apps. Kick
 
 In this guide we will show you how easy it is to create a great looking spatial app from scratch to visualize a dataset and filter it with an interactive widget.
 
-ToDo: include screenshot of final application here  
+![Final app](/img/get-started/dev-final-app.png)  
 
 {{%/ tutorialStep %}}
 
 {{% tutorialStep stepName="Kickstart your app"%}}
 
-CARTO for React provides templates for Create React App. To create a new app in a folder called `my-app` using the skeleton (blank) template, you need to execute the following command in your terminal (requires Node.js installed):
+CARTO for React provides templates for Create React App. To create a new app in a folder called `my-app` using the skeleton (blank) template for CARTO 3.0 (our fully cloud native platform), you need to execute the following command in your terminal (requires Node.js):
 
 ```shell
-~ npx create-react-app my-app --template @carto
+~ npx create-react-app my-app --template @carto/cloud-native
 ```
 
-Then, if you have the yarn package manager installed, you can start a development server by changing the current directory and the following yarn command:
+Then, if you have the yarn package manager installed, you can start a development server by changing the current directory and executing the following command (requires the yarn package manager):
 
 ```shell
 ~ cd my-app
@@ -300,15 +300,27 @@ Then, if you have the yarn package manager installed, you can start a developmen
 
 You should see the following app in your browser with a default header, a sidebar and an area dedicated to the map:
 
-ToDo: include screenshot of blank app here  
+![Blank app](/img/get-started/dev-blank-app.png)  
 
 {{%/ tutorialStep %}}
 
 {{% tutorialStep stepName="Adding a layer"%}}
 
-Now we are going to add a layer to visualize data from a source that will be displayed in a new view. These are the three main components for working with CARTO for React and we provide a code generation tool based on Hygen to make it really easy to create them.
+Now we are going to add a layer to visualize data from a data source that will be displayed in a new view. These are the three main components for working with CARTO for React and we provide a code generation tool based on Hygen to make it really easy to create them.
 
-We first start by creating a new view with "Stores" as the name and including the link in the header:
+The data source is a dataset coming from a BigQuery table named `retail_stores`. For this tutorial, we are using a public token that provides access to the BigQuery table but you can also use OAuth for providing authenticated access. This means you also need to remove the `oauth` object from the initial state (or comment it out).
+
+First you need to edit the `src/store/initialStateSlice.js` file and add the public access token to the credentials object:
+
+```javascript
+credentials: {
+  apiVersion: API_VERSIONS.V3,
+  apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfanF4am02aXciLCJqdGkiOiJiYzVkZjkyNyJ9.ax8NFyL270Yl1--wEfyGkOxhvYtsXTvwdEL-C2sRJYo',
+},
+```
+
+Then you create a new view named "Stores" and include the link in the header:
 
 ```shell
 ~ yarn hygen view new
@@ -318,17 +330,18 @@ $ hygen view new
 ✔ Do you want a link in the menu? (y/N) · true
 ```
 
-Then we create a source pointing to a dataset in the CARTO `public` account:
+You can now create a source pointing to the BigQuery table:
 
 ```shell
 ~ yarn hygen source new
 $ hygen source new
 ✔ Name: · Stores
-✔ Choose type · SQL dataset
-✔ Type a query · SELECT * FROM retail_stores
+✔ Enter a valid connection name · cloud-native-demo-app
+✔ Choose type · table
+✔ Type a query · cartodb-on-gcp-pm-team.demo.retail_stores
 ```
 
-Finally we create a layer using the source and view created in the previous steps:
+Finally you can create a layer using the source and view created in the previous steps:
 
 ```shell
 ~ yarn hygen layer new
@@ -340,7 +353,7 @@ Finally we create a layer using the source and view created in the previous step
 
 If we look at our browser, we should see a new link "Stores" in the header. If we click on this link, the stores layer will be displayed on top of the basemap:
 
-ToDo: include screenshot of app with layer here 
+![Add layer](/img/get-started/dev-add-layer.png)  
 
 {{%/ tutorialStep %}}
 
@@ -348,7 +361,14 @@ ToDo: include screenshot of app with layer here
 
 Now we are going to add a widget to show the revenue by store type for stores in the current viewport. To do that, we are going to use the Category widget.
 
-We need to open the `src/components/views/Stores.js` folder, remove the "Hello World" text and add the following JSX code for the widget:
+We need to open the `src/components/views/Stores.js` folder and import the component and enumeration that we will use in the widget definition:
+
+```javascript
+import { AggregationTypes } from '@carto/react-core';
+import { CategoryWidget } from '@carto/react-widgets';
+```
+
+Then we need  to remove the "Hello World" `<Grid>` component and add the following JSX code for the widget:
 
 ```javascript
 <CategoryWidget
@@ -365,13 +385,13 @@ In addition to giving the widget a unique ID and a title, we link it with the la
 
 If you go to your browser, you will see the widget in the sidebar and if you click on any of the store types, you will see how the map is filtered.
 
-ToDo: include final screenshot of app here 
+![Add widget](/img/get-started/dev-final-app.png)  
 
 {{%/ tutorialStep %}}
 
 {{% tutorialStep stepName="Additional resources"%}}
 
-In this documentation center you will find comprehensive [documentation](/react) on CARTO for React. For visualization CARTO for React uses our [module](/deck-gl) for deck.gl. You can also use deck.gl with other frontend frameworks like [Angular](/deck-gl/guides/angular-integration) or [Vue.js](/deck-gl/guides/vue-integration).
+In this documentation center you will find comprehensive [documentation](/react) on CARTO for React. For visualization CARTO for React uses our [module](/deck-gl) for deck.gl. You can also use deck.gl with other frontend frameworks like [Angular](/angular) or [Vue.js](/vue).
 
 CARTO is an open ecosystem that does not force you to use a specific technology or library. Please read the following guides if you want to work with CARTO and [Google Maps](/google-maps), [Mapbox](/mapbox-gl) or [Amazon Location](/amazon-location).
 
