@@ -19,18 +19,20 @@ The integration of tilesets with custom web map applications is also possible wi
 
 Learn how to create, visualize and share your first tileset by following the [Tilesets guides](../../guides/tilesets).
 
-### Tileset procedures
+### Tileset types and procedures
 
-CARTO BigQuery Tiler enables the creation of two types of tilesets through [stored procedures](https://cloud.google.com/bigquery/docs/reference/standard-sql/scripting): *simple* and *aggregation* tilesets. For this, we provide the following set of procedures. We recommend their use depending on the nature of the input data:
+CARTO BigQuery Tiler enables the creation of two types of tilesets through [stored procedures](https://cloud.google.com/bigquery/docs/reference/standard-sql/scripting): *simple* and *aggregation* tilesets. _Simple_ tilesets encode all the input features as is, while _aggregation_ tilesets encode aggregations over the input features. Therefore, you should use _simple_ tilesets for visualizing a dataset of world rivers, but use an _aggregation_ tileset to visualize the concentration of trees in New York. 
 
-1. `tiler.CREATE_SIMPLE_TILESET`
-    * Use this procedure if you have a dataset with any geography type (point, line, or polygon) and you want to see it at an appropriate zoom level.
+We provide the following set of procedures to create tilesets:
+
+1. `tiler.CREATE_TILESET`
+    * This procedure creates a _simple_ tileset. You should use it if you have a dataset with any geography type (point, line, or polygon) and you want to visualize it at an appropriate zoom level.
     * The geographies will be represented exactly as stored in BigQuery, which means that if they are too small to be visible at a certain zoom level they won't be included in the tiles at that zoom level.
     * The values associated with each feature are the same as the ones available in the source dataset.
-  
-2. `tiler.CREATE_TILESET`
-   * Use this procedure if you have a dataset with any geography type (point, line, or polygon) and you do not want to concern about the right parameters to be used. If required, you can also use the `options` parameter to include some of them or simply leave it as `null` so the procedure will choose them for you.
-   * In terms of functionality, this procedure behaves in the same way as `tiler.CREATE_SIMPLE_TILESET`.
+
+2. `tiler.CREATE_SIMPLE_TILESET`
+    * This procedure is the older version of `tiler.CREATE_TILESET` and you can achieve exactly the same results with either of these procedures. However, `tiler.CREATE_TILESET` is capable of finding the right configuration for your input data, whereas this procedure requires you to set them yourself. 
+    * Please use this procedure _only_ if you need a really specific configuration for your tileset or need to tweak a particular option that it's not available in `tiler.CREATE_TILESET`.
 
 3. `tiler.CREATE_POINT_AGGREGATION_TILESET`
     * Use this procedure if you have a point dataset (or anything that can be converted to points, such as polygon centroids) and you want to see it aggregated.
