@@ -23,7 +23,7 @@ cascade:
         - "New police stations based on Chicago crime locations clusters"
         - "Analyzing weather stations coverage using a Voronoi diagram"
         - "A NYC subway connection graph using Delaunay triangulation"
-        - "Computing US Airports connections and routes interpolations"
+        - "Computing US airports connections and routes interpolations"
         - "Identifying earthquake-prone areas in the state of California"
         - "Bikeshare stations within a San Francisco buffer"
         - "Census areas in the UK within tiles of multiple resolutions"

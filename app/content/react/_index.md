@@ -8,7 +8,8 @@ cascade:
     - name: "Guides"
       elements:
         - "Getting Started"
-        - "Layers and Widgets"
+        - "Layers"
+        - "Widgets"
         - "Data Management"
         - "Basemaps"
         - "Look and Feel"
