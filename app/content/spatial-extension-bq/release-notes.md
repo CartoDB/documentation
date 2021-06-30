@@ -1,5 +1,21 @@
 ## Release notes
 
+### June 23, 2021
+
+#### Module data v1.0.0-beta.1
+
+Feature
+- ADD DATAOBS_SUBSCRIPTIONS procedure.
+- ADD DATAOBS_SUBSCRIPTION_VARIABLES procedure.
+
+Changed
+- Change spatial catalog structure using two tables.
+- Improve enrichment procedures:
+  - Use public geographies instead of subscription views
+  - Remove unnecessary variables from ENRICH_POLYGONS_WITH_MEASURES
+  - Make input_id_column always mandatory
+  - Add input_area consistently
+
 ### June 2, 2021
 
 #### Module data v1.0.0-alpha.1
