@@ -4,11 +4,9 @@ cascade:
   description: "Build applications using CARTO & deck.gl advanced framework for data visualization"
   icon: "/img/icons/carto-deck.png"
   repoUrl: https://github.com/visgl/deck.gl/tree/master/modules/carto
+  extra_sections:
+    - "Using the CartoLayer"
   folders:
-    - name: "Guides"
-      elements:
-        - "Getting Started"
-        - "Style Language"
     - name: "Examples"
       folders:
         - name: "Basic examples"
@@ -42,5 +40,6 @@ cascade:
             - "Extrusion"
             - "Globe View"
             - "Lighting"
-            - "Trips Layer"
+            - "Trips Layer" 
+    - name: "Release notes"
 ---
