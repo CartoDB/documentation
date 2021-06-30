@@ -32,12 +32,10 @@ As a result of the enrichment, each point will be associated with the data assig
 **Output** 
 The output table will contain all the input columns provided in the `input_query` and one column for each variable in `variables` named after its corresponding slug. 
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POINTS(
+CALL bqcarto.data.DATAOBS_ENRICH_POINTS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
@@ -79,12 +77,10 @@ Another field will contain a parameter indicating the type (2, 1 or 0) of this m
 
 The output table will contain all the input columns provided in the `input_query` and three columns for each variable in `variables`: one with the value, named after its corresponding slug, another one with the corresponding measure (area or length), with the same name and a `measure` suffix, and finally another one with the type of measure with a `measure_type` suffix. There are three possible types of measures: 2 indicates an area measured in square meters; 1 a length in meters, and 0 corresponds to a null measure, which is always the case when enriching with a points dataset.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(
+CALL bqcarto.data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
@@ -126,12 +122,10 @@ For each input polygon, the data of all intersecting areas is aggregated using t
 
 The output table will contain all the input columns provided in the `input_query` and one column for each variable in `variables`, named after its corresponding slug and including a prefix indicating the aggregation method used.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(
+CALL bqcarto.data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(
    R'''
    SELECT id, polygon FROM `my-project.my-dataset.my-table`
    ''',
@@ -153,7 +147,7 @@ data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(input_query, input_id_column, input_g
 
 **Description**
 
-This procedure enriches a query containing geographic polygons with data from the Data Observatory. The user must be subscribed to all the datasets necessary for the enrichment.
+This procedure enriches a query containing geographic polygons with data from the Data Observatory. The user must be subscribed to all the datasets necessary for the enrichment. 
 
 As a result of the enrichment, each polygon will be associated with the data assigned spatially to areas that intersect with each polygon.
 
@@ -166,7 +160,7 @@ The values of all intersecting areas are not aggregated so each input row can ap
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `variables`: `ARRAY<STRING>` of slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
-* `subscriptions_project`: `STRING` name of the BigQuery project where the Data Observatory subscriptions of the user are stored.
+* `subscriptions_project`: `STRING` name of the BigQuery project where the Data Observatory subscriptions of the user are stored. 
 * `subscriptions_dataset`: `STRING` name of the BigQuery dataset where the Data Observatory subscriptions of the user are stored.
 
 **Output**
@@ -178,12 +172,10 @@ The output table will contain all the input columns provided in the `input_query
 
 Moreover, another column named `input_area` will be added containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(
+CALL bqcarto.data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(
    R'''
    SELECT id, polygon FROM `my-project.my-dataset.my-table`
    ''',
@@ -196,74 +188,6 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: id, geom, population_93405ad7, population_93405ad7_intersection_measure, population_93405ad7_total_measure, population_93405ad7_measure_type, input_area
-```
-
-### DATAOBS_SUBSCRIPTIONS
-
-{{% bannerNote type="code" %}}
-data.DATAOBS_SUBSCRIPTIONS(subscriptions_project STRING, subscriptions_dataset STRING, filters STRING)
-{{%/ bannerNote %}}
-
-**Description**
-
-When calling this procedure, the result shows a list of the DO subscriptions available
-
-* `subscriptions_project`: `STRING` name of the BigQuery project where the Data Observatory subscriptions of the user are stored.
-* `subscriptions_dataset`: `STRING` name of the BigQuery dataset where the Data Observatory subscriptions of the user are stored.
-* `filters`: `STRING` SQL expression to filter the results, e.g. `'category="Housing"'`.
-  And empty string `''` or `NULL` can be used to omit the filtering.
-
-**Output**
-
-The result is a table with these columns:
-* `dataset_slug` Internal identifier of the DO dataset.
-* `dataset_name` name of the DO dataset.
-* `dataset_country` name of the country the dataset belongs to.
-* `dataset_category` name of the dataset category.
-* `dataset_provider` name of the dataset provider.
-* `dataset_version` version of the dataset.
-* `table` name of the user BigQuery subscription table to access the dataset.
-* `associated_geography` geography associated with the dataset (NULL if category is `Geography` meanint the dataset itself is a geography); contains a subscription view name if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CALL carto-st.data.DATAOBS_SUBSCRIPTIONS('do-myorg-de4a1b21c14326c53184', 'do_us_myuser_3a21c14322b214326', '');
-```
-
-### DATAOBS_SUBSCRIPTIONS
-
-{{% bannerNote type="code" %}}
-data.DATAOBS_SUBSCRIPTION_VARIABLES(subscriptions_project STRING, subscriptions_dataset STRING, filters STRING)
-{{%/ bannerNote %}}
-
-**Description**
-
-When calling this procedure, the result shows a list of the DO subscriptions and variables available.
-
-* `subscriptions_project`: `STRING` name of the BigQuery project where the Data Observatory subscriptions of the user are stored.
-* `subscriptions_dataset`: `STRING` name of the BigQuery dataset where the Data Observatory subscriptions of the user are stored.
-* `filters`: `STRING` SQL expression to filter the results, e.g. `'type="STRING"'`.
-  And empty string `''` or `NULL` can be used to omit the filtering.
-
-**Output**
-
-The result is a table with one row per variable and these columns:
-* `variable_slug` unique identifier of the variable. This can be used for enrichment.
-* `variable_name` column name of the variable.
-* `variable_description` description of the variable.
-* `variable_type` type of the variable column.
-* `variable_aggregation` default aggregation method for the variable.
-* `dataset_slug` identifier of the dataset the variable belongs to.
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CALL carto-st.data.DATAOBS_SUBSCRIPTION_VARIABLES('do-myorg-de4a1b21c14326c53184','do_us_myuser_3a21c14322b214326','');
 ```
 
 ### ENRICH_POINTS
@@ -290,12 +214,10 @@ As a result of the enrichment, each point will be associated with the data assig
 
 The output table will contain all the input columns provided in the `input_query` and one column for each of the data columns provided in the `data_query` (the result of the enrichment).
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.data.ENRICH_POINTS(
+SELECT bqcarto.data.ENRICH_POINTS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -338,12 +260,10 @@ The output table will contain all the input columns provided in the `input_query
   + 1 if the enrichment geography is a line. In this case `total_measure` is in meters.
   + 0 if the enrichment geography is a point. In this case `total_measure` is 0.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.data.ENRICH_POINTS_WITH_MEASURES(
+SELECT bqcarto.data.ENRICH_POINTS_WITH_MEASURES(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -387,12 +307,10 @@ For each input polygon, the data of all intersecting areas is aggregated using t
 
 The output table will contain all the input columns provided in the `input_query` and one column for each variable in `variables`, named with a prefix indicating the aggregation method used.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.data.ENRICH_POLYGONS_WITH_AGGREGATION(
+SELECT bqcarto.data.ENRICH_POLYGONS_WITH_AGGREGATION(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -411,7 +329,7 @@ SELECT carto-st.data.ENRICH_POLYGONS_WITH_AGGREGATION(
 ### ENRICH_POLYGONS_WITH_MEASURES
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POLYGONS_WITH_MEASURES(input_query, input_id_column, input_geography_column, data_query, data_geography_column, output))
+data.ENRICH_POLYGONS_WITH_MEASURES(input_query, input_id_column, input_geography_column, data_query, data_geography_column, variables, output))
 {{%/ bannerNote %}}
 
 **Description**
@@ -427,24 +345,20 @@ The values of all intersecting areas are not aggregated so each input row can ap
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
+* `variables`: `ARRAY<STRING>` Columns from the `data_query` that will be used to enrich the input polygons.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
 
 **Output**
 
-The output table will contain all the input columns provided in the `input_query`, the enrichment columns (all columns
-from the data query except the geography) and three additional columns:
+The output table will contain all the input columns provided in the `input_query` and three columns for each variable in `variables`:
 * `intersection_measure`: measure (area or length) of the intersection between the input polygons and the enrichment features.
-* `total_measure`: total measure (area or length) of the enrichment feature.
+* `total_measure`: total measure (area or length) of the enrichment feature. 
 * `measure_type`: type of measure: 2 for areas in square meters, 1 for lengths in meters, 0 for points.
 
-Moreover, another column named `input_area` will be added containing the area of the input polygon in square meters.
-
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.data.ENRICH_POLYGONS_WITH_MEASURES(
+SELECT bqcarto.data.ENRICH_POLYGONS_WITH_MEASURES(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -453,6 +367,7 @@ SELECT carto-st.data.ENRICH_POLYGONS_WITH_MEASURES(
    R'''
    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
    ''',
+   ['var1', 'var2'],
    ['`my-project.my-dataset.my-enriched-table`']
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
@@ -473,11 +388,9 @@ Returns the current version of the data module.
 
 `STRING`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.data.VERSION();
--- 1.0.0-beta.1
+SELECT bqcarto.data.VERSION();
+-- 1.0.0-alpha.1
 ```

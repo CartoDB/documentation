@@ -22,12 +22,10 @@ Returns the placekey equivalent to the given H3 index.
 
 `STRING`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.placekey.H3_ASPLACEKEY('847b59dffffffff');
+SELECT bqcarto.placekey.H3_ASPLACEKEY('847b59dffffffff');
 -- @ff7-swh-m49
 ```
 
@@ -47,22 +45,20 @@ Returns a boolean value `true` when the given string represents a valid Placekey
 
 `BOOLEAN`
 
-{{% customSelector %}}
 **Examples**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.placekey.ISVALID('@ff7-swh-m49');
+SELECT bqcarto.placekey.ISVALID('@ff7-swh-m49');
 -- true
 ```
 
 ```sql
-SELECT carto-os.placekey.ISVALID('ff7-swh-m49');
+SELECT bqcarto.placekey.ISVALID('ff7-swh-m49');
 -- true
 ```
 
 ```sql
-SELECT carto-os.placekey.ISVALID('x');
+SELECT bqcarto.placekey.ISVALID('x');
 -- false
 ```
 
@@ -82,12 +78,10 @@ Returns the H3 index equivalent to the given placekey.
 
 `STRING`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.placekey.PLACEKEY_ASH3('@ff7-swh-m49');
+SELECT bqcarto.placekey.PLACEKEY_ASH3('@ff7-swh-m49');
 -- 8a7b59dffffffff
 ```
 
@@ -105,10 +99,8 @@ Returns the current version of the placekey module.
 
 `STRING`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.placekey.VERSION();
+SELECT bqcarto.placekey.VERSION();
 -- 1.0.1

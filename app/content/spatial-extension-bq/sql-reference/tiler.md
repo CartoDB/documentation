@@ -39,12 +39,10 @@ Generates a point aggregation tileset.
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. In Point Aggregation Tilesets we have two kinds of `properties`: the main ones, `"properties"`, which are the result of an aggregate function, and `"single_point_properties"`, which are properties that are only applied when there is a single point in the cell, therefore, they are columns from the source data points themselves, not an aggregation.<br/><br/>Each main `property` is defined by its name, type (Number, Boolean or String) and formula (any formula that uses an [aggregate function]((https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#aggregate_functions)) supported by BigQuery and returns the expected type) to generate the properties from all the values of the points that fall under the cell. Only name and type are necessary for `"single_point_properties"`. Check out the examples included below. |
 
-{{% customSelector %}}
 **Examples**
-{{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_POINT_AGGREGATION_TILESET(
+CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
     SELECT ST_CENTROID(geometry) as geom
     FROM `bigquery-public-data.geo_openstreetmap.planet_features`
@@ -137,12 +135,10 @@ zoom_max_column is the column that each row could have to modify its end zoom le
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
 
-{{% customSelector %}}
 **Examples**
-{{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_SIMPLE_TILESET(
+CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -215,11 +211,9 @@ Returns the current version of the tiler module.
 
 `STRING`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.tiler.VERSION();
+SELECT bqcarto.tiler.VERSION();
 -- 1.11.0
 ```
