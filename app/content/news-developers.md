@@ -1,3 +1,18 @@
+---
+title: Developer News
+description: "CARTO for Developers Latest News"
+tocName: "Developer News"
+type: single-page
+---
+
+###### New feature
+
+##### 2021-06-29
+
+The Spatial Extension is packed with functions and procedures to perform geospatial analysis through expressive and simple SQL, all natively within the data warehouse environment. The core layer of the Spatial Extension, which enhances the built-in GIS capabilities of the cloud data warehouses, is open source and freely available on [GitHub](https://github.com/CartoDB/carto-spatial-extension). 
+<video autoplay="" loop="" muted=""> <source src="http://localhost:1313/img/news-developers/bigquery-se-core-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+For further information check the [blog post](https://carto.com/blog/enhancing-geospatial-in-bigquery-with-carto-spatial-extension/) and the [documentation](https://docs.carto.com/spatial-extension-bq/).
+
 ###### New Release
 
 ##### 2021-06-26
