@@ -1,3 +1,7 @@
+/**
+ * DEPRECATED: new component aside-menu
+ */
+
 var sidebar = document.querySelector(".js-toc-sidebar");
 var sidebarContainer =
   sidebar && sidebar.querySelector(".js-toc-sidebar-container");

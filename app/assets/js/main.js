@@ -1,5 +1,4 @@
 require("./navbar");
-// require("./sidebar");
 require("./aside-menu");
 require("./dropdown");
 require("./floating-panel");
