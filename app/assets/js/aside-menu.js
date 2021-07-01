@@ -29,8 +29,8 @@ function onResize() {
 function setDesktop() {
   tocContainer.setAttribute("data-click-outside", false);
   tocContainer.classList.remove("dropdown", "hide");
-  removeDropdownListeners(tocContainer);
   tocLinks.classList.remove("dropdown-options", "hide");
+  removeDropdownListeners(tocContainer);
   titleDesktop.display = "initial";
   titleDesktop.hidden = false;
   titleMobile.display = "none";
@@ -49,17 +49,22 @@ function setMobile() {
 }
 
 function addClickOutside() {
-  document.addEventListener("click", function (event) {
-    var isClickInside = tocContainer.contains(event.target);
-
-    if (!isClickInside && !tocContainer.classList.contains('hide')) {
-      toggleMenuDisplay({ currentTarget: titleMobile, stopPropagation: () => {} });
-    }
-  });
+  document.addEventListener("click", onClickOutside, false);
 }
 
 function removeClickOutside() {
-  document.removeEventListener("click")
+  document.removeEventListener("click", onClickOutside);
+}
+
+function onClickOutside (event) {
+  var isClickInside = tocContainer.contains(event.target);
+
+  if (!isClickInside && !tocContainer.classList.contains("hide")) {
+    toggleMenuDisplay({
+      currentTarget: titleMobile,
+      stopPropagation: () => {},
+    });
+  }
 }
 
 function addDropdownListeners(dropdown, children) {
@@ -74,8 +79,9 @@ function addDropdownListeners(dropdown, children) {
   }
 }
 
-function removeDropdownListeners(el) {
-  el.removeDropdownListeners('click', toggleMenuDisplay);
+function removeDropdownListeners(dropdown) {
+  const btn = dropdown.querySelector(".dropdown-btn");
+  btn.removeEventListener("click", toggleMenuDisplay);
 }
 
 function toggleClass(elem, className) {
@@ -95,3 +101,89 @@ function toggleMenuDisplay(event) {
   toggleClass(dropdown, "hide");
   toggleClass(options, "hide");
 }
+
+
+// Scroll navigation and active items
+var selectedElement;
+
+if (asideMenu) {
+  window.addEventListener("scroll", function (e) {
+    selectCurrentTocCategory();
+  });
+}
+
+selectCurrentTocCategory();
+
+function selectCurrentTocCategory() {
+  var sections = document.querySelectorAll(
+    ".js-content > h2, .js-content > h3, .js-content > h4"
+  );
+
+  var currentIndex = 0;
+  for (var i = 0; i < sections.length; i++) {
+    if (sections[i].getBoundingClientRect().top < 200) {
+      currentIndex = i;
+    } else {
+      break;
+    }
+  }
+
+  // Activate node items recursively
+  var newElement = tocContainer && tocContainer.querySelector('a[href="#' + sections[currentIndex].id + '"]');
+  if (selectedElement !== newElement) {
+    selectedElement = newElement;
+    deactivateNodes({ el: tocContainer });
+    activateNodes({ el: selectedElement, isCurrent: true });
+  }
+}
+
+function deactivateNodes({ el }) {
+  el &&
+    el.querySelectorAll(".is-active, .is-current").forEach(function (item) {
+      item.classList.remove("is-active");
+      item.classList.remove("is-current");
+    });
+}
+
+function activateNodes({ isCurrent, el }) {
+  const stop = !el || el.classList.contains("toc-hugo__folder-one");
+
+  if (stop) {
+    return;
+  }
+
+  var firstChild = el.firstElementChild;
+  var hasFirstChild = !!firstChild;
+
+  if (hasFirstChild) {
+    var firstChildIsLink =
+      firstChild.tagName === "A" || firstChild.tagName === "BUTTON";
+
+    if (firstChildIsLink) {
+      firstChild.classList.add(isCurrent ? "is-current" : "is-active");
+    }
+
+    activateNodes({ el: el.parentElement, isCurrent: false });
+  } else {
+    activateNodes({ el: el.parentElement, isCurrent: true });
+  }
+}
+
+var to = null;
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    to = null;
+
+    var href = this.getAttribute("href");
+    var element = document.querySelector(href);
+    var y = element.offsetTop - 100;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+
+    to = window.setTimeout(function () {
+      window.location.hash = href;
+    }, 250);
+  });
+});
