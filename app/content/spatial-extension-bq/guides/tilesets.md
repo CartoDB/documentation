@@ -13,7 +13,7 @@ SELECT bqcarto.tiler.VERSION()
 
 Check the [Getting Access](../../overview/getting-started/#getting-access) section if you run into any error when running the query above.
 
-Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your BigQuery console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset types](../../overview/tilesets/#tileset-types)) from a couple of joined tables; one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
+Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your BigQuery console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-procedures)) from a couple of joined tables; one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
 
 The result will be a tileset with the geometry and total population per blockgroup:
 
@@ -41,6 +41,60 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
       "total_pop": "Number"
     }
   }'''
+);
+```
+
+Creating a tileset by means of `tiler.CREATE_SIMPLE_TILESET` can sometimes be a confusing task due to the large amount of parameters that the user must manage. In order to relieve them of this responsibility, we provide a wrapper function in which the parameters are automatically chosen by performing a previous analysis of the passed data. This analysis also serves as a validation step to avoid BigQuery limitations. Therefore, the above generated tileset can also be obtained by executing:
+
+```sql
+CALL bqcarto.tiler.CREATE_TILESET(
+  R'''
+  (
+    SELECT
+      d.geoid,
+      d.total_pop,
+      g.geom 
+    FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
+    JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
+      ON d.geoid = g.geoid
+  ) _input
+  ''',
+  R'''`cartobq.maps.blockgroup_pop`''',
+  null
+);
+```
+
+or by defining explicitly the options if they are required:
+
+```sql
+CALL bqcarto.tiler.CREATE_TILESET(
+  R'''
+  (
+    SELECT
+      d.geoid,
+      d.total_pop,
+      g.geom 
+    FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
+    JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
+      ON d.geoid = g.geoid
+  ) _input
+  ''',
+  R'''`cartobq.maps.blockgroup_pop`''',
+  STRUCT
+  (
+    null AS name,
+    null AS description,
+    null AS legend,
+    0 AS zoom_min,
+    14 AS zoom_max,
+    null AS geom_column_name,
+    null AS zoom_min_column,
+    null AS zoom_max_column,
+    3072 AS max_tile_size_kb,
+    null AS tile_feature_order,
+    null AS drop_duplicates,
+    null AS extra_metadata
+  )
 );
 ```
 

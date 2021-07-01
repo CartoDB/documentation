@@ -1,5 +1,12 @@
 ## Release notes
 
+### July 1, 2021
+
+#### Module tiler v1.12.0
+
+Feature
+- Add new version of tiler to create simple tilesets: `CREATE_TILESET`.
+
 ### June 2, 2021
 
 #### Module data v1.0.0-alpha.1
