@@ -13,6 +13,8 @@ The Spatial Extension is packed with functions and procedures to perform geospat
 <video autoplay="" loop="" muted=""> <source src="http://localhost:1313/img/news-developers/bigquery-se-core-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 For further information check the [blog post](https://carto.com/blog/enhancing-geospatial-in-bigquery-with-carto-spatial-extension/) and the [documentation](https://docs.carto.com/spatial-extension-bq/).
 
+---
+
 ###### New Release
 
 ##### 2021-06-26
