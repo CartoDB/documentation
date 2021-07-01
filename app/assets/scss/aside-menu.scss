@@ -103,11 +103,16 @@
   }
 }
 
+.dropdown {
+  pointer-events: none;
+}
+
 .dropdown-btn {
-  font-size: inherit;
   width: 100%;
-  text-align: left;
   background-color: transparent;
+  font-size: inherit;
+  text-align: left;
+  pointer-events: all;
 
   > div {
     display: flex;
@@ -123,10 +128,6 @@
     width: 15px;
     transform: rotate(-180deg);
     transition: transform 0.3s ease;
-
-    &.rotate {
-      transform: rotate(-180deg);
-    }
   }
 }
 
@@ -134,6 +135,7 @@
   max-height: calc(100vh - 300px);
 	overflow: hidden;
   transition: max-height 0.25s ease;
+  pointer-events: all;
 
   &.hide {
     max-height: 0 !important;

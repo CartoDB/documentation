@@ -2,12 +2,14 @@ var isMobile = false;
 var asideMenu = document.querySelector("#aside-menu");
 var tocContainer = asideMenu.querySelector(".toc--container");
 var tocLinks = asideMenu.querySelector(".toc--links");
+var titleDesktop = asideMenu.querySelector(".aside-menu-title-desktop");
+var titleMobile = asideMenu.querySelector(".aside-menu-title-mobile");
 var dropdowns = asideMenu.querySelectorAll(".dropdown");
 
 window.addEventListener("resize", onResize);
 
 dropdowns.forEach((dropdown) => {
-  addDropdownListeners(dropdown);
+  addDropdownListeners(dropdown, true);
 });
 
 onResize();
@@ -15,33 +17,65 @@ onResize();
 function onResize() {
   if (window.innerWidth <= 800) {
     isMobile = true;
-    tocContainer.classList.add('dropdown');
-    tocLinks.classList.add('dropdown-options', 'hide');
-    addDropdownListeners(tocContainer);
-    document.querySelector('.aside-menu-title-desktop').display = 'none';
-    document.querySelector('.aside-menu-title-desktop').hidden = true;
-    document.querySelector('.aside-menu-title-mobile').display = 'initial';
-    document.querySelector('.aside-menu-title-mobile').hidden = false;
+    setMobile();
+    addClickOutside();
   } else {
     isMobile = false;
-    tocContainer.classList.remove('dropdown');
-    tocLinks.classList.remove('dropdown-options', 'hide');
-    document.querySelector('.aside-menu-title-desktop').display = 'initial';
-    document.querySelector('.aside-menu-title-desktop').hidden = false;
-    document.querySelector('.aside-menu-title-mobile').display = 'none';
-    document.querySelector('.aside-menu-title-mobile').hidden = true;
+    setDesktop();
+    removeClickOutside();
   }
 }
 
-function addDropdownListeners(dropdown) {
-  dropdown.addEventListener("click", toggleMenuDisplay);
+function setDesktop() {
+  tocContainer.setAttribute("data-click-outside", false);
+  tocContainer.classList.remove("dropdown", "hide");
+  removeDropdownListeners(tocContainer);
+  tocLinks.classList.remove("dropdown-options", "hide");
+  titleDesktop.display = "initial";
+  titleDesktop.hidden = false;
+  titleMobile.display = "none";
+  titleMobile.hidden = true;
+}
+
+function setMobile() {
+  tocContainer.setAttribute("data-click-outside", true);
+  tocContainer.classList.add("dropdown", "hide");
+  addDropdownListeners(tocContainer, false);
+  tocLinks.classList.add("dropdown-options", "hide");
+  titleDesktop.display = "none";
+  titleDesktop.hidden = true;
+  titleMobile.display = "initial";
+  titleMobile.hidden = false;
+}
+
+function addClickOutside() {
+  document.addEventListener("click", function (event) {
+    var isClickInside = tocContainer.contains(event.target);
+
+    if (!isClickInside && !tocContainer.classList.contains('hide')) {
+      toggleMenuDisplay({ currentTarget: titleMobile, stopPropagation: () => {} });
+    }
+  });
+}
+
+function removeClickOutside() {
+  document.removeEventListener("click")
+}
+
+function addDropdownListeners(dropdown, children) {
+  const btn = dropdown.querySelector(".dropdown-btn");
+  btn.addEventListener("click", toggleMenuDisplay);
 
   var innerDropdowns = dropdown.querySelectorAll(".dropdown");
-  if (innerDropdowns.length) {
+  if (innerDropdowns.length && children) {
     innerDropdowns.forEach((inner) => {
-      addDropdownListeners(inner);
+      addDropdownListeners(inner, true);
     });
   }
+}
+
+function removeDropdownListeners(el) {
+  el.removeDropdownListeners('click', toggleMenuDisplay);
 }
 
 function toggleClass(elem, className) {
@@ -53,12 +87,19 @@ function toggleClass(elem, className) {
 function toggleMenuDisplay(event) {
   event.stopPropagation();
 
-  const dropdown = event.currentTarget;
+  const btn = event.currentTarget;
+  console.log(btn);
+  const dropdown = btn.parentNode;
   const options = dropdown.querySelector(".dropdown-options");
-  const caret = dropdown.querySelector(".caret");
-  console.log(caret);
 
+  toggleClass(btn, "hide");
   toggleClass(dropdown, "hide");
   toggleClass(options, "hide");
-  toggleClass(caret, "rotate");
+}
+
+function getRotation(el) {
+  window.getComputedStyle(el, null);
+  var style = window.getComputedStyle(el);
+  var matrix = new WebKitCSSMatrix(style.transform);
+  console.log("rotate: ", matrix.m41);
 }
