@@ -5,46 +5,50 @@ tocName: "Developer News"
 type: single-page
 ---
 
-###### New feature
+## Enhancing Geospatial in BigQuery with CARTO Spatial Extension
 
-##### 2021-06-29
+##### 2021-04-29
 
-The Spatial Extension is packed with functions and procedures to perform geospatial analysis through expressive and simple SQL, all natively within the data warehouse environment. The core layer of the Spatial Extension, which enhances the built-in GIS capabilities of the cloud data warehouses, is open source and freely available on [GitHub](https://github.com/CartoDB/carto-spatial-extension). 
-<video autoplay="" loop="" muted=""> <source src="http://localhost:1313/img/news-developers/bigquery-se-core-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+###### New Release
+
+The Spatial Extension is packed with functions and procedures to perform geospatial analysis through expressive and simple SQL, all natively within the data warehouse environment. The core layer of the Spatial Extension, which enhances the built-in GIS capabilities of the cloud data warehouses, is open source and freely available on [GitHub](https://github.com/CartoDB/carto-spatial-extension).
+
+<video autoplay="" loop="" muted=""> <source src="https://github.com/CartoDB/documentation/tree/carto3/app/static/img/news-developers/bigquery-se-core-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+
 For further information check the [blog post](https://carto.com/blog/enhancing-geospatial-in-bigquery-with-carto-spatial-extension/) and the [documentation](https://docs.carto.com/spatial-extension-bq/).
 
 ---
 
+## Introducing CARTO for React
+
+##### 2021-03-23
+
 ###### New Release
 
-##### 2021-06-26
+React is currently one of the most popular frameworks for building web applications. We are convinced that the React library along with Redux provides an unmatched environment for building Location Intelligence applications.
 
-### Enhancing Geospatial in BigQuery with CARTO Spatial Extension
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla porta fringilla. Phasellus faucibus feugiat pretium. Mauris scelerisque facilisis diam vitae consequat. Integer a interdum lacus. Praesent consequat, ipsum vitae bibendum blandit, justo magna luctus justo, eu semper lorem orci eu purus. Sed massa velit, faucibus in laoreet id, fermentum sit amet tellus. Vivamus aliquam urna in dui dictum, ac posuere ex pulvinar. Duis viverra faucibus mi.
+Today we are announcing a further development resource to help our partners and customers to be more productive building apps, by opening up the same tools we use to create CARTO itself, and announcing CARTO for React. With this announcement our goal is to make development of spatial applications at least twice as fast.
+
+<video autoplay="" loop="" muted=""> <source src="https://github.com/CartoDB/documentation/tree/carto3/app/static/img/news-developers/react-thinking-machines-app.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+
+For further information check the [blog post](https://carto.com/blog/carto-for-react-faster-way-to-develop-spatial-applications/) and the [documentation](https://docs.carto.com/react/).
 
 ---
 
-###### Feature
+### Introducing CARTO for deck.gl
 
 ##### 2021-06-23
 
-### Upgrades improve CARTO platform performance by > 20%
-![Image](https://carto.com/developers/img/assets/cartoframes/guide-2.eafd219c.png)
+###### Feature
+
+It is CARTO’s vision that you, as a developer, should be able to choose whichever mapping library you prefer for your applications. And for that reason we have been working over the last few months on adding support for one of the most popular libraries out there, deck.gl. We are so excited about its possibilities that we have decided to make it our preferred and recommended library for building spatial applications using CARTO. 
+
+Today, we are very excited to announce that a complete CARTO module is now available as part of the deck.gl framework. This means developers can easily use CARTO APIs when building apps using the deck.gl framework.
+
+The new CARTO modules for deck.gl allow you to visualize regular Tables in CARTO and [BigQuery Tilesets](https://carto.com/bigquery-tiler/).
+
+<video autoplay="" loop="" muted=""> <source src="https://github.com/CartoDB/documentation/tree/carto3/app/static/img/news-developers/deckgl-animation.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+
+For additional information check the [blog post](https://carto.com/blog/carto-now-available-for-deck-gl/) and the [documentation](https://docs.carto.com/deck-gl/).
 
 ---
-
-###### New Release
-
-##### 2021-06-22
-
-### CARTO for React 1.0.0
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla porta fringilla. Phasellus faucibus feugiat pretium. Mauris scelerisque facilisis diam vitae consequat. Integer a interdum lacus. Praesent consequat, ipsum vitae bibendum blandit, justo magna luctus justo, eu semper lorem orci eu purus. Sed massa velit, faucibus in laoreet id, fermentum sit amet tellus. Vivamus aliquam urna in dui dictum, ac posuere ex pulvinar. Duis viverra faucibus mi.
-
----
-
-###### New Release
-
-##### 2021-06-14
-
-### deck.gl 8.5.0-alpha.10
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce fringilla porta fringilla. Phasellus faucibus feugiat pretium. Mauris scelerisque facilisis diam vitae consequat. Integer a interdum lacus. Praesent consequat, ipsum vitae bibendum blandit, justo magna luctus justo, eu semper lorem orci eu purus. Sed massa velit, faucibus in laoreet id, fermentum sit amet tellus. Vivamus aliquam urna in dui dictum, ac posuere ex pulvinar. Duis viverra faucibus mi.
