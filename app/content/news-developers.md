@@ -35,7 +35,7 @@ For further information check the [blog post](https://carto.com/blog/carto-for-r
 
 ---
 
-### Introducing CARTO for deck.gl
+## Introducing CARTO for deck.gl
 
 ##### 2021-06-23
 
