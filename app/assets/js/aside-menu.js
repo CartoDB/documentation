@@ -88,18 +88,10 @@ function toggleMenuDisplay(event) {
   event.stopPropagation();
 
   const btn = event.currentTarget;
-  console.log(btn);
   const dropdown = btn.parentNode;
   const options = dropdown.querySelector(".dropdown-options");
 
   toggleClass(btn, "hide");
   toggleClass(dropdown, "hide");
   toggleClass(options, "hide");
-}
-
-function getRotation(el) {
-  window.getComputedStyle(el, null);
-  var style = window.getComputedStyle(el);
-  var matrix = new WebKitCSSMatrix(style.transform);
-  console.log("rotate: ", matrix.m41);
 }
