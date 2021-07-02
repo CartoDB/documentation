@@ -31,9 +31,6 @@
         {{else}}
           <a href="{{(.GetPage $overview).Permalink}}" class="toc--link level-one">Overview</a>
         {{end}}
-        
-        {{else}}
-          <div class="toc--links toc-hugo__folder-one">{{$context.TableOfContents}}</div>
       {{end}}
 
       {{if .Params.extra_sections}}
@@ -41,15 +38,15 @@
           {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
           {{$isActive := eq $file $context.File.Path}}
           {{if $isActive}}
-            <div class="toc-hugo__folder-one">
+            <ul class="toc--links toc-hugo__folder-one">
               {{$context.TableOfContents}}
-            </div>
+            </ul>
           {{else}}
             <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
           {{end}}
         {{end}}
       {{end}}
-
+        
       {{if .Params.folders}}
         {{range $folderTwo := .Params.folders}}
           {{$folderTwoName := printf "%s%s" (urlize $folderTwo.name) "/"}}
@@ -70,13 +67,13 @@
                   {{$isActive := eq $fileFolderTwo $context.File.Path}}
 
                   {{if $isActive}}
-                    <div class="toc-hugo__folder-two">
+                    <ul class="toc-hugo__folder-two">
                       {{$context.TableOfContents}}
-                    </div>
+                    </ul>
                   {{else}}
                     <ul>
                       <li>
-                        <a href="{{($context.GetPage (urlize $fileFolderTwo)).Permalink}}" class="toc--link level-two">{{$elemFolderTwo}}</a>
+                        <a href="{{($context.GetPage (urlize $fileFolderTwo)).Permalink}}" class="toc--link level-two {{ if $isActive }}is-current{{ end }}">{{$elemFolderTwo}}</a>
                       </li>
                     </ul>
                   {{end}}
@@ -103,13 +100,13 @@
                             {{$isActiveChild := eq $fileFolderThree $context.File.Path}}
                      
                             {{if $isActiveChild }}
-                              <div class="toc-hugo__folder-three">
+                              <ul class="toc-hugo__folder-three">
                                 {{$context.TableOfContents}}
-                              </div>
+                              </ul>
                             {{else}}
                               <ul>
                                 <li>
-                                  <a href="{{($context.GetPage (urlize $fileFolderThree)).Permalink}}" class="toc--link level-three">{{$elemFolderThree}}</a>
+                                  <a href="{{($context.GetPage (urlize $fileFolderThree)).Permalink}}" class="toc--link level-three {{ if $isActiveChild }}is-current{{ end }}">{{$elemFolderThree}}</a>
                                 </li>
                               </ul>
                             {{end}}
@@ -125,12 +122,13 @@
           </ul>
         {{end}}
       {{end}}
+
       {{if fileExists $reference}}
         {{$isActive := eq (printf "%s%s" $folderOneName "reference.md") .File.Path}}
         {{if $isActive}}
-          <div class="toc-hugo__folder-one">
+          <ul class="toc-hugo__folder-one">
             {{$context.TableOfContents}}
-          </div>
+          </ul>
         {{else}}
           <a href="{{(.GetPage $reference).Permalink}}" class="toc--link level-one">Reference</a>
         {{end}}
