@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0-alpha.11/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-alpha.11/dist.min.js"></script>
 
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
 
       const deckgl = new deck.DeckGL({
         container: 'map',
-        mapStyle: 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json',
+        mapStyle: deck.carto.BASEMAP.POSITRON_NOLABELS,
         initialViewState: {
           longitude: -74.012,
           latitude: 40.705,
@@ -66,8 +66,9 @@
             stroked: false,
             getFillColor: [0, 0, 0, 0]
           }),
-          new deck.carto.CartoSQLLayer({
+          new deck.carto.CartoLayer({
             id: 'buildings-layer',
+            type: deck.carto.MAP_TYPES.QUERY,
             data: 'SELECT the_geom_webmercator, height FROM lower_manhattan_buildings',
             extruded: true,
             getElevation: f => f.properties.height,
