@@ -31,6 +31,9 @@
         {{else}}
           <a href="{{(.GetPage $overview).Permalink}}" class="toc--link level-one">Overview</a>
         {{end}}
+        
+        {{else}}
+          <div class="toc--links toc-hugo__folder-one">{{$context.TableOfContents}}</div>
       {{end}}
 
       {{if .Params.extra_sections}}
