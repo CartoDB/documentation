@@ -11,6 +11,14 @@ cascade:
       elements:
         - "Getting started"
         - "Spatial indexes"
+    - name: "Examples"
+      elements:
+        - "A Quadkey grid of stores locations and simple cannibalization analysis"
+        - "Minkowski distance to perform cannibalization analysis"
+        - "Computing US airports connections and routes interpolations"
+        - "New suppliers offices based on store locations clusters"
+        - "Analyzing store locations coverage using a Voronoi diagram"
+        - "Enrichment of catchment areas for store characterization"
     - name: "SQL Reference"
       elements:
         - "Overview"

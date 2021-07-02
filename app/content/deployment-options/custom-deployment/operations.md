@@ -27,30 +27,7 @@ Upgrading the installation requires a new installer package provided by the CART
 Using `.env.customer` file to persist configuration
 -->
 
-### Installing and configuring SSL certificates
-
-In order to use your own SSL certificates in your CARTO installation, follow the steps below: 
-
-* Have your certificate and private key ready in PEM format (plain text).
-* Copy them into the `certs` folder within your CARTO intaller. If you use the names `carto.crt` and `carto.key` respectively, you can skip the next step. 
-* If you used different names for your certificate and private key files, edit your `.env` file and update the following lines with your actual values. Edit only the file name, not the path.
-
-	```bash
-	CARTO_NGINX_SSL_CERT_PATH=/etc/nginx/ssl/your-cert-name.crt
-	CARTO_NGINX_SSL_KEY_PATH=/etc/nginx/ssl/your-key-name.key
-	```
-* Set `CARTO_BUILDER_SSL_REQUIRED=true` in `.env` file.
-* Apply changes with `docker-compose up -d --build --force-recreate`.
-
-### Configuring a domain 
-
-CARTO Builder will use this configuration parameter to send API requests to the backend. For this reason, the configuration needs to match the actuall address where you access your CARTO installation. This configuration can be set following the steps below:
-
-* Edit `.env` and find `CARTO_DOMAIN`.
-* Set your actual address, including the CARTO subdomain. For example: `carto.your-company.com`.
-* Run `docker-compose up -d` to recreate the containers affected by this change.
-
-### Escalation of services
+### Configuring for server resources
 
 In cases of high concurrency, increasing the server's number of CPUs and/or memory, and raising the number of instances of a specific service can help to improve performance. Follow the next steps for configuring the number of instances for a specific service:
 

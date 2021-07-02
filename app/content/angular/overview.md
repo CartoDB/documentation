@@ -1,4 +1,4 @@
-## Angular Integration
+## Getting started
 
 This guide describes an approach for integrating CARTO for deck.gl within applications developed using the [Angular](https://angular.io/) framework.
 

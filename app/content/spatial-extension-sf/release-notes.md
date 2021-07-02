@@ -1,5 +1,12 @@
 ## Release notes
 
+### June 2, 2021
+
+#### Module h3 v1.0.1
+
+Changed
+- Reduce bundle size for every function.
+
 ### May 26, 2021
 
 #### Module processing v1.0.0

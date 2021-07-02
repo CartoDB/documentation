@@ -20,7 +20,7 @@ CARTO can run on any Linux system with [Docker](https://docs.docker.com/engine/)
 In terms of hardware requirements, we don't have fixed requirements, as CARTO is a versatile platform that can support a range of different use cases. However, here are some high-level requirements that will work well for most cases: 
 * 8 CPU cores
 * 8 GB RAM
-* SSD persistent storage
+* SSD persistent storage (with a minimum of 20GB for the installation)
 
 {{% bannerNote title="note"%}}
 As a rule of thumb, a CARTO installation will need around twice the storage quota for your organization. This is due to the creation of geometry columns, indexes and other database elements that take up space but don't count against your storage quota.
