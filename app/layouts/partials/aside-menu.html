@@ -20,7 +20,6 @@
         </svg>
       </div>
     </button>
-
     <div class="toc--links">
       {{if fileExists $overview}}
         {{$isActive := eq $overview .File.Path}}
@@ -32,6 +31,12 @@
           <a href="{{(.GetPage $overview).Permalink}}" class="toc--link level-one">Overview</a>
         {{end}}
       {{end}}
+
+      {{ if and (not .Params.extra_sections) (not .Params.extra_sections) (not .Params.folders) }}
+        <ul class="toc--links toc-hugo__folder-one">
+          {{$context.TableOfContents}}
+        </ul>
+      {{ end }}
 
       {{if .Params.extra_sections}}
         {{range $elem := .Params.extra_sections}}
