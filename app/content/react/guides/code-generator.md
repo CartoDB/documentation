@@ -72,7 +72,7 @@ The command will ask you to select the following options:
 
 The code generator will perform two different actions:
 
-1. Create a new file for the layer in the `src/components/layers/` folder. This element will return a CartoSQLLayer or a CartoBQTilerLayer, depending on the associated source. If you want to modify the default visualization options, you can modify the corresponding deck.gl layer properties. 
+1. Create a new file for the layer in the `src/components/layers/` folder. This element will return a `CartoLayer`. If you want to modify the default visualization options, you can modify the corresponding deck.gl layer properties. 
 
 2. Attach the layer to the view in the corresponding view file, if this option has been selected. If this is the case, before adding the layer by dispatching the `addLayer` action, the source will also be added using the `addSource` action.
 

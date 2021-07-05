@@ -10,7 +10,7 @@ cascade:
         - "Getting Started"
         - "Layers"
         - "Widgets"
-        - "Data Management"
+        - "Authentication and Authorization"
         - "Basemaps"
         - "Look and Feel"
         - "Code Generator"

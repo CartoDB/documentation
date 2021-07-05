@@ -4,15 +4,15 @@ This guide explains how to work with layers in a CARTO for React application.
 
 ### Layer types
 
-CARTO for React uses deck.gl for visualization, so you can use any [deck.gl layer](https://deck.gl/docs/api-reference/layers), not only the specific CARTO submodule layers ([CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer), [CartoSQLLayer](https://deck.gl/docs/api-reference/carto/carto-sql-layer) and [CartoBQTilerLayer](https://deck.gl/docs/api-reference/carto/carto-bqtiler-layer)). 
+CARTO for React uses deck.gl for visualization, so you can use any [deck.gl layer](https://deck.gl/docs/api-reference/layers), not only the specific CARTO submodule layer ([CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer)). 
 
-If you use the code generator for adding your layers (see [below](#creating-a-layer)), it will always create a `CartoLayer` because it supports all the different data sources and the other layers will be removed in a future deck.gl version. 
+If you use the code generator for adding your layers (see [below](#creating-a-layer)), it will create a `CartoLayer` with default rendering and interactivity properties. 
 
 ### Layer sources
 
-If you are working with a CARTO for deck.gl layer, you can associate it with a source (CARTO dataset or BigQuery tileset). The source provides `data`, `type`, `connection` and, optionally, `credentials` properties that are used by CARTO for deck.gl to retrieve the vector tiles.
+If you are working with a CARTO for deck.gl layer, you can associate it with a data source. The source provides `data`, `type`, `connection` and, optionally, `credentials` properties that are used by CARTO for deck.gl to retrieve the vector tiles.
 
-If you need to use a different deck.gl layer (i.e. TripsLayer), you can't associate the layer with a source and you need to take care of providing the data for the layer in the expected format.
+If you need to use a different deck.gl layer (i.e. TripsLayer), you can't associate the layer with a source and you need to take care of providing the data for the layer in the expected format. In order to do that, you can take advantage of the `getData` function.
 
 If you want to sync the layer with one or more widgets, you can only use CARTO for deck.gl layers because filters are applied through the source. 
 

@@ -21,6 +21,7 @@ The *NPM* packages are available here:
 
     | Package | Version | Downloads |
     | ------- | ------- | --------- |
+    | @carto/cra-template-carto-3 (CARTO 3 skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template-carto-3">  <img src="https://img.shields.io/npm/v/@carto/cra-template-carto-3.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-carto-3">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-carto-3.svg?style=flat-square" alt="downloads" /></a> |
     | @carto/cra-template (skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template">  <img src="https://img.shields.io/npm/v/@carto/cra-template.svg?style=flat-square" alt="version" /> </a> | <a href="https://npmjs.org/package/@carto/cra-template"> <img src="https://img.shields.io/npm/dt/@carto/cra-template.svg?style=flat-square" alt="downloads" /></a> |
     | @carto/cra-template-sample-app (sample app template) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app.svg?style=flat-square" alt="downloads" /></a> |
 
@@ -61,11 +62,13 @@ Yes, it's a new paradigm, but once you learn it, you'll love it.
 
 ### Templates
 
-CARTO for React includes two different Create React App templates for kickstarting your application:
+CARTO for React includes three different Create React App templates for kickstarting your application:
 
-- The skeleton template that creates a simple application with just a map. This is the template you are usually going to choose when you are creating a new app.
+- The CARTO 3 skeleton template that creates a simple application with just a map using the CARTO 3 platform. This is the template you are usually going to choose when you are creating a new app.
 
-- The sample app template that creates a more complex application with several views, layers and widgets. The purpose of this template is demonstrating how you can implement common LI functionalities in a CARTO for React app.
+- The CARTO 2 skeleton template, similar to the CARTO 3 skeleton template. You are going to use it when you are creating a new app with the CARTO 2 platform.
+
+- The sample app template for CARTO 2 that creates a more complex application with several views, layers and widgets. The purpose of this template is demonstrating how you can implement common LI functionalities in a CARTO for React app.
 
 The command to create a new application is the following:
 
@@ -74,10 +77,10 @@ npx create-react-app [application_name] --template [template_name]
 ```
 
 - `application_name` is the name of the folder that will be created for your application
-- `template_name` is the name of the template to use (`@carto` for the skeleton template or `@carto/sample-app` for the sample app template)
+- `template_name` is the name of the template to use (`@carto/carto-3` for the CARTO 3 skeleton template, `@carto` for the CARTO 2 skeleton template or `@carto/sample-app` for the sample app template)
 
 {{% bannerNote title="note" %}}
-In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the skeleton template:
+In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the CARTO 2 skeleton template:
 
 ```shell
 npx create-react-app my-app --template '@carto'
@@ -106,4 +109,11 @@ If your application is not so complex and does not need the benefits added by th
 
 **I’m using Vue or Angular for building my applications, what are my options?**
 
-At this moment, we only provide a complete solution with templates and widgets for React. If you are building an application using Vue, Angular or other JavaScript framework, you don’t have to worry, it is completely feasible and you just need to use the CARTO for deck.gl pure JavaScript flavor. Please check the [examples](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js).
+At this moment, we only provide a complete solution with templates and widgets for React. If you are building an application using Vue, Angular or other JavaScript framework, you don’t have to worry, it is completely feasible and you just need to use the CARTO for deck.gl pure JavaScript flavor. Please check the [examples](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js) and the [CARTO + Vue.js](/vue) and [CARTO + Angular](/angular) docs.
+
+**When should I use the CARTO 3 platform vs the CARTO 2 platform?**
+
+CARTO 3 is a fully cloud native platform that avoids data duplication and provides almost infinite scalability. You should use the CARTO 2 platform only if you are a current CARTO customer that has not been migrated yet to the CARTO 3 platform and plan to continue using it for the foreseeable future. 
+
+**Can I use the library with my own Create React App template?**
+Yes, the library can be used independently. You will need to take care of adding the required dependencies and you won't be able to use the code generator, but you can take advantage of the functionality offered by the library: user interface components, widgets, state management, interaction with the CARTO platform...
