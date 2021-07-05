@@ -26,7 +26,7 @@ npx create-react-app my-app --template '@carto'
 ```
 {{%/ bannerNote %}}
 
-If you want to create a template for the cloud native platform, just type:
+If you want to create a template for the CARTO 3 platform, just type:
 
 ```bash
 npx create-react-app my-app --template @carto/cloud-native

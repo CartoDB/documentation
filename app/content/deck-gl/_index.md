@@ -12,13 +12,11 @@ cascade:
         - name: "Basic examples"
           elements:
             - "Hello World"
+            - "Hello World CARTO 3"
             - "BigQuery Tileset Layer"
             - "CARTO Basemap"
             - "Interactivity"
             - "Icon Layer"
-        - name: "Cloud Native"
-          elements:
-            - "Hello World Cloud Native"
         - name: "Styling"
           elements:
             - "Color Bins Style"

@@ -40,7 +40,7 @@ The command will ask you to select the following options:
 |--------|-----------|
 | Name   | The name you will give to the source. The code generator will append "Source" at the end. |
 | Type   | The source type. You can choose between a table name, a SQL query or a tileset. |
-| Connection | Connection name in the workspace (only needed for cloud native). |
+| Connection | Connection name in the workspace (only needed for CARTO 3). |
 | Data   | Table name, SQL query or tileset name. |
 
 The code generator will create a new file in the `src/data/sources/` folder that will define a source object with the following properties:
@@ -49,7 +49,7 @@ The code generator will create a new file in the `src/data/sources/` folder that
 |--------|-----------|
 | id     | This is a unique ID for the source generated from the provided source name. |
 | type   | MAP_TYPES.QUERY, MAP_TYPES.TABLE or MAP_TYPES.TILESET. |
-| connection | Connection name in the workspace (only needed for cloud native). |
+| connection | Connection name in the workspace (only needed for CARTO 3). |
 | data   | This is the SQL query, table name or tileset name. |
 
 In addition to these three properties, you can add an additional `credentials` property to the source after it has been created. This is useful if you want to add a source with different credentials from those specified in the `src/store/initialStateSlice.js` file.

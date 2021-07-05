@@ -9,7 +9,7 @@ This is an object to define the connection to CARTO, including the credentials (
 * `apiVersion` (optional): API version. Default: `API_VERSIONS.V2`. Possible values are:
   * API_VERSIONS.V1
   * API_VERSIONS.V2
-  * API_VERSIONS.V3 (**CARTO Cloud Native**)
+  * API_VERSIONS.V3 (**CARTO 3**)
 
 If using API v1 or v2, the following properties are used:
 
@@ -22,7 +22,7 @@ If using API v1 or v2, the following properties are used:
 
 If using API v3, these are the available properties:
 
-* `apiBaseUrl` (required): base URL for requests to the API (can be obtained in the CARTO Cloud Native Workspace)
+* `apiBaseUrl` (required): base URL for requests to the API (can be obtained in the CARTO 3 Workspace)
 * `accessToken` (required): token to authenticate/authorize requests to the Maps API (private datasets)
 * `mapsUrl` (optional): Maps API URL Template. Default: 
   * `https://{apiBaseUrl}/v3/maps` 
@@ -41,7 +41,7 @@ setDefaultCredentials({
 
 `CartoLayer` is the layer to visualize data using the CARTO Maps API.
 
-#### Usage CARTO 2.0
+#### Usage CARTO 2
 
 ```js
 import DeckGL from '@deck.gl/react';
@@ -67,7 +67,7 @@ function App({viewState}) {
 }
 ```
 
-#### Usage CARTO 3.0
+#### Usage CARTO 3
 
 ```js
 import DeckGL from '@deck.gl/react';
@@ -94,7 +94,7 @@ function App({viewState}) {
 }
 ```
 
-> **CARTO 3.0** is a fully cloud native platform currently available only in a private beta. If you want to test it, please contact us at [support@carto.com](mailto:support@carto.com?subject=Access%20to%20Cloud%20%Native%20%API%20(v3)).
+> **CARTO 3** is a fully cloud native platform currently available only in a private beta. If you want to test it, please contact us at [support@carto.com](mailto:support@carto.com?subject=Access%20to%20Cloud%20%Native%20%API%20(v3)).
 
 #### Installation
 
