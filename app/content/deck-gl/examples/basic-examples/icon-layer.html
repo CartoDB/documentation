@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0-alpha.11/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-alpha.11/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -25,7 +25,7 @@
 
     const deckgl = new deck.DeckGL({
       container: 'map',
-      mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
 
       initialViewState: {
         latitude: 0,
@@ -35,23 +35,20 @@
       controller: true,
 
       layers: [
-        new deck.carto.CartoSQLLayer({
+        new deck.carto.CartoLayer({
+          type: deck.carto.MAP_TYPES.QUERY,
           data: 'SELECT the_geom_webmercator, country_name FROM world_population_2015',
 
-          /* Substitute default GeoJSONLayer with an IconLayer, but you can use different layers here */
-          renderSubLayers: props => new deck.IconLayer({...props}),
+          pointType: 'icon',
 
-          /* Set IconLayer related props */
           pickable: true,
-          getSize: d => 24,
-          getColor: d => [255, 140, 0], // Remember to set mask to true in your icon mapping to enable colouring
+          getIconSize: d => 24,
+          getIconColor: d => [255, 140, 0], // Remember to set mask to true in your icon mapping to enable colouring
           getIcon: d => 'marker',
           iconMapping: ICON_MAPPING,
           
-          // You can use different image formats including PNG or SVG
           iconAtlas: 'https://s3.amazonaws.com/com.cartodb.users-assets.production/maki-icons/marker-stroked-24.svg?req=markup',
 
-          // Get coordinates from GeoJSON geometry
           getPosition: d => d.geometry.coordinates
         })
       ]
