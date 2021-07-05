@@ -2,6 +2,7 @@
 
 The CARTO Spatial Extension's functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.
 
+{{% tableWrapper %}}
 | Module | Type | Function or Procedure |
 | :----- | :------ | :------ |
 | accessors | core |<ul style="list-style:none"><li><a href="../accessors/#st_envelope">ST_ENVELOPE</a></li><li><a href="../accessors/#version">VERSION</a></li></ul>|
@@ -15,3 +16,4 @@ The CARTO Spatial Extension's functions are organized in modules based on the fu
 | random | advanced |<ul style="list-style:none"><li><a href="../random/#st_generatepoints">ST_GENERATEPOINTS</a></li><li><a href="../random/#version">VERSION</a></li></ul>|
 | s2 | core |<ul style="list-style:none"><li><a href="../s2/#hilbertquadkey_fromid">HILBERTQUADKEY_FROMID</a></li><li><a href="../s2/#id_fromhilbertquadkey">ID_FROMHILBERTQUADKEY</a></li><li><a href="../s2/#longlat_asid">LONGLAT_ASID</a></li><li><a href="../s2/#st_asid">ST_ASID</a></li><li><a href="../s2/#st_boundary">ST_BOUNDARY</a></li><li><a href="../s2/#version">VERSION</a></li></ul>|
 | transformations | core |<ul style="list-style:none"><li><a href="../transformations/#st_centermean">ST_CENTERMEAN</a></li><li><a href="../transformations/#st_centermedian">ST_CENTERMEDIAN</a></li><li><a href="../transformations/#st_centerofmass">ST_CENTEROFMASS</a></li><li><a href="../transformations/#st_concavehull">ST_CONCAVEHULL</a></li><li><a href="../transformations/#st_destination">ST_DESTINATION</a></li><li><a href="../transformations/#st_greatcircle">ST_GREATCIRCLE</a></li><li><a href="../transformations/#st_line_interpolate_point">ST_LINE_INTERPOLATE_POINT</a></li><li><a href="../transformations/#version">VERSION</a></li></ul>|
+{{%/ tableWrapper %}}

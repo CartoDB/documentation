@@ -19,9 +19,9 @@ $fontSizes: (
   }
 }
 
-@media (max-width: $layout-mobile) {
+@media (max-width: $layout-desktop) {
   @each $fontSize in $fontSizes {
-    .f#{nth($fontSize, 1)}--mobile {
+    .f#{nth($fontSize, 1)}--desktop-s {
       font-size: #{nth($fontSize, 1)}px;
       line-height: #{nth($fontSize, 2)}px;
       letter-spacing: #{nth($fontSize, 3)}px;
@@ -39,9 +39,9 @@ $fontSizes: (
   }
 }
 
-@media (max-width: $layout-desktop) {
+@media (max-width: $layout-mobile) {
   @each $fontSize in $fontSizes {
-    .f#{nth($fontSize, 1)}--desktop-s {
+    .f#{nth($fontSize, 1)}--mobile {
       font-size: #{nth($fontSize, 1)}px;
       line-height: #{nth($fontSize, 2)}px;
       letter-spacing: #{nth($fontSize, 3)}px;
