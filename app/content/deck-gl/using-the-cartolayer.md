@@ -14,7 +14,7 @@ The CartoLayer uses the credentials specified with the `setDefaultCredentials` f
 
 - `apiBaseUrl`. This is the API base URL to connect to your instance. Points by default to the CARTO US-EAST-1 instance on the Google Cloud Platform: `https://gcp-us-east1.api.carto.com`. You can check your URL in the `Developers` section within the Workspace.
   
-- `apiVersion`. This is the API version. Points by default to v2 (`API_VERSIONS.V2`). To specify the API version the CARTO module includes an enumeration named `API_VERSIONS`, including constants for the different supported Maps API versions. For CARTO 3.0 you need to set it to `API_VERSIONS.V3`.
+- `apiVersion`. This is the API version. Points by default to v2 (`API_VERSIONS.V2`). To specify the API version the CARTO module includes an enumeration named `API_VERSIONS`, including constants for the different supported Maps API versions. For CARTO 3 you need to set it to `API_VERSIONS.V3`.
    
 - `accessToken`. This is the access token that authorizes access to the dataset. Depending on your application you will use access tokens retrieved using the OAuth protocol or public tokens. More on that on the [Public vs Private Layers](#public-vs-private-layers) section below. 
 
@@ -48,15 +48,15 @@ new CartoLayer({
 
 {{% bannerNote title="note" %}}
 
-If you are using CARTO 2.0, there are some differences you need to take into account when specifying the properties:
+If you are using CARTO 2, there are some differences you need to take into account when specifying the properties:
 
 - Authorization is not performed using an `accessToken` but you need to specify your CARTO `username` and `apiKey`.
 
 - The `connection` parameter is not used. The `CartoLayer` connects by default with your PostgreSQL database if you specify a SQL query or to your BigQuery project if you specify a tileset (using the connection defined in your dashboard).
 
-- The `region` property points to the CARTO 2.0 US instance. You don't need to change this parameter unless your CARTO 2.0 database is located in the CARTO 2.0 EU instance.
+- The `region` property points to the CARTO 2 US instance. You don't need to change this parameter unless your CARTO 2 database is located in the CARTO 2 EU instance.
 
-- The `mapsUrl` points by default to the CARTO 2.0 Maps API instance. You only need to change it if you have an on-premises CARTO 2.0 deployment.
+- The `mapsUrl` points by default to the CARTO 2 Maps API instance. You only need to change it if you have an on-premises CARTO 2 deployment.
 
 {{%/ bannerNote %}}
 
@@ -66,7 +66,7 @@ When you retrieve data from a cloud data warehouse connection you need to provid
 
 If you are building a private application with restricted access, these are the steps you need to follow:
 
-1. Create an application in the CARTO 3.0 workspace. 
+1. Create an application in the CARTO 3 workspace. 
 2. Configure the application client ID and launch the OAuth protocol in your application login workflow so the user authenticates against the CARTO platform. 
 3. Upon successful authentication, you will receive an access token that you can use to authenticate your requests. The user must have access to the connection to the cloud data warehouse where the data resides.
 
@@ -77,7 +77,7 @@ If you are building a public application where the users don't need to login, yo
 
 {{% bannerNote title="note" %}}
 
-If you are using CARTO 2.0, the authentication is based on the `username`/`apiKey` combination. 
+If you are using CARTO 2, the authentication is based on the `username`/`apiKey` combination. 
 
 For private datasets, you need to create an API key that provides access to the datasets you are going to use in your application.
 
@@ -120,6 +120,6 @@ new H3HexagonLayer({
 
 {{% bannerNote title="note" %}}
 
-If you are using CARTO 2.0, there isn't an equivalent function to the `getData` function but you can use the SQL API to retrieve the data in JSON or GeoJSON format depending on the layer you want to use. Please check the `ArcLayer` [example](/deck-gl/examples/advanced-examples/arc-layer) to see how it works.
+If you are using CARTO 2, there isn't an equivalent function to the `getData` function but you can use the SQL API to retrieve the data in JSON or GeoJSON format depending on the layer you want to use. Please check the `ArcLayer` [example](/deck-gl/examples/advanced-examples/arc-layer) to see how it works.
 
 {{%/ bannerNote %}}
