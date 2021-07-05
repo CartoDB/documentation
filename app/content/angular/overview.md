@@ -1,8 +1,20 @@
 ## Getting started
 
-This guide describes an approach for integrating CARTO for deck.gl within applications developed using the [Angular](https://angular.io/) framework.
+The CARTO platform is framework-agnostic so you can build applications using CARTO with your framework of choice. When you build an application with CARTO you mostly use deck.gl as the visualization library. This guide describes an approach for integrating CARTO for deck.gl within applications developed using the [Angular](https://angular.io/) framework, but you can use CARTO with Angular and other visualization libraries.
 
-We have created an example that you can download and execute in your own local machine. This guide follows an step-by-step approach using the mentioned example as reference. To download the example, clone the CARTO viz-doc [repo](https://github.com/CartoDB/viz-doc):
+We have created an example that you can download and execute in your own local machine, available in the viz-doc [repository](https://github.com/CartoDB/viz-doc):
+
+<ul class="grid-cell--col10 grid u-mt16">
+    <li class="grid-cell grid-cell--col6 grid-cell--col12--mobile u-mb20">
+        <a href="https://github.com/CartoDB/viz-doc" target="_blank" class="clickable-card clickable-card--small">
+        <img class="u-mr4" src="/img/documentation/github.svg" alt="Github" style="filter: invert(1); margin-bottom: 8px">
+        <h3 class="title f20 is-txtBaseGrey u-mt8" style="margin-top: 8px;">viz-doc</h3>
+        <p class="text f16 is-txtTypo2 u-mt8">Examples using CARTO and different visualization libraries</p>
+        </a>
+    </li>
+</ul>
+
+This guide follows an step-by-step approach using the mentioned example as reference. To download and execute the example, start by cloning the repository:
 
 ```shell
 git clone git@github.com:CartoDB/viz-doc.git
