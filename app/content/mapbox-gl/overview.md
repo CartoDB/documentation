@@ -1,14 +1,10 @@
 ## Getting started
 
+Mapbox provides different SDKs for developing [web](https://docs.mapbox.com/mapbox-gl-js/api/) and mobile ([iOS](https://docs.mapbox.com/ios) and [Android](https://docs.mapbox.com/ios)) applications. These SDKs include different visualization capabilities and you can learn more about them in the Mapbox [Docs](https://docs.mapbox.com/) website.
+
 In this guide, you will learn the basics of visualizing a CARTO dataset with the [Mapbox GL JS library](https://docs.mapbox.com/mapbox-gl-js/api/). There are no previous requirements to complete this guide, but a basic knowledge of the Mapbox GL JS library would be helpful.
 
 After completing this guide, you will have your first Mapbox GL map with a CARTO dataset!
-
-The following example is built on top of Mapbox GL JS v2. It enables 3D mapping with elevated terrain, customizable skies and camera functionalities.
-
-This example adds 3D terrain to a map using setTerrain with a raster-dem source.
-
-It uses exaggeration to exaggerate the height of the terrain. It also adds a sky layer that is shown when the map is highly pitched.
 
 <div class="example-map">
   <iframe
@@ -20,55 +16,23 @@ It uses exaggeration to exaggerate the height of the terrain. It also adds a sky
   </iframe>
 </div>
 
-
-### About MapboxGL license
-
-Beginning with **v2.0.0**, `mapbox-gl-js` is no longer under the 3-Clause BSD license. Also, from that same version, a billable map load occurs whenever a Map object is initialized. That leaves **1.13.0** as the latest mapbox-gl-js version with BSD, that can be freely used.
-
-If you want to continue using the mapbox-gl free version (remember that 3D elevated terrain capabilities start from v2), use the following CARTO CDN:
-
-```html
-  <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
-  <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
-```
-
-For more info about this, you can read our blogpost [Our Thoughts as MapboxGL JS v2.0 Goes Proprietary](https://carto.com/blog/our-thoughts-as-mapboxgl-js-2-goes-proprietary/).
-
 ### Basic setup
 
-The first thing you need to do is to add all the required Mapbox GL dependencies (library and CSS files):
+Beginning with **v2.0.0**, `mapbox-gl-js` is no longer under the 3-Clause BSD license. Also, from that same version, a billable map load occurs whenever a Map object is initialized. That leaves **1.13.0** as the latest mapbox-gl-js version with BSD, that can be freely used. For more info about this, you can read our blogpost [Our Thoughts as MapboxGL JS v2.0 Goes Proprietary](https://carto.com/blog/our-thoughts-as-mapboxgl-js-2-goes-proprietary/).
 
-```html
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-```
+In this example we are going to use v2 to showcase new available functionality like the 3D elevated terrain capabilities but, if you want to use a library compatible with Mapbox 1.x and CARTO, community supported, we recommend you to check [MapLibre](https://maplibre.org/). 
 
-#### Add map container
+<ul class="grid-cell--col10 grid u-mt16">
+    <li class="grid-cell grid-cell--col6 grid-cell--col12--mobile u-mb20">
+        <a href="https://github.com/maplibre/maplibre-gl-js" target="_blank" class="clickable-card clickable-card--small">
+        <img class="u-mr4" src="/img/documentation/github.svg" alt="Github" style="filter: invert(1); margin-bottom: 8px">
+        <h3 class="title f20 is-txtBaseGrey u-mt8" style="margin-top: 8px;">MapLibre GL JS</h3>
+        <p class="text f16 is-txtTypo2 u-mt8">Community led fork derived from Mapbox GL JS</p>
+        </a>
+    </li>
+</ul>
 
-Next, you need to create a `div` inside the `body` where the map will be drawn and you need to style them to ensure the map displays at full width:
-
-```html
-<body style="margin: 0; padding: 0;">
-  <div id="map" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
-</body>
-```
-
-#### Create map and set properties
-
-Once you have a `div` for your map, you can use the [`mapboxgl.Map`](https://docs.mapbox.com/mapbox-gl-js/api/map/) constructor to create your map with the desired initial view. Here we are also specifying the style property to use a raster-dem source. You will need to provide your Mapbox access token:
-
-```js
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
-  center: [-112.125, 36.12],
-  zoom: 12,
-  pitch: 70,
-  bearing: 180
-});
-```
-
-At this point you will have a basic 3D map with terrain:
+We are going to start by adding a map with 3D terrain. Please check [this example](https://docs.mapbox.com/mapbox-gl-js/example/add-terrain/) in the Mapbox docs. It uses exaggeration to exaggerate the height of the terrain and adds a sky layer that is shown when the map is highly pitched.
 
 <div class="example-map">
   <iframe
@@ -80,7 +44,7 @@ At this point you will have a basic 3D map with terrain:
   </iframe>
 </div>
 
-### Add layer
+### Adding a dataset from CARTO
 
 In order to visualize a CARTO dataset, you just need to provide a [TileJSON](https://github.com/mapbox/tilejson-spec) URL using the Maps API within a source of type vector while you are creating your layer using the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
 
@@ -102,11 +66,7 @@ map.addLayer({
 });
 ```
 
-In order to have the best performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (SELECT *). If you select all the fields from the dataset, the vector tiles will be bigger than needed and would take more time to encode, download and decode.
-
-### Camera and animation
-
-The example uses the new Free Camera API in Mapbox GL JS v2 and features an initial animation that updates the camera position using linear interpolation between two locations.
+In order to have the best performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (`SELECT *`). If you select all the fields from the dataset, the vector tiles will be bigger than needed and would take more time to encode, download and decode.
 
 ### All together
 
