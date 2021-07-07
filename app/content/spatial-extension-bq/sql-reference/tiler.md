@@ -20,6 +20,7 @@ Creates a simple tileset. It differs from `tiler.CREATE_SIMPLE_TILESET` in that 
 * `options`: `STRUCT<name STRING, description STRING,legend STRING, zoom_min INT64, zoom_max INT64, geom_column_name STRING, zoom_min_column STRING, zoom_max_column STRING, max_tile_size_kb INT64, tile_feature_order STRING, drop_duplicates BOOL, extra_metadata STRING>|NULL` containing the different options. Valid options are described in the table below.
 
 
+{{% tableWrapper %}}
 | Option | Description |
 | :----- | :------ |
 |`name`| Default: `""`. A `STRING` that contains the name of tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
@@ -34,7 +35,7 @@ Creates a simple tileset. It differs from `tiler.CREATE_SIMPLE_TILESET` in that 
 |`tile_feature_order`| Default: `""`. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. **This is an expensive operation, so it's recommended to only use it when necessary.**. If no order is provided, a custom dropping depending on the geometry type is performed. In case of `POINT` geometries, features are dropped randomly. In case of `POLYGON` geometries the features are added ordered by their area, while for `LINESTRING` geometries the criteria is the feature length.|
 |`drop_duplicates`| Default: `false`. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
 |`extra_metadata`| Default: {}. A JSON object to specify the custom metadata of the tileset.|
-
+{{%/ tableWrapper %}}
 
 **Examples**
 
@@ -53,7 +54,7 @@ CALL bqcarto.tiler.CREATE_TILESET(
 If any of the options introduced above are required, the remaining fields should also be provided or set to `NULL`. Here is an example of a valid structure for the `options` parameter (the field alias can be ignored):
 
 ```sql
-CALL carto-st.tiler.CREATE_TILESET(
+CALL bqcarto.tiler.CREATE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -108,6 +109,7 @@ To avoid issues in the process when building the queries that will be executed i
 zoom_min_column is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between zoom_min and zoom_max.
 zoom_max_column is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between zoom_min and zoom_max.
 
+{{% tableWrapper %}}
 | Option | Description |
 | :----- | :------ |
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
@@ -126,6 +128,7 @@ zoom_max_column is the column that each row could have to modify its end zoom le
 |`drop_duplicates`| Default: `false`. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
+{{%/ tableWrapper %}}
 
 **Examples**
 
