@@ -1,8 +1,10 @@
 ## Redux
 
+{{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
 | @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a>
+{{%/ tableWrapper %}}
 
 Functions to ease the management of CARTO within a react-redux application. This package includes 2 slices to manage the main redux blocks of a CARTO for React application. A [slice](https://redux-toolkit.js.org/api/createSlice) is a way to manage a "portion" or _slice_ of the redux store with a module:
 
@@ -19,9 +21,11 @@ the reducers that support CARTO for React achitecture.
 
 - **Input**:
 
-  | Param        | Type                | Description       |
-  | ------------ | ------------------- | ----------------- |
-  | initialState | <code>Object</code> | the initial state |
+{{% tableWrapper tab="true" %}}
+| Param        | Type                | Description       |
+| ------------ | ------------------- | ----------------- |
+| initialState | <code>Object</code> | the initial state |
+{{%/ tableWrapper %}}
 
   An initial state object might look like:
 
@@ -53,12 +57,14 @@ Action to add a **source** to the store.
 
 - **Input**:
 
-  | Param      | Type                | Description                                                                                                    |
-  | ---------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
-  | props      | <code>Object</code> | { id, data, type }                                                                                             |
-  | props.id   | <code>string</code> | unique id for the source                                                                                       |
-  | props.data | <code>string</code> | data definition for the source. Either a Query for SQL dataset or the name of the tileset for BigQuery Tileset |
-  | props.type | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                         |
+{{% tableWrapper tab="true" %}}
+| Param      | Type                | Description                                                                                                    |
+| ---------- | ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| props      | <code>Object</code> | { id, data, type }                                                                                             |
+| props.id   | <code>string</code> | unique id for the source                                                                                       |
+| props.data | <code>string</code> | data definition for the source. Either a Query for SQL dataset or the name of the tileset for BigQuery Tileset |
+| props.type | <code>string</code> | type of source. Posible values are 'sql' or 'bigquery'                                                         |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -81,9 +87,11 @@ Action to remove a source from the store
 
 - **Input**:
 
-  | Param    | Type                | Description                |
-  | -------- | ------------------- | -------------------------- |
-  | sourceId | <code>string</code> | id of the source to remove |
+{{% tableWrapper tab="true" %}}
+| Param    | Type                | Description                |
+| -------- | ------------------- | -------------------------- |
+| sourceId | <code>string</code> | id of the source to remove |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -102,12 +110,14 @@ Important! This doesn't imply adding a whole deck.gl layer to the redux store, j
 
 - **Input**:
 
-  | Param                   | Type                | Description                                       |
-  | ----------------------- | ------------------- | ------------------------------------------------- |
-  | props                   | <code>Object</code> | { id, source, layerAttributes }                   |
-  | props.id                | <code>string</code> | unique id for the layer                           |
-  | props.source            | <code>string</code> | id of the source of the layer                     |
-  | [props.layerAttributes] | <code>Object</code> | (optional) custom attributes to pass to the layer |
+{{% tableWrapper tab="true" %}}
+| Param                   | Type                | Description                                       |
+| ----------------------- | ------------------- | ------------------------------------------------- |
+| props                   | <code>Object</code> | { id, source, layerAttributes }                   |
+| props.id                | <code>string</code> | unique id for the layer                           |
+| props.source            | <code>string</code> | id of the source of the layer                     |
+| [props.layerAttributes] | <code>Object</code> | (optional) custom attributes to pass to the layer |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -129,11 +139,13 @@ Action to update a Layer in the store
 
 - **Input**:
 
-  | Param                 | Type                | Description                                        |
-  | --------------------- | ------------------- | -------------------------------------------------- |
-  | props                 | <code>Object</code> | { id, layerAttributes }                            |
-  | props.id              | <code>string</code> | unique id for the CARTO layer already in the store |
-  | props.layerAttributes | <code>Object</code> | custom attributes to update in the layer           |
+{{% tableWrapper tab="true" %}}
+| Param                 | Type                | Description                                        |
+| --------------------- | ------------------- | -------------------------------------------------- |
+| props                 | <code>Object</code> | { id, layerAttributes }                            |
+| props.id              | <code>string</code> | unique id for the CARTO layer already in the store |
+| props.layerAttributes | <code>Object</code> | custom attributes to update in the layer           |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -154,9 +166,11 @@ Action to remove a layer from the store
 
 - **Input**:
 
-  | Param | Type                | Description               |
-  | ----- | ------------------- | ------------------------- |
-  | id    | <code>string</code> | id of the layer to remove |
+{{% tableWrapper tab="true" %}}
+| Param | Type                | Description               |
+| ----- | ------------------- | ------------------------- |
+| id    | <code>string</code> | id of the layer to remove |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -171,9 +185,11 @@ Action to set a basemap. To see available maps, check the reference for `@carto/
 
 - **Input**:
 
-  | Param   | Type                | Description            |
-  | ------- | ------------------- | ---------------------- |
-  | basemap | <code>String</code> | the new basemap to add |
+{{% tableWrapper tab="true" %}}
+| Param   | Type                | Description            |
+| ------- | ------------------- | ---------------------- |
+| basemap | <code>String</code> | the new basemap to add |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -191,14 +207,16 @@ Action to add a filter on a given `source` by a `column`. This is done internall
 
 - **Input**:
 
-  | Param         | Type                    | Description                                                               |
-  | ------------- | ----------------------- | ------------------------------------------------------------------------- |
-  | props         | <code>Object</code>     | { id, column, type, values, [owner]}                                      |
-  | props.id      | <code>string</code>     | sourceId of the source to apply the filter on                             |
-  | props.column  | <code>string</code>     | column from the source to use by the filter                               |
-  | props.type    | <code>FilterType</code> | 'in' or 'between'                                                         |
-  | props.values  | <code>array</code>      | Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between') |
-  | [props.owner] | <code>FilterType</code> | (optional) id of the widget triggering the filter (to be excluded)        |
+{{% tableWrapper tab="true" %}}
+| Param         | Type                    | Description                                                               |
+| ------------- | ----------------------- | ------------------------------------------------------------------------- |
+| props         | <code>Object</code>     | { id, column, type, values, [owner]}                                      |
+| props.id      | <code>string</code>     | sourceId of the source to apply the filter on                             |
+| props.column  | <code>string</code>     | column from the source to use by the filter                               |
+| props.type    | <code>FilterType</code> | 'in' or 'between'                                                         |
+| props.values  | <code>array</code>      | Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between') |
+| [props.owner] | <code>FilterType</code> | (optional) id of the widget triggering the filter (to be excluded)        |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -223,11 +241,13 @@ Action to remove a column filter from a source
 
 - **Input**:
 
-  | Param        | Type                | Description                                      |
-  | ------------ | ------------------- | ------------------------------------------------ |
-  | props        | <code>Object</code> | { id, column }                                   |
-  | props.id     | <code>string</code> | sourceId of the source to remove the filter from |
-  | props.column | <code>string</code> | column of the filter to remove                   |
+{{% tableWrapper tab="true" %}}
+| Param        | Type                | Description                                      |
+| ------------ | ------------------- | ------------------------------------------------ |
+| props        | <code>Object</code> | { id, column }                                   |
+| props.id     | <code>string</code> | sourceId of the source to remove the filter from |
+| props.column | <code>string</code> | column of the filter to remove                   |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -250,9 +270,11 @@ Action to remove all filters from a source
 
 - **Input**:
 
-  | Type            | Description                                       |
-  | --------------- | ------------------------------------------------- |
-  | <code>id</code> | sourceId of the source to remove all filters from |
+{{% tableWrapper tab="true" %}}
+| Type            | Description                                       |
+| --------------- | ------------------------------------------------- |
+| <code>id</code> | sourceId of the source to remove all filters from |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -272,10 +294,12 @@ Redux selector to get a source by ID
 
 - **Input**:
 
-  | Param    | Type                | Description                            |
-  | -------- | ------------------- | -------------------------------------- |
-  | state    | <code>Object</code> | root redux state                       |
-  | sourceId | <code>string</code> | id of the source to recover from redux |
+{{% tableWrapper tab="true" %}}
+| Param    | Type                | Description                            |
+| -------- | ------------------- | -------------------------------------- |
+| state    | <code>Object</code> | root redux state                       |
+| sourceId | <code>string</code> | id of the source to recover from redux |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -294,9 +318,11 @@ Action to set the current ViewState of the map
 
 - **Input**:
 
-  | Param     | Type                | Description                      |
-  | --------- | ------------------- | -------------------------------- |
-  | viewState | <code>Object</code> | ViewState, as defined by deck.gl |
+{{% tableWrapper tab="true" %}}
+| Param     | Type                | Description                      |
+| --------- | ------------------- | -------------------------------- |
+| viewState | <code>Object</code> | ViewState, as defined by deck.gl |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -317,12 +343,13 @@ Action to set the current ViewState of the map
 Action to set the loading state to a specific widget. It can be useful when creating custom widgets.
 
 - **Input**:
-
-  | Param           | Type                 | Description            |
-  | --------------- | -------------------- | ---------------------- |
-  | props           | <code>Object</code>  | { widgetId, isLoading} |
-  | props.widgetId  | <code>string</code>  | id of the widget       |
-  | props.isLoading | <code>boolean</code> | loading state          |
+{{% tableWrapper tab="true" %}}
+| Param           | Type                 | Description            |
+| --------------- | -------------------- | ---------------------- |
+| props           | <code>Object</code>  | { widgetId, isLoading} |
+| props.widgetId  | <code>string</code>  | id of the widget       |
+| props.isLoading | <code>boolean</code> | loading state          |
+{{%/ tableWrapper %}}
 
 #### removeWidgetLoadingState
 
@@ -330,9 +357,11 @@ Action to remove a specific widget loading state
 
 - **Input**:
 
-  | Param    | Type                | Description      |
-  | -------- | ------------------- | ---------------- |
-  | widgetId | <code>string</code> | id of the widget |
+{{% tableWrapper tab="true" %}}
+| Param    | Type                | Description      |
+| -------- | ------------------- | ---------------- |
+| widgetId | <code>string</code> | id of the widget |
+{{%/ tableWrapper %}}
 
 #### setAllWidgetsLoadingStates
 
@@ -340,9 +369,11 @@ Action to set the all the widgets loading state at once
 
 - **Input**:
 
-  | Param      | Type                 | Description   |
-  | ---------- | -------------------- | ------------- |
-  | areLoading | <code>boolean</code> | loading state |
+{{% tableWrapper tab="true" %}}
+| Param      | Type                 | Description   |
+| ---------- | -------------------- | ------------- |
+| areLoading | <code>boolean</code> | loading state |
+{{%/ tableWrapper %}}
 
 ---
 
@@ -355,9 +386,11 @@ reducers to manage OAuth with CARTO platform.
 
 - **Input**:
 
-  | Param        | Type                | Description       |
-  | ------------ | ------------------- | ----------------- |
-  | initialState | <code>Object</code> | the initial state |
+{{% tableWrapper tab="true" %}}
+| Param        | Type                | Description       |
+| ------------ | ------------------- | ----------------- |
+| initialState | <code>Object</code> | the initial state |
+{{%/ tableWrapper %}}
 
   An initial state object might look like:
 
@@ -382,9 +415,11 @@ Action to set the userInfo in the redux store, once there is a valid token (and 
 
 - **Input**:
 
-  | Param | Type                | Description                                                                                    |
-  | ----- | ------------------- | ---------------------------------------------------------------------------------------------- |
-  | props | <code>Object</code> | oauthParams, as returned by `useOAuthLogin` hook ({ accessToken, expirationDate, userInfoUrl}) |
+{{% tableWrapper tab="true" %}}
+| Param | Type                | Description                                                                                    |
+| ----- | ------------------- | ---------------------------------------------------------------------------------------------- |
+| props | <code>Object</code> | oauthParams, as returned by `useOAuthLogin` hook ({ accessToken, expirationDate, userInfoUrl}) |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -433,12 +468,14 @@ Selector to fetch the current OAuth credentials from the redux store
 
 - **Returns**:
 
-  | Param                         | Type                | Description                             |
-  | ----------------------------- | ------------------- | --------------------------------------- |
-  | credentials                   | <code>Object</code> | { username, apiKey, serverUrlTemplate } |
-  | credentials.username          | <code>string</code> | CARTO username                          |
-  | credentials.apiKey            | <code>string</code> | apiKey coming from OAuth                |
-  | credentials.serverUrlTemplate | <code>string</code> | required for further api requests       |
+{{% tableWrapper tab="true" %}}
+| Param                         | Type                | Description                             |
+| ----------------------------- | ------------------- | --------------------------------------- |
+| credentials                   | <code>Object</code> | { username, apiKey, serverUrlTemplate } |
+| credentials.username          | <code>string</code> | CARTO username                          |
+| credentials.apiKey            | <code>string</code> | apiKey coming from OAuth                |
+| credentials.serverUrlTemplate | <code>string</code> | required for further api requests       |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
