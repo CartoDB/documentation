@@ -12,7 +12,7 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
 
 TODO: create a gif creating a bq connection with the name bqconn
 
-2. Create a public token
+2. Create a token using our token API (TODO: link to tokens api doc).
 
 TODO: CURL Request to get a token for project.mydataset.mytable
  
@@ -24,7 +24,7 @@ A function `setDefaultCredentials` is provided to define the connection to CARTO
 setDefaultCredentials({
   apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
   apiVersion: API_VERSIONS.V3,
-  accessToken: 'yourAccessToken'
+  accessToken: 'TODO: replace with a public token'
 });
 ```
 
@@ -50,7 +50,7 @@ TODO: embed a live example here with the previous table and a public token.
 
 If you are using CARTO 2, there are some differences you need to take into account when specifying the properties:
 
-- setDefaultCredentials needs and `username` and `apiKey`. For more info check the [reference](/deck-gl/reference#credentials).
+- setDefaultCredentials needs and `username` and `apiKey`. For more info check the [reference](/deck-gl/reference#credentials) or our guide for [Managing your API keys](https://docs.carto.com/authorization/#managing-your-api-keys) 
 
 - The `connection` parameter is not required.
 
@@ -72,26 +72,7 @@ If you are using CARTO 2, there are some differences you need to take into accou
 
 {{%/ bannerNote %}}
 
-### Public vs Private Layers
 
-When you retrieve data from a cloud data warehouse connection you need to provide an access token that authorizes access to the data. The way of generating this access token is different if your application is private or public.
-
-####  Get a public token
-If you are building a public application, you need to create a public token (TODO: link to API doc) for the datasets of your application. 
-
-TODO: Add CURL example to get a token
-
-####  Get a private token
-
-CARTO uses OAuth to manage private access to the platform, you need to use CARTO for React (TODO: link to CARTO for React cloud native guide).
-
-{{% bannerNote title="note" %}}
-
-If you are using CARTO 2, the authentication is based on the `username`/`apiKey` combination. 
-
-For private datasets, you need to create an [API key](https://docs.carto.com/authorization/#api-keys) that provides access to the datasets you are going to use in your application.
-
-{{%/ bannerNote %}}
 
 ### Support for other deck.gl layers
 
