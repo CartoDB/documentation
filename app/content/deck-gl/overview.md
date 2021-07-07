@@ -2,9 +2,9 @@
 
 ### Introduction
 
-Deck.gl is one of the most popular Open Source map visualization libraries and is the preferred library to use with CARTO. With deck.gl and CARTO you can create highly scalable applications that visualize location data in many different ways. We have created a submodule `@deck.gl/carto` that you can use to work with CARTO datasets and tilesets in a very easy and straightforward way.
+[deck.gl](https://deck.gl) is one of the most popular Open Source map visualization libraries and is the preferred library to use with CARTO. With deck.gl and CARTO you can create highly scalable applications that visualize location data in many different ways. We have created a submodule `@deck.gl/carto` that you can use to work with CARTO datasets and tilesets in a very easy and straightforward way.
 
-The `CartoLayer` is the deck.gl layer that provides the integration with the CARTO platform. This layer can be used from different frameworks like React, Angular or Vue.js. It works both with CARTO 2.x and CARTO 3.0.
+The [CartoLayer](/deck-gl/using-the-cartolayer) is the deck.gl layer that provides the integration with the CARTO platform. This layer can be used from different frameworks like React, Angular or Vue.js. It works both with CARTO 2 and CARTO 3.
 
 We provide lots of examples that you can checkout to see how to use the deck.gl library with our platform. Please take a look at the [examples](examples/basic-examples/hello-world.html) section in this site and the examples in the [viz-doc](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples) repository. 
 
@@ -16,7 +16,7 @@ It is important that you begin by learning the core deck.gl concepts. Please che
 
 Starting with version 8.3, deck.gl includes a submodule `@deck.gl/carto` for integration with the CARTO platform. This module provides all that you need to:
 
-- **Access data from the CARTO platform**. Using the `credentials` object you supply the parameters needed to connect with the CARTO platform, then you use the `CartoLayer` to visualize the datasets.
+- **Access data from the CARTO platform**. Using the [setDefaultcredentials](/deck-gl/reference/#setdefaultcredentials) function you supply the parameters needed to connect with the CARTO platform, then you use the [CartoLayer](/deck-gl/reference/#cartolayer) to visualize the datasets.
   
 - **Use CARTO basemaps**. With deck.gl you can choose between different basemaps for your visualizations. CARTO provides a set of free basemaps from OpenStreetMap, but you can also use Google Maps, Mapbox or any other provider with MVT support.
   
@@ -24,11 +24,11 @@ Starting with version 8.3, deck.gl includes a submodule `@deck.gl/carto` for int
 
 ### Installation
 
-deck.gl can be used in web applications in two different flavors:
+Two different flavors are provided:
 
-- **Scripting**. You will use the scripting flavor for prototypes and simple applications.
+- **Scripting**. Useful to build prototypes.
   
-- **NPM Module**. You will use the NPM module in React applications, Vanilla JavaScript applications or applications using other frameworks such as Angular or Vue.js.
+- **NPM Module**. You'll use the NPM module in React applications, Vanilla JavaScript applications or applications using other frameworks such as Angular or Vue.js.
 
 #### Using scripting
 

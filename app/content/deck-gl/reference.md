@@ -2,14 +2,13 @@
 
 The CARTO submodule for deck.gl is open source, so we maintain the [documentation](https://deck.gl/docs/api-reference/carto/overview) updated in the project official repository. We are replicating the content here for convenience.
 
-### Credentials
+### setDefaultCredentials
 
-This is an object to define the connection to CARTO, including the credentials (and optionally the parameters to point to specific api endpoints). The configuration properties that must be defined depend on the CARTO API version used:
+This is a function to define the connection to CARTO, including the credentials (and optionally the parameters to point to specific api endpoints). The configuration properties that must be defined depend on the CARTO API version used:
 
-* `apiVersion` (optional): API version. Default: `API_VERSIONS.V2`. Possible values are:
-  * API_VERSIONS.V1
-  * API_VERSIONS.V2
-  * API_VERSIONS.V3 (**CARTO 3**)
+* [apiVersion](/deck-gl/reference/#api_versions) (optional): API version. Default: `API_VERSIONS.V2`.
+
+#### CARTO 2
 
 If using API v1 or v2, the following properties are used:
 
@@ -20,12 +19,6 @@ If using API v1 or v2, the following properties are used:
   * `https://{username}.carto.com/api/v1/map` for v1
   * `https://maps-api-v2.{region}.carto.com/user/{username}` for v2
 
-If using API v3, these are the available properties:
-
-* `apiBaseUrl` (required): base URL for requests to the API (can be obtained in the CARTO 3 Workspace)
-* `accessToken` (required): token to authenticate/authorize requests to the Maps API (private datasets)
-* `mapsUrl` (optional): Maps API URL Template. Default: 
-  * `https://{apiBaseUrl}/v3/maps` 
 
 If you have a custom CARTO deployment (on-premise user or you're running CARTO from [Google Cloud Marketplace](https://console.cloud.google.com/marketplace/product/cartodb-public/carto-enterprise-byol)), you need to set the URLs to point to your instance. 
 
@@ -37,106 +30,26 @@ setDefaultCredentials({
 });
 ```
 
+#### CARTO 3
+
+If using API v3, these are the available properties:
+
+* `apiBaseUrl` (required): base URL for requests to the API (can be obtained in the CARTO 3 Workspace)
+* `accessToken` (required): token to authenticate/authorize requests to the Maps API (private datasets)
+* `mapsUrl` (optional): Maps API URL Template. Default: `https://{apiBaseUrl}/v3/maps` 
+
+
 ### CartoLayer
 
 `CartoLayer` is the layer to visualize data using the CARTO Maps API.
 
-#### Usage CARTO 2
-
-```js
-import DeckGL from '@deck.gl/react';
-import {CartoLayer, setDefaultCredentials, MAP_TYPES, API_VERSIONS} from '@deck.gl/carto';
-
-setDefaultCredentials({
-  apiVersion: API_VERSIONS.V2,
-  username: 'public',
-  apiKey: 'default_public'
-});
-
-function App({viewState}) {
-  const layer = new CartoLayer({
-    type: MAP_TYPES.QUERY,
-    data: 'SELECT * FROM world_population_2015',
-    pointRadiusMinPixels: 2,
-    getLineColor: [0, 0, 0, 125],
-    getFillColor: [238, 77, 90],
-    lineWidthMinPixels: 1
-  })
-
-  return <DeckGL viewState={viewState} layers={[layer]} />;
-}
-```
-
-#### Usage CARTO 3
-
-```js
-import DeckGL from '@deck.gl/react';
-import {CartoLayer, setDefaultCredentials, MAP_TYPES, API_VERSIONS} from '@deck.gl/carto';
-
-setDefaultCredentials({
-  apiVersion: API_VERSIONS.V3
-  apiBaseUrl: 'https://gcp-us-east1.api.carto.com', 
-  accessToken: 'XXX',
-});
-
-function App({viewState}) {
-  const layer = new CartoLayer({
-    type: MAP_TYPES.QUERY,
-    connection: 'bigquery',
-    data: 'SELECT * FROM cartobq.testtables.points_10k',
-    pointRadiusMinPixels: 2,
-    getLineColor: [0, 0, 0, 200],
-    getFillColor: [238, 77, 90],
-    lineWidthMinPixels: 1
-  })
-
-  return <DeckGL viewState={viewState} layers={[layer]} />;
-}
-```
-
 > **CARTO 3** is a fully cloud native platform currently available only in a private beta. If you want to test it, please contact us at [support@carto.com](mailto:support@carto.com?subject=Access%20to%20Cloud%20%Native%20%API%20(v3)).
 
-#### Installation
-
-To install the dependencies from NPM:
-
-```bash
-npm install deck.gl
-# or
-npm install @deck.gl/core @deck.gl/layers @deck.gl/carto
-```
-
-```js
-import {CartoLayer} from '@deck.gl/carto';
-new CartoLayer({});
-```
-
-To use pre-bundled scripts:
-
-```html
-<script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
-
-<!-- or -->
-<script src="https://unpkg.com/@deck.gl/core@^8.5.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/layers@^8.5.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/geo-layers@^8.5.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
-```
-
-```js
-new deck.carto.CartoLayer({});
-```
-
-#### Properties
-
-This layer allows to work with the different CARTO Maps API versions (v1, v2 and v3). When using version v1 and v2, the layer always works with vector tiles so it inherits all properties from [`MVTLayer`](/docs/api-reference/geo-layers/mvt-layer.md). When using v3, the layer works with vector tiles if the `type` property is `MAP_TYPES.TILESET` and with GeoJSON data if the `type` is `MAP_TYPES.QUERY` or `MAP_TYPES.TABLE`. When using GeoJSON data, the layer inherits all properties from [`GeoJsonLayer`](/docs/api-reference/layers/geojson-layer.md).
-
-##### `data` (String)
+#### `data` (String)
 
 Required. Either a SQL query or a name of dataset/tileset.
 
-##### `type` (String)
+#### `type` (String)
 
 Required. Data type. Possible values are:
 
@@ -144,26 +57,23 @@ Required. Data type. Possible values are:
 - `MAP_TYPES.TILESET`, if `data` is a tileset name.
 - `MAP_TYPES.TABLE`, if `data` is a dataset name. Only supported with API v3.
 
-##### `connection` (String)
+#### `connection` (String)
 
 Required when apiVersion is `API_VERSIONS.V3`. 
 
 Name of the connection registered in the CARTO workspace.
 
-##### `uniqueIdProperty` (String)
+#### `uniqueIdProperty` (String)
 
 * Default: `cartodb_id`
 
 Optional. A string pointing to a unique attribute at the result of the query. A unique attribute is needed for highlighting with vector tiles when a feature is split across two or more tiles.
 
-##### `credentials` (Object)
+#### `credentials` (Object)
 
 Optional. Overrides the configuration to connect with CARTO. Check the parameters [here](overview#carto-credentials).
 
-
-#### Callbacks
-
-##### `onDataLoad` (Function, optional)
+#### `onDataLoad` (Function, optional)
 
 `onDataLoad` is called when the request to the CARTO Maps API was completed successfully.
 
@@ -173,7 +83,7 @@ Receives arguments:
 
 * `data` (Object) - Data received from CARTO Maps API
 
-##### `onDataError` (Function, optional)
+#### `onDataError` (Function, optional)
 
 `onDataError` is called when the request to the CARTO Maps API failed. By default the Error is thrown.
 
@@ -195,9 +105,7 @@ Receives arguments:
 Ensure you follow the [Terms and Conditions](https://drive.google.com/file/d/1P7bhSE-N9iegI398QYDjKeVhnbS7-Ilk/view) when using them.
 
 
-#### Usage
-
-##### React
+#### Usage on React
 
 **Important Note:** Mapbox-GL-JS v2.0 changed to a license that requires an API key for loading the library, which will prevent you from using `react-map-gl` ( a higher level library). They have an in-depth guide about it [here](https://github.com/visgl/react-map-gl/blob/v6.0.0/docs/get-started/mapbox-tokens.md).
 
@@ -220,7 +128,7 @@ import {BASEMAP} from '@deck.gl/carto';
 </DeckGL>
 ```
 
-##### Standalone
+#### Usage standalone
 
 To use pre-bundled scripts:
 
@@ -235,7 +143,7 @@ To use pre-bundled scripts:
 <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
 ```
 
-```js
+```javascript
 const deckgl = new deck.DeckGL({
     container: 'map',
     mapStyle: deck.carto.BASEMAP.POSITRON,
@@ -412,5 +320,18 @@ Color for null values.
 Default: `[204, 204, 204]`
 
 
+### Constants
 
+To make it easier to work with the CARTO module the following constants are provided:
 
+#### API_VERSIONS
+
+Enumeration values: V1, V2, V3.
+
+#### MAP_TYPES
+
+Enumeration values: QUERY, TABLE, TILESET
+
+#### FORMATS
+
+Enumeration values: GEOJSON, JSON, TILEJSON, NDJSON
