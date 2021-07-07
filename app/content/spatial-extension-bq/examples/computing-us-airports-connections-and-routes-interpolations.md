@@ -1,4 +1,4 @@
-## Computing US Airports connections and routes interpolations
+## Computing US airports connections and routes interpolations
 
 ### Generating connections
 
@@ -18,7 +18,7 @@ WHERE t1.abbrev != t2.abbrev
 
 This query first creates all the possible combinations between airports and then generates the paths between them using the `ST_GREATCIRCLE` function. The resulting paths contain 25 points, but you can set the number of points in order to make the lines smoother if needed.
 
-The result is displayed in this visualization, where you'll notice we are not using straight lines to interconnect the different airports, but rather great circles.
+The result is displayed in this visualization. Notice we are not using straight lines to interconnect the different airports, but great circles instead.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/f54fe4b8-fee3-4e2d-a9d1-4f8a632eba71" title="US airports connections."></iframe> 
 
@@ -39,7 +39,7 @@ CROSS JOIN data AS t2
 WHERE t1.abbrev != t2.abbrev
 ```
 
-This query uses the `ST_LINE_INTERPOLATE_POINT`over each great circle in order to calculate the position after travelling 500 kilometers. In the following visualization you can see the different locations of the airplane as well as their origin and destination airports.
+This query uses the `ST_LINE_INTERPOLATE_POINT` function over each great circle in order to calculate the location of the plane after travelling 500 kilometers. In the following visualization you can see these locations as well as their origin and destination airports.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/b5c490e8-81ec-4c6f-ad67-864509d734d6" title="US airports routes interpolation."></iframe>
 

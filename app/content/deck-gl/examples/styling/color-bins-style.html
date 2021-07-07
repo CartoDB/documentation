@@ -6,8 +6,8 @@
       rel="stylesheet"
     />
 
-    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -25,7 +25,7 @@
 
     const deckgl = new deck.DeckGL({
       container: 'map',
-      mapStyle: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+      mapStyle: deck.carto.BASEMAP.POSITRON,
 
       initialViewState: {
         latitude: 38,
@@ -35,8 +35,9 @@
       controller: true,
 
       layers: [
-        new deck.carto.CartoSQLLayer({
+        new deck.carto.CartoLayer({
           id: 'higher_edu_by_county',
+          type: deck.carto.MAP_TYPES.QUERY,
           data: 'SELECT the_geom_webmercator, pct_higher_ed FROM higher_edu_by_county',
           getFillColor: deck.carto.colorBins({
             attr: 'pct_higher_ed',

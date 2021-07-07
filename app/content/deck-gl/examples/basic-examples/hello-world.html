@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
 
     const deckgl = new deck.DeckGL({
       container: 'map',
-      mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
 
       initialViewState: {
         latitude: 0,
@@ -31,9 +31,10 @@
       controller: true,
 
       layers: [
-        new deck.carto.CartoSQLLayer({
+        new deck.carto.CartoLayer({
           // For better performance select the_geom_webmercator as the source of the geometry
           // and only retrieve the fields needed  
+          type: deck.carto.MAP_TYPES.QUERY,
           data: 'SELECT the_geom_webmercator, name FROM populated_places', 
           getFillColor: [238, 77, 90],
           pointRadiusMinPixels: 2.5

@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -30,7 +30,7 @@
     // Create Deck.GL map
     const deckgl = new deck.DeckGL({
       container: 'map',
-      mapStyle: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+      mapStyle: deck.carto.BASEMAP.DARK_MATTER,
 
       initialViewState: {
         latitude: 40.7368521,
@@ -41,8 +41,9 @@
       controller: true,
 
       layers: [
-        new deck.carto.CartoSQLLayer({
+        new deck.carto.CartoLayer({
           id: 'mrli',
+          type: deck.carto.MAP_TYPES.QUERY,
           data: `SELECT geoid, the_geom_webmercator, avg(txn_amt) as index
             FROM public.mrli_ny_jan WHERE industry ='ret'
             group by geoid, the_geom_webmercator`,
