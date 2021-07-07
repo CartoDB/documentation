@@ -6,7 +6,7 @@ cascade:
   folders:
     - name: "Overview"
       elements:
-        - "Overview"
+        - "Getting started"
         - "Terminology"
     - name: "Guides"
       elements:
