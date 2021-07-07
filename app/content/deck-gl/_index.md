@@ -14,7 +14,6 @@ cascade:
         - name: "Basic examples"
           elements:
             - "Hello World"
-            - "Hello World CARTO 3"
             - "BigQuery Tileset Layer"
             - "CARTO Basemap"
             - "Interactivity"
