@@ -9,7 +9,8 @@ Carefull this query scan a lot of data. You may skip this query by creating dire
 
 
 ```sql
-CREATE TABLE mydataset.liberty_island_linestrings AS
+CREATE TABLE
+  mydataset.liberty_island_linestrings AS
 SELECT
   geometry,
   all_tags
@@ -21,8 +22,7 @@ WHERE
   key = 'highway'
   AND ST_INTERSECTS(geometry,
     --NY Liberty Island Bounding Box:
-    ST_GEOGFROMGEOJSON("""{"type": "Polygon","coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158], [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") )
-``` 
+    ST_GEOGFROMGEOJSON("""{"type": "Polygon","coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158], [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") )``` 
 
 #### Creating the network from linestrings
 
@@ -37,17 +37,19 @@ CALL `bqcarto.routing.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestri
 Or you can go the hard way using a function.
 
 ```sql
-    CREATE OR REPLACE TABLE `mydataset.liberty_island_network`
-      AS
-        WITH T as(
-            SELECT
-              `bqcarto.routing.GENERATE_NETWORK`(ARRAY_AGG(geometry)) generate_network
-            FROM
-              `mydataset.my_test_linestrings`
-                  )
-      SELECT myunnest.*
-      FROM T,
-      unnest(generate_network) myunnest
+CREATE OR REPLACE TABLE
+  `mydataset.liberty_island_network` AS
+WITH
+  T AS(
+  SELECT
+    `bqcarto.routing.GENERATE_NETWORK`(ARRAY_AGG(geometry)) generate_network
+  FROM
+    `mydataset.my_test_linestrings` )
+SELECT
+  myunnest.*
+FROM
+  T,
+  UNNEST(generate_network) myunnest
 ```
 
 #### Visualising the network
@@ -60,7 +62,6 @@ SELECT
 UNION ALL
 SELECT
     ST_MAKELINE(src_geo, dest_geo) line, 1 compacted FROM `mydataset.liberty_island_network`
-);
 ```
 
 
@@ -74,11 +75,10 @@ Again we have created a procedure for that:
 
 ```sql
 CALL
-  `bqcarto.routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`(
-      "mydataset.liberty_island_network","mydataset.my_shortest_path",
-      "ST_geogpoint(-74.04665, 40.68983)",
-      "ST_geogpoint(-74.0438, 40.68874)"
-      )
+  `bqcarto.routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
+    "mydataset.my_shortest_path",
+    "ST_geogpoint(-74.04665, 40.68983)",
+    "ST_geogpoint(-74.0438, 40.68874)" )
 ```
 
 #### Using a function
@@ -86,16 +86,20 @@ CALL
 And again, you can choose to go the hard way using a function.
 
 ```sql
-        WITH T as(
-            SELECT
-              `bqcarto.routing.FIND_SHORTEST_PATH_FROM_NETWORK`(ARRAY_AGG(flatten_links),
-                ST_geogpoint(-74.04665, 40.68983),
-                ST_geogpoint(-74.0438, 40.68874)) myroutes
-            FROM
-              `mydataset.liberty_island_network` flatten_links
-              )
-      SELECT myroutes.*
-      from T
+WITH
+  T AS(
+  SELECT
+    `bqcarto.routing.FIND_SHORTEST_PATH_FROM_NETWORK`(ARRAY_AGG(flatten_links),
+      ST_geogpoint(-74.04665,
+        40.68983),
+      ST_geogpoint(-74.0438,
+        40.68874)) myroutes
+  FROM
+    `mydataset.liberty_island_network` flatten_links )
+SELECT
+  myroutes.*
+FROM
+  T
 ```
 
 #### Visualising the shortest path
@@ -112,11 +116,9 @@ Again we have created a procedure for that:
 
 ```sql
 CALL
-  `bqcarto.routing.DISTANCE_MAP_FROM_NETWORK_TABLE`(
-      "mydataset.liberty_island_network",
-      "mydataset.my_distance_map",
-      "ST_geogpoint(-74.0438, 40.68874)"
-      )
+  `bqcarto.routing.DISTANCE_MAP_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
+    "mydataset.my_distance_map",
+    "ST_geogpoint(-74.0438, 40.68874)" )
 ```
 
 #### Using a function
@@ -124,19 +126,23 @@ CALL
 And again, you can choose to go the hard way using a function.
 
 ```sql
-        WITH T as(
-            SELECT
-              `bqcarto.routing.DISTANCE_MAP_FROM_NETWORK`(ARRAY_AGG(flatten_links),
-                ST_geogpoint(-74.0438, 40.68874)) distance_map
-            FROM
-              `mydataset.liberty_island_network` flatten_links
-              )
-      SELECT myunnest.*
-      from T,
-      unnest(distance_map) myunnest
+WITH
+  T AS(
+  SELECT
+    `bqcarto.routing.DISTANCE_MAP_FROM_NETWORK`(ARRAY_AGG(flatten_links),
+      ST_geogpoint(-74.0438,
+        40.68874)) distance_map
+  FROM
+    `mydataset.liberty_island_network` flatten_links )
+SELECT
+  myunnest.*
+FROM
+  T,
+  UNNEST(distance_map) myunnest
 ```
 
 #### Visualising the distance map
+The point of origin is in green, the other are colored based on the length of the shortest path to the origin.
 ![distance map visualization](/img/bq-spatial-extension/routing/distance_map.png)
 
 
