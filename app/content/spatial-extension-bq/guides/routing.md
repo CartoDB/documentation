@@ -17,10 +17,10 @@ FROM
   `bigquery-public-data.geo_openstreetmap.planet_ways`,
   UNNEST(all_tags) tag
 WHERE
-  #Keep only highway, discard buildings, borders ...
+  --Keep only highway, discard buildings, borders ...
   key = 'highway'
   AND ST_INTERSECTS(geometry,
-    #NY Liberty Island Bounding Box:
+    --NY Liberty Island Bounding Box:
     ST_GEOGFROMGEOJSON("""{"type": "Polygon","coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158], [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") )
 ``` 
 
@@ -72,8 +72,7 @@ Let's calculate a shortest path between two points.
 
 Again we have created a procedure for that:
 
-```
-
+```sql
 CALL
   `bqcarto.routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`(
       "mydataset.liberty_island_network","mydataset.my_shortest_path",
@@ -86,7 +85,7 @@ CALL
 
 And again, you can choose to go the hard way using a function.
 
-```
+```sql
         WITH T as(
             SELECT
               `bqcarto.routing.FIND_SHORTEST_PATH_FROM_NETWORK`(ARRAY_AGG(flatten_links),
@@ -111,7 +110,7 @@ Let's calculate a shortest path between two points.
 
 Again we have created a procedure for that:
 
-```
+```sql
 CALL
   `bqcarto.routing.DISTANCE_MAP_FROM_NETWORK_TABLE`(
       "mydataset.liberty_island_network",
@@ -124,7 +123,7 @@ CALL
 
 And again, you can choose to go the hard way using a function.
 
-```
+```sql
         WITH T as(
             SELECT
               `bqcarto.routing.DISTANCE_MAP_FROM_NETWORK`(ARRAY_AGG(flatten_links),
