@@ -133,7 +133,8 @@ CALL bqcarto.data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(
    'polygon',
    [('population_93405ad7', 'SUM')],
    ['`my-project.my-dataset.my-enriched-table`'],
-   'do-myorg-de4a1b21c14326c53184.do_us_myuser_3a21c14322b214326'
+   'do-myorg-de4a1b21c14326c53184',
+   'do_us_myuser_3a21c14322b214326'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: id, geom, sum_population_93405ad7
