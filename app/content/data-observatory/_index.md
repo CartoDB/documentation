@@ -3,6 +3,8 @@ cascade:
   title: Data Observatory
   description: "Public and premium datasets ready to be used across the CARTO platform"
   icon: "/img/icons/data-observatory.png"
+  extra_sections:
+    - "Tilesets collection"
   folders:
     - name: "Overview"
       elements:
