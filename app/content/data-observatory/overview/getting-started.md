@@ -86,7 +86,7 @@ Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) allo
 
 Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [Worldpop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](https://docs.carto.com/spatial-extension-bq/overview/tilesets/) using the [Spatial Extension for BigQuery](https://docs.carto.com/spatial-extension-bq/guides/tilesets/).
 
-We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are publicly available in the BigQuery project `carto-do-public-tilesets`. Visit THIS PAGE for a gallery of visualizations and the full list of available lilesets. 
+We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are publicly available in the BigQuery project `carto-do-public-tilesets`. Visit [this page](../../tilesets-collection) for a gallery of visualizations and the full list of available lilesets. 
 
 <div class="figures-table" style="text-align:center">
     <figure>
