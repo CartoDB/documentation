@@ -91,9 +91,12 @@ In this guide, you will learn how to upload a .csv file and create your first da
 
 Download the following dataset:
 
+{{% tableWrapper %}}
 |       |       |       |       |
 |-------|-------|-------|-------|
 | World Ports | 3,669 rows | 708 kB | <a href="https://public.carto.com/api/v2/sql?q=select%20*%20from%20public.world_ports&format=csv&filename=worldports"> Download</a> |
+{{%/ tableWrapper %}}
+
 
 In the "Connect dataset" tab, click on “Browse”, select the file, and then click on “Connect dataset”
 
@@ -151,7 +154,7 @@ Your map has now been published and you can use the link or embed code to share 
 This guide is intended for those who want to start augmenting their data using CARTOframes, our Python library. You can find full guides and examples in the [documentation page](https://carto.com/developers/cartoframes/).
 
 {{<interactiveTutorial>}}
-  {{% tutorialStep stepName="Intro"%}}
+{{% tutorialStep stepName="Intro" %}}
 
 We define *enrichment* as the process of augmenting your data with new variables by means of a spatial join between your data and a dataset aggregated at a given spatial resolution in the CARTO Data Observatory.
 
@@ -169,6 +172,7 @@ set_default_credentials('creds.json')
 ```
 
 {{%/ tutorialStep %}}
+
 {{% tutorialStep stepName="Get areas of influence"%}}
 
 Let's read the file where we have our areas of influence stored and check out the first few records:
@@ -177,6 +181,8 @@ Let's read the file where we have our areas of influence stored and check out th
 aoi_gdf = read_file('http://libs.cartocdn.com/cartoframes/files/starbucks_brooklyn_isolines.geojson')
 aoi_gdf.head()
 ```
+
+{{% tableWrapper %}}
 | data_range | geometry |
 | -----: | ------: |
 | 8 min.   | MULTIPOLYGON (((-73.95959 40.67571, -73.95971 ... |
@@ -184,15 +190,15 @@ aoi_gdf.head()
 | 25 min.   | POLYGON ((-73.95986 40.68815, -73.95711 40.688 ... |
 | 8 min.   | MULTIPOLYGON (((-73.96185 40.58321, -73.96231 ... |
 | 17 min.   | MULTIPOLYGON (((-73.96684 40.57483, -73.96830 ... |
+{{% /tableWrapper %}}
 
 Let's keep only the 8-minute range:
 
 ``` python
 aoi_gdf_8 = aoi_gdf[aoi_gdf['range_label']=='8 min.']
 ```
-
-
 {{%/ tutorialStep %}}
+
 {{% tutorialStep stepName="Get population data from the Data Observatory"%}}
 
 After browsing the [Data Catalog](https://carto.com/spatial-data-catalog/browser/), we've decided we are going to enrich our data with demographics data aggregated at the Census block group level from this [dataset](https://carto.com/spatial-data-catalog/browser/dataset/ags_sociodemogr_a7e14220/) provided by [AGS](https://appliedgeographic.com/).
@@ -222,8 +228,8 @@ Let's visualise the total population variable, `POPCY_4534fac4` in the context o
 <iframe src="https://public.carto.com/kuviz/a8ae5b01-83c8-4db7-8ccc-9d738b2e69c6" style="border: 1px solid #cfcfcf;
     width: 100%;height:500px" title="Iframe Example"></iframe>
 
-  
 {{%/ tutorialStep %}}
+
 {{% tutorialStep stepName="Enrich areas of influence"%}}
 
 To enrich our areas of influence, we first have to select the variable that we are going to use for the enrichment (total population):
@@ -238,6 +244,7 @@ enriched_aoi_gdf.head()
 ```
 As a result, we get a new column added to our dataset, containing the total population that lives inside each the areas of influence:
 
+{{% tableWrapper %}}
 | data_range | geometry | POPCY
 | -----: | ------: | ------: |
 | 8 min.   | MULTIPOLYGON (((-73.95959 40.67571, -73.95971 ... | 21893.52 |
@@ -245,8 +252,9 @@ As a result, we get a new column added to our dataset, containing the total popu
 | 8 min.   | MULTIPOLYGON (((-73.99010 40.62280, -73.99067 ... | 18204.30 |
 | 8 min.   | MULTIPOLYGON (((-74.02791 40.63631, -74.02809 ... | 17606.95 |
 | 8 min.   | MULTIPOLYGON (((-74.00100 40.59815, -74.00141 ... | 2517.66 |
-
+{{% /tableWrapper %}}
 {{%/ tutorialStep %}}
+
 {{% tutorialStep stepName="Visualize the result"%}}
 
 Map visualizations can be created very easily using CARTOframes. In fact, all the maps that you've seen so far in this guide have been created with it. 
@@ -262,7 +270,7 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
 
 
 
-  {{%/ tutorialStep %}}
+{{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
 ## CARTO for Development
