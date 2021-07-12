@@ -1,12 +1,14 @@
-## Tilesets collection
+## Example tilesets
 
-Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [Worldpop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](https://docs.carto.com/spatial-extension-bq/overview/tilesets/) using the [Spatial Extension for BigQuery](https://docs.carto.com/spatial-extension-bq/guides/tilesets/).
+Some of the spatial datasets offered in the Data Observatory are very large (a few TB), either due to their global coverage, such as [Worldpop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level and their visualization requires the creation of [tilesets](https://docs.carto.com/spatial-extension-bq/overview/tilesets/) tilesets. Tilesets creation is currently only available for BigQuery users through the [CARTO Spatial Extension](https://docs.carto.com/spatial-extension-bq/guides/tilesets/).
 
 We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are publicly available in the BigQuery project `carto-do-public-tilesets`.
 
-Use the [gallery](#gallery) to browse examples of the types of visualizations you can achieve and the [catalog](#catalog) to find the location and characteristics of all available tilesets.
+Use the gallery below to browse examples of the types of visualizations you can achieve and the table that follows to find the location and characteristics of all available tilesets.
 
-### Gallery
+{{% bannerNote type="tip" title="TIP" %}}
+We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are directly available in the BigQuery project `carto-do-public-tilesets`. Visit [this page](../../tilesets-collection) for a gallery of visualizations and the full list of available lilesets. 
+{{%/ bannerNote %}}
 
 {{<grid>}}
 
@@ -90,7 +92,8 @@ Use the [gallery](#gallery) to browse examples of the types of visualizations yo
 
 {{</grid>}}
 
-### Catalog
+</br>
+</br>
 
 {{% tableWrapper %}}
 
