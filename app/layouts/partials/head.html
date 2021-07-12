@@ -19,7 +19,9 @@
   <link rel="canonical" href="{{.Permalink}}">
   <link rel="mask-icon" href="/img/logo/icon-carto.svg" color="#162945">
 
-  {{if .Params.title}}
+  {{if .CurrentSection.Params.title}}
+    <title>{{.CurrentSection.Params.title}}{{" | "}}{{ .Site.Title }}</title>
+  {{else if .Params.title}}
     <title>{{.Params.title}}{{" | "}}{{ .Site.Title }}</title>
   {{else}}
     <title>{{ .Site.Title }}</title>
