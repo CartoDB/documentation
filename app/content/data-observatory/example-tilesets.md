@@ -6,10 +6,6 @@ We have created a collection of ready-to-use Data Observatory tilesets from publ
 
 Use the gallery below to browse examples of the types of visualizations you can achieve and the table that follows to find the location and characteristics of all available tilesets.
 
-{{% bannerNote type="tip" title="TIP" %}}
-We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are directly available in the BigQuery project `carto-do-public-tilesets`. Visit [this page](../../example-tilesets) for a gallery of visualizations and the full list of available lilesets. 
-{{%/ bannerNote %}}
-
 {{<grid>}}
 
 {{<imageCard 
