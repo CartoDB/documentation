@@ -100,6 +100,6 @@ Tilesets can be visualized directly [from your CARTO Dashboard](https://docs.car
 </br>
 
 {{% bannerNote type="tip" title="TIP" %}}
-We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are directly available in the BigQuery project `carto-do-public-tilesets`. Visit [this page](../../tilesets-collection) for a gallery of visualizations and the full list of available lilesets. 
+We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are directly available in the BigQuery project `carto-do-public-tilesets`. Visit [this page](../../example-tilesets) for a gallery of visualizations and the full list of available lilesets. 
 {{%/ bannerNote %}}
 

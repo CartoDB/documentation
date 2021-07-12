@@ -12,7 +12,7 @@ Tileset creation is currently only available for BigQuery users through the [CAR
 {{%/ bannerNote %}}
 
 
-Besides creating your own tilesets, you can also use any of the tilesets in our collection of ready-to-use Data Observatory tilesets from public datasets, available in the BigQuery project `carto-do-public-tilesets`. You can access [here](../../tilesets-collection) the full list of tilsets and a gallery of example visualizations.
+Besides creating your own tilesets, you can also use any of the tilesets in our collection of ready-to-use Data Observatory tilesets from public datasets, available in the BigQuery project `carto-do-public-tilesets`. You can access [here](../../example-tilesets) the full list of tilesets and a gallery of example visualizations.
 
 
 ### Create a BigQuery connection
