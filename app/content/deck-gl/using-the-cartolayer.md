@@ -6,7 +6,7 @@ The [CartoLayer](/deck-gl/reference/#cartolayer) is a deck.gl [`CompositeLayer`]
 
 It is compatible with the different versions of the CARTO Maps API (v1, v2, and v3) and takes care of connecting to the platform to retrieve the data for visualization.
 
-### Connecting to CARTO
+### Connecting to CARTO 3
 
 1. Go to [workspace](https://gcp-us-east1.app.carto.com/connections/create) and create a new connection:
 
@@ -14,11 +14,23 @@ TODO: create a gif creating a bq connection with the name bqconn
 
 2. Create a token using our token API (TODO: link to tokens api doc).
 
-TODO: CURL Request to get a token for project.mydataset.mytable
+```shell
+curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "grants": [
+        {
+            "connection_name": "bqconn",
+            "source": "project.mydataset.mytable"
+        }
+    ],
+    "referers": []
+}'
+```
  
 3. Set connection parameters
 
-A function `setDefaultCredentials` is provided to define the connection to CARTO:
+A function `setDefaultCredentials` is provided to define the connection parameters to CARTO:
 
 ```javascript
 setDefaultCredentials({
@@ -50,7 +62,7 @@ TODO: embed a live example here with the previous table and a public token.
 
 If you are using CARTO 2, there are some differences you need to take into account when specifying the properties:
 
-- setDefaultCredentials needs and `username` and `apiKey`. For more info check the [reference](/deck-gl/reference#credentials) or our guide for [Managing your API keys](https://docs.carto.com/authorization/#managing-your-api-keys) 
+- setDefaultCredentials needs an `username` and `apiKey`. For more info check the [reference](/deck-gl/reference#credentials) or our guide for [Managing your API keys](https://docs.carto.com/authorization/#managing-your-api-keys) 
 
 - The `connection` parameter is not required.
 
