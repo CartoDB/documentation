@@ -15,6 +15,7 @@ cascade:
           elements:
             - "Hello World"
             - "BigQuery Tileset Layer"
+            - "Data Observatory Tileset Layer"
             - "CARTO Basemap"
             - "Interactivity"
             - "Icon Layer"
