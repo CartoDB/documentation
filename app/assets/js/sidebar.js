@@ -142,7 +142,7 @@
  
  function deactivateNodes({ el }) {
    el &&
-    el.querySelectorAll(".native .is-active, .native .is-current").forEach(function (item) {
+    el.querySelectorAll("s.is-active, .is-current").forEach(function (item) {
        item.classList.remove("is-active");
        item.classList.remove("is-current");
      });

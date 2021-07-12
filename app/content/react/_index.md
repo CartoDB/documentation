@@ -40,7 +40,7 @@ menu:
       - title: "Core"
         url: "/library-reference/core"
       - title: "Redux"
-        url: "/library-reference/reduz"
+        url: "/library-reference/redux"
       - title: "UI"
         url: "/library-reference/ui"
       - title: "Widgets"
