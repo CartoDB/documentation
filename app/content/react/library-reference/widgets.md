@@ -11,6 +11,7 @@ A set of advanced widgets, which allow not only a visual representation but a ri
 **Tip:** To review interactively the widgets, check the [Storybook catalogue](https://storybook-react.carto.com/)
 
 ### Components
+
 #### CategoryWidget
 
 Renders a `<CategoryWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features.

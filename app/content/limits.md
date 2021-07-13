@@ -1,8 +1,9 @@
 ---
 title: Limits
 description: "Understand API limits"
-tocName: "Limits"
-type: single-page
+
+menu:
+  - title: "Limits"
 ---
 
 ## Overview

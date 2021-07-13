@@ -1,28 +1,32 @@
 ---
-cascade:
-  title: CARTO for React
-  description: "Build compelling spatial apps using CARTO, React and deck.gl."
-  icon: "/img/icons/carto-react.png"
-  repoUrl: https://github.com/CartoDB/carto-react-template
-  folders:
-    - name: "Guides"
-      elements:
-        - "Getting Started"
-        - "Layers"
-        - "Widgets"
-        - "Authentication and Authorization"
-        - "Basemaps"
-        - "Look and Feel"
-        - "Code Generator"
-        - "Sample Application"
-        - "Deployment"
-    - name: "Library Reference"
-      elements:
-        - "API"
-        - "Auth"
-        - "Basemaps"
-        - "Core"
-        - "Redux"
-        - "UI"
-        - "Widgets"
+title: CARTO for React
+description: "Build compelling spatial apps using CARTO, React and deck.gl."
+icon: "/img/icons/carto-react.png"
+repoUrl: https://github.com/CartoDB/carto-react-template
+
+url: react
+indexPage: "overview.md"
+
+menu: 
+  - title: "Overview"
+  - title: "Guides"
+    folder:
+      - title: "Getting Started"
+      - title: "Layers"
+      - title: "Widgets"
+      - title: "Authentication & Authorization"
+      - title: "Basemaps"
+      - title: "Look and Feel"
+      - title: "Code Generator"
+      - title: "Sample Application"
+      - title: "Deployment"
+  - title: "Library Reference"
+    folder:
+      - title: "API"
+      - title: "Auth"
+      - title: "Basemaps"
+      - title: "Core"
+      - title: "Redux"
+      - title: "UI"
+      - title: "Widgets"
 ---
