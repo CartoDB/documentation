@@ -1,3 +1,4 @@
+{{ $dir := .Page.Dir }}
 {{ $menu := .Page.CurrentSection.Params.menu }}
 {{ $exaples := slice }}
 
@@ -21,7 +22,8 @@
     <div class="thumbnails-wrapper">
       {{ range $thumbnail := $section.folder }}
         <div class="thumbnail">
-          <a href="#">
+          {{ $url := path.Join "/" $dir (urlize $section.title) (urlize $thumbnail.title) }}
+          <a href="{{ $url }}">
             <div class="img-wrapper">
               <img src="" alt="">
             </div>
