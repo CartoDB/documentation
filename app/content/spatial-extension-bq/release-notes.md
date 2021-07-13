@@ -1,11 +1,18 @@
 ## Release notes
 
+### July 13, 2021
+
+#### Module data v1.0.0-beta.4
+
+Changed
+- DATAOBS_ENRICH_* procedures take single `source` parameter with default `carto-customers` project.
+
 ### July 9, 2021
 
 #### Module data v1.0.0-beta.3
 
 Feature
-- ADD DATAOBS_SAMPLES procedure.
+- Add DATAOBS_SAMPLES procedure.
 
 Changed
 - DATAOBS_SUBSCRIPTIONS and DATAOBS_SUBSCRIPTION_VARIABLES take single `source` parameter with default `carto-customers` project. Views with `sub_` prefix are supported.
@@ -44,8 +51,8 @@ Feature
 #### Module data v1.0.0-beta.1
 
 Feature
-- ADD DATAOBS_SUBSCRIPTIONS procedure.
-- ADD DATAOBS_SUBSCRIPTION_VARIABLES procedure.
+- Add DATAOBS_SUBSCRIPTIONS procedure.
+- Add DATAOBS_SUBSCRIPTION_VARIABLES procedure.
 
 Changed
 - Change spatial catalog structure using two tables.
@@ -62,14 +69,14 @@ Changed
 Feature
 - Create data module.
 - Add VERSION function.
-- ADD DATAOBS_ENRICH_POINTS procedure.
-- ADD DATAOBS_ENRICH_POINTS_WITH_MEASURES procedure.
-- ADD DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION procedure.
-- ADD DATAOBS_ENRICH_POLYGONS_WITH_MEASURES procedure.
-- ADD ENRICH_POINTS procedure.
-- ADD ENRICH_POINTS_WITH_MEASURES procedure.
-- ADD ENRICH_POLYGONS_WITH_AGGREGATION procedure.
-- ADD ENRICH_POLYGONS_WITH_MEASURES procedure.
+- Add DATAOBS_ENRICH_POINTS procedure.
+- Add DATAOBS_ENRICH_POINTS_WITH_MEASURES procedure.
+- Add DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION procedure.
+- Add DATAOBS_ENRICH_POLYGONS_WITH_MEASURES procedure.
+- Add ENRICH_POINTS procedure.
+- Add ENRICH_POINTS_WITH_MEASURES procedure.
+- Add ENRICH_POLYGONS_WITH_AGGREGATION procedure.
+- Add ENRICH_POLYGONS_WITH_MEASURES procedure.
 
 ### June 1, 2021
 
