@@ -3,7 +3,10 @@
 {{ $dir := string .Dir }}
 {{ $path := path.Join "/" $dir }}
 {{ $base := path.Base .Page.RelPermalink }}
+{{ $currentSection := replace $dir $context.url "" }}
+{{ $currentSectionPath := path.Join $currentSection $base }}
 {{ $toc := .TableOfContents }}
+
 
 <aside class="grid-cell grid-cell--col3 title f12 toc--sidebar" id="aside-menu">
   <div class="toc--container">
@@ -39,7 +42,7 @@
                 <ul class="toc-hugo__folder-two">
                   {{ range $levelTwo := $item.folder }}
                     <li>
-                      {{ $levelTwoActive := in $levelTwo.url $base }}
+                      {{ $levelTwoActive := eq $levelTwo.url $currentSectionPath }}
                       {{ if $levelTwoActive }}
                         <ul class="toc-hugo__folder-two native">
                           {{$toc}}
@@ -61,7 +64,7 @@
                               <ul class="toc-hugo__folder-three">
                                 {{ range $levelThree := $levelTwo.folder }}
                                   <li>
-                                    {{ $levelThreeActive := in $levelThree.url $base }}
+                                    {{ $levelThreeActive := eq $levelThree.url $currentSectionPath }}
                                     {{ if $levelThreeActive }}
                                       <ul class="toc-hugo__folder-three native">
                                         {{$toc}}
