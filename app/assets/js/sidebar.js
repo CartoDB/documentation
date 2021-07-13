@@ -8,7 +8,7 @@
  var titleDesktop = asideMenu.querySelector(".aside-menu-title-desktop");
  var titleMobile = asideMenu.querySelector(".aside-menu-title-mobile");
  var dropdowns = asideMenu.querySelectorAll(".dropdown");
- console.log(tocContainer);
+
  window.addEventListener("resize", onResize);
  
  dropdowns.forEach((dropdown) => {
@@ -118,7 +118,6 @@
  selectCurrentTocCategory();
  
  function selectCurrentTocCategory() {
-   console.log('entra');
    var sections = document.querySelectorAll(
     ".js-content > h2, .js-content > h3, .js-content > h4"
     );
