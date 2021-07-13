@@ -34,7 +34,7 @@
   {{if eq .CurrentSection.Params.title "Spatial Extension for BigQuery"}}
     {{ $styles := resources.Get "scss/main-bq.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
-  {{else if eq .Params.title "Spatial Extension for Snowflake"}}
+  {{else if eq .CurrentSection.Params.title "Spatial Extension for Snowflake"}}
     {{ $styles := resources.Get "scss/main-sf.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
   {{else}}
