@@ -25,7 +25,9 @@ It never generates more than the requested number of points, but there is a smal
 
 `ARRAY<GEOGRAPHY>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
 WITH blocks AS (
@@ -35,7 +37,7 @@ WITH blocks AS (
   WHERE g.county_name = 'Sonoma County'
 ),
 point_lists AS (
-  SELECT bqcarto.random.ST_GENERATEPOINTS(blockgroup_geom, CAST(total_pop AS INT64)) AS points
+  SELECT carto-st.random.ST_GENERATEPOINTS(blockgroup_geom, CAST(total_pop AS INT64)) AS points
   FROM blocks
 )
 SELECT points FROM point_lists CROSS JOIN point_lists.points
@@ -55,9 +57,11 @@ Returns the current version of the random module.
 
 `STRING`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.random.VERSION();
+SELECT carto-st.random.VERSION();
 -- 1.0.0
 ```
