@@ -9,6 +9,7 @@
 
 
 <aside class="grid-cell grid-cell--col3 title f12 toc--sidebar" id="aside-menu">
+  <p>{{$currentSectionPath}}</p>
   <div class="toc--container">
     <h3 class="title f16 is-txtNavyBlue toc--title aside-menu-title-desktop">{{ $context.title }}</h3>
 
@@ -24,14 +25,15 @@
     </button>
 
     <div class="toc--links">
-      {{ range $item := $mainMenu }}
-        {{ if $item.folder }}
+      {{ range $levelOne := $mainMenu }}
+        {{ $levelOneURL := urlize $levelOne.title }}
+        {{ if $levelOne.folder }}
           <ul class="toc-hugo__folder-one">
             <li class="dropdown">
-              {{ $dropdownActive := in $path (urlize $item.title) }}
+              {{ $dropdownActive := in $path $levelOneURL }}
               <button class="toc--link level-one end-check-active dropdown-btn {{ if not $dropdownActive }} hide {{ end }}">
                 <div>
-                  <span>{{ $item.title }}</span>
+                  <span>{{ $levelOne.title }}</span>
                   <svg class="caret" stroke="currentColor" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
                     <path fill="#162945" fill-rule="evenodd" d="M11.569 5.431L8.04 8.96 4.511 5.431l-.942.943 4.471 4.471 4.471-4.471z"/>
                   </svg>
@@ -40,10 +42,11 @@
 
               <div class="dropdown-options {{ if not $dropdownActive }} hide {{ end }}">
                 <ul class="toc-hugo__folder-two">
-                  {{ range $levelTwo := $item.folder }}
+                  {{ range $levelTwo := $levelOne.folder }}
+                    {{ $levelTwoURL := path.Join $levelOneURL (urlize $levelTwo.title) }}
                     <li>
-                      {{ $levelTwoActive := eq $levelTwo.url $currentSectionPath }}
-                      {{ if $levelTwoActive }}
+                      {{ $levelTwoActive := in $currentSectionPath $levelTwoURL }}
+                      {{ if and $levelTwoActive (not $levelTwo.folder) }}
                         <ul class="toc-hugo__folder-two native">
                           {{$toc}}
                         </ul>
@@ -63,14 +66,15 @@
                             <div class="dropdown-options {{ if not $dropdownTwoActive }} hide {{ end }}">
                               <ul class="toc-hugo__folder-three">
                                 {{ range $levelThree := $levelTwo.folder }}
+                                  {{ $levelThreeURL := path.Join $levelTwoURL (urlize $levelThree.title) }}
                                   <li>
-                                    {{ $levelThreeActive := eq $levelThree.url $currentSectionPath }}
+                                    {{ $levelThreeActive := in $currentSectionPath $levelThreeURL }}
                                     {{ if $levelThreeActive }}
                                       <ul class="toc-hugo__folder-three native">
                                         {{$toc}}
                                       </ul>
                                     {{ else }}
-                                      <a class="toc--link level-three" href="{{ path.Join "/" $context.url $levelThree.url }}">{{ $levelThree.title }}</a>
+                                      <a class="toc--link level-three" href="{{ path.Join "/" $context.url $levelThreeURL }}">{{ $levelThree.title }}</a>
                                     {{ end }}
                                   </li>
                                 {{ end }}
@@ -78,7 +82,7 @@
                             </div>
                           </li>
                         {{ else }}
-                          <a class="toc--link level-two" href="{{ path.Join "/" $context.url $levelTwo.url }}">{{ $levelTwo.title }}</a>
+                          <a class="toc--link level-two" href="{{ path.Join "/" $context.url $levelTwoURL }}">{{ $levelTwo.title }}</a>
                         {{ end }}
                       {{ end }}
                     </li>
@@ -88,13 +92,13 @@
             </li>
           </ul>
         {{ else }}
-          {{ $itemActive := in $item.url $base }}
-          {{ if and $itemActive $toc }}
+          {{ $levelOneActive := in $levelOneURL $base }}
+          {{ if and $levelOneActive $toc }}
             <div class="toc-hugo__folder-one native">
               {{ $toc }}
             </div>
           {{ else }}
-            <a class="toc--link level-one {{ if $itemActive }} is-active is-current {{ end }}" href="{{ path.Join "/" $context.url $item.url }}">{{ $item.title }}</a>
+            <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ path.Join "/" $context.url $levelOneURL }}">{{ $levelOne.title }}</a>
           {{ end }}
         {{ end }}
       {{ end }}
