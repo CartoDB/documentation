@@ -1,4 +1,4 @@
-{{ $context := .CurrentSection.Params }}
+{{ $context := cond (not .CurrentSection.Dir) .Page.Params .CurrentSection.Params }}
 {{ $mainMenu := $context.menu }}
 {{ $dir := string .Dir }}
 {{ $path := path.Join "/" $dir }}
@@ -6,7 +6,6 @@
 {{ $currentSection := replace $dir $context.url "" }}
 {{ $currentSectionPath := path.Join $currentSection $base }}
 {{ $toc := .TableOfContents }}
-
 
 <aside class="grid-cell grid-cell--col3 title f12 toc--sidebar" id="aside-menu">
   <div class="toc--container">
@@ -25,7 +24,9 @@
 
     <div class="toc--links">
       {{ range $levelOne := $mainMenu }}
-        {{ $levelOneURL := urlize $levelOne.title }}
+        <p>{{$levelOne.url}}</p>
+        {{ $levelOneURL := cond (not $levelOne.url) (urlize $levelOne.title) $levelOne.url }}
+
         {{ if $levelOne.folder }}
           <ul class="toc-hugo__folder-one">
             <li class="dropdown">
@@ -43,8 +44,10 @@
                 <ul class="toc-hugo__folder-two">
                   {{ range $levelTwo := $levelOne.folder }}
                     {{ $levelTwoURL := path.Join $levelOneURL (urlize $levelTwo.title) }}
+
                     <li>
                       {{ $levelTwoActive := in $currentSectionPath $levelTwoURL }}
+
                       {{ if and $levelTwoActive (not $levelTwo.folder) }}
                         <ul class="toc-hugo__folder-two native">
                           {{$toc}}
@@ -53,6 +56,7 @@
                         {{ if $levelTwo.folder }}
                           <li class="dropdown">
                             {{ $dropdownTwoActive := in $path (urlize $levelTwo.title) }}
+
                             <button class="toc--link level-two end-check-active dropdown-btn {{ if not $dropdownTwoActive }} hide {{ end }}">
                               <div>
                                 <span>{{ $levelTwo.title }}</span>
@@ -66,8 +70,10 @@
                               <ul class="toc-hugo__folder-three">
                                 {{ range $levelThree := $levelTwo.folder }}
                                   {{ $levelThreeURL := path.Join $levelTwoURL (urlize $levelThree.title) }}
+                                  
                                   <li>
                                     {{ $levelThreeActive := in $currentSectionPath $levelThreeURL }}
+
                                     {{ if $levelThreeActive }}
                                       <ul class="toc-hugo__folder-three native">
                                         {{$toc}}
@@ -92,6 +98,7 @@
           </ul>
         {{ else }}
           {{ $levelOneActive := in $levelOneURL $base }}
+
           {{ if and $levelOneActive $toc }}
             <div class="toc-hugo__folder-one native">
               {{ $toc }}

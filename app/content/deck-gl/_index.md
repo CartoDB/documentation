@@ -20,6 +20,7 @@ menu:
         folder:
         - title: "Hello World"
         - title: "BigQuery Tileset Layer"
+        - title: "Data Observatory Tileset Layer"
         - title: "CARTO Basemap"
         - title: "Interactivity"
         - title: "Icon Layer"
