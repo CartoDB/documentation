@@ -1,4 +1,4 @@
-{{ $context := .CurrentSection.Params }}
+{{ $context := cond (eq .CurrentSection.Dir "") .Page.Params .CurrentSection.Params }}
 {{ $mainMenu := $context.menu }}
 {{ $dir := string .Dir }}
 {{ $path := path.Join "/" $dir }}
@@ -25,7 +25,7 @@
 
     <div class="toc--links">
       {{ range $levelOne := $mainMenu }}
-        {{ $levelOneURL := urlize $levelOne.title }}
+        {{ $levelOneURL := cond (eq $levelOne.url "") (urlize $levelOne.title) $levelOne.url }}
         {{ if $levelOne.folder }}
           <ul class="toc-hugo__folder-one">
             <li class="dropdown">

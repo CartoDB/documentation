@@ -1,8 +1,10 @@
 ---
 title: Developer News
 description: "CARTO for Developers Latest News"
-tocName: "Developer News"
-type: single-page
+
+menu:
+  - title: "Developer News"
+    url: "news-developers"
 ---
 
 ### Enhancing Geospatial in BigQuery with CARTO Spatial Extension
