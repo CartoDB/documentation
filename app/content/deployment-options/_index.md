@@ -1,19 +1,22 @@
 ---
-cascade:
-  title: Deployment options
-  description: ""
-  icon: "/img/icons/deployment.png"
-  folders:
-    - name: "Overview"
-      elements:
-        - "Getting Started"
-        - "Compliance"
-    - name: "SaaS"
-      elements:
-        - "Overview"
-    - name: "Custom deployment"
-      elements:
-        - "Overview"
-        - "Installation"
-        - "Operations"     
+title: Deployment options
+description: ""
+icon: "/img/icons/deployment.png"
+
+url: deployment-options
+indexPage: "overview/getting-started.md"
+
+menu:
+  - title: "Overview"
+    folder:
+      - title: "Getting Started"
+      - title: "Compliance"
+  - title: "SaaS"
+    folder:
+      - title: "Overview"
+  - title: "Custom deployment"
+    folder:
+      - title: "Overview"
+      - title: "Installation"
+      - title: "Operations"     
 ---
