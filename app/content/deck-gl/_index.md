@@ -5,10 +5,10 @@ icon: "/img/icons/carto-deck.png"
 repoUrl: https://github.com/visgl/deck.gl/tree/master/modules/carto
 
 url: deck-gl
-indexPage: "overview.md"
+indexPage: "getting-started.md"
 
 menu:
-  - title: "Overview"
+  - title: "Getting started"
   - title: "Using the CartoLayer"
   - title: "Examples"
     folder:
