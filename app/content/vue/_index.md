@@ -8,4 +8,5 @@ indexPage: "getting-started.md"
 
 menu:
   - title: "Getting Started"
+  - title: "Whats New"
 ---
