@@ -23,9 +23,10 @@
       {{ range $thumbnail := $section.folder }}
         <div class="thumbnail">
           {{ $url := path.Join "/" $dir (urlize $section.title) (urlize $thumbnail.title) }}
+          {{ $src := printf "%s%s%s" "/img" $url ".png" }}
           <a href="{{ $url }}">
             <div class="img-wrapper">
-              <img src="" alt="">
+              <img src="{{ $src }}" alt="">
             </div>
             <div class="title-wrapper">
               <h4>{{ $thumbnail.title }}</h4>
