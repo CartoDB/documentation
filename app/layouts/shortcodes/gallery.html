@@ -1,0 +1,42 @@
+{{ $menu := .Page.CurrentSection.Params.menu }}
+{{ $exaples := slice }}
+
+{{ range $menuItem := $menu }}
+  {{ if eq $menuItem.title "Examples" }}
+    {{ range $folder := $menuItem.folder }}
+      {{ $gallery := eq $folder.title "Gallery" }}
+      {{ if not $gallery }}
+        {{ $exaples = $exaples | append $folder}}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+
+
+<div class="gallery-wrapper">
+  {{ range $section := $exaples }}
+    <h3>{{ $section.title }}</h3>
+
+    <div class="thumbnails-wrapper">
+      {{ range $thumbnail := $section.folder }}
+        <div class="thumbnail">
+          <a href="#">
+            <div class="img-wrapper">
+              <img src="" alt="">
+            </div>
+            <div class="title-wrapper">
+              <h4>{{ $thumbnail.title }}</h4>
+            </div>
+          </a>
+        </div>
+      {{ end }}
+    </div>
+  {{ end }}
+
+  <script>
+    var h2 = document.querySelector('.js-content > h2#gallery')
+    h2.style.display = 'none'
+    h2.style.marginBottom = 0
+  </script>
+</div>

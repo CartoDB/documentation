@@ -15,6 +15,7 @@ menu:
       - title: "Style Language"
   - title: "Examples"
     folder:
+      - title: "Gallery"
       - title: "Basic examples"
         folder:
         - title: "Hello World"
