@@ -31,7 +31,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&family=Overpass+Mono&display=swap" rel="stylesheet">
 
-  {{if eq .Params.title "Spatial Extension for BigQuery"}}
+  {{if eq .CurrentSection.Params.title "Spatial Extension for BigQuery"}}
     {{ $styles := resources.Get "scss/main-bq.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
   {{else if eq .Params.title "Spatial Extension for Snowflake"}}
