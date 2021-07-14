@@ -6,5 +6,5 @@
 
 ### July 16, 2021
 
-- Example updated to deck.gl v8.5
+- Example updated to use MapLibre GL JS
 
