@@ -44,7 +44,7 @@ We are going to start by adding a map with 3D terrain. Please check [this exampl
   </iframe>
 </div>
 
-### Adding a dataset from CARTO
+### Adding data from CARTO
 
 In order to visualize a CARTO dataset, you just need to provide a [TileJSON](https://github.com/mapbox/tilejson-spec) URL using the Maps API within a source of type vector while you are creating your layer using the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
 

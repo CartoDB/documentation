@@ -31,7 +31,7 @@ At this point you will have a simple map:
 
 > View this step [here](../examples/getting-started/step-1.html)
 
-### Connecting to CARTO
+### Adding data from CARTO
 
 The first thing you need to do is to add the [deck.gl](https://deck.gl) dependencies, including the CARTO [submodule](https://deck.gl/docs/api-reference/carto/overview):
 
@@ -49,8 +49,6 @@ setDefaultCredentials({
   accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
 });
 ```
-
-### Adding data from CARTO
 
 Now you can add a map layer from the public account. In order to add the layer, we will use the [`GoogleMapsOverlay`](https://deck.gl/docs/api-reference/google-maps/google-maps-overlay) class from deck.gl. We need to specify the layers as an array. In this case, we only have one [`CartoLayer`](https://deck.gl/docs/api-reference/carto/carto-layer) from the deck.gl CARTO submodule. We pass the following parameters to the constructor:
 
