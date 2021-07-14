@@ -134,7 +134,7 @@ async function initializeMap() {
     });
 
     /**
-     * Sign requests made by Mapbox GL using AWS SigV4.
+     * Sign requests made by MapLibre GL JS using AWS SigV4.
      */
     AWS.config.region = identityPoolId.split(":")[0];
     const { Signer } = window.aws_amplify_core;
