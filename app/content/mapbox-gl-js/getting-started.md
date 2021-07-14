@@ -4,7 +4,7 @@ Mapbox provides different SDKs for developing [web](https://docs.mapbox.com/mapb
 
 In this guide, you will learn the basics of visualizing a CARTO dataset with the [Mapbox GL JS library](https://docs.mapbox.com/mapbox-gl-js/api/). There are no previous requirements to complete this guide, but a basic knowledge of the Mapbox GL JS library would be helpful.
 
-After completing this guide, you will have your first Mapbox GL map with a CARTO dataset!
+After completing this guide, you will have your first Mapbox GL JS map with a CARTO dataset!
 
 <div class="example-map">
   <iframe
