@@ -1,0 +1,24 @@
+[
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "value",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "key",
+        "type": "STRING"
+      }
+    ],
+    "mode": "REPEATED",
+    "name": "all_tags",
+    "type": "RECORD"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "geometry",
+    "type": "STRING"
+  }
+]
