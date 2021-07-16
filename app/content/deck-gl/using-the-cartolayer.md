@@ -10,53 +10,63 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
 
 1. Go to [workspace](https://gcp-us-east1.app.carto.com/connections/create) and create a new connection:
 
-TODO: create a gif creating a bq connection with the name bqconn
+   <video height="425" autoplay="" loop="" muted=""> <source src="/img/deck-gl/workspace-connection.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
-2. Create a token using our token API (TODO: link to tokens api doc).
+2. Create a token using our token API with access to the required table.
 
-```shell
-curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "grants": [
-        {
-            "connection_name": "bqconn",
-            "source": "project.mydataset.mytable"
-        }
-    ],
-    "referers": []
-}'
-```
- 
+   ```shell
+   curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
+   --header 'Content-Type: application/json' \
+   --data-raw '{
+       "grants": [
+           {
+               "connection_name": "bqconn",
+               "source": "cartobq.public_account.populated_places"
+           }
+       ],
+       "referers": []
+   }'
+   ```
+
 3. Set connection parameters
 
-A function `setDefaultCredentials` is provided to define the connection parameters to CARTO:
+   A function `setDefaultCredentials` is provided to define the connection parameters to CARTO:
 
-```javascript
-setDefaultCredentials({
-  apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-  apiVersion: API_VERSIONS.V3,
-  accessToken: 'TODO: replace with a public token'
-});
-```
+   ```javascript
+   setDefaultCredentials({
+     apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+     apiVersion: API_VERSIONS.V3,
+     accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+   });
+   ```
 
-For more info about the parameters of this function, check the [reference](/deck-gl/reference#setdefaultcredentials).
+   For more info about the parameters of this function, check the [reference](/deck-gl/reference#setdefaultcredentials).
 
 
-4. Create a layer using the connection previously created:
+4. Create a layer using the previously created connection:
 
-```javascript
-new CartoLayer({
-  id: 'mylayer',
-  connection: 'bqconn',
-  type: MAP_TYPES.TABLE,
-  data: 'project.mydataset.mytable',
-  pointRadiusMinPixels: 2,
-  getFillColor: [200, 0, 80],
-}),
-```
+   ```javascript
+   new CartoLayer({
+     id: 'places',
+     connection: 'bqconn',
+     type: MAP_TYPES.TABLE,
+     data: 'cartobq.public_account.populated_places',
+     pointRadiusMinPixels: 2,
+     getFillColor: [200, 0, 80],
+   }),
+   ```
 
-TODO: embed a live example here with the previous table and a public token.
+   <iframe
+       id="getting-started-final-result"
+       src="../examples/basic-examples/hello-world-carto3.html"
+       width="100%"
+       height="500"
+       frameBorder="0">
+   </iframe>
+
+   > View the complete example [here](../examples/basic-examples/hello-world-carto3.html)
+   
+   <br/>
 
 {{% bannerNote title="note" %}}
 
@@ -92,10 +102,10 @@ The `CartoLayer` uses the `GeoJsonLayer` for rendering but you can also use any 
 
 This function expects the same connection parameters than the `CartoLayer` described above:
 
-- [connection](deck-gl/reference/#connection-string)
-- [type](deck-gl/reference/#type-string)
-- [data](deck-gl/reference/#data-string)
-- [format](deck-gl/reference/#formats)
+- [connection](../reference#connection-string)
+- [type](../reference#type-string)
+- [data](../reference#data-string)
+- [format](../reference#formats)
 
 ```javascript
 import { getData, FORMATS } from '@deck.gl/carto';
