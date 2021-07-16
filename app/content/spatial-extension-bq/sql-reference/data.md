@@ -11,7 +11,7 @@ This module is in an experimental phase and therefore is subject to breaking cha
 ### DATAOBS_ENRICH_POINTS
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POINTS(input_query, input_id_column, input_geography_column, variables, output, subscription_path)
+data.DATAOBS_ENRICH_POINTS(input_query, input_id_column, input_geography_column, variables, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -29,6 +29,7 @@ As a result of the enrichment, each point will be associated with the data assig
 * `source`: `STRING` name of the location where the Data Observatory samples of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
 
 **Output**
+
 The output table will contain all the input columns provided in the `input_query` and one column for each variable in `variables` named after its corresponding slug.
 
 {{% customSelector %}}
@@ -44,8 +45,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS(
    'geom',
    ['population_93405ad7'],
    ['`my-project.my-dataset.my-enriched-table`'],
-   'do-myorg-de4a1b21c14326c53184',
-   'do_us_myuser_3a21c14322b214326'
+   'my-dataobs-project.my-dataobs-dataset'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: id, geom, population_93405ad7
@@ -54,7 +54,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS(
 ### DATAOBS_ENRICH_POINTS_WITH_MEASURES
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(input_query, input_id_column, input_geography_column, variables, output, subscription_project, subscriptions_dataset)
+data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(input_query, input_id_column, input_geography_column, variables, output, subscription_project, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -90,8 +90,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(
    'geom',
    ['population_93405ad7'],
    ['`my-project.my-dataset.my-enriched-table`'],
-   'do-myorg-de4a1b21c14326c53184',
-   'do_us_myuser_3a21c14322b214326'
+   'my-dataobs-project.my-dataobs-dataset'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: id, geom, population_93405ad7, population_93405ad7_measure, population_93405ad7_measure_type
@@ -100,7 +99,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(
 ### DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_id_column, input_geography_column, variables, output, subscription_project, subscriptions_dataset)
+data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_id_column, input_geography_column, variables, output, subscription_project, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -136,7 +135,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(
    'polygon',
    [('population_93405ad7', 'SUM')],
    ['`my-project.my-dataset.my-enriched-table`'],
-   'do-myorg-de4a1b21c14326c53184.do_us_myuser_3a21c14322b214326'
+   'my-dataobs-project.my-dataobs-dataset'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: id, geom, sum_population_93405ad7
@@ -145,7 +144,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(
 ### DATAOBS_ENRICH_POLYGONS_WITH_MEASURES
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(input_query, input_id_column, input_geography_column, variables, output, subscription_project, subscriptions_dataset)
+data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(input_query, input_id_column, input_geography_column, variables, output, subscription_project, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -187,8 +186,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(
    'polygon',
    ['population_93405ad7'],
    ['`my-project.my-dataset.my-enriched-table`'],
-   'do-myorg-de4a1b21c14326c53184',
-   'do_us_myuser_3a21c14322b214326'
+   'my-dataobs-project.my-dataobs-dataset'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: id, geom, population_93405ad7, population_93405ad7_intersection_measure, population_93405ad7_total_measure, population_93405ad7_measure_type, input_area
