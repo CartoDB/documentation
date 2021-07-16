@@ -1,0 +1,26 @@
+<!-- Mock customSelector component -->
+
+{{.Inner}}
+
+<script>
+  domReady(updateCustomSelector);
+  
+  function updateCustomSelector () {
+    const examples = document.getElementsByClassName('language-sql');
+
+    Array.from(examples).forEach(example => {
+      example.innerHTML = example.innerHTML.replace(
+        /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/,
+        `<span class="n">bqcarto</span>`
+      );
+    });
+  }
+
+  function domReady (fn) {
+    document.readyState === 'loading'
+    // The document is still loading
+    ? document.addEventListener('DOMContentLoaded', fn)
+    // The document is loaded completely
+    : fn();
+  }
+</script>

@@ -21,10 +21,12 @@ Takes a set of points and partition them into clusters using the k-mean. It uses
 
 `ARRAY<STRUCT<cluster INT64, geom GEOGRAPHY>>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.clustering.ST_CLUSTERKMEANS([ST_GEOGPOINT(0, 0), ST_GEOGPOINT(0, 1), ST_GEOGPOINT(5, 0), ST_GEOGPOINT(1, 0)], 2);
+SELECT carto-st.clustering.ST_CLUSTERKMEANS([ST_GEOGPOINT(0, 0), ST_GEOGPOINT(0, 1), ST_GEOGPOINT(5, 0), ST_GEOGPOINT(1, 0)], 2);
 -- {cluster: 1, geom: POINT(0 0)}
 -- {cluster: 1, geom: POINT(0 1)}
 -- {cluster: 0, geom: POINT(5 0)}
@@ -45,9 +47,11 @@ Returns the current version of the clustering module.
 
 `STRING`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.clustering.VERSION();
+SELECT carto-st.clustering.VERSION();
 -- 1.0.1
 ```

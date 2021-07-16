@@ -42,6 +42,7 @@ cascade:
         - "processing"
         - "quadkey"
         - "random"
+        - "routing"
         - "s2"
         - "tiler"
         - "transformations"
