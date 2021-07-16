@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0; font-family: 'Open Sans', Helvetica, sans-serif;">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  </body>
+
+  <script type="text/javascript">
+    deck.carto.setDefaultCredentials({
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      apiVersion: deck.carto.API_VERSIONS.V3,
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+    });
+
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: deck.carto.BASEMAP.POSITRON,
+
+      initialViewState: {
+        latitude: 38,
+        longitude: -98,
+        zoom: 3,
+      },
+      controller: true,
+
+      layers: [
+        new deck.carto.CartoLayer({
+          id: 'higher_edu_by_county',
+          connection: 'bqconn',
+          type: deck.carto.MAP_TYPES.QUERY,
+          data: 'SELECT geom, pct_higher_ed FROM cartobq.public_account.higher_edu_by_county',
+          getFillColor: deck.carto.colorBins({
+            attr: 'pct_higher_ed',
+            domain: [0, 20, 30, 40, 50, 60, 70],
+            colors: 'PinkYl'
+          }),
+          getLineColor: [0, 0, 0, 100],
+          lineWidthMinPixels: 0.5,
+          pickable: true,
+        }),
+      ],
+
+      getTooltip: ({ object }) => {
+        if (!object) return false;
+        return {
+          html: `${object.properties.pct_higher_ed.toFixed(2)}%`,
+        };
+      },
+    });
+
+  </script>
+</html>
