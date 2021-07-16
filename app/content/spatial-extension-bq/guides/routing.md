@@ -2,10 +2,11 @@
 
 ### Creating a network
 
-#### Importing linestrings from openstreetmap
+#### Importing linestrings from Openstreetmap
 
-To make some routing, we need some network. Let's extract linestings from New York Liberty Island from openstreetmap planet ways to build us a playground.
-Carefull this query scan a lot of data. You may skip this query by creating directly `mydataset.liberty_island_linestrings` table from this [Newline-delimited JSON](/img/bq-spatial-extension/routing/liberty_island_linestrings_data.json) using this [schema](/img/bq-spatial-extension/routing/liberty_island_linestrings_schema.json).
+To create a route, we need a network. Let's extract linestrings from New York's Liberty Island from Openstreetmap planet ways table in BigQuery to build ourselves a playground.
+
+Be careful, this query scans a lot of data (223GB). You may skip this query by creating directly the `mydataset.liberty_island_linestrings` table from this [Newline-delimited JSON](/img/bq-spatial-extension/routing/liberty_island_linestrings_data.json) using this [schema](/img/bq-spatial-extension/routing/liberty_island_linestrings_schema.json).
 
 
 ```sql
@@ -22,19 +23,23 @@ WHERE
   key = 'highway'
   AND ST_INTERSECTS(geometry,
     --NY Liberty Island Bounding Box:
-    ST_GEOGFROMGEOJSON("""{"type": "Polygon","coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158], [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") )``` 
+    ST_GEOGFROMGEOJSON("""{"type": "Polygon", 
+    "coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158], 
+    [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") ) 
+```
 
 #### Creating the network from linestrings
 
-Now let's create a compacted network where all two legs intermediate nodes have been contracted.
+Now let's create a compacted network. During this process all nodes with only two links are removed, but total distances between nodes are kept. 
 
-We have created a procedure for that:
+We are going to use the [`GENERATE_NETWORK_TABLE`](../../sql-reference/routing/#generate_network_table) procedure:
 
 ```sql
-CALL `bqcarto.routing.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestrings', 'mydataset.liberty_island_network');
+CALL `bqcarto.routing.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestrings', 
+'mydataset.liberty_island_network');
 ```
 
-Or you can go the hard way using a function.
+If you prefer, you can also use the [`GENERATE_NETWORK`](../../sql-reference/routing/#generate_network) function instead, although it requires a slightly advanced query:
 
 ```sql
 CREATE OR REPLACE TABLE
@@ -52,10 +57,10 @@ FROM
   UNNEST(generate_network) myunnest
 ```
 
-#### Visualising the network
+#### Visualizing the network
 
-Let's see the difference beetween the collection of linestrings (in red) and the compacted graph (in blue). Compaction reduce drasticacly the numer of nodes and thus links but preserve the length of paths beetween remaining nodes.
-![network visualization](/img/bq-spatial-extension/routing/network.png)
+Let's see the difference between the collection of linestrings (in red) and the compacted network (in blue). Compaction reduces drastically the number of nodes and thus links, but it preserves the length of paths between the remaining nodes.
+
 ```sql
 SELECT
     geometry, 0 compacted FROM `mydataset.liberty_island_linestrings`
@@ -64,14 +69,17 @@ SELECT
     ST_MAKELINE(src_geo, dest_geo) line, 1 compacted FROM `mydataset.liberty_island_network`
 ```
 
+<div style="text-align:center" >
+<img src="/img/bq-spatial-extension/routing/network.png" alt="Network visualization." style="width:70%">
+</div>
 
-### Calculating Shortest path
 
-Let's calculate a shortest path between two points. 
 
-#### Using a procedure
+### Calculating the shortest path
 
-Again we have created a procedure for that:
+Let's calculate the shortest path between two points. 
+
+You can use the [`FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`](../../sql-reference/routing/#find_shortest_path_from_network_table) procedure:
 
 ```sql
 CALL
@@ -81,9 +89,8 @@ CALL
     "ST_geogpoint(-74.0438, 40.68874)" )
 ```
 
-#### Using a function
 
-And again, you can choose to go the hard way using a function.
+Our you can use the [`FIND_SHORTEST_PATH_FROM_NETWORK`](../../sql-reference/routing/#find_shortest_path_from_network) function, which is a bit trickier than using the procedure:
 
 ```sql
 WITH
@@ -102,17 +109,20 @@ FROM
   T
 ```
 
-#### Visualising the shortest path
-![shortest path visualization](/img/bq-spatial-extension/routing/shortest_path.png)
+Here is the result:
+
+<div style="text-align:center" >
+<img src="/img/bq-spatial-extension/routing/shortest_path.png" alt="Shortest path visualization." style="width:70%">
+</div>
 
 
-### Calculating Distance map
 
-Let's calculate a shortest path between two points. 
+### Calculating a distance map
 
-#### Using a procedure
+Given a starting point, we are going to calculate the distances from that point to all the nodes of the network. Then, we are going to visualize the result to identify the destination points that are within similar distance. 
 
-Again we have created a procedure for that:
+
+You can use the [`DISTANCE_MAP_FROM_NETWORK_TABLE`](../../sql-reference/routing/#distance_map_from_network_table) procedure:
 
 ```sql
 CALL
@@ -121,9 +131,7 @@ CALL
     "ST_geogpoint(-74.0438, 40.68874)" )
 ```
 
-#### Using a function
-
-And again, you can choose to go the hard way using a function.
+Or you can use the [`DISTANCE_MAP_FROM_NETWORK`](../../sql-reference/routing/#distance_map_from_network) function, which is a bit trickier than using the procedure:
 
 ```sql
 WITH
@@ -141,8 +149,15 @@ FROM
   UNNEST(distance_map) myunnest
 ```
 
-#### Visualising the distance map
-The point of origin is in green, the other are colored based on the length of the shortest path to the origin.
-![distance map visualization](/img/bq-spatial-extension/routing/distance_map.png)
 
+Here is the result. The starting point is highlighted in green. Destination points are colored according to the total length of the shortest path from the origin (darker means further).
 
+<div style="text-align:center" >
+<img src="/img/bq-spatial-extension/routing/distance_map.png" alt="Distance map visualization." style="width:70%">
+</div>
+
+In this GIF we can see all the destination points of the network that are reachable from the origin point, starting with the closest. The compacted network is depicted in grey.
+
+<div style="text-align:center" >
+<img src="/img/bq-spatial-extension/routing/distance_map_gif.gif" alt="Distance map visualization gif." style="width:70%">
+</div>
