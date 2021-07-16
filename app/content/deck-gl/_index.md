@@ -12,6 +12,7 @@ menu:
   - title: "Using the CartoLayer"
   - title: "Examples"
     folder:
+      - title: "Gallery"
       - title: "Basic examples"
         folder:
         - title: "Hello World"
