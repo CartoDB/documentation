@@ -21,7 +21,7 @@ The *NPM* packages are available here:
 {{% tableWrapper tab="true" %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/cra-template-carto-3 (CARTO 3 skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template-carto-3">  <img src="https://img.shields.io/npm/v/@carto/cra-template-carto-3.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-carto-3">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-carto-3.svg?style=flat-square" alt="downloads" /></a> |
+| @carto/cra-template-carto-3 (CARTO 3 skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template-cloud-native">  <img src="https://img.shields.io/npm/v/@carto/cra-template-cloud-native.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-cloud-native">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-cloud-native.svg?style=flat-square" alt="downloads" /></a> |
 | @carto/cra-template (skeleton template) | <a href="https://npmjs.org/package/@carto/cra-template"><img src="https://img.shields.io/npm/v/@carto/cra-template.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template"> <img src="https://img.shields.io/npm/dt/@carto/cra-template.svg?style=flat-square" alt="downloads" /></a> |
 | @carto/cra-template-sample-app (sample app template) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app"><img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app"><img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app.svg?style=flat-square" alt="downloads" /></a> |
 {{% /tableWrapper %}}
@@ -78,7 +78,7 @@ npx create-react-app [application_name] --template [template_name]
 ```
 
 - `application_name` is the name of the folder that will be created for your application
-- `template_name` is the name of the template to use (`@carto/carto-3` for the CARTO 3 skeleton template, `@carto` for the CARTO 2 skeleton template or `@carto/sample-app` for the sample app template)
+- `template_name` is the name of the template to use (`@carto/cloud-native` for the CARTO 3 skeleton template, `@carto` for the CARTO 2 skeleton template or `@carto/sample-app` for the sample app template)
 
 {{% bannerNote title="note" %}}
 In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the CARTO 2 skeleton template:
