@@ -106,7 +106,7 @@ The library includes a set of [UI components](https://storybook-react.carto.com)
 
 **Installing npm modules, learning React with Redux, learning Material-UI, it is just too much for my application, is there a simpler way?**
 
-If your application is not so complex and does not need the benefits added by this template, you can just use CARTO for deck.gl with the scripting API. Please check the [examples](https://docs.carto.com/deck-gl/examples/hello-world).
+If your application is not so complex and does not need the benefits added by this template, you can just use CARTO for deck.gl with the scripting API. Please check the [examples](/deck-gl/examples/gallery).
 
 **I’m using Vue or Angular for building my applications, what are my options?**
 

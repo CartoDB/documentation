@@ -72,7 +72,7 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
 
 If you are using CARTO 2, there are some differences you need to take into account when specifying the properties:
 
-- setDefaultCredentials needs an `username` and `apiKey`. For more info check the [reference](/deck-gl/reference#credentials) or our guide for [Managing your API keys](https://docs.carto.com/authorization/#managing-your-api-keys) 
+- setDefaultCredentials needs an `username` and `apiKey`. For more info check the [reference](/deck-gl/reference#credentials) or our guide for [Managing your API keys](/authorization/#managing-your-api-keys) 
 
 - The `connection` parameter is not required.
 
