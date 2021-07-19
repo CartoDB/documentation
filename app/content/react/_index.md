@@ -14,7 +14,7 @@ menu:
       - title: "Getting Started"
       - title: "Layers"
       - title: "Widgets"
-      - title: "Authentication & Authorization"
+      - title: "Authentication and Authorization"
       - title: "Basemaps"
       - title: "Look and Feel"
       - title: "Code Generator"
