@@ -94,7 +94,7 @@ routing.DISTANCE_MAP_FROM_NETWORK_TABLE(src_fullname, target_fullname_quoted, po
 Procedure that takes a network table and a reference point as input. Returns a table with the cost and geometry of the shortest path in terms of weights of links between the node closest to the reference point and each of the nodes of the network.
 
 * `src_fullname`: `STRING` The source table from where the network will be read. A `STRING` of the form `projectID.dataset.tablename` is expected. The projectID can be omitted (in which case the default one will be used). You can use the result of the `GENERATE_NETWORK_TABLE` procedure.
-* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>\`projectID.dataset.tablename\`</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
+* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
 * `point`: `STRING` The reference geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the reference point to compute the distance map.
 
 **Return type**
@@ -207,8 +207,8 @@ routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE(src_fullname, target_fullname_quot
 
 Procedure that takes a network, a source point and a destination point as input. Returns the length and the geometry of the shortest path in terms of weights of links between the node closest to the source point and the node closest to the destination point. It stores the result into a table.
 
-* `src_fullname`: `STRING` The source table from where the network will be read to compute the shortest path. A `STRING` of the form <code>\`projectID.dataset.tablename\`</code> is expected. The projectID can be omitted (in which case the default one will be used). You can use the result of the `GENERATE_NETWORK_TABLE` procedure.
-* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>\`projectID.dataset.tablename\`</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
+* `src_fullname`: `STRING` The source table from where the network will be read to compute the shortest path. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). You can use the result of the `GENERATE_NETWORK_TABLE` procedure.
+* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
 * `pointA`: `STRING` The source geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the source point to compute the shortest path.
 * `pointB`: `STRING` The destination geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
 
@@ -274,8 +274,8 @@ routing.GENERATE_NETWORK_TABLE(src_fullname, target_fullname_quoted)
 
 Procedure that generates a network graph from a table of linestrings and stores the result into a table. The network is based on a compacted geometry of the linestring collection where all nodes with only two links are dropped.
 
-* `src_fullname`: `STRING` The linestrings table from where the network will be read to compute the shortest path. A `STRING` of the form <code>\`projectID.dataset.tablename\`</code> is expected. The projectID can be omitted (in which case the default one will be used).
-* `target_fullname_quoted`: `STRING` The resulting table where the network will be stored. A `STRING` of the form <code>\`projectID.dataset.tablename\`</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
+* `src_fullname`: `STRING` The linestrings table from where the network will be read to compute the shortest path. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used).
+* `target_fullname_quoted`: `STRING` The resulting table where the network will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
 
 This procedure implements the same functionality as the `GENERATE_NETWORK` function, with the only difference that it stores the resulting network into a table.
 
