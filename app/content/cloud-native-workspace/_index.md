@@ -11,13 +11,28 @@ cascade:
         - "Getting help"
     - name: "Connections"
       elements:
+        - "Introduction"
         - "Creating a connection"
         - "Editing a connection"
         - "Deleting a connection"
-        - name: "Connections"
     - name: "Maps" 
       elements:
-        - "Creating a connection"
-        - "Editing a connection"
-        - "Deleting a connection"
+        - "Introduction"
+        - "Add data"
+        - "View data table"
+        - "Map settings"
+        - "Map styles"
+    - name: "Applications" 
+      elements:
+        - "Accessing applications"
+    - name: "Account Settings" 
+      elements:
+        - "Configuring your account"
+        - "Your subscription"
+        - "Managing registered apps"
+        - "Inviting users to your account"
+        - "Delete account"
+    - name: "Developers" 
+      elements:
+        - "CARTO for developers"
 ---

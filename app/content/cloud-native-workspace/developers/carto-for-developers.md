@@ -1,0 +1,125 @@
+## CARTO for developers
+
+Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+
+Our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
+
+### API Base URL
+
+The API withb the base URL is displayed. You can copy and use it by clicking on the icon on the right.
+
+![Developers api base url](/img/cloud-native-workspace/developers/developers_api_base_url.png)
+
+(*EXPLICAR MÁS ESTE APARTADO*)
+
+### Managing built applications
+
+CARTO 3 provides different tools and libraries to help you built and manage your own applications.
+
+#### Builting applications
+
+First time you built an application, you will see the following page:
+
+![Developers application type](/img/cloud-native-workspace/developers/developers_create_new.png)
+
+For builting a new application, click on *Create new* button. Then you will see the new application setup options. You can built an application with basic information, or an application that includes advanced settings.
+
+##### Builting applications with basic information
+
+Enter the basic information:
+
+- Name
+- Description (Optional)
+- App URL
+- Thumbnail URL (Optional)
+- Click *Save*
+
+![Developers application type](/img/cloud-native-workspace/developers/developers_basic_information.png)
+
+##### Builting application with advanced settings
+
+Enter the advanced information:
+
+- Application type
+
+![Developers application type](/img/cloud-native-workspace/developers/developers_application_type.png)
+
+You can access the drop-down menu for selecting your application type by clicking the arrow in the right corner. There are 3 options available: Single Page Application, Machine to Machine and Regular Web Application
+
+![Developers application type](/img/cloud-native-workspace/developers/developers_drop_down.png)
+
+- Token Endpoint Authentication Method
+
+![Developers application type](/img/cloud-native-workspace/developers/developers_token.png)
+
+*Expand more info* button: defines the requested authentication method for the token endpoint. Possible values are 'None' (public application without a client secret), 'Post' (application uses HTTP POST parameters) or 'Basic' (application uses HTTP Basic). This option is only available for 'Machine to Machine' and 'Regular Web Application'.
+
+You can access the drop-down menu for selecting your application type by clicking the arrow in the right corner:
+
+![Developers application type](/img/cloud-native-workspace/developers/developers_token_endpoint.png)
+
+- Application Login URL
+
+*Expand more info* button: in some scenarios, CARTO will need to redirect to your application’s login page. This URI needs to point to a route in your application that should redirect to your tenant’s /authorize endpoint. Learn more.
+
+- Allowed Callback URLS (Optional)
+
+*Expand more info* button: after the user authenticates we will only call back to any of these URLs. You can specify multiple valid URLs by comma-separating them (typically to handle different environments like QA or testing). Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://. You can use Organization URL parameters in these URLs.
+
+- Allowed Logout URLS (Optional)
+
+*Expand more info* button: a set of URLs that are valid to redirect to after logout from CARTO. After a user logs out from CARTO you can redirect them with the returnTo query parameter. The URL that you use in returnTo must be listed here. You can specify multiple valid URLs by comma-separating them. You can use the star symbol as a wildcard for subdomains (*.google.com). Query strings and hash information are not taken into account when validating these URLs. Read more about this at https://auth0.com/docs/logout.
+
+- Allowed Web Origins (Optional): 
+
+*Expand more info* button: comma-separated list of allowed origins for use with Cross-Origin Authentication, Device Flow, and web message response mode, in the form of <scheme> “://“ <host> [ “:” <port>], such as https://login.mydomain.com or http://localhost:3000. You can use wildcards at the subdomain level (e.g.: https://*.contoso-com). Query strings and hash information are not taken into account when validating these URLs.
+
+- Allowed Origins (CORS) (Optional): 
+
+*Expand more info* button: allowed Origins are URLs that will be allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if you need to. You can specify multiple valid URLs by comma-separating the or one by line, and also use wildcards at the subdomain level (e.g.: https://*contoso.com). Query strings and hash information are not taken into account when validating these URLs. You can use Organization URL placeholders in these URLs.
+
+Click *Save* for saving your changes. 
+
+#### Editing built applications
+
+In the *Built applications* menu of the Workspace, you will see the list of your current applications. You can access the quick actions menu for managing your connection by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete.
+
+(VER IMAGENES EDIT AND DELETE CONNECTION Y HACER LO MISMO AQUI)
+
+If you click the *Edit* quick action, you will be redirected to a dialog for editing application parameters. This dialog contains the same form that you filled out when creating the application, showing the current values.
+
+![Edit connection](/img/cloud-native-workspace/connections/connections_edit.png)
+
+After editing the application parameters click the *Save changes* button. A dialog will appear so you can confirm that you want to save the changes. Click the *Yes, save* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
+
+![Confirm connection edition](/img/cloud-native-workspace/connections/connections_edit_confirmation.png)
+
+
+You can also copy the application ID or access the application directly throught the URL from the *Applications* menu. 
+(IMAGEN)
+
+#### Deleting built aaplications
+
+In the *Built applications* menu of the Workspace, you will see the list of your current applications. You can access the quick actions menu for managing your connection by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete.
+
+(VER IMAGENES EDIT AND DELETE CONNECTION Y HACER LO MISMO AQUI)
+
+If you click the *Delete* quick action, a dialog will appear so you can confirm that you want to delete the selected applicationn. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
+
+
+You can also copy the application ID or access the application directly throught the URL from the *Applications* menu. 
+(IMAGEN)
+### Guide
+
+You can start creating applications from scratch by using our documentation. By clicking on this banner, you will be redirected to <a href="https://docs.carto.com/react/guides/getting-started//" target="_blank">CARTO for React documentation</a> to learn how to create a new application from scratch.
+
+![Developers guide](/img/cloud-native-workspace/developers/developers_guide.png)
+
+### Featured documentation
+
+In this section, you have quick access to different developer toolkit to get started with the build of the most innovative spatial analytics apps.
+
+![Developers featured documentation](/img/cloud-native-workspace/developers/developers_featured_documentation.png)
+
+You can click on *View all* button to have access to all <a href="https://docs.carto.com/" target="_blank">CARTO documentation</a>. In this link, you will find all the resources you need to get the most out of your developments.
+
