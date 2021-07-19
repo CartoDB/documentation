@@ -1,10 +1,10 @@
 ## Managing registered apps
 
-Carto 3 allows you to register existing apps so that you have all the applications you need in a centralised way.
+The Carto 3 Workspace includes options for managing your registered apps. From the *Account Settings* menu, you can register apps, editing apps, view details apps or delete apps.
 
 ### Registering apps
 
-For registering an app, click the *Register new* button. 
+You can register existing apps so that you have easy and quick access to it when you need it. For registering an app, click the *Register new* button. 
 
 ![Account Settings register new apps](/img/cloud-native-workspace/account-settings/account_settings_new_apps.png)
 
@@ -16,11 +16,11 @@ After you have provided the registration parameters, click *Create*. Then you wi
 
 ![Account Settings list registered apps](/img/cloud-native-workspace/account-settings/account_settings_list_apps.png)
 
-Once the application is registered, you can access by clicking on the link below the name of the app.
+Once the application is registered, you can access directly to it by clicking on the link below the name of the application.
 
 ### Editing apps
 
-Once you have registered your app, you will see the list of current registered apps. You can access the quick actions menu for managing your app by clicking the three point icon in the top right corner. There are 3 options available: Edit, View details and Delete. 
+Once you have registered your app, you will see the list of your current registered apps. You can access the quick actions menu for managing your app by clicking the three point icon in the top right corner. There are 3 options available: Edit, View details and Delete. 
 
 ![Account Settings edit app](/img/cloud-native-workspace/account-settings/account_settings_actions_apps.png)
 
