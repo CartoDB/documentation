@@ -1,12 +1,12 @@
 ## CARTO for developers
 
-Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, we provide a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+Carto 3 Workspace intends to make the development of web-based spatial applications as easy as possible. To achieve this, the *Developers* menu provides a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
-Our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
+The developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
 
 ### API Base URL
 
-The API withb the base URL is displayed. You can copy and use it by clicking on the icon on the right.
+The API with the base URL is displayed. You can copy and use it by clicking on the icon on the right.
 
 ![Developers api base url](/img/cloud-native-workspace/developers/developers_api_base_url.png)
 
@@ -14,15 +14,15 @@ The API withb the base URL is displayed. You can copy and use it by clicking on 
 
 ### Managing built applications
 
-CARTO 3 provides different tools and libraries to help you built and manage your own applications.
+The Carto 3 Workspace includes options for managing your built applications. From the *Account Settings* menu, you can built, edit or delete applications.
 
-#### Builting applications
+#### Creating applications
 
-First time you built an application, you will see the following page:
+You can create new applications by using the tools and libraries provided by Carto 3. First time you built an application, you will see the following page:
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_create_new.png)
 
-For builting a new application, click on *Create new* button. Then you will see the new application setup options. You can built an application with basic information, or an application that includes advanced settings.
+For builting a new application, click on *Create new* button. Then you will see the new application setup options. You can create a new application with basic information, or a new application that includes advanced settings.
 
 ##### Builting applications with basic information
 
@@ -36,7 +36,7 @@ Enter the basic information:
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_basic_information.png)
 
-##### Builting application with advanced settings
+##### Creating application with advanced settings
 
 Enter the advanced information:
 
@@ -54,7 +54,7 @@ You can access the drop-down menu for selecting your application type by clickin
 
 *Expand more info* button: defines the requested authentication method for the token endpoint. Possible values are 'None' (public application without a client secret), 'Post' (application uses HTTP POST parameters) or 'Basic' (application uses HTTP Basic). This option is only available for 'Machine to Machine' and 'Regular Web Application'.
 
-You can access the drop-down menu for selecting your application type by clicking the arrow in the right corner:
+You can access the drop-down menu for selecting your token endpoint authentication method by clicking the arrow in the right corner:
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_token_endpoint.png)
 
@@ -62,45 +62,54 @@ You can access the drop-down menu for selecting your application type by clickin
 
 *Expand more info* button: in some scenarios, CARTO will need to redirect to your application’s login page. This URI needs to point to a route in your application that should redirect to your tenant’s /authorize endpoint. Learn more.
 
+![Developers application type](/img/cloud-native-workspace/developers/developers_application_login_url.png)
+
 - Allowed Callback URLS (Optional)
 
 *Expand more info* button: after the user authenticates we will only call back to any of these URLs. You can specify multiple valid URLs by comma-separating them (typically to handle different environments like QA or testing). Make sure to specify the protocol (https://) otherwise the callback may fail in some cases. With the exception of custom URI schemes for native clients, all callbacks should use protocol https://. You can use Organization URL parameters in these URLs.
+
+![Developers application type](/img/cloud-native-workspace/developers/developers_allowed_callback_urls.png)
 
 - Allowed Logout URLS (Optional)
 
 *Expand more info* button: a set of URLs that are valid to redirect to after logout from CARTO. After a user logs out from CARTO you can redirect them with the returnTo query parameter. The URL that you use in returnTo must be listed here. You can specify multiple valid URLs by comma-separating them. You can use the star symbol as a wildcard for subdomains (*.google.com). Query strings and hash information are not taken into account when validating these URLs. Read more about this at https://auth0.com/docs/logout.
 
+IMAGEN
+
 - Allowed Web Origins (Optional): 
 
 *Expand more info* button: comma-separated list of allowed origins for use with Cross-Origin Authentication, Device Flow, and web message response mode, in the form of <scheme> “://“ <host> [ “:” <port>], such as https://login.mydomain.com or http://localhost:3000. You can use wildcards at the subdomain level (e.g.: https://*.contoso-com). Query strings and hash information are not taken into account when validating these URLs.
+
+IMAGEN
 
 - Allowed Origins (CORS) (Optional): 
 
 *Expand more info* button: allowed Origins are URLs that will be allowed to make requests from JavaScript to Auth0 API (typically used with CORS). By default, all your callback URLs will be allowed. This field allows you to enter other origins if you need to. You can specify multiple valid URLs by comma-separating the or one by line, and also use wildcards at the subdomain level (e.g.: https://*contoso.com). Query strings and hash information are not taken into account when validating these URLs. You can use Organization URL placeholders in these URLs.
 
+IMAGEN
+
 Click *Save* for saving your changes. 
 
-#### Editing built applications
+#### Editing applications
 
-In the *Built applications* menu of the Workspace, you will see the list of your current applications. You can access the quick actions menu for managing your connection by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete.
+In the *Built applications* section of the Workspace, you will see the list of your current built applications. You can access the quick actions menu for managing your built applications by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete.
 
-(VER IMAGENES EDIT AND DELETE CONNECTION Y HACER LO MISMO AQUI)
+(VER IMAGENES EDIT AND DELETE)
 
 If you click the *Edit* quick action, you will be redirected to a dialog for editing application parameters. This dialog contains the same form that you filled out when creating the application, showing the current values.
 
 ![Edit connection](/img/cloud-native-workspace/connections/connections_edit.png)
 
-After editing the application parameters click the *Save changes* button. A dialog will appear so you can confirm that you want to save the changes. Click the *Yes, save* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
+After editing the built application parameters, click the *Save changes* button. A dialog will appear so you can confirm that you want to save the changes. Click the *Yes, save* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 
-![Confirm connection edition](/img/cloud-native-workspace/connections/connections_edit_confirmation.png)
-
+(IMAGEN)
 
 You can also copy the application ID or access the application directly throught the URL from the *Applications* menu. 
 (IMAGEN)
 
-#### Deleting built aaplications
+#### Deleting applications
 
-In the *Built applications* menu of the Workspace, you will see the list of your current applications. You can access the quick actions menu for managing your connection by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete.
+In the *Built applications* section of the Workspace, you will see the list of your current built applications. You can access the quick actions menu for managing your built applications by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete.
 
 (VER IMAGENES EDIT AND DELETE CONNECTION Y HACER LO MISMO AQUI)
 
