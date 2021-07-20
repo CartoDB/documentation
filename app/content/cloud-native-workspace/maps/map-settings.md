@@ -4,7 +4,7 @@
 
 Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.
 
-The Cloud Native Builder provides a set of CARTO basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
+The CARTO 3 Builder provides a set of CARTO basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
 
 ![Map created](/img/cloud-native-workspace/maps/map_basemap.png)
 

@@ -1,14 +1,14 @@
 ## Getting started
 
-The Cloud Native Workspace allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, the Tilesets module, and other fresh features.
+The CARTO 3 Workspace allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, the Tilesets module, and other fresh features.
 
-### Create your Cloud Native account
+### Create your CARTO 3 account
 
-4 simple steps gets you into the Cloud Native Workspace:
+4 simple steps gets you into the CARTO 3 Workspace:
 
 1. **Email and password**
 
-    - Go to the <a href="http://app.carto.com" target="_blank">CARTO Cloud Native Sign In</a> page.
+    - Go to the <a href="http://app.carto.com" target="_blank">CARTO 3 Sign In</a> page.
     - Click *Sign up*.
     - Enter your email address and password. You can also sing up with your existing Google account by clicking *Continue with Google*.
     - Once you have entered your credentials: click *Continue*.
@@ -59,13 +59,13 @@ The Cloud Native Workspace allows you to create amazing maps and spatial analyti
 
     ![Business profile](/img/cloud-native-workspace/get-started/business_profile.png)
 	
-You are all set up to start using CARTO Cloud Native!
+You are all set up to start using CARTO 3!
 
-### Cloud Native Workspace overview
+### CARTO 3 Workspace overview
 
 Learn everything you need to know about your Workspace and how to make the most out of it.
 
-When you log in to your Cloud Native account, you land on your Workspace. The workspace allows you to manage connections to your data warehouses, creating tilesets and maps, list your applications, access your account settings, manage users of your organization, and access spatial application development features.
+When you log in to your CARTO 3 account, you land on your Workspace. The workspace allows you to manage connections to your data warehouses, creating tilesets and maps, list your applications, access your account settings, manage users of your organization, and access spatial application development features.
 
 ![Workspace overview](/img/cloud-native-workspace/get-started/workspace_overview.png)
 
@@ -84,19 +84,19 @@ View your latest content. This module displays the latest 3 maps that you have b
 
 #### Getting started
 
-In this section, you have quick access to different options to get started with the Cloud Native Workspace, like creating maps from your data, developing spatial applications, learning how to use the Spatial Extension, etc.
+In this section, you have quick access to different options to get started with the CARTO 3 Workspace, like creating maps from your data, developing spatial applications, learning how to use the Spatial Extension, etc.
 
 ![Recent maps](/img/cloud-native-workspace/get-started/getting_started.png)
 
 #### What’s new
 
-Fresh features, interesting articles, and the latest news related to CARTO Cloud Native from our <a href="https://carto.com/blog" target="_blank">blog</a>.
+Fresh features, interesting articles, and the latest news related to CARTO 3 from our <a href="https://carto.com/blog" target="_blank">blog</a>.
 
 ![Recent maps](/img/cloud-native-workspace/get-started/what_is_new.png)
 
 #### Menu
 
-In the left panel, you can find the navigation menu with all the available options to access the Cloud Native features: Maps, Tilesets, Connections, Applications, Account Settings, and CARTO for Developers. 
+In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Maps, Tilesets, Connections, Applications, Account Settings, and CARTO for Developers. 
 
 ![Menu features](/img/cloud-native-workspace/get-started/menu_features.png)
 
@@ -110,7 +110,7 @@ In the bottom part of the menu, you have additional options to Join our Slack ch
 
 This is a quick guide to help you get started. A step-by-step overview on how to connect to your data warehouse and create maps using your data.
 
-The Cloud Native Workspace includes functionalities for registering and managing connections to your data warehouses. Once you have registered a connection, you can perform different operations with the data source, like executing the functions provided by the CARTO Spatial Extension or creating stunning maps.
+The CARTO 3 Workspace includes functionalities for registering and managing connections to your data warehouses. Once you have registered a connection, you can perform different operations with the data source, like executing the functions provided by the CARTO Spatial Extension or creating stunning maps.
 
 #### Create a Connection
 
@@ -134,9 +134,9 @@ After you have provided the connection parameters, click the *Connect* button. T
 
 #### Create a Map
 
-The *Maps* page enables you to create and manage maps in the Cloud Native Workspace. You can use existing connections to your data warehouses or you can directly upload new datasets files.
+The *Maps* page enables you to create and manage maps in the CARTO 3 Workspace. You can use existing connections to your data warehouses or you can directly upload new datasets files.
 
-1. From your *Maps* page, click *Create your first map*. This will open the Cloud Native map tool: Builder.
+1. From your *Maps* page, click *Create your first map*. This will open the CARTO 3 map tool: Builder.
 	
 ![Map module](/img/cloud-native-workspace/get-started/map_module.png)
 
@@ -153,4 +153,4 @@ The *Maps* page enables you to create and manage maps in the Cloud Native Worksp
 	
 ![Map created](/img/cloud-native-workspace/get-started/map_style.png)
 
-The Cloud Native Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main Cloud Native Builder features:
+The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:

@@ -1,6 +1,6 @@
 ## Managing registered apps
 
-The Carto 3 Workspace includes options for managing your registered apps. From the *Account Settings* menu, you can register apps, editing apps, view details apps or delete apps.
+CARTO 3 Workspace includes options for managing your registered apps. From the *Account Settings* menu, you can register apps, editing apps, view details apps or delete apps.
 
 ### Registering apps
 

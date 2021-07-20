@@ -1,6 +1,6 @@
 ## Map styles
 
-When styling maps, you can style your geometry using different settings. By default, the Cloud Native Builder styles by fixed values for size and solid colors. The following sections list the different styling options that you can set for your map. Some of them are available depending on the type of layer (point, line, polygon, etc.).
+When styling maps, you can style your geometry using different settings. By default, the CARTO 3 Builder styles by fixed values for size and solid colors. The following sections list the different styling options that you can set for your map. Some of them are available depending on the type of layer (point, line, polygon, etc.).
 
 To style your layers, expand the *layer settings panel*.
 
