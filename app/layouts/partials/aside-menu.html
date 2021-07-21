@@ -24,7 +24,6 @@
 
     <div class="toc--links">
       {{ range $levelOne := $mainMenu }}
-        <p>{{$levelOne.url}}</p>
         {{ $levelOneURL := cond (not $levelOne.url) (urlize $levelOne.title) $levelOne.url }}
 
         {{ if $levelOne.folder }}

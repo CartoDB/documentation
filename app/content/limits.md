@@ -1,6 +1,7 @@
 ---
 title: Limits
 description: "Understand API limits"
+type: single-page
 
 menu:
   - title: "Limits"
