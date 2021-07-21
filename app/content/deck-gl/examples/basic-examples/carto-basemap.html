@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -12,11 +12,6 @@
   </body>
 
   <script type="text/javascript">
-    const cartoBasemaps = {
-      VOYAGER: "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
-      POSITRON: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
-      DARK_MATTER: "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json",
-    };
 
     deck.carto.setDefaultCredentials({
       username: 'public',
@@ -26,19 +21,20 @@
     const deckgl = new deck.DeckGL({
       container: 'map',
       // CARTO's provides three basemaps voyager, positron, dark-matter
-      mapStyle: cartoBasemaps.VOYAGER,
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
+      // mapStyle: deck.carto.BASEMAP.POSITRON,
+      // mapStyle: deck.carto.BASEMAP.DARK_MATTER,
 
       initialViewState: {
-        latitude: 0,
-        longitude: 0,
-        zoom: 1,
+        latitude: 51.502,
+        longitude: -0.118,
+        zoom: 16,
       },
       controller: true,
 
       layers: [
-        new deck.carto.CartoSQLLayer({
-          // For better performance select the_geom_webmercator as the source of the geometry
-          // and only retrieve the fields needed  
+        new deck.carto.CartoLayer({
+          type: deck.carto.MAP_TYPES.QUERY,
           data: `SELECT the_geom_webmercator, name FROM populated_places`, 
           getFillColor: [238, 77, 90],
           pointRadiusMinPixels: 2.5

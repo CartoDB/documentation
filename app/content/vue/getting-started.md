@@ -1,8 +1,20 @@
 ## Getting started
 
-This guide describes an approach for integrating CARTO for deck.gl within applications developed using the [Vue.js](https://vuejs.org/) framework.
+The CARTO platform is framework-agnostic so you can build applications using CARTO with your framework of choice. When you build an application with CARTO you mostly use deck.gl as the visualization library. This guide describes an approach for integrating [CARTO for deck.gl](/deck-gl) within applications developed using the [Vue.js](https://vuejs.org/) framework, but you can use CARTO with Vue.js and other visualization libraries.
 
-We have created an example that you can download and execute in your own local machine. This guide follows an step-by-step approach using the mentioned example as reference. To download the example, clone the CARTO viz-doc [repo](https://github.com/CartoDB/viz-doc):
+We have created an example that you can download and execute in your own local machine, available in the viz-doc [repository](https://github.com/CartoDB/viz-doc):
+
+<ul class="grid-cell--col10 grid u-mt16">
+    <li class="grid-cell grid-cell--col6 grid-cell--col12--mobile u-mb20">
+        <a href="https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js/vue" target="_blank" class="clickable-card clickable-card--small">
+        <img class="u-mr4" src="/img/documentation/github.svg" alt="Github" style="filter: invert(1); margin-bottom: 8px">
+        <h3 class="title f20 is-txtBaseGrey u-mt8" style="margin-top: 8px;">viz-doc</h3>
+        <p class="text f16 is-txtTypo2 u-mt8">CARTO for deck.gl + Vue.js example</p>
+        </a>
+    </li>
+</ul>
+
+This guide follows an step-by-step approach using the mentioned example as reference. To download and execute the example, start by cloning the repository:
 
 ```shell
 git clone git@github.com:CartoDB/viz-doc.git
@@ -32,7 +44,7 @@ And you will be able to access the application in the following URL:
 
 ### Creating your application
 
-We are going to start by creating a new Vue.js application using the Vue CLI. If you haven't installed it already, you need to execute the following command:
+We are going to start by creating a new Vue.js application using the [Vue CLI](https://cli.vuejs.org/). If you haven't installed it already, you need to execute the following command:
 
 ```bash
 yarn global add @vue/cli
@@ -141,7 +153,7 @@ export default {
 
 ### Routing
 
-Our sample application could grow and potentially include many views and lots of JavaScript code. In order to make sure we can manage different routes/paths easily and we provide a good user experience, we are going to use the Vue Router along with an AppShell for starting our application.
+Our sample application could grow and potentially include many views and lots of JavaScript code. In order to make sure we can manage different routes/paths easily and we provide a good user experience, we are going to use the [Vue Router](https://router.vuejs.org/) along with an AppShell for starting our application.
 
 First we add the Vue Router to our project:
 
@@ -202,7 +214,7 @@ Our example application is going to have one view only but we have prepared the 
 
 ### Map component
 
-Until this point we have worked on the basic structure of our application but we have not added yet anything related to deck.gl. In this section we are going to add the deck.gl map; deck.gl itself does not include basemap functionality but it is compatible with different libraries for managing basemaps like Mapbox GL JS or Google Maps. 
+Until this point we have worked on the basic structure of our application but we have not added yet anything related to [deck.gl](https://deck.gl). In this section we are going to add the deck.gl map; deck.gl itself does not include basemap functionality but it is compatible with different libraries for managing basemaps like [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js) or [Google Maps](https://developers.google.com/maps). 
 
 If you want to include a basemap in your application, you need to create two different canvases: one for drawing the basemap and another for drawing the deck.gl layers. In addition to that, you need to make sure that both canvases are in sync and showing the same viewport.
 
@@ -258,7 +270,7 @@ export default class DeckMap extends Deck {
 }
 ```
 
-Once we have created the canvas for deck.gl and the basemap, we are ready to create the corresponding objects in the constructor. We create the `Deck` object by calling the base class constructor and we instantiate the Mapbox GL map using the same initial viewstate properties:
+Once we have created the canvas for deck.gl and the basemap, we are ready to create the corresponding objects in the constructor. We create the `Deck` object by calling the base class constructor and we instantiate the Mapbox GL JS map using the same initial viewstate properties:
 
 ```javascript
 export default class DeckMap extends Deck {
@@ -279,7 +291,7 @@ export default class DeckMap extends Deck {
 }
 ```
 
-Finally we need to add the code for keeping the basemap and the layers in sync. We do this by using the `_onBeforeRender` event callback that is called just before the deck.gl canvas is re-rendered. We retrieve the current viewport and use the `jumpTo` method in the Mapbox GL `Map` object forcing a re-render with the `redrawMapbox` function. Please take a look at the [DeckMap.js](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/map-component/map-utils/DeckMap.js) file for the complete implementation.
+Finally we need to add the code for keeping the basemap and the layers in sync. We do this by using the `_onBeforeRender` event callback that is called just before the deck.gl canvas is re-rendered. We retrieve the current viewport and use the `jumpTo` method in the Mapbox GL JS `Map` object forcing a re-render with the `redrawMapbox` function. Please take a look at the [DeckMap.js](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/vue/src/components/map-component/map-utils/DeckMap.js) file for the complete implementation.
 
 ```javascript
 export default class DeckMap extends Deck {
@@ -383,13 +395,13 @@ export default {
 }
 ```
 
-We have everything in place to add our own layers. We are going to add three different layers to showcase some of the options for working with CARTO for deck.gl:
+We have everything in place to add our own layers. We are going to add three different layers to showcase some of the options for working with [CARTO for deck.gl](/deck-gl). The Buildings and Railroads layers use the [`CartoLayer`](https://deck.gl/docs/api-reference/carto/carto-layer):
 
-- Buildings. This is a polygon layer created from a BigQuery tileset that uses the CARTO for deck.gl [`CartoBQTilerLayer`](https://deck.gl/docs/api-reference/carto/carto-bqtiler-layer). This layer will be hidden by default (`visible: false`).
+- Buildings. This is a polygon layer created from a BigQuery tileset. This layer will be hidden by default (`visible: false`).
 
-- Railroads. This is a line layer created from a CARTO dataset that uses the CARTO for deck.gl [`CartoSQLLayer`](https://deck.gl/docs/api-reference/carto/carto-sql-layer).
+- Railroads. This is a line layer created from a CARTO dataset.
 
-- Stores. This is a point layer created from a GeoJSON dataset extracted from the CARTO database using the SQL API that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
+- Stores. This is a point layer created from a GeoJSON dataset extracted from the CARTO database using the [SQL API](https://carto.com/developers/sql-api/) that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
 
 For working with CARTO datasets, you need to provide the credentials (username and API key) for the dataset that will be the source for your layer. In this case, the three layers we are going to use are public datasets accessible in the `public` user with the `default_public` API key. If you want to use your own datasets, public or private, you will need to provide your own credentials.
 
@@ -397,7 +409,7 @@ One common pattern in spatial apps is adding your layers when the view is access
 
 ```javascript
 import { GeoJsonLayer } from '@deck.gl/layers'
-import { CartoBQTilerLayer, CartoSQLLayer, setDefaultCredentials, colorCategories, colorContinuous } from '@deck.gl/carto'
+import { CartoLayer, MAP_TYPES, setDefaultCredentials, colorCategories, colorContinuous } from '@deck.gl/carto'
 import TemplateComponent from '@/components/template-component/TemplateComponent.vue';
 import layerService from '@/services/layerService'
 
@@ -413,8 +425,9 @@ export default {
     });
 
     layerManager.addLayer(
-      new CartoSQLLayer({
+      new CartoLayer({
         id: 'roads',
+        type: MAP_TYPES.QUERY,
         data: 'SELECT cartodb_id, the_geom_webmercator, scalerank FROM ne_10m_railroads_public',
         pickable: true,
         lineWidthScale: 20,
@@ -451,8 +464,9 @@ export default {
     )
 
     layerManager.addLayer(
-      new CartoBQTilerLayer({
+      new CartoLayer({
         id: 'buildings',
+        type: MAP_TYPES.TILESET,
         data: 'cartobq.maps.msft_buildings',
         visible: false,
         pointRadiusUnits: 'pixels',

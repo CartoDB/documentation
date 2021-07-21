@@ -5,14 +5,11 @@ icon: "/img/icons/carto-deck.png"
 repoUrl: https://github.com/visgl/deck.gl/tree/master/modules/carto
 
 url: deck-gl
-indexPage: "overview.md"
+indexPage: "getting-started.md"
 
 menu:
-  - title: "Overview"
-  - title: "Guides"
-    folder:
-      - title: "Getting Started"
-      - title: "Style Language"
+  - title: "Getting started"
+  - title: "Using the CartoLayer"
   - title: "Examples"
     folder:
       - title: "Gallery"
@@ -47,41 +44,5 @@ menu:
           - title: "Lighting"
           - title: "Trips Layer"
   - title: "Reference"
-
-  # folders:
-  #   - name: "Guides"
-  #     elements:
-  #       - "Getting Started"
-  #       - "Style Language"
-  #   - name: "Examples"
-  #     folders:
-  #       - name: "Basic examples"
-  #         elements:
-  #           - "Hello World"
-  #           - "BigQuery Tileset Layer"
-  #           - "CARTO Basemap"
-  #           - "Interactivity"
-  #           - "Icon Layer"
-  #       - name: "Styling"
-  #         elements:
-  #           - "Color Bins Style"
-  #           - "Color Categories Style"
-  #           - "Color Continuous Style"
-  #       - name: "Clustering and Aggregation"
-  #         elements:
-  #           - "Clustering"
-  #           - "Grid Layer"
-  #           - "H3 Cluster Layer"
-  #           - "H3 Hexagon Layer"
-  #           - "Heatmap Layer"
-  #           - "Hexagon Layer"
-  #           - "S2 Layer"
-  #       - name: "Advanced examples"
-  #         elements:
-  #           - "Arc Layer"
-  #           - "Contour Layer"
-  #           - "Extrusion"
-  #           - "Globe View"
-  #           - "Lighting"
-  #           - "Trips Layer"
+  - title: "Release Notes"
 ---

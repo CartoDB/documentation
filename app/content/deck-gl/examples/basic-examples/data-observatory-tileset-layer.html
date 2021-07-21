@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@8.4.2/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@8.4.2/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@8.5.0-beta.1/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -24,7 +24,8 @@
       },
       controller: true,
       layers: [
-        new deck.carto.CartoBQTilerLayer({
+        new deck.carto.CartoLayer({
+          type: deck.carto.MAP_TYPES.TILESET,
           data: 'carto-do-public-tilesets.carto.derived_spatialfeatures_usa_quadgrid15_v1_yearly_2020_tileset_002',
           getFillColor: deck.carto.colorBins({
             attr: 'population',

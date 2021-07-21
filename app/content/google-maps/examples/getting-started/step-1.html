@@ -1,24 +1,45 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&libraries=visualization&v=weekly"></script>
+    <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://unpkg.com/deck.gl@^8.3.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@latest/dist.min.js"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
 
-  <body style="margin: 0; padding: 0;">
-    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  <body>
+    
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+    
   </body>
 
   <script type="text/javascript">
+    let map;
 
-    const map = new google.maps.Map(document.getElementById("map"), {
-      center: {
-        lat: 0,
-        lng: 0,
-      },
-      zoom: 2,
-    });
-    
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 38, lng: -98 },
+        zoom: 4,
+      });
+    }
   </script>
 </html>

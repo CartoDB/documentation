@@ -6,7 +6,7 @@ It's currently hosted on Google Cloud Platform and available in two regions: the
 
 ### Limits
 
-The CARTO SaaS platform is subject to certain usage limits to ensure avalability and quality of the service. Learn more about them [here](https://docs.carto.com/limits/).
+The CARTO SaaS platform is subject to certain usage limits to ensure avalability and quality of the service. Learn more about them [here](/limits/).
 
 ### Legal
 

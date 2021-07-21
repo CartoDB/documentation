@@ -5,8 +5,8 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.775.0.min.js"></script>
     <script src="https://unpkg.com/@aws-amplify/core@3.7.0/dist/aws-amplify-core.min.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@1.14.0/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@1.14.0/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
 
   <body style="margin: 0; padding: 0;">
@@ -24,7 +24,7 @@
     });
 
     /**
-     * Sign requests made by Mapbox GL using AWS SigV4.
+     * Sign requests made by MapLibre GL JS using AWS SigV4.
      */
     AWS.config.region = identityPoolId.split(":")[0];
     const { Signer } = window.aws_amplify_core;
@@ -59,7 +59,7 @@
 
       const mapName = "Rivers"; // Amazon Location Service Map Name
 
-      map = new mapboxgl.Map({
+      map = new maplibregl.Map({
         container: "map",
         center: [20, 49], 
         zoom: 4, 
@@ -67,7 +67,7 @@
         transformRequest,
       });
 
-      map.addControl(new mapboxgl.NavigationControl(), "top-left");
+      map.addControl(new maplibregl.NavigationControl(), "top-left");
 
       map.on('load', () => {
         addCartoLayer();

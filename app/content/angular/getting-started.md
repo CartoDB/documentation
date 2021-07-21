@@ -1,8 +1,20 @@
 ## Getting started
 
-This guide describes an approach for integrating CARTO for deck.gl within applications developed using the [Angular](https://angular.io/) framework.
+The CARTO platform is framework-agnostic so you can build applications using CARTO with your framework of choice. When you build an application with CARTO you mostly use deck.gl as the visualization library. This guide describes an approach for integrating [CARTO for deck.gl](/deck-gl) within applications developed using the [Angular](https://angular.io/) framework, but you can use CARTO with Angular and other visualization libraries.
 
-We have created an example that you can download and execute in your own local machine. This guide follows an step-by-step approach using the mentioned example as reference. To download the example, clone the CARTO viz-doc [repo](https://github.com/CartoDB/viz-doc):
+We have created an example that you can download and execute in your own local machine, available in the viz-doc [repository](https://github.com/CartoDB/viz-doc):
+
+<ul class="grid-cell--col10 grid u-mt16">
+    <li class="grid-cell grid-cell--col6 grid-cell--col12--mobile u-mb20">
+        <a href="https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples/pure-js/angular" target="_blank" class="clickable-card clickable-card--small">
+        <img class="u-mr4" src="/img/documentation/github.svg" alt="Github" style="filter: invert(1); margin-bottom: 8px">
+        <h3 class="title f20 is-txtBaseGrey u-mt8" style="margin-top: 8px;">viz-doc</h3>
+        <p class="text f16 is-txtTypo2 u-mt8">CARTO for deck.gl + Angular example</p>
+        </a>
+    </li>
+</ul>
+
+This guide follows an step-by-step approach using the mentioned example as reference. To download and execute the example, start by cloning the repository:
 
 ```shell
 git clone git@github.com:CartoDB/viz-doc.git
@@ -32,7 +44,7 @@ And you will be able to access the application in the following URL:
 
 ### Creating your application
 
-We are going to start by creating a new Angular application using the Angular CLI. If you haven't installed it already, you need to execute the following command:
+We are going to start by creating a new Angular application using the [Angular CLI](https://angular.io/cli). If you haven't installed it already, you need to execute the following command:
 
 ```bash
 npm install -g @angular/cli
@@ -50,7 +62,7 @@ The tool will ask us to select some options. We are going to select the followin
 - Answer 'Y' to use angular routing
 - Select 'CSS' as the stylesheet format
 
-Now we are going to add the deck.gl packages using the following commands:
+Now we are going to add the [deck.gl](https://deck.gl) packages using the following commands:
 
 ```bash
 npm install deck.gl
@@ -123,7 +135,7 @@ const routes: Routes = [
 ```
 
 {{% bannerNote title="tip" %}}
-Our example application is going to have one module only but we have prepared the example with Angular Routing so you can use it as an starting point for creating a more complex application with multiple modules and views.
+Our example application is going to have one module only but we have prepared the example with [Angular Routing](https://angular.io/guide/router) so you can use it as an starting point for creating a more complex application with multiple modules and views.
 {{%/ bannerNote %}}
 
 ### Map component
@@ -178,7 +190,7 @@ ngAfterViewInit() {
 }
 ```
 
-2. In the `launchMap` function, create the Mapbox Map object that will manage the basemap specifying the initial center coordinates and zoom level. Here we are using our Positron basemap.
+2. In the `launchMap` function, create the Mapbox GL JS `MapboxMap` object that will manage the basemap specifying the initial center coordinates and zoom level. Here we are using our Positron basemap.
 
 ```Typescript
 const map = new MapboxMap({
@@ -190,7 +202,7 @@ const map = new MapboxMap({
 });
 ```
 
-3. In the same function, right after the Mapbox map, create the deck.gl instance to draw our layers. We use the `onBeforeRender` event handler to synchronize the view state between the deck.gl instance and the basemap using the `jumpTo` and `redrawMapbox` methods.
+3. In the same function, right after the `MapboxMap`, create the deck.gl instance to draw our layers. We use the `onBeforeRender` event handler to synchronize the view state between the deck.gl instance and the basemap using the `jumpTo` and `redrawMapbox` methods.
 
 ```Typescript
 this.deck = new Deck({
@@ -212,7 +224,7 @@ this.deck = new Deck({
 });
 ```
 
-In order to have the best performance, we run both the Mapbox map and deck.gl instantiations outside Angular zone, to ensure Angular is not running any change detection code (`zone.runOutsideAngular`).
+In order to have the best performance, we run both the Mapbox GL JS map and deck.gl instantiations outside Angular zone, to ensure Angular is not running any change detection code (`zone.runOutsideAngular`).
 
 ### Layers
 
@@ -250,13 +262,13 @@ This base class is included in the `src/app/models` folder but we are going to i
 
 We want the layers to be provided and injected as dependencies so we define them as classes with the `Injectable` decorator. First we create a folder named `layers` within the `modules/home` folder and then we create a class for each of the layers we want to use in the application. 
 
-In the example we have created three layers to showcase some of the options for working with CARTO datasets and tilesets:
+In the example we have created three layers to showcase some of the options for working with CARTO datasets and tilesets. The Buildings and Railroads layers use the [`CartoLayer`](https://deck.gl/docs/api-reference/carto/carto-layer):
 
-- [BuildingsLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/buildings-layer.ts). This is a polygon layer created from a BigQuery tileset that uses the CARTO for deck.gl [`CartoBQTilerLayer`](https://deck.gl/docs/api-reference/carto/carto-bqtiler-layer).
+- [BuildingsLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/buildings-layer.ts). This is a polygon layer created from a BigQuery tileset.
 
-- [RailroadsLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/rail-roads-layer.ts). This is a line layer created from a CARTO dataset that uses the CARTO for deck.gl [`CartoSQLLayer`](https://deck.gl/docs/api-reference/carto/carto-sql-layer).
+- [RailroadsLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/rail-roads-layer.ts). This is a line layer created from a CARTO dataset.
 
-- [StoresLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/stores-layer.ts). This is a point layer created from a GeoJSON dataset extracted from the CARTO database using the SQL API that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
+- [StoresLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/stores-layer.ts). This is a point layer created from a GeoJSON dataset extracted from the CARTO database using the [SQL API](https://carto.com/developers/sql-api/) that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
 
 The structure for all the layers is similar: we define a class that extends from the base `Layer` class. We need to specify a unique `id` for the layer and set the `visible` property to `true` or `false` depending if we want to show the layer or not when the view is loaded. The most important part is creating the deck.gl object that we must return in the `getLayer` method. Here we specify the data source for the layer, the `id` and `visible` properties and the styling properties like `getFillColor` or `getLineColor`.
 

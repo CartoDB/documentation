@@ -14,12 +14,13 @@ menu:
       - title: "Getting Started"
       - title: "Layers"
       - title: "Widgets"
-      - title: "Data Management"
+      - title: "Authentication and Authorization"
       - title: "Basemaps"
       - title: "Look and Feel"
       - title: "Code Generator"
       - title: "Sample Application"
       - title: "Deployment"
+  - title: "Examples"
   - title: "Library Reference"
     folder:
       - title: "API"
@@ -29,4 +30,5 @@ menu:
       - title: "Redux"
       - title: "UI"
       - title: "Widgets"
+  - title: "Release Notes"
 ---

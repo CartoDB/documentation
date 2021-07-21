@@ -26,7 +26,15 @@ npx create-react-app my-app --template '@carto'
 ```
 {{%/ bannerNote %}}
 
-A full [Sample Application](#sample-application) with the most common functionality is available at https://sample-app-react.carto.com. If you want to create a new application based on the sample app template, just type the following:
+If you want to create a template for the CARTO 3 platform, just type:
+
+```bash
+npx create-react-app my-app --template @carto/cloud-native
+cd my-app
+yarn start
+```
+
+A full [Sample Application](#sample-application) for the current platform with the most common functionality is available at https://sample-app-react.carto.com. If you want to create a new application based on the sample app template, just type the following:
 
 ```bash
 npx create-react-app my-app --template @carto/sample-app

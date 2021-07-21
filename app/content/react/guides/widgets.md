@@ -18,14 +18,14 @@ The widgets are implemented combining the functionality of three different libra
 
 ### Data sources
 
-The widgets work with vector tiles provided by the Maps API. The workers retrieve the information from the tiles and execute the different calculations needed by each widget. Every time we change the viewport, new tiles are downloaded and the widgets are updated.
+The widgets work with vector tiles or GeoJSON features provided by the Maps API. The workers retrieve the information from the tiles / GeoJSON features and execute the different calculations needed by each widget. Every time we change the viewport, the widgets are updated.
 
 {{% bannerNote title="note" %}}
-The widgets work with client-side features from the vector tiles, whether the source is a CARTO dataset or a BigQuery Tiler tileset. To avoid counting the same feature two or more times when it is near or crosses a tile border, we need to know what's the name of the feature property that allows us to identify the features. By default it tries to find a property with the name `cartodb_id` or `geoid` (default property name for CARTO datasets and Data Observatory tilesets) but if your source does not contain any of these properties, you can indicate what property to use with the `uniqueIdProperty` parameter in the [`useCartoLayerProps`](../../library-reference/api/#usecartolayerprops--codeobjectcode) function. 
+When retrieving data in a CARTO 2 platform application or when using the MAP_TYPES.TILESET type in a CARTO 3 application, the widgets work with client-side features obtained from vector tiles. To avoid counting the same feature two or more times when it is near or crosses a tile border, we need to know what's the name of the feature property that allows us to identify the features. By default it tries to find a property with the name `cartodb_id` or `geoid` (default property name for CARTO datasets and Data Observatory tilesets) but if your source does not contain any of these properties, you can indicate what property to use with the `uniqueIdProperty` parameter in the [`useCartoLayerProps`](../../library-reference/api/#usecartolayerprops--codeobjectcode) function. 
 {{%/ bannerNote %}}
 
 {{% bannerNote title="warning" %}}
-If your source is a simple tileset that you have generated with the `dropFeatures` strategy, widget calculations at some zoom levels can be inaccurate due to features being dropped from the tiles. 
+If your source is a tileset, widget calculations at some zoom levels can be inaccurate due to features being dropped from the tiles to keep the tile size under the limit. 
 {{%/ bannerNote %}}
 
 ### Common properties

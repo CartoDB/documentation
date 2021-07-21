@@ -142,7 +142,7 @@ Using Google Maps as a basemap is also possible with this tool. Add `"google": t
 
 ### Sharing a visualization
 
-Tilesets can be used as data layers with many web mapping libraries. Take a look at the **Development tools** section in our [documentation](https://docs.carto.com) to learn about different options.
+Tilesets can be used as data layers with many web mapping libraries. Take a look at the **Development tools** section in our [documentation](/#dev-tools) to learn about different options.
 
 For quick sharing and publishing on the web, use the options from the _Share_ menu in Map Viewer.
 

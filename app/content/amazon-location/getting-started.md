@@ -12,104 +12,13 @@ After completing this guide, you will have your first Amazon Location map with a
     frameBorder="0">
 </iframe>
 
-### Introduction
+### Basic setup
 
 There are two main steps for visualizing a CARTO layer: first you create a map resource in your AWS account, and then you create a web application that uses a rendering library to visualize the map and the CARTO layer on top of this map.
 
 For this guide, we have already created a map resource called "Rivers" in our AWS account. If you want to create your own map resource, you can follow the instructions from the [Developer Guide](https://docs.aws.amazon.com/location/latest/developerguide/create-map-resource.html).
 
-### Basic setup
-
-The first thing you need to do is to add all the required Amazon (AWS SDK for Javascript and AWS Amplify core) and Mapbox GL dependencies (library and CSS files):
-
-```html
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.775.0.min.js"></script>
-<script src="https://unpkg.com/@aws-amplify/core@3.7.0/dist/aws-amplify-core.min.js"></script>
-<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-```
-
-#### Add map container
-
-Next, you need to create a `div` inside the `body` where the map will be drawn and you need to style them to ensure the map displays at full width:
-
-```html
-<body style="margin: 0; padding: 0;">
-    <div id="map" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
-</body>
-```
-
-### Setup credentials to access to your map resource
-
-In order to provide access to your map resource, you can use IAM directly or you can use [Amazon Cognito](https://aws.amazon.com/cognito/) authentication if you want to provide access to unauthenticated users or you want to use your own authentication system.
-
-In this guide, we want our map to be accessible to unauthenticated users, so we are using Amazon Cognito. We have created an identity pool that allows access to unauthenticated entities. We have also added a policy to grant read-only access to our map resource.
-
-Now, in the application code, we instantiate a credential provider using Cognito:
-
-```js
-const identityPoolId = "us-east-2:303d12f6-e24e-4571-8a79-66cc7c6a6bdc"; // Cognito Identity Pool ID
-const credentials = new AWS.CognitoIdentityCredentials({
-  IdentityPoolId: identityPoolId,
-});
-```
-
-### Initialize the map
-
-Before instantiating the Mapbox GL JS map we need to obtain the credentials from the Cognito identity provider. This is an asynchronous operation, so we need to wait for the credentials. After we have obtained the credentials, we create our `Map` object assigning the style property to our Amazon Location Service map name. We also need to define the `transformRequest` handler to sign our requests to AWS.
-
-```js
-async function initializeMap() {
-  await credentials.getPromise();
-
-  const mapName = "Rivers";
-
-  // actually initialize the map
-  map = new mapboxgl.Map({
-    container: "map",
-    center: [20, 49], 
-    zoom: 4, 
-    style: mapName,
-    transformRequest,
-  });
-
-  map.addControl(new mapboxgl.NavigationControl(), "top-left");
-}
-```
-
-### Sign the requests to AWS
-
-We need to sign the requests from Mapbox GL JS to our map resource using the credentials. In order to do that, we take advantage of the [`transformRequest`](https://docs.mapbox.com/mapbox-gl-js/api/properties/#requestparameters) option to intercept the requests and modify them before they are sent.
-
-```js
-AWS.config.region = identityPoolId.split(":")[0];
-
-const { Signer } = window.aws_amplify_core;
-
-function transformRequest(url, resourceType) {
-  if (resourceType === "Style" && !url.includes("://")) {
-    url = `https://maps.geo.${AWS.config.region}.amazonaws.com/maps/v0/maps/${url}/style-descriptor`;
-  }
-  if (url.includes("amazonaws.com")) {
-    return {
-      url: Signer.signUrl(url, {
-        access_key: credentials.accessKeyId,
-        secret_key: credentials.secretAccessKey,
-        session_token: credentials.sessionToken,
-      }),
-    };
-  }
-  return { url };
-}
-```
-
-#### Initialize map
-
-Now we just need to call the function to initialize our map:
-
-```js
-initializeMap();
-```
+Follow the [Using MapLibre GL JS with Amazon Location Service](https://docs.aws.amazon.com/location/latest/developerguide/tutorial-maplibre-gl-js.html) tutorial to create a basic map with the [MapLibre GL JS](https://maplibre.org/maplibre-gl-js-docs/api/) rendering library. 
 
 At this point you will have a basic map with the Rivers Amazon Location map resource:
 
@@ -124,9 +33,9 @@ At this point you will have a basic map with the Rivers Amazon Location map reso
 
 > View this step [here](../examples/getting-started/step-1.html)
 
-### Add CARTO layer
+### Adding data from CARTO
 
-In order to visualize the CARTO tileset, we are going to take advantage of the new TileJSON endpoints in the Maps API v2. We just need to provide the endpoint URL through the [`source.url`](https://docs.mapbox.com/mapbox-gl-js/style-spec/sources/) property while calling the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map.
+In order to visualize the CARTO tileset, we are going to take advantage of the new TileJSON endpoints in the Maps API v2. We just need to provide the endpoint URL through the [`source.url`](https://maplibre.org/maplibre-gl-js-docs/style-spec/sources/) property while calling the [`addLayer`](https://maplibre.org/maplibre-gl-js-docs/api/map/#map#addlayer) method on the map.
 
 We are using a public tileset generated using our BigQuery Tiler and we are assigning a different color to each line representing a river, depending on the value of the `bearing` attribute.
 
@@ -172,8 +81,6 @@ map.addLayer(
 );
 ```
 
-### All together
-
 Finally we need to add the layer to the map after it is loaded:
 
 ```js
@@ -184,6 +91,8 @@ async function initializeMap() {
   })
 }
 ```
+
+### All together
 
 <div class="example-map">
     <iframe
@@ -206,8 +115,8 @@ async function initializeMap() {
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.775.0.min.js"></script>
     <script src="https://unpkg.com/@aws-amplify/core@3.7.0/dist/aws-amplify-core.min.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@1.14.0/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@1.14.0/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
 
   <body style="margin: 0; padding: 0;">
@@ -225,7 +134,7 @@ async function initializeMap() {
     });
 
     /**
-     * Sign requests made by Mapbox GL using AWS SigV4.
+     * Sign requests made by MapLibre GL JS using AWS SigV4.
      */
     AWS.config.region = identityPoolId.split(":")[0];
     const { Signer } = window.aws_amplify_core;
@@ -260,7 +169,7 @@ async function initializeMap() {
 
       const mapName = "Rivers"; // Amazon Location Service Map Name
 
-      map = new mapboxgl.Map({
+      map = new maplibregl.Map({
         container: "map",
         center: [20, 49], 
         zoom: 4, 
@@ -268,7 +177,7 @@ async function initializeMap() {
         transformRequest,
       });
 
-      map.addControl(new mapboxgl.NavigationControl(), "top-left");
+      map.addControl(new maplibregl.NavigationControl(), "top-left");
 
       map.on('load', () => {
         addCartoLayer();

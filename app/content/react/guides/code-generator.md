@@ -39,16 +39,18 @@ The command will ask you to select the following options:
 | Option |Description|
 |--------|-----------|
 | Name   | The name you will give to the source. The code generator will append "Source" at the end. |
-| Type   | The source type. You can choose between SQL dataset (CARTO account dataset) and BigQuery tileset. |
-| Query  | For CARTO datasets you can specify the dataset (table) name or a SQL query. For BigQuery tilesets, you need to specify the tileset name including the BigQuery project and dataset. |
+| Type   | The source type. You can choose between a table name, a SQL query or a tileset. |
+| Connection | Connection name in the workspace (only needed for CARTO 3). |
+| Data   | Table name, SQL query or tileset name. |
 
 The code generator will create a new file in the `src/data/sources/` folder that will define a source object with the following properties:
 
 | Property |Description|
 |--------|-----------|
 | id     | This is a unique ID for the source generated from the provided source name. |
-| data   | This is the SQL query, CARTO dataset name or BigQuery tileset name. |
-| type   | This is 'sql' for CARTO datasets or 'bigquery' for BigQuery tilesets. |
+| type   | MAP_TYPES.QUERY, MAP_TYPES.TABLE or MAP_TYPES.TILESET. |
+| connection | Connection name in the workspace (only needed for CARTO 3). |
+| data   | This is the SQL query, table name or tileset name. |
 
 In addition to these three properties, you can add an additional `credentials` property to the source after it has been created. This is useful if you want to add a source with different credentials from those specified in the `src/store/initialStateSlice.js` file.
 
@@ -70,7 +72,7 @@ The command will ask you to select the following options:
 
 The code generator will perform two different actions:
 
-1. Create a new file for the layer in the `src/components/layers/` folder. This element will return a CartoSQLLayer or a CartoBQTilerLayer, depending on the associated source. If you want to modify the default visualization options, you can modify the corresponding deck.gl layer properties. 
+1. Create a new file for the layer in the `src/components/layers/` folder. This element will return a `CartoLayer`. If you want to modify the default visualization options, you can modify the corresponding deck.gl layer properties. 
 
 2. Attach the layer to the view in the corresponding view file, if this option has been selected. If this is the case, before adding the layer by dispatching the `addLayer` action, the source will also be added using the `addSource` action.
 

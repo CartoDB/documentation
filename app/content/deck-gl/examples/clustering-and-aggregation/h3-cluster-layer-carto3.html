@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- h3-js is required -->
+    <script src="https://unpkg.com/h3-js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0; overflow: hidden; font-family: 'Open Sans', sans-serif">
+    <div id="map" style="width: 100vw; height: 100vh"></div>
+  </body>
+
+  <script type="text/javascript">
+    async function initialize() {
+      deck.carto.setDefaultCredentials({
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+        apiVersion: deck.carto.API_VERSIONS.V3,
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+      });
+
+      // Fetch Data from CARTO
+      const jsonData =  await deck.carto.getData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT mean, count, hexids FROM cartobq.public_account.sf_h3_clusters`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.JSON
+      });
+
+      // Create deck.gl map
+      const deckgl = new deck.DeckGL({
+        container: 'map',
+        mapStyle: deck.carto.BASEMAP.DARK_MATTER,
+        initialViewState: {
+          longitude: -122.43,
+          latitude: 37.76,
+          zoom: 10.5
+        },
+        controller: true,
+        layers: [
+          new deck.H3ClusterLayer({
+            id: 'h3-cluster-layer',
+            data: jsonData.rows,
+            pickable: true,
+            stroked: true,
+            filled: true,
+            extruded: false,  
+            getHexagons: d => d.hexids,
+            getFillColor: d => [255, (1 - d.mean / 500) * 255, 0],
+            getLineColor: [255, 255, 255, 120],
+            lineWidthMinPixels: 2
+          })
+        ],
+        getTooltip: ({object}) => object && `density: ${object.mean}`
+      });
+    }
+
+    initialize();    
+  </script>
+</html>
