@@ -8,6 +8,12 @@
       <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet u-mb96 js-content u-pr example-layout">
         {{.Content}}
         
+        <ul class="version-switch">
+          {{ range $version := .Page.Params.versions}}
+            {{- partial "swith-button.html" $version -}}
+          {{ end }}
+        </ul>
+        
         <div class="iframe-wrapper" data-fullscreen-target-id="example-iframe" >
           {{- partial "floating-panel.html" . -}}
 

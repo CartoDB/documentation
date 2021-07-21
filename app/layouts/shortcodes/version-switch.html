@@ -1,0 +1,5 @@
+<ul class="version-switch">
+  {{ range $version := .Page.Params.versions}}
+    {{- partial "swith-button.html" $version -}}
+  {{ end }}
+</ul>
