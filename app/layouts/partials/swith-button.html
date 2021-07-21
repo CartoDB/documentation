@@ -1,4 +1,2 @@
-{{ $version := . }}
-<li class="switch-version-button">
-  <a href="{{ $version.url }}" class="wtitch-button">{{ $version.title }}</a>
-</li>
+{{ $url := printf "%s%s" .CTX.Page.Dir .version.url}}
+<a href="{{ $url | absURL }}" class="swtitch-button {{ if .version.active }} active {{ end }}">{{ .version.title }}</a>
