@@ -706,6 +706,14 @@ li {
       height: 250px;
       margin-right: 24px;
       margin-bottom: 24px;
+
+      @media (max-width: $layout-desktop) {
+        width: calc(50% - 24px);
+      }
+
+      @media (max-width: $layout-mobile) {
+        width: 100%;
+      }
       
       a {
         display: flex;
@@ -745,4 +753,11 @@ li {
       }
     }
   }
+
+  // @media (max-width: $layout-tablet) {
+  //   .thumbnail {
+  //     background-color: red;
+  //     // width: calc(33.33333% - 24px);
+  //   }
+  // }
 }
