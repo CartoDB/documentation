@@ -2,7 +2,7 @@
 cascade:
   title: Spatial Extension for Snowflake
   description: "Unlock Spatial Analytics in Snowflake"
-  icon: "/img/icons/snowflake.png"
+  icon: "/img/icons/snowflake-spatial-extension.png"
   repoUrl: https://github.com/CartoDB/carto-spatial-extension
   extra_sections:
     - "Release notes"
