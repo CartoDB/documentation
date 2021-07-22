@@ -1,6 +1,6 @@
 ---
 layout: example
-exampleTitle: "Hello World v3"
+exampleTitle: "Hello World"
 code: "hello-world-carto3.html"
 exampleDescription: "This example shows how to create your first map using CARTO for deck.gl."
 exampleExtraCode: ""
