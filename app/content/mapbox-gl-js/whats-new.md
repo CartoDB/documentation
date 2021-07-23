@@ -2,6 +2,6 @@
 
 ### July 30, 2021
 
-- Add example for CARTO 3
+- Add examples for CARTO 3
 
 

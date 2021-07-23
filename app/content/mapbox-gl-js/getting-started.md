@@ -46,7 +46,9 @@ We are going to start by adding a map with 3D terrain. Please check [this exampl
 
 ### Adding data from CARTO
 
-In order to visualize a CARTO dataset, you just need to provide a [TileJSON](https://github.com/mapbox/tilejson-spec) URL using the Maps API within a source of type vector while you are creating your layer using the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
+In order to visualize a CARTO dataset, you need to fetch data from the CARTO platform. The process is different depending on the CARTO platform version.
+
+If you are working with the CARTO 2 platform (Maps API v2), you just need to provide a [TileJSON](https://github.com/mapbox/tilejson-spec) URL using the Maps API within a source of type vector while you are creating your layer using the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
 
 ```js
 const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
@@ -66,7 +68,22 @@ map.addLayer({
 });
 ```
 
-In order to have the best performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (`SELECT *`). If you select all the fields from the dataset, the vector tiles will be bigger than needed and would take more time to encode, download and decode.
+If you are working with the CARTO 3 platform, you can use pregenerated tilesets and you will use a similar approach to the code above with a vector tiles source. But Maps API v3 also gives you the possibility of getting the data in GeoJSON format. In order to do that, you can use the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function from the [CARTO module](https://deck.gl/docs/api-reference/carto/overview) for [deck.gl](https://deck.gl). 
+
+```javascript
+const data =  await deck.carto.getData({
+  type: deck.carto.MAP_TYPES.QUERY,
+  source: `SELECT geom, name FROM cartobq.public_account.populated_places`,
+  connection: 'bqconn',
+  format: deck.carto.FORMATS.GEOJSON
+});
+map.addSource('populated-places', {
+  'type': 'geojson',
+  'data': data
+})
+```
+
+In order to have the best performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (`SELECT *`). If you select all the fields from the dataset, the vector tiles or GeoJSON objects will be bigger than needed and would take more time to encode, download and decode.
 
 ### All together
 

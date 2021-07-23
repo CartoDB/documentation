@@ -8,5 +8,9 @@ indexPage: "getting-started.md"
 
 menu:
   - title: "Getting Started"
+  - title: "Examples"
+    folder:
+      - title: "Hello World"
+      - title: "Terrain"
   - title: "Whats New"
 ---
