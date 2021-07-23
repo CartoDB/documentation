@@ -1,0 +1,2 @@
+{{ $url := printf "%s%s" .CTX.Page.Dir .version.url}}
+<a href="{{ $url | absURL }}" class="swtitch-button {{ if .version.active }} active {{ end }}">{{ .version.title }}</a>

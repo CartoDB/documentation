@@ -25,7 +25,9 @@
       // Fetch Data from CARTO
       const geojsonData =  await deck.carto.getData({
         type: deck.carto.MAP_TYPES.QUERY,
-        source: `SELECT geom, vendor, timestamps FROM cartobq.public_account.new_york_trips`,
+        source: `SELECT geom, vendor, 
+                        TO_JSON_STRING(timestamps) AS timestamps 
+                   FROM cartobq.public_account.new_york_trips`,
         connection: 'bqconn',
         format: deck.carto.FORMATS.GEOJSON
       });
@@ -33,8 +35,8 @@
       // TripsLayer needs data in the following format
       const layerData = geojsonData.features.map(f => ({
         vendor: f.properties.vendor,
-        timestamps: f.properties.timestamps,
-        path: f.geometry.coordinates[0]
+        timestamps: JSON.parse(f.properties.timestamps),
+        path: f.geometry.coordinates
       }));
 
       const deckgl = new deck.DeckGL({

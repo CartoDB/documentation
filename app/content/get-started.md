@@ -1,6 +1,7 @@
 ---
 title: Getting started with CARTO
 description: "Helpful resources to get you up and running."
+type: single-page
 
 menu:
   - title: "Getting started with CARTO"

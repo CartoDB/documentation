@@ -1,6 +1,7 @@
 ---
 title: Developer News
 description: "CARTO for Developers Latest News"
+type: single-page
 
 menu:
   - title: "Developer News"

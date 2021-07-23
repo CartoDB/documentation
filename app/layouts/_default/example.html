@@ -1,14 +1,24 @@
 {{ define "main" }}
   {{- partial "header.html" . -}}
+  {{ $context := . }}
 
   <div class="is-bgWhite">
+    {{ $versions := .Page.Params.versions }}
     <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
       {{- partial "aside-menu.html" . -}}
       
       <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet u-mb96 js-content u-pr example-layout">
         {{.Content}}
         
-        <div class="iframe-wrapper" data-fullscreen-target-id="example-iframe" >
+        {{ if $versions }}
+          <div class="version-switch">
+            {{ range $version := $versions }}
+              {{- partial "swith-button.html" (dict "CTX" $context "version" $version) -}}
+            {{ end }}
+          </div>
+        {{ end }}
+        
+        <div class="iframe-wrapper" data-fullscreen-target-id="example-iframe">
           {{- partial "floating-panel.html" . -}}
 
           <button data-fullscreen-button data-target="example-iframe" class="button--map fullscreen-button">
@@ -16,7 +26,7 @@
               <path d="M21 14v6c0 .553-.447 1-1 1h-6v-2h5v-5h2zM5 14v5h5v2H4c-.553 0-1-.448-1-1v-6h2zM20 3c.553 0 1 .448 1 1v6h-2V5h-5V3h6zM10 3v2H5v5H3V4c0-.552.447-1 1-1h6z" transform="translate(-1246 -742) translate(508 208) translate(732 528) translate(6 6)"/>
             </svg>
           </button>
-          <iframe src="../{{.Params.code}}" style="border: 1px solid #cfcfcf; border-radius: 4px; width: 100%; height:100%; min-height: 500px;" title="{{ .Params.title }}"></iframe>
+          <iframe src="../{{.Page.Params.code}}" style="border: 1px solid #cfcfcf; border-radius: 4px; width: 100%; height:100%; min-height: 500px;" title="{{ .Params.title }}"></iframe>
         </div>
 
         <div class="u-mt24">

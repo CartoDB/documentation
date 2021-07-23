@@ -27,12 +27,15 @@
       });
 
       // Fetch Data from CARTO
-      const jsonData =  await deck.carto.getData({
+      let jsonData =  await deck.carto.getData({
         type: deck.carto.MAP_TYPES.QUERY,
-        source: `SELECT mean, count, hexids FROM cartobq.public_account.sf_h3_clusters`,
+        source: `SELECT mean, count, 
+                        '[' || ARRAY_TO_STRING(hexids, ',') || ']' as hexids 
+                   FROM cartobq.public_account.sf_h3_clusters`,
         connection: 'bqconn',
         format: deck.carto.FORMATS.JSON
       });
+      jsonData.map(cluster => cluster.hexids = JSON.parse(cluster.hexids));
 
       // Create deck.gl map
       const deckgl = new deck.DeckGL({
@@ -47,7 +50,7 @@
         layers: [
           new deck.H3ClusterLayer({
             id: 'h3-cluster-layer',
-            data: jsonData.rows,
+            data: jsonData,
             pickable: true,
             stroked: true,
             filled: true,

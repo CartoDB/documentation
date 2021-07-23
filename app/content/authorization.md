@@ -1,6 +1,7 @@
 ---
 title: Authorization
 description: "Understand how to authorize access to CARTO resources"
+type: single-page
 
 menu:
   - title: "Authorization"
