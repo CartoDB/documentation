@@ -1,6 +1,6 @@
 ## Getting started
 
-The CARTO 3 Workspace allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, the Tilesets module, and other fresh features.
+The CARTO 3 Workspace is the leading cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, the Tilesets module, and other fresh features.
 
 ### Create your CARTO 3 account
 
@@ -26,10 +26,12 @@ The CARTO 3 Workspace allows you to create amazing maps and spatial analytics at
 2. **Account setup**
 
     - Choose an account name.
+    - Select if you want anyone with a @cartodb.com email to automatically join your account, or leave it unchecked if you want them to go through go through an approval process.
     - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform is in 2 GCP regions (Europe-West and USA-Central). We give you the possibility to choose the region that is closer to your data warehouse.
     - Click *Next*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_setup.png)
+    ![Account setup](/img/cloud-native-workspace/get-started/account_setup_check.png)
+
 
 3. **Personal information**
 
@@ -65,7 +67,7 @@ You are all set up to start using CARTO 3!
 
 Learn everything you need to know about your Workspace and how to make the most out of it.
 
-When you log in to your CARTO 3 account, you land on your Workspace. The workspace allows you to manage connections to your data warehouses, creating tilesets and maps, list your applications, access your account settings, manage users of your organization, and access spatial application development features.
+When you log in to your CARTO 3 account, you land on your Workspace. The workspace allows you to manage connections to your data warehouses, creating tilesets and maps, list your applications, access your account settings, manage users of your account, and access spatial application development features.
 
 ![Workspace overview](/img/cloud-native-workspace/get-started/workspace_overview.png)
 
@@ -96,7 +98,7 @@ Fresh features, interesting articles, and the latest news related to CARTO 3 fro
 
 #### Menu
 
-In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Maps, Tilesets, Connections, Applications, Account Settings, and CARTO for Developers. 
+In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Home, Maps, Data Explorer, Connections, Applications, Account Settings, and Developers. 
 
 ![Menu features](/img/cloud-native-workspace/get-started/menu_features.png)
 
