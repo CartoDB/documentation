@@ -13,25 +13,87 @@ The CARTO 3 Workspace is the leading cloud-native Location Intelligence platform
     - Enter your email address and password. You can also sing up with your existing Google account by clicking *Continue with Google*.
     - Once you have entered your credentials: click *Continue*.
 
-    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_password.png)
+    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_and_password.png)
     - Verify your account with the link sent to your existing email address.
     - Click *Verify email* in the email sent.
 
-    ![Verify your account](/img/cloud-native-workspace/get-started/signup_verify_account.png)
+    ![Verify your account](/img/cloud-native-workspace/get-started/signup_verify_the_account.png)
 
     - Click *Back to Accounts Login/Signup*.
 
-    ![Email verified](/img/cloud-native-workspace/get-started/signup_email_verified.png)
+    ![Email verified](/img/cloud-native-workspace/get-started/signup_email_is_verified.png)
 
 2. **Account setup**
+    
+    When a user initiates the account creation process, they can choose to create a new account, or join an existing account. 
+
+    ![Account setup](/img/cloud-native-workspace/get-started/account_detected.png)
+
+    **Create a new account**:
 
     - Choose an account name.
     - Select if you want anyone with a @cartodb.com email to automatically join your account, or leave it unchecked if you want them to go through go through an approval process.
     - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform is in 2 GCP regions (Europe-West and USA-Central). We give you the possibility to choose the region that is closer to your data warehouse.
     - Click *Next*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_setup_check.png)
+    ![Account setup](/img/cloud-native-workspace/get-started/account_the_setup.png)
 
+
+    Enter your personal information:
+
+    - First name.
+    - Last name.
+    - Country.
+    - Phone number.
+    - Click *Next*.
+
+    ![Personal information](/img/cloud-native-workspace/get-started/form_personal_information.png)
+
+     Enter your business profile information:
+
+    - Company name.
+    - Job title.
+    - Number of employees (optional).
+    - Industry (optional).
+    - What use case are you interested in? (optional).
+
+    By signing up you accept the <a href="https://carto.com/legal/" target="_blank">Terms and conditions of the Services</a> and the <a href="https://carto.com/privacy/" target="_blank">privacy notice</a>.
+
+    - Click *Finish*.
+
+    ![Business profile](/img/cloud-native-workspace/get-started/form_business_profile.png)
+	
+    You are all set up to start using CARTO 3!
+
+    **Joining an existing account**:
+
+    ![Account setup](/img/cloud-native-workspace/get-started/account_detected.png)
+
+    ![Account setup](/img/cloud-native-workspace/get-started/account_request_sent.png)
+
+    Enter your personal information:
+
+    - First name.
+    - Last name.
+    - Country.
+    - Phone number.
+    - Click *Next*.
+
+    ![Account setup](/img/cloud-native-workspace/get-started/join_personal_information.png)
+
+     Enter your business profile information:
+
+    - Company name.
+    - Job title.
+    - Number of employees (optional).
+    - Industry (optional).
+    - What use case are you interested in? (optional).
+
+    By signing up you accept the <a href="https://carto.com/legal/" target="_blank">Terms and conditions of the Services</a> and the <a href="https://carto.com/privacy/" target="_blank">privacy notice</a>.
+
+    - Click *Finish*.
+
+    ![Account setup](/img/cloud-native-workspace/get-started/join_business_profile.png)
 
 3. **Personal information**
 
@@ -43,7 +105,7 @@ The CARTO 3 Workspace is the leading cloud-native Location Intelligence platform
     - Phone number.
     - Click *Next*.
 
-    ![Personal information](/img/cloud-native-workspace/get-started/personal_information.png)
+    ![Personal information](/img/cloud-native-workspace/get-started/form_personal_information.png)
 
 4. **Business profile**
 
@@ -59,7 +121,7 @@ The CARTO 3 Workspace is the leading cloud-native Location Intelligence platform
 
     - Click *Finish*.
 
-    ![Business profile](/img/cloud-native-workspace/get-started/business_profile.png)
+    ![Business profile](/img/cloud-native-workspace/get-started/form_business_profile.png)
 	
 You are all set up to start using CARTO 3!
 
@@ -75,7 +137,7 @@ When you log in to your CARTO 3 account, you land on your Workspace. The workspa
 
 The first time that you access the Workspace, you will see a *Welcome* banner with quick access to the *Connections* panel. By clicking this banner, you can easily connect your data warehouse to start using the Workspace. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
 
-![Welcome banner](/img/cloud-native-workspace/get-started/first_connection.png)
+![Welcome banner](/img/cloud-native-workspace/get-started/the_first_connection.png)
 
 #### Recent maps
 
@@ -100,11 +162,11 @@ Fresh features, interesting articles, and the latest news related to CARTO 3 fro
 
 In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Home, Maps, Data Explorer, Connections, Applications, Account Settings, and Developers. 
 
-![Menu features](/img/cloud-native-workspace/get-started/menu_features.png)
+![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
 
 In the bottom part of the menu, you have additional options to Join our Slack channel, send us feedback, or access to Documentation.
 
-![Menu features additional options](/img/cloud-native-workspace/get-started/menu_features_more.png)
+![Menu features additional options](/img/cloud-native-workspace/get-started/the_menu_features_more.png)
 
 ### Quick guide to connect data and create maps
 
@@ -118,7 +180,7 @@ The CARTO 3 Workspace includes functionalities for registering and managing conn
 
 Go to the *Connections* menu in the Workspace, where you will see the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/get-started/connections_module.png)
+![Connections module](/img/cloud-native-workspace/get-started/the_connections_module.png)
 
 For adding a new connection follow the next steps:
 
@@ -128,11 +190,11 @@ For adding a new connection follow the next steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/connections_bigquery_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/connections_bigquery_the_parameters.png)
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/get-started/connections_successful.png)
+![Successful connection](/img/cloud-native-workspace/get-started/the_connections_successful.png)
 
 #### Create a Map
 
@@ -140,7 +202,7 @@ The *Maps* page enables you to create and manage maps in the CARTO 3 Workspace. 
 
 1. From your *Maps* page, click *Create your first map*. This will open the CARTO 3 map tool: Builder.
 	
-![Map module](/img/cloud-native-workspace/get-started/map_module.png)
+![Map module](/img/cloud-native-workspace/get-started/the_map_module.png)
 
 2. The *Add data* options appear, where you can upload new datasets using a local file or add a dataset from your existing data warehouse connection. In this example, we are using the BigQuery connection created in the previous step. With BigQuery we can use a Query to retrieve data, add a whole Table, or a Tileset.
 	

@@ -9,6 +9,9 @@ cascade:
         - "Getting Started"
         - "Glosario"
         - "Getting help"
+    - name: "Data Explorer"
+      elements:
+        - "Introduction"
     - name: "Connections"
       elements:
         - "Introduction"
