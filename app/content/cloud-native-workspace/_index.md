@@ -21,7 +21,7 @@ cascade:
     - name: "Maps" 
       elements:
         - "Introduction"
-        - "Add data"
+        - "Add source"
         - "View data table"
         - "Map settings"
         - "Map styles"

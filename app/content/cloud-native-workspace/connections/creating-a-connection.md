@@ -9,11 +9,11 @@ For creating a new connection follow the next steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/connections_bigquery_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
 
 After you have provided the connection parameters, click *Connect*. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/connections/connections_successful.png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful.png)
 
 Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the *Maps* module) or you can create Tilesets (navigating to the *Tilesets* module).
 
@@ -32,7 +32,7 @@ When you access BigQuery, the billing account associated with the selected billi
 
 When you select the BigQuery connector in the *New connection* dialog, you will see the following page:
 
-![BigQuery Connection](/img/cloud-native-workspace/connections/connections_bigquery_first.png)
+![BigQuery Connection](/img/cloud-native-workspace/connections/the_connections_bigquery_first.png)
 
 Click the *Connect using a service account* button. You will see the form where you need to provide your connection parameters:
 
@@ -40,7 +40,7 @@ Click the *Connect using a service account* button. You will see the form where 
 - **Service account key file** in JSON format. Please read the following instructions for creating a <a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" target="_blank">service account</a> and a service account <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank">key file</a>. We will use this service account to list tilesets, visualize them privately and grant publishing permissions. Be sure that the service account has <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Data Owner</a> (bigquery.dataOwner) and <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Job User</a> (bigquery.jobUser). Read our <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">documentation</a> if you want to learn about the specific permissions CARTO requires.
 - **Billing project**: after entering the previous parameters, a selector for choosing the billing project will be enabled, so CARTO can run queries using your service account.
 
-![BigQuery connection parameters](/img/cloud-native-workspace/connections/connections_bigquery_parameters.png)
+![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your BigQuery server. If everything is OK, your new connection will be registered.
 
@@ -50,7 +50,7 @@ You can use CARTO with your data in a PostgreSQL-compatible database, including 
 
 If you want to create a connection to your PostgreSQL server, you need to select the PostgreSQL connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
-![Connection setup with PostgreSQL](/img/cloud-native-workspace/connections/connections_postgres_first.png)
+![Connection setup with PostgreSQL](/img/cloud-native-workspace/connections/the_connections_postgres_first.png)
 
 These are the parameters you need to provide:
 
@@ -61,7 +61,7 @@ These are the parameters you need to provide:
 - **Database**: Database your connection will use.
 - **Port**: TCP port where your server is listening for connections.
 
-![Connection parameters with PostgreSQL](/img/cloud-native-workspace/connections/connections_postgres_parameters.png)
+![Connection parameters with PostgreSQL](/img/cloud-native-workspace/connections/the_connections_postgres_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your PostgreSQL server. If everything is OK, your new connection will be registered.
 
@@ -71,7 +71,7 @@ You can use CARTO with your data in an Amazon Redshift data warehouse.
 
 If you want to create a connection to your Redshift data warehouse, you need to select the Redshift connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
-![Connection setup with Redshift](/img/cloud-native-workspace/connections/connections_redshift_first.png)
+![Connection setup with Redshift](/img/cloud-native-workspace/connections/the_connections_redshift_first.png)
 
 These are the parameters you need to provide:
 
@@ -82,7 +82,7 @@ These are the parameters you need to provide:
 - **Database**: Database your connection will use.
 - **Port**: TCP port where your cluster is listening for connections.
 
-![Connection parameters with Redshift](/img/cloud-native-workspace/connections/connections_redshift_parameters.png)
+![Connection parameters with Redshift](/img/cloud-native-workspace/connections/the_connections_redshift_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Redshift cluster. If everything is OK, your new connection will be registered.
 
@@ -92,7 +92,7 @@ You can use CARTO with your data in a Snowflake data warehouse.
 
 If you want to create a connection to your Snowflake data warehouse, you need to select the Snowflake connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
-![Connection setup with Snowflake](/img/cloud-native-workspace/connections/connections_snowflake_first.png)
+![Connection setup with Snowflake](/img/cloud-native-workspace/connections/the_connections_snowflake_first.png)
 
 These are the parameters you need to provide:
 
@@ -105,6 +105,6 @@ These are the parameters you need to provide:
 
 Currently we only support username/password authentication using the internal Snowflake authenticator. We don’t support federated authentication/SSO, OAuth or SAML 2.0 compliant identity providers.
 
-![Connection parameters with Snowflake](/img/cloud-native-workspace/connections/connections_snowflake_parameters.png)
+![Connection parameters with Snowflake](/img/cloud-native-workspace/connections/the_connections_snowflake_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Snowflake account. If everything is OK, your new connection will be registered.

@@ -1,35 +1,5 @@
 ## Map settings
 
-### BASEMAPS
-
-Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.
-
-The CARTO 3 Builder provides a set of CARTO basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
-
-![Map created](/img/cloud-native-workspace/maps/map_basemap.png)
-
-Open the basemap style drop down menu to see different basemap options. They include:
-- **Voyager**: basemap with colors to clearly differentiate natural and cultural features. This basemap is showed by default when creating a new map.
-- **Positron**: light basemap with dark-colored text.
-- **Dark**: dark basemap with light-colored text.
-
-![Map created](/img/cloud-native-workspace/maps/map_basemap_list.png)
-
-**Basemap layers:** You can manage basemaps layers to hide and show water, buildings, roads, and more. Options include: 
-
-- Labels: shows labels for cities, neighborhoods, and so on.
-- Roads: displays a translucent layer of road lines.
-- Borders: shows state and continent borders.
-- Buildings: shows building footprints.
-- Water: displays bodies of water.
-- Land: Shows parks, mountains, and other landscape features.
-
-![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_show.png)
-
-**Basemap layer order:** to control the order in which map imagery layers are displayed, click the *move to top of data layers* icon:
-
-![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_order.png)
-
 ### LAYERS
 
 Once your datasets are connected to your map, as explained in this [guide](../../maps/add-data), you can use Builder to discover key insights about your location data. This section describes how to view and work with map layers in the Cloud Native Builder.
@@ -67,3 +37,48 @@ When working with layers in the layer list of Builder, the following features ar
 -  **Blend layers:** by selecting an option from the dropdown at the bottom of the Layers panel. There are three different ways to blend layers: Normal, Additive, and Subtractive.
 
 ![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
+
+### WIDGETS
+
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_new_widget.png)
+
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_widget.png)
+
+
+### INTERACTIONS
+
+![Map layers blending](/img/cloud-native-workspace/maps/map_settings_interactions.png)
+
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_tooltip.png)
+
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_search_location.png)
+
+### BASEMAPS
+
+Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.
+
+The CARTO 3 Builder provides a set of CARTO basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
+
+![Map created](/img/cloud-native-workspace/maps/map_basemap2.png)
+
+Open the basemap style drop down menu to see different basemap options. They include:
+- **Voyager**: basemap with colors to clearly differentiate natural and cultural features. This basemap is showed by default when creating a new map.
+- **Positron**: light basemap with dark-colored text.
+- **Dark**: dark basemap with light-colored text.
+
+![Map created](/img/cloud-native-workspace/maps/map_basemap_list2.png)
+
+**Basemap layers:** You can manage basemaps layers to hide and show water, buildings, roads, and more. Options include: 
+
+- Labels: shows labels for cities, neighborhoods, and so on.
+- Roads: displays a translucent layer of road lines.
+- Borders: shows state and continent borders.
+- Buildings: shows building footprints.
+- Water: displays bodies of water.
+- Land: Shows parks, mountains, and other landscape features.
+
+![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_show.png)
+
+**Basemap layer order:** to control the order in which map imagery layers are displayed, click the *move to top of data layers* icon:
+
+![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_order.png)

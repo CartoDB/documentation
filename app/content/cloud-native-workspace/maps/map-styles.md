@@ -4,7 +4,7 @@ When styling maps, you can style your geometry using different settings. By defa
 
 To style your layers, expand the *layer settings panel*.
 
-![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings2.png)
 
 ### FILL COLOR
 
