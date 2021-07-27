@@ -12,11 +12,11 @@ transformations.ST_BUFFER(geog, radius, units, steps)
 
 **Description**
 
-Calculates a Geography buffer for input features for a given radius. Units supported are miles, kilometers, and degrees. https://turfjs.org/docs/#buffer
+Calculates a Geography buffer for input features for a given radius. Units supported are miles, kilometers, and degrees.
 
 * `geog`: `GEOGRAPHY` input to be buffered.
 * `radius`: `FLOAT64` distance to draw the buffer (negative values are allowed).
-* `units`: `STRING`|`NULL` any of the options supported by turf units: miles, kilometers, and degrees. If `NULL`the default value `kilometers` is used.
+* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, and degrees. If `NULL`the default value `kilometers` is used.
 * `steps`: `INT64`|`NULL` number of steps. If `NULL` the default value `8` is used.
 
 **Return type**
@@ -40,7 +40,7 @@ transformations.ST_CENTERMEAN(geog)
 
 **Description**
 
-Takes a Feature or FeatureCollection and returns the mean center. https://github.com/Turfjs/turf/tree/master/packages/turf-center-mean
+Takes a Feature or FeatureCollection and returns the mean center.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -65,7 +65,7 @@ transformations.ST_CENTERMEDIAN(geog)
 
 **Description**
 
-Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that is requires the least total travel from all other points. https://github.com/Turfjs/turf/tree/master/packages/turf-center-median
+Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that is requires the least total travel from all other points.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -90,7 +90,7 @@ transformations.ST_CENTEROFMASS(geog)
 
 **Description**
 
-Takes any Feature or a FeatureCollection and returns its center of mass using this formula: Centroid of Polygon. https://turfjs.org/docs/#centerOfMass
+Takes any Feature or a FeatureCollection and returns its center of mass using this formula: Centroid of Polygon.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -115,11 +115,11 @@ transformations.ST_CONCAVEHULL(geog, maxEdge, units)
 
 **Description**
 
-Takes a set of points and returns a concave hull Polygon or MultiPolygon. Internally, this uses turf-tin to generate geometries. https://turfjs.org/docs/#concave
+Takes a set of points and returns a concave hull Polygon or MultiPolygon. Internally, this uses turf-tin to generate geometries.
 
 * `geog`: `ARRAY<GEOGRAPHY>` input points.
 * `maxEdge`: `FLOAT64`|`NULL` the length (in 'units') of an edge necessary for part of the hull to become concave. If `NULL`the default value `infinity` is used.
-* `units`: `STRING`|`NULL` any of the options supported by turf units: miles, kilometers, degrees or radians. If `NULL`the default value `kilometers` is used.
+* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees or radians. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 
@@ -142,12 +142,12 @@ transformations.ST_DESTINATION(startPoint, distance, bearing, units)
 
 **Description**
 
-Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and bearing in degrees. This uses the Haversine formula to account for global curvature. https://turfjs.org/docs/#destination
+Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and bearing in degrees. This uses the Haversine formula to account for global curvature.
 
 * `origin`: `GEOGRAPHY` starting point.
 * `distance`: `FLOAT64` distance from the origin point.
 * `bearing`: `FLOAT64` ranging from -180 to 180.
-* `units`: `STRING`|`NULL` any of the options supported by turf units: miles, kilometers, degrees or radians. If `NULL`the default value `kilometers` is used.
+* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees or radians. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 
@@ -170,7 +170,7 @@ transformations.ST_GREATCIRCLE(startPoint, endPoint, npoints)
 
 **Description**
 
-Calculate great circles routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString. https://turfjs.org/docs/#greatCircle
+Calculate great circles routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString.
 
 * `startPoint`: `GEOGRAPHY` source point feature.
 * `endPoint`: `GEOGRAPHY` destination point feature.
@@ -197,11 +197,11 @@ transformations.ST_LINE_INTERPOLATE_POINT(geog, distance, units)
 
 **Description**
 
-Takes a LineString and returns a Point at a specified distance along the line. https://turfjs.org/docs/#along
+Takes a LineString and returns a Point at a specified distance along the line.
 
 * `geog`: `GEOGRAPHY` input line.
 * `distance`: `FLOAT64` distance along the line.
-* `units`: `STRING`|`NULL` any of the options supported by turf units: miles, kilometers, degrees and radians. If `NULL`the default value `kilometers` is used.
+* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees and radians. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 

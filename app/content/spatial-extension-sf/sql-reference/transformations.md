@@ -12,7 +12,7 @@ transformations.ST_CENTERMEAN(geog)
 
 **Description**
 
-Takes a Feature or FeatureCollection and returns the mean center. https://github.com/Turfjs/turf/tree/master/packages/turf-center-mean
+Takes a Feature or FeatureCollection and returns the mean center.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -35,7 +35,7 @@ transformations.ST_CENTERMEDIAN(geog)
 
 **Description**
 
-Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that is requires the least total travel from all other points. https://github.com/Turfjs/turf/tree/master/packages/turf-center-median
+Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that is requires the least total travel from all other points.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -58,7 +58,7 @@ transformations.ST_CENTEROFMASS(geog)
 
 **Description**
 
-Takes any Feature or a FeatureCollection and returns its center of mass using this formula: Centroid of Polygon. https://turfjs.org/docs/#centerOfMass
+Takes any Feature or a FeatureCollection and returns its center of mass using this formula: Centroid of Polygon.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -81,11 +81,11 @@ transformations.ST_CONCAVEHULL(geojsons [, maxEdge] [, units])
 
 **Description**
 
-Takes a set of points and returns a concave hull Polygon or MultiPolygon. Internally, this uses turf-tin to generate geometries. https://turfjs.org/docs/#concave
+Takes a set of points and returns a concave hull Polygon or MultiPolygon. Internally, this uses turf-tin to generate geometries.
 
 * `geojsons`: `ARRAY` array of features in GeoJSON format casted to STRING.
 * `maxEdge` (optional): `DOUBLE` the length (in 'units') of an edge necessary for part of the hull to become concave. By default `maxEdge` is `infinity`.
-* `units` (optional): `STRING` any of the options supported by turf units: miles, kilometers, degrees or radians. By default `units` is `kilometers`.
+* `units` (optional): `STRING` units of length, the supported options are: miles, kilometers, degrees or radians. By default `units` is `kilometers`.
 
 **Return type**
 
@@ -116,12 +116,12 @@ transformations.ST_DESTINATION(startPoint, distance, bearing [, units])
 
 **Description**
 
-Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and bearing in degrees. This uses the Haversine formula to account for global curvature. https://turfjs.org/docs/#destination
+Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and bearing in degrees. This uses the Haversine formula to account for global curvature.
 
 * `origin`: `GEOGRAPHY` starting point.
 * `distance`: `DOUBLE` distance from the origin point.
 * `bearing`: `DOUBLE` ranging from -180 to 180.
-* `units` (optional): `STRING` any of the options supported by turf units: miles, kilometers, degrees or radians. By default `units` is `kilometers`.
+* `units` (optional): `STRING` units of length, the supported options are: miles, kilometers, degrees or radians. By default `units` is `kilometers`.
 
 **Return type**
 
@@ -147,7 +147,7 @@ transformations.ST_GREATCIRCLE(startPoint, endPoint [, npoints])
 
 **Description**
 
-Calculate great circles routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString. https://turfjs.org/docs/#greatCircle
+Calculate great circles routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString.
 
 * `startPoint`: `GEOGRAPHY` source point feature.
 * `endPoint`: `GEOGRAPHY` destination point feature.
@@ -177,11 +177,11 @@ transformations.ST_LINE_INTERPOLATE_POINT(geog, distance [, units])
 
 **Description**
 
-Takes a LineString and returns a Point at a specified distance along the line. https://turfjs.org/docs/#along
+Takes a LineString and returns a Point at a specified distance along the line.
 
 * `geog`: `GEOGRAPHY` input line.
 * `distance`: `DOUBLE` distance along the line.
-* `units` (optional): `STRING` any of the options supported by turf units: miles, kilometers, degrees and radians. By default `units` is `kilometers`.
+* `units` (optional): `STRING` units of length, the supported options are: miles, kilometers, degrees and radians. By default `units` is `kilometers`.
 
 **Return type**
 
