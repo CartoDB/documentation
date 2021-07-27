@@ -6,8 +6,8 @@
       rel="stylesheet"
     />
 
-    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -43,15 +43,14 @@
           pickable: true,
         }),
       ],
-      getTooltip: ({ object }) => {
-        console.log(object);
+      getTooltip: ({ object }) => 
         object && {
           html: `
             <strong>Country</strong>: ${object.properties.country_name}<br/>
             <strong>Longitude</strong>: ${object.geometry.coordinates[0].toFixed(6)}<br/>
             <strong>Latitude</strong>: ${object.geometry.coordinates[1].toFixed(6)}
           `
-        }},
+        },
     });
   </script>
 </html>
