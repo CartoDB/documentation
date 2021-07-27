@@ -1,3 +1,10 @@
+
+{{/*
+  *
+  * @IMPORTANT:
+  * Deprecated by "aside-menu" partial 
+  */}}
+
 {{$context := .}}
 {{$folderNames := split .Dir "/"}}
 {{$folderOneName := printf "%s%s" (index $folderNames 0) "/"}}
@@ -24,14 +31,6 @@
           {{$isActive := eq $overview .File.Path}}
           <a href="{{(.GetPage $overview).Permalink}}" class="toc--link level-one {{ if $isActive }}is-current{{ end }}">Overview</a>
         {{end}}
-
-        {{if .Params.extra_sections}}
-          {{range $elem := .Params.extra_sections}}
-            {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
-            {{$isActive := eq $file $context.File.Path}}
-            <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one {{ if $isActive }}is-current{{ end }}">{{$elem}}</a>
-          {{end}}
-        {{end}}
   
         {{if .Params.folders}}
           {{range $folderTwo := .Params.folders}}
@@ -48,6 +47,14 @@
           {{$isActive := eq $reference .File.Path}}
           <a href="{{(.GetPage $reference).Permalink}}" class="toc--link level-one {{ if $isActive }}is-current{{ end }}">Reference</a>
         {{end}}
+
+        {{if .Params.extra_sections}}
+          {{range $elem := .Params.extra_sections}}
+            {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
+            {{$isActive := eq $file $context.File.Path}}
+            <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one {{ if $isActive }}is-current{{ end }}">{{$elem}}</a>
+          {{end}}
+        {{end}}        
       </div>
     </div>
   </div>
@@ -67,20 +74,6 @@
           </div>
         {{else}}
           <a href="{{(.GetPage $overview).Permalink}}" class="toc--link level-one">Overview</a>
-        {{end}}
-      {{end}}
-
-      {{if .Params.extra_sections}}
-        {{range $elem := .Params.extra_sections}}
-          {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
-          {{$isActive := eq $file $context.File.Path}}
-          {{if $isActive}}
-            <div class="toc-hugo__folder-one">
-              {{$context.TableOfContents}}
-            </div>
-          {{else}}
-            <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
-          {{end}}
         {{end}}
       {{end}}
 
@@ -169,6 +162,21 @@
           <a href="{{(.GetPage $reference).Permalink}}" class="toc--link level-one">Reference</a>
         {{end}}
       {{end}}
+
+      {{if .Params.extra_sections}}
+        {{range $elem := .Params.extra_sections}}
+          {{$file := printf "%s%s%s" $folderOneName (urlize $elem) ".md"}}
+          {{$isActive := eq $file $context.File.Path}}
+          {{if $isActive}}
+            <div class="toc-hugo__folder-one">
+              {{$context.TableOfContents}}
+            </div>
+          {{else}}
+            <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one">{{$elem}}</a>
+          {{end}}
+        {{end}}
+      {{end}}
+
     </div>
   </div>
 </aside>

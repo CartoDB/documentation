@@ -38,7 +38,12 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 CARTO will provide a single package that contains specific configuration, credentials and license files required to run the installation. Once you have received the package, follow the instructions below to get your CARTO installation up and running.
 
 - Unzip your customer package in the location where you want to store all files and configurations.
-- Navigate to your installation folder and run 
+- Navigate to your installation folder
+- Give execution permisions to the install script
+	```bash
+	chmod +x install.sh
+	```
+- Run the script
 
 	```bash
 	./install.sh

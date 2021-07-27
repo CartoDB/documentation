@@ -1,8 +1,10 @@
 ## Basemaps
 
+{{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
 | @carto/react-basemaps  | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/v/@carto/react-basemaps.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/dt/@carto/react-basemaps.svg?style=flat-square" alt="downloads" /></a>
+{{%/ tableWrapper %}}
 
 Basemaps constants and a GoogleMaps component
 
@@ -14,14 +16,16 @@ React component for working with Google Maps API and [deck.gl](https://deck.gl),
 
 - **Input**:
 
-  | Param            | Type                             | Description                    |
-  | ---------------- | -------------------------------- | ------------------------------ |
-  | props            |                                  |                                |
-  | props.basemap    | <code>Object</code>              | Basemap                        |
-  | props.viewState  | <code>Object</code>              | Viewstate (center, zoom level) |
-  | props.layers     | <code>Array.&lt;Layer&gt;</code> | Layers array                   |
-  | props.getTooltip | <code>function</code>            | Tooltip handler                |
-  | props.apiKey     | <code>string</code>              | Google Maps API Key            |
+{{% tableWrapper tab="true" %}}
+| Param            | Type                             | Description                    |
+| ---------------- | -------------------------------- | ------------------------------ |
+| props            |                                  |                                |
+| props.basemap    | <code>Object</code>              | Basemap                        |
+| props.viewState  | <code>Object</code>              | Viewstate (center, zoom level) |
+| props.layers     | <code>Array.&lt;Layer&gt;</code> | Layers array                   |
+| props.getTooltip | <code>function</code>            | Tooltip handler                |
+| props.apiKey     | <code>string</code>              | Google Maps API Key            |
+{{%/ tableWrapper %}}
 
 - **Example**:
 

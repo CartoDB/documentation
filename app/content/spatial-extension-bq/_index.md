@@ -15,6 +15,7 @@ cascade:
     - name: "Guides"
       elements:
         - "Tilesets"
+        - "Routing"
     - name: "Examples"
       elements:
         - "Creating simple tilesets"
@@ -41,6 +42,7 @@ cascade:
         - "processing"
         - "quadkey"
         - "random"
+        - "routing"
         - "s2"
         - "tiler"
         - "transformations"

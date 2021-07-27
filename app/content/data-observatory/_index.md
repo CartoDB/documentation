@@ -3,10 +3,12 @@ cascade:
   title: Data Observatory
   description: "Public and premium datasets ready to be used across the CARTO platform"
   icon: "/img/icons/data-observatory.png"
+  extra_sections:
+    - "Example tilesets"
   folders:
     - name: "Overview"
       elements:
-        - "Overview"
+        - "Getting started"
         - "Terminology"
     - name: "Guides"
       elements:
@@ -14,4 +16,5 @@ cascade:
         - "Subscribing to public and premium datasets"
         - "Managing your subscriptions"
         - "Accessing your subscriptions from BigQuery, AWS or Azure"
+        - "Creating Data Observatory tilesets"
 ---

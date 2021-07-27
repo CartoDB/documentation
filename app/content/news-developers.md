@@ -9,8 +9,6 @@ type: single-page
 
 ##### 2021-04-29
 
-###### New Release
-
 The Spatial Extension is packed with functions and procedures to perform geospatial analysis through expressive and simple SQL, all natively within the data warehouse environment. The core layer of the Spatial Extension, which enhances the built-in GIS capabilities of the cloud data warehouses, is open source and freely available on [GitHub](https://github.com/CartoDB/carto-spatial-extension).
 
 <video autoplay="" loop="" muted=""> <source src="https://docs.carto.com/img/news-developers/bigquery-se-core-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
@@ -22,8 +20,6 @@ For further information check the [blog post](https://carto.com/blog/enhancing-g
 ### Introducing CARTO for React
 
 ##### 2021-03-23
-
-###### New Release
 
 React is currently one of the most popular frameworks for building web applications. We are convinced that the React library along with Redux provides an unmatched environment for building Location Intelligence applications.
 
@@ -37,9 +33,7 @@ For further information check the [blog post](https://carto.com/blog/carto-for-r
 
 ### Introducing CARTO for deck.gl
 
-##### 2021-06-23
-
-###### New Release
+##### 2020-10-14
 
 It is CARTO’s vision that you, as a developer, should be able to choose whichever mapping library you prefer for your applications. And for that reason we have been working over the last few months on adding support for one of the most popular libraries out there, deck.gl. We are so excited about its possibilities that we have decided to make it our preferred and recommended library for building spatial applications using CARTO. 
 

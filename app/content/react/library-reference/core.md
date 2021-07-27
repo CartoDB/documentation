@@ -1,8 +1,10 @@
 ## Core
 
+{{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
 | @carto/react-core  | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/v/@carto/react-core.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/dt/@carto/react-core.svg?style=flat-square" alt="downloads" /></a>
+{{%/ tableWrapper %}}
 
 Set of common functions, to be used mostly by other packages. You won't usually consume this package directly, but when using `AggregationTypes` for widgets or when creating custom widgets.
 
@@ -16,10 +18,12 @@ Contains a set of basic aggregation functions (count, min, max, sum and average)
 
 - **Input**:
 
-  | Param  | Type                | Description                                                                  |
-  | ------ | ------------------- | ---------------------------------------------------------------------------- |
-  | values | <code>Array</code>  | Array of numbers or objects with a numerical property                        |
-  | [key]  | <code>string</code> | (optional). When using objects, name of the property to use for calculations |
+{{% tableWrapper tab="true" %}}
+| Param  | Type                | Description                                                                  |
+| ------ | ------------------- | ---------------------------------------------------------------------------- |
+| values | <code>Array</code>  | Array of numbers or objects with a numerical property                        |
+| [key]  | <code>string</code> | (optional). When using objects, name of the property to use for calculations |
+{{%/ tableWrapper %}}
 
 - **Returns**: <code>Object</code> - An object with Aggregation functions, which keys are every `AggregationTypes` values
 
@@ -39,13 +43,14 @@ Contains a set of basic aggregation functions (count, min, max, sum and average)
 Makes groups from f∫eatures based in a column (`keysColumn`) and applying an `operation` to the numeric values in a predefined column (`valuesColumn`).
 
 - **Input**:
-
-  | Param        | Type                | Default | Description                                                                     |
-  | ------------ | ------------------- | ------- | ------------------------------------------------------------------------------- |
-  | data         | <code>Array</code>  |         | Features for calculations (plain objects with properties)                       |
-  | valuesColumn | <code>string</code> |         | Quantitative column for grouping (the name of a numeric property in the object) |
-  | keysColumn   | <code>string</code> |         | Qualitative column for grouping (the name of a string property in the object)   |
-  | operation    | <code>string</code> |         | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)    |
+{{% tableWrapper tab="true" %}}
+| Param        | Type                | Default | Description                                                                     |
+| ------------ | ------------------- | ------- | ------------------------------------------------------------------------------- |
+| data         | <code>Array</code>  |         | Features for calculations (plain objects with properties)                       |
+| valuesColumn | <code>string</code> |         | Quantitative column for grouping (the name of a numeric property in the object) |
+| keysColumn   | <code>string</code> |         | Qualitative column for grouping (the name of a string property in the object)   |
+| operation    | <code>string</code> |         | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)    |
+{{%/ tableWrapper %}}
 
 - **Returns**: <code>Array</code> - Grouped values
 
@@ -71,12 +76,14 @@ Categorizes numeric values as a histogram from a set of features, having the opt
 
 - **Input**:
 
-  | Param      | Type                | Description                                                                                             |
-  | ---------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
-  | features   | <code>Array</code>  | Features for calculations (plain objects with properties)                                               |
-  | columnName | <code>string</code> | Quantitative column for calculations (the name of a number property in the object)                      |
-  | ticks      | <code>Array</code>  | Array of numbers to build intervals (eg 1, 5, 10 will defines 4 intervals: <1, 1 to 5, 5 to 10 and >10) |
-  | operation  | <code>string</code> | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)                            |
+{{% tableWrapper tab="true" %}}
+| Param      | Type                | Description                                                                                             |
+| ---------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
+| features   | <code>Array</code>  | Features for calculations (plain objects with properties)                                               |
+| columnName | <code>string</code> | Quantitative column for calculations (the name of a number property in the object)                      |
+| ticks      | <code>Array</code>  | Array of numbers to build intervals (eg 1, 5, 10 will defines 4 intervals: <1, 1 to 5, 5 to 10 and >10) |
+| operation  | <code>string</code> | Operation for groups calculations, see [AggregationTypes](#aggregationtypes)                            |
+{{%/ tableWrapper %}}
 
 - **Returns**: <code>Array</code> - Histogram data for each bin, derived from ticks
 
