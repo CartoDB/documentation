@@ -1,7 +1,7 @@
 ---
 cascade:
-  title: Cloud Native Workspace
-  description: "Connect your data warehouse and create amazing maps using CARTO Cloud Native features"
+  title: CARTO 3 Workspace
+  description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
   icon: "/img/icons/carto-react.png"
   folders:
     - name: "Overview"
