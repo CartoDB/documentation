@@ -269,6 +269,10 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
 
 Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, our developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
 
+The CARTO platform is based on industry standards like GeoJSON or vector tiles. You can use your choice of visualization library because most of them have support for these standards. We recommend using [deck.gl](https://deck.gl) with the [CARTO module](https://deck.gl/docs/api-reference/carto/overview) as we are actively contributing to ensure the best integration and performance. In this website you will find guides and examples for working with CARTO and different visualization libraries.
+
+If you are developing a web application, the CARTO platform is framework-agnostic, so you can use Angular, Vue.js, React or any other frontend framework/library. We recommend using [React](https://reactjs.org) because we think reactive programming is a sound approach to spatial applications architecture. If you want to reduce development time, we encourage you to use [CARTO for React](/react), although you can build an application with CARTO and React without it. We also provide guides and examples for integrating CARTO with [Angular](/angular) and [Vue.js](/vue).
+
 ### App Development with CARTO for React
 
 {{<interactiveTutorial>}}
