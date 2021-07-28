@@ -1,6 +1,6 @@
 ## Your subscription
 
-The CARTO 3 Workspace brings together all your account information on a single screen. From this section, you can always be aware of details and features of your account plan.
+The CARTO 3 Workspace brings together all your account information on a single screen. From this section, you can always be aware of all details and features of your account plan.
 
 The Details included are:
 

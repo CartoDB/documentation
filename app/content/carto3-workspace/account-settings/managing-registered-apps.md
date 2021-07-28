@@ -1,10 +1,10 @@
 ## Managing registered apps
 
-The CARTO 3 Workspace includes options for managing your registered apps. From the *Account Settings* menu, you can register apps, editing apps, view details apps or delete apps.
+The CARTO 3 Workspace includes options for managing your registered apps. From the *Account Settings* section, you can register apps, editing apps, view details apps or delete apps.
 
 ### Registering apps
 
-You can register existing apps so that you have easy and quick access to it when you need it. For registering an app, click the *Register new* button. 
+You can register existing apps so that you have easy and quick access to them when you need. For registering an app, click the *Register new* button. 
 
 ![Account Settings register new apps](/img/cloud-native-workspace/account-settings/account_settings_new_apps.png)
 
@@ -34,7 +34,7 @@ After editing the registration parameters click the *Save* button. A popup will 
 
 ### Viewing details apps
 
-In the *Account Settings* menu of the Workspace, you will see the list of your current registered apps. You can access the quick actions menu for managing your application by clicking the three point icon in the top right corner. There are 3 options available: Edit, View details and Delete. 
+In the *Account Settings* section of the Workspace, you will see the list of your current registered apps. You can access the quick actions menu for managing your application by clicking the three point icon in the top right corner. There are 3 options available: Edit, View details and Delete. 
 
 ![Account Settings actions app](/img/cloud-native-workspace/account-settings/account_settings_actions_apps.png)
 
@@ -44,7 +44,7 @@ If you click the View details quick action, a dialog will appear with details of
 
 ### Deleting apps
 
-In the *Account Settings* menu of the Workspace, you will see the list of your current registered apps. You can access the quick actions menu for managing your application by clicking the three point icon in the top right corner. There are 3 options available: Edit, View details and Delete. 
+In the *Account Settings* section of the Workspace, you will see the list of your current registered apps. You can access the quick actions menu for managing your application by clicking the three point icon in the top right corner. There are 3 options available: Edit, View details and Delete. 
 
 ![Account Settings delete apps](/img/cloud-native-workspace/account-settings/account_settings_actions_apps.png)
 
@@ -52,4 +52,4 @@ If you click the Delete quick action, a dialog will appear so you can confirm th
 
 ![Account Settings delete apps](/img/cloud-native-workspace/account-settings/account_settings_delete_apps.png)
 
-If you delete an app, this app will also no longer be available from the *Applications* menu. You can use this [guide](../../applications/accessing-applications) for a better understanding of the list of available apps.
+If you delete an app, this app will also no longer be available from the *Applications* section. You can use this [guide](../../applications/accessing-applications) for a better understanding of the list of available apps.

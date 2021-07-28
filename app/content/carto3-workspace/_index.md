@@ -36,7 +36,7 @@ cascade:
         - "Your subscription"
         - "Managing registered apps"
         - "Inviting users to your account"
-        - "Delete account"
+        - "Deleting your account"
     - name: "Developers" 
       elements:
         - "CARTO for developers"

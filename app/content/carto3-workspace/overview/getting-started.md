@@ -24,8 +24,8 @@ Simple steps gets you into the CARTO 3 Workspace:
     ![Email verified](/img/cloud-native-workspace/get-started/signup_email_is_verified.png)
 
 2. **Account setup**
-    
-    When a user initiates the account creation process, the user can choose to create a new account or join an existing account. CARTO 3 will detect if their account email is already associated with an existing account. If so, there are two options available: join the account directly (if the admin allows through a specific setting) or request access and wait for the admin to approve.
+
+    When a user initiates the account creation process, CARTO 3 will detect if their account email is already associated with an existing account. If so, the user can choose to create a new account or join an existing account. When joining an existing account, there are two options available: join the account directly (if the admin allows through a specific setting) or request access and wait for the admin to approve.
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_detected_multiple.png)
 
