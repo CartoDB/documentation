@@ -1,6 +1,6 @@
 ## Getting started
 
-The CARTO 3 Workspace is the leading cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, the Tilesets module, and other fresh features.
+The CARTO 3 Workspace is the leading cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, Data Observatory, and other fresh features.
 
 ### Create your CARTO 3 account
 
@@ -25,14 +25,16 @@ Simple steps gets you into the CARTO 3 Workspace:
 
 2. **Account setup**
     
-    When a user initiates the account creation process, they can choose to create a new account or join an existing account. CARTO 3 will detect if their account email is already associated with an existing account. If so, there are two options available: join the account directly (if the admin allows through a specific setting) or request access and wait for the admin to approve.
+    When a user initiates the account creation process, the user can choose to create a new account or join an existing account. CARTO 3 will detect if their account email is already associated with an existing account. If so, there are two options available: join the account directly (if the admin allows through a specific setting) or request access and wait for the admin to approve.
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_detected_multiple.png)
 
     **Create a new account**:
 
+    For creating a new account follow the next steps:
+
     - Choose an account name.
-    - Select if you want anyone with the same domain to automatically join your account, or leave it unchecked if you want them to go through go through an approval process.
+    - Select if you want anyone with the same domain to automatically join your account, or leave it unchecked if you want them to go through an approval process.
     - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform is in 2 GCP regions (Europe-West and USA-Central). We give you the possibility to choose the region that is closer to your data warehouse.
     - Click *Next*.
 
@@ -66,11 +68,13 @@ Simple steps gets you into the CARTO 3 Workspace:
 
     **Joining an existing account**:
 
-    You can choose **Join** an account or **Request** access to an account. 
+    For joining an existing account follow the next steps:
+
+    - Choose **Join** an account or **Request access** to an account. 
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_detected_multiple.png)
 
-    If you select **Join** the account directly, the next step before accessing the workspace is filling the personal form.
+    If you select **Join** the account directly, the next step before accessing the CARTO 3 Workspace is filling the personal form.
 
     Enter your personal information:
 
@@ -98,11 +102,11 @@ Simple steps gets you into the CARTO 3 Workspace:
 
     You are all set up to start using CARTO 3!
 
-    If you select **Request** access, the request will be sent to the account administrator and your access will be blocked until it is accepted:
+    If you select **Request access**, the request will be sent to the account administrator and your access will be blocked until it is accepted:
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_request_sent.png)
 
-    You will receive an email in your existing email address informing you whether your order has been accepted or declined. If declined, you have the possibility to re-select a different account to join, or create a new account. If accepted, you will be redirected to the personal form before having access to the workspace.
+    You will receive an email in your existing email address informing you whether your order has been accepted or declined. If it is declined, you have the possibility to select a different account to join or create a new account. If it is accepted, you will be redirected to the personal form before having access to the CARTO 3 Workspace.
 
     Enter your personal information:
 
@@ -175,7 +179,7 @@ In the bottom part of the menu, you have additional options to Join our Slack ch
 
 #### Introduction
 
-This is a quick guide to help you get started. A step-by-step overview on how to connect to your data warehouse and create maps using your data.
+This is a quick guide to help you get started. A step-by-step overview on how to connect to your data warehouse, explore your data and create maps using your data.
 
 The CARTO 3 Workspace includes functionalities for registering and managing connections to your data warehouses. Once you have registered a connection, you can perform different operations with the data source, like executing the functions provided by the CARTO Spatial Extension or creating stunning maps.
 
@@ -193,7 +197,7 @@ For adding a new connection follow the next steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/the_connections_bigquery_the_parameters.png)
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections:
 
@@ -208,23 +212,29 @@ The *Maps* page enables you to create and manage maps in the CARTO 3 Workspace. 
 ![Map module](/img/cloud-native-workspace/get-started/the_map_module.png)
 
 2. The *Layers* tab appear, where you can upload new datasets using a local file or add a dataset from your existing data warehouse connection. In this example, we are using the BigQuery connection created in the previous step. With BigQuery we can use a Query to retrieve data, add a whole Table, or a Tileset.
-	
-![Add data to your map](/img/cloud-native-workspace/get-started/map_add_dataset2.png)
-	
-3. In this example we are going to use a table. The next step is entering the fully qualified table name.
-4. Click *Add Source*.
 
-![Enter table name](/img/cloud-native-workspace/get-started/map_add_source.png)
+![Add data to your map](/img/cloud-native-workspace/maps/map_layers_no_source.png)
+		
+3. A new dialog will open so you can select your data source. 
 
-5. Once the process is finished, the BigQuery table is included in the Builder map tool as a new layer. The map displays the basemap and map layer that are the backbone for rendering your visualization. You can add additional layers, or apply styling and analysis features.
+4. In this example we are going to use a table with BigQuery connection. Insert the *Fully Qualified Table* and click *Add source*.
+
+![Enter table name](/img/cloud-native-workspace/get-started/map_add_source_table.png)
+
+Once the process is finished, the BigQuery table is included in the Builder map tool as a new layer. The map displays the basemap and map layer that are the backbone for rendering your visualization. You can add additional layers, or apply styling and analysis features.
 	
-![Map created](/img/cloud-native-workspace/get-started/map_style.png)
+![Map created](/img/cloud-native-workspace/maps/map_style_connection.png)
 
 The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:
 
+- Add your source [guide](../../maps/add-data)
+- View your data table [guide](../../maps/view-data-table)
+- Configure your map settings [guide](../../maps/map-settings)
+- Style your maps [guide](../../maps/map-styles)
+
 #### Explore your data
 
-The *Data Explorer* section enables you to explore your data warehouses and create maps from their data If you haven’t connect a data warehouse yet, you will see the following page:
+The *Data Explorer* section enables you to explore your data warehouses and create maps from their data. If you haven’t connect a data warehouse yet, you will see the following page:
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection.png)
 
@@ -237,7 +247,7 @@ For adding your first connection, follow the next steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/the_connections_bigquery_the_parameters.png)
 
 After you have provided the connection parameters, click the Connect button. Then you will see the list of your current connections:
 

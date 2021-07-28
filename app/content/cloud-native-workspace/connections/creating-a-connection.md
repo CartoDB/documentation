@@ -15,7 +15,7 @@ After you have provided the connection parameters, click *Connect*. Then you wil
 
 ![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful.png)
 
-Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the *Maps* module) or you can create Tilesets (navigating to the *Tilesets* module).
+Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the  *Data Explorer* ) or you can create maps using local files or datasets from your data warehouse (navigating to the *Maps* module).
 
 In the next sections we show how to configure connections to the supported datasources.
 

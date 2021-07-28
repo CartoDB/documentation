@@ -2,13 +2,17 @@
 
 ### LAYERS
 
-Once your datasets are connected to your map, as explained in this [guide](../../maps/add-data), you can use Builder to discover key insights about your location data. This section describes how to view and work with map layers in the Cloud Native Builder.
+Once your datasets are connected to your map, as explained in this [guide](../../maps/add-source), you can use Builder to discover key insights about your location data. This guide describes how to view and work with map layers in the CARTO 3 Builder.
 
 When opening a map, layers for the selected map appear. The layers list appears by default, displaying the basemap and map data layer(s) that are the backbone for rendering your visualization.
 
 ![Map layers](/img/cloud-native-workspace/maps/map_paris.png)
 
 When working with layers in the layer list of Builder, the following features are available:
+
+- **Layers label:** Layers are created alphabetically (A, B, C, D) and each layer displays a unique color. Each layer icon displays the geometry type behind the data as either point, line, polygon, or empty.
+
+(IMAGEN VARIAS SOURCES Y UNA CAPA DE CADA SOURCE PARA QUE SE VEA BIEN LO DE LAS LABELS)
 
 - **Layers order:** Layers are rendered from bottom to top, with basemaps being the bottom layer. Click and drag a layer to rearrange the hierarchal order of how layers are rendered on your map.
 
@@ -40,16 +44,25 @@ When working with layers in the layer list of Builder, the following features ar
 
 ### WIDGETS
 
+This guide describes how to add interactive widgets for viewing your map data in CARTO 3 Builder. Widgets are embedded with your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
+
+In the *Wiget* tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
+
 ![Map layers blending](/img/cloud-native-workspace/maps/interactions_new_widget.png)
 
-![Map layers blending](/img/cloud-native-workspace/maps/interactions_widget.png)
+Click on *New widget* button to start interacting with your data:
 
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_widget.png)
 
 ### INTERACTIONS
 
 ![Map layers blending](/img/cloud-native-workspace/maps/map_settings_interactions.png)
 
+A tooltip is an infowindow that appears when you hover your mouse over a map feature. A tooltip appears where the mouse cursor is located on the map. You can customize the content of the tooltip by defining the source columns and the formatting.
+
 ![Map layers blending](/img/cloud-native-workspace/maps/interactions_tooltip.png)
+
+The search location 
 
 ![Map layers blending](/img/cloud-native-workspace/maps/interactions_search_location.png)
 
@@ -59,15 +72,13 @@ Basemaps are image tiles that are used to render the graphical representation of
 
 The CARTO 3 Builder provides a set of CARTO basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
 
-![Map created](/img/cloud-native-workspace/maps/map_basemap2.png)
+![Map created](/img/cloud-native-workspace/maps/map_basemap_new.png)
 
-Open the basemap style drop down menu to see different basemap options. They include:
+Select the CARTO Basemap menu to see different basemap options. They include:
 - **Voyager**: basemap with colors to clearly differentiate natural and cultural features. This basemap is showed by default when creating a new map.
 - **Positron**: light basemap with dark-colored text.
 - **Dark**: dark basemap with light-colored text.
-
-![Map created](/img/cloud-native-workspace/maps/map_basemap_list2.png)
-
+  
 **Basemap layers:** You can manage basemaps layers to hide and show water, buildings, roads, and more. Options include: 
 
 - Labels: shows labels for cities, neighborhoods, and so on.

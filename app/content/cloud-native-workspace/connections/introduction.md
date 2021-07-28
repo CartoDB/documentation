@@ -4,7 +4,7 @@ The CARTO 3 Workspace includes functionalities for registering and managing conn
 
 In the *Connections* menu of the Workspace, you will see the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_module.png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_module2.png)
 
 To manage connections to your data warehouse, learn how to:
 

@@ -1,15 +1,16 @@
 ## Introduction
 
-CARTO 3 provides a better and easy experience to help the user to build maps and solutions using their geospatial data.
+CARTO 3 Workspace provides a better and easy experience to help the user to build maps and solutions using their geospatial data.
 This section will allow users to explore their data warehouses and create maps from their data.
 
 Select a connection and see the content (database/project(s), schemas/datasets and tables) from top to bottom in a collapsible tree. If you click on a specific project/database or dataset/schema, we should prioritize that one.
 
-In the *Data Explorer* section in the Workspace, you will see the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
+
+In the *Data Explorer* section in the Workspace, you will see the list of your current connections. You can select a connection and see the content (database/project(s), schemas/datasets and tables) from top to bottom in a collapsible tree. If you haven’t registered a connection yet, you will see the following page:
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection.png)
 
-### Adding your first connection
+## Adding your first connection
 
 For adding your first connection, follow the next steps:
 
@@ -20,7 +21,7 @@ For adding your first connection, follow the next steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/the_connections_bigquery_the_parameters.png)
 
 After you have provided the connection parameters, click the Connect button. Then you will see the list of your current connections:
 
@@ -30,21 +31,17 @@ Once you have added a connection, go back to the *Data Explorer* section in the 
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_bigquery.png)
 
-### Selecting a connection
+## Creating a map from your data
 
-For selecting a connection, click on your connection and select the content (database/project(s), schemas/datasets and tables) in the collapsible tree: 
+For creating a map from your data, select a connection and click on a specific content (database/project(s), schemas/datasets and tables) from the collapsible tree. 
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_content.png)
 
-### Previewing data 
-
-For previewing data, select a table or tileset and check the details and metadata from the table/tileset preview.
+Once your table or tileset is selected, you can see a preview of the map and the details of the table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO 3 map tool: Builder.
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_preview.png)
 
-### Creating a map
-
-For creating a map, click New map. This will open the CARTO 3 map tool: Builder.
+In this example, we have created a map from the tileset that was selected in the previous step:
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_create_map.png)
 

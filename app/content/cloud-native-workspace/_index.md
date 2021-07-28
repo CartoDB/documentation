@@ -12,6 +12,8 @@ cascade:
     - name: "Data Explorer"
       elements:
         - "Introduction"
+        - "Adding your first connection"
+        - "Creating a map from your data"
     - name: "Connections"
       elements:
         - "Introduction"

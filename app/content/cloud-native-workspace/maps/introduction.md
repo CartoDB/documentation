@@ -7,14 +7,13 @@ This guide will teach you how to create a map in the CARTO 3 Builder, and perfor
 
 In the *Maps* section of the Workspace, you will see the list of your current maps. If you haven’t created a map yet, you will see the following page:
 
-![Maps module](/img/cloud-native-workspace/maps/maps_module2.png)
+![Maps module](/img/cloud-native-workspace/maps/maps_module_firstmap.png)
 
-For creating a new map, click *New map*. This will open the CARTO 3 map tool: Builder.
+For creating a new map, click *Create your first map*. This will open the CARTO 3 map tool: Builder.
 
-To create and style your maps, learn how to:
+The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:
 
 - Add your source [guide](../../maps/add-data)
 - View your data table [guide](../../maps/view-data-table)
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
-
