@@ -7,8 +7,8 @@ cascade:
     - name: "Overview"
       elements:
         - "Getting Started"
-        - "Glosario"
-        - "Getting help"
+        # TO DO - "Glossary"
+        # TO DO - "Getting help"
     - name: "Data Explorer"
       elements:
         - "Introduction"

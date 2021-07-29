@@ -1,6 +1,6 @@
 ## Getting started
 
-The CARTO 3 Workspace is the leading cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, Data Observatory, and other fresh features.
+The CARTO 3 Workspace is the user interface for leading cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, Data Observatory, and other fresh features.
 
 ### Create your CARTO 3 account
 
@@ -35,7 +35,7 @@ Simple steps gets you into the CARTO 3 Workspace:
 
     - Choose an account name.
     - Select if you want anyone with the same domain to automatically join your account, or leave it unchecked if you want them to go through an approval process.
-    - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform is in 2 GCP regions (Europe-West and USA-Central). We give you the possibility to choose the region that is closer to your data warehouse.
+    - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform is in four GCP regions (Europe-West, USA-Central, Asia-Northeast, Australia-Southeast). We give you the possibility to choose the region that is closer to your data warehouse.
     - Click *Next*.
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_the_setup2.png)
@@ -148,7 +148,7 @@ The first time that you access the Workspace, you will see a *Welcome* banner wi
 
 #### Recent maps
 
-View your latest content. This module displays the latest 3 maps that you have been working on so that you can quickly access and continue working with them.
+View your latest content. This module displays the latest maps that you have been working on so that you can quickly access and continue working with them.
 
 ![Recent maps](/img/cloud-native-workspace/get-started/recent_maps.png)
 
