@@ -10,8 +10,6 @@ The API with the base CARTO 3 URL is displayed. You can copy and use it by click
 
 ![Developers api base url](/img/cloud-native-workspace/developers/developers_api_base_url.png)
 
-(*EXPLICAR MÁS ESTE APARTADO*)
-
 ### Managing built applications
 
 The CARTO 3 Workspace includes options for managing your built applications. From the *Account Settings* section, you can built, edit or delete applications.
