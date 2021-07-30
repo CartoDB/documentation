@@ -23,7 +23,7 @@ menu:
   - title: "Examples"
   - title: "Library Reference"
     folder:
-      - title: "Overview"
+      - title: "Introduction"
       - title: "API"
       - title: "Auth"
       - title: "Basemaps"
