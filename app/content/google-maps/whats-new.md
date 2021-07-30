@@ -4,7 +4,7 @@
 
 - Add example for CARTO 3
 
-### July 16, 2021
+### July 26, 2021
 
 - Example updated to deck.gl v8.5
 
