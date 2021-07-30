@@ -71,7 +71,7 @@ Optional. A string pointing to a unique attribute at the result of the query. A 
 
 #### `credentials` (Object)
 
-Optional. Overrides the configuration to connect with CARTO. Check the parameters [here](overview#carto-credentials).
+Optional. Overrides the configuration to connect with CARTO. Check the parameters [here](#setdefaultcredentials).
 
 #### `onDataLoad` (Function, optional)
 
