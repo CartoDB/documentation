@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@8.5.0-beta.1/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -15,7 +15,7 @@
   <script type="text/javascript">
     const deckgl = new deck.DeckGL({
       container: 'map',
-      mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
 
       initialViewState: {
         latitude: 38.302222210685656,

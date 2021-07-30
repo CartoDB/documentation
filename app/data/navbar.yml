@@ -11,6 +11,8 @@ navbar:
     subelements:
       - name: Spatial Extension for BigQuery
         url: /spatial-extension-bq
+      - name: Spatial Extension for Snowflake
+        url: /spatial-extension-sf
   - name: Dev tools
     subelements:
       - name: CARTO for React

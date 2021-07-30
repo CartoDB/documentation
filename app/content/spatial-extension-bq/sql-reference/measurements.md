@@ -12,7 +12,7 @@ measurements.ST_ANGLE(startPoint, midPoint, endPoint, mercator)
 
 **Description**
 
-Finds the angle formed by two adjacent segments defined by 3 points. The result will be the (positive clockwise) angle with origin on the startPoint-midPoint segment, or its explementary angle if required. https://github.com/Turfjs/turf/tree/master/packages/turf-angle
+Finds the angle formed by two adjacent segments defined by 3 points. The result will be the (positive clockwise) angle with origin on the startPoint-midPoint segment, or its explementary angle if required.
 
 * `startPoint`: `GEOGRAPHY` start Point Coordinates.
 * `midPoint`: `GEOGRAPHY` mid Point Coordinates.
@@ -23,10 +23,12 @@ Finds the angle formed by two adjacent segments defined by 3 points. The result 
 
 `FLOAT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ``` sql
-SELECT bqcarto.measurements.ST_ANGLE(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-4.70325 ,10.4167), ST_GEOGPOINT(-5.70325 ,40.4167), false);
+SELECT carto-os.measurements.ST_ANGLE(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-4.70325 ,10.4167), ST_GEOGPOINT(-5.70325 ,40.4167), false);
 -- 3.933094586038578
 ```
 
@@ -38,7 +40,7 @@ measurements.ST_AZIMUTH(startPoint, endPoint)
 
 **Description**
 
-Takes two points and finds the geographic bearing between them, i.e. the angle measured in degrees from the north line (0 degrees). https://turfjs.org/docs/#bearing
+Takes two points and finds the geographic bearing between them, i.e. the angle measured in degrees from the north line (0 degrees).
 
 * `startPoint`: `GEOGRAPHY` starting Point.
 * `endPoint`: `GEOGRAPHY` ending Point.
@@ -47,10 +49,12 @@ Takes two points and finds the geographic bearing between them, i.e. the angle m
 
 `FLOAT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ``` sql
-SELECT bqcarto.measurements.ST_AZIMUTH(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-4.70325 ,41.4167));
+SELECT carto-os.measurements.ST_AZIMUTH(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-4.70325 ,41.4167));
 -- -36.75052908494255
 ```
 
@@ -62,7 +66,7 @@ measurements.ST_MINKOWSKIDISTANCE(geog, p)
 
 **Description**
 
-Calculate the Minkowski p-norm distance between two features. https://github.com/Turfjs/turf/tree/master/packages/turf-distance-weight
+Calculate the Minkowski p-norm distance between two features.
 
 * `geog`: `ARRAY<GEOGRAPHY>` featureCollection.
 * `p`: `FLOAT64` minkowski p-norm distance parameter. 1: Manhattan distance. 2: Euclidean distance. 1 =< p <= infinity. If `NULL` the default value `2` is used.
@@ -71,10 +75,12 @@ Calculate the Minkowski p-norm distance between two features. https://github.com
 
 `ARRAY<STRING>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ``` sql
-SELECT bqcarto.measurements.ST_MINKOWSKIDISTANCE([ST_GEOGPOINT(10,10),ST_GEOGPOINT(13,10)],2);
+SELECT carto-os.measurements.ST_MINKOWSKIDISTANCE([ST_GEOGPOINT(10,10),ST_GEOGPOINT(13,10)],2);
 -- ["0,0.3333333333333333","0.3333333333333333,0"]
 ```
 
@@ -92,9 +98,11 @@ Returns the current version of the measurements module.
 
 `STRING`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.measurements.VERSION();
+SELECT carto-os.measurements.VERSION();
 -- 1.0.0
 ```
