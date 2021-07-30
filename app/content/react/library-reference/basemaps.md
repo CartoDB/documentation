@@ -3,7 +3,7 @@
 {{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-basemaps  | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/v/@carto/react-basemaps.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/dt/@carto/react-basemaps.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-basemaps  | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/v/@carto/react-basemaps.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-basemaps">  <img src="https://img.shields.io/npm/dt/@carto/react-basemaps.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
 {{%/ tableWrapper %}}
 
 This package includes constants for working with CARTO and Google Maps basemaps and a component for integration with the [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview).

@@ -3,7 +3,7 @@
 {{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-redux  | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/v/@carto/react-redux.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-redux">  <img src="https://img.shields.io/npm/dt/@carto/react-redux.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
 {{%/ tableWrapper %}}
 
 Functions to manage application state using React-Redux and the Redux Toolkit. This package includes 2 slices to manage the main redux blocks of a CARTO for React application. A [slice](https://redux-toolkit.js.org/api/createSlice) is a way to manage a "portion" or _slice_ of the redux store with a module:

@@ -3,7 +3,7 @@
 {{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-api  | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/v/@carto/react-api.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/dt/@carto/react-api.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-api  | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/v/@carto/react-api.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-api">  <img src="https://img.shields.io/npm/dt/@carto/react-api.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
 {{%/ tableWrapper %}}
 
 Set of functions that allow to work with CARTO APIs.
