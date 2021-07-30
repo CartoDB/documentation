@@ -103,8 +103,8 @@ deckOverlay.setMap(map);
   <head>
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://unpkg.com/deck.gl@^8.5.0-beta.1/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0-beta.1/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */

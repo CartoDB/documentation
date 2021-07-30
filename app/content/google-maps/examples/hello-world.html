@@ -44,9 +44,8 @@
       });
 
       deck.carto.setDefaultCredentials({
-        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-        apiVersion: deck.carto.API_VERSIONS.V3,
-        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+        username: 'public',
+        apiKey: 'default_public'
       });
 
       const deckOverlay = new deck.GoogleMapsOverlay({
@@ -54,7 +53,7 @@
           new deck.carto.CartoLayer({
             connection: 'bqconn',
             type: deck.carto.MAP_TYPES.TABLE,
-            data: `cartobq.public_account.retail_stores`,
+            data: `SELECT the_geom_webmercator, storetype from retail_stores`,
             getLineColor: [255, 255, 255],
             getFillColor: [238, 77, 90],
             pointRadiusMinPixels: 6,
