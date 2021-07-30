@@ -1,19 +1,19 @@
 ## Release notes
 
-### v8.5 - July 16, 2021
+### v8.5 - July 26, 2021
 
-- Support triangulation of polygons for MVTLoader in loaders.gl
-- Set default of MVTLayer binary to true
 - CARTO 3 integration
+- New CartoLayer supporting all the Maps API versions (CartoSQLLayer and CartoBQTiler layer will be deprecated and we recommend migrating existing code)
+- Support triangulation of polygons for MVTLoader in loaders.gl
 - Support pointType prop to allow changing point rendering in GeoJsonLayer
 
 ### v8.4 - February 1, 2021
 
-- Add onDataLoad and onDataError callbacks to CARTO layers
-- TileJSON support to the MVTLayer
 - Basemap module for @deck.gl/carto
 - Style helpers and CARTO colors
 - Support for CARTO Maps API v2
+- Add onDataLoad and onDataError callbacks to CARTO layers
+- TileJSON support to the MVTLayer
 - MVTLayer getRenderedFeatures
 - MVTLayer coordinates transformation to WGS84
 - MVTLayer binary data support
