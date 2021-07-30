@@ -12,7 +12,7 @@ When activated, geo shapes are filled in with colors. By default, Builder assign
 
 ![Map style fill color](/img/cloud-native-workspace/maps/map_style_fill2.png)
 
-You can explore additional fill color features by clicking the *three dots* icon: 
+You can explore additional fill color features by clicking the *three dots* icon:
 
 ![Map style fill additional features](/img/cloud-native-workspace/maps/map_style_fill_features2.png)
 
