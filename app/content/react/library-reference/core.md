@@ -117,6 +117,41 @@ Categorizes numeric values as a histogram from a set of features, having the opt
       */
   ```
 
+#### scatterPlot
+
+Receives an array of features and the properties that will be used for each axis, checks that properties are valid and returns a formatted array.
+
+- **Input**:
+
+{{% tableWrapper tab="true" %}}
+| Param      | Type                | Description                                                                                             |
+| ---------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
+| features   | <code>Array</code>  | Features                                                |
+| xAxisColumn | <code>string</code> | Property containing values for the X axis.                      |
+| yAxisColumn | <code>string</code> | Property containing values for the Y axis.                      |
+{{%/ tableWrapper %}}
+
+- **Returns**: <code>Array</code> - Formatted array.
+
+- **Example**:
+
+  ```js
+  import { scatterPlot } from "@carto/react-core";
+
+  const data = [
+    { x: 0 }, // Missing y
+    { y: 1 }, // Missing x
+    { x: null, y: 1 }, // null x
+    { x: 1, y: null }, // null y
+    { x: 0, y: 0 }, // zero for both
+    { x: 1, y: 2 }, // valid
+    {}, // no values for both
+    { x: 2, y: 3 } // valid
+  ];
+  sp = scatterPlot(data, 'x', 'y'));
+  console.log(sp); // [[0, 0],[1, 2],[2, 3]]; Invalid values are filtered out
+  ```
+
 ### Constants & enums
 
 #### AggregationTypes
