@@ -3,7 +3,7 @@
 {{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
 {{%/ tableWrapper %}}
 
 A set of advanced widgets, which allow not only a visual representation but a rich interaction with data & map layers, such as filtering or an automatic data refresh on viewport change, thanks to the connection with the CARTO slice on redux.
@@ -169,12 +169,71 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 | Param         | Type           | Default       | Description    |
 | ------------- | -------------- | ------------- | -------------- |
 | props         | <code>Object</code>               |               |                |
-| [props.className] | <code>string</code>   | (optional) Material-UI withStyle class for styling                             |
+| [props.className] | <code>string</code>   |         | (optional) Material-UI withStyle class for styling |
 {{%/ tableWrapper %}}
 
 - **Example**:
 
-  In this example, the widget uses a custom CSS class.
+  If you want to show a legend for a layer, you need to define some layer attributes before you instantiate the layer. Here we are going to create a `BINS` type legend where we are assigning colors and labels to the different legend elements. We use the same colors to the CARTO for deck.gl `colorBins` helper when creating the layer. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action:
+
+  ```js
+  import { LEGEND_TYPES } from "@carto/react-ui";
+  import { updateLayer } from "@carto/react-redux";
+  import { CartoLayer, colorBins } from "@deck.gl/carto";
+
+  export const COLORS = [
+    [247, 254, 174],
+    [183, 230, 165],
+    [124, 203, 162],
+    [70, 174, 160],
+    [4, 82, 117],
+  ];
+
+  export const LABELS = [
+    '< $100M',
+    '$100M - $500M',
+    '$500M - $1B',
+    '$1B - $1.5B',
+    '> $1.5B',
+  ];
+
+  const DATA = LABELS.map((elem, index) => {
+    return { color: rgbToHex(COLORS[index]), label: elem };
+  });
+
+  const layerConfig = {
+    title: 'Layer Name',
+    visible: true,
+    legend: {
+      attr: 'revenue',
+      type: LEGEND_TYPES.BINS,
+      labels: DATA.map((data) => data.label),
+      colors: DATA.map((data) => data.color),
+    },
+  };
+
+  layer = new CartoLayer({
+    id: MY_LAYER_ID,
+    type: MAP_TYPES.QUERY,
+    connection: 'myconn',
+    data: 'SELECT ...',
+    getFillColor: colorBins({
+      attr: layerConfig.legend.attr,
+      domain: [100e6, 500e6, 1e9, 1.5e9],
+      colors: COLORS,
+    }),
+    onDataLoad: () => {
+      dispatch(
+        updateLayer({
+          id: MY_LAYER_ID,
+          layerAttributes: { ...layerConfig },
+        })
+      );
+    }
+  }
+  ```
+
+  Now you can add the `LegendWidget` component. In this example, the widget uses a custom CSS class.
 
   ```js
   import { LegendWidget } from "@carto/react-widgets";
@@ -183,6 +242,18 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
     <LegendWidget className={myCSSClassName} />
   );
   ```
+
+   {{% bannerNote title="tip" %}}
+   If you just want layer switching functionality for a layer (show/hide) but you don't want to add a legend, you can just create an empty object for the legend:
+
+   ```js
+   const layerConfig = {
+     title: 'Layer Name',
+     visible: true,
+     legend: {},
+   };
+   ```
+   {{%/ bannerNote %}}
 
 #### PieWidget
 
