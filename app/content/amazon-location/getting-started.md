@@ -35,7 +35,7 @@ At this point you will have a basic map with the Rivers Amazon Location map reso
 
 ### Adding data from CARTO
 
-In order to visualize the CARTO tileset, we are going to take advantage of the new TileJSON endpoints in the Maps API v2. We just need to provide the endpoint URL through the [`source.url`](https://maplibre.org/maplibre-gl-js-docs/style-spec/sources/) property while calling the [`addLayer`](https://maplibre.org/maplibre-gl-js-docs/api/map/#map#addlayer) method on the map.
+In order to visualize the CARTO tileset, we are going to take advantage of the TileJSON endpoints in the Maps API v3. We just need to provide the endpoint URL through the [`source.url`](https://maplibre.org/maplibre-gl-js-docs/style-spec/sources/) property while calling the [`addLayer`](https://maplibre.org/maplibre-gl-js-docs/api/map/#map#addlayer) method on the map. In the URL we need to provide a token with access to the tileset.
 
 We are using a public tileset generated using our BigQuery Tiler and we are assigning a different color to each line representing a river, depending on the value of the `bearing` attribute.
 
@@ -46,7 +46,7 @@ map.addLayer(
     type: 'line',
     source: {
       type: 'vector',
-      url: 'https://maps-api-v2.us.carto.com/user/public/bigquery/tileset?source=cartobq.maps.eurivers&format=tilejson&api_key=default_public&client=amazon-location'
+      url: 'https://gcp-us-east1.api.carto.com/v3/maps/bqconn/tileset?name=cartobq.public_account.eurivers&access_token=eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c&format=tilejson&client=amazon-location'
     },
     'source-layer': 'default',
     "paint": {
@@ -91,6 +91,10 @@ async function initializeMap() {
   })
 }
 ```
+
+{{% bannerNote title="tip" %}}
+If using CARTO 2, you can follow a similar approach but using the TileJSON endpoints provided by Maps API v2. For instance, this a valid URL for retrieving a TileJSON using CARTO 2: `https://maps-api-v2.us.carto.com/user/public/bigquery/tileset?source=cartobq.maps.eurivers&format=tilejson&api_key=default_public&client=amazon-location`
+{{%/ bannerNote %}}
 
 ### All together
 
@@ -191,8 +195,7 @@ async function initializeMap() {
           type: 'line',
           source: {
             type: 'vector',
-            url: 'https://maps-api-v2.us.carto.com/user/public/bigquery/tileset?source=cartobq.maps.eurivers&format=tilejson&api_key=default_public&client=amazon-location'
-
+            url: 'https://gcp-us-east1.api.carto.com/v3/maps/bqconn/tileset?name=cartobq.public_account.eurivers&access_token=eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c&format=tilejson&client=amazon-location'
           },
           'source-layer': 'default',
           "paint": {
