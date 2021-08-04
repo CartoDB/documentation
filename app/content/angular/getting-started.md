@@ -20,10 +20,10 @@ This guide follows an step-by-step approach using the mentioned example as refer
 git clone git@github.com:CartoDB/viz-doc.git
 ```   
 
-Then change the current directory to the Angular example:
+Then change the current directory to the Angular example for CARTO 2 or CARTO 3:
 
 ```shell
-cd viz-doc/deck.gl/examples/pure-js/angular
+cd viz-doc/deck.gl/examples/pure-js/angular/carto3
 ```   
 
 Install the packages using the following command:
@@ -230,6 +230,65 @@ In order to have the best performance, we run both the Mapbox GL JS map and deck
 
 If we run our application right now, we will hopefully see our homepage with an empty sidebar on the left and our Positron basemap in the map area. We are ready to start adding our layers to the map.
 
+The process for adding layers with datasets from the CARTO 3 platform involves these steps:
+
+1. Create a connection in the Workspace with access to the datasets
+2. Set the credentials to connect with the CARTO platform
+3. Create a layer that uses the connection and the credentials to retrieve the data and render it
+4. Add the layer to the map
+
+#### Creating a connection in the workspace
+
+In the Workspace we need to define a connection with access to those datasets and use the connection name when instancing the layers.
+
+<video height="425" autoplay="" loop="" muted=""> <source src="/img/deck-gl/workspace-connection.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+
+#### Setting the credentials
+
+The Map component is also in charge of setting the credentials we will use for connecting with the CARTO platform and retrieve the data for the layers we are going to add in the next section. 
+
+First we need to create a token using the Tokens API with access to the datasets we want to visualize:
+
+```shell
+curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "grants": [
+        {
+            "connection_name": "bqconn",
+            "source": "SELECT geom, scalerank FROM cartobq.public_account.ne_10m_railroads_public"
+        },
+        {
+            "connection_name": "bqconn",
+            "source": "cartobq.public_account.retail_stores"
+        },
+        {
+            "connection_name": "bqconn",
+            "source": "cartobq.maps.msft_buildings"
+        }
+    ],
+    "referers": []
+}'
+```
+
+{{% bannerNote title="note" %}}
+If you are working with the CARTO 2 platform you need to provide a username / API key combination that provides access to the datasets you want to use. In the CARTO 2 example we access data from the `public` user with the `default_public` API key. If you want to use your own datasets, public or private, you will need to provide your own credentials.
+{{%/ bannerNote %}}
+
+Then we set the credentials by using the [`setDefaultCredentials`](https://deck.gl/docs/api-reference/carto/overview#carto-credentials) method from the CARTO for deck.gl module. 
+
+```typescript
+setDefaultCredentials({
+  apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+  apiVersion: API_VERSIONS.V3,
+  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+});
+```
+
+#### Creating the layers
+
+Once we have setup the credentials for connecting to the CARTO platform, we can add layers to visualize the datasets. 
+
 We are going to define a [base class](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/models/layer.ts) for layers and all the layers will inherit from this class. The Layer objects will include an `id` property to be able to identify the layer and a `visible` property initialized by default to `true`. The base layer implements the `show` and `hide` methods and defines the `getLayer` method that must be implemented by derived layers:
 
 ```Typescript
@@ -268,9 +327,34 @@ In the example we have created three layers to showcase some of the options for 
 
 - [RailroadsLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/rail-roads-layer.ts). This is a line layer created from a CARTO dataset.
 
-- [StoresLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/stores-layer.ts). This is a point layer created from a GeoJSON dataset extracted from the CARTO database using the [SQL API](https://carto.com/developers/sql-api/) that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
+- [StoresLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/stores-layer.ts). This is a point layer created from a GeoJSON dataset extracted from the CARTO platform using the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer). We could have added directly the `CartoLayer` with `type: MAP_TYPES.TABLE` but we wanted to illustrate the `getData` functionality. For CARTO 2 you can follow a similar approach with the [SQL API](https://carto.com/developers/sql-api/).
 
-The structure for all the layers is similar: we define a class that extends from the base `Layer` class. We need to specify a unique `id` for the layer and set the `visible` property to `true` or `false` depending if we want to show the layer or not when the view is loaded. The most important part is creating the deck.gl object that we must return in the `getLayer` method. Here we specify the data source for the layer, the `id` and `visible` properties and the styling properties like `getFillColor` or `getLineColor`.
+The structure for all the layers is similar: we define a class that extends from the base `Layer` class. We need to specify a unique `id` for the layer and set the `visible` property to `true` or `false` depending if we want to show the layer or not when the view is loaded. The most important part is creating the deck.gl object that we must return in the `getLayer` method. Here we specify the data source for the layer, the `id` and `visible` properties and the styling properties like `getFillColor` or `getLineColor`. Below you can see the implementation for the `getLayer` method in the `RailroadsLayer`:
+
+```Typescript
+async getLayer() {
+  return new CartoLayer({
+    id: this.id,
+    connection: 'bqconn',
+    type: MAP_TYPES.QUERY,
+    data: 'SELECT geom, scalerank FROM cartobq.public_account.ne_10m_railroads_public',
+    visible: this.visible,
+    pickable: true,
+    lineWidthScale: 20,
+    lineWidthMinPixels: 2,
+    getLineColor: colorContinuous({
+      attr: 'scalerank',
+      domain: [4, 5, 6, 7, 8, 9, 10],
+      colors: 'BluYl'
+    }),
+    getLineWidth: (f: any) => f.properties.scalerank,
+    autoHighlight: true,
+    highlightColor: [0, 255, 0],
+  });
+}
+```
+
+#### Adding the layers to the map
 
 Now that we have created our layers, we are ready to add them to the map. We want the layers to be added or removed when we load a new view (plug a component in the `<router-outlet>`). So we need to go to the component class definition and add the corresponding code. 
 

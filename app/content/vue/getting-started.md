@@ -20,10 +20,10 @@ This guide follows an step-by-step approach using the mentioned example as refer
 git clone git@github.com:CartoDB/viz-doc.git
 ```   
 
-Then change the current directory to the Vue.js example:
+Then change the current directory to the Vue.js example for CARTO 2 or CARTO 3:
 
 ```shell
-cd viz-doc/deck.gl/examples/pure-js/vue
+cd viz-doc/deck.gl/examples/pure-js/vue/carto3
 ```   
 
 Install the packages using the following command:
@@ -395,21 +395,53 @@ export default {
 }
 ```
 
-We have everything in place to add our own layers. We are going to add three different layers to showcase some of the options for working with [CARTO for deck.gl](/deck-gl). The Buildings and Railroads layers use the [`CartoLayer`](https://deck.gl/docs/api-reference/carto/carto-layer):
+We are going to add three different layers to showcase some of the options for working with [CARTO for deck.gl](/deck-gl). The Buildings and Railroads layers use the [`CartoLayer`](https://deck.gl/docs/api-reference/carto/carto-layer):
 
 - Buildings. This is a polygon layer created from a BigQuery tileset. This layer will be hidden by default (`visible: false`).
 
 - Railroads. This is a line layer created from a CARTO dataset.
 
-- Stores. This is a point layer created from a GeoJSON dataset extracted from the CARTO database using the [SQL API](https://carto.com/developers/sql-api/) that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
+- Stores. This is a point layer created from a GeoJSON dataset extracted from the CARTO platform using the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer). We could have added directly the `CartoLayer` with `type: MAP_TYPES.TABLE` but we wanted to illustrate the `getData` functionality. For CARTO 2 you can follow a similar approach with the [SQL API](https://carto.com/developers/sql-api/).
 
-For working with CARTO datasets, you need to provide the credentials (username and API key) for the dataset that will be the source for your layer. In this case, the three layers we are going to use are public datasets accessible in the `public` user with the `default_public` API key. If you want to use your own datasets, public or private, you will need to provide your own credentials.
+When accessing datasets from the CARTO 3 platform you need to provide the  name of a connection in the Workspace with access to the datasets:
+
+<video height="425" autoplay="" loop="" muted=""> <source src="/img/deck-gl/workspace-connection.mp4" type="video/mp4"> Your browser does not support the video tag. </video> 
+
+After you have created the connection, you need to create a token with access to the datasets using the Tokens API and use this token when setting up your credentials.
+
+```shell
+curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "grants": [
+        {
+            "connection_name": "bqconn",
+            "source": "SELECT geom, scalerank FROM cartobq.public_account.ne_10m_railroads_public"
+        },
+        {
+            "connection_name": "bqconn",
+            "source": "cartobq.public_account.retail_stores"
+        },
+        {
+            "connection_name": "bqconn",
+            "source": "cartobq.maps.msft_buildings"
+        }
+    ],
+    "referers": []
+}'
+```
+
+{{% bannerNote title="note" %}}
+If you are working with the CARTO 2 platform you need to provide a username / API key combination that provides access to the datasets you want to use. In the CARTO 2 example we access data from the `public` user with the `default_public` API key. If you want to use your own datasets, public or private, you will need to provide your own credentials.
+{{%/ bannerNote %}}
+
+You provide the credentials using the [`setDefaultCredentials`](https://deck.gl/docs/api-reference/carto/overview#carto-credentials) function. These credentials will be used for accessing the datasets that will be the source for your layer. 
 
 One common pattern in spatial apps is adding your layers when the view is accessed. So we are going to add our layers when the `Home` view is mounted. After we configure the credentials, we will call the `addLayer` function from the `layerManager` object with our deck.gl layer:
 
 ```javascript
 import { GeoJsonLayer } from '@deck.gl/layers'
-import { CartoLayer, MAP_TYPES, setDefaultCredentials, colorCategories, colorContinuous } from '@deck.gl/carto'
+import { CartoLayer, API_VERSIONS, MAP_TYPES, setDefaultCredentials, colorCategories, colorContinuous } from '@deck.gl/carto'
 import TemplateComponent from '@/components/template-component/TemplateComponent.vue';
 import layerService from '@/services/layerService'
 
@@ -420,15 +452,17 @@ export default {
   },
   mounted () {
     setDefaultCredentials({
-      username: 'public',
-      apiKey: 'default_public'
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      apiVersion: API_VERSIONS.V3,
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
     });
 
     layerManager.addLayer(
       new CartoLayer({
         id: 'roads',
+        connection: 'bqconn',
         type: MAP_TYPES.QUERY,
-        data: 'SELECT cartodb_id, the_geom_webmercator, scalerank FROM ne_10m_railroads_public',
+        data: 'SELECT cartodb_id, the_geom_webmercator, scalerank FROM cartobq.public_account.ne_10m_railroads_public',
         pickable: true,
         lineWidthScale: 20,
         lineWidthMinPixels: 2,
@@ -442,12 +476,17 @@ export default {
       })
     )
 
-    const storesQuery = 'SELECT * FROM retail_stores';
-    const storesUrl = `https://public.carto.com/api/v2/sql?q=${storesQuery}&format=geojson`;
+    const geojsonData = await getData({
+      type: MAP_TYPES.TABLE,
+      source: `cartobq.public_account.retail_stores`,
+      connection: 'bqconn',
+      format: FORMATS.GEOJSON
+    })
+    this.storesData = geojsonData.features
     layerManager.addLayer(
       new GeoJsonLayer({
         id: 'stores',
-        data: storesUrl,
+        data: geojsonData.features,
         pointRadiusUnits: 'pixels',
         lineWidthUnits: 'pixels',
         pickable: true,
@@ -466,8 +505,9 @@ export default {
     layerManager.addLayer(
       new CartoLayer({
         id: 'buildings',
+        connection: 'bqconn', 
         type: MAP_TYPES.TILESET,
-        data: 'cartobq.maps.msft_buildings',
+        data: 'cartobq.public_account.msft_buildings',
         visible: false,
         pointRadiusUnits: 'pixels',
         getFillColor: [240, 142, 240]
