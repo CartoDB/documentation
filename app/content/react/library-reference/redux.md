@@ -77,7 +77,7 @@ Action to add a **source** to the store.
   const source = {
     id: "sourceOne",
     type: MAP_TYPES.QUERY,
-    connection: 'cloud-native-demo-app',
+    connection: 'bqconn',
     data: "SELECT * FROM my_table",
   };
 
