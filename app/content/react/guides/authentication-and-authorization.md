@@ -18,7 +18,7 @@ Then you need to add the public access token just created in the `accessToken` p
 
 ### Private applications
 
-If you are building a private application, you need to start by creating a connection in the CARTO 3 workspace to your cloud data warehouse / database. Then you need to create an application in the `Developers` section. For development purposes, you can set the URL to `127.0.0.1`. When the application is created, the clientID OAuth property will be displayed in the `Application ID` column within the `Built applications` table.
+If you are building a private application, you need to start by creating a connection in the CARTO 3 workspace to your cloud data warehouse / database. Then you need to create an application in the `Developers` section. For development purposes, you can set the URL to `127.0.0.1:3000`. When the application is created, the clientID OAuth property will be displayed in the `Application ID` column within the `Built applications` table.
 
 Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauth` object with the one from the application just created. You can also modify the `scopes` property to specify what permissions you want to request to the user.
 
