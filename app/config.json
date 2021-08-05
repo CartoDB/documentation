@@ -1,5 +1,6 @@
 {
   "languageCode": "en-us",
+  "baseURL": "https://carto3-docs.web.app",
   "title": "CARTO Documentation",
   "disableKinds": ["taxonomy", "term", "RSS", "robotsTXT", "404"],
   "assetDir": "assets",

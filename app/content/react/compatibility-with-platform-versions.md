@@ -14,3 +14,23 @@ If you update an application from CARTO for React v1.0 to v1.1 there are some mi
 - `executeSQL` now uses object destructuring instead of multiple arguments
 - `SourceTypes` constants have been removed from the `@carto/react-api` package
 - The `type` property in data sources now accepts a different set of values. You need to use `MAP_TYPES.QUERY` if you were using `'sql'` or `MAP_TYPES.TILESET` if you were using `'bigquery'`. The `MAP_TYPES` constants are defined in the `@deck.gl\carto` package.
+
+In the v1.1 beta version we have also renamed the existing templates and added a new template for building apps with CARTO 3:
+
+- `base-2` is the new name for the CARTO 2 template that was previously the default `@carto` template
+
+   ```shell
+   $ npx create-react-app my-app --template @carto/base-2
+   ```
+
+- `sample-app-2` is the new name for the CARTO 2 sample app template, previously named `sample-app`
+
+   ```shell
+   $ npx create-react-app my-app --template @carto/sample-app-2
+   ```
+
+- `base-3` is the new template for building applications with the CARTO 3 platform
+
+   ```shell
+   $ npx create-react-app my-app --template @carto/base-3
+   ```
