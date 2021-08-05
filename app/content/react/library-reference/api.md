@@ -62,15 +62,17 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
 
 - **Input**:
 {{% tableWrapper tab="true" %}}
-| Param              | Type                | Description                                                                                                                   |
-| ------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| source             | <code>Object</code> | Data source                                  |
-| source.id          | <code>string</code> | Unique source ID |
-| source.type        | <code>string</code> | Source type. Check available types [here](/deck-gl/reference#type-string)  |
-| source.connection  | <code>string</code> | Connection name. Required only for CARTO 3.  |
-| source.data        | <code>string</code> |  Table name, tileset name or SQL query                                           |
-| source.credentials | <code>string</code> |  Credentials for accessing the source (check the parameters [here](/deck-gl/reference#setdefaultcredentials))                                           |
-| [uniqueIdProperty] | <code>string</code> | (optional) Name of the column for identity. To be used internally when getting viewportFeatures (used by widget computations) |
+| Param              | Type                | Description              |
+| ------------------ | ------------------- | ------------------------ |
+| props              | <code>Object</code> | Object properties        |
+| props.source       | <code>Object</code> | Data source              |
+| props.source.id    | <code>string</code> | Unique source ID         |
+| props.source.type  | <code>string</code> | Source type. Check available types [here](/deck-gl/reference#type-string)  |
+| props.source.connection  | <code>string</code> | Connection name. Required only for CARTO 3.  |
+| props.source.data  | <code>string</code> |  Table name, tileset name or SQL query                                           |
+| props.source.credentials | <code>string</code> |  Credentials for accessing the source (check the parameters [here](/deck-gl/reference#setdefaultcredentials))                                           |
+| [props.uniqueIdProperty] | <code>string</code> | (optional) Name of the column for identity. To be used internally when getting viewportFeatures (used by widget computations) |
+| [props.viewportFeatures] | <code>boolean</code> | (optional) Default: `true`. Whether to calculate viewport features for this layer or not.  |
 {{%/ tableWrapper %}}
 
    {{% bannerNote title="tip" %}}
