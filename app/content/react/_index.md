@@ -9,6 +9,7 @@ indexPage: "overview.md"
 
 menu: 
   - title: "Overview"
+  - title: "Compatibility with Platform Versions"
   - title: "Guides"
     folder:
       - title: "Getting Started"

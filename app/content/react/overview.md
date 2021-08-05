@@ -15,7 +15,11 @@ The code is open source and is available in the following repositories:
 * Library: https://github.com/CartoDB/carto-react
 
 
-The *NPM* packages are available here:
+{{% bannerNote type="warning" title="Warning" %}}
+This documentation site has been already updated for v1.1 beta but the latest stable version is 1.0. Please read [this article](../compatibility-with-platform-versions) to learn more about the compatibility among CARTO for React and the different platform versions and changes between v1.0 and v1.1.
+{{%/ bannerNote %}}
+
+The *NPM* packages for the stable version are linked below:
 
 - Templates: 
 {{% tableWrapper tab="true" %}}
