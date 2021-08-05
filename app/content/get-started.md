@@ -300,13 +300,13 @@ In this guide we will show you how easy it is to create a great looking spatial 
 
 {{% tutorialStep stepName="Kickstart your app"%}}
 
-CARTO for React provides templates for Create React App. To create a new app in a folder called `my-app` using the skeleton (blank) template for CARTO 3.0 (our fully cloud native platform), you need to execute the following command in your terminal (requires Node.js):
+CARTO for React provides templates for Create React App. To create a new app in a folder called `my-app` using the template for CARTO 3 (our fully cloud native platform), you need to execute the following command in your terminal (requires Node.js):
 
 ```shell
-~ npx create-react-app my-app --template @carto/cloud-native
+~ npx create-react-app my-app --template @carto/base-3
 ```
 
-Then, if you have the yarn package manager installed, you can start a development server by changing the current directory and executing the following command (requires the yarn package manager):
+Then you can start a development server by changing the current directory and executing the following command (requires the yarn package manager):
 
 ```shell
 ~ cd my-app
@@ -331,7 +331,7 @@ First you need to edit the `src/store/initialStateSlice.js` file and add the pub
 credentials: {
   apiVersion: API_VERSIONS.V3,
   apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfanF4am02aXciLCJqdGkiOiJiYzVkZjkyNyJ9.ax8NFyL270Yl1--wEfyGkOxhvYtsXTvwdEL-C2sRJYo',
+  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c',
 },
 ```
 
@@ -351,9 +351,9 @@ You can now create a source pointing to the BigQuery table:
 ~ yarn hygen source new
 $ hygen source new
 ✔ Name: · Stores
-✔ Enter a valid connection name · cloud-native-demo-app
+✔ Enter a valid connection name · bqconn
 ✔ Choose type · table
-✔ Type a query · cartodb-on-gcp-pm-team.demo.retail_stores
+✔ Type a query · cartobq.public_account.retail_stores
 ```
 
 Finally you can create a layer using the source and view created in the previous steps:
