@@ -104,14 +104,14 @@ To create a source, the easiest way is again to use the [code generator](../code
 yarn hygen source new
 ```
 
-Before adding the source, you need to create a connection to your data warehouse in the Workspace. If you have not created a connection yet, you can use the `carto-dw` connection to the CARTO Cloud Data Warehouse that is provided with all the accounts.
+Before adding the source, you need to create a connection to your data warehouse in the Workspace. If you have not created a connection yet, you can use the `carto_dw` connection to the CARTO Cloud Data Warehouse that is provided with all the accounts.
 
-We are going to create a source pointing to the public BigQuery dataset `cartobq.public_account.retail_stores` using the `carto-dw` connection. We recommend you to create a source pointing to one of the datasets in your data warehouse. You need to choose the following options:
+We are going to create a source pointing to the public BigQuery dataset `cartobq.public_account.retail_stores` using the `carto_dw` connection. We recommend you to create a source pointing to one of the datasets in your data warehouse. You need to choose the following options:
 
 ```shell
 $ hygen source new
 ✔ Name: · Stores
-✔ Enter a valid connection name · carto-dw
+✔ Enter a valid connection name · carto_dw
 ✔ Choose type · table
 ✔ Type a query · cartobq.public_account.retail_stores
 ```
