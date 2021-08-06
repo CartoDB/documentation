@@ -100,20 +100,6 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
   );
   ```
 
-#### GeocoderWidget
-
-Renders a `<GeocoderWidget />` component
-
-- **Input**:
-
-{{% tableWrapper tab="true" %}}
-| Param             | Type                  | Description                                                                    |
-| ----------------- | --------------------- | ------------------------------------------------------------------------------ |
-| props             |                       |                                                                                |
-| [props.className] | <code>Object</code>   | (optional) Material-UI withStyle class for styling                             |
-| [props.onError]   | <code>function</code> | (optional) _errorCallback_: Function to handle error messages from the widget. |
-{{%/ tableWrapper %}}
-
 #### HistogramWidget
 
 Renders a `<HistogramWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features.
