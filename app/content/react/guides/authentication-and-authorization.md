@@ -1,54 +1,52 @@
 ## Authentication and Authorization
 
-This guide shows how you can control access to the datasets in your application.
+This guide shows how you can create private and public applications. We can classify the applications in two sets:
 
-We can classify the datasets in two sets:
-
-- Public datasets. The user does not need to log into the application to access these datasets. Access is provided through a public token.
+- Public applications. The user does not need to log into the application. Access is provided through a public token.
   
-- Private datasets. These datasets require the user to log into the application using her CARTO credentials in the OAuth protocol flow, and also require access to the connection in the CARTO 3 Workspace.
+- Private applications. These applications require the users to log with their CARTO credentials and access to the data warehouse connection in the CARTO 3 Workspace.
 
 ### Public applications
 
 To create a public application where all the datasets are public, you first need to create a public token with access to those datasets. In order to create the public token, you need to make a POST request to the tokens API specifying the connection name in the CARTO 3 workspace and the exact data sources you are going to access in your application (if you are going to use a SQL query, you need to specify the SQL query).
 
-By default, the CARTO 3 skeleton template is configured to use OAuth. If you want to make a public application where all the datasets are public, you need to edit the `src/store/initialStateSlice.js` file and remove the `oauth` object. 
+By default, the CARTO 3 template is configured for private applications. If you want to make a public application, you need to edit the `src/store/initialStateSlice.js` file and remove the `oauth` object. 
 
-Then you need to add the public access token just created in the `accessToken` property in the `credentials` object. If you add a new dataset, you need to update your token with a new grant.
+Then you need to add the public access token just created in the `accessToken` property in the `credentials` object. If you add a new dataset to your application, you need to update your token with a new grant.
 
 ### Private applications
 
-If you are building a private application, you need to start by creating a connection in the CARTO 3 workspace to your cloud data warehouse / database. Then you need to create an application in the `Developers` section. For development purposes, you can set the URL to `127.0.0.1:3000`. When the application is created, the clientID OAuth property will be displayed in the `Application ID` column within the `Built applications` table.
+If you are building a private application, you need to start by creating a connection in the CARTO 3 workspace to your cloud data warehouse. Then you need to create an application in the `Developers` section. For development purposes, you can set the URL to `127.0.0.1:3000`. When the application is created, the clientID OAuth property will be displayed in the `Application ID` column within the `Built applications` table.
 
-Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauth` object with the one from the application just created. You can also modify the `scopes` property to specify what permissions you want to request to the user.
+Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauth` object with the one from the application just created. 
 
 When you have everything configured, the first screen for your application will be the following:
 
 ![oauth-login](/img/react/oauth-login.png 'OAuth Login')
 
-When your users click on the `Login with CARTO` button, the OAuth protocol flow will start and your users will be asked to allow access to the application. When the protocol finishes, a new access token with the required scopes will be sent. This access token will be used to access the data sources in the application, unless specific credentials are provided.
+When your users click on the `Login with CARTO` button, the authentication protocol will start and your users to login and to allow access to the application. When the protocol finishes, a new access token with the required scopes will be sent. This access token will be used to access the data sources in the application, unless specific credentials are provided.
 
 ### CARTO 2 platform
 
 If you are using the CARTO 2 platform, the process is slightly different.
 
-If you want to work with public datasets, you can make the datasets public in the CARTO 2 Dashboard and then you can use the `default_public` API key when providing the credentials for accessing the dataset.
+If you want to create a public application, you can make the datasets public in the CARTO 2 Dashboard and then you can use the `default_public` API key when providing the credentials for accessing the dataset.
 
-If you need to manage private datasets, you have two options:
+If you need to create a private application, you have two options:
 
-- Generate an API key with access (read) to those datasets. 
+- Generate an API key with access (read) to the datasets. 
 
 - Use OAuth for authentication.
 
 #### Using API keys
 
-This is the traditional (legacy) way of working with private datasets in the CARTO 2 platform. You need to generate an API key in the CARTO 2 Dashboard with access (read/select) to your datasets. After you have generated the API key, you introduce this API in the initial state slice as explained in the [Getting Started](../getting-started#connecting-your-carto-account) guide.
+This is the traditional (legacy) way of working with private applications in the CARTO 2 platform. You need to generate an API key in the CARTO 2 Dashboard with access (read/select) to your datasets. After you have generated the API key, you introduce this API key in the initial state slice.
 
 If you are using API keys, you need to implement your own authentication mechanism if you want to restrict access. Anyone can read your API key from the JavaScript source and you are potentially exposing more information than you want to.
 
 #### Using OAuth
 
-CARTO 2 supports [OAuth](https://en.wikipedia.org/wiki/OAuth) to communicate with our [APIs](https://carto.com/developers/). OAuth is the preferred way to manage credentials, so we recommend you use this protocol for implementing **authentication & authorization** in your applications.
+CARTO 2 supports [OAuth](https://en.wikipedia.org/wiki/OAuth) to communicate with CARTO 2 REST APIs. OAuth is the preferred way to manage credentials, so we recommend you use this protocol for implementing **authentication & authorization** in your applications.
 
 OAuth `scopes` are used to specify what permissions will users have to give to the application. For example, `datasets:r:table_name` will grant `read` access to the table `table_name`.
 
