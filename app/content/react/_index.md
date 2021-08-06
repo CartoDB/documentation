@@ -9,7 +9,6 @@ indexPage: "overview.md"
 
 menu: 
   - title: "Overview"
-  - title: "Compatibility with Platform Versions"
   - title: "Guides"
     folder:
       - title: "Getting Started"
@@ -21,6 +20,7 @@ menu:
       - title: "Code Generator"
       - title: "Sample Application"
       - title: "Deployment"
+      - title: "Upgrade Guide"
   - title: "Examples"
   - title: "Library Reference"
     folder:

@@ -16,7 +16,7 @@ The code is open source and is available in the following repositories:
 
 
 {{% bannerNote type="warning" title="Warning" %}}
-This documentation site has been already updated for v1.1 beta but the latest stable version is 1.0. Please read [this article](../compatibility-with-platform-versions) to learn more about the compatibility among CARTO for React and the different platform versions and changes between v1.0 and v1.1.
+This documentation site has been already updated for v1.1 beta but the latest stable version is 1.0. Please read [this guide](../guides/upgrade-guide) to learn more about the changes between v1.0 and v1.1 and CARTO for React compatibility with the different platform versions.
 {{%/ bannerNote %}}
 
 The *NPM* packages (latest version) are linked below:
@@ -82,7 +82,7 @@ npx create-react-app [application_name] --template [template_name]
 ```
 
 - `application_name` is the name of the folder that will be created for your application
-- `template_name` is the name of the template to use (`@carto/base-3` for the CARTO 3 template (default), `@carto/base-2` for the CARTO 2 template or `@carto/sample-app-2` for the sample app template for CARTO 2)
+- `template_name` is the name of the template to use: `@carto/base-3` for the CARTO 3 template (default), `@carto/base-2` for the CARTO 2 template or `@carto/sample-app-2` for the sample app template for CARTO 2.
 
 {{% bannerNote title="note" %}}
 In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the default template:
