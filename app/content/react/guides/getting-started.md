@@ -52,22 +52,19 @@ And these are the main files:
 
 ### Setting up the credentials for connecting your CARTO account
 
-This getting started tutorial uses a token that provides public access to the dataset we are going to use (no user login required). If you want to control access to your application, you need to create an OAuth application. Please read the Authentication & Authorization [guide](../authentication-and-authorization) to learn more about this.
+This getting started tutorial demonstrates how to create a private application that requires the user to authenticate against the CARTO platform. If you are building a public application (where the user does not need to login), you need to provide the token in the credentials object. Please read the Authentication & Authorization [guide](../authentication-and-authorization) to learn more about this.
 
-You need to edit the `src/store/initialStateSlice.js` file and add the following credentials.
+In the credentials you need to specify the base URL for the API. You can check the value you must use in the Developers section in the Workspace and update the `apiBaseUrl` property in the `credentials` object within the `src/store/initialStateSlice.js` file:
 
 ```javascript
     ...
     credentials: {
       apiVersion: API_VERSIONS.V3,
       apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c',
     },
     ...
   },
 ```
-
-If you are creating an OAuth application, you don't need to specify the access token here; once the OAuth flow has been completed, CARTO for React will request a temporary token that will be used to connect with the platform.
 
 ### Creating a view
 
@@ -101,20 +98,20 @@ You should see the map component with a `Hello World` text on the left sidebar a
 
 A source is a key piece in a CARTO for React application. Both layers and widgets depend on sources. A source exports a plain object with a certain structure that will be understood by the CARTO for React library to feed layers or widgets using the CARTO SQL and/or Maps APIs.
    
-The different sources are stored inside the `/data/sources` folder. The goal of the `/data` folder is to easily differentiate the parts of the application that access data from the database or external services, like CARTO APIs, your own backend, GeoJSON files...
-
 To create a source, the easiest way is again to use the [code generator](../code-generator):
 
 ```shell
 yarn hygen source new
 ```
 
-In this case, we're creating a new source that can feed layers and widgets with the dataset we uploaded before. It is going to be called `StoresSource` to follow a convention ("Source" will be added to the name you provide). You need to choose the following options:
+Before adding the source, you need to create a connection to your data warehouse in the Workspace. If you have not created a connection yet, you can use the `carto-dw` connection to the CARTO Cloud Data Warehouse that is provided with all the accounts.
+
+We are going to create a source pointing to the public BigQuery dataset `cartobq.public_account.retail_stores` using the `carto-dw` connection. We recommend you to create a source pointing to one of the datasets in your data warehouse. You need to choose the following options:
 
 ```shell
 $ hygen source new
 ✔ Name: · Stores
-✔ Enter a valid connection name · bqconn
+✔ Enter a valid connection name · carto-dw
 ✔ Choose type · table
 ✔ Type a query · cartobq.public_account.retail_stores
 ```
