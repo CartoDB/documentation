@@ -4,7 +4,7 @@ This guide shows how you can create a basic CARTO for React application with lay
 
 It is a really straightforward process as you can see in the following video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GVyiUZoxL_U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
+<video height="400" autoplay="" loop="" muted=""> <source src="/img/react/getting-started.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
 ### Creating an application
 
