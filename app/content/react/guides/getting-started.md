@@ -14,25 +14,13 @@ To create a new application based on the CARTO 3 template for create-react-app, 
 
 ```bash
 npx create-react-app my-app --template @carto/base-3
-cd my-app
-yarn start
 ```
 
-You can also create a new application based on the CARTO 2 template executing the following command:
+The template is configured by default to authenticate the users against the platform. The first thing you need to do is to create a new application in the Workspace (Developers section) with `https://127.0.0.1:3000` as the URL. Then you need to copy the value in the `Application ID` column and paste it in the `clientID` property for the `oauth` object in the `src/store/initialStateSlice.js` file.
 
-```bash
-npx create-react-app my-app --template @carto/base-2
-cd my-app
-yarn start
-```
-
-A full [Sample Application](#sample-application) for the CARTO 2 platform with the most common functionality is available at https://sample-app-react.carto.com. If you want to create a new application based on the sample app template for CARTO 2, just type the following:
-
-```bash
-npx create-react-app my-app --template @carto/sample-app
-cd my-app
-yarn start
-```
+{{% bannerNote type="note" title="CARTO 2 templates" %}}
+You can also create a new application based on the CARTO 2 template if you use `@carto/base-2` as the template name. We have also created a sample app template (`@carto/sample-app-2`) for CARTO 2 showing how to implement common spatial apps features.
+{{%/ bannerNote %}}
 
 ### Understanding the folder structure
 
