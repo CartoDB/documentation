@@ -1,22 +1,77 @@
 ## Authentication and Authorization
 
-This guide shows how you can create private and public applications. We can classify the applications in two sets:
+This guide shows how you can create private and public applications. We can classify the applications in two:
 
-- Public applications. The user does not need to log into the application. Access is provided through a public token.
+- Private applications. Requires a login against CARTO platform.
+
+- Public applications. The user does not need to log into the application. Access to data is provided through a token.
   
-- Private applications. These applications require the users to log with their CARTO credentials and access to the data warehouse connection in the CARTO 3 Workspace.
 
 ### Public applications
 
-To create a public application where all the datasets are public, you first need to create a public token with access to those datasets. In order to create the public token, you need to make a POST request to the tokens API specifying the connection name in the CARTO 3 workspace and the exact data sources you are going to access in your application (if you are going to use a SQL query, you need to specify the SQL query).
+To create a public application, you need to create a public token with access all the datasets required by the application and introduce the token in the application config (`src/store/initialStateSlice.js`).
 
-By default, the CARTO 3 template is configured for private applications. If you want to make a public application, you need to edit the `src/store/initialStateSlice.js` file and remove the `oauth` object. 
+{{% bannerNote title="note" %}}
+Because of security reasons the SQL cannot be modified by the user in a private application
+{{%/ bannerNote %}}
 
-Then you need to add the public access token just created in the `accessToken` property in the `credentials` object. If you add a new dataset to your application, you need to update your token with a new grant.
+
+With the following changes we're going to make the private application public.
+
+1. Create a token.
+
+```shell
+curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "grants": [
+        {
+            "connection_name": "bqconn",
+            "source": "cartobq.public_account.retail_stores"
+        }
+    ],
+}'
+```
+
+2. Add the token to the config and remove oauth section. 
+
+The file `src/store/initialStateSlice.js` will look like this:
+
+```javascript
+import { VOYAGER } from '@carto/react-basemaps';
+import { API_VERSIONS } from '@deck.gl/carto';
+
+export const initialState = {
+  viewState: {
+    latitude: 31.802892,
+    longitude: -103.007813,
+    zoom: 2,
+    pitch: 0,
+    bearing: 0,
+    dragRotate: false,
+  },
+  basemap: VOYAGER,
+  credentials: {
+    apiVersion: API_VERSIONS.V3,
+    apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+    accessToken: 'TYPE HERE THE TOKEN'
+  },
+  googleApiKey: '', // only required when using a Google Basemap,
+  // oauth: 
+};
+
+```
+
 
 ### Private applications
 
-If you are building a private application, you need to start by creating a connection in the CARTO 3 workspace to your cloud data warehouse. Then you need to create an application in the `Developers` section. For development purposes, you can set the URL to `127.0.0.1:3000`. When the application is created, the clientID OAuth property will be displayed in the `Application ID` column within the `Built applications` table.
+If you are building a private application, you need to create and Application and get an `Application ID`:
+
+1. Go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers)
+
+2. Create a new APP with the URL `https://127.0.0.1:3000`
+
+3. Copy the `Application ID` and introduce it at `src/store/initialStateSlice.js`.
 
 Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauth` object with the one from the application just created. 
 

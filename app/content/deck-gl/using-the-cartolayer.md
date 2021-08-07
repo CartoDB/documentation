@@ -12,20 +12,25 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
 
    <video height="425" autoplay="" loop="" muted=""> <source src="/img/deck-gl/workspace-connection.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
+  {{% bannerNote title="note" %}}
+  `carto_dw` connection is also available for users who don't have a data warehouse.
+  {{%/ bannerNote %}}
+  
+
 2. Create a token using our token API with access to the required table.
 
    ```shell
    curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
-   --header 'Content-Type: application/json' \
-   --data-raw '{
-       "grants": [
-           {
-               "connection_name": "bqconn",
-               "source": "cartobq.public_account.populated_places"
-           }
-       ],
-       "referers": []
-   }'
+    --header 'Content-Type: application/json' \
+    --data-raw '{
+        "grants": [
+            {
+                "connection_name": "bqconn",
+                "source": "cartobq.public_account.populated_places"
+            }
+        ],
+      
+    }'
    ```
 
 3. Set connection parameters

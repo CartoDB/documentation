@@ -12,10 +12,10 @@ You can start testing CARTO for React v1.1 beta right now but we don't recommend
 
 If you update an application that is using v1.0 of the CARTO for React library to v1.1, there are some minor changes that might affect your existing code (we have already updated our documentation with these changes):
 
-- `useCartoLayerProps` now uses object destructuring instead of multiple arguments
-- `executeSQL` now uses object destructuring instead of multiple arguments
+- [useCartoLayerProps](react/library-reference/api/#usecartolayerprops) now uses object destructuring instead of multiple arguments
+- [executeSQL](/react/library-reference/api/#executesql) now uses object destructuring instead of multiple arguments
 - `SourceTypes` constants have been removed from the `@carto/react-api` package
-- The `type` property in data sources now accepts a different set of values. You need to use `MAP_TYPES.QUERY` if you were using `'sql'` or `MAP_TYPES.TILESET` if you were using `'bigquery'`. The `MAP_TYPES` constants are defined in the `@deck.gl\carto` package.
+- The `type` property in data sources now accepts a different set of values. You need to use `MAP_TYPES.QUERY` if you were using `'sql'` or `MAP_TYPES.TILESET` if you were using `'bigquery'`. The `MAP_TYPES` constants are defined in the `@deck.gl/carto` package.
 
 ### Template changes
 

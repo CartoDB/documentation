@@ -139,7 +139,7 @@ If you need to override the [`uniqueidproperty`](https://deck.gl/docs/api-refere
 
 
 ```javascript
-const cartoLayerProps = useCartoLayerProps({ source, 'uniqueIdProperty' });
+const cartoLayerProps = useCartoLayerProps({ source, uniqueIdProperty: 'mycustomid' });
 ```
 
 If you need to override any of the properties configured by the hook, you must include them in the layer constructor after `...cartoLayerProps`. For instance, if you want to add your own [`updateTriggers`](https://deck.gl/docs/api-reference/core/layer#updatetriggers) property, you could add the following code to maintain the current behaviour and add your own update trigger for a given accessor (`getFillColor`, `getRadius`...):
@@ -157,7 +157,7 @@ return new CartoLayer({
 
 ### Support for other deck.gl layers
 
-If you want to use a different deck.gl layer (i.e. ArcLayer, TripsLayer), you can't associate the layer with a source and you need to take care of providing the data for the layer in the expected format. Please read [this section](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) in the deck.gl documentation to learn more.
+If you want to use a different deck.gl layer (i.e. ArcLayer, TripsLayer), read [this section](/deck-gl/using-the-cartolayer/#support-for-other-deckgl-layerss) in the deck.gl documentation to learn more.
 
 ### Summary
 
@@ -170,6 +170,4 @@ This is the summary:
 - The layer must be added to the map component layers array.
 
 - You need to add the source and the layer to the store when the view is initialized.
-
-- You can add your own CARTO layer properties if required.
 

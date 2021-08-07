@@ -1,8 +1,7 @@
 ## Getting Started
 
-This guide shows how you can create a basic CARTO for React application with layers and widgets. You will learn about the main files that compose the application and how to configure it to use datasets from your own CARTO account.
 
-It is a really straightforward process as you can see in the following video:
+This guide shows how you to create a private application with layers and widgets. A private application starts with a login page.
 
 <video height="400" autoplay="" loop="" muted=""> <source src="/img/react/getting-started.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
@@ -10,17 +9,9 @@ It is a really straightforward process as you can see in the following video:
 
 The basic prerequisite for using Create React App is to have a package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)) previously installed.
 
-To create a new application based on the CARTO 3 template for create-react-app, just type:
-
 ```bash
 npx create-react-app my-app --template @carto/base-3
 ```
-
-The template is configured by default to authenticate the users against the platform. The first thing you need to do is to create a new application in the Workspace (Developers section) with `https://127.0.0.1:3000` as the URL. Then you need to copy the value in the `Application ID` column and paste it in the `clientID` property for the `oauth` object in the `src/store/initialStateSlice.js` file.
-
-{{% bannerNote type="note" title="CARTO 2 templates" %}}
-You can also create a new application based on the CARTO 2 template if you use `@carto/base-2` as the template name. We have also created a sample app template (`@carto/sample-app-2`) for CARTO 2 showing how to implement common spatial apps features.
-{{%/ bannerNote %}}
 
 ### Understanding the folder structure
 
@@ -50,11 +41,28 @@ And these are the main files:
 
 * **store/appSlice.js**: general slice of the app to include/extend with custom app functionality.
 
-### Setting up the credentials for connecting your CARTO account
+### Connecting your CARTO account
 
-This getting started tutorial demonstrates how to create a private application that requires the user to authenticate against the CARTO platform. If you are building a public application (where the user does not need to login), you need to provide the token in the credentials object. Please read the Authentication & Authorization [guide](../authentication-and-authorization) to learn more about this.
+### Get an Application ID
 
-In the credentials you need to specify the base URL for the API. You can check the value you must use in the Developers section in the Workspace and update the `apiBaseUrl` property in the `credentials` object within the `src/store/initialStateSlice.js` file:
+To connect a private application you first need to create and Application and get an `Application ID`:
+
+1. You need to go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers)
+
+2. Create a new APP with the URL `https://127.0.0.1:3000`
+
+3. Copy the `Application ID` and introduce it at `src/store/initialStateSlice.js`.
+
+{{% bannerNote type="note" title="CARTO 2 templates" %}}
+You can also create a new application based on the CARTO 2 template if you use `@carto/base-2` as the template name. We've also created a sample app template (`@carto/sample-app-2`) for CARTO 2 showing how to implement common spatial apps features. This sample App is available at [https://sample-app-react.carto.com](https://sample-app-react.carto.com/)
+{{%/ bannerNote %}}
+
+
+### apiBaseUrl
+
+Go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers) and copy the `apiBaseUrl`.
+
+Edit `src/store/initialStateSlice.js` to add it:
 
 ```javascript
     ...
@@ -104,9 +112,9 @@ To create a source, the easiest way is again to use the [code generator](../code
 yarn hygen source new
 ```
 
-Before adding the source, you need to create a connection to your data warehouse in the Workspace. If you have not created a connection yet, you can use the `carto_dw` connection to the CARTO Cloud Data Warehouse that is provided with all the accounts.
+When you create a source in CARTO3, you need to provide the connection name you want to use. CARTO provides a default `carto_dw`, but you probably want to [connect](https://gcp-us-east1.app.carto.com/connections/create) your own data warehouse to access your data
 
-We are going to create a source pointing to the public BigQuery dataset `cartobq.public_account.retail_stores` using the `carto_dw` connection. We recommend you to create a source pointing to one of the datasets in your data warehouse. You need to choose the following options:
+We are going to create a source pointing to the public BigQuery dataset `cartobq.public_account.retail_stores` using the `carto_dw` connection. 
 
 ```shell
 $ hygen source new
@@ -119,8 +127,6 @@ $ hygen source new
 ### Creating a layer
 
 Once we have defined the source, we can add now the layer to the map. 
-
-We create the layer by using the [code generator](../code-generator) again:
 
 ```shell
 yarn hygen layer new
