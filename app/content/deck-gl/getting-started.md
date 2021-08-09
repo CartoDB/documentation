@@ -12,6 +12,11 @@ It is important that you begin by learning the core deck.gl concepts. Please che
 
 ![eu-rivers](/img/deck-gl/eu-rivers.jpg 'EU Rivers')
 
+
+{{% bannerNote title="Are you a React user?" %}}
+If you're a React user and you want to build a web application using CARTO, we recommend you to use [CARTO for React](/react/overview/).
+{{%/ bannerNote %}}
+
 ### What does CARTO provide
 
 Starting with version 8.3, deck.gl includes a submodule `@deck.gl/carto` for integration with the CARTO platform. This module provides all that you need to:
@@ -47,7 +52,7 @@ In the [Examples](/deck-gl/examples/hello-world) section you can find interactiv
 
 #### Using the NPM module
 
-You can use the NPM module for Vanilla JavaScript applications or for applications using frameworks like React, Angular or Vue.js.
+You can use the NPM module for Vanilla JavaScript applications or for applications using frameworks like React, Angular or Vue.js. 
 
 You just need to add the deck.gl dependency to your project using the package manager. When you install this dependency, the CARTO submodule is already included:
 
@@ -94,4 +99,3 @@ In the [viz-doc](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples
    ```shell
    yarn start
    ```   
-   
