@@ -2,7 +2,7 @@
 
 ### Configuring proxy
 
-When the instance is going to be installed behind a `proxy` it is necessary to:
+When the instance is going to be installed behind a proxy it is necessary to:
 
 * Configure the `noProxy` policy for Docker:
 	```bash
@@ -20,9 +20,9 @@ When the instance is going to be installed behind a `proxy` it is necessary to:
 		"proxies": {
       			"default":
        			{
-       				"httpProxy": "<PROXY_ADDRESS>",
-       				"httpsProxy": "<PROXY_ADDRESS>",
-       				"noProxy": "127.0.0.1,localhost,<CARTO_DOMAIN>"
+       				"httpProxy": "http://0.0.0.0:3128",
+       				"httpsProxy": "http://0.0.0.0:3128",
+       				"noProxy": "127.0.0.1,localhost,carto.lan"
       			}
 		}
 	}
@@ -32,17 +32,24 @@ When the instance is going to be installed behind a `proxy` it is necessary to:
 	```bash
 	# /etc/systemd/system/docker.service.d/http-proxy.conf
 	[Service]
-	Environment="HTTP_PROXY=<PROXY_ADDRESS>"
-	Environment="HTTPS_PROXY=<PROXY_ADDRESS>"
+	Environment="HTTP_PROXY=https://0.0.0.0:3128"
+	Environment="HTTPS_PROXY=https://0.0.0.0:3128"
 	Environment="NO_PROXY=127.0.0.1,localhost"
 	``` 
 
 * Redirect host to the proper domain:
 	```bash
 	# /etc/hosts
-	127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 <CARTO_DOMAIN>
-	::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 <CARTO_DOMAIN>
+	127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 carto.lan
+	::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 carto.lan
 	```
+
+{{% bannerNote title="WARNING"%}}
+
+`http://0.0.0.0:3128` and `carto.lan` should be substituted for the actual **Proxy Address** and **CARTO domain** of each server.
+{{%/ bannerNote %}}
+
+
 
 ### Stopping CARTO services
 
