@@ -1,5 +1,41 @@
 ## Release notes
 
+### August 11, 2021
+
+#### Module quadkey v1.0.3
+
+Fixed
+- Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
+
+### August 6, 2021
+
+#### Module data v1.0.0-beta.5
+
+Feature
+- Add DATAOBS_ENRICH_GRID procedure.
+- Add ENRICH_GRID procedure.
+
+### August 4, 2021
+
+#### Module quadkey v1.0.2
+
+Feature
+- Add ST_GEOGPOINTFROMQUADINT function.
+
+### July 30, 2021
+
+#### Module geohash v1.0.0
+
+Feature
+- Create geohash module.
+- Add VERSION function.
+- Add ST_BOUNDARY function.
+
+#### Module tiler v1.12.1
+
+Changed
+- Checking if the output table exists before running the tiler.
+
 ### July 13, 2021
 
 #### Module data v1.0.0-beta.4

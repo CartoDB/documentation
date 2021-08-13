@@ -66,6 +66,7 @@ SELECT carto-os.quadkey.KRING(4388, 1);
 -- 4932
 ```
 
+
 ### LONGLAT_ASQUADINT
 
 {{% bannerNote type="code" %}}
@@ -318,6 +319,31 @@ SELECT carto-os.quadkey.ST_BOUNDARY(4388);
 -- POLYGON((22.5 0, 22.5 -21.9430455334382, 22.67578125 ...
 ```
 
+### ST_GEOGPOINTFROMQUADINT
+
+{{% bannerNote type="code" %}}
+quadkey.ST_GEOGPOINTFROMQUADINT(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the centroid for a given quadint.
+
+* `quadint`: `INT64` quadint to get the centroid geography from.
+
+**Return type**
+
+`GEOGRAPHY`
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT carto-os.quadkey.ST_GEOGPOINTFROMQUADINT(4388);
+-- 	POINT(33.75 22.2982994295938)
+```
+
 ### TOCHILDREN
 
 {{% bannerNote type="code" %}}
@@ -393,7 +419,7 @@ Returns the current version of the quadkey module.
 
 ```sql
 SELECT carto-os.quadkey.VERSION();
--- 1.0.1
+-- 1.0.3
 ```
 
 ### ZXY_FROMQUADINT

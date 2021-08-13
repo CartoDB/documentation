@@ -34,7 +34,7 @@ Note: this visualization is made using Builder, where you can easily import your
 
 ### Using finer resolution H3 for simple cannibalization analysis
 
-Next, we will analyze in finer detail the grid cell that we have identified contains the highest concentration of Starbucks locations, with ID `595193501273030655`. 
+Next, we will analyze in finer detail the grid cell that we have identified contains the highest concentration of Starbucks locations, with ID `8428d55ffffffff`. 
 
 <div class="figures-table" style="text-align:center">
     <figure>
@@ -52,7 +52,7 @@ WITH
   FROM `cartobq.docs.starbucks_locations_usa`
   WHERE
     ST_INTERSECTS(geog,
-      bqcarto.h3.ST_BOUNDARY(595193501273030655))
+      bqcarto.h3.ST_BOUNDARY('8428d55ffffffff'))
   GROUP BY h3id
   )
 SELECT
@@ -65,7 +65,7 @@ FROM
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/38bcfc88-d53c-4d1b-b399-28bea935fa18" title="Starbucks locations around Seattle aggregated in an H3 grid of resolution 9."></iframe>
 
-We can clearly identify that there are two H3 cells with the highest concentration of Starbucks locations, and therefore at risk of suffering cannibalisation. These are cells with IDs `617711491567058943` and `617711491559718911` respectively. Finally, to complete our analysis, we can calculate how many locations are within one cell distance of the last cell:
+We can clearly identify that there are two H3 cells with the highest concentration of Starbucks locations, and therefore at risk of suffering cannibalization. These are cells with IDs `8928d542c17ffff` and `8928d542c87ffff` respectively. Finally, to complete our analysis, we can calculate how many locations are within one cell distance of this first cell:
 
 ```sql
 WITH
@@ -76,12 +76,12 @@ WITH
   FROM `cartobq.docs.starbucks_locations_usa`
   WHERE
     ST_INTERSECTS(geog,
-      bqcarto.h3.ST_BOUNDARY(595193501273030655))
+      bqcarto.h3.ST_BOUNDARY('8428d55ffffffff'))
   GROUP BY h3id
   )
 SELECT 
 SUM(agg_total)
 FROM data
-WHERE h3id IN UNNEST(bqcarto.h3.KRING(617711491559718911, 1))
+WHERE h3id IN UNNEST(bqcarto.h3.KRING('8928d542c17ffff', 1))
 -- 13
 ```

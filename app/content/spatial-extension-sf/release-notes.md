@@ -1,5 +1,12 @@
 ## Release notes
 
+### August 11, 2021
+
+#### Module quadkey v1.0.1
+
+Fixed
+- Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
+
 ### June 2, 2021
 
 #### Module h3 v1.0.1
