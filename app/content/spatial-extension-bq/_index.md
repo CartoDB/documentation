@@ -35,6 +35,7 @@ cascade:
         - "accessors"
         - "clustering"
         - "constructors"
+        - "geohash"
         - "data"
         - "h3"
         - "measurements"
