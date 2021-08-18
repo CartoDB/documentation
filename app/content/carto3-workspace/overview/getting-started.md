@@ -150,7 +150,7 @@ The first time that you access the Workspace, you will see a *Welcome* banner wi
 
 View your latest content. This module displays the latest maps that you have been working on so that you can quickly access and continue working with them.
 
-![Recent maps](/img/cloud-native-workspace/get-started/recent_maps.png)
+![Recent maps](/img/cloud-native-workspace/get-started/recent_maps2.png)
 
 
 #### Getting started
@@ -169,7 +169,7 @@ Fresh features, interesting articles, and the latest news related to CARTO 3 fro
 
 In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Home, Maps, Data Explorer, Connections, Applications, Account Settings, and Developers. 
 
-![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
+![Menu features](/img/cloud-native-workspace/get-started/the_menu_features2.png)
 
 In the bottom part of the menu, you have additional options to Join our Slack channel, send us feedback, or access to Documentation.
 
@@ -187,7 +187,7 @@ The CARTO 3 Workspace includes functionalities for registering and managing conn
 
 Go to the *Connections* menu in the Workspace, where you will see the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/get-started/the_connections_module.png)
+![Connections module](/img/cloud-native-workspace/get-started/the_connections_module2.png)
 
 For adding a new connection follow the next steps:
 

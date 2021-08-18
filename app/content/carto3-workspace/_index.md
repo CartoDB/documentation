@@ -14,6 +14,11 @@ cascade:
         - "Introduction"
         - "Adding your first connection"
         - "Creating a map from your data"
+    - name: "Data Observatory"
+      elements:
+        - "Accessing and browsing the Spatial Data Catalog"
+        - "Subscribing to public and premium datasets"
+        - "Managing your subscriptions"
     - name: "Connections"
       elements:
         - "Introduction"
