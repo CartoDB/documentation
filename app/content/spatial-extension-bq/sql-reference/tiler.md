@@ -22,7 +22,7 @@ Generates a point aggregation tileset.
 | :----- | :------ |
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
-|`zoom_max`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`zoom_max`| Default: `0`. A `NUMBER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
 |`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`target_partitions`| Default: `4000`. Max: `4000`. A `NUMBER` that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
