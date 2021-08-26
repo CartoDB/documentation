@@ -1,5 +1,28 @@
 ## Release notes
 
+### August 26, 2021
+
+#### Module data v1.0.0-beta.6
+
+Changed
+- ENRICH_GRID and DATAOBS_ENRICH_GRID procedures take `input_query` and `input_index_column` parameters instead of the `indices` array.
+- DATAOBS_ENRICH_* procedures now report missing subscriptions in a more user-friendly way.
+
+### August 25, 2021
+
+#### Module tiler v1.12.2
+
+Fixed
+- Fix support for TIMESTAMP,DATETIME in CREATE_TILESET and CREATE_SIMPLE_TILESET.
+- Reduce parallelization to skip the recent error: "Not enough resources for query planning - too many subqueries or query is too complex"
+
+### August 24, 2021
+
+#### Module h3 v1.0.3
+
+Fixed
+- Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
+
 ### August 11, 2021
 
 #### Module quadkey v1.0.3
@@ -17,9 +40,15 @@ Feature
 
 ### August 4, 2021
 
+#### Module h3 v1.0.2
+
+Feature
+- Add KRING_INDEXED function.
+
 #### Module quadkey v1.0.2
 
 Feature
+- Add KRING_INDEXED function.
 - Add ST_GEOGPOINTFROMQUADINT function.
 
 ### July 30, 2021

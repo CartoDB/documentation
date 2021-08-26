@@ -11,22 +11,24 @@ This module is in an experimental phase and therefore is subject to breaking cha
 ### DATAOBS_ENRICH_GRID
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_GRID(grid_type, indices, variables, output, source)
+data.DATAOBS_ENRICH_GRID(grid_type, input_query, input_index_column, variables, output, source)
 {{%/ bannerNote %}}
 
 **Description**
 
 This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2, geohash) using Data Observatory subscriptions. The cells are identified by their indices.
 
-* `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
-* `indices`: `ARRAY<STRING>` with the grid indices of the cells to be enriched. Note that indices are passed as STRINGs, even for s2 and quadkey.
+* `grid_type`: `STRING` Type of grid: "h3", "quadkey", "s2" or "geohash".
+* `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce
+   valid grid indices for the selected grid type in a column of the proper type (STRING for h3 or geohash, and INT64 for quadkey or s2). It can include additional columns with data associalted to the grid cells that will be preserved.
+* `input_index_column`: `STRING` name of a column in the query that contain the grid indices.
 * `variables`: `ARRAY<STRUCT<slug STRING, aggr STRING>>`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
 * `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
 
 **Output**
 
-The output table will contain the cell indices and one column for each variable in `variables`, named after its corresponding slug and including a prefix indicating the aggregation method used.
+The output table will contain the input columns and one column for each variable in `variables`, named after its corresponding slug and including a prefix indicating the aggregation method used.
 
 
 **Example**
@@ -34,7 +36,10 @@ The output table will contain the cell indices and one column for each variable 
 ```sql
 CALL carto-st.data.DATAOBS_ENRICH_GRID(
   'h3',
-  ['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff'],
+  R'''
+  SELECT * FROM UNNEST(['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff']) AS index
+  ''',
+  'index',
   [('population_14d9cf55', 'SUM')],
   ['`my-project.my-dataset.my-enriched-table`'],
   'my-dataobs-project.my-dataobs-dataset'
@@ -333,7 +338,7 @@ CALL carto-st.data.DATAOBS_SUBSCRIPTION_VARIABLES('myproject.mydataset','');
 ### ENRICH_GRID
 
 {{% bannerNote type="code" %}}
-data.ENRICH_GRID(grid_type, indices, data_query, data_geography_column, variables, output)
+data.ENRICH_GRID(grid_type, input_query, input_index_column, data_query, data_geography_column, variables, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -341,7 +346,9 @@ data.ENRICH_GRID(grid_type, indices, data_query, data_geography_column, variable
 Enrich grid cells with user-provided data.
 
 * `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
-* `indices`: `ARRAY<STRING>` with the grid indices of the cells to be enriched. Note that indices are passed as STRINGs, even for s2 and quadkey.
+* `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce
+   valid grid indices for the selected grid type in a column of the proper type (STRING for h3 or geohash, and INT64 for quadkey or s2). It can include additional columns with data associalted to the grid cells that will be preserved.
+* `input_index_column`: `STRING` name of a column in the query that contain the grid indices.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY<STRUCT<column STRING, aggregation STRING>>` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`).
@@ -350,7 +357,7 @@ Enrich grid cells with user-provided data.
 
 **Output**
 
-The resulting table has a column for the grid cell index and one column for each variable in `variables`, named with a prefix indicating the aggregation method used.
+The resulting table has all the input columns and one additional column for each variable in `variables`, named with a prefix indicating the aggregation method used.
 
 {{% customSelector %}}
 **Example**
@@ -359,7 +366,10 @@ The resulting table has a column for the grid cell index and one column for each
 ```sql
 CALL carto-st.data.ENRICH_GRID(
    'h3',
-   ['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff'],
+   R'''
+   SELECT * FROM UNNEST(['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff']) AS index
+   ''',
+   'index',
    R'''
    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
    ''',
@@ -584,5 +594,5 @@ Returns the current version of the data module.
 
 ```sql
 SELECT carto-st.data.VERSION();
--- 1.0.0-beta.5
+-- 1.0.0-beta.6
 ```
