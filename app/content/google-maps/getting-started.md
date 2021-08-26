@@ -14,7 +14,7 @@ After completing this guide, you will have your first Google Maps API map with a
 
 ### Basic setup
 
-We are going to start with the Hello World example from the Google Maps Javascript API [documentation](https://developers.google.com/maps/documentation/javascript), but centering the initial view centered on the United States and zoom level 4. To simplify the example, we are going to embed the JavaScript code and the CSS declarations in the HTML file.
+We are going to start with the Hello World example from the Google Maps Javascript API [documentation](https://developers.google.com/maps/documentation/javascript), but centering the initial view on the United States and zoom level 4. To simplify the example, we are going to embed the JavaScript code and the CSS declarations in the HTML file.
 
 At this point you will have a simple map:
 
@@ -33,7 +33,7 @@ At this point you will have a simple map:
 
 ### Adding data from CARTO
 
-The first thing you need to do is to add the [deck.gl](https://deck.gl) dependencies, including the CARTO [submodule](https://deck.gl/docs/api-reference/carto/overview):
+The first step you need to perform is to add the [deck.gl](https://deck.gl) dependencies, including the CARTO [submodule](https://deck.gl/docs/api-reference/carto/overview):
 
 ```html
 <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
@@ -56,7 +56,7 @@ Now you can add a map layer from the public account. In order to add the layer, 
 
 - `type` defines the type of dataset. In this case, we are going to visualize a table so we use one of the constants defined in the `MAP_TYPES` enumeration.
   
-- `data` contains the dataset that we want to visualize. It can be the name of a table, the name of a tileset or a SQL query. In this case we are going to provide a table name. The `CartoLayer` will make the appropriate requests to the Maps API to retrieve the GeoJSON features from the BigQuery table.
+- `data` contains the dataset that we want to visualize. It can be the name of a table, the name of a tileset, or a SQL query. In this case we are going to provide a table name. The `CartoLayer` will make the appropriate requests to the Maps API to retrieve the GeoJSON features from the BigQuery table.
 
 - Style parameters. In order to display the information, the [`CartoLayer`](https://deck.gl/docs/api-reference/carto/carto-layer) uses the [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer) to style the features, so all the properties of this class are supported. The style parameters depend on the dataset type of geometry. In this case, we are adding a point layer, so we specify the point color using the `getFillColor` property, the circle outline color with the `getLineColor` property, and the point and outline sizes through the `pointRadiusMinPixels` and `lineWidthMinPixels` properties.
    

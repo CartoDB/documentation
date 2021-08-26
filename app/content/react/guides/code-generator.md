@@ -1,6 +1,6 @@
 ## Code Generator
 
-CARTO for React includes a code generator based on [Hygen](https://www.hygen.io/) to speed up the creation of the most common elements found in apps: views, sources and layers.
+CARTO for React includes a code generator based on [Hygen](https://www.hygen.io/) to speed up the creation of the most common elements found in apps: views, sources, and layers.
 
 ### Views
 

@@ -14,7 +14,7 @@ Set of common functions, to be used mostly by other packages. You won't usually 
 
 #### aggregationFunctions
 
-Contains a set of basic aggregation functions (count, min, max, sum and average), used automatically for widgets and layers, see [AggregationTypes](#aggregationtypes). Functions are applicable to numbers and also objects using a numeric property
+Contains a set of basic aggregation functions (count, min, max, sum, and average), used automatically for widgets and layers, see [AggregationTypes](#aggregationtypes). Functions are applicable to numbers and also objects using a numeric property.
 
 - **Input**:
 
@@ -40,7 +40,7 @@ Contains a set of basic aggregation functions (count, min, max, sum and average)
 
 #### groupValuesByColumn
 
-Makes groups from f∫eatures based in a column (`keysColumn`) and applying an `operation` to the numeric values in a predefined column (`valuesColumn`).
+Makes groups from features based in a column (`keysColumn`) and applying an `operation` to the numeric values in a predefined column (`valuesColumn`).
 
 - **Input**:
 {{% tableWrapper tab="true" %}}
@@ -72,7 +72,7 @@ Makes groups from f∫eatures based in a column (`keysColumn`) and applying an `
 
 #### histogram
 
-Categorizes numeric values as a histogram from a set of features, having the option of just calculating the frequency (with COUNT operation) or an aggregated operation on the features inside the bin (eg. SUM).
+Categorizes numeric values as a histogram from a set of features, having the option of just calculating the frequency (with COUNT operation) or an aggregated operation on the features inside the bin (e.g., SUM).
 
 - **Input**:
 
@@ -156,7 +156,7 @@ Receives an array of features and the properties that will be used for each axis
 
 #### AggregationTypes
 
-Enum for the different types of aggregations, available for widgets
+Enum for the different types of aggregations, available for widgets.
 
 - **Options**:
 

@@ -1,6 +1,6 @@
 ## Getting started
 
-The CARTO platform is framework-agnostic so you can build applications using CARTO with your framework of choice. When you build an application with CARTO you mostly use deck.gl as the visualization library. This guide describes an approach for integrating [CARTO for deck.gl](/deck-gl) within applications developed using the [Angular](https://angular.io/) framework, but you can use CARTO with Angular and other visualization libraries.
+The CARTO platform is framework-agnostic so you can build applications using CARTO with your framework of choice. When you build an application with CARTO it is common to use deck.gl as the visualization library. This guide describes an approach for integrating [CARTO for deck.gl](/deck-gl) within applications developed using the [Angular](https://angular.io/) framework, but you can use CARTO with Angular and other visualization libraries.
 
 We have created an example that you can download and execute in your own local machine, available in the viz-doc [repository](https://github.com/CartoDB/viz-doc):
 
@@ -14,7 +14,7 @@ We have created an example that you can download and execute in your own local m
     </li>
 </ul>
 
-This guide follows an step-by-step approach using the mentioned example as reference. To download and execute the example, start by cloning the repository:
+This guide follows a step-by-step approach using the mentioned example as reference. To download and execute the example, start by cloning the repository:
 
 ```shell
 git clone git@github.com:CartoDB/viz-doc.git
@@ -38,7 +38,7 @@ Now you are ready to start the application in your local development environment
 ng serve
 ```   
 
-And you will be able to access the application in the following URL:
+And you will be able to access the application using the following URL:
 
 `https://localhost:4200`
 
@@ -73,9 +73,9 @@ npm install @deck.gl/layers
 
 ### Basic layout
 
-At this point we have the default Angular project structure with the addition of the deck.gl packages. Now we start by defining our application layout. We will have a simple but versatile layout with a header, a left sidebar and a map area.
+At this point we have the default Angular project structure with the addition of the deck.gl packages. Now we start by defining our application layout. We will have a simple but versatile layout with a header, a left sidebar, and a map area.
 
-The first thing we are going to do is to generate a header component in the `src/app/components` folder with this command:
+The first task we are going to perform is to generate a header component in the `src/app/components` folder with this command:
 
 ```bash
 ng g component components/header
@@ -118,7 +118,7 @@ In the `<router-outlet>` element we are going to inject a new component (`Sideba
 ng g component modules/home/views/sidebar
 ```
 
-We are going to leave empty this component for now but we are going to configure routing so this component is loaded when we request the homepage for the application. We need to open the `app-routing.module.ts` file and configure the `routes` property to load the HomeComponent and its SidebarComponent child:
+We are going to leave this component empty for now but we are going to configure routing so this component will be loaded when we request the homepage for the application. We need to open the `app-routing.module.ts` file and configure the `routes` property to load the HomeComponent and its SidebarComponent child:
 
 ```Typescript
 const routes: Routes = [
@@ -135,7 +135,7 @@ const routes: Routes = [
 ```
 
 {{% bannerNote title="tip" %}}
-Our example application is going to have one module only but we have prepared the example with [Angular Routing](https://angular.io/guide/router) so you can use it as an starting point for creating a more complex application with multiple modules and views.
+Our example application is going to have only one module but we have prepared the example with [Angular Routing](https://angular.io/guide/router) so you can use it as an starting point for creating a more complex application with multiple modules and views.
 {{%/ bannerNote %}}
 
 ### Map component
@@ -146,7 +146,7 @@ Now that we have our basic layout and routing, we are going to add a map compone
 ng g module modules/shared/shared
 ```
 
-And now we create the `map` component:
+Now we create the `map` component:
 
 ```bash
 ng g component modules/shared/map
@@ -161,7 +161,7 @@ The HTML template for this component will include a main `<div>` element with on
 </div>
 ```
 
-The style definition includes the CSS styles for ensuring the map takes almost all of the remaining space:
+The style definition includes the CSS styles to ensure the map takes almost all of the remaining space:
 
 ```css
 .map-container {
@@ -180,9 +180,9 @@ The style definition includes the CSS styles for ensuring the map takes almost a
 }
 ```
 
-Finally we must add the code to include our map in the component TypeScript file. There are three main things we need to do:
+Finally we must add the code to include our map in the component TypeScript file. There are three main tasks we need to perform:
 
-1. Add our map when the component has been initialized (`ngAfterViewInit`). We call a private function called `launchMap` with the initial center coordinates and zoom level:
+1. Add our map when the component has been initialized (`ngAfterViewInit`). We call a private function `launchMap` with the initial center coordinates and zoom level:
 
 ```Typescript
 ngAfterViewInit() {
@@ -224,11 +224,11 @@ this.deck = new Deck({
 });
 ```
 
-In order to have the best performance, we run both the Mapbox GL JS map and deck.gl instantiations outside Angular zone, to ensure Angular is not running any change detection code (`zone.runOutsideAngular`).
+In order to have optimal performance, we run both the Mapbox GL JS map and deck.gl instantiations outside Angular zone, to ensure Angular is not running any change detection code (`zone.runOutsideAngular`).
 
 ### Layers
 
-If we run our application right now, we will hopefully see our homepage with an empty sidebar on the left and our Positron basemap in the map area. We are ready to start adding our layers to the map.
+If we run our application in this moment, we will hopefully see our homepage with an empty sidebar on the left and our Positron basemap in the map area. We are ready to start adding our layers to the map.
 
 The process for adding layers with datasets from the CARTO 3 platform involves these steps:
 
@@ -245,7 +245,7 @@ In the Workspace we need to define a connection with access to those datasets an
 
 #### Setting the credentials
 
-The Map component is also in charge of setting the credentials we will use for connecting with the CARTO platform and retrieve the data for the layers we are going to add in the next section. 
+The Map component is also responsible for setting the credentials we will use for connecting with the CARTO platform and retrieving the data for the layers we are going to add in the next section. 
 
 First we need to create a token using the Tokens API with access to the datasets we want to visualize:
 
@@ -287,9 +287,9 @@ setDefaultCredentials({
 
 #### Creating the layers
 
-Once we have setup the credentials for connecting to the CARTO platform, we can add layers to visualize the datasets. 
+Once we have established the credentials for connecting to the CARTO platform, we can add layers to visualize the datasets. 
 
-We are going to define a [base class](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/models/layer.ts) for layers and all the layers will inherit from this class. The Layer objects will include an `id` property to be able to identify the layer and a `visible` property initialized by default to `true`. The base layer implements the `show` and `hide` methods and defines the `getLayer` method that must be implemented by derived layers:
+We are going to define a [base class](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/models/layer.ts) for layers from which all the layers will inherit. The Layer objects will include an `id` property in order to identify the layer and a `visible` property initialized by default to `true`. The base layer implements the `show` and `hide` methods and defines the `getLayer` method that must be implemented by derived layers:
 
 ```Typescript
 export class Layer {
@@ -327,9 +327,9 @@ In the example we have created three layers to showcase some of the options for 
 
 - [RailroadsLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/rail-roads-layer.ts). This is a line layer created from a CARTO dataset.
 
-- [StoresLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/stores-layer.ts). This is a point layer created from a GeoJSON dataset extracted from the CARTO platform using the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer). We could have added directly the `CartoLayer` with `type: MAP_TYPES.TABLE` but we wanted to illustrate the `getData` functionality. For CARTO 2 you can follow a similar approach with the [SQL API](https://carto.com/developers/sql-api/).
+- [StoresLayer](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/modules/home/layers/stores-layer.ts). This is a point layer created from a GeoJSON dataset extracted from the CARTO platform using the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function that uses deck.gl [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer). We could have directly added the `CartoLayer` with `type: MAP_TYPES.TABLE` but we wanted to illustrate the `getData` functionality. For CARTO 2 you can follow a similar approach with the [SQL API](https://carto.com/developers/sql-api/).
 
-The structure for all the layers is similar: we define a class that extends from the base `Layer` class. We need to specify a unique `id` for the layer and set the `visible` property to `true` or `false` depending if we want to show the layer or not when the view is loaded. The most important part is creating the deck.gl object that we must return in the `getLayer` method. Here we specify the data source for the layer, the `id` and `visible` properties and the styling properties like `getFillColor` or `getLineColor`. Below you can see the implementation for the `getLayer` method in the `RailroadsLayer`:
+The structure for all the layers is similar: we define a class that extends from the base `Layer` class. We need to specify a unique `id` for the layer and set the `visible` property to `true` or `false` depending on if we want to show the layer or not when the view is loaded. The most important part is creating the deck.gl object that we must return in the `getLayer` method. Here we specify the data source for the layer, the `id`, and `visible` properties and the styling properties like `getFillColor` or `getLineColor`. Below you can see the implementation for the `getLayer` method in the `RailroadsLayer`:
 
 ```Typescript
 async getLayer() {
@@ -373,13 +373,13 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
 Then we can use the `ngOnInit` event handler to add the layers to the map and the `ngOnDestroy` event handler to remove the layers from the map when we switch to a different view.
 
-Instead of adding or removing directly the layers in those event handlers, we are going to define an Angular service that will implement the most common operations found in location intelligence applications. The service is going to be called [`MapService`](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/services/map.service.ts) and will take care of adding, removing or updating layers, among other operations:
+Instead of adding or removing directly the layers in those event handlers, we are going to define an Angular service that will implement the most common operations found in Location Intelligence applications. The service is going to be called [`MapService`](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/services/map.service.ts) and will take care of adding, removing, or updating layers, amongst other operations:
 
 ```shell
 ng g service services/map
 ```
 
-The first thing we need to do is to add to the service the deck.gl instance created by the `MapComponent`. We define a `setDeckInstance` public method that will be called after we have created the deck.gl instance in the `launchMap` private method:
+The first task we need to perform is to add to the service the deck.gl instance created by the `MapComponent`. We define a `setDeckInstance` public method that will be called after we have created the deck.gl instance in the `launchMap` private method:
 
 ```typescript
 ...
@@ -387,9 +387,9 @@ this.mapService.setDeckInstance(this.deck);
 ...
 ```
 
-Then we need to add a couple of private arrays for managing the layers efficiently. The `layers` array will contain the collection of deck.gl layers and the `layersIdx` array will contain the ids for these layers so we can efficiently retrieve, update or remove layers. 
+Then we need to add a couple of private arrays to manage the layers efficiently. The `layers` array will contain the collection of deck.gl layers and the `layersIdx` array will contain the ids for these layers so we can efficiently retrieve, update, or remove layers. 
 
-For instance, adding a layer to the map will be an asynchronous operation that includes adding the layer `id` to the `layersIdx` array, adding the deck.gl layer to the `layers` array and calling the `updateDeck` private method to update the deck.gl instance `layers` property:
+For example, adding a layer to the map will be an asynchronous operation that includes adding the layer `id` to the `layersIdx` array, adding the deck.gl layer to the `layers` array and calling the `updateDeck` private method to update the deck.gl instance `layers` property:
 
 ```typescript
 async addLayer(layer: Layer) {
@@ -400,7 +400,7 @@ async addLayer(layer: Layer) {
 }
 ```
 
-Please review the [`MapService`](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/services/map.service.ts) code to find out how we are implementing the different layer operations.
+Please review the [`MapService`](https://github.com/CartoDB/viz-doc/blob/master/deck.gl/examples/pure-js/angular/src/app/services/map.service.ts) code to discover how we are implementing the different layer operations.
 
 Now that we have the `MapService` defined, we must inject the dependency in the `SidebarComponent` and use the service to add and remove layers in the event handlers:
 
@@ -418,20 +418,20 @@ ngOnDestroy () {
 }
 ```
 
-One important functionality of this service is the ability to keep the different applications components in sync. In order to implement this functionality with a clear design we take advantage of the [`Observable`](https://rxjs-dev.firebaseapp.com/guide/observable), [`Subject`](https://rxjs-dev.firebaseapp.com/guide/subject) and [`BehaviorSubject`](https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject) types defined in the Angular [RxJS library](https://angular.io/guide/rx-library). With this library we can use reactive programming concepts that provide a sound approach to location intelligence applications where you need to maintain several elements in sync (map, layers, user interface components...)
+One important functionality of this service is the ability to keep the different applications components in sync. In order to implement this functionality with a clear design we take advantage of the [`Observable`](https://rxjs-dev.firebaseapp.com/guide/observable), [`Subject`](https://rxjs-dev.firebaseapp.com/guide/subject), and [`BehaviorSubject`](https://rxjs-dev.firebaseapp.com/guide/subject#behaviorsubject) types defined in the Angular [RxJS library](https://angular.io/guide/rx-library). With this library we can use reactive programming concepts that provide a sound approach to Location Intelligence applications where you need to maintain several elements in sync (map, layers, user interface components...)
 
-Please take a look at the `onLayerChange` event handler and the `onViewStateChange` property to understand how we are synchronizing layer changes (for instance when we are filtering data) or viewstate changes.
+Please take a look at the `onLayerChange` event handler and the `onViewStateChange` property to understand how we are synchronizing layer changes (for example when we are filtering data) or viewstate changes.
 
 ### Manage layer visibility
 
-We already have an application where we are showing layers with data coming from the CARTO platform. In location intelligence applications, one basic functionality is the ability to show or hide layers on demand. We are going to create a new component called `ToggleComponent` to control the visibility of layers.
+We already have an application where we are showing layers with data coming from the CARTO platform. In Location Intelligence applications, one basic functionality is the ability to show or hide layers on demand. We are going to create a new component called `ToggleComponent` to control the visibility of layers.
 
 ```shell
 ng g component modules/home/components/toggle/toggle
 ```
 
 {{% bannerNote title="tip" %}}
-We are adding this component to the `modules/home/components` folder because, in this simple example, we only have one module (`home`) and the component is quite coupled with the module/view. If you are going to build an application with multiples modules/views, it makes sense to generalize the functionality of this component and add it to the `modules/shared/components` folder instead so we can reuse it in all the views.
+We are adding this component to the `modules/home/components` folder because, in this simple example, we only have one module (`home`) and the component is quite coupled with the module/view. If you are going to build an application with multiples modules/views, it makes sense to generalize the functionality of this component and instead add it to the `modules/shared/components` folder so that we can reuse it in all the views.
 {{%/ bannerNote %}}
 
 In the HTML template for the component we are going to use the [`<mat-slide-toggle>`](https://material.angular.io/components/slide-toggle/overview) component from the [Angular Material](https://material.angular.io/) UI library. We will include a slide toggle component for each layer. We will use the `change` event to update the layer visibility when the user interacts with the toggle and the `checked` event to keep the layer visibility status up-to-date.
@@ -480,13 +480,13 @@ Finally we must add the component to the `SidebarComponent` HTML template:
 
 ### Interactivity
 
-Another important functionality commonly found in location intelligence applications is interactivity. In our example we are using two different features to make our application more interactive and have a better user experience:
+Another important functionality commonly found in Location Intelligence applications is interactivity. In our example we are using two different features to make our application more interactive and have an improved user experience:
 
 - Highlighting the features when the user moves the pointer over them
   
 - Showing a tooltip with feature information when the user moves the pointer over it
   
-Highlighting features is very easy using deck.gl. For instance, if we want to highlight the railroad lines with green color, we just need to add the following properties to the deck.gl layer instantiation:
+Highlighting features is very easy using deck.gl. For instance, if we want to highlight the railroad lines with a green color, we just need to add the following properties to the deck.gl layer instantiation:
 
 ```typescript
 ...
@@ -496,7 +496,7 @@ highlightColor: [0, 255, 0],
 ...
 ```
 
-Implementing a tooltip with deck.gl is also quite easy. First we need to set the `pickable` property to `true` for all the layers we want to show a tooltip for (in the layer instantiation). Then we need to add an event handler for the `getTooltip` property in the deck.gl instance instantiation in the `MapComponent`:
+Implementing a tooltip with deck.gl is also straight forward. First we need to set the `pickable` property to `true` for all the layers we want to show a tooltip for (in the layer instantiation). Then we need to add an event handler for the `getTooltip` property in the deck.gl instance instantiation in the `MapComponent`:
 
 ```typescript
 getTooltip: this.tooltip   
@@ -533,7 +533,7 @@ We have implemented a common tooltip that is applied to all the different layers
 
 ### Charts
 
-We are going to finish this guide adding a chart to our application. This is another functionality that we usually see in location intelligence apps that allows users to better analyze the information displayed in the map.
+We are going to finish this guide by adding a chart to our application. This is another functionality that we usually see in Location Intelligence applications that allows users to better analyze the information displayed in the map.
 
 In the example we have created a component that shows a bar chart with the number of the stores layer features by store type in the current viewport. To implement the chart we are using the [Apache ECharts](https://echarts.apache.org/en/index.html) library. 
 
@@ -556,7 +556,7 @@ In the component HTML template, we add the `div` element that will contain our c
 <div echarts [options]="chartOptions" class="bar-chart"></div>
 ```
 
-We set the chart height in the component styles definition file and then we are ready to add the charting code to the component class. The chart is updated automatically with every viewstate change. In order to do that, the `MapService` is injected in the component constructor and the component subscribes to the map service `onViewStateChange` event in the `ngOnInit` handler. When this event is fired, we retrieve the stores layer features in the current viewport and update the chart:
+We set the chart height in the component styles definition file and then we are ready to add the charting code to the component class. The chart is updated automatically with every viewstate change. In order to achieve this, the `MapService` is injected in the component constructor and the component subscribes to the map service `onViewStateChange` event in the `ngOnInit` handler. When this event is fired, we retrieve the stores layer features in the current viewport and update the chart:
 
 ```typescript
 ngOnInit() {
@@ -583,7 +583,7 @@ function getViewportFeatures(features: any, viewport: any) {
 
 Then the features are grouped by store type and counted using the `groupValuesByColumn` method. This method returns an array of key-value properties with the store type (category) as the key and the number of stores as the value. We call this method using the store type as the keys column and the store revenue as the values column.
 
-This method uses a map-reduce approach: in the map stage, we assign the store to its category (store type) and in the reduce stage we accumulate the store revenue. Instead of summing up the revenues for each of the store types, we are simplifying the calculation and we are just returning the number of elements (stores) per category (store type). 
+This method uses a map-reduce approach: in the map stage, we assign the store to its category (store type) and in the reduce stage we accumulate the store revenue. Instead of summing the revenues for each of the store types, we are simplifying the calculation and just returning the number of elements (stores) per category (store type). 
 
 ```typescript
 function groupValuesByColumn(data: [], valuesColumn: string, keysColumn: string) {
@@ -619,6 +619,6 @@ Finally we must add the chart component to the `SidebarComponent` HTML template 
 ```
 
 {{% bannerNote title="tip" %}}
-In this simple example, we have included this chart component in the `Home` module and it is tightly coupled with the Stores layer. If you are building a more complex application with several charts, this component can be easily generalized to work with different layers and generate different types of charts. In the particular case of the `groupValuesByColumn`, this method is implementing a calculation similar to doing a SQL query with a `GROUP BY` clause on the keys column and the map stage can be improved to apply different aggregation operations, in addition to the current `COUNT` calculation (`AVG`, `SUM`, ..)
+In this simple example, we have included this chart component in the `Home` module and it is tightly coupled with the Stores layer. If you are building a more complex application with several charts, this component can be easily generalized to work with different layers and generate different types of charts. In the particular case of the `groupValuesByColumn`, this method is implementing a calculation similar to performing a SQL query with a `GROUP BY` clause on the keys column and the map stage can be improved to apply different aggregation operations, in addition to the current `COUNT` calculation (`AVG`, `SUM`, ..)
 {{%/ bannerNote %}}
 

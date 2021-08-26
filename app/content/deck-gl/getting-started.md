@@ -4,9 +4,9 @@
 
 [deck.gl](https://deck.gl) is one of the most popular Open Source map visualization libraries and is the preferred library to use with CARTO. With deck.gl and CARTO you can create highly scalable applications that visualize location data in many different ways. We have created a submodule `@deck.gl/carto` that you can use to work with CARTO datasets and tilesets in a very easy and straightforward way.
 
-The [CartoLayer](/deck-gl/using-the-cartolayer) is the deck.gl layer that provides the integration with the CARTO platform. This layer can be used from different frameworks like React, Angular or Vue.js. It works both with CARTO 2 and CARTO 3.
+The [CartoLayer](/deck-gl/using-the-cartolayer) is the deck.gl layer that provides the integration with the CARTO platform. This layer can be used from different frameworks like React, Angular, or Vue.js. It works with both CARTO 2 and CARTO 3.
 
-We provide lots of examples that you can checkout to see how to use the deck.gl library with our platform. Please take a look at the [examples](examples/basic-examples/hello-world.html) section in this site and the examples in the [viz-doc](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples) repository. 
+We have provided many examples that you can study to see how to use the deck.gl library with our platform. Please take a look at the [examples](examples/basic-examples/hello-world.html) section in this site and the examples in the [viz-doc](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples) repository. 
 
 It is important that you begin by learning the core deck.gl concepts. Please check the [official deck.gl documentation site](https://deck.gl/docs).
 
@@ -14,7 +14,7 @@ It is important that you begin by learning the core deck.gl concepts. Please che
 
 
 {{% bannerNote title="Are you a React user?" %}}
-If you're a React user and you want to build a web application using CARTO, we recommend you to use [CARTO for React](/react/overview/).
+If you are a React user and want to build a web application using CARTO, we recommend you to use [CARTO for React](/react/overview/).
 {{%/ bannerNote %}}
 
 ### What does CARTO provide
@@ -23,9 +23,9 @@ Starting with version 8.3, deck.gl includes a submodule `@deck.gl/carto` for int
 
 - **Access data from the CARTO platform**. Using the [setDefaultcredentials](/deck-gl/reference/#setdefaultcredentials) function you supply the parameters needed to connect with the CARTO platform, then you use the [CartoLayer](/deck-gl/reference/#cartolayer) to visualize the datasets.
   
-- **Use CARTO basemaps**. With deck.gl you can choose between different basemaps for your visualizations. CARTO provides a set of free basemaps from OpenStreetMap, but you can also use Google Maps, Mapbox or any other provider with MVT support.
+- **Use CARTO basemaps**. With deck.gl you can choose between different basemaps for your visualizations. CARTO provides a set of free basemaps from OpenStreetMap, but you can also use Google Maps, Mapbox, or any other provider with MVT support.
   
-- **Create data-driven visualizations**. Through our style helpers you can easily create choropleth maps for numerical and categorical data.
+- **Create data-driven visualizations**. Using our style helpers you can easily create choropleth maps for numerical and categorical data.
 
 ### Installation
 
@@ -33,7 +33,7 @@ Two different flavors are provided:
 
 - **Scripting**. Useful to build prototypes.
   
-- **NPM Module**. You'll use the NPM module in React applications, Vanilla JavaScript applications or applications using other frameworks such as Angular or Vue.js.
+- **NPM Module**. You'll use the NPM module in React applications, Vanilla JavaScript applications, or applications using other frameworks such as Angular or Vue.js.
 
 #### Using scripting
 
@@ -52,7 +52,7 @@ In the [Examples](/deck-gl/examples/hello-world) section you can find interactiv
 
 #### Using the NPM module
 
-You can use the NPM module for Vanilla JavaScript applications or for applications using frameworks like React, Angular or Vue.js. 
+You can use the NPM module for Vanilla JavaScript applications or for applications using frameworks like React, Angular, or Vue.js. 
 
 You just need to add the deck.gl dependency to your project using the package manager. When you install this dependency, the CARTO submodule is already included:
 
@@ -60,7 +60,7 @@ You just need to add the deck.gl dependency to your project using the package ma
 npm install deck.gl
 ```   
 
-We have specific documentation for working with the CARTO submodule for deck.gl and different frameworks like [React](/react), [Angular](/angular) and [Vue.js](/vue). 
+We have specific documentation for working with the CARTO submodule for deck.gl and different frameworks like [React](/react), [Angular](/angular), and [Vue.js](/vue). 
 
 In the [viz-doc](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples) repo we provide additional examples that you can download and run, using the following instructions:
 
@@ -70,7 +70,7 @@ In the [viz-doc](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples
    git clone git@github.com:CartoDB/viz-doc.git
    ```   
 
-- Change directory to the example you are interested in, e.g.
+- Change directory to the example you are interested in, e.g.,
 
    ```shell
    cd viz-doc/deck.gl/examples/pure-js
