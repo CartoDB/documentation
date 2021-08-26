@@ -1,5 +1,50 @@
 ## Operations
 
+### Configuring proxy
+
+When the instance is going to be installed behind a proxy it is necessary to:
+
+* Configure the `noProxy` policy for Docker:
+	```bash
+	# /root/.docker/config.json
+	{
+		"auths": {},
+		"credHelpers":
+		{
+      			"asia.gcr.io": "gcr",
+       			"eu.gcr.io": "gcr",
+       			"gcr.io": "gcr",
+       			"marketplace.gcr.io": "gcr",
+       			"us.gcr.io": "gcr"
+		},
+		"proxies": {
+      			"default":
+       			{
+       				"httpProxy": "http://192.168.3.4:1234",
+       				"httpsProxy": "http://192.168.3.4:1234",
+       				"noProxy": "127.0.0.1,localhost,carto.lan"
+      			}
+		}
+	}
+	```
+* Configure `http-proxy` for Docker:
+	```bash
+	# /etc/systemd/system/docker.service.d/http-proxy.conf
+	[Service]
+	Environment="HTTP_PROXY=https://192.168.3.4:1234"
+	Environment="HTTPS_PROXY=https://192.168.3.4:1234"
+	Environment="NO_PROXY=127.0.0.1,localhost"
+	```
+* Redirect host to the proper domain:
+   ```bash
+   # /etc/hosts
+   127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 carto.lan
+   ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6 carto.lan
+   ```
+{{% bannerNote title="WARNING"%}}
+`http://192.168.3.4:1234` and `carto.lan` should be substituted for the actual **Proxy Address** and **CARTO domain** of each server.
+{{%/ bannerNote %}}
+
 ### Stopping CARTO services
 
 Executing this command from the CARTO installer folder would stop all CARTO services while keeping all persisted data:
