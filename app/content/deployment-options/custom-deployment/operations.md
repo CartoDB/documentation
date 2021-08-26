@@ -20,8 +20,8 @@ When the instance is going to be installed behind a proxy it is necessary to:
 		"proxies": {
       			"default":
        			{
-       				"httpProxy": "http://0.0.0.0:3128",
-       				"httpsProxy": "http://0.0.0.0:3128",
+       				"httpProxy": "http://192.168.3.4:1234",
+       				"httpsProxy": "http://192.168.3.4:1234",
        				"noProxy": "127.0.0.1,localhost,carto.lan"
       			}
 		}
@@ -32,8 +32,8 @@ When the instance is going to be installed behind a proxy it is necessary to:
 	```bash
 	# /etc/systemd/system/docker.service.d/http-proxy.conf
 	[Service]
-	Environment="HTTP_PROXY=https://0.0.0.0:3128"
-	Environment="HTTPS_PROXY=https://0.0.0.0:3128"
+	Environment="HTTP_PROXY=https://192.168.3.4:1234"
+	Environment="HTTPS_PROXY=https://192.168.3.4:1234"
 	Environment="NO_PROXY=127.0.0.1,localhost"
 	``` 
 
@@ -46,7 +46,7 @@ When the instance is going to be installed behind a proxy it is necessary to:
 
 {{% bannerNote title="WARNING"%}}
 
-`http://0.0.0.0:3128` and `carto.lan` should be substituted for the actual **Proxy Address** and **CARTO domain** of each server.
+`http://192.168.3.4:1234` and `carto.lan` should be substituted for the actual **Proxy Address** and **CARTO domain** of each server.
 {{%/ bannerNote %}}
 
 
