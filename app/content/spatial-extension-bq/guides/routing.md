@@ -47,7 +47,7 @@ CREATE OR REPLACE TABLE
 WITH
   T AS(
   SELECT
-    `bqcarto.routing.GENERATE_NETWORK`(ARRAY_AGG(geometry)) generate_network
+    `bqcarto.routing.GENERATE_NETWORK`(ARRAY_AGG(STRUCT(geometry, 1.))) generate_network
   FROM
     `mydataset.my_test_linestrings` )
 SELECT
