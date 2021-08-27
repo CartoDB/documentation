@@ -8,6 +8,14 @@ Changed
 - ENRICH_GRID and DATAOBS_ENRICH_GRID procedures take `input_query` and `input_index_column` parameters instead of the `indices` array.
 - DATAOBS_ENRICH_* procedures now report missing subscriptions in a more user-friendly way.
 
+#### Module routing v1.0.0-beta.2
+
+Changed
+- Pass network to JS UDF natively
+- Support custom speed over LineStrings for GENERATE_NETWORK function.
+- Support custom speed over LineStrings for FIND_SHORTEST_PATH function.
+- Support custom speed over LineStrings for DISTANCE_MAP function.
+
 ### August 25, 2021
 
 #### Module tiler v1.12.2
