@@ -51,7 +51,7 @@ CALL carto-st.data.DATAOBS_ENRICH_GRID(
 ### DATAOBS_ENRICH_POINTS
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POINTS(input_query, input_id_column, input_geography_column, variables, output, source)
+data.DATAOBS_ENRICH_POINTS(input_query, input_geography_column, variables, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -62,7 +62,6 @@ As a result of the enrichment, each point will be associated with the data assig
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `variables`: `ARRAY<STRING>` of slugs (unique identifiers) of the Data Observatory variables to add to the input query.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
@@ -81,7 +80,6 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
-   'id',
    'geom',
    ['population_93405ad7'],
    ['`my-project.my-dataset.my-enriched-table`'],
@@ -94,7 +92,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS(
 ### DATAOBS_ENRICH_POINTS_WITH_MEASURES
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(input_query, input_id_column, input_geography_column, variables, output, subscription_project, source)
+data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(input_query, input_geography_column, variables, output, subscription_project, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -107,7 +105,6 @@ Another field will contain a parameter indicating the type (2, 1 or 0) of this m
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `variables`: `ARRAY<STRING>` of slugs (unique identifiers) of the Data Observatory variables to add to the input query.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
@@ -126,7 +123,6 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
-   'id',
    'geom',
    ['population_93405ad7'],
    ['`my-project.my-dataset.my-enriched-table`'],
@@ -139,7 +135,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(
 ### DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_id_column, input_geography_column, variables, output, subscription_project, source)
+data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_geography_column, variables, output, subscription_project, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -152,7 +148,6 @@ For each input polygon, the data of all intersecting areas is aggregated using t
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `variables`: `ARRAY<STRUCT<slug STRING, aggr STRING>>`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable its slug and the aggregation method to be used must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
@@ -171,7 +166,6 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(
    R'''
    SELECT id, polygon FROM `my-project.my-dataset.my-table`
    ''',
-   'id',
    'polygon',
    [('population_93405ad7', 'SUM')],
    ['`my-project.my-dataset.my-enriched-table`'],
@@ -184,7 +178,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(
 ### DATAOBS_ENRICH_POLYGONS_WITH_MEASURES
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(input_query, input_id_column, input_geography_column, variables, output, subscription_project, source)
+data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(input_query, input_geography_column, variables, output, subscription_project, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -198,7 +192,6 @@ The values of all intersecting areas are not aggregated so each input row can ap
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `variables`: `ARRAY<STRING>` of slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
@@ -222,7 +215,6 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_WITH_MEASURES(
    R'''
    SELECT id, polygon FROM `my-project.my-dataset.my-table`
    ''',
-   'id',
    'polygon',
    ['population_93405ad7'],
    ['`my-project.my-dataset.my-enriched-table`'],
@@ -303,7 +295,7 @@ The result is a table with these columns:
 CALL carto-st.data.DATAOBS_SUBSCRIPTIONS('myproject.mydataset', '');
 ```
 
-### DATAOBS_SUBSCRIPTIONS
+### DATAOBS_SUBSCRIPTION_VARIABLES
 
 {{% bannerNote type="code" %}}
 data.DATAOBS_SUBSCRIPTION_VARIABLES(source STRING, filters STRING)
@@ -384,18 +376,17 @@ CALL carto-st.data.ENRICH_GRID(
 ### ENRICH_POINTS
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POINTS(input_query, input_id_column, input_geography_column, data_query, data_geography_column, output)
+data.ENRICH_POINTS(input_query, input_geography_column, data_query, data_geography_column, output)
 {{%/ bannerNote %}}
 
 **Description**
 
 This procedure enriches a query containing geographic points with data from another query, spatially matching both.
-As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points. 
+As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points.
 
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
@@ -414,7 +405,6 @@ SELECT carto-st.data.ENRICH_POINTS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
-   'id',
    'geom',
    R'''
    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
@@ -428,24 +418,23 @@ SELECT carto-st.data.ENRICH_POINTS(
 ### ENRICH_POINTS_WITH_MEASURES
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POINTS_WITH_MEASURES(input_query, input_id_column, input_geography_column, data_query, data_geography_column, output)
+data.ENRICH_POINTS_WITH_MEASURES(input_query, input_geography_column, data_query, data_geography_column, output)
 {{%/ bannerNote %}}
 
 **Description**
 
 This procedure enriches a query containing geographic points with data from another query, spatially matching both.
-As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points. 
+As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points.
 
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
 
-**Output** 
+**Output**
 The output table will contain all the input columns provided in the `input_query`, one column for each of the data columns provided in the `data_query` (the result of the enrichment) and two extra columns:
 * `total_measure`: measure (area/length) of the geography in the data query that was spatially assigned to the input point during the enrichment.
 * `measure_type`: type of the measure provided:
@@ -462,7 +451,6 @@ SELECT carto-st.data.ENRICH_POINTS_WITH_MEASURES(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
-   'id',
    'geom',
    R'''
    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
@@ -476,7 +464,7 @@ SELECT carto-st.data.ENRICH_POINTS_WITH_MEASURES(
 ### ENRICH_POLYGONS_WITH_AGGREGATION
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_id_column, input_geography_column, data_query, data_geography_column, variables, output))
+data.ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_geography_column, data_query, data_geography_column, variables, output))
 {{%/ bannerNote %}}
 
 **Description**
@@ -491,7 +479,6 @@ For each input polygon, the data of all intersecting areas is aggregated using t
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
@@ -511,7 +498,6 @@ CALL carto-st.data.ENRICH_POLYGONS_WITH_AGGREGATION(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
-   'id',
    'geom',
    R'''
    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
@@ -526,7 +512,7 @@ CALL carto-st.data.ENRICH_POLYGONS_WITH_AGGREGATION(
 ### ENRICH_POLYGONS_WITH_MEASURES
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POLYGONS_WITH_MEASURES(input_query, input_id_column, input_geography_column, data_query, data_geography_column, output))
+data.ENRICH_POLYGONS_WITH_MEASURES(input_query, input_geography_column, data_query, data_geography_column, output))
 {{%/ bannerNote %}}
 
 **Description**
@@ -538,7 +524,6 @@ The values of all intersecting areas are not aggregated so each input row can ap
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched (Standard SQL).
-* `input_id_column`: `STRING` name of a column in the query that identifies each row uniquely.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
@@ -563,7 +548,6 @@ SELECT carto-st.data.ENRICH_POLYGONS_WITH_MEASURES(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
-   'id',
    'geom',
    R'''
    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
@@ -594,5 +578,5 @@ Returns the current version of the data module.
 
 ```sql
 SELECT carto-st.data.VERSION();
--- 1.0.0-beta.6
+-- 1.0.0-beta.7
 ```

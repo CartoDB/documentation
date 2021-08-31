@@ -1,5 +1,21 @@
 ## Release notes
 
+### August 31, 2021
+
+#### Module data v1.0.0-beta.7
+
+Changed
+- DATAOBS_ENRICH_* procedures are now optimized to reduce the amount of data processed by taking advantage of clusterization by geography in the Data Observatory.
+- The `input_id_column` parameter has been removed from the following procedures:
+  + `DATAOBS_ENRICH_POINTS`
+  + `DATAOBS_ENRICH_POINTS_WITH_MEASURES`
+  + `DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION`
+  + `DATAOBS_ENRICH_POLYGONS_WITH_MEASURES`
+  + `ENRICH_POINTS`
+  + `ENRICH_POINTS_WITH_MEASURES`
+  + `ENRICH_POLYGONS_WITH_AGGREGATION`
+  + `ENRICH_POLYGONS_WITH_MEASURES`
+
 ### August 26, 2021
 
 #### Module data v1.0.0-beta.6
