@@ -73,7 +73,7 @@ CARTO for React includes three different Create React App templates for kickstar
 
 - The CARTO 2 template, similar to the CARTO 3 template. You are going to use it when you are creating a new app with the CARTO 2 platform.
 
-- The sample app template for CARTO 2 that creates a more complex application with several views, layers, and widgets. The purpose of this template is to demonstrate how you can implement common Location Intellifence functionalities in a CARTO for React app.
+- The sample app template for CARTO 2 that creates a more complex application with several views, layers, and widgets. The purpose of this template is to demonstrate how you can implement common Location Intelligence functionalities in a CARTO for React app.
 
 The command to create a new application is the following:
 

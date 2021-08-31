@@ -2,9 +2,9 @@
 
 ### Creating a network
 
-#### Importing linestrings from Openstreetmap
+#### Importing linestrings from OpenStreetMap
 
-To create a route, we need a network. Let's extract linestrings from New York's Liberty Island from Openstreetmap planet ways table in BigQuery to build ourselves a playground.
+To create a route, we need a network. Let's extract linestrings from New York's Liberty Island from OpenStreetMap planet ways table in BigQuery to build ourselves a playground.
 
 Be careful, this query scans a lot of data (223GB). You may skip this query by creating directly the `mydataset.liberty_island_linestrings` table from this [Newline-delimited JSON](/img/bq-spatial-extension/routing/liberty_island_linestrings_data.json) using this [schema](/img/bq-spatial-extension/routing/liberty_island_linestrings_schema.json).
 
@@ -39,7 +39,7 @@ CALL `bqcarto.routing.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestri
 'mydataset.liberty_island_network');
 ```
 
-If you prefer, you can also use the [`GENERATE_NETWORK`](../../sql-reference/routing/#generate_network) function instead, although it requires a slightly advanced query:
+If you prefer, you can also use the [`GENERATE_NETWORK`](../../sql-reference/routing/#generate_network) function instead, although it requires a slightly more advanced query:
 
 ```sql
 CREATE OR REPLACE TABLE
@@ -119,7 +119,7 @@ Here is the result:
 
 ### Calculating a distance map
 
-Given a starting point, we are going to calculate the distances from that point to all the nodes of the network. Then, we are going to visualize the result to identify the destination points that are within similar distance. 
+Given a starting point, we are going to calculate the distances from that point to all the nodes of the network. Then, we are going to visualize the result to identify the destination points that are within a similar distance. 
 
 
 You can use the [`DISTANCE_MAP_FROM_NETWORK_TABLE`](../../sql-reference/routing/#distance_map_from_network_table) procedure:
@@ -156,7 +156,7 @@ Here is the result. The starting point is highlighted in green. Destination poin
 <img src="/img/bq-spatial-extension/routing/distance_map.png" alt="Distance map visualization." style="width:70%">
 </div>
 
-In this GIF we can see all the destination points of the network that are reachable from the origin point, starting with the closest. The compacted network is depicted in grey.
+In this GIF we can see all the destination points of the network that are reachable from the origin point, starting with the closest. The compacted network is depicted in gray.
 
 <div style="text-align:center" >
 <img src="/img/bq-spatial-extension/routing/distance_map_gif.gif" alt="Distance map visualization gif." style="width:70%">
