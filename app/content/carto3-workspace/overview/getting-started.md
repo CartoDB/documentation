@@ -136,7 +136,7 @@ Simple steps gets you into the CARTO 3 Workspace:
 
 Learn everything you need to know about your Workspace and how to make the most out of it.
 
-When you log in to your CARTO 3 account, you land on your Workspace. The workspace allows you to manage connections to your data warehouses, creating tilesets and maps, explore your data, list your applications, access your account settings, manage users of your account, and access spatial application development features.
+When you log in to your CARTO 3 account, you land on your Workspace. The workspace allows you to access all components of CARTO 3 platform. Manage connections to your data warehouses, explore your data, subscribe to Data Observatory datasets, develop spatial applications, run visualizations and spatial analysis through a dedicated portal.
 
 ![Workspace overview](/img/cloud-native-workspace/get-started/workspace_overview_default.png)
 
@@ -181,27 +181,31 @@ In the bottom part of the menu, you have additional options to Join our Slack ch
 
 This is a quick guide to help you get started. A step-by-step overview on how to connect to your data warehouse, explore your data and create maps using your data.
 
-The CARTO 3 Workspace includes functionalities for registering and managing connections to your data warehouses. Once you have registered a connection, you can perform different operations with the data source, like executing the functions provided by the CARTO Spatial Extension or creating stunning maps.
+The CARTO 3 Workspace includes functionalities for registering and managing connections to your data warehouses. For every user we will provision a CARTO Datawarehouse, hence the user can expand the capacity of that connection or connect their own Data Warehouse. 
+
+Once you have registered a connection, you can perform different operations with the data source, like executing the functions provided by the CARTO Spatial Extension or creating stunning maps.
 
 #### Create a Connection
 
 Go to the *Connections* menu in the Workspace, where you will see the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/get-started/the_connections_module2.png)
+![Connections module](/img/cloud-native-workspace/get-started/the_connections_module3.png)
 
-For adding a new connection follow the next steps:
+We will provision spatial extension for all CARTO DW,  so it is enabled by default.
 
-1. Select your data warehouse: BigQuery, PostgreSQL, Redshift, Snowflake, etc.
+For adding a new connection, click on *New connection* and follow the next steps:
+
+1. Select your data warehouse: BigQuery, PostgreSQL, Redshift or Snowflake.
 2. Click the *Setup connection* button, or the *Connect using a service account* button if you are connecting to BigQuery.
 3. Enter the connection parameters and credentials. You need to enter the connection parameters such as the server, username, password, or provide a service account, depending on the connector.
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/the_connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/get-started/the_connections_bigquery_the_parameters2.png)
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/get-started/the_connections_successful.png)
+![Successful connection](/img/cloud-native-workspace/get-started/the_connections_successful2.png)
 
 #### Create a Map
 
@@ -234,32 +238,44 @@ The CARTO 3 Builder contains many features that guide you through the process of
 
 #### Explore your data
 
-The *Data Explorer* section enables you to explore your data warehouses and create maps from their data. If you haven’t connect a data warehouse yet, you will see the following page:
+The new *Data Explorer* functionality simplifies visualization. This section enables you to explore your connected data warehouse, preview your geospatial tables and tilesets and create maps or tilesets from your data. If you haven’t connect your own data warehouse yet, you will see the provisioned data warehouse:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection.png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection2.png)
 
 For adding your first connection, you can follow the previous create a connection <a href="http://localhost:1313/carto3-workspace/overview/getting-started/#create-a-connection" target="_blank">Guide</a>.
 
 Once you have added a connection, go back to the *Data Explorer* section in the Workspace, where you will see the list of your current connections. If you have registered a connection, you will see the following page:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_bigquery.png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_bigquery2.png)
 
 Select a connection and see the content (database/project(s), schemas/datasets and tables) in a collapsible tree:
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_content.png)
 
-This section will allow users to explore their data warehouses and create maps from their data. Select a table or tileset and check the details and metadata from the table/tileset preview. For creating a new map, click New map. This will open the CARTO 3 map tool: Builder.
+Once your table or tileset is selected, you can see a preview of the map and the details of the table or tileset. You can create a map by clicking on the Create button on the top and then Create map. This will open the CARTO 3 map tool: Builder. In case of large amounts of data, the user will be warned of the possibility to create a map with a dataset added as SQL query with a filter, or to create a tileset to visualize the whole table. 
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_preview.png)
 
-To create and style your maps, learn how to:
+#### Create Tileset
 
-- Add your data [guide](../../maps/add-data)
+You can create a tileset by clicking on the Create button on the top and then Create tileset. A new dialog will open so you can edit your output table. You can create a tileset with the default parameters, or a new tileset that includes advanced options for editing parameters.
+
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_create_tileset2.png)
+
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_create_tileset_custom.png)
+
+#### Add data and style your maps
+
+The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:
+
+- Add your data [guide](../../maps/add-source)
 - View your data table [guide](../../maps/view-data-table)
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
 
+#### Publish and share your map
 
+Once you visualize and publish a map, you can get a link to share the map or embed it to a website or blog. For details, see [Publishing and sharing maps](#publishing-and-sharing-maps) to get started.
 
 
 

@@ -13,7 +13,7 @@ For creating a new map, click *Create your first map*. This will open the CARTO 
 
 The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:
 
-- Add your source [guide](../../maps/add-data)
+- Add your source [guide](../../maps/add-source)
 - View your data table [guide](../../maps/view-data-table)
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)

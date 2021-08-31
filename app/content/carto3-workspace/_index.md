@@ -32,6 +32,7 @@ cascade:
         - "View data table"
         - "Map settings"
         - "Map styles"
+        - "Publishing and sharing maps"
     - name: "Applications" 
       elements:
         - "Accessing applications"
