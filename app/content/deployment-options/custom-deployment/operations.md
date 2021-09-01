@@ -104,3 +104,66 @@ source .env && docker run --rm \
 ```
 
 
+### Upgrading to a new version
+
+CARTO On-Premises can be upgraded with just a few steps. To proceed, you should ask Support team for your upgrade files.
+
+First you'll need to perform a backup of your data:
+
+1. Stop Docker containers
+```bash
+docker-compose stop
+```
+2. Create a backup of the current version's logs
+```bash
+docker-compose logs -t > backup.log
+```
+3. Copy the current configuration files.
+```bash
+cp -r /previous/installation/folder /carto-backup
+```
+{{% bannerNote title="WARNING"%}}
+You'll need to substitude */previous/installation/folder* and */carto-backup* for the actual origin and destination of the configuration files.
+
+Please, be sure that the destination folder has enough disk space.
+{{%/ bannerNote %}}
+
+4. Make a backup with the content of the folder located in */var/lib/docker/volumes* that contains the docker volumes used to execute the CARTO services.
+```bash
+cp -r /var/lib/docker/volumes /var/lib/docker/backup-volumes
+```
+{{% bannerNote title="WARNING"%}}
+*/var/lib/docker/volumes* is the default path of Docker Volumes, you'll need to substitude */var/lib/docker/volumes* for the actual origin in case they are not in the default destination.
+
+Please, be sure that the destination folder has enough disk space.
+{{%/ bannerNote %}}
+
+At this point everything is ready to proceed with the upgrade, so you may need to follow these steps:
+
+1. Unzip the new customer package in the location where you want to store all files and configurations.
+```bash
+unzip Customer_Package_new.zip -d /new/installation/folder
+```
+2. Navigate to the installation folder.
+```bash
+cd /new/installation/folder
+```
+3. Give execution permissions to the install script.
+```bash
+chmod +x install.sh
+```
+4. Modify */new/installation/folder/.env* parameters' `CARTO_DOMAIN` and `CARTO_GOOGLE_SERVICE_ACCOUNT` to match the ones that you can find on */previous/installation/folder/.env*.
+5. Copy the *.env.customer* from the previous installation folder to the upgraded one.
+```bash
+cp /previous/installation/folder/.env.customer /new/installation/folder
+```
+6. Delete the docker containers and volumes from the previous installation running the following command inside the old installation folder:
+```bash
+docker-compose down -v
+```
+7. Remove the Data Services' volume executing this command:
+```bash
+source .env
+docker volume rm ${COMPOSE_PROJECT_NAME}_dataservices
+```
+Your environment is now ready to be upgraded, so following the [installation process](https://docs.carto.com/deployment-options/custom-deployment/installation/#installation-of-the-carto-package) from the new configuration folder you can complete the CARTO OnPremise upgrade.
