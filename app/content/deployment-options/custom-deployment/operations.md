@@ -123,7 +123,7 @@ docker-compose logs -t > backup.log
 cp -r /previous/installation/folder /carto-backup
 ```
 {{% bannerNote title="WARNING"%}}
-You'll need to substitude */previous/installation/folder* and */carto-backup* for the actual origin and destination of the configuration files.
+You'll need to replace */previous/installation/folder* and */carto-backup* for the actual origin and destination of the configuration files.
 
 Please, be sure that the destination folder has enough disk space.
 {{%/ bannerNote %}}
@@ -133,7 +133,7 @@ Please, be sure that the destination folder has enough disk space.
 cp -r /var/lib/docker/volumes /var/lib/docker/backup-volumes
 ```
 {{% bannerNote title="WARNING"%}}
-*/var/lib/docker/volumes* is the default path of Docker Volumes, you'll need to substitude */var/lib/docker/volumes* for the actual origin in case they are not in the default destination.
+*/var/lib/docker/volumes* is the default path of Docker Volumes, you'll need to substitute */var/lib/docker/volumes* for the actual origin in case they are not in the default destination.
 
 Please, be sure that the destination folder has enough disk space.
 {{%/ bannerNote %}}
