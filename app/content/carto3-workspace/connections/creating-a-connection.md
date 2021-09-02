@@ -24,9 +24,7 @@ In the next sections we show how to configure connections to the supported datas
 CARTO uses access credentials to connect to BigQuery in order to run queries on your behalf.
 You can use parts of CARTO directly by using the BigQuery console through the CARTO spatial extension, or you can use the CARTO Workspace to launch different operations, like tileset generation.
 
-We will use the email associated with your CARTO account to grant access to the Spatial Extension from the BigQuery Console. If you signed up using your Google Account, there is nothing else to do. Otherwise, please update your email address in your account settings to match your Google Account before registering the connection.
-
-We will also use a Google Cloud Service Account for other operations such as listing the tilesets stored in your project’s datasets, publishing and unpublishing tilesets for public visualizations.
+We will use a Google Cloud Service Account for other operations such as exploring your projects and fetching data for visualization.
 
 When you access BigQuery, the billing account associated with the selected billing project will be charged. Unless you have a flat-rate pricing agreement, we recommend you configure specific limits in BigQuery to avoid any unexpected charges.
 

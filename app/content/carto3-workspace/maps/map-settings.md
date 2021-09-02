@@ -6,41 +6,37 @@ Once your datasets are connected to your map, as explained in this [guide](../..
 
 When opening a map, layers for the selected map appear. The layers list appears by default, displaying the basemap and map data layer(s) that are the backbone for rendering your visualization.
 
-![Map layers](/img/cloud-native-workspace/maps/map_paris.png)
+![Map layers](/img/cloud-native-workspace/maps/map_paris2.png)
 
 When working with layers in the layer list of Builder, the following features are available:
 
 - **Layers label:** Layers are created alphabetically (A, B, C, D) and each layer displays a unique color. Each layer icon displays the geometry type behind the data as either point, line, polygon, or empty.
 
-(IMAGEN VARIAS SOURCES Y UNA CAPA DE CADA SOURCE PARA QUE SE VEA BIEN LO DE LAS LABELS)
-
 - **Layers order:** Layers are rendered from bottom to top, with basemaps being the bottom layer. Click and drag a layer to rearrange the hierarchal order of how layers are rendered on your map.
-
-![Map layers order](/img/cloud-native-workspace/maps/map_layers_order.gif)
 
 - **Layer settings:** To apply custom styling to your layer.
 
-![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings2.png)
 
 - **Rename layer:** Click on the layer title to edit the name of the layer.
 
-![Map layers rename](/img/cloud-native-workspace/maps/map_layer_rename.png)
+![Map layers rename](/img/cloud-native-workspace/maps/map_layer_rename3.png)
 
 - **Duplicate layer:** To create a copy of your layer.
 
-![Map layers duplicate](/img/cloud-native-workspace/maps/map_layer_duplicate.png)
+![Map layers duplicate](/img/cloud-native-workspace/maps/map_layer_duplicate2.png)
 
 - **Show/hide layer:** To show/hide the layer in the map.
 
-![Map layers show or hide](/img/cloud-native-workspace/maps/map_layer_hide.png)
+![Map layers show or hide](/img/cloud-native-workspace/maps/map_layer_hide2.png)
 
 - **Remove layer:** To remove a layer from the map.
 
-![Map layers remove](/img/cloud-native-workspace/maps/map_layer_remove.png)
+![Map layers remove](/img/cloud-native-workspace/maps/map_layer_remove2.png)
 
 -  **Blend layers:** by selecting an option from the dropdown at the bottom of the Layers panel. There are three different ways to blend layers: Normal, Additive, and Subtractive.
 
-![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
+![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blending4.png)
 
 ### WIDGETS
 
@@ -48,23 +44,27 @@ This guide describes how to add interactive widgets for viewing your map data in
 
 In the *Wiget* tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map layers blending](/img/cloud-native-workspace/maps/interactions_new_widget.png)
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_new_widget2.png)
 
 Click on *New widget* button to start interacting with your data:
 
-![Map layers blending](/img/cloud-native-workspace/maps/interactions_widget.png)
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_widget2.png)
 
 ### INTERACTIONS
 
-![Map layers blending](/img/cloud-native-workspace/maps/map_settings_interactions.png)
+![Map layers blending](/img/cloud-native-workspace/maps/map_settings_interactions2.png)
 
-A tooltip is an infowindow that appears when you hover your mouse over a map feature. A tooltip appears where the mouse cursor is located on the map. You can customize the content of the tooltip by defining the source columns and the formatting.
+**Tooltip**
 
-![Map layers blending](/img/cloud-native-workspace/maps/interactions_tooltip.png)
+The tooltip is an infowindow that appears when you hover your mouse over a map feature. A tooltip appears where the mouse cursor is located on the map. You can customize the content of the tooltip by defining the source columns and the formatting.
 
-The search location 
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_tooltip2.png)
 
-![Map layers blending](/img/cloud-native-workspace/maps/interactions_search_location.png)
+**Coordinates**
+
+It shows the coordinates where you click with the mouse. The coordinates will appear in the tooltip, so you need to activate the tooltip first.
+
+![Map layers blending](/img/cloud-native-workspace/maps/interactions_coordinates.png)
 
 ### BASEMAPS
 
@@ -88,8 +88,4 @@ Select the CARTO Basemap menu to see different basemap options. They include:
 - Water: displays bodies of water.
 - Land: Shows parks, mountains, and other landscape features.
 
-![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_show.png)
-
-**Basemap layer order:** to control the order in which map imagery layers are displayed, click the *move to top of data layers* icon:
-
-![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_order.png)
+![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_show2.png)

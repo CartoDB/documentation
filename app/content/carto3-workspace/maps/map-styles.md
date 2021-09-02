@@ -4,27 +4,27 @@ When styling maps, you can style your geometry using different settings. By defa
 
 To style your layers, expand the *layer settings panel*.
 
-![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings2.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings5.png)
 
 ### FILL COLOR
 
 When activated, geo shapes are filled in with colors. By default, Builder assign a **predefined fill color**. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
 
-![Map style fill color](/img/cloud-native-workspace/maps/map_style_fill.png)
+![Map style fill color](/img/cloud-native-workspace/maps/map_style_fill2.png)
 
-You can explore additional fill color features by clicking the *three dots* icon: 
+You can explore additional fill color features by clicking the *three dots* icon:
 
-![Map style fill additional features](/img/cloud-native-workspace/maps/map_style_fill_features.png)
+![Map style fill additional features](/img/cloud-native-workspace/maps/map_style_fill_features2.png)
 
 - **Color based on**: When styling maps, you can assign color based on a field from your dataset(s).
 
     1. Click the *Color based on* button. Select a field from your dataset to style your layer. In this example, we style our layer based on the "population" field. 
 
-    ![Map fill style based on field](/img/cloud-native-workspace/maps/map_style_fill_based_on.png)
+    ![Map fill style based on field](/img/cloud-native-workspace/maps/map_style_fill_based_on2.png)
 	
 	The color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
 	
-    ![Map fill style based on field result](/img/cloud-native-workspace/maps/map_style_fill_based_on_result.png)
+    ![Map fill style based on field result](/img/cloud-native-workspace/maps/map_style_fill_based_on_result2.png)
 	
     2. By default, Builder assign a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes comes in diverging, sequential and qualitative types.
 	
@@ -35,16 +35,6 @@ You can explore additional fill color features by clicking the *three dots* icon
     ![Map style fill color custom palette](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_color_palette_toogle.png)![Map style fill color custom palette.png](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_color_palette.png)
 	
     3. Your color is applied to your map as soon as you select the predefined palette or *confirm* the choices of customized colors.
-	
-- **Color scale**: For your color palette, you can choose either a quantile or quantized color scale.
-![Map style fill color scale](/img/cloud-native-workspace/maps/map_style_fill_color_scale.png)
-    - **Quantile**: A quantile color scale is determined by rank. A quantile classification is well suited to linearly distributed data. Each quantile class contains an equal number of features. There are no empty classes or classes with too few or too many values. This can be misleading sometimes, since similar features can be placed in adjacent classes or widely different values can be in the same class, due to equal number grouping.
-	
-    - **Quantized**: Quantized color scale is determined by value. To Quantize means to group values with discrete increments. It allows to transform an initial continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
-	
-- **Opacity**: Change the transparency of a layer. 1 = opaque, 0 = invisible. You can change the predefined opacity using the *opacity slider* or by directly writting the level of opacity in the *text input*.
-
-![Map style fill opacity](/img/cloud-native-workspace/maps/map_style_fill_opacity.png)
 
 ### STROKE COLOR
 
@@ -54,7 +44,7 @@ When activated, draws outlines around geoshapes. When styling a map layer, the s
 
 You can explore additional stroke color features by clicking the *three dots* icon: 
 
-![Map style stroke additional features](/img/cloud-native-workspace/maps/map_style_stroke_features.png)
+![Map style stroke additional features](/img/cloud-native-workspace/maps/map_style_stroke_features2.png)
 
 - **Color based on**: When styling maps, you can assign stroke color based on a field from your dataset(s).
 
@@ -64,7 +54,7 @@ You can explore additional stroke color features by clicking the *three dots* ic
 	
 	The color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
 	
-    ![Map stroke style based on field result](/img/cloud-native-workspace/maps/map_style_stroke_based_on_result.png)
+    ![Map stroke style based on field result](/img/cloud-native-workspace/maps/map_style_stroke_based_on_result2.png)
 	
     2. By default, Builder assign a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes comes in diverging, sequential and qualitative types.
 	
@@ -75,16 +65,6 @@ You can explore additional stroke color features by clicking the *three dots* ic
     ![Map style stroke color custom palette](/img/cloud-native-workspace/maps/map_style_stroke_based_on_custom_color_palette_toogle.png)![Map style fill color custom palette.png](/img/cloud-native-workspace/maps/map_style_stroke_based_on_custom_color_palette.png)
 	
     3. Your color is applied to your map as soon as you select the predefined palette or *confirm* the choices of customized colors.
-	
-- **Color scale**: For your color palette, you can choose either a quantile or quantized color scale.
-![Map style stroke color scale](/img/cloud-native-workspace/maps/map_style_stroke_color_scale.png)
-    - **Quantile**: A quantile color scale is determined by rank. A quantile classification is well suited to linearly distributed data. Each quantile class contains an equal number of features. There are no empty classes or classes with too few or too many values. This can be misleading sometimes, since similar features can be placed in adjacent classes or widely different values can be in the same class, due to equal number grouping.
-	
-    - **Quantized**: Quantized color scale is determined by value. To Quantize means to group values with discrete increments. It allows to transform an initial continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
-	
-- **Opacity**: Change the transparency of a layer. 1 = opaque, 0 = invisible. You can change the predefined opacity using the *opacity slider* or by directly writting the level of opacity in the *text input*.
-
-![Map style stroke opacity](/img/cloud-native-workspace/maps/map_style_stroke_opacity.png)
 
 ### STROKE WIDTH
 
@@ -104,11 +84,6 @@ You can explore additional stroke width features by clicking the *three dots* ic
 	
 	![Map stroke width based on range](/img/cloud-native-workspace/maps/map_style_stroke_width_based_on_range.png)
 	
-	![Map stroke width based on field](/img/cloud-native-workspace/maps/map_style_stroke_width_result.png)  
-
-- **Stroke width scale**: For your stroke width range, you can choose either a Linear, Sqrt or Log scale.
-    ![Map style stroke width scale](/img/cloud-native-workspace/maps/map_style_stroke_width_scale.png)
-	
 ### HEIGHT
 
 Assign polygons height for 3D visualizations. You can activate this option by clicking the toogle. You can change the height using the *height slider* or by directly writting the height in the *text input*.
@@ -125,32 +100,14 @@ Click the *Height based on* button. Select a field from your dataset to style yo
 ![Map height based on field](/img/cloud-native-workspace/maps/map_style_height_based_on.png)   
 
 You can explore the 3D visualization by clicking on the *3D map* button on the upper right corner of the map.
-![Activating 3D map visualization](/img/cloud-native-workspace/maps/map_style_height_3d_map.png)
+![Activating 3D map visualization](/img/cloud-native-workspace/maps/map_style_height_3d_map2.png)
 
 In the example, we can now explore as a 3D map those polygons with more population.
 
-![Map stroke width based on field](/img/cloud-native-workspace/maps/map_style_height_result.png)
-
-- **Height scale**: You can choose either a Linear, Sqrt or Log scale.
-![Map style height scale](/img/cloud-native-workspace/maps/map_style_height_scale.png)
-
-### RADIUS
-
-Change the radius of points, or assign radius values based on a field from your dataset(s). You can change the predefined radius using the *radius slider* or by directly writting the radius size in the *text input*.
-
-You can explore additional radius features by clicking the three dots icon:
-
-![Map style radius additional features](/img/cloud-native-workspace/maps/map_style_radius_features.png)
-
-- **Radius based on**: When styling maps, you can assign radius values based on a field from your dataset(s).
-Click the *Radius based on* button. Select a field from your dataset to style your layer. In this example, we style our layer radius based on the "population" field.
-
-### Radius range
-
-Set a lower and upper threshold for projected radius size.
+![Map stroke width based on field](/img/cloud-native-workspace/maps/map_style_height_result2.png)
 
 ### Layer Blending
 
 You can choose either a Additive, Normal or Substractive.
 
-![Map style layer blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
+![Map style layer blending](/img/cloud-native-workspace/maps/map_layer_blending5.png)

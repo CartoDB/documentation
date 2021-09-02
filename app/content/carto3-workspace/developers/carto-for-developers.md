@@ -8,9 +8,7 @@ The developer toolkit includes industry-leading visualization, mapping and appli
 
 The API with the base CARTO 3 URL is displayed. You can copy and use it by clicking on the icon on the right.
 
-![Developers api base url](/img/cloud-native-workspace/developers/developers_api_base_url.png)
-
-(*EXPLICAR MÁS ESTE APARTADO*)
+![Developers API Base URL](/img/cloud-native-workspace/developers/developers_api_base_url.png)
 
 ### Managing built applications
 

@@ -7,16 +7,22 @@ cascade:
     - name: "Overview"
       elements:
         - "Getting Started"
-        - "Glosario"
-        - "Getting help"
+        # TO DO - "Glossary"
+        # TO DO - "Getting help"
     - name: "Data Explorer"
       elements:
         - "Introduction"
         - "Adding your first connection"
         - "Creating a map from your data"
+    - name: "Data Observatory"
+      elements:
+        - "Accessing and browsing the Spatial Data Catalog"
+        - "Subscribing to public and premium datasets"
+        - "Managing your subscriptions"
     - name: "Connections"
       elements:
         - "Introduction"
+        - "CARTO Data Warehouse"
         - "Creating a connection"
         - "Editing a connection"
         - "Deleting a connection"
@@ -27,6 +33,7 @@ cascade:
         - "View data table"
         - "Map settings"
         - "Map styles"
+        - "Publishing and sharing maps"
     - name: "Applications" 
       elements:
         - "Accessing applications"
