@@ -1,5 +1,5 @@
-# Getting Started
+## Getting Started
 
-## Registering applications
+### Registering applications
 
-## Authorization
+### Authorization

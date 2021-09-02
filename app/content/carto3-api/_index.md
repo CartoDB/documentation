@@ -9,14 +9,11 @@ cascade:
         - "Getting Started"
     - name: "Maps API"
       elements:
-        - "Introduction"
-        - "Reference"
+        - "Maps API"
     - name: "SQL API"
       elements:
-        - "Introduction"
-        - "Reference"
+        - "SQL API"
     - name: "Token API" 
       elements:
-        - "Introduction"
-        - "Reference"
+        - "Token API"
 ---
