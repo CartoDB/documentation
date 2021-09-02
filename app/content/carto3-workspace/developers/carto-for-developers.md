@@ -12,11 +12,11 @@ The API with the base CARTO 3 URL is displayed. You can copy and use it by click
 
 ### Managing built applications
 
-The CARTO 3 Workspace includes options for managing your built applications. From the *Account Settings* section, you can built, edit or delete applications.
+The CARTO 3 Workspace includes options for managing your applications. From the *Account Settings* section, you can create, edit or delete applications.
 
 #### Creating applications
 
-You can create new applications by using the tools and libraries provided by Carto 3. The first time you built an application, you will see the following page:
+You can create new applications that will be used for development of custom web and backend applications. The first time you access the Developers section, you will see the following page:
 
 ![Developers create new application](/img/cloud-native-workspace/developers/developers_creating_application.png)
 
@@ -47,7 +47,6 @@ You can access the drop-down menu for selecting your application type by clickin
 ![Developers application type](/img/cloud-native-workspace/developers/developers_drop_down.png)
 
 - Token Endpoint Authentication Method
-
 
 ![Developers token endpoint](/img/cloud-native-workspace/developers/developers_token_endpoint.png)
 
