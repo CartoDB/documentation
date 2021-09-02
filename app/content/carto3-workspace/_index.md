@@ -22,6 +22,7 @@ cascade:
     - name: "Connections"
       elements:
         - "Introduction"
+        - "CARTO Data Warehouse"
         - "Creating a connection"
         - "Editing a connection"
         - "Deleting a connection"
