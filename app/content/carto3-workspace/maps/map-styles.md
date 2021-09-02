@@ -106,7 +106,7 @@ In the example, we can now explore as a 3D map those polygons with more populati
 
 ![Map stroke width based on field](/img/cloud-native-workspace/maps/map_style_height_result2.png)
 
-### Layer Blending
+### LAYER BLENDING
 
 You can choose either a Additive, Normal or Substractive.
 

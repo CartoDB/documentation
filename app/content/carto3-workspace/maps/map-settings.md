@@ -70,15 +70,24 @@ It shows the coordinates where you click with the mouse. The coordinates will ap
 
 Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.
 
-The CARTO 3 Builder provides a set of CARTO basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
-
-![Map created](/img/cloud-native-workspace/maps/map_basemap_new.png)
+The CARTO 3 Builder provides a set of CARTO and Google Maps basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
 
 Select the CARTO Basemap menu to see different basemap options. They include:
 - **Voyager**: basemap with colors to clearly differentiate natural and cultural features. This basemap is showed by default when creating a new map.
 - **Positron**: light basemap with dark-colored text.
 - **Dark**: dark basemap with light-colored text.
-  
+
+![Map created](/img/cloud-native-workspace/maps/map_basemap_carto.png)
+
+Select the Google Maps Basemap menu to see different basemap options. They include:
+
+- **Roadmap**: displays the default road map view.
+- **Satellite**: displays Google Earth satellite images.
+- **Hybrid**: displays a mixture of normal and satellite views.
+- **Terrain**: displays a physical map based on terrain information.
+
+![Map created](/img/cloud-native-workspace/maps/map_basemap_google.png)
+
 **Basemap layers:** You can manage basemaps layers to hide and show water, buildings, roads, and more. Options include: 
 
 - Labels: shows labels for cities, neighborhoods, and so on.

@@ -42,6 +42,7 @@ cascade:
         - "Your subscription"
         - "Managing registered apps"
         - "Inviting users to your account"
+        - "Managing user roles"
         - "Deleting your account"
     - name: "Developers" 
       elements:

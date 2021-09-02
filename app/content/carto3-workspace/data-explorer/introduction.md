@@ -7,5 +7,6 @@ Select a connection and see the content (database/project(s), schemas/datasets a
 
 In the *Data Explorer* section in the Workspace, you will see the list of your current connections. You can select a connection and see the content (database/project(s), schemas/datasets and tables) from top to bottom in a collapsible tree. If you haven’t registered a connection yet, you will see the following page:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection.png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/the_connections_module.png)
+
 

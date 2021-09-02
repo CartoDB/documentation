@@ -264,6 +264,10 @@ You can create a tileset by clicking on the Create button on the top and then Cr
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_create_tileset_custom.png)
 
+#### Extend your data
+
+The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing and accessing spatial data.
+
 #### Add data and style your maps
 
 The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:
@@ -275,7 +279,8 @@ The CARTO 3 Builder contains many features that guide you through the process of
 
 #### Publish and share your map
 
-Once you visualize and publish a map, you can get a link to share the map or embed it to a website or blog. For details, see [Publishing and sharing maps](#publishing-and-sharing-maps) to get started.
+Once you visualize and publish a map, you can get a link to share the map, embed it to a website or blog CARTO 3 Builder lets you GET THE LINK to share a link to your map, EMBED IT using HTML code for a blog or website or USE the map token for the development of applications. For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+
 
 
 
