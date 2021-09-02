@@ -191,8 +191,6 @@ Go to the *Connections* menu in the Workspace, where you will see the list of yo
 
 ![Connections module](/img/cloud-native-workspace/get-started/the_connections_module3.png)
 
-We will provision spatial extension for all CARTO DW,  so it is enabled by default.
-
 For adding a new connection, click on *New connection* and follow the next steps:
 
 1. Select your data warehouse: BigQuery, PostgreSQL, Redshift or Snowflake.
