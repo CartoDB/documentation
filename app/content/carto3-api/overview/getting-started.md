@@ -4,7 +4,7 @@
 CARTO 3 API allows interacting with your data in an external data warehouse using a existing connection in your CARTO 3 account. Learn more about connections [here](https://docs.carto.com/carto3-workspace/connections/introduction/). 
 
 ### Authorization
-CARTO 3 API uses an access token as authorization method. In order to obtain an access token you need to call the `/oauth/token` endpoint, using the `client_id` and `client_secret` from an application previously created in your account.
+CARTO 3 API uses an access token as authorization method. In order to obtain an access token you need to call the `https://auth.carto.com/oauth/token` endpoint, using the `client_id` and `client_secret` from an application previously created in your account.
 
 There are different types of applications: 
 
@@ -14,11 +14,22 @@ There are different types of applications:
 
 After an application is created, you can copy the `Client ID` and `Client Secret` from the list and use them as required in different scenarios.
 
+This is an example of how to get an access token with `cURL`:
+```bash
+curl --request POST \
+  --url 'https://auth.carto.com/oauth/token' \
+  --header 'content-type: application/x-www-form-urlencoded' \
+  --data 'grant_type=client_credentials' \
+  --data 'client_id=xyxhWf4tthisisjustanexampleZxwc4NP9jpTRIch8P' \
+  --data 'client_secret=k4s0LOPzlVnehythisisjustanexampleHCc9BtbtdS1Sq7NcRS3AFVD5I3H6s0a0aKz3aZyxK0' \
+  --data 'audience=carto-cloud-native-api' 
+```
+
 #### Creating an application
 
 - Login to your CARTO 3 account and open the _Developers_ section.
 - Click on _+ Create new_
-- Fill in the name and description. The URL is not relevant in this example, so feel free to use something like `http://localhost` 
+- Fill in the name and description. The URL is not relevant in this example, so feel free to use something like `https://example.domain.com` 
 - Open the _Advanced Settings_ menu
 - In _Application Type_ select _Machine to Machine_.
 - Make sure that _Token Endpoint Authentication Method_ is set to _Post_
