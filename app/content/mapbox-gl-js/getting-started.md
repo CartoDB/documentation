@@ -46,7 +46,7 @@ We are going to start by adding a map with 3D terrain. Please check [this exampl
 
 ### Adding data from CARTO
 
-In order to visualize a CARTO dataset, you need to fetch data from the CARTO platform. With CARTO Maps API v3 you have the possibility of retrieving data in GeoJSON format. In order to do that, you first set your credentials and the you can use the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function from the [CARTO module](https://deck.gl/docs/api-reference/carto/overview) for [deck.gl](https://deck.gl). Once you have retrieved the data, you can just add a new source to the map with `geojson` type.
+In order to visualize a CARTO dataset, you need to fetch data from the CARTO platform. With CARTO Maps API v3 you have the possibility of retrieving data in GeoJSON format. In order to do that, you first set your credentials and then you can use the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function from the [CARTO module](https://deck.gl/docs/api-reference/carto/overview) for [deck.gl](https://deck.gl). Once you have retrieved the data, you can just add a new source to the map with `geojson` type.
 
 ```javascript
 deck.carto.setDefaultCredentials({
@@ -69,7 +69,7 @@ map.addSource('trails', {
 ```
 
 {{% bannerNote title="tip" %}}
-In order to have the best performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (`SELECT *`). If you select all the fields from the dataset, the vector tiles or GeoJSON objects will be bigger than needed and would take more time to encode, download and decode.
+In order to achieve optimal performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (`SELECT *`). If you select all the fields from the dataset, the vector tiles or GeoJSON objects will be bigger than needed and would take more time to encode, download, and decode.
 {{%/ bannerNote %}}
 
 {{% bannerNote title="note" %}}

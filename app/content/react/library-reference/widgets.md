@@ -124,7 +124,7 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 
 - **Example**:
 
-  In this example, the widget would display the number of stores in different ranks, based on their number of sales
+  In this example, the widget would display the number of stores in different ranks, based on their number of sales.
 
   ```js
   import { HistogramWidget } from "@carto/react-widgets";

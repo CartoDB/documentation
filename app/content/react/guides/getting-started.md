@@ -45,7 +45,7 @@ And these are the main files:
 
 ### Get an Application ID
 
-To connect a private application you first need to create and Application and get an `Application ID`:
+To connect a private application you first need to create an Application and get an `Application ID`:
 
 1. You need to go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers)
 
@@ -112,7 +112,7 @@ To create a source, the easiest way is again to use the [code generator](../code
 yarn hygen source new
 ```
 
-When you create a source in CARTO3, you need to provide the connection name you want to use. CARTO provides a default `carto_dw`, but you probably want to [connect](https://gcp-us-east1.app.carto.com/connections/create) your own data warehouse to access your data
+When you create a source in CARTO 3, you need to provide the connection name you want to use. CARTO provides a default `carto_dw`, but you probably want to [connect](https://gcp-us-east1.app.carto.com/connections/create) your own data warehouse to access your data.
 
 We are going to create a source pointing to the public BigQuery dataset `cartobq.public_account.retail_stores` using the `carto_dw` connection. 
 
@@ -148,7 +148,7 @@ If you reload the page, you will see the new layer in the map.
 
 Finally we are ready to add some widgets to the view. We will add a Formula and a Category Widget.
 
-The first thing you need to do is to add the following imports at the top of the `src/components/views/Stores.js` file:
+The first task you need to perform is to add the following imports at the top of the `src/components/views/Stores.js` file:
 
 ```javascript
 import { Divider } from '@material-ui/core';

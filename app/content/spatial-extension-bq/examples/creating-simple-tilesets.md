@@ -2,7 +2,7 @@
 
 ### COVID-19 vaccination progress in the USA (points)
 
-In this example we are creating a tileset in which every USA inhabitant is represented by means of a point. Each point is tagged with a _vaccinated_ (blue) or _non-vaccinated_ (purple) tag. This visualization enables to depict at a glance which parts of the country are progressing better in the vaccination race.
+In this example we are creating a tileset in which every inhabitant in the US is represented by means of a point. Each point is tagged with a _vaccinated_ (blue) or _non-vaccinated_ (purple) tag. This visualization enables us to depict at a glance which parts of the country are progressing better with the vaccination rollout.
 
 The query used to produce the tileset is the following:
 
@@ -26,9 +26,9 @@ Check out this [blogpost](https://carto.com/blog/how-we-developed-covid-vaccine-
 
 ### United States roads by type (lines)
 
-In this example we use a BigQuery public dataset from the United States Census Bureau to visualize all USA's national roads. The visualization is styled by the [RTTYP route type code](https://gis.stackexchange.com/questions/20545/what-does-the-code-rttyp-represent-in-the-usa-tiger-road-files).
+In this example we use a BigQuery public dataset from the United States Census Bureau to visualize all of the national roads in the US. The visualization is styled by the [RTTYP route type code](https://gis.stackexchange.com/questions/20545/what-does-the-code-rttyp-represent-in-the-usa-tiger-road-files).
 
-This dataset can be produced in a very straighfroward way by executing the next procedure:
+This dataset can be produced in a very straightforward manner by executing the next procedure:
 
 ```sql
 CALL bqcarto.tiler.CREATE_TILESET(
@@ -48,7 +48,7 @@ CALL bqcarto.tiler.CREATE_TILESET(
 
 ### NYC urban growth (polygons)
 
-This example shows in a very effective way the historical growth of New York City by means of the year of construction of its more than 800K buildings. The dataset has been obtained from the [MapPLUTO repository](https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page) of the NYC Department of City planning.
+This example shows in a very effective manner the historical growth of New York City by means of the year of construction of its more than 800K buildings. The dataset has been obtained from the [MapPLUTO repository](https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page) of the NYC Department of City planning.
 
 ```sql
 CALL bqcarto.tiler.CREATE_TILESET(
@@ -138,7 +138,7 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 );
 ```
 
-Check the result:
+Checkout the result:
 
 ![US Blockgroup population](/img/bq-spatial-extension/tiler/examples-blockgroup_pop.png)
 
@@ -146,7 +146,7 @@ Check the result:
 
 ### Zoom-dependant tileset for USA administrative units
 
-You can create a tileset that uses different data sources depending on the zoom level. In this example, we are making use of the Data Observatory's public datasets offering to create a visualization of the different administrative units in the US: the higher the zoom level, the higher is the granularity of the administrative unit being shown.
+You can create a tileset that uses different data sources depending on the zoom level. In this example, we are making use of the Data Observatory's public datasets offering to create a visualization of the different administrative units in the US: the higher the zoom level, the higher the granularity of the administrative unit being shown.
 
 {{% bannerNote type="warning" title="warning" %}}
 This example uses the `CREATE_SIMPLE_TILESET` procedure. We strongly recommend to use `CREATE_TILESET` instead. Learn more [here](../../overview/tilesets/#tileset-types-and-procedures) about the difference between the two procedures.

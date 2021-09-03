@@ -16,9 +16,9 @@ menu:
     folder:
       - title: "A Quadkey grid of stores locations and simple cannibalization analysis"
       - title: "Minkowski distance to perform cannibalization analysis"
-      - title: "Computing US airports connections and routes interpolations"
-      - title: "New suppliers offices based on store locations clusters"
-      - title: "Analyzing store locations coverage using a Voronoi diagram"
+      - title: "Computing US airport connections and route interpolations"
+      - title: "New supplier offices based on store locations clusters"
+      - title: "Analyzing store location coverage using a Voronoi diagram"
       - title: "Enrichment of catchment areas for store characterization"
   - title: "SQL Reference"
     folder:

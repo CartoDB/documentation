@@ -10,7 +10,7 @@ If you use the code generator for adding your layers (see [below](#creating-a-la
 
 ### Layer sources
 
-If you are working with the ([CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer)), you need to associate it with a data source. The source provides `data`, `type`, `connection` and, optionally, `credentials` properties that are used by CARTO for deck.gl to retrieve the vector tiles.
+If you are working with the ([CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer)), you need to associate it with a data source. The source provides `data`, `type`, `connection`, and, optionally, `credentials` properties that are used by CARTO for deck.gl to retrieve the vector tiles.
 
 If you want to sync the layer with one or more widgets, you can only use CARTO for deck.gl layers because filters are applied through the source.
 
@@ -142,7 +142,7 @@ If you need to override the [`uniqueidproperty`](https://deck.gl/docs/api-refere
 const cartoLayerProps = useCartoLayerProps({ source, uniqueIdProperty: 'mycustomid' });
 ```
 
-If you need to override any of the properties configured by the hook, you must include them in the layer constructor after `...cartoLayerProps`. For instance, if you want to add your own [`updateTriggers`](https://deck.gl/docs/api-reference/core/layer#updatetriggers) property, you could add the following code to maintain the current behaviour and add your own update trigger for a given accessor (`getFillColor`, `getRadius`...):
+If you need to override any of the properties configured by the hook, you must include them in the layer constructor after `...cartoLayerProps`. For instance, if you want to add your own [`updateTriggers`](https://deck.gl/docs/api-reference/core/layer#updatetriggers) property, you could add the following code to maintain the current behavior and add your own update trigger for a given accessor (`getFillColor`, `getRadius`...):
 
 ```javascript
 return new CartoLayer({

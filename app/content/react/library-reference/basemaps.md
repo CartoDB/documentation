@@ -12,7 +12,7 @@ This package includes constants for working with CARTO and Google Maps basemaps 
 
 #### GoogleMap
 
-React component for working with Google Maps API and [deck.gl](https://deck.gl), by using `GoogleMapsOverlay`, from _@deck.gl/google-maps\_ module;. It offers a basic googlemaps basemap with an interface similar to the one presented by `react-map-gl` for Mabpox, thus allowing an easier change between them in your app.
+React component for working with Google Maps API and [deck.gl](https://deck.gl), by using `GoogleMapsOverlay`, from _@deck.gl/google-maps\_ module;. It offers a basic Google Maps basemap with an interface similar to the one presented by `react-map-gl` for Mapbox, thus allowing an easier change between them in your app.
 
 - **Input**:
 

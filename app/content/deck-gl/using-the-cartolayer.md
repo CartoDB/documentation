@@ -4,7 +4,7 @@
 
 The [CartoLayer](/deck-gl/reference/#cartolayer) is a deck.gl [`CompositeLayer`](https://deck.gl/docs/api-reference/core/composite-layer) used to visualize geospatial data from the CARTO platform.
 
-It is compatible with the different versions of the CARTO Maps API (v1, v2, and v3) and takes care of connecting to the platform to retrieve the data for visualization.
+It is compatible with the different versions of the CARTO Maps API (v1, v2, and v3) and is responsible for connecting to the platform in order to retrieve the data for visualization.
 
 ### Connecting to CARTO 3
 

@@ -11,7 +11,7 @@ SELECT bqcarto.tiler.VERSION()
 --Use bqcartoeu.tiler.VERSION() if your BigQuery account is in GCP's EU multi-region
 ``` 
 
-Check the [Getting Access](../../overview/getting-started/#getting-access) section if you run into any error when running the query above.
+Check the [Getting Access](../../overview/getting-started/#getting-access) section if you run into any errors when running the query above.
 
 Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your BigQuery console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-procedures)) from a couple of joined tables; one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
 
@@ -136,7 +136,7 @@ Let's create a binned ramp visualization with the `colorBins()` helper function:
 
 ![Tileset Viewer II](/img/bq-spatial-extension/tiler/guides-viewer-2.png)
 
-Using Google Maps as a basemap is also possible with this tool. Add `"google": true` in the Map Style section, or just use the basemap selector on the top right corner of the screen:
+Using Google Maps as a basemap is also possible with this tool. Add `"google": true` in the Map Style section, or just use the basemap selector in the top right corner of the screen:
 
 ![Tileset Viewer III](/img/bq-spatial-extension/tiler/guides-viewer-3.png)
 
@@ -146,7 +146,7 @@ Tilesets can be used as data layers with many web mapping libraries. Take a look
 
 For quick sharing and publishing on the web, use the options from the _Share_ menu in Map Viewer.
 
-Clicking on _Publish_ will grant permission in BigQuery to the CARTO Maps API service account, to it can directly fetch and serve the map tiles. Use the _Unpublish_ toggle to revoke the access.
+Clicking on _Publish_ will grant permission in BigQuery to the CARTO Maps API service account, so it can directly fetch and serve the map tiles. Use the _Unpublish_ toggle to revoke the access.
 
 ![Tileset Viewer sharing menu](/img/bq-spatial-extension/tiler/guides-sharing.png)
 
@@ -184,7 +184,7 @@ You can also use Google Maps as basemaps, selecting *Roads* or *Satellite*
 
 #### Basic styles
 
-You can quickly change some of the properties, like `getFillColor` for changing the fill colors of points and polygons, or `getLineColor` for lines. The property expects a color defined as an `[r,g,b,[a]]` array. Simple visualization properties are detailed [here](../../../deck-gl/guides/style-language/#layers-basic-properties).
+You can quickly change some of the properties, like `getFillColor` to modify the fill colors of points and polygons, or `getLineColor` for lines. The property expects a color defined as an `[r,g,b,[a]]` array. Simple visualization properties are detailed [here](../../../deck-gl/guides/style-language/#layers-basic-properties).
 
 #### Color ramps
 
@@ -192,7 +192,7 @@ Basic styles might be a good option for the most basic maps, but creating more s
 
 * `colorBins` assigns different colors to different buckets in the data range. This is useful for a choropleth visualization where you need to define the breaks of the data and define a color palette.
 * `colorCategories` assigns colors to specific values. This is useful for visualizing categorical data.
-* `colorContinuous` assings a blended color based on a linear interpolation of values. This is useful for different types of visualizations. This is the one we are going to use for our example.
+* `colorContinuous` assigns a blended color based on a linear interpolation of values. This is useful for different types of visualizations. This is the one we are going to use for our example.
 
 Replace the `getLineColor` property with the following block to style the rivers depending on their bearing. 
 
@@ -218,7 +218,7 @@ Let's explain a bit how this function works:
 * `"attr"`: Select a property from your tileset that contains the values that you want to use for the styling. In this case, it's `bearing`, which contains the direction in degrees relative to the North in which each river flows. 
 * `"domain"`: In this case, it contains the values that will be used for the interpolation. 
 * `"colors"`: This value can be an array of `[r,g,b,[a]]` colors that will be mapped with the values in the domain. The intermediate colors will be assigned based on the linear interpolation of values.
-Another option is just using a [CARTOcolors](https://carto.com/carto-colors) palette, by just indicating its name.
+Another option is using a [CARTOcolors](https://carto.com/carto-colors) palette, by just indicating its name.
 
 Take a look at the result. Can you appreciate how the hydrographic basins stand out, just by assigning different colors to each river's bearing?  
 
@@ -245,7 +245,7 @@ This is most useful for loading the tileset with any web-mapping library or desk
 
 #### Share
 
-The _Share_ section allows publishing a tileset. By publishing, we grant **CARTO BigQuery Data Viewer** (`bigquery/dataViewer`) permissions to the associated tileset. By doing so, this map becomes public on the web, and anybody with the URL will be able to see it.
+The _Share_ section allows the publishing of a tileset. By publishing, we grant **CARTO BigQuery Data Viewer** (`bigquery/dataViewer`) permissions to the associated tileset. By doing so, this map becomes public on the web, and anybody with the URL will be able to see it.
 
 By unpublishing the tileset, we will revoke the permission mentioned above and disable the sharing links. 
 
@@ -253,7 +253,7 @@ By unpublishing the tileset, we will revoke the permission mentioned above and d
 It can take up to 5 minutes to remove the map from the CDN cache.
 {{%/ bannerNote %}}
 
-Once published, you will find different options to publish the map URL in social networks, as well as the HTML code to embed the map on a website. 
+Once published, you will find different options to publish the map URL on social networks, as well as the HTML code to embed the map on a website. 
 
 ### CLI tool
 
@@ -290,7 +290,7 @@ carto-bq-tiler --help
 
 #### Authentication
 
-`carto-bq-tiler` uses the credentials created by the [bq command-line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool), and it will use the default project configured for it. If you want to use another project you can use the `-p` (`--project`) option, like for listing the tilests:
+`carto-bq-tiler` uses the credentials created by the [bq command-line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool), and it will use the default project configured for it. If you want to use another project you can use the `-p` (`--project`) option, for example for listing the tilests:
 
 ```bash
 carto-bq-tiler -p PROJECT list
