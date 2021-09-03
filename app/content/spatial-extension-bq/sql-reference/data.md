@@ -1,6 +1,6 @@
 ## data
 
-<div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
+<div class="badges"><div class="advanced"></div></div>
 
 This module contains functions and procedures that make use of data (either Data Observatory or user-provided data) for their computations.
 
@@ -232,7 +232,7 @@ data.DATAOBS_SAMPLES(source STRING, filters STRING)
 
 **Description**
 
-When calling this procedure, the result shows a list of the DO samples available
+When calling this procedure, the result shows a list of the DO samples available.
 
 * `source`: `STRING` name of the location where the Data Observatory samples of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
 * `filters`: `STRING` SQL expression to filter the results, e.g. `'category="Housing"'`.
@@ -267,7 +267,7 @@ data.DATAOBS_SUBSCRIPTIONS(source STRING, filters STRING)
 
 **Description**
 
-When calling this procedure, the result shows a list of the DO subscriptions available
+When calling this procedure, the result shows a list of the DO subscriptions available.
 
 * `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
 * `filters`: `STRING` SQL expression to filter the results, e.g. `'category="Housing"'`.
@@ -285,7 +285,7 @@ The result is a table with these columns:
 * `dataset_version` version of the dataset.
 * `dataset_geo_type` type of geometry used by the geography: "POINT"/"MULTIPOINT"/"LINESTRING"/"MULTILINESTRING"/"POLYGON"/"MULTIPOLYGON"/"GEOMETRYCOLLECTION".
 * `table` name of the user BigQuery subscription table to access the dataset.
-* `associated_geography` geography associated with the dataset (NULL if category is `Geography` meanint the dataset itself is a geography); contains a subscription view name if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
+* `associated_geography` geography associated with the dataset (NULL if category is `Geography` meanint the dataset itself is a geography); contains a subscription table/view if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
 
 {{% customSelector %}}
 **Example**
@@ -578,5 +578,5 @@ Returns the current version of the data module.
 
 ```sql
 SELECT carto-st.data.VERSION();
--- 1.0.0-beta.7
+-- 1.0.0
 ```
