@@ -2,14 +2,14 @@
 
 This guide shows how you can create private and public applications. We can classify the applications in two:
 
-- Private applications. Requires a login against CARTO platform.
+- Private applications. Requires a login against the CARTO platform.
 
 - Public applications. The user does not need to log into the application. Access to data is provided through a token.
   
 
 ### Public applications
 
-To create a public application, you need to create a public token with access all the datasets required by the application and introduce the token in the application config (`src/store/initialStateSlice.js`).
+To create a public application, you need to create a public token with access to all of the datasets required by the application and introduce the token in the application config (`src/store/initialStateSlice.js`).
 
 {{% bannerNote title="note" %}}
 Because of security reasons the SQL cannot be modified by the user in a private application
@@ -65,7 +65,7 @@ export const initialState = {
 
 ### Private applications
 
-If you are building a private application, you need to create and Application and get an `Application ID`:
+If you are building a private application, you need to create an Application and get an `Application ID`:
 
 1. Go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers)
 
@@ -101,7 +101,7 @@ If you are using API keys, you need to implement your own authentication mechani
 
 #### Using OAuth
 
-CARTO 2 supports [OAuth](https://en.wikipedia.org/wiki/OAuth) to communicate with CARTO 2 REST APIs. OAuth is the preferred way to manage credentials, so we recommend you use this protocol for implementing **authentication & authorization** in your applications.
+CARTO 2 supports [OAuth](https://en.wikipedia.org/wiki/OAuth) to communicate with CARTO 2 REST APIs. OAuth is the preferred method to manage credentials, so we recommend you use this protocol for implementing **authentication & authorization** in your applications.
 
 OAuth `scopes` are used to specify what permissions will users have to give to the application. For example, `datasets:r:table_name` will grant `read` access to the table `table_name`.
 
@@ -111,11 +111,11 @@ The workflow is:
 
 2. You get an API_KEY (token) to call CARTO APIs but restricted to the requested scopes.
 
-The first thing you need to do is go to your CARTO 2 Dashboard and create a new OAuth app as described in the [documentation](/authorization/#oauth-apps), in order to get the clientID for your application.
+The first step you need to perform is to go to your CARTO 2 Dashboard and create a new OAuth app as described in the [documentation](/authorization/#oauth-apps), in order to get the clientID for your application.
 
 Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauthInitialState` object. You can also modify the `scopes` property to specify what permissions you want to give the application.
 
-If you want to force authentication in your application so no unauthenticated users can access, you need to set the `forceOAuthLogin` property to `true` in the initialState object within the `src/store/appSlice.js` file. When you activate this flag, the first screen for your application will be the following:
+If you want to force authentication in your application, so no unauthenticated users can access, you need to set the `forceOAuthLogin` property to `true` in the initialState object within the `src/store/appSlice.js` file. When you activate this flag, the first screen for your application will be the following:
 
 ![oauth-login](/img/react/oauth-login.png 'OAuth Login')
 
@@ -127,7 +127,7 @@ When your users click on the `Login with CARTO` button, the OAuth protocol flow 
 
 If you just want to restrict access to some application features, you can use the [`OAuthLogin`](../../library-reference/oauth#oauthlogin) component. This will display a popup with the implicit OAuth flow.
 
-Once the OAuth flow has been completed and the user has given consent to your application to access their CARTO account, you can get the user credentials like this:
+Once the OAuth flow has been completed and the user has given consent to your application to access their CARTO account, you can obtain user credentials like this:
 
 ```javascript
 import { selectOAuthCredentials } from '@carto/react-redux';

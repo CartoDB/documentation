@@ -2,7 +2,7 @@
 
 <div class="badges"><div class="core"></div></div>
 
-This module contains functions that compute measurements of distance, area and angles. There are also functions to compute geometry values determined by measurements.
+This module contains functions that compute measurements of distance, area, and angles. There are also functions to compute geometry values determined by measurements.
 
 ### ST_ANGLE
 
@@ -40,7 +40,7 @@ measurements.ST_AZIMUTH(startPoint, endPoint)
 
 **Description**
 
-Takes two points and finds the geographic bearing between them, i.e. the angle measured in degrees from the north line (0 degrees).
+Takes two points and finds the geographic bearing between them, i.e., the angle measured in degrees from the north line (0 degrees).
 
 * `startPoint`: `GEOGRAPHY` starting Point.
 * `endPoint`: `GEOGRAPHY` ending Point.
@@ -66,7 +66,7 @@ measurements.ST_MINKOWSKIDISTANCE(geog, p)
 
 **Description**
 
-Calculate the Minkowski p-norm distance between two features.
+Calculates the Minkowski p-norm distance between two features.
 
 * `geog`: `ARRAY<GEOGRAPHY>` featureCollection.
 * `p`: `FLOAT64` minkowski p-norm distance parameter. 1: Manhattan distance. 2: Euclidean distance. 1 =< p <= infinity. If `NULL` the default value `2` is used.

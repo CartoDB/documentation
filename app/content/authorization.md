@@ -37,7 +37,7 @@ API keys are managed from your user profile.
 
 ![How to get your API keys dashboard](/img/authorization/api-keys.png)
 
-This is an example of how the authorization dashboard looks like in Builder.
+This is an example of how the authorization dashboard looks in Builder.
 
 ![Example of the authorization dashboard](/img/authorization/capture-dashboard-auth-fundamentals.png)
 
@@ -67,7 +67,7 @@ Currently, end user authentication and authorization needs to be performed outsi
 
 ### OAuth apps
 
-CARTO allows you to register external applications on your CARTO account, no matter if you have an individual or organizational plan.
+CARTO allows you to register external applications on your CARTO account, nregardless if you have an individual or enterprise plan.
 
 The users of your application will be able to authenticate against their CARTO accounts by using the [OAuth 2.0 protocol](https://oauth.net/2). You will not need to develop a custom authentication/authorization system unless you want to have more advanced features in your flow such as roles.
 
@@ -88,7 +88,7 @@ OAuth apps are managed from developer settings, under your profile settings, as 
 
 ##### Create an app
 
-You can create a new OAuth app by clicking on the `NEW OAUTH APP` button. You will have to provide a name, website URL and at least one callback URL. Optionally, you can also add a description and a logo, which will be shown to your users when requesting access.
+You can create a new OAuth app by clicking on the `NEW OAUTH APP` button. You will have to provide a name, website URL, and at least one callback URL. Optionally, you can also add a description and a logo, which will be shown to your users when requesting access.
 
 After that, you will see the client ID and client secret of your application, required for the authorization flow.
 
@@ -104,7 +104,7 @@ Also, you could check the client ID and client secret of the application, requir
 
 ##### Remove an app
 
-At the bottom of the edition view, there is a button to `Delete my app`. This operation cannot be undone and will revoke the access from all the users, showing them a notification on their CARTO accounts. The datasets created by the app will not be deleted.
+At the bottom of the edition view, there is a button to `Delete my app`. This operation cannot be undone and will revoke the access from all the users and displaying a notification on their CARTO accounts. The datasets created by the app will not be deleted.
 
 ##### Manage connected apps
 
@@ -164,7 +164,7 @@ There are two different flows to get the API key (depending on the `response_typ
 
 **2.1 Authorization Code Grant**
 
-After users login and authorise an app, CARTO redirects them to the URI specified in the `redirect_uri` param, attaching a code that can be used to get a temporary API Key for that user. For example:
+After users login and authorize an app, CARTO redirects them to the URI specified in the `redirect_uri` param, attaching a code that can be used to get a temporary API Key for that user. For example:
 ```
 https://example.com/callback?code=fd17b6af-fde8-401e-9891-a6d430f9e456
 ```
@@ -219,9 +219,9 @@ You can put any state information in the `state` parameter so you keep the conte
 
 *B) Reauthenticate silently*
 
-There is a way to re-authenticate without redirecting the user. The trick is to use an invisible iframe in order to redirect the browser to the OAuth flow. In order to better support this, CARTO supports the `prompt=none`. With this parameter, the application will get an error in case the user is not logged in or authorized, so you can handle the error and redirect the user to the flow with a redirection (so the user can interact with the consent screen). The flow would be like:
+There is a way to re-authenticate without redirecting the user. The trick is to use an invisible iframe in order to redirect the browser to the OAuth flow. In order to better support this, CARTO supports the `prompt=none`. With this parameter, the application will get an error in case the user is not logged in or authorized, so you can handle the error and redirect the user to the flow with a redirection (so the user can interact with the consent screen). The flow would be:
 
-1. Create an invisible iframe with a location like: `https://carto.com/oauth2/authorize?client_id=...?response_code=token&prompt=none`.
+1. Create an invisible iframe with a location: `https://carto.com/oauth2/authorize?client_id=...?response_code=token&prompt=none`.
 2. Poll the location of the iframe after a while (`iframe.contentWindow.location`). If you get a browser error it’s because the iframe URL is not under your domain (i.e: CARTO has not yet redirected back).
 3. Once you can read the iframe URL, parse it. It can either include the new token or an error. In the first case, you can start using it. In the second, you should redirect the user to the full OAuth flow (without the prompt parameter).
 
@@ -230,13 +230,13 @@ There is a way to re-authenticate without redirecting the user. The trick is to 
 
 Your app should be able to use the provided API Key to communicate with CARTO’s APIs :)
 
-To do it, you just have to include an `api_key` parameter to the available endpoints. For example:
+To do this, you just have to include an `api_key` parameter to the available endpoints. For example:
 
 ```txt
  {BASE_URL}/api/v4/me?api_key=bdda6efbfd71ae4f619018efb8883a85cdbe30fe
 ```
 
-The access token will be valid during 60 minutes. After that, you will have to resfresh it or request a new one.
+The access token will be valid for 60 minutes. After this time, you will have to refresh it or request a new one.
 
 ***Tip:*** The response from the token endpoint includes the full URL for the `me` endpoint, so you do not have to hard-code the URLs.
 

@@ -14,9 +14,9 @@ After completing this guide, you will have your first Amazon Location map with a
 
 ### Basic setup
 
-There are two main steps for visualizing a CARTO layer: first you create a map resource in your AWS account, and then you create a web application that uses a rendering library to visualize the map and the CARTO layer on top of this map.
+There are two main steps for visualizing a CARTO layer: first you need to create a map resource in your AWS account followed by the creation of a web application that uses a rendering library to visualize the map with the corresponding CARTO layer.
 
-For this guide, we have already created a map resource called "Rivers" in our AWS account. If you want to create your own map resource, you can follow the instructions from the [Developer Guide](https://docs.aws.amazon.com/location/latest/developerguide/create-map-resource.html).
+For this guide, we have already created a map resource called "Rivers" in our AWS account. If you want to create your own map resource, you can follow the instructions from the [Amazon Developer Guide](https://docs.aws.amazon.com/location/latest/developerguide/create-map-resource.html).
 
 Follow the [Using MapLibre GL JS with Amazon Location Service](https://docs.aws.amazon.com/location/latest/developerguide/tutorial-maplibre-gl-js.html) tutorial to create a basic map with the [MapLibre GL JS](https://maplibre.org/maplibre-gl-js-docs/api/) rendering library. 
 
@@ -93,7 +93,7 @@ async function initializeMap() {
 ```
 
 {{% bannerNote title="tip" %}}
-If using CARTO 2, you can follow a similar approach but using the TileJSON endpoints provided by Maps API v2. For instance, this a valid URL for retrieving a TileJSON using CARTO 2: `https://maps-api-v2.us.carto.com/user/public/bigquery/tileset?source=cartobq.maps.eurivers&format=tilejson&api_key=default_public&client=amazon-location`
+If using CARTO 2, you can follow a similar approach but using the TileJSON endpoints provided by Maps API v2. For example, this a valid URL for retrieving a TileJSON using CARTO 2: `https://maps-api-v2.us.carto.com/user/public/bigquery/tileset?source=cartobq.maps.eurivers&format=tilejson&api_key=default_public&client=amazon-location`
 {{%/ bannerNote %}}
 
 ### All together

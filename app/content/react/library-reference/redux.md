@@ -8,7 +8,7 @@
 
 Functions to manage application state using React-Redux and the Redux Toolkit. This package includes 2 slices to manage the main redux blocks of a CARTO for React application. A [slice](https://redux-toolkit.js.org/api/createSlice) is a way to manage a "portion" or _slice_ of the redux store with a module:
 
-- `cartoSlice`: to deal with basemap, viewState, sources, layers and filters on sources.
+- `cartoSlice`: to deal with basemap, viewState, sources, layers, and filters on sources.
 - `oauthSlice`: to use an OAuth app.
 
 **Tip:** The CARTO for React template already makes extensive use of these slices for redux out of the box, to provide several features in an easy way.
@@ -16,7 +16,7 @@ Functions to manage application state using React-Redux and the Redux Toolkit. T
 
 #### createCartoSlice
 
-A function that accepts an `initialState`, setups the state and creates
+A function that accepts an `initialState`, setups the state, and creates
 the reducers that support CARTO for React architecture. In the CARTO 3 skeleton template this slice includes also the OAuth settings; in the CARTO 2 templates there is a separate [slice](#oauth-slice) for OAuth settings.
 
 - **Input**:
@@ -212,7 +212,7 @@ Action to set the default credentials parameters to use for requests to the CART
 
 #### setBasemap
 
-Action to set a basemap. To see available maps, check the reference for `@carto/react-basemaps`. If you use a googlemaps basemap, you would need to manage its api_key properly.
+Action to set a basemap. To see available maps, check the reference for `@carto/react-basemaps`. If you use a Google Maps basemap, you would need to manage its api_key properly.
 
 - **Input**:
 
@@ -268,7 +268,7 @@ Action to add a filter on a given `source` by a `column`. This is done internall
 
 #### removeFilter
 
-Action to remove a column filter from a source
+Action to remove a column filter from a source.
 
 - **Input**:
 
@@ -297,7 +297,7 @@ Action to remove a column filter from a source
 
 #### clearFilters
 
-Action to remove all filters from a source
+Action to remove all filters from a source.
 
 - **Input**:
 
@@ -345,7 +345,7 @@ Redux selector to get a source by ID
 
 #### setViewState
 
-Action to set the current ViewState of the map
+Action to set the current ViewState of the map.
 
 - **Input**:
 
@@ -412,7 +412,7 @@ Action to set the all the widgets loading state at once
 
 #### createOauthCartoSlice
 
-A function that accepts an initialState, setup the state and creates
+A function that accepts an initialState, setup the state, and creates
 reducers to manage OAuth with the CARTO 2 platform. This slice is not used with CARTO 3 templates because OAuth is managed through the Auth0 React SDK.
 
 - **Input**:
@@ -482,7 +482,7 @@ Action to set the userInfo in the redux store, once there is a valid token (and 
 
 #### logout
 
-Action to logout, removing user info & token from redux store
+Action to logout, removing user info & token from redux store.
 
 - **Example**:
 
@@ -495,7 +495,7 @@ Action to logout, removing user info & token from redux store
 
 #### selectOAuthCredentials
 
-Selector to fetch the current OAuth credentials from the redux store
+Selector to fetch the current OAuth credentials from the redux store.
 
 - **Returns**:
 
