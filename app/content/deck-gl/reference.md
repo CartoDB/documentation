@@ -41,9 +41,9 @@ If using API v3, these are the available properties:
 
 ### CartoLayer
 
-`CartoLayer` is the layer to visualize data using the CARTO Maps API.
+`CartoLayer` is the layer to visualize data using the CARTO Maps API. This layer allows to work with the different CARTO Maps API versions (v1, v2, and v3). When using version v1 and v2, the layer always works with vector tiles so it inherits all properties from [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer.md). When using v3, the layer works with vector tiles if the `type` property is `MAP_TYPES.TILESET` and with GeoJSON data if the `type` is `MAP_TYPES.QUERY` or `MAP_TYPES.TABLE`. When using GeoJSON data, the layer inherits all properties from [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer.md).
 
-> **CARTO 3** is a fully cloud native platform currently available only in a private beta. If you want to test it, please contact us at [support@carto.com](mailto:support@carto.com?subject=Access%20to%20Cloud%20%Native%20%API%20(v3)).
+> **CARTO 3** is our new cloud-native platform. If you'd like to get access, click on the following link for more information: [https://carto.com/carto3](https://carto.com/carto3).
 
 #### `data` (String)
 
@@ -62,6 +62,18 @@ Required. Data type. Possible values are:
 Required when apiVersion is `API_VERSIONS.V3`. 
 
 Name of the connection registered in the CARTO workspace.
+
+##### `geoColumn` (String, optional)
+
+Only supported when apiVersion is `API_VERSIONS.V3` and `type` is `MAP_TYPES.TABLE`.
+
+Name of the `geo_column` in the CARTO platform. Use this override the default column ('geom'), from which the geometry information should be fetched.
+
+##### `columns` (Array, optional)
+
+Only supported when apiVersion is `API_VERSIONS.V3` and `type` is `MAP_TYPES.TABLE`.
+
+Names of columns to fetch. By default, all columns are fetched.
 
 #### `uniqueIdProperty` (String)
 
