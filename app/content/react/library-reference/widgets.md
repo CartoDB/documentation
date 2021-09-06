@@ -147,7 +147,7 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 
 #### LegendWidget
 
-Renders a `<LegendWidget />` component. The widget can display a switch to show or hide a layer and a legend for the layer. The legend representation depends on the legend type. The widget access the layer information from the store and add the legend for those layers where it has been specified.
+Renders a `<LegendWidget />` component. The widget can display a switch to show or hide a layer and a legend for the layer. The legend representation depends on the legend type. You can check the available `LEGEND_TYPES` [here](../ui/#legend_types). The widget accesses the layer information from the store and add the legend for those layers where it has been specified.
 
 - **Input**:
 
@@ -158,9 +158,29 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 | [props.className] | <code>string</code>   |         | (optional) Material-UI withStyle class for styling |
 {{%/ tableWrapper %}}
 
+You can control the legend options through the following properties that must be added to the `layerAttributes` property for the layer in the store:
+
+{{% tableWrapper tab="true" %}}
+| Param         | Type           | Default       | Description    |
+| ------------- | -------------- | ------------- | -------------- |
+| title         | `string`       |               | Layer title    |
+| switchable    | `boolean`      | `true`        | Whether the layer can be hide/shown |
+| legend        | `Object`       |               | Legend properties |
+| legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
+| legend.attr   | `string`       |               | Attribute used for styling the layer |
+| legend.colors | `Array` or `string` |               | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP` |
+| legend.labels | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
+|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps). |
+|               |                |               | - Array of `[min, max]` numbers for `LEGEND_TYPES.PROPORTION`. |
+| legend.icons  | `Array`        |               | Array of string with icons URLs. Used for `LEGEND_TYPES.ICON`. |
+| legend.note   | `string`       |               | Note to show below th  legend to add additional explanations. |
+| legend.collapsible | `boolean` | `true`        | Whether the legend is collapsible or not. |
+{{%/ tableWrapper %}}
+
+
 - **Example**:
 
-  If you want to show a legend for a layer, you need to define some layer attributes before you instantiate the layer. Here we are going to create a `BINS` type legend where we are assigning colors and labels to the different legend elements. We use the same colors to the CARTO for deck.gl `colorBins` helper when creating the layer. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action:
+  If you want to show a legend for a layer, you need to define some layer attributes before you instantiate the layer. Here we are going to create a `BINS` type legend where we are assigning colors and labels to the different legend elements. We use the same colors in the CARTO for deck.gl `colorBins` helper when creating the layer. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action. We also manage the layer visibility through the `visible` attribute in the store:
 
   ```js
   import { LEGEND_TYPES } from "@carto/react-ui";
@@ -176,11 +196,10 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
   ];
 
   export const LABELS = [
-    '< $100M',
-    '$100M - $500M',
-    '$500M - $1B',
-    '$1B - $1.5B',
-    '> $1.5B',
+    '$100M',
+    '$500M',
+    '$1B',
+    '$1.5B',
   ];
 
   const DATA = LABELS.map((elem, index) => {
@@ -198,24 +217,29 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
     },
   };
 
-  layer = new CartoLayer({
-    id: MY_LAYER_ID,
-    type: MAP_TYPES.QUERY,
-    connection: 'myconn',
-    data: 'SELECT ...',
-    getFillColor: colorBins({
-      attr: layerConfig.legend.attr,
-      domain: [100e6, 500e6, 1e9, 1.5e9],
-      colors: COLORS,
-    }),
-    onDataLoad: () => {
-      dispatch(
-        updateLayer({
-          id: MY_LAYER_ID,
-          layerAttributes: { ...layerConfig },
-        })
-      );
-    }
+  const { myLayer } = useSelector((state) => state.carto.layers);
+  const source = useSelector((state) => selectSourceById(state, myLayer?.source));
+  const cartoLayerProps = useCartoLayerProps({ source });
+
+  if (myLayer && source) {
+    return new CartoLayer({
+      ...cartoLayerProps,
+      id: MY_LAYER_ID,
+      visible: myLayer.visible,
+      getFillColor: colorBins({
+        attr: layerConfig.legend.attr,
+        domain: [100e6, 500e6, 1e9, 1.5e9],
+        colors: COLORS,
+      }),
+      onDataLoad: () => {
+        dispatch(
+          updateLayer({
+            id: MY_LAYER_ID,
+            layerAttributes: { ...layerConfig },
+          })
+        );
+      }
+    });
   }
   ```
 
