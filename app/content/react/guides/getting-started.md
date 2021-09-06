@@ -47,11 +47,11 @@ And these are the main files:
 
 To connect a private application you first need to create and Application and get an `Application ID`:
 
-1. You need to go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers)
+1. You need to go to the Developers section in the Workspace
 
 2. Create a new APP with the URL `https://127.0.0.1:3000`
 
-3. Copy the `Application ID` and introduce it at `src/store/initialStateSlice.js`.
+3. Copy the `Client ID` and introduce it at `src/store/initialStateSlice.js`.
 
 {{% bannerNote type="note" title="CARTO 2 templates" %}}
 You can also create a new application based on the CARTO 2 template if you use `@carto/base-2` as the template name. We've also created a sample app template (`@carto/sample-app-2`) for CARTO 2 showing how to implement common spatial apps features. This sample App is available at [https://sample-app-react.carto.com](https://sample-app-react.carto.com/)
@@ -60,7 +60,7 @@ You can also create a new application based on the CARTO 2 template if you use `
 
 ### apiBaseUrl
 
-Go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers) and copy the `apiBaseUrl`.
+Go to the Developers section in the Workspace and copy the `apiBaseUrl`.
 
 Edit `src/store/initialStateSlice.js` to add it:
 
