@@ -8,7 +8,7 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
 
 ### Connecting to CARTO 3
 
-1. Go to [workspace](https://gcp-us-east1.app.carto.com/connections/create) and create a new connection:
+1. Go to the Workspace and create a new connection:
 
    <video height="425" autoplay="" loop="" muted=""> <source src="/img/deck-gl/workspace-connection.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
