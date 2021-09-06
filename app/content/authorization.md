@@ -67,7 +67,7 @@ Currently, end user authentication and authorization needs to be performed outsi
 
 ### OAuth apps
 
-CARTO allows you to register external applications on your CARTO account, nregardless if you have an individual or enterprise plan.
+CARTO allows you to register external applications on your CARTO account, regardless if you have an individual or enterprise plan.
 
 The users of your application will be able to authenticate against their CARTO accounts by using the [OAuth 2.0 protocol](https://oauth.net/2). You will not need to develop a custom authentication/authorization system unless you want to have more advanced features in your flow such as roles.
 
