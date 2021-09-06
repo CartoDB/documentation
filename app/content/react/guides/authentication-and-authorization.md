@@ -15,23 +15,15 @@ To create a public application, you need to create a public token with access to
 Because of security reasons the SQL cannot be modified by the user in a private application
 {{%/ bannerNote %}}
 
-
 With the following changes we're going to make the private application public.
 
-1. Create a token.
+1. Create a token. There are two different ways for creating a public token: 
+   
+   - You can create a map in Builder with the data sources you want to use in your application and then you make it public by clicking the "Share" button. You can then select the "Developers" tab and copy the map token.
+  
+   ![map-token](/img/react/map-token.png 'Public Token')
 
-```shell
-curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "grants": [
-        {
-            "connection_name": "bqconn",
-            "source": "cartobq.public_account.retail_stores"
-        }
-    ],
-}'
-```
+   - You can make a request to the `Create Token` endpoint from the [CARTO 3 API](https://api-docs.carto.com)
 
 2. Add the token to the config and remove oauth section. 
 
@@ -67,7 +59,7 @@ export const initialState = {
 
 If you are building a private application, you need to create an Application and get a `Client ID`:
 
-1. Go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers)
+1. Go to the Developers section in the Workspace
 
 2. Create a new APP with the URL `https://127.0.0.1:3000`
 
