@@ -65,13 +65,13 @@ export const initialState = {
 
 ### Private applications
 
-If you are building a private application, you need to create an Application and get an `Application ID`:
+If you are building a private application, you need to create an Application and get a `Client ID`:
 
 1. Go to [developers section in workspace](https://gcp-us-east1.app.carto.com/developers)
 
 2. Create a new APP with the URL `https://127.0.0.1:3000`
 
-3. Copy the `Application ID` and introduce it at `src/store/initialStateSlice.js`.
+3. Copy the `Client ID` and introduce it at `src/store/initialStateSlice.js`.
 
 Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauth` object with the one from the application just created. 
 

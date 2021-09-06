@@ -45,7 +45,7 @@ And these are the main files:
 
 ### Get an Application ID
 
-To connect a private application you first need to create an Application and get an `Application ID`:
+To connect a private application you first need to create an Application and get a `Client ID`:
 
 1. You need to go to the Developers section in the Workspace
 
