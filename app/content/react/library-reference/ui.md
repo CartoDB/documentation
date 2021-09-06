@@ -72,12 +72,12 @@ Constants for the different legend types available.
 
 - **Options**:
 
-  - CATEGORY. Use this type when you are visualizing a choropleth map based on the value of a `string` property.
-  - ICON. Use this type when you are visualizing a point layer using icons.
-  - CONTINUOUS_RAMP. Use this type when you are visualizing a layer using a continuous color ramp based on a numeric property.
-  - BINS. Use this type when you are visualizing a layer assigning colors to bins/intervals based on a numeric property.
-  - PROPORTION. Use this type when you are visualizing a point layer using proportional symbols (size-varying).
-  - CUSTOM. Use this type when you have a custom visualization that does not fit with the other legend types.
+  - `CATEGORY`. Use this type when you are visualizing a choropleth map based on the value of a `string` property.
+  - `ICON`. Use this type when you are visualizing a point layer using icons.
+  - `CONTINUOUS_RAMP`. Use this type when you are visualizing a layer using a continuous color ramp based on a numeric property.
+  - `BINS`. Use this type when you are visualizing a layer assigning colors to bins/intervals based on a numeric property.
+  - `PROPORTION`. Use this type when you are visualizing a point layer using proportional symbols (size-varying).
+  - `CUSTOM`. Use this type when you have a custom visualization that does not fit with the other legend types.
 
 - **Example**:
 
