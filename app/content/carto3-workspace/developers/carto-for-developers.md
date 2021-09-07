@@ -1,8 +1,8 @@
 ## CARTO for developers
 
-The CARTO 3 Workspace intends to make the development of web-based spatial applications as easy as possible. To achieve this, the *Developers* section provides a complete set of app development tools that includes APIs, SDKs, development frameworks and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+The CARTO 3 Workspace has been designed to make the development of web-based spatial applications as easy as possible. To achieve this, the *Developers* section provides a complete set of app development tools that includes APIs, SDKs, development frameworks, and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
-The developer toolkit includes industry-leading visualization, mapping and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
+The developer toolkit includes industry-leading visualization, mapping, and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences for desktop and mobile.
 
 ### API Base URL
 
@@ -12,7 +12,7 @@ The API with the base CARTO 3 URL is displayed. You can copy and use it by click
 
 ### Managing built applications
 
-The CARTO 3 Workspace includes options for managing your applications. From the *Account Settings* section, you can create, edit or delete applications.
+The CARTO 3 Workspace includes options for managing your applications. From the *Account Settings* section, you can create, edit, or delete applications.
 
 #### Creating applications
 
@@ -20,7 +20,7 @@ You can create new applications that will be used for development of custom web 
 
 ![Developers create new application](/img/cloud-native-workspace/developers/developers_creating_application.png)
 
-For creating a new application, click on *Create new* button. Then you will see the new application setup options. You can create a new application with basic information, or a new application that includes advanced settings.
+To create a new application, click on *Create new* button. Then you will see the new application setup options. You can create a new application with basic information, or a new application that includes advanced settings.
 
 ##### Creating applications with basic information
 
@@ -34,7 +34,7 @@ Enter the basic information:
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_basic_information.png)
 
-##### Creating application with advanced settings
+##### Creating applications with advanced settings
 
 Enter the advanced information:
 
@@ -42,7 +42,7 @@ Enter the advanced information:
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_application_type.png)
 
-You can access the drop-down menu for selecting your application type by clicking the arrow in the right corner. There are 3 options available: Single Page Application, Machine to Machine and Regular Web Application
+You can access the drop-down menu to select your application type by clicking the arrow in the right hand corner. There are 3 options available: Single Page Application, Machine to Machine, and Regular Web Application
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_drop_down.png)
 
@@ -50,7 +50,7 @@ You can access the drop-down menu for selecting your application type by clickin
 
 ![Developers token endpoint](/img/cloud-native-workspace/developers/developers_token_endpoint.png)
 
-You can access the drop-down menu for selecting your token endpoint authentication method by clicking the arrow in the right corner:
+You can access the drop-down menu to select your token endpoint authentication method by clicking the arrow in the right hand corner:
 
 ![Developers token endpoint dropdown](/img/cloud-native-workspace/developers/developers_token_endpoint_dropdown.png)
 
@@ -102,15 +102,15 @@ Click *Save* for saving your changes.
 
 #### Editing applications
 
-In the *Built applications* section of the Workspace, you will see the list of your current built applications:
+In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
 ![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
-You can access the quick actions menu for managing your built applications by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete. You can also copy the application ID by hovering your mouse over and clicking on it.
+You can access the quick actions menu to manafe your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete. You can also copy the application ID by hovering your mouse over and clicking on it.
 
 ![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions.png)
 
-If you click the *Edit* quick action, you will be redirected to a dialog for editing application parameters. This dialog contains the same form that you filled out when creating the application, showing the current values.
+If you click the *Edit* quick action, you will be redirected to a dialog to edit application parameters. This dialog contains the same form that you filled out when creating the application, showing the current values.
 
 ![Developers edit application](/img/cloud-native-workspace/developers/developers_editing_applications.png)
 
@@ -118,11 +118,11 @@ After editing the built application parameters, click the *Save changes* button.
 
 #### Deleting applications
 
-In the *Built applications* section of the Workspace, you will see the list of your current built applications:
+In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
 ![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
-You can access the quick actions menu for managing your built applications by clicking on the three point icon in the top right corner. There are 2 options available: Edit and Delete.
+You can access the quick actions menu to manage your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete.
 
 ![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions.png)
 
@@ -132,7 +132,7 @@ If you click the *Delete* quick action, a dialog will appear so you can confirm 
 
 #### Copying URL
 
-In the *Built applications* section of the Workspace, you will see the list of your current built applications:
+In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
 ![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
@@ -148,9 +148,9 @@ You can start creating applications from scratch by using our documentation. By 
 
 ### Featured documentation
 
-In this section, you have quick access to different developer toolkit to get started with the build of the most innovative spatial analytics apps: <a href="https://carto.com/developers/maps-api/" target="_blank">Maps API</a>, <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">BigQuery Spatial Extension</a>, <a href="https://docs.carto.com/deck-gl/overview/" target="_blank">CARTO for deck.gl</a> and <a href="https://docs.carto.com/react/overview/" target="_blank">CARTO for React</a>
+In this section, you have quick access to different developer toolkits to get started with the build of the most innovative spatial analytics apps: <a href="https://carto.com/developers/maps-api/" target="_blank">Maps API</a>, <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">BigQuery Spatial Extension</a>, <a href="https://docs.carto.com/deck-gl/overview/" target="_blank">CARTO for deck.gl</a> and <a href="https://docs.carto.com/react/overview/" target="_blank">CARTO for React</a>
 
 ![Developers featured documentation](/img/cloud-native-workspace/developers/developers_featured_documentation.png)
 
-You can click on *View all* button to have access to all <a href="https://docs.carto.com/" target="_blank">CARTO documentation</a>. In this link, you will find all the resources you need to get the most out of your developments.
+You can click on *View all* button to have access to all <a href="https://docs.carto.com/" target="_blank">CARTO documentation</a>. In these pages, you will find all the resources you need to get the most out of your developments.
 

@@ -40,7 +40,7 @@ When working with layers in the layer list of Builder, the following features ar
 
 ### WIDGETS
 
-This guide describes how to add interactive widgets for viewing your map data in CARTO 3 Builder. Widgets are embedded with your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
+This guide describes how to add interactive widgets to view your map data in CARTO 3 Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
 
 In the *Wiget* tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
@@ -56,7 +56,7 @@ Click on *New widget* button to start interacting with your data:
 
 **Tooltip**
 
-The tooltip is an infowindow that appears when you hover your mouse over a map feature. A tooltip appears where the mouse cursor is located on the map. You can customize the content of the tooltip by defining the source columns and the formatting.
+The tooltip is an info window that appears when you hover your mouse over a map feature. A tooltip appears where the mouse cursor is located on the map. You can customize the content of the tooltip by defining the source columns and the formatting.
 
 ![Map layers blending](/img/cloud-native-workspace/maps/interactions_tooltip2.png)
 
@@ -70,7 +70,7 @@ It shows the coordinates where you click with the mouse. The coordinates will ap
 
 Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.
 
-The CARTO 3 Builder provides a set of CARTO and Google Maps basemaps styles as background map. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
+The CARTO 3 Builder provides a set of CARTO and Google Maps basemaps styles as background maps. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
 
 Select the CARTO Basemap menu to see different basemap options. They include:
 - **Voyager**: basemap with colors to clearly differentiate natural and cultural features. This basemap is showed by default when creating a new map.

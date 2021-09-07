@@ -1,16 +1,16 @@
 ## Getting started
 
-The CARTO 3 Workspace is the user interface for leading cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse. Take the most from our Spatial Extension, Data Observatory, and other fresh features.
+The CARTO 3 Workspace is the user interface for our next generation cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse(s). Learn how to make the most of our Spatial Extension, Data Observatory, and other new features.
 
 ### Create your CARTO 3 account
 
-Simple steps gets you into the CARTO 3 Workspace:
+Follow these simple steps to access the CARTO 3 Workspace:
 
 1. **Email and password**
 
     - Go to the <a href="http://app.carto.com" target="_blank">CARTO 3 Sign In</a> page.
     - Click *Sign up*.
-    - Enter your email address and password. You can also sing up with your existing Google account by clicking *Continue with Google*.
+    - Enter your email address and password. You can also sign up with your existing Google account by clicking *Continue with Google*.
     - Once you have entered your credentials: click *Continue*.
 
     ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_and_password.png)
@@ -31,11 +31,11 @@ Simple steps gets you into the CARTO 3 Workspace:
 
     **Create a new account**:
 
-    For creating a new account follow the next steps:
+    To create a new account follow these steps:
 
     - Choose an account name.
     - Select if you want anyone with the same domain to automatically join your account, or leave it unchecked if you want them to go through an approval process.
-    - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform is in four GCP regions (Europe-West, USA-Central, Asia-Northeast, Australia-Southeast). We give you the possibility to choose the region that is closer to your data warehouse.
+    - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform (GCP) is in four GCP regions (Europe-West, USA-Central, Asia-Northeast, Australia-Southeast). We give you the possibility to choose the region that is closest to your data warehouse.
     - Click *Next*.
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_the_setup2.png)
@@ -64,17 +64,17 @@ Simple steps gets you into the CARTO 3 Workspace:
 
     ![Business profile](/img/cloud-native-workspace/get-started/form_business_profile.png)
 	
-    You are all set up to start using CARTO 3!
+    You are ready to start using CARTO 3!
 
     **Joining an existing account**:
 
-    For joining an existing account follow the next steps:
+   To join an existing account follow these steps:
 
     - Choose **Join** an account or **Request access** to an account. 
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_detected_multiple.png)
 
-    If you select **Join** the account directly, the next step before accessing the CARTO 3 Workspace is filling the personal form.
+    If you select to **Join** the account directly, you will need to enter additional information before accessing the CARTO 3 Workspace.
 
     Enter your personal information:
 
@@ -100,13 +100,13 @@ Simple steps gets you into the CARTO 3 Workspace:
 
     ![Business profile](/img/cloud-native-workspace/get-started/join_business_profile.png)
 
-    You are all set up to start using CARTO 3!
+    You are ready to start using CARTO 3!
 
-    If you select **Request access**, the request will be sent to the account administrator and your access will be blocked until it is accepted:
+    If you select **Request access**, the request will be sent to the account administrator and your access will be on hold until it is accepted:
 
     ![Account setup](/img/cloud-native-workspace/get-started/account_request_sent.png)
 
-    You will receive an email in your existing email address informing you whether your order has been accepted or declined. If it is declined, you have the possibility to select a different account to join or create a new account. If it is accepted, you will be redirected to the personal form before having access to the CARTO 3 Workspace.
+    You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different account to join or create a new account. If it is accepted, you will be redirected to the personal information form which needs to be filld in before having access to the CARTO 3 Workspace.
 
     Enter your personal information:
 
@@ -136,32 +136,32 @@ Simple steps gets you into the CARTO 3 Workspace:
 
 Learn everything you need to know about your Workspace and how to make the most out of it.
 
-When you log in to your CARTO 3 account, you land on your Workspace. The workspace allows you to access all components of CARTO 3 platform. Manage connections to your data warehouses, explore your data, subscribe to Data Observatory datasets, develop spatial applications, run visualizations and spatial analysis through a dedicated portal.
+When you log in to your CARTO 3 account, you will be presented with your Workspace. The Workspace allows you to access all components of CARTO 3 platform: Manage connections to your data warehouse(s), explore your data, subscribe to Data Observatory datasets, develop spatial applications, and run visualizations and spatial analysis through a dedicated portal.
 
 ![Workspace overview](/img/cloud-native-workspace/get-started/workspace_overview_default.png)
 
 #### Welcome
 
-The first time that you access the Workspace, you will see a *Welcome* banner with quick access to the *Connections* panel. By clicking this banner, you can easily connect your data warehouse to start using the Workspace. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
+The first time that you access the Workspace, you will see a *Welcome* banner with quick access to the *Connections* panel. By clicking this banner, you can easily connect your data warehouse(s) to start using the Workspace. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
 
 ![Welcome banner](/img/cloud-native-workspace/get-started/home_first_landing.png)
 
 #### Recent maps
 
-View your latest content. This module displays the latest maps that you have been working on so that you can quickly access and continue working with them.
+View your latest content. This module displays the latest maps that you have been working on so that you can quickly access and continue working on them.
 
 ![Recent maps](/img/cloud-native-workspace/get-started/recent_maps2.png)
 
 
 #### Getting started
 
-In this section, you have quick access to different options to get started with the CARTO 3 Workspace, like creating maps from your data, developing spatial applications, learning how to use the Spatial Extension, etc.
+In this section, you have quick access to different options to get started with the CARTO 3 Workspace, such as creating maps from your data, developing spatial applications, or learning how to use the Spatial Extension.
 
 ![Recent maps](/img/cloud-native-workspace/get-started/getting_started.png)
 
 #### What’s new
 
-Fresh features, interesting articles, and the latest news related to CARTO 3 from our <a href="https://carto.com/blog" target="_blank">blog</a>.
+New features, interesting articles, and the latest news related to CARTO 3 from our <a href="https://carto.com/blog" target="_blank">blog</a>.
 
 ![Recent maps](/img/cloud-native-workspace/get-started/what_is_new.png)
 
@@ -171,7 +171,7 @@ In the left panel, you can find the navigation menu with all the available optio
 
 ![Menu features](/img/cloud-native-workspace/get-started/the_menu_features2.png)
 
-In the bottom part of the menu, you have additional options to Join our Slack channel, send us feedback, or access to Documentation.
+In the bottom part of the menu, you have additional options to Join our Slack channel, send us feedback, or get access to Documentation.
 
 ![Menu features additional options](/img/cloud-native-workspace/get-started/the_menu_features_more.png)
 
@@ -179,21 +179,21 @@ In the bottom part of the menu, you have additional options to Join our Slack ch
 
 #### Introduction
 
-This is a quick guide to help you get started. A step-by-step overview on how to connect to your data warehouse, explore your data and create maps using your data.
+This is a quick guide to help you get started and is a step-by-step overview on how to connect to your data warehouse, explore your data, and create maps using it.
 
-The CARTO 3 Workspace includes functionalities for registering and managing connections to your data warehouses. For every user we will provision a CARTO Datawarehouse, hence the user can expand the capacity of that connection or connect their own Data Warehouse. 
+The CARTO 3 Workspace includes functionalities for registering and managing connections to your data warehouse(s). For each user we provision a CARTO data warehouse, allowing the user to expand the capacity of that connection or connect their own data warehouse(s). 
 
-Once you have registered a connection, you can perform different operations with the data source, like executing the functions provided by the CARTO Spatial Extension or creating stunning maps.
+Once you have registered a connection, you can perform a multitude of operations with the data source, such as executing the functions provided by the CARTO Spatial Extension or creating stunning maps.
 
 #### Create a Connection
 
-Go to the *Connections* menu in the Workspace, where you will see the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
+Go to the *Connections* menu in the Workspace, where you can view the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
 
 ![Connections module](/img/cloud-native-workspace/get-started/the_connections_module3.png)
 
-For adding a new connection, click on *New connection* and follow the next steps:
+To add a new connection, click on *New connection* and follow these steps:
 
-1. Select your data warehouse: BigQuery, PostgreSQL, Redshift or Snowflake.
+1. Select your data warehouse: BigQuery, PostgreSQL, Redshift, or Snowflake.
 2. Click the *Setup connection* button, or the *Connect using a service account* button if you are connecting to BigQuery.
 3. Enter the connection parameters and credentials. You need to enter the connection parameters such as the server, username, password, or provide a service account, depending on the connector.
 
@@ -207,7 +207,7 @@ After you have provided the connection parameters, click the *Connect* button. T
 
 #### Create a Map
 
-The *Maps* page enables you to create and manage maps in the CARTO 3 Workspace. You can use existing connections to your data warehouses or you can directly upload new datasets files.
+The *Maps* page enables you to create and manage maps in the CARTO 3 Workspace. You can use existing connections to your data warehouse(s) or you can directly upload new datasets files.
 
 1. From your *Maps* page, click *Create your first map*. This will open the CARTO 3 map tool: Builder.
 	
@@ -219,7 +219,7 @@ The *Maps* page enables you to create and manage maps in the CARTO 3 Workspace. 
 		
 3. A new dialog will open so you can select your data source. 
 
-4. In this example we are going to use a table with BigQuery connection. Insert the *Fully Qualified Table* and click *Add source*.
+4. In this example we are going to use a table with a BigQuery connection. Insert the *Fully Qualified Table* and click *Add source*.
 
 ![Enter table name](/img/cloud-native-workspace/get-started/map_add_source_table.png)
 
@@ -236,21 +236,21 @@ The CARTO 3 Builder contains many features that guide you through the process of
 
 #### Explore your data
 
-The new *Data Explorer* functionality simplifies visualization. This section enables you to explore your connected data warehouse, preview your geospatial tables and tilesets and create maps or tilesets from your data. If you haven’t connect your own data warehouse yet, you will see the provisioned data warehouse:
+The new *Data Explorer* functionality simplifies visualization. This section enables you to explore your connected data warehouse, preview your geospatial tables and tilesets, and create maps or tilesets from your data. If you haven’t connect your own data warehouse yet, you will see the provisioned data warehouse:
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection2.png)
 
-For adding your first connection, you can follow the previous create a connection <a href="http://localhost:1313/carto3-workspace/overview/getting-started/#create-a-connection" target="_blank">Guide</a>.
+To add your first connection, you can follow the previous create a connection <a href="http://localhost:1313/carto3-workspace/overview/getting-started/#create-a-connection" target="_blank">Guide</a>.
 
 Once you have added a connection, go back to the *Data Explorer* section in the Workspace, where you will see the list of your current connections. If you have registered a connection, you will see the following page:
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_bigquery2.png)
 
-Select a connection and see the content (database/project(s), schemas/datasets and tables) in a collapsible tree:
+Select a connection and view the content (database/project(s), schemas/datasets, and tables) in a collapsible tree:
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_content.png)
 
-Once your table or tileset is selected, you can see a preview of the map and the details of the table or tileset. You can create a map by clicking on the Create button on the top and then Create map. This will open the CARTO 3 map tool: Builder. In case of large amounts of data, the user will be warned of the possibility to create a map with a dataset added as SQL query with a filter, or to create a tileset to visualize the whole table. 
+Once your table or tileset is selected, you can view a preview of the map and the details of the table or tileset. You can create a map by clicking on the Create button on the top and then Create map. This will open the CARTO 3 map tool: Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter, or to create a tileset to visualize the whole table. 
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_preview.png)
 
@@ -264,7 +264,7 @@ You can create a tileset by clicking on the Create button on the top and then Cr
 
 #### Extend your data
 
-The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing and accessing spatial data.
+The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.
 
 #### Add data and style your maps
 
@@ -277,7 +277,7 @@ The CARTO 3 Builder contains many features that guide you through the process of
 
 #### Publish and share your map
 
-Once you visualize and publish a map, you can get a link to share the map, embed it to a website or blog CARTO 3 Builder lets you GET THE LINK to share a link to your map, EMBED IT using HTML code for a blog or website or USE the map token for the development of applications. For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+Once you visualize and publish a map, you can obtain a link to share the map or embed it on a website or blog. CARTO 3 Builder allows you to GET THE LINK to share a link to your map, EMBED IT using HTML code for a blog or website, or USE the map token for the development of applications. For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
 
 

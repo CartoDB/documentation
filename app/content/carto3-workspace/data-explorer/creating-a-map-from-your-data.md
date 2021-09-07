@@ -1,10 +1,10 @@
 ## Creating a map from your data
 
-For creating a map from your data, select a connection and click on a specific content (database/project(s), schemas/datasets and tables) from the collapsible tree. 
+To create a map from your data, select a connection and click on a specific content (database/project(s), schemas/datasets and tables) from the collapsible tree. 
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_content.png)
 
-Once your table or tileset is selected, you can see a preview of the map and the details of the table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO 3 map tool: Builder.
+Once your table or tileset is selected, you can view a preview of the map and the details of the table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO 3 map tool: Builder.
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_preview.png)
 
