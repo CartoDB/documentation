@@ -20,10 +20,12 @@ Returns an array with the boundary box of a given quadint. This boundary box con
 
 `ARRAY<FLOAT64>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.BBOX(4388);
+SELECT carto-os.quadkey.BBOX(4388);
 -- 22.5
 -- -21.943045533438177
 -- 45.0
@@ -38,7 +40,7 @@ quadkey.KRING(quadint, distance)
 
 **Description**
 
-Returns an array containing all the quadints directly next to the given quadint at the same level of zoom. Diagonal, horizontal and vertical nearby quadints plus the current quadint are considered, so KRING always returns `(distance*2 + 1)^2` quadints.
+Returns an array containing all the quadints directly next to the given quadint at the same level of zoom. Diagonal, horizontal, and vertical nearby quadints plus the current quadint are considered, so KRING always returns `(distance*2 + 1)^2` quadints.
 
 * `quadint`: `INT64` quadint to get the KRING from.
 * `distance`: `INT64` distance (in cells) to the source.
@@ -47,10 +49,12 @@ Returns an array containing all the quadints directly next to the given quadint 
 
 `ARRAY<INT64>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.KRING(4388, 1);
+SELECT carto-os.quadkey.KRING(4388, 1);
 -- 3844
 -- 3876
 -- 3908
@@ -80,10 +84,12 @@ Returns the quadint representation for a given level of detail and geographic co
 
 `INT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
+SELECT carto-os.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
 -- 4388
 ```
 
@@ -108,10 +114,12 @@ Returns the quadint index for the given point for each zoom level requested, at 
 
 `ARRAY<STRUCT<INT64, INT64, INT64>>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
+SELECT carto-os.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
 -- id        z  x   y
 -- 268743    3  4   4
 -- 1069960   4  9   8
@@ -135,10 +143,12 @@ Returns the quadint equivalent to the input quadkey.
 
 `INT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.QUADINT_FROMQUADKEY("3001");
+SELECT carto-os.quadkey.QUADINT_FROMQUADKEY("3001");
 -- 4388
 ```
 
@@ -164,10 +174,12 @@ Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates,
 
 `INT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.QUADINT_FROMZXY(4, 9, 8);
+SELECT carto-os.quadkey.QUADINT_FROMZXY(4, 9, 8);
 -- 4388
 ```
 
@@ -187,10 +199,12 @@ Returns the quadkey equivalent to the input quadint.
 
 `STRING`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.QUADKEY_FROMQUADINT(4388);
+SELECT carto-os.quadkey.QUADKEY_FROMQUADINT(4388);
 -- 3001
 ```
 
@@ -211,10 +225,12 @@ Returns the quadint directly next to the given quadint at the same zoom level. T
 
 `INT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.SIBLING(4388, 'up');
+SELECT carto-os.quadkey.SIBLING(4388, 'up');
 -- 3876
 ```
 
@@ -235,10 +251,12 @@ Returns the quadint of a given point at a given level of detail.
 
 `INT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
+SELECT carto-os.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
 -- 4388
 ```
 
@@ -259,10 +277,12 @@ Returns an array of quadints that intersect with the given geography at a given 
 
 `ARRAY<INT64>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.ST_ASQUADINT_POLYFILL(
+SELECT carto-os.quadkey.ST_ASQUADINT_POLYFILL(
     ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(-363.71219873428345, 40.413365349070865), ST_GEOGPOINT(-363.7144088745117, 40.40965661286395), ST_GEOGPOINT(-363.70659828186035, 40.409525904775634), ST_GEOGPOINT(-363.71219873428345, 40.413365349070865)])), 
     17);
 -- 207301334801
@@ -289,10 +309,12 @@ Returns the boundary for a given quadint. We extract the boundary in the same wa
 
 `GEOGRAPHY`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.ST_BOUNDARY(4388);
+SELECT carto-os.quadkey.ST_BOUNDARY(4388);
 -- POLYGON((22.5 0, 22.5 -21.9430455334382, 22.67578125 ...
 ```
 
@@ -313,10 +335,12 @@ Returns an array with the children quadints of a given quadint for a specific re
 
 `ARRAY<INT64>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.TOCHILDREN(1155, 4);
+SELECT carto-os.quadkey.TOCHILDREN(1155, 4);
 -- 4356
 -- 4868
 -- 4388
@@ -340,10 +364,12 @@ Returns the parent quadint of a given quadint for a specific resolution. A paren
 
 `INT64`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.TOPARENT(4388, 3);
+SELECT carto-os.quadkey.TOPARENT(4388, 3);
 -- 1155
 ```
 
@@ -361,10 +387,12 @@ Returns the current version of the quadkey module.
 
 `STRING`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.VERSION();
+SELECT carto-os.quadkey.VERSION();
 -- 1.0.1
 ```
 
@@ -384,10 +412,12 @@ Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
 
 `STRUCT<INT64, INT64, INT64>`
 
+{{% customSelector %}}
 **Example**
+{{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.quadkey.ZXY_FROMQUADINT(4388);
+SELECT carto-os.quadkey.ZXY_FROMQUADINT(4388);
 -- z  x  y
 -- 4  9  8
 ```

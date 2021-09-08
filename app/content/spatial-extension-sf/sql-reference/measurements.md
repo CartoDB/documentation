@@ -2,7 +2,7 @@
 
 <div class="badges"><div class="core"></div></div>
 
-This module contains functions that compute measurements of distance, area and angles. There are also functions to compute geometry values determined by measurements.
+This module contains functions that compute measurements of distance, area, and angles. There are also functions to compute geometry values determined by measurements.
 
 ### ST_ANGLE
 
@@ -12,7 +12,7 @@ measurements.ST_ANGLE(startPoint, midPoint, endPoint)
 
 **Description**
 
-Finds the angle formed by two adjacent segments defined by 3 points. The result will be the (positive clockwise) angle with origin on the startPoint-midPoint segment, or its explementary angle if required. https://github.com/Turfjs/turf/tree/master/packages/turf-angle
+Finds the angle formed by two adjacent segments defined by 3 points. The result will be the (positive clockwise) angle with origin on the startPoint-midPoint segment, or its explementary angle if required.
 
 * `startPoint`: `GEOGRAPHY` start Point Coordinates.
 * `midPoint`: `GEOGRAPHY` mid Point Coordinates.
@@ -37,7 +37,7 @@ measurements.ST_AZIMUTH(startPoint, endPoint)
 
 **Description**
 
-Takes two points and finds the geographic bearing between them, i.e. the angle measured in degrees from the north line (0 degrees). https://turfjs.org/docs/#bearing
+Takes two points and finds the geographic bearing between them, i.e., the angle measured in degrees from the north line (0 degrees).
 
 * `startPoint`: `GEOGRAPHY` starting Point.
 * `endPoint`: `GEOGRAPHY` ending Point.
@@ -61,7 +61,7 @@ measurements.ST_MINKOWSKIDISTANCE(geog [, p])
 
 **Description**
 
-Calculate the Minkowski p-norm distance between two features. https://github.com/Turfjs/turf/tree/master/packages/turf-distance-weight
+Calculate the Minkowski p-norm distance between two features.
 
 * `geojsons`: `ARRAY` array of features in GeoJSON format casted to STRING.
 * `p` (optional): `FLOAT64` minkowski p-norm distance parameter. 1: Manhattan distance. 2: Euclidean distance. 1 =< p <= infinity. By default `p` is `2`.

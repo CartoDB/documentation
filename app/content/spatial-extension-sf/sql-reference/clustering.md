@@ -12,7 +12,7 @@ clustering.ST_CLUSTERKMEANS(geog [, numberOfClusters])
 
 **Description**
 
-Takes a set of points and partition them into clusters using the k-mean. It uses the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry. https://turfjs.org/docs/#clustersKmeans
+Takes a set of points and partitions them into clusters using the k-mean. It uses the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
 
 * `geojsons`: `ARRAY` points to be clustered.
 * `numberOfClusters` (optional): `INT` numberOfClusters that will be generated. By default `numberOfClusters` is `Math.sqrt(<NUMBER OF POINTS>/2)`.

@@ -1,11 +1,66 @@
 ## Release notes
 
+### July 13, 2021
+
+#### Module data v1.0.0-beta.4
+
+Changed
+- DATAOBS_ENRICH_* procedures take single `source` parameter with default `carto-customers` project.
+
+### July 9, 2021
+
+#### Module data v1.0.0-beta.3
+
+Feature
+- Add DATAOBS_SAMPLES procedure.
+
+Changed
+- DATAOBS_SUBSCRIPTIONS and DATAOBS_SUBSCRIPTION_VARIABLES take single `source` parameter with default `carto-customers` project. Views with `sub_` prefix are supported.
+
+#### Module routing v1.0.0-beta.1
+
+Feature
+- Create routing module.
+- Add GENERATE_NETWORK function.
+- Add GENERATE_NETWORK_TABLE procedure.
+- Add FIND_SHORTEST_PATH function.
+- Add FIND_SHORTEST_PATH_FROM_NETWORK function.
+- Add FIND_SHORTEST_PATH_FROM_NETWORK_TABLE procedure.
+- Add DISTANCE_MAP function.
+- Add DISTANCE_MAP_FROM_NETWORK function.
+- Add DISTANCE_MAP_FROM_NETWORK_TABLE procedure.
+- Add VERSION function.
+
+### July 8, 2021
+
+#### Module data v1.0.0-beta.2
+
+Fixed
+- Fix DATAOBS_SUBSCRIPTIONS and DATAOBS_SUBSCRIPTION_VARIABLES not working with subscriptions in which the
+  provider id contained underscores.
+
 ### July 1, 2021
 
 #### Module tiler v1.12.0
 
 Feature
-- Add new version of tiler to create simple tilesets: `CREATE_TILESET`.
+- Add new automatic tileset generator `CREATE_TILESET`.
+
+### June 23, 2021
+
+#### Module data v1.0.0-beta.1
+
+Feature
+- Add DATAOBS_SUBSCRIPTIONS procedure.
+- Add DATAOBS_SUBSCRIPTION_VARIABLES procedure.
+
+Changed
+- Change spatial catalog structure using two tables.
+- Improve enrichment procedures:
+  - Use public geographies instead of subscription views
+  - Remove unnecessary variables from ENRICH_POLYGONS_WITH_MEASURES
+  - Make input_id_column always mandatory
+  - Add input_area consistently
 
 ### June 2, 2021
 
@@ -14,14 +69,14 @@ Feature
 Feature
 - Create data module.
 - Add VERSION function.
-- ADD DATAOBS_ENRICH_POINTS procedure.
-- ADD DATAOBS_ENRICH_POINTS_WITH_MEASURES procedure.
-- ADD DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION procedure.
-- ADD DATAOBS_ENRICH_POLYGONS_WITH_MEASURES procedure.
-- ADD ENRICH_POINTS procedure.
-- ADD ENRICH_POINTS_WITH_MEASURES procedure.
-- ADD ENRICH_POLYGONS_WITH_AGGREGATION procedure.
-- ADD ENRICH_POLYGONS_WITH_MEASURES procedure.
+- Add DATAOBS_ENRICH_POINTS procedure.
+- Add DATAOBS_ENRICH_POINTS_WITH_MEASURES procedure.
+- Add DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION procedure.
+- Add DATAOBS_ENRICH_POLYGONS_WITH_MEASURES procedure.
+- Add ENRICH_POINTS procedure.
+- Add ENRICH_POINTS_WITH_MEASURES procedure.
+- Add ENRICH_POLYGONS_WITH_AGGREGATION procedure.
+- Add ENRICH_POLYGONS_WITH_MEASURES procedure.
 
 ### June 1, 2021
 

@@ -1,37 +1,16 @@
 ## Getting Started
 
-This guide shows how you can create a basic CARTO for React application with layers and widgets. You will learn about the main files that compose the application and how to configure it to use datasets from your own CARTO account.
 
-It is a really straightforward process as you can see in the following video:
+This guide shows how you to create a private application with layers and widgets. A private application starts with a login page.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GVyiUZoxL_U" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="margin-bottom: 30px;"></iframe>
+<video height="400" autoplay="" loop="" muted=""> <source src="/img/react/getting-started.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
 ### Creating an application
 
 The basic prerequisite for using Create React App is to have a package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)) previously installed.
 
-To create a new application based on the skeleton template for create-react-app, just type:
-
 ```bash
-npx create-react-app my-app --template @carto
-cd my-app
-yarn start
-```
-
-{{% bannerNote title="note" %}}
-In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the skeleton template:
-
-```shell
-npx create-react-app my-app --template '@carto'
-```
-{{%/ bannerNote %}}
-
-A full [Sample Application](#sample-application) with the most common functionality is available at https://sample-app-react.carto.com. If you want to create a new application based on the sample app template, just type the following:
-
-```bash
-npx create-react-app my-app --template @carto/sample-app
-cd my-app
-yarn start
+npx create-react-app my-app --template @carto/base-3
 ```
 
 ### Understanding the folder structure
@@ -58,38 +37,42 @@ And these are the main files:
 
 * **views/Main.js**: the general component that defines the layout of the application.
 
-* **store/initialStateSlice.js**: the file that defines the configuration of CARTO as default values for the slices. Set your CARTO account, apiKeys, basemap, OAuth apps, etc...
+* **store/initialStateSlice.js**: the file that defines the configuration of CARTO as default values for the slices. Set your CARTO account, token / api key, basemap, OAuth app configuration, etc...
 
 * **store/appSlice.js**: general slice of the app to include/extend with custom app functionality.
 
-### Uploading the sample dataset to your CARTO account
-
-We are going to start by uploading the sample dataset to your account. Go to your dashboard and click on `New Dataset`. In the `Add new dataset` dialog select the `URL` option within the `Cloud Files` section.
-
-![add-new-dataset](/img/react/add-new-dataset.png 'Add new dataset')
-
-Copy the following URL and click on `Submit`:
-
-`https://public.carto.com/api/v2/sql?filename=retail_stores&q=select+*+from+public.retail_stores&format=shp`
-
 ### Connecting your CARTO account
 
-Now that you have uploaded the dataset, you need to decide if you want to keep it public or private. If you want to keep it private, you need to create an [API KEY](https://carto.com/developers/auth-api/guides/CARTO-Authorization/) with read (SELECT) access to the dataset. OAuth Apps are available for more complex use cases, we'll cover this later on the [Data Management](../data-management) guide.
+### Get an Application ID
 
-You need to edit the `src/store/initialStateSlice.js` file and add your own credentials.
+To connect a private application you first need to create an Application and get a `Client ID`:
+
+1. You need to go to the Developers section in the Workspace
+
+2. Create a new APP with the URL `https://127.0.0.1:3000`
+
+3. Copy the `Client ID` and introduce it at `src/store/initialStateSlice.js`.
+
+{{% bannerNote type="note" title="CARTO 2 templates" %}}
+You can also create a new application based on the CARTO 2 template if you use `@carto/base-2` as the template name. We've also created a sample app template (`@carto/sample-app-2`) for CARTO 2 showing how to implement common spatial apps features. This sample App is available at [https://sample-app-react.carto.com](https://sample-app-react.carto.com/)
+{{%/ bannerNote %}}
+
+
+### apiBaseUrl
+
+Go to the Developers section in the Workspace and copy the `apiBaseUrl`.
+
+Edit `src/store/initialStateSlice.js` to add it:
 
 ```javascript
     ...
     credentials: {
-      username: '<your_username>',
-      apiKey: '<your_api_key>',
-      serverUrlTemplate: 'https://{user}.carto.com',
+      apiVersion: API_VERSIONS.V3,
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
     },
     ...
   },
 ```
-
-If you have made your dataset public and you don't need to use dataservices (geocoding, routing or isochrones), you can use the `default_public` API key.
 
 ### Creating a view
 
@@ -104,9 +87,10 @@ yarn hygen view new
 and select these options:
 
 ```shell
-✔ Name: Stores
-✔ Route path: /stores
-✔ Do you want a link in the menu? (y/N) y
+$ hygen view new
+✔ Name: · Stores
+✔ Route path: · stores
+✔ Do you want a link in the menu? (y/N) · true
 ```
 
 Now you're ready to start the local development server using the following command:
@@ -122,27 +106,27 @@ You should see the map component with a `Hello World` text on the left sidebar a
 
 A source is a key piece in a CARTO for React application. Both layers and widgets depend on sources. A source exports a plain object with a certain structure that will be understood by the CARTO for React library to feed layers or widgets using the CARTO SQL and/or Maps APIs.
    
-The different sources are stored inside the `/data/sources` folder. The goal of the `/data` folder is to easily differentiate the parts of the application that have a communication with external services, like CARTO APIs, your own backend, GeoJSON files...
-
 To create a source, the easiest way is again to use the [code generator](../code-generator):
 
 ```shell
 yarn hygen source new
 ```
 
-In this case, we're creating a new source that can feed layers and widgets with the dataset we uploaded before. It is going to be called `StoresSource` to follow a convention ("Source" will be added to the name you provide). You need to choose the following options:
+When you create a source in CARTO 3, you need to provide the connection name you want to use. CARTO provides a default `carto_dw`, but you probably want to [connect](https://gcp-us-east1.app.carto.com/connections/create) your own data warehouse to access your data.
+
+We are going to create a source pointing to the public BigQuery dataset `cartobq.public_account.retail_stores` using the `carto_dw` connection. 
 
 ```shell
-✔ Name: Stores
-✔ Choose type: SQL dataset
-✔ Type a query: select cartodb_id, store_id, storetype, revenue, address, the_geom_webmercator from retail_stores
+$ hygen source new
+✔ Name: · Stores
+✔ Enter a valid connection name · carto_dw
+✔ Choose type · table
+✔ Type a query · cartobq.public_account.retail_stores
 ```
 
 ### Creating a layer
 
 Once we have defined the source, we can add now the layer to the map. 
-
-We create the layer by using the [code generator](../code-generator) again:
 
 ```shell
 yarn hygen layer new
@@ -151,10 +135,11 @@ yarn hygen layer new
 We select the following options:
 
 ```shell
-✔ Name: Stores
-✔ Choose a source: StoresSource
-✔ Do you want to attach to some view (y/N) y
-✔ Choose a view: Stores
+~ yarn hygen layer new
+✔ Name: · Stores
+✔ Choose a source · storesSource
+✔ Do you want to attach to some view (y/N) · true
+✔ Choose a view · Stores (views/Stores.js)
 ```
 
 If you reload the page, you will see the new layer in the map.
@@ -163,7 +148,7 @@ If you reload the page, you will see the new layer in the map.
 
 Finally we are ready to add some widgets to the view. We will add a Formula and a Category Widget.
 
-The first thing you need to do is to add the following imports at the top of the `src/components/views/Stores.js` file:
+The first task you need to perform is to add the following imports at the top of the `src/components/views/Stores.js` file:
 
 ```javascript
 import { Divider } from '@material-ui/core';
@@ -209,4 +194,4 @@ There are two main elements in the store: the source and the viewport. When we c
 
 - Any time we change the map extent (pan or zoom), the viewport changes and all the widgets are refreshed.
 
-- Any time a widget applies a filter (for example selecting a widget category), the filter is dispatched to the store. When we add a filter, we are changing the source, so all the components depending on the source are updated: the widgets are re-rendered and the layers are filtered. The map applies the filters using the `DataFilterExtension` from deck.gl.
+- Any time a widget applies a filter (for example selecting a widget category), the filter is dispatched to the store. When we add a filter, we are changing the source, so all the components depending on the source are updated: the widgets are re-rendered and the layers are filtered. The map applies the filters using the [`DataFilterExtension`](https://deck.gl/docs/api-reference/extensions/data-filter-extension) from deck.gl.

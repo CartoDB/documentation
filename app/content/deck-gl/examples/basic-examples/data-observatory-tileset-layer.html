@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+
+  </head>
+
+  <body style="margin: 0; padding: 0">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  </body>
+
+  <script type="text/javascript">
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
+
+      initialViewState: {
+        latitude: 38.302222210685656,
+        longitude: -98.51898888084287,
+        zoom: 3.0396661579025492
+      },
+      controller: true,
+      layers: [
+        new deck.carto.CartoLayer({
+          type: deck.carto.MAP_TYPES.TILESET,
+          data: 'carto-do-public-tilesets.carto.derived_spatialfeatures_usa_quadgrid15_v1_yearly_2020_tileset_002',
+          getFillColor: deck.carto.colorBins({
+            attr: 'population',
+            domain: [0, 10, 100, 1000, 10000, 100000],
+            colors: 'Teal'
+          }),
+          pointRadiusMinPixels: 2,
+          stroked: false,
+        }),
+      ],
+    });
+  </script>
+</html>
