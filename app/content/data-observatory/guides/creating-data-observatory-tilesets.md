@@ -55,7 +55,7 @@ Copy the example query, as you will need it in the next step of the process.
 
 ### Run the Tiler
 
-The next step is to use [any of the available procedures](http://localhost:1313/spatial-extension-bq/sql-reference/tiler/) in the Spatial Extension for BigQuery to create a tileset. You can create two types of tilesets: 
+The next step is to use [any of the available procedures](/spatial-extension-bq/sql-reference/tiler/) in the Spatial Extension for BigQuery to create a tileset. You can create two types of tilesets: 
 * Simple: choose this type if you are wanting to visualize the original features of the dataset. To get started, find [here](spatial-extension-bq/examples/creating-simple-tilesets/) a set of examples on how to create simple tilesets using the `CREATE_TILESET` procedure.
 * Aggregation: choose this type when your dataset is composed of points and you want to see them aggregated. To get started, find [here](/spatial-extension-bq/examples/creating-aggregation-tilesets/) a set of examples on how to create aggregation tilesets using the `CREATE_POINT_AGGREGATION_TILESET` procedure.
 

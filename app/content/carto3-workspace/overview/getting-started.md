@@ -229,7 +229,7 @@ Once the process is finished, the BigQuery table is included in the Builder map 
 
 The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:
 
-- Add your source [guide](../../maps/add-data)
+- Add your source [guide](../../maps/add-source)
 - View your data table [guide](../../maps/view-data-table)
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
@@ -240,7 +240,7 @@ The new *Data Explorer* functionality simplifies visualization. This section ena
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection2.png)
 
-For adding your first connection, you can follow the previous create a connection <a href="http://localhost:1313/carto3-workspace/overview/getting-started/#create-a-connection" target="_blank">Guide</a>.
+For adding your first connection, you can follow the previous create a connection <a href="#create-a-connection" target="_blank">Guide</a>.
 
 Once you have added a connection, go back to the *Data Explorer* section in the Workspace, where you will see the list of your current connections. If you have registered a connection, you will see the following page:
 
