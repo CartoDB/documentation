@@ -1,4 +1,4 @@
-## Computing US airports connections and routes interpolations
+## Computing US airport connections and route interpolations
 
 ### Generating connections
 

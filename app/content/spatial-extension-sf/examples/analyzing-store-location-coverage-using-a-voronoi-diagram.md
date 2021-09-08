@@ -1,4 +1,4 @@
-## Analyzing store locations coverage using a Voronoi diagram
+## Analyzing store location coverage using a Voronoi diagram
 
 Voronoi diagrams are a very useful tool to build influence regions from a set of points and the Spatial Extension provides a convenient function to build them. An example application of these diagrams is the calculation of the coverage areas of a series of Starbucks stores. In the following query we are going to calculate these influence areas in Atlanta. 
 

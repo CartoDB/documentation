@@ -1,4 +1,4 @@
-## New police stations based on Chicago crime locations clusters
+## New police stations based on Chicago crime location clusters
 
 In this example we are going to use points clustering to analyze where to locate five new police stations in Chicago based on 5000 samples of crime locations.
 
