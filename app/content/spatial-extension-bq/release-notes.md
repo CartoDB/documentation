@@ -1,5 +1,101 @@
 ## Release notes
 
+### September 3, 2021
+
+#### Module data v1.0.0
+
+Changes
+- Search for tables in DATAOBS_SAMPLES, DATAOBS_SUBSCRIPTIONS, DATAOBS_SUBSCRIPTIONS_VARIABLES.
+
+### August 31, 2021
+
+#### Module data v1.0.0-beta.7
+
+Changed
+- DATAOBS_ENRICH_* procedures are now optimized to reduce the amount of data processed by taking advantage of clusterization by geography in the Data Observatory.
+- The `input_id_column` parameter has been removed from the following procedures:
+  - DATAOBS_ENRICH_POINTS
+  - DATAOBS_ENRICH_POINTS_WITH_MEASURES
+  - DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION
+  - DATAOBS_ENRICH_POLYGONS_WITH_MEASURES
+  - ENRICH_POINTS
+  - ENRICH_POINTS_WITH_MEASURES
+  - ENRICH_POLYGONS_WITH_AGGREGATION
+  - ENRICH_POLYGONS_WITH_MEASURES
+
+### August 26, 2021
+
+#### Module data v1.0.0-beta.6
+
+Changed
+- ENRICH_GRID and DATAOBS_ENRICH_GRID procedures take `input_query` and `input_index_column` parameters instead of the `indices` array.
+- DATAOBS_ENRICH_* procedures now report missing subscriptions in a more user-friendly way.
+
+#### Module routing v1.0.0-beta.2
+
+Changed
+- Pass network to JS UDF natively
+- Support custom speed over LineStrings for GENERATE_NETWORK function.
+- Support custom speed over LineStrings for FIND_SHORTEST_PATH function.
+- Support custom speed over LineStrings for DISTANCE_MAP function.
+
+### August 25, 2021
+
+#### Module tiler v1.12.2
+
+Fixed
+- Fix support for TIMESTAMP,DATETIME in CREATE_TILESET and CREATE_SIMPLE_TILESET.
+- Reduce parallelization to skip the recent error: "Not enough resources for query planning - too many subqueries or query is too complex"
+
+### August 24, 2021
+
+#### Module h3 v1.0.3
+
+Fixed
+- Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
+
+### August 11, 2021
+
+#### Module quadkey v1.0.3
+
+Fixed
+- Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
+
+### August 6, 2021
+
+#### Module data v1.0.0-beta.5
+
+Feature
+- Add DATAOBS_ENRICH_GRID procedure.
+- Add ENRICH_GRID procedure.
+
+### August 4, 2021
+
+#### Module h3 v1.0.2
+
+Feature
+- Add KRING_INDEXED function.
+
+#### Module quadkey v1.0.2
+
+Feature
+- Add KRING_INDEXED function.
+- Add ST_GEOGPOINTFROMQUADINT function.
+
+### July 30, 2021
+
+#### Module geohash v1.0.0
+
+Feature
+- Create geohash module.
+- Add VERSION function.
+- Add ST_BOUNDARY function.
+
+#### Module tiler v1.12.1
+
+Changed
+- Checking if the output table exists before running the tiler.
+
 ### July 13, 2021
 
 #### Module data v1.0.0-beta.4

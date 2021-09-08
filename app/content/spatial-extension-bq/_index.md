@@ -16,6 +16,7 @@ menu:
   - title: "Guides"
     folder:
       - title: "Tilesets"
+      - title: "Routing"
   - title: "Examples"
     folder:
       - title: "Creating simple tilesets"
@@ -36,12 +37,14 @@ menu:
       - title: "clustering"
       - title: "constructors"
       - title: "data"
+      - title: "geohash"
       - title: "h3"
       - title: "measurements"
       - title: "placekey"
       - title: "processing"
       - title: "quadkey"
       - title: "random"
+      - title: "routing"
       - title: "s2"
       - title: "tiler"
       - title: "transformations"

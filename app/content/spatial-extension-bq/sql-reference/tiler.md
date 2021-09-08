@@ -119,9 +119,6 @@ Generates a simple tileset.
 To avoid issues in the process when building the queries that will be executed internally against BigQuery, it is highly recommended to use [raw strings](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#string_and_bytes_literals) when passing long queries in the `source_table` that might contain special characters.
 {{%/ bannerNote %}}
 
-zoom_min_column is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between zoom_min and zoom_max.
-zoom_max_column is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between zoom_min and zoom_max.
-
 | Option | Description |
 | :----- | :------ |
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
@@ -225,15 +222,21 @@ Creates a simple tileset. It differs from `tiler.CREATE_SIMPLE_TILESET` in that 
 |`name`| Default: `""`. A `STRING` that contains the name of tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`description`| Default: `""`. A `STRING` that contains a description for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`legend`| Default: `""`. A `STRING` that contains a legend for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
-|`zoom_min`| Default: `0` for `POINTS` datasets and `2` for `POLYGON/LINSTRING` datasets. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
+|`zoom_min`| Default: `0` for `POINTS` datasets and `2` for `POLYGON/LINESTRING` datasets. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `15`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
 |`geom_column_name`| Default: `"geom"`. A `STRING` that contains the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then `zoom_min` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then `zoom_max` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`max_tile_size_kb`| Default: `512`. Maximum allowed: `6144`. A `NUMBER` setting the approximate maximum size for a tile in kilobytes. 
-|`tile_feature_order`| Default: `""`. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. **This is an expensive operation, so it's recommended to only use it when necessary.**. If no order is provided, a custom dropping depending on the geometry type is performed. In case of `POINT` geometries, features are dropped randomly. In case of `POLYGON` geometries the features are added ordered by their area, while for `LINESTRING` geometries the criteria is the feature length.|
+|`tile_feature_order`| Default: `NULL`. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. **This is an expensive operation, so it's recommended to only use it when necessary**. If no order is provided, a custom dropping depending on the geometry type is performed. In case of `POINT` geometries, features are dropped randomly. In case of `POLYGON` geometries the features are added ordered by their area, while for `LINESTRING` geometries the criteria is the feature length.|
 |`drop_duplicates`| Default: `false`. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
 |`extra_metadata`| Default: {}. A JSON object to specify the custom metadata of the tileset.|
+
+
+{{% bannerNote type="note" title="tip"%}}
+Any option left as `NULL` will take its default value. This also applies for geometry type dependant options such as `zoom_min` or `tile_feature_order`.
+{{%/ bannerNote %}}
+
 
 {{% customSelector %}}
 **Examples**
@@ -303,5 +306,5 @@ Returns the current version of the tiler module.
 
 ```sql
 SELECT carto-st.tiler.VERSION();
--- 1.11.0
+-- 1.12.2
 ```
