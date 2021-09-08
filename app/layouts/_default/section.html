@@ -1,26 +1,9 @@
-{{$overview := printf "%s%s" .File.Dir "overview.md"}}
-{{$overview2 := printf "%s%s" .File.Dir "overview/getting-started.md"}}
-{{$overview3 := printf "%s%s" .File.Dir "overview/overview.md"}}
-{{$guides := printf "%s%s" .File.Dir "guide.md"}}
-{{$reference := printf "%s%s" .File.Dir "reference.md"}}
-{{$examples := printf "%s%s" .File.Dir "example.md"}}
-
-{{.Scratch.Set "url" "/"}}
-{{if fileExists $overview}}
-  {{.Scratch.Set "url" (.GetPage $overview).Permalink}}
-{{else if fileExists $overview2}}
-  {{.Scratch.Set "url" (.GetPage $overview2).Permalink}}
-{{else if fileExists $overview3}}
-  {{.Scratch.Set "url" (.GetPage $overview3).Permalink}}  
-{{else if fileExists $guides}}
-  {{.Scratch.Set "url" (.GetPage $guides).Permalink}}
-{{else if fileExists $reference}}
-  {{.Scratch.Set "url" (.GetPage $reference).Permalink}}
-{{else if fileExists $examples}}
-  {{.Scratch.Set "url" (.GetPage $examples).Permalink}}
-{{end}}
-
+{{ .Scratch.Set "url" "/" }}
+{{ if .Page.Params.indexPage }}
+  {{ .Scratch.Set "url" (.GetPage .Page.Params.indexPage).Permalink }}
+{{ end }}
 {{$url := .Scratch.Get "url"}}
+
 
 <!DOCTYPE HTML>
 <html lang="en-US">

@@ -3,7 +3,7 @@
 {{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-core  | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/v/@carto/react-core.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/dt/@carto/react-core.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-core  | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/v/@carto/react-core.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-core">  <img src="https://img.shields.io/npm/dt/@carto/react-core.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
 {{%/ tableWrapper %}}
 
 Set of common functions, to be used mostly by other packages. You won't usually consume this package directly, but when using `AggregationTypes` for widgets or when creating custom widgets.
@@ -14,7 +14,7 @@ Set of common functions, to be used mostly by other packages. You won't usually 
 
 #### aggregationFunctions
 
-Contains a set of basic aggregation functions (count, min, max, sum and average), used automatically for widgets and layers, see [AggregationTypes](#aggregationtypes). Functions are applicable to numbers and also objects using a numeric property
+Contains a set of basic aggregation functions (count, min, max, sum, and average), used automatically for widgets and layers, see [AggregationTypes](#aggregationtypes). Functions are applicable to numbers and also objects using a numeric property.
 
 - **Input**:
 
@@ -40,7 +40,7 @@ Contains a set of basic aggregation functions (count, min, max, sum and average)
 
 #### groupValuesByColumn
 
-Makes groups from f∫eatures based in a column (`keysColumn`) and applying an `operation` to the numeric values in a predefined column (`valuesColumn`).
+Makes groups from features based in a column (`keysColumn`) and applying an `operation` to the numeric values in a predefined column (`valuesColumn`).
 
 - **Input**:
 {{% tableWrapper tab="true" %}}
@@ -72,7 +72,7 @@ Makes groups from f∫eatures based in a column (`keysColumn`) and applying an `
 
 #### histogram
 
-Categorizes numeric values as a histogram from a set of features, having the option of just calculating the frequency (with COUNT operation) or an aggregated operation on the features inside the bin (eg. SUM).
+Categorizes numeric values as a histogram from a set of features, having the option of just calculating the frequency (with COUNT operation) or an aggregated operation on the features inside the bin (e.g., SUM).
 
 - **Input**:
 
@@ -117,11 +117,46 @@ Categorizes numeric values as a histogram from a set of features, having the opt
       */
   ```
 
+#### scatterPlot
+
+Receives an array of features and the properties that will be used for each axis, checks that properties are valid and returns a formatted array.
+
+- **Input**:
+
+{{% tableWrapper tab="true" %}}
+| Param      | Type                | Description                                                                                             |
+| ---------- | ------------------- | ------------------------------------------------------------------------------------------------------- |
+| features   | <code>Array</code>  | Features                                                |
+| xAxisColumn | <code>string</code> | Property containing values for the X axis.                      |
+| yAxisColumn | <code>string</code> | Property containing values for the Y axis.                      |
+{{%/ tableWrapper %}}
+
+- **Returns**: <code>Array</code> - Formatted array.
+
+- **Example**:
+
+  ```js
+  import { scatterPlot } from "@carto/react-core";
+
+  const data = [
+    { x: 0 }, // Missing y
+    { y: 1 }, // Missing x
+    { x: null, y: 1 }, // null x
+    { x: 1, y: null }, // null y
+    { x: 0, y: 0 }, // zero for both
+    { x: 1, y: 2 }, // valid
+    {}, // no values for both
+    { x: 2, y: 3 } // valid
+  ];
+  sp = scatterPlot(data, 'x', 'y'));
+  console.log(sp); // [[0, 0],[1, 2],[2, 3]]; Invalid values are filtered out
+  ```
+
 ### Constants & enums
 
 #### AggregationTypes
 
-Enum for the different types of aggregations, available for widgets
+Enum for the different types of aggregations, available for widgets.
 
 - **Options**:
 

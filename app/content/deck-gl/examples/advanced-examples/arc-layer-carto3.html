@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0; background-color: #212121;">
+    <div id="map" style="width: 100vw; height: 100vh"></div>
+  </body>
+
+  <script type="text/javascript">
+    async function initialize() {
+      deck.carto.setDefaultCredentials({
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+        apiVersion: deck.carto.API_VERSIONS.V3,
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+      });
+
+      // Fetch Data from CARTO
+      const geojsonData =  await deck.carto.getData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT geom, scalerank FROM cartobq.public_account.airports_to_london WHERE scalerank > 7`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.GEOJSON
+      });
+
+      // Create deck.gl map
+      const deckgl = new deck.DeckGL({
+        container: 'map',
+        mapStyle: deck.carto.BASEMAP.DARK_MATTER,
+        initialViewState: {
+          latitude: 30,
+          longitude: 10,
+          zoom: 1,
+          pitch: 30
+        },
+        controller: true,
+        layers: [
+          new deck.ArcLayer({
+            id: 'arc-layer',
+            data: geojsonData.features,
+            getSourcePosition: f => [-0.4531566, 51.4709959], // London
+            getTargetPosition: f => f.geometry.coordinates,
+            getSourceColor: [0, 128, 200],
+            getTargetColor: [200, 0, 80],
+            getWidth: 1
+          })
+        ]
+      });
+    }
+
+    initialize();    
+  </script>
+</html>

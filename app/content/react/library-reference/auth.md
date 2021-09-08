@@ -3,10 +3,10 @@
 {{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
 {{%/ tableWrapper %}}
 
-OAuth utilities
+This package contains some OAuth utilities for implementing authentication and authorization against the CARTO 2 platform. If you are building an application with CARTO 3, you should use [Auth0 React SDK](https://auth0.com/docs/quickstart/spa/react) instead of this package.
 
 ### Components
 

@@ -8,7 +8,7 @@
  var titleDesktop = asideMenu.querySelector(".aside-menu-title-desktop");
  var titleMobile = asideMenu.querySelector(".aside-menu-title-mobile");
  var dropdowns = asideMenu.querySelectorAll(".dropdown");
- 
+
  window.addEventListener("resize", onResize);
  
  dropdowns.forEach((dropdown) => {
@@ -119,9 +119,9 @@
  
  function selectCurrentTocCategory() {
    var sections = document.querySelectorAll(
-     ".js-content > h2, .js-content > h3, .js-content > h4"
-   );
- 
+    ".js-content > h2, .js-content > h3, .js-content > h4"
+    );
+
    var currentIndex = 0;
    for (var i = 0; i < sections.length; i++) {
      if (sections[i].getBoundingClientRect().top < 200) {
@@ -132,7 +132,7 @@
    }
  
    // Activate node items recursively
-   var newElement = tocContainer && tocContainer.querySelector('a[href="#' + sections[currentIndex].id + '"]');
+   var newElement = tocContainer.querySelector('a[href="#' + sections[currentIndex].id + '"]');
    if (selectedElement !== newElement) {
      selectedElement = newElement;
      deactivateNodes({ el: tocContainer });
@@ -142,7 +142,7 @@
  
  function deactivateNodes({ el }) {
    el &&
-     el.querySelectorAll(".is-active, .is-current").forEach(function (item) {
+    el.querySelectorAll(".is-active, .is-current").forEach(function (item) {
        item.classList.remove("is-active");
        item.classList.remove("is-current");
      });

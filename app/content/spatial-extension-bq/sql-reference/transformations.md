@@ -65,7 +65,7 @@ transformations.ST_CENTERMEDIAN(geog)
 
 **Description**
 
-Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that is requires the least total travel from all other points.
+Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that requires the least total travel from all other points.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -119,7 +119,7 @@ Takes a set of points and returns a concave hull Polygon or MultiPolygon.
 
 * `geog`: `ARRAY<GEOGRAPHY>` input points.
 * `maxEdge`: `FLOAT64`|`NULL` the length (in 'units') of an edge necessary for part of the hull to become concave. If `NULL`the default value `infinity` is used.
-* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees or radians. If `NULL`the default value `kilometers` is used.
+* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees, or radians. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 
@@ -201,7 +201,7 @@ Takes a LineString and returns a Point at a specified distance along the line.
 
 * `geog`: `GEOGRAPHY` input line.
 * `distance`: `FLOAT64` distance along the line.
-* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees and radians. If `NULL`the default value `kilometers` is used.
+* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees, and radians. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 
