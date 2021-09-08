@@ -21,7 +21,7 @@ If you are a React user and want to build a web application using CARTO, we reco
 
 Starting with version 8.3, deck.gl includes a submodule `@deck.gl/carto` for integration with the CARTO platform. This module provides all that you need to:
 
-- **Access data from the CARTO platform**. Using the [setDefaultcredentials](/deck-gl/reference/#setdefaultcredentials) function you supply the parameters needed to connect with the CARTO platform, then you use the [CartoLayer](/deck-gl/reference/#cartolayer) to visualize the datasets.
+- **Access data from the CARTO platform**. Using the [setDefaultCredentials](/deck-gl/reference/#setdefaultcredentials) function you supply the parameters needed to connect with the CARTO platform, then you use the [CartoLayer](/deck-gl/reference/#cartolayer) to visualize the datasets.
   
 - **Use CARTO basemaps**. With deck.gl you can choose between different basemaps for your visualizations. CARTO provides a set of free basemaps from OpenStreetMap, but you can also use Google Maps, Mapbox, or any other provider with MVT support.
   
