@@ -29,5 +29,5 @@ JOIN (
   FROM data
   GROUP BY qid 
   ) d
-ON qid = bqcarto.quadkey.QUADINT_FROMQUADKEY(geoid)
+ON qid = geoid
 ```
