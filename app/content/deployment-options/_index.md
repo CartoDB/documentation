@@ -1,5 +1,5 @@
 ---
-title: Deployment options
+title: Deployment Options
 description: ""
 icon: "/img/icons/deployment.png"
 
@@ -14,9 +14,10 @@ menu:
   - title: "SaaS"
     folder:
       - title: "Overview"
-  - title: "Custom deployment"
+  - title: "Custom Deployment"
     folder:
       - title: "Overview"
       - title: "Installation"
       - title: "Operations"     
+      - title: "Release Notes"
 ---
