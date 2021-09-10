@@ -240,7 +240,7 @@ The new *Data Explorer* functionality simplifies visualization. This section ena
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection2.png)
 
-To add your first connection, you can follow the previous create a connection <a href="http://localhost:1313/carto3-workspace/overview/getting-started/#create-a-connection" target="_blank">Guide</a>.
+To add your first connection, you can follow the previous create a connection <a href="#create-a-connection" target="_blank">Guide</a>.
 
 Once you have added a connection, go back to the *Data Explorer* section in the Workspace, where you will see the list of your current connections. If you have registered a connection, you will see the following page:
 
