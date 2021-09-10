@@ -2,7 +2,7 @@
 
 <div class="badges"><div class="core"></div></div>
 
-This module contains functions that compute measurements of distance, area, and angles. There are also functions to compute geometry values determined by measurements.
+This module contains functions that compute measurements of distance, area and angles. There are also functions to compute geometry values determined by measurements.
 
 ### ST_ANGLE
 
@@ -37,7 +37,7 @@ measurements.ST_AZIMUTH(startPoint, endPoint)
 
 **Description**
 
-Takes two points and finds the geographic bearing between them, i.e., the angle measured in degrees from the north line (0 degrees).
+Takes two points and finds the geographic bearing between them, i.e. the angle measured in degrees from the north line (0 degrees).
 
 * `startPoint`: `GEOGRAPHY` starting Point.
 * `endPoint`: `GEOGRAPHY` ending Point.

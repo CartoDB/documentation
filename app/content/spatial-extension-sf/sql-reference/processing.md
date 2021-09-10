@@ -2,7 +2,7 @@
 
 <div class="badges"><div class="core"></div></div>
 
-This module contains functions that create geographies from already existing geographies by computing a prior processing.
+On this module are contained functions that create geographies from already existing geographies by computing a prior processing.
 
 
 ### ST_DELAUNAYLINES

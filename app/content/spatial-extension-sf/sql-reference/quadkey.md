@@ -331,7 +331,7 @@ Returns the current version of the quadkey module.
 
 ```sql
 SELECT sfcarto.quadkey.VERSION();
--- 1.0.1
+-- 1.0.2
 ```
 
 ### ZXY_FROMQUADINT

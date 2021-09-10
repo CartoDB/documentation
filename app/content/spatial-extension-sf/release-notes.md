@@ -1,5 +1,12 @@
 ## Release notes
 
+### September 9, 2021
+
+#### Module quadkey v1.0.2
+
+Changed
+- Performance improvement in ST_ASQUADINT_POLYFILL.
+
 ### August 24, 2021
 
 #### Module h3 v1.0.2

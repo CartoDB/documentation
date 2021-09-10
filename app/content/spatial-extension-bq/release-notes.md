@@ -1,5 +1,21 @@
 ## Release notes
 
+### September 10, 2021
+
+#### Module geocoding v1.0.0-beta.1
+
+Feature
+- Create geocoding module.
+- Add VERSION function.
+- Add GEOCODING_BATCH procedure.
+
+### September 9, 2021
+
+#### Module quadkey v1.0.4
+
+Changed
+- Performance improvement in ST_ASQUADINT_POLYFILL.
+
 ### September 3, 2021
 
 #### Module data v1.0.0

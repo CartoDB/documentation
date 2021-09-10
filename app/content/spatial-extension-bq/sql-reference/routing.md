@@ -165,7 +165,7 @@ routing.FIND_SHORTEST_PATH_FROM_NETWORK(network, pointA, pointB)
 
 **Description**
 
-Takes a network, a source point, and a destination point as input. Returns the length and the geometry of the shortest path in terms of weights of links between the node closest to the source point and the node closest to the destination point.
+Takes a network, a source point and a destination point as input. Returns the length and the geometry of the shortest path in terms of weights of links between the node closest to the source point and the node closest to the destination point.
 
 * `network`: `ARRAY<STRUCT<src_idx INT64, src_geo GEOGRAPHY, dest_idx INT64, dest_geo GEOGRAPHY, weight FLOAT64>>` The network from which to compute the shortest path. You can use the result of the `GENERATE_NETWORK` function.
 * `pointA`: `GEOGRAPHY` Source point. The node of the network nearest to this point will be used as the source point to compute the shortest path.
@@ -209,7 +209,7 @@ routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE(src_fullname, target_fullname_quot
 
 **Description**
 
-Procedure that takes a network, a source point, and a destination point as input. Returns the length and the geometry of the shortest path in terms of weights of links between the node closest to the source point and the node closest to the destination point. It stores the result into a table.
+Procedure that takes a network, a source point and a destination point as input. Returns the length and the geometry of the shortest path in terms of weights of links between the node closest to the source point and the node closest to the destination point. It stores the result into a table.
 
 * `src_fullname`: `STRING` The source table from where the network will be read to compute the shortest path. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). You can use the result of the `GENERATE_NETWORK_TABLE` procedure.
 * `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.

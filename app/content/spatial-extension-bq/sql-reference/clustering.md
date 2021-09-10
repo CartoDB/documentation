@@ -12,7 +12,7 @@ clustering.ST_CLUSTERKMEANS(geog, numberOfClusters)
 
 **Description**
 
-Takes a set of points and partitions them into clusters using the k-mean. It uses the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
+Takes a set of points and partition them into clusters using the k-mean. It uses the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
 
 * `geog`: `ARRAY<GEOGRAPHY>` points to be clustered.
 * `numberOfClusters`: `INT64`|`NULL` numberOfClusters that will be generated. If `NULL` the default value `Math.sqrt(<NUMBER OF POINTS>/2)` is used.
