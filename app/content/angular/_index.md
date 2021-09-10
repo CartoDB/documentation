@@ -1,6 +1,12 @@
 ---
-cascade:
-  title: CARTO + Angular
-  description: "Build applications using CARTO & Angular."
-  icon: "/img/icons/angular.png"
+title: CARTO + Angular
+description: "Build applications using CARTO & Angular."
+icon: "/img/icons/angular.png"
+
+url: angular
+indexPage: "getting-started.md"
+
+menu:
+  - title: "Getting Started"
+  - title: "Whats New"
 ---

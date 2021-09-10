@@ -138,7 +138,7 @@
   overflow: hidden;
   max-height: 0;
 
-  @media (min-width: $layout-tablet) { 
+  @media (min-width: $layout-tablet) {
     transition: max-height 0.3s ease;
   }
 }
@@ -177,7 +177,7 @@
     width: 15px;
     transition: transform 0.3s ease;
   }
-  
+
   .unfold {
     display: none;
   }
@@ -245,7 +245,7 @@
     height: 0;
     visibility: hidden;
     opacity: 0;
-  
+
     &.is-active {
       height: auto;
       visibility: visible;
@@ -521,7 +521,7 @@ li {
 
   .iframe-wrapper {
     position: relative;
-    
+
     .fullscreen-button {
       position: absolute;
       right: 24px;
@@ -537,7 +537,6 @@ li {
     margin-left: 32px;
   }
 }
-
 
 // New toc sidebar
 
@@ -557,7 +556,7 @@ li {
     z-index: 999;
   }
 
-  @media (min-width: $layout-tablet) { 
+  @media (min-width: $layout-tablet) {
     --offset-top: 136px;
     --offset-bottom: 20px;
     top: var(--offset-top);
@@ -679,12 +678,115 @@ li {
 }
 
 .dropdown-options {
-	overflow: hidden;
+  overflow: hidden;
   transition: max-height 0.25s ease;
   pointer-events: all;
 
   &.hide {
     max-height: 0 !important;
     padding: 0;
+  }
+}
+
+.gallery-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .thumbnails-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .thumbnail {
+      display: flex;
+      width: calc(33.33333% - 24px);
+      height: 250px;
+      margin-right: 24px;
+      margin-bottom: 24px;
+
+      @media (max-width: $layout-desktop) {
+        width: calc(50% - 24px);
+      }
+
+      @media (max-width: $layout-mobile) {
+        width: 100%;
+      }
+
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        border: solid 1px #c5ccd5;
+        border-radius: 4px;
+        text-decoration: none;
+        overflow: hidden;
+
+        .img-wrapper {
+          flex: 1;
+          height: calc(100% - 72px);
+          background-color: $softgrey;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .title-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          height: 72px;
+          padding: 0 24px;
+          border-top: solid 1px #c5ccd5;
+
+          h4 {
+            margin: 0;
+            color: $navyBlue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.version-switch {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: flex-start;
+  width: auto;
+  height: 32px;
+  margin-bottom: 8px;
+  padding: 4px;
+  border: 1px solid #e7e9ec;
+  border-radius: 4px;
+  
+  .swtitch-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: transparent;
+    @include title();
+    font-size: 12px;
+    color: #6f777c;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:not(:last-of-type) {
+      margin-right: 4px;
+    }
+
+    &.active {
+      color: $emerald;
+      background-color: rgba(42, 172, 2, 0.1);
+    }
   }
 }

@@ -1,14 +1,14 @@
 ## Getting started
 
-The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing and accessing spatial data.
+The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.
 
 We strongly recommend reading through the [Terminology](../terminology) section to get familiar with all the components of the Data Observatory.
 
 In the following sections you will find a collection of resources where you can learn how to:
 
 * [subscribe to Data Observatory data](#data-subscriptions),
-* [access it and introduce it in your analysis workflows](#data-access-and-analysis),
-* and [visualize it](#data-visualization). 
+* [access and introduce the data in your analysis workflows](#data-access-and-analysis),
+* [visualize it](#data-visualization). 
 
 <br/>
 
@@ -43,7 +43,7 @@ You can access these tables from any of the tools available in your CARTO Dashbo
 
 #### From CARTOframes
 
-Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) is a great tool to access Data Observatory datasets of any size from your Python code or notebook. To get started, please refer to [this guide from the CARTOframes documentation page](https://carto.com/developers/cartoframes/guides/Data-Observatory/#data-access) or download the example notebook provided in _Your subscriptions_ page of the Dashboard.
+Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) is a great tool to access Data Observatory datasets of any size from your Python code or notebook. To get started, please refer to [this guide from the CARTOframes documentation page](https://carto.com/developers/cartoframes/guides/Data-Observatory/#data-access) or download the example notebook provided in the _Your subscriptions_ page of the Dashboard.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-cartoframes-example-notebook.png" alt="Data Observatory example notebook for CARTOframes." style="width:100%">
@@ -53,7 +53,7 @@ CARTOframes also offers a set of functions to enrich your datasets with any of t
 
 #### From your cloud data storage or warehouse
 
-You can also access your subscriptions directly from BigQuery, AWS or Azure. Refer to [this step-by-step guide](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure) to learn more. If you are a BigQuery user, you can also leverage our [Spatial Extension for BigQuery](https://docs.carto.com/spatial-extension-bq) to perform spatial analysis using your Data Observatory datasets without leaving your BigQuery console.
+You can also access your subscriptions directly from BigQuery, AWS, or Azure. Refer to [this step-by-step guide](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure) to learn more. If you are a BigQuery user, you can also leverage the [Spatial Extension for BigQuery](/spatial-extension-bq) to perform spatial analysis using your Data Observatory datasets without leaving your BigQuery console.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-access-in-menu.png" alt="Data Observatory access in menu." style="width:100%">
@@ -63,7 +63,7 @@ You can also access your subscriptions directly from BigQuery, AWS or Azure. Ref
 
 #### From your CARTO Dashboard
 
-Data Observatory datasets that are smaller than 2GB can visualized from Builder. You can easily do so by clicking on the _Create map_ action in _Your subscriptions_ page of the Dashboard.
+Data Observatory datasets that are smaller than 2GB can be visualized within Builder. You can easily do so by clicking on the _Create map_ action in the _Your subscriptions_ page of the Dashboard.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-create-map.png" alt="Using Builder to create a map from Data Observatory data." style="width:100%">
@@ -84,7 +84,7 @@ Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) allo
 
 #### Using tilesets
 
-Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [Worldpop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](https://docs.carto.com/spatial-extension-bq/overview/tilesets/) using the [Spatial Extension for BigQuery](https://docs.carto.com/spatial-extension-bq/guides/tilesets/).
+Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [WorldPop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](/spatial-extension-bq/overview/tilesets/) using the [Spatial Extension for BigQuery](/spatial-extension-bq/guides/tilesets/).
 
 <div class="figures-table" style="text-align:center">
     <figure>
@@ -95,7 +95,7 @@ Some of the spatial datasets offered in the Data Observatory are massive (a few 
 
 To create your own Data Observatory tilesets, from either your public or premium subscriptions, simply find the location of your subscription in BigQuery using the [“Access in BigQuery”](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure/#access-in-bigquery) functionality and run the Tiler from your console. [Here](../../guides/creating-data-observatory-tilesets) is a step-by-step guide that will help you through the process.
 
-Tilesets can be visualized directly [from your CARTO Dashboard](https://docs.carto.com/spatial-extension-bq/guides/tilesets/#visualizing-a-tileset) or integrated into your custom spatial applications using [CARTO for deck.gl](https://docs.carto.com/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
+Tilesets can be visualized directly [from your CARTO Dashboard](/spatial-extension-bq/guides/tilesets/#visualizing-a-tileset) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
 
 </br>
 

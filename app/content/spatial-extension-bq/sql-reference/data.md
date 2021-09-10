@@ -57,7 +57,8 @@ data.DATAOBS_ENRICH_POINTS(input_query, input_geography_column, variables, outpu
 **Description**
 
 This procedure enriches a query containing geographic points with data from the Data Observatory. The user must be subscribed to all the datasets necessary for the enrichment.
-As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points.
+
+As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines, or polygons that intersect with the input points.
 
 **Input parameters**
 
@@ -98,9 +99,12 @@ data.DATAOBS_ENRICH_POINTS_WITH_MEASURES(input_query, input_geography_column, va
 **Description**
 
 This procedure enriches a query containing geographic points with data from the Data Observatory. The user must be subscribed to all the datasets necessary for the enrichment.
-As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points.
-In addition to the requested variables, for each variable a field will be created containing the measure (area or length) of the geography to which the variable value is assigned to. This can be used for normalization.
-Another field will contain a parameter indicating the type (2, 1 or 0) of this measure: 2 indicates an area measured in square meters; 1 a length in meters, and 0 corresponds to a null measure, which is always the case when enriching with a points dataset.
+
+As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines, or polygons that intersect with the input points.
+
+In addition to the requested variables, a field will be created for each variable containing the measure (area or length) of the geography to which the variable value is assigned to. This can be used for normalization.
+
+Another field will contain a parameter indicating the type (2, 1, or 0) of this measure: 2 indicates an area measured in square meters; 1 a length in meters, and 0 corresponds to a null measure, which is always the case when enriching with a points dataset.
 
 **Input parameters**
 
@@ -141,6 +145,7 @@ data.DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_geography_colum
 **Description**
 
 This procedure enriches a query containing geographic polygons with data from the Data Observatory. The user must be subscribed to all the datasets necessary for the enrichment.
+
 As a result of the enrichment, each polygon will be associated with the data assigned spatially to areas that intersect with each polygon.
 
 For each input polygon, the data of all intersecting areas is aggregated using the aggregation methods specified. When the aggregation is `SUM`, the sum is weighted by the proportion of the area (or length in the case of enrichments with linear data, such as traffic intensity) intersected by the input polygons.
@@ -381,8 +386,9 @@ data.ENRICH_POINTS(input_query, input_geography_column, data_query, data_geograp
 
 **Description**
 
-This procedure enriches a query containing geographic points with data from another query, spatially matching both.
-As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points.
+This procedure enriches a query containing goegraphic points with data from another query, spatially matching both.
+
+As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines, or polygons that intersect with the input points. 
 
 **Input parameters**
 
@@ -423,8 +429,9 @@ data.ENRICH_POINTS_WITH_MEASURES(input_query, input_geography_column, data_query
 
 **Description**
 
-This procedure enriches a query containing geographic points with data from another query, spatially matching both.
-As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines or polygons that intersect with the input points.
+This procedure enriches a query containing goegraphic points with data from another query, spatially matching both.
+
+As a result of the enrichment, each point will be associated with the data assigned spatially to it, i.e., with the data of the points, lines, or polygons that intersect with the input points. 
 
 **Input parameters**
 
@@ -471,7 +478,8 @@ data.ENRICH_POLYGONS_WITH_AGGREGATION(input_query, input_geography_column, data_
 
 Enrich a polygons query with data from another query, spatially matching both and aggregating the result.
 
-This procedure enriches a query containing geographic polygons with data from another query.
+This procedure enriches a query containing geographic polygons with data from another query. 
+
 As a result of the enrichment, each polygon will be associated with the data assigned spatially to areas that intersect with each polygon.
 
 For each input polygon, the data of all intersecting areas is aggregated using the aggregation methods specified. When the aggregation is `SUM`, the sum is weighted by the proportion of the area (or length in the case of enrichments with linear data, such as traffic intensity) intersected by the input polygons.
@@ -517,7 +525,7 @@ data.ENRICH_POLYGONS_WITH_MEASURES(input_query, input_geography_column, data_que
 
 **Description**
 
-This procedure enriches a query containing goegraphic polygons with data from another query, spatially matching both. As a result of the enrichment, each polygon will be associated with the data assigned spatially to areas that intersect with each polygon.
+This procedure enriches a query containing geographic polygons with data from another query, spatially matching both. As a result of the enrichment, each polygon will be associated with the data assigned spatially to areas that intersect with each polygon.
 
 The values of all intersecting areas are not aggregated so each input row can appear in multiple output rows, one for each intersection. Extra columns are added per enrichment variable to facilitate aggregating or post-processing the results. See the output information for details.
 

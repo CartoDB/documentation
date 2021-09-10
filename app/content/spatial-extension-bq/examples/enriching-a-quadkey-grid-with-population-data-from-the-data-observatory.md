@@ -24,10 +24,10 @@ JOIN (
     ON d.geoid = g.geoid
     WHERE shop = 'supermarket' )
   SELECT
-    bqcartost.quadkey.ST_ASQUADINT(geom, 15) AS qid,
+    bqcarto.quadkey.ST_ASQUADINT(geom, 15) AS qid,
     COUNT(*) AS agg_total
   FROM data
   GROUP BY qid 
   ) d
-ON qid = bqcarto.quadkey.QUADINT_FROMQUADKEY(geoid)
+ON qid = geoid
 ```

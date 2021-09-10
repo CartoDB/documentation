@@ -1,51 +1,54 @@
 ---
-cascade:
-  title: CARTO 3 Workspace
-  description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
-  icon: "/img/icons/carto-react.png"
-  folders:
-    - name: "Overview"
-      elements:
-        - "Getting Started"
+title: CARTO 3 Workspace
+description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
+icon: "/img/icons/carto-react.png"
+
+url: carto3-workspace
+indexPage: "overview/getting-started.md"
+
+menu:
+  - title: "Overview"
+    folder:
+      - title: "Getting started"
         # TO DO - "Glossary"
         # TO DO - "Getting help"
-    - name: "Data Explorer"
-      elements:
-        - "Introduction"
-        - "Adding your first connection"
-        - "Creating a map from your data"
-    - name: "Data Observatory"
-      elements:
-        - "Accessing and browsing the Spatial Data Catalog"
-        - "Subscribing to public and premium datasets"
-        - "Managing your subscriptions"
-    - name: "Connections"
-      elements:
-        - "Introduction"
-        - "CARTO Data Warehouse"
-        - "Creating a connection"
-        - "Editing a connection"
-        - "Deleting a connection"
-    - name: "Maps" 
-      elements:
-        - "Introduction"
-        - "Add source"
-        - "View data table"
-        - "Map settings"
-        - "Map styles"
-        - "Publishing and sharing maps"
-    - name: "Applications" 
-      elements:
-        - "Accessing applications"
-    - name: "Account Settings" 
-      elements:
-        - "Configuring your account"
-        - "Your subscription"
-        - "Managing registered apps"
-        - "Inviting users to your account"
-        - "Managing user roles"
-        - "Deleting your account"
-    - name: "Developers" 
-      elements:
-        - "CARTO for developers"
+  - title: "Data Explorer"
+    folder:
+      - title: "Introduction"
+      - title: "Adding your first connection"
+      - title: "Creating a map from your data"  
+  - title: "Data Observatory"
+    folder:
+      - title: "Accessing and browsing the Spatial Data Catalog"
+      #- title: "Subscribing to public and premium datasets"
+      #- title: "Managing your subscriptions"
+  - title: "Connections" 
+    folder:
+      - title: "Introduction"
+      - title: "CARTO Data Warehouse"
+      - title: "Creating a connection"
+      - title: "Editing a connection"
+      - title: "Deleting a connection"
+  - title: "Maps"
+    folder:
+      - title: "Introduction"
+      - title: "Add source"
+      - title: "View data table"
+      - title: "Map settings"
+      - title: "Map styles"
+      - title: "Publishing and sharing maps"
+  - title: "Applications"
+    folder:
+      - title: "Accessing applications"
+  - title: "Account Settings" 
+    folder:
+      - title: "Configuring your account"
+      - title: "Your subscription"
+      - title: "Managing registered apps"
+      - title: "Inviting users to your account"
+      - title: "Managing user roles"
+      - title: "Deleting your account"
+  - title: "Developers" 
+    folder:
+      - title: "CARTO for developers"
 ---
