@@ -1,8 +1,8 @@
 ## Creating a connection
 
-For creating a new connection follow the next steps:
+To create a new connection follow these steps:
 
-1. If you already have existing connections, click the *New connection* button. If you haven't created any connection yet, follow the step number 2.
+1. If you already have existing connections, click the *New connection* button. If you haven't created any connections yet, follow step 2.
 2. Select your data warehouse: BigQuery, PostgreSQL, Redshift, Snowflake, etc.
 3. Click the *Setup connection* button, or the *Connect using a service account* button if you are connecting to BigQuery.
 4. Enter the connection parameters and credentials. You need to enter the connection parameters such as the server, username, password, or provide a service account, depending on the connector.
@@ -17,12 +17,12 @@ After you have provided the connection parameters, click *Connect*. Then you wil
 
 Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the  *Data Explorer* ) or you can create maps using local files or datasets from your data warehouse (navigating to the *Maps* module).
 
-In the next sections we show how to configure connections to the supported datasources.
+In the next sections we show how to configure connections to the supported data sources.
 
 ### Connection to BigQuery
 
 CARTO uses access credentials to connect to BigQuery in order to run queries on your behalf.
-You can use parts of CARTO directly by using the BigQuery console through the CARTO spatial extension, or you can use the CARTO Workspace to launch different operations, like tileset generation.
+You can use parts of CARTO directly by using the BigQuery console through the CARTO Spatial Extension, or you can use the CARTO Workspace to launch different operations, like tileset generation.
 
 We will use a Google Cloud Service Account for other operations such as exploring your projects and fetching data for visualization.
 
@@ -35,8 +35,8 @@ When you select the BigQuery connector in the *New connection* dialog, you will 
 Click the *Connect using a service account* button. You will see the form where you need to provide your connection parameters:
 
 - **Name** for your connection: You can register different connections with the BigQuery connector. You can use the name to identify the connections.
-- **Service account key file** in JSON format. Please read the following instructions for creating a <a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" target="_blank">service account</a> and a service account <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank">key file</a>. We will use this service account to list tilesets, visualize them privately and grant publishing permissions. Be sure that the service account has <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Data Owner</a> (bigquery.dataOwner) and <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Job User</a> (bigquery.jobUser). Read our <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">documentation</a> if you want to learn about the specific permissions CARTO requires.
-- **Billing project**: after entering the previous parameters, a selector for choosing the billing project will be enabled, so CARTO can run queries using your service account.
+- **Service account key file** in JSON format. Please read the following instructions to create a <a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" target="_blank">service account</a> and a service account <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank">key file</a>. We will use this service account to list tilesets, visualize them privately, and grant publishing permissions. Be sure that the service account has <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Data Owner</a> (bigquery.dataOwner) and <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Job User</a> (bigquery.jobUser). Read our <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">documentation</a> if you want to learn about the specific permissions CARTO requires.
+- **Billing project**: having entered the previous parameters, a selector for choosing the billing project will be enabled, enabling CARTO to run queries using your service account.
 
 ![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
 
@@ -44,7 +44,7 @@ Once you have entered the parameters, you can click the *Connect* button. CARTO 
 
 ### Connection to PostgreSQL
 
-You can use CARTO with your data in a PostgreSQL-compatible database, including Google Cloud SQL, Amazon Aurora & RDS and Azure Database for PostgreSQL.
+You can use CARTO with your data in a PostgreSQL-compatible database, including Google Cloud SQL, Amazon Aurora & RDS, and Azure Database for PostgreSQL.
 
 If you want to create a connection to your PostgreSQL server, you need to select the PostgreSQL connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
@@ -101,7 +101,7 @@ These are the parameters you need to provide:
 - **Account**: Hostname for your account in the following format: `<account_name>.snowflakecomputing.com`.
 - **Warehouse**: Default warehouse that will run your queries. This parameter is optional.
 
-Currently we only support username/password authentication using the internal Snowflake authenticator. We don’t support federated authentication/SSO, OAuth or SAML 2.0 compliant identity providers.
+Currently we only support username/password authentication using the internal Snowflake authenticator. We don’t support federated authentication/SSO, OAuth, or SAML 2.0 compliant identity providers.
 
 ![Connection parameters with Snowflake](/img/cloud-native-workspace/connections/the_connections_snowflake_parameters.png)
 
