@@ -314,7 +314,7 @@ Action to remove all filters from a source.
   ```js
   import { clearFilters } from "@carto/react-redux";
 
-  const action = clearFilters({ id: "sourceOne" });
+  const action = clearFilters("sourceOne");
 
   // dispatch(action)
   ```
