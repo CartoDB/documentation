@@ -9,7 +9,7 @@ This guide shows how you can create private and public applications. We can clas
 
 ### Public applications
 
-To create a public application, you need to create a public token with access to all of the datasets required by the application and introduce the token in the application config (`src/store/initialStateSlice.js`).
+To create a public application, you need to create a token with access to all of the datasets required by the application and introduce the token in the application config (`src/store/initialStateSlice.js`).
 
 {{% bannerNote title="note" %}}
 Because of security reasons the SQL cannot be modified by the user in a private application
@@ -17,11 +17,11 @@ Because of security reasons the SQL cannot be modified by the user in a private 
 
 With the following changes we're going to make the private application public.
 
-1. Create a token. There are two different ways for creating a public token: 
+1. Create a token. There are two different ways for creating a token: 
    
    - You can create a map in Builder with the data sources you want to use in your application and then you make it public by clicking the "Share" button. You can then select the "Developers" tab and copy the map token.
   
-   ![map-token](/img/react/map-token.png 'Public Token')
+   ![map-token](/img/react/map-token.png 'Map Token')
 
    - You can make a request to the `Create Token` endpoint from the [CARTO 3 API](https://api-docs.carto.com)
 

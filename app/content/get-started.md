@@ -323,7 +323,7 @@ You should see the following app in your browser with a default header, a sideba
 
 Now we are going to add a layer to visualize data from a data source that will be displayed in a new view. These are the three main components for working with CARTO for React and we provide a code generation tool based on Hygen to make it really easy to create them.
 
-The data source is a dataset coming from a BigQuery table named `retail_stores`. For this tutorial, we are using a public token that provides access to the BigQuery table but you can also use OAuth for providing authenticated access. This means you also need to remove the `oauth` object from the initial state (or comment it out).
+The data source is a dataset coming from a BigQuery table named `retail_stores`. For this tutorial, we are using a token that provides access to the BigQuery table but you can also use OAuth for providing authenticated access. This means you also need to remove the `oauth` object from the initial state (or comment it out).
 
 First you need to edit the `src/store/initialStateSlice.js` file and add the public access token to the credentials object:
 
