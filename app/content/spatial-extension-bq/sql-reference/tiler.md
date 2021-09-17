@@ -139,7 +139,7 @@ To avoid issues in the process when building the queries that will be executed i
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
 
 {{% bannerNote type="note" title="tip"%}}
-If `drop_fraction_as_needed` is used, a `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level. Please bear in mind that the exact percentages can be up to 5% higher. 
+If `drop_fraction_as_needed` is used, a `fraction_dropped_per_zoom` property will be included in the tileset metadata, containing an estimate of the percentage of the features that have been dropped per zoom level. Please bear in mind that the exact percentages can be up to 5% higher. 
 {{%/ bannerNote %}}
 
 {{% customSelector %}}
@@ -242,7 +242,7 @@ Any option left as `NULL` will take its default value. This also applies for geo
 {{%/ bannerNote %}}
 
 {{% bannerNote type="note" title="tip"%}}
-A `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level as a result of applying the `drop_fraction_as_needed` strategy. Please bear in mind that the exact percentages can be up to 5% higher. 
+A `fraction_dropped_per_zoom` property will be included in the tileset metadata, containing an estimate of the percentage of the features that have been dropped per zoom level as a result of applying the `drop_fraction_as_needed` strategy. Please bear in mind that the exact percentages can be up to 5% higher. 
 {{%/ bannerNote %}}
 
 
