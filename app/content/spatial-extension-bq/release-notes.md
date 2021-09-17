@@ -1,5 +1,35 @@
 ## Release notes
 
+### September 17, 2021
+
+#### Module tiler v1.12.3
+
+Fixed
+- Fix support for DATE in `CREATE_TILESET`.
+- Fix naming of internal variables to avoid name collisions.
+
+Feature
+- Add `fraction_dropped_per_zoom` in tileset metadata.
+
+### September 16, 2021
+
+#### Module data v1.0.1
+
+Changes
+- Support `sub_` (table) subscriptions in:
+  - DATAOBS_ENRICH_POINTS
+  - DATAOBS_ENRICH_POINTS_WITH_MEASURES
+  - DATAOBS_ENRICH_POLYGONS_WITH_AGGREGATION
+  - DATAOBS_ENRICH_POLYGONS_WITH_MEASURES
+  - DATAOBS_ENRICH_GRID
+
+### September 14, 2021
+
+#### Module s2 v1.1.1
+
+Fixed
+- Avoid keeping planar shape in spherical coordinates in ST_BOUNDARY.
+
 ### September 10, 2021
 
 #### Module geocoding v1.0.0-beta.1
