@@ -138,6 +138,10 @@ To avoid issues in the process when building the queries that will be executed i
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
 
+{{% bannerNote type="note" title="tip"%}}
+If `drop_fraction_as_needed` is used, a `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level. Please bear in mind that the exact percentages can be up to 5% higher. 
+{{%/ bannerNote %}}
+
 {{% customSelector %}}
 **Examples**
 {{%/ customSelector %}}
@@ -227,7 +231,7 @@ Creates a simple tileset. It differs from `tiler.CREATE_SIMPLE_TILESET` in that 
 |`geom_column_name`| Default: `"geom"`. A `STRING` that contains the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then `zoom_min` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then `zoom_max` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
-|`max_tile_size_kb`| Default: `512`. Maximum allowed: `6144`. A `NUMBER` setting the approximate maximum size for a tile in kilobytes. 
+|`max_tile_size_kb`| Default: `512`. Maximum allowed: `6144`. A `NUMBER` setting the approximate maximum size for a tile in kilobytes. For every zoom level, a consistent fraction of features will be dropped in every tile to make sure all generated tiles are below this maximum.
 |`tile_feature_order`| Default: `NULL`. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. **This is an expensive operation, so it's recommended to only use it when necessary**. If no order is provided, a custom dropping depending on the geometry type is performed. In case of `POINT` geometries, features are dropped randomly. In case of `POLYGON` geometries the features are added ordered by their area, while for `LINESTRING` geometries the criteria is the feature length.|
 |`drop_duplicates`| Default: `false`. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
 |`extra_metadata`| Default: {}. A JSON object to specify the custom metadata of the tileset.|
@@ -236,6 +240,11 @@ Creates a simple tileset. It differs from `tiler.CREATE_SIMPLE_TILESET` in that 
 {{% bannerNote type="note" title="tip"%}}
 Any option left as `NULL` will take its default value. This also applies for geometry type dependant options such as `zoom_min` or `tile_feature_order`.
 {{%/ bannerNote %}}
+
+{{% bannerNote type="note" title="tip"%}}
+A `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level as a result of applying the `drop_fraction_as_needed` strategy. Please bear in mind that the exact percentages can be up to 5% higher. 
+{{%/ bannerNote %}}
+
 
 
 {{% customSelector %}}

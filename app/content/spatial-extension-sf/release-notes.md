@@ -1,5 +1,12 @@
 ## Release notes
 
+### September 14, 2021
+
+#### Module s2 v1.0.1
+
+Changes
+- Compute ST_BOUNDARY from WKT.
+
 ### September 9, 2021
 
 #### Module quadkey v1.0.2
