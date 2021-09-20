@@ -11,9 +11,9 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Go to the <a href="http://app.carto.com" target="_blank">CARTO 3 Sign In</a> page.
     - Click *Sign up*.
     - Enter your email address and password. You can also sign up with your existing Google account by clicking *Continue with Google*.
-    - Once you have entered your credentials: click *Continue*.
+    - Once you have entered your credentials: click *Continued*.
 
-    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_and_password.png)
+    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_and_password(new).png)
     - Verify your account with the link sent to your existing email address.
     - Click *Verify email* in the email sent.
 
