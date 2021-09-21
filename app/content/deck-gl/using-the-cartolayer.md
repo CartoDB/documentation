@@ -105,18 +105,22 @@ If you are using CARTO 2, there are some differences you need to take into accou
 
 The `CartoLayer` uses the `GeoJsonLayer` for rendering but you can also use any other deck.gl layer for rendering using the `getData` function from the CARTO module. This works for datasets with less than 200k rows but not for bigger datasets where you need to use a tileset.
 
-This function expects the same connection parameters than the `CartoLayer` described above:
+This function receives an object with the following properties:
 
 - [connection](../reference#connection-string)
 - [type](../reference#type-string)
-- [data](../reference#data-string)
+- [source](../reference#data-string) (equivalent to the `data` property for `CartoLayer`)
 - [format](../reference#formats)
 
+If the format is not explicitly specified, `getData` will pick a format automatically, depending on what is available from the CARTO API. The `getData` function returns an `Object` with the following properties:
+  - `format`: the format of the returned data 
+  - `data`: the actual data response
+  
 ```javascript
 import { getData, FORMATS } from '@deck.gl/carto';
 import { H3HexagonLayer } from '@deck.gl/geo-layers/';
 
-const data =  await getData({
+const result =  await getData({
   type: MAP_TYPES.QUERY,
   source: `SELECT bqcarto.h3.ST_ASH3(internal_point_geom, 4) as h3, count(*) as count
               FROM bigquery-public-data.geo_us_census_places.us_national_places 
@@ -124,6 +128,7 @@ const data =  await getData({
   connection: 'connection_name',
   format: FORMATS.JSON
 });
+const data = result.data;
 
 new H3HexagonLayer({
   data,
