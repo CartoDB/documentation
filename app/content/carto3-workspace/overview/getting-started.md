@@ -144,7 +144,7 @@ When you log in to your CARTO 3 account, you will be presented with your Workspa
 
 The first time that you access the Workspace, you will see a *Welcome* banner with quick access to the *Connections* panel. By clicking this banner, you can easily connect your data warehouse(s) to start using the Workspace. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
 
-![Welcome banner](/img/cloud-native-workspace/get-started/home_first_landing(new2).png)
+![Welcome banner](/img/cloud-native-workspace/get-started/home_first_landing(new).png)
 
 #### Recent maps
 
@@ -157,19 +157,19 @@ View your latest content. This module displays the latest maps that you have bee
 
 In this section, you have quick access to different options to get started with the CARTO 3 Workspace, such as creating maps from your data, developing spatial applications, or learning how to use the Spatial Extension.
 
-![Recent maps](/img/cloud-native-workspace/get-started/getting_started(new2).png)
+![Recent maps](/img/cloud-native-workspace/get-started/getting_started(new).png)
 
 #### What’s new
 
 New features, interesting articles, and the latest news related to CARTO 3 from our <a href="https://carto.com/blog" target="_blank">blog</a>.
 
-![Recent maps](/img/cloud-native-workspace/get-started/what_is_new(new2).png)
+![Recent maps](/img/cloud-native-workspace/get-started/what_is_new(new).png)
 
 #### Menu
 
 In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Home, Maps, Data Explorer, Connections, Applications, Account Settings, and Developers. In the bottom part of the menu, you have additional options to Join our Slack channel, send us feedback, or get access to Documentation.
 
-![Menu features](/img/cloud-native-workspace/get-started/the_menu_features(new2).png)
+![Menu features](/img/cloud-native-workspace/get-started/the_menu_features(new).png)
 
 ### Quick guide to connect data and create maps
 
@@ -185,7 +185,7 @@ Once you have registered a connection, you can perform a multitude of operations
 
 Go to the *Connections* menu in the Workspace, where you can view the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_module(new).png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_module(new2).png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
@@ -195,11 +195,11 @@ To add a new connection, click on *New connection* and follow these steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters(new2).png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters(new).png)
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful(new2).png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful(new).png)
 
 #### Create a Map
 
@@ -207,21 +207,21 @@ The *Maps* page enables you to create and manage maps in the CARTO 3 Workspace. 
 
 1. From your *Maps* page, click *Create your first map*. This will open the CARTO 3 map tool: Builder.
 	
-![Map module](/img/cloud-native-workspace/get-started/the_map_module(new2).png)
+![Map module](/img/cloud-native-workspace/get-started/the_map_module(new).png)
 
 2. The *Layers* tab appear, where you can upload new datasets using a local file or add a dataset from your existing data warehouse connection. In this example, we are using the BigQuery connection created in the previous step. With BigQuery we can use a Query to retrieve data, add a whole Table, or a Tileset.
 
-![Add data to your map](/img/cloud-native-workspace/maps/map_layers_no_source(new2).png)
+![Add data to your map](/img/cloud-native-workspace/maps/map_layers_no_source(new).png)
 		
 3. A new dialog will open so you can select your data source. 
 
 4. In this example we are going to use a table with a BigQuery connection. Insert the *Fully Qualified Table* and click *Add source*.
 
-![Enter table name](/img/cloud-native-workspace/maps/map_add_source_table(new2).png)
+![Enter table name](/img/cloud-native-workspace/maps/map_add_source_table(new).png)
 
 Once the process is finished, the BigQuery table is included in the Builder map tool as a new layer. The map displays the basemap and map layer that are the backbone for rendering your visualization. You can add additional layers, or apply styling and analysis features.
 	
-![Map created](/img/cloud-native-workspace/maps/map_style_connection(new2).png)
+![Map created](/img/cloud-native-workspace/maps/map_add_source_table2(new).png)
 
 The CARTO 3 Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears. Use the following task list as guide for some of the main CARTO 3 Builder features:
 
@@ -234,33 +234,33 @@ The CARTO 3 Builder contains many features that guide you through the process of
 
 The new *Data Explorer* functionality simplifies visualization. This section enables you to explore your connected data warehouse, preview your geospatial tables and tilesets, and create maps or tilesets from your data. If you haven’t connect your own data warehouse yet, you will see the provisioned data warehouse:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_first_connection(new2).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_first_connection(new).png)
 
 To add your first connection, you can follow the previous create a connection <a href="#create-a-connection" target="_blank">Guide</a>.
 
 Once you have added a connection, go back to the *Data Explorer* section in the Workspace, where you will see the list of your current connections. If you have registered a connection, you will see the following page:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_bigquery(new2).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_bigquery(new).png)
 
 Select a connection and view the content (database/project(s), schemas/datasets, and tables) in a collapsible tree:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_content(new2).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_content(new).png)
 
 Once your table or tileset is selected, you can view a preview of the map and the details of the table or tileset. You can create a map by clicking on the Create button on the top and then Create map. This will open the CARTO 3 map tool: Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter, or to create a tileset to visualize the whole table. 
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_preview(new2).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_preview_table(new).png)
 
 #### Create Tileset
 
 You can create a tileset by clicking on the *Create tileset* button on the top. 
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_preview_tileset.png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_preview_table2(new).png)
 
 A new dialog will open so you can edit your output table. You can create a tileset with the default parameters, or a new tileset that includes advanced options for editing parameters.
 
 ![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_create_tileset(new).png)
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_create_tileset_custom(new2).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/data_explorer_create_tileset_custom(new).png)
 
 #### Extend your data
 

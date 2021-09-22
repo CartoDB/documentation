@@ -1,7 +1,7 @@
 ---
 title: CARTO 3 Workspace
 description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
-icon: "/img/icons/carto-react.png"
+icon: "/img/icons/Workspace.png"
 
 url: carto3-workspace
 indexPage: "overview/getting-started.md"
