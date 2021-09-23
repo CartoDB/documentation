@@ -35,15 +35,15 @@ SELECT carto-os.quadkey.BBOX(4388);
 ### KRING
 
 {{% bannerNote type="code" %}}
-quadkey.KRING(quadint, distance)
+quadkey.KRING(origin, size)
 {{%/ bannerNote %}}
 
 **Description**
 
-Returns an array containing all the quadints directly next to the given quadint at the same level of zoom. Diagonal, horizontal and vertical nearby quadints plus the current quadint are considered, so KRING always returns `(distance*2 + 1)^2` quadints.
+Returns all cell indexes in a **filled square k-ring** centered at the origin in no particular order.
 
-* `quadint`: `INT64` quadint to get the KRING from.
-* `distance`: `INT64` distance (in cells) to the source.
+* `origin`: `INT64` quadint index of the origin.
+* `size`: `INT64` size of the ring (distance from the origin).
 
 **Return type**
 
@@ -66,39 +66,43 @@ SELECT carto-os.quadkey.KRING(4388, 1);
 -- 4932
 ```
 
-### KRING_INDEXED
+### KRING_DISTANCES
 
 {{% bannerNote type="code" %}}
-quadkey.KRING_INDEXED(quadint, distance)
+quadkey.KRING_DISTANCES(origin, size)
 {{%/ bannerNote %}}
 
 **Description**
 
-Returns an array containing all the quadints and their relative position to the given quadint in term of x and y. Quadints returned are directly next to the given quadint at the same level of zoom. Diagonal, horizontal and vertical nearby quadints plus the current quadint are considered, so KRING_INDEXED always returns `(distance*2 + 1)^2` quadints.
+Returns all cell indexes and their distances in a **filled square k-ring** centered at the origin in no particular order.
 
-* `quadint`: `INT64` quadint to get the KRING_INDEXED from.
-* `distance`: `INT64` distance (in cells) to the source.
+* `origin`: `INT64` quadint index of the origin.
+* `size`: `INT64` size of the ring (distance from the origin).
 
 **Return type**
 
-`ARRAY<STRUCT<x INT64, y INT64, idx INT64>>`
+`ARRAY<STRUCT<index INT64, distance INT64>>`
 
 {{% customSelector %}}
 **Example**
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.KRING_INDEXED(4388, 1);
--- [{"x": "-1", "y": "-1", "idx": "3844"},
---  {"x": "0", "y": "-1", "idx": "3876"},
---  {"x": "1", "y": "-1", "idx": "3908"},
---  {"x": "-1", "y": "0", "idx": "4356"},
---  {"x": "0", "y": "0", "idx": "4388"},
---  {"x": "1", "y": "0", "idx": "4420"},
---  {"x": "-1", "y": "1", "idx": "4868"},
---  {"x": "0", "y": "1", "idx": "4900"},
---  {"x": "1", "y": "1", "idx": "4932"}]
+SELECT carto-os.quadkey.KRING_DISTANCES(4388, 1);
+-- {"index": 4388, "distance": 0}
+-- {"index": 4932, "distance": 1}
+-- {"index": 4900, "distance": 1}
+-- {"index": 4868, "distance": 1}
+-- {"index": 4420, "distance": 1}
+-- {"index": 4356, "distance": 1}
+-- {"index": 3908, "distance": 1}
+-- {"index": 3876, "distance": 1}
+-- {"index": 3844, "distance": 1}
 ```
+
+{{% bannerNote type="note" title="tip"%}}
+The distance of the rings is computed as the [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance).
+{{%/ bannerNote %}}
 
 ### LONGLAT_ASQUADINT
 
@@ -452,7 +456,7 @@ Returns the current version of the quadkey module.
 
 ```sql
 SELECT carto-os.quadkey.VERSION();
--- 1.0.4
+-- 1.0.5
 ```
 
 ### ZXY_FROMQUADINT

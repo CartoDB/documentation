@@ -1,5 +1,23 @@
 ## Release notes
 
+### September 22, 2021
+
+#### Module h3 v1.0.3
+
+Feature
+- Add KRING_DISTANCES function.
+
+Changed
+- Review HEXRING, KRING functions.
+
+#### Module quadkey v1.0.3
+
+Feature
+- Add KRING_DISTANCES function.
+
+Changed
+- Review KRING function.
+
 ### September 14, 2021
 
 #### Module s2 v1.0.1

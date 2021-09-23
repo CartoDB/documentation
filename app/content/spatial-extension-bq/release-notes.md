@@ -1,5 +1,36 @@
 ## Release notes
 
+### September 23, 2021
+
+#### Module s2 v1.1.2
+
+Changed
+- Rename functions ID_FROMUINT64REPR, UINT64REPR_FROMID to follow convention.
+
+#### Module statistics v1.0.0
+
+Feature
+- Create statistics module.
+- Add GETIS_ORD_H3 function.
+- Add GETIS_ORD_QUADKEY function.
+- Add MORANS_I_H3 function.
+- Add MORANS_I_QUADKEY function.
+- Add VERSION function.
+
+### September 22, 2021
+
+#### Module h3 v1.0.4
+
+Changed
+- Review HEXRING, KRING functions.
+- Change KRING_INDEXED to KRING_DISTANCES.
+
+#### Module quadkey v1.0.5
+
+Changed
+- Review KRING function.
+- Change KRING_INDEXED to KRING_DISTANCES.
+
 ### September 17, 2021
 
 #### Module tiler v1.12.3
