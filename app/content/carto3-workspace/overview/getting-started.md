@@ -195,7 +195,7 @@ To add a new connection, click on *New connection* and follow these steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters(new).png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters(new2).png)
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections:
 
