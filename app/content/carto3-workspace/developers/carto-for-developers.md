@@ -104,15 +104,15 @@ Click *Save* for saving your changes.
 
 In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
-![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
+![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications(new2).png)
 
 You can access the quick actions menu to manafe your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete. You can also copy the application ID by hovering your mouse over and clicking on it.
 
-![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions.png)
+![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions(new2).png)
 
 If you click the *Edit* quick action, you will be redirected to a dialog to edit application parameters. This dialog contains the same form that you filled out when creating the application, showing the current values.
 
-![Developers edit application](/img/cloud-native-workspace/developers/developers_editing_applications.png)
+![Developers edit application](/img/cloud-native-workspace/developers/developers_editing_applications(new).png)
 
 After editing the built application parameters, click the *Save changes* button. A popup will appear informing you that the app has been successfully created. Otherwise, click *Cancel* if you don’t want the changes to be applied.
 
@@ -120,25 +120,25 @@ After editing the built application parameters, click the *Save changes* button.
 
 In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
-![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
+![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications(new2).png)
 
 You can access the quick actions menu to manage your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete.
 
-![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions.png)
+![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions(new2).png)
 
 If you click the *Delete* quick action, a dialog will appear so you can confirm that you want to delete the selected applicationn. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 
-![Developers delete application](/img/cloud-native-workspace/developers/developers_deleting_applications.png)
+![Developers delete application](/img/cloud-native-workspace/developers/developers_deleting_applications(new).png)
 
-#### Copying URL
+#### Copying ID
 
 In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
-![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
+![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications(new2).png)
 
 If you hover your mouse over the id, a popup 'Copy ID' will appear, and you can copy the id by clicking on it. Once you have copied the id, a popup will appear indicating that the url has been copied. 
 
-![Developers copy url](/img/cloud-native-workspace/developers/developers_copying_url.png)
+![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions(new2).png)
 
 ### Guide
 
@@ -148,7 +148,8 @@ You can start creating applications from scratch by using our documentation. By 
 
 ### Featured documentation
 
-In this section, you have quick access to different developer toolkits to get started with the build of the most innovative spatial analytics apps: <a href="https://carto.com/developers/maps-api/" target="_blank">Maps API</a>, <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">BigQuery Spatial Extension</a>, <a href="https://docs.carto.com/deck-gl/overview/" target="_blank">CARTO for deck.gl</a> and <a href="https://docs.carto.com/react/overview/" target="_blank">CARTO for React</a>
+In this section, you have quick access to different developer toolkits to get started with the build of the most innovative spatial analytics apps: <a href="https://carto.com/developers/maps-api/" target="_blank">Maps API</a>, <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">BigQuery Spatial Extension</a>, <a href="https://docs.carto.com/deck-gl/getting-started/"
+ target="_blank">CARTO for deck.gl</a> and <a href="https://docs.carto.com/react/overview/" target="_blank">CARTO for React</a>
 
 ![Developers featured documentation](/img/cloud-native-workspace/developers/developers_featured_documentation.png)
 
