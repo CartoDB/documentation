@@ -8,4 +8,4 @@ This menu will only be visible when you have at least one application registered
 
 The following screen shows the *Applications* menu with the list of all current applications identified by an image, the name, and the last update performed. You can access them by clicking on each banner.
 
-![Applications list applications](/img/cloud-native-workspace/applications/applications_list_applications2.png)
+![Applications list applications](/img/cloud-native-workspace/applications/applications_list_applications(new).png)
