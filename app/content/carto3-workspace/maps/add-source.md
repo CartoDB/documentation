@@ -2,39 +2,41 @@
 
 The *Layers* tab will appear, where you can upload new datasets using a local file or add a dataset from your existing data warehouse connection. If you haven’t added a data source yet, you will see the following page:
 
-![Layers no source](/img/cloud-native-workspace/maps/map_layers_no_source2.png)
+![Add data to your map](/img/cloud-native-workspace/maps/map_layers_no_source(new).png)
 
 ### ADD SOURCE FROM A CONNECTION
 
 From the *Layers* tab, go to the *Sources* panel and click on *Add source from...*. A new dialog will open allowing you to select a table or a tileset from your selected connection. Insert the *Fully Qualified Table* or the *Tileset Name* and click *Add source*.
 
-![Enter table name](/img/cloud-native-workspace/maps/map_add_source_table3.png)
+![Enter table name](/img/cloud-native-workspace/maps/map_add_source_selected_connection(new).png)
+
+![Enter table name](/img/cloud-native-workspace/maps/map_add_source_table(new).png)
 
 Once the process is finished, the BigQuery table is included in the Builder map tool as a new layer. The map displays the basemap and map layer that are the backbone for rendering your visualization. You can add additional layers, or apply styling and analysis features.
-
-![Map created](/img/cloud-native-workspace/maps/map_style_connection3.png)
+	
+![Map created](/img/cloud-native-workspace/maps/map_add_source_table2(new).png)
 
 ### ADD SOURCE FROM A CUSTOM QUERY
 
 Go to *Sources* and click *Add source from...*. A new dialog will open allowing you to create your own query or run a SQL analysis from your connection. Select an option and click *Add source*.
 
-![Enter table name](/img/cloud-native-workspace/maps/map_add_source_custom_query2.png)
+![Enter table name](/img/cloud-native-workspace/maps/map_add_source_custom_query(new).png)
 
-![Enter table name](/img/cloud-native-workspace/maps/map_add_source_analysis_query2.png)
+![Enter table name](/img/cloud-native-workspace/maps/map_add_source_analysis_query(new2).png)
 
 Once the process is finished, the SQL console is included in the Builder map view. You can type your query by inserting the *Fully Qualified Table* or the *Tileset Name* and then click *Run*. 
 
-![Enter table name](/img/cloud-native-workspace/maps/map_sql_console2.png)
+![Enter table name](/img/cloud-native-workspace/maps/map_sql_console(new).png)
 
 In this example we are going to use a table with a BigQuery connection. The BigQuery table is included in the Builder map tool as a new layer. The map displays the basemap and map layer that are the backbone for rendering your visualization. You can add additional layers, or apply styling and analysis features.
 	
-![Map created](/img/cloud-native-workspace/maps/map_style_query2.png)
+![Map created](/img/cloud-native-workspace/maps/map_style_query(new).png)
 
 ### ADD SOURCE FROM A LOCAL FILE
 
 Go to *Sources* and click *Add source from...*. A new dialog will open allowing you to upload a CSV, Json, GeoJSON, or saved map Json file. You can browse your files, or drag & drop them into the dotted area of the dialog.
 
-![Enter table name](/img/cloud-native-workspace/maps/map_add_source_file3.png)
+![Enter table name](/img/cloud-native-workspace/maps/map_add_source_file(new).png)
 
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. The map displays the basemap and map layer that are the backbone for rendering your visualization. You can add additional layers, or apply styling and analysis features.
 	

@@ -4,13 +4,13 @@ When styling maps, you can style your geometry using different settings. By defa
 
 To style your layers, expand the *layer settings panel*.
 
-![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings5.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings(new).png)
 
 ### FILL COLOR
 
 When activated, geo shapes are filled in with colors. By default, Builder assigns a **predefined fill color**. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
 
-![Map style fill color](/img/cloud-native-workspace/maps/map_style_fill2.png)
+![Map style fill color](/img/cloud-native-workspace/maps/map_style_fill.png)
 
 You can explore additional fill color features by clicking the *three dots* icon:
 
@@ -24,7 +24,7 @@ You can explore additional fill color features by clicking the *three dots* icon
 	
 	The color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
 	
-    ![Map fill style based on field result](/img/cloud-native-workspace/maps/map_style_fill_based_on_result2.png)
+    ![Map fill style based on field result](/img/cloud-native-workspace/maps/map_style_fill_based_on_result(new).png)
 	
     2. By default, Builder assign a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes comes in diverging, sequential, and qualitative types.
 	
@@ -54,7 +54,7 @@ You can explore additional stroke color features by clicking the *three dots* ic
 	
 	The color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
 	
-    ![Map stroke style based on field result](/img/cloud-native-workspace/maps/map_style_stroke_based_on_result2.png)
+    ![Map stroke style based on field result](/img/cloud-native-workspace/maps/map_style_stroke_based_on_result(new).png)
 	
     2. By default, Builder assigns a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes comes in diverging, sequential and qualitative types.
 	
@@ -104,7 +104,7 @@ You can explore the 3D visualization by clicking on the *3D map* button on the u
 
 In the example, we can now explore as a 3D map those polygons with a higher population.
 
-![Map stroke width based on field](/img/cloud-native-workspace/maps/map_style_height_result2.png)
+![Map stroke width based on field](/img/cloud-native-workspace/maps/map_style_height_result(new).png)
 
 ### LAYER BLENDING
 
