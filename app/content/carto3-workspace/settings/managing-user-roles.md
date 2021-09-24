@@ -1,12 +1,12 @@
 ## Managing user roles
 
-From the *User* section, you can view the list of users who have access to your account. You can access the quick actions menu to manage users role by clicking on the drop-down menu, or by clicking the three point icon in the right hand corner. There are three options available: Make Admin, Make Editor, and Delete account.
+From the *User* section, you can view the list of users who have access to your organization. You can access the quick actions menu to manage users role by clicking on the drop-down menu, or by clicking the three point icon in the right hand corner. There are three options available: Make Admin, Make Editor, and Delete account.
 
 ![Account Settings user role actions](/img/cloud-native-workspace/account-settings/account_settings_user_role_actions.png)
 
 ### Making Admin
 
-If you click the Make Admin quick action, you are providing “admin” privileges to the user. This enables the option to have more than one administrator per account.
+If you click the Make Admin quick action, you are providing “admin” privileges to the user. This enables the option to have more than one administrator per organization.
 
 ### Making Editor
 

@@ -41,14 +41,14 @@ menu:
   - title: "Applications"
     folder:
       - title: "Accessing applications"
-  - title: "Account Settings" 
+  - title: "Settings" 
     folder:
-      - title: "Configuring your account"
+      - title: "Configuring your organization"
       - title: "Your subscription"
       - title: "Managing registered apps"
-      - title: "Inviting users to your account"
+      - title: "Inviting users to your organization"
       - title: "Managing user roles"
-      - title: "Deleting your account"
+      - title: "Deleting your organization"
   - title: "Developers" 
     folder:
       - title: "CARTO for developers"
