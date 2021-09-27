@@ -186,7 +186,7 @@ Once you have registered a connection, you can perform a multitude of operations
 
 Go to the *Connections* menu in the Workspace, where you can view the list of your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_module(new2).png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_module(new).png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
@@ -200,7 +200,7 @@ The following screen shows the connection setup options for BigQuery:
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful(new).png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful(new2).png)
 
 #### Create a Map
 

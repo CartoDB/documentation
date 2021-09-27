@@ -4,7 +4,7 @@ CARTO 3 Workspace includes several options for configuring your organization. Fr
 
 ### Managing your organization
 
-From the *General* section, you can rename your organization or manage who can join to it. Select the checkbox if you want someone with the same email domain to automatically join your account, or leave it unchecked if you want them to go through an approval process to be able to join your account:
+From the *General* section, you can rename your organization or manage who can join to it. Select the checkbox if you want someone with the same email domain to automatically join your organization, or leave it unchecked if you want them to go through an approval process to be able to join your organization:
 
 ![Settings general](/img/cloud-native-workspace/account-settings/account_settings_general(new).png)
 
