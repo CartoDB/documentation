@@ -6,11 +6,11 @@ The *Data Explorer* section in the Workspace allows users to explore their data 
 
 From the Data Warehouses panel, select a connection to view content (database/project(s), schemas/datasets, and tables) from top to bottom in a collapsible tree. If you haven’t registered a connection yet, you will see the following page:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_cartodw(new).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_cartodw(new2).png)
 
 From the Data Observatory panel at the bottom of the page, you can access the different Data Observatory datasets you subscribed to. If you haven’t subscribed to any dataset yet, you will see the following page:
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_nosubscriptions(new).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_nosubscriptions(new2).png)
 
 
 

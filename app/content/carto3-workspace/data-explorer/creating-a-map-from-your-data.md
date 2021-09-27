@@ -2,11 +2,11 @@
 
 To create a map from your data, select a connection and click on a specific content (database/project(s), schemas/datasets and tables) from the collapsible tree. 
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_content(new).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_content(new2).png)
 
 Once your table or tileset is selected, you can view a preview of the map and the details of the table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO 3 map tool: Builder.
 
-![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_preview_tileset(new).png)
+![Data Explorer first connection](/img/cloud-native-workspace/data-explorer/de_preview_tileset(new2).png)
 
 In this example, we have created a map from the tileset that was selected in the previous step:
 

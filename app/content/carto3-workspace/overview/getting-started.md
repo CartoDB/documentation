@@ -38,7 +38,7 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform (GCP) is in four GCP regions (Europe-West, USA-Central, Asia-Northeast, Australia-Southeast). We give you the possibility to choose the region that is closest to your data warehouse.
     - Click *Next*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_the_setup2.png)
+    ![Account setup](/img/cloud-native-workspace/get-started/account_the_setup(new2).png)
 
     Enter your personal information:
 
@@ -48,7 +48,7 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Phone number.
     - Click *Next*.
 
-    ![Personal information](/img/cloud-native-workspace/get-started/form_personal_information.png)
+    ![Personal information](/img/cloud-native-workspace/get-started/form_personal_information(new).png)
 
      Enter your business profile information:
 
@@ -62,7 +62,7 @@ Follow these simple steps to access the CARTO 3 Workspace:
 
     - Click *Finish*.
 
-    ![Business profile](/img/cloud-native-workspace/get-started/form_business_profile.png)
+    ![Business profile](/img/cloud-native-workspace/get-started/form_business_profile(new).png)
 	
     You are ready to start using CARTO 3!
 
@@ -84,7 +84,7 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Phone number.
     - Click *Next*.
 
-    ![Personal information](/img/cloud-native-workspace/get-started/join_personal_information.png)
+    ![Personal information](/img/cloud-native-workspace/get-started/form_personal_information(new).png)
 
     Enter your business profile information:
 
@@ -98,13 +98,13 @@ Follow these simple steps to access the CARTO 3 Workspace:
 
     - Click *Finish*.
 
-    ![Business profile](/img/cloud-native-workspace/get-started/join_business_profile.png)
+    ![Business profile](/img/cloud-native-workspace/get-started/form_business_profile(new).png)
 
     You are ready to start using CARTO 3!
 
     If you select **Request access**, the request will be sent to the organization administrator and your access will be on hold until it is accepted:
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_request_sent.png)
+    ![Account setup](/img/cloud-native-workspace/get-started/account_request_sent(new).png)
 
     You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different organization to join or create a new one. If it is accepted, you will be redirected to the personal information form which needs to be filld in before having access to the CARTO 3 Workspace.
 
@@ -116,7 +116,7 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Phone number.
     - Click *Next*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/join_personal_information.png)
+    ![Personal information](/img/cloud-native-workspace/get-started/form_personal_information(new).png)
 
      Enter your business profile information:
 
@@ -130,7 +130,8 @@ Follow these simple steps to access the CARTO 3 Workspace:
 
     - Click *Finish*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/join_business_profile.png)
+    ![Business profile](/img/cloud-native-workspace/get-started/form_business_profile(new).png)
+
 
 ### CARTO 3 Workspace overview
 
