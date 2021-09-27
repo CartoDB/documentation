@@ -4,7 +4,7 @@ CARTO's Spatial Data Catalog allows users to explore thousands of spatial datase
 
 The Spatial Data Catalog is built on top of a smart metadata system that has registered all characteristics defining a dataset in an homogenous manner (i.e., provider, coverage, schema, variable description, sample data, etc.). This provides a unified experience that allows users to explore and understand the details of very different types of spatial data.
 
-The Spatial Data Catalog is available from our [public website](http://www.carto.com/data) and also from within your user dashboard once you [log into](http://app.carto.com/) your account and navigate to the "Data Observatory" section. 
+The Spatial Data Catalog is available from our [public website](http://www.carto.com/data) and also from within your user dashboard once you [log into](http://app.carto.com/) your Workspace and navigate to the "Data Observatory" section. 
 
 ![Spatial Data Catalog](/img/cloud-native-workspace/data-observatory/do_spatial_data_catalog.png)
 
