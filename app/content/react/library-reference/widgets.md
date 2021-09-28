@@ -208,10 +208,6 @@ You can control the legend options through the following properties that must be
     '$1.5B',
   ];
 
-  const DATA = LABELS.map((elem, index) => {
-    return { color: rgbToHex(COLORS[index]) };
-  });
-
   const layerConfig = {
     title: 'Layer Name',
     visible: true,
@@ -219,7 +215,7 @@ You can control the legend options through the following properties that must be
       attr: 'revenue',
       type: LEGEND_TYPES.BINS,
       labels: LABELS,
-      colors: DATA.map((data) => data.color),
+      colors: COLORS.map((color) => rgbToHex(color)),
     },
   };
 
