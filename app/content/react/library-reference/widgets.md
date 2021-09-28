@@ -180,7 +180,13 @@ You can control the legend options through the following properties that must be
 
 - **Example**:
 
-  If you want to show a legend for a layer, you need to define some layer attributes before you instantiate the layer. Here we are going to create a `BINS` type legend where we are assigning colors and labels to the different legend elements. We use the same colors in the CARTO for deck.gl `colorBins` helper when creating the layer. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action. We also manage the layer visibility through the `visible` attribute in the store:
+  If you want to show a legend for a layer, you need to do the following:
+  
+  1. Define some layer attributes (`layerConfig`) before you instantiate the layer. Here we are going to create a `LEGEND_TYPES.BINS` type legend where we are assigning colors and labels to the different legend elements. We use the same colors in the CARTO for deck.gl `colorBins` helper when creating the layer. 
+  
+  2. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action. It is important that we call the original `onDataLoad` handler defined in the `useCartoLayerProps` hook for the other widgets in the app to work.
+  
+  3. Make sure the layer visibility is controlled through the `visible` attribute in the store
 
   ```js
   import { LEGEND_TYPES } from "@carto/react-ui";
@@ -203,7 +209,7 @@ You can control the legend options through the following properties that must be
   ];
 
   const DATA = LABELS.map((elem, index) => {
-    return { color: rgbToHex(COLORS[index]), label: elem };
+    return { color: rgbToHex(COLORS[index]) };
   });
 
   const layerConfig = {
@@ -212,7 +218,7 @@ You can control the legend options through the following properties that must be
     legend: {
       attr: 'revenue',
       type: LEGEND_TYPES.BINS,
-      labels: DATA.map((data) => data.label),
+      labels: LABELS,
       colors: DATA.map((data) => data.color),
     },
   };
@@ -231,19 +237,20 @@ You can control the legend options through the following properties that must be
         domain: [100e6, 500e6, 1e9, 1.5e9],
         colors: COLORS,
       }),
-      onDataLoad: () => {
+      onDataLoad: (data) => {
         dispatch(
           updateLayer({
             id: MY_LAYER_ID,
             layerAttributes: { ...layerConfig },
           })
         );
+        cartoLayerProps.onDataLoad(data);
       }
     });
   }
   ```
 
-  Now you can add the `LegendWidget` component. In this example, the widget uses a custom CSS class.
+  Now you can add the `LegendWidget` component. If you are using the CARTO for React templates, you can add it to the `MapContainer` component so it is shown for all views or add it to a particular view to show it in the sidebar just for that view. In this example, the widget uses a custom CSS class.
 
   ```js
   import { LegendWidget } from "@carto/react-widgets";
