@@ -52,7 +52,7 @@
         layers: [
           new deck.carto.CartoLayer({
             connection: 'bqconn',
-            type: deck.carto.MAP_TYPES.TABLE,
+            type: deck.carto.MAP_TYPES.QUERY,
             data: `SELECT the_geom_webmercator, storetype from retail_stores`,
             getLineColor: [255, 255, 255],
             getFillColor: [238, 77, 90],
