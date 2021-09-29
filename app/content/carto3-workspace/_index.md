@@ -2,6 +2,7 @@
 title: CARTO 3 Workspace
 description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
 icon: "/img/icons/carto-react.png"
+# TO DO - Change icon
 
 url: carto3-workspace
 indexPage: "overview/getting-started.md"
@@ -40,14 +41,14 @@ menu:
   - title: "Applications"
     folder:
       - title: "Accessing applications"
-  - title: "Account Settings" 
+  - title: "Settings" 
     folder:
-      - title: "Configuring your account"
+      - title: "Configuring your organization"
       - title: "Your subscription"
       - title: "Managing registered apps"
-      - title: "Inviting users to your account"
+      - title: "Inviting users to your organization"
       - title: "Managing user roles"
-      - title: "Deleting your account"
+      - title: "Deleting your organization"
   - title: "Developers" 
     folder:
       - title: "CARTO for developers"

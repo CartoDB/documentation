@@ -12,7 +12,7 @@ The API with the base CARTO 3 URL is displayed. You can copy and use it by click
 
 ### Managing built applications
 
-The CARTO 3 Workspace includes options for managing your applications. From the *Account Settings* section, you can create, edit, or delete applications.
+The CARTO 3 Workspace includes options for managing your applications. From the *Settings* section, you can create, edit, or delete applications.
 
 #### Creating applications
 

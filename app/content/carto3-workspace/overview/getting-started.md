@@ -2,7 +2,7 @@
 
 The CARTO 3 Workspace is the user interface for our next generation cloud-native Location Intelligence platform. It allows you to create amazing maps and spatial analytics at a scale, straight from your data warehouse(s). Learn how to make the most of our Spatial Extension, Data Observatory, and other new features.
 
-### Create your CARTO 3 account
+### Create your CARTO 3 organization
 
 Follow these simple steps to access the CARTO 3 Workspace:
 
@@ -14,31 +14,31 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Once you have entered your credentials: click *Continue*.
 
     ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_and_password.png)
-    - Verify your account with the link sent to your existing email address.
+    - Verify your email with the link sent to your existing email address.
     - Click *Verify email* in the email sent.
 
-    ![Verify your account](/img/cloud-native-workspace/get-started/signup_verify_the_account.png)
+    ![Verify your email](/img/cloud-native-workspace/get-started/signup_verify_email(new).png)
 
-    - Click *Back to Accounts Login/Signup*.
+    - Click *Back to Login/Signup*.
 
     ![Email verified](/img/cloud-native-workspace/get-started/signup_email_is_verified.png)
 
-2. **Account setup**
+2. **Organization setup**
 
-    When a user initiates the account creation process, CARTO 3 will detect if their account email is already associated with an existing account. If so, the user can choose to create a new account or join an existing account. When joining an existing account, there are two options available: join the account directly (if the admin allows through a specific setting) or request access and wait for the admin to approve.
+    When a user initiates the organization creation process, CARTO 3 will detect if their organization email is already associated with an existing organization. If so, the user can choose to create a new organization or join an existing organization. When joining an existing organization, there are two options available: join the organization directly (if the admin allows through a specific setting) or request access and wait for the admin to approve.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_detected_multiple.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/organization_detected_multiple.png)
 
-    **Create a new account**:
+    **Create a new organization**:
 
-    To create a new account follow these steps:
+    To create a new organization follow these steps:
 
-    - Choose an account name.
-    - Select if you want anyone with the same domain to automatically join your account, or leave it unchecked if you want them to go through an approval process.
+    - Choose an organization name.
+    - Select if you want anyone with the same domain to automatically join your organization, or leave it unchecked if you want them to go through an approval process.
     - Choose your region: CARTO’s cloud-infrastructure of Google Cloud Platform (GCP) is in four GCP regions (Europe-West, USA-Central, Asia-Northeast, Australia-Southeast). We give you the possibility to choose the region that is closest to your data warehouse.
     - Click *Next*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_the_setup2.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/organization_the_setup2.png)
 
     Enter your personal information:
 
@@ -66,15 +66,15 @@ Follow these simple steps to access the CARTO 3 Workspace:
 	
     You are ready to start using CARTO 3!
 
-    **Joining an existing account**:
+    **Joining an existing organization**:
 
-   To join an existing account follow these steps:
+   To join an existing organization follow these steps:
 
-    - Choose **Join** an account or **Request access** to an account. 
+    - Choose **Join** an organization or **Request access** to an organization. 
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_detected_multiple.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/organization_detected_multiple.png)
 
-    If you select to **Join** the account directly, you will need to enter additional information before accessing the CARTO 3 Workspace.
+    If you select to **Join** the organization directly, you will need to enter additional information before accessing the CARTO 3 Workspace.
 
     Enter your personal information:
 
@@ -102,11 +102,11 @@ Follow these simple steps to access the CARTO 3 Workspace:
 
     You are ready to start using CARTO 3!
 
-    If you select **Request access**, the request will be sent to the account administrator and your access will be on hold until it is accepted:
+    If you select **Request access**, the request will be sent to the organization administrator and your access will be on hold until it is accepted:
 
-    ![Account setup](/img/cloud-native-workspace/get-started/account_request_sent.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/organization_request_sent.png)
 
-    You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different account to join or create a new account. If it is accepted, you will be redirected to the personal information form which needs to be filld in before having access to the CARTO 3 Workspace.
+    You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different organization to join or create a new organization. If it is accepted, you will be redirected to the personal information form which needs to be filld in before having access to the CARTO 3 Workspace.
 
     Enter your personal information:
 
@@ -116,7 +116,7 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Phone number.
     - Click *Next*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/join_personal_information.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/join_personal_information.png)
 
      Enter your business profile information:
 
@@ -130,13 +130,13 @@ Follow these simple steps to access the CARTO 3 Workspace:
 
     - Click *Finish*.
 
-    ![Account setup](/img/cloud-native-workspace/get-started/join_business_profile.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/join_business_profile.png)
 
 ### CARTO 3 Workspace overview
 
 Learn everything you need to know about your Workspace and how to make the most out of it.
 
-When you log in to your CARTO 3 account, you will be presented with your Workspace. The Workspace allows you to access all components of CARTO 3 platform: Manage connections to your data warehouse(s), explore your data, subscribe to Data Observatory datasets, develop spatial applications, and run visualizations and spatial analysis through a dedicated portal.
+When you log in to your CARTO 3 user, you will be presented with your Workspace. The Workspace allows you to access all components of CARTO 3 platform: Manage connections to your data warehouse(s), explore your data, subscribe to Data Observatory datasets, develop spatial applications, and run visualizations and spatial analysis through a dedicated portal.
 
 ![Workspace overview](/img/cloud-native-workspace/get-started/workspace_overview_default.png)
 
@@ -167,7 +167,7 @@ New features, interesting articles, and the latest news related to CARTO 3 from 
 
 #### Menu
 
-In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Home, Maps, Data Explorer, Connections, Applications, Account Settings, and Developers. 
+In the left panel, you can find the navigation menu with all the available options to access the CARTO 3 features: Home, Maps, Data Explorer, Connections, Applications, Settings, and Developers. 
 
 ![Menu features](/img/cloud-native-workspace/get-started/the_menu_features2.png)
 
