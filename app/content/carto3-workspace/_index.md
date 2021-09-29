@@ -1,5 +1,5 @@
 ---
-title: CARTO 3 Workspace
+title: CARTO User Manual
 description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
 icon: "/img/icons/Workspace.png"
 
