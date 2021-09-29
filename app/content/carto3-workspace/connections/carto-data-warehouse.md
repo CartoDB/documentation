@@ -16,4 +16,4 @@ The CARTO Spatial Extension is enabled by default on the `CARTO Data Warehouse` 
 
 ### CARTO Demo Data
 
-The `CARTO Data Warehouse` connection grants access to a set of demo tables and tilesets that can be used to start creating maps and exploring the tools from the very beginning. They're available and ready to be used in your account's Data Explorer.
+The `CARTO Data Warehouse` connection grants access to a set of demo tables and tilesets that can be used to start creating maps and exploring the tools from the very beginning. They're available and ready to be used in your  Data Explorer.
