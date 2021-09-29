@@ -1,6 +1,6 @@
 ## Inviting users to your organization 
 
-The CARTO 3 Workspace includes the option to invite users to your organization. From the *Settings* menu, you can invite a user, manage the role, or delete a user.
+The CARTO Workspace includes the option to invite users to your organization. From the *Settings* section, you can invite a user, manage the role, or delete a user.
 
 Click *Invite* to invite select users by sending an email. You must also select the user role as Builder (write and read access) or Viewer (read-only access).
 

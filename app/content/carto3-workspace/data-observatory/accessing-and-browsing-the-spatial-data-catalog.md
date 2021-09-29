@@ -6,7 +6,7 @@ The Spatial Data Catalog is built on top of a smart metadata system that has reg
 
 The Spatial Data Catalog is available from our [public website](http://www.carto.com/data) and also from within your user dashboard once you [log into](http://app.carto.com/) your Workspace and navigate to the "Data Observatory" section. 
 
-![Spatial Data Catalog](/img/cloud-native-workspace/data-observatory/do_spatial_data_catalog(new).png)
+![Spatial Data Catalog](/img/cloud-native-workspace/data-observatory/do_spatial_data_catalog.png)
 
 There are a set of high-level metadata attributes that allow the user to filter different datasets when browsing the Spatial Data Catalog:
 - Countries -- The geographical coverage of the datasets.
@@ -15,7 +15,7 @@ There are a set of high-level metadata attributes that allow the user to filter 
 - Sources -- The premium data provider or public data source of the datasets.
 - Placetypes -- The type of spatial aggregation used in the dataset (e.g. admin region, postal codes, road segments, grids, etc.).
 
-![Spatial Data Catalog](/img/cloud-native-workspace/data-observatory/do-dataset-metadata(new).png)
+![Spatial Data Catalog metadata](/img/cloud-native-workspace/data-observatory/do-dataset-metadata.png)
 
 <!-- <div style="text-align:center">
 <img src="/img/data-observatory/data-observatory-dataset-metadata1.png" alt="Dataset metadata" style="width:85%; text-align:center">
@@ -39,20 +39,20 @@ From the Summary, there is also information on the right hand side about the fol
 - Update frequency.
 - Associated Geography. If applicable, these are the digital boundaries (geometries) associated with this dataset, this is, its spatial aggregation. Note that some Geographies can also require their own premium license.
 
-![Data Observatory data sample](/img/cloud-native-workspace/data-observatory/do-summary-sample(new).png)
+![Data Observatory summary sample](/img/cloud-native-workspace/data-observatory/do-summary-sample.png)
 
-![Data Observatory data sample](/img/cloud-native-workspace/data-observatory/do-data-sample(new).png)
+![Data Observatory data sample](/img/cloud-native-workspace/data-observatory/do-data-sample.png)
 
-![Data Observatory map preview](/img/cloud-native-workspace/data-observatory/do-map-sample(new).png)
+![Data Observatory map sample](/img/cloud-native-workspace/data-observatory/do-map-sample.png)
 
 You can have access to a sample of the data by clicking on *Access free sample*:
 
-![Data Observatory map preview](/img/cloud-native-workspace/data-observatory/do-public-access-free-sample(new).png)
+![Data Observatory access free sample](/img/cloud-native-workspace/data-observatory/do-public-access-free-sample.png)
 
 A new dialog will open so you can accept the terms of use of the data. Click on *Connect sample* to connect to the data sample. 
 
-![Data Observatory map preview](/img/cloud-native-workspace/data-observatory/do-connect-your-sample(new).png)
+![Data Observatory connect your sample](/img/cloud-native-workspace/data-observatory/do-connect-your-sample.png)
 
 When you connect your data sample, you will be redirected to the Data Explorer section, from where you can explore your current connections as well as your data observatory subscriptions and sample data.
 
-![Data Observatory map preview](/img/cloud-native-workspace/data-observatory/do-sample-dataset(new).png)
+![Data Observatory sample dataset](/img/cloud-native-workspace/data-observatory/do-sample-dataset.png)

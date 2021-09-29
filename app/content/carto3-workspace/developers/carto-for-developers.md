@@ -1,18 +1,18 @@
 ## CARTO for developers
 
-The CARTO 3 Workspace has been designed to make the development of web-based spatial applications as easy as possible. To achieve this, the *Developers* section provides a complete set of app development tools that includes APIs, SDKs, development frameworks, and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+The CARTO Workspace has been designed to make the development of web-based spatial applications as easy as possible. To achieve this, the *Developers* section provides a complete set of app development tools that includes APIs, SDKs, development frameworks, and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
 The developer toolkit includes industry-leading visualization, mapping, and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences for desktop and mobile.
 
 ### API Base URL
 
-The API with the base CARTO 3 URL is displayed. You can copy and use it by clicking on the icon on the right.
+The API with the base CARTO URL is displayed. You can copy and use it by clicking on the icon on the right.
 
 ![Developers API Base URL](/img/cloud-native-workspace/developers/developers_api_base_url.png)
 
 ### Managing built applications
 
-The CARTO 3 Workspace includes options for managing your applications. From the *Settings* section, you can create, edit, or delete applications.
+The CARTO Workspace includes options for managing your applications. From the *Settings* section, you can create, edit, or delete applications.
 
 #### Creating applications
 

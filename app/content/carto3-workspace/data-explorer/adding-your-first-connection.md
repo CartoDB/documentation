@@ -4,6 +4,6 @@ To add your first connection, follow this [guide](../../connections/creating-a-c
 
 Once you have added a connection, go back to the *Data Explorer* section in the Workspace, where you can view the list of your current connections. If you have registered a connection, you will see the following page:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful(new).png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful.png)
 
 
