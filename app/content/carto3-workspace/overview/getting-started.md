@@ -17,7 +17,7 @@ Follow these simple steps to access the CARTO 3 Workspace:
     - Verify your email with the link sent to your existing email address.
     - Click *Verify email* in the email sent.
 
-    ![Verify your email](/img/cloud-native-workspace/get-started/signup_verify_email.png)
+    ![Verify your email](/img/cloud-native-workspace/get-started/signup_verify_email(new).png)
 
     - Click *Back to Login/Signup*.
 
