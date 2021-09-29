@@ -12,6 +12,14 @@ menu:
       - title: "Getting started"
         # TO DO - "Glossary"
         # TO DO - "Getting help"
+  - title: "Maps"
+    folder:
+      - title: "Introduction"
+      - title: "Add source"
+      - title: "View data table"
+      - title: "Map settings"
+      - title: "Map styles"
+      - title: "Publishing and sharing maps"
   - title: "Data Explorer"
     folder:
       - title: "Introduction"
@@ -30,14 +38,6 @@ menu:
       - title: "Creating a connection"
       - title: "Editing a connection"
       - title: "Deleting a connection"
-  - title: "Maps"
-    folder:
-      - title: "Introduction"
-      - title: "Add source"
-      - title: "View data table"
-      - title: "Map settings"
-      - title: "Map styles"
-      - title: "Publishing and sharing maps"
   - title: "Applications"
     folder:
       - title: "Accessing applications"
