@@ -47,6 +47,7 @@ menu:
       - title: "random"
       - title: "routing"
       - title: "s2"
+      - title: "statistics"
       - title: "tiler"
       - title: "transformations"
   - title: "Release notes"

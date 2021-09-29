@@ -1,10 +1,10 @@
 ## CARTO Data Warehouse
 
-Every CARTO account comes with an active data warehouse connection created by default. 
+Every CARTO organization comes with an active data warehouse connection created by default. 
 
 This connection will grant you access to some resources, in terms of storage and computing, in order to get you started with our platform, and also have access to some demo data. It will also enable you to have access to spatial datasets from CARTO’s Data Observatory without the need of connecting your own data warehouse.
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_cartodw_card(new2).png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_cartodw_card.png)
 
 ### Limits
 

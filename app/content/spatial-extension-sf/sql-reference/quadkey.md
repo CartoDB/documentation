@@ -33,15 +33,15 @@ SELECT sfcarto.quadkey.BBOX(4388);
 ### KRING
 
 {{% bannerNote type="code" %}}
-quadkey.KRING(quadint, distance)
+quadkey.KRING(origin, size)
 {{%/ bannerNote %}}
 
 **Description**
 
-Returns an array containing all the quadints directly next to the given quadint at the same level of zoom. Diagonal, horizontal and vertical nearby quadints plus the current quadint are considered, so KRING always returns `(distance*2 + 1)^2` quadints.
+Returns all cell indexes in a **filled square k-ring** centered at the origin in no particular order.
 
-* `quadint`: `BIGINT` quadint to get the KRING from.
-* `distance`: `INT` distance (in cells) to the source.
+* `origin`: `BIGINT` quadint index of the origin.
+* `size`: `INT` size of the ring (distance from the origin).
 
 **Return type**
 
@@ -61,6 +61,44 @@ SELECT sfcarto.quadkey.KRING(4388, 1);
 -- 4900
 -- 4932
 ```
+
+### KRING_DISTANCES
+
+{{% bannerNote type="code" %}}
+quadkey.KRING_DISTANCES(origin, size)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns all cell indexes and their distances in a **filled square k-ring** centered at the origin in no particular order.
+
+* `origin`: `BIGINT` quadint index of the origin.
+* `size`: `INT` size of the ring (distance from the origin).
+
+**Return type**
+
+`ARRAY`
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT sfcarto.quadkey.KRING_DISTANCES(4388, 1);
+-- {"index": 4388, "distance": 0}
+-- {"index": 4932, "distance": 1}
+-- {"index": 4900, "distance": 1}
+-- {"index": 4868, "distance": 1}
+-- {"index": 4420, "distance": 1}
+-- {"index": 4356, "distance": 1}
+-- {"index": 3908, "distance": 1}
+-- {"index": 3876, "distance": 1}
+-- {"index": 3844, "distance": 1}
+```
+
+{{% bannerNote type="note" title="tip"%}}
+The distance of the rings is computed as the [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance).
+{{%/ bannerNote %}}
 
 ### LONGLAT_ASQUADINT
 
@@ -331,7 +369,7 @@ Returns the current version of the quadkey module.
 
 ```sql
 SELECT sfcarto.quadkey.VERSION();
--- 1.0.2
+-- 1.0.3
 ```
 
 ### ZXY_FROMQUADINT
