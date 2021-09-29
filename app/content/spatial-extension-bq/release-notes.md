@@ -1,5 +1,12 @@
 ## Release notes
 
+### September 24, 2021
+
+#### Module geocoding v1.0.0-beta.2
+
+Feature
+- Add GEOCODING_PC_BATCH procedure.
+
 ### September 23, 2021
 
 #### Module s2 v1.1.2
