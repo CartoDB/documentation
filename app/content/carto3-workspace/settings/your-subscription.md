@@ -20,6 +20,6 @@ The Plan features included are:
 - Connections
 - Applications
 
-![Account Settings your subscription](/img/cloud-native-workspace/account-settings/settings_your_subscription.png)
+![Account Settings your subscription](/img/cloud-native-workspace/settings/settings_your_subscription.png)
 
 The Plan features layout is dynamic, meaning that as the different features are utilized, the scoreboard is updated. If you hover the mouse over 'Applications', you will see the number of registered applications.
