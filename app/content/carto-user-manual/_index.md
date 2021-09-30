@@ -1,9 +1,9 @@
 ---
 title: CARTO User Manual
-description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
+description: "Connect your data warehouse and create amazing maps with CARTO tools"
 icon: "/img/icons/Workspace.png"
 
-url: carto3-workspace
+url: carto-user-manual
 indexPage: "overview/getting-started.md"
 
 menu:
