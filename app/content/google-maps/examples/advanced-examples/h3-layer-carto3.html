@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- h3-js is required -->
+    <script src="https://unpkg.com/h3-js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.6.0-alpha.3/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0-alpha.3/dist.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style>
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div id="map"></div>
+
+    <script  
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=beta"
+      async
+    ></script>
+
+  </body>
+
+  <script type="text/javascript">
+    let map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 31, lng: 32.2 },
+        zoom: 10,
+        tilt: 45,
+        heading: -45,
+        mapId: '716bc8b1cc71ef3b',
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
+      });
+      
+      deck.carto.setDefaultCredentials({
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+        apiVersion: deck.carto.API_VERSIONS.V3,
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfN3hoZnd5bWwiLCJqdGkiOiJkNjQ2OWUxNiJ9.fQv03Aq2jCtNc5eiwDscPx_5cfGJHmAWjgW40r20Ves'
+      });
+
+      const jsonData = deck.carto.getData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT AVG(water) AS avg_wa, SUM(water) AS sum_wa, COUNT(*) AS c, bqcarto.h3.ST_ASH3(geo,9) AS hex 
+                 FROM cartobq.earthengine.first_dataset
+                 GROUP BY hex
+                 HAVING sum_wa <> 0`,
+        connection: 'bigquery',
+        format: deck.carto.FORMATS.JSON
+      });
+
+      // CARTO Colors Teal palette
+      const colors = [
+        [209, 238, 234],
+        [168, 219, 217],
+        [133, 196, 201],
+        [104, 171, 184],
+        [79, 144, 166],
+        [59, 115, 143],
+        [42, 86, 116]
+      ];
+
+      const colorScale = d3.scaleQuantize().range(colors).domain([0, 5]);
+
+      const deckOverlay = new deck.GoogleMapsOverlay({
+        layers: [
+          new deck.H3HexagonLayer({
+            id: 'h3-hexagon-layer',
+            data: jsonData,
+            pickable: true,
+            autoHighlight: true,
+            wireframe: false,
+            pickable: true,
+            filled: true,
+            extruded: true,
+            elevationScale: 100,
+            getHexagon: d => d.hex,
+            getFillColor: d => colorScale(d.avg_wa),  
+            getElevation: d => d.sum_wa
+          })
+        ]
+      });
+
+      deckOverlay.setMap(map);
+
+    }
+  </script>
+</html>

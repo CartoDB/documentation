@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>BigQuery Tileset Layer</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://unpkg.com/deck.gl@^8.6.0-alpha.3/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0-alpha.3/dist.min.js"></script>  
+    <script src="https://unpkg.com/deck.gl@8.6.0-alpha.3/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@8.6.0-alpha.3/dist.min.js"></script>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
       #map {
         height: 100%;
       }
 
-      /* Optional: Makes the sample page fill the window. */
       html,
       body {
         height: 100%;
@@ -26,8 +23,7 @@
     
     <div id="map"></div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
+    <script  
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=beta"
       async
     ></script>
@@ -39,9 +35,14 @@
 
     function initMap() {
       map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 38, lng: -98 },
-        zoom: 4,
+        center: { lat: 40.73, lng: -73.8 },
+        zoom: 9,
         mapId: '856f688f677c0bc3',
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
       });
 
       deck.carto.setDefaultCredentials({
@@ -54,14 +55,17 @@
         layers: [
           new deck.carto.CartoLayer({
             connection: 'bqconn',
-            type: deck.carto.MAP_TYPES.TABLE,
-            data: `cartobq.public_account.retail_stores`,
-            getLineColor: [255, 255, 255],
-            getFillColor: [238, 77, 90],
-            pointRadiusMinPixels: 6,
-            lineWidthMinPixels: 1,
-          }),
-        ],
+            type: deck.carto.MAP_TYPES.TILESET,
+            data: 'cartobq.public_account.nyc_taxi_points_demo_id',
+            getFillColor: deck.carto.colorBins({
+              attr: 'aggregated_total',
+              domain: [10, 1e2, 1e3, 1e4, 1e5, 1e6],
+              colors: 'Temps'
+            }),
+            pointRadiusMinPixels: 2,
+            stroked: false,
+          })
+        ]
       });
 
       deckOverlay.setMap(map);
@@ -69,4 +73,3 @@
 
   </script>
 </html>
-

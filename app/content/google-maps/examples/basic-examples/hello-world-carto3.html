@@ -28,7 +28,7 @@
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=beta"
       async
     ></script>
     
@@ -41,6 +41,12 @@
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 38, lng: -98 },
         zoom: 4,
+        mapId: '856f688f677c0bc3',
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
       });
 
       deck.carto.setDefaultCredentials({
