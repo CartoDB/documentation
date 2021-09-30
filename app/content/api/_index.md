@@ -1,9 +1,9 @@
 ---
-title: CARTO 3 Public API
-description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
+title: CARTO Public API
+description: "Connect your data warehouse and create amazing applications using CARTO APIs"
 icon: "/img/icons/carto-react.png"
 
-url: carto3-api
+url: api
 indexPage: "overview/getting-started.md"
 
 menu:
