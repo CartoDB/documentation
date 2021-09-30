@@ -1,6 +1,6 @@
 ## Your subscription
 
-The CARTO 3 Workspace brings together all of your organization information onto a single screen. From this section, you always have visibility of all details and features of your organization plan.
+The CARTO Workspace brings together all of your organization information onto a single screen. From this section, you always have visibility of all details and features of your organization plan.
 
 The Details included are:
 
@@ -20,6 +20,6 @@ The Plan features included are:
 - Connections
 - Applications
 
-![Settings your subscription](/img/cloud-native-workspace/settings/settings_your_subscription.png)
+![Account Settings your subscription](/img/cloud-native-workspace/settings/settings_your_subscription.png)
 
-The Plan features layout is dynamic, meaning that as the different features are utilized, the scoreboard is updated. If you hover the mouse over 'Applications', you will see the number of registered applications:
+The Plan features layout is dynamic, meaning that as the different features are utilized, the scoreboard is updated. If you hover the mouse over 'Applications', you will see the number of registered applications.

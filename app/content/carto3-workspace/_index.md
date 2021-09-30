@@ -1,8 +1,7 @@
 ---
-title: CARTO 3 Workspace
+title: CARTO User Manual
 description: "Connect your data warehouse and create amazing maps using CARTO 3 features"
-icon: "/img/icons/carto-react.png"
-# TO DO - Change icon
+icon: "/img/icons/Workspace.png"
 
 url: carto3-workspace
 indexPage: "overview/getting-started.md"
@@ -13,11 +12,20 @@ menu:
       - title: "Getting started"
         # TO DO - "Glossary"
         # TO DO - "Getting help"
+  - title: "Maps"
+    folder:
+      - title: "Introduction"
+      - title: "Add source"
+      - title: "View data table"
+      - title: "Map settings"
+      - title: "Map styles"
+      - title: "Publishing and sharing maps"
   - title: "Data Explorer"
     folder:
       - title: "Introduction"
       - title: "Adding your first connection"
       - title: "Creating a map from your data"  
+      - title: "Creating a tileset from your data"  
   - title: "Data Observatory"
     folder:
       - title: "Accessing and browsing the Spatial Data Catalog"
@@ -30,14 +38,6 @@ menu:
       - title: "Creating a connection"
       - title: "Editing a connection"
       - title: "Deleting a connection"
-  - title: "Maps"
-    folder:
-      - title: "Introduction"
-      - title: "Add source"
-      - title: "View data table"
-      - title: "Map settings"
-      - title: "Map styles"
-      - title: "Publishing and sharing maps"
   - title: "Applications"
     folder:
       - title: "Accessing applications"

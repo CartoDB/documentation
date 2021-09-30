@@ -9,13 +9,14 @@ To create a new connection follow these steps:
 
 The following screen shows the connection setup options for BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
 
 After you have provided the connection parameters, click *Connect*. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful2.png)
 
-Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the  *Data Explorer* ) or you can create maps using local files or datasets from your data warehouse (navigating to the *Maps* module).
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful.png)
+
+Once your connection is created, you can create maps using datasets from your connections (navigating to the  *Data Explorer* ) or you can create maps using local files or datasets from your data warehouse (navigating to the *Maps* module).
 
 In the next sections we show how to configure connections to the supported data sources.
 
@@ -38,7 +39,7 @@ Click the *Connect using a service account* button. You will see the form where 
 - **Service account key file** in JSON format. Please read the following instructions to create a <a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" target="_blank">service account</a> and a service account <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank">key file</a>. We will use this service account to list tilesets, visualize them privately, and grant publishing permissions. Be sure that the service account has <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Data Owner</a> (bigquery.dataOwner) and <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Job User</a> (bigquery.jobUser). Read our <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">documentation</a> if you want to learn about the specific permissions CARTO requires.
 - **Billing project**: having entered the previous parameters, a selector for choosing the billing project will be enabled, enabling CARTO to run queries using your service account.
 
-![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
+![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your BigQuery server. If everything is OK, your new connection will be registered.
 
