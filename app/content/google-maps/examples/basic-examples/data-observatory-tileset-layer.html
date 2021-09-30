@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
+    <title>Data Observatory Tileset Layer</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
     <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
       #map {
         height: 100%;
       }
 
-      /* Optional: Makes the sample page fill the window. */
       html,
       body {
         height: 100%;
@@ -26,9 +23,8 @@
     
     <div id="map"></div>
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA1QNyLGz2mEAjyCR4-lz5k1OlJKETvqc&callback=initMap&libraries=&v=beta"
       async
     ></script>
     
@@ -41,24 +37,31 @@
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 38, lng: -98 },
         zoom: 4,
+        mapId: '856f688f677c0bc3',
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
       });
 
       deck.carto.setDefaultCredentials({
-        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-        apiVersion: deck.carto.API_VERSIONS.V3,
-        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+        username: 'public',
+        apiKey: 'default_public'
       });
 
       const deckOverlay = new deck.GoogleMapsOverlay({
         layers: [
           new deck.carto.CartoLayer({
-            connection: 'bqconn',
-            type: deck.carto.MAP_TYPES.TABLE,
-            data: `cartobq.public_account.retail_stores`,
-            getLineColor: [255, 255, 255],
-            getFillColor: [238, 77, 90],
-            pointRadiusMinPixels: 6,
-            lineWidthMinPixels: 1,
+            type: deck.carto.MAP_TYPES.TILESET,
+            data: 'carto-do-public-tilesets.carto.derived_spatialfeatures_usa_quadgrid15_v1_yearly_2020_tileset_002',
+            getFillColor: deck.carto.colorBins({
+              attr: 'population',
+              domain: [0, 10, 100, 1000, 10000, 100000],
+              colors: 'Teal'
+            }),
+            pointRadiusMinPixels: 2,
+            stroked: false,
           }),
         ],
       });
@@ -68,4 +71,3 @@
 
   </script>
 </html>
-
