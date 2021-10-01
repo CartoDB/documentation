@@ -35,10 +35,10 @@
   const LOOP_LENGTH = 1800;
   const ANIMATION_SPEED = 0.4;
   let time = 0;
-  let layerData;
+  let layerData = [];
   let deckOverlay;
 
-  async function initMap() {
+  function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
       center: { lat: 40.73, lng: -74 },
       zoom: 13,
@@ -58,21 +58,21 @@
     });
 
     // Fetch Data from CARTO
-    const geojsonData = await deck.carto.getData({
+    deck.carto.getData({
       type: deck.carto.MAP_TYPES.QUERY,
       source: `SELECT geom, vendor, 
                         TO_JSON_STRING(timestamps) AS timestamps 
                    FROM cartobq.public_account.new_york_trips`,
       connection: 'bqconn',
       format: deck.carto.FORMATS.GEOJSON
+    }).then((geojsonData) => {
+      // TripsLayer needs data in the following format
+      layerData = geojsonData.features.map(f => ({
+        vendor: f.properties.vendor,
+        timestamps: JSON.parse(f.properties.timestamps),
+        path: f.geometry.coordinates
+      }));
     });
-
-    // TripsLayer needs data in the following format
-    layerData = geojsonData.features.map(f => ({
-      vendor: f.properties.vendor,
-      timestamps: JSON.parse(f.properties.timestamps),
-      path: f.geometry.coordinates
-    }));
 
     deckOverlay = new deck.GoogleMapsOverlay({});
 
