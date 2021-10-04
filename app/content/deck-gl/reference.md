@@ -14,7 +14,7 @@ If using API v1 or v2, the following properties are used:
 
 * `username` (required): unique username in the platform
 * `apiKey` (optional): api key. Default: `default_public`
-* `region` (optional): region where the user database is located, possible values are `us` or `eu`. Default: `us`, only need to be specified if you've specifically requested an account in `eu`
+* `region` (optional): region where the user database is located, possible values are `us` or `eu`. Default: `us`, only need to be specified if you've specifically requested an account in `eu`. The database's location can be found in the user's profile settings
 * `mapsUrl` (optional): Maps API URL Template. Default: 
   * `https://{username}.carto.com/api/v1/map` for v1
   * `https://maps-api-v2.{region}.carto.com/user/{username}` for v2
