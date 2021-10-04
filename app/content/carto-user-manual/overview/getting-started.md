@@ -216,7 +216,7 @@ The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 
 4. In this example we are going to use a table from our BigQuery connection. Select the table from the list and click *Add source*.
 
-![Add source table](/img/cloud-native-workspace/maps/map_add_source_table.png)
+![Add source table](/img/cloud-native-workspace/maps/map_add_source_tablee.png)
 
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
 	
