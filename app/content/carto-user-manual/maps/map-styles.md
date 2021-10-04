@@ -1,36 +1,36 @@
 ## Map styles
 
-When styling maps, you can style your geometry using different settings. By default, the CARTO Builder styles by fixed values for size and solid colors. The following sections list the different styling options that you can set for your map. Some of them are available depending on the type of layer (point, line, polygon, etc.).
+When styling map visualizations, you can style your geometry using different settings. By default, CARTO Builder styles by fixed values for size and solid colors. The following sections list the different styling options that you can set for your map. Note that some of them are only available depending on the type of geometry layer (point, line, polygon, etc.).
 
-To style your layers, expand the *layer settings panel*.
+To style your layers, expand the *Layer settings panel*.
 
 ![Map layers settings](/img/cloud-native-workspace/maps/map_layer_setting(new).png)
 
 ### FILL COLOR
 
-When activated, geo shapes are filled in with colors. By default, Builder assigns a **predefined fill color**. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
+When activated, geometry shapes are filled in with colors. By default, Builder assigns a **predefined fill color**. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
 
 ![Map style fill color](/img/cloud-native-workspace/maps/map_style_fill_color.png)
 
-You can explore additional fill color features by clicking the *three dots* icon:
+You can explore additional fill color features by clicking on the *three dots* icon:
 
 ![Map style fill additional features](/img/cloud-native-workspace/maps/map_style_fill_feature.png)
 
-- **Color based on**: When styling maps, you can assign color based on a field from your dataset(s).
+- **Color based on**: When styling maps, you can assign a color based on the values from a field from your data source.
 
     1. Click the *Color based on* button. Select a field from your dataset to style your layer. In this example, we style our layer based on the "population" field. 
 
     ![Map fill style based on field](/img/cloud-native-workspace/maps/map_style_fill_based_on.png)
 	
-	The color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
+	A color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
 	
     ![Map fill style based on field result](/img/cloud-native-workspace/maps/map_style_fill_based_on_result.png)
 	
-    2. By default, Builder assign a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes comes in diverging, sequential, and qualitative types.
+    2. By default, Builder assign a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes come in diverging, sequential, and qualitative types.
 	
 	![fill color predefined palette](/img/cloud-native-workspace/maps/map_style_fill_based_on_color_predefined_palette.png)
 	
-	You can also design a **custom palette**. To activate this option, toggle on *custom palette*. Click on each color to pick a new color either by clicking on the color picker or inputting HEX/RGB values. Colors steps can be added, removed, or shuffled. 
+	You can also design a **custom palette**. To activate this option, toggle on *custom palette*. Click on each color to pick a new color either by clicking on the color picker or inputting HEX/RGB values. Color steps can be added, removed, or shuffled. 
 	
     ![Map style fill color custom palette](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_color_palette_toogle.png)![Map style fill color custom palette.png](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_color_palette.png)
 	
@@ -42,7 +42,7 @@ When activated, this feature draws outlines around geoshapes. When styling a map
 
 ![Map style stroke color](/img/cloud-native-workspace/maps/map_style_stroke.png)
 
-You can explore additional stroke color features by clicking the *three dots* icon: 
+You can explore additional stroke color features by clicking on the *three dots* icon: 
 
 ![Map style stroke additional features](/img/cloud-native-workspace/maps/map_style_stroke_features.png)
 
@@ -68,13 +68,13 @@ You can explore additional stroke color features by clicking the *three dots* ic
 
 ### STROKE WIDTH
 
-This feature allows you to change the thickness of lines, or assign a width based on a field from your dataset(s). You can change the predefined stroke width using the *width slider* or by directly inputting the stroke size in the *text input*.
+This feature allows you to change the thickness of lines, or to assign a width based on a field from your data sources. You can change the predefined stroke width using the *width slider* or by directly inputting the stroke size in the *text input*.
 
 You can explore additional stroke width features by clicking the *three dots* icon: 
 
 ![Map style stroke width additional features](/img/cloud-native-workspace/maps/map_style_stroke_width_features.png)
 
-- **Stroke width based on**: When styling maps, you can assign stroke width based on a field from your dataset(s).
+- **Stroke width based on**: when styling maps, you can assign stroke width based on a field from your dataset(s).
 
     1. Click the *Stroke based on* button. Select a field from your dataset to style your layer. In this example, we style our layer stroke based on the "population" field. 
 
@@ -86,15 +86,15 @@ You can explore additional stroke width features by clicking the *three dots* ic
 	
 ### HEIGHT
 
-This feature allows you to assign polygon heights for 3D visualizations. You can activate this option by clicking the toogle. You can change the height using the *height slider* or by directly inputting the height in the *text input*.
+This feature allows you to assign polygon heights to build 3D visualizations. You can activate this option by clicking the toogle. You can change the height using the *height slider* or by directly inputting the height in the *text input*.
 
 ![Map style height](/img/cloud-native-workspace/maps/map_style_height.png)
 
-You can explore additional height features by clicking the *three dots* icon: 
+You can explore additional height features by clicking on the *three dots* icon: 
 
 ![Map style height additional features](/img/cloud-native-workspace/maps/map_style_height_features.png)
 
-- **Height based on**: When styling maps, you can assign height based on a field from your dataset(s).
+- **Height based on**: when styling maps, you can assign height based on a field from your dataset(s).
 Click the *Height based on* button. Select a field from your dataset to style your layer. In this example, we style our layer height based on the "population" field. 
 
 ![Map height based on field](/img/cloud-native-workspace/maps/map_style_height_based_on.png)   

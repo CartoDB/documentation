@@ -1,10 +1,10 @@
-## Accessing and browsing the Spatial Data Catalog
+## Browsing the Spatial Data Catalog
 
-CARTO's Spatial Data Catalog allows users to explore thousands of spatial datasets available via the Data Observatory, in order to find the best data based on their requirements.
+CARTO's Spatial Data Catalog allows users to explore thousands of spatial datasets available via the Data Observatory, in order to find the best data for their use-case
 
-The Spatial Data Catalog is built on top of a smart metadata system that has registered all characteristics defining a dataset in an homogenous manner (i.e., provider, coverage, schema, variable description, sample data, etc.). This provides a unified experience that allows users to explore and understand the details of very different types of spatial data.
+The Spatial Data Catalog is built on top of a smart metadata system that has registered all characteristics defining a data product in an homogenous manner (i.e., provider, coverage, schema, variable description, sample data, etc.). This system enables us to provide a unified experience for users to explore and understand the details of very different types of spatial data.
 
-The Spatial Data Catalog is available from our [public website](http://www.carto.com/data) and also from within your user dashboard once you [log into](http://app.carto.com/) your Workspace and navigate to the "Data Observatory" section. 
+The Spatial Data Catalog is available from our [public website](http://www.carto.com/data) and also from within your Workspace once you [log into](http://app.carto.com/) your account and navigate to the "Data Observatory" section from the left-side menu. 
 
 ![Spatial Data Catalog](/img/cloud-native-workspace/data-observatory/do_spatial_data_catalog.png)
 
@@ -49,10 +49,10 @@ You can have access to a sample of the data by clicking on *Access free sample*:
 
 ![Data Observatory access free sample](/img/cloud-native-workspace/data-observatory/do-public-access-free-sample.png)
 
-A new dialog will open so you can accept the terms of use of the data. Click on *Connect sample* to connect to the data sample. 
+A new dialog will open so you can accept the terms of use of the data (e.g. evaluation purposes only). Click on *Connect sample* to connect to the data sample. 
 
 ![Data Observatory connect your sample](/img/cloud-native-workspace/data-observatory/do-connect-your-sample.png)
 
-When you connect your data sample, you will be redirected to the Data Explorer section, from where you can explore your current connections as well as your data observatory subscriptions and sample data.
+When you connect your data sample, you will be redirected to the Data Explorer section, from where you can explore your current connections as well as your Data Observatory subscriptions and sample data.
 
 ![Data Observatory sample dataset](/img/cloud-native-workspace/data-observatory/do-sample-dataset.png)

@@ -28,7 +28,7 @@ menu:
       - title: "Creating a tileset from your data"  
   - title: "Data Observatory"
     folder:
-      - title: "Accessing and browsing the Spatial Data Catalog"
+      - title: "Browsing the Spatial Data Catalog"
       #- title: "Subscribing to public and premium datasets"
       #- title: "Managing your subscriptions"
   - title: "Connections" 

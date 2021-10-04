@@ -2,35 +2,35 @@
 
 ### LAYERS
 
-Once your datasets are connected to your map, as explained in this [guide](../../maps/add-source), you can use Builder to discover key insights about your location data. This guide describes how to view and work with map layers in the CARTO Builder.
+Once your data sources are connected to your map, as explained in this [guide](../../maps/add-source), you can use Builder to analyse and discover key insights from your location data. This guide describes how to work with map layers in CARTO Builder.
 
-When opening a map, layers for the selected map appear. The layers list appears by default, displaying the basemap and map data layer(s) that are the backbone for rendering your visualization.
+When opening a map, all added layers for the selected map appear in the left side panel. The layers list appears by default, displaying the basemap and map data layer(s) that are the backbone for your visualization.
 
 ![Map layers](/img/cloud-native-workspace/maps/map_paris.png)
 
-When working with layers in the layer list of Builder, the following features are available:
+The following features are available in the list of layers of your map in Builder:
 
-- **Layers label:** Layers are created alphabetically (A, B, C, D) and each layer displays a unique color. Each layer icon displays the geometry type behind the data as either point, line, polygon, or empty.
+- **Layers label:** layers are provided with a label that is created alphabetically (A, B, C, D). Also each layer is labeled with a unique color to help you distinguish them. Each layer icon displays the geometry type behind the data as either a point, line, polygon, or empty.
 
-- **Layers order:** Layers are rendered from bottom to top, with basemaps being the bottom layer. Click and drag a layer to rearrange the hierarchal order of how layers are rendered on your map.
+- **Layers order:** layers are rendered from bottom to top, with basemaps being the bottom layer. Click and drag a layer to rearrange the hierarchal order of how layers are rendered on your map.
 
-- **Layer settings:** To apply custom styling to your layer.
+- **Layer settings:** to apply custom styling to your layer.
 
 ![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settingsss.png)
 
-- **Rename layer:** Click on the layer title to edit the name of the layer.
+- **Rename layer:** click on the layer title to edit the name of the layer.
 
 ![Map layers rename](/img/cloud-native-workspace/maps/map_layer_rename.png)
 
-- **Duplicate layer:** To create a copy of your layer.
+- **Duplicate layer:** to create a copy of your layer and to add it to the map.
 
 ![Map layers duplicate](/img/cloud-native-workspace/maps/map_layer_duplicate.png)
 
-- **Show/hide layer:** To show/hide the layer in the map.
+- **Show/hide layer:** to show/hide the layer in the map.
 
 ![Map layers show or hide](/img/cloud-native-workspace/maps/map_layer_hide.png)
 
-- **Remove layer:** To remove a layer from the map.
+- **Remove layer:** to remove a layer from the map.
 
 ![Map layers remove](/img/cloud-native-workspace/maps/map_layer_remove.png)
 
