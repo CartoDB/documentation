@@ -7,12 +7,12 @@ navbar:
     url: /data-observatory
   - name: CARTOframes
     url: https://carto.com/developers/cartoframes
-  - name: Spatial Extensions
+  - name: Analytics Toolbox
     subelements:
-      - name: Spatial Extension for BigQuery
-        url: /spatial-extension-bq
-      - name: Spatial Extension for Snowflake
-        url: /spatial-extension-sf
+      - name: Analytics Toolbox for BigQuery
+        url: /analytics-toolbox-bq
+      - name: Analytics Toolbox for Snowflake
+        url: /analytics-toolbox-sf
   - name: Dev tools
     subelements:
       - name: CARTO for React

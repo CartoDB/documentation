@@ -1,10 +1,10 @@
 ---
-title: Spatial Extension for Snowflake
+title: Analytics Toolbox for Snowflake
 description: "Unlock Spatial Analytics in Snowflake"
-icon: "/img/icons/snowflake.png"
+icon: "/img/icons/snowflake-analytics-toolbox.png"
 repoUrl: https://github.com/CartoDB/carto-spatial-extension
 
-url: spatial-extension-sf
+url: analytics-toolbox-sf
 indexPage: "overview/getting-started.md"
 
 menu:

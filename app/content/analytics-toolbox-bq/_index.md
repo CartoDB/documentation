@@ -1,10 +1,10 @@
 ---
-title: Spatial Extension for BigQuery
+title: Analytics Toolbox for BigQuery
 description: "Unlock Spatial Analytics in BigQuery"
-icon: "/img/icons/spatial-extension-bq.png"
+icon: "/img/icons/bigquery-analytics-toolbox.png"
 repoUrl: https://github.com/CartoDB/carto-spatial-extension
 
-url: spatial-extension-bq
+url: analytics-toolbox-bq
 indexPage: "overview/getting-started.md"
 
 menu:

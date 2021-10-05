@@ -52,12 +52,12 @@
     </ul>
   </div>
 
-
-
   <div class="container grid u-justify-center u-mt120 u-mb32 u-mt48--tablet">
     <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet">
-      <h2 class="title f48 f32--tablet is-txtBaseGrey">CARTO Components</h2>
-      <p class="text f20 is-txtBaseGrey u-mt24">Find out more about the key components of our end-to-end Location Intelligence platform.</p>
+      <h2 class="title f48 f32--tablet is-txtBaseGrey">CARTO Platform</h2>
+      <p class="text f20 is-txtBaseGrey u-mt24">CARTO unlocks the power of spatial analysis in the cloud, extending the visualization, analysis and development capabilities of the leading cloud data warehouse platforms, such as Google BigQuery, Snowflake and Amazon Redshift. </p>
+      <p class="text f20 is-txtBaseGrey u-mt24"> Find out how to get the most out of our Location Intelligence platform with our product documentation: </p>
+
     </div>
     <div class="grid-cell--col3"></div>
     <ul class="grid-cell--col10 grid u-mt64">
@@ -66,6 +66,23 @@
           <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
             <img src="/img/icons/{{$elem.image}}"/>
             <h3 class="title f20 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
+            <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
+          </a>
+        </li>
+      {{end}}
+    </ul>
+  </div>
+
+  <div class="container grid u-justify-center u-mb32">
+    <div class="grid-cell grid-cell--col10">
+      <h2 id="dev-tools" class="title f20 is-txtBaseGrey">Data and Analysis</h2>
+    </div>
+    <ul class="grid-cell--col10 grid u-mt24">
+      {{range $elem := $data.dataAndAnalysis}}
+        <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
+          <a href="{{$elem.url}}" class="clickable-card clickable-card--small {{if $elem.highlighted}}clickable-card--highlighted{{end}}">
+            <img src="/img/icons/{{$elem.image}}"/>
+            <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
             <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
           </a>
         </li>
@@ -96,7 +113,7 @@
     </div>
     <ul class="grid-cell--col10 grid u-mt24">
       {{range $elem := $data.apis}}
-        <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
+        <li class="grid-cell grid-cell--col6 grid-cell--col12--mobile u-mb20">
           <a href="{{$elem.url}}" class="clickable-card clickable-card--small">
             <img src="/img/icons/{{$elem.image}}"/>
             <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
