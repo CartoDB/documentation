@@ -1,5 +1,5 @@
 ## Introduction
-The CARTO 3 Tokens API allows you to create public tokens that grant access to specific tables, tilests, and arbitraty queries using a specific connection in your CARTO 3 account. Learn more about connections [here](https://docs.carto.com/carto3-workspace/connections/introduction/).
+The CARTO Tokens API allows you to create public tokens that grant access to specific tables, tilests, and arbitraty queries using a specific connection in your CARTO organization. Learn more about connections [here](https://docs.carto.com/carto3-workspace/connections/introduction/).
 A public token allows you to create map layers and fetch data from tables, tilesets, or arbitrary SQL queries in public applications.
 
 ## Authorization

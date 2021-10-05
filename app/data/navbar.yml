@@ -1,6 +1,6 @@
 navbar:
-  - name: Dashboard
-    url: https://carto.com/help/tutorials/your-dashboard-overview
+  - name: User Manual
+    url: /carto-user-manual
   # - name: Builder
   #   url: https://carto.com/help/tutorials/using-builder
   - name: Data Observatory
