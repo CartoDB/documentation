@@ -351,3 +351,60 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
     />
   );
   ```
+
+#### TimeSeriesWidget
+
+Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features. From a data perspective, the TimeSeriesWidget groups the features in time intervals and allows to play an animation that filters the features displayed based on the current interval.
+
+- **Input**:
+   
+
+{{% tableWrapper tab="true" %}}
+| Param       | Type        | Default   | Description      |
+| ----------- | ----------- | --------- | ---------------- |
+| props       | `Object` |   |                  |
+| props.id    | `string` |   | ID for the widget instance. |
+| props.title | `string` |   | Title to show in the widget header.|
+| props.dataSource | `string` | | ID of the data source to get the data from. |
+| props.column | `string` |  | Name of the data source's column with the timestamp/date values |
+| props.stepSize | `GroupDateTypes` |  | Time interval size |
+| [props.operation] | `string` | AggregationTypes.COUNT | (optional) Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object. |
+| [props.operationColumn] | `string` |  | (optional) Column to use in the aggregation operation |
+| [props.formatter]   | `function` |  | (optional) _formatterCallback_: Function to format each value returned.  |
+| [props.onError]      | `errorCallback` |  | (optional) _errorCallback_: Function to handle error messages from the widget.   |
+| [props.wrapperProps] | `Object` |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.height]     | `string` | '300px' | (optional) Chart height (CSS) |
+| [props.tooltipFormatter] | `formatterCallback` | | (optional) _formatterCallback_: Function to format the tooltip values. |               
+| [props.stepSizeOptions] | `Array<GroupDateTypes>` | `[]` | (optional) Available time interval sizes |
+| [props.duration] | `number` | 20000 | (optional) Animation duration (ms) |
+| [props.chartType] | `enum` | `TIME_SERIES_CHART_TYPES.LINE` | (optional) Selected chart type (line or bar) |
+| [props.tooltip] | `boolean` | `true` | (optional) Whether to show or not the tooltip |
+| [props.timeWindow] | `Array<number|string>` | `[]` | (optional) Interval for the currently selected time window (timestamps or dates formatted as strings) |
+| [props.showControls] | `boolean` | `true` | (optional) Whether to show or not the controls (play, pause, stop, speed selection...) |
+| [props.isPlaying] | `boolean` | `false` | (optional) Whether to set the widget to play mode |
+| [props.isPaused] | `boolean` | `false` | (optional) Whether to set the widget to pause mode |
+| [props.onPlay] | `functionCallback` |  | (optional) Handler to receive the event emitted when the animation starts to play |
+| [props.onPause] | `functionCallback` |  | (optional) Handler to receive the event emitted when the animation is paused |
+| [props.onStop] | `functionCallback` |   | (optional) Handler to receive the event emitted when the animation is stopped |
+| [props.onTimelineUpdate] | `functionCallback` |   | (optional) Handler to receive the event emitted when the animation moves to the next time interval |
+| [props.onTimeWindowUpdate] | `functionCallback` |   | (optional) Handler to receive the event emitted when the time window moves to the next time interval |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, the widget will display the count of features in each time interval defined by the `event_date` column.
+
+  ```js
+  import { TimeSeriesWidget } from "@carto/react-widgets";
+  import { GroupDateTypes } from "@carto/react-core";
+
+  return (
+    <TimeSeriesWidget
+      id="events"
+      title="Events per day"
+      dataSource="eventsSourceId"
+      column="event_date"
+      stepSize={GroupDateTypes.DAYS}
+    />
+  );
+  ```
