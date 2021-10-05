@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BigQuery Tileset Layer</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/deck.gl@8.6.0-alpha.3/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@8.6.0-alpha.3/dist.min.js"></script>
+    <style>
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div id="map"></div>
+
+    <script  
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=beta"
+      async
+    ></script>
+    
+  </body>
+
+  <script type="text/javascript">
+    let map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 40.73, lng: -73.8 },
+        zoom: 9,
+        mapId: '856f688f677c0bc3',
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
+      });
+
+      deck.carto.setDefaultCredentials({
+        username: 'public',
+        apiKey: 'default_public'
+      });
+
+      const deckOverlay = new deck.GoogleMapsOverlay({
+        layers: [
+          new deck.carto.CartoLayer({
+            type: deck.carto.MAP_TYPES.TILESET,
+            data: 'cartobq.maps.nyc_taxi_points_demo_id',
+            getFillColor: deck.carto.colorBins({
+              attr: 'aggregated_total',
+              domain: [10, 1e2, 1e3, 1e4, 1e5, 1e6],
+              colors: 'Temps'
+            }),
+            pointRadiusMinPixels: 2,
+            stroked: false,
+          })
+        ]
+      });
+
+      deckOverlay.setMap(map);
+    }
+
+  </script>
+</html>

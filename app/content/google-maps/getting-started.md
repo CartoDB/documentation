@@ -16,6 +16,8 @@ After completing this guide, you will have your first Google Maps API map with a
 
 We are going to start with the Hello World example from the Google Maps Javascript API [documentation](https://developers.google.com/maps/documentation/javascript), but centering the initial view on the United States and zoom level 4. To simplify the example, we are going to embed the JavaScript code and the CSS declarations in the HTML file.
 
+We are going to use the new [WebGL features](https://developers.google.com/maps/documentation/javascript/webgl) for the Maps Javascript API. These features add support for vector maps, 3D graphic content, continuous zoom and tilt/heading parameters. Please follow the instructions to [create a Map ID](https://developers.google.com/maps/documentation/javascript/styling#creating-map-ids) in the Google Cloud Console.  
+
 At this point you will have a simple map:
 
 <div class="example-map">
@@ -36,8 +38,8 @@ At this point you will have a simple map:
 The first step you need to perform is to add the [deck.gl](https://deck.gl) dependencies, including the CARTO [submodule](https://deck.gl/docs/api-reference/carto/overview):
 
 ```html
-<script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
+<script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
 ```
 
 Then you need to provide the credentials for connecting to the CARTO 3 platform, as explained [here](/deck-gl/using-the-cartolayer/#connecting-to-carto-3). Here we are using a token with access to some public datasets in BigQuery. You will need to create a token with access to the datasets you want to visualize.
@@ -49,6 +51,17 @@ setDefaultCredentials({
   accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
 });
 ```
+
+{{% bannerNote title="note" %}}
+Starting with Google Maps v3.45 there are two modes of rendering: Vector and Raster. In this case we are using a vector map, so vector rendering will be used. 
+
+From v8.6, the deck.gl [GoogleMapsOverlay](https://deck.gl/docs/api-reference/google-maps/google-maps-overlay) class automatically detects at runtime which rendering type is used. The Vector rendering mode is in general more performant, and the GoogleMapsOverlay class offers several features not available when using Raster rendering such as:
+
+- Shared 3D space: objects drawn by the GoogleMapsOverlay class appear inside the Google Maps scene, correctly intersecting with 3D buildings and behind the contextual labels drawn by Google Maps
+- Tilting and rotating the view is supported
+- Rendering uses the same WebGL context as Google Maps, improving performance
+{{%/ bannerNote %}}
+
 
 Now you can add a map layer from the public account. In order to add the layer, we will use the [`GoogleMapsOverlay`](https://deck.gl/docs/api-reference/google-maps/google-maps-overlay) class from deck.gl. We need to specify the layers as an array. In this case, we only have one [`CartoLayer`](https://deck.gl/docs/api-reference/carto/carto-layer) from the deck.gl CARTO submodule. We pass the following parameters to the constructor:
 
@@ -103,8 +116,8 @@ deckOverlay.setMap(map);
   <head>
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://unpkg.com/deck.gl@^8.5.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.5.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>  
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -128,10 +141,10 @@ deckOverlay.setMap(map);
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA1QNyLGz2mEAjyCR4-lz5k1OlJKETvqc&callback=initMap&libraries=&v=beta"
       async
     ></script>
-
+    
   </body>
 
   <script type="text/javascript">
@@ -141,6 +154,7 @@ deckOverlay.setMap(map);
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 38, lng: -98 },
         zoom: 4,
+        mapId: '856f688f677c0bc3',
       });
 
       deck.carto.setDefaultCredentials({

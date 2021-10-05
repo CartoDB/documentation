@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Extrusion</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/deck.gl@8.6.0-alpha.3/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@8.6.0-alpha.3/dist.min.js"></script>
+    <style>
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div id="map"></div>
+
+    <script  
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=beta"
+      async
+    ></script>
+
+  </body>
+
+  <script type="text/javascript">
+    let map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 40.7368521, lng: -73.9936065 },
+        zoom: 12,
+        tilt: 70,
+        mapId: '716bc8b1cc71ef3b',
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
+      });
+
+      deck.carto.setDefaultCredentials({
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+        apiVersion: deck.carto.API_VERSIONS.V3,
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+      });
+
+      const POLYGON_COLORS = [
+        [128, 0, 32],
+        [190, 1, 31],
+        [255, 77, 32],
+        [255, 142, 54],
+        [255, 179, 66],
+        [254, 239, 157],
+        [253, 255, 208],
+      ];
+
+      const deckOverlay = new deck.GoogleMapsOverlay({
+        layers: [
+          new deck.carto.CartoLayer({
+            id: 'mrli',
+            connection: 'bqconn',
+            type: deck.carto.MAP_TYPES.QUERY,
+            data: `SELECT geom, index FROM cartobq.public_account.mrli_ny_jan`,
+            getFillColor: deck.carto.colorBins({
+              attr: 'index',
+              domain: [0, 50, 150, 300, 600, 1000],
+              colors: POLYGON_COLORS
+            }),
+            getLineColor: [0, 0, 0, 0],
+            lineWidthMinPixels: 0,
+            filled: true,
+            extruded: true,
+            wireframe: true,
+            getElevation: (f) => {
+              return f.properties.index ? f.properties.index : 0
+            }
+          }),
+        ]
+      });
+
+      deckOverlay.setMap(map);
+    }
+
+  </script>
+</html>
