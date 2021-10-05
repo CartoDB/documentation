@@ -16,7 +16,7 @@ The Analytics Toolbox is packed with functions and procedures to perform geospat
 
 <video autoplay="" loop="" muted=""> <source src="https://docs.carto.com/img/news-developers/bigquery-se-core-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
-For further information check the [blog post](https://carto.com/blog/enhancing-geospatial-in-bigquery-with-carto-spatial-extension/) and the [documentation](https://docs.carto.com/spatial-extension-bq/).
+For further information check the [blog post](https://carto.com/blog/enhancing-geospatial-in-bigquery-with-carto-spatial-extension/) and the [documentation](https://docs.carto.com/analytics-toolbox-bq/).
 
 ---
 

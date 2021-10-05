@@ -8,7 +8,7 @@ In this guide you will learn how to create tilesets from your Data Observatory d
 
 
 {{% bannerNote type="note" title="NOTE" %}}
-Tileset creation is currently only available for BigQuery users using the [CARTO Analytics Toolbox](/spatial-extension-bq).
+Tileset creation is currently only available for BigQuery users using the [CARTO Analytics Toolbox](/analytics-toolbox-bq).
 {{%/ bannerNote %}}
 
 
@@ -30,7 +30,7 @@ Then, choose to create a connection of type OAuth and follow the steps to comple
 </div>
 
 
-Once your BigQuery connection has been set up, the Google user that you have used to create it should now have access to both the [CARTO Analytics Toolbox](/spatial-extension-bq) and your Data Observatory subscriptions directly from BigQuery.
+Once your BigQuery connection has been set up, the Google user that you have used to create it should now have access to both the [CARTO Analytics Toolbox](/analytics-toolbox-bq) and your Data Observatory subscriptions directly from BigQuery.
 
 ### Access your Data Observatory dataset in BigQuery
 
@@ -55,9 +55,9 @@ Copy the example query, as you will need it in the next step of the process.
 
 ### Run the Tiler
 
-The next step is to use [any of the available procedures](/spatial-extension-bq/sql-reference/tiler/) in the Analytics Toolbox for BigQuery to create a tileset. You can create two types of tilesets: 
-* Simple: choose this type if you are wanting to visualize the original features of the dataset. To get started, find [here](spatial-extension-bq/examples/creating-simple-tilesets/) a set of examples on how to create simple tilesets using the `CREATE_TILESET` procedure.
-* Aggregation: choose this type when your dataset is composed of points and you want to see them aggregated. To get started, find [here](/spatial-extension-bq/examples/creating-aggregation-tilesets/) a set of examples on how to create aggregation tilesets using the `CREATE_POINT_AGGREGATION_TILESET` procedure.
+The next step is to use [any of the available procedures](/analytics-toolbox-bq/sql-reference/tiler/) in the Analytics Toolbox for BigQuery to create a tileset. You can create two types of tilesets: 
+* Simple: choose this type if you are wanting to visualize the original features of the dataset. To get started, find [here](analytics-toolbox-bq/examples/creating-simple-tilesets/) a set of examples on how to create simple tilesets using the `CREATE_TILESET` procedure.
+* Aggregation: choose this type when your dataset is composed of points and you want to see them aggregated. To get started, find [here](/analytics-toolbox-bq/examples/creating-aggregation-tilesets/) a set of examples on how to create aggregation tilesets using the `CREATE_POINT_AGGREGATION_TILESET` procedure.
 
 Both of the aforementioned procedures take as input a SQL query specifying the data that you want to transform into a tileset. If the case of Data Observatory datasets, you can use the example query provided as part of the "Access in BigQuery" functionality (see the previous section) as a starting point. We recommend that in order to minimize the cost and avoid reaching BigQuery internal limits, you only include in your input query the data columns that you strictly need for your visualization.
 
@@ -69,7 +69,7 @@ Here is a GIF showcasing how the full process works:
 
 ### Create a visualization
 
-The final step is visualizing the tileset. Tilesets can be visualized directly from your CARTO Dashboard following [this guide](/spatial-extension-bq/guides/tilesets/#visualizing-a-tileset) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
+The final step is visualizing the tileset. Tilesets can be visualized directly from your CARTO Dashboard following [this guide](/analytics-toolbox-bq/guides/tilesets/#visualizing-a-tileset) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
 
 Here is an example of a tileset visualization of [WorldPop's dataset](https://carto.com/spatial-data-catalog/browser/dataset/carto-do-public-data.worldpop.demographics_population_glo_grid1km_v1_yearly_2020) created from the Dashboard:
 
