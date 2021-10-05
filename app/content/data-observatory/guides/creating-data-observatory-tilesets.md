@@ -8,7 +8,7 @@ In this guide you will learn how to create tilesets from your Data Observatory d
 
 
 {{% bannerNote type="note" title="NOTE" %}}
-Tileset creation is currently only available for BigQuery users using the [CARTO Spatial Extension](/spatial-extension-bq).
+Tileset creation is currently only available for BigQuery users using the [CARTO Analytics Toolbox](/spatial-extension-bq).
 {{%/ bannerNote %}}
 
 
@@ -30,7 +30,7 @@ Then, choose to create a connection of type OAuth and follow the steps to comple
 </div>
 
 
-Once your BigQuery connection has been set up, the Google user that you have used to create it should now have access to both the [CARTO Spatial Extension](/spatial-extension-bq) and your Data Observatory subscriptions directly from BigQuery.
+Once your BigQuery connection has been set up, the Google user that you have used to create it should now have access to both the [CARTO Analytics Toolbox](/spatial-extension-bq) and your Data Observatory subscriptions directly from BigQuery.
 
 ### Access your Data Observatory dataset in BigQuery
 
@@ -55,7 +55,7 @@ Copy the example query, as you will need it in the next step of the process.
 
 ### Run the Tiler
 
-The next step is to use [any of the available procedures](/spatial-extension-bq/sql-reference/tiler/) in the Spatial Extension for BigQuery to create a tileset. You can create two types of tilesets: 
+The next step is to use [any of the available procedures](/spatial-extension-bq/sql-reference/tiler/) in the Analytics Toolbox for BigQuery to create a tileset. You can create two types of tilesets: 
 * Simple: choose this type if you are wanting to visualize the original features of the dataset. To get started, find [here](spatial-extension-bq/examples/creating-simple-tilesets/) a set of examples on how to create simple tilesets using the `CREATE_TILESET` procedure.
 * Aggregation: choose this type when your dataset is composed of points and you want to see them aggregated. To get started, find [here](/spatial-extension-bq/examples/creating-aggregation-tilesets/) a set of examples on how to create aggregation tilesets using the `CREATE_POINT_AGGREGATION_TILESET` procedure.
 

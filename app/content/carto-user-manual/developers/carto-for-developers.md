@@ -148,7 +148,7 @@ You can start creating applications from scratch by using our documentation. By 
 
 ### Featured documentation
 
-In this section, you have quick access to different developer toolkits to get started with the build of the most innovative spatial analytics apps: <a href="https://carto.com/developers/maps-api/" target="_blank">Maps API</a>, <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">BigQuery Spatial Extension</a>, <a href="https://docs.carto.com/deck-gl/getting-started/"
+In this section, you have quick access to different developer toolkits to get started with the build of the most innovative spatial analytics apps: <a href="https://carto.com/developers/maps-api/" target="_blank">Maps API</a>, <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">BigQuery Analytics Toolbox</a>, <a href="https://docs.carto.com/deck-gl/getting-started/"
  target="_blank">CARTO for deck.gl</a> and <a href="https://docs.carto.com/react/overview/" target="_blank">CARTO for React</a>
 
 ![Developers featured documentation](/img/cloud-native-workspace/developers/developers_featured_documentation.png)

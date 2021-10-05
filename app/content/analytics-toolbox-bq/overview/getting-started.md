@@ -1,25 +1,25 @@
 ## Getting started
 
-The CARTO Spatial Extension for BigQuery is a set of UDFs and Stored Procedures to unlock Spatial Analytics. It is organized in a set of modules based on the functionality they offer. There are two types of modules: _core_ modules, that are [open source](https://github.com/CartoDB/carto-spatial-extension) and free to use for anyone with a BigQuery account, and _advanced_ modules, only available with a CARTO account. 
+The CARTO Analytics Toolbox for BigQuery is a set of UDFs and Stored Procedures to unlock Spatial Analytics. It is organized in a set of modules based on the functionality they offer. There are two types of modules: _core_ modules, that are [open source](https://github.com/CartoDB/carto-spatial-extension) and free to use for anyone with a BigQuery account, and _advanced_ modules, only available with a CARTO account. 
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/se-modules-diagram-new-icon.png" alt="CARTO Spatial Extension for BigQuery modules" style="width:75%">
+<img src="/img/bq-spatial-extension/se-modules-diagram-new-icon.png" alt="Modules of the CARTO Analytics Toolbox for BigQuery" style="width:75%">
 </div>
 
 Visit the [SQL Reference](../../sql-reference/) to see the full list of available modules and functions. If you already have a CARTO account, please keep reading to learn how you can access the *advanced* modules.
 
 {{% bannerNote title="STAY IN THE LOOP" type="tip" %}}
-Join our [Google Group](https://groups.google.com/a/cartodb.com/g/bigquery-spatial-extension) to stay informed of any new feature launches and relevant changes to the Spatial Extension. Start a conversation with us in our [Discord channel](https://discord.gg/4U5XVrGyqW).
+Join our [Google Group](https://groups.google.com/a/cartodb.com/g/bigquery-spatial-extension) to stay informed of any new feature launches and relevant changes to the Analytics Toolbox. Start a conversation with us in our [Discord channel](https://discord.gg/4U5XVrGyqW).
 {{%/ bannerNote %}}
 
 ### Accessing advanced modules
 
-To use the CARTO Spatial Extension, it requires to be activated for your account. For that, you will need:
+To use the CARTO Analytics Toolbox, it requires to be activated for your account. For that, you will need:
 
    * A CARTO account. Go to your organization's sign-up page at [_your-organization.carto.com/signup_](), or directly to [_carto.com/signup_](https://carto.com/signup) to create an individual account.
    * A Google Cloud Platform account. For more information about how to get one [here](https://cloud.google.com/gcp/getting-started).
 
-Access to the Spatial Extension for BigQuery is granted to every CARTO account when [adding a new connection to BigQuery](#connecting-to-bigquery). 
+Access to the Analytics Toolbox for BigQuery is granted to every CARTO account when [adding a new connection to BigQuery](#connecting-to-bigquery). 
 
 Some of the extension's capabilities are leveraged directly as SQL queries from the BigQuery console. To enable this, we'll grant access to the extension’s functions and procedures in BigQuery using the email address associated with your CARTO account.
 
@@ -68,7 +68,7 @@ If you get a permission error, please make sure that your account's email addres
 
 ### Deployment options
 
-You can use the Spatial Extension calling the procedures directly from our BigQuery projects, or install it on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls). 
+You can use the Analytics Toolbox calling the procedures directly from our BigQuery projects, or install it on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls). 
 
 We make the extension available in different projects for different locations. As an example, the following queries should return the version number for the Tiler module for each region.
 
@@ -77,7 +77,7 @@ SELECT bqcarto.tiler.VERSION() -- US multi-region
 SELECT bqcartoeu.tiler.VERSION() -- EU multi-region
 ```
 
-Different types of capabilities belong to different modules of the Spatial Extension. Each of these modules is available on a different dataset.
+Different types of capabilities belong to different modules of the Analytics Toolbox. Each of these modules is available on a different dataset.
 
 For example, all the tiling functions to process and visualize large amounts of data are inside the `tiler` dataset. 
 
@@ -85,9 +85,9 @@ As we continue adding capabilities to the extension, we will release new modules
 
 ### Pricing and cost
 
-When you are using CARTO Spatial Extension for BigQuery you will incur 2 different types of cost:
+When you are using CARTO Analytics Toolbox for BigQuery you will incur 2 different types of cost:
 
 * BigQuery data processing: You will be charged for the amount of data processed. There are On-demand and Flat-rate options available. [Know more](https://cloud.google.com/bigquery/pricing) about BigQuery pricing.
-* CARTO Spatial Extension Processing: We will keep track of the amount of data processed using the extension and enforce different limits based on your account pricing plan. These limits range from 10GB for  Free accounts to _unlimited_ in the highest Enterprise tier.
+* CARTO Analytics Toolbox Processing: We will keep track of the amount of data processed using the extension and enforce different limits based on your account pricing plan. These limits range from 10GB for  Free accounts to _unlimited_ in the highest Enterprise tier.
 
 [Contact us](https://carto.com/contact/) if you have any questions around pricing and plans.

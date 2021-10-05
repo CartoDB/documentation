@@ -53,7 +53,7 @@ CARTOframes also offers a set of functions to enrich your datasets with any of t
 
 #### From your cloud data storage or warehouse
 
-You can also access your subscriptions directly from BigQuery, AWS, or Azure. Refer to [this step-by-step guide](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure) to learn more. If you are a BigQuery user, you can also leverage the [Spatial Extension for BigQuery](/spatial-extension-bq) to perform spatial analysis using your Data Observatory datasets without leaving your BigQuery console.
+You can also access your subscriptions directly from BigQuery, AWS, or Azure. Refer to [this step-by-step guide](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure) to learn more. If you are a BigQuery user, you can also leverage the [Analytics Toolbox for BigQuery](/spatial-extension-bq) to perform spatial analysis using your Data Observatory datasets without leaving your BigQuery console.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-access-in-menu.png" alt="Data Observatory access in menu." style="width:100%">
@@ -84,7 +84,7 @@ Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) allo
 
 #### Using tilesets
 
-Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [WorldPop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](/spatial-extension-bq/overview/tilesets/) using the [Spatial Extension for BigQuery](/spatial-extension-bq/guides/tilesets/).
+Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [WorldPop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](/spatial-extension-bq/overview/tilesets/) using the [Analytics Toolbox for BigQuery](/spatial-extension-bq/guides/tilesets/).
 
 <div class="figures-table" style="text-align:center">
     <figure>

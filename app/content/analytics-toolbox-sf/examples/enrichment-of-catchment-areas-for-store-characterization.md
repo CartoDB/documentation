@@ -12,7 +12,7 @@ SELECT ST_MAKEPOINT(LONGITUDE, LATITUDE) as geom FROM CDA26920_STARBUCKS_CORE_PL
 <img src="/img/sf-spatial-extension/examples/sf-enrichment-example-1.png" alt="Store locations." style="width:90%">
 </div>
 
-To quickly explore this data, using the Spatial Extension, we can easily compute an aggregation of these locations using Quadkeys at resolution 15, which lets us visualize the result as a heatmap. Here is a close-up of the Manhattan area, where we can easily identify the areas of highest concentration of Starbucks stores. 
+To quickly explore this data, using the Analytics Toolbox, we can easily compute an aggregation of these locations using Quadkeys at resolution 15, which lets us visualize the result as a heatmap. Here is a close-up of the Manhattan area, where we can easily identify the areas of highest concentration of Starbucks stores. 
 
 ```sql
 with qks as 
@@ -25,7 +25,7 @@ SELECT count(*) as num_stores, sfcarto.quadkey.ST_BOUNDARY(qk) as geom from qks 
 <img src="/img/sf-spatial-extension/examples/sf-enrichment-example-2.png" alt="Store aggregations in quadkeys of resolution 15." style="width:90%">
 </div>
 
-Now, let’s enhance our analysis by computing a 3 km buffer around each store, using the geometry constructor module from the Spatial Extension:
+Now, let’s enhance our analysis by computing a 3 km buffer around each store, using the geometry constructor module from the Analytics Toolbox:
 
 ```sql
 SELECT sfcarto.constructors.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12) as geom
