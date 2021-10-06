@@ -216,7 +216,7 @@ The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 
 4. In this example we are going to use a table from our BigQuery connection. Select the table from the list and click *Add source*.
 
-![Add source table](/img/cloud-native-workspace/maps/map_add_source_table.png)
+![Add source table](/img/cloud-native-workspace/maps/map_add_source_tablee.png)
 
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
 	
@@ -250,6 +250,8 @@ Once your table or tileset is selected, you can access a preview of the map and 
 ![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_table.png)
 
 #### Create Tileset
+
+Check the <a href="https://docs.carto.com/spatial-extension-bq/overview/tilesets/" target="_blank">Tileset</a> reference documentation for a better understanding of what a tileset is and how it works, as well as to get started using the BigQuery Tiler as a solution to visualise massive datasets hosted in CARTO DW connection and BigQuery connections.
 
 You can create a tileset by clicking on the *Create tileset* button on the top. 
 

@@ -36,11 +36,11 @@ The following features are available in the list of layers of your map in Builde
 
 -  **Blend layers:** by selecting an option from the dropdown at the bottom of the Layers panel. There are three different ways to blend layers: Normal, Additive, and Subtractive.
 
-![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blendingg.png)
+![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
 
 ### WIDGETS
 
-This guide describes how to add interactive widgets to view your map data in CARTO 3 Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
+This guide describes how to add interactive widgets to view your map data in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
 
 In the *Wiget* tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
