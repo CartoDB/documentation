@@ -44,7 +44,7 @@ menu:
   - title: "Settings" 
     folder:
       - title: "Configuring your organization"
-      - title: "Your subscription"
+      #- title: "Your subscription"
       - title: "Managing registered apps"
       - title: "Inviting users to your organization"
       - title: "Managing user roles"
