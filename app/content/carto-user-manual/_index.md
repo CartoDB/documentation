@@ -23,7 +23,7 @@ menu:
   - title: "Data Explorer"
     folder:
       - title: "Introduction"
-      - title: "Adding your first connection"
+      #- title: "Adding your first connection"
       - title: "Creating a map from your data"  
       - title: "Creating a tileset from your data"  
   - title: "Data Observatory"
