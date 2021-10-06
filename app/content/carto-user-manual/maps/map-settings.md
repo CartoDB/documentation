@@ -36,7 +36,7 @@ The following features are available in the list of layers of your map in Builde
 
 -  **Blend layers:** by selecting an option from the dropdown at the bottom of the Layers panel. There are three different ways to blend layers: Normal, Additive, and Subtractive.
 
-![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blendingg.png)
+![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
 
 ### WIDGETS
 

@@ -16,7 +16,7 @@ menu:
     folder:
       - title: "Introduction"
       - title: "Add source"
-      - title: "View data table"
+      #- title: "View data table"
       - title: "Map settings"
       - title: "Map styles"
       - title: "Publishing and sharing maps"
