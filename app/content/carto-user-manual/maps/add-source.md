@@ -32,6 +32,27 @@ In this example we are going to use a table accessible via a BigQuery connection
 	
 ![Map add query](/img/cloud-native-workspace/maps/map_add_query.png)
 
+#### Custom queries using the Analytics Toolbox
+
+You can also use the Analytics Toolbox functions in your custom SQL queries. For example, you can perform a simple clustering using the `ST_CLUSTERKMEANS` function by running this query from your CARTO Data Warehouse connection:
+
+```sql
+with clustered_points AS
+(
+    SELECT `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
+    FROM carto-demo-data.demo_tables.sample_customer_home_locations
+)
+
+SELECT cluster_element.cluster, cluster_element.geom AS geom FROM clustered_points, UNNEST(cluster_arr) AS cluster_element
+```
+
+This query computes five clusters from the points of the `sample_customer_home_locations` table. As a result, each point is assigned a `cluster` ID. By styling the layer by this `cluster` attribute, we get the following result:
+
+![Map add query](/img/cloud-native-workspace/maps/map_custom-query-analytics-toolbox-clustering.png)
+
+
+To learn more, please visit the Documentation page of the [Analytics Toolbox for BigQuery](/analytics-toolbox-bq) (also valid for the CARTO Data Warehouse) and [for Snowflake](/analytics-toolbox-sf).
+
 ### ADD SOURCE FROM A LOCAL FILE
 
 Go to *Sources* and click *Add source from...*. A new dialog will open allowing you to upload a CSV, Json, GeoJSON, or a saved map Json file. You can browse your files, or drag & drop them into the dotted area of the dialog screen.

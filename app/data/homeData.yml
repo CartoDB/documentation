@@ -33,7 +33,7 @@ getStarted:
 products:
   - title: "CARTO User Manual"
     description: "Manage your datasets and maps, access your account settings, manage your API keys, and access your public profile."
-    url: "https://docs.carto.com/carto-user-manual/overview/getting-started/#getting-started"
+    url: "/carto-user-manual/overview/getting-started/#getting-started"
     image: "carto.png"
   # - title: "Spatial Extension for BigQuery"
   #   description: "Unlock Spatial Analytics on your BigQuery"
