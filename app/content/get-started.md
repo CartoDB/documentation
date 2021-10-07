@@ -24,7 +24,7 @@ Depending on your usage of the CARTO platform, whether it’s for visualization,
 {{%sideImage image="/img/get-started/dashboard.png" alt="Dasbhoard"%}}
 ##### Workspace
 
-Connect to multiple data sources, including local or remote files, cloud data warehouses, and BI solutions. Seamlessly access a wealth of vetted datasets to enhance your geospatial analysis.
+Connect to multiple cloud data warehouses and explore your geospatial data. Seamlessly access a wealth of vetted datasets to enhance your geospatial analysis.
 
 {{<link href="https://carto.com/signup" target="_blank">}}
   Login or create an account

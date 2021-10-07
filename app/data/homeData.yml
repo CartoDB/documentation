@@ -34,7 +34,7 @@ getStarted:
 
 products:
   - title: "CARTO User Manual"
-    description: "Manage your datasets and maps, access your account settings, manage your API keys, and access your public profile."
+    description: "Create maps, connect and explore your data warehouse and manage your application tokens."
     url: "https://docs.carto.com/carto-user-manual/overview/getting-started/#getting-started"
     image: "carto.png"
   # - title: "Spatial Extension for BigQuery"
@@ -61,8 +61,6 @@ products:
   #   description: "CARTO is available as a fully managed multi-tenant SaaS platform, or as a custom installation: On-premises or in your own cloud."
   #   url: "./deployment-options"
   #   image: "deployment.png"
-
-
 
 developmentTools:
   - title: "CARTO for React"
@@ -126,7 +124,7 @@ dataAndAnalysis:
 
 apis:
   - title: "CARTO API"
-    description: "CARTO API allows you to interact with your data in an external data warehouse."
+    description: "The new CARTO API allows you to interact with your data in an external data warehouse to create performant cloud-native geospatial solutions."
     url: "https://api-docs.carto.com"
     image: "carto-api.png"
 
