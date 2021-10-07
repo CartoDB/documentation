@@ -1,21 +1,22 @@
 ## Getting Started
 
-### Introduction
 The CARTO API lets you interact with your data in an external data warehouse using a existing connection in your CARTO organization. Learn more about connections [here](https://docs.carto.com/carto3-workspace/connections/introduction/). 
 
+
+## API Reference
 The CARTO API complete reference is available at [api-docs.carto.com](https://api-docs.carto.com) as a Postman collection that you can explore interactively by clicking on the _Run in Postman_ button.
 
-#### Using the Postman collection
+<!-- #### Using the Postman collection
 
 In order to obtain the access token required to run the collection, you need to follow these steps:
-- Create a Machine to Machine application in your CARTO 3 account as described above.
+- Create a Machine to Machine application in your CARTO account.
 - Go to [api-docs.carto.com](https://api-docs.carto.com) and click on _Run in Postman_
 - Import the Collection in one of your Postman Workspaces
 - Configure your Environment: 
   - Click on Environments
   - Select _Documentation_
   - Set the variables `apiBaseURL`, `clientId`, and `clientSecret` with the values that you will find in the Developers section of your CARTO account.
-- You are all set! Select a folder in the collection and run the example requests.
+- You are all set! Select a folder in the collection and run the example requests. -->
 
 <!-- 
 
