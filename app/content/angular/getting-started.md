@@ -42,6 +42,10 @@ And you will be able to access the application using the following URL:
 
 `https://localhost:4200`
 
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
+{{%/ bannerNote %}}
+
 ### Creating your application
 
 We are going to start by creating a new Angular application using the [Angular CLI](https://angular.io/cli). If you haven't installed it already, you need to execute the following command:
