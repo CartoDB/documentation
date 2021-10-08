@@ -17,7 +17,7 @@ getStarted:
   - title: "Development"
     description: "Build the most innovative spatial analytics apps using our comprehensive developer toolkit."
     image: "development.png"
-    url: "https://api-docs.carto.com"
+    url: "/get-started/#carto-for-development"
     related:
       - name: "CARTO for React"
         url: "/react"
@@ -25,6 +25,8 @@ getStarted:
         url: "/deck-gl"
       - name: "CARTO + Google Maps"
         url: "/google-maps"
+      - name: "CARTO API"
+        url: "https://api-docs.carto.com"
       # - name: "SQL API"
       #   url: "https://api-docs.carto.com/#95aa64ca-128c-4c2c-b156-aa417260050e"
       # - name: "Maps API"
@@ -59,8 +61,6 @@ products:
   #   description: "CARTO is available as a fully managed multi-tenant SaaS platform, or as a custom installation: On-premises or in your own cloud."
   #   url: "./deployment-options"
   #   image: "deployment.png"
-
-
 
 developmentTools:
   - title: "CARTO for React"
@@ -100,12 +100,12 @@ developmentTools:
 
 dataAndAnalysis:
   - title: "Analytics Toolbox for BigQuery"
-    description: ""
+    description: "Unlock Spatial Analytics on your BigQuery"
     url: "/analytics-toolbox-bq"
     image: "bigquery-analytics-toolbox.png"
     highlighted: true
   - title: "Analytics Toolbox for Snowflake"
-    description: "sss"
+    description: "Unlock Spatial Analytics on your Snowflake"
     url: "/analytics-toolbox-sf"
     image: "snowflake-analytics-toolbox.png"
     highlighted: true
@@ -124,7 +124,7 @@ dataAndAnalysis:
 
 apis:
   - title: "CARTO API"
-    description: "CARTO API allows you to interact with your data in an external data warehouse."
+    description: "The new CARTO API allows you to interact with your data in an external data warehouse to create performant cloud-native geospatial solutions."
     url: "https://api-docs.carto.com"
     image: "carto-api.png"
 

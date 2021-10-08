@@ -6,6 +6,6 @@ Click *Invite* to invite select users by sending an email. You must also select 
 
 The following screen shows the *Invite user* dialog box:
 
-![Settings invite user](/img/cloud-native-workspace/settings/settings_invite_user.png)
+![Settings invite user](/img/cloud-native-workspace/settings/settings_invite_user_organization.png)
 
 After adding an email address and a user role, click the *Invite* button. A popup will appear informing you that the invitation has been correctly sent. Otherwise, click *Cancel* if you don’t want to sent the invitation.
