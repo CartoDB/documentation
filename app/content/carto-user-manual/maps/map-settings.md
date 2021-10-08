@@ -1,6 +1,6 @@
 ## Map settings
 
-### LAYERS
+### Layers
 
 Once your data sources are connected to your map, as explained in this [guide](../../maps/add-source), you can use Builder to analyse and discover key insights from your location data. This guide describes how to work with map layers in CARTO Builder.
 
@@ -38,7 +38,7 @@ The following features are available in the list of layers of your map in Builde
 
 ![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
 
-### WIDGETS
+### Widgets
 
 This guide describes how to add interactive widgets to view your map data in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
 
@@ -50,7 +50,7 @@ Click on *New widget* button to start interacting with your data:
 
 ![Map widgets](/img/cloud-native-workspace/maps/maps_widget.png)
 
-### INTERACTIONS
+### Interactions
 
 ![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
 
@@ -66,7 +66,7 @@ It shows the coordinates where you click with the mouse. The coordinates will ap
 
 ![Map interactions coordinates](/img/cloud-native-workspace/maps/interactions_coordinates.png)
 
-### BASEMAPS
+### Basemaps
 
 Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.
 

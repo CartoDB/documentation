@@ -6,7 +6,7 @@ To style your layers, expand the *Layer settings panel*.
 
 ![Map layers settings](/img/cloud-native-workspace/maps/map_layer_setting.png)
 
-### FILL COLOR
+### Fill color
 
 When activated, geometry shapes are filled in with colors. By default, Builder assigns a **predefined fill color**. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
 
@@ -45,7 +45,7 @@ You can explore additional fill color features by clicking on the *three dots* i
 **Quantized**: Quantized color scale is determined by value. To Quantize means to group values with discrete increments. It allows to transform an initial continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
 
 - **Opacity**: Change the transparency of a layer. 1 = opaque, 0 = invisible. You can change the predefined opacity using the *opacity slider* or by directly writting the level of opacity in the *text input*. ![Map style fill opacity](/img/cloud-native-workspace/maps/map_fill_opacity.png)
-### STROKE COLOR
+### Stroke color
 
 When activated, this feature draws outlines around geoshapes. When styling a map layer, the stroke contains the width, color, and opacity for the sides of the geometry. By default, Builder assigns a **predefined stroke color**. You can change it by clicking the *Stroke* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
 
@@ -75,7 +75,7 @@ You can explore additional stroke color features by clicking on the *three dots*
 	
     3. Your color is applied to your map as soon as you select the predefined palette or *confirm* the choices of customized colors.
 
-### STROKE WIDTH
+### Stroke width 
 
 This feature allows you to change the thickness of lines, or to assign a width based on a field from your data sources. You can change the predefined stroke width using the *width slider* or by directly inputting the stroke size in the *text input*.
 
@@ -92,7 +92,7 @@ You can explore additional stroke width features by clicking the *three dots* ic
     2. By default, Builder assigns a predefined width range. The range slider allows you to set a custom range using a lower and upper threshold for projected stroke width. You can change the predefined stroke width range using the *width range slider* or by directly inputting the lower and upper stroke size in the *text input*.
 	
 	![Map stroke width based on range](/img/cloud-native-workspace/maps/map_stroke_width_based_on_range.png)
-### RADIUS
+### Radius
 
 Change the radius of points, or assign radius values based on a field from your dataset(s). You can change the predefined radius using the *radius slider* or by directly writting the radius size in the *text input*.
 
@@ -103,7 +103,7 @@ You can explore additional radius features by clicking the three dots icon:
 - **Radius based on**: When styling maps, you can assign radius values based on a field from your dataset(s).
 
 Click the *Radius based on* button. Select a field from your dataset to style your layer. In this example, we style our layer radius based on the "population" field.
-### LABEL
+### Label
 
 Applying text labels to your data enables you to enhance the typography of your map. While adding labels is optional, they are useful for communicating details with the map viewer. Positive effects of label styling will display legible text and considerate placement of labels on the Map View. In CARTO Builder, the STYLE tab of a selected map layer provides basic label options. 
 
@@ -113,7 +113,7 @@ Enable the Labels checkbox, select a column and then specify the following optio
 
 Select an appropriate font, size, and color for your label. For example, consider if the text appears uppercase, lowercase, mixed case, and how the label appears based on the size and style of the typeface.
 
-### HEIGHT
+### Height
 
 This feature allows you to assign polygon heights to build 3D visualizations. You can activate this option by clicking the toogle. You can change the height using the *height slider* or by directly inputting the height in the *text input*.
 
@@ -134,12 +134,12 @@ You can explore the 3D visualization by clicking on the *3D map* button on the u
 In the example, we can now explore as a 3D map those polygons with a higher population.
 
 ![Map stroke width based on field](/img/cloud-native-workspace/maps/map_style_height_result.png)
-### LAYER BLENDING
+### Layer blending
 
 You can choose either a Additive, Normal, or Substractive.
 
 ![Map style layer blending](/img/cloud-native-workspace/maps/map_layer_blending2.png)
-### LEGEND
+### Legend
 
 Apply a map legend to show symbols and text that describe your data in CARTO Builder.
 

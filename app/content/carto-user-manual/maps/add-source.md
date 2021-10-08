@@ -4,7 +4,7 @@ When you open a map, the *Layers* tab will appear on the left side panel. There 
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_to_your_map.png)
 
-### ADD SOURCE FROM A CONNECTION
+### Add source from a connection
 
 From the *Layers* tab, go to the *Sources* panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from on of your connections. Insert the *Fully Qualified Table* or the *Tileset Name* and click *Add source*.
 
@@ -24,7 +24,7 @@ By clicking the *tree dots* icon the Column Context menu will reveal additional 
 
 ![Map view table column](/img/cloud-native-workspace/maps/map_table_column.png)
 
-### ADD SOURCE FROM A CUSTOM QUERY
+### Add source from a custom query
 
 Go to *Sources* and click *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
 
