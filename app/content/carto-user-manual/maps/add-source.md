@@ -16,13 +16,17 @@ Once the process is finished, the table or tileset is included in the Builder ma
 	
 ![Map created](/img/cloud-native-workspace/maps/map_created.png)
 
-Once you have added your datasets to the map, you can visualize the data table. Click the *Show data table* button and your dataset table will be displayed. 
+Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
 
-![Map view data table](/img/cloud-native-workspace/maps/map_show_datatable.png)
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_options.png)
 
 By clicking the *tree dots* icon the Column Context menu will reveal additional options such as: Sort on this column, ascending or descending, Pin the column so you can freeze it in the first position, and copy column data.
 
 ![Map view table column](/img/cloud-native-workspace/maps/map_table_column.png)
+
+Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*.
+
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_options.png)
 
 ### Add source from a custom query
 
