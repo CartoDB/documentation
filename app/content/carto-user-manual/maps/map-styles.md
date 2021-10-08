@@ -2,7 +2,11 @@
 
 When styling map visualizations, you can style your geometry using different settings. By default, CARTO Builder styles by fixed values for size and solid colors. The following sections list the different styling options that you can set for your map. Note that some of them are only available depending on the type of geometry layer (point, line, polygon, etc.).
 
-To style your layers, expand the *Layer settings panel*.
+To style your layers, click on the three dots icon and select *Layer style*.
+
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_style.png)
+
+You will see tthe differentstyling options that you can set for your map depending on the type of geometry layer.
 
 ![Map layers settings](/img/cloud-native-workspace/maps/map_layer_setting.png)
 

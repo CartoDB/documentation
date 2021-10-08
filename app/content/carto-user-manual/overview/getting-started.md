@@ -184,7 +184,7 @@ Once you have registered a connection to a data warehouse, you can start using y
 
 Go to the *Connections* section in the Workspace, where you can find the list of all your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_module.png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_module_cartodw.png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
