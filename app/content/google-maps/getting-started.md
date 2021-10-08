@@ -42,6 +42,10 @@ The first step you need to perform is to add the [deck.gl](https://deck.gl) depe
 <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
 ```
 
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
+{{%/ bannerNote %}}
+
 Then you need to provide the credentials for connecting to the CARTO 3 platform, as explained [here](/deck-gl/using-the-cartolayer/#connecting-to-carto-3). Here we are using a token with access to some public datasets in BigQuery. You will need to create a token with access to the datasets you want to visualize.
 
 ```js

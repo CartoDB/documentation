@@ -48,6 +48,10 @@ We are going to start by adding a map with 3D terrain. Please check [this exampl
 
 In order to visualize a CARTO dataset, you need to fetch data from the CARTO platform. With CARTO Maps API v3 you have the possibility of retrieving data in GeoJSON format. In order to do that, you first set your credentials and then you can use the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function from the [CARTO module](https://deck.gl/docs/api-reference/carto/overview) for [deck.gl](https://deck.gl). Once you have retrieved the data, you can just add a new source to the map with `geojson` type.
 
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
+{{%/ bannerNote %}}
+
 ```javascript
 deck.carto.setDefaultCredentials({
   apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
