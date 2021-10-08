@@ -36,7 +36,7 @@ Go to *Sources* and click *Add source from...*. A new dialog screen will open al
 
 ![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_add_analysis_query.png)
 
-Once the process is finished, the SQL console appears in the Builder interface You can type your query by inserting the *Fully Qualified Table* or the *Tileset Name* when calling an object and then click *Run*. 
+Once the process is finished, the SQL console appears in the Builder interface, where you can type your query and then click *Run*. Please make sure to use *Fully Qualified Table* names.
 
 ![Map sql console](/img/cloud-native-workspace/maps/map_sql_console.png)
 
