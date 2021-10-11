@@ -69,7 +69,7 @@ Here is a GIF showcasing how the full process works:
 
 ### Create a visualization
 
-The final step is visualizing the tileset. Tilesets can be visualized directly from your CARTO Dashboard following [this guide](/analytics-toolbox-bq/guides/tilesets/#visualizing-a-tileset) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
+The final step is visualizing the tileset. Tilesets can be visualized directly from your CARTO Workspace following [this guide](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
 
 Here is an example of a tileset visualization of [WorldPop's dataset](https://carto.com/spatial-data-catalog/browser/dataset/carto-do-public-data.worldpop.demographics_population_glo_grid1km_v1_yearly_2020) created from the Dashboard:
 

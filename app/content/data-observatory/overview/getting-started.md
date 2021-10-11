@@ -84,7 +84,7 @@ Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) allo
 
 #### Using tilesets
 
-Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [WorldPop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](/analytics-toolbox-bq/overview/tilesets/) using the [Analytics Toolbox for BigQuery](/analytics-toolbox-bq/guides/tilesets/).
+Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [WorldPop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](/analytics-toolbox-bq/overview/tilesets/) using the [Analytics Toolbox for BigQuery](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/).
 
 <div class="figures-table" style="text-align:center">
     <figure>
@@ -95,7 +95,7 @@ Some of the spatial datasets offered in the Data Observatory are massive (a few 
 
 To create your own Data Observatory tilesets, from either your public or premium subscriptions, simply find the location of your subscription in BigQuery using the [“Access in BigQuery”](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure/#access-in-bigquery) functionality and run the Tiler from your console. [Here](../../guides/creating-data-observatory-tilesets) is a step-by-step guide that will help you through the process.
 
-Tilesets can be visualized directly [from your CARTO Dashboard](/analytics-toolbox-bq/guides/tilesets/#visualizing-a-tileset) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
+Tilesets can be visualized directly [from the CARTO Workspace](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
 
 </br>
 

@@ -1,27 +1,27 @@
 ## Getting access
 
-### Access from the CARTO Workspace
+### Access from the new CARTO Workspace
 
 {{% bannerNote title="WARNING" type="warning" %}}
-If you are still using the previous version of the CARTO platform and wish to get access to the Analytics Toolbox through the classic CARTO Dashboard, please refer to [this section](#access-from-the-carto-dashboard-legacy).
+If you are still using the previous version of the CARTO platform and wish to get access to the Analytics Toolbox through the classic CARTO Dashboard, please refer to [this section](#access-from-the-carto-dashboard).
 {{%/ bannerNote %}} 
 
-To get access to all the CARTO Analytics Toolbox modules, both core and advanced, you will need:
+To get access to the entire collection of modules of the CARTO Analytics Toolbox (both core and advanced) you will need:
 
-   * A CARTO account. If you still don't have one, you can create a trial account [here](https://app.carto.com/). 
+   * A CARTO account. If you still don't have one, you can create a trial account [here](https://app.carto.com/signup). 
    * A Google Cloud Platform account. Find [here](https://cloud.google.com/gcp/getting-started) more information about how to get one.
 
-Access to the Analytics Toolbox for BigQuery is granted to every service account that is used to create a connection with BigQuery from the CARTO Workspace. You can find [here](/carto-user-manual/connections/creating-a-connection/#connection-to-bigquery) step-by-step instructions on how to create a connection with BigQuery.
+Access to the Analytics Toolbox for BigQuery is granted to every service account that is used to create a connection with BigQuery from the CARTO Workspace. You can find step-by-step instructions on how to create a connection with BigQuery [here](/carto-user-manual/connections/creating-a-connection/#connection-to-bigquery).
 
 <div style="text-align:center" >
 <img src="/img/cloud-native-workspace/connections/the_connections_bigquery_first.png" alt="Creating a connection with BigQuery from the CARTO Workspace" style="width:100%">
 </div>
 
 
-These service accounts will have the permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery contained in the `carto-un` and `carto-un-eu`. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
+These service accounts will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery available in the `carto-un` and `carto-un-eu` projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
 
 To start using the Analytics Toolbox from the CARTO Workspace, you can:
-* Create tilesets using the interface following [this guide](/analytics-toolbox-bq/guides/tilesets/#from-the-carto-workspace).
+* Create tilesets from the Data Explorer following [this guide](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/#from-the-carto-workspace).
 * Create custom SQL layers in Builder following [this guide](/analytics-toolbox-bq/guides/running-queries-from-builder/).
 
 {{% bannerNote title="CONTACT SUPPORT" type="info" %}}
@@ -29,22 +29,11 @@ Please contact [support@carto.com](mailto:support@carto.com) if you are a CARTO 
 
 * need access to the Analytics Toolbox for a Google account (not a service account). 
 * need access to the Analytics Toolbox in a different region.
-* install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls).
+* wish to install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls).
 {{%/ bannerNote %}} 
 
 
-### Free access to the core modules
-
-If you are not a CARTO customer you can still use the **core** modules of the Analytics Toolbox. These modules are available to all BigQuery authenticated users through the `carto-os` and `carto-os-eu` projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data.
-
-### Pricing and cost
-
-When you are using CARTO Analytics Toolbox for BigQuery you will incur into two different types of cost:
-
-* BigQuery data processing: You will be charged for the amount of data processed. There are On-demand and Flat-rate options available. [Know more](https://cloud.google.com/bigquery/pricing) about BigQuery pricing.
-* CARTO license: Access to the the Analytics Toolbox is included as part of your CARTO license. [Contact us](https://carto.com/contact/) if you have any questions around pricing and plans.
-
-### Access from the CARTO Dashboard (legacy)
+### Access from the CARTO Dashboard
 
 If you are using the previous version of the CARTO platform (CARTO Dashboard) you can also get access to the Analytics Toolbox for BigQuery. However, for the best experience we strongly recommend its usage from the the newest version of the platform (CARTO Workspace).
 
@@ -52,7 +41,7 @@ Access to the Analytics Toolbox for BigQuery is granted to every CARTO account w
 
 Upon creating a new connection to BigQuery, the email address associated with your CARTO account will be granted access to the Analytics Toolbox. For that to work successfully, this email address should be the same as the one you use to log into your BigQuery. This happens automatically when you sign in to CARTO using your Google Account.
 
-Once this access is granted, you can call any of the Analytics Toolbox functions or procedures directly from your BigQuery console. 
+Once this access is granted, you can call any of the Analytics Toolbox functions or procedures available in the `bqcarto` (US multi-region) and `bqcartoeu` (EU multi-region) projects directly from your BigQuery console. 
 
 
 ##### Connecting to BigQuery
@@ -88,9 +77,9 @@ Additionally, the following predefined roles need to be granted to your account 
 * **BigQuery Data Owner** (`bigquery.dataOwner`) role for changing permission on the tilesets from the Map Viewer. 
   * This is needed for publishing maps with tileset layers on the web, available to anyone with the link. That means editing the tileset's permissions to grant CARTO APIs reading access to the tileset. 
   * This role is also required for unpublishing a public map. 
-  * Learn more about creating public maps out of tilesets [here](/analytics-toolbox-bq/guides/tilesets/#from-the-carto-dashboard-legacy).
+  * Learn more about creating public maps out of tilesets [here](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/#from-the-carto-dashboard-legacy).
 * **BigQuery Job User** (`bigquery.jobUser`) role for listing your projects, datasets and tilesets in the Dashboard.
-* **BigQuery Read Session User** (`bigquery.readSessionUser`) role for importing data from BigQuery as tables into CARTO embedded database.
+* **BigQuery Read Session User** (`bigquery.readSessionUser`) role for importing data from BigQuery as tables into CARTO's embedded database.
 
 Take a look at the BigQuery [documentation](https://cloud.google.com/bigquery/docs/access-control#bq-permissions) for more information about roles and permissions.
 
@@ -105,3 +94,8 @@ SELECT bqcartoeu.tiler.VERSION() -- EU multi-region
 ```
 
 If you need access to the Analytics Toolbox in a different region or install it on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls), please get in touch at [support@carto.com](mailto:support@carto.com).
+
+
+### Free access to the core modules
+
+If you are not a CARTO customer you can still use the **core** modules of the Analytics Toolbox. These modules are available to all BigQuery authenticated users through the `carto-os` and `carto-os-eu` projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data.

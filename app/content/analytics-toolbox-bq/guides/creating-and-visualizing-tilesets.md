@@ -1,10 +1,10 @@
-## Tilesets
+## Creating and visualizing tilesets
 
 ### Creating a tileset
 
 #### From the CARTO Workspace
 
-The CARTO Workspace offers a user interface that you can use to create [simple tilesets](analytics-toolbox-bq/overview/tilesets/#tileset-types-and-procedures). The option _Create tileset_ will be available from the Data Explorer for those tables that are too big to be visualized directly and therefore require the creation of a tileset.
+The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-bq/overview/tilesets/#tileset-types-and-procedures). The option _Create tileset_ is available from the Data Explorer for those tables that are too big to be visualized directly and therefore require the creation of a tileset.
 
 <div style="text-align:center" >
 <img src="/img/bq-spatial-extension/tiler/create_tileset_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
@@ -19,7 +19,6 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 
 
 #### From the BigQuery console or client
-
 As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [BigQuery console](https://console.cloud.google.com/bigquery) or client of choice after connecting your CARTO account to BigQuery.
 
 To check that your Google account or service account has access to the Tiler, try running this query:
@@ -31,7 +30,7 @@ SELECT `carto-un`.tiler.VERSION()
 
 Check the [Getting Access](../../overview/getting-access) section if you run into any errors when running the query above.
 
-Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your BigQuery console or client and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures) from a couple of joined tables; one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
+Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your BigQuery console or client and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
 
 The result will be a tileset with the geometry and total population per blockgroup:
 
@@ -62,7 +61,7 @@ CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
 );
 ```
 
-Creating a tileset by means of `tiler.CREATE_SIMPLE_TILESET` can sometimes be a confusing task due to the large amount of parameters that the user must manage. In order to relieve them of this responsibility, we provide a wrapper function in which the parameters are automatically chosen by performing a previous analysis of the passed data. This analysis also serves as a validation step to avoid BigQuery limitations. Therefore, the above generated tileset can also be obtained by executing:
+Creating a tileset by means of `tiler.CREATE_SIMPLE_TILESET` can sometimes be cumbersome due to the large amount of parameters that users have to manage. In order to relieve them of this responsibility, we provide a wrapper function in which the tiler configuration is automatically set by performing a previous analysis of the input data. This analysis also serves as a validation step to avoid BigQuery limitations. As a result, the above generated tileset can also be obtained by executing:
 
 ```sql
 CALL `carto-un`.tiler.CREATE_TILESET(
@@ -120,11 +119,11 @@ CALL `carto-un`.tiler.CREATE_TILESET(
 
 #### From the CARTO Workspace
 
-The CARTO Workspace offers access to the Data Explorer, where you will be able to preview your tilesets, and Builder, CARTO's state-of-the-art map making tool, where you will be able to style them and include them in your visualizations.
+The CARTO Workspace offers access to the Data Explorer, where you will be able to preview your tilesets, and Builder, CARTO's state-of-the-art map making tool, where you will be able to style them, include them in your visualizations and share them.
 
 ##### Previewing tilesets from the Data Explorer
 
-The Data Explorer offers a preview of your tilesets and displays their associated details and metadata in a convenient way, such as their size, number of records and statistics regarding the tile sizes per zoom level.
+The Data Explorer offers a preview of your tilesets and displays their associated details and metadata, such as their size, number of records and statistics regarding the tile sizes per zoom level. Please refer to [this page](/carto-user-manual/data-explorer/introduction/) for more information regarding the Data Explorer.
 
 <div style="text-align:center" >
 <img src="/img/bq-spatial-extension/tiler/tileset_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
@@ -146,7 +145,7 @@ For the latter option, you simply need to follow these simple steps:
 </div>
 
 2. Choose the BigQuery connection from where your tileset is accessible.
-3. Browse your projects and datasets until you find your tileset in the explorer.
+3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
 <img src="/img/bq-spatial-extension/tiler/tileset_layer_choose_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
@@ -158,13 +157,13 @@ For the latter option, you simply need to follow these simple steps:
 <img src="/img/bq-spatial-extension/tiler/tileset_layer_loaded.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
-5. Style your tileset like any other layer in Builder. For more details on how to style your layers, follow [this guide](carto-user-manual/maps/map-styles/).
+5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
 <img src="/img/bq-spatial-extension/tiler/tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
-#### From the CARTO Dashboard (legacy)
+#### From the CARTO Dashboard
 
 After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
@@ -330,7 +329,7 @@ We provide a Python Command Line tool called `carto-bq-tiler`. Think of it as a 
 * Upload Tilesets generated using other tools in MBTiles format
 * Download a tileset from BigQuery into a set of vector files or an MBTiles file to host your Tilesets somewhere else
 
-#### Installation
+##### Installation
 
 You need to have the Google [bq command-line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool) already installed and [working](https://cloud.google.com/shell/docs/using-cloud-shell). So check if this command works for you:
 
@@ -354,7 +353,7 @@ Finally, to check that the tool is working just type:
 carto-bq-tiler --help
 ```
 
-#### Authentication
+##### Authentication
 
 `carto-bq-tiler` uses the credentials created by the [bq command-line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool), and it will use the default project configured for it. If you want to use another project you can use the `-p` (`--project`) option, for example for listing the tilests:
 
@@ -368,7 +367,7 @@ Also, if you have a service account JSON file you can use it instead with `-c` (
 carto-bq-tiler -c CREDENTIALS_JSON_PATH list
 ```
 
-#### List your tilesets
+##### List your tilesets
 
 List the Tilesets in your Google Cloud project with:
 
@@ -376,7 +375,7 @@ List the Tilesets in your Google Cloud project with:
 carto-bq-tiler list
 ```
 
-#### Upload a tileset
+##### Upload a tileset
 
 You can upload MBTiles files that contain tiles in MVT format. The only constraint is that the features must have an `id` integer property.
 
@@ -386,7 +385,7 @@ carto-bq-tiler load MBTILES_PATH TILESET_NAME
 
 `TILESET_NAME` is the tileset destination in BigQuery, and it's composed by the dataset and the table as `dataset.table`.
 
-#### Delete a tileset
+##### Delete a tileset
 
 You can simply delete a dataset from BigQuery with:
 
@@ -394,7 +393,7 @@ You can simply delete a dataset from BigQuery with:
 carto-bq-tileset remove TILESET_NAME
 ```
 
-#### Export a tileset
+##### Export a tileset
 
 Tilesets can be exported to your computer in two formats:
 
@@ -410,7 +409,7 @@ Directory tree:
 carto-bq-tiler export-tiles TILESET_NAME
 ```
 
-#### View a tileset
+##### View a tileset
 
 Tilesets can be viewed and explored in multiple ways:
 

@@ -16,8 +16,8 @@ menu:
       - title: "Spatial indexes"
   - title: "Guides"
     folder:
-      - title: "Tilesets"
-      - title: "Routing"
+      - title: "Creating and visualizing tilesets"
+      - title: "Using the routing module"
       - title: "Running queries from Builder"
   - title: "Examples"
     folder:

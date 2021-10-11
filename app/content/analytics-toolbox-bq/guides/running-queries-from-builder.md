@@ -3,12 +3,12 @@
 Once you have created your BigQuery connection in the CARTO Workspace (see [_Getting Access_](analytics-toolbox-bq/overview/getting-access/#access-from-the-carto-workspace) for details), you can create custom SQL layers in Builder that make use of the Analytics Toolbox for BigQuery.
 
 {{% bannerNote title="From the CARTO Data Warehouse connection" type="tip" %}}
-You can also run queries from Builder using the Analytics Toolbox for BigQuery from your CARTO Data Warehouse connection. This connection is available for all CARTO accounts.
+You can also run queries from Builder using the Analytics Toolbox for BigQuery from your CARTO Data Warehouse connection. This connection is available and ready-to-use for all CARTO accounts.
 {{%/ bannerNote %}}
 
-The Analytics Toolbox functions are available from the `carto-un` and `carto-un-eu` BigQuery. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
+The Analytics Toolbox functions are available from the `carto-un` and `carto-un-eu` BigQuery projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
 
-Let's run a simple query to cluster a set of points using the `ST_CLUSTERKMEANS` function from the _clustering_ module. 
+To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bq/sql-reference/clustering/#st_clusterkmeans) function from the _clustering_ module. 
 
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
@@ -16,7 +16,7 @@ Let's run a simple query to cluster a set of points using the `ST_CLUSTERKMEANS`
 <img src="/img/bq-spatial-extension/tiler/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div>
 
-2. Select the second tab _Custom Query (SQL)_ and pick your BigQuery or CARTO Data Warehouse connection that you will use to run the query.
+2. Select the second tab _Custom Query (SQL)_ and pick the BigQuery or CARTO Data Warehouse connection that you will use to run the query.
 
 <div style="text-align:center" >
 <img src="/img/bq-spatial-extension/builder_custom_query_option.png" alt="Picking a connection to run a custom query" style="width:100%">
@@ -48,5 +48,5 @@ SELECT cluster_element.cluster, cluster_element.geom AS geom FROM clustered_poin
 
 
 {{% bannerNote title="MORE EXAMPLES" type="note" %}}
-For more examples, visit the [Examples](/analytics-toolbox-bq/examples/) section or try executing any of the queries included for each function in the [SQL Reference](/analytics-toolbox-bq/sql-reference).
+For more examples, visit the [Examples](/analytics-toolbox-bq/examples/) section or try executing any of the queries included in every function definition in the [SQL Reference](/analytics-toolbox-bq/sql-reference).
 {{%/ bannerNote %}}

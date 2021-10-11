@@ -43,7 +43,7 @@ In this example we are going to use a table accessible via a BigQuery connection
 
 #### Custom queries using the Analytics Toolbox
 
-You can also use the Analytics Toolbox functions in your custom SQL queries. For example, you can perform a simple clustering using the `ST_CLUSTERKMEANS` function by running this query from your CARTO Data Warehouse connection:
+You can also use the Analytics Toolbox functions in your custom SQL queries. For example, you can perform a simple clustering using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bq/sql-reference/clustering/#st_clusterkmeans) function by running this query from your CARTO Data Warehouse connection:
 
 ```sql
 with clustered_points AS
