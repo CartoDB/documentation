@@ -32,7 +32,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     To create a new organization follow these steps:
 
-    - Choose an organization name (e.g. ACME)
+    - Choose an organization name (e.g. CARTO)
     - Select if you want anyone with the same e-mail domain to automatically join your organization, or leave it unchecked if you want them to go through an approval process.
     - Choose the region where you want CARTO to run. CARTO’s cloud-infrastructure in Google Cloud Platform (GCP) is in four regions: Europe-West, USA-Central, Asia-Northeast, and Australia-Southeast. We give you the possibility to choose the region that is closest to your data warehouse.
     - Click *Next*.
