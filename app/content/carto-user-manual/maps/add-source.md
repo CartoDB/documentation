@@ -4,7 +4,7 @@ When you open a map, the *Layers* tab will appear on the left side panel. There 
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_to_your_map.png)
 
-### ADD SOURCE FROM A CONNECTION
+### Add source from a connection
 
 From the *Layers* tab, go to the *Sources* panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from on of your connections. Insert the *Fully Qualified Table* or the *Tileset Name* and click *Add source*.
 
@@ -16,15 +16,19 @@ Once the process is finished, the table or tileset is included in the Builder ma
 	
 ![Map created](/img/cloud-native-workspace/maps/map_created.png)
 
-Once you have added your datasets to the map, you can visualize the data table. Click the *Show data table* button and your dataset table will be displayed. 
+Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
 
-![Map view data table](/img/cloud-native-workspace/maps/map_show_datatable.png)
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_options.png)
 
 By clicking the *tree dots* icon the Column Context menu will reveal additional options such as: Sort on this column, ascending or descending, Pin the column so you can freeze it in the first position, and copy column data.
 
 ![Map view table column](/img/cloud-native-workspace/maps/map_table_column.png)
 
-### ADD SOURCE FROM A CUSTOM QUERY
+Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*.
+
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_options.png)
+
+### Add source from a custom query
 
 Go to *Sources* and click *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
 
@@ -32,7 +36,7 @@ Go to *Sources* and click *Add source from...*. A new dialog screen will open al
 
 ![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_add_analysis_query.png)
 
-Once the process is finished, the SQL console appears in the Builder interface You can type your query by inserting the *Fully Qualified Table* or the *Tileset Name* when calling an object and then click *Run*. 
+Once the process is finished, the SQL console appears in the Builder interface, where you can type your query and then click *Run*. Please make sure to use *Fully Qualified Table* names.
 
 ![Map sql console](/img/cloud-native-workspace/maps/map_sql_console.png)
 
