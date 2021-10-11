@@ -1,4 +1,4 @@
-## Routing
+## Using the routing module
 
 ### Creating a network
 
