@@ -1,7 +1,6 @@
 ## Getting started
 
-The CARTO Workspace is the user interface for our next generation cloud-native Location Intelligence platform. It allows you to create stunning maps and to perform spatial analytics at a scale, with everything running directly on top of your data warehouse(s). Learn how to make the most of our Builder tool, Analytics Toolbox, Data Observatory, and all other new features.
-
+The CARTO Workspace is the user interface for our next generation cloud-native Location Intelligence platform. It allows you to create stunning maps and to perform spatial analytics at scale, with everything running directly on top of your cloud data warehouse(s). Learn how to make the most out of our Builder tool, Analytics Toolbox, Data Observatory, and other new features.
 ### Create your CARTO organization
 
 Follow these simple steps to access the CARTO Workspace:
@@ -13,7 +12,7 @@ Follow these simple steps to access the CARTO Workspace:
     - Enter your email address and password. You can also sign up with your existing Google account by clicking *Continue with Google*.
     - Once you have entered your credentials: click *Continue*.
 
-    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_and_password.png)
+    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_password.png)
     - Verify your email with the link sent to your existing email address.
     - Click *Verify email* in the email sent.
 
@@ -25,7 +24,7 @@ Follow these simple steps to access the CARTO Workspace:
 
 2. **Organization setup**
 
-    When a user initiates the process to create an organization, CARTO will detect if their e-mail domain is already associated with an existing CARTO organization. If so, the user is allowed to choose to either create a brand new organization or to join one of the existing organizations that have been detected under the same domain. When joining an existing organization, there are two options available: to join the organization directly (if the admin allows through a specific organization setting) or to request access and wait for the admin to approve it.
+    When a user initiates the process to create an organization, CARTO will detect if their e-mail domain is already associated with an existing CARTO organization. If so, the user is allowed to choose to either create a brand new organization or to join one of the existing organizations that have been detected under the same domain. When joining an existing organization, there are two options available: to join the organization directly (if the admin allows through a specific organization setting), or to request access and wait for the admin to approve your request.
 
     ![Organization setup](/img/cloud-native-workspace/get-started/organization_detected_multiple.png)
 
@@ -33,7 +32,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     To create a new organization follow these steps:
 
-    - Choose an organization name (e.g. ACME)
+    - Choose an organization name (e.g. CARTO)
     - Select if you want anyone with the same e-mail domain to automatically join your organization, or leave it unchecked if you want them to go through an approval process.
     - Choose the region where you want CARTO to run. CARTO’s cloud-infrastructure in Google Cloud Platform (GCP) is in four regions: Europe-West, USA-Central, Asia-Northeast, and Australia-Southeast. We give you the possibility to choose the region that is closest to your data warehouse.
     - Click *Next*.
@@ -106,7 +105,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     ![Organization setup](/img/cloud-native-workspace/get-started/organization_request_sent.png)
 
-    You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different organization to join or create a new organization. If it is accepted, you will be redirected to the personal information form which needs to be filld in before having access to the CARTO Workspace.
+    You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different organization to join or create a new organization. If it is accepted, you will be redirected to the personal information form which needs to be filled in before having access to the CARTO Workspace.
 
     Enter your personal information:
 
@@ -135,7 +134,7 @@ Follow these simple steps to access the CARTO Workspace:
 
 Learn everything you need to know about your Workspace and how to make the most out of it.
 
-When you log in to your CARTO user account, you will be presented with your Workspace. The Workspace allows you to access all components of the CARTO platform via a signle interface. It will allow you to manage connections to your data warehouse(s), explore your data, subscribe to Data Observatory datasets, develop spatial applications, and run visualizations and spatial analysis through our map-making tool, Builder.
+When you log in to your CARTO user account, you will be presented with your Workspace. The Workspace allows you to access all components of the CARTO platform via a single interface. It will allow you to manage connections to your data warehouse(s), explore your data, subscribe to Data Observatory datasets, develop spatial applications, and run visualizations and spatial analysis through our map-making tool, Builder.
 
 <!-- ![Workspace overview](/img/cloud-native-workspace/get-started/workspace_overview_default.png) -->
 
@@ -143,7 +142,7 @@ When you log in to your CARTO user account, you will be presented with your Work
 
 The first time that you access the Workspace, you will see a *Welcome* banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. By clicking the link in this banner, you can easily connect your data warehouse(s) to start using CARTO. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
 
-![Welcome banner](/img/cloud-native-workspace/get-started/home_first_landing.png)
+![Welcome banner](/img/cloud-native-workspace/get-started/homepage_first_landing.png)
 
 #### Recent maps
 
@@ -156,7 +155,7 @@ View your latest content. This module displays the latest maps that you have bee
 
 In this section, you also have quick access to different content pieces to help you get started with CARTO, such as creating maps from your data, developing spatial applications, or learning how to use the Analytics Toolbox.
 
-![Recent maps](/img/cloud-native-workspace/get-started/getting_started.png)
+![Recent maps](/img/cloud-native-workspace/get-started/getting_started_new.png)
 
 #### What’s new
 
@@ -166,7 +165,7 @@ Announcements of new features, interesting articles, and the latest news related
 
 #### Navigation Menu
 
-In the left panel, you can find the navigation menu with all the available options to access the CARTO componenets: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
+In the left panel, you can find the *Navigation Menu* with all the available options to access the CARTO components: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
 
 ![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
 
@@ -176,7 +175,7 @@ In the left panel, you can find the navigation menu with all the available optio
 
 This is a quick guide to help you get started and is a step-by-step overview on how to connect CARTO to your data warehouse, explore your data, and create maps.
 
-The CARTO Workspace includes functionalities for registering and managing connections to your data warehouse(s). Additionally, for each organization we also provision resources from the CARTO Data Warehouse to ensure you can get going with our technology since the beginning.
+The CARTO Workspace includes functionalities for registering and managing connections to your data warehouse(s). Additionally, for each organization we also provision resources from the CARTO Data Warehouse to ensure you can get going with our technology from the beginning.
 
 Once you have registered a connection to a data warehouse, you can start using your data with all components of the CARTO platform, such as running advanced spatial analysis with our Analytics Toolbox or creating stunning maps with Builder.
 
@@ -184,7 +183,7 @@ Once you have registered a connection to a data warehouse, you can start using y
 
 Go to the *Connections* section in the Workspace, where you can find the list of all your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_module.png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_module_cartodw.png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
@@ -216,7 +215,7 @@ The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 
 4. In this example we are going to use a table from our BigQuery connection. Select the table from the list and click *Add source*.
 
-![Add source table](/img/cloud-native-workspace/maps/map_add_source_table.png)
+![Add source table](/img/cloud-native-workspace/maps/map_add_source_tablee.png)
 
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
 	
@@ -251,16 +250,33 @@ Once your table or tileset is selected, you can access a preview of the map and 
 
 #### Create Tileset
 
+Check the <a href="https://docs.carto.com/spatial-extension-bq/overview/tilesets/" target="_blank">Tileset</a> reference documentation for a better understanding of what a tileset is and how it works, as well as to get started using the BigQuery Tiler as a solution to visualise massive datasets hosted in CARTO DW connection and BigQuery connections.
+
 You can create a tileset by clicking on the *Create tileset* button on the top. 
 
 ![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_table2.png)
 
-A new dialog will open so you can edit your output table. You can create a tileset with the default parameters, or a new tileset that includes advanced options for editing parameters.
+A new dialog will open so you can create the tileset from a *form* mode or from a *sql* mode. You are initially presented with a *form* mode to configure the tileset. 
 
-![Data Explorer create tileset](/img/cloud-native-workspace/data-explorer/de_create_tileset.png)
+This interface will allow you to select the tileset zoom leves and identify the output table. Once you have configured it, click on *Continue* : 
 
-![Data Explorer create tileset custom](/img/cloud-native-workspace/data-explorer/de_create_tileset_custom.png)
+![Data Explorer create tileset (settings)](/img/cloud-native-workspace/data-explorer/de_create_tileset(settings).png)
 
+The next interface will allow you to easily select and expect what columns will be loaded in a tileset. After selecting the columns to include in the tileset, click on *Continue* : 
+
+![Data Explorer create tileset (attributes)](/img/cloud-native-workspace/data-explorer/de_create_tileset(attributes_selected).png)
+
+The last interface will show you the location and attributes of the new tileset. To confirm, click on *Create* :
+
+![Data Explorer create tileset (confirmation)](/img/cloud-native-workspace/data-explorer/de_create_tileset(confirmation).png)
+
+You can also switch to enable the *SQL editor* and have access to advanced options for editing parameters. To confirm, click on *Create* :
+
+![Data Explorer create tileset sql editor](/img/cloud-native-workspace/data-explorer/de_create_tileset_sql_editor.png)
+
+If you edit the SQL query and goes back to the form, a message appears warning you that all changes will be lost. Click on *Clear* to accept this or click on *Cancel* to cancel the tileset creation process:
+
+![Data Explorer create tileset disable sql editor](/img/cloud-native-workspace/data-explorer/de_disable_sql_editor.png)
 #### Enrich your data with the Data Observatory
 
 The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.

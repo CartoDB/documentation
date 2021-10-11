@@ -16,14 +16,14 @@ menu:
     folder:
       - title: "Introduction"
       - title: "Add source"
-      - title: "View data table"
+      #- title: "View data table"
       - title: "Map settings"
       - title: "Map styles"
       - title: "Publishing and sharing maps"
   - title: "Data Explorer"
     folder:
       - title: "Introduction"
-      - title: "Adding your first connection"
+      #- title: "Adding your first connection"
       - title: "Creating a map from your data"  
       - title: "Creating a tileset from your data"  
   - title: "Data Observatory"
@@ -44,7 +44,7 @@ menu:
   - title: "Settings" 
     folder:
       - title: "Configuring your organization"
-      - title: "Your subscription"
+      #- title: "Your subscription"
       - title: "Managing registered apps"
       - title: "Inviting users to your organization"
       - title: "Managing user roles"
