@@ -12,7 +12,7 @@ Follow these simple steps to access the CARTO Workspace:
     - Enter your email address and password. You can also sign up with your existing Google account by clicking *Continue with Google*.
     - Once you have entered your credentials: click *Continue*.
 
-    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_and_password.png)
+    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_password.png)
     - Verify your email with the link sent to your existing email address.
     - Click *Verify email* in the email sent.
 
@@ -256,12 +256,27 @@ You can create a tileset by clicking on the *Create tileset* button on the top.
 
 ![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_table2.png)
 
-A new dialog will open so you can edit your output table. You can create a tileset with the default parameters, or a new tileset that includes advanced options for editing parameters.
+A new dialog will open so you can create the tileset from a *form* mode or from a *sql* mode. You are initially presented with a *form* mode to configure the tileset. 
 
-![Data Explorer create tileset](/img/cloud-native-workspace/data-explorer/de_create_tileset.png)
+This interface will allow you to select the tileset zoom leves and identify the output table. Once you have configured it, click on *Continue* : 
 
-![Data Explorer create tileset custom](/img/cloud-native-workspace/data-explorer/de_create_tileset_custom.png)
+![Data Explorer create tileset](/img/cloud-native-workspace/data-explorer/de_create_tileset(settings).png)
 
+The next interface will allow you to easily select and expect what columns will be loaded in a tileset. After selecting the columns to include in the tileset, click on *Continue* : 
+
+![Data Explorer create tileset](/img/cloud-native-workspace/data-explorer/de_create_tileset(attributes_selected).png)
+
+The last interface will show you the location and attributes of the new tileset. To confirm, click on *Create* :
+
+![Data Explorer create tileset](/img/cloud-native-workspace/data-explorer/de_create_tileset(confirmation).png)
+
+You can also switch to enable the *SQL editor* and have access to advanced options for editing parameters. To confirm, click on *Create* :
+
+![Data Explorer create tileset custom](/img/cloud-native-workspace/data-explorer/de_create_tileset_custom(new).png)
+
+If you edit the SQL query and goes back to the form, a message appears warning you that all changes will be lost. Click on *Clear* to accept this or click on *Cancel* to cancel the tileset creation process:
+
+![Data Explorer create tileset custom](/img/cloud-native-workspace/data-explorer/de_disable_sql_editor.png)
 #### Enrich your data with the Data Observatory
 
 The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.
