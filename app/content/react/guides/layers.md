@@ -65,6 +65,8 @@ export default function StoresLayer() {
       id: STORES_LAYER_ID,
       getFillColor: [241, 109, 122],
       pointRadiusMinPixels: 2,
+      getLineColor: [255, 255, 255],
+      lineWidthMinPixels: 1,
       pickable: true,
       onHover: (info) => {
         if (info?.object) {
@@ -130,6 +132,10 @@ The `dispatch` function is used to dispatch an action to the Redux store. This i
 4. The Map Component get all the layers in the store and draw them.
 
 This is one of the benefits of reactive programming: we can add the layer from any place in the application just by dispatching the right action.
+
+### Styling properties
+
+If you use the code generator, the code will create a `CartoLayer` with default styling properties. To learn more about customizing the style properties for your layers, please read the [Customizing the CartoLayer style](/deck-gl/customizing-the-cartolayer-style) guide in the CARTO for deck.gl documentation.
 
 ### useCartoLayerProps
 
