@@ -1,13 +1,14 @@
 ## Getting Started
 
-
-This guide shows how you to create a private application with layers and widgets. A private application starts with a login page.
+This guide shows how you to create a private application with layers and widgets. A private application requires users to login into the application using their CARTO credentials.
 
 <video height="400" autoplay="" loop="" muted=""> <source src="/img/react/getting-started.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
 ### Creating an application
 
-The basic prerequisite for using Create React App is to have a package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)) previously installed.
+CARTO for React applications are created using [Create React App](https://create-react-app.dev/) with one of the CARTO for React templates. The basic prerequisite for using Create React App is to have a package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)) previously installed.
+
+We are going to create a new application in the `my-app` folder using the `@carto/base-3` template:
 
 ```bash
 npx create-react-app my-app --template @carto/base-3
@@ -78,7 +79,7 @@ Edit `src/store/initialStateSlice.js` to add it:
 
 We're going to create a view called `Stores` that will be accesible in the `/stores` path. When this view is loaded, the layer will be displayed.
 
-The easiest way to create a new view in the application is to use the [code generator](../code-generator). You need to enter the following command:
+The easiest way to create a new view in the application is to use the [code generator](../code-generator). You need to execute the following command in the `my-app` folder:
 
 ```shell
 yarn hygen view new
@@ -101,6 +102,10 @@ yarn start
 ```
 
 You should see the map component with a `Hello World` text on the left sidebar and a link to the new view in the top navigation bar.
+
+{{% bannerNote type="note" title="Browser certificate warning" %}}
+The application uses HTTPS by default but your browser will complain because it cannot found a valid certificate. It is safe to ignore this warning when developing but you should have a valid certificate when you deploy the application to your web server. 
+{{%/ bannerNote %}}
 
 ### Creating a source
 
@@ -195,3 +200,12 @@ There are two main elements in the store: the source and the viewport. When we c
 - Any time we change the map extent (pan or zoom), the viewport changes and all the widgets are refreshed.
 
 - Any time a widget applies a filter (for example selecting a widget category), the filter is dispatched to the store. When we add a filter, we are changing the source, so all the components depending on the source are updated: the widgets are re-rendered and the layers are filtered. The map applies the filters using the [`DataFilterExtension`](https://deck.gl/docs/api-reference/extensions/data-filter-extension) from deck.gl.
+
+
+### Where to go next 
+
+You already have your first CARTO for React application with layers and widgets, now you can jump to the Layers guide to learn more about working with layers and customizing styling properties:
+
+{{<link href="../layers">}}
+  Layers
+{{</link>}}
