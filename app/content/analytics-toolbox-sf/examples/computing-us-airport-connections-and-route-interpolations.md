@@ -2,7 +2,7 @@
 
 ### Generating connections
 
-In this example we will showcase how easily we can compute all the paths that interconnect the main four US airports using the Spatial Extension.
+In this example we will showcase how easily we can compute all the paths that interconnect the main four US airports using the Analytics Toolbox.
 
 ```sql
 WITH data AS(

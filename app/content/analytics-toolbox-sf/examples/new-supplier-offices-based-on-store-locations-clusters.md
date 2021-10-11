@@ -28,7 +28,7 @@ This query gathers the geometries of the Starbucks locations in order to establi
 
 ### Calculating the clusters' centers
 
-Once we have split the sample of points into clusters, we can easily work with them to calculate their centers, envelopes, concave/convex hulls and other different transformations. In this particular example we are interested in finding the center of the clusters, since that is where we are going to place the offices. The Spatial Extension offers different functions for this task, for example `ST_CENTERMEAN`, `ST_CENTERMEDIAN` and `ST_CENTEROFMASS`. 
+Once we have split the sample of points into clusters, we can easily work with them to calculate their centers, envelopes, concave/convex hulls and other different transformations. In this particular example we are interested in finding the center of the clusters, since that is where we are going to place the offices. The Analytics Toolbox offers different functions for this task, for example `ST_CENTERMEAN`, `ST_CENTERMEDIAN` and `ST_CENTEROFMASS`. 
 
 In this case we are going to use `ST_CENTEROFMASS` to calculate the location of the new offices:
 
