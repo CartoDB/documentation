@@ -1,6 +1,6 @@
 ## Getting started
 
-CARTO provides a powerful way to visualize data from your datawarehouse with [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview). By utilizing the CartoLayer class of deck.gl you can bring data from a table, a tileset or even a SQL directly all from JS. 
+CARTO provides a powerful way to visualize data from your datawarehouse with [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview). By utilizing the [CartoLayer class](https://deck.gl/docs/api-reference/carto/carto-layer) of deck.gl you can bring data from a table, a tileset or even a SQL directly all from JS. 
 
 After completing this guide, you will have your first Google Maps API map with data from your datawarehouse!
 
