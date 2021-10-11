@@ -10,6 +10,7 @@ indexPage: "getting-started.md"
 menu:
   - title: "Getting started"
   - title: "Using the CartoLayer"
+  - title: "Customizing the CartoLayer style"
   - title: "Examples"
     folder:
       - title: "Gallery"
