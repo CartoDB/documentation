@@ -42,7 +42,7 @@ For most of the accessors we can also specify a constant value (an array, a numb
 
 In this section we are going to describe the most common accessors but you can find the complete list of accessor supported by the `GeoJsonLayer` in the deck.gl docs [site](https://deck.gl/docs/api-reference/layers/geojson-layer).
 
-You can use these accessors to create advanced visualizations, including choropleth maps like the ones available with the [style helpers](#style-helpers) and [bubble maps](#bubble-maps). You can also use them to apply different styles depending on the current [zoom level](#zoom-based-styling).
+You can use these accessors to create advanced visualizations, including choropleth maps like the ones available with the [style helpers](#style-helpers) and [proportional symbol maps](#proportional-symbol-maps). You can also use them to apply different styles depending on the current [zoom level](#zoom-based-styling).
 
 #### `getFillColor`
 
@@ -88,7 +88,7 @@ The two mandatory properties you need to specify when using [circles](https://de
 
 ##### `getPointRadius`
 
-This accessor is used to indicate the radius for point features. It can be used to create [bubble maps](#bubble-maps) as shown below. 
+This accessor is used to indicate the radius for point features. It can be used to create [proportional symbol maps](#proportional-symbol-maps) as shown below. 
 
 ##### `pointRadiusMinPixels`
 
@@ -106,7 +106,7 @@ You can use this accessor to specify the icon to use. If you use an icon atlas w
 
 ##### `getIconSize`
 
-This is the [accessor](https://deck.gl/docs/api-reference/layers/icon-layer#getsize) used to specify the icon height in pixels, unless you specify a different unit. By default the value is 1, so you want to set it to the actual height size. It can be used also to create a [proportional symbol map](#bubble-maps) where the icon size varies according to the value of some feature property or to implement [zoom based styling](#zoom-based-styling) where the icon size is adapted to the current zoom level.
+This is the [accessor](https://deck.gl/docs/api-reference/layers/icon-layer#getsize) used to specify the icon height in pixels, unless you specify a different unit. By default the value is 1, so you want to set it to the actual height size. It can be used also to create a [proportional symbol map](#proportional-symbol-maps) where the icon size varies according to the value of some feature property or to implement [zoom based styling](#zoom-based-styling) where the icon size is adapted to the current zoom level.
 
 ##### `iconAtlas`
 
@@ -134,19 +134,82 @@ Depending on the feature property values, you might want to scale them to visual
 
 Please check the [extrusion](/deck-gl/examples/advanced-examples/extrusion) example to see how you can extrude polygon features.
 
-### Style helpers
+### Scales-Classification
 
-colorBins, colorCategories, colorContinuous. Link to the reference.
+If you want to create a choropleth map or a proportional symbol map, you can use absolute scaling or distribute the features in classes. In the first case, the color and/or size of a feature in the map is proportional to the value of some property or combination of properties. In the second case, values are classified according to a classification rule. 
 
-### Color scales
+There are many classification rules like equal intervals, jenks natural breaks or classification by quantiles. The choice of classification rule depends on the data and has a great impact on the visualization. These rules can be implemented using accessors like `getFillColor` or `getPointRadius` but you need to be able to calculate the thresholds for each class.
 
-d3-scale (linear, threshold, quantile, quantize)
+When the `CartoLayer` `type` property is set to `MAP_TYPES.QUERY` or `MAP_TYPES.TABLE`, all the data from the query or the table is retrieved and you can perform threshold calculations client-side. When the `type` property is set to `MAP_TYPES.TILESET`, only the vector tiles corresponding to the current viewport and zoom level are downloaded to the client, so you can only determine the thresholds for the whole dataset if the server provides them.
 
-CDB_ functions for CARTO 2
+#### Client-side calculations
 
-### Bubble maps
+You can perform the threshold calculations yourself but our recommendation is to use a library that already implements this functionality such as [d3-scale](https://github.com/d3/d3-scale). This library includes support for many different scales such as linear, threshold, quantile or quantize scales.
 
-These maps are created using point features and choosing the `'circle'` `pointType`. The circle radius is scaled according to the value of some feature property. They can be included among the more general category of proportional symbol maps or graduated symbol maps when using other symbols like icons.
+These scales map the domain of values into a range. The range can be an array of colors in RGB[A] format if you want to create a choropleth map or an array of numbers if you want to create a proportional symbol map.
+
+For example, if you want to create a choropleth map with a quantize (equal intervals) scale with five different classes, you must specify an array with five colors and the domain for your values. In this case we are going to apply the colors to populated places with a population between 1 million (1e6) and 1 billion (1e9). Then we need use the `getFillColor` accessor to retrieve the corresponding color for each feature property value:
+
+```javascript
+const colors = [
+  [209, 238, 234],
+  [168, 219, 217],
+  [133, 196, 201],
+  [104, 171, 184],
+  [79, 144, 166]
+];
+
+const colorScale = d3.scaleQuantize().range(colors).domain([1e6, 1e9]);
+
+layer = new deck.carto.CartoLayer({
+    id: 'my-layer',
+    connection: 'bqconn',
+    type: deck.carto.MAP_TYPES.QUERY,
+    data: 'SELECT geom, name, population FROM cartobq.public_account.populated_places', 
+    getFillColor: d => colorScale(population),
+    pointRadiusMinPixels: 2.5
+});
+```
+
+#### Server-side calculations
+
+If you are using vector tiles, you just have in the client the data for the current viewport, so you cannot calculate thresholds taking into account the whole dataset. In this case, you have only two options: use the statistics provided by the map server (if available) or implement your own calculations using the data from the tileset source table.
+
+If you are going to visualize a tileset created with the CARTO Analytics Toolbox, the tileset metadata includes information about quantiles for each property. You can retrieve this information using the `CartoLayer` [`onDataLoad`](https://deck.gl/docs/api-reference/carto/carto-layer#ondataload) handler that receives the tileset metadata in [TileJSON](https://github.com/mapbox/tilejson-spec) format as the argument.
+
+{{% bannerNote title="Statistical functions in CARTO 2" %}}
+
+If you are using CARTO 2, there is a set of available [functions](https://carto.com/help/working-with-data/carto-functions/#statistical-functions) that implements the jenks natural breaks optimization, quantiles and heads/tails classification rules.
+
+{{%/ bannerNote %}}
+
+### Choropleth maps
+
+Choropleth maps are created assigning different colors to features representing geographic areas such as countries or neighborhoods. Color assignment depends on the value of some property or a combination of two properties (bivariate choropleth map).
+
+If you have a numeric property, you have two options: you can apply a classification rule as shown above to create classes or bins for your data or you can use absolute scaling and map the values to a color ramp. 
+
+If you already have a string property that represents a categorical or qualitative variable, you can use this property as the class and assign a color to each of the possible property values.
+
+It is important to choose a color palette adequate to the type of choropleth map / variable you are using. We have defined a set of data-driven color schemes called [CARTO Colors](https://carto.com/carto-colors/) that you can use in your choropleth maps.
+
+We have a set of schemes appropriate to represent numeric values from low to high (sequential schemes). We have another set suitable for visualizing categorical differences in qualitative data (qualitative schemes). Finally, we also have defined diverging schemes for those cases where we have an interesting mid-point in quantitative data. 
+
+In order to create the choropleth map, you can use the [`getFillColor`](#getfillcolor) accessor to provide the color for each feature as shown above in the [Scales/Classification](#scales-classification) section. 
+
+But you can also take advantage of the [style helpers](https://deck.gl/docs/api-reference/carto/styles) provided in the CARTO for deck.gl module. These helpers make it really easy to implement a choropleth map using numeric bins ([colorBins](https://deck.gl/docs/api-reference/carto/styles#colorbins) helper), existing categories ([colorCategories](https://deck.gl/docs/api-reference/carto/styles#colorcategories) helper), or using a color ramp to map numeric values ([colorContinuous](https://deck.gl/docs/api-reference/carto/styles#color-continuous) helper).
+
+These style helpers allows you to specify the feature property you want to use to create the choropleth, the domain of values for that property and the colors you want to use. The colors can be specified using an array or using a string with the CARTO colors palette name.
+
+Take a look at the [Styling](https://docs.carto.com/deck-gl/examples/gallery/) examples section to see how you can use these style helpers.
+
+### Proportional symbol maps
+
+Proportional symbol maps assign a larger or smaller symbol to features depending on the value of some property. If you use a circle as the symbol, they are sometimes known as bubble maps. 
+
+You can implement this type of maps by using data accessors like [`getPointRadius`](#getpointradius) if using circles or [`getIconSize`](#geticonsize) if using icons as the symbol.
+
+You can also combine choropleths and proportional symbol maps. For example, we are going to create a map where we represent the population of each country using a bubble map and then assign a different color to each circle depending on the country continent.
 
 Try to add the instructions for creating the map in this blogpost: https://carto.com/blog/proportional-symbol-maps/
 
