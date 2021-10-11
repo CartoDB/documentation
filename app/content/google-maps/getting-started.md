@@ -1,8 +1,8 @@
 ## Getting started
 
-In this guide, you will learn the basics of visualizing a CARTO dataset with the [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview). There are no previous requirements to complete this guide, but a basic knowledge of Google Maps Javascript API would be helpful.
+CARTO provides a powerful way to visualize data from your datawarehouse with [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview). By utilizing the CartoLayer class of deck.gl you can bring data from a table, a tileset or even a SQL directly all from JS. 
 
-After completing this guide, you will have your first Google Maps API map with a CARTO dataset!
+After completing this guide, you will have your first Google Maps API map with data from your datawarehouse!
 
 <iframe
     id="getting-started-final-result"
