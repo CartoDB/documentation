@@ -11,7 +11,11 @@ menu:
   - title: "Overview"
     folder:
       - title: "Getting started"
+      - title: "Getting access"
       - title: "Spatial indexes"
+  - title: "Guides"
+    folder:
+      - title: "Running queries from Builder"
   - title: "Examples"
     folder:
       - title: "A Quadkey grid of stores locations and simple cannibalization analysis"

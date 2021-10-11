@@ -13,7 +13,7 @@ To get started, let's run a simple example query to cluster a set of points usin
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
+<img src="/img/bq-spatial-extension/tiler/tileset_layer_choose_connection.png" alt="Choosing a connection" style="width:100%">
 </div>
 
 2. Select the second tab _Custom Query (SQL)_ and pick the BigQuery or CARTO Data Warehouse connection that you will use to run the query.
