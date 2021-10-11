@@ -8,15 +8,15 @@ menu:
     url: "news-developers"
 ---
 
-### Enhancing Geospatial in BigQuery with CARTO Spatial Extension
+### Enhancing Geospatial in BigQuery with CARTO's Analytics Toolbox
 
 ##### 2021-04-29
 
-The Spatial Extension is packed with functions and procedures to perform geospatial analysis using expressive and simple SQL, all natively within the data warehouse environment. The core layer of the Spatial Extension, which enhances the built-in GIS capabilities of the cloud data warehouses, is open source and freely available on [GitHub](https://github.com/CartoDB/carto-spatial-extension).
+The Analytics Toolbox is packed with functions and procedures to perform geospatial analysis using expressive and simple SQL, all natively within the data warehouse environment. The core layer of the Analytics Toolbox, which enhances the built-in GIS capabilities of the cloud data warehouses, is open source and freely available on [GitHub](https://github.com/CartoDB/carto-spatial-extension).
 
 <video autoplay="" loop="" muted=""> <source src="https://docs.carto.com/img/news-developers/bigquery-se-core-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
-For further information check the [blog post](https://carto.com/blog/enhancing-geospatial-in-bigquery-with-carto-spatial-extension/) and the [documentation](https://docs.carto.com/spatial-extension-bq/).
+For further information check the [blog post](https://carto.com/blog/enhancing-geospatial-in-bigquery-with-carto-spatial-extension/) and the [documentation](https://docs.carto.com/analytics-toolbox-bq/).
 
 ---
 

@@ -1,6 +1,6 @@
 ## Identifying earthquake-prone areas in the state of California
 
-In this example we are going to use some of the functions included in CARTO's Spatial Extension in order to highlight zones prone to earthquakes, using a [BigQuery public dataset](https://console.cloud.google.com/marketplace/product/noaa-public/noaa-earthquakes). 
+In this example we are going to use some of the functions included in CARTO's Analytics Toolbox in order to highlight zones prone to earthquakes, using a [BigQuery public dataset](https://console.cloud.google.com/marketplace/product/noaa-public/noaa-earthquakes). 
 
 First we define our region of interest, which in this case is a bounding box enclosing the state of California, using the function `ST_MAKEENVELOPE`. After filtering the earthquake locations with this bounding box, we compute the concave hull polygon enclosing the resulting points using the `ST_CONCAVEHULL` function. For visualization purposes, this polygon is smoothed out by means of the `ST_BEZIERSPLINE` function. Finally, we construct the polygon defining the earthquake-prone area using the `ST_POLYGONIZE` function.
 

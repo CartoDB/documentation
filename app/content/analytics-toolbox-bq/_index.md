@@ -11,12 +11,14 @@ menu:
   - title: "Overview"
     folder:
       - title: "Getting started"
+      - title: "Getting access"
       - title: "Tilesets" 
       - title: "Spatial indexes"
   - title: "Guides"
     folder:
-      - title: "Tilesets"
-      - title: "Routing"
+      - title: "Creating and visualizing tilesets"
+      - title: "Using the routing module"
+      - title: "Running queries from Builder"
   - title: "Examples"
     folder:
       - title: "Creating simple tilesets"

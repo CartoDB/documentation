@@ -1,6 +1,6 @@
 ## Bikeshare stations within a San Francisco buffer
 
-In this example we are going to showcase how easily we can compute buffers around geometries using the Spatial Extension.
+In this example we are going to showcase how easily we can compute buffers around geometries using the Analytics Toolbox.
 
 ### Creating a buffer of a neighborhood
 

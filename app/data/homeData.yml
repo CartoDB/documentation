@@ -34,8 +34,8 @@ getStarted:
 
 products:
   - title: "CARTO User Manual"
-    description: "Create maps, connect and explore your data warehouse and manage your application tokens."
-    url: "https://docs.carto.com/carto-user-manual/overview/getting-started/#getting-started"
+    description: "Manage your datasets and maps, access your account settings, manage your API keys, and access your public profile."
+    url: "/carto-user-manual/overview/getting-started/#getting-started"
     image: "carto.png"
   # - title: "Spatial Extension for BigQuery"
   #   description: "Unlock Spatial Analytics on your BigQuery"
