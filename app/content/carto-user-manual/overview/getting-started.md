@@ -155,7 +155,7 @@ View your latest content. This module displays the latest maps that you have bee
 
 In this section, you also have quick access to different content pieces to help you get started with CARTO, such as creating maps from your data, developing spatial applications, or learning how to use the Analytics Toolbox.
 
-![Recent maps](/img/cloud-native-workspace/get-started/getting_started.png)
+![Recent maps](/img/cloud-native-workspace/get-started/getting_started_new.png)
 
 #### What’s new
 
