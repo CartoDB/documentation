@@ -22,7 +22,7 @@ stations_nys AS (
   ) AS array_stations
 ),
 voronoi_array AS (
-  SELECT bqcarto.processing.ST_VORONOIPOLYGONS(stations_nys.array_stations, null) AS nested_voronoi
+  SELECT `carto-un`.processing.ST_VORONOIPOLYGONS(stations_nys.array_stations, null) AS nested_voronoi
   FROM stations_nys
 ),
 voronoi_polygons AS (

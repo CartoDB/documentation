@@ -7,7 +7,7 @@ In this example we are going to showcase how easily we can compute buffers aroun
 The following query creates a buffer with a radius of 50 meters around San Francisco's Financial District neighborhood using the `ST_BUFFER` function. The number of steps could be modified in order to make the lines smoother if needed.
 
 ```sql
-SELECT bqcarto.transformations.ST_BUFFER(neighborhood_geom, 50, 'meters', 5) AS geo FROM `bigquery-public-data`.san_francisco_neighborhoods.boundaries WHERE neighborhood = "Financial District"
+SELECT `carto-un`.transformations.ST_BUFFER(neighborhood_geom, 50, 'meters', 5) AS geo FROM `bigquery-public-data`.san_francisco_neighborhoods.boundaries WHERE neighborhood = "Financial District"
 ```
 
 In this visualization you can see the Financial Disctrict (darker blue) and its buffer around it. Notice that buffers radius are not necesarily positive numbers. Negative numbers would generate a buffer in the interior of the district's geomery.
@@ -22,7 +22,7 @@ Now let's use the buffer as a way of defining a bigger region around the Financi
 ```sql
 SELECT ST_GEOGPOINT(d2.longitude,d2.latitude) AS geo FROM `bigquery-public-data`.san_francisco_neighborhoods.boundaries d1,
 `bigquery-public-data`.san_francisco.bikeshare_stations d2
-WHERE d1.neighborhood = "Financial District" AND ST_CONTAINS(bqcarto.transformations.ST_BUFFER(d1.neighborhood_geom, 50, 'meters', 5), ST_GEOGPOINT(d2.longitude, d2.latitude))
+WHERE d1.neighborhood = "Financial District" AND ST_CONTAINS(`carto-un`.transformations.ST_BUFFER(d1.neighborhood_geom, 50, 'meters', 5), ST_GEOGPOINT(d2.longitude, d2.latitude))
 ```
 This query uses the `ST_BUFFER` and `ST_CONTAINS` functions in order to filter those bikeshare stations that are contained inside the buffered geometry. The result is displayed below, where bikeshare stations are represented as yellow dots.
 

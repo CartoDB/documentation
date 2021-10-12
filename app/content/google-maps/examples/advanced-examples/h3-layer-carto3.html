@@ -62,7 +62,7 @@
 
       const jsonData = deck.carto.getData({
         type: deck.carto.MAP_TYPES.QUERY,
-        source: `SELECT AVG(water) AS avg_wa, SUM(water) AS sum_wa, COUNT(*) AS c, bqcarto.h3.ST_ASH3(geo,9) AS hex 
+        source: `SELECT AVG(water) AS avg_wa, SUM(water) AS sum_wa, COUNT(*) AS c, `carto-un`.h3.ST_ASH3(geo,9) AS hex 
                  FROM cartobq.earthengine.first_dataset
                  GROUP BY hex
                  HAVING sum_wa <> 0`,
