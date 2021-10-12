@@ -250,7 +250,7 @@ Once your table or tileset is selected, you can access a preview of the map and 
 
 #### Create Tileset
 
-Check the <a href="https://docs.carto.com/spatial-extension-bq/overview/tilesets/" target="_blank">Tileset</a> reference documentation for a better understanding of what a tileset is and how it works, as well as to get started using the BigQuery Tiler as a solution to visualise massive datasets hosted in CARTO DW connection and BigQuery connections.
+Check the <a href="/analytics-toolbox-bq/overview/tilesets/" target="_blank">Tileset</a> reference documentation for a better understanding of what a tileset is and how it works, as well as to get started using the BigQuery Tiler as a solution to visualise massive datasets hosted in CARTO DW connection and BigQuery connections.
 
 You can create a tileset by clicking on the *Create tileset* button on the top. 
 

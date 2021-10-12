@@ -38,7 +38,7 @@ Next, we will analyze in finer detail the grid cell that we have identified cont
 
 <div class="figures-table" style="text-align:center">
     <figure>
-        <img src="/img/bq-spatial-extension/spatial-indexes/h3-most-starbucks.png" alt="Multiresolution quadkeys">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png" alt="Multiresolution quadkeys">
         <figcaption class="figcaption" style="text-align:center">H3 grid of resolution 4 with 293 Starbucks locations.</figcaption>
     </figure>
 </div>

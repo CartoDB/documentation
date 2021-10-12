@@ -133,7 +133,7 @@ Optionally, you could spend some time and style this layer based on the customer
 {{%/ tutorialStep %}}
 {{% tutorialStep stepName="Find clusters of points"%}}
 
-Now, we are going to modify the SQL Query used to generate the map layer, and we are going to use the [clustering functions](https://docs.carto.com/spatial-extension-bq/sql-reference/clustering/) in CARTO’s Analytics Toolbox to generate 6 clusters (which is the number of stores we want to open).
+Now, we are going to modify the SQL Query used to generate the map layer, and we are going to use the [clustering functions](/analytics-toolbox-bq/sql-reference/clustering/) in CARTO’s Analytics Toolbox to generate 6 clusters (which is the number of stores we want to open).
 
 ```sql
 WITH clustered_points AS
@@ -173,7 +173,7 @@ We are now going to create another layer. In order to do that, click again on �
 
 ![Builder image](/img/get-started/builder_step5a@2x.png)
 
-For this second layer we are going to adapt the previous SQL Query and compute the centroid of each of the clusters using the [transformation functions](https://docs.carto.com/spatial-extension-bq/sql-reference/transformations/) in the Analytics Toolbox; this would give us a potentially optimal location to open each store in the center of each of the previously computed clusters.
+For this second layer we are going to adapt the previous SQL Query and compute the centroid of each of the clusters using the [transformation functions](/analytics-toolbox-bq/sql-reference/transformations/) in the Analytics Toolbox; this would give us a potentially optimal location to open each store in the center of each of the previously computed clusters.
 
 ```sql
 with clustered_points AS

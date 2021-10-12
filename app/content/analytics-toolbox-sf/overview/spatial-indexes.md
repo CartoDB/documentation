@@ -6,15 +6,15 @@ CARTO's Analytics Toolbox provides access to the most popular spatial indexes li
 
 <div class="figures-table">
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/quadkeys-microsoft.jpg" alt="Microsoft Quadkeys">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/quadkeys-microsoft.jpg" alt="Microsoft Quadkeys">
         <figcaption class="figcaption">Quadkey (<a href="https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system">source</a>)</figcaption>
     </figure>
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/h3-uber-globe.png" alt="Uber H3">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/h3-uber-globe.png" alt="Uber H3">
         <figcaption class="figcaption">Uber's H3 (<a href="https://eng.uber.com/h3/">source</a>)</figcaption>
     </figure>
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/s2-florida.gif" alt="S2 indexes">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/s2-florida.gif" alt="S2 indexes">
         <figcaption class="figcaption">S2 (<a href="https://s2geometry.io/devguide/examples/coverings">source</a>)</figcaption>
     </figure>
 </div>
@@ -28,7 +28,7 @@ Quadkey uniquely identifies any of the grid cells (or map tiles) that result fro
 
 <div class="figures-table">
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/quadkeys-multilevel-microsoft.jpg" alt="Multiresolution quadkeys">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/quadkeys-multilevel-microsoft.jpg" alt="Multiresolution quadkeys">
         <figcaption class="figcaption" style="text-align:center">Multiple levels of quadkeys (<a href="https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system">source</a>)</figcaption>
     </figure>
 </div>
@@ -52,7 +52,7 @@ In this module, we also provide the functions necessary to convert quadints into
 
 <div class="figures-table">
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/h3-multilevel-uber.png" alt="Multiresolution quadkeys">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/h3-multilevel-uber.png" alt="Multiresolution quadkeys">
         <figcaption class="figcaption" style="text-align:center">Multiple levels of H3 grids (<a href="https://eng.uber.com/h3">source</a>)</figcaption>
     </figure>
 </div>
@@ -63,7 +63,7 @@ One of the most powerful properties of H3 is that all neighboring hexagons of a 
 
 <div class="figures-table">
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/h3_kring_comparison.png" alt="H3 KRing">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/h3_kring_comparison.png" alt="H3 KRing">
         <figcaption class="figcaption" style="text-align:center">kRings of distance 1, 2 and 3 around an H3 index of resolution 11.</figcaption>
     </figure>
 </div>
@@ -76,7 +76,7 @@ S2 enables the decomposition of the unit sphere into a hierarchy of cells, each 
 
 <div class="figures-table">
     <figure class="figure">
-        <img src="/img/bq-spatial-extension/spatial-indexes/s2-multilevel-google.gif" alt="Multiresolution quadkeys">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/s2-multilevel-google.gif" alt="Multiresolution quadkeys">
         <figcaption class="figcaption" style="text-align:center">S2 cell hierarchy (<a href="https://s2geometry.io/devguide/s2cell_hierarchy">source</a>)</figcaption>
     </figure>
 </div>
@@ -90,7 +90,7 @@ S2 cells are uniquely identified by a 64-bit ID, following a numbering system op
 
 <div class="figures-table" style="text-align:center">
     <figure>
-        <img src="/img/bq-spatial-extension/spatial-indexes/placekey-components.png" alt="Placekey components" style="width:60%">
+        <img src="/img/bq-analytics-toolbox/spatial-indexes/placekey-components.png" alt="Placekey components" style="width:60%">
         <figcaption class="figcaption" style="text-align:center">Placekey components (<a href="https://www.placekey.io">source</a>)</figcaption>
     </figure>
 </div>

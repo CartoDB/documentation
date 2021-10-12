@@ -6,7 +6,7 @@
 
 To create a route, we need a network. Let's extract linestrings from New York's Liberty Island from OpenStreetMap planet ways table in BigQuery to build ourselves a playground.
 
-Be careful, this query scans a lot of data (223GB). You may skip this query by creating directly the `mydataset.liberty_island_linestrings` table from this [Newline-delimited JSON](/img/bq-spatial-extension/routing/liberty_island_linestrings_data.json) using this [schema](/img/bq-spatial-extension/routing/liberty_island_linestrings_schema.json).
+Be careful, this query scans a lot of data (223GB). You may skip this query by creating directly the `mydataset.liberty_island_linestrings` table from this [Newline-delimited JSON](/img/bq-analytics-toolbox/routing/liberty_island_linestrings_data.json) using this [schema](/img/bq-analytics-toolbox/routing/liberty_island_linestrings_schema.json).
 
 
 ```sql
@@ -70,7 +70,7 @@ SELECT
 ```
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/routing/network.png" alt="Network visualization." style="width:70%">
+<img src="/img/bq-analytics-toolbox/routing/network.png" alt="Network visualization." style="width:70%">
 </div>
 
 
@@ -112,7 +112,7 @@ FROM
 Here is the result:
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/routing/shortest_path.png" alt="Shortest path visualization." style="width:70%">
+<img src="/img/bq-analytics-toolbox/routing/shortest_path.png" alt="Shortest path visualization." style="width:70%">
 </div>
 
 
@@ -153,11 +153,11 @@ FROM
 Here is the result. The starting point is highlighted in green. Destination points are colored according to the total length of the shortest path from the origin (darker means further).
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/routing/distance_map.png" alt="Distance map visualization." style="width:70%">
+<img src="/img/bq-analytics-toolbox/routing/distance_map.png" alt="Distance map visualization." style="width:70%">
 </div>
 
 In this GIF we can see all the destination points of the network that are reachable from the origin point, starting with the closest. The compacted network is depicted in gray.
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/routing/distance_map_gif.gif" alt="Distance map visualization gif." style="width:70%">
+<img src="/img/bq-analytics-toolbox/routing/distance_map_gif.gif" alt="Distance map visualization gif." style="width:70%">
 </div>
