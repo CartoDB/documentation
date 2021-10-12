@@ -22,7 +22,7 @@ This new release includes several performance improvements, bug fixes and adds s
 
 <video autoplay="" loop="" muted=""> <source src="https://docs.carto.com/img/news-developers/deckgl-8-6.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
-For further information check the [blog post](https://vis.gl/blog/) and the updated documentation in the official deck.gl [site](https://deck.gl/docs/api-reference/google-maps/overview). We have also updated the documentation and examples in our site both for the [CARTO module](https://docs.carto.com/deck-gl) and the integration with [Google Maps](https://docs.carto.com/google-maps/).
+For further information check the [blog post](https://medium.com/vis-gl/deck-gl-v8-6-now-available-with-deeper-google-maps-support-b734719076a7) and the updated documentation in the official deck.gl [site](https://deck.gl/docs/api-reference/google-maps/overview). We have also updated the documentation and examples in our site both for the [CARTO module](https://docs.carto.com/deck-gl) and the integration with [Google Maps](https://docs.carto.com/google-maps/).
 
 ---
 
