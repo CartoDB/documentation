@@ -197,7 +197,7 @@ R'''(
     geom
     FROM `carto-do-public-data.carto.geography_usa_state_2019`
 ) _a''',
-R'''``carto-un`demos.tilesets.usa_acs_multisource_example`''',
+R'''`bqcartodemos.tilesets.usa_acs_multisource_example`''',
 '''
     {
         "zoom_min": 0,
