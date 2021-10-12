@@ -65,7 +65,7 @@ CALL bqcarto.tiler.CREATE_TILESET(
 
 The [visualization](https://team.carto.com/viewer/user/agraciano/bigquery?config=eyJpbml0aWFsVmlld1N0YXRlIjp7ImxhdGl0dWRlIjo0MC42OTE5MjEwNDgyOTcwNzUsImxvbmdpdHVkZSI6LTczLjkyMDUxOTgxOTI1MjcyLCJ6b29tIjoxMiwicGl0Y2giOjAsImJlYXJpbmciOjAsImRyYWdSb3RhdGUiOmZhbHNlLCJ3aWR0aCI6MTk4NCwiaGVpZ2h0IjoxMTkwLCJhbHRpdHVkZSI6MS41LCJtYXhab29tIjoyMCwibWluWm9vbSI6MCwibWF4UGl0Y2giOjYwLCJtaW5QaXRjaCI6MCwidHJhbnNpdGlvbkR1cmF0aW9uIjoxLCJ0cmFuc2l0aW9uSW50ZXJydXB0aW9uIjoxfSwidmlld3MiOlt7IkBAdHlwZSI6Ik1hcFZpZXciLCJjb250cm9sbGVyIjp0cnVlLCJtYXBTdHlsZSI6IkBAI0NBUlRPX0JBU0VNQVAuREFSS19NQVRURVIifV0sImxheWVycyI6W3siQEB0eXBlIjoiQ2FydG9CUVRpbGVyTGF5ZXIiLCJkYXRhIjoiY2FydG9kYi1nY3AtYmFja2VuZC1kYXRhLXRlYW0uYWdyYWNpYW5vX3Rlc3RzLnBsdXRvX255Y190aWxlc2V0IiwiY3JlZGVudGlhbHMiOnsidXNlcm5hbWUiOiJhZ3JhY2lhbm8iLCJhcGlLZXkiOiJkZWZhdWx0X3B1YmxpYyJ9LCJnZXRGaWxsQ29sb3IiOnsiQEBmdW5jdGlvbiI6ImNvbG9yQ29udGludW91cyIsImF0dHIiOiJZZWFyQnVpbHQiLCJkb21haW4iOlsxODAwLDE5MDAsMTkxMCwxOTIwLDE5MzAsMTk0MCwxOTUwLDE5NjAsMTk3MCwxOTgwLDE5OTAsMjAwMCwyMDA1LDIwMTAsMjAxNSwyMDIwXSwiY29sb3JzIjoiVGVhbCJ9LCJwb2ludFJhZGl1c01pblBpeGVscyI6Miwic3Ryb2tlZCI6ZmFsc2UsImxpbmVXaWR0aE1pblBpeGVscyI6MSwiZ2V0TGluZUNvbG9yIjpbMjU1LDAsMjU1XSwicGlja2FibGUiOnRydWUsImJpbmFyeSI6dHJ1ZSwib25EYXRhRXJyb3IiOnsiQEBmdW5jdGlvbiI6Im9uRGF0YUVycm9yIn19XX0%3D&embed=true) represents older buildings with lighter footprints and more recent ones with darker footprints.
 
-![NYC footprints](/img/bq-spatial-extension/tiler/examples-nyc-footprints.png)
+![NYC footprints](/img/bq-analytics-toolbox/tiler/examples-nyc-footprints.png)
 
 Checkout [this blogpost](https://carto.com/blog/how-to-visualize-urban-growth-spatial-extension-bigquery/) to learn more about this visualization.
 
@@ -101,7 +101,7 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 
 The result is a worldwide map with the requested tiles, including the type of each road.
 
-![Natural Earth Roads](/img/bq-spatial-extension/tiler/examples-naturalearthroads.png)
+![Natural Earth Roads](/img/bq-analytics-toolbox/tiler/examples-naturalearthroads.png)
 
 ### US block groups (polygons)
 
@@ -140,7 +140,7 @@ CALL bqcarto.tiler.CREATE_SIMPLE_TILESET(
 
 Checkout the result:
 
-![US Blockgroup population](/img/bq-spatial-extension/tiler/examples-blockgroup_pop.png)
+![US Blockgroup population](/img/bq-analytics-toolbox/tiler/examples-blockgroup_pop.png)
 
 
 

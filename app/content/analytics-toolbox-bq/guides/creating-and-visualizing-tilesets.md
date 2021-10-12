@@ -7,14 +7,14 @@
 The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-bq/overview/tilesets/#tileset-types-and-procedures). The option _Create tileset_ is available from the Data Explorer for those tables that are too big to be visualized directly and therefore require the creation of a tileset.
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/create_tileset_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/create_tileset_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
 </div>
 
 
 Clicking on the _Create tileset_ button will trigger a tileset creation wizard that you can follow along to configure your tileset. For step-by-step instructions, please visit [this guide](/carto-user-manual/data-explorer/creating-a-tileset-from-your-data/).
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/create_tileset_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/create_tileset_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
 </div>
 
 
@@ -126,7 +126,7 @@ The CARTO Workspace offers access to the Data Explorer, where you will be able t
 The Data Explorer offers a preview of your tilesets and displays their associated details and metadata, such as their size, number of records and statistics regarding the tile sizes per zoom level. Please refer to [this page](/carto-user-manual/data-explorer/introduction/) for more information regarding the Data Explorer.
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/tileset_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/tileset_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
 </div>
 
 ##### Creating maps with tilesets using Builder
@@ -141,37 +141,37 @@ For the latter option, you simply need to follow these simple steps:
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div>
 
 2. Choose the BigQuery connection from where your tileset is accessible.
 3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/tileset_layer_choose_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_choose_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
 </div>
 
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/tileset_layer_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_loaded.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/bq-spatial-extension/tiler/tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 #### From the CARTO Dashboard
 
 After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
-![Your Tilesets](/img/bq-spatial-extension/tiler/guides-your-tilesets.png)
+![Your Tilesets](/img/bq-analytics-toolbox/tiler/guides-your-tilesets.png)
 
 Click in one of the tilesets to visualize it using **Map Viewer**. 
 
-![Tileset Viewer](/img/bq-spatial-extension/tiler/guides-viewer-1.png)
+![Tileset Viewer](/img/bq-analytics-toolbox/tiler/guides-viewer-1.png)
 
 Map Viewer uses CARTO for deck.gl's [declarative styling language](../../../deck-gl/guides/style-language), which makes it easier to create data-driven visualizations. 
 
@@ -199,11 +199,11 @@ Let's create a binned ramp visualization with the `colorBins()` helper function:
 * `domain`: manual classification breaks. Click on [_Open TileJSON_](https://maps-api-v2.us.carto.com/user/ernestomb/bigquery/tileset?source=cartobq.maps.blockgroup_pop&format=tilejson&api_key=default_public) and find the `quantiles` section, which gives you the breaks for different quantile classifications.
 * `colors`: Use an array of RGBA colors `[ [r, g, b, [a]] ]` , or just pick a [CARTOcolors](https://carto.com/carto-colors) ramp and use its name. 
 
-![Tileset Viewer II](/img/bq-spatial-extension/tiler/guides-viewer-2.png)
+![Tileset Viewer II](/img/bq-analytics-toolbox/tiler/guides-viewer-2.png)
 
 Using Google Maps as a basemap is also possible with this tool. Add `"google": true` in the Map Style section, or just use the basemap selector in the top right corner of the screen:
 
-![Tileset Viewer III](/img/bq-spatial-extension/tiler/guides-viewer-3.png)
+![Tileset Viewer III](/img/bq-analytics-toolbox/tiler/guides-viewer-3.png)
 
 ##### Sharing a visualization
 
@@ -213,7 +213,7 @@ For quick sharing and publishing on the web, use the options from the _Share_ me
 
 Clicking on _Publish_ will grant permission in BigQuery to the CARTO Maps API service account, so it can directly fetch and serve the map tiles. Use the _Unpublish_ toggle to revoke the access.
 
-![Tileset Viewer sharing menu](/img/bq-spatial-extension/tiler/guides-sharing.png)
+![Tileset Viewer sharing menu](/img/bq-analytics-toolbox/tiler/guides-sharing.png)
 
 Copy the link or the embed code to share or publish the visualization.
 
@@ -227,7 +227,7 @@ Map Viewer provides some defaults to help you explore your data, but it's possib
 
 For this guide, we will use a tileset that contains every European river. It's available in the CARTO Data Observatory public data project in BigQuery. To visualize it, just type the `bqcartodemos` in the project selector and find the `tilesets` dataset.
 
-![eurivers tileset](/img/bq-spatial-extension/tiler/guides-eurivers.png)
+![eurivers tileset](/img/bq-analytics-toolbox/tiler/guides-eurivers.png)
 
 **Map Style**
 
@@ -235,7 +235,7 @@ By clicking on the icon on the left bar, the Map Style panel will appear, showin
 
 As mentioned before, Map Viewer uses deck.gl's style language. For more detailed information about the language's capabilities, see the complete reference [here](../../../deck-gl/guides/style-language/#api-reference).
 
-![Map Style](/img/bq-spatial-extension/tiler/guides-mapstyle.png)
+![Map Style](/img/bq-analytics-toolbox/tiler/guides-mapstyle.png)
 
 **Basemaps**
 
@@ -245,7 +245,7 @@ Map Viewer offers different basemaps for your visualizations. Click on the icon 
 
 You can also use Google Maps as basemaps, selecting *Roads* or *Satellite*
 
-![Map Style basemap selector](/img/bq-spatial-extension/tiler/guides-basemap-selector.png)
+![Map Style basemap selector](/img/bq-analytics-toolbox/tiler/guides-basemap-selector.png)
 
 **Basic styles**
 
@@ -287,7 +287,7 @@ Another option is using a [CARTOcolors](https://carto.com/carto-colors) palette,
 
 Take a look at the result. Can you appreciate how the hydrographic basins stand out, just by assigning different colors to each river's bearing?  
 
-![Map Style ramp](/img/bq-spatial-extension/tiler/guides-ramp.png)
+![Map Style ramp](/img/bq-analytics-toolbox/tiler/guides-ramp.png)
 
 
 ##### Open TileJSON
@@ -339,7 +339,7 @@ bq query "SELECT 1"
 
 If you get something like this:
 
-![Working CLI](/img/bq-spatial-extension/tiler/working-cli.png)
+![Working CLI](/img/bq-analytics-toolbox/tiler/working-cli.png)
 
 you are good to go and you should install `carto-bq-tiler` like this:
 

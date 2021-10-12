@@ -80,7 +80,7 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
 
 Then we can style our visualization using the properties that we have added:
 
-![NYC happy trees example](/img/bq-spatial-extension/tiler/examples-nychappytrees.png)
+![NYC happy trees example](/img/bq-analytics-toolbox/tiler/examples-nychappytrees.png)
 
 ### 2020 world population
 
@@ -115,4 +115,4 @@ CALL bqcarto.tiler.CREATE_POINT_AGGREGATION_TILESET(
 
   Note that since this dataset contains already aggregated data, it doesn't make sense to visualize it at very high zoom levels, but visualize the data at a country scale.
 
-![2020 worldpop](/img/bq-spatial-extension/tiler/examples-worldpop2020.png)
+![2020 worldpop](/img/bq-analytics-toolbox/tiler/examples-worldpop2020.png)

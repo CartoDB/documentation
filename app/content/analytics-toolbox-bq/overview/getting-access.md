@@ -52,7 +52,7 @@ This connection can be established using your GCP account via **OAuth** authenti
 
 To create a connection with BigQuery from the CARTO Dashboard, go to _Data_, click on _Your Connections_ and create a _New connection_. 
 
-![New Connection](/img/bq-spatial-extension/overview-new-connection.png)
+![New Connection](/img/bq-analytics-toolbox/overview-new-connection.png)
 
 From the list of available connections, choose BigQuery and complete the connection steps. If you choose the _Service Account_ option, it will ask you to upload a service account key in JSON format. 
 
