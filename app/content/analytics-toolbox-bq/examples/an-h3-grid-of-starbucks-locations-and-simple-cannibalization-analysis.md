@@ -10,7 +10,7 @@ The first step is to [import](https://cloud.google.com/bigquery/docs/batch-loadi
 WITH
   data AS (
   SELECT
-    bqcarto.h3.ST_ASH3(geog, 4) AS h3id,
+    `carto-un`.h3.ST_ASH3(geog, 4) AS h3id,
     COUNT(*) AS agg_total
   FROM `cartobq.docs.starbucks_locations_usa`
   GROUP BY h3id
@@ -18,7 +18,7 @@ WITH
 SELECT
   h3id, 
   agg_total,
-  bqcarto.h3.ST_BOUNDARY(h3id) AS geom
+  `carto-un`.h3.ST_BOUNDARY(h3id) AS geom
 FROM
   data
 ```
@@ -47,18 +47,18 @@ Next, we will analyze in finer detail the grid cell that we have identified cont
 WITH
   data AS (
   SELECT
-    bqcarto.h3.ST_ASH3(geog, 9) AS h3id,
+    `carto-un`.h3.ST_ASH3(geog, 9) AS h3id,
     COUNT(*) AS agg_total
   FROM `cartobq.docs.starbucks_locations_usa`
   WHERE
     ST_INTERSECTS(geog,
-      bqcarto.h3.ST_BOUNDARY('8428d55ffffffff'))
+      `carto-un`.h3.ST_BOUNDARY('8428d55ffffffff'))
   GROUP BY h3id
   )
 SELECT
   h3id,
   agg_total,
-  bqcarto.h3.ST_BOUNDARY(h3id) AS geom
+  `carto-un`.h3.ST_BOUNDARY(h3id) AS geom
 FROM
   data
 ```
@@ -71,17 +71,17 @@ We can clearly identify that there are two H3 cells with the highest concentrati
 WITH
   data AS (
   SELECT
-    bqcarto.h3.ST_ASH3(geog, 9) AS h3id,
+    `carto-un`.h3.ST_ASH3(geog, 9) AS h3id,
     COUNT(*) AS agg_total
   FROM `cartobq.docs.starbucks_locations_usa`
   WHERE
     ST_INTERSECTS(geog,
-      bqcarto.h3.ST_BOUNDARY('8428d55ffffffff'))
+      `carto-un`.h3.ST_BOUNDARY('8428d55ffffffff'))
   GROUP BY h3id
   )
 SELECT 
 SUM(agg_total)
 FROM data
-WHERE h3id IN UNNEST(bqcarto.h3.KRING('8928d542c17ffff', 1))
+WHERE h3id IN UNNEST(`carto-un`.h3.KRING('8928d542c17ffff', 1))
 -- 13
 ```

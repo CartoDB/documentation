@@ -40,7 +40,7 @@ Produces a table with the result of the input query and some additional attribut
 {{%/ customSelector %}}
 
 ```sql
-CALL bqcarto.geocoding.GEOCODE_BATCH(
+CALL `carto-un`.geocoding.GEOCODE_BATCH(
   'SELECT id, city, state, country FROM `my-project.my-dataset.my-table`',
   'city', 'country', 'state',
   ['`my-project.my-dataset.my-geododed-table`'],
@@ -83,7 +83,7 @@ Produces a table with the result of the input query and some additional attribut
 {{%/ customSelector %}}
 
 ```sql
-CALL bqcarto.geocoding.GEOCODE_PC_BATCH(
+CALL `carto-un`.geocoding.GEOCODE_PC_BATCH(
   'SELECT id, zip, FROM `my-project.my-dataset.my-table`',
   'zip', "'US'",
   ['`my-project.my-dataset.my-geododed-table`'],
@@ -112,6 +112,6 @@ Returns the current version of the geocoding module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.geocoding.VERSION();
+SELECT `carto-un`.geocoding.VERSION();
 -- 1.0.0-beta.2
 ```

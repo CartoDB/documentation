@@ -14,8 +14,8 @@ point_data AS (
     FROM UNNEST (GENERATE_ARRAY(11, 15)) AS resolution
 ),
 quadkey_tiles AS (
-    SELECT bqcarto.quadkey.ZXY_FROMQUADINT(
-            bqcarto.quadkey.LONGLAT_ASQUADINT(longitude, latitude, resolution)
+    SELECT `carto-un`.quadkey.ZXY_FROMQUADINT(
+            `carto-un`.quadkey.LONGLAT_ASQUADINT(longitude, latitude, resolution)
         ) AS index
     FROM point_data
 )
@@ -23,7 +23,7 @@ SELECT ANY_VALUE(census.geom) AS area, MAX(index.z) AS level
 FROM quadkey_tiles
 JOIN census_data AS census
 ON 
-ST_INTERSECTS(bqcarto.constructors.ST_TILEENVELOPE(index.z, index.x, index.y), census.geom)
+ST_INTERSECTS(`carto-un`.constructors.ST_TILEENVELOPE(index.z, index.x, index.y), census.geom)
 GROUP BY census.geoid
 ```
 

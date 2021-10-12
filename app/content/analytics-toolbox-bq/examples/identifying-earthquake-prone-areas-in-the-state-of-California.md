@@ -6,7 +6,7 @@ First we define our region of interest, which in this case is a bounding box enc
 
 ```sql
 WITH bounds AS (
-    SELECT bqcarto.constructors.ST_MAKEENVELOPE(-126.98746757203217, 31.72298737861544, -118.1856191911019, 40.871240645013735) AS bbox
+    SELECT `carto-un`.constructors.ST_MAKEENVELOPE(-126.98746757203217, 31.72298737861544, -118.1856191911019, 40.871240645013735) AS bbox
 ),
 data AS (
     SELECT ST_GEOGPOINT(longitude, latitude) AS points
@@ -16,15 +16,15 @@ data AS (
     WHERE longitude IS NOT NULL AND latitude IS NOT NULL
 ),
 bezier_spline AS (
-    SELECT bqcarto.constructors.ST_BEZIERSPLINE(
+    SELECT `carto-un`.constructors.ST_BEZIERSPLINE(
         ST_BOUNDARY(
-        bqcarto.transformations.ST_CONCAVEHULL(ARRAY_AGG(points), 300, "kilometres")), 
+        `carto-un`.transformations.ST_CONCAVEHULL(ARRAY_AGG(points), 300, "kilometres")), 
         null,
         0.9) AS geom
     FROM data
 ),
 polygon_array AS (
-    SELECT bqcarto.processing.ST_POLYGONIZE(ARRAY_AGG(geom)) AS geom
+    SELECT `carto-un`.processing.ST_POLYGONIZE(ARRAY_AGG(geom)) AS geom
     FROM bezier_spline
 ) 
 SELECT unnested FROM polygon_array, UNNEST(geom) AS unnested

@@ -122,7 +122,7 @@ import { H3HexagonLayer } from '@deck.gl/geo-layers/';
 
 const result =  await getData({
   type: MAP_TYPES.QUERY,
-  source: `SELECT bqcarto.h3.ST_ASH3(internal_point_geom, 4) as h3, count(*) as count
+  source: `SELECT `carto-un`.h3.ST_ASH3(internal_point_geom, 4) as h3, count(*) as count
               FROM bigquery-public-data.geo_us_census_places.us_national_places 
             GROUP BY h3`,
   connection: 'connection_name',
