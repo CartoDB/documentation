@@ -250,31 +250,35 @@ Once your table or tileset is selected, you can access a preview of the map and 
 
 #### Create Tileset
 
-Check the <a href="/analytics-toolbox-bq/overview/tilesets/" target="_blank">Tileset</a> reference documentation for a better understanding of what a tileset is and how it works, as well as to get started using the BigQuery Tiler as a solution to visualise massive datasets hosted in CARTO DW connection and BigQuery connections.
+{{% bannerNote title="ONLY FOR BIGQUERY AND CARTO DATA WAREHOUSE CONNECTIONS" type="tip" %}}
+Creating tilesets is currently only available from BigQuery and CARTO Data Warehouse connections.
+{{%/ bannerNote %}}
 
-You can create a tileset by clicking on the *Create tileset* button on the top. 
+Check the <a href="/analytics-toolbox-bq/overview/tilesets/" target="_blank">Tileset</a> reference documentation for a better understanding of what a tileset is and how it works, as well as to get started using the BigQuery Tiler as a solution to visualise massive datasets hosted in BigQuery and CARTO Data Warehouse connections.
+
+You can create a tileset by clicking on the *Create tileset* button at the top right of the screen. Please note that this option will only be available for those tables that require a tileset to be visualized entirely due to their size. 
 
 ![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_table2.png)
 
 A new dialog will open so you can create the tileset from a *form* mode or from a *sql* mode. You are initially presented with a *form* mode to configure the tileset. 
 
-This interface will allow you to select the tileset zoom leves and identify the output table. Once you have configured it, click on *Continue* : 
+This interface will allow you to select the tileset zoom levels, choose the geometry column and set the location and name of the output table. Once you have completed this configuration, click on *Continue* :
 
 ![Data Explorer create tileset (settings)](/img/cloud-native-workspace/data-explorer/de_create_tileset(settings).png)
 
-The next interface will allow you to easily select and expect what columns will be loaded in a tileset. After selecting the columns to include in the tileset, click on *Continue* : 
+The next screen will allow you to easily select the attributes of your table that will be included in the tileset. After completing this step, click on *Continue* :
 
 ![Data Explorer create tileset (attributes)](/img/cloud-native-workspace/data-explorer/de_create_tileset(attributes_selected).png)
 
-The last interface will show you the location and attributes of the new tileset. To confirm, click on *Create* :
+The last screen will show you a summary of the configuration of the tileset for your confirmation. To confirm, click on *Create* :
 
 ![Data Explorer create tileset (confirmation)](/img/cloud-native-workspace/data-explorer/de_create_tileset(confirmation).png)
 
-You can also switch to enable the *SQL editor* and have access to advanced options for editing parameters. To confirm, click on *Create* :
+At any point of the process you can switch to enable the *SQL editor*. This editor allows you to configure your tileset directly on the query that will be run to create it, therefore allowing you to edit all of the advanced options available. Once you have finished editing the SQL query, click on *Create*:
 
 ![Data Explorer create tileset sql editor](/img/cloud-native-workspace/data-explorer/de_create_tileset_sql_editor.png)
 
-If you edit the SQL query and goes back to the form, a message appears warning you that all changes will be lost. Click on *Clear* to accept this or click on *Cancel* to cancel the tileset creation process:
+Please note that if you edit the SQL query and go back to the form, a message appears warning you that all changes will be lost. Click on *Clear* to accept this or click on *Cancel* to continue editing:
 
 ![Data Explorer create tileset disable sql editor](/img/cloud-native-workspace/data-explorer/de_disable_sql_editor.png)
 #### Enrich your data with the Data Observatory
