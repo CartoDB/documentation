@@ -1,5 +1,12 @@
 ## Release notes
 
+### October 1, 2021
+
+#### Module quadkey v1.0.6
+
+fixed
+- Fix ST_BOUNDARY for level 1 and 2.
+
 ### September 24, 2021
 
 #### Module geocoding v1.0.0-beta.2

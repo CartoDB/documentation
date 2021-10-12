@@ -54,7 +54,7 @@
             {{$isActive := eq $file $context.File.Path}}
             <a href="{{($context.GetPage (printf "%s%s" "/" $file)).Permalink}}" class="toc--link level-one {{ if $isActive }}is-current{{ end }}">{{$elem}}</a>
           {{end}}
-        {{end}}        
+        {{end}}
       </div>
     </div>
   </div>
@@ -176,7 +176,6 @@
           {{end}}
         {{end}}
       {{end}}
-
     </div>
   </div>
 </aside>
