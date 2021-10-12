@@ -10,6 +10,11 @@
       "source": "/spatial-extension-bq/**",
       "destination": "/analytics-toolbox-bq/",
       "type": 302
+    },
+    {
+      "source": "/spatial-extension-sf/**",
+      "destination": "/analytics-toolbox-sf/",
+      "type": 302
     }]
   }
 }
