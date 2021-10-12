@@ -7,13 +7,28 @@
       "**/node_modules/**"
     ],
     "redirects": [{
+      "source": "/spatial-extension-bq",
+      "destination": "/analytics-toolbox-bq",
+      "type": 301
+    }, {
       "source": "/spatial-extension-bq/**",
-      "destination": "/analytics-toolbox-bq/",
+      "destination": "/analytics-toolbox-bq",
       "type": 302
-    },
-    {
+    }, {
+      "source": "/spatial-extension-bq/**/",
+      "destination": "/analytics-toolbox-bq",
+      "type": 302
+    }, {
+      "source": "/spatial-extension-sf",
+      "destination": "/analytics-toolbox-sf",
+      "type": 301
+    }, {
       "source": "/spatial-extension-sf/**",
-      "destination": "/analytics-toolbox-sf/",
+      "destination": "/analytics-toolbox-sf",
+      "type": 302
+    }, {
+      "source": "/spatial-extension-sf/**/",
+      "destination": "/analytics-toolbox-sf",
       "type": 302
     }]
   }
