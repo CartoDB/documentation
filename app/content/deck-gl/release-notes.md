@@ -1,5 +1,15 @@
 ## Release notes
 
+### v8.6 - October 12, 2021
+
+- Default to binary mode in `MVTLayer`
+- Include API error at the exception message
+- Add geoColumn & columns props to `CartoLayer`
+- Fix `MVTLayer` autoHighlight with binary data
+- Check for correct layerName when highlighting in `MVTLayer`
+
+In addition to these changes to the CARTO for deck.gl module and the `MVTLayer`, we have also implemented support for the new Google Maps vector rendering features in the Google Maps module.
+
 ### v8.5 - July 26, 2021
 
 - CARTO 3 integration
