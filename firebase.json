@@ -7,17 +7,9 @@
       "**/node_modules/**"
     ],
     "redirects": [{
-      "source": "/spatial-extension-bq/tiler/map-viewer/",
-      "destination": "/spatial-extension-bq/guides/tilesets/#map-viewer",
-      "type": 301
-    },{
-      "source": "/spatial-extension-bq/tiler/examples/",
-      "destination": "/spatial-extension-bq/examples/tilesets",
-      "type": 301
-    },{
-      "source": "/spatial-extension-bq/tiler/cli-tool/",
-      "destination": "/spatial-extension-bq/guides/tilesets/#cli-tool",
-      "type": 301
+      "source": "/spatial-extension-bq/**",
+      "destination": "/analytics-toolbox-bq/",
+      "type": 302
     }]
   }
 }
