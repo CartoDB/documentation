@@ -2,7 +2,7 @@
 
 <div class="badges"><div class="core"></div></div>
 
-You can learn more about quadkeys and quandints in the [Overview section](/spatial-extension-bq/overview/spatial-indexes/#quadkey) of the documentation.
+You can learn more about quadkeys and quandints in the [Overview section](/analytics-toolbox-bq/overview/spatial-indexes/#quadkey) of the documentation.
 
 ### BBOX
 
@@ -89,15 +89,15 @@ Returns all cell indexes and their distances in a **filled square k-ring** cente
 
 ```sql
 SELECT carto-os.quadkey.KRING_DISTANCES(4388, 1);
--- {"index": "4388", "distance": "0"}
--- {"index": "4932", "distance": "1"}
--- {"index": "4900", "distance": "1"}
--- {"index": "4868", "distance": "1"}
--- {"index": "4420", "distance": "1"}
--- {"index": "4356", "distance": "1"}
--- {"index": "3908", "distance": "1"}
--- {"index": "3876", "distance": "1"}
--- {"index": "3844", "distance": "1"}
+-- {"index": 4388, "distance": 0}
+-- {"index": 4932, "distance": 1}
+-- {"index": 4900, "distance": 1}
+-- {"index": 4868, "distance": 1}
+-- {"index": 4420, "distance": 1}
+-- {"index": 4356, "distance": 1}
+-- {"index": 3908, "distance": 1}
+-- {"index": 3876, "distance": 1}
+-- {"index": 3844, "distance": 1}
 ```
 
 {{% bannerNote type="note" title="tip"%}}
