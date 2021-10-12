@@ -26,7 +26,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     When a user initiates the process to create an organization, CARTO will detect if their e-mail domain is already associated with an existing CARTO organization. If so, the user is allowed to choose to either create a brand new organization or to join one of the existing organizations that have been detected under the same domain. When joining an existing organization, there are two options available: to join the organization directly (if the admin allows through a specific organization setting), or to request access and wait for the admin to approve your request.
 
-    ![Organization setup](/img/cloud-native-workspace/get-started/organization_detected_multiple.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/organization_setup_detected_multiples.png)
 
     **Create a new organization**:
 
@@ -71,7 +71,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     - Choose **Join** an organization or **Request access** to an organization. 
 
-    ![Organization setup](/img/cloud-native-workspace/get-started/organization_detected_multiple.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/organization_setup_detected_multiples.png)
 
     If you select to **Join** the organization directly, you will need to enter additional information before accessing the CARTO Workspace.
 
@@ -103,7 +103,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     If you select **Request access**, the request will be sent to the organization administrator and your access will be on hold until it is accepted:
 
-    ![Organization setup](/img/cloud-native-workspace/get-started/organization_request_sent.png)
+    ![Organization setup](/img/cloud-native-workspace/get-started/organization_request_sentt.png)
 
     You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different organization to join or create a new organization. If it is accepted, you will be redirected to the personal information form which needs to be filled in before having access to the CARTO Workspace.
 
