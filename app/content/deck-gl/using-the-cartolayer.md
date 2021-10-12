@@ -99,7 +99,13 @@ If you are using CARTO 2, there are some differences you need to take into accou
 
 {{%/ bannerNote %}}
 
+### Geometry column
 
+By default, the data source you specify in the `data` property must contain a column named "geom" with the geometry. If the column containing the geometry has a different name, you can still use it but you need to do the following:
+
+- If the `type` is `MAP_TYPES.QUERY`, you need to alias the geometry column to `geom`
+
+- If the `type` is `MAP_TYPES.TABLE`, you need to specify the name of the column containing the geometry using the [`geoColumn`](/deck-gl/reference#geocolumn-string-optional) property.
 
 ### Support for other deck.gl layers
 
