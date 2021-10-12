@@ -1,11 +1,11 @@
 ## Sample Application
 
-A full sample-application with the most common functionality for creating LI Apps is also available at https://sample-app-react.carto.com.
+A full CARTO 2 sample-application with the most common functionality for creating LI Apps is also available at https://sample-app-react.carto.com.
 
 To download it to your local environment or use it to kickstart an application, just run:
 
 ```bash
-npx create-react-app my-app --template @carto/sample-app
+npx create-react-app my-app --template @carto/sample-app-2
 cd my-app
 yarn start
 ```

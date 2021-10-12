@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.4.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.4.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
 
     <script src="https://unpkg.com/supercluster@6.0.2/dist/supercluster.min.js"></script>
     
@@ -91,7 +91,7 @@
       // Create a Deck.gl map and use your IconClusterLayer with your CARTO dataset
       const deckgl = new DeckGL({
         container: 'map',
-        mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+        mapStyle: deck.carto.BASEMAP.VOYAGER,
 
         initialViewState: {
           latitude: 0,

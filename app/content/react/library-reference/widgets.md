@@ -1,33 +1,37 @@
 ## Widgets
 
+{{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-widgets  | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/v/@carto/react-widgets.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-widgets">  <img src="https://img.shields.io/npm/dt/@carto/react-widgets.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
+{{%/ tableWrapper %}}
 
 A set of advanced widgets, which allow not only a visual representation but a rich interaction with data & map layers, such as filtering or an automatic data refresh on viewport change, thanks to the connection with the CARTO slice on redux.
 
-**Tip:** To review interactively the widgets, check the [Storybook catalogue](https://storybook-react.carto.com/)
+This package, `@carto/react-widgets` contains the widgets business logic and the `@carto/react-ui` package contains the user interface components. The UI is decoupled from the business logic so you can provide your own user interface or modify the business logic. To review interactively the UI for the widgets, check the [Storybook catalogue](https://storybook-react.carto.com/).
 
 ### Components
+
 #### CategoryWidget
 
 Renders a `<CategoryWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features.
 
 - **Input**:
-
-  | Param                   | Type                  | Default         | Description                                                                                                                         |
-  | ----------------------- | --------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-  | props                   |                       |                 |                                                                                                                                     |
-  | props.id                | <code>string</code>   |                 | ID for the widget instance.                                                                                                         |
-  | props.title             | <code>string</code>   |                 | Title to show in the widget header.                                                                                                 |
-  | props.dataSource        | <code>string</code>   |                 | ID of the data source to get the data from.                                                                                         |
-  | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
-  | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-  | [props.operationColumn] | <code>string</code>   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`.                                      |
-  | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
-  | [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
-  | [props.onError]         | <code>function</code> |                 | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
-  | [props.wrapperProps]    | <code>Object</code>   |                 | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{% tableWrapper tab="true" %}}
+| Param                   | Type                  | Default         | Description                                                                                                                         |
+| ----------------------- | --------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| props                   | <code>Object</code> |                 |                                                                                                                                     |
+| props.id                | <code>string</code>   |                 | ID for the widget instance.                                                                                                         |
+| props.title             | <code>string</code>   |                 | Title to show in the widget header.                                                                                                 |
+| props.dataSource        | <code>string</code>   |                 | ID of the data source to get the data from.                                                                                         |
+| props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
+| props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
+| [props.operationColumn] | <code>string</code>   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`.                                      |
+| [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
+| [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
+| [props.onError]         | <code>function</code> |                 | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
+| [props.wrapperProps]    | <code>Object</code>   |                 | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -60,17 +64,19 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 
 - **Input**:
 
-  | Param                | Type                       | Default | Description                                                                                                                         |
-  | -------------------- | -------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-  | props                |                            |         |                                                                                                                                     |
-  | props.id             | <code>string</code>        |         | ID for the widget instance.                                                                                                         |
-  | props.title          | <code>string</code>        |         | Title to show in the widget header.                                                                                                 |
-  | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
-  | props.column         | <code>string</code>        |         | Name of the data source's column to get the data from.                                                                              |
-  | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-  | [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
-  | [props.onError]      | <code>errorCallback</code> |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
-  | [props.wrapperProps] | <code>Object</code>        |         | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{% tableWrapper tab="true" %}}
+| Param                | Type                       | Default | Description                                                                                                                         |
+| -------------------- | -------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| props                | <code>Object</code> |         |                                                                                                                                     |
+| props.id             | <code>string</code>        |         | ID for the widget instance.                                                                                                         |
+| props.title          | <code>string</code>        |         | Title to show in the widget header.                                                                                                 |
+| props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
+| props.column         | <code>string</code>        |         | Name of the data source's column to get the data from.                                                                              |
+| props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
+| [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
+| [props.onError]      | <code>errorCallback</code> |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
+| [props.wrapperProps] | <code>Object</code>        |         | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -94,42 +100,31 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
   );
   ```
 
-#### GeocoderWidget
-
-Renders a `<GeocoderWidget />` component
-
-- **Input**:
-
-  | Param             | Type                  | Description                                                                    |
-  | ----------------- | --------------------- | ------------------------------------------------------------------------------ |
-  | props             |                       |                                                                                |
-  | props.id          | <code>string</code>   | ID for the widget instance.                                                    |
-  | [props.className] | <code>Object</code>   | (optional) Material-UI withStyle class for styling                             |
-  | [props.onError]   | <code>function</code> | (optional) _errorCallback_: Function to handle error messages from the widget. |
-
 #### HistogramWidget
 
 Renders a `<HistogramWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features.
 
 - **Input**:
 
-  | Param                  | Type                              | Default | Description                                                                                                              |
-  | ---------------------- | --------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
-  | props                  |                                   |         |                                                                                                                          |
-  | props.id               | <code>string</code>               |         | ID for the widget instance.                                                                                              |
-  | props.title            | <code>string</code>               |         | Title to show in the widget header.                                                                                      |
-  | props.dataSource       | <code>string</code>               |         | ID of the data source to get the data from.                                                                              |
-  | props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
-  | props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
-  | props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, 1 to 5, 5 to 10 and >10)                   |
-  | [props.xAxisformatter] | <code>function</code>             |         | (optional) _formatterCallback_: Function to format X axis values.                                                        |
-  | [props.formatter]      | <code>function</code>             |         | (optional) _formatterCallback_: Function to format tooltip and Y axis values.                                            |
-  | [props.onError]        | <code>function</code>             |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                           |
-  | [props.wrapperProps]   | <code>Object</code>               |         | Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{% tableWrapper tab="true" %}}
+| Param                  | Type                              | Default | Description                                                                                                              |
+| ---------------------- | --------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------ |
+| props                  |  <code>Object</code>  |         |                                                                                                                          |
+| props.id               | <code>string</code>               |         | ID for the widget instance.                                                                                              |
+| props.title            | <code>string</code>               |         | Title to show in the widget header.                                                                                      |
+| props.dataSource       | <code>string</code>               |         | ID of the data source to get the data from.                                                                              |
+| props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
+| props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
+| props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, 1 to 5, 5 to 10 and >10)                   |
+| [props.xAxisFormatter] | <code>function</code>             |         | (optional) _formatterCallback_: Function to format X axis values.                                                        |
+| [props.formatter]      | <code>function</code>             |         | (optional) _formatterCallback_: Function to format tooltip and Y axis values.                                            |
+| [props.onError]        | <code>function</code>             |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                           |
+| [props.wrapperProps]   | <code>Object</code>               |         | Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{%/ tableWrapper %}}
 
 - **Example**:
 
-  In this example, the widget would display the number of stores in different ranks, based on their number of sales
+  In this example, the widget would display the number of stores in different ranks, based on their number of sales.
 
   ```js
   import { HistogramWidget } from "@carto/react-widgets";
@@ -150,23 +145,209 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
   // bins for the histogram would be <10, 10 to 100, 100 to 500, 500 to 1000 and > 1000
   ```
 
+#### LegendWidget
+
+Renders a `<LegendWidget />` component. The widget can display a switch to show or hide a layer and a legend for the layer. The legend representation depends on the legend type. You can check the available `LEGEND_TYPES` [here](../ui/#legend_types). The widget accesses the layer information from the store and add the legend for those layers where it has been specified.
+
+- **Input**:
+
+{{% tableWrapper tab="true" %}}
+| Param         | Type           | Default       | Description    |
+| ------------- | -------------- | ------------- | -------------- |
+| props         | <code>Object</code>               |               |                |
+| [props.className] | <code>string</code>   |         | (optional) Material-UI withStyle class for styling |
+{{%/ tableWrapper %}}
+
+You can control the legend options through the following properties that must be added to the `layerAttributes` property for the layer in the store:
+
+{{% tableWrapper tab="true" %}}
+| Param         | Type           | Default       | Description    |
+| ------------- | -------------- | ------------- | -------------- |
+| title         | `string`       |               | Layer title    |
+| switchable    | `boolean`      | `true`        | Whether the layer can be hide/shown |
+| legend        | `Object`       |               | Legend properties |
+| legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
+| legend.attr   | `string`       |               | Attribute used for styling the layer |
+| legend.colors | `Array` or `string` |               | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP` |
+| legend.labels | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
+|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps). |
+|               |                |               | - Array of `[min, max]` numbers for `LEGEND_TYPES.PROPORTION`. |
+| legend.icons  | `Array`        |               | Array of string with icons URLs. Used for `LEGEND_TYPES.ICON`. |
+| legend.note   | `string`       |               | Note to show below th  legend to add additional explanations. |
+| legend.collapsible | `boolean` | `true`        | Whether the legend is collapsible or not. |
+{{%/ tableWrapper %}}
+
+
+- **Example**:
+
+  If you want to show a legend for a layer, you need to do the following:
+  
+  1. Define some layer attributes (`layerConfig`) before you instantiate the layer. Here we are going to create a `LEGEND_TYPES.BINS` type legend where we are assigning colors and labels to the different legend elements. We use the same colors in the CARTO for deck.gl `colorBins` helper when creating the layer. 
+  
+  2. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action. It is important that we call the original `onDataLoad` handler defined in the `useCartoLayerProps` hook for the other widgets in the app to work.
+  
+  3. Make sure the layer visibility is controlled through the `visible` attribute in the store
+
+  ```js
+  import { LEGEND_TYPES } from "@carto/react-ui";
+  import { updateLayer } from "@carto/react-redux";
+  import { CartoLayer, colorBins } from "@deck.gl/carto";
+
+  export const COLORS = [
+    [247, 254, 174],
+    [183, 230, 165],
+    [124, 203, 162],
+    [70, 174, 160],
+    [4, 82, 117],
+  ];
+
+  export const LABELS = [
+    '$100M',
+    '$500M',
+    '$1B',
+    '$1.5B',
+  ];
+
+  const layerConfig = {
+    title: 'Layer Name',
+    visible: true,
+    legend: {
+      attr: 'revenue',
+      type: LEGEND_TYPES.BINS,
+      labels: LABELS,
+      colors: COLORS.map((color) => rgbToHex(color)),
+    },
+  };
+
+  const { myLayer } = useSelector((state) => state.carto.layers);
+  const source = useSelector((state) => selectSourceById(state, myLayer?.source));
+  const cartoLayerProps = useCartoLayerProps({ source });
+
+  if (myLayer && source) {
+    return new CartoLayer({
+      ...cartoLayerProps,
+      id: MY_LAYER_ID,
+      visible: myLayer.visible,
+      getFillColor: colorBins({
+        attr: layerConfig.legend.attr,
+        domain: [100e6, 500e6, 1e9, 1.5e9],
+        colors: COLORS,
+      }),
+      onDataLoad: (data) => {
+        dispatch(
+          updateLayer({
+            id: MY_LAYER_ID,
+            layerAttributes: { ...layerConfig },
+          })
+        );
+        cartoLayerProps.onDataLoad(data);
+      }
+    });
+  }
+  ```
+
+  Now you can add the `LegendWidget` component. If you are using the CARTO for React templates, you can add it to the `MapContainer` component so it is shown for all views or add it to a particular view to show it in the sidebar just for that view. In this example, the widget uses a custom CSS class.
+
+  ```js
+  import { LegendWidget } from "@carto/react-widgets";
+
+  return (
+    <LegendWidget className={myCSSClassName} />
+  );
+  ```
+
+   {{% bannerNote title="tip" %}}
+   If you just want layer switching functionality for a layer (show/hide) but you don't want to add a legend, you can just create an empty object for the legend:
+
+   ```js
+   const layerConfig = {
+     title: 'Layer Name',
+     visible: true,
+     legend: {},
+   };
+   ```
+   {{%/ bannerNote %}}
+
 #### PieWidget
 
 Renders a `<PieWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features. From a data perspective, PieWidget would present a behaviour equivalent to CategoryWidget (groups or 'categories' from a column, with an aggregated calculation), but with a different UI.
 
 - **Input**:
 
-  | Param                    | Type                           | Default            | Description                                                                                                                         |
-  | ------------------------ | ------------------------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-  | props                    |                                |                    |                                                                                                                                     |
-  | props.id                 | <code>string</code>            |                    | ID for the widget instance.                                                                                                         |
-  | props.title              | <code>string</code>            |                    | Title to show in the widget header.                                                                                                 |
-  | props.dataSource         | <code>string</code>            |                    | ID of the data source to get the data from.                                                                                         |
-  | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
-  | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-  | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
-  | [props.operationColumn]  | <code>string</code>            |                    | Name of the data source's column to operate with. If not defined it will default to the one defined in `column`.                    |
-  | [props.formatter]        | <code>function</code>          |                    | (optional) _formatterCallback_: Function to format each value returned.                                                             |
-  | [props.tooltipFormatter] | <code>formatterCallback</code> |                    | (optional) _formatterCallback_: Function to return the HTML of the tooltip.                                                         |
-  | [props.onError]          | <code>errorCallback</code>     |                    | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
-  | [props.wrapperProps]     | <code>Object</code>            |                    | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{% tableWrapper tab="true" %}}
+| Param                    | Type                           | Default            | Description                                                                                                                         |
+| ------------------------ | ------------------------------ | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| props                    | <code>Object</code> |                    |                                                                                                                                     |
+| props.id                 | <code>string</code>            |                    | ID for the widget instance.                                                                                                         |
+| props.title              | <code>string</code>            |                    | Title to show in the widget header.                                                                                                 |
+| props.dataSource         | <code>string</code>            |                    | ID of the data source to get the data from.                                                                                         |
+| props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
+| props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
+| props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
+| [props.operationColumn]  | <code>string</code>            |                    | Name of the data source's column to operate with. If not defined it will default to the one defined in `column`.                    |
+| [props.formatter]        | <code>function</code>          |                    | (optional) _formatterCallback_: Function to format each value returned.                                                             |
+| [props.tooltipFormatter] | <code>formatterCallback</code> |                    | (optional) _formatterCallback_: Function to format the tooltip values.                                                         |
+| [props.onError]          | <code>errorCallback</code>     |                    | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
+| [props.wrapperProps]     | <code>Object</code>            |                    | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, the widget would display a pie chart by continent with the SUM of population for all the countries in that continent
+
+  ```js
+  import { PieWidget } from "@carto/react-widgets";
+
+  return (
+    <PieWidget
+      id="populationByContinent"
+      title="Population by continent"
+      dataSource="countriesSourceId"
+      column="continent"
+      operationColumn="population"
+      operation={AggregationTypes.SUM}
+    />
+  );
+
+  // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
+  ```
+
+#### ScatterPlotWidget
+
+Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features. From a data perspective, the ScatterPlotWidget represents two properties/columns in a cartesian chart from a data source to help understand if there is correlation between them.
+
+- **Input**:
+
+{{% tableWrapper tab="true" %}}
+| Param        | Type          | Default          | Description         |
+| ------------ | ------------- | ---------------- | ------------------- |
+| props        | <code>Object</code> |            |                     |
+| props.id     | <code>string</code> |            | ID for the widget instance. |
+| props.title  | <code>string</code> |            | Title to show in the widget header. |
+| props.dataSource | <code>string</code> |        | ID of the data source to get the data from. |
+| props.xAxisColumn | <code>string</code> |            | Name of the data source's column to get the data for the X axis from. |
+| props.yAxisColumn | <code>string</code> |            | Name of the data source's column to get the data for the Y axis from. |
+| [props.xAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values.  |
+| [props.yAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values. |
+| [props.tooltipFormatter] | <code>formatterCallback</code> |  | (optional) _formatterCallback_: Function to format the tooltip values. |
+| [props.onError] | <code>errorCallback</code> |  | (optional) _errorCallback_: Function to handle error messages from the widget. |
+| [props.wrapperProps] | <code>Object</code> |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, the widget would display the values from the size and revenue columns.
+
+  ```js
+  import { ScatterPlotWidget } from "@carto/react-widgets";
+
+  return (
+    <ScatterPlotWidget
+      id="sizeRevenueCorrelation"
+      title="Size / Revenue"
+      dataSource="storesSourceId"
+      xAxisColumn="size"
+      yAxisColumn="revenue"
+    />
+  );
+  ```

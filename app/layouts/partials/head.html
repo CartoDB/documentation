@@ -19,7 +19,9 @@
   <link rel="canonical" href="{{.Permalink}}">
   <link rel="mask-icon" href="/img/logo/icon-carto.svg" color="#162945">
 
-  {{if .Params.title}}
+  {{if .CurrentSection.Params.title}}
+    <title>{{.CurrentSection.Params.title}}{{" | "}}{{ .Site.Title }}</title>
+  {{else if .Params.title}}
     <title>{{.Params.title}}{{" | "}}{{ .Site.Title }}</title>
   {{else}}
     <title>{{ .Site.Title }}</title>
@@ -29,10 +31,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;600&family=Overpass+Mono&display=swap" rel="stylesheet">
 
-  {{if eq .Params.title "Spatial Extension for BigQuery"}}
+  {{if eq .CurrentSection.Params.title "Analytics Toolbox for BigQuery"}}
     {{ $styles := resources.Get "scss/main-bq.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
-  {{else if eq .Params.title "Spatial Extension for Snowflake"}}
+  {{else if eq .CurrentSection.Params.title "Analytics Toolbox for Snowflake"}}
     {{ $styles := resources.Get "scss/main-sf.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
   {{else}}

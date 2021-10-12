@@ -1,11 +1,12 @@
 ## Auth
 
+{{% tableWrapper %}}
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
-| @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" /></a> | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" /></a>
+| @carto/react-auth  | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/v/@carto/react-auth.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/react-auth">  <img src="https://img.shields.io/npm/dt/@carto/react-auth.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a>
+{{%/ tableWrapper %}}
 
-
-OAuth utilities
+This package contains some OAuth utilities for implementing authentication and authorization against the CARTO 2 platform. If you are building an application with CARTO 3, you should use [Auth0 React SDK](https://auth0.com/docs/quickstart/spa/react) instead of this package.
 
 ### Components
 
@@ -33,13 +34,15 @@ Hook to perform login against CARTO, with OAuth implicit flow and using a popup.
 
 - **Input**:
 
-  | Param                      | Type                              | Description                                |
-  | -------------------------- | --------------------------------- | ------------------------------------------ |
-  | oauthApp                   | <code>Object</code>               | OAuth parameters                           |
-  | oauthApp.clientId          | <code>string</code>               | Application client ID                      |
-  | oauthApp.scopes            | <code>Array.&lt;string&gt;</code> | Scopes to request                          |
-  | oauthApp.authorizeEndPoint | <code>string</code>               | Authorization endpoint                     |
-  | onParamsRefreshed          | <code>function</code>             | Function to call when params are refreshed |
+{{% tableWrapper tab="true" %}}
+| Param                      | Type                              | Description                                |
+| -------------------------- | --------------------------------- | ------------------------------------------ |
+| oauthApp                   | <code>Object</code>               | OAuth parameters                           |
+| oauthApp.clientId          | <code>string</code>               | Application client ID                      |
+| oauthApp.scopes            | <code>Array.&lt;string&gt;</code> | Scopes to request                          |
+| oauthApp.authorizeEndPoint | <code>string</code>               | Authorization endpoint                     |
+| onParamsRefreshed          | <code>function</code>             | Function to call when params are refreshed |
+{{%/ tableWrapper %}}
 
 - **Returns**: <code>function</code> - A function to trigger oauth with a popup
 

@@ -3,6 +3,7 @@
   "title": "CARTO Documentation",
   "disableKinds": ["taxonomy", "term", "RSS", "robotsTXT", "404"],
   "assetDir": "assets",
+  "baseURL": "https://docs.carto.com/",
   "contentDir": "content",
   "layoutDir": "layouts",
   "dataDir": "data",

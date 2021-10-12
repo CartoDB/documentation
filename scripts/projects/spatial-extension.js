@@ -5,7 +5,7 @@ const path = require('path');
 
 const cloud = process.env.CLOUD || '';
 const cloudCode = { bigquery: 'bq', snowflake: 'sf' }[cloud];
-const targetPath = path.join(`./app/content/spatial-extension-${cloudCode}`);
+const targetPath = path.join(`./app/content/analytics-toolbox-${cloudCode}`);
 
 const index = [];
 let changelogs = [];
@@ -47,6 +47,7 @@ function updateOverview () {
 
 The CARTO Spatial Extension's functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.
 
+{{% tableWrapper %}}
 | Module | Type | Function or Procedure |
 | :----- | :------ | :------ |
 `;
@@ -59,6 +60,8 @@ The CARTO Spatial Extension's functions are organized in modules based on the fu
         content += `| ${module} | ${type} |<ul style="list-style:none">${functions.map(f => `<li><a href="../${module}/#${f.toLowerCase()}">${f.toUpperCase()}</a></li>`).join('')}</ul>|\n`;
     });
 
+    content += '{{%/ tableWrapper %}}'
+    
     console.log(`- Update overview`);
     fs.writeFileSync(path.join(targetPath, 'sql-reference', 'overview.md'), content);
 }

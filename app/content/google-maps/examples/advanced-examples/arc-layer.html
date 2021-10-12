@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arc Layer</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <style>
+      #map {
+        height: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div id="map"></div>
+
+    <script  
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=beta"
+      async
+    ></script>
+
+  </body>
+
+  <script type="text/javascript">
+    let map;
+
+    function initMap() {
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: 30, lng: 10 },
+        zoom: 2,
+        tilt: 30,
+        mapId: '716bc8b1cc71ef3b',
+        fullscreenControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_BOTTOM,
+        },
+      });
+
+      deck.carto.setDefaultCredentials({
+        username: 'public',
+        apiKey: 'default_public'
+      });
+
+      // Fetch Data from CARTO
+      // Notice that you can use any Deck.gl layer with CARTO datasets getting GeoJSON data from CARTO's API.
+      const fetchData = () => {
+        const url = 'https://public.carto.com/api/v2/sql?q=SELECT the_geom, scalerank FROM airports_to_london WHERE scalerank > 7&format=geojson';
+        return(fetch(url).then(response => response.json()));
+      }
+
+      const deckOverlay = new deck.GoogleMapsOverlay({
+        layers: [
+          new deck.ArcLayer({
+            id: 'arc-layer',
+            data: fetchData().then(geojsonData => geojsonData.features),
+            getSourcePosition: f => [-0.4531566, 51.4709959], // London
+            getTargetPosition: f => f.geometry.coordinates,
+            getSourceColor: [0, 128, 200],
+            getTargetColor: [200, 0, 80],
+            getWidth: 1
+          })
+        ]
+      });
+
+      deckOverlay.setMap(map);
+    }
+
+  </script>
+</html>

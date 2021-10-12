@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  </body>
+
+  <script type="text/javascript">
+    deck.carto.setDefaultCredentials({
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      apiVersion: deck.carto.API_VERSIONS.V3,
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+    });
+
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
+
+      initialViewState: {
+        latitude: 0,
+        longitude: 0,
+        zoom: 1,
+      },
+      controller: true,
+
+      layers: [
+        new deck.carto.CartoLayer({
+          connection: 'bqconn',
+          type: deck.carto.MAP_TYPES.QUERY,
+          data: 'SELECT geom, country_name FROM cartobq.public_account.world_population_2015',
+          getFillColor: [238, 77, 90],
+          pointRadiusMinPixels: 4,
+          pickable: true,
+        }),
+      ],
+      getTooltip: ({ object }) => 
+        object && {
+          html: `
+            <strong>Country</strong>: ${object.properties.country_name}<br/>
+            <strong>Longitude</strong>: ${object.geometry.coordinates[0].toFixed(6)}<br/>
+            <strong>Latitude</strong>: ${object.geometry.coordinates[1].toFixed(6)}
+          `
+        },
+    });
+  </script>
+</html>

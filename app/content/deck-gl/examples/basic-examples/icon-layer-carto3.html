@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  </body>
+
+  <script type="text/javascript">
+
+    const ICON_MAPPING = {
+      marker: {x: 0, y: 0, width: 24, height: 24, mask: true}
+      // ... you can set different mappings and use them by key at getIcon function
+    };
+
+    deck.carto.setDefaultCredentials({
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      apiVersion: deck.carto.API_VERSIONS.V3,
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+    });
+
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
+
+      initialViewState: {
+        latitude: 0,
+        longitude: 0,
+        zoom: 1
+      },
+      controller: true,
+
+      layers: [
+        new deck.carto.CartoLayer({
+          connection: 'bqconn',
+          type: deck.carto.MAP_TYPES.QUERY,
+          data: 'SELECT geom, country_name FROM cartobq.public_account.world_population_2015',
+
+          pointType: 'icon',
+
+          pickable: true,
+          getIconSize: d => 24,
+          getIconColor: d => [255, 140, 0], // Remember to set mask to true in your icon mapping to enable colouring
+          getIcon: d => 'marker',
+          iconMapping: ICON_MAPPING,
+          
+          iconAtlas: 'https://s3.amazonaws.com/com.cartodb.users-assets.production/maki-icons/marker-stroked-24.svg?req=markup',
+
+          getPosition: d => d.geometry.coordinates
+        })
+      ]
+    });
+
+  </script>
+</html>
