@@ -10,7 +10,7 @@ From the *Layers* tab, go to the *Sources* panel and click on *Add source from..
 
 ![Add source select a connection](/img/cloud-native-workspace/maps/map_add_source_select_a_connection.png)
 
-![Add source select a table](/img/cloud-native-workspace/maps/map_add_source_tablee.png)
+![Add source select a table](/img/cloud-native-workspace/maps/map_add_source_table.png)
 
 Once the process is finished, the table or tileset is included in the Builder map as a new layer. The map displays the basemap and the new layer on top. You can add additional layers, or start applying styling and analysis features.
 	
@@ -22,19 +22,19 @@ Once you have added your datasets to the map, you can visualize the data table. 
 
 By clicking the *tree dots* icon the Column Context menu will reveal additional options such as: Sort on this column, ascending or descending, Pin the column so you can freeze it in the first position, and copy column data.
 
-![Map view table column](/img/cloud-native-workspace/maps/map_table_column.png)
+![Map table column](/img/cloud-native-workspace/maps/map_table_column.png)
 
 Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*.
 
-![Map source options view data table](/img/cloud-native-workspace/maps/map_source_options.png)
+![Map source options delete source](/img/cloud-native-workspace/maps/map_source_options.png)
 
 ### Add source from a custom query
 
 Go to *Sources* and click *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
 
-![Add source custom query](/img/cloud-native-workspace/maps/map_add_source_type_custom_query.png)
+![Add source custom query](/img/cloud-native-workspace/maps/map_add_source_custom_query.png)
 
-![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_add_analysis_query.png)
+![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_analysis_query.png)
 
 Once the process is finished, the SQL console appears in the Builder interface, where you can type your query and then click *Run*. Please make sure to use *Fully Qualified Table* names.
 

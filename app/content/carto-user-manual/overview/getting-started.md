@@ -12,7 +12,7 @@ Follow these simple steps to access the CARTO Workspace:
     - Enter your email address and password. You can also sign up with your existing Google account by clicking *Continue with Google*.
     - Once you have entered your credentials: click *Continue*.
 
-    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_password(new).png)
+    ![Sign up Email and password](/img/cloud-native-workspace/get-started/signup_email_password.png)
     - Verify your email with the link sent to your existing email address.
     - Click *Verify email* in the email sent.
 
@@ -20,13 +20,13 @@ Follow these simple steps to access the CARTO Workspace:
 
     - Click *Back to Login/Signup*.
 
-    ![Email verified](/img/cloud-native-workspace/get-started/signup_email_is_verified.png)
+    ![Email verified](/img/cloud-native-workspace/get-started/signup_email_verified.png)
 
 2. **Organization setup**
 
     When a user initiates the process to create an organization, CARTO will detect if their e-mail domain is already associated with an existing CARTO organization. If so, the user is allowed to choose to either create a brand new organization or to join one of the existing organizations that have been detected under the same domain. When joining an existing organization, there are two options available: to join the organization directly (if the admin allows through a specific organization setting), or to request access and wait for the admin to approve your request.
 
-    ![Organization setup](/img/cloud-native-workspace/get-started/organization_setup_detected_multiples.png)
+    ![Organization setup detected multiple](/img/cloud-native-workspace/get-started/organization_setup_detected_multiple.png)
 
     **Create a new organization**:
 
@@ -71,7 +71,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     - Choose **Join** an organization or **Request access** to an organization. 
 
-    ![Organization setup](/img/cloud-native-workspace/get-started/organization_setup_detected_multiples.png)
+    ![Organization setup detected multiple](/img/cloud-native-workspace/get-started/organization_setup_detected_multiple.png)
 
     If you select to **Join** the organization directly, you will need to enter additional information before accessing the CARTO Workspace.
 
@@ -103,7 +103,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     If you select **Request access**, the request will be sent to the organization administrator and your access will be on hold until it is accepted:
 
-    ![Organization setup](/img/cloud-native-workspace/get-started/organization_request_sentt.png)
+    ![Organization setup request sent](/img/cloud-native-workspace/get-started/organization_request_sent.png)
 
     You will receive an email to your existing email address informing you whether your request has been accepted or declined. If it is declined, you have the possibility to select a different organization to join or create a new organization. If it is accepted, you will be redirected to the personal information form which needs to be filled in before having access to the CARTO Workspace.
 
@@ -142,7 +142,7 @@ When you log in to your CARTO user account, you will be presented with your Work
 
 The first time that you access the Workspace, you will see a *Welcome* banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. By clicking the link in this banner, you can easily connect your data warehouse(s) to start using CARTO. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
 
-![Welcome banner](/img/cloud-native-workspace/get-started/homepage_first_landing.png)
+![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png)
 
 #### Recent maps
 
@@ -150,25 +150,23 @@ View your latest content. This module displays the latest maps that you have bee
 
 ![Recent maps](/img/cloud-native-workspace/get-started/recent_maps.png)
 
-
 #### Getting started
 
 In this section, you also have quick access to different content pieces to help you get started with CARTO, such as creating maps from your data, developing spatial applications, or learning how to use the Analytics Toolbox.
 
-![Recent maps](/img/cloud-native-workspace/get-started/getting_started_new.png)
+![Getting started](/img/cloud-native-workspace/get-started/getting_started.png)
 
 #### What’s new
 
 Announcements of new features, interesting articles, and the latest news related to CARTO from our <a href="https://carto.com/blog" target="_blank">blog</a>.
 
-![Recent maps](/img/cloud-native-workspace/get-started/what_is_new(new).png)
+![What is new](/img/cloud-native-workspace/get-started/what_is_new.png)
 
 #### Navigation Menu
 
 In the left panel, you can find the *Navigation Menu* with all the available options to access the CARTO components: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
 
 ![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
-
 ### Quickstart guide to create your first map
 
 #### Introduction
@@ -183,7 +181,7 @@ Once you have registered a connection to a data warehouse, you can start using y
 
 Go to the *Connections* section in the Workspace, where you can find the list of all your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_module_cartodw.png)
+![Connections module cartodw](/img/cloud-native-workspace/connections/the_connections_module_cartodw.png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
@@ -197,7 +195,7 @@ The following screen shows the connection setup options for Google Cloud BigQuer
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections with the new one added:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful.png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_connection_successful.png)
 
 #### Create a map
 
@@ -215,7 +213,7 @@ The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 
 4. In this example we are going to use a table from our BigQuery connection. Select the table from the list and click *Add source*.
 
-![Add source table](/img/cloud-native-workspace/maps/map_add_source_tablee.png)
+![Add source table](/img/cloud-native-workspace/maps/map_add_source_table.png)
 
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
 	
@@ -258,7 +256,7 @@ Check the <a href="/analytics-toolbox-bq/overview/tilesets/" target="_blank">Til
 
 You can create a tileset by clicking on the *Create tileset* button at the top right of the screen. Please note that this option will only be available for those tables that require a tileset to be visualized entirely due to their size. 
 
-![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_table2.png)
+![Data Explorer preview table2](/img/cloud-native-workspace/data-explorer/de_preview_table2.png)
 
 A new dialog will open so you can create the tileset from a *form* mode or from a *sql* mode. You are initially presented with a *form* mode to configure the tileset. 
 

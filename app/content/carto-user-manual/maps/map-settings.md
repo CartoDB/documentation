@@ -6,8 +6,6 @@ Once your data sources are connected to your map, as explained in this [guide](.
 
 When opening a map, all added layers for the selected map appear in the left side panel. The layers list appears by default, displaying the basemap and map data layer(s) that are the backbone for your visualization.
 
-![Map layers](/img/cloud-native-workspace/maps/map_paris.png)
-
 The following features are available in the list of layers of your map in Builder:
 
 - **Layers label:** layers are provided with a label that is created alphabetically (A, B, C, D). Also each layer is labeled with a unique color to help you distinguish them. Each layer icon displays the geometry type behind the data as either a point, line, polygon, or empty.
@@ -26,7 +24,7 @@ The following features are available in the list of layers of your map in Builde
 
 ![Map layers settings](/img/cloud-native-workspace/maps/map_layer_style.png)
 
-![Map layers rename](/img/cloud-native-workspace/maps/map_layer_renamed2.png)
+![Map layers rename](/img/cloud-native-workspace/maps/map_layer_renamed.png)
 
 - **Duplicate layer:** click on *Duplicate layer* to create a copy of your layer and to add it to the map.
 
@@ -34,7 +32,7 @@ The following features are available in the list of layers of your map in Builde
 
 - **Show/hide layer:** to show/hide the layer in the map.
 
-![Map layers show or hide](/img/cloud-native-workspace/maps/map_layer_hidee.png)
+![Map layers show or hide](/img/cloud-native-workspace/maps/map_layer_hide.png)
 
 - **Remove layer:** click on *Delete layer* to remove a layer from the map.
 
@@ -50,7 +48,7 @@ This guide describes how to add interactive widgets to view your map data in CAR
 
 In the *Wiget* tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map widgets](/img/cloud-native-workspace/maps/maps_new_widgets.png)
+![Map widgets add new widget](/img/cloud-native-workspace/maps/maps_add_new_widget.png)
 
 Click on *New widget* button to start interacting with your data:
 
@@ -83,7 +81,7 @@ Select the CARTO Basemap menu to see different basemap options. They include:
 - **Positron**: light basemap with dark-colored text.
 - **Dark**: dark basemap with light-colored text.
 
-![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_cartoo.png)
+![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_carto.png)
 
 Select the Google Maps Basemap menu to see different basemap options. They include:
 
@@ -103,4 +101,4 @@ Select the Google Maps Basemap menu to see different basemap options. They inclu
 - Water: displays bodies of water.
 - Land: Shows parks, mountains, and other landscape features.
 
-![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_showss.png)
+![Basemap layers](/img/cloud-native-workspace/maps/map_basemap_layers.png)

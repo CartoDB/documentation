@@ -4,7 +4,7 @@ This guide describes how you can publish and share any CARTO map using CARTO Bui
 
 From an open map in Builder, click the SHARE button on the top-left to open the publishing options. 
 
-![Publish options share link](/img/cloud-native-workspace/maps/map_sharelink_button.png) 
+![Publish options share link button](/img/cloud-native-workspace/maps/map_sharelink_button.png) 
 
 The publishing options display the Share Link and the Developers options. You can toggle between these subtabs and select the option you are interested in. 
 
@@ -12,7 +12,7 @@ The publishing options display the Share Link and the Developers options. You ca
 
 ![Publish options share link copied](/img/cloud-native-workspace/maps/map_sharelink_copied.png)
 
-![Publish options developers](/img/cloud-native-workspace/maps/map_developers_option.png)
+![Publish options developers](/img/cloud-native-workspace/maps/map_developers_options.png)
 
 Once your map is public, you can manage whether new changes to the map will be updated on the published map or not. In case you want the public map to show the changes, click on the *Publish map* icon:
 
