@@ -104,15 +104,15 @@ Click *Save* for saving your changes.
 
 In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
-![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications(new2).png)
+![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
 You can access the quick actions menu to manafe your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete. You can also copy the application ID by hovering your mouse over and clicking on it.
 
-![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions(new2).png)
+![Developers application actions](/img/cloud-native-workspace/developers/developers_application_actions.png)
 
 If you click the *Edit* quick action, you will be redirected to a dialog to edit application parameters. This dialog contains the same form that you filled out when creating the application, showing the current values.
 
-![Developers edit application](/img/cloud-native-workspace/developers/developers_editing_applications(new).png)
+![Developers edit application](/img/cloud-native-workspace/developers/developers_editing_applications.png)
 
 After editing the built application parameters, click the *Save changes* button. A popup will appear informing you that the app has been successfully created. Otherwise, click *Cancel* if you don’t want the changes to be applied.
 
@@ -120,25 +120,25 @@ After editing the built application parameters, click the *Save changes* button.
 
 In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
-![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications(new2).png)
+![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
 You can access the quick actions menu to manage your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete.
 
-![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions(new2).png)
+![Developers application actions](/img/cloud-native-workspace/developers/developers_application_actions.png)
 
 If you click the *Delete* quick action, a dialog will appear so you can confirm that you want to delete the selected applicationn. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 
-![Developers delete application](/img/cloud-native-workspace/developers/developers_deleting_applications(new).png)
+![Developers delete application](/img/cloud-native-workspace/developers/developers_deleting_applications.png)
 
 #### Copying ID
 
 In the *Built applications* section of the Workspace, you will see the list of your currently built applications:
 
-![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications(new2).png)
+![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
 If you hover your mouse over the id, a popup 'Copy ID' will appear, and you can copy the id by clicking on it. Once you have copied the id, a popup will appear indicating that the url has been copied. 
 
-![Developers application actions](/img/cloud-native-workspace/developers/developers_built_applications_actions(new2).png)
+![Developers application actions copy ID](/img/cloud-native-workspace/developers/developers_application_actions.png)
 
 ### Guide
 

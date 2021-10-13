@@ -142,7 +142,7 @@ In the example, we can now explore as a 3D map those polygons with a higher popu
 
 You can choose either a Additive, Normal, or Substractive.
 
-![Map style layer blending](/img/cloud-native-workspace/maps/map_layer_blending2.png)
+![Map style layer blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
 ### Legend
 
 Apply a map legend to show symbols and text that describe your data in CARTO Builder.
