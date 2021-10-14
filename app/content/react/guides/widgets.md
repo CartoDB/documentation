@@ -154,7 +154,7 @@ Requires/accepts the following additional properties:
 | `stepSize` | Time interval size |
 | `stepSizeOptions` | Available time interval sizes |
 | `duration` | Animation duration |
-| `chartType` | Selected chart type (line or bar) |
+| `chartType` | Selected chart type: line chart (default) or bar chart |
 | `tooltip` | Whether to show or not the tooltip |
 | `timeWindow` | Interval for the currently selected time window |
 | `showControls` | Whether to show or not the controls (play, pause, stop, speed selection...) |
