@@ -7,8 +7,8 @@ You can use widgets in your application to provide advanced functionality for ex
   - [Histogram](#histogram-widget)
   - [Legend](#legend-widget)
   - [Pie](#pie-widget)
-  - [Scatter Plot](#scatter-plot-widget)
-  - [Time Series](#time-series-widget)
+  - [ScatterPlot](#scatterplot-widget)
+  - [TimeSeries](#timeseries-widget)
 
 The widgets are implemented combining the functionality of three different library packages:
 
@@ -119,7 +119,7 @@ Requires/accepts the following additional properties:
 | `height`     | Chart height (CSS) |
 | `tooltipFormatter`  | Formatter for the tooltip |
 
-### Scatter Plot widget
+### ScatterPlot widget
 
 Represents two properties/columns in a cartesian chart from a data source to help understand if there is correlation between them.
 
@@ -135,7 +135,7 @@ Requires/accepts the following additional properties:
 | `yAxisFormatter`   | Function to format X axis values. |
 | `tooltipFormatter` | Function to format the tooltip values. |
 
-### Time Series widget
+### TimeSeries widget
 
 Groups features into time intervals and allows to play an animation that filters the features displayed based on the current interval. 
 
