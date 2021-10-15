@@ -1,5 +1,16 @@
 ## Release notes
 
+### October 15, 2021
+
+#### Module data v1.1.0
+
+Fixed
+- Enrichment results could mix input rows and values, specially for large inputs due
+  to multiple evaluation of nondeterministic ROW_NUMBERS expression.
+
+Changes
+- New API, with consistent naming of procedures.
+
 ### October 1, 2021
 
 #### Module quadkey v1.0.6

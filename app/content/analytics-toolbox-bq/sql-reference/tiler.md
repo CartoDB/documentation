@@ -2,7 +2,7 @@
 
 <div class="badges"><div class="advanced"></div></div>
 
-We currently provide procedures to create two types of tilesets: _simple_ and _aggregation_ tilesets, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview](/analytics-toolbox-bq/overview/tilesets/#tileset-types-and-procedures) section to learn more about tileset types and which procedures to use in each case.
+We currently provide procedures to create two types of tilesets: _simple_ and _aggregation_ tilesets, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview](/spatial-extension-bq/overview/tilesets/#tileset-types-and-procedures) section to learn more about tileset types and which procedures to use in each case.
 
 ### CREATE_POINT_AGGREGATION_TILESET
 
