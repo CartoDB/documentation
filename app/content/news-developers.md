@@ -26,6 +26,24 @@ For further information check the [blog post](https://medium.com/vis-gl/deck-gl-
 
 ---
 
+### Support for the new CARTO platform in deck.gl 8.5
+
+##### 2021-07-26
+
+The release of deck.gl 8.5 adds support in our module for the upcoming version of the CARTO platform, to be released later this year. Now you can access directly datasets and tilesets hosted on your cloud data warehouse (BigQuery, Snowflake, Redshift, PostgreSQL), without needing to import first the data in the CARTO platform.
+
+The CARTO module now includes a new [CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer) with support for all the different versions of the CARTO Maps API. You can migrate your existing code using [CartoSQLLayer](https://deck.gl/docs/api-reference/carto/carto-sql-layer#migration-to-cartolayer) and [CartoBQTilerLayer](https://deck.gl/docs/api-reference/carto/carto-bqtiler-layer#migration-to-cartolayer) by following the instructions in the docs. 
+
+We have also added a new [getData](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function to provide better support for other deck.gl layers (ArcLayer, Heatmap, H3HexagonLayer...) when working with the new version of the platform. You can retrieve the data in different formats like GeoJSON, JSON and NDJSON (to handle incremental loading).
+
+In this version we have improved the support for vector tiles and the [MVTLayer](https://deck.gl/docs/api-reference/geo-layers/mvt-layer) is now 2x-3x faster processing tiles. You will experience improved performance with both the current and upcoming version of the platform. 
+
+<video autoplay="" loop="" muted=""> <source src="https://docs.carto.com/img/news-developers/trips-layer.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+
+See [what's new](https://deck.gl/docs/whats-new#deckgl-v85) in this release and check the updated documentation in the official deck.gl [site](https://deck.gl/docs/api-reference/carto/overview). We have also updated the documentation and examples within the [CARTO for deck.gl](https://docs.carto.com/deck-gl) section in our docs.
+
+---
+
 ### Enhancing Geospatial in BigQuery with CARTO's Analytics Toolbox
 
 ##### 2021-04-29
