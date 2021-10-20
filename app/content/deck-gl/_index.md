@@ -27,6 +27,7 @@ menu:
           - title: "Color Bins Style"
           - title: "Color Categories Style"
           - title: "Color Continuous Style"
+          - title: "Proportional Symbol Map"
       - title: "Clustering and Aggregation"
         folder:
           - title: "Clustering"
