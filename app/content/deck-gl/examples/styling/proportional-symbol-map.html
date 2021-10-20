@@ -23,8 +23,6 @@
       apiKey: 'default_public',
     });
 
-    let zoom = 1.5;
-
     const deckgl = new deck.DeckGL({
       container: 'map',
       mapStyle: deck.carto.BASEMAP.DARK_MATTER,
@@ -32,13 +30,9 @@
       initialViewState: {
         latitude: 15,
         longitude: 10,
-        zoom: zoom,
+        zoom: 1.5,
       },
       controller: true,
-
-      onViewStateChange: ({viewState}) => {
-        zoom = viewState.zoom;
-      },
 
       layers: [
         new deck.carto.CartoLayer({
@@ -70,15 +64,12 @@
           getLineColor: [255, 255, 255, 204],
           pointRadiusUnits: 'pixels',
           getPointRadius: (d) => {
-            // Proportional symbol map + zoom based styling
-            // Maximum symbol size: 30 px * zoom level
+            // Proportional symbol map 
+            // Maximum symbol size: 30 px 
             // Maximum population square root (China): 27620.2642999664
-            return 30.0 * zoom * Math.sqrt(d.properties.pop_2015) / 27620.2642999664;
+            return 30.0 * Math.sqrt(d.properties.pop_2015) / 27620.2642999664;
           },
           lineWidthMinPixels: 1,
-          updateTriggers: {
-            getRadius: [zoom]
-          },
           pickable: true,
         }),
       ],
