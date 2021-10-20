@@ -46,7 +46,11 @@ We are going to start by adding a map with 3D terrain. Please check [this exampl
 
 ### Adding data from CARTO
 
-In order to visualize a CARTO dataset, you need to fetch data from the CARTO platform. With CARTO Maps API v3 you have the possibility of retrieving data in GeoJSON format. In order to do that, you first set your credentials and then you can use the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function from the [CARTO module](https://deck.gl/docs/api-reference/carto/overview) for [deck.gl](https://deck.gl). Once you have retrieved the data, you can just add a new source to the map with `geojson` type.
+In order to visualize a CARTO dataset, you need to fetch data from the CARTO platform. With CARTO Maps API v3 you can add two different types of sources: GeoJSON and tilesets (vector). 
+
+- For adding a source with GeoJSON format you first set your credentials and then you can use the [`getData`](https://deck.gl/docs/api-reference/carto/overview#support-for-other-deckgl-layers) function from the [CARTO module](https://deck.gl/docs/api-reference/carto/overview) for [deck.gl](https://deck.gl). Once you have retrieved the data, you can just add a new source to the map with `geojson` type.
+
+- For adding a tileset, you can need to provide the TileJSON URL when adding your vector source. This URL needs the connection name and the access token. Please check the [tileset example](/mapbox-gl-js/examples/tileset).
 
 {{% bannerNote title="About CARTO platform versions" %}}
 In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
@@ -76,8 +80,8 @@ map.addSource('trails', {
 In order to achieve optimal performance, we recommend you to retrieve only the fields you want to use client-side, instead of selecting all the fields (`SELECT *`). If you select all the fields from the dataset, the vector tiles or GeoJSON objects will be bigger than needed and would take more time to encode, download, and decode.
 {{%/ bannerNote %}}
 
-{{% bannerNote title="note" %}}
-If you are working with the CARTO 2 platform (Maps API v2), you just need to provide a [TileJSON](https://github.com/mapbox/tilejson-spec) URL using the Maps API within a source of type vector while you are creating your layer using the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
+{{% bannerNote title="Working with CARTO 2" %}}
+If you are working with the CARTO 2 platform (Maps API v2), the source consists always of vector tiles and the approach is very similar to tilesets with CARTO 3. You just need to provide the [TileJSON](https://github.com/mapbox/tilejson-spec) URL using the Maps API within a source of type vector while you are creating your layer using the [`addLayer`](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addlayer) method on the map. We also need to indicate the ID for the layer and the styling properties:
 
 ```js
 const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';

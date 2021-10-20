@@ -12,5 +12,6 @@ menu:
     folder:
       - title: "Hello World"
       - title: "Terrain"
+      - title: "Tileset"
   - title: "Whats New"
 ---
