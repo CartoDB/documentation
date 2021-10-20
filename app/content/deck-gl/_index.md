@@ -10,6 +10,7 @@ indexPage: "getting-started.md"
 menu:
   - title: "Getting started"
   - title: "Using the CartoLayer"
+  - title: "Customizing the CartoLayer style"
   - title: "Examples"
     folder:
       - title: "Gallery"
@@ -26,6 +27,8 @@ menu:
           - title: "Color Bins Style"
           - title: "Color Categories Style"
           - title: "Color Continuous Style"
+          - title: "Proportional Symbol Map"
+          - title: "Zoom Based Styling"
       - title: "Clustering and Aggregation"
         folder:
           - title: "Clustering"
