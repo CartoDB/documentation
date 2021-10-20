@@ -28,6 +28,7 @@ menu:
           - title: "Color Categories Style"
           - title: "Color Continuous Style"
           - title: "Proportional Symbol Map"
+          - title: "Zoom Based Styling"
       - title: "Clustering and Aggregation"
         folder:
           - title: "Clustering"
