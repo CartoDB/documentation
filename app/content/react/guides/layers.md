@@ -139,9 +139,9 @@ If you use the code generator, the code will create a `CartoLayer` with default 
 
 ### useCartoLayerProps
 
-The last parameter passed to the layer constructor is `...cartoLayerProps`. This is a set of default properties that are used mainly for filtering and highlight features. You can get more details about the `useCartoLayerProps` hook in the [library reference](../../library-reference/api/#usecartolayerprops). 
+The first parameter passed to the layer constructor when using the code generator is `...cartoLayerProps`. This is a set of default properties that are used mainly for setting the source properties, and filtering and highlighting features. You can get more details about the `useCartoLayerProps` hook in the [library reference](../../library-reference/api/#usecartolayerprops). 
 
-If you need to override the [`uniqueidproperty`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer#uniqueidproperty), used in vector tile layers to identify features, you need to specify it when you call the hook. This is useful for filtering and highlighting when a feature crosses or is present in multiple tiles:
+If you need to override the [`uniqueIdProperty`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer#uniqueidproperty), used in vector tile layers to identify features, you need to specify the property name when you call the hook. This is useful for filtering and highlighting when a feature crosses or is present in multiple tiles:
 
 
 ```javascript
@@ -152,12 +152,27 @@ If you need to override any of the properties configured by the hook, you must i
 
 ```javascript
 return new CartoLayer({
-  ...,
   ...cartoLayerProps,
+  ...
   updateTriggers: { // below the cartoLayerProps hook, otherwise it will be overwritten
     ...cartoLayerProps.updateTriggers, // getting existing update triggers
     accessor: data_property // the trigger (accessor will be re-evaluated if data_property changes)
   }
+  ...
+});
+```
+
+The `useCartoLayerProps` hook also defines handlers for `CartoLayer` events like `onDataLoad` or `onViewportLoad`. If you need to add additional functionality to these handlers, you can listen to the events but you must call the original handler to ensure the app keeps working as expected:
+
+```javascript
+return new CartoLayer({
+  ...cartoLayerProps,
+  ...
+  onDataLoad: (data) => {
+    ...  // Your code here
+    cartoLayerProps.onDataLoad(data);
+  }
+  ...
 });
 ```
 
