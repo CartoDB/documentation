@@ -13,7 +13,7 @@ The following screen shows the connection setup options for Google Cloud BigQuer
 
 After you have provided the connection parameters, click *Connect*. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_successful.png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_connection_successful.png)
 
 Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the  *Data Explorer* ).
 
@@ -35,7 +35,7 @@ When you select the BigQuery connector in the *New connection* dialog, you will 
 Click the *Connect using a service account* button. You will see the form where you need to provide your connection parameters:
 
 - **Name** for your connection: You can register different connections with the BigQuery connector. You can use the name to identify the different connections.
-- **Service account key file** in JSON format. Please read the following instructions to create a <a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" target="_blank">service account</a> and a service account <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank">key file</a>. We will use this service account to list tilesets, visualize them privately, and grant publishing permissions. Be sure that the service account has <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Data Owner</a> (bigquery.dataOwner) and <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Job User</a> (bigquery.jobUser). Read our <a href="https://docs.carto.com/spatial-extension-bq/overview/getting-started/" target="_blank">documentation</a> if you want to learn about the specific permissions CARTO requires.
+- **Service account key file** in JSON format. Please read the following instructions to create a <a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" target="_blank">service account</a> and a service account <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank">key file</a>. We will use this service account to list tilesets, visualize them privately, and grant publishing permissions. Be sure that the service account has <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Data Owner</a> (bigquery.dataOwner) and <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Job User</a> (bigquery.jobUser). Read our <a href="https://docs.carto.com/analytics-toolbox-bq/overview/getting-started/" target="_blank">documentation</a> if you want to learn about the specific permissions CARTO requires.
 - **Billing project**: having entered the previous parameters, a selector for choosing the billing project will be enabled, enabling CARTO to run queries using your service account.
 
 ![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)

@@ -6,6 +6,10 @@
 
 The [CartoLayer](/deck-gl/using-the-cartolayer) is the deck.gl layer that provides the integration with the CARTO platform. This layer can be used from different frameworks like React, Angular, or Vue.js. It works with both CARTO 2 and CARTO 3.
 
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
+{{%/ bannerNote %}}
+
 We have provided many examples that you can study to see how to use the deck.gl library with our platform. Please take a look at the [examples](examples/basic-examples/hello-world.html) section in this site and the examples in the [viz-doc](https://github.com/CartoDB/viz-doc/tree/master/deck.gl/examples) repository. 
 
 It is important that you begin by learning the core deck.gl concepts. Please check the [official deck.gl documentation site](https://deck.gl/docs).

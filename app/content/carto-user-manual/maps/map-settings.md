@@ -1,56 +1,60 @@
 ## Map settings
 
-### LAYERS
+### Layers
 
 Once your data sources are connected to your map, as explained in this [guide](../../maps/add-source), you can use Builder to analyse and discover key insights from your location data. This guide describes how to work with map layers in CARTO Builder.
 
 When opening a map, all added layers for the selected map appear in the left side panel. The layers list appears by default, displaying the basemap and map data layer(s) that are the backbone for your visualization.
 
-![Map layers](/img/cloud-native-workspace/maps/map_paris.png)
-
 The following features are available in the list of layers of your map in Builder:
 
 - **Layers label:** layers are provided with a label that is created alphabetically (A, B, C, D). Also each layer is labeled with a unique color to help you distinguish them. Each layer icon displays the geometry type behind the data as either a point, line, polygon, or empty.
 
-- **Layers order:** layers are rendered from bottom to top, with basemaps being the bottom layer. Click and drag a layer to rearrange the hierarchal order of how layers are rendered on your map.
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_label.png)
 
-- **Layer settings:** to apply custom styling to your layer.
+- **Layers order:** layers are rendered from bottom to top, with basemaps being the bottom layer. Move the mouse to the left of the layer card and click on the dots that appear to drag a layer and rearrange the hierarchal order of how layers are rendered on your map.
 
-![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settingsss.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_drag.png)
 
-- **Rename layer:** click on the layer title to edit the name of the layer.
+- **Layer style:** click on *Layer style* to apply custom styling to your layer.
 
-![Map layers rename](/img/cloud-native-workspace/maps/map_layer_rename.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_style.png)
 
-- **Duplicate layer:** to create a copy of your layer and to add it to the map.
+- **Rename layer:** click on *Rename* to edit the name of the layer.
 
-![Map layers duplicate](/img/cloud-native-workspace/maps/map_layer_duplicate.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_style.png)
+
+![Map layers rename](/img/cloud-native-workspace/maps/map_layer_renamed.png)
+
+- **Duplicate layer:** click on *Duplicate layer* to create a copy of your layer and to add it to the map.
+
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_style.png)
 
 - **Show/hide layer:** to show/hide the layer in the map.
 
 ![Map layers show or hide](/img/cloud-native-workspace/maps/map_layer_hide.png)
 
-- **Remove layer:** to remove a layer from the map.
+- **Remove layer:** click on *Delete layer* to remove a layer from the map.
 
-![Map layers remove](/img/cloud-native-workspace/maps/map_layer_remove.png)
+![Map layers settings](/img/cloud-native-workspace/maps/map_layer_style.png)
 
 -  **Blend layers:** by selecting an option from the dropdown at the bottom of the Layers panel. There are three different ways to blend layers: Normal, Additive, and Subtractive.
 
-![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blendingg.png)
+![Map layers blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
 
-### WIDGETS
+### Widgets
 
-This guide describes how to add interactive widgets to view your map data in CARTO 3 Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
+This guide describes how to add interactive widgets to view your map data in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
 
 In the *Wiget* tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map widgets](/img/cloud-native-workspace/maps/maps_new_widgets.png)
+![Map widgets add new widget](/img/cloud-native-workspace/maps/maps_add_new_widget.png)
 
 Click on *New widget* button to start interacting with your data:
 
 ![Map widgets](/img/cloud-native-workspace/maps/maps_widget.png)
 
-### INTERACTIONS
+### Interactions
 
 ![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
 
@@ -66,7 +70,7 @@ It shows the coordinates where you click with the mouse. The coordinates will ap
 
 ![Map interactions coordinates](/img/cloud-native-workspace/maps/interactions_coordinates.png)
 
-### BASEMAPS
+### Basemaps
 
 Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.
 
@@ -77,7 +81,7 @@ Select the CARTO Basemap menu to see different basemap options. They include:
 - **Positron**: light basemap with dark-colored text.
 - **Dark**: dark basemap with light-colored text.
 
-![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_cartoo.png)
+![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_carto.png)
 
 Select the Google Maps Basemap menu to see different basemap options. They include:
 
@@ -97,4 +101,4 @@ Select the Google Maps Basemap menu to see different basemap options. They inclu
 - Water: displays bodies of water.
 - Land: Shows parks, mountains, and other landscape features.
 
-![Basemap layers order](/img/cloud-native-workspace/maps/map_basemap_layer_showss.png)
+![Basemap layers](/img/cloud-native-workspace/maps/map_basemap_layers.png)

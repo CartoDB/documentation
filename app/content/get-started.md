@@ -22,9 +22,9 @@ Our platform helps you visualize, analyze, and build applications using location
 Depending on your usage of the CARTO platform, whether it’s for visualization, analysis, or application development, you will be using different components of the platform.
 
 {{%sideImage image="/img/get-started/dashboard.png" alt="Dasbhoard"%}}
-##### Dashboard
+##### Workspace
 
-Connect to multiple data sources, including local or remote files, cloud data warehouses, and BI solutions. Seamlessly access a wealth of vetted datasets to enhance your geospatial analysis.
+Connect to multiple cloud data warehouses and explore your geospatial data. Seamlessly access a wealth of vetted datasets to enhance your geospatial analysis.
 
 {{<link href="https://carto.com/signup" target="_blank">}}
   Login or create an account
@@ -34,7 +34,7 @@ Connect to multiple data sources, including local or remote files, cloud data wa
 {{%sideImage image="/img/get-started/builder.png" alt="Builder"%}}
 ##### Builder
 
-CARTO Builder offers powerful map making, data visualization, and pre-packaged analytics.
+CARTO Builder offers powerful map making, data visualization, and integration with Data Warehouses.
 
 {{<link href="https://carto.com/builder" target="_blank">}}
   Learn more
@@ -82,72 +82,119 @@ CARTO's Location Intelligence platform lets you store, enrich, analyze, & visual
 {{<interactiveTutorial>}}
   {{% tutorialStep stepName="Intro"%}}
 
-Builder is our drag & drop tool to design, build, and publish interactive web maps with your location data. Maps can be easily shared or embedded on any website or blog.
+Builder is our mapping tool to design, build, and publish interactive web maps with your location data. Maps can be easily shared or embedded on any website or blog.
 
-In this guide, you will learn how to upload a .csv file and create your first dataset, create a simple map, and publish it.
+In this guide, you will learn how to use the sample data available in the CARTO Data Warehouse to find the best place to create a store close to the potential customers: 
 
 ![Builder image](/img/get-started/build-map-intro.png)
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Create your first map"%}}
+
+Log in to CARTO.
+
+Go to Maps and click on "+ New Map".
+
+![Builder image](/img/get-started/builder_step1a@2x.png)
+  
+Once in Builder, click on “Add source from …”
+
+![Builder image](/img/get-started/builder_step1b@2x.png)
+
+Select “Custom Query (SQL)” and “Type your own query” using the `carto_dw` connection and click on “Add Source”
+
+![Builder image](/img/get-started/builder_step2a@2x.png)
+
+Now, you have a SQL panel where you can run queries in CARTO Data Warehouse (based on Google BigQuery) and see the result in the map.
+
+![Builder image](/img/get-started/builder_step2b@2x.png)
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Explore your data"%}}
+
+The following queries should be executed in order, and each of them will show a different result:
+
+Let’s start by just plotting a table that we have through our connection with the CARTO Data Warehouse (note that you would achieve the same result creating a map from the Data Explorer)
+
+```sql
+SELECT * FROM `carto-demo-data`.demo_tables.sample_customer_home_locations
+```
+![Builder image](/img/get-started/builder_step3a@2x.png)
   
 
-{{%/ tutorialStep %}}
-{{% tutorialStep stepName="Import your data"%}}
+Optionally, you could spend some time and style this layer based on the customer value feature, either with the fill color of the points ... 
 
-Download the following dataset:
+![Builder image](/img/get-started/builder_step3b@2x.png)
 
-{{% tableWrapper %}}
-|       |       |       |       |
-|-------|-------|-------|-------|
-| World Ports | 3,669 rows | 708 kB | <a href="https://public.carto.com/api/v2/sql?q=select%20*%20from%20public.world_ports&format=csv&filename=worldports"> Download</a> |
-{{%/ tableWrapper %}}
+... or their radius.
 
-
-In the "Connect dataset" tab, click on “Browse”, select the file, and then click on “Connect dataset”
-
-![Builder image](/img/get-started/builder_step2@2x.png)
-
+![Builder image](/img/get-started/builder_step3c@2x.png)
 
 {{%/ tutorialStep %}}
-{{% tutorialStep stepName="Explore your new dataset"%}}
+{{% tutorialStep stepName="Find clusters of points"%}}
 
-Once the upload has finished and the new dataset has been created, you will be redirected to the Dataset view. Here, you can explore your data.
+Now, we are going to modify the SQL Query used to generate the map layer, and we are going to use the [clustering functions](/analytics-toolbox-bq/sql-reference/clustering/) in CARTO’s Analytics Toolbox to generate 6 clusters (which is the number of stores we want to open).
 
-![Builder image2](/img/get-started/builder_step3@2x.png)
-  
+```sql
+WITH clustered_points AS
+  (
+    SELECT `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
+    FROM `carto-demo-data`.demo_tables.sample_customer_home_locations
+  )
 
-Double-click on any cell to edit it.
-Click on any of the columns to change the order, rename it, change its data type, remove it, or even add new columns.
-You can also add new rows and export your data in different formats.
+SELECT 
+  cluster_element.cluster, 
+  ST_UNION_AGG(cluster_element.geom) AS geom 
+FROM clustered_points, UNNEST(cluster_arr) AS cluster_element 
+GROUP BY cluster_element.cluster
+```
+![Builder image](/img/get-started/builder_step4a@2x.png)
 
+Let’s now change the name of the layer to “Clusters of customer homes”
+
+![Builder image](/img/get-started/builder_step4b@2x.png)
+
+Style the layer by modifying the fill color of the points based on the column “cluster”. You can change the color and width of the stroke in order to polish the visualization.
+
+![Builder image](/img/get-started/builder_step4c@2x.png)
+
+You can also add a Widget to be able to filter the home locations based on the cluster
+
+![Builder image](/img/get-started/builder_step4d@2x.png)
+
+Let’s also add a tooltip to the points based on the cluster number
+
+![Builder image](/img/get-started/builder_step4e@2x.png)
 
 {{%/ tutorialStep %}}
-{{% tutorialStep stepName="Create a map using your new dataset"%}}
+{{% tutorialStep stepName="Locate your stores"%}}
 
-From the dataset view, click on the “Create map” button (on the bottom right of your screen).
-Your map will be created and you will be redirected to Builder, CARTO’s map editor:
+We are now going to create another layer. In order to do that, click again on “Add source from”, “Customer Query (SQL)” and “Type your own query” from your `carto_dw` connection. Finally click on “Add source”.
 
-![Builder image2](/img/get-started/builder_step4@2x.png)
+![Builder image](/img/get-started/builder_step5a@2x.png)
 
-Double click on the name of the map (Untitled Map) and rename it to “My first map”. This will also be the name that you will see on your dashboard.
+For this second layer we are going to adapt the previous SQL Query and compute the centroid of each of the clusters using the [transformation functions](/analytics-toolbox-bq/sql-reference/transformations/) in the Analytics Toolbox; this would give us a potentially optimal location to open each store in the center of each of the previously computed clusters.
 
-Change the style of the features on the map (eg: point size, point color, strike size, strike color) by clicking on the layer name and playing with the styling options.
+```sql
+with clustered_points AS
 
-![Builder image2](/img/get-started/builder_step4b@2x.png)
- 
+  (
+    SELECT `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
+    FROM `carto-demo-data`.demo_tables.sample_customer_home_locations
+  )
 
-{{%/ tutorialStep %}}
-{{% tutorialStep stepName="Publish and share your map with the world"%}}
+SELECT 
+  cluster_element.cluster, 
+  `carto-un`.transformations.ST_CENTERMEAN(ST_UNION_AGG(cluster_element.geom)) AS geom 
+FROM clustered_points, UNNEST(cluster_arr) AS cluster_element 
+GROUP BY cluster_element.cluster
+```
 
-1.- Click “Publish” to publish your map.
+Let’s rename this second layer as “Cluster centers” and style this layer by changing the fill color and increasing the radius of the points in order to make them more visible
 
-2.- Click on the red privacy button to make your map “Public”.
+![Builder image](/img/get-started/builder_step5b@2x.png)
 
-3.- Click “Publish” to publish this version of your map.
-
-Your map has now been published and you can use the link or embed code to share your map.
-
-![Builder image2](/img/get-started/builder_step5@2x.png)
-
-
+That's it! The resulting map shows the different clusters of customer locations and the potential location of each store.
 
 {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}

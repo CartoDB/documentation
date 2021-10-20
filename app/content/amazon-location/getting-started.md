@@ -37,6 +37,10 @@ At this point you will have a basic map with the Rivers Amazon Location map reso
 
 In order to visualize the CARTO tileset, we are going to take advantage of the TileJSON endpoints in the Maps API v3. We just need to provide the endpoint URL through the [`source.url`](https://maplibre.org/maplibre-gl-js-docs/style-spec/sources/) property while calling the [`addLayer`](https://maplibre.org/maplibre-gl-js-docs/api/map/#map#addlayer) method on the map. In the URL we need to provide a token with access to the tileset.
 
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” or "Maps API v3" to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
+{{%/ bannerNote %}}
+
 We are using a public tileset generated using our BigQuery Tiler and we are assigning a different color to each line representing a river, depending on the value of the `bearing` attribute.
 
 ```js

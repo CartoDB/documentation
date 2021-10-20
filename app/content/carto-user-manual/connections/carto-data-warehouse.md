@@ -4,7 +4,7 @@ Every CARTO organization comes provisioned with an active data warehouse connect
 
 This connection will grant you access to some resources, in terms of cloud storage and cloud computing, that are provided by CARTO. This default connection will help you get started with our platform, and it will also give you access to some demo datasets so you can start using our platform from the very beginning. It will also enable you to have access to spatial datasets from CARTO’s Data Observatory without the need of connecting your own data warehouse to get access to cloud resources.
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_cartodw_card.png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_card_cartodw.png)
 
 ### Limits
 

@@ -5,7 +5,7 @@ const path = require('path');
 
 const cloud = process.env.CLOUD || '';
 const cloudCode = { bigquery: 'bq', snowflake: 'sf' }[cloud];
-const targetPath = path.join(`./app/content/spatial-extension-${cloudCode}`);
+const targetPath = path.join(`./app/content/analytics-toolbox-${cloudCode}`);
 
 const index = [];
 let changelogs = [];
@@ -45,7 +45,7 @@ function updateModules (type) {
 function updateOverview () {
     let content = `## Overview
 
-The CARTO Spatial Extension's functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.
+The CARTO Analytics Toolbox's functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.
 
 {{% tableWrapper %}}
 | Module | Type | Function or Procedure |

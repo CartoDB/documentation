@@ -1,8 +1,8 @@
 ## Getting started
 
-In this guide, you will learn the basics of visualizing a CARTO dataset with the [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview). There are no previous requirements to complete this guide, but a basic knowledge of Google Maps Javascript API would be helpful.
+CARTO provides a powerful way to visualize data from your datawarehouse with [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/overview). By utilizing the [CartoLayer class](https://deck.gl/docs/api-reference/carto/carto-layer) of deck.gl you can bring data from a table, a tileset or even a SQL directly all from JS. 
 
-After completing this guide, you will have your first Google Maps API map with a CARTO dataset!
+After completing this guide, you will have your first Google Maps API map with data from your datawarehouse!
 
 <iframe
     id="getting-started-final-result"
@@ -41,6 +41,10 @@ The first step you need to perform is to add the [deck.gl](https://deck.gl) depe
 <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
 <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
 ```
+
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
+{{%/ bannerNote %}}
 
 Then you need to provide the credentials for connecting to the CARTO 3 platform, as explained [here](/deck-gl/using-the-cartolayer/#connecting-to-carto-3). Here we are using a token with access to some public datasets in BigQuery. You will need to create a token with access to the datasets you want to visualize.
 
@@ -141,7 +145,7 @@ deckOverlay.setMap(map);
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBA1QNyLGz2mEAjyCR4-lz5k1OlJKETvqc&callback=initMap&libraries=&v=beta"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvHtBZM79O5uGTBT1ZOWOKW2_FVMstHNs&callback=initMap&libraries=&v=beta"
       async
     ></script>
     

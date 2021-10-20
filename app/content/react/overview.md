@@ -55,6 +55,10 @@ CARTO for React is based on the following libraries:
 - [Material-UI](https://material-ui.com/): UI React components for faster and easier web development.
 - [@carto/react-*]: A set of packages created to make easy integration with CARTO platform and its APIs, geospatial widgets, and a custom theme for [Material-UI](https://material-ui.com/).
 
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
+{{%/ bannerNote %}}
+
 **Why React?**
 
 Location Intelligence Apps tend to be applications with a reduced number of pages, but with lots of functionalities at each page and many relations between them.

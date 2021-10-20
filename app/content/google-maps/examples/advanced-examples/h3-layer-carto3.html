@@ -8,8 +8,8 @@
     />
     <!-- h3-js is required -->
     <script src="https://unpkg.com/h3-js"></script>
-    <script src="https://unpkg.com/deck.gl@^8.6.0-alpha.3/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0-alpha.3/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
     <style>
@@ -57,16 +57,16 @@
       deck.carto.setDefaultCredentials({
         apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
         apiVersion: deck.carto.API_VERSIONS.V3,
-        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfN3hoZnd5bWwiLCJqdGkiOiJkNjQ2OWUxNiJ9.fQv03Aq2jCtNc5eiwDscPx_5cfGJHmAWjgW40r20Ves'
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       const jsonData = deck.carto.getData({
         type: deck.carto.MAP_TYPES.QUERY,
-        source: `SELECT AVG(water) AS avg_wa, SUM(water) AS sum_wa, COUNT(*) AS c, bqcarto.h3.ST_ASH3(geo,9) AS hex 
+        source: `SELECT AVG(water) AS avg_wa, SUM(water) AS sum_wa, COUNT(*) AS c, \`carto-un\`.h3.ST_ASH3(geo,9) AS hex 
                  FROM cartobq.earthengine.first_dataset
                  GROUP BY hex
                  HAVING sum_wa <> 0`,
-        connection: 'bigquery',
+        connection: 'bqconn',
         format: deck.carto.FORMATS.JSON
       });
 
