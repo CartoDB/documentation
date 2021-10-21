@@ -65,13 +65,11 @@ If you are building a private application, you need to create an Application and
 
 3. Copy the `Client ID` and introduce it at `src/store/initialStateSlice.js`.
 
-Then, you need to edit the `src/store/initialStateSlice.js` file and modify the clientId property in the `oauth` object with the one from the application just created. 
-
 When you have everything configured, the first screen for your application will be the following:
 
 ![oauth-login](/img/react/oauth-login.png 'OAuth Login')
 
-When your users click on the `Login with CARTO` button, the authentication protocol will start and your users to login and to allow access to the application. When the protocol finishes, a new access token with the required scopes will be sent. This access token will be used to access the data sources in the application, unless specific credentials are provided.
+When your users click on the `Login with CARTO` button, the authentication protocol will start and your users will need to login using their CARTO credentials and allow access to the application. When the protocol finishes, a new access token with the required scopes will be sent. This access token will be used to access the data sources in the application, unless specific credentials are provided.
 
 ### CARTO 2 platform
 
