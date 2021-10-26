@@ -1,5 +1,6 @@
 {{$tab := .Get "tab" | default ""}}
+{{$overflow_layout := .Get "overflow-layout" | default ""}}
 
-<div class="table__wrapper {{if $tab}}tab{{end}}">
+<div class="table__wrapper {{if $tab}}tab{{end}} {{if $overflow_layout}}overflow-layout{{end}}">
   {{.Inner}}
 </div>

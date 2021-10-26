@@ -357,9 +357,8 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features. From a data perspective, the TimeSeriesWidget groups the features in time intervals and allows to play an animation that filters the features displayed based on the current interval.
 
 - **Input**:
-   
 
-{{% tableWrapper tab="true" %}}
+{{% tableWrapper tab="true" overflow-layout="true" %}}
 | Param       | Type        | Default   | Description      |
 | ----------- | ----------- | --------- | ---------------- |
 | props       | `Object` |   |                  |

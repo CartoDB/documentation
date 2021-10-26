@@ -85,6 +85,9 @@
     width: 100%;
     margin-bottom: 24px;
 
+    table-layout: inherit;
+    overflow-wrap: inherit;
+
     th {
       @include title();
       font-size: 16px;
@@ -535,6 +538,11 @@ li {
 
   &.tab {
     margin-left: 32px;
+  }
+
+  &.overflow-layout {
+    table-layout: fixed;
+    overflow-wrap: break-word;   
   }
 }
 
