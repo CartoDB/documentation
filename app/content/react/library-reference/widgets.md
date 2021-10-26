@@ -375,7 +375,6 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | [props.height]     | `string` | '300px' | (optional) Chart height (CSS) |
 | [props.tooltipFormatter] | `formatterCallback` | | (optional) _formatterCallback_: Function to format the tooltip values. |               
 | [props.stepSizeOptions] | `Array<GroupDateTypes>` | `[]` | (optional) Available time interval sizes |
-| [props.duration] | `number` | 20000 | (optional) Animation duration (ms) |
 | [props.chartType] | `enum` | `TIME_SERIES_CHART_TYPES.LINE` | (optional) Selected chart type (line or bar) |
 | [props.tooltip] | `boolean` | `true` | (optional) Whether to show or not the tooltip |
 | [props.timeWindow] | `Array<number|string>` | `[]` | (optional) Interval for the currently selected time window (timestamps or dates formatted as strings) |
