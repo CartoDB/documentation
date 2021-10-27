@@ -52,4 +52,7 @@ menu:
   - title: "Developers" 
     folder:
       - title: "CARTO for developers"
+  - title: "Tutorials" 
+    folder:
+      - title: "Build a categories & bubbles visualization"
 ---
