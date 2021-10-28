@@ -26,6 +26,8 @@ The *NPM* packages (latest version) are linked below:
 | Package | Version | Downloads |
 | ------- | ------- | --------- |
 | @carto/cra-template-base-3 (CARTO 3 template) | <a href="https://npmjs.org/package/@carto/cra-template-base-3">  <img src="https://img.shields.io/npm/v/@carto/cra-template-base-3.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-base-3">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-base-3.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a> |
+| @carto/cra-template-base-3-typescript (CARTO 3 template for TypeScript) | <a href="https://npmjs.org/package/@carto/cra-template-base-3-typescript">  <img src="https://img.shields.io/npm/v/@carto/cra-template-base-3-typescript.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-base-3-typescript">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-base-3-typescript.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a> |
+| @carto/cra-template-sample-app-3 (CARTO 3 template) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app-3">  <img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app-3.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app-3">  <img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app-3.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a> |
 | @carto/cra-template-base-2 (CARTO 2 template) | <a href="https://npmjs.org/package/@carto/cra-template-base-2"><img src="https://img.shields.io/npm/v/@carto/cra-template-base-2.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-base-2"> <img src="https://img.shields.io/npm/dt/@carto/cra-template-base-2.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a> |
 | @carto/cra-template-sample-app-2 (sample app template for CARTO 2) | <a href="https://npmjs.org/package/@carto/cra-template-sample-app-2"><img src="https://img.shields.io/npm/v/@carto/cra-template-sample-app-2.svg?style=flat-square" alt="version" style="margin-bottom: 0px; vertical-align: middle;" /></a> | <a href="https://npmjs.org/package/@carto/cra-template-sample-app-2"><img src="https://img.shields.io/npm/dt/@carto/cra-template-sample-app-2.svg?style=flat-square" alt="downloads" style="margin-bottom: 0px; vertical-align: middle;" /></a> |
 {{% /tableWrapper %}}
@@ -71,13 +73,15 @@ Yes, it is a new paradigm, but once you learn it, you will love it.
 
 ### Templates
 
-CARTO for React includes three different Create React App templates for kickstarting your application:
+CARTO for React includes the following Create React App templates for kickstarting your application:
 
-- The CARTO 3 template that creates a simple application with just a map using the CARTO 3 platform. This is the template you are usually going to choose when you are creating a new app.
+- The CARTO 3 template that creates a simple application with just a map using the CARTO 3 platform. This is the template you are usually going to choose when you are creating a new app using JavaScript.
+
+- The CARTO 3 template for TypeScript that creates a simple application with just a map using the CARTO 3 platform. This is the template you are usually going to choose when you are creating a new app using TypeScript.
 
 - The CARTO 2 template, similar to the CARTO 3 template. You are going to use it when you are creating a new app with the CARTO 2 platform.
 
-- The sample app template for CARTO 2 that creates a more complex application with several views, layers, and widgets. The purpose of this template is to demonstrate how you can implement common Location Intelligence functionalities in a CARTO for React app.
+- The sample app templates for CARTO 2 and CARTO 3 that create a more complex application with several views, layers, and widgets. The purpose of these templates is to demonstrate how you can implement common Location Intelligence functionalities in a CARTO for React app.
 
 The command to create a new application is the following:
 
@@ -86,7 +90,12 @@ npx create-react-app [application_name] --template [template_name]
 ```
 
 - `application_name` is the name of the folder that will be created for your application
-- `template_name` is the name of the template to use: `@carto/base-3` for the CARTO 3 template (default), `@carto/base-2` for the CARTO 2 template or `@carto/sample-app-2` for the sample app template for CARTO 2.
+- `template_name` is the name of the template to use: 
+  - `@carto/base-3` for the CARTO 3 template 
+  - `@carto/base-3-typescript` for the CARTO 3 template for TypeScript
+  - `@carto/sample-app-3` for the sample app template for CARTO 3.
+  - `@carto/base-2` for the CARTO 2 template 
+  - `@carto/sample-app-2` for the sample app template for CARTO 2.
 
 {{% bannerNote title="note" %}}
 In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the default template:

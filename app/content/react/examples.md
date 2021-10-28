@@ -2,7 +2,7 @@
 
 Here you can find some applications built using CARTO for React. The code is also available in some cases.
 
-### Sample App Template
+### Sample App Template for CARTO 2
 
 <div>
   <a href="https://sample-app-react.com" target="_blank">

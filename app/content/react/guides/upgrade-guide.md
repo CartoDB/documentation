@@ -4,7 +4,7 @@ This guide includes information about changes between CARTO for React v1.0 and v
 
 In this documentation site we have already updated the documentation for version 1.1.0-beta but, currently, the latest stable version is 1.0.2 for the templates and 1.0.1 for the library. 
 
-CARTO for React v1.1 includes support for deck.gl 8.5 that provides data visualization capabilities for the new [CARTO 3 platform](#compatibility-with-platform-versions). Read more about the capabilities in this new deck.gl version [here](/deck-gl).
+CARTO for React v1.1 includes support for deck.gl 8.6 that provides data visualization capabilities for the new [CARTO 3 platform](#compatibility-with-platform-versions). Read more about the capabilities in this new deck.gl version [here](/deck-gl).
 
 You can start testing CARTO for React v1.1 beta right now but we don't recommend its use for production applications yet. We will release the final stable version when CARTO 3 is launched.
 
@@ -19,7 +19,7 @@ If you update an application that is using v1.0 of the CARTO for React library t
 
 ### Template changes
 
-In this new version 1.1, we have also renamed our existing templates and added a new template for creating applications with the CARTO 3 platform:
+In this new version 1.1, we have also renamed our existing templates and added three new templates for creating applications with the CARTO 3 platform:
 
 - `base-2` is the new name for the existing CARTO 2 skeleton template, previously the default `@carto` template
 
@@ -33,10 +33,22 @@ In this new version 1.1, we have also renamed our existing templates and added a
    $ npx create-react-app my-app --template @carto/base-3
    ```
 
+- `base-3-typescript` is the name for the new CARTO 3 template for TypeScript
+
+   ```shell
+   $ npx create-react-app my-app --template @carto/base-3-typescript
+   ```
+
 - `sample-app-2` is the new name for the existing sample app template for CARTO 2, previously named `sample-app`
 
    ```shell
    $ npx create-react-app my-app --template @carto/sample-app-2
+   ```
+
+- `sample-app-3` is the name for the new sample app template for CARTO 3
+
+   ```shell
+   $ npx create-react-app my-app --template @carto/sample-app-3
    ```
 
 ### Compatibility with platform versions
