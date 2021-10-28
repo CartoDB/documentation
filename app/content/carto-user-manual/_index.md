@@ -54,5 +54,10 @@ menu:
       - title: "CARTO for developers"
   - title: "Tutorials" 
     folder:
+      - title: "Overview"
       - title: "Build a categories & bubbles visualization"
+      - title: "Build an animated visualization with time series"
+      - title: "Build a 3D map with a tileset"
+      - title: "Discover spatial datasets from the Data Observatory"
+
 ---
