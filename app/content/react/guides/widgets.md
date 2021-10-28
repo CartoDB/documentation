@@ -118,6 +118,8 @@ Requires/accepts the following additional properties:
 | `formatter`  | Formatter for the aggregated value |
 | `height`     | Chart height (CSS) |
 | `tooltipFormatter`  | Formatter for the tooltip |
+| `colors`     | Array of colors to show for each category.  |
+| `labels`     | Labels to show for each category |
 
 ### ScatterPlot widget
 

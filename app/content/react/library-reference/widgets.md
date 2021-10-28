@@ -285,6 +285,8 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
 | [props.operationColumn]  | <code>string</code>            |                    | Name of the data source's column to operate with. If not defined it will default to the one defined in `column`.                    |
+| [colors]                 | `Array<string>`                | CARTO colors bold palette | Array of colors to show for each category. |
+| [labels]                 | `Array<string>`                | Column values      | Labels to show for each category |
 | [props.formatter]        | <code>function</code>          |                    | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.tooltipFormatter] | <code>formatterCallback</code> |                    | (optional) _formatterCallback_: Function to format the tooltip values.                                                         |
 | [props.onError]          | <code>errorCallback</code>     |                    | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
