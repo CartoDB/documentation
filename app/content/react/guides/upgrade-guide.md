@@ -2,11 +2,7 @@
 
 This guide includes information about changes between CARTO for React v1.0 and v1.1. 
 
-In this documentation site we have already updated the documentation for version 1.1.0-beta but, currently, the latest stable version is 1.0.2 for the templates and 1.0.1 for the library. 
-
 CARTO for React v1.1 includes support for deck.gl 8.6 that provides data visualization capabilities for the new [CARTO 3 platform](#compatibility-with-platform-versions). Read more about the capabilities in this new deck.gl version [here](/deck-gl).
-
-You can start testing CARTO for React v1.1 beta right now but we don't recommend its use for production applications yet. We will release the final stable version when CARTO 3 is launched.
 
 ### Library changes
 
@@ -53,5 +49,5 @@ In this new version 1.1, we have also renamed our existing templates and added t
 
 ### Compatibility with platform versions
 
-CARTO for React v1.1 is the first version compatible with the CARTO 3 platform. CARTO 3 is a fully cloud native platform that is currently in beta and provides direct connectivity to cloud data warehouses without the need for importing data first into CARTO. If you want to request access, please fill in [this form](https://carto.com/carto3/).
+CARTO for React v1.1 is the first version compatible with the CARTO 3 platform. CARTO 3 is a fully cloud native platform that is currently in beta and provides direct connectivity to cloud data warehouses without the need for importing data first into CARTO. If you want to learn more about this new version and sign-up for a free trial, please go to [this page](https://carto.com/carto3/).
 

@@ -14,9 +14,8 @@ The code is open source and is available in the following repositories:
 
 * Library: https://github.com/CartoDB/carto-react
 
-
-{{% bannerNote type="warning" title="Warning" %}}
-This documentation site has been already updated for v1.1 beta but the latest stable version is 1.0. Please read [this guide](../guides/upgrade-guide) to learn more about the changes between v1.0 and v1.1 and CARTO for React compatibility with the different platform versions.
+{{% bannerNote title="About CARTO platform versions" %}}
+In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
 {{%/ bannerNote %}}
 
 The *NPM* packages (latest version) are linked below:
@@ -56,10 +55,6 @@ CARTO for React is based on the following libraries:
 - [React](https://reactjs.org/) as the JavaScript library for building user interfaces and [Redux](https://redux.js.org/) for managing global state for the application. We use [React-Redux](https://react-redux.js.org/) for managing the interactions between the React components with the Redux store.
 - [Material-UI](https://material-ui.com/): UI React components for faster and easier web development.
 - [@carto/react-*]: A set of packages created to make easy integration with CARTO platform and its APIs, geospatial widgets, and a custom theme for [Material-UI](https://material-ui.com/).
-
-{{% bannerNote title="About CARTO platform versions" %}}
-In this documentation we use the term “CARTO 3” to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
-{{%/ bannerNote %}}
 
 **Why React?**
 
