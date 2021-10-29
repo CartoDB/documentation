@@ -27,6 +27,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
 | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | [props.operationColumn] | <code>string</code>   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`.                                      |
+| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This property is not applicable to the `LegendWidget`. |
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
 | [props.onError]         | <code>function</code> |                 | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
@@ -73,6 +74,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
 | props.column         | <code>string</code>        |         | Name of the data source's column to get the data from.                                                                              |
 | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
+| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.onError]      | <code>errorCallback</code> |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps] | <code>Object</code>        |         | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
@@ -115,7 +117,8 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 | props.dataSource       | <code>string</code>               |         | ID of the data source to get the data from.                                                                              |
 | props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
 | props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
-| props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, 1 to 5, 5 to 10 and >10)                   |
+| props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
+| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.xAxisFormatter] | <code>function</code>             |         | (optional) _formatterCallback_: Function to format X axis values.                                                        |
 | [props.formatter]      | <code>function</code>             |         | (optional) _formatterCallback_: Function to format tooltip and Y axis values.                                            |
 | [props.onError]        | <code>function</code>             |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                           |
@@ -165,7 +168,7 @@ You can control the legend options through the following properties that must be
 | ------------- | -------------- | ------------- | -------------- |
 | title         | `string`       |               | Layer title    |
 | switchable    | `boolean`      | `true`        | Whether the layer can be hide/shown |
-| legend        | `Object`       |               | Legend properties |
+| legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
 | legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
 | legend.attr   | `string`       |               | Attribute used for styling the layer |
 | legend.colors | `Array` or `string` |               | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP` |
@@ -215,7 +218,7 @@ You can control the legend options through the following properties that must be
       attr: 'revenue',
       type: LEGEND_TYPES.BINS,
       labels: LABELS,
-      colors: COLORS.map((color) => rgbToHex(color)),
+      colors: COLORS,
     },
   };
 
@@ -284,7 +287,10 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
+| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.operationColumn]  | <code>string</code>            |                    | Name of the data source's column to operate with. If not defined it will default to the one defined in `column`.                    |
+| [colors]                 | `Array<string>`                | CARTO colors bold palette | Array of colors to show for each category. |
+| [labels]                 | `Array<string>`                | Column values      | Labels to show for each category |
 | [props.formatter]        | <code>function</code>          |                    | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.tooltipFormatter] | <code>formatterCallback</code> |                    | (optional) _formatterCallback_: Function to format the tooltip values.                                                         |
 | [props.onError]          | <code>errorCallback</code>     |                    | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
@@ -327,6 +333,7 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 | props.dataSource | <code>string</code> |        | ID of the data source to get the data from. |
 | props.xAxisColumn | <code>string</code> |            | Name of the data source's column to get the data for the X axis from. |
 | props.yAxisColumn | <code>string</code> |            | Name of the data source's column to get the data for the Y axis from. |
+| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.xAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values.  |
 | [props.yAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values. |
 | [props.tooltipFormatter] | <code>formatterCallback</code> |  | (optional) _formatterCallback_: Function to format the tooltip values. |
@@ -369,6 +376,7 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | props.stepSize | `GroupDateTypes` |  | Time interval size |
 | [props.operation] | `string` | AggregationTypes.COUNT | (optional) Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object. |
 | [props.operationColumn] | `string` |  | (optional) Column to use in the aggregation operation |
+| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This does not apply to the animation when the widget is in play mode. Applies only when the data visualized in the chart changes (i.e. when we select a different step size). |
 | [props.formatter]   | `function` |  | (optional) _formatterCallback_: Function to format each value returned.  |
 | [props.onError]      | `errorCallback` |  | (optional) _errorCallback_: Function to handle error messages from the widget.   |
 | [props.wrapperProps] | `Object` |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |

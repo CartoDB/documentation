@@ -39,6 +39,7 @@ There are some properties that are used by all the widgets, except the Legend wi
 | `id`         | ID for the widget instance |
 | `title`      | Title to show in the widget header |
 | `dataSource` | ID of the data source to get the data from |
+| `animation` | Indicates whether the widget update is animated or jumps directly to the new state |
 | `wrapperProps` | Props to pass to the WrapperWidgetUI |
 | `noDataAlertProps` | Message (title and body) to show when there is no data available for the widget |
 | `onError` | Event emitted when an error is thrown while the widget is doing calculations |
@@ -118,6 +119,8 @@ Requires/accepts the following additional properties:
 | `formatter`  | Formatter for the aggregated value |
 | `height`     | Chart height (CSS) |
 | `tooltipFormatter`  | Formatter for the tooltip |
+| `colors`     | Array of colors to show for each category.  |
+| `labels`     | Labels to show for each category |
 
 ### ScatterPlot widget
 
