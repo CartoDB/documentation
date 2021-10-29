@@ -47,23 +47,23 @@
 
 11. Add a widget based on the column `admin0name`. Now we can filter the data based on the country.
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_first_widget.png)
+    ![Map widgets first widget](/img/cloud-native-workspace/tutorials/tutorial1_map_first_widget.png)
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_first_widget_valuesin.png)
+    ![Map widgets first widget values in](/img/cloud-native-workspace/tutorials/tutorial1_map_first_widget_valuesin.png)
 
 12. Add a second widget, now based on `pop_max`. You will get a histogram widget in order to be able to filter the populated places based on their population.
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_second_widget.png)
+    ![Map widgets second widget](/img/cloud-native-workspace/tutorials/tutorial1_map_second_widget.png)
 
 13. Now let’s configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the fields `Admin0name`, `Featurecla` and `Pop_max`. 
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_tooltip.png)
+    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial1_map_tooltip.png)
 
 14. Finally we can change our basemap. Go to Basemaps tab and select “Dark Matter” from CARTO.
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_basemap.png)
+    ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial1_map_basemap.png)
 
 15. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_public.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial1_map_public.png)
  

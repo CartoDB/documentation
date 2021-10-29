@@ -39,17 +39,17 @@
 
 9. In order to be able to visualize this data on a 3D map, we need to detail what feature should be used to obtain the “height” information. Click on the “three dots” icon in the Height section and in the field “Height Based On” pick the feature `elevation` with a linear scale.
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_height.png)
+   ![Map height](/img/cloud-native-workspace/tutorials/tutorial3_map_height.png)
 
    You can also change the height using the height slider or by directly inputting the height in the 
 text input.
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_height_slider.png)
+   ![Map height slider](/img/cloud-native-workspace/tutorials/tutorial3_map_height_slider.png)
 
 10. Finally, modify the map visualization to be in 3D by clicking on the “cube” icon in the top bar. 
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_3D.png)
+   ![Map 3D map](/img/cloud-native-workspace/tutorials/tutorial3_map_3D.png)
 
 11. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_public.png)
+   ![Map public map](/img/cloud-native-workspace/tutorials/tutorial3_map_public.png)

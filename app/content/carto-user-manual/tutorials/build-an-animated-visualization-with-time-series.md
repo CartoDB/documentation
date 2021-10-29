@@ -51,23 +51,23 @@
 
 12. Add a widget based on the column `species`. Now we can filter the data based on the country.
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_first_widget.png)
+    ![Map widgets first widget](/img/cloud-native-workspace/tutorials/tutorial2_map_first_widget.png)
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_first_widget_valuesin.png)
+    ![Map widgets first widget_values in](/img/cloud-native-workspace/tutorials/tutorial2_map_first_widget_valuesin.png)
 
 13. Add a second widget, now based on `plant_date`. This will generate a time-series widget directly on the map.
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_second_widget.png)
+    ![Map widgets second widget](/img/cloud-native-workspace/tutorials/tutorial2_map_second_widget.png)
 
 14. Modify the time window to be “incremental”.
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_second_widget_incremental.png)
+    ![Map widgets second widget incremental](/img/cloud-native-workspace/tutorials/tutorial2_map_second_widget_incremental.png)
 
 
 14. Now let’s configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the field `species`. 
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_tooltip.png)
+    ![Map widgets new tooltip](/img/cloud-native-workspace/tutorials/tutorial2_map_tooltip.png)
 
 15. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_public.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial2_map_public.png)

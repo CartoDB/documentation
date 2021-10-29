@@ -1,0 +1,148 @@
+// @ts-check
+(function () {
+  'use strict';
+
+  var context = {
+    boot: '0',
+    name: 'commandbar',
+    orgName: 'Shortcut',
+    position: 'end',
+    scripts: 'https://frames-commandbar-stable.commandbar.com/static/js/runtime.a1faf418.js|https://frames-commandbar-stable.commandbar.com/static/js/vendor-modules.297fb722.js|https://frames-commandbar-stable.commandbar.com/static/js/index.48c40110.js',
+    // @ts-ignore
+    silent: 'false' === 'true',
+    stylesheets: 'https://frames-commandbar-stable.commandbar.com/static/css/index.d09df73b.css',
+    initProxy: 'true',
+    aux: '0',
+
+    orgUuid: 'f7aa22b3',
+  };
+  var polyfills = ['Symbol', 'Object.assign', 'Symbol.for'].join('%2C');
+  var e;
+
+  function loadScript(target, async, src) {
+    e = document.createElement('script');
+    e.async = !!async;
+    e.src = src;
+    if (src.includes('localhost')) e.crossOrigin = 'anonymous';
+    e.type = 'text/javascript';
+    e.setAttribute('data-' + context.name, '1');
+    target.appendChild(e);
+  }
+
+  function loadCss(target, href) {
+    e = document.createElement('link');
+    e.rel = 'stylesheet';
+    e.type = 'text/css';
+    e.href = href;
+    e.setAttribute('data-' + context.name, '1');
+    target.appendChild(e);
+  }
+
+  function initProxy() {
+    var _configuration = Symbol.for('CommandBar::configuration');
+    var _disposed = Symbol.for('CommandBar::disposed');
+    var _isProxy = Symbol.for('CommandBar::isProxy');
+    var _queue = Symbol.for('CommandBar::queue');
+    var _unwrap = Symbol.for('CommandBar::unwrap');
+
+    let queue = [];
+    if (window.CommandBar && Array.isArray(window.CommandBar.q)) {
+      // @ts-ignore
+      queue = window.CommandBar.q;
+    }
+
+    var defaults = {};
+    defaults[_disposed] = false;
+    defaults[_isProxy] = true;
+    defaults[_queue] = queue;
+
+    var overrides = {};
+    overrides[_configuration] = {
+      uuid: context.orgUuid,
+    };
+    overrides[_unwrap] = function () {
+      return proxy;
+    };
+
+    // @ts-ignore
+    var proxy = Object.assign(defaults, window.CommandBar, overrides);
+    // @ts-ignore
+    window.CommandBar =
+      typeof Proxy === 'undefined'
+        ? proxy
+        : new Proxy(proxy, {
+            get: function (_, prop) {
+              if (prop in proxy) return proxy[prop];
+              return function () {
+                const a = Array.prototype.slice.call(arguments);
+                a.unshift(prop);
+                proxy[_queue].push(a);
+              };
+            },
+          });
+  }
+
+  function addWrapper() {
+    var wrapper = document.getElementById(context.name);
+    if (wrapper === null) {
+      wrapper = document.createElement('div');
+      wrapper.id = context.name + '-wrapper';
+    } else {
+      console.log('Skipped loading ' + context.name + '-wrapper.');
+      return undefined;
+    }
+
+    if (context.position === 'end') {
+      document.body.appendChild(wrapper);
+    } else {
+      document.body.insertBefore(wrapper, document.body.firstChild);
+    }
+
+    var root = document.createElement('div');
+    root.setAttribute('data-' + context.name, '1');
+    root.id = context.name;
+    wrapper.appendChild(root);
+
+    return wrapper;
+  }
+
+  function bootstrap() {
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', bootstrap, { capture: false, once: true });
+      return;
+    }
+    delete window['__CommandBarBootstrap__'];
+
+    if (context.initProxy === 'true') initProxy();
+
+    // @ts-ignore
+    var cb = window.CommandBar;
+
+    if (cb && context.aux !== '1') {
+      cb[Symbol.for('CommandBar::orgConfig')] = {
+        orgName: context.orgName || undefined,
+        silent: context.silent,
+      };
+    }
+
+    var wrapper = addWrapper();
+    if (wrapper === undefined) return;
+
+    if (context.scripts !== '') context.scripts.split('|').forEach(loadScript.bind(null, wrapper, true));
+    if (context.stylesheets !== '') context.stylesheets.split('|').forEach(loadCss.bind(null, wrapper));
+
+    if (cb && context.boot !== '0') {
+      cb.boot(context.boot);
+    }
+  }
+
+  if (typeof Object.assign === 'undefined' || typeof Symbol === 'undefined' || typeof Symbol.for === 'undefined') {
+    // @ts-ignore
+    window.__CommandBarBootstrap__ = bootstrap;
+    var src =
+      'https://polyfill.io/v3/polyfill.min.js?version=3.101.0&callback=__CommandBarBootstrap__&features=' + polyfills;
+    loadScript(document.head, false, src);
+  } else {
+    bootstrap();
+  }
+})();
