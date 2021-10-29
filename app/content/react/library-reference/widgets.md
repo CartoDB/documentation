@@ -168,7 +168,7 @@ You can control the legend options through the following properties that must be
 | ------------- | -------------- | ------------- | -------------- |
 | title         | `string`       |               | Layer title    |
 | switchable    | `boolean`      | `true`        | Whether the layer can be hide/shown |
-| legend        | `Object`       |               | Legend properties |
+| legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
 | legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
 | legend.attr   | `string`       |               | Attribute used for styling the layer |
 | legend.colors | `Array` or `string` |               | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP` |
@@ -218,7 +218,7 @@ You can control the legend options through the following properties that must be
       attr: 'revenue',
       type: LEGEND_TYPES.BINS,
       labels: LABELS,
-      colors: COLORS.map((color) => rgbToHex(color)),
+      colors: COLORS,
     },
   };
 
