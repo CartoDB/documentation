@@ -51,8 +51,8 @@ Then you need to modify the "basemap" property in the initialState object and pr
 export const initialState = {
   ...
   basemap: GOOGLE_CUSTOM,
-  googleMapId: 'AAAA8888CCCC',
-  googleApiKey: 'AAAAABBBBBBBCCCCCCC11111122222233333',
+  googleMapId: 'YOUR_GOOGLE_MAP_ID',
+  googleApiKey: 'YOUR_GOOGLE_API_KEY',
   ...
 };
 ```
@@ -67,7 +67,7 @@ CARTO basemaps follow the [Mapbox Style Specification](https://www.mapbox.com/ma
 
 3. Export the style in JSON format using the `Export` dialog.
 
-4. Add the JSON file to your project.
+4. Add the JSON file to your project (adding it to your public folder is a good choice, for example public/custom_basemap.json).
 
 5. Edit the `basemap` property in the `src/store/initialStateSlice.js`:
 

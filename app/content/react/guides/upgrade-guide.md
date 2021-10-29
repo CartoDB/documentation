@@ -49,5 +49,5 @@ In this new version 1.1, we have also renamed our existing templates and added t
 
 ### Compatibility with platform versions
 
-CARTO for React v1.1 is the first version compatible with the CARTO 3 platform. CARTO 3 is a fully cloud native platform that is currently in beta and provides direct connectivity to cloud data warehouses without the need for importing data first into CARTO. If you want to learn more about this new version and sign-up for a free trial, please go to [this page](https://carto.com/carto3/).
+CARTO for React v1.1 is the first version compatible with the CARTO 3 platform. CARTO 3 is the new version of the CARTO platform that provides direct connectivity to cloud data warehouses without the need for importing data first into CARTO. If you want to learn more about this new version and sign-up for a free trial, please go to [this page](https://carto.com/carto3/).
 
