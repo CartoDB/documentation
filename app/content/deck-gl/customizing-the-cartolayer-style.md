@@ -84,7 +84,7 @@ There are different properties available to control the visual configuration dep
 
 #### Circles
 
-The two mandatory properties you need to specify when using [circles](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtypecircle-options) are `getPointRadius` and `pointRadiusMinPixels`. There are also additional properties to specify the units, scale or maximum radius.
+When using [circles](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtypecircle-options) for visualizing point features you need the use the `getPointRadius` accessor to set the radius for the circle (by default in meters) or you can just set the `pointRadiusMinPixels` property. There are also additional properties to specify the units, scale or maximum radius.
 
 ##### `getPointRadius`
 
@@ -166,7 +166,7 @@ layer = new deck.carto.CartoLayer({
     connection: 'bqconn',
     type: deck.carto.MAP_TYPES.QUERY,
     data: 'SELECT geom, name, population FROM cartobq.public_account.populated_places', 
-    getFillColor: d => colorScale(population),
+    getFillColor: d => colorScale(d.properties.population),
     pointRadiusMinPixels: 2.5
 });
 ```

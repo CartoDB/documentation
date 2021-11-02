@@ -2,12 +2,13 @@
 
 You can use widgets in your application to provide advanced functionality for exploring and filtering the information. CARTO for React comes with several widgets out-of-the-box that you can add really easily to your spatial apps:
 
-- Category
-- Formula
-- Histogram
-- Legend
-- Pie
-- ScatterPlot
+  - [Category](#category-widget)
+  - [Formula](#formula-widget)
+  - [Histogram](#histogram-widget)
+  - [Legend](#legend-widget)
+  - [Pie](#pie-widget)
+  - [ScatterPlot](#scatterplot-widget)
+  - [TimeSeries](#timeseries-widget)
 
 The widgets are implemented combining the functionality of three different library packages:
 
@@ -38,6 +39,10 @@ There are some properties that are used by all the widgets, except the Legend wi
 | `id`         | ID for the widget instance |
 | `title`      | Title to show in the widget header |
 | `dataSource` | ID of the data source to get the data from |
+| `animation` | Indicates whether the widget update is animated or jumps directly to the new state |
+| `wrapperProps` | Props to pass to the WrapperWidgetUI |
+| `noDataAlertProps` | Message (title and body) to show when there is no data available for the widget |
+| `onError` | Event emitted when an error is thrown while the widget is doing calculations |
 
 ### Category widget
 
@@ -51,7 +56,7 @@ Requires/accepts the following additional properties:
 | ------------ | -------------------- |
 | `column`     | Name of the data source’s column to get the data from |
 | `operation`  | Aggregation operation to apply on the `operationColumn` values |
-| `operationColumn`  | Column to use int the aggregation operation |
+| `operationColumn`  | Column to use in the aggregation operation |
 | `formatter`  | Formatter for the aggregated value |
 | `labels`     | Labels to show for each category |
 
@@ -110,10 +115,12 @@ Requires/accepts the following additional properties:
 | ------------ | -------------------- |
 | `column`     | Name of the data source’s column to get the data from |
 | `operation`  | Aggregation operation to apply on the `operationColumn` values |
-| `operationColumn`  | Column to use int the aggregation operation |
+| `operationColumn`  | Column to use in the aggregation operation |
 | `formatter`  | Formatter for the aggregated value |
 | `height`     | Chart height (CSS) |
 | `tooltipFormatter`  | Formatter for the tooltip |
+| `colors`     | Array of colors to show for each category.  |
+| `labels`     | Labels to show for each category |
 
 ### ScatterPlot widget
 
@@ -130,3 +137,34 @@ Requires/accepts the following additional properties:
 | `xAxisFormatter`   | Function to format X axis values.  |
 | `yAxisFormatter`   | Function to format X axis values. |
 | `tooltipFormatter` | Function to format the tooltip values. |
+
+### TimeSeries widget
+
+Groups features into time intervals and allows to play an animation that filters the features displayed based on the current interval. 
+
+![TimeSeries Widget](/img/react/time-series-widget.png)
+
+Requires/accepts the following additional properties:
+
+| Property           | Description          |
+| ------------------ | -------------------- |
+| `column`     | Column containing the timestamp/date values |
+| `operation`  | Aggregation operation to apply on the `operationColumn` values. Default: COUNT |
+| `operationColumn`  | Column to use in the aggregation operation |
+| `formatter`  | Formatter for the aggregated value |
+| `height`     | Chart height (CSS) |
+| `tooltipFormatter`  | Formatter for the tooltip |
+| `stepSize` | Time interval size |
+| `stepSizeOptions` | Available time interval sizes |
+| `chartType` | Selected chart type: line chart (default) or bar chart |
+| `tooltip` | Whether to show or not the tooltip |
+| `timeWindow` | Interval for the currently selected time window |
+| `showControls` | Whether to show or not the controls (play, pause, stop, speed selection...) |
+| `isPlaying` | Whether to set the widget to play mode |
+| `isPaused` | Whether to set the widget to pause mode |
+| `onPlay` | Event emitted when the animation starts to play |
+| `onPause` | Event emitted when the animation is paused |
+| `onStop` | Event emitted when the animation is stopped |
+| `onTimelineUpdate` | Event emitted when the animation moves to the next time interval |
+| `onTimeWindowUpdate` | Event emitted when the time window moves to the next time interval |
+

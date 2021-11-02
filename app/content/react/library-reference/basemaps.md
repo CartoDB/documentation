@@ -12,19 +12,22 @@ This package includes constants for working with CARTO and Google Maps basemaps 
 
 #### GoogleMap
 
-React component for working with Google Maps API and [deck.gl](https://deck.gl), by using `GoogleMapsOverlay`, from _@deck.gl/google-maps\_ module;. It offers a basic Google Maps basemap with an interface similar to the one presented by `react-map-gl` for Mapbox, thus allowing an easier change between them in your app.
+React component for working with Google Maps API and [deck.gl](https://deck.gl), by using `GoogleMapsOverlay`, from `@deck.gl/google-maps` module;. It offers a basic Google Maps basemap with an interface similar to the one presented by `react-map-gl` for Mapbox, thus allowing an easier change between them in your app. It supports both raster and vector basemaps.
 
 - **Input**:
 
 {{% tableWrapper tab="true" %}}
-| Param            | Type                             | Description                    |
-| ---------------- | -------------------------------- | ------------------------------ |
-| props            |                                  |                                |
-| props.basemap    | <code>Object</code>              | Basemap                        |
-| props.viewState  | <code>Object</code>              | Viewstate (center, zoom level) |
-| props.layers     | <code>Array.&lt;Layer&gt;</code> | Layers array                   |
-| props.getTooltip | <code>function</code>            | Tooltip handler                |
-| props.apiKey     | <code>string</code>              | Google Maps API Key            |
+| Param                   | Type                             | Description                                  |
+| ----------------------- | -------------------------------- | -------------------------------------------- |
+| props                   |                                  |                                              |
+| props.basemap           | <code>Object</code>              | Basemap                                      |
+| props.viewState         | <code>Object</code>              | Viewstate (center, zoom level)               |
+| props.layers            | <code>Array.&lt;Layer&gt;</code> | Layers array                                 |
+| props.apiKey            | <code>string</code>              | Google Maps API Key                          |
+| props.mapId             | <code>string</code>              | Optional. Google Maps Map ID                 |
+| props.getTooltip        | <code>function</code>            | Optional. Tooltip handler                    |
+| props.onResize          | <code>function</code>            | Optional. Handler for resize event           |
+| props.onViewStateChange | <code>function</code>            | Optional. Handler for viewstate change event |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -65,7 +68,8 @@ React component for working with Google Maps API and [deck.gl](https://deck.gl),
   - GOOGLE_ROADMAP
   - GOOGLE_SATELLITE
   - GOOGLE_HYBRID
-
+  - GOOGLE_CUSTOM
+  
 - **Example**:
 
   ```js

@@ -17,7 +17,7 @@ Functions to manage application state using React-Redux and the Redux Toolkit. T
 #### createCartoSlice
 
 A function that accepts an `initialState`, setups the state, and creates
-the reducers that support CARTO for React architecture. In the CARTO 3 skeleton template this slice includes also the OAuth settings; in the CARTO 2 templates there is a separate [slice](#oauth-slice) for OAuth settings.
+the reducers that support CARTO for React architecture. In the CARTO 3 templates this slice includes also the OAuth settings; in the CARTO 2 templates there is a separate [slice](#oauth-slice) for OAuth settings.
 
 - **Input**:
 
