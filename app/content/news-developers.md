@@ -8,6 +8,24 @@ menu:
     url: "news-developers"
 ---
 
+### CARTO for React 1.1 has been released
+
+##### 2021-10-29
+
+CARTO for React 1.1 is available and comes packed with new features:
+
+- Integration with the new version of the CARTO platform, including new basic templates for JavaScript and TypeScript
+  
+- New widgets for creating layer legends, visualizing scatterplots and exploring time-enabled layers 
+
+- Support for Google Maps vector basemaps
+
+<video autoplay="" loop="" muted=""> <source src="https://docs.carto.com/img/news-developers/carto-for-react-1-1.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
+
+For additional information check the [documentation](https://docs.carto.com/react) and the [release notes](https://docs.carto.com/react/release-notes). You can also check the full changelog with the complete list of improvements and bug fixes in the [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md) and the [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md).
+
+---
+
 ### Announcing deck.gl 8.6 release
 
 ##### 2021-10-12
