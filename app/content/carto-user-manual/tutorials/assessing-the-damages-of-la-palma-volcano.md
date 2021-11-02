@@ -14,7 +14,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
 2. Create a new CARTO organization. Check this [guide](../../overview/getting-started/) to get started.
 
-3. The first time that you access the Workspace, you will see a Welcome banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. By clicking the link in this banner, you can easily connect your data warehouse(s) to start using CARTO. 
+3. The first time that you access the Workspace, you will see a Welcome banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. 
 
     ![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png)
 
@@ -27,9 +27,9 @@ In this tutorial we are going to assess the number of buildings and population t
    ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/tutorial1_content_carto_dw.png)
 
 6. In this tutorial, we are going to use the following 3 tables:
-- lapalma_buildings: it contains the buildings in La Palma as obtained from the Spanish cadaster website;
-- lapalma_sociodemo_parcels: it contains a sample from Unica360’s dataset in the Data Observatory “Cadaster and Sociodemographics (Parcel)”;
-- lapalma_volcano_lavaflow: it includes the lava flow from the Volcano eruption in La Palma, Spain as measured by the Copernicus satellite on 10/04/2021.
+   - lapalma_buildings: it contains the buildings in La Palma as obtained from the Spanish cadaster website;
+   - lapalma_sociodemo_parcels: it contains a sample from Unica360’s dataset in the Data Observatory “Cadaster and Sociodemographics (Parcel)”;
+   - lapalma_volcano_lavaflow: it includes the lava flow from the Volcano eruption in La Palma, Spain as measured by the Copernicus satellite on 10/04/2021.
 
 7. Spend some time exploring the three tables in the Data Explorer.
 
@@ -37,19 +37,19 @@ In this tutorial we are going to assess the number of buildings and population t
 
    ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_data_preview_second_table.png)
 
-   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_map_preview_third_table.png)
+   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_map_preview_third_table.png)
 
 8. Selected "lapalma_buildings" and click on *Create > Create map* button on the top.
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial7_de_create_map_from_table.png)
 
     This will open CARTO Builder with this table added as a layer to a map. 
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_created_map_from_table.png)
+   ![Data Explorer created map from table](/img/cloud-native-workspace/tutorials/tutorial7_created_map_from_table.png)
 
 9.  Let’s start by having a look at the Data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed.
 
-    ![Map source options view data table](/img/cloud-native-workspace/tutorials/tutorial7_map_source_options.png)
+    ![Map source options](/img/cloud-native-workspace/tutorials/tutorial7_map_source_options.png)
 
     Note that we have added a column called `estimated_prop_value` in which we have estimated the value of the residential buildings based on the average market value per square meter in each municipality and the surface area of each building (which is provided by the cadaster itself).
 
@@ -69,13 +69,13 @@ In this tutorial we are going to assess the number of buildings and population t
 
 13. Let’s now add another layer by clicking on the “Add source from…” button from Sources. Select Table/Tileset, then select the `CARTO Data Warehouse`connection and click on *demo data > demo_tables > lapalma_sociodemo_parcels* from the collapsible tree. Click on *Add Source*.
 
-    ![Add source select a table](/img/cloud-native-workspace/tutorials/tutorial7_add_source_table.png)
+    ![Add source table](/img/cloud-native-workspace/tutorials/tutorial7_add_source_table.png)
 
 14. Let’s change the name of this second layer (B) to “La Palma demographics” 
 
-   ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_rename_second_layer.png)
+   ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_second_layer_rename.png)
 
-15. Now we change the style of this new layer, by changing the color and size of the geometries:
+15. Now we change the style of this new layer, by changing the color and size of the geometries.
 
     ![Map fill color](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_color_second_layer.png)
 
@@ -111,15 +111,15 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map sql console first query](/img/cloud-native-workspace/tutorials/tutorial7_map_sql_console_firstquery.png)
 
-19. This query should have generated a new layer with the volcano’s lava flow and the following columns `num_properties` and `value_damage` . You can check the Data table from the “Source” to validate the result of your query:
+19. This query should have generated a new layer with the volcano’s lava flow and the following columns `num_properties` and `value_damage` . You can check the Data table from the “Source” to validate the result of your query.
 
     ![Map table results](/img/cloud-native-workspace/tutorials/tutorial7_map_table_results.png)
 
 20. Let’s rename this third layer (C) as “Lava flow”. 
 
-   ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_rename_third_layer.png)
+   ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_third_layer_rename.png)
 
-21. Let’s change the ordering of the layers and place this third layer to the bottom of the list so the other layers render on top of the lava flow. You should only drag & drop the C layer on the layer panel.
+21. Let’s change the ordering of the layers and place this third layer to the bottom of the list so the other layers render on top of the lava flow. You should only drag & drop the "C"layer on the layer panel.
 
     ![Map layers order](/img/cloud-native-workspace/tutorials/tutorial7_map_layers_order.png)
 
@@ -133,7 +133,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial7_map_tooltip.png)
 
-    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial7_map_tooltip_on_map.png)
+    ![Map tooltips new tooltip on map](/img/cloud-native-workspace/tutorials/tutorial7_map_tooltip_on_map.png)
 
 24. Now let’s add a last layer into the map. We are going to do again a Custom SQL query, so repeat the steps done before but now run the following query:
 
@@ -160,8 +160,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     It should generate a fourth layer such as the one illustrated below:
 
-    ![Map sql console first query](/img/cloud-native-workspace/tutorials/tutorial7_map_sql_console_secondquery.png)
-
+    ![Map sql console second query](/img/cloud-native-workspace/tutorials/tutorial7_map_sql_console_secondquery.png)
 
 25. Let’s rename this fourth layer (D) as “Lava buffer” and place it at the bottom of all other layers. 
 

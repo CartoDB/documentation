@@ -1,7 +1,9 @@
 ## Build a 3D map with a tileset
 
+**Steps To Reproduce**
+
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
-   - Click on *Log in*
+   - Click on *Log in*.
    - Enter your email address and password. You can also log in with your existing Google account by clicking *Continue with Google*.
    - Once you have entered your credentials: click *Continue*.
 
@@ -23,13 +25,15 @@
 
 5. Create a map by clicking on the *Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check the [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) to get started.
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial3_create_map_from_tileset.png)
+   ![Data Explorer create map from tileset](/img/cloud-native-workspace/tutorials/tutorial3_create_map_from_tileset.png)
 
 6. Change layer name to “NASADEM elevation”.
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial3_map_layer_rename.png)
 
 7. Click on *Layer style* to start styling the layer.
+
+   ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial3_map_layer_option.png)
 
    ![Map layers style](/img/cloud-native-workspace/tutorials/tutorial3_map_layer_style.png)
 
@@ -48,8 +52,10 @@ text input.
 
 10. Finally, modify the map visualization to be in 3D by clicking on the “cube” icon in the top bar. 
 
-   ![Map 3D map](/img/cloud-native-workspace/tutorials/tutorial3_map_3D.png)
+    ![Map 3D map icon](/img/cloud-native-workspace/tutorials/tutorial3_map_3D_icon.png)
+
+    ![Map 3D map](/img/cloud-native-workspace/tutorials/tutorial3_map_3D.png)
 
 11. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-   ![Map public map](/img/cloud-native-workspace/tutorials/tutorial3_map_public.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial3_map_public.png)

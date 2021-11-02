@@ -1,7 +1,9 @@
 ## Build a categories & bubbles visualization
 
+**Steps To Reproduce**
+
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
-   - Click on *Log in*
+   - Click on *Log in*.
    - Enter your email address and password. You can also log in with your existing Google account by clicking *Continue with Google*.
    - Once you have entered your credentials: click *Continue*.
 
@@ -23,13 +25,15 @@
 
 5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check the [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial1_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial1_create_map_from_table.png)
 
 6. Change layer name to “Populated Places”.
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial1_map_layer_rename.png)
 
 7. Click on *Layer style* to start styling the layer.
+
+   ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial1_map_layer_options.png)
 
    ![Map layers style](/img/cloud-native-workspace/tutorials/tutorial1_map_layer_style.png)
 

@@ -1,7 +1,9 @@
 ## Discover spatial datasets from the Data Observatory
 
- Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
-   - Click on *Log in*
+**Steps To Reproduce**
+
+1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
+   - Click on *Log in*.
    - Enter your email address and password. You can also log in with your existing Google account by clicking *Continue with Google*.
    - Once you have entered your credentials: click *Continue*.
 
@@ -15,7 +17,7 @@
 
    ![DO Spatial Data Catalog](/img/cloud-native-workspace/tutorials/tutorial4_do_spatial_data_catalog.png)
 
-4. Click on *Access free sample* to have access to a sample of the data. You will have to then accept the Terms of Use for accessing the sample data only for evaluation purposes. Finally click on “Connect sample”
+4. Click on *Access free sample* to have access to a sample of the data. You will have to then accept the Terms of Use for accessing the sample data only for evaluation purposes. Finally click on *Connect sample*
 
    ![DO Spatial Data Catalog connect sample](/img/cloud-native-workspace/tutorials/tutorial4_do_spatial_data_catalog_connect_sample.png)
 
@@ -25,7 +27,7 @@
 
    ![DE sample data preview](/img/cloud-native-workspace/tutorials/tutorial4_de_sample_data_preview.png)
 
-6. If you click on “View dataset”, you will be able to access again to the associated dataset page in the Spatial Data Catalog.
+6. If you click on *View dataset*, you will be able to access again to the associated dataset page in the Spatial Data Catalog.
 
    ![DE sample view dataset](/img/cloud-native-workspace/tutorials/tutorial4_de_sample_view_dataset.png)
 

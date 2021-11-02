@@ -1,7 +1,9 @@
 ## Build an animated visualization with time series
 
+**Steps To Reproduce** 
+
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
-   - Click on *Log in*
+   - Click on *Log in*.
    - Enter your email address and password. You can also log in with your existing Google account by clicking *Continue with Google*.
    - Once you have entered your credentials: click *Continue*.
 
@@ -23,7 +25,7 @@
 
 5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check the [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial2_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial2_create_map_from_table.png)
 
 6. Change layer name to “Populated Places”.
 
@@ -31,9 +33,11 @@
 
 7. Change the basemap. Go to Basemaps tab and select “Dark Matter” from CARTO.
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_basemap.png)
+    ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial2_map_basemap.png)
 
-8. Click on *Layer style* to start styling the layer
+8. Click on *Layer style* to start styling the layer.
+
+   ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial2_map_layer_options.png)
 
    ![Map layers style](/img/cloud-native-workspace/tutorials/tutorial2_map_layer_style.png)
 
@@ -43,7 +47,7 @@
 
 10. Modify the Radius of the points to make them smaller.
  
-   ![Map style radius additional features](/img/cloud-native-workspace/tutorials/tutorial2_map_radius.png)
+   ![Map style radius](/img/cloud-native-workspace/tutorials/tutorial2_map_radius.png)
 
 11. Go to Widget tab. If you haven’t created a widget yet, you will see the following page:
 
