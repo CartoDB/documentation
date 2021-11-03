@@ -12,5 +12,6 @@ From *Data Observatory* panel at the bottom of the page, you can access the diff
 
 ![Data Explorer no subscriptions](/img/cloud-native-workspace/data-explorer/de_nosubscriptions.png)
 
+This dataset is as any other table in the Data Explorer. Meaning, that you can access the map and data preview of the table as well as creating a map in Builder. 
 
 
