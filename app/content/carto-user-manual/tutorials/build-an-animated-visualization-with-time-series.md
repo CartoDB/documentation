@@ -23,7 +23,7 @@
 
    ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial2_data_preview.png)
 
-5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check the [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
+5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
    ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial2_create_map_from_table.png)
 
@@ -31,7 +31,7 @@
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial2_map_layer_rename.png)
 
-7. Change the basemap. Go to Basemaps tab and select “Dark Matter” from CARTO.
+7. Change the basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
 
     ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial2_map_basemap.png)
 
@@ -49,11 +49,11 @@
  
    ![Map style radius](/img/cloud-native-workspace/tutorials/tutorial2_map_radius.png)
 
-11. Go to Widget tab. If you haven’t created a widget yet, you will see the following page:
+11. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
 
     ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_add_new_widget.png)
 
-12. Add a widget based on the column `species`. Now we can filter the data based on the country.
+12. Add a widget based on the column `species`. Now we can filter the data based on type of tree.
 
     ![Map widgets first widget](/img/cloud-native-workspace/tutorials/tutorial2_map_first_widget.png)
 
@@ -68,7 +68,7 @@
     ![Map widgets second widget incremental](/img/cloud-native-workspace/tutorials/tutorial2_map_second_widget_incremental.png)
 
 
-14. Now let’s configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the field `species`. 
+14. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the field `species`. 
 
     ![Map widgets new tooltip](/img/cloud-native-workspace/tutorials/tutorial2_map_tooltip.png)
 

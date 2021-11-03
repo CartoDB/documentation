@@ -23,7 +23,7 @@
 
    ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial1_data_preview.png)
 
-5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check the [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
+5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
    ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial1_create_map_from_table.png)
 
@@ -37,7 +37,7 @@
 
    ![Map layers style](/img/cloud-native-workspace/tutorials/tutorial1_map_layer_style.png)
 
-8. Click on the “three dots” icon in the Fill Color section and select “Color Based On” feature `featurecla`. It has information about the kind of places there are. Pick a palette for a categorical variable (versus a gradient).  
+8. Click on the “three dots” icon in the Fill Color section and select “Color Based On” feature `featurecla`. It has information about what kind of places there are. Pick a palette for a categorical variable (versus a gradient).  
 
    ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial1_map_fill_based_on.png)
 
@@ -45,7 +45,7 @@
  
    ![Map style radius additional features](/img/cloud-native-workspace/tutorials/tutorial1_map_radius_based_on.png)
 
-10. Go to Widget tab. If you haven’t created a widget yet, you will see the following page:
+10. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
 
     ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_add_new_widget.png)
 
@@ -59,11 +59,11 @@
 
     ![Map widgets second widget](/img/cloud-native-workspace/tutorials/tutorial1_map_second_widget.png)
 
-13. Now let’s configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the fields `Admin0name`, `Featurecla` and `Pop_max`. 
+13. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the fields `admin0name`, `Featurecla` and `Pop_max`. 
 
     ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial1_map_tooltip.png)
 
-14. Finally we can change our basemap. Go to Basemaps tab and select “Dark Matter” from CARTO.
+14. Finally we can change our basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
 
     ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial1_map_basemap.png)
 

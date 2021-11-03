@@ -25,7 +25,7 @@
 
 5. This table due to its size, and current constraints in Builder, cannot be added to a Builder map without subsampling the number of rows. 
 
-    Therefore, in order to build a visualization with this table, we need to create a tileset by clicking on the *Create > Create tileset* button on the top. This will open the table as a layer on a CARTO Builder map. Check the [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) to get started.
+    Therefore, in order to build a visualization with this table, we need to create a tileset by clicking on the *Create > Create tileset* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) to get started.
 
    ![Data Explorer create tileset](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset.png)
 
@@ -55,7 +55,7 @@
 
     ![Map created from new tileset](/img/cloud-native-workspace/tutorials/tutorial6_de_map_created_from_new_tileset.png)
 
-12. Now let´s style this layer as we want to build a cool visualization.
+12. Now let's style this layer as we want to build a cool visualization.
 
     ![Map fill based on](/img/cloud-native-workspace/tutorials/tutorial6_map_fill_based_on.png)
 

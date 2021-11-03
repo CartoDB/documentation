@@ -33,7 +33,7 @@
    The following queries should be executed in order, and each of them will show a different result.
 {{%/ bannerNote %}} 
 
-7. Let’s start by just plotting a table that we have through our connection with the `CARTO Data Warehouse` (note that you would achieve the same result creating a map from the Data Explorer).
+7. Let's start by just plotting a table that we have through our connection with the `CARTO Data Warehouse` (note that you would achieve the same result creating a map from the Data Explorer).
 
     ```sql
     SELECT * FROM carto-demo-data.demo_tables.sample_customer_home_locations
@@ -49,7 +49,7 @@
     ![Map style fill and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_fill_and_radius_based.png)
 
 9. Now we are going to modify the SQL Query used to generate the map layer, and we are going to use the  [`clustering functions`](/analytics-toolbox-bq/sql-reference/clustering/) 
-in `CARTO’s Analytics Toolbox` to generate 6 clusters (which is the number of stores we want to open).
+in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of stores we want to open).
 
     ```sql
     WITH
@@ -66,7 +66,7 @@ in `CARTO’s Analytics Toolbox` to generate 6 clusters (which is the number of 
     ```
     ![Map sql cluster](/img/cloud-native-workspace/tutorials/tutorial5_map_sql_cluster.png)
 
-10. Let’s now change the name of the layer to “Clusters of customer homes”.
+10. Let's now change the name of the layer to “Clusters of customer homes”.
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial5_map_layer_rename.png)
 
@@ -78,16 +78,16 @@ in `CARTO’s Analytics Toolbox` to generate 6 clusters (which is the number of 
 
     ![Map widgets first widget](/img/cloud-native-workspace/tutorials/tutorial5_map_first_widget.png)
 
-13. Let’s also add a tooltip to the points based on the cluster number.
+13. Let's also add a tooltip to the points based on the cluster number.
 
     ![Map tooltip new tooltip](/img/cloud-native-workspace/tutorials/tutorial5_map_tooltip.png)
 
 
-14. We can change our basemap. Go to Basemaps tab and select “Dark Matter” from CARTO.
+14. We can change our basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
 
     ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial5_map_basemap.png)
 
-15. We are now going to create another layer. In order to do that, back to *Layers* tab and click again on "Add source from”, *Customer Query (SQL)* and “Type your own query” from your `CARTO Data Warehouse` connection. Finally click on *Add source*.
+15. We are now going to create another layer. In order to do that, go back to *Layers* tab and click again on "Add source from”, *Custom Query (SQL)* and “Type your own query” from your `CARTO Data Warehouse` connection. Finally click on *Add source*.
 
     ![Add source custom query](/img/cloud-native-workspace/tutorials/tutorial5_add_source_custom_query_second.png)
 
@@ -106,7 +106,7 @@ in the `Analytics Toolbox`; this would give us a potentially optimal location to
     FROM clustered_points, UNNEST(cluster_arr) AS cluster_element 
     GROUP BY cluster_element.cluster
     ```
-17. Let’s rename this second layer as “Cluster centers”.
+17. Let's rename this second layer as “Cluster centers”.
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial5_map_second_layer_rename.png)
 

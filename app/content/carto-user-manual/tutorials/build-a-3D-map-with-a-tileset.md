@@ -23,7 +23,7 @@
 
    ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial3_tileset_metadata.png)
 
-5. Create a map by clicking on the *Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check the [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) to get started.
+5. Create a map by clicking on the *Create map* button on the top. This will open the tileset as a layer on a CARTO Builder map. Check [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) to get started.
 
    ![Data Explorer create map from tileset](/img/cloud-native-workspace/tutorials/tutorial3_create_map_from_tileset.png)
 

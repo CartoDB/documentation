@@ -1,4 +1,4 @@
-## Discover spatial datasets from the Data Observatory
+<!-- ## Discover spatial datasets from the Data Observatory
 
 **Steps To Reproduce**
 
@@ -34,3 +34,4 @@
 7. The Spatial Data Catalog now also detects that you already have connected a sample of that dataset, so from the Catalog you can now go back to the Data Explorer to check the sample data by clicking on *View sample*.
 
    ![DO Spatial Data Catalog view sample](/img/cloud-native-workspace/tutorials/tutorial4_do_spatial_data_catalog_view_sample.png)
+ -->

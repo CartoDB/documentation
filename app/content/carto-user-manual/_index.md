@@ -58,9 +58,9 @@ menu:
       - title: "Build a categories & bubbles visualization"
       - title: "Build an animated visualization with time series"
       - title: "Build a 3D map with a tileset"
-      - title: "Discover spatial datasets from the Data Observatory"
+      #- title: "Discover spatial datasets from the Data Observatory"
       - title: "Find the best place to create a store near the customers"
       - title: "Create a tileset and build a basic visualization"
-      - title: "Assessing the damages of La Palma´s Volcano"
+      - title: "Assessing the damages of La Palma Volcano"
 
 ---

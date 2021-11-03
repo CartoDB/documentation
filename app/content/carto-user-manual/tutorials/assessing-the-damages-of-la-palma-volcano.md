@@ -1,10 +1,10 @@
-## Assessing the damages of La Palma´s Volcano
+## Assessing the damages of La Palma Volcano
 
 **Context**
 
 Since 11 September 2021, a swarm of seismic activity had been ongoing in the southern part of the Spanish Canary Island of La Palma (Cumbre Vieja region). The increasing frequency, magnitude, and shallowness of the seismic events were an indication of a pending volcanic eruption; which occurred on 16th September, leading to evacuation of people living in the vicinity. 
 
-In this tutorial we are going to assess the number of buildings and population that may get affected by the lava flow and its deposits. We’ll also estimate the value of damaged residential properties affected by the volcano eruption.
+In this tutorial we are going to assess the number of buildings and population that may get affected by the lava flow and its deposits. We'll also estimate the value of damaged residential properties affected by the volcano eruption.
 
 **Steps to reproduce**
 
@@ -28,7 +28,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
 6. In this tutorial, we are going to use the following 3 tables:
    - lapalma_buildings: it contains the buildings in La Palma as obtained from the Spanish cadaster website;
-   - lapalma_sociodemo_parcels: it contains a sample from Unica360’s dataset in the Data Observatory “Cadaster and Sociodemographics (Parcel)”;
+   - lapalma_sociodemo_parcels: it contains a sample from Unica360's dataset in the Data Observatory “Cadaster and Sociodemographics (Parcel)”;
    - lapalma_volcano_lavaflow: it includes the lava flow from the Volcano eruption in La Palma, Spain as measured by the Copernicus satellite on 10/04/2021.
 
 7. Spend some time exploring the three tables in the Data Explorer.
@@ -47,7 +47,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
    ![Data Explorer created map from table](/img/cloud-native-workspace/tutorials/tutorial7_created_map_from_table.png)
 
-9.  Let’s start by having a look at the Data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed.
+9.  Let's start by having a look at the Data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed.
 
     ![Map source options](/img/cloud-native-workspace/tutorials/tutorial7_map_source_options.png)
 
@@ -67,11 +67,11 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map fill color](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_color.png)
 
-13. Let’s now add another layer by clicking on the “Add source from…” button from Sources. Select Table/Tileset, then select the `CARTO Data Warehouse`connection and click on *demo data > demo_tables > lapalma_sociodemo_parcels* from the collapsible tree. Click on *Add Source*.
+13. Let's now add another layer by clicking on the “Add source from…” button from Sources. Select Table/Tileset, then select the `CARTO Data Warehouse`connection and click on *demo data > demo_tables > lapalma_sociodemo_parcels* from the collapsible tree. Click on *Add Source*.
 
     ![Add source table](/img/cloud-native-workspace/tutorials/tutorial7_add_source_table.png)
 
-14. Let’s change the name of this second layer (B) to “La Palma demographics” 
+14. Let's change the name of this second layer (B) to “La Palma demographics” 
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_second_layer_rename.png)
 
@@ -89,7 +89,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map radius based on](/img/cloud-native-workspace/tutorials/tutorial7_map_second_layer_radius_based_on.png)
 
-17. Now we are going to add a new layer by creating a custom SQL Query that is going to aggregate the number of buildings and their estimated value (remember, only for residential properties) that fall within the volcano’s lava flow. 
+17. Now we are going to add a new layer by creating a custom SQL Query that is going to aggregate the number of buildings and their estimated value (remember, only for residential properties) that fall within the volcano's lava flow. 
 
     For that, we click again on “Add source from…”, but now we select “Custom Query (SQL)”, we select the `CARTO Data Warehouse` connection, and the option “Type your own query”. Then we click on *Add Source*. 
    
@@ -111,23 +111,23 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map sql console first query](/img/cloud-native-workspace/tutorials/tutorial7_map_sql_console_firstquery.png)
 
-19. This query should have generated a new layer with the volcano’s lava flow and the following columns `num_properties` and `value_damage` . You can check the Data table from the “Source” to validate the result of your query.
+19. This query should have generated a new layer with the volcano's lava flow and the following columns `num_properties` and `value_damage` . You can check the Data table from the “Source” to validate the result of your query.
 
     ![Map table results](/img/cloud-native-workspace/tutorials/tutorial7_map_table_results.png)
 
-20. Let’s rename this third layer (C) as “Lava flow”. 
+20. Let's rename this third layer (C) as “Lava flow”. 
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_third_layer_rename.png)
 
-21. Let’s change the ordering of the layers and place this third layer to the bottom of the list so the other layers render on top of the lava flow. You should only drag & drop the "C"layer on the layer panel.
+21. Let's change the ordering of the layers and place this third layer to the bottom of the list so the other layers render on top of the lava flow. You should only drag & drop the "C"layer on the layer panel.
 
     ![Map layers order](/img/cloud-native-workspace/tutorials/tutorial7_map_layers_order.png)
 
-22. Let’s change the styling of the Lava flow layer. Change the Fill and Stroke colors as suggested below:
+22. Let's change the styling of the Lava flow layer. Change the Fill and Stroke colors as suggested below:
 
     ![Map fill stroke](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_stroke_third_layer.png)
 
-23. In case it’s not activated by default, let’s activate a tooltip for this third layer, in order to show the values of the number of damaged buildings and the estimated damaged value of residential properties when hovering on top of the lava flow polygon. 
+23. In case it's not activated by default, let's activate a tooltip for this third layer, in order to show the values of the number of damaged buildings and the estimated damaged value of residential properties when hovering on top of the lava flow polygon. 
 
     For that, go to the *Interactions* tab and activate the tooltip option. Press on *Clear All* and delete the tooltips except for the third source “SQL Query 1” and leave the fields `Num_properties` and `Value_damage` as shown below:
 
@@ -135,7 +135,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map tooltips new tooltip on map](/img/cloud-native-workspace/tutorials/tutorial7_map_tooltip_on_map.png)
 
-24. Now let’s add a last layer into the map. We are going to do again a Custom SQL query, so repeat the steps done before but now run the following query:
+24. Now let's add a last layer into the map. We are going to do again a Custom SQL query, so repeat the steps done before but now run the following query:
 
     ```sql
     WITH lava_buffer AS
@@ -162,14 +162,14 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map sql console second query](/img/cloud-native-workspace/tutorials/tutorial7_map_sql_console_secondquery.png)
 
-25. Let’s rename this fourth layer (D) as “Lava buffer” and place it at the bottom of all other layers. 
+25. Let's rename this fourth layer (D) as “Lava buffer” and place it at the bottom of all other layers. 
 
     ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_rename_fourth_layer.png)
    
     ![Map layers order](/img/cloud-native-workspace/tutorials/tutorial7_map_layers_order_again.png)
 
 
-26. Let’s apply some styling to the layer, for example as shown below:
+26. Let's apply some styling to the layer, for example as shown below:
 
     ![Map fill stroke](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_stroke_fourth_layer.png)
 
@@ -179,7 +179,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial7_map_second_tooltip_on_map.png)
 
-28. We can now also change the basemap of our map. Let’s go to the *Basemap* tab and select Google Maps basemaps with the “Terrain” option, and let's remove all layers except the “Landscape” one. As follows:
+28. We can now also change the basemap of our map. Let's go to the *Basemap* tab and select Google Maps basemaps with the “Terrain” option, and let's remove all layers except the “Landscape” one. As follows:
 
     ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial7_map_basemap.png)
 
