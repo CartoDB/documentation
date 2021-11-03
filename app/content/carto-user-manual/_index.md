@@ -29,8 +29,8 @@ menu:
   - title: "Data Observatory"
     folder:
       - title: "Browsing the Spatial Data Catalog"
-      #- title: "Subscribing to public and premium datasets"
-      #- title: "Managing your subscriptions"
+      - title: "Subscribing to public and premium datasets"
+      - title: "Managing your subscriptions"
   - title: "Connections" 
     folder:
       - title: "Introduction"
