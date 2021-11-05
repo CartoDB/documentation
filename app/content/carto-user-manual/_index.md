@@ -26,6 +26,7 @@ menu:
       #- title: "Adding your first connection"
       - title: "Creating a map from your data"  
       - title: "Creating a tileset from your data"  
+      - title: "Importing data"
   - title: "Data Observatory"
     folder:
       - title: "Browsing the Spatial Data Catalog"
