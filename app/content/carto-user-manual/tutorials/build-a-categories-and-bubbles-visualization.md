@@ -71,3 +71,6 @@
 
     ![Map public map](/img/cloud-native-workspace/tutorials/tutorial1_map_public.png)
  
+ 16. Finally, we can visualize the result.
+
+<iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/121e2fc6-b2e1-4b2a-b79e-e74f5df78b1e"></iframe>
