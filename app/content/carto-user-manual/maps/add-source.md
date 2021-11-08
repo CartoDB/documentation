@@ -1,16 +1,16 @@
 ## Add source
 
-When you open a map, the *Layers* tab will appear on the left side panel. There you can add data as layers to the map by clicking on "Add source from", where you can access the contents from your existing data warehouse connections. If you haven’t added a data layer to the map yet, you will see the following page:
+When you open a map, the Layers tab will appear on the left side panel. There you can add data as layers to the map by clicking on *Add source from*, where you can access the contents from your existing data warehouse connections. If you haven’t added a data layer to the map yet, you will see the following page:
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_to_your_map.png)
 
 ### Add source from a connection
 
-From the *Layers* tab, go to the *Sources* panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from on of your connections. Insert the *Fully Qualified Table* or the *Tileset Name* and click *Add source*.
+From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from on of your connections. Insert the *Fully Qualified Table* or the *Tileset Name* and click *Add source*.
 
-![Add source select a connection](/img/cloud-native-workspace/maps/map_add_source_select_a_connection.png)
+![Add source select a connection bq](/img/cloud-native-workspace/maps/map_add_source_select_a_bq_connection.png)
 
-![Add source select a table](/img/cloud-native-workspace/maps/map_add_source_table.png)
+![Add source select a table](/img/cloud-native-workspace/maps/map_add_source_select_table.png)
 
 Once the process is finished, the table or tileset is included in the Builder map as a new layer. The map displays the basemap and the new layer on top. You can add additional layers, or start applying styling and analysis features.
 	
@@ -30,11 +30,11 @@ Once you have added your datasets to the map, you can always add a new layer or 
 
 ### Add source from a custom query
 
-Go to *Sources* and click *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
+From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
 
-![Add source custom query](/img/cloud-native-workspace/maps/map_add_source_custom_query.png)
+![Add source custom query](/img/cloud-native-workspace/maps/map_add_source_a_custom_query.png)
 
-![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_analysis_query.png)
+![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_an_analysis_query.png)
 
 Once the process is finished, the SQL console appears in the Builder interface, where you can type your query and then click *Run*. Please make sure to use *Fully Qualified Table* names.
 
@@ -68,55 +68,63 @@ To learn more, please visit the Documentation page of the [Analytics Toolbox for
 
 ### Add source from a local file
 
-From the *Layers* tab, go to the *Sources* panel, click on *Add source from...* and select *Import file* tab. A new dialog will open allowing you to import your data from your computer and set the name of the output table. 
+From the Layers tab, go to the Sources panel, click on *Add source from...* and select *Import file*. A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
 
-![Add source import file](/img/cloud-native-workspace/maps/map_add_source_import_file.png)
+![Add source import file](/img/cloud-native-workspace/maps/map_add_source_import_a_file.png)
 
 You can upload your data through two different methods: Local or Remote.
 
 -  **Local**
 
-<!-- From Upload Method, select the icon on the left.
+To import a local file, select the icon on the left:
 
-![Map import upload method file](/img/cloud-native-workspace/maps/map_import_upload_method_file.png)
- -->
-This interface will allow you to browse a supported file (Shapefile or GeoJSON), and set the name of the output table. 
+![Map import local](/img/cloud-native-workspace/maps/map_import_local.png)
 
-![Map import dataset file](/img/cloud-native-workspace/maps/map_import_dataset_file.png)
+This interface will allow you to upload a supported file, such as GeoJSON or Shapefile (.zip), into `CARTO Data Warehouse` and set the name of the output table on your organization data *shared* folder.
 
-Once you have completed this configuration, click on *Continue*: 
+![Map add source import local file](/img/cloud-native-workspace/maps/map_import_local_file.png)
 
-![Map import dataset file contine](/img/cloud-native-workspace/maps/map_import_dataset_file_continue.png)
+Once you have completed this configuration, click on *Continue* : 
 
-The next screen will show you a summary of the configuration of the table for your confirmation. To confirm, click on *Add Source* :
+![Map add source import local file continue](/img/cloud-native-workspace/maps/map_import_local_file_continue.png)
 
-![Map import add source](/img/cloud-native-workspace/maps/map_import_add_source.png)
+The next screen will show you a summary of the configuration of the table for your confirmation. Click on *Add Source* to confirm or click on *Edit details* to edit your import file.
 
-At this moment, the default location to import your data is your organization´s *shared* folder from our provisioned CARTO Data Warehouse connection.
+![Map add source import confirmation local file](/img/cloud-native-workspace/maps/map_import_confirmation_local_file.png)
+
+Once you click on Add Source, a new dialog will open informing you that the import may take a while to process and that once the file has been imported, it will be added as a data source to the map.
+
+![Map add source importing local file](/img/cloud-native-workspace/maps/map_importing_local_file.png)
 
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. You can then add additional layers, or apply styling and analysis features.
+
+![Map add source import urban areas](/img/cloud-native-workspace/maps/map_import_urban_areas.png)
 
 -  **Remote**
 
-<!-- From Upload Method, select the icon on the right.
+To import a remote URL, select the icon on the right.
 
-![Map import upload method url](/img/cloud-native-workspace/maps/map_import_upload_method_url.png) -->
+![Map import remote](/img/cloud-native-workspace/maps/map_import_remote.png)
 
-This interface will allow you to enter your URL and set the name of the output table. 
+This interface will allow you to enter your supported URL file, such as GeoJSON or Shapefile (.zip), into `CARTO Data Warehouse` and set the name of the output table on your organization data *shared* folder.
 
-![Map import data icon](/img/cloud-native-workspace/maps/map_import_dataset_file_url.png)
+![Map add source import remote url](/img/cloud-native-workspace/maps/map_import_remote_url.png)
 
-Once you have completed this configuration, click on *Continue*: 
+Once you have completed this configuration, click on *Continue* : 
 
-![Map import data icon](/img/cloud-native-workspace/maps/map_import_dataset_file_continue_url.png)
+![Map add source import remote url continue](/img/cloud-native-workspace/maps/map_import_remote_url_continue.png)
 
-The next screen will show you a summary of the configuration of the table for your confirmation. To confirm, click on *Add Source* :
+The next screen will show you a summary of the configuration of the table for your confirmation. Click on *Add Source* to confirm or click on *Edit details* to edit your import file.
 
-![Map import confirmation](/img/cloud-native-workspace/maps/map_import_add_source_url.png)
+![Map add source import confirmation remote url](/img/cloud-native-workspace/maps/map_import_confirmation_remote_url.png)
 
-At this moment, the default location to import your data is your organization´s *shared* folder from our provisioned CARTO Data Warehouse connection.
+Once you click on Add Source, a new dialog will open informing you that the import may take a while to process and that once the file has been imported, it will be added as a data source to the map.
+
+![Map add source importing remote url](/img/cloud-native-workspace/maps/map_importing_remote_url.png)
 
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. You can then add additional layers, or apply styling and analysis features.
+
+![Map add source import rivers](/img/cloud-native-workspace/maps/map_import_rivers.png)
 
 
 

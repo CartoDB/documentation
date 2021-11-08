@@ -6,7 +6,7 @@ Builder is designed to allow technical and non-technical audiences to visualize,
 
 This guide will teach you how to create a map in the CARTO Builder, and perform data analysis by adding data to a map, adding filters, and more.
 
-In the *Maps* section of the Workspace, you will see the list of your current maps. If you haven’t created a map yet, you will see the following page:
+In the Maps section of the Workspace, you will see the list of your current maps. If you haven’t created a map yet, you will see the following page:
 
 ![Maps module first map](/img/cloud-native-workspace/maps/maps_module_firstmap.png)
 
