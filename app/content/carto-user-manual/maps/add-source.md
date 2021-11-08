@@ -72,14 +72,14 @@ From the *Layers* tab, go to the *Sources* panel, click on *Add source from...* 
 
 ![Add source import file](/img/cloud-native-workspace/maps/map_add_source_import_file.png)
 
-You can upload your data through two different methods: local file or URL.
+You can upload your data through two different methods: Local or Remote.
 
--  **Local file**
+-  **Local**
 
-From Upload Method, select the icon on the left.
+<!-- From Upload Method, select the icon on the left.
 
 ![Map import upload method file](/img/cloud-native-workspace/maps/map_import_upload_method_file.png)
-
+ -->
 This interface will allow you to browse a supported file (Shapefile or GeoJSON), and set the name of the output table. 
 
 ![Map import dataset file](/img/cloud-native-workspace/maps/map_import_dataset_file.png)
@@ -92,15 +92,15 @@ The next screen will show you a summary of the configuration of the table for yo
 
 ![Map import add source](/img/cloud-native-workspace/maps/map_import_add_source.png)
 
-At this moment, the default location is the *shared* folder from our provisioned CARTO Data Warehouse connection that is created by default.
+At this moment, the default location to import your data is your organization´s *shared* folder from our provisioned CARTO Data Warehouse connection.
 
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. You can then add additional layers, or apply styling and analysis features.
 
--  **URL**
+-  **Remote**
 
-From Upload Method, select the icon on the right.
+<!-- From Upload Method, select the icon on the right.
 
-![Map import upload method url](/img/cloud-native-workspace/maps/map_import_upload_method_url.png)
+![Map import upload method url](/img/cloud-native-workspace/maps/map_import_upload_method_url.png) -->
 
 This interface will allow you to enter your URL and set the name of the output table. 
 
@@ -114,7 +114,7 @@ The next screen will show you a summary of the configuration of the table for yo
 
 ![Map import confirmation](/img/cloud-native-workspace/maps/map_import_add_source_url.png)
 
-At this moment, the default location is the *shared* folder from our provisioned CARTO Data Warehouse connection that is created by default.
+At this moment, the default location to import your data is your organization´s *shared* folder from our provisioned CARTO Data Warehouse connection.
 
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. You can then add additional layers, or apply styling and analysis features.
 
