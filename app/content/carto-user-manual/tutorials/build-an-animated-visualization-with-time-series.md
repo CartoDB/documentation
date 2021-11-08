@@ -1,5 +1,11 @@
 ## Build an animated visualization with time series
 
+There is an increasing need for conservation and connection with nature in cities. In this sense, geospatial analysis plays an important role in the effective management of our natural resources.
+
+This dataset is provided by San Francisco Department of Public Works, and it includes a list of maintained streets trees including: Planting data, species and location.
+
+In this tutorial we are going to represent the distribution of tree species by using a qualitative palette and interactive widgets which will allow you to explore your map by selecting targered filters of interest. In this example, filters are applied by specie and date of planting.
+
 **Steps To Reproduce** 
 
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
@@ -27,7 +33,7 @@
 
    ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial2_create_map_from_table.png)
 
-6. Change layer name to “Populated Places”.
+6. Change layer name to “San Francisco trees”.
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial2_map_layer_rename.png)
 

@@ -1,5 +1,11 @@
 ## Build a categories & bubbles visualization
 
+Understanding population distribution has important implications in a wide range of geospatial analysis such as human exposure to hazards and climate change or improving geomarketing and site selection strategies.
+
+This dataset is provided by Natural Earth,...
+
+In this tutorial we are going to represent the distribution of the most populated places by using a qualitative palette and a point size based on the maximum population. Therefore, we we can easily understand how the human settlement areas is distributed with a simple visualization that we can use in further analysis.
+
 **Steps To Reproduce**
 
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
@@ -73,4 +79,4 @@
  
  16. Finally, we can visualize the result.
 
-<iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/121e2fc6-b2e1-4b2a-b79e-e74f5df78b1e"></iframe>
+      <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/121e2fc6-b2e1-4b2a-b79e-e74f5df78b1e"></iframe>
