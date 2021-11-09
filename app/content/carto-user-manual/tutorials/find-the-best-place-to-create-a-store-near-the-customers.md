@@ -1,5 +1,7 @@
 ## Find the best place to create a store near the customers 
 
+**Context**
+
 Understanding & analyzing spatial data is critical to the future of your business. CARTO 3 Location Intelligence platform allows organizations to **store**, **enrich**, **analyze & visualize** their data to make spatially-aware decisions.
 <!-- This dataset is provided by CARTO, and it includes a list of customer home locations that we will use in this analysis.
  -->

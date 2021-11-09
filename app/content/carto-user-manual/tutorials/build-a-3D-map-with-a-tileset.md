@@ -1,9 +1,11 @@
 ## Build a 3D map with a tileset
 
+**Context**
+
 A geospatial analysis of land use dynamics has special relevance for the management of many phenomena, such as the assessment of the loss of soil due to erosion or the reduction of rural land in favour of the built-up areas.
 In this regard, Digital elevation Models (DEM) are important inputs to quantify the characteristics of the land surface.
 
-In this example we are creating a map from a tileset to represent the distribution of land elevation by using a gradual color palette and then build a 3D visualization by assigning heights to polygons.
+In this example we are building a map from a tileset createad by CARTO from a new NASA Digital Elevation Model (NASADEM). We are going to represent the distribution of land elevation by using a gradual color palette and then build a 3D visualization by assigning heights to polygons.
 
 <!-- This dataset is provided by Earthdata Nasa Organization. NASADEM is a modernization of the Digital Elevation Model (DEM) and associated products generated from the Shuttle Radar Topography Mission (SRTM) data. CARTO has transformed the original NASADEM HGT v001 raster data into a common geographic support, the Quadkey grid. -->
  

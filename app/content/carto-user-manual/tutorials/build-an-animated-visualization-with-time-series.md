@@ -1,5 +1,7 @@
 ## Build an animated visualization with time series
 
+**Context**
+
 There is an increasing need for conservation and connection with nature in cities. In this sense, geospatial analysis plays an important role in the effective management of our natural resources.
 
 <!-- This dataset is provided by San Francisco Department of Public Works, and it includes a list of maintained streets trees including: Planting data, species and location. -->

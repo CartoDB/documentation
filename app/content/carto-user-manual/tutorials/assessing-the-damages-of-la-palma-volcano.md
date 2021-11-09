@@ -189,7 +189,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
 30. Finally, we can visualize the result.
 
-
+    <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/1d60619f-e9d1-408a-9d23-5eb409f8dd9b"></iframe>
 
 
 
