@@ -1,5 +1,11 @@
 ## Create a tileset and build a basic visualization
 
+Understanding the distribution of floor area in a city has important implications in a wide range of geospatial analysis, for example, to inform decision-makers in sectors such as urban planning.
+
+<!-- This dataset is provided by Inspire, and it requires a tileset to be visualized entirely due to their size. -->
+
+In this example we are creating a tileset in which each building in Madrid is represented by a polygon. Each polygon is assigned a graduated color from the lowest to the highest value of the gross floor area. This visualisation allows us to represent at a glance how the surface area in Madrid is distributed.
+
 **Steps To Reproduce**
 
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
@@ -62,3 +68,7 @@
 13. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
     ![Map public map](/img/cloud-native-workspace/tutorials/tutorial6_map_public.png)
+
+14. Finally, we can visualize the result.
+
+   <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/c04ec4da-1b01-4133-99fb-5daa8044b6cf"></iframe>

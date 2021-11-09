@@ -2,9 +2,9 @@
 
 There is an increasing need for conservation and connection with nature in cities. In this sense, geospatial analysis plays an important role in the effective management of our natural resources.
 
-This dataset is provided by San Francisco Department of Public Works, and it includes a list of maintained streets trees including: Planting data, species and location.
+<!-- This dataset is provided by San Francisco Department of Public Works, and it includes a list of maintained streets trees including: Planting data, species and location. -->
 
-In this tutorial we are going to represent the distribution of tree species by using a qualitative palette and interactive widgets which will allow you to explore your map by selecting targered filters of interest. In this example, filters are applied by specie and date of planting.
+In this tutorial we are going to represent the distribution of tree species in the streets of San Francisco by color and we will add some interaction through widgets, which will allow us to explore the map by selecting targered filters of interest. In this example, filters are applied by specie and date of planting.
 
 **Steps To Reproduce** 
 
@@ -81,3 +81,7 @@ In this tutorial we are going to represent the distribution of tree species by u
 15. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
     ![Map public map](/img/cloud-native-workspace/tutorials/tutorial2_map_public.png)
+
+16. Finally, we can visualize the result.
+
+   <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/7bcfaa45-137f-4ecc-8527-5f40f54ada7d"></iframe>

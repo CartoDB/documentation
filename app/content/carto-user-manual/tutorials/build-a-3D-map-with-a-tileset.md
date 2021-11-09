@@ -3,10 +3,10 @@
 A geospatial analysis of land use dynamics has special relevance for the management of many phenomena, such as the assessment of the loss of soil due to erosion or the reduction of rural land in favour of the built-up areas.
 In this regard, Digital elevation Models (DEM) are important inputs to quantify the characteristics of the land surface.
 
-In this tutorial we are going to represent the distribution of land elevation by using a gradual color palette and then build a 3D visualization by assigning heights to polygons.
+In this example we are creating a map from a tileset to represent the distribution of land elevation by using a gradual color palette and then build a 3D visualization by assigning heights to polygons.
 
-This dataset is provided by Earthdata Nasa Organization. NASADEM is a modernization of the Digital Elevation Model (DEM) and associated products generated from the Shuttle Radar Topography Mission (SRTM) data. CARTO has transformed the original NASADEM HGT v001 raster data into a common geographic support, the Quadkey grid.
-
+<!-- This dataset is provided by Earthdata Nasa Organization. NASADEM is a modernization of the Digital Elevation Model (DEM) and associated products generated from the Shuttle Radar Topography Mission (SRTM) data. CARTO has transformed the original NASADEM HGT v001 raster data into a common geographic support, the Quadkey grid. -->
+ 
 **Steps To Reproduce**
 
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
@@ -66,3 +66,7 @@ text input.
 11. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
     ![Map public map](/img/cloud-native-workspace/tutorials/tutorial3_map_public.png)
+
+12. Finally, we can visualize the result.
+
+   <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/7812419f-a7da-4c62-a734-0c1117f6e90a"></iframe>

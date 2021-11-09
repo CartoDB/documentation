@@ -187,7 +187,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map public map](/img/cloud-native-workspace/tutorials/tutorial7_map_public.png)
 
-
+30. Finally, we can visualize the result.
 
 
 

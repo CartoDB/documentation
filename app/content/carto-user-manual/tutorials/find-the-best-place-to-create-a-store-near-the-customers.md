@@ -1,5 +1,10 @@
 ## Find the best place to create a store near the customers 
 
+Understanding & analyzing spatial data is critical to the future of your business. CARTO 3 Location Intelligence platform allows organizations to **store**, **enrich**, **analyze & visualize** their data to make spatially-aware decisions.
+<!-- This dataset is provided by CARTO, and it includes a list of customer home locations that we will use in this analysis.
+ -->
+In this example we are going to use points clustering to analyze how to find the best place to locate six stores in Portland city based on proximity to customers.
+
 **Steps To Reproduce** 
 
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
@@ -117,3 +122,7 @@ in the `Analytics Toolbox`; this would give us a potentially optimal location to
 19. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
     ![Map public map](/img/cloud-native-workspace/tutorials/tutorial5_map_public.png)
+
+20. Finally, we can visualize the result.
+
+    <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/d363a917-045d-4c62-859c-8f89ce73559e"></iframe>    

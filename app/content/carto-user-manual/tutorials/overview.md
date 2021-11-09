@@ -12,8 +12,6 @@ In this section, we provide a varied set of tutorials on how to get the most out
 
 - [Build a 3D map with a tileset](../../tutorials/build-a-3d-map-with-a-tileset)
 
-- [Discover spatial datasets from the Data Observatory](../../tutorials/discover-spatial-datasets-from-the-data-observatory)
-
 - [Find the best place to create a store near the customers](../../tutorials/find-the-best-place-to-create-a-store-near-the-customers)
 
 - [Create a tileset and build a basic visualization](../../tutorials/create-a-tileset-and-build-a-basic-visualization)
