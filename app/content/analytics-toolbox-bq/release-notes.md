@@ -1,5 +1,36 @@
 ## Release notes
 
+### November 5, 2021
+
+#### Module data v1.1.2
+
+Changes
+- Fields named `dimension`, `total`, `intersection` and `input_area` are now
+  `__carto_dimension`, `__carto_total` and `__carto_intersection` and `__carto_input_area`.
+  Also the column `_carto_enrichment_` is now `__carto_enrichment`.
+  This affects all the _raw_ enrichment procedures: `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`, `DATAOBS_ENRICH_POINTS_RAW`, `DATAOBS_ENRICH_POLYGONS_RAW`, `DATAOBS_ENRICH_GRID_RAW`.
+
+Fixed
+- User provided queries can now have columns named `dimension`, `total`, `intersection`, `input_area`, `_nonglobal`, which could have collided previously with internal columns. All internal columns are now prefixed with `__carto_`. This affects all the enrichment procedures: `ENRICH_POINTS`, `ENRICH_POLYGONS`, `ENRICH_GRID`, `DATAOBS_ENRICH_POINTS`, `DATAOBS_ENRICH_POLYGONS`, `DATAOBS_ENRICH_GRID`, `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`, `DATAOBS_ENRICH_POINTS_RAW`, `DATAOBS_ENRICH_POLYGONS_RAW`, `DATAOBS_ENRICH_GRID_RAW`.
+
+### November 2, 2021
+
+#### Module data v1.1.1
+
+Changes
+- Add `associated_geography_slug` column to `DATAOBS_SUBSCRIPTIONS`.
+- Some column names have changed in `DATAOBS_SUBSCRIPTIONS`:
+  + `table` is now `dataset_table`
+  + `associated_geography` is now `associated_geography_table`
+- Some column names have changed in `DATAOBS_SUBSCRIPTION_VARIABLES`:
+  + `geography_slug` is now `associated_geography_slug`.
+- Some column names have changed in `DATAOBS_SAMPLES`:
+  + `table` is now `dataset_sample_table`.
+- In `DATAOBS_SUBSCRIPTION_VARIABLES`, the column `associated_geography_slug` is now NULL for geography datasets.
+
+Fixed
+- The output of `DATAOBS_SUBSCRIPTIONS` and `DATAOBS_SUBSCRIPTION_VARIABLES` now omits items that are not Data Observatory products.
+
 ### October 15, 2021
 
 #### Module data v1.1.0
@@ -9,7 +40,7 @@ Fixed
   to multiple evaluation of nondeterministic ROW_NUMBERS expression.
 
 Changes
-- New API, with consistent naming of procedures.
+- New API, with consistent naming of procedures `
 
 ### October 1, 2021
 
