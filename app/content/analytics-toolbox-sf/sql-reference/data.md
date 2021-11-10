@@ -42,9 +42,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL sfcarto.data.ENRICH_GRID(
@@ -97,9 +95,7 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL sfcarto.data.ENRICH_GRID_RAW(
@@ -148,9 +144,7 @@ For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL sfcarto.data.ENRICH_POINTS(
@@ -196,7 +190,6 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL sfcarto.data.ENRICH_POINTS_RAW(
@@ -246,9 +239,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL sfcarto.data.ENRICH_POLYGONS(
@@ -298,9 +289,7 @@ The output table will contain all the input columns provided in the `input_query
 
 Moreover, another field named `__carto_input_area` will be included in `__CARTO_ENRICHMENT`, containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL sfcarto.data.ENRICH_POLYGONS_RAW(
@@ -328,9 +317,7 @@ Returns the current version of the data module.
 
 `STRING`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 SELECT sfcarto.data.VERSION();
