@@ -66,7 +66,9 @@ This query computes five clusters from the points of the `sample_customer_home_l
 
 To learn more, please visit the Documentation page of the [Analytics Toolbox for BigQuery](/analytics-toolbox-bq) (also valid for the CARTO Data Warehouse) and [Analytics Toolbox for Snowflake](/analytics-toolbox-sf).
 
-### Add source from a local file
+### Add source from a local or remote file
+
+CARTO allows to create geospatial tables in an organization's CARTO Datawarehouse by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
 From the Layers tab, go to the Sources panel, click on *Add source from...* and select *Import file*. A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
 

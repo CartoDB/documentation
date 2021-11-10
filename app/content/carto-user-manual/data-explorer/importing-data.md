@@ -1,12 +1,16 @@
 ## Importing data
 
+CARTO allows to create geospatial tables in an organization's CARTO Datawarehouse by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
+
+Currently, the import of GeoJSON and Shapefiles (in a zip package) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
+
 To import your data, go to *Connections* panel and click on *Import data* button on the top left:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
 
 A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_local.png)
 
 You can import your data through two different methods: Local or Remote.
 
