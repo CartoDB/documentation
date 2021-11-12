@@ -8,7 +8,7 @@ This connection will grant you access to some resources, in terms of cloud stora
 
 ### Limits
 
-The CARTO Data Warehouse connection is limited to a certain amount of computing per day. You can find this limit in the `CARTO Data Warehouse` connection's card. These limits depend on whether your organization has purchased the CARTO Data Warehouse Add-on in your subscription plan. 
+The `CARTO Data Warehouse` connection is limited to a certain amount of computing per day. You can find this limit in the `CARTO Data Warehouse` connection's card. These limits depend on whether your organization has purchased the CARTO Data Warehouse Add-on in your subscription plan. 
 
 ### CARTO Demo Data
 
