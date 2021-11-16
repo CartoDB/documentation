@@ -1,10 +1,10 @@
 ---
 title: FAQs
 description: "Frequently Asked Questions about the CARTO platform and its components"
-icon: "/img/icons/carto.png"
+icon: "/img/icons/faq.png"
 
 url: faqs
-indexPage: "/getting-started.md"
+indexPage: "getting-started.md"
 
 menu:
   - title: "Categories"
@@ -16,7 +16,5 @@ menu:
       - title: "Analytics Toolbox"
       - title: "Development Tools"
       - title: "Support Packages"
-    # folder:
-    #   - title: "CARTO Accounts"
 
 ---

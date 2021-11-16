@@ -40,7 +40,7 @@ products:
   - title: "FAQs"
     description: "Frequently Asked Questions about the CARTO platform and its components"
     url: "/faqs/getting-started"
-    image: "carto.png"
+    image: "faq.png"
   # - title: "Spatial Extension for BigQuery"
   #   description: "Unlock Spatial Analytics on your BigQuery"
   #   url: "./spatial-extension-bq"
