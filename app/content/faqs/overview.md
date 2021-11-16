@@ -1,4 +1,4 @@
-## Frequently Asked Questions
+## Overview
 
 ### CARTO Accounts
 * [What is the new version of the CARTO platform?](../categories/carto-accounts/#what-is-the-new-version-of-the-carto-platform)

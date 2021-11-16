@@ -4,9 +4,10 @@ description: "Frequently Asked Questions about the CARTO platform and its compon
 icon: "/img/icons/faq.png"
 
 url: faqs
-indexPage: "getting-started.md"
+indexPage: "overview.md"
 
 menu:
+  - title: "Overview"
   - title: "Categories"
     folder:
       - title: "CARTO Accounts"
