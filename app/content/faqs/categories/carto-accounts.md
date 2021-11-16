@@ -25,7 +25,7 @@ No, by default it is not. Both versions of the platform are completely independe
 ##### Will I be forced to move all my data to the new version of the CARTO platform?
 No, you won’t. If you are an existing CARTO customer you can enjoy both versions of the platform. If you are an existing enterprise customer, and you would like to make available in the new platform some of the tables you have in your existing account, please get in touch with your CARTO representative or our Support team, and we can assist you to migrate data across our two platform versions.  
 
-#### Is CARTO’s Student Package still available?
+##### Is CARTO’s Student Package still available?
 Yes, it is. Until March 2022 you can still sign up to our previous version of the platform as well as to the new one. From March 2022 onwards, Student accounts will only be available for our new platform. Therefore, please make sure you adapt the contents of your course or project to the new CARTO platform. 
 
 
