@@ -472,6 +472,15 @@ li {
 
 .image-card__content {
   padding: 24px;
+
+  p {
+    max-height: 150px;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;  
+  }
 }
 
 .image-card__image {
