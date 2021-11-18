@@ -1,5 +1,32 @@
 ## Release notes
 
+### November 5, 2021
+
+#### Module data v1.0.0-beta.2
+
+Changes
+- Fields named `dimension`, `total`, `intersection` and `input_area` are now
+  `__carto_dimension`, `__carto_total` and `__carto_intersection` and `__carto_input_area`.
+  Also the column `_carto_enrichment_` is now `__carto_enrichment`.
+  This affects all the _raw_ enrichment procedures: `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`.
+
+Fixed
+- User provided queries can now have columns named `dimension`, `total`, `intersection`, `input_area`, `_nonglobal`, which could have collided previously with internal columns. All internal columns are now prefixed with `__carto_`. This affects all the enrichment procedures: `ENRICH_POINTS`, `ENRICH_POLYGONS`, `ENRICH_GRID`, `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`.
+
+### November 4, 2021
+
+#### Module data v1.0.0-beta.1
+
+Feature
+- Create data module.
+- Add VERSION function.
+- Add ENRICH_POINTS procedure.
+- Add ENRICH_POINTS_RAW procedure.
+- Add ENRICH_POLYGON procedure.
+- Add ENRICH_POLYGON_RAW procedure.
+- Add ENRICH_GRID procedure.
+- Add ENRICH_GRID_RAW procedure.
+
 ### September 22, 2021
 
 #### Module h3 v1.0.3

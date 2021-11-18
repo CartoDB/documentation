@@ -30,6 +30,7 @@ menu:
       - title: "accessors"
       - title: "clustering"
       - title: "constructors"
+      - title: "data"
       - title: "h3"
       - title: "measurements"
       - title: "placekey"

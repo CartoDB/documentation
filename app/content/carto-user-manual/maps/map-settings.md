@@ -46,7 +46,7 @@ The following features are available in the list of layers of your map in Builde
 
 This guide describes how to add interactive widgets to view your map data in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
 
-In the *Wiget* tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
+In the Widget tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
 ![Map widgets add new widget](/img/cloud-native-workspace/maps/maps_add_new_widget.png)
 

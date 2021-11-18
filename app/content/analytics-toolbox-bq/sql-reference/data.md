@@ -87,9 +87,9 @@ As a result of this process, each input grid cell will be enriched with the data
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
 The array contains STRUCTs with one field for each variable, using the variable slug as the field name. Additional fields will be included with information about the intersection of the grid cell and the Data Observatory geographies.
-* `dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
-* `intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
-* `total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
+* `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
+* `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
+* `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
 {{% customSelector %}}
 **Example**
@@ -109,7 +109,8 @@ CALL carto-st.data.DATAOBS_ENRICH_GRID_RAW(
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: index, and wp_grid100m_10955184.
--- Column wp_grid100m_10955184 will have the fields population_93405ad7, dimension, intersection and total.
+-- Column wp_grid100m_10955184 will have the fields population_93405ad7,
+-- __carto_dimension, __carto_intersection and __carto_total.
 ```
 
 
@@ -186,10 +187,10 @@ As a result of this process, each input point will be enriched with the data of 
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
 The array contains STRUCTs with one field for each variable, using the variable slug as the field name. Additional fields will be included with information about the intersected enrichment geographies:
-* `dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
-* `total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
+* `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
+* `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
-Moreover, another column named `input_area` will be added containing the area of the input polygon in square meters.
+Moreover, another column named `__carto_input_area` will be added containing the area of the input polygon in square meters.
 
 {{% customSelector %}}
 **Examples**
@@ -207,8 +208,8 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS_RAW(
    'my-dataobs-project.my-dataobs-dataset'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
--- with columns: id, geom, input_area and and wp_grid100m_10955184.
--- Column wp_grid100m_10955184 will have the fields population_93405ad7, dimension  and total.
+-- with columns: id, geom, __carto_input_area and and wp_grid100m_10955184.
+-- Column wp_grid100m_10955184 will have the fields population_93405ad7, __carto_dimension and __carto_total.
 ```
 
 Imagine that you need some information about your points of interest. We'll get population information from the Data Observatory at those points:
@@ -234,7 +235,7 @@ Now let's compute the average density of population at each location:
 ```sql
 SELECT
   name,
-  AVG(enrichment.population_f9004c56 / NULLIF(enrichment.total, 0) AS popdens_avg
+  AVG(enrichment.population_f9004c56 / NULLIF(enrichment.__carto_total, 0) AS popdens_avg
 FROM
   `my-project.my-dataset.enriched_points`, UNNEST(wp_grid1km_b16138c1) enrichment
 GROUP BY name
@@ -319,11 +320,11 @@ As a result of this process, each input polygon will be enriched with the data o
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
 The array contains STRUCTs with one field for each variable, using the variable slug as the field name. Additional fields will be included with information about the intersection of the geographies:
-* `dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
-* `intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
-* `total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
+* `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
+* `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
+* `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
-Moreover, another column named `input_area` will be added containing the area of the input polygon in square meters.
+Moreover, another column named `__carto_input_area` will be added containing the area of the input polygon in square meters.
 
 {{% customSelector %}}
 **Example**
@@ -342,7 +343,8 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_RAW(
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: id, geom, input_area and wp_grid100m_10955184.
--- Column wp_grid100m_10955184 will have the fields population_93405ad7, dimension, intersection and total.
+-- Column wp_grid100m_10955184 will have the fields population_93405ad7,
+-- __carto_dimension, __carto_intersection and __carto_total.
 ```
 
 Imagine that you need some information about the population in two areas of interest defined as a 100-meter buffer around two given points.
@@ -373,8 +375,8 @@ Now let's compute some aggregated statistics for our area:
 ```sql
 SELECT
   name,
-  SUM(enrichment.population_f9004c56 * enrichment.intersection / NULLIF(enrichment.total, 0)) AS population_sum,
-  SUM(enrichment.population_f9004c56 / NULLIF(enrichment.total, 0) * enrichment.intersection) / NULLIF(SUM(enrichment.intersection), 0) AS popdens_avg
+  SUM(enrichment.population_f9004c56 * enrichment.__carto_intersection / NULLIF(enrichment.__carto_total, 0)) AS population_sum,
+  SUM(enrichment.population_f9004c56 / NULLIF(enrichment.__carto_total, 0) * enrichment.__carto_intersection) / NULLIF(SUM(enrichment.__carto_intersection), 0) AS popdens_avg
 FROM
   `my-project.my-dataset.enriched_area`, UNNEST(wp_grid1km_b16138c1) enrichment
 GROUP BY name
@@ -406,7 +408,7 @@ The result is a table with these columns:`
 * `dataset_provider` name of the dataset provider.
 * `dataset_version` version of the dataset.
 * `dataset_geo_type` type of geometry used by the geography: "POINT"/"MULTIPOINT"/"LINESTRING"/"MULTILINESTRING"/"POLYGON"/"MULTIPOLYGON"/"GEOMETRYCOLLECTION".
-* `table` name of the user BigQuery sample table.
+* `dataset_sample_table` name of the user BigQuery sample table.
 
 {{% customSelector %}}
 **Example**
@@ -441,8 +443,9 @@ The result is a table with these columns:
 * `dataset_provider` name of the dataset provider.
 * `dataset_version` version of the dataset.
 * `dataset_geo_type` type of geometry used by the geography: "POINT"/"MULTIPOINT"/"LINESTRING"/"MULTILINESTRING"/"POLYGON"/"MULTIPOLYGON"/"GEOMETRYCOLLECTION".
-* `table` name of the user BigQuery subscription table to access the dataset.
-* `associated_geography` geography associated with the dataset (NULL if category is `Geography` meanint the dataset itself is a geography); contains a subscription table/view if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
+* `dataset_table` name of the user BigQuery subscription table to access the dataset.
+* `associated_geography_table` geography associated with the dataset (NULL if category is `Geography` meaning the dataset itself is a geography); contains a subscription table/view if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
+* `associated_geography_slug` internal identifier of the geography associated with the dataset (NULL if category is `Geography`).
 
 {{% customSelector %}}
 **Example**
@@ -475,7 +478,7 @@ The result is a table with one row per variable and these columns:
 * `variable_type` type of the variable column.
 * `variable_aggregation` default aggregation method for the variable.
 * `dataset_slug` identifier of the dataset the variable belongs to.
-* `geography_slug` identifier of the corresponding geography.
+* `associated_geography_slug` identifier of the corresponding geography. Note that this is NULL if the dataset itself is a geography..
 
 {{% customSelector %}}
 **Example**
@@ -554,7 +557,7 @@ data.ENRICH_GRID_RAW(grid_type, input_query, input_index_column, data_query, dat
 
 This procedure enriches a query containing grid cell indices of one of the supported types (h3, quadkey, s2, geohash) with data from another enrichment query.
 
-As a result of this process, each input grid cell will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input cell will be returned in an ARRAY column named `_carto_enrichment_`. Each array contains STRUCTs with one field for each variable and additional measure fields `intersection`, `total`, `dimension`. See the output information for more details.
+As a result of this process, each input grid cell will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input cell will be returned in an ARRAY column named `__carto_enrichment`. Each array contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for more details.
 
 **Input parameters**
 
@@ -569,10 +572,10 @@ As a result of this process, each input grid cell will be enriched with the data
 
 **Output**
 
-The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column named `_carto_enrichment_`. The array contains STRUCTs with one field for each variable. Additional fields will be included with information about the intersection of the grid cell and the enrichment features.
-* `dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
-* `intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
-* `total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
+The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column named `__carto_enrichment`. The array contains STRUCTs with one field for each variable. Additional fields will be included with information about the intersection of the grid cell and the enrichment features.
+* `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
+* `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
+* `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
 {{% customSelector %}}
 **Example**
@@ -593,7 +596,8 @@ CALL carto-st.data.ENRICH_GRID(
    ['`my-project.my-dataset.my-enriched-table`']
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
--- with columns: index, _carto_enrichment_. The latter will contain STRUCTs with the fields var1, var2, intersection, total, and dimension.
+-- with columns: index, __carto_enrichment. The latter will contain STRUCTs with the fields var1, var2,
+-- __carto_intersection, __carto_total, and __carto_dimension.
 ```
 
 
@@ -656,7 +660,7 @@ data.ENRICH_POINTS_RAW(input_query, input_geography_column, data_query, data_geo
 
 This procedure enriches a query containing geographic points with data from another query, spatially matching both.
 
-As a result of this process, each input point will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input point will be returned in an ARRAY column named `_carto_enrichment_`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `intersection`, `total`, `dimension. See the output information for details.
+As a result of this process, each input point will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input point will be returned in an ARRAY column named `__carto_enrichment`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `dimension. See the output information for details.
 
 **Input parameters**
 
@@ -669,9 +673,9 @@ As a result of this process, each input point will be enriched with the data of 
 
 **Output**
 
-The output table will contain all the input columns provided in the `input_query`, and one extra ARRAY column named `_carto_enrichment_`. The array contains STRUCTs with one field for each variable. Additional fields will be included with information about the intersection of the geographies:
-* `dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
-* `total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
+The output table will contain all the input columns provided in the `input_query`, and one extra ARRAY column named `__carto_enrichment`. The array contains STRUCTs with one field for each variable. Additional fields will be included with information about the intersection of the geographies:
+* `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
+* `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
 {{% customSelector %}}
 **Example**
@@ -690,7 +694,8 @@ CALL carto-st.data.ENRICH_POINTS(
    ['`my-project.my-dataset.my-enriched-table`']
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
--- with columns: id, geom, _carto_enrichment_. The latter will contain STRUCTs with the fields var1, var2, intersection, total, and dimension.
+-- with columns: id, geom, __carto_enrichment. The latter will contain STRUCTs with the fields var1, var2,
+-- __carto_total, and __carto_dimension.
 ```
 
 ### ENRICH_POLYGONS
@@ -758,7 +763,7 @@ data.ENRICH_POLYGONS_RAW(input_query, input_geography_column, data_query, data_g
 
 This procedure enriches a query containing geographic polygons with data from another query, spatially matching both.
 
-As a result of this process, each input polygon will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input polygon will be returned in an ARRAY column named `_carto_enrichment_`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `intersection`, `total`, `dimension. See the output information for details.
+As a result of this process, each input polygon will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input polygon will be returned in an ARRAY column named `__carto_enrichment`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for details.
 
 **Input parameters**
 
@@ -771,12 +776,12 @@ As a result of this process, each input polygon will be enriched with the data o
 
 **Output**
 
-The output table will contain all the input columns provided in the `input_query`, and one extra ARRAY column named `_carto_enrichment_`. The array contains STRUCTs with one field for each variable. Additional fields will be included with information about the intersection of the geographies:
-* `dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
-* `intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
-* `total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
+The output table will contain all the input columns provided in the `input_query`, and one extra ARRAY column named `__carto_enrichment`. The array contains STRUCTs with one field for each variable. Additional fields will be included with information about the intersection of the geographies:
+* `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
+* `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
+* `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-Moreover, another column named `input_area` will be added containing the area of the input polygon in square meters.
+Moreover, another column named `__carto_input_area` will be added containing the area of the input polygon in square meters.
 
 {{% customSelector %}}
 **Example**
@@ -795,7 +800,8 @@ CALL carto-st.data.ENRICH_POLYGONS_RAW(
    ['`my-project.my-dataset.my-enriched-table`']
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
--- with columns: id, geom, _carto_enrichment_. The latter will contain STRUCTs with the fields var1, var2, intersection, total, and dimension.
+-- with columns: id, geom, __carto_enrichment. The latter will contain STRUCTs with the fields var1, var2,
+-- __carto_intersection, __carto_total, and __carto_dimension.
 ```
 
 ### VERSION
@@ -818,5 +824,5 @@ Returns the current version of the data module.
 
 ```sql
 SELECT carto-st.data.VERSION();
--- 1.0.0
+-- 1.0.0-beta.1
 ```
