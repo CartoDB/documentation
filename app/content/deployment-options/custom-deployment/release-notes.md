@@ -1,6 +1,6 @@
 ## Release Notes
 
-## 21.11.15
+### 21.11.15
 * Add choice to disable import notifications
 * Possibility to allow random SAML usernames generation
 * Fix privacy dropdown when editing a map
