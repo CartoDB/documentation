@@ -1,3 +1,10 @@
+---
+title: "Find the best place to create a store near the customers"
+description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population."
+url: "./find-the-best-place-to-create-a-store-near-the-customers"
+image: "/img/tutorials/fake.png"
+type: "tutorial"
+---
 ## Find the best place to create a store near the customers 
 
 **Context**

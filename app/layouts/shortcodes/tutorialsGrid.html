@@ -1,0 +1,44 @@
+<div style="display: none">{{ .Inner }}</div>
+{{ $tutorials := where .Site.Pages "Params.type" "tutorial" }}
+{{ $total := len $tutorials }}
+{{ $itemsPerPage := 2 }}
+{{ $pages := div $total $itemsPerPage }}
+{{ $from := 0 }}
+{{ $to := 1 }}
+
+<div class="grid">
+  {{ range $tutorial := $tutorials}}
+  <div class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mt48 u-mb24 tutorial-card">
+    <a href="{{ $tutorial.Params.url }}" target="{{ $tutorial.Params.target }}">
+      <div class="tutorial-card__image">
+        <img src="{{ $tutorial.Params.image }}" />
+      </div>
+    </a>
+    <div class="tutorial-card__content">
+      <a href="{{ $tutorial.Params.url }}" target="{{ $tutorial.Params.target }}" class="title f32">
+        {{ $tutorial.Params.title }}
+      </a>
+      <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
+    </div>
+
+    {{ if $tutorial.Params.tags }}
+        {{ range $tag := $tutorial.Params.tags }}
+        <a href="#" class="tag">{{ $tag }}</a>
+        {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
+
+<div class="pagination">
+  {{ $first := .Page.RelPermalink }}
+  {{ range $i, $t := $tutorials  }}
+    {{ $index := add $i 1 }}
+    {{ $link := print $index | print "page-" }}
+    {{ if eq $i 0 }}
+      <a href="{{ $first }}" class="pagination__link">1</a>
+    {{ else }}
+      <a href="{{ $first }}{{ $link }}" class="pagination__link">{{ $index}}</a>
+    {{ end }}
+  {{ end }}
+</div>

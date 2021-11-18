@@ -1,3 +1,11 @@
+---
+title: "Assessing the damages of La Palma Volcano"
+description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population."
+url: "./assessing-the-damages-of-la-palma-volcano"
+image: "/img/tutorials/fake.png"
+type: "tutorial"
+---
+
 ## Assessing the damages of La Palma Volcano
 
 **Context**

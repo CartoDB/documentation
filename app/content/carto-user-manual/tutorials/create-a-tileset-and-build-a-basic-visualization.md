@@ -1,3 +1,10 @@
+---
+title: "Create a tileset and build a basic visualization"
+description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population." 
+url: "./create-a-tileset-and-build-a-basic-visualization"
+image: "/img/tutorials/fake.png"
+type: "tutorial"
+---
 ## Create a tileset and build a basic visualization
 
 **Context**
