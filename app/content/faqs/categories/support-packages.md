@@ -4,6 +4,9 @@
 
 ##### What support packages are available at CARTO?
 
+CARTO offers comprehensive Support Packages to our enterprise customers. CARTO is committed to helping you make the most of your CARTO solution.
+These Packages are structured to help organizations at any stage of using location data to solve complex problems. We offer the following Packages with a combination of services to best suit your specific needs.
+
 <style>
 #article table th, #article table td{
   padding: 16px 8px;
@@ -13,7 +16,7 @@
   <thead>
     <tr>
       <th style="min-width:150px"></th>
-      <th style="text-align: center; width: 20%;"><strong>Individual</strong></th>
+      <th style="text-align: center; width: 20%;"><strong>Individual</b></strong></th>
       <th style="text-align: center; width: 20%;"><strong>Standard</strong></th>
       <th style="text-align: center; width: 20%;"><strong>Premium</strong></th>
       <th style="text-align: center; width: 20%;"><strong>Elite</strong></th>
@@ -21,91 +24,91 @@
   </thead>
   <tbody>
     <tr>
-      <td>Support Access</td>
+      <td><strong>Support Access</strong></td>
       <td style="text-align: center">mail</td>
       <td style="text-align: center">mail</td>
       <td style="text-align: center">mail</td>
       <td style="text-align: center">mail or telephone</td>
     </tr>
     <tr>
-      <td>Help and Developer Center</td>
+      <td><strong>Help and Developer Center</strong></td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
     </tr>
     <tr>
-      <td>Support Coverage</td>
+      <td><strong>Support Coverage</strong></td>
       <td style="text-align: center">Business Hours <br/> (1 region)</td>
       <td style="text-align: center">Business Hours <br/> (1 region)</td>
       <td style="text-align: center">Business Hours <br/> (2 regions)</td>
       <td style="text-align: center">24 / 7</td>
     </tr>
     <tr>
-      <td>Target Response Times</td>
+      <td><strong>Target Response Times</strong></td>
       <td style="text-align: center">Pro</td>
       <td style="text-align: center">Standard</td>
       <td style="text-align: center">Premium</td>
       <td style="text-align: center">Elite</td>
     </tr>
     <tr>
-      <td>Customer Success Manager (CSM)</td>
+      <td><strong>Customer Success Manager (CSM)</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
     </tr>
     <tr>
-      <td>Onboarding</td>
+      <td><strong>Onboarding</strong></td>
       <td style="text-align: center">Online</td>
       <td style="text-align: center">Online</td>
       <td style="text-align: center">CSM-led</td>
       <td style="text-align: center">CSM-led</td>
     </tr>
     <tr>
-      <td>Success Plans</td>
+      <td><strong>Success Plans</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
     </tr>
     <tr>
-      <td>Value Project(s)</td>
+      <td><strong>Value Project(s)</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">max 10 h.</td>
       <td style="text-align: center">max 30 h.</td>
     </tr>
     <tr>
-      <td>Quarterly Business Reviews</td>
+      <td><strong>Quarterly Business Reviews</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
     </tr>
     <tr>
-      <td>Access to CARTO-organized communities of practice</td>
+      <td><strong>Access to CARTO-organized communities of practice</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
     </tr>
     <tr>
-      <td>Product Updates</td>
+      <td><strong>Product Updates</strong></td>
       <td style="text-align: center">Online</td>
       <td style="text-align: center">Online</td>
       <td style="text-align: center">CSM-led review</td>
       <td style="text-align: center">CSM-led review</td>
     </tr>
     <tr>
-      <td>Feature Request elevation</td>
+      <td><strong>Feature Request elevation</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">✓</td>
     </tr>
     <tr>
-      <td>Technical Advising Services</td>
+      <td><strong>Technical Advising Services</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">max. 40h</td>
@@ -113,9 +116,6 @@
     </tr>
   </tbody>
 </table>
-
-CARTO offers comprehensive Support Packages to our enterprise customers. CARTO is committed to helping you make the most of your CARTO solution.
-These Packages are structured to help organizations at any stage of using location data to solve complex problems. We offer the following Packages with a combination of services to best suit your specific needs.
 
 ##### Who is entitled to Support?
 Users of the CARTO Platform are entitled to support according to their Support Package, described above. CARTO is not responsible for providing support to end users of CARTO-powered applications.
