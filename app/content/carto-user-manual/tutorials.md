@@ -1,4 +1,4 @@
-## Overview
+## Tutorials
 
 The `CARTO Data Warehouse` connection grants access to a set of demo tables and tilesets that can be used to start creating stunning maps and exploring the tools from the very beginning. 
 
