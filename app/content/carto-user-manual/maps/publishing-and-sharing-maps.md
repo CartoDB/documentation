@@ -28,7 +28,7 @@ Public maps have extra options to share the link with the public, or to get Deve
 
 ![Publish options share link copied](/img/cloud-native-workspace/maps/map_sharing_options_public_map_sharelinkcopied.png)
 
-![Publish options developers](/img/cloud-native-workspace/maps/map_sharing_options_public_map_develops.png)
+![Publish options developers](/img/cloud-native-workspace/maps/map_sharing_options_public_map_developers.png)
 
 #### Publishing updates for shared and public maps
 
