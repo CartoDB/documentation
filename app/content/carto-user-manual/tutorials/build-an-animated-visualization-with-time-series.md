@@ -86,4 +86,4 @@ In this tutorial we are going to represent the distribution of tree species in t
 
 16. Finally, we can visualize the result.
 
-   <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/7bcfaa45-137f-4ecc-8527-5f40f54ada7d"></iframe>
+    <iframe width="800x" height="400px" src="https://gcp-europe-west1.app.carto.com/map/7bcfaa45-137f-4ecc-8527-5f40f54ada7d"></iframe>

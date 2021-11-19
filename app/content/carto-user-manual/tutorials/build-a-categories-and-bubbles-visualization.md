@@ -79,4 +79,4 @@ In this tutorial we are going to represent the distribution of the most populate
  
  16. Finally, we can visualize the result.
 
-      <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/121e2fc6-b2e1-4b2a-b79e-e74f5df78b1e"></iframe>
+      <iframe width="800px" height="400px" src="https://gcp-europe-west1.app.carto.com/map/121e2fc6-b2e1-4b2a-b79e-e74f5df78b1e"></iframe>

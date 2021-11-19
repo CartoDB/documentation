@@ -127,4 +127,4 @@ in the `Analytics Toolbox`; this would give us a potentially optimal location to
 
 20. Finally, we can visualize the result.
 
-    <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/d363a917-045d-4c62-859c-8f89ce73559e"></iframe>    
+    <iframe width="800px" height="400px" src="https://gcp-europe-west1.app.carto.com/map/d363a917-045d-4c62-859c-8f89ce73559e"></iframe>    
