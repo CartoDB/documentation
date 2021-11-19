@@ -669,6 +669,10 @@ li {
     }
   }
 
+  .toc--link.level-one.is-tutorial {
+    color: $navyBlue;
+  }
+
   .toc--link.level-one,
   .toc-hugo__folder-one > nav > ul > li > a {
     @include title();

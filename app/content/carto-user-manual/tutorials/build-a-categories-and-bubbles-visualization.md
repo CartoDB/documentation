@@ -1,7 +1,7 @@
 ---
 title: "Build a categories & bubbles visualization"
 description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population." 
-url: "./build-a-categories-and-bubbles-visualization"
+url: "carto-user-manual/tutorials/build-a-categories-and-bubbles-visualization"
 image: "/img/tutorials/fake.png" 
 type: "tutorial"
 ---

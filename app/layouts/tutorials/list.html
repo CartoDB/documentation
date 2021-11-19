@@ -1,0 +1,36 @@
+{{ define "main" }}
+{{- partial "header.html" . -}}
+
+<div class="is-bgWhite is-txtBaseGrey">
+  <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
+    {{- partial "aside-menu.html" . -}}
+    <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
+      <h2>Overview</h2>
+      <ul class="grid">
+        {{ range $tutorial := (.Paginate ( first 10 .Pages )).Pages }}
+        <div
+          class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mt48 u-mb24 tutorial-card">
+          <a href="{{ absURL $tutorial.Params.url }}">
+            <div class="tutorial-card__image">
+              <img src="{{ $tutorial.Params.image }}" />
+            </div>
+          </a>
+          <div class="tutorial-card__content">
+            <a href="{{ absURL $tutorial.Params.url }}" class="title f24">
+              {{ $tutorial.Params.title }}
+            </a>
+            <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
+          </div>
+
+          {{ if $tutorial.Params.tags }}
+          {{ range $tag := $tutorial.Params.tags }}
+          <a href="#" class="tag">{{ $tag }}</a>
+          {{ end }}
+          {{ end }}
+        </div>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
+</div>
+{{end}}

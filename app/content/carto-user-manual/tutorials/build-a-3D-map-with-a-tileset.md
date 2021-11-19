@@ -1,7 +1,7 @@
 ---
 title: "Build a 3D map with a tileset"
 description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours..." 
-url: "./build-a-3d-map-with-a-tileset" 
+url: "carto-user-manual/tutorials/build-a-3d-map-with-a-tileset" 
 image: "/img/tutorials/fake.png"
 type: "tutorial"
 ---

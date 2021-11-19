@@ -78,7 +78,7 @@
                                         {{$toc}}
                                       </ul>
                                     {{ else }}
-                                      <a class="toc--link level-three" href="{{ path.Join "/" $context.url $levelThreeURL }}">{{ $levelThree.title }}</a>
+                                      <a class="toc--link level-three" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" ) $levelThreeURL) }}">{{ $levelThree.title }}</a>
                                     {{ end }}
                                   </li>
                                 {{ end }}
@@ -86,7 +86,7 @@
                             </div>
                           </li>
                         {{ else }}
-                          <a class="toc--link level-two" href="{{ path.Join "/" $context.url $levelTwoURL }}">{{ $levelTwo.title }}</a>
+                          <a class="toc--link level-two" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" ) $levelTwoURL) }}">{{ $levelTwo.title }}</a>
                         {{ end }}
                       {{ end }}
                     </li>
@@ -97,14 +97,16 @@
           </ul>
         {{ else }}
           {{ $levelOneActive := in $levelOneURL $base }}
-
           {{ if and $levelOneActive $toc }}
             <div class="toc-hugo__folder-one native">
               {{ $toc }}
             </div>
           {{ else }}
-            <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ path.Join "/" $context.url $levelOneURL }}">{{ $levelOne.title }}</a>
+            <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" ) $levelOneURL) }}">{{ $levelOne.title }}</a>
           {{ end }}
+          {{ if $levelOne.toc }}
+            <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" )) }}">{{ $levelOne.title }}</a>
+          {{end}}
         {{ end }}
       {{ end }}
     </div>
