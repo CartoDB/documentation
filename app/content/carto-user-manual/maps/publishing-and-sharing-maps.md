@@ -4,13 +4,17 @@ This guide describes how you can share any CARTO map with your teammates, or pub
 
 When you create a map, it's always **private** by default.
 
-To share the map with your organization, open the map in Builder and click the SHARE button on the top-right to open the sharing options. 
+To share the map with your organization, open the map in Builder and click the *Share* button on the top-right to open the sharing options. 
 
 <!-- screenshot needed -->
 
-![Publish options share link button](/img/cloud-native-workspace/maps/map_sharelink_button.png) 
+![Publish options share link button](/img/cloud-native-workspace/maps/map_share_button.png) 
 
-Here you'll find three different settings:
+A new dialog screen will open allowing you to select who you want to share your maps with:
+
+![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options.png) 
+
+Here you'll find three different sharing options:
 
 * **Private**: Only you can view and open it.
 * **Organization**: The map will be visible to all users in your organization.
