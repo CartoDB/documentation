@@ -657,12 +657,15 @@ li {
 
       &:hover,
       &.is-active,
-      &.is-current {
+      &.active,
+      &.is-current,
+      &.current {
         color: $navyBlue;
       }
 
       &:hover,
-      &.is-current {
+      &.is-current,
+      &current {
         text-decoration: none;
         background-color: $softblue;
       }
@@ -694,7 +697,8 @@ li {
     @include text();
     padding: 8px 8px 8px 48px;
 
-    &.is-current {
+    &.is-current,
+    &.current {
       font-weight: 600;
     }
   }
@@ -705,7 +709,8 @@ li {
     @include text();
     padding: 8px 8px 8px 64px;
 
-    &.is-current {
+    &.is-current,
+    &.current {
       font-weight: 600;
     }
   }

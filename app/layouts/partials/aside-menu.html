@@ -42,7 +42,7 @@
               <div class="dropdown-options {{ if not $dropdownActive }} hide {{ end }}">
                 <ul class="toc-hugo__folder-two">
                   {{ range $levelTwo := $levelOne.folder }}
-                    {{ $levelTwoURL := path.Join $levelOneURL (urlize $levelTwo.title) }}
+                    {{ $levelTwoURL := cond (not $levelTwo.url) (path.Join $levelOneURL (urlize $levelTwo.title)) $levelTwo.url }}
 
                     <li>
                       {{ $levelTwoActive := in $currentSectionPath $levelTwoURL }}
@@ -68,7 +68,7 @@
                             <div class="dropdown-options {{ if not $dropdownTwoActive }} hide {{ end }}">
                               <ul class="toc-hugo__folder-three">
                                 {{ range $levelThree := $levelTwo.folder }}
-                                  {{ $levelThreeURL := path.Join $levelTwoURL (urlize $levelThree.title) }}
+                                  {{ $levelThreeURL := cond (not $levelThree.url) (urlize $levelThree.title) $levelThree.url }}
                                   
                                   <li>
                                     {{ $levelThreeActive := in $currentSectionPath $levelThreeURL }}
@@ -78,6 +78,7 @@
                                         {{$toc}}
                                       </ul>
                                     {{ else }}
+                                      <!-- TODO: level 3? -->
                                       <a class="toc--link level-three" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" ) $levelThreeURL) }}">{{ $levelThree.title }}</a>
                                     {{ end }}
                                   </li>
@@ -86,7 +87,7 @@
                             </div>
                           </li>
                         {{ else }}
-                          <a class="toc--link level-two" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" ) $levelTwoURL) }}">{{ $levelTwo.title }}</a>
+                          <a class="toc--link level-two" href="{{ absURL (path.Join "/" $context.basePath $levelTwoURL) }}">{{ $levelTwo.title }}</a>
                         {{ end }}
                       {{ end }}
                     </li>
@@ -97,16 +98,15 @@
           </ul>
         {{ else }}
           {{ $levelOneActive := in $levelOneURL $base }}
-          {{ if and $levelOneActive $toc }}
+          {{ if and $levelOneActive $toc (eq $levelOne.hasToc false) }}
             <div class="toc-hugo__folder-one native">
               {{ $toc }}
             </div>
           {{ else }}
-            <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" ) $levelOneURL) }}">{{ $levelOne.title }}</a>
+            {{ if (ne $levelOne.title nil) }}
+              <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ path.Join "/" $context.basePath $levelOneURL }}">{{ $levelOne.title }}</a>
+            {{ end }}
           {{ end }}
-          {{ if $levelOne.toc }}
-            <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ absURL (path.Join "/" (replace $context.url $currentSectionPath "" )) }}">{{ $levelOne.title }}</a>
-          {{end}}
         {{ end }}
       {{ end }}
     </div>
