@@ -1,9 +1,7 @@
 ---
 title: "Build an animated visualization with time series"
 description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population." 
-url: "carto-user-manual/tutorials/build-an-animated-visualization-with-time-series" 
-image: "/img/tutorials/fake.png" 
-type: "tutorial"
+image: "/img/tutorials/animated.png" 
 ---
 ## Build an animated visualization with time series
 

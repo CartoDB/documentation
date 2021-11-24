@@ -6,20 +6,26 @@
     {{- partial "aside-menu.html" . -}}
     <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
       <h2>Overview</h2>
+      
+      <p>The <code>CARTO Data Warehouse</code> connection grants access to a set of demo tables and tilesets that can be used to start creating stunning maps and exploring the tools from the very beginning.</p>
+      <p>They’re available and ready to be used in the Data Explorer and Builder and you can start using them with all components of the CARTO platform, such as running advanced spatial analysis with our Analytics Toolbox, with everything running directly on top of the provisioned <code>CARTO Data Warehouse</code>connection.</p>
+      <p>In this section, we provide a varied set of tutorials on how to get the most out of your data:</p>
+
+      {{ $paginator := .Paginator }}
       <ul class="grid">
-        {{ range $tutorial := (.Paginate ( first 10 .Pages )).Pages }}
+        {{ range $tutorial := $paginator.Pages }}
         <div
           class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mt48 u-mb24 tutorial-card">
-          <a href="{{ absURL $tutorial.Params.url }}">
+          <a href="{{ .Permalink }}">
             <div class="tutorial-card__image">
               <img src="{{ $tutorial.Params.image }}" />
             </div>
           </a>
           <div class="tutorial-card__content">
-            <a href="{{ absURL $tutorial.Params.url }}" class="title f24">
-              {{ $tutorial.Params.title }}
+            <a href="{{ .Permalink }}" class="title f24">
+              {{ .Title }}
             </a>
-            <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
+            <p class="text f16 is-txtTypo2 u-mt8">{{ $tutorial.Params.description }}</p>
           </div>
 
           {{ if $tutorial.Params.tags }}
@@ -30,6 +36,8 @@
         </div>
         {{ end }}
       </ul>
+
+      {{ partial "paginator.html" (dict "context" . "paginator" $paginator) }}
     </div>
   </div>
 </div>

@@ -9,6 +9,7 @@
   "dataDir": "data",
   "staticDir": "static",
   "publishDir": "_site",
+  "paginate": 2,
   "sitemap": {
     "changefreq": "monthly",
     "filename": "doc-sitemap.xml",
