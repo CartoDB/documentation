@@ -858,8 +858,21 @@ li {
   }
 }
 
-.tutorial h2 {
-  margin-top: 28px;
+.tutorial {
+  .go-back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    svg {
+      margin-right: 4px;
+      transform: rotate(180deg);
+    }
+  }
+
+  h2 {
+    margin-top: 28px;
+  }
 }
 
 // Pagination
