@@ -22,7 +22,7 @@ Here you'll find three different sharing options:
 
 Remember that if your map is "shared" or "public" you'll need to push your changes with the "Publish Updates" button, next to the sharing button in the top-right menu. 
 
-Public maps have extra options to share the link with the public, or to get Developers information for embedding or working with CARTO for developers. You can toggle between these subtabs and select the option you are interested in. 
+Public maps have some extra options: to share the link with the public, to get Developers information for embedding, or to work with CARTO for developers. You can toggle between these subtabs and select the option you are interested in. 
 
 ![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_public_map_selected.png) 
 
