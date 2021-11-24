@@ -2,6 +2,7 @@
 title: "Build an animated visualization with time series"
 description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population." 
 image: "/img/tutorials/animated.png" 
+type: tutorials
 ---
 ## Build an animated visualization with time series
 
