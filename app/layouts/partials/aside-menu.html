@@ -104,7 +104,7 @@
             </div>
           {{ else }}
             {{ if (ne $levelOne.title nil) }}
-              <a class="toc--link level-one {{ if $levelOneActive }} is-active is-current {{ end }}" href="{{ path.Join "/" $context.basePath $levelOneURL }}">{{ $levelOne.title }}</a>
+              <a class="toc--link level-one {{ if $levelOneActive }} active is-active is-current {{ end }}" href="{{ path.Join "/" $context.basePath $levelOneURL }}">{{ $levelOne.title }}</a>
             {{ end }}
           {{ end }}
         {{ end }}
