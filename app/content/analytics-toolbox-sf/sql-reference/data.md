@@ -559,6 +559,7 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
+{{% customSelector %}}
 **Example**
 {{%/ customSelector %}}
 
