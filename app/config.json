@@ -9,7 +9,8 @@
   "dataDir": "data",
   "staticDir": "static",
   "publishDir": "_site",
-  "paginate": 2,
+  "paginate": 6,
+  "tocMinWordCount": 10,
   "sitemap": {
     "changefreq": "monthly",
     "filename": "doc-sitemap.xml",
