@@ -1,5 +1,22 @@
 ## Release notes
 
+### November 25, 2021
+
+#### Module statistics v1.1.0
+
+Feature
+- Add GWR_GRID function.
+
+### November 16, 2021
+
+#### Module tiler v1.12.4
+
+Fixed
+- Use `zoom_min_column` as `zoom_min` and `zoom_max_column` as `zoom_max` when provided.
+  
+Changed
+- Optimize simplification method instead of the native BigQuery.
+
 ### November 5, 2021
 
 #### Module data v1.1.2

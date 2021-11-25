@@ -35,7 +35,7 @@ For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_
 * `variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY<STRUCT<dataset STRING, expression STRING>>`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter cannot be NULL or empty.
-* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
+* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
 
 **Output**
 
@@ -181,7 +181,7 @@ As a result of this process, each input point will be enriched with the data of 
 * `variables`: `ARRAY<STRING>` of slugs (unique identifiers) of the Data Observatory variables to add to the input points. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY<STRUCT<dataset STRING, expression STRING>>`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter cannot be NULL or empty.
-* `source`: `STRING` name of the location where the Data Observatory samples of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
+* `source`: `STRING` name of the location where the Data Observatory samples of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
 
 **Output**
 
@@ -208,7 +208,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS_RAW(
    'my-dataobs-project.my-dataobs-dataset'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
--- with columns: id, geom, __carto_input_area and and wp_grid100m_10955184.
+-- with columns: id, geom, __carto_input_area and wp_grid100m_10955184.
 -- Column wp_grid100m_10955184 will have the fields population_93405ad7, __carto_dimension and __carto_total.
 ```
 
@@ -342,7 +342,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_RAW(
    'my-dataobs-project.my-dataobs-dataset'
 );
 -- The table `my-project.my-dataset.my-enriched-table` will be created
--- with columns: id, geom, input_area and wp_grid100m_10955184.
+-- with columns: id, geom, __carto_input_area and wp_grid100m_10955184.
 -- Column wp_grid100m_10955184 will have the fields population_93405ad7,
 -- __carto_dimension, __carto_intersection and __carto_total.
 ```
@@ -393,7 +393,7 @@ data.DATAOBS_SAMPLES(source STRING, filters STRING)
 
 When calling this procedure, the result shows a list of the DO samples available.
 
-* `source`: `STRING` name of the location where the Data Observatory samples of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
+* `source`: `STRING` name of the location where the Data Observatory samples of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
 * `filters`: `STRING` SQL expression to filter the results, e.g. `'category="Housing"'`.
   And empty string `''` or `NULL` can be used to omit the filtering.
 
@@ -428,7 +428,7 @@ data.DATAOBS_SUBSCRIPTIONS(source STRING, filters STRING)
 
 When calling this procedure, the result shows a list of the DO subscriptions available.
 
-* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
+* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
 * `filters`: `STRING` SQL expression to filter the results, e.g. `'category="Housing"'`.
   And empty string `''` or `NULL` can be used to omit the filtering.
 
@@ -465,7 +465,7 @@ data.DATAOBS_SUBSCRIPTION_VARIABLES(source STRING, filters STRING)
 
 When calling this procedure, the result shows a list of the DO subscriptions and variables available.
 
-* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
+* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
 * `filters`: `STRING` SQL expression to filter the results, e.g. `'type="STRING"'`.
   And empty string `''` or `NULL` can be used to omit the filtering.
 

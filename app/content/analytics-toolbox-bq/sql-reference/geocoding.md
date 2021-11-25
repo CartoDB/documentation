@@ -21,7 +21,7 @@ This procedure geocodes an input query. To geocode a table pass a query like `SE
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
 * `max_multiple_results`: `INT64`. Set it to NULL to return only a single best match geocode result per row. Geocoding attributes will appear as separate columns of the result. If you pass an integer greater than 0 multiple geocoding result per row will be returned in a `__carto_geocode__`column. Geocoding attributes will appear as STRUCT fields. The integer passed will define the maximum geocode matches per row;
 note that if you pass 1 you will get single best matches, but in a single column with the same format as for multiple results.
-* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
+* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
 
 **Result**
 
@@ -65,7 +65,7 @@ This procedure geocodes postal codes in an input query. To geocode a table pass 
 * `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. This parameter can be NULL or empty, in which case the enrichment result is simply returned but not stored anywhere.
 * `max_multiple_results`: `INT64`. Set it to NULL to return only a single best match geocode result per row. Geocoding attributes will appear as separate columns of the result. If you pass an integer greater than 0 multiple geocoding result per row will be returned in a `__carto_geocode__`column. Geocoding attributes will appear as STRUCT fields. The integer passed will define the maximum geocode matches per row;
 note that if you pass 1 you will get single best matches, but in a single column with the same format as for multiple results.
-* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-customers` by default.
+* `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
 
 **Result**
 
