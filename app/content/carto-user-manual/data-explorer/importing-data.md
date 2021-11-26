@@ -3,7 +3,17 @@
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse)
 by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
-Currently, the import of GeoJSON and Shapefiles (in a zip package) is supported, and soon also CSV files will be supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
+
+### Supported formats
+Currently, the import of CSV, GeoJSON and Shapefiles (in a zip package) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
+
+For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
+* For *geometry*: `geom,Geom,geometry,the_geom,wkt,wkb`
+* For *latitude*: `latitude,lat,Latitude`
+* For *longitude*: `longitude,lon,Lon,Longitude,lng,Lng`
+
+The expected delimiters are: comma (`,`), semi-colon (`;`) or a tabulation.
+
 
 To import your data, go to *Connections* panel and click on *Import data* button on the top left:
 
