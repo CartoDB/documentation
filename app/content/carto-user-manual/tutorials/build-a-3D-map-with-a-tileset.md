@@ -1,6 +1,6 @@
 ---
 title: "Build a 3D map with a tileset"
-description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours..." 
+description: "A geospatial analysis of land use dynamics has special relevance for the management of many phenomena, such as the assessment of the loss of soil due to erosion or the reduction of rural land in favour of the built-up areas. In this regard, Digital elevation Models (DEM) are important inputs to quantify the characteristics of the land surface. In this example we are building a map from a tileset createad by CARTO from a new NASA Digital Elevation Model (NASADEM). We are going to represent the distribution of land elevation by using a gradual color palette and then build a 3D visualization by assigning heights to polygons." 
 image: "/img/tutorials/3d.png"
 type: tutorials
 ---

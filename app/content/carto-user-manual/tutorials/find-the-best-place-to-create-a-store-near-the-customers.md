@@ -1,6 +1,6 @@
 ---
 title: "Find the best place to create a store near the customers"
-description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population."
+description: "Understanding & analyzing spatial data is critical to the future of your business. CARTO 3 Location Intelligence platform allows organizations to store, enrich,analyze & visualize their data to make spatially-aware decisions. In this example we are going to use points clustering to analyze how to find the best place to locate six stores in Portland city based on proximity to customers."
 image: "/img/tutorials/stores.png"
 type: tutorials
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Build an animated visualization with time series"
-description: "In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population." 
+description: "There is an increasing need for conservation and connection with nature in cities. In this sense, geospatial analysis plays an important role in the effective management of our natural resources. In this tutorial we are going to represent the distribution of tree species in the streets of San Francisco by color and we will add some interaction through widgets, which will allow us to explore the map by selecting targered filters of interest. In this example, filters are applied by specie and date of planting." 
 image: "/img/tutorials/animated.png" 
 type: tutorials
 ---
