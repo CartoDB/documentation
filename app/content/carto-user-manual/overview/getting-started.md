@@ -288,7 +288,7 @@ To import your data, go to Data Explorer section, select  *Connections* panel an
 
 A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_local.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
 You can import your data through two different methods: Local or Remote. For more details, check [Importing data](../../data-explorer/importing-data) guide.
 

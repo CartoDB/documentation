@@ -21,7 +21,7 @@ To import your data, go to Data Explorer section, select *Connections* panel and
 
 A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_local.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
 You can import your data through two different methods: Local or Remote.
 
@@ -33,11 +33,11 @@ To import a local file, select the icon on the left:
 
 This interface will allow you to upload a supported file, such as GeoJSON or Shapefile (.zip), into `CARTO Data Warehouse` and set the name of the output table on your organization data *shared* folder.
 
-![Data Explorer import select file local](/img/cloud-native-workspace/data-explorer/de_import_select_file_local.png)
+![Data Explorer import select file local](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
 Once you have completed this configuration, click on *Continue*: 
 
-![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_select_file_local_continue.png)
+![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_select_local_file_continue.png)
 
 The next screen will show you a summary of the configuration of the table for your confirmation. To confirm, click on *Import* :
 
@@ -71,12 +71,12 @@ To import a remote URL, select the icon on the right.
 
 This interface will allow you to enter your supported URL file, such as GeoJSON or Shapefile (.zip), into `CARTO Data Warehouse` and set the name of the output table on your organization data *shared* folder.
 
-![Data Explorer import select file url](/img/cloud-native-workspace/data-explorer/de_import_select_file_url.png)
+![Data Explorer import select file url](/img/cloud-native-workspace/data-explorer/de_import_select_url.png)
 
 Once you have completed this configuration, click on *Continue*: 
 
-![Data Explorer import selected file continue url](/img/cloud-native-workspace/data-explorer/de_import_selected_file_continue_url.png)
-
+![Data Explorer import selected file continue url](/img/cloud-native-workspace/data-explorer/de_import_select_url_continue.png)
+n
 The next screen will show you a summary of the configuration of the table for your confirmation. To confirm, click on *Import* :
 
 ![Data Explorer import confirmation url](/img/cloud-native-workspace/data-explorer/de_import_confirmation_url_.png)
