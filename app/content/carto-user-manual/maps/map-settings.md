@@ -48,11 +48,49 @@ This guide describes how to add interactive widgets to view your map data in CAR
 
 In the Widget tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map widgets add new widget](/img/cloud-native-workspace/maps/maps_add_new_widget.png)
+![Map widgets add new widget](/img/cloud-native-workspace/maps/map_add_widget.png)
 
-Click on *New widget* button to start interacting with your data:
+Click on *Add widget* button to start interacting with your data. When you add a widget, it´s always the Formula widget by default:
 
-![Map widgets](/img/cloud-native-workspace/maps/maps_widget.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_selected_source.png)
+
+You can access the quick actions menu to manage your widgets by clicking on the “three dots” icon in the top-right corner. There are two options available: Rename and Delete widget. 
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_rename_delete.png)
+
+You can also manage your widgets by clicking on the “three dots” icon in the top-right corner of the widget. There are two options available: Widget options and Delete widget.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_delete.png)
+
+Click on the top icon to show or hide the list of your widgets from the map:
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_icon.png)
+
+If you click on the *Back* arrow, you will exist the widget options and you will be redirected to the Widget tab of Builer from where you can also manage your widgets. There are 3 options available: Widgets options, Rename and Delete widget.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_back_arrow.png)
+
+![Map interactions](/img/cloud-native-workspace/maps/map_widget_current_widgets_menu.png)
+
+**Widgets Types**
+
+The following types of widgets are available to customize:
+
+- **Formula widgets**: calculate aggregated values from numeric columns in COLUMN, AVG, MAX, MIN, and SUM. These are useful for viewing analysis results.
+
+- **Category widgets**: enable you aggregate the data following different methods, and create categories.
+
+- **Histogram widgets**: examine numerical values within a given range, distributed across your data map. You can configure values by a data column and define the number of buckets.
+
+- **Time-Series widgets**: enable you to display animated data (by aggregation) over a specified date range, or display and filter a static widget of numbers over time.
+
+#### Formula Widget
+
+#### Category Widget
+
+#### Histogram Widget
+
+#### Time-series Widget
 
 ### Interactions
 
