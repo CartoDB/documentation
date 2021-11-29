@@ -307,4 +307,8 @@ CARTO Builder contains many features that guide you through the process of creat
 
 #### Publish and share your map
 
-Once you publish a map, you obtain a URL to share access to the map or HTML code to embed it on a website or blog. You can also get the map token to call the map when developing an application in CARTO. For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+By default all maps you create are set as private. With CARTO you can share your maps with your organization or publish them for anyone with the link.
+
+Once you publish a map, you obtain a URL to share access to the map or HTML code to embed it on a website or blog. You can also get the map token to call the map when developing an application in CARTO. 
+
+For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).

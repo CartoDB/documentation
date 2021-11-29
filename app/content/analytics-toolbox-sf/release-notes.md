@@ -1,5 +1,17 @@
 ## Release notes
 
+### November 24, 2021
+
+#### Module data v1.0.0-beta.3
+
+Feature
+- Add DATAOBS_ENRICH_POINTS procedure.
+- Add DATAOBS_ENRICH_POINTS_RAW procedure.
+- Add DATAOBS_ENRICH_POLYGON procedure.
+- Add DATAOBS_ENRICH_POLYGON_RAW procedure.
+- Add DATAOBS_ENRICH_GRID procedure.
+- Add DATAOBS_ENRICH_GRID_RAW procedure.
+
 ### November 5, 2021
 
 #### Module data v1.0.0-beta.2
