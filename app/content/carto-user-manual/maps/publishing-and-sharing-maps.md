@@ -2,9 +2,16 @@
 
 This guide describes how you can share any CARTO map with your teammates, or publish a map to the internet, using CARTO Builder.
 
-When you create a map, it's always **private** by default.
+When you create a map, it's always **private** by default. 
 
-To share the map with your organization, open the map in Builder and click the *Share* button on the top-right to open the sharing options. 
+To be able to share a map, you need to add data and a title to the map:
+
+
+![Publish options share link button](/img/cloud-native-workspace/maps/map_share_button_add_data_and_title.png) 
+
+![Publish options share link button](/img/cloud-native-workspace/maps/map_share_button_disabled.png) 
+
+Once you have added data and a title to your map, the *Share* button will be enabled and you will be able to share your maps with your organization, by clicking the *Share* button on the top-right to open the sharing options. 
 
 <!-- screenshot needed -->
 
@@ -29,7 +36,6 @@ Public maps have some extra options: to share the link with the public, to get D
 ![Publish options share link copied](/img/cloud-native-workspace/maps/map_sharing_options_public_map_sharelinkcopied.png)
 
 ![Publish options developers](/img/cloud-native-workspace/maps/map_sharing_options_public_map_developers.png)
-
 #### Publishing updates for shared and public maps
 
 Once your map is shared or public, you can manage the state of the map for your viewers (so your editing doesn't affect their experience). When you're ready to push an update, click on the *Publish Updates* icon:
