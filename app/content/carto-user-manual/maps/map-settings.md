@@ -48,50 +48,79 @@ This guide describes how to add interactive widgets to view your map data in CAR
 
 In the Widget tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map widgets add new widget](/img/cloud-native-workspace/maps/map_add_widget.png)
+![Map widgets new widget](/img/cloud-native-workspace/maps/map_new_widget.png)
 
-Click on *Add widget* button to start interacting with your data. When you add a widget, it´s always the Formula widget by default:
+Click on *New widget* button to start interacting with your data. When you add a widget, it´s always the Formula widget by default:
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_selected_source.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_new_widget_dropdown.png)
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_bydefault.png)
 
 You can access the quick actions menu to manage your widgets by clicking on the “three dots” icon in the top-right corner. There are two options available: Rename and Delete widget. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_rename_delete.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_quickmenu.png)
 
 You can also manage your widgets by clicking on the “three dots” icon in the top-right corner of the widget. There are two options available: Widget options and Delete widget.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_delete.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickmenu_widget.png)
 
-Click on the top icon to show or hide the list of your widgets from the map:
+Click on the top-right icon to show or hide the list of your widgets from the map:
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_icon.png)
 
-If you click on the *Back* arrow, you will exist the widget options and you will be redirected to the Widget tab of Builer from where you can also manage your widgets. There are 3 options available: Widgets options, Rename and Delete widget.
+If you click on the *Back* arrow, you will exist the widget options and you will be redirected to the Widget tab of Builer from where you will see the list of your current widgets.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_back_arrow.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_back_to_list.png)
 
-![Map interactions](/img/cloud-native-workspace/maps/map_widget_current_widgets_menu.png)
+Click on the “three dots” icon to configure your widgets. There are 3 options available: Widgets options, Rename and Delete widget.
 
-**Widgets Types**
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickmenu_card.png)
 
-The following types of widgets are available to customize:
+To add a new widget to the map, click on *Add widget* button and select the source:
 
-- **Formula widgets**: calculate aggregated values from numeric columns in COLUMN, AVG, MAX, MIN, and SUM. These are useful for viewing analysis results.
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_add_widget.png)
 
-- **Category widgets**: enable you aggregate the data following different methods, and create categories.
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_source.png)
 
-- **Histogram widgets**: examine numerical values within a given range, distributed across your data map. You can configure values by a data column and define the number of buckets.
-
-- **Time-Series widgets**: enable you to display animated data (by aggregation) over a specified date range, or display and filter a static widget of numbers over time.
-
+At this moment, there are three advanced widgets available to customize your visual representation and get a rich interaction with your data: 
+- **Formula**: Calculate aggregated values from numeric columns in COUNT, AVG, MAX, MIN, and SUM. These are useful for viewing analysis results. 
+- **Category**: Enable you aggregate the data following different methods, and create categories.
+- **Histogram**: Examine numerical values within a given range, distributed across your data map. You can configure values by a data column and define the number of buckets.
 #### Formula Widget
 
+From Data, choose the operation from the list and select a field from your source dataset that you want to analyze. The COUNT aggregation is always selected by default.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula.png)
+
+In this example, we aggregate our values with AVG operation based on the `revenue` field.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_avg_field_selected.png)
+
+From Display options, you can also add some notes to your histagram and change the format as the values are displayed.
+
+<!-- screenshot needed -->
 #### Category Widget
 
+From Data, choose the operation from the list and select a field from your dataset that you want to analyze. In this example, we aggregate our layer based on the `store_type` field.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_count_dropdown.png)
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_count_field_selected.png)
+
+From Display options, you can also add some notes to your histagram and change the format as the values are displayed.
+
+<!-- screenshot needed -->
 #### Histogram Widget
 
-#### Time-series Widget
+From Data, select a field from your source dataset that you want to analyze. In this example, we aggregate our layer based on the `revenue` field.
 
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram.png)
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_field_selected.png)
+
+From Display options, you can also choose the number of buckets of your histogram, add some notes and change the format as the values are displayed.
+
+<!-- screenshot needed -->
 ### Interactions
 
 ![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
