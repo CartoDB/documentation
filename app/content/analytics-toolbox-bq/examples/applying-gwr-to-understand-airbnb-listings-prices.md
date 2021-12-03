@@ -18,7 +18,7 @@ CALL `carto-un`.statistics.GWR_GRID(
 
 This particular configuration will run a local regression for each H3 grid cell at resolution 7. All listings at each particular grid cell and those within its neighborhood, defined as its [Kring](../sql-reference/h3/#kring) of size 3 will be taken into account to run this regression. Data points within the neighborhood will be given a weight inversely proportional to the distance to the central cell, according to the kernel function of choice, in this case, a Gaussian.
 
-The output of our GWR analysis is a table that contains the result of each of these regressions: the coefficients for each of the predictor variables and the intercept. The following map shows the coefficients associated with the number of bedrooms (top) and bathroom (bottom):
+The output of our GWR analysis is a table that contains the result of each of these regressions: the coefficients for each of the predictor variables and the intercept. The following map shows the coefficients associated with the number of bedrooms (top) and bathroom (bottom), where darker/brighter areas correspond to lower/higher values:
 
 <iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/fa17dbf3-99b9-4a46-8be7-e52fd5cd0e6f" title="Spatially-varying relationship between Airbnb's listing prices and their number of bedrooms and bathrooms."></iframe>
 
