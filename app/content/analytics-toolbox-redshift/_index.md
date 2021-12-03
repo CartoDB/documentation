@@ -1,7 +1,7 @@
 ---
 title: Analytics Toolbox for Redshift
 description: "Unlock Spatial Analytics in Redshift"
-icon: "/img/icons/snowflake-analytics-toolbox.png"
+icon: "/img/icons/redshift-analytics-toolbox.png"
 repoUrl: https://github.com/CartoDB/carto-spatial-extension
 
 url: analytics-toolbox-redshift
