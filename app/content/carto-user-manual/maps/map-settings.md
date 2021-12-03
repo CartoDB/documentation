@@ -44,9 +44,9 @@ The following features are available in the list of layers of your map in Builde
 
 ### Widgets
 
-This guide describes how to add interactive widgets to view your map data in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your map by selecting targeted filters of interest.
+This guide describes how to add interactive widgets to your map in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your data and get insights by drilling-down different types of filters that are conected to each other and the map's viewport.
 
-In the Widget tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
+In the Widgets tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
 ![Map widgets new widget](/img/cloud-native-workspace/maps/map_new_widget.png)
 
@@ -83,12 +83,13 @@ To add a new widget to the map, click on *Add widget* button and select the data
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_source.png)
 
 At this moment, there are three advanced widgets available to customize your visual representation and get a rich interaction with your data: 
-- **Formula**: Calculate aggregated values from numeric columns in COUNT, AVG, MAX, MIN, and SUM. These are useful for viewing analysis results. 
-- **Category**: Enable you aggregate the data following different methods, and create categories.
-- **Histogram**: Examine numerical values within a given range, distributed across your data map. You can configure values by a data column and define the number of buckets.
+- **Formula**: Shows aggregated numerical data from the features in the map's viewport.
+- **Category**: Breaks down the data into categories and shows aggregated values.
+- **Histogram**: Shows the frequency distribution across equal bins in the data range.
+
 #### Formula Widget
 
-From Data, choose the operation from the list and select a field from your source dataset that you want to analyze. 
+From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze. 
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_by_count.png)
 
@@ -102,7 +103,7 @@ From Data, choose the operation from the list and select a field from your datas
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_by_count.png)
 
-From Display options, you can also change the format as the values are displayed and add some notes to your histagram. In this example, we aggregate the average values from each `storetype` field based on `revenue` column. 
+From Display options, you can also change the format as the values are displayed and add some notes to your histagram. In this example, we aggregate the average `revenue` on each category from the `storetype` column.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_by_avg.png)
 
@@ -125,13 +126,12 @@ Click on *Search in “X” elements* and then click the box next to the other v
 You can Unlock to view the default categories again.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_search_elements_from_list.png)
+
 #### Histogram Widget
 
-From Data, select a field from your source dataset that you want to analyze. In this example, we aggregate our layer into 9 buckets based on the `size_m2` column. The histogram widget display the number of selected records in each bucket, allowing you to visualize a range of data that you may want to explore.
+From Data, select a field from your source dataset that you want to analyze. In this example, we divide the data range of the `size_m2` column in 9 buckets. The histogram widget displays the number of records in each bucket, allowing you to select and visualize a specific range of data.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_histograma.png)
-
-Histogram widgets filter numerical data within a given range. The selected range is distributed across your map in buckets, to display groups of data. The higher the number of buckets, the more granular the data. The objective of grouping data into buckets is to put similar values together.
 
 When hovering over a Histogram widget, the number of records in each bucket appears. This is a good indicator of where you might want to filter data.
 
