@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const cloud = process.env.CLOUD || '';
-const cloudCode = { bigquery: 'bq', snowflake: 'sf' }[cloud];
+const cloudCode = { bigquery: 'bq', snowflake: 'sf', redshift: 'redshift' }[cloud];
 const targetPath = path.join(`./app/content/analytics-toolbox-${cloudCode}`);
 
 const index = [];

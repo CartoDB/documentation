@@ -2,7 +2,55 @@
 
 <div class="badges"><div class="core"></div></div>
 
-You can learn more about quadkeys and quandints in the [Overview section](/spatial-extension-sf/overview/spatial-indexes/#quadkey) of the documentation.
+You can learn more about quadkeys and quandints in the [Overview section](/spatial-extension-rs/overview/spatial-indexes/#quadkey) of the documentation.
+
+
+### QUADINT_ASQUADKEY
+
+{{% bannerNote type="code" %}}
+carto.QUADINT_ASQUADKEY(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the quadkey equivalent to the input quadint.
+
+* `quadint`: `BIGINT` quadint to be converted into quadkey.
+
+**Return type**
+
+`VARCHAR`
+
+**Example**
+
+```sql
+SELECT carto.QUADINT_ASQUADKEY(4388);
+-- 3001
+```
+
+### QUADINT_ASZXY
+
+{{% bannerNote type="code" %}}
+carto.QUADINT_ASZXY(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
+
+* `quadint`: `BIGINT` quadint we want to extract tile information from.
+
+**Return type**
+
+`SUPER`
+
+**Example**
+
+```sql
+SELECT carto.QUADINT_ASZXY(4388);
+-- z  x  y
+-- 4  9  8
+```
 
 ### QUADINT_BBOX
 
@@ -14,11 +62,11 @@ carto.QUADINT_BBOX(quadint)
 
 Returns an array with the boundary box of a given quadint. This boundary box contains the minimum and maximum longitude and latitude. The output format is [West-South, East-North] or [min long, min lat, max long, max lat].
 
-* `quadint`: `BIGINT` quadint to get the bbox from.
+* `quadint`: `BIGINT` quadint to get the boundary box from.
 
 **Return type**
 
-`ARRAY`
+`SUPER`
 
 **Example**
 
@@ -38,19 +86,19 @@ carto.QUADINT_BOUNDARY(quadint)
 
 **Description**
 
-Returns the boundary for a given quadint. We extract the boundary in the same way as when we calculate its [QUADINT_BBOX](#bbox), then enclose it in a GeoJSON and finally transform it into a geography.
+Returns the boundary for a given quadint. We extract the boundary in the same way as when we calculate its [QUADINT_BBOX](#quadint_bbox), then enclose it in a GeoJSON and finally transform it into a geography.
 
 * `quadint`: `BIGINT` quadint to get the boundary geography from.
 
 **Return type**
 
-`GEOGRAPHY`
+`GEOMETRY`
 
 **Example**
 
 ```sql
 SELECT carto.QUADINT_BOUNDARY(4388);
--- POLYGON((22.5 0, 22.5 -21.9430455334382, 22.67578125 ...
+-- {'type': 'Polygon', 'coordinates': [[[22.5, -21.943045533438177], [22.5, 0.0], ...
 ```
 
 ### QUADINT_FROMGEOGPOINT
@@ -63,7 +111,7 @@ carto.QUADINT_FROMGEOGPOINT(point, resolution)
 
 Returns the quadint of a given point at a given level of detail.
 
-* `point`: `GEOGRAPHY` point to get the quadint from.
+* `point`: `GEOMETRY` point to get the quadint from.
 * `resolution`: `INT` level of detail or zoom.
 
 **Return type**
@@ -87,8 +135,8 @@ carto.QUADINT_FROMLONGLAT(longitude, latitude, resolution)
 
 Returns the quadint representation for a given level of detail and geographic coordinates.
 
-* `longitude`: `DOUBLE` horizontal coordinate of the map.
-* `latitude`: `DOUBLE` vertical coordinate of the map.
+* `longitude`: `FLOAT8` horizontal coordinate of the map.
+* `latitude`: `FLOAT8` vertical coordinate of the map.
 * `resolution`: `INT` level of detail or zoom.
 
 **Return type**
@@ -112,7 +160,7 @@ carto.QUADINT_FROMQUADKEY(quadkey)
 
 Returns the quadint equivalent to the input quadkey.
 
-* `quadkey`: `STRING` quadkey to be converted to quadint.
+* `quadkey`: `VARCHAR` quadkey to be converted to quadint.
 
 **Return type**
 
@@ -121,7 +169,7 @@ Returns the quadint equivalent to the input quadkey.
 **Example**
 
 ```sql
-SELECT carto.QUADINT_FROMQUADKEY("3001");
+SELECT carto.QUADINT_FROMQUADKEY('3001');
 -- 4388
 ```
 
@@ -169,7 +217,7 @@ Returns all cell indexes in a **filled square k-ring** centered at the origin in
 
 **Return type**
 
-`ARRAY`
+`SUPER`
 
 **Example**
 
@@ -201,11 +249,9 @@ Returns all cell indexes and their distances in a **filled square k-ring** cente
 
 **Return type**
 
-`ARRAY`
+`SUPER`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 SELECT carto.QUADINT_KRING_DISTANCES(4388, 1);
@@ -234,23 +280,23 @@ carto.QUADINT_POLYFILL(geography, resolution)
 
 Returns an array of quadints that intersect with the given geography at a given level of detail.
 
-* `geography`: `GEOGRAPHY` geography to extract the quadints from.
+* `geography`: `GEOMETRY` geography to extract the quadints from.
 * `resolution`: `INT` level of detail or zoom.
 
 **Return type**
 
-`ARRAY`
+`SUPER`
 
 **Example**
 
 ```sql
-SELECT carto.QUADINT_POLYFILL(ST_MAKEPOLYGON(TO_GEOGRAPHY('LINESTRING(-3.71219873428345 40.4133653490709, -3.71440887451172 40.4096566128639, -3.70659828186035 40.4095259047756, -3.71219873428345 40.4133653490709)')), 17);
+SELECT carto.QUADINT_POLYFILL(ST_MAKEPOLYGON(ST_GeomFromText('LINESTRING(-3.71219873428345 40.4133653490709, -3.71440887451172 40.4096566128639, -3.70659828186035 40.4095259047756, -3.71219873428345 40.4133653490709)')), 17);
+-- 207301334833
 -- 207301334801
--- 207305529105
 -- 207305529073
+-- 207305529105
 -- 207305529137
 -- 207305529169
--- 207301334833
 ```
 
 ### QUADINT_SIBLING
@@ -261,10 +307,10 @@ carto.QUADINT_SIBLING(quadint, direction)
 
 **Description**
 
-Returns the quadint directly next to the given quadint at the same zoom level. The direction must be sent as argument and currently only horizontal/vertical movements are allowed.
+Returns the quadint directly next to the given quadint at the same zoom level. The direction must be included as an argument and currently only horizontal/vertical movements are allowed.
 
 * `quadint`: `BIGINT` quadint to get the sibling from.
-* `direction`: `STRING` <code>'right'|'left'|'up'|'down'</code> direction to move in to extract the next sibling. 
+* `direction`: `VARCHAR` <code>'right'|'left'|'up'|'down'</code> direction to move in to extract the next sibling. 
 
 **Return type**
 
@@ -326,51 +372,4 @@ Returns the parent quadint of a given quadint for a specific resolution. A paren
 ```sql
 SELECT carto.QUADINT_TOPARENT(4388, 3);
 -- 1155
-```
-
-### QUADINT_TOQUADKEY
-
-{{% bannerNote type="code" %}}
-carto.QUADINT_TOQUADKEY(quadint)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the quadkey equivalent to the input quadint.
-
-* `quadint`: `BIGINT` quadint to be converted to quadkey.
-
-**Return type**
-
-`STRING`
-
-**Example**
-
-```sql
-SELECT carto.QUADINT_TOQUADKEY(4388);
--- 3001
-```
-
-### QUADINT_TOZXY
-
-{{% bannerNote type="code" %}}
-carto.QUADINT_TOZXY(quadint)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
-
-* `quadint`: `BIGINT` quadint we want to extract tile information from.
-
-**Return type**
-
-`OBJECT`
-
-**Example**
-
-```sql
-SELECT carto.QUADINT_TOZXY(4388);
--- z  x  y
--- 4  9  8
 ```

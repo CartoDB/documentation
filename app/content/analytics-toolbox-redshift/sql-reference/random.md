@@ -18,23 +18,20 @@ Generates randomly placed points inside a polygon and returns them in an array o
 It never generates more than the requested number of points, but there is a small chance of generating less points.
 {{%/ bannerNote %}}
 
-* `geog`: `GEOGRAPHY` a polygon; the random points generated will be inside this polygon.
+* `geog`: `GEOMETRY` a polygon; the random points generated will be inside this polygon.
 * `npoints`: `INT` number of points to generate.
 
 **Constraints**
 
-`npoints` must not exceed 100000.
+`npoints` must not exceed `1000`.
 
 **Return type**
 
-`ARRAY`
+`VARCHAR(MAX)`
 
 **Example**
 
 ```sql
-SELECT carto.ST_GENERATEPOINTS(TO_GEOGRAPHY('POLYGON((0 0, 10 0, 10 10, 0 0))'),100);
--- "{\"coordinates\":[6.781385759749447e+00,9.240795947965740e-01],\"type\":\"Point\"}"
--- "{\"coordinates\":[9.993805698147805e+00,5.083022246239731e+00],\"type\":\"Point\"}"
--- "{\"coordinates\":[3.228015360947772e+00,5.353450085600810e-01],\"type\":\"Point\"}"
--- ...
+SELECT carto.ST_GENERATEPOINTS(ST_GEOMFROMTEXT('POLYGON((0 0, 10 0, 10 10, 0 0))'), 100);
+-- {"type": "MultiPoint", "coordinates": [[8.383157939015296, 1.062699131285872], ...
 ```

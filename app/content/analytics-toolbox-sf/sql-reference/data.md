@@ -8,7 +8,7 @@ This module contains functions and procedures that make use of data (either Data
 ### DATAOBS_ENRICH_GRID
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_GRID(grid_type, input_query, input_index_column, variables, filters, output, source)
+carto.DATAOBS_ENRICH_GRID(grid_type, input_query, input_index_column, variables, filters, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -48,7 +48,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.DATAOBS_ENRICH_GRID(
+CALL carto.DATAOBS_ENRICH_GRID(
   'h3',
   $$
   SELECT VALUE AS INDEX FROM TABLE(FLATTEN(ARRAY_CONSTRUCT(
@@ -68,7 +68,7 @@ CALL sfcarto.data.DATAOBS_ENRICH_GRID(
 ### DATAOBS_ENRICH_GRID_RAW
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_GRID_RAW(grid_type, input_query, input_index_column, variables, filters, output, source)
+carto.DATAOBS_ENRICH_GRID_RAW(grid_type, input_query, input_index_column, variables, filters, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -105,7 +105,7 @@ Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.DATAOBS_ENRICH_GRID_RAW(
+CALL carto.DATAOBS_ENRICH_GRID_RAW(
   'h3',
   $$
   SELECT VALUE AS INDEX FROM TABLE(FLATTEN(ARRAY_CONSTRUCT(
@@ -126,7 +126,7 @@ CALL sfcarto.data.DATAOBS_ENRICH_GRID_RAW(
 ### DATAOBS_ENRICH_POINTS
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POINTS(input_query, input_geography_column, variables, filters, output, source)
+carto.DATAOBS_ENRICH_POINTS(input_query, input_geography_column, variables, filters, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -157,7 +157,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.DATAOBS_ENRICH_POINTS(
+CALL carto.DATAOBS_ENRICH_POINTS(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    ARRAY_CONSTRUCT(
      OBJECT_CONSTRUCT('variable', 'population_93405ad7', 'aggregation', 'SUM')
@@ -174,7 +174,7 @@ CALL sfcarto.data.DATAOBS_ENRICH_POINTS(
 ### DATAOBS_ENRICH_POINTS_RAW
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POINTS_RAW(input_query, input_geography_column, variables, filters, output, source)
+carto.DATAOBS_ENRICH_POINTS_RAW(input_query, input_geography_column, variables, filters, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -204,7 +204,7 @@ The array contains OBJECTs with one field for each variable, using the variable 
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.DATAOBS_ENRICH_POINTS_RAW(
+CALL carto.DATAOBS_ENRICH_POINTS_RAW(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    ARRAY_CONSTRUCT('population_93405ad7'),
    NULL,
@@ -220,7 +220,7 @@ CALL sfcarto.data.DATAOBS_ENRICH_POINTS_RAW(
 ### DATAOBS_ENRICH_POLYGONS
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POLYGONS(input_query, input_geography_column, variables, filters, output, source)
+carto.DATAOBS_ENRICH_POLYGONS(input_query, input_geography_column, variables, filters, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -258,7 +258,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.DATAOBS_ENRICH_POLYGONS(
+CALL carto.DATAOBS_ENRICH_POLYGONS(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    ARRAY_CONSTRUCT(
      OBJECT_CONSTRUCT('variable', 'population_93405ad7', 'aggregation', 'SUM')
@@ -275,7 +275,7 @@ CALL sfcarto.data.DATAOBS_ENRICH_POLYGONS(
 ### DATAOBS_ENRICH_POLYGONS_RAW
 
 {{% bannerNote type="code" %}}
-data.DATAOBS_ENRICH_POLYGONS_RAW(input_query, input_geography_column, variables, filters, output, source)
+carto.DATAOBS_ENRICH_POLYGONS_RAW(input_query, input_geography_column, variables, filters, output, source)
 {{%/ bannerNote %}}
 
 **Description**
@@ -310,7 +310,7 @@ Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.DATAOBS_ENRICH_POLYGONS_RAW(
+CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    ARRAY_CONSTRUCT('population_93405ad7'),
    ),
@@ -327,7 +327,7 @@ CALL sfcarto.data.DATAOBS_ENRICH_POLYGONS_RAW(
 Imagine that you need some information about the population in two areas of interest defined by polygons.
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_RAW(
+CALL carto-st.carto.DATAOBS_ENRICH_POLYGONS_RAW(
   $$
     SELECT
       'Area1' AS NAME,
@@ -372,7 +372,7 @@ GROUP BY NAME
 ### ENRICH_GRID
 
 {{% bannerNote type="code" %}}
-data.ENRICH_GRID(grid_type, input_query, input_index_column, data_query data_geography_column, variables, output)
+carto.ENRICH_GRID(grid_type, input_query, input_index_column, data_query data_geography_column, variables, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -411,7 +411,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.ENRICH_GRID(
+CALL carto.ENRICH_GRID(
    'h3',
    $$
    SELECT value AS index FROM TABLE(FLATTEN(ARRAY_CONSTRUCT(
@@ -435,7 +435,7 @@ CALL sfcarto.data.ENRICH_GRID(
 ### ENRICH_GRID_RAW
 
 {{% bannerNote type="code" %}}
-data.ENRICH_GRID_RAW(grid_type, input_query, input_index_column, data_query data_geography_column, variables, output)
+carto.ENRICH_GRID_RAW(grid_type, input_query, input_index_column, data_query data_geography_column, variables, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -466,7 +466,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.ENRICH_GRID_RAW(
+CALL carto.ENRICH_GRID_RAW(
    'h3',
    $$
    SELECT value AS index  FROM TABLE(FLATTEN(ARRAY_CONSTRUCT(
@@ -486,7 +486,7 @@ CALL sfcarto.data.ENRICH_GRID_RAW(
 ### ENRICH_POINTS
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POINTS(input_query, input_geography_column, data_query, data_geography_column, variables, output)
+carto.ENRICH_POINTS(input_query, input_geography_column, data_query, data_geography_column, variables, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -517,7 +517,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.ENRICH_POINTS(
+CALL carto.ENRICH_POINTS(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
    ARRAY_CONSTRUCT(
@@ -535,7 +535,7 @@ CALL sfcarto.data.ENRICH_POINTS(
 ### ENRICH_POINTS_RAW
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POINTS_RAW(input_query, input_geography_column, data_query, data_geography_column, variables, output)
+carto.ENRICH_POINTS_RAW(input_query, input_geography_column, data_query, data_geography_column, variables, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -564,7 +564,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.ENRICH_POINTS_RAW(
+CALL carto.ENRICH_POINTS_RAW(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
    ARRAY_CONSTRUCT('VAR1', 'VAR2'),
@@ -578,7 +578,7 @@ CALL sfcarto.data.ENRICH_POINTS_RAW(
 ### ENRICH_POLYGONS
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POLYGONS(input_query, input_geography_column, data_query, data_geography_column, variables, output)
+carto.ENRICH_POLYGONS(input_query, input_geography_column, data_query, data_geography_column, variables, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -616,7 +616,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.ENRICH_POLYGONS(
+CALL carto.ENRICH_POLYGONS(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
    ARRAY_CONSTRUCT(
@@ -634,7 +634,7 @@ CALL sfcarto.data.ENRICH_POLYGONS(
 ### ENRICH_POLYGONS_RAW
 
 {{% bannerNote type="code" %}}
-data.ENRICH_POLYGONS_RAW(input_query, input_geography_column, data_query, data_geography_column, variables, output)
+carto.ENRICH_POLYGONS_RAW(input_query, input_geography_column, data_query, data_geography_column, variables, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -668,7 +668,7 @@ Moreover, another field named `__carto_input_area` will be included in `__CARTO_
 {{%/ customSelector %}}
 
 ```sql
-CALL sfcarto.data.ENRICH_POLYGONS_RAW(
+CALL carto.ENRICH_POLYGONS_RAW(
    'SELECT ID, GEOM FROM MYTABLE', 'GEOM',
    'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
    ARRAY_CONSTRUCT('VAR1', 'VAR2'),
@@ -676,28 +676,4 @@ CALL sfcarto.data.ENRICH_POLYGONS_RAW(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, __CARTO_ENRICHMENT. The latter will contain OBJECTSs with the fields VAR1, VAR2, __carto_intersection, __carto_total, dimension and __carto_input_area.
-```
-
-
-### VERSION
-
-{{% bannerNote type="code" %}}
-data.VERSION()
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the current version of the data module.
-
-**Return type**
-
-`STRING`
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-SELECT sfcarto.data.VERSION();
--- 1.0.0
 ```

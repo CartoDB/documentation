@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "\nSpatial Extension: pull latest changes\n"
+echo "\nAnalytics Toolbox: pull latest changes\n"
 mkdir -p ./repos
 cd ./repos
 
