@@ -6,6 +6,6 @@ The CARTO Analytics Toolbox for Snowflake is composed of a set of user-defined f
 <img src="/img/rs-analytics-toolbox/rs-at-modules-diagram.png" alt="Modules of the CARTO Analytics Toolbox for Redshift" style="width:75%">
 </div>
 
-Visit the [SQL Reference](../../sql-reference/) to see the full list of available modules and functions. Check out the [Examples section](../../examples/) to find sample code that solves real-world spatial problems.
+Visit the [SQL reference](../../sql-reference/) to see the full list of available modules and functions. Check out the [Examples section](../../examples/) to find sample code that solves real-world spatial problems.
 
-Please refer to the [_Getting Access_](../getting-access) section to learn how to access CARTO's Analytics Toolbox.
+Please refer to the [_Getting access_](../getting-access) section to learn how to access CARTO's Analytics Toolbox.
