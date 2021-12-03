@@ -76,7 +76,7 @@ Click on the “three dots” icon to configure your widgets. There are 3 option
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickmenu_card.png)
 
-To add a new widget to the map, click on *Add widget* button and select the source:
+To add a new widget to the map, click on *Add widget* button and select the data source:
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_add_widget.png)
 
@@ -88,39 +88,64 @@ At this moment, there are three advanced widgets available to customize your vis
 - **Histogram**: Examine numerical values within a given range, distributed across your data map. You can configure values by a data column and define the number of buckets.
 #### Formula Widget
 
-From Data, choose the operation from the list and select a field from your source dataset that you want to analyze. The COUNT aggregation is always selected by default.
+From Data, choose the operation from the list and select a field from your source dataset that you want to analyze. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_by_count.png)
 
-In this example, we aggregate our values with AVG operation based on the `revenue` field.
+From Display options, you can also change the format as the values are displayed and add some notes to your widget. In this example, we aggregate the data by the average total of revenue based on the `revenue` column. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_avg_field_selected.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_by_avg.png)
 
-From Display options, you can also add some notes to your histagram and change the format as the values are displayed.
-
-<!-- screenshot needed -->
 #### Category Widget
 
-From Data, choose the operation from the list and select a field from your dataset that you want to analyze. In this example, we aggregate our layer based on the `store_type` field.
+From Data, choose the operation from the list and select a field from your dataset that you want to analyze. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_count_dropdown.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_by_count.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_count_field_selected.png)
+From Display options, you can also change the format as the values are displayed and add some notes to your histagram. In this example, we aggregate the average values from each `storetype` field based on `revenue` column. 
 
-From Display options, you can also add some notes to your histagram and change the format as the values are displayed.
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_by_avg.png)
 
-<!-- screenshot needed -->
+You can select one or more values from a category widget to highlight particular columns of interest. If you select an element from the list, only the selected filters appear styled on your map, and the rest of the categories are temporarily removed from your visualization.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_category_from_list.png)
+
+Click on the same filters again to deselect them, or click on *Clear* to show all relevant categories from the widget again. You can also *Lock* and *Unlock* to enable or disable the interactivity with the map.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_search_elements_from_list.png)
+
+The Category widgets display the top five categories of data, based on the Map View of your visualization. The `Other` category groups together the less relevant values that may not be visible from your Map View. 
+
+You can manually search for values from the `Other`category by clicking on *Search in "X" elements*, or you can modify the order of how values appear in the category widget. As you zoom or pan the map, the category widget filters change. By doing this, it can help you re-evaluate how your Map View should appear. 
+
+Click on *Search in “X” elements* and then click the box next to the other value(s) to be included. You can type a value, or search through the list of available values.Then click *Apply* to filter the category widget by the selected values, or *Cancel*  if you don’t want the filters to be applied.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_search_elements_before_applying.png)
+
+You can Unlock to view the default categories again.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_search_elements_from_list.png)
 #### Histogram Widget
 
-From Data, select a field from your source dataset that you want to analyze. In this example, we aggregate our layer based on the `revenue` field.
+From Data, select a field from your source dataset that you want to analyze. In this example, we aggregate our layer into 9 buckets based on the `size_m2` column. The histogram widget display the number of selected records in each bucket, allowing you to visualize a range of data that you may want to explore.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histograma.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_field_selected.png)
+Histogram widgets filter numerical data within a given range. The selected range is distributed across your map in buckets, to display groups of data. The higher the number of buckets, the more granular the data. The objective of grouping data into buckets is to put similar values together.
 
-From Display options, you can also choose the number of buckets of your histogram, add some notes and change the format as the values are displayed.
+When hovering over a Histogram widget, the number of records in each bucket appears. This is a good indicator of where you might want to filter data.
 
-<!-- screenshot needed -->
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_hover_over.png)
+
+Click once on the Histogram to display the range selector. Only the selected filters appear on your map, and any analyses are rerun and recalculated.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_range_selected.png)
+
+For advanced analysis, you can all widgets in a single map so you can combine your filters and get a better visualisation of your data:
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together.png)
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together_filtered.png)
 ### Interactions
 
 ![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
