@@ -39,6 +39,7 @@ menu:
       - title: "Creating a connection"
       - title: "Editing a connection"
       - title: "Deleting a connection"
+      - title: "Sharing a connection"
   - title: "Applications"
     folder:
       - title: "Accessing applications"

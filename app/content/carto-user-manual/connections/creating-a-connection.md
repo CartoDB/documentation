@@ -9,7 +9,7 @@ To create a new connection follow these steps:
 
 The following screen shows the connection setup options for Google Cloud BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
 
 After you have provided the connection parameters, click *Connect*. Then you will see the list of your current connections:
 
