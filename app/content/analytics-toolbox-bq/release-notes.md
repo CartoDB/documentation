@@ -1,5 +1,12 @@
 ## Release notes
 
+### December 3, 2021
+
+#### Module geocoding v1.0.0-beta.4
+
+Fixed
+* GEOCODE_BATCH optimization
+
 ### December 2, 2021
 
 #### Module geocoding v1.0.0-beta.3
@@ -63,7 +70,7 @@ Fixed
 Changes
 - Add `associated_geography_slug` column to `DATAOBS_SUBSCRIPTIONS`.
 - Some column names have changed in `DATAOBS_SUBSCRIPTIONS`:
-  + `table` is now `dataset_table`
+  + `table` is now `dataset_table`
   + `associated_geography` is now `associated_geography_table`
 - Some column names have changed in `DATAOBS_SUBSCRIPTION_VARIABLES`:
   + `geography_slug` is now `associated_geography_slug`.
