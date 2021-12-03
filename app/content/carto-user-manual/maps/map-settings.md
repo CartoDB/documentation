@@ -81,18 +81,9 @@ Select the CARTO Basemap menu to see different basemap options. They include:
 - **Positron**: light basemap with dark-colored text.
 - **Dark**: dark basemap with light-colored text.
 
-![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_carto.png)
+![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_CARTO.png)
 
-Select the Google Maps Basemap menu to see different basemap options. They include:
-
-- **Roadmap**: displays the default road map view.
-- **Satellite**: displays Google Earth satellite images.
-- **Hybrid**: displays a mixture of normal and satellite views.
-- **Terrain**: displays a physical map based on terrain information.
-
-![Map basemap google](/img/cloud-native-workspace/maps/map_basemap_google.png)
-
-**Basemap layers:** You can manage basemaps layers to hide and show water, buildings, roads, and more. Options include: 
+**CARTO Basemap layers:** You can manage the CARTO basemaps layers to hide and show water, buildings, roads, and more. Options include: 
 
 - Labels: shows labels for cities, neighborhoods, and so on.
 - Roads: displays a translucent layer of road lines.
@@ -102,3 +93,13 @@ Select the Google Maps Basemap menu to see different basemap options. They inclu
 - Land: Shows parks, mountains, and other landscape features.
 
 ![Basemap layers](/img/cloud-native-workspace/maps/map_basemap_layers.png)
+
+Select the Google Maps Basemap menu to see different basemap options. They include:
+
+- **Roadmap**: displays the default road map view.
+- **Satellite**: displays Google Earth satellite images.
+- **Hybrid**: displays a mixture of normal and satellite views.
+- **Terrain**: displays a physical map based on terrain information.
+- **Positron**, **Voyager** and **Dark Matter**: new versions that has been developed for Google Maps.
+
+![Map basemap google](/img/cloud-native-workspace/maps/map_basemap_google_maps.png)
