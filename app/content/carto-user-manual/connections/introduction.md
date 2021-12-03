@@ -12,4 +12,3 @@ To manage the connections to your data warehouse(s), learn how to:
 - Edit a connection [guide](../../connections/editing-a-connection)
 - Delete a connection [guide](../../connections/deleting-a-connection)
 
-### Private and shared connections
