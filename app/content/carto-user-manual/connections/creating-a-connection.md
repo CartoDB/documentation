@@ -106,3 +106,30 @@ Currently we only support username/password authentication using the internal Sn
 ![Connection parameters with Snowflake](/img/cloud-native-workspace/connections/the_connections_snowflake_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Snowflake account. If everything is OK, your new connection will be registered.
+### Connection to Databricks
+
+You can use CARTO with your data in an Databricks data warehouse.
+
+If you want to create a connection to your Databricks data warehouse, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
+
+{{% bannerNote title="WARNING" type="tip" %}}
+This connector is in BETA stage and the API might change or have limited support
+{{%/ bannerNote %}}
+
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_first(ded).png)
+
+A dialog will appear informing you that you first need to install carto.analyticstoolbox.core package. Click on *Got it!*  to confirm.
+
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_connect(ded).png)
+
+These are the parameters you need to provide:
+
+- **Name** for your connection: You can register different connections with the Databricks connector. You can use the name to identify the connections.
+- **Server**: DNS name or IP address for your Databricks server.
+- **HTTPPatch**: Open Database Connectivity HTTPPatch.
+- **Token**: Password for the user account.
+- **Database**: Database your connection will use.
+- **Port**:  TCP port where your server is listening for connections.
+
+Once you have entered the parameters, you can click the Connect button. CARTO will try to connect to your Databricks cluster. If everything is OK, your new connection will be registered.
+
