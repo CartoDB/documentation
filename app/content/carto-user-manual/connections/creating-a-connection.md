@@ -125,7 +125,7 @@ A dialog will appear informing you that you first need to install carto.analytic
 These are the parameters you need to provide:
 
 - **Name** for your connection: You can register different connections with the Databricks connector. You can use the name to identify the connections.
-- **Server**: DNS name or IP address for your Databricks server.
+- **Server**: DNS name or IP address for your Databricks cluster.
 - **HTTPPatch**: Open Database Connectivity HTTPPatch.
 - **Token**: Password for the user account.
 - **Database**: Database your connection will use.
