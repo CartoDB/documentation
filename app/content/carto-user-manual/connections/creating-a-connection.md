@@ -113,7 +113,7 @@ You can use CARTO with your data in an Databricks data warehouse.
 If you want to create a connection to your Databricks data warehouse, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
 {{% bannerNote title="WARNING" type="tip" %}}
-This connector is in BETA stage and the API might change or have limited support
+This connector is in BETA stage and the API might change in the future
 {{%/ bannerNote %}}
 
 ![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_first(ded).png)
