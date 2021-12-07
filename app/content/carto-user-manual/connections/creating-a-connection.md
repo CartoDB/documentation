@@ -125,12 +125,11 @@ A dialog will appear informing you that you first need to install carto.analytic
 These are the parameters you need to provide:
 
 - **Name** for your connection: You can register different connections with the Databricks connector. You can use the name to identify the connections.
-- **Server**: DNS name or IP address for your Databricks cluster.
-- **HTTP Path**: HTTP Path of your cluster for JDBC/ODBC connections.
-- **Port**: TCP port where your server is listening for JDBC/ODBC connections.
+- **Server**: Databricks cluster JDBC/ODBC server hostname.
+- **HTTP Path**: Databricks cluster JDBC/ODBC compute resources URL.
+- **Port**: TCP port (443).
 - **Token**: Password for the user account.
 - **Database**: Database your connection will use.
-- **Port**:  TCP port where your server is listening for connections.
 
 Once you have entered the parameters, you can click the Connect button. CARTO will try to connect to your Databricks cluster. If everything is OK, your new connection will be registered.
 
