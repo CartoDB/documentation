@@ -1,6 +1,6 @@
 ## CARTO for developers
 
-The CARTO Workspace has been designed to make the development of web-based spatial applications as easy as possible. To achieve this, the *Developers* section provides access to a complete set of app development tools that includes APIs, SDKs, development frameworks, and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+The CARTO Workspace has been designed to make the development of web-based spatial applications as easy as possible. To achieve this, the Developers section provides access to a complete set of app development tools that includes APIs, SDKs, development frameworks, and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
 The developer toolkit includes industry-leading visualization, mapping, and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences for desktop and mobile.
 

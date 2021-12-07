@@ -32,6 +32,7 @@ menu:
       - title: "Identifying earthquake-prone areas in the state of California"
       - title: "Bikeshare stations within a San Francisco buffer"
       - title: "Census areas in the UK within tiles of multiple resolutions"
+      - title: "Applying GWR to understand Airbnb listings prices"
   - title: "SQL Reference"
     folder:
       - title: "Overview"

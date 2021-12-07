@@ -92,6 +92,56 @@ FROM (
 )
 ```
 
+### GWR_GRID
+
+{{% bannerNote type="code" %}}
+statistics.GWR_GRID(input_table, features_columns, label_column, cell_column, cell_type, kring_distance, kernel_function, fit_intercept, output_table)
+{{%/ bannerNote %}}
+
+**Description**
+
+Geographically weighted regression (GWR) models local relationships between spatially varying predictors and an outcome of interest using a local least squares regression.
+
+This procedures performs a local least squares regression for every input cell. In each regression, the data of each cell and that of the neighboring cells, defined by the `kring_distance` parameter, will be taken into account. The data of the neighboring cells will be assigned a lower weight the further they are from the origin cell, following the function specified in the `kernel_function`.
+
+* `input_table`: `STRING` name of the source dataset. It should be a quoted qualified table with project and dataset: `<project-id>.<dataset-id>.<table-name>`.
+* `features_columns`: `ARRAY<STRING>` array of column names from `input_table` to be used as features in the GWR.
+* `label_column`: `STRING` name of the target variable column.
+* `cell_column`: `STRING` name of the column containing the cell ids.
+* `cell_type`: `STRING` spatial index type as 'h3' or 'quadkey'.
+* `kring_distance`: `INT64` distance of the neighboring cells whose data will be included in the local regression of each cell.
+* `kernel_function`: `STRING` [kernel function](https://en.wikipedia.org/wiki/Kernel_(statistics)) to compute the spatial weights across the kring. Available functions are: 'uniform', 'triangular', 'quadratic', 'quartic' and 'gaussian'.
+* `fit_intercept `: `BOOL` whether to calculate the interception of the model or to force it to zero if, for example, the input data is already supposed to be centered. If NULL, `fit_intercept` will be considered as `TRUE`.
+* `output_table `: `STRING` name of the output table. It should be a quoted qualified table with project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the target table already exists. If NULL, the result will be returned directly by the query and not persisted.
+
+**Output**
+
+The output table will contain a column with the cell id, a column for each feature column containing its corresponding coefficient estimate and one extra column for intercept if `fit_intercept` is `TRUE`.
+
+{{% customSelector %}}
+**Examples**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-st`.statistics.GWR_GRID(
+    'cartobq.docs.airbnb_raw_h3_quadkey',
+    ['a', 'b', 'ba'], -- [ accommodates feature, beds feature, bathrooms feature ]
+    'p', -- price (target variable)
+    'h3_z6', 'h3', 3, 'gaussian', TRUE,
+    '<project-id>.<dataset-id>.<table-name>'
+);
+```
+
+```sql
+CALL `carto-st`.statistics.GWR_GRID(
+    'cartobq.docs.airbnb_raw_h3_quadkey',
+    ['a', 'b', 'ba'], -- [ accommodates feature, beds feature, bathrooms feature ]
+    'p', -- price (target variable)
+    'quadkey_z12', 'quadkey', 3, 'gaussian', TRUE,
+    '<project-id>.<dataset-id>.<table-name>'
+);
+```
+
 ### MORANS_I_H3
 
 {{% bannerNote type="code" %}}
