@@ -126,7 +126,8 @@ These are the parameters you need to provide:
 
 - **Name** for your connection: You can register different connections with the Databricks connector. You can use the name to identify the connections.
 - **Server**: DNS name or IP address for your Databricks cluster.
-- **HTTPPatch**: Open Database Connectivity HTTPPatch.
+- **HTTP Path**: HTTP Path of your cluster for JDBC/ODBC connections.
+- **Port**: TCP port where your server is listening for JDBC/ODBC connections.
 - **Token**: Password for the user account.
 - **Database**: Database your connection will use.
 - **Port**:  TCP port where your server is listening for connections.
