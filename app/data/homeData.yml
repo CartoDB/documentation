@@ -122,7 +122,7 @@ dataAndAnalysis:
   - title: "Analytics Toolbox for Databricks"
     description: "Unlock Spatial Analytics on your Databricks"
     url: "/analytics-toolbox-databricks"
-    image: "redshift-analytics-toolbox.png"
+    image: "databricks-analytics-toolbox.png"
   - title: "Data Observatory"
     description: "Gain access to thousands of public & premium spatial datasets and save time on gathering, cleaning and analysing data."
     url: "https://docs.carto.com/data-observatory"
