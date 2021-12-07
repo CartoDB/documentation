@@ -27,7 +27,7 @@ Finds the angle formed by two adjacent segments defined by 3 points. The result 
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.measurements.ST_ANGLE(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-4.70325 ,10.4167), ST_GEOGPOINT(-5.70325 ,40.4167), false);
 -- 3.933094586038578
 ```
@@ -53,7 +53,7 @@ Takes two points and finds the geographic bearing between them, i.e. the angle m
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.measurements.ST_AZIMUTH(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-4.70325 ,41.4167));
 -- -36.75052908494255
 ```
@@ -79,7 +79,7 @@ Calculate the Minkowski p-norm distance between two features.
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.measurements.ST_MINKOWSKIDISTANCE([ST_GEOGPOINT(10,10),ST_GEOGPOINT(13,10)],2);
 -- ["0,0.3333333333333333","0.3333333333333333,0"]
 ```

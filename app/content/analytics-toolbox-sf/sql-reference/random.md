@@ -7,7 +7,7 @@ This module contains functions to generate random geographies.
 ### ST_GENERATEPOINTS
 
 {{% bannerNote type="code" %}}
-random.ST_GENERATEPOINTS(geog, npoints)
+carto.ST_GENERATEPOINTS(geog, npoints)
 {{%/ bannerNote %}}
 
 **Description**
@@ -32,30 +32,9 @@ It never generates more than the requested number of points, but there is a smal
 **Example**
 
 ```sql
-SELECT sfcarto.random.ST_GENERATEPOINTS(TO_GEOGRAPHY('POLYGON((0 0, 10 0, 10 10, 0 0))'),100);
+SELECT carto.ST_GENERATEPOINTS(TO_GEOGRAPHY('POLYGON((0 0, 10 0, 10 10, 0 0))'),100);
 -- "{\"coordinates\":[6.781385759749447e+00,9.240795947965740e-01],\"type\":\"Point\"}"
 -- "{\"coordinates\":[9.993805698147805e+00,5.083022246239731e+00],\"type\":\"Point\"}"
 -- "{\"coordinates\":[3.228015360947772e+00,5.353450085600810e-01],\"type\":\"Point\"}"
 -- ...
-```
-
-### VERSION
-
-{{% bannerNote type="code" %}}
-random.VERSION()
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the current version of the random module.
-
-**Return type**
-
-`STRING`
-
-**Example**
-
-```sql
-SELECT sfcarto.random.VERSION();
--- 1.0.0
 ```

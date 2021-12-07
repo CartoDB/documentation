@@ -1,11 +1,15 @@
 #!/bin/sh
 
-echo "\nSpatial Extension for BigQuery"
+echo "\nAnalytics Toolbox for BigQuery"
 echo "------------------------------"
-CLOUD=bigquery node ./scripts/projects/spatial-extension.js
+CLOUD=bigquery node ./scripts/projects/analytics-toolbox.js
 
-echo "\nSpatial Extension for Snowflake"
+echo "\nAnalytics Toolbox for Snowflake"
 echo "-------------------------------"
-CLOUD=snowflake node ./scripts/projects/spatial-extension.js
+CLOUD=snowflake node ./scripts/projects/analytics-toolbox.js
+
+echo "\nAnalytics Toolbox for Redshift"
+echo "-------------------------------"
+CLOUD=redshift node ./scripts/projects/analytics-toolbox.js
 
 echo ""
