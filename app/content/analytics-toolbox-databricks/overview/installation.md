@@ -7,9 +7,7 @@ To install the CARTO Analytics Toolbox in your Databricks cluster, follow the in
 * Open the _Libraries_ tab
 * Click on _Install new_
 * Select _Maven_ as Library Source
-<!-- TO DO: Review this part -->
-* Introduce these coordinates: `com.carto.analytics-toolbox_X.Y:1.0.0`
-* Alternatively, you can click on _Search Packages_ and look for `carto.analytics-toolbox`; select the latest version and click on _Select_
+* Click on _Search Packages_ and look for `carto.analyticstoolbox`; select the latest version and click on _Select_
 * Click _Install_ to finish the process. Dependencies of the package will be installed transitively
 
 Once the package is installed, you need to create the SQL UDFs functions in your cluster, open a SQL console and run [this script](https://github.com/CartoDB/analytics-toolbox-databricks/blob/master/core/sql/createUDFs.sql):
