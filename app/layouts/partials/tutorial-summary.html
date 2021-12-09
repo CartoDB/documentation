@@ -1,0 +1,21 @@
+<div class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mt48 u-mb24 tutorial-card">
+  <a href="{{ .RelPermalink }}">
+    <div class="tutorial-card__image">
+      <img src="{{ .Params.image }}" />
+    </div>
+  </a>
+  <div class="tutorial-card__content">
+    <a href="{{ .RelPermalink }}" class="title f24">
+      {{ .Title }}
+    </a>
+    <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
+  </div>
+
+  {{ if .Params.categories }}
+  <div class="tutorial-card__tags u-mt32">
+    {{ range .Params.categories }}
+    <a href="/categories/{{ . | urlize}}" class="title f12 tag u-mb4 u-mr4">{{ . }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>

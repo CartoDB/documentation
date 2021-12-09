@@ -1,7 +1,7 @@
 {
   "languageCode": "en-us",
   "title": "CARTO Documentation",
-  "disableKinds": ["taxonomy", "term", "RSS", "robotsTXT", "404"],
+  "disableKinds": ["RSS", "robotsTXT", "404"],
   "assetDir": "assets",
   "baseURL": "https://docs.carto.com/",
   "contentDir": "content",
@@ -9,7 +9,7 @@
   "dataDir": "data",
   "staticDir": "static",
   "publishDir": "_site",
-  "paginate": 6,
+  "paginate": 3,
   "tocMinWordCount": 10,
   "sitemap": {
     "changefreq": "monthly",
@@ -44,6 +44,10 @@
     }
  },
  "permalinks": {
-    "documentation": "/:sections/:filename/"
+    "documentation": "/:sections/:filename/",
+    "categories": "/:sections/:filename/"
+  },
+  "taxonomies": {
+    "category": "categories"
   }
 }

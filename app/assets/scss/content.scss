@@ -536,6 +536,17 @@ li {
   }
 }
 
+.tutorial-card__tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  .tag {
+    margin-top: 0;
+    text-transform: uppercase;
+  }
+}
+
 .highlight-container {
   position: relative;
 
