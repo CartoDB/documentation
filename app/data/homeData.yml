@@ -119,7 +119,7 @@ dataAndAnalysis:
     description: "Unlock Spatial Analytics on your Redshift"
     url: "/analytics-toolbox-redshift"
     image: "redshift-analytics-toolbox.png"
-  - title: "Analytics Toolbox for Databricks"
+  - title: "Analytics Toolbox for Databricks (Beta)"
     description: "Unlock Spatial Analytics on your Databricks"
     url: "/analytics-toolbox-databricks"
     image: "databricks-analytics-toolbox.png"
