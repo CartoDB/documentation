@@ -118,11 +118,11 @@ You can use CARTO with your data in an Databricks data warehouse.
 
 If you want to create a connection to your Databricks data warehouse, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
-![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_first(ded).png)
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_first.png)
 
 A dialog will appear informing you that you first need to install carto.analyticstoolbox.core package. Click on *Got it!*  to confirm.
 
-![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_connect(ded).png)
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_connect(warning).png)
 
 These are the parameters you need to provide:
 
@@ -133,5 +133,8 @@ These are the parameters you need to provide:
 - **Token**: Password for the user account.
 - **Database**: Database your connection will use.
 
-Once you have entered the parameters, you can click the Connect button. CARTO will try to connect to your Databricks cluster. If everything is OK, your new connection will be registered.
+Please visit the documentation of the Databricks [connection parameters](/analytics-toolbox-databricks/overview/installation/#connection-parameters) to get more information about how to obtain them.
 
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_parameters.png)
+
+Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Databricks cluster. If everything is OK, your new connection will be registered.
