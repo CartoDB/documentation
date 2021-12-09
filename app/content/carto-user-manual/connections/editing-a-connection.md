@@ -1,6 +1,6 @@
 ## Editing a connection
 
-In the *Connections* section of the Workspace, you can view the list of your current connections. You can access the quick actions menu to manage your connection by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit connection and Delete connection.
+In the *Connections* section of the Workspace, you can view the list of your current connections. You can access the quick actions menu to manage your connection by clicking on the three point icon in the top right hand corner. There are 3 options available: Edit, Share and Delete.
 
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_editing.png)
 

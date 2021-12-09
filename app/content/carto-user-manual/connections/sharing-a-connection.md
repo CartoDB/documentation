@@ -6,16 +6,22 @@ In the Connections section of the Workspace, you can view the list of your curre
 
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_share.png)
 
-If you click the Share quick action, you will be redirected to a new dialog screen that will allow you to select who you want to share your maps with. 
+If you click the *Share* quick action, you will be redirected to a new dialog screen that will allow you to select who you want to share your maps with. 
 
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_sharing_options_private.png)
 
-Click on *Organization* to share it. Note that if you share the connection with your organization, you're also sharing the permissions it might have.
+Click on *Organization* to share it. 
 
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_sharing_options_organization.png)
+
+{{% bannerNote title="WARNING" type="warning"%}}
+Note that if you share the connection with your organization, you're also sharing the permissions it might have.
+{{%/ bannerNote %}}
 
 Once you has shared your connection, it will be available to all users in your organization. You can easily identify it with the icon and label on the card.
 
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_shared_connection.png)
 
+You can always change the privacy of your connection. When you select the private mode, a message will appear warning you that by making the connection private, it will break the data sources added by other users, affecting their maps. Click on *Confirm* to accept this or click on *Cancel* to continue:
 
+![Connection confirmation deletion](/img/cloud-native-workspace/connections/the_connections_private_warning.png)
