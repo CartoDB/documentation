@@ -18,7 +18,7 @@ Click on *Organization* to share it.
 Note that if you share the connection with your organization, you're also sharing the permissions it might have.
 {{%/ bannerNote %}}
 
-Once you has shared your connection, it will be available to all users in your organization. You can easily identify it with the icon and label on the card.
+Once you have shared your connection, it will be available to all users in your organization. This means they'll be able to use this connection in their own maps. You can easily identify it with the icon and label on the card.
 
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_shared_connection.png)
 
