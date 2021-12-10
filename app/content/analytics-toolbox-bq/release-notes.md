@@ -1,5 +1,55 @@
 ## Release notes
 
+### December 3, 2021
+
+#### Module geocoding v1.0.0-beta.4
+
+Fixed
+* GEOCODE_BATCH optimization
+
+### December 2, 2021
+
+#### Module geocoding v1.0.0-beta.3
+
+Feature
+* New output column/fields `__carto_geocode_matched_name`/`matched_name` and `__carto_num_equal_matches`/`num_equal_matches` in `GEOCODE_BATCH`
+* New parameter `max_resolution`  in `GEOCODE_BATCH`
+* `GEOCODE_BATCH` can now geocode a table in place when `output` is NULL
+
+Changed
+* Remove trailing `__` from all generated columns (of the form `_carto_XXX`)
+* The column/field `__carto_geocode_accuracy`/`accuracy` has been removed
+* Internal refactor of query generation
+* Internal changes of geocoding tables
+
+Fixed
+* Prevent inexact mathces of country codes
+* Allow multiple (equally good) admin matches
+
+### November 30, 2021
+
+#### Module tiler v1.12.5
+
+Fixed
+- Escape single-quoted properties in the `CREATE_TILESET` metadata when obtaining the geometry type.
+
+### November 25, 2021
+
+#### Module statistics v1.1.0
+
+Feature
+- Add GWR_GRID function.
+
+### November 16, 2021
+
+#### Module tiler v1.12.4
+
+Fixed
+- Use `zoom_min_column` as `zoom_min` and `zoom_max_column` as `zoom_max` when provided.
+  
+Changed
+- Optimize simplification method instead of the native BigQuery.
+
 ### November 5, 2021
 
 #### Module data v1.1.2

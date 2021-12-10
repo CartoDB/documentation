@@ -180,7 +180,7 @@ Once you have registered a connection to a data warehouse, you can start using y
 
 Go to the *Connections* section in the Workspace, where you can find the list of all your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module cartodw](/img/cloud-native-workspace/connections/the_connections_module_cartodw.png)
+![Connections module cartodw](/img/cloud-native-workspace/connections/the_connections_cartodw.png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
@@ -212,7 +212,7 @@ The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 
 4. In this example we are going to use a table from our BigQuery connection. Select the table from the list and click *Add source*.
 
-![Add source table](/img/cloud-native-workspace/maps/map_add_source_table.png)
+![Add source table](/img/cloud-native-workspace/maps/map_add_source_select_table.png)
 
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
 	
@@ -241,9 +241,9 @@ Select a connection and start exploring the content (database/project(s), schema
 
 ![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_content.png)
 
-Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. You can create a map by clicking on the *Create* button on the top and then *Create map*. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
+Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
 
-![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_table.png)
+![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_map.png)
 
 #### Create Tileset
 
@@ -278,6 +278,20 @@ At any point of the process you can switch to enable the *SQL editor*. This edit
 Please note that if you edit the SQL query and go back to the form, a message appears warning you that all changes will be lost. Click on *Clear* to accept this or click on *Cancel* to continue editing:
 
 ![Data Explorer create tileset disable sql editor](/img/cloud-native-workspace/data-explorer/de_disable_sql_editor.png)
+#### Import data
+
+The Data Explorer section enables you to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse) from your imported data and used them in Builder and external applications to create maps. 
+
+To import your data, go to Data Explorer section, select  *Connections* panel and click on *Import data* button on the top left:
+
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
+
+A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
+
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
+
+You can import your data through two different methods: Local or Remote. For more details, check [Importing data](../../data-explorer/importing-data) guide.
+
 #### Enrich your data with the Data Observatory
 
 The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.
@@ -293,4 +307,8 @@ CARTO Builder contains many features that guide you through the process of creat
 
 #### Publish and share your map
 
-Once you publish a map, you obtain a URL to share access to the map or HTML code to embed it on a website or blog. You can also get the map token to call the map when developing an application in CARTO. For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+By default all maps you create are set as private. With CARTO you can share your maps with your organization or publish them for anyone with the link.
+
+Once you publish a map, you obtain a URL to share access to the map or HTML code to embed it on a website or blog. You can also get the map token to call the map when developing an application in CARTO. 
+
+For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).

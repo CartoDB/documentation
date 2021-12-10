@@ -9,7 +9,7 @@ To create a new connection follow these steps:
 
 The following screen shows the connection setup options for Google Cloud BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
 
 After you have provided the connection parameters, click *Connect*. Then you will see the list of your current connections:
 
@@ -106,3 +106,35 @@ Currently we only support username/password authentication using the internal Sn
 ![Connection parameters with Snowflake](/img/cloud-native-workspace/connections/the_connections_snowflake_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Snowflake account. If everything is OK, your new connection will be registered.
+### Connection to Databricks
+
+{{% bannerNote title="WARNING" type="tip" %}}
+This connection is in BETA.
+
+Please verify you've already [installed](/analytics-toolbox-databricks/overview/installation) the CARTO analytics toolbox in your cluster before following these steps.
+{{%/ bannerNote %}}
+
+You can use CARTO with your data in an Databricks data warehouse.
+
+If you want to create a connection to your Databricks data warehouse, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
+
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_first.png)
+
+A dialog will appear informing you that you first need to install carto.analyticstoolbox.core package. Click on *Got it!*  to confirm.
+
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_connect(warning).png)
+
+These are the parameters you need to provide:
+
+- **Name** for your connection: You can register different connections with the Databricks connector. You can use the name to identify the connections.
+- **Server**: Databricks cluster JDBC/ODBC server hostname.
+- **HTTP Path**: Databricks cluster JDBC/ODBC compute resources URL.
+- **Port**: TCP port (443).
+- **Token**: Password for the user account.
+- **Database**: Database your connection will use.
+
+Please visit the documentation of the Databricks [connection parameters](/analytics-toolbox-databricks/overview/installation/#connection-parameters) to get more information about how to obtain them.
+
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_parameters.png)
+
+Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Databricks cluster. If everything is OK, your new connection will be registered.

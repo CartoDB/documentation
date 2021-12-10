@@ -80,4 +80,4 @@ text input.
 
 12. Finally, we can visualize the result.
 
-   <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/7812419f-a7da-4c62-a734-0c1117f6e90a"></iframe>
+    <iframe width="800x" height="400px" src="https://gcp-europe-west1.app.carto.com/map/7812419f-a7da-4c62-a734-0c1117f6e90a"></iframe>

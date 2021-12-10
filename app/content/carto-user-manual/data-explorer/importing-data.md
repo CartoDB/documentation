@@ -3,15 +3,25 @@
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse)
 by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
-Currently, the import of GeoJSON and Shapefiles (in a zip package) is supported, and soon also CSV files will be supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
 
-To import your data, go to *Connections* panel and click on *Import data* button on the top left:
+### Supported formats
+Currently, the import of CSV, GeoJSON and Shapefiles (in a zip package) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
+
+For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
+* For *geometry*: `geom,Geom,geometry,the_geom,wkt,wkb`
+* For *latitude*: `latitude,lat,Latitude`
+* For *longitude*: `longitude,lon,Lon,Longitude,lng,Lng`
+
+The expected delimiters are: comma (`,`), semi-colon (`;`) or a tabulation.
+
+
+To import your data, go to Data Explorer section, select *Connections* panel and click on *Import data* button on the top left:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
 
 A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_local.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
 You can import your data through two different methods: Local or Remote.
 
@@ -23,11 +33,11 @@ To import a local file, select the icon on the left:
 
 This interface will allow you to upload a supported file, such as GeoJSON or Shapefile (.zip), into `CARTO Data Warehouse` and set the name of the output table on your organization data *shared* folder.
 
-![Data Explorer import select file local](/img/cloud-native-workspace/data-explorer/de_import_select_file_local.png)
+![Data Explorer import select file local](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
 Once you have completed this configuration, click on *Continue*: 
 
-![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_select_file_local_continue.png)
+![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_select_local_file_continue.png)
 
 The next screen will show you a summary of the configuration of the table for your confirmation. To confirm, click on *Import* :
 
@@ -61,12 +71,12 @@ To import a remote URL, select the icon on the right.
 
 This interface will allow you to enter your supported URL file, such as GeoJSON or Shapefile (.zip), into `CARTO Data Warehouse` and set the name of the output table on your organization data *shared* folder.
 
-![Data Explorer import select file url](/img/cloud-native-workspace/data-explorer/de_import_select_file_url.png)
+![Data Explorer import select file url](/img/cloud-native-workspace/data-explorer/de_import_select_url.png)
 
 Once you have completed this configuration, click on *Continue*: 
 
-![Data Explorer import selected file continue url](/img/cloud-native-workspace/data-explorer/de_import_selected_file_continue_url.png)
-
+![Data Explorer import selected file continue url](/img/cloud-native-workspace/data-explorer/de_import_select_url_continue.png)
+n
 The next screen will show you a summary of the configuration of the table for your confirmation. To confirm, click on *Import* :
 
 ![Data Explorer import confirmation url](/img/cloud-native-workspace/data-explorer/de_import_confirmation_url_.png)

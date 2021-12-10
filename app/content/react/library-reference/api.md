@@ -73,6 +73,7 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
 | props.source.credentials | <code>string</code> |  Credentials for accessing the source (check the parameters [here](/deck-gl/reference#setdefaultcredentials))                                           |
 | [props.uniqueIdProperty] | <code>string</code> | (optional) Name of the column for identity. To be used internally when getting viewportFeatures (used by widget computations) |
 | [props.viewportFeatures] | <code>boolean</code> | (optional) Default: `true`. Whether to calculate viewport features for this layer or not.  |
+| [props.viewportFeaturesDebounceTimeout] | <code>number</code> | (optional) Default: `500`. Timeout for calculating viewport features when there's a change. It's used to avoid repeated viewport calculations in a short amount of time.  |
 {{%/ tableWrapper %}}
 
    {{% bannerNote title="tip" %}}

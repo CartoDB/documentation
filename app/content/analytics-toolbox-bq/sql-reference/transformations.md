@@ -27,7 +27,7 @@ Calculates a Geography buffer for input features for a given radius. Units suppo
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_BUFFER(ST_GEOGPOINT(-74.00, 40.7128), 1, "kilometers", 10);
 -- POLYGON((-73.9881354374691 40.7127993926494 ... 
 ```
@@ -52,7 +52,7 @@ Takes a Feature or FeatureCollection and returns the mean center.
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_CENTERMEAN(ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))"));
 -- POINT(25.3890912155939 29.7916831655627)
 ```
@@ -77,7 +77,7 @@ Takes a FeatureCollection of points and calculates the median center, algorithim
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_CENTERMEDIAN(ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))"));
 -- POINT(25.3783930513609 29.8376035441371)
 ```
@@ -102,7 +102,7 @@ Takes any Feature or a FeatureCollection and returns its center of mass using th
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_CENTEROFMASS(ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))"));
 -- POINT(25.1730977433239 27.2789529273059) 
 ```
@@ -129,7 +129,7 @@ Takes a set of points and returns a concave hull Polygon or MultiPolygon.
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_CONCAVEHULL([ST_GEOGPOINT(-75.833, 39.284),ST_GEOGPOINT(-75.6, 39.984),ST_GEOGPOINT(-75.221, 39.125),ST_GEOGPOINT(-75.521, 39.325)], 100, 'kilometers');
 -- POLYGON((-75.68 39.24425, -75.527 39.2045 ...
 ```
@@ -157,7 +157,7 @@ Takes a Point and calculates the location of a destination point given a distanc
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_DESTINATION(ST_GEOGPOINT(-3.70325,40.4167), 10, 45, "miles");
 -- POINT(-3.56862505487045 40.5189626777536)
 ```
@@ -184,7 +184,7 @@ Calculate great circles routes as LineString or MultiLineString. If the start an
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_GREATCIRCLE(ST_GEOGPOINT(-3.70325,40.4167), ST_GEOGPOINT(-73.9385,40.6643), 20);
 -- LINESTRING(-3.70325 40.4167 ... 
 ```
@@ -211,7 +211,7 @@ Takes a LineString and returns a Point at a specified distance along the line.
 **Example**
 {{%/ customSelector %}}
 
-``` sql
+```sql
 SELECT carto-os.transformations.ST_LINE_INTERPOLATE_POINT(ST_GEOGFROMTEXT("LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)"), 250, 'miles');
 -- POINT(-74.297592068938 19.4498107103156) 
 ```

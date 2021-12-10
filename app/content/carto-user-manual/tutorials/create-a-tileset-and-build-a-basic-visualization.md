@@ -84,4 +84,4 @@ In this example we are creating a tileset in which each building in Madrid is re
 
 14. Finally, we can visualize the result.
 
-   <iframe width="640px" height="360px" src="https://gcp-europe-west1.app.carto.com/map/c04ec4da-1b01-4133-99fb-5daa8044b6cf"></iframe>
+    <iframe width="800px" height="400px" src="https://gcp-europe-west1.app.carto.com/map/c04ec4da-1b01-4133-99fb-5daa8044b6cf"></iframe>
