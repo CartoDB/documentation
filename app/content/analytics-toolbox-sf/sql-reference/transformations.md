@@ -22,7 +22,7 @@ Takes a Feature or FeatureCollection and returns the mean center.
 
 **Example**
 
-```sql
+``` sql
 SELECT carto.ST_CENTERMEAN(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- { "coordinates": [ 26, 24 ], "type": "Point" }
 ```
@@ -45,7 +45,7 @@ Takes a FeatureCollection of points and calculates the median center, algorithim
 
 **Example**
 
-```sql
+``` sql
 SELECT carto.ST_CENTERMEDIAN(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- { "coordinates": [ 25, 27.5 ], "type": "Point" }
 ```
@@ -68,7 +68,7 @@ Takes any Feature or a FeatureCollection and returns its center of mass using th
 
 **Example**
 
-```sql
+``` sql
 SELECT carto.ST_CENTEROFMASS(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- { "coordinates": [ 25.454545454545453, 26.96969696969697 ], "type": "Point" }
 ```
@@ -93,17 +93,17 @@ Takes a set of points and returns a concave hull Polygon or MultiPolygon.
 
 **Examples**
 
-```sql
+``` sql
 SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING, ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING));
 -- { "coordinates": [ [ [ -75.221, 39.125 ], [ -75.833, 39.284 ], [ -75.6, 39.984 ], [ -75.221, 39.125 ] ] ], "type": "Polygon" }
 ```
 
-```sql
+``` sql
 SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING, ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING), 100);
 -- { "coordinates": [ [ [ -75.833, 39.284 ], [ -75.6, 39.984 ], ...
 ```
 
-```sql
+``` sql
 SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING, ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING), 100, 'kilometers');
 -- { "coordinates": [ [ [ -75.833, 39.284 ], [ -75.6, 39.984 ], ...
 ```
@@ -129,12 +129,12 @@ Takes a Point and calculates the location of a destination point given a distanc
 
 **Examples**
 
-```sql
+``` sql
 SELECT carto.ST_DESTINATION(ST_POINT(-3.70325,40.4167), 10, 45);
 -- { "coordinates": [ -3.6196461743569053, 40.48026145975517 ], "type": "Point" }
 ```
 
-```sql
+``` sql
 SELECT carto.ST_DESTINATION(ST_POINT(-3.70325,40.4167), 10, 45, 'miles');
 -- { "coordinates": [ -3.56862505487045, 40.518962677753585 ], "type": "Point" }
 ```
@@ -159,12 +159,12 @@ Calculate great circles routes as LineString or MultiLineString. If the start an
 
 **Examples**
 
-```sql
+``` sql
 SELECT carto.ST_GREATCIRCLE(ST_POINT(-3.70325,40.4167), ST_POINT(-73.9385,40.6643));
 -- { "coordinates": [ [ -3.7032499999999993, 40.4167 ], ... 
 ```
 
-```sql
+``` sql
 SELECT carto.ST_GREATCIRCLE(ST_POINT(-3.70325,40.4167), ST_POINT(-73.9385,40.6643), 20);
 -- { "coordinates": [ [ -3.7032499999999993, 40.4167 ], ... 
 ```
@@ -189,12 +189,12 @@ Takes a LineString and returns a Point at a specified distance along the line.
 
 **Examples**
 
-```sql
+``` sql
 SELECT carto.ST_LINE_INTERPOLATE_POINT(TO_GEOGRAPHY('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'), 250);
 -- { "coordinates": [ -75.5956489839589, 19.273615818183988 ], "type": "Point" } 
 ```
 
-```sql
+``` sql
 SELECT carto.ST_LINE_INTERPOLATE_POINT(TO_GEOGRAPHY('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'), 250, 'miles');
 -- { "coordinates": [ -74.297592068938, 19.449810710315635 ], "type": "Point" } 
 ```

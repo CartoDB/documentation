@@ -209,15 +209,15 @@ Returns all cell indexes and their distances in a **filled square k-ring** cente
 
 ```sql
 SELECT carto.QUADINT_KRING_DISTANCES(4388, 1);
--- {"index": 4388, "distance": 0}
--- {"index": 4932, "distance": 1}
--- {"index": 4900, "distance": 1}
--- {"index": 4868, "distance": 1}
--- {"index": 4420, "distance": 1}
--- {"index": 4356, "distance": 1}
--- {"index": 3908, "distance": 1}
--- {"index": 3876, "distance": 1}
--- {"index": 3844, "distance": 1}
+-- {"index": "4388", "distance": 0}
+-- {"index": "4932", "distance": 1}
+-- {"index": "4900", "distance": 1}
+-- {"index": "4868", "distance": 1}
+-- {"index": "4420", "distance": 1}
+-- {"index": "4356", "distance": 1}
+-- {"index": "3908", "distance": 1}
+-- {"index": "3876", "distance": 1}
+-- {"index": "3844", "distance": 1}
 ```
 
 {{% bannerNote type="note" title="tip"%}}
@@ -285,7 +285,7 @@ carto.QUADINT_TOCHILDREN(quadint, resolution)
 
 **Description**
 
-Returns an array with the children quadints of a given quadint for a specific resolution. A children quadint is a quadint of higher level of detail that is contained within the current quadint. Each quadint has four children by definition.
+Returns an array with the children quadints of a given quadint for a specific resolution. A children quadint is a quadint of higher level of detail that is contained by the current quadint. Each quadint has four children by definition.
 
 * `quadint`: `BIGINT` quadint to get the children from.
 * `resolution`: `INT` resolution of the desired children.

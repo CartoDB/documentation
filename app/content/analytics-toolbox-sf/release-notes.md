@@ -135,26 +135,6 @@ Changed
 Removed
 - Remove VERSION function.
 
-### November 25, 2021
-
-#### Module clustering v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "clustering".
-- Remove VERSION function.
-
-#### Module data v1.0.0-beta.4
-
-Changed
-- Deployment schema "carto" instead of "data".
-- Remove VERSION function.
-
-#### Module random v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "random".
-- Remove VERSION function.
-
 ### November 24, 2021
 
 #### Module data v1.0.0-beta.3
@@ -342,6 +322,13 @@ Feature
 - Add ST_ASID function.
 - Add ST_BOUNDARY function.
 - Add VERSION function.
+
+### April 10, 2021
+
+#### Module random v1.1.1
+
+Changed
+- ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
 
 ### April 7, 2021
 

@@ -43,19 +43,50 @@ If `max_multiple_results` is NULL the following columns will be added to either 
 If `max_multiple_results` is an integer, then multiple results will appear in a single column `__carto_geocode` of type ARRAY, containing objects with fields corresponding to the columns mentioned above (but without the `__carto_` prefixes in their names).
 
 {{% customSelector %}}
-**Example**
+**Examples**
 {{%/ customSelector %}}
+
+Geocode cities. Note that `country` & `state` are optional, but it's highly
+recommendable to provide at least the country. Otherwise results may not only
+be inaccurate, but processing time can be very long, since each input has to be search globally.
 
 ```sql
 CALL bqcarto.geocoding.GEOCODE_BATCH(
   'SELECT id, city, state, country FROM `my-project.my-dataset.my-table`',
   'city', 'country', 'state',
-  ['`my-project.my-dataset.my-geododed-table`'],
+  ['`my-project.my-dataset.my-geocoded-table`'],
   NULL,
   'my-dataobs-project.my-dataobs-dataset',
   NULL
 );
 ```
+
+Geocode states. In this case `admin` should be NULL and the `topadmin` option must be used.
+
+```sql
+CALL bqcarto.geocoding.GEOCODE_BATCH(
+  'SELECT id, state, country FROM `my-project.my-dataset.my-table`',
+  'state', 'country', NULL ,
+  ['`my-project.my-dataset.my-geocoded-table`'],
+  NULL,
+  'my-dataobs-project.my-dataobs-dataset',
+  'topadmin'
+);
+```
+
+Geocode countries. Both `country` and `admin` should be NULL and the `topadmin` option must be used.
+
+```sql
+CALL bqcarto.geocoding.GEOCODE_BATCH(
+  'SELECT id, country FROM `my-project.my-dataset.my-table`',
+  'country', NULL, NULL ,
+  ['`my-project.my-dataset.my-geocoded-table`'],
+  NULL,
+  'my-dataobs-project.my-dataobs-dataset',
+  'topadmin'
+);
+```
+
 
 ### GEOCODE_PC_BATCH
 

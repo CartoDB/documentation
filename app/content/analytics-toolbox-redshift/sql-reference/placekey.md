@@ -7,38 +7,15 @@
 You can learn more about Placekey on [their website](https://www.placekey.io/) or in the [Overview section](/spatial-extension-rs/sql-reference/placekey/#placekey) of this documentation.
 
 
-### PLACEKEY_ASH3
+### H3_ASPLACEKEY
 
 {{% bannerNote type="code" %}}
-carto.PLACEKEY_ASH3(placekey)
+placekey.H3_ASPLACEKEY(h3index)
 {{%/ bannerNote %}}
 
 **Description**
 
-Returns the H3 index equivalent to the given placekey.
-
-* `placekey`: `VARCHAR` Placekey identifier.
-
-**Return type**
-
-`VARCHAR`
-
-**Example**
-
-```sql
-SELECT carto.PLACEKEY_ASH3('@ff7-swh-m49');
--- 8a7b59dffffffff
-```
-
-### PLACEKEY_FROMH3
-
-{{% bannerNote type="code" %}}
-carto.PLACEKEY_FROMH3(h3index)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the Placekey equivalent to the given H3 index.
+Returns the placekey equivalent to the given H3 index.
 
 * `h3index`: `VARCHAR` H3 identifier.
 
@@ -49,14 +26,14 @@ Returns the Placekey equivalent to the given H3 index.
 **Example**
 
 ```sql
-SELECT carto.PLACEKEY_FROMH3('847b59dffffffff');
+SELECT placekey.H3_ASPLACEKEY('847b59dffffffff');
 -- @ff7-swh-m49
 ```
 
-### PLACEKEY_ISVALID
+### ISVALID
 
 {{% bannerNote type="code" %}}
-carto.PLACEKEY_ISVALID(placekey)
+placekey.ISVALID(placekey)
 {{%/ bannerNote %}}
 
 **Description**
@@ -72,16 +49,60 @@ Returns a boolean value `true` when the given string represents a valid Placekey
 **Examples**
 
 ```sql
-SELECT carto.PLACEKEY_ISVALID('@ff7-swh-m49');
+SELECT placekey.ISVALID('@ff7-swh-m49');
 -- true
 ```
 
 ```sql
-SELECT carto.PLACEKEY_ISVALID('ff7-swh-m49');
+SELECT placekey.ISVALID('ff7-swh-m49');
 -- true
 ```
 
 ```sql
-SELECT carto.PLACEKEY_ISVALID('x');
+SELECT placekey.ISVALID('x');
 -- false
+```
+
+### PLACEKEY_ASH3
+
+{{% bannerNote type="code" %}}
+placekey.PLACEKEY_ASH3(placekey)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the H3 index equivalent to the given placekey.
+
+* `placekey`: `VARCHAR` Placekey identifier.
+
+**Return type**
+
+`VARCHAR`
+
+**Example**
+
+```sql
+SELECT placekey.PLACEKEY_ASH3('@ff7-swh-m49');
+-- 8a7b59dffffffff
+```
+
+### VERSION
+
+{{% bannerNote type="code" %}}
+placekey.VERSION()
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the current version of the placekey module.
+
+**Return type**
+
+`VARCHAR`
+
+**Example**
+
+```sql
+SELECT placekey.VERSION();
+-- 1.0.0
 ```

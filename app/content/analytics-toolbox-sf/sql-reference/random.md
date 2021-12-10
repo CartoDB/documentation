@@ -14,6 +14,8 @@ carto.ST_GENERATEPOINTS(geog, npoints)
 
 Generates randomly placed points inside a polygon and returns them in an array of geographies.
 
+The distribution of the generated points is spherically uniform (i.e. if the coordinates are interpreted as longitude and latitude on a sphere); this means that WGS84 coordinates will be only approximately uniformly distributed, since WGS84 is based on an ellipsoidal model.
+
 {{% bannerNote type="warning" title="warning"%}}
 It never generates more than the requested number of points, but there is a small chance of generating less points.
 {{%/ bannerNote %}}

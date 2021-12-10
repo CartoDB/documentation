@@ -1,5 +1,15 @@
 ## Release notes
 
+### December 10, 2021
+
+#### Module statistics v1.2.0
+
+Feature
+- Add KNN function.
+- Add GFUN function.
+- Add LOF function.
+- Add LOF_TABLE procedure.
+
 ### December 3, 2021
 
 #### Module geocoding v1.0.0-beta.4
@@ -471,6 +481,13 @@ Feature
 - Create transformation module.
 - Add ST_BUFFER function.
 - Add VERSION function.
+
+### April 10, 2021
+
+#### Module random v1.0.1
+
+Changed
+- ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
 
 ### April 9, 2021
 
