@@ -3,7 +3,7 @@ title: "Build an animated visualization with time series"
 description: "There is an increasing need for conservation and connection with nature in cities. In this sense, geospatial analysis plays an important role in the effective management of our natural resources. In this tutorial we are going to represent the distribution of tree species in the streets of San Francisco by color and we will add some interaction through widgets, which will allow us to explore the map by selecting targered filters of interest. In this example, filters are applied by specie and date of planting." 
 image: "/img/tutorials/animated.png" 
 type: tutorials
-date: "12-03-2021"
+date: "2021-08-12"
 categories: 
    - tag one
    - tag two

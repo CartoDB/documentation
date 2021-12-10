@@ -21,7 +21,7 @@
       {{ end }}
       
       <ul class="grid">
-        {{ range $tutorial := sort $paginator.Pages "Params.date" "asc" }}
+        {{ range $tutorial := sort $paginator.Pages "Params.date" "desc" }}
           {{ partial "tutorial-summary.html" $tutorial }}
         {{ end }}
       </ul>

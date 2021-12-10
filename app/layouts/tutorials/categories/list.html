@@ -5,7 +5,9 @@
   <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
     {{- partial "aside-menu.html" . -}}
     <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
-      
+      <!-- NOTE: category title -->
+      <!-- <h1 class="title f32 u-mb48">{{ humanize .Params.category }}</h1> -->
+
       {{ $curr := slice .Params.category }}
       {{ $paginator := .Paginate (where .Site.Pages "Params.categories" "intersect" $curr) }}
       <ul class="grid">

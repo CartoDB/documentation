@@ -3,7 +3,7 @@ title: "Create a tileset and build a basic visualization"
 description: "Understanding the urban areas has important implications in a wide range of geospatial analysis, for example, to inform decision-makers in sectors such as urban planning. In this example we are creating a tileset in which each building in Madrid is represented by a polygon and each of them is assigned a graduated color from the lowest to the highest value of the gross floor area. This visualisation allows us to represent at a glance how the surface area in Madrid is distributed." 
 image: "/img/tutorials/tileset.png"
 type: tutorials
-date: "12-02-2021"
+date: "2021-07-12"
 categories: 
    - tag one
    - tag two

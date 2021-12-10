@@ -9,7 +9,7 @@
   "dataDir": "data",
   "staticDir": "static",
   "publishDir": "_site",
-  "paginate": 3,
+  "paginate": 6,
   "tocMinWordCount": 10,
   "sitemap": {
     "changefreq": "monthly",
