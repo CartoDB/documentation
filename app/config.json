@@ -44,10 +44,6 @@
     }
  },
  "permalinks": {
-    "documentation": "/:sections/:filename/",
-    "categories": "/:sections/:filename/"
-  },
-  "taxonomies": {
-    "category": "categories"
+    "documentation": "/:sections/:filename/"
   }
 }

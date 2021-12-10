@@ -3,9 +3,10 @@ title: "Build a categories & bubbles visualization"
 description: "Understanding population distribution has important implications in a wide range of geospatial analysis such as human exposure to hazards and climate change or improving geomarketing and site selection strategies. In this tutorial we are going to represent the distribution of the most populated places by applying colours to each type of place and a point size based on the maximum population. Therefore, we can easily understand how the human settlement areas is distributed with a simple visualization that we can use in further analysis."
 image: "/img/tutorials/bubbles.png" 
 type: tutorials
-date: "2021-12-03"
+date: "12-04-2021"
 categories: 
-   - tagtwo
+   - tag one
+   - tag two
 ---
 ## Build a categories & bubbles visualization
 

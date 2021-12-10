@@ -11,38 +11,18 @@
 
       <!-- Show overview text on the first page only  -->
       {{ if not $paginator.HasPrev }}
-        <h2>Overview</h2>
-        
-        <p>The <code>CARTO Data Warehouse</code> connection grants access to a set of demo tables and tilesets that can be used to start creating stunning maps and exploring the tools from the very beginning.</p>
-        <p>They’re available and ready to be used in the Data Explorer and Builder and you can start using them with all components of the CARTO platform, such as running advanced spatial analysis with our Analytics Toolbox, with everything running directly on top of the provisioned <code>CARTO Data Warehouse</code>connection.</p>
-        <p>In this section, we provide a varied set of tutorials on how to get the most out of your data:</p>
+        <div class="u-mb48">
+          <h2>Overview</h2>
+          
+          <p>The <code>CARTO Data Warehouse</code> connection grants access to a set of demo tables and tilesets that can be used to start creating stunning maps and exploring the tools from the very beginning.</p>
+          <p>They’re available and ready to be used in the Data Explorer and Builder and you can start using them with all components of the CARTO platform, such as running advanced spatial analysis with our Analytics Toolbox, with everything running directly on top of the provisioned <code>CARTO Data Warehouse</code>connection.</p>
+          <p>In this section, we provide a varied set of tutorials on how to get the most out of your data:</p>
+        </div>
       {{ end }}
       
       <ul class="grid">
         {{ range $tutorial := sort $paginator.Pages "Params.date" "asc" }}
           {{ partial "tutorial-summary.html" $tutorial }}
-          <!-- <div
-            class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mt48 u-mb24 tutorial-card">
-            <a href="{{ .RelPermalink }}">
-              <div class="tutorial-card__image">
-                <img src="{{ $tutorial.Params.image }}" />
-              </div>
-            </a>
-            <div class="tutorial-card__content">
-              <a href="{{ .RelPermalink }}" class="title f24">
-                {{ .Title }}
-              </a>
-              <p class="text f16 is-txtTypo2 u-mt8">{{ $tutorial.Params.description }}</p>
-            </div>
-
-            {{ if $tutorial.Params.categories }}
-              <div class="tutorial-card__tags u-mt32">
-                {{ range $category := $tutorial.Params.categories }}
-                  <a href="{{ "/categories/" | relURL }}{{ . | urlize }}" class="title f12 tag u-mb4 u-mr4">{{ $category }}</a>
-                {{ end }}
-              </div>
-            {{ end }}
-          </div> -->
         {{ end }}
       </ul>
       
