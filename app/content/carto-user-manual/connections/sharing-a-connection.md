@@ -15,7 +15,7 @@ Click on *Organization* to share it.
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_sharing_options_organization.png)
 
 {{% bannerNote title="WARNING" type="warning"%}}
-Note that if you share the connection with your organization, you're also sharing the permissions it might have.
+Note that if you share the connection with your organization, you're effectively granting users access to any permissions that might be also available in this connection, such as updating or deleting data through SQL queries.
 {{%/ bannerNote %}}
 
 Once you have shared your connection, it will be available to all users in your organization. This means they'll be able to use this connection in their own maps. You can easily identify it with the icon and label on the card.
