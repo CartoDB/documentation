@@ -1,4 +1,4 @@
-{{$type := .Get "type" | default "bigquery"}}
+{{$dir := .Page.Dir}}
 {{$id := delimit (shuffle (seq 1 9)) ""}}
 
 <div class="code-examples">
@@ -9,7 +9,7 @@
 <!-- TODO: move JS code to a common place -->
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script>
-  if ('{{$type}}' === 'bigquery') {
+  if ('{{$dir}}'.startsWith('analytics-toolbox-bq')) {
     domReady(() => {
       initializeCustomSelector('id{{$id}}'); 
     });
@@ -57,8 +57,8 @@
 
     Array.from(examples).forEach(example => {
       example.innerHTML = example.innerHTML.replace(
-        /<span class="n">\`?carto<\/span><span class="o">-<\/span><span class="n">.*?\`?<\/span>/,
-        `<span class="n">\`carto</span><span class="o">-</span><span class="n">${value}\`</span>`
+        /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/,
+        `<span class="n">carto</span><span class="o">-</span><span class="n">${value}</span>`
       );
     });
 

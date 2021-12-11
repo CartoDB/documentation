@@ -95,7 +95,6 @@ Takes any Feature or a FeatureCollection as input and returns its centroid. It i
 ```sql
 SELECT carto.ST_CENTROID(ST_GEOMFROMTEXT('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- POINT (25.4545454545 26.9696969697)
-```
 
 ### ST_DESTINATION
 

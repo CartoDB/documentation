@@ -27,5 +27,7 @@ git clone --branch sf-prev --depth 1 git@github.com:CartoDB/carto-advanced-spati
 
 echo -e "\nCheckout Analytics Toolbox for Redshift"
 echo "---------------------------------------"
-git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-redshift-master
-git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-redshift-master
+# git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-redshift-master
+# git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-redshift-master
+git clone --branch propose-new-naming-redshift --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-redshift-master
+git clone --branch propose-new-naming-redshift --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-redshift-master
