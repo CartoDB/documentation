@@ -4,5 +4,6 @@ description: "Connect your data warehouse and create amazing maps with CARTO too
 icon: "/img/icons/Workspace.png"
 type: tutorials
 category: easy
+icon: /img/icons/Workspace.png
 layout: categories/list
 ---

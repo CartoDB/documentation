@@ -1,20 +1,26 @@
 <div class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mb48 tutorial-card">
-  <a href="{{ .RelPermalink }}">
-    <div class="tutorial-card__image">
-      <img src="{{ .Params.image }}" />
-    </div>
-  </a>
-  <div class="tutorial-card__content">
-    <a href="{{ .RelPermalink }}" class="title f24">
-      {{ .Title }}
+  <div class="tutorial-card__content__wrapper">
+    <a href="{{ .RelPermalink }}">
+      <div class="tutorial-card__image">
+        <img src="{{ .Params.image }}" />
+      </div>
     </a>
-    <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
+    <div class="tutorial-card__content">
+      <a href="{{ .RelPermalink }}" class="title f24">
+        {{ .Title }}
+      </a>
+      <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
+    </div>
   </div>
 
   {{ if .Params.categories }}
   <div class="tutorial-card__tags u-mt32">
     {{ range .Params.categories }}
-    <a href="{{ "carto-user-manual/tutorials/categories/" | relURL }}{{ . | urlize}}" class="title f12 tag u-mb4 u-mr4">{{ . }}</a>
+    <a href="{{ "carto-user-manual/tutorials/categories/" | relURL }}{{ . | urlize}}" class="title f12 tutorial-tag u-mb4 u-mr4">
+      {{ $icon := printf "%s%s%s" "/img/icons/" . ".png" }}
+      <img src="{{ $icon }}" alt="">
+      {{ . }}
+    </a>
     {{ end }}
   </div>
   {{ end }}
