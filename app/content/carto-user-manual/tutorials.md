@@ -2,7 +2,7 @@
 
 In this section we provide a set of tutorials that showcase how to get the most out of the CARTO platform, in particular through the Workspace and Builder interfaces that are detailed in this User Manual.
 
-These tutorials leverage the demo data provided by default via the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection, so you can start creating maps and exploring our tools from the very beginning. 
+These tutorials leverage the demo data provided by default via the [CARTO Data Warehouse](../../carto-user-manual/connections/carto-data-warehouse) connection, so you can start creating maps and exploring our tools from the very beginning. 
 
 The data you need for these tutorials are available and ready to be used in the Data Explorer and Builder and you can start using them with all other components of the CARTO platform.
 
