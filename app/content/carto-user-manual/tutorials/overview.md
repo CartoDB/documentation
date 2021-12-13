@@ -1,10 +1,10 @@
 ## Overview
 
-The `CARTO Data Warehouse` connection grants access to a set of demo tables and tilesets that can be used to start creating stunning maps and exploring the tools from the very beginning. 
+In this section we provide a set of tutorials that showcase how to get the most out of the CARTO platform, in particular through the Workspace and Builder interfaces that are detailed in this User Manual.
 
-They're available and ready to be used in the Data Explorer and Builder and you can start using them with all components of the CARTO platform, such as running advanced spatial analysis with our Analytics Toolbox, with everything running directly on top of the provisioned `CARTO Data Warehouse`connection. 
+These tutorials leverage the demo data provided by default via the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection, so you can start creating maps and exploring our tools from the very beginning. 
 
-In this section, we provide a varied set of tutorials on how to get the most out of your data:
+The data you need for these tutorials are available and ready to be used in the Data Explorer and Builder and you can start using them with all other components of the CARTO platform.
 
 <!-- - [Build a categories & bubbles visualization](../../tutorials/build-a-categories-and-bubbles-visualization)
 
