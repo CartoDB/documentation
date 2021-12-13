@@ -4,10 +4,8 @@ description: "There is an increasing need for conservation and connection with n
 image: "/img/tutorials/animated.png" 
 type: tutorials
 date: "2021-08-12"
-categories: 
-   - tag one
-   - tag two
-   - tag three
+categories:
+    - easy
 ---
 ## Build an animated visualization with time series
 

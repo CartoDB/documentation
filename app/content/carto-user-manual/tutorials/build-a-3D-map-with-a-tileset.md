@@ -4,8 +4,8 @@ description: "A geospatial analysis of land use dynamics has special relevance f
 image: "/img/tutorials/3d.png"
 type: tutorials
 date: "2021-05-12"
-categories: 
-   - tag one
+categories:
+    - easy
 ---
 ## Build a 3D map with a tileset
 

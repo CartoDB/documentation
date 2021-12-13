@@ -5,8 +5,7 @@ image: "/img/tutorials/stores.png"
 type: tutorials
 date: "2021-06-12"
 categories:
-    - tag five
-    - tag six
+    - easy
 ---
 ## Find the best place to create a store near the customers 
 

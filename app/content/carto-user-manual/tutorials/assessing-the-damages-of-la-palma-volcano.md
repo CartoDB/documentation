@@ -4,14 +4,8 @@ description: "Since 11 September 2021, a swarm of seismic activity had been ongo
 image: "/img/tutorials/volcano.png"
 type: tutorials
 date: "2021-10-12"
-categories: 
-    - tag one
-    - tag two
-    - tag three
-    - tag four
-    - tag five
-    - tag six
-    - una categoria mas
+categories:
+    - easy
 ---
 
 ## Assessing the damages of La Palma Volcano

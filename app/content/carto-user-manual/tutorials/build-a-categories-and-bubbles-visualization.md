@@ -4,9 +4,8 @@ description: "Understanding population distribution has important implications i
 image: "/img/tutorials/bubbles.png" 
 type: tutorials
 date: "2021-09-12"
-categories: 
-   - tag one
-   - tag two
+categories:
+    - easy
 ---
 ## Build a categories & bubbles visualization
 
