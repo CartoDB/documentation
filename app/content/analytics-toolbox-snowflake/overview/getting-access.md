@@ -26,8 +26,6 @@ By clicking on "View Database" you will be redirected to the database you just c
 ![Analytics Toolbox for Snowflake get data form](/img/sf-analytics-toolbox/sf-datamarketplace-step5-get.png)
 
 
-
-
 ### Manual installation
 
 This guide explains all the steps to install the SQL functions and procedures of the toolbox in your Snowflake database.
@@ -36,7 +34,9 @@ The CARTO Analytics Toolbox contains two packages:
 * **core**: this is the public and open-source package. It contains all the core GIS functions that complement the GIS native functions available in Snowflake.
 * **advanced**: this is a premium package. It contains advanced GIS functions to power high-level GIS analytics in Snowflake.
 
-NOTE: This guide explains how to install the core package. In order to access the **advanced** features, please contact support@carto.com.
+{{% bannerNote title="NOTE" type="note" %}}
+This guide explains how to install the core package. In order to access the **advanced** features, please contact support@carto.com.
+{{%/ bannerNote %}}
 
 We can divide the process into two steps: setup and installation. The first one must be done only the first time, then the second one must be done every time you want to install a new version of the packages.
 
@@ -130,6 +130,8 @@ Download the `modules.sql` file from: https://storage.googleapis.com/carto-analy
 
 Execute the file `modules.sql` to create the SQL functions and procedures in the "carto" schema of the "carto" database.
 
-Warning: this file will remove all the previous functions and procedures in the "carto" schema.
+{{% bannerNote title="WARNING" type="note" %}}
+This file will remove all the previous functions and procedures in the "carto" schema.
+{{%/ bannerNote %}}
 
 **Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/).
