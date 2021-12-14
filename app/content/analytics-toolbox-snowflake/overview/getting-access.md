@@ -111,7 +111,7 @@ USE DATABASE carto;
 USE SCHEMA carto;
 ```
 
-##### 2. Check the installed version
+##### 2. Check the installed version
 
 If this is the first time installing the toolbox, skip this step.
 
@@ -119,9 +119,12 @@ Download the version file from:
 https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version
 
 Compare with your version installed:
-SELECT carto.VERSION_CORE();
 
-##### 3. Create the functions and procedures
+```sql
+SELECT carto.VERSION_CORE();
+```
+
+##### 3. Create the functions and procedures
 
 Download the `modules.sql` file from: https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/modules.sql
 
