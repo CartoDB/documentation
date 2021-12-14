@@ -12,13 +12,18 @@
       <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
     </div>
   </div>
-
+  <p>
+  </p>
+  {{ $baseDir := .Dir}}
+  {{ $path := path.Join $baseDir "categories" }}
   {{ if .Params.categories }}
   <div class="example-card__tags u-mt32">
     {{ range .Params.categories }}
-    <a href="{{ "carto-user-manual/tutorials/categories/" | relURL }}{{ . | urlize}}" class="title f12 example-tag u-mb4 u-mr4">
+    <a href="{{ $path | relURL }}/{{ . | urlize}}" class="title f12 example-tag u-mb4 u-mr4">
       {{ $icon := printf "%s%s%s" "/img/icons/" . ".png" }}
-      <img src="{{ $icon }}" alt="">
+      {{ if fileExists $icon }}
+        <img src="{{ $icon }}" alt="">
+      {{ end }}
       {{ . }}
     </a>
     {{ end }}
