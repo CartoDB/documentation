@@ -70,22 +70,22 @@ GRANT ROLE carto_role TO USER carto;
 GRANT USAGE ON DATABASE "<my database>" TO ROLE carto_role;
 
 -- Create the carto schema
-CREATE SCHEMA "<my database>"carto;
+CREATE SCHEMA "<my database>".carto;
 
 -- Give the carto user full access to the carto schema
-GRANT ALL PRIVILEGES ON SCHEMA "<my database>"carto TO ROLE carto_role;
+GRANT ALL PRIVILEGES ON SCHEMA "<my database>".carto TO ROLE carto_role;
 
 -- Grant usage on public role
 GRANT USAGE ON DATABASE carto TO ROLE public;
-GRANT USAGE ON SCHEMA "<my database>"carto TO ROLE public;
-GRANT SELECT ON ALL TABLES IN SCHEMA "<my database>"carto TO ROLE public;
-GRANT SELECT ON FUTURE TABLES IN SCHEMA "<my database>"carto TO ROLE public;
-GRANT SELECT ON ALL VIEWS IN SCHEMA "<my database>"carto TO ROLE public;
-GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<my database>"carto TO ROLE public;
-GRANT USAGE ON ALL FUNCTIONS IN SCHEMA "<my database>"carto TO ROLE public;
-GRANT USAGE ON FUTURE FUNCTIONS IN SCHEMA "<my database>"carto TO ROLE public;
-GRANT USAGE ON ALL PROCEDURES IN SCHEMA "<my database>"carto TO ROLE public;
-GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT USAGE ON SCHEMA "<my database>".carto TO ROLE public;
+GRANT SELECT ON ALL TABLES IN SCHEMA "<my database>".carto TO ROLE public;
+GRANT SELECT ON FUTURE TABLES IN SCHEMA "<my database>".carto TO ROLE public;
+GRANT SELECT ON ALL VIEWS IN SCHEMA "<my database>".carto TO ROLE public;
+GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<my database>".carto TO ROLE public;
+GRANT USAGE ON ALL FUNCTIONS IN SCHEMA "<my database>".carto TO ROLE public;
+GRANT USAGE ON FUTURE FUNCTIONS IN SCHEMA "<my database>".carto TO ROLE public;
+GRANT USAGE ON ALL PROCEDURES IN SCHEMA "<my database>".carto TO ROLE public;
+GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA "<my database>".carto TO ROLE public;
 ```
 
 {{% bannerNote title="WARNING" type="warning" %}}
