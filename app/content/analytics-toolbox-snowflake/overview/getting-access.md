@@ -91,9 +91,9 @@ GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA carto.carto TO ROLE public;
 ```
 
 In the installation step the information established by this script will be needed:
-* database name ("carto")
-* user ("carto")
-* password
+* **database** name ("carto")
+* **user** ("carto")
+* **password**
 
 You can check out the [Snowflake getting started documentation](https://docs.snowflake.com/en/user-guide-getting-started.html) for further information.
 
