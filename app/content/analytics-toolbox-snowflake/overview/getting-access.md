@@ -48,7 +48,6 @@ We'll create a schema named "carto" in the database where you want the CARTO Ana
 
 We recommend having a dedicated user called "carto" to manage the CARTO Analytics Toolbox. The following script will create the user, schema and role to be used for the installation in your database. Note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role)
 
-
 ```sql
 -- Set admin permissions
 USE ROLE accountadmin;
@@ -137,3 +136,77 @@ This file will remove all the previous functions and procedures in the "carto" s
 {{%/ bannerNote %}}
 
 **Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/).
+
+<style>
+.highlight {
+  position: relative;
+}
+.highlight-copy-btn {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  border: 0;
+  border-radius: 4px;
+  padding: 1px;
+  font-size: 0.7em;
+  line-height: 1.8;
+  color: #fff;
+  background-color: #777;
+  min-width: 55px;
+  text-align: center;
+}
+.highlight-copy-btn:hover {
+  background-color: #666;
+}
+</style>
+<script>
+(function() {
+  'use strict';
+
+  if(!document.queryCommandSupported('copy')) {
+    return;
+  }
+
+  function flashCopyMessage(el, msg) {
+    el.textContent = msg;
+    setTimeout(function() {
+      el.textContent = "Copy";
+    }, 1000);
+  }
+
+  function selectText(node) {
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.selectNodeContents(node);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    return selection;
+  }
+
+  function addCopyButton(containerEl) {
+    var copyBtn = document.createElement("button");
+    copyBtn.className = "highlight-copy-btn";
+    copyBtn.textContent = "Copy";
+
+    var codeEl = containerEl.getElementsByClassName('language-sql')[0];
+    copyBtn.addEventListener('click', function() {
+      try {
+        var selection = selectText(codeEl);
+        document.execCommand('copy');
+        selection.removeAllRanges();
+
+        flashCopyMessage(copyBtn, 'Copied!')
+      } catch(e) {
+        console && console.log(e);
+        flashCopyMessage(copyBtn, 'Failed :\'(')
+      }
+    });
+
+    containerEl.appendChild(copyBtn);
+  }
+
+  // Add copy button to code blocks
+  var highlightBlocks = document.getElementsByClassName('highlight');
+  Array.prototype.forEach.call(highlightBlocks, addCopyButton);
+})();
+</script>
