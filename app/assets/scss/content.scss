@@ -495,7 +495,7 @@ li {
   }
 }
 
-.tutorial-card {
+.example-card {
   // display: block;
   display: flex;
   flex-direction: column;
@@ -503,7 +503,7 @@ li {
   align-items: stretch;
 }
 
-.tutorial-card__image {
+.example-card__image {
   height: 144px;
   border-radius: 4px;
   overflow: hidden;
@@ -520,7 +520,7 @@ li {
   }
 }
 
-.tutorial-card__content {
+.example-card__content {
   margin-top: 24px;
 
   a {
@@ -539,12 +539,12 @@ li {
   }
 }
 
-.tutorial-card__tags {
+.example-card__tags {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 
-  .tutorial-tag {
+  .example-tag {
     display: flex;
     flex-direction: row;
     align-items: center;
