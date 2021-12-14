@@ -128,7 +128,7 @@ SELECT carto.VERSION_CORE();
 
 ##### 3. Create the functions and procedures
 
-Download the [`modules.sql`](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/modules.sql).
+Download [`modules.sql`](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/modules.sql) into a locafile.
 
 Execute the file `modules.sql` to create the SQL functions and procedures in the "carto" schema of the "carto" database.
 
