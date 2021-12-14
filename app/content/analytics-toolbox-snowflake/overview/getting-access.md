@@ -129,16 +129,4 @@ Execute the file `modules.sql` to create the SQL functions and procedures in the
 
 Warning: this file will remove all the previous functions and procedures in the "carto" schema.
 
-You can use the [SnowSQL](https://docs.snowflake.com/en/user-guide/snowsql.html#:~:text=SnowSQL%20is%20the%20next%2Dgeneration,data%20out%20of%20database%20tables) command line client to perform the installation like this:
-
-```bash
-export SNOWSQL_ACCOUNT="<Your snowflake account>"
-export SNOWSQL_USER=carto
-export SNOWSQL_PWD="<The password chosen during setup>"
-export SNOWSQL_ROLE=carto_role
-export SNOWSQL_DATABASE=carto
-export SNOWSQL_SCHEMA=carto
-snowsql -f modules.sql
-```
-
 **Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/).
