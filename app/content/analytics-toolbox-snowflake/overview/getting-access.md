@@ -44,9 +44,10 @@ We can divide the process into two steps: setup and installation. The first one 
 
 This step consists of setting up the Snowflake database where we want to install the toolbox. A Snowflake account and cluster are required.
 
-We'll create a database named "carto" to hold the CARTO Analytics Toolbox.This is the recommended setup; in case you need to install it in an existing database you can follow the instructions further below.
+We'll create a schema named "carto" in the database where you want the CARTO Analytics Toolbox installed.
 
-We also recommend having a dedicated user called "carto" to manage the CARTO Analytics Toolbox. The following script will create the user, database, schema and role to be used for the installation. Note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role)
+We recommend having a dedicated user called "carto" to manage the CARTO Analytics Toolbox. The following script will create the user, schema and role to be used for the installation in your database. Note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role)
+
 
 ```sql
 -- Set admin permissions
@@ -59,9 +60,6 @@ CREATE ROLE carto_role;
 -- Note that this does not grant sysadmin privileges to the carto role
 GRANT ROLE carto_role TO ROLE sysadmin;
 
--- Create carto database?
-CREATE DATABASE carto;
-
 -- Create the carto user
 CREATE USER carto WITH DEFAULT_ROLE=carto_role DEFAULT_WAREHOUSE=COMPUTE_WH PASSWORD='<strong, unique password>';
 
@@ -69,29 +67,34 @@ CREATE USER carto WITH DEFAULT_ROLE=carto_role DEFAULT_WAREHOUSE=COMPUTE_WH PASS
 GRANT ROLE carto_role TO USER carto;
 
 -- Let the carto user see this database
-GRANT USAGE ON DATABASE carto TO ROLE carto_role;
+GRANT USAGE ON DATABASE "<my database>" TO ROLE carto_role;
 
 -- Create the carto schema
-CREATE SCHEMA carto.carto;
+CREATE SCHEMA "<my database>"carto;
 
 -- Give the carto user full access to the carto schema
-GRANT ALL PRIVILEGES ON SCHEMA carto.carto TO ROLE carto_role;
+GRANT ALL PRIVILEGES ON SCHEMA "<my database>"carto TO ROLE carto_role;
 
 -- Grant usage on public role
 GRANT USAGE ON DATABASE carto TO ROLE public;
-GRANT USAGE ON SCHEMA carto.carto TO ROLE public;
-GRANT SELECT ON ALL TABLES IN SCHEMA carto.carto TO ROLE public;
-GRANT SELECT ON FUTURE TABLES IN SCHEMA carto.carto TO ROLE public;
-GRANT SELECT ON ALL VIEWS IN SCHEMA carto.carto TO ROLE public;
-GRANT SELECT ON FUTURE VIEWS IN SCHEMA carto.carto TO ROLE public;
-GRANT USAGE ON ALL FUNCTIONS IN SCHEMA carto.carto TO ROLE public;
-GRANT USAGE ON FUTURE FUNCTIONS IN SCHEMA carto.carto TO ROLE public;
-GRANT USAGE ON ALL PROCEDURES IN SCHEMA carto.carto TO ROLE public;
-GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA carto.carto TO ROLE public;
+GRANT USAGE ON SCHEMA "<my database>"carto TO ROLE public;
+GRANT SELECT ON ALL TABLES IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT SELECT ON FUTURE TABLES IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT SELECT ON ALL VIEWS IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT SELECT ON FUTURE VIEWS IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT USAGE ON ALL FUNCTIONS IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT USAGE ON FUTURE FUNCTIONS IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT USAGE ON ALL PROCEDURES IN SCHEMA "<my database>"carto TO ROLE public;
+GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA "<my database>"carto TO ROLE public;
 ```
 
+{{% bannerNote title="WARNING" type="warning" %}}
+Before executing the script be sure to replace the placeholders `'<strong, unique password>'` and
+`"<my database>"` by your password and the name of your database repectively.
+{{%/ bannerNote %}}
+
 In the installation step the information established by this script will be needed:
-* **database** name ("carto")
+* **database** name
 * **user** ("carto")
 * **password**
 
@@ -107,7 +110,7 @@ This step is required to run the next SQL scripts. Connect to the account using 
 
 ```sql
 USE ROLE carto_role;
-USE DATABASE carto;
+USE DATABASE "<my database>";
 USE SCHEMA carto;
 ```
 
@@ -130,8 +133,6 @@ Download the `modules.sql` file from: https://storage.googleapis.com/carto-analy
 
 Execute the file `modules.sql` to create the SQL functions and procedures in the "carto" schema of the "carto" database.
 
-{{% bannerNote title="WARNING" type="note" %}}
+{{% bannerNote title="WARNING" type="warning" %}}
 This file will remove all the previous functions and procedures in the "carto" schema.
 {{%/ bannerNote %}}
-
-**Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/).
