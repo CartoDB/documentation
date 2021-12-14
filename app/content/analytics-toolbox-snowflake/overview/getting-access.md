@@ -95,7 +95,6 @@ Before executing the script be sure to replace the placeholders `'<strong, uniqu
 
 In the installation step the information established by this script will be needed:
 * **database** name
-* **user** ("carto")
 * **password**
 
 You can check out the [Snowflake getting started documentation](https://docs.snowflake.com/en/user-guide-getting-started.html) for further information.
