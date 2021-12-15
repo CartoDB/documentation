@@ -1,4 +1,4 @@
-<div class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mb48 tutorial-card">
+<div class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile u-mb48 example-card">
   <div class="example-card__content__wrapper">
     <a href="{{ .RelPermalink }}">
       <div class="example-card__image">
@@ -21,7 +21,7 @@
     {{ range .Params.categories }}
     <a href="{{ $path | relURL }}/{{ . | urlize}}" class="title f12 example-tag u-mb4 u-mr4">
       {{ $icon := printf "%s%s%s" "/img/icons/" . ".png" }}
-      {{ if fileExists $icon }}
+      {{ if fileExists (printf "%s%s" "static" $icon) }}
         <img src="{{ $icon }}" alt="">
       {{ end }}
       {{ . }}

@@ -1,3 +1,12 @@
+---
+title: "Creating simple tilesets"
+description: "[Geographically Weighted Regression](https://en.wikipedia.org/wiki/Spatial_analysis#Spatial_regression) (GWR) is a statistical regression method that models the local (e.g. regional or sub-regional) relationships between a set of predictor variables and an outcome of interest. Therefore, it should be used in lieu of a global model in those scenarios where these relationships vary spatially."
+image: "/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png"
+type: examples
+date: "2021-10-12"
+categories:
+    - example
+---
 ## Creating simple tilesets
 
 ### COVID-19 vaccination progress in the USA (points)

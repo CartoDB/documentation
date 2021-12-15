@@ -19,13 +19,13 @@ cascade:
       folder:
         - title: "Running queries from Builder"
     - title: "Examples"
-      folder:
-        - title: "A Quadkey grid of stores locations and simple cannibalization analysis"
-        - title: "Minkowski distance to perform cannibalization analysis"
-        - title: "Computing US airport connections and route interpolations"
-        - title: "New supplier offices based on store locations clusters"
-        - title: "Analyzing store location coverage using a Voronoi diagram"
-        - title: "Enrichment of catchment areas for store characterization"
+      # folder:
+      #   - title: "A Quadkey grid of stores locations and simple cannibalization analysis"
+      #   - title: "Minkowski distance to perform cannibalization analysis"
+      #   - title: "Computing US airport connections and route interpolations"
+      #   - title: "New supplier offices based on store locations clusters"
+      #   - title: "Analyzing store location coverage using a Voronoi diagram"
+      #   - title: "Enrichment of catchment areas for store characterization"
     - title: "SQL Reference"
       folder:
         - title: "Overview"
