@@ -133,6 +133,13 @@ Compare with your version installed: (execute this in the same session as the pr
 SELECT carto.VERSION_CORE();
 ```
 
+You can also check the installed functions and procedures with:
+
+```sql
+SHOW USER FUNCTIONS IN SCHEMA "<my_database>".carto;
+SHOW USER PROCEDURES IN SCHEMA "<my_database>".carto;
+```
+
 ##### 3. Create the functions and procedures
 
 Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/sql/carto-analytics-toolbox-core-snowflake-modules.sql) into a local file.
@@ -152,7 +159,7 @@ This file will remove all the previous functions and procedures in the "carto" s
 This file will remove all the previous functions and procedures in the "carto" schema.
 {{%/ bannerNote %}}
 
-**Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/).
+**Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/). Refer to step 2 above to check the installed version and functions.
 
 <style>
 .highlight {
