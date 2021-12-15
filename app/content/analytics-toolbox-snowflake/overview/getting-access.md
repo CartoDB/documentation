@@ -42,7 +42,7 @@ We can divide the process into two steps: setup and installation. The first one 
 
 #### Setup
 
-This step consists of setting up the Snowflake database where we want to install the toolbox. A Snowflake account and cluster are required.
+This step consists of setting up the Snowflake database where we want to install the toolbox. A Snowflake account is required.
 
 We'll create a schema named "carto" in the database where you want the CARTO Analytics Toolbox installed.
 
