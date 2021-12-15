@@ -92,6 +92,13 @@ Before executing the script be sure to replace the placeholders `'<strong, uniqu
 `"<my database>"` by your password and the name of your database repectively.
 {{%/ bannerNote %}}
 
+![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/setup.png)
+
+{{% bannerNote title="TIP" type="tip" %}}
+Mark the "All Queries" check on your worksheet or select all the lines manually to execute the whole script you pasted in the SQL editor.
+{{%/ bannerNote %}}
+
+
 In the installation step the information established by this script will be needed:
 * **database** name
 * **password**
@@ -112,13 +119,15 @@ USE DATABASE "<my database>";
 USE SCHEMA carto;
 ```
 
+![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install1.png)
+
 ##### 2. Check the installed version
 
 If this is the first time installing the toolbox, skip this step.
 
 Download the [version file](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version).
 
-Compare with your version installed:
+Compare with your version installed: (execute this in the same session as the previous USE ROLE etc.)
 
 ```sql
 SELECT carto.VERSION_CORE();
@@ -129,7 +138,15 @@ SELECT carto.VERSION_CORE();
 Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/sql/carto-analytics-toolbox-core-snowflake-modules.sql) into a local file.
 
 
-Execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql` to create the SQL functions and procedures in the "carto" schema of your database.
+Execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql` to create the SQL functions and procedures in the "carto" schema of your database. You must execute this file's commands in the same session where you executed the statements in step 1 (`USE ROLE carto_role; ...`). So, on the Snowflake web interface use the same worksheet.
+
+{{% bannerNote title="TIP" type="tip" %}}
+You can load the script into a Worksheet using the dropdown menu on top right and chosing "Load Script".
+Then mark the "All Queries" check on your worksheet to execute the whole script you pasted in the SQL editor; otherwise you need to select all the lines in the script.
+This file will remove all the previous functions and procedures in the "carto" schema.
+{{%/ bannerNote %}}
+
+![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install2.png)
 
 {{% bannerNote title="WARNING" type="warning" %}}
 This file will remove all the previous functions and procedures in the "carto" schema.
