@@ -75,7 +75,7 @@ CREATE SCHEMA "<my database>".carto;
 GRANT ALL PRIVILEGES ON SCHEMA "<my database>".carto TO ROLE carto_role;
 
 -- Grant usage on public role
-GRANT USAGE ON DATABASE carto TO ROLE public;
+GRANT USAGE ON DATABASE "<my database>" TO ROLE public;
 GRANT USAGE ON SCHEMA "<my database>".carto TO ROLE public;
 GRANT SELECT ON ALL TABLES IN SCHEMA "<my database>".carto TO ROLE public;
 GRANT SELECT ON FUTURE TABLES IN SCHEMA "<my database>".carto TO ROLE public;
