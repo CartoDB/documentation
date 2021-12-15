@@ -46,7 +46,7 @@ This step consists of setting up the Snowflake database where we want to install
 
 We'll create a schema named "carto" in the database where you want the CARTO Analytics Toolbox installed.
 
-We recommend having a dedicated user called "carto" to manage the CARTO Analytics Toolbox. The following script will create the user, schema and role to be used for the installation in your database. Note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role)
+We recommend having a dedicated user called "carto" to manage the CARTO Analytics Toolbox. The following script will create the user, schema and role to be used for the installation in your database. Note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role).
 
 ```sql
 -- Set admin permissions
@@ -117,7 +117,6 @@ This step is required to run the next SQL scripts. Connect to the account using 
 ```sql
 USE ROLE carto_role;
 USE DATABASE "<my database>";
-USE SCHEMA carto;
 ```
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install1.png)
@@ -137,8 +136,8 @@ SELECT carto.VERSION_CORE();
 You can also check the installed functions and procedures with:
 
 ```sql
-SHOW USER FUNCTIONS IN SCHEMA "<my_database>".carto;
-SHOW USER PROCEDURES IN SCHEMA "<my_database>".carto;
+SHOW USER FUNCTIONS IN SCHEMA carto;
+SHOW USER PROCEDURES IN SCHEMA carto;
 ```
 
 ##### 3. Create the functions and procedures
