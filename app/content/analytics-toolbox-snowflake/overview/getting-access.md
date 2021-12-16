@@ -75,7 +75,7 @@ CREATE SCHEMA "<my database>".carto;
 GRANT ALL PRIVILEGES ON SCHEMA "<my database>".carto TO ROLE carto_role;
 
 -- Grant usage on public role
--- Repeat this for any other role that needs access to use the toolkit
+-- Repeat this for any other role that needs access to use the toolbox
 GRANT USAGE ON DATABASE "<my database>" TO ROLE public;
 GRANT USAGE ON SCHEMA "<my database>".carto TO ROLE public;
 GRANT SELECT ON ALL TABLES IN SCHEMA "<my database>".carto TO ROLE public;
@@ -148,9 +148,8 @@ Download the [modules script](https://storage.googleapis.com/carto-analytics-too
 Execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql` to create the SQL functions and procedures in the "carto" schema of your database. You must execute this file's commands in the same session where you executed the statements in step 1 (`USE ROLE carto_role; ...`). So, on the Snowflake web interface use the same worksheet.
 
 {{% bannerNote title="TIP" type="tip" %}}
-You can load the script into a Worksheet using the dropdown menu on top right and chosing "Load Script".
+You can load the script into a Worksheet using the dropdown menu on top right and chosing "Load Script". Scroll to the end to verify everything is loaded, until the "VERSION" function.
 Then mark the "All Queries" check on your worksheet to execute the whole script you pasted in the SQL editor; otherwise you need to select all the lines in the script.
-This file will remove all the previous functions and procedures in the "carto" schema.
 {{%/ bannerNote %}}
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install2.png)
