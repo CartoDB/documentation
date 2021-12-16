@@ -96,42 +96,34 @@ USE DATABASE "<my database>";
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install1.png)
 
-##### 2. Check the installed version
-
-{{% bannerNote title="TIP" type="tip" %}}
-If this is the first time installing the toolbox, you can skip this step.
-{{%/ bannerNote %}}
-
-Download the [version file](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version).
-
-Compare with your installed version by executing this in the same Worksheet where you have completed Step 1 of the installation process.
-
-```sql
-SELECT carto.VERSION_CORE();
-```
-
-You can also check the installed functions and procedures with:
-
-```sql
-SHOW USER FUNCTIONS IN SCHEMA carto;
-SHOW USER PROCEDURES IN SCHEMA carto;
-```
-
-##### 3. Create the functions and procedures
+##### 2. Create the functions and procedures
 
 Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/sql/carto-analytics-toolbox-core-snowflake-modules.sql) into a local file.
 
-Execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql` to create the SQL functions and procedures in the `carto` schema of your database. You must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide. 
-
 {{% bannerNote title="TIP" type="tip" %}}
-You can load the script into a Worksheet by using the dropdown menu on the top right and choosing "Load Script". The "All Queries" check seems to work unreliably with large scripts, so we advice to select all the text instead (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
+If you have a previously installed version of the Analytics Toolbox, you can check the installed version by running `SELECT carto.VERSION_CORE()` and then compare it with the version of the toolbox you are about to install by checking [this version file](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version).
 {{%/ bannerNote %}}
+
+To install the functions and procedures of the Analytics Toolbox in the `carto` schema of your database, execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql`. Please note that must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide. 
+
+You can load the script into a Worksheet by using the dropdown menu on the top right and choosing "Load Script". The "All Queries" check seems to work unreliably with large scripts, so we advice to select all the text instead (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install2.png)
 
 {{% bannerNote title="WARNING" type="warning" %}}
 This script will remove all the previously installed functions and procedures of the Analytics Toolbox in the `carto` schema.
 {{%/ bannerNote %}}
+
+
+##### 3. Check installation
+
+You can check the installed functions and procedures by running the following statements:
+
+```sql
+SHOW USER FUNCTIONS IN SCHEMA carto;
+SHOW USER PROCEDURES IN SCHEMA carto;
+```
+
 
 **Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/). Please refer to Step 2 above to check the installed version and functions.
 
