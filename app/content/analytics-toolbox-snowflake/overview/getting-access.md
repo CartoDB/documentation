@@ -112,7 +112,7 @@ Once the setup is completed, we can proceed with the installation of the toolbox
 
 ##### 1. Connect to the database
 
-This step is required to run the next SQL scripts. Connect to the account using the "carto" user and password. Then it is very important to set the role, database and schema used to install the toolkit:
+This step is required to run the next SQL scripts. Connect to the account using the "carto" user and password. Then it is very important to set the role and database used to install the toolbox:
 
 ```sql
 USE ROLE carto_role;
