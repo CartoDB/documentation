@@ -124,6 +124,34 @@ SHOW USER FUNCTIONS IN SCHEMA carto;
 SHOW USER PROCEDURES IN SCHEMA carto;
 ```
 
+##### 4. Import sample data (optional)
+
+In order to be able to reproduce the queries included in the [Guides](../../guides) and [Examples](../../examples) sections, you can optionally import into the `carto` schema a sample table containing the Starbucks locations in the US. 
+
+To do so, please run the following script in the same Worksheet you have used for the installation of the Analytics Toolbox:
+
+```sql
+-- SET GEOM FORMAT AS wkt
+ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT = wkt;
+-- LOAD TABLE <my database>.carto.starbucks_locations_usa
+CREATE OR REPLACE TABLE "<my database>".carto.starbucks_locations_usa(
+  id BIGINT,
+  brand STRING,
+  store_name STRING,
+  ownership_type STRING,
+  address STRING,
+  city STRING,
+  state_province STRING,
+  country STRING,
+  postcode STRING,
+  geog GEOGRAPHY);
+COPY INTO "<my database>".carto.starbucks_locations_usa
+  FROM 'gcs://carto-analytics-toolbox-core/samples/starbucks_locations_usa.csv'
+  FILE_FORMAT = (type = 'csv', FIELD_OPTIONALLY_ENCLOSED_BY = '"');
+-- SET GEOM FORMAT AS geojson
+ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT = geojson;
+```
+
 
 **Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/). Please refer to Step 2 above to check the installed version and functions.
 

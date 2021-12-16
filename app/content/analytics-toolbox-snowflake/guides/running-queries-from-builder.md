@@ -4,10 +4,6 @@ Once you have gained access to the Analytics Toolbox through the Snowflake Data 
 
 To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-snowflake/sql-reference/clustering/#st_clusterkmeans) function from the _clustering_ module. 
 
-{{% bannerNote title="DATABASE NAME" type="warning" %}}
-If you have named your local database `SFCARTO` as recommended, you can copy and paste the example query provided below. If not, please make sure to substitute `SFCARTO` by the correct name.
-{{%/ bannerNote %}}
-
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
@@ -29,6 +25,7 @@ If you have named your local database `SFCARTO` as recommended, you can copy and
 4. Copy and paste the following query:
 
 ```sql
+-- Substitute "sfcarto" by the name of the database where the Analytics Toolbox is installed
 USE DATABASE sfcarto;
 
 WITH data AS(
