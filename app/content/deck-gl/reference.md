@@ -112,7 +112,11 @@ Receives arguments:
 
 ### fetchMap
 
-`fetchMap` is an API that instantiates layers configured in CARTO Builder for use with deck.gl. It is available starting with CARTO Maps API version v3.
+{{% bannerNote type="warning" title="Only available in v8.7 alpha"%}}
+This function is only available in deck.gl v8.7 alpha.
+{{%/ bannerNote %}}
+
+`fetchMap` is an API that instantiates layers configured in CARTO Builder for use with deck.gl. You just need to add your data sources in Builder, style your layers and share your map. Then you need to copy the map ID and use it to retrieve the map configuration from the platform. It is available starting with CARTO Maps API version v3.
 
 <div align="center">
   <div>
