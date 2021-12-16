@@ -7,13 +7,15 @@ mkdir $CHECKOUT_DIR
 
 echo -e "\nCheckout Analytics Toolbox for BigQuery"
 echo "---------------------------------------"
-git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-master
-git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-master
+git clone --branch bigquery-naming-refactor --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-master
+git clone --branch bigquery-naming-refactor --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-master
+# git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-master
+# git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-master
 
-# echo -e "\nCheckout Analytics Toolbox for BigQuery prev"
-# echo "--------------------------------------------"
-# git clone --branch bq-prev --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-bq-prev
-# git clone --branch bq-prev --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-bq-prev
+echo -e "\nCheckout Analytics Toolbox for BigQuery prev"
+echo "--------------------------------------------"
+git clone --branch bq-prev --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-bq-prev
+git clone --branch bq-prev --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-bq-prev
 
 echo -e "\nCheckout Analytics Toolbox for Snowflake"
 echo "----------------------------------------"
@@ -27,7 +29,5 @@ git clone --branch sf-prev --depth 1 git@github.com:CartoDB/carto-advanced-spati
 
 echo -e "\nCheckout Analytics Toolbox for Redshift"
 echo "---------------------------------------"
-# git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-redshift-master
-# git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-redshift-master
-git clone --branch propose-new-naming-redshift --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-redshift-master
-git clone --branch propose-new-naming-redshift --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-redshift-master
+git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-redshift-master
+git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-redshift-master
