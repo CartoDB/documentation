@@ -171,7 +171,7 @@ Once you are in the details page of the listing, you will find that you can _GET
 
 ![Analytics Toolbox for Snowflake get data](/img/sf-analytics-toolbox/sf-datamarketplace-step2-get.png)
 
-2. Rename the database to `SFCARTO`. Next, click on _More options_ to choose all the roles to which you wish to give access to this database, accept the Terms of Use and finally click on "Create Database".
+2. Rename the database to the name of your choice. Next, click on _More options_ to choose all the roles to which you wish to give access to this database, accept the Terms of Use and finally click on "Create Database".
 
 ![Analytics Toolbox for Snowflake get data form](/img/sf-analytics-toolbox/sf-datamarketplace-step3-get.png)
 
