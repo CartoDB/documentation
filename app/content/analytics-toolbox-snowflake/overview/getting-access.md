@@ -123,7 +123,9 @@ USE DATABASE "<my database>";
 
 ##### 2. Check the installed version
 
+{{% bannerNote title="ATTENTION" type="warning" %}}
 If this is the first time installing the toolbox, skip this step.
+{{%/ bannerNote %}}
 
 Download the [version file](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version).
 
@@ -147,9 +149,10 @@ Download the [modules script](https://storage.googleapis.com/carto-analytics-too
 
 Execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql` to create the SQL functions and procedures in the "carto" schema of your database. You must execute this file's commands in the same session where you executed the statements in step 1 (`USE ROLE carto_role; ...`). So, on the Snowflake web interface use the same worksheet.
 
-{{% bannerNote title="TIP" type="tip" %}}
-You can load the script into a Worksheet using the dropdown menu on top right and chosing "Load Script". Scroll to the end to verify everything is loaded, until the "VERSION" function.
-Then mark the "All Queries" check on your worksheet to execute the whole script you pasted in the SQL editor; otherwise you need to select all the lines in the script.
+{{% bannerNote title="WARNING" type="warning" %}}
+You can load the script into a Worksheet using the dropdown menu on top right and chosing "Load Script". Scroll to the end to verify everything is loaded, down to the "VERSION" function.
+
+The "All Queries" check seems to work unreliably with large scripts, so we advice instead to select all the text (just press Control-A or Command-A if using a Mac), the press the "Run" button and confirm you want to execute all the lines.
 {{%/ bannerNote %}}
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install2.png)
