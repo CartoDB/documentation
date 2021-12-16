@@ -68,12 +68,12 @@ GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA "<my database>".carto TO ROLE public;
 ```
 
 {{% bannerNote title="TIP" type="tip" %}}
-Mark the "All Queries" check on your worksheet or select all the lines manually to execute the whole script you pasted in the SQL editor. You can check out the [Snowflake getting started documentation](https://docs.snowflake.com/en/user-guide-getting-started.html) for further information.
+Mark the "All Queries" check on your worksheet or select all the lines manually to execute the whole script you pasted in the SQL editor.
 {{%/ bannerNote %}}
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/setup.png)
 
-
+You can check out the [Snowflake getting started documentation](https://docs.snowflake.com/en/user-guide-getting-started.html) for further information.
 
 #### Installation
 
@@ -131,10 +131,11 @@ In order to be able to reproduce the queries included in the [Guides](../../guid
 To do so, please run the following script in the same Worksheet you have used for the installation of the Analytics Toolbox:
 
 ```sql
--- SET GEOM FORMAT AS wkt
+-- Set geom format as wkt
 ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT = wkt;
--- LOAD TABLE <my database>.carto.starbucks_locations_usa
-CREATE OR REPLACE TABLE "<my database>".carto.starbucks_locations_usa(
+
+-- Load sample table
+CREATE OR REPLACE TABLE carto.starbucks_locations_usa(
   id BIGINT,
   brand STRING,
   store_name STRING,
@@ -145,15 +146,16 @@ CREATE OR REPLACE TABLE "<my database>".carto.starbucks_locations_usa(
   country STRING,
   postcode STRING,
   geog GEOGRAPHY);
-COPY INTO "<my database>".carto.starbucks_locations_usa
+COPY INTO carto.starbucks_locations_usa
   FROM 'gcs://carto-analytics-toolbox-core/samples/starbucks_locations_usa.csv'
   FILE_FORMAT = (type = 'csv', FIELD_OPTIONALLY_ENCLOSED_BY = '"');
--- SET GEOM FORMAT AS geojson
+
+-- Set geom format as geojson
 ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT = geojson;
 ```
 
 
-**Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/). Please refer to Step 2 above to check the installed version and functions.
+**Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/). Please refer to Step 3 above to check the installed version and functions.
 
 
 ### Marketplace installation (for non-CARTO customers)
@@ -178,7 +180,6 @@ Once you are in the details page of the listing, you will find that you can _GET
 By clicking on "View Database" you will be redirected to the database you just created, where you will be able to browse all the modules (schemas) and functions and procedures available within the Analytics Toolbox.
 
 ![Analytics Toolbox for Snowflake get data form](/img/sf-analytics-toolbox/sf-datamarketplace-step5-get.png)
-
 
 
 

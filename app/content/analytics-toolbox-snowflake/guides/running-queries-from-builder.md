@@ -25,8 +25,8 @@ To get started, let's run a simple example query to cluster a set of points usin
 4. Copy and paste the following query:
 
 ```sql
--- Substitute "sfcarto" by the name of the database where the Analytics Toolbox is installed
-USE DATABASE sfcarto;
+-- Substitute "carto_os" by the name of the database where the Analytics Toolbox is installed
+USE DATABASE carto_os;
 
 WITH data AS(
   SELECT geog
