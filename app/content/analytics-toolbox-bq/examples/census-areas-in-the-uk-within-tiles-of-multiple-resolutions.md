@@ -1,7 +1,7 @@
 ---
 title: "Census areas in the UK within tiles of multiple resolutions"
 description: "In this example we are going to showcase the extent of quadkey tiles at different resolutions. For this purpose we are using the United Kingdom census areas dataset from CARTO's Data Observatory."
-image: "/img/tutorials/volcano.png"
+image: "/img/bq-analytics-toolbox/examples/uk-census-areas.png"
 type: examples
 date: "2021-02-12"
 categories:

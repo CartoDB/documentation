@@ -1,7 +1,7 @@
 ---
 title: "Computing US airport connections and route interpolations"
 description: "In this example we will showcase how easily we can compute all the paths that interconnect the main four US airports using the Analytics Toolbox."
-image: "/img/tutorials/volcano.png"
+image: "/img/bq-analytics-toolbox/examples/us-airport-connections-route-interpolations.png"
 type: examples
 date: "2021-05-12"
 categories:

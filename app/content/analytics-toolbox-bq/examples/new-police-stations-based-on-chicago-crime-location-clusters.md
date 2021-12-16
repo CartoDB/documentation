@@ -1,7 +1,7 @@
 ---
 title: "New police stations based on Chicago crime location clusters"
 description: "In this example we are going to use points clustering to analyze where to locate five new police stations in Chicago based on 5000 samples of crime locations."
-image: "/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png"
+image: "/img/bq-analytics-toolbox/examples/chicago-police-stations.png"
 type: examples
 date: "2021-07-12"
 categories:

@@ -1,7 +1,7 @@
 ---
 title: "A Quadkey grid of stores locations and simple cannibalization analysis"
-description: "Providing a good network connection between subway stations is critical to ensure an efficient mobility system in big areas. Let's imagine we need to design a well-distributed subway network to connect the stations of a brand-new subway system. A simple and effective solution to this problem is to build a Delaunay triangulation of the predefined stations, which ensures a good connection distribution."
-image: "/img/tutorials/volcano.png"
+description: "PWe are going to demonstrate how fast and easy it is to make a visualization of a Quadkey grid to identify the concentration of Starbucks locations in the US."
+image: "/img/sf-analytics-toolbox/examples/starbucks-usa-quadkey-grid.png"
 type: examples
 date: "2021-10-12"
 categories:

@@ -1,3 +1,12 @@
+---
+title: "Computing US airport connections and route interpolations"
+description: "In this example we will showcase how easily we can compute all the paths that interconnect the main four US airports using the Analytics Toolbox."
+image: "/img/sf-analytics-toolbox/examples/sf-us-airport-connections-route-interpolations.png"
+type: examples
+date: "2021-08-12"
+categories:
+    - example
+---
 ## Computing US airport connections and route interpolations
 
 ### Generating connections

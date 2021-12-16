@@ -1,3 +1,12 @@
+---
+title: "Enrichment of catchment areas for store characterization"
+description: "In this example we are going to characterize all Starbucks locations in the US by the total population covered by their catchment areas. We are going to define these catchment areas as a 3km buffer around each store."
+image: "/img/sf-analytics-toolbox/examples/sf-enrichment-example-5.png"
+type: examples
+date: "2021-05-12"
+categories:
+    - example
+---
 ## Enrichment of catchment areas for store characterization
 
 In this example we are going to characterize all Starbucks locations in the US by the total population covered by their catchment areas. We are going to define these catchment areas as a 3km buffer around each store.

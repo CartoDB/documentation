@@ -1,7 +1,7 @@
 ---
 title: "An H3 grid of Starbucks locations and simple cannibalization analysis"
 description: "In this example we are going to demonstrate how fast and easy it is to make a visualization of an H3 grid to identify the concentration of Starbucks locations in the US."
-image: "/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png"
+image: "/img/bq-analytics-toolbox/examples/starbucks-h3-grid.png"
 type: examples
 date: "2021-09-12"
 categories:

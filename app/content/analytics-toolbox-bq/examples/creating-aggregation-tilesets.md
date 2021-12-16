@@ -1,7 +1,7 @@
 ---
 title: "Creating aggregation tilesets"
 description: "The aggregation tilesets encode aggregations over the input features. We provide a set of examples that showcase how to easily create aggregation tilesets allowing you to process and visualize very large spatial datasets stored in BigQuery."
-image: "/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png"
+image: "/img/bq-analytics-toolbox/examples/2020-world-population.png"
 type: examples
 date: "2021-10-12"
 categories:

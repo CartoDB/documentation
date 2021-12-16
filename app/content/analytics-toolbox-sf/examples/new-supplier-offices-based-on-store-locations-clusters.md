@@ -1,3 +1,12 @@
+---
+title: "New supplier offices based on store locations clusters"
+description: "In this example we are going to use points clustering to analyze where to locate 10 new supplier offices in US so they can best serve all Starbucks locations."
+image: "/img/sf-analytics-toolbox/examples/supplier-offices-clusters.png"
+type: examples
+date: "2021-07-12"
+categories:
+    - example
+---
 ## New supplier offices based on store locations clusters
 
 In this example we are going to use points clustering to analyze where to locate 10 new supplier offices in US so they can best serve all Starbucks locations.

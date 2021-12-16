@@ -1,3 +1,12 @@
+---
+title: "Minkowski distance to perform cannibalization analysis"
+description: "In this example we are going to showcase how to use the Minkowski distance to evaluate cannibalization across Starbucks stores in Los Ángeles, assuming that the ratio of cannibalization depends on the nearby store sizes and the distance to them."
+image: "/img/sf-analytics-toolbox/examples/minkowski-cannibalization-analysis.png"
+type: examples
+date: "2021-09-12"
+categories:
+    - example
+---
 ## Minkowski distance to perform cannibalization analysis
 
 In this example we are going to showcase how to use the Minkowski distance to evaluate cannibalization across Starbucks stores in Los Ángeles, assuming that the ratio of cannibalization depends on the nearby store sizes and the distance to them. As we do not have real data concerning of the store, for the sake of simplicity we are going to use a randomly generated value: `starbucks_size`.

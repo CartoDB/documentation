@@ -1,7 +1,7 @@
 ---
 title: "Applying GWR to understand Airbnb listings prices"
 description: "Geographically Weighted Regression (GWR) is a statistical regression method that models the local (e.g. regional or sub-regional) relationships between a set of predictor variables and an outcome of interest. Therefore, it should be used in lieu of a global model in those scenarios where these relationships vary spatially."
-image: "/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png"
+image: "/img/bq-analytics-toolbox/examples/gwr-airbnb-listings-prices.png"
 type: examples
 date: "2021-01-12"
 categories:

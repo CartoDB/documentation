@@ -1,7 +1,7 @@
 ---
 title: "Creating simple tilesets"
 description: "Simple tilesets encode all the input features as is. We provide a set of examples that showcase how to easily create simple tilesets allowing you to process and visualize very large spatial datasets stored in BigQuery."
-image: "/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png"
+image: "/img/bq-analytics-toolbox/examples/covid19-vaccination.png"
 type: examples
 date: "2021-11-12"
 categories:
