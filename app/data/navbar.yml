@@ -12,7 +12,7 @@ navbar:
       - name: Analytics Toolbox for BigQuery
         url: /analytics-toolbox-bq
       - name: Analytics Toolbox for Snowflake
-        url: /analytics-toolbox-sf
+        url: /analytics-toolbox-snowflake
       - name: Analytics Toolbox for Redshift
         url: /analytics-toolbox-redshift
       - name: Analytics Toolbox for Databricks

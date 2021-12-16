@@ -9,13 +9,13 @@ First, we calculate Starbucks locations clusters using the `ST_CLUSTERKMEANS` 
 ```sql
 WITH data AS(
   SELECT geog
-  FROM sfcarto.public.starbucks_locations_usa
+  FROM carto.starbucks_locations_usa
   WHERE geog IS NOT null
   ORDER BY id
 ),
 clustered_points AS
 (
-    SELECT sfcarto.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
+    SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
     FROM data
 )
 SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geom 
@@ -35,16 +35,16 @@ In this case we are going to use `ST_CENTEROFMASS` to calculate the location o
 ```sql
 WITH data AS(
   SELECT geog
-  FROM sfcarto.public.starbucks_locations_usa
+  FROM carto.starbucks_locations_usa
   WHERE geog IS NOT null
   ORDER BY id
 ),
 clustered_points AS
 (
-    SELECT sfcarto.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
+    SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
     FROM data
 )
-SELECT GET(VALUE, 'cluster') AS cluster, sfcarto.transformations.ST_CENTEROFMASS(ST_COLLECT(TO_GEOGRAPHY(GET(VALUE, 'geom')))) AS geom 
+SELECT GET(VALUE, 'cluster') AS cluster, carto.ST_CENTEROFMASS(ST_COLLECT(TO_GEOGRAPHY(GET(VALUE, 'geom')))) AS geom 
 FROM clustered_points, lateral FLATTEN(input => cluster_arr)
 GROUP BY cluster
 ```
