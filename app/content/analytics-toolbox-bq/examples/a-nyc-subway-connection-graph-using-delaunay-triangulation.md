@@ -3,9 +3,9 @@ title: "A NYC subway connection graph using Delaunay triangulation"
 description: "Providing a good network connection between subway stations is critical to ensure an efficient mobility system in big areas. Let's imagine we need to design a well-distributed subway network to connect the stations of a brand-new subway system. A simple and effective solution to this problem is to build a Delaunay triangulation of the predefined stations, which ensures a good connection distribution."
 image: "/img/tutorials/volcano.png"
 type: examples
-date: "2021-10-12"
+date: "2021-05-12"
 categories:
-    - example
+    - processing
 ---
 ## A NYC subway connection graph using Delaunay triangulation
 

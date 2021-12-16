@@ -1,3 +1,13 @@
+---
+title: "Census areas in the UK within tiles of multiple resolutions"
+description: "In this example we are going to showcase the extent of quadkey tiles at different resolutions. For this purpose we are using the United Kingdom census areas dataset from CARTO's Data Observatory."
+image: "/img/tutorials/volcano.png"
+type: examples
+date: "2021-02-12"
+categories:
+    - quadkey
+    - constructors
+---
 ## Census areas in the UK within tiles of multiple resolutions
 
 In this example we are going to use the `ST_TILEENVELOPE` function, which returns the bounding geometry of quadkey tile given its 3D coordinates (x, y and resolution), to showcase the extent of quadkey tiles at different resolutions. For this purpose we are using the [United Kingdom census areas dataset](https://carto.com/spatial-data-catalog/browser/geography/drd_output_area_73f0b4a3/) from CARTO's Data Observatory. 

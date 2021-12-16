@@ -1,3 +1,14 @@
+---
+title: "Identifying earthquake-prone areas in the state of California"
+description: "In this example we are going to use some of the functions included in CARTO's Analytics Toolbox in order to highlight zones prone to earthquakes, using a  BigQuery public dataset."
+image: "/img/tutorials/volcano.png"
+type: examples
+date: "2021-04-12"
+categories:
+    - constructors
+    - transformations
+    - processing
+---
 ## Identifying earthquake-prone areas in the state of California
 
 In this example we are going to use some of the functions included in CARTO's Analytics Toolbox in order to highlight zones prone to earthquakes, using a [BigQuery public dataset](https://console.cloud.google.com/marketplace/product/noaa-public/noaa-earthquakes). 
