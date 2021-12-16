@@ -7,7 +7,7 @@ This module contains functions that perform geocoding: taking a text-based descr
 ### GEOCODE_BATCH
 
 {{% bannerNote type="code" %}}
-geocoding.GEOCODE_BATCH(input_query, search, country, admin, output, max_multiple_results, max_resolution)
+carto.GEOCODE_BATCH(input_query, search, country, admin, output, max_multiple_results, max_resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -50,7 +50,7 @@ recommendable to provide at least the country. Otherwise results may not only
 be inaccurate, but processing time can be very long, since each input has to be search globally.
 
 ```sql
-CALL `carto-un`.geocoding.GEOCODE_BATCH(
+CALL `carto-un`.carto.GEOCODE_BATCH(
   'SELECT id, city, state, country FROM `my-project.my-dataset.my-table`',
   'city', 'country', 'state',
   'my-project.my-dataset.my-geocoded-table',
@@ -87,7 +87,7 @@ CALL `carto-un`.geocoding.GEOCODE_BATCH(
 ### GEOCODE_PC_BATCH
 
 {{% bannerNote type="code" %}}
-geocoding.GEOCODE_PC_BATCH(input_query, search, country, output, max_multiple_results)
+carto.GEOCODE_PC_BATCH(input_query, search, country, output, max_multiple_results)
 {{%/ bannerNote %}}
 
 **Description**
@@ -118,34 +118,10 @@ If `max_multiple_results` is an integer, then multiple results will appear in a 
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.geocoding.GEOCODE_PC_BATCH(
+CALL `carto-un`.carto.GEOCODE_PC_BATCH(
   'SELECT id, zip, FROM `my-project.my-dataset.my-table`',
   'zip', "'US'",
   'my-project.my-dataset.my-geododed-table',
   NULL
 );
-```
-
-
-### VERSION
-
-{{% bannerNote type="code" %}}
-geocoding.VERSION()
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the current version of the geocoding module.
-
-**Return type**
-
-`STRING`
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-SELECT `carto-un`.geocoding.VERSION();
--- 1.0.0-beta.2
 ```
