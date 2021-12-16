@@ -33,7 +33,7 @@ USE DATABASE sfcarto;
 
 WITH data AS(
   SELECT geog
-  FROM public.starbucks_locations_usa
+  FROM carto.starbucks_locations_usa
   WHERE geog IS NOT null
   ORDER BY id
 ),

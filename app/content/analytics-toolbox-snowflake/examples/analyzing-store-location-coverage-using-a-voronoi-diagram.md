@@ -8,7 +8,7 @@ The result can be seen in the visualization below, where the color of each polyg
 WITH starbucks AS
 (
   SELECT geog
-  FROM sfcarto.public.STARBUCKS_LOCATIONS_USA 
+  FROM carto.STARBUCKS_LOCATIONS_USA 
   WHERE CITY = 'Atlanta' AND geog IS NOT NULL
   ORDER BY id
 ),
