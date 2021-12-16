@@ -1,34 +1,8 @@
 ## Getting access
 
-There are two ways to get access to the Analytics Toolbox for Snowflake; the easiest is to get it from the Data Marketplace, but if you need to install it into your database or require more control over the installation you can also perform a manual installation.
+### Manual installation (for CARTO customers)
 
-### Marketplace installation
-
-You can get access to the Analytics Toolbox for Snowflake through the [Snowflake's Data Marketplace](https://www.snowflake.com/datasets/carto-spatial-extension/). If you are unsure of how to access the Data Marketplace, you can find detailed instructions in [this article](https://docs.snowflake.com/en/user-guide/data-marketplace-intro.html#how-do-i-access-the-snowflake-data-marketplace-to-browse-listings) of Snowflake's documentation center.
-
-Once in the Data Marketplace, search for _carto analytics toolbox_ to find the listing:
-
-![Analytics Toolbox for Snowflake listing](/img/sf-analytics-toolbox/sf-datamarketplace-step1.png)
-
-Once you are in the details page of the listing, you will find that you can _GET_ the Analytics Toolbox directly following these instructions:
-
-
-1. Click on the GET DATA button on the top right corner of the Data Marketplace listing.
-
-![Analytics Toolbox for Snowflake get data](/img/sf-analytics-toolbox/sf-datamarketplace-step2-get.png)
-
-2. Rename the database to `SFCARTO`. Next, click on _More options_ to choose all the roles to which you wish to give access to this database, accept the Terms of Use and finally click on "Create Database".
-
-![Analytics Toolbox for Snowflake get data form](/img/sf-analytics-toolbox/sf-datamarketplace-step3-get.png)
-
-By clicking on "View Database" you will be redirected to the database you just created, where you will be able to browse all the modules (schemas) and functions and procedures available within the Analytics Toolbox.
-
-![Analytics Toolbox for Snowflake get data form](/img/sf-analytics-toolbox/sf-datamarketplace-step5-get.png)
-
-
-### Manual installation
-
-This guide explains all the steps to install the SQL functions and procedures of the toolbox in your Snowflake database.
+This guide explains all the steps to install the SQL functions and procedures of the Analytics Toolbox in your Snowflake database.
 
 The CARTO Analytics Toolbox contains two packages:
 * **core**: this is the public and open-source package. It contains all the core GIS functions that complement the GIS native functions available in Snowflake.
@@ -38,15 +12,20 @@ The CARTO Analytics Toolbox contains two packages:
 This guide explains how to install the core package. In order to access the **advanced** features, please contact support@carto.com.
 {{%/ bannerNote %}}
 
-We can divide the process into two steps: setup and installation. The first one must be done only the first time, then the second one must be done every time you want to install a new version of the packages.
+The process consists of two steps: [setup](#setup) and [installation](#installation). The first one is required only the first time you install the toolbox, while the second one must be done every time you want to install a new version of the packages.
 
 #### Setup
 
-This step consists of setting up the Snowflake database where we want to install the toolbox. A Snowflake account is required.
+This step consists of setting up the Snowflake database where you want to install the toolbox. A Snowflake account is required.
 
-We'll create a schema named "carto" in the database where you want the CARTO Analytics Toolbox installed.
+We'll create a schema named `carto` in the database where you want the CARTO Analytics Toolbox installed. We also recommend creating a dedicated Snowflake user called `carto` to manage the CARTO Analytics Toolbox. 
 
-We recommend having a dedicated user called "carto" to manage the CARTO Analytics Toolbox. The following script will create the user, schema and role to be used for the installation in your database. Note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role).
+The following script will create the user, schema and role to be used for the installation in your database. Please note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role).
+
+{{% bannerNote title="WARNING" type="warning" %}}
+Before executing the script make sure to replace the placeholders `'<strong, unique password>'` and
+`"<my database>"` by your password and the name of your database. respectively.
+{{%/ bannerNote %}}
 
 ```sql
 -- Set admin permissions
@@ -74,8 +53,8 @@ CREATE SCHEMA "<my database>".carto;
 -- Give the carto user full access to the carto schema
 GRANT ALL PRIVILEGES ON SCHEMA "<my database>".carto TO ROLE carto_role;
 
--- Grant usage on public role
--- Repeat this for any other role that needs access to use the toolbox
+-- Grant usage to public role
+-- Repeat this for any other role that needs to use the toolbox
 GRANT USAGE ON DATABASE "<my database>" TO ROLE public;
 GRANT USAGE ON SCHEMA "<my database>".carto TO ROLE public;
 GRANT SELECT ON ALL TABLES IN SCHEMA "<my database>".carto TO ROLE public;
@@ -88,31 +67,27 @@ GRANT USAGE ON ALL PROCEDURES IN SCHEMA "<my database>".carto TO ROLE public;
 GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA "<my database>".carto TO ROLE public;
 ```
 
-{{% bannerNote title="WARNING" type="warning" %}}
-Before executing the script be sure to replace the placeholders `'<strong, unique password>'` and
-`"<my database>"` by your password and the name of your database repectively.
+{{% bannerNote title="TIP" type="tip" %}}
+Mark the "All Queries" check on your worksheet or select all the lines manually to execute the whole script you pasted in the SQL editor. You can check out the [Snowflake getting started documentation](https://docs.snowflake.com/en/user-guide-getting-started.html) for further information.
 {{%/ bannerNote %}}
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/setup.png)
 
-{{% bannerNote title="TIP" type="tip" %}}
-Mark the "All Queries" check on your worksheet or select all the lines manually to execute the whole script you pasted in the SQL editor.
-{{%/ bannerNote %}}
 
-
-In the installation step the information established by this script will be needed:
-* **database** name
-* **password**
-
-You can check out the [Snowflake getting started documentation](https://docs.snowflake.com/en/user-guide-getting-started.html) for further information.
 
 #### Installation
 
 Once the setup is completed, we can proceed with the installation of the toolbox. This step will be performed the first time and every time we want to install an updated version.
 
+During this installation step you are going to need the following information from the [setup](#setup) step:
+* database name where the Analytics Toolbox will be installed
+* password for the `carto` user
+
 ##### 1. Connect to the database
 
-This step is required to run the next SQL scripts. Connect to the account using the "carto" user and password. Then it is very important to set the role and database used to install the toolbox:
+This step is required to run the installation SQL script. 
+
+First, connect to your Snowflake account using the `carto` user and password. Then, please set the role and database that will be used to install the toolbox:
 
 ```sql
 USE ROLE carto_role;
@@ -121,45 +96,63 @@ USE DATABASE "<my database>";
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install1.png)
 
-##### 2. Check the installed version
+##### 2. Create the functions and procedures
 
-{{% bannerNote title="ATTENTION" type="warning" %}}
-If this is the first time installing the toolbox, skip this step.
+Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/sql/carto-analytics-toolbox-core-snowflake-modules.sql) into a local file.
+
+{{% bannerNote title="TIP" type="tip" %}}
+If you have a previously installed version of the Analytics Toolbox, you can check the installed version by running `SELECT carto.VERSION_CORE()` and then compare it with the version of the toolbox you are about to install by checking [this version file](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version).
 {{%/ bannerNote %}}
 
-Download the [version file](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version).
+To install the functions and procedures of the Analytics Toolbox in the `carto` schema of your database, execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql`. Please note that must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide. 
 
-Compare with your version installed: (execute this in the same session as the previous USE ROLE etc.)
+You can load the script into a Worksheet by using the dropdown menu on the top right and choosing "Load Script". The "All Queries" check seems to work unreliably with large scripts, so we advice to select all the text instead (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
 
-```sql
-SELECT carto.VERSION_CORE();
-```
+![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install2.png)
 
-You can also check the installed functions and procedures with:
+{{% bannerNote title="WARNING" type="warning" %}}
+This script will remove all the previously installed functions and procedures of the Analytics Toolbox in the `carto` schema.
+{{%/ bannerNote %}}
+
+
+##### 3. Check installation
+
+You can check the installed functions and procedures by running the following statements:
 
 ```sql
 SHOW USER FUNCTIONS IN SCHEMA carto;
 SHOW USER PROCEDURES IN SCHEMA carto;
 ```
 
-##### 3. Create the functions and procedures
 
-Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/sql/carto-analytics-toolbox-core-snowflake-modules.sql) into a local file.
+**Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/). Please refer to Step 2 above to check the installed version and functions.
 
 
-Execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql` to create the SQL functions and procedures in the "carto" schema of your database. You must execute this file's commands in the same session where you executed the statements in step 1 (`USE ROLE carto_role; ...`). So, on the Snowflake web interface use the same worksheet.
+### Marketplace installation (for non-CARTO customers)
 
-{{% bannerNote title="TIP" type="tip" %}}
-You can load the script into a Worksheet using the dropdown menu on top right and choosing "Load Script". The "All Queries" check seems to work unreliably with large scripts, so we advice instead to select all the text (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
-{{%/ bannerNote %}}
+You can get access to the core modules of the Analytics Toolbox for Snowflake through the [Snowflake's Data Marketplace](https://www.snowflake.com/datasets/carto-analytics-toolbox). If you are unsure of how to access the Data Marketplace, you can find detailed instructions in [this article](https://docs.snowflake.com/en/user-guide/data-marketplace-intro.html#how-do-i-access-the-snowflake-data-marketplace-to-browse-listings) of Snowflake's documentation center.
 
-![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install2.png)
+Once in the Data Marketplace, search for _carto analytics toolbox_ to find the listing:
 
-{{% bannerNote title="WARNING" type="warning" %}}
-This file will remove all the previous functions and procedures in the "carto" schema.
-{{%/ bannerNote %}}
+![Analytics Toolbox for Snowflake listing](/img/sf-analytics-toolbox/sf-datamarketplace-step1.png)
 
-**Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your Snowflake database. Now you can start [using the functions](/analytics-toolbox-snowflake/sql-reference/overview/). Refer to step 2 above to check the installed version and functions.
+Once you are in the details page of the listing, you will find that you can _GET_ the Analytics Toolbox directly following these instructions:
+
+
+1. Click on the GET DATA button on the top right corner of the Data Marketplace listing.
+
+![Analytics Toolbox for Snowflake get data](/img/sf-analytics-toolbox/sf-datamarketplace-step2-get.png)
+
+2. Rename the database to `SFCARTO`. Next, click on _More options_ to choose all the roles to which you wish to give access to this database, accept the Terms of Use and finally click on "Create Database".
+
+![Analytics Toolbox for Snowflake get data form](/img/sf-analytics-toolbox/sf-datamarketplace-step3-get.png)
+
+By clicking on "View Database" you will be redirected to the database you just created, where you will be able to browse all the modules (schemas) and functions and procedures available within the Analytics Toolbox.
+
+![Analytics Toolbox for Snowflake get data form](/img/sf-analytics-toolbox/sf-datamarketplace-step5-get.png)
+
+
+
 
 <style>
 .highlight {
