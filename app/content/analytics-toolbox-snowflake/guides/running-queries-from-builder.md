@@ -29,15 +29,17 @@ If you have named your local database `SFCARTO` as recommended, you can copy and
 4. Copy and paste the following query:
 
 ```sql
+USE DATABASE sfcarto;
+
 WITH data AS(
   SELECT geog
-  FROM sfcarto.public.starbucks_locations_usa
+  FROM carto.starbucks_locations_usa
   WHERE geog IS NOT null
   ORDER BY id
 ),
 clustered_points AS
 (
-    SELECT sfcarto.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 8) AS cluster_arr
+    SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 8) AS cluster_arr
     FROM data
 )
 SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geom 
