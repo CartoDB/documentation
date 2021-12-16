@@ -7,7 +7,7 @@ With a single query, we are going to calculate how many Starbucks locations fall
 
 ```sql
 WITH data AS (
-  SELECT sfcarto.quadkey.ST_ASQUADINT(geog, 10) AS qk,
+  SELECT carto.QUADINT_FROMGEOGPOINT(geog, 10) AS qk,
   COUNT(*) as agg_total
   FROM sfcarto.public.starbucks_locations_usa
   WHERE geog IS NOT null
@@ -16,7 +16,7 @@ WITH data AS (
 SELECT
   qk, 
   agg_total,
-  sfcarto.quadkey.ST_BOUNDARY(qk) AS geom
+  carto.QUADINT_BOUNDARY(qk) AS geom
 FROM
   data
 ```
@@ -29,19 +29,19 @@ This query adds two new columns to our dataset: `geom`, representing the bounda
 
 Next, we will analyze in finer detail the grid cells in Las Vegas to identify potential cannibalizations through to analysis of the surroundings of each store. We present the same analysis applying two different methods, which simply differ in the way the influence areas around each store are defined.
 
-The first method uses the `KRING` function with distance 1 to define an area of influence around each store, and then aggregates the quadkey indexes around each Starbucks location.
+The first method uses the `QUADINT_KRING` function with distance 1 to define an area of influence around each store, and then aggregates the quadkey indexes around each Starbucks location.
 
 ```sql
 WITH data AS (
-  SELECT sfcarto.quadkey.KRING(
-  sfcarto.quadkey.ST_ASQUADINT(geog, 15), 1) AS qk
+  SELECT carto.QUADINT_KRING(
+  carto.QUADINT_FROMGEOGPOINT(geog, 15), 1) AS qk
   FROM sfcarto.public.starbucks_locations_usa
   WHERE city = 'Las Vegas' AND geog IS NOT null
 ),
 flat_qks AS(
   SELECT VALUE::BIGINT as qk,
   count(*) AS agg_total, 
-  sfcarto.quadkey.ST_BOUNDARY(VALUE) AS geom
+  carto.QUADINT_BOUNDARY(VALUE) AS geom
   FROM data, lateral FLATTEN(input => qk)
   GROUP BY VALUE
 )
@@ -56,15 +56,15 @@ The second approach calculates how many Starbucks fall within a radius of three 
 
 ```sql
 WITH data AS (
-  SELECT sfcarto.quadkey.ST_ASQUADINT_POLYFILL(
-  sfcarto.constructors.ST_MAKEELLIPSE(geog, 3, 3, 0, 'kilometers', 12), 15) AS qk
+  SELECT carto.QUADINT_POLYFILL(
+  carto.ST_MAKEELLIPSE(geog, 3, 3, 0, 'kilometers', 12), 15) AS qk
   FROM sfcarto.public.starbucks_locations_usa
   WHERE city = 'Las Vegas' AND geog IS NOT null
 ),
 flat_qks AS(
   SELECT VALUE::BIGINT as qk,
   count(*) AS agg_total, 
-  sfcarto.quadkey.ST_BOUNDARY(VALUE) AS geom
+  carto.QUADINT_BOUNDARY(VALUE) AS geom
   FROM data, lateral FLATTEN(input => qk)
   GROUP BY VALUE
 )

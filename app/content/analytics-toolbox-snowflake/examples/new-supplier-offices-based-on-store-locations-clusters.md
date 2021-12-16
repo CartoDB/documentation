@@ -15,7 +15,7 @@ WITH data AS(
 ),
 clustered_points AS
 (
-    SELECT sfcarto.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
+    SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
     FROM data
 )
 SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geom 
@@ -41,7 +41,7 @@ WITH data AS(
 ),
 clustered_points AS
 (
-    SELECT sfcarto.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
+    SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
     FROM data
 )
 SELECT GET(VALUE, 'cluster') AS cluster, sfcarto.transformations.ST_CENTEROFMASS(ST_COLLECT(TO_GEOGRAPHY(GET(VALUE, 'geom')))) AS geom 

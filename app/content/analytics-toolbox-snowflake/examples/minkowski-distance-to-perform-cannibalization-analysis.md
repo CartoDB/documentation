@@ -10,7 +10,7 @@ WITH starbucks AS
   SELECT geog, 
   ROW_NUMBER() OVER(ORDER BY (SELECT NULL)) - 1 AS id,
   uniform(1, 10, random()) AS starbucks_size
-  FROM sfcarto.public.STARBUCKS_LOCATIONS_USA 
+  FROM public.STARBUCKS_LOCATIONS_USA 
   WHERE CITY = 'Los Angeles' AND geog IS NOT NULL
   ORDER BY id
 ),
@@ -22,7 +22,7 @@ crossjoined_starbucks AS
   WHERE t1.id != t2.id
 ),
 business_impact AS(
-  SELECT t1_id, SUM(t2_starbucks_size * GET(GET(sfcarto.measurements.ST_MINKOWSKIDISTANCE(ARRAY_CONSTRUCT(ST_ASGEOJSON(t1_geog)::STRING,ST_ASGEOJSON(t2_geog)::STRING)), 0), 1)) AS received_cannibalization
+  SELECT t1_id, SUM(t2_starbucks_size * GET(GET(carto.ST_MINKOWSKIDISTANCE(ARRAY_CONSTRUCT(ST_ASGEOJSON(t1_geog)::STRING,ST_ASGEOJSON(t2_geog)::STRING)), 0), 1)) AS received_cannibalization
   FROM crossjoined_starbucks
   GROUP BY t1_id
 )

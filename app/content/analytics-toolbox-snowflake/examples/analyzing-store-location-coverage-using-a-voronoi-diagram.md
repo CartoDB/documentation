@@ -17,8 +17,8 @@ starbucks_array AS (
   FROM starbucks
 ),
 voronoi_array AS (
-  SELECT sfcarto.accessors.ST_ENVELOPE(geog_array) AS envelope,
-  sfcarto.processing.ST_VORONOIPOLYGONS(geog_array, ARRAY_CONSTRUCT(ST_XMIN(envelope), ST_YMIN(envelope), ST_XMAX(envelope), ST_YMAX(envelope))) AS nested_voronoi
+  SELECT carto.ST_ENVELOPE_ARR(geog_array) AS envelope,
+  carto.ST_VORONOIPOLYGONS(geog_array, ARRAY_CONSTRUCT(ST_XMIN(envelope), ST_YMIN(envelope), ST_XMAX(envelope), ST_YMAX(envelope))) AS nested_voronoi
   FROM starbucks_array
 )
 SELECT TO_GEOGRAPHY(VALUE) AS geom, ST_AREA(geom) AS area FROM voronoi_array, lateral FLATTEN(input => nested_voronoi)

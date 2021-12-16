@@ -20,15 +20,15 @@
       "type": 301
     }, {
       "source": "/spatial-extension-sf",
-      "destination": "/analytics-toolbox-sf",
+      "destination": "/analytics-toolbox-snowflake",
       "type": 301
     }, {
       "source": "/spatial-extension-sf/**",
-      "destination": "/analytics-toolbox-sf",
+      "destination": "/analytics-toolbox-snowflake",
       "type": 301
     }, {
       "source": "/spatial-extension-sf/**/",
-      "destination": "/analytics-toolbox-sf",
+      "destination": "/analytics-toolbox-snowflake",
       "type": 301
     }]
   }
