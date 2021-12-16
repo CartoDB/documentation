@@ -152,7 +152,7 @@ Execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql`
 {{% bannerNote title="WARNING" type="warning" %}}
 You can load the script into a Worksheet using the dropdown menu on top right and chosing "Load Script". Scroll to the end to verify everything is loaded, down to the "VERSION" function.
 
-The "All Queries" check seems to work unreliably with large scripts, so we advice instead to select all the text (just press Control-A or Command-A if using a Mac), the press the "Run" button and confirm you want to execute all the lines.
+The "All Queries" check seems to work unreliably with large scripts, so we advice instead to select all the text (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
 {{%/ bannerNote %}}
 
 ![Setup on Snowflake Classic Web Interface](/img/analytics-toolbox-snowflake/install2.png)
