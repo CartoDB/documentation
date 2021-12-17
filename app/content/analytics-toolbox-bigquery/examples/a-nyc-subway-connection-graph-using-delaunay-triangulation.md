@@ -11,7 +11,7 @@ WITH data AS (
     ) AS array_points
 ),
 delaunay_array AS (
-    SELECT `carto-un`.processing.ST_DELAUNAYLINES(array_points) AS nested
+    SELECT `carto-un`.carto.ST_DELAUNAYLINES(array_points) AS nested
     FROM data
 ),
 delaunay_triangles AS (

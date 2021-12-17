@@ -7,7 +7,7 @@ In this example we are creating a tileset in which every inhabitant in the US is
 The query used to produce the tileset is the following:
 
 ```sql
-CALL `carto-un`.tiler.CREATE_TILESET(
+CALL `carto-un`.carto.CREATE_TILESET(
     "cartobq.maps.covid19_vaccinated_usa_blockgroups",
     "`cartobq.maps.covid19_vaccination_usa_tileset`",
     null
@@ -31,7 +31,7 @@ In this example we use a BigQuery public dataset from the United States Census B
 This dataset can be produced in a very straightforward manner by executing the next procedure:
 
 ```sql
-CALL `carto-un`.tiler.CREATE_TILESET(
+CALL `carto-un`.carto.CREATE_TILESET(
     R'''
     (   SELECT road_geom AS geom, route_type
         FROM `bigquery-public-data.geo_us_roads.us_national_roads`
@@ -51,7 +51,7 @@ CALL `carto-un`.tiler.CREATE_TILESET(
 This example shows in a very effective manner the historical growth of New York City by means of the year of construction of its more than 800K buildings. The dataset has been obtained from the [MapPLUTO repository](https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page) of the NYC Department of City planning.
 
 ```sql
-CALL `carto-un`.tiler.CREATE_TILESET(
+CALL `carto-un`.carto.CREATE_TILESET(
     R'''
     (   SELECT geometry AS geom, YearBuilt 
         FROM cartobq.maps.pluto_nyc 
@@ -79,7 +79,7 @@ This example uses the `CREATE_SIMPLE_TILESET` procedure. We strongly recommend t
 {{%/ bannerNote %}}
 
 ```sql
-CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
+CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
   R'''
 (
   SELECT geom, type
@@ -112,7 +112,7 @@ This example uses the `CREATE_SIMPLE_TILESET` procedure. We strongly recommend t
 {{%/ bannerNote %}}
 
 ```sql
-CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
+CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
   R'''
 (
   SELECT
@@ -153,7 +153,7 @@ This example uses the `CREATE_SIMPLE_TILESET` procedure. We strongly recommend t
 {{%/ bannerNote %}}
 
 ```sql
-CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
+CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
 R'''(
     SELECT
     14 as zoom_min,

@@ -10,7 +10,7 @@ WITH data AS(
     FROM `carto-do-public-data`.natural_earth.geography_glo_airports_410 
 	WHERE abbrev = 'JFK' OR abbrev = 'LAX'  OR abbrev = 'SEA'  OR abbrev = 'MIA'
 )
-SELECT `carto-un`.transformations.ST_GREATCIRCLE(t1.geom, t2.geom, 25) AS geo
+SELECT `carto-un`.carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25) AS geo
 FROM data AS t1
 CROSS JOIN data AS t2
 WHERE t1.abbrev != t2.abbrev
@@ -33,7 +33,7 @@ WITH data AS(
     FROM `carto-do-public-data`.natural_earth.geography_glo_airports_410 
 	WHERE abbrev = 'JFK' OR abbrev = 'LAX'  OR abbrev = 'SEA'  OR abbrev = 'MIA'
 )
-SELECT CONCAT(t1.abbrev, " - ", t2.abbrev) as route, `carto-un`.transformations.ST_LINE_INTERPOLATE_POINT(`carto-un`.transformations.ST_GREATCIRCLE(t1.geom, t2.geom, 25), 500,'kilometers') AS geo
+SELECT CONCAT(t1.abbrev, " - ", t2.abbrev) as route, `carto-un`.carto.ST_LINE_INTERPOLATE_POINT(`carto-un`.carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25), 500,'kilometers') AS geo
 FROM data AS t1
 CROSS JOIN data AS t2
 WHERE t1.abbrev != t2.abbrev

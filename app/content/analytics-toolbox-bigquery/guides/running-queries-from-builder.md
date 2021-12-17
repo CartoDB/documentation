@@ -8,7 +8,7 @@ You can also run queries from Builder using the Analytics Toolbox for BigQuery f
 
 The Analytics Toolbox functions are available from the `carto-un` and `carto-un-eu` BigQuery projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
 
-To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bq/sql-reference/clustering/#st_clusterkmeans) function from the _clustering_ module. 
+To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bq/sql-reference/clustering/#st_clusterkmeans) function from the _carto_ module. 
 
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
@@ -33,7 +33,7 @@ To get started, let's run a simple example query to cluster a set of points usin
 ```sql
 with clustered_points AS
 (
-    SELECT `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
+    SELECT `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
     FROM carto-demo-data.demo_tables.sample_customer_home_locations
 )
 
