@@ -20,7 +20,7 @@
   <div class="example-card__tags u-mt32">
     {{ range .Params.categories }}
     <a href="{{ $path | relURL }}/{{ . | urlize}}" class="title example-tag u-mb4 u-mr4">
-      {{ $icon := printf "%s%s%s" "/img/icons/" . ".png" }}
+      {{ $icon := printf "%s%s%s" "/img/icons/categories/" . ".png" }}
       {{ if fileExists (printf "%s%s" "static" $icon) }}
         <img src="{{ $icon }}" alt="">
       {{ end }}

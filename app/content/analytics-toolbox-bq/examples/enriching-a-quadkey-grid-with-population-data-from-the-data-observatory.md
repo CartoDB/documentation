@@ -1,7 +1,7 @@
 ---
 title: "Enriching a quadkey grid with population data from the Data Observatory"
 description: "The pains of working with data in different spatial aggregations can be greatly eased by using spatial indexes. In this example we showcase how, in a single query, we can create a quadkey grid of resolution 15 of all supermarket POIs in the US and enrich it with population data."
-image: "/img/bq-analytics-toolbox/spatial-indexes/h3-most-starbucks.png"
+image: "/img/bq-analytics-toolbox/examples/do-quadkey-grid.png"
 type: examples
 date: "2021-08-12"
 categories:
@@ -40,3 +40,6 @@ JOIN (
   ) d
 ON qid = geoid
 ```
+<iframe height=480px width=100%  src="https://gcp-us-east1.app.carto.com/map/65a4b2ef-6f74-42b8-9d88-09ea19639552"></iframe>
+
+

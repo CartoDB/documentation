@@ -5,7 +5,7 @@ image: "/img/sf-analytics-toolbox/examples/minkowski-cannibalization-analysis.pn
 type: examples
 date: "2021-09-12"
 categories:
-    - example
+    - measurements
 ---
 ## Minkowski distance to perform cannibalization analysis
 
