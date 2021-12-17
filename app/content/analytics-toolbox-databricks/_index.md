@@ -12,9 +12,9 @@ menu:
     folder:
       - title: "Getting started"
       - title: "Installation"
-  # - title: "Guides"
-  #   folder:
-  #     - title: "Lorem Ipsum"
+  - title: "Guides"
+    folder:
+      - title: "Working with geospatial data"
   - title: "SQL Reference"
     folder:
       - title: "Geometry Accessors"
