@@ -18,8 +18,12 @@ menu:
   - title: "SQL Reference"
     folder:
       - title: "Geometry Accessors"
+      - title: "Geometry Cast"
       - title: "Geometry Constructors"
-      - title: "Spatial Relationships"
+      - title: "Geometry Editors"
       - title: "Geometry Outputs"
+      - title: "Geometry Processing"
+      - title: "Spatial Relationships"
+ 
   # - title: "Release notes"
 ---

@@ -106,6 +106,7 @@ Currently we only support username/password authentication using the internal Sn
 ![Connection parameters with Snowflake](/img/cloud-native-workspace/connections/the_connections_snowflake_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Snowflake account. If everything is OK, your new connection will be registered.
+
 ### Connection to Databricks
 
 {{% bannerNote title="WARNING" type="tip" %}}
@@ -114,9 +115,9 @@ This connection is in BETA.
 Please verify you've already [installed](/analytics-toolbox-databricks/overview/installation) the CARTO analytics toolbox in your cluster before following these steps.
 {{%/ bannerNote %}}
 
-You can use CARTO with your data in an Databricks data warehouse.
+You can use CARTO with your data from [Databricks](https://databricks.com).
 
-If you want to create a connection to your Databricks data warehouse, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
+If you want to create a connection to your Databricks, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
 ![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_first.png)
 
@@ -130,8 +131,8 @@ These are the parameters you need to provide:
 - **Server**: Databricks cluster JDBC/ODBC server hostname.
 - **HTTP Path**: Databricks cluster JDBC/ODBC compute resources URL.
 - **Port**: TCP port (443).
-- **Token**: Password for the user account.
-- **Database**: Database your connection will use.
+- **Token**: Token for the user account.
+- **Database**: Database your connection will use. This database need to be the one where the [CARTO Analytics Toolbox UDFs have been created](/analytics-toolbox-databricks/overview/installation/). 
 
 Please visit the documentation of the Databricks [connection parameters](/analytics-toolbox-databricks/overview/installation/#connection-parameters) to get more information about how to obtain them.
 

@@ -1,4 +1,4 @@
-### Working with geospatial data in Databricks
+## Working with geospatial data in Databricks
 
 Databricks doesn't have native support for geospatial data types. That means not being able to store geospatial data as a geometry.
 
@@ -6,9 +6,9 @@ The CARTO Analytics Toolbox for Databricks provides geospatial capabilities thro
 
 How can we make them work when there is not a geometry data type available? This guide will help you with that. 
 
-#### Storing geospatial data
+### Storing geospatial data
 
-CARTO Maps API can work directly with geospatial data represented as [GeoJSON](https://geojson.org/), [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) or [WKB](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary) strings. 
+CARTO Maps API can work directly with geospatial data represented as <!-- [GeoJSON](https://geojson.org/), --> [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) or [WKB](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary) strings. 
 
 That means you can preview your data in Data Explorer, load it in Builder to create maps and use it in your custom applications, if it's stored as a text string in any of those formats.
 
@@ -17,14 +17,12 @@ In order to preview your tables from Data Explorer, the column that contains the
 {{%/ bannerNote %}} 
 
 <div style="text-align:center" >
-  <img src="/img/databricks-analytics-toolbox/databricks-dataexplorer.png" alt="SQL UDFs functions in your cluster" style="width:100%">
+  <img src="/img/databricks-analytics-toolbox/databricks-dataexplorer.png" alt="Preview geospatial data in your Data Explorer" style="width:100%">
 </div>
-
-The Analytics Toolbox functions that return a `Geometry` data type use the WKB representation, which can be represented directly in Builder.
 
 <!-- ADD SCREENSHOT WHEN FIXED -->
 
-#### Spatial SQL in the Analytics Toolbox
+### Spatial SQL with the Analytics Toolbox
 
 As mentioned above, many the functions from the Analytics Toolbox expect a geometry data type as input. See the [SQL Reference](../../sql-reference/overview) to get more detailed information on each function.
 
@@ -42,7 +40,7 @@ WHERE st_Intersects(
 Since our points are stored as WKT strings in the `geom` column, we just need to create the geometry with `st_geomfromWKT(geom)`.
 
 <div style="text-align:center" >
-  <img src="/img/databricks-analytics-toolbox/databricks-builder-intersection.png" alt="SQL UDFs functions in your cluster" style="width:100%">
+  <img src="/img/databricks-analytics-toolbox/databricks-builder-intersection.png" alt="Work with Spatial SQL in Builder" style="width:100%">
 </div>
 
 The map above shows a point layer and as an overlay, the intersection between that layer and the bounding box defined in the example query. 
