@@ -1,4 +1,4 @@
-## `Geometry` Constructors
+## Geometry Constructors
 
 
 ### st_box2DFromGeoHash
