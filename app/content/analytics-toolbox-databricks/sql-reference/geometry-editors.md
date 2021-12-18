@@ -1,5 +1,4 @@
-## `Geometry` 
-Editors
+## Geometry Editors
 
 ### st_translate
 `Geometry st_translate(Geometry geom, Double deltaX, Double deltaY)`

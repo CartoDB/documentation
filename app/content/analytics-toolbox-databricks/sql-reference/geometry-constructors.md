@@ -14,7 +14,7 @@ Returns the `Geometry` of the bounding box corresponding to the Geohash string _
 ### st_geomFromGeoJSON
 `Geometry st_geomFromGeoJSON(String geojsonGeometry)`
 
-Creates a `Geometry` from the given GeoJSON `Geometry` (GeoJson).
+Creates a `Geometry` from the given GeoJSON.
 
 ### st_geomFromWKB
 `Geometry st_geomFromWKB(Array[Byte] wkb)`
@@ -59,7 +59,7 @@ Creates a `Geometry` representing a bounding box with the given boundaries.
 ### st_makeBox2D
 `Geometry st_makeBox2D(Point lowerLeft, `Point` upperRight)`
 
-Creates a `Geometry` representing a bounding box defined by the given Points.
+Creates a `Geometry` representing a bounding box defined by the given `Points`.
 
 ### st_makeLine
 `LineString st_makeLine(Seq[Point] points)`
@@ -69,12 +69,12 @@ Creates a `LineString` using the given sequence of vertices in points.
 ### st_makePoint
 `Point st_makePoint(Double x, Double y)`
 
-Creates a `Point` with an x and y coordinate.
+Creates a `Point` with an _x_ and _y_ coordinate.
 
 ### st_makePointM
 `Point st_makePointM(Double x, Double y, Double m)`
 
-Creates a `Point` with an x, y, and m coordinate.
+Creates a `Point` with an _x_, _y_, and _m_ coordinate.
 
 ### st_makePolygon
 `Polygon st_makePolygon(LineString shell)`

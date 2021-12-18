@@ -3,12 +3,12 @@
 ### st_boundary
 `Geometry st_boundary(Geometry geom)`
 
-Returns the boundary, or an empty `Geometry` of appropriate dimension, if geom is empty.
+Returns the boundary, or an empty `Geometry` of appropriate dimension, if _geom_ is empty.
 
 ### st_coordDim
 `Int st_coordDim(Geometry geom)`
 
-Returns the number of dimensions of the coordinates of `Geometry` geom.
+Returns the number of dimensions of the coordinates of `Geometry` _geom_.
 
 ### st_dimension
 `Int st_dimension(Geometry geom)`
@@ -18,7 +18,7 @@ Returns the inherent number of dimensions of this `Geometry` object, which must 
 ### st_envelope
 `Geometry st_envelope(Geometry geom)`
 
-Returns a `Geometry` representing the bounding box of geom.
+Returns a `Geometry` representing the bounding box of _geom_.
 
 ### st_exteriorRing
 `LineString st_exteriorRing(Geometry geom)`
@@ -33,12 +33,12 @@ Returns the _n_-th `Geometry` (1-based index) of _geom_ if the `Geometry` is a `
 ### st_interiorRingN
 `Int st_interiorRingN(Geometry geom, Int n)`
 
-Returns the n-th interior `LineString` ring of the `Polygon` geom. Returns null if the `Geometry` is not a `Polygon` or the given _n_ is out of range.
+Returns the _n_-th interior `LineString` ring of the `Polygon` _geom_. Returns null if the `Geometry` is not a `Polygon` or the given _n_ is out of range.
 
 ### st_isClosed
 `Boolean st_isClosed(Geometry geom)`
 
-Returns true if geom is a `LineString` or `MultiLineString` and its start and end points are coincident. Returns true for all other `Geometry` types.
+Returns `true` if geom is a `LineString` or `MultiLineString` and its start and end points are coincident. Returns true for all other `Geometry` types.
 
 ### st_isCollection
 `Boolean st_isCollection(Geometry geom)`

@@ -1,4 +1,4 @@
-### Working with geospatial data in Databricks
+## Working with geospatial data in Databricks
 
 Databricks doesn't have native support for geospatial data types. That means not being able to store geospatial data as a geometry.
 
@@ -6,7 +6,7 @@ The CARTO Analytics Toolbox for Databricks provides geospatial capabilities thro
 
 How can we make them work when there is not a geometry data type available? This guide will help you with that. 
 
-#### Storing geospatial data
+### Storing geospatial data
 
 CARTO Maps API can work directly with geospatial data represented as <!-- [GeoJSON](https://geojson.org/), --> [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) or [WKB](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary) strings. 
 
@@ -20,11 +20,9 @@ In order to preview your tables from Data Explorer, the column that contains the
   <img src="/img/databricks-analytics-toolbox/databricks-dataexplorer.png" alt="Preview geospatial data in your Data Explorer" style="width:100%">
 </div>
 
-The Analytics Toolbox functions that return a `Geometry` data type use the WKB representation, which can be represented directly in Builder.
-
 <!-- ADD SCREENSHOT WHEN FIXED -->
 
-#### Spatial SQL in the Analytics Toolbox
+### Spatial SQL with the Analytics Toolbox
 
 As mentioned above, many the functions from the Analytics Toolbox expect a geometry data type as input. See the [SQL Reference](../../sql-reference/overview) to get more detailed information on each function.
 
