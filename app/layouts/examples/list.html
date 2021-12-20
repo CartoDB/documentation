@@ -10,9 +10,9 @@
       {{ $paginator := .Paginator }}
 
       <!-- Show overview text on the first page only  -->
-      <!-- {{ if not $paginator.HasPrev }}
-        {{- partial "tutorials-overview" . -}}
-      {{ end }} -->
+      {{ if not $paginator.HasPrev }}
+        {{- partial "examples-bq-overview" . -}}
+      {{ end }}
       
       <ul class="grid">
         {{ range $tutorial := sort $paginator.Pages "Params.date" "desc" }}

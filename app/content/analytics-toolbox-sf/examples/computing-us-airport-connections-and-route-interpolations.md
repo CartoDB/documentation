@@ -5,7 +5,7 @@ image: "/img/sf-analytics-toolbox/examples/sf-us-airport-connections-route-inter
 type: examples
 date: "2021-08-12"
 categories:
-    - example
+    - transformations
 ---
 ## Computing US airport connections and route interpolations
 

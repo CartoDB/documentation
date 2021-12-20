@@ -5,7 +5,8 @@ image: "/img/sf-analytics-toolbox/examples/sf-enrichment-example-5.png"
 type: examples
 date: "2021-05-12"
 categories:
-    - example
+    - quadkey
+    - constructors
 ---
 ## Enrichment of catchment areas for store characterization
 

@@ -5,7 +5,8 @@ image: "/img/sf-analytics-toolbox/examples/supplier-offices-clusters.png"
 type: examples
 date: "2021-07-12"
 categories:
-    - example
+    - clustering
+    - transformations
 ---
 ## New supplier offices based on store locations clusters
 

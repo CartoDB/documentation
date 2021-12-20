@@ -9,7 +9,7 @@ categories:
 ---
 ## Analyzing weather stations coverage using a Voronoi diagram
 
-Voronoi diagrams are a very useful tool to build influence regions from a set of points and the Analytics Toolbox provides a convenient function to build them. An example application of these diagrams is the calculation of the coverage areas of a series of weather stations. In the following query we are going to calculate these influence areas in the state of New York. 
+[Voroni diagrams](/analytics-toolbox-bq/sql-reference/processing/#st_voronoilines) are a very useful tool to build influence regions from a set of points and the Analytics Toolbox provides a convenient function to build them. An example application of these diagrams is the calculation of the coverage areas of a series of weather stations. In the following query we are going to calculate these influence areas in the state of New York. 
 
 The result can be seen in the visualization below, where the color of each polygon indicates its area, which gives an insight on the coverage provided by the station.
 

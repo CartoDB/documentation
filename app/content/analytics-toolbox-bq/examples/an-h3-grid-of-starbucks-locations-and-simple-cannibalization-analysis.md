@@ -11,7 +11,7 @@ categories:
 
 ### Bulding the H3 grid
 
-We are going to demonstrate how fast and easy it is to make a visualization of an H3 grid to identify the concentration of Starbucks locations in the US.
+We are going to demonstrate how fast and easy it is to make a visualization of an [h3](/analytics-toolbox-bq/sql-reference/h3/) grid to identify the concentration of Starbucks locations in the US.
 
 The first step is to [import](https://cloud.google.com/bigquery/docs/batch-loading-data#loading_data_from_local_files) the Starbucks locations [dataset](https://libs.cartocdn.com/spatial-extension/samples/starbucks-locations-usa.csv) into a BigQuery table called `starbucks_locations_usa`. Then, with a single query, we are going to calculate how many Starbucks locations fall within each H3 grid cell of resolution 4.
 

@@ -10,7 +10,7 @@ categories:
 ---
 ## New police stations based on Chicago crime location clusters
 
-In this example we are going to use points clustering to analyze where to locate five new police stations in Chicago based on 5000 samples of crime locations.
+In this example we are going to use points [clustering](/analytics-toolbox-bq/sql-reference/clustering/) to analyze where to locate five new police stations in Chicago based on 5000 samples of crime locations.
 
 ### Generating the clusters
 

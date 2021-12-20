@@ -5,7 +5,8 @@ image: "/img/sf-analytics-toolbox/examples/voronoi-store-location.png"
 type: examples
 date: "2021-06-12"
 categories:
-    - example
+    - accessors
+    - processing
 ---
 ## Analyzing store location coverage using a Voronoi diagram
 
