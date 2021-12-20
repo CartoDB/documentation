@@ -6,6 +6,7 @@ type: tutorials
 date: "2021-09-12"
 categories:
     - easy
+    - widgets
 ---
 ## Build a categories & bubbles visualization
 
@@ -34,13 +35,13 @@ In this tutorial we are going to represent the distribution of the most populate
 
 4. Selected "populated_places" and explore the preview of the map and the details of the table. 
 
-   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial1_map_preview.png)
+   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial1_de_map_preview.png)
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial1_data_preview.png)
+   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial1_de_data_preview.png)
 
-5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
+5. Create a map by clicking on the *Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
-   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial1_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial1_de_create_map_from_table.png)
 
 6. Change layer name to “Populated Places”.
 
@@ -62,30 +63,55 @@ In this tutorial we are going to represent the distribution of the most populate
 
 10. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_add_new_widget.png)
+    ![Map widgets new widget](/img/cloud-native-workspace/tutorials/tutorial1_map_new_widget.png)
 
-11. Add a widget based on the column `admin0name`. Now we can filter the data based on the country.
+11. Click on *New widget* button and select "populated_places".
 
-    ![Map widgets first widget](/img/cloud-native-workspace/tutorials/tutorial1_map_first_widget.png)
+    ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial1_map_widget_select_source.png)
 
-    ![Map widgets first widget values in](/img/cloud-native-workspace/tutorials/tutorial1_map_first_widget_valuesin.png)
+    When you add a widget, it´s always the Formula widget by default:
 
-12. Add a second widget, now based on `pop_max`. You will get a histogram widget in order to be able to filter the populated places based on their population.
+    ![Map widget formula by default](/img/cloud-native-workspace/tutorials/tutorial1_map_widget_formula_by_default.png)
 
-    ![Map widgets second widget](/img/cloud-native-workspace/tutorials/tutorial1_map_second_widget.png)
+12. Select CATEGORY widget, choose `COUNT` operation from the list and select the column `admin0name`. 
 
-13. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the fields `admin0name`, `Featurecla` and `Pop_max`. 
+    ![Map category widget select field](/img/cloud-native-workspace/tutorials/tutorial1_map_category_widget_select_field.png)
+
+    Now we can filter the data based on the country.
+
+    ![Map category widget selected field](/img/cloud-native-workspace/tutorials/tutorial1_map_category_widget_selected_field.png)
+
+13. Select "United States of America" from the list to highlight this particular category and temporally remove the others from your visualization:
+
+    ![Map category widget selected element](/img/cloud-native-workspace/tutorials/tutorial1_map_category_widget_selected_element.png)
+
+14. Click on the *Back* arrow and then click on *Add widget* to add a second widget (HISTOGRAM), now based on `pop_max`. You will get a histogram widget in order to be able to filter the populated places based on their population.
+
+    ![Map histogram widget selected field](/img/cloud-native-workspace/tutorials/tutorial1_map_histogram_widget_selected_field.png)
+
+15. Change the names of both widgets for "Nº of Countries" and “Size (inhab.)”. Click on the *Back* arrow and then click on the “three dots” icon to configure rename your widgets.
+
+    ![Map widgets renamed](/img/cloud-native-workspace/tutorials/tutorial1_map_widgets_rename.png)
+
+16. You can also change the format as the values are displayed and add some notes to your widget.
+
+    ![Map histogram widget note](/img/cloud-native-workspace/tutorials/tutorial1_map_histogram_widget_note.png)
+
+17. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the fields `admin0name`, `Featurecla` and `Pop_max`. 
 
     ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial1_map_tooltip.png)
 
-14. Finally we can change our basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
+18. Finally we can change our basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
 
-    ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial1_map_basemap.png)
+    ![Map basemap carto](/img/cloud-native-workspace/tutorials/tutorial1_map_basemap_carto.png)
 
-15. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+19. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial1_map_public.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial1_map_public_map.png)
  
- 16. Finally, we can visualize the result.
+20. Finally, we can visualize the result.
 
-      <iframe width="800px" height="400px" src="https://gcp-europe-west1.app.carto.com/map/121e2fc6-b2e1-4b2a-b79e-e74f5df78b1e"></iframe>
+      <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/149e695c-13a0-470b-b420-500d2bb90a60"></iframe>
+
+<!--       <iframe width="800px" height="400px" src="https://gcp-europe-west1.app.carto.com/map/121e2fc6-b2e1-4b2a-b79e-e74f5df78b1e"></iframe>
+ -->

@@ -6,6 +6,7 @@ type: tutorials
 date: "2021-05-12"
 categories:
     - easy
+    - 3D
 ---
 ## Build a 3D map with a tileset
 
