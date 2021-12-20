@@ -8,8 +8,11 @@
       <!-- NOTE: category title -->
       <!-- <h1 class="title f32 u-mb48">{{ humanize .Params.category }}</h1> -->
 
+      {{ $pages := where .Site.Pages "Section" .Section }}
+      <p>Section: {{ .Section }}</p>
+      <p>Pages in this section: {{ $pages }}</p>
       {{ $curr := slice .Params.category }}
-      {{ $paginator := .Paginate (where .Site.Pages "Params.categories" "intersect" $curr) }}
+      {{ $paginator := .Paginate (where $pages "Params.categories" "intersect" $curr) }}
 
       <!-- Show overview text on the first page only  -->
       <!-- {{ if not $paginator.HasPrev }}
