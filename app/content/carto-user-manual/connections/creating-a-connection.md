@@ -46,6 +46,10 @@ Once you have entered the parameters, you can click the *Connect* button. CARTO 
 
 You can use CARTO with your data in a PostgreSQL-compatible database, including Google Cloud SQL, Amazon Aurora & RDS, and Azure Database for PostgreSQL.
 
+CARTO supports the following PostgreSQL and PostGIS versions: 
+* PostgreSQL 12 and higher
+* PostGIS 2.4 and higher
+
 If you want to create a connection to your PostgreSQL server, you need to select the PostgreSQL connector in the *New connection* dialog. After you select the connector click on the *Setup connection* button.
 
 ![Connection setup with PostgreSQL](/img/cloud-native-workspace/connections/the_connections_postgres_first.png)
