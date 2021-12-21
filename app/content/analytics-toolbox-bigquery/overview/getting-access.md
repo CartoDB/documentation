@@ -155,7 +155,7 @@ Then we need to create a dataset named `carto` to contain the toolbox:
 
 ```bash
 # Create dataset "carto"
-bq mk --location=$TARGET_REGION --description="CARTO Analytics Toolbox" -d $TARGET_PROJECT:carto
+bq mk --location=$TARGET_REGION --description="CARTO dataset" -d $TARGET_PROJECT:carto
 ```
 
 #### Installation
