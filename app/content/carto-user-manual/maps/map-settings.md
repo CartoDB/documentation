@@ -168,14 +168,16 @@ Basemaps are image tiles that are used to render the graphical representation of
 
 The CARTO Builder provides a set of CARTO and Google Maps basemaps styles as background maps. By default, basemaps are projected using the <a href="https://en.wikipedia.org/wiki/Web_Mercator_projection" target="_blank">Webmercator projection</a>. To setup your map's base map, open the *Base Map panel* to select from a list of default map styles.
 
-Select the CARTO Basemap menu to see different basemap options. They include:
+#### CARTO
+
+Select _CARTO_ in the menu to see different basemap options. They include:
 - **Voyager**: basemap with colors to clearly differentiate natural and cultural features. This basemap is showed by default when creating a new map.
 - **Positron**: light basemap with dark-colored text.
 - **Dark**: dark basemap with light-colored text.
 
 ![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_CARTO.png)
 
-**CARTO Basemap layers:** You can manage the CARTO basemaps layers to hide and show water, buildings, roads, and more. Options include: 
+You can manage the CARTO basemaps layers to hide and show water, buildings, roads, and more. Options include: 
 
 - Labels: shows labels for cities, neighborhoods, and so on.
 - Roads: displays a translucent layer of road lines.
@@ -186,7 +188,9 @@ Select the CARTO Basemap menu to see different basemap options. They include:
 
 ![Basemap layers](/img/cloud-native-workspace/maps/map_basemap_layers.png)
 
-Select the Google Maps Basemap menu to see different basemap options. They include:
+#### Google Maps
+
+Select _Google Maps_ in the menu to see different basemap options. They include:
 
 - **Roadmap**: displays the default road map view.
 - **Satellite**: displays Google Earth satellite images.
@@ -195,3 +199,21 @@ Select the Google Maps Basemap menu to see different basemap options. They inclu
 - **Positron**, **Voyager** and **Dark Matter**: new versions that has been developed for Google Maps.
 
 ![Map basemap google](/img/cloud-native-workspace/maps/map_basemap_google_maps.png)
+
+
+#### Amazon Location
+
+Select _Amazon Location_ in the menu to see the options to use a base map from the [Amazon Location Service](https://docs.aws.amazon.com/location/index.html).
+
+To use an Amazon Location maps, you will need to introduce some credentials from your Amazon Location Service account. Lear more about it in [this guide]((https://docs.aws.amazon.com/location/latest/developerguide/using-maps.html)): 
+
+- Cognito Pool ID: Amazon Cognito provides authentication, authorization, and user management for web and mobile apps. You can use Amazon Cognito unauthenticated identity pools with Amazon Location as a way for applications to retrieve temporary, scoped-down AWS credentials. Learn more about how to get a Cognito Pool ID [here](https://docs.aws.amazon.com/location/latest/developerguide/authenticating-using-cognito.html).
+
+- Map name: The name of the map style from your [Maps home page](https://console.aws.amazon.com/location/maps/home) in your AWS console.
+
+![Map basemap amazon](/img/cloud-native-workspace/maps/map_basemap_amazon_location.png)
+
+Once you have set the credentials, click on _Apply_. The current configuration will be saved in this map. 
+
+To use another base map from Amazon Location, specify the new credentials and click _Apply_ again. The map will be updated and saved.
+
