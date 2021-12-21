@@ -205,7 +205,7 @@ Select _Google Maps_ in the menu to see different basemap options. They include:
 
 Select _Amazon Location_ in the menu to see the options to use a base map from the [Amazon Location Service](https://docs.aws.amazon.com/location/index.html).
 
-To use an Amazon Location maps, you will need to introduce some credentials from your Amazon Location Service account. Lear more about it in [this guide]((https://docs.aws.amazon.com/location/latest/developerguide/using-maps.html)): 
+To use an Amazon Location maps, you will need to introduce some credentials from your Amazon Location Service account. Lear more about it in [this guide](https://docs.aws.amazon.com/location/latest/developerguide/using-maps.html): 
 
 - Cognito Pool ID: Amazon Cognito provides authentication, authorization, and user management for web and mobile apps. You can use Amazon Cognito unauthenticated identity pools with Amazon Location as a way for applications to retrieve temporary, scoped-down AWS credentials. Learn more about how to get a Cognito Pool ID [here](https://docs.aws.amazon.com/location/latest/developerguide/authenticating-using-cognito.html).
 
