@@ -4,9 +4,9 @@ description: "There is an increasing need for conservation and connection with n
 image: "/img/tutorials/animated.png" 
 type: tutorials
 date: "2021-08-12"
-categories:
-    - easy
-    - widgets
+# categories:
+#     - easy
+#     - widgets
 ---
 ## Build an animated visualization with time series
 
@@ -69,35 +69,35 @@ In this tutorial we are going to represent the distribution of tree species in t
 
 11. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_color_new_widget.png)
+    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_new_widget.png)
 
 11. Click on *New widget* button and select "populated_places".
 
-    ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial2_map_color_widget_select_source.png)
+    ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial2_map_widget_select_source.png)
 
     When you add a widget, it´s always the Formula widget by default:
 
-    ![Map widget formula by default](/img/cloud-native-workspace/tutorials/tutorial2_map_color_widget_formula_by_default.png)
+    ![Map widget formula by default](/img/cloud-native-workspace/tutorials/tutorial2_map_widget_formula_by_default.png)
 
 12. Select CATEGORY widget, choose `COUNT` operation from the list and select the column `species`. 
 
-    ![Map category widget select field](/img/cloud-native-workspace/tutorials/tutorial2_map_color_category_widget_select_field.png)
+    ![Map category widget select field](/img/cloud-native-workspace/tutorials/tutorial2_map_category_widget_select_field.png)
 
     Now we can filter the data based on the country.
 
-    ![Map category widget selected field](/img/cloud-native-workspace/tutorials/tutorial2_map_color_category_widget_selected_field.png)
+    ![Map category widget selected field](/img/cloud-native-workspace/tutorials/tutorial2_map_category_widget_selected_field.png)
 
 13. Click on the *Back* arrow and then click on *Add widget* to add a second widget (TIME-SERIES), now based on `plant_date`. You will get a time-series widget in order to be able to filter the species based on their plant date.
 
-    ![Map time-series widget selected field](/img/cloud-native-workspace/tutorials/tutorial2_map_color_time-series_widget_selected_field.png)
+    ![Map time-series widget selected field](/img/cloud-native-workspace/tutorials/tutorial2_map_time-series_widget_selected_field.png)
 
 14. Change the default bucket size to "Years" to display different groups of data. You can also include some animation by clicking on *Play/Pause control (animation)*:
 
-    ![Map widgets renamed](/img/cloud-native-workspace/tutorials/tutorial2_map_widgets_animation.png)
+    ![Map widgets animation](/img/cloud-native-workspace/tutorials/tutorial2_map_widgets_animation.png)
 
 15. Let´s the names of both widgets for "Nº of Species" and “Plant date”. Click on the *Back* arrow and then click on the “three dots” icon to configure rename your widgets.
 
-    ![Map widgets animation](/img/cloud-native-workspace/tutorials/tutorial2_map_widgets_rename.png)
+    ![Map widgets rename](/img/cloud-native-workspace/tutorials/tutorial2_map_widgets_rename.png)
 
 14. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the field `species`. 
 

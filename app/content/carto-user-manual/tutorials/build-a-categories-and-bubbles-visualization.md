@@ -4,9 +4,9 @@ description: "Understanding population distribution has important implications i
 image: "/img/tutorials/bubbles.png" 
 type: tutorials
 date: "2021-09-12"
-categories:
-    - easy
-    - widgets
+# categories:
+#     - easy
+#     - widgets
 ---
 ## Build a categories & bubbles visualization
 
@@ -41,7 +41,7 @@ In this tutorial we are going to represent the distribution of the most populate
 
 5. Create a map by clicking on the *Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
-   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial1_de_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial1_de_map_from_table.png)
 
 6. Change layer name to “Populated Places”.
 
@@ -91,7 +91,7 @@ In this tutorial we are going to represent the distribution of the most populate
 
 15. Change the names of both widgets for "Nº of Countries" and “Size (inhab.)”. Click on the *Back* arrow and then click on the “three dots” icon to configure rename your widgets.
 
-    ![Map widgets renamed](/img/cloud-native-workspace/tutorials/tutorial1_map_widgets_rename.png)
+    ![Map widgets rename](/img/cloud-native-workspace/tutorials/tutorial1_map_widgets_rename.png)
 
 16. You can also change the format as the values are displayed and add some notes to your widget.
 

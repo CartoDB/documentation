@@ -4,9 +4,9 @@ description: "Understanding the urban areas has important implications in a wide
 image: "/img/tutorials/tileset.png"
 type: tutorials
 date: "2021-07-12"
-categories:
-    - easy
-    - tileset
+# categories:
+#     - easy
+#     - tileset
 ---
 ## Create a tileset and build a basic visualization
 

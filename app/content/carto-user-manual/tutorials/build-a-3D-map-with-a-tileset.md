@@ -4,9 +4,9 @@ description: "A geospatial analysis of land use dynamics has special relevance f
 image: "/img/tutorials/3d.png"
 type: tutorials
 date: "2021-05-12"
-categories:
-    - easy
-    - 3D
+# categories:
+#     - easy
+#     - 3D
 ---
 ## Build a 3D map with a tileset
 
@@ -44,7 +44,7 @@ In this example we are building a map from a tileset createad by CARTO from a ne
 
 5. Create a map by clicking on the *Create map* button on the top. This will open the tileset as a layer on a CARTO Builder map. Check [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) to get started.
 
-   ![Data Explorer create map from tileset](/img/cloud-native-workspace/tutorials/tutorial3_create_map_from_tileset.png)
+   ![Data Explorer create map from tileset](/img/cloud-native-workspace/tutorials/tutorial3_map_from_tileset.png)
 
 6. Change layer name to “NASADEM elevation”.
 
@@ -58,27 +58,29 @@ In this example we are building a map from a tileset createad by CARTO from a ne
 
 8. Click on the “three dots” icon in the Fill Color section and select “Color Based On” feature `elevation`. Select a sequential color palette for this type of feature. 
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_fill_based_on.png)
+   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_fill_color_based_on.png)
 
-9. In order to be able to visualize this data on a 3D map, we need to detail what feature should be used to obtain the “height” information. Click on the “three dots” icon in the Height section and in the field “Height Based On” pick the feature `elevation` with a linear scale.
+9. In order to be able to visualize this data on a 3D map, we need to detail what feature should be used to obtain the “height” information. Click on the “three dots” icon in the Height section and in the field “Height Based On” pick the feature `elevation` with a linear scale. 
 
-   ![Map height](/img/cloud-native-workspace/tutorials/tutorial3_map_height.png)
+   ![Map fill based on](/img/cloud-native-workspace/tutorials/tutorial3_map_filled_color.png)
 
-   You can also change the height using the height slider or by directly inputting the height in the 
+   You can change the height using the height slider or by directly inputting the height in the 
 text input.
 
-   ![Map height slider](/img/cloud-native-workspace/tutorials/tutorial3_map_height_slider.png)
+   ![Map height slider](/img/cloud-native-workspace/tutorials/tutorial3_map_height_using_slider.png)
 
 10. Finally, modify the map visualization to be in 3D by clicking on the “cube” icon in the top bar. 
 
     ![Map 3D map icon](/img/cloud-native-workspace/tutorials/tutorial3_map_3D_icon.png)
 
-    ![Map 3D map](/img/cloud-native-workspace/tutorials/tutorial3_map_3D.png)
+    ![Map 3D map](/img/cloud-native-workspace/tutorials/tutorial3_map_3D_view.png)
 
 11. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial3_map_public.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial3_map_public_map.png)
 
 12. Finally, we can visualize the result.
 
-    <iframe width="800x" height="400px" src="https://gcp-europe-west1.app.carto.com/map/7812419f-a7da-4c62-a734-0c1117f6e90a"></iframe>
+    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/0b426434-bb05-40b5-a3cf-157e13b3c48b"></iframe> 
+
+  <!--   <iframe width="800x" height="400px" src="https://gcp-europe-west1.app.carto.com/map/7812419f-a7da-4c62-a734-0c1117f6e90a"></iframe> -->
