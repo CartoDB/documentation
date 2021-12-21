@@ -49,15 +49,15 @@ In this example we are creating a tileset in which each building in Madrid is re
 
 6. Now from this interface, you need to select the tileset zoom levels, choose the geometry column and give a location for the output table in a directory within the `CARTO Data Warehouse` where the user has write permissions. In the case of the `CARTO Data Warehouse` connection for this user account the directory is `carto-dw-ac-t4cgd7ox.data`. Once you have completed this configuration, click on *Continue*.
 
-   ![Data Explorer create tileset settings](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_1settings.png)
+   ![Data Explorer create tileset settings](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_settings.png)
 
 7. From the next screen, you can select the attributes of your table that will be included in the tileset. After completing this step, click on *Continue*. 
 
-   ![Data Explorer create tileset attributes](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_2attributes.png)
+   ![Data Explorer create tileset attributes](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_attributes.png)
 
 8. The last screen will show you a summary of the configuration of the tileset for your confirmation. Click on *Create* to confirm.
 
-   ![Data Explorer create tileset confirmation](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_3confirmation.png)
+   ![Data Explorer create tileset confirmation](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_confirmation.png)
 
 9. Tilesets take a while to process. Once the process is completed you will see the message in the “Processing jobs” tab on the top right corner of the screen (blue tab).
 

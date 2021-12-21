@@ -71,7 +71,7 @@ In this tutorial we are going to represent the distribution of the most populate
 
     When you add a widget, it´s always the Formula widget by default:
 
-    ![Map widget formula by default](/img/cloud-native-workspace/tutorials/tutorial1_map_widget_formula_by_default.png)
+    ![Map widgets formula by default](/img/cloud-native-workspace/tutorials/tutorial1_map_widget_formula_by_default.png)
 
 12. Select CATEGORY widget, choose `COUNT` operation from the list and select the column `admin0name`. 
 

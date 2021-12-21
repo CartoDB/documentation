@@ -89,6 +89,11 @@ date: "2021-04-12"
 
     ![DO source with bounding box sql applied](/img/cloud-native-workspace/tutorials/tutorial4_do_source_with_boundingbox_sql_applied.png)
 
+
+{{% bannerNote type="warning" title="Warning" %}}
+Note that when modifying the query you should keep the table IDs as defined for your own account, not based on the ones we showcase in this example (e.g. `carto-data.ac_lqe3zwgu`). The important part is the introduction of  `ST_INTERSECTSBOX(geom, -118.341567,33.972640,-118.093688,34.089010)`. 
+{{%/ bannerNote %}}
+
 13. Going back to our buffer in Chicago, we can now go ahead and use Builder in order to create an interactive dashboard. First let’s re-run the previous query and give a name to our layer such as “Spatial Features - Chicago”. 
     
     ![DO rename layer](/img/cloud-native-workspace/tutorials/tutorial4_do_rename_the_layer.png)

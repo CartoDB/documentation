@@ -38,9 +38,9 @@ In this example we are building a map from a tileset createad by CARTO from a ne
 
 4. Selected "nasadem_glo_quadgrid15" and explore the details and metadata of the tileset. 
 
-   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial3_tileset_details.png)
+   ![Data Explorer tileset details](/img/cloud-native-workspace/tutorials/tutorial3_de_tileset_details.png)
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial3_tileset_metadata.png)
+   ![Data Explorer tileset metadata](/img/cloud-native-workspace/tutorials/tutorial3_de_tileset_metadata.png)
 
 5. Create a map by clicking on the *Create map* button on the top. This will open the tileset as a layer on a CARTO Builder map. Check [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) to get started.
 

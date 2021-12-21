@@ -51,7 +51,7 @@ In this tutorial we are going to represent the distribution of tree species in t
 
 7. Change the basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
 
-    ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial2_map_basemap_carto.png)
+    ![Map basemap carto](/img/cloud-native-workspace/tutorials/tutorial2_map_basemap_carto.png)
 
 8. Click on *Layer style* to start styling the layer.
 
@@ -101,7 +101,7 @@ In this tutorial we are going to represent the distribution of tree species in t
 
 14. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the field `species`. 
 
-    ![Map widgets new tooltip](/img/cloud-native-workspace/tutorials/tutorial2_map_tooltip.png)
+    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial2_map_tooltip.png)
 
 15. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 

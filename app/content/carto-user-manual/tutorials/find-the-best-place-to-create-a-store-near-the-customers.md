@@ -40,7 +40,7 @@ In this example we are going to use points clustering to analyze how to find the
 
 5. Select *Custom Query (SQL)* and “Type your own query” using the `CARTO Data Warehouse` connection and click on *Add Source*.
 
-    ![Add source custom sql query](/img/cloud-native-workspace/tutorials/tutorial5_add_source_custom_sqlquery.png)
+    ![Add source custom sql query](/img/cloud-native-workspace/tutorials/tutorial5_add_source_custom_query.png)
 
 6. Once the process is finished, the SQL panel appears in the Builder interface, where you can run queries in `CARTO Data Warehouse` (based on Google BigQuery) and see the result in the map. 
 
