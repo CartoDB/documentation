@@ -13,13 +13,11 @@ To be able to share a map, you need to add data and a title to the map:
 
 Once you have added data and a title to your map, the *Share* button will be enabled and you will be able to share your maps with your organization, by clicking the *Share* button on the top-right to open the sharing options. 
 
-<!-- screenshot needed -->
-
 ![Publish options share link button](/img/cloud-native-workspace/maps/map_share_button.png) 
 
 A new dialog screen will open allowing you to select who you want to share your maps with:
 
-![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_private_selected.png) 
+![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_private_by_default.png) 
 
 Here you'll find three different sharing options:
 
@@ -31,11 +29,11 @@ Remember that if your map is "shared" or "public" you'll need to push your chang
 
 Public maps have some extra options: to share the link with the public, to get Developers information for embedding, or to work with CARTO for developers. You can toggle between these subtabs and select the option you are interested in. 
 
-![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_public_map_selected.png) 
+![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_public_map.png) 
 
-![Publish options share link copied](/img/cloud-native-workspace/maps/map_sharing_options_public_map_sharelinkcopied.png)
+![Publish options share link copied](/img/cloud-native-workspace/maps/map_public_map_sharelinkcopied.png)
 
-![Publish options developers](/img/cloud-native-workspace/maps/map_sharing_options_public_map_developers.png)
+![Publish options developers](/img/cloud-native-workspace/maps/map_public_map_developers_options.png)
 #### Publishing updates for shared and public maps
 
 Once your map is shared or public, you can manage the state of the map for your viewers (so your editing doesn't affect their experience). When you're ready to push an update, click on the *Publish Updates* icon:
