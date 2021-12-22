@@ -48,6 +48,7 @@ menu:
       - title: "processing"
       - title: "quadkey"
       - title: "random"
+      - title: "retail"
       - title: "routing"
       - title: "s2"
       - title: "statistics"
