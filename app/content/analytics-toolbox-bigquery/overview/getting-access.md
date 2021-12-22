@@ -128,7 +128,7 @@ The CARTO Analytics Toolbox contains two packages:
 This guide explains how to install the core package which is publicly available. In order to access the **advanced** features, please contact support@carto.com.
 {{%/ bannerNote %}}
 
-We can divide the process into two steps: setup and installation. The first one must be done only the first time, then the second one must be done every time you want to install a new version of the packages.
+We can divide the process into three steps: preparation, setup and installation. The setup must be done only the first time, then the installation must be done every time you want to install a new version of the packages.
 
 In this guide we'll use Google Cloud Shell to setup and install the toolbox.
 You'll need to open the [GCP console](https://console.cloud.google.com) and select the project to install the toolbox, then use the ">_" button (top right) to "Activate Cloud Shell".
@@ -139,17 +139,17 @@ You'll need a GCP project to install the toolbox, as well as a storage bucket in
 
 We'll set this information as well as the location where the toolbox will be created (should be the same as the bucket) into Cloud Shell environment variables:
 
-* The id of the project where the toolbox dataset will be created,  `TARGET_PROJECT`
-* The name of the bucket to store the toolbox JavasScript libraries `TARGET_BUCKET`
+* `TARGET_PROJECT`: The id of the project where the toolbox dataset will be created
+* `TARGET_BUCKET`: The name of the bucket to store the toolbox JavasScript libraries
   (don't use a protocol prefix like `gs://`)
-* The region of the bucket, where the toolbox dataset will be created `TARGET_REGION`
+* `TARGET_REGION`: The region of the bucket, where the toolbox dataset will be created
 
 Set these variables by executing the following in Cloud Shell (after replacing the appropriate values):
 
 ```bash
-export TARGET_PROJECT="MYPROJECT"
-export TARGET_REGION="MYREGION"
-export TARGET_BUCKET="MYBUCKET"
+export TARGET_PROJECT="<my-project>"
+export TARGET_REGION="<my-region>"
+export TARGET_BUCKET="<my-bucket>"
 ```
 
 {{% bannerNote title="WARNING" type="warning" %}}
@@ -158,7 +158,7 @@ After a while without using the Cloud Shell you may need to reconnect it; in thi
 
 #### Setup
 
-This step will be required only before the first installation. Activate the cloud shell in the target project and make sure the environment variables from the preparation above are set.
+This step will be required only before the first installation. Activate the Cloud Shell in the target project and make sure the environment variables from the preparation above are set.
 
 Before starting the process make sure the target GCP project exists and is the correct one:
 
@@ -176,14 +176,15 @@ bq mk --location=$TARGET_REGION --description="CARTO dataset" -d $TARGET_PROJECT
 
 #### Installation
 
-Each time a new release of the toolbox is available, a [new package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/latest/carto-analytics-toolbox-core-bigquery.zip) should be installed in the `carto` dataset.
+Each time a new release of the toolbox is available, a [new package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip) should be installed in the `carto` dataset.
 
 To do so, access the Cloud Shell and set the environment variables as described above, then run the following commands:
 
 ```bash
 # Download package
-wget https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/latest/carto-analytics-toolbox-core-bigquery.zip
-unzip carto-analytics-toolbox-core-bigquery.zip
+wget https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip
+unzip carto-analytics-toolbox-core-bigquery-2021.12.13.zip
+cd carto-analytics-toolbox-core-bigquery-2021.12.13
 
 # Prepare SQL code (replace bucket name)
 sed -e 's!<BUCKET>!'"$TARGET_BUCKET"'!g'  modules.sql > modules_rep.sql
@@ -206,8 +207,6 @@ Execute the following in the BigQuery console: (in the project where the toolbox
 ```sql
 SELECT carto.VERSION_CORE();
 ```
-
-The result should match the [latest released version](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/latest/version).
 
 You can also check all the installed routines (functions and procedures) with:
 
@@ -268,7 +267,7 @@ SELECT * FROM carto.INFORMATION_SCHEMA.ROUTINES;
     copyBtn.className = "highlight-copy-btn";
     copyBtn.textContent = "Copy";
 
-    var codeEl = containerEl.getElementsByClassName('language-sql')[0];
+    var codeEl = containerEl.getElementsByClassName('language-sql')[0] || containerEl.getElementsByClassName('language-bash')[0];
     copyBtn.addEventListener('click', function() {
       try {
         var selection = selectText(codeEl);
