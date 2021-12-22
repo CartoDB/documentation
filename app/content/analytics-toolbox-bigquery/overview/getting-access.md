@@ -178,23 +178,25 @@ bq mk --location=$TARGET_REGION --description="CARTO dataset" -d $TARGET_PROJECT
 
 #### Installation
 
-To install the Analytics Toolbox in the `carto` dataset we will use the [this installation package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip) and follow the instructions below. Please note that this process should be repeated every time a new version of the Toolbox is available.
+To install the Analytics Toolbox in the `carto` dataset we will use the [this installation package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-latest.zip) and follow the instructions below. Please note that this process should be repeated every time a new version of the Toolbox is available.
 
 Access the Cloud Shell and set the environment variables as described in the preparation step above, then run the following commands:
 
 ```bash
 # Download package
-wget https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip
-unzip carto-analytics-toolbox-core-bigquery-2021.12.13.zip
-cd carto-analytics-toolbox-core-bigquery-2021.12.13
+wget https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-latest.zip
+unzip carto-analytics-toolbox-core-bigquery-latest.zip
 
-# Prepare SQL code (replace bucket name)
+# Enter the directory (you may need to change the version)
+cd carto-analytics-toolbox-core-bigquery-2021.12.16
+
+# Prepare SQL code
 sed -e 's!<BUCKET>!'"$TARGET_BUCKET"'!g'  modules.sql > modules_rep.sql
 
 # Copy libs to bucket
 gsutil -m cp -r libs/ gs://$TARGET_BUCKET/carto/
 
-# Install (execute SQL)
+# Install the functions and procedures
 bq --location=$TARGET_REGION --project_id=$TARGET_PROJECT query --use_legacy_sql=false --max_statement_results=10000 --format=prettyjson < modules_rep.sql
 ```
 

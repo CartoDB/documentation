@@ -98,13 +98,13 @@ USE DATABASE "<my database>";
 
 ##### 2. Create the functions and procedures
 
-Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/sql/carto-analytics-toolbox-core-snowflake-modules.sql) into a local file.
+Download the [package file]](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/carto-analytics-toolbox-core-snowflake-latest.zip) and unzip it in your local storage.
 
 {{% bannerNote title="TIP" type="tip" %}}
-If you have a previously installed version of the Analytics Toolbox, you can check the installed version by running `SELECT carto.VERSION_CORE()` and then compare it with the version of the toolbox you are about to install by checking [this version file](https://storage.googleapis.com/carto-analytics-toolbox-core/snowflake/latest/version).
+If you have a previously installed version of the Analytics Toolbox, you can check the installed version by running `SELECT carto.VERSION_CORE()`.
 {{%/ bannerNote %}}
 
-To install the functions and procedures of the Analytics Toolbox in the `carto` schema of your database, execute the downloaded file `carto-analytics-toolbox-core-snowflake-modules.sql`. Please note that must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide. 
+To install the functions and procedures of the Analytics Toolbox in the `carto` schema of your database, execute the downloaded file `modules.sql`. Please note that must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide. 
 
 You can load the script into a Worksheet by using the dropdown menu on the top right and choosing "Load Script". The "All Queries" check seems to work unreliably with large scripts, so we advice to select all the text instead (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
 
