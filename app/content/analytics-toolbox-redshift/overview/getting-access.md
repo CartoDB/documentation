@@ -62,7 +62,7 @@ SELECT carto.VERSION_CORE();
 
 #### 3. Create the libraries in the cluster
 
-Download the [libraries script](https://storage.googleapis.com/carto-analytics-toolbox-core/redshift/latest/sql/carto-analytics-toolbox-redshift-libraries.sql), and run it to create the Python libraries used by the toolbox in the cluster.
+Download the [libraries script](https://storage.googleapis.com/carto-analytics-toolbox-core/redshift/latest/sql/carto-analytics-toolbox-core-redshift-libraries.sql), and run it to create the Python libraries used by the toolbox in the cluster.
 
 {{% bannerNote type="tip" title="Troubleshooting"%}}
 If the following error arises `Must be superuser or the owner of library X`, means that the library is already created by a superuser, so your user can not replace it. If the superuser drops the library (`DROP LIBRARY X`), then your user will be able to create it.
@@ -70,7 +70,7 @@ If the following error arises `Must be superuser or the owner of library X`, mea
 
 #### 4. Create the functions and procedures
 
-Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/redshift/latest/sql/carto-analytics-toolbox-redshift-modules.sql), and run it to create the SQL functions and procedures in the `carto` schema.
+Download the [modules script](https://storage.googleapis.com/carto-analytics-toolbox-core/redshift/latest/sql/carto-analytics-toolbox-core-redshift-modules.sql), and run it to create the SQL functions and procedures in the `carto` schema.
 
 {{% bannerNote type="warning" title="warning"%}}
 This script will remove all the previous functions and procedures in the `carto` schema.

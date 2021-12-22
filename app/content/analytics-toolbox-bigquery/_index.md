@@ -4,7 +4,7 @@ description: "Unlock Spatial Analytics in BigQuery"
 icon: "/img/icons/bigquery-analytics-toolbox.png"
 repoUrl: https://github.com/CartoDB/carto-spatial-extension
 
-url: analytics-toolbox-bq
+url: analytics-toolbox-bigquery
 indexPage: "overview/getting-started.md"
 
 menu:

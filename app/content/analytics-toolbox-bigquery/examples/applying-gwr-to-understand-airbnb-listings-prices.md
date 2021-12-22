@@ -7,7 +7,7 @@ In this example we are going to analyze the local relationships between Airbnb's
 We can run our GWR analysis by simply running this query:
 
 ```sql
-CALL `carto-un`.statistics.GWR_GRID(
+CALL `carto-un`.carto.GWR_GRID(
     'cartobq.docs.airbnb_berlin_h3_qk',
     ['bedrooms', 'bathrooms'], -- [ beds feature, bathrooms feature ]
     'price', -- price (target variable)

@@ -12,14 +12,18 @@ menu:
     folder:
       - title: "Getting started"
       - title: "Installation"
-  # - title: "Guides"
-  #   folder:
-  #     - title: "Lorem Ipsum"
+  - title: "Guides"
+    folder:
+      - title: "Working with geospatial data"
   - title: "SQL Reference"
     folder:
       - title: "Geometry Accessors"
+      - title: "Geometry Cast"
       - title: "Geometry Constructors"
-      - title: "Spatial Relationships"
+      - title: "Geometry Editors"
       - title: "Geometry Outputs"
+      - title: "Geometry Processing"
+      - title: "Spatial Relationships"
+ 
   # - title: "Release notes"
 ---

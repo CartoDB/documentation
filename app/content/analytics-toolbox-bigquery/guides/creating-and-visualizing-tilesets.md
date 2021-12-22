@@ -24,8 +24,8 @@ As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available 
 To check that your Google account or service account has access to the Tiler, try running this query:
 
 ```sql
-SELECT `carto-un`.tiler.VERSION()
---Use `carto-un-eu`.tiler.VERSION() if your data is in GCP's EU multi-region
+SELECT `carto-un`.carto.VERSION_ADVANCED()
+--Use `carto-un-eu`.carto.VERSION_ADVANCED() if your data is in GCP's EU multi-region
 ``` 
 
 Check the [Getting Access](../../overview/getting-access) section if you run into any errors when running the query above.
@@ -35,7 +35,7 @@ Once you are all set getting access to the Tiler, creating a tileset is as easy 
 The result will be a tileset with the geometry and total population per blockgroup:
 
 ```sql
-CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
+CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
   R'''
   (
     SELECT
@@ -61,10 +61,10 @@ CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
 );
 ```
 
-Creating a tileset by means of `tiler.CREATE_SIMPLE_TILESET` can sometimes be cumbersome due to the large amount of parameters that users have to manage. In order to relieve them of this responsibility, we provide a wrapper function in which the tiler configuration is automatically set by performing a previous analysis of the input data. This analysis also serves as a validation step to avoid BigQuery limitations. As a result, the above generated tileset can also be obtained by executing:
+Creating a tileset by means of `CREATE_SIMPLE_TILESET` can sometimes be cumbersome due to the large amount of parameters that users have to manage. In order to relieve them of this responsibility, we provide a wrapper function in which the tiler configuration is automatically set by performing a previous analysis of the input data. This analysis also serves as a validation step to avoid BigQuery limitations. As a result, the above generated tileset can also be obtained by executing:
 
 ```sql
-CALL `carto-un`.tiler.CREATE_TILESET(
+CALL `carto-un`.carto.CREATE_TILESET(
   R'''
   (
     SELECT
@@ -84,7 +84,7 @@ CALL `carto-un`.tiler.CREATE_TILESET(
 or by defining explicitly the options if they are required:
 
 ```sql
-CALL `carto-un`.tiler.CREATE_TILESET(
+CALL `carto-un`.carto.CREATE_TILESET(
   R'''
   (
     SELECT

@@ -15,10 +15,10 @@ SELECT ST_MAKEPOINT(LONGITUDE, LATITUDE) as geom FROM CDA26920_STARBUCKS_CORE_PL
 To quickly explore this data, using the Analytics Toolbox, we can easily compute an aggregation of these locations using Quadkeys at resolution 15, which lets us visualize the result as a heatmap. Here is a close-up of the Manhattan area, where we can easily identify the areas of highest concentration of Starbucks stores. 
 
 ```sql
-with qks as 
-(SELECT sfcarto.quadkey.LONGLAT_ASQUADINT(LONGITUDE, LATITUDE, 15) as qk
+WITH qks AS 
+(SELECT carto.QUADINT_FROMLONGLAT(LONGITUDE, LATITUDE, 15) AS qk
 FROM CDA26920_STARBUCKS_CORE_PLACES_SAMPLE.PUBLIC.CORE_POI)
-SELECT count(*) as num_stores, sfcarto.quadkey.ST_BOUNDARY(qk) as geom from qks GROUP BY qk
+SELECT count(*) as num_stores, carto.QUADINT_BOUNDARY(qk) AS geom FROM qks GROUP BY qk
 ```
 
 <div style="text-align:center" >
@@ -28,7 +28,7 @@ SELECT count(*) as num_stores, sfcarto.quadkey.ST_BOUNDARY(qk) as geom from qks 
 Now, let’s enhance our analysis by computing a 3 km buffer around each store, using the geometry constructor module from the Analytics Toolbox:
 
 ```sql
-SELECT sfcarto.constructors.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12) as geom
+SELECT carto.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12) as geom
 FROM CDA26920_STARBUCKS_CORE_PLACES_SAMPLE.PUBLIC.CORE_POI
 ```
 
@@ -40,12 +40,12 @@ We can then deepen our analysis by computing the Quadkeys at resolution 15 that 
 
 ```sql
 WITH qks AS(
-SELECT sfcarto.quadkey.ST_ASQUADINT_POLYFILL(
-    sfcarto.constructors.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12), 15) AS qk
+SELECT carto.QUADINT_POLYFILL(
+    carto.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12), 15) AS qk
 FROM CDA26920_STARBUCKS_CORE_PLACES_SAMPLE.PUBLIC.CORE_POI
 )
 
-SELECT sfcarto.quadkey.ST_BOUNDARY(VALUE) AS geom
+SELECT carto.QUADINT_BOUNDARY(VALUE) AS geom
 FROM qks, lateral FLATTEN(input => qk)
 ```
 
@@ -57,12 +57,12 @@ Next, we enrich the resulting Quadkeys with the total population and the populat
 
 ```sql
 WITH qks AS(
-SELECT sfcarto.quadkey.ST_ASQUADINT_POLYFILL(
-    sfcarto.constructors.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12), 15) AS qk
+SELECT carto.QUADINT_POLYFILL(
+    carto.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12), 15) AS qk
 FROM CDA26920_STARBUCKS_CORE_PLACES_SAMPLE.PUBLIC.CORE_POI
 ),
 geom_data AS(
-SELECT sfcarto.quadkey.QUADKEY_FROMQUADINT(VALUE::BIGINT) AS geoid, sfcarto.quadkey.ST_BOUNDARY(VALUE) AS geom
+SELECT carto.QUADINT_TOQUADKEY(VALUE::BIGINT) AS geoid, carto.QUADINT_BOUNDARY(VALUE) AS geom
 FROM qks, lateral FLATTEN(input => qk)
 GROUP BY VALUE
 )
@@ -82,13 +82,13 @@ Once we have this data ready, we can now calculate the total population that is 
 
 ```sql
 WITH qks AS(
-SELECT sfcarto.quadkey.ST_ASQUADINT_POLYFILL(
-    sfcarto.constructors.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12), 15) AS qk, SAFEGRAPH_PLACE_ID as store_id
+SELECT carto.QUADINT_POLYFILL(
+    carto.ST_MAKEELLIPSE(ST_POINT(LONGITUDE,LATITUDE),3,3,0,'kilometers',12), 15) AS qk, SAFEGRAPH_PLACE_ID as store_id
 FROM CDA26920_STARBUCKS_CORE_PLACES_SAMPLE.PUBLIC.CORE_POI
 ),
 
 flat_qks AS(
-SELECT t1.store_id, sfcarto.quadkey.QUADKEY_FROMQUADINT(VALUE::BIGINT) AS geoid
+SELECT t1.store_id, carto.QUADINT_TOQUADKEY(VALUE::BIGINT) AS geoid
 FROM qks t1, lateral FLATTEN(input => qk)
 ),
 

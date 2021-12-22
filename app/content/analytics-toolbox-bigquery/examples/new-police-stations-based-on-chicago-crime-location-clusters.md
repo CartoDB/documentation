@@ -15,7 +15,7 @@ WITH data AS(
 ),
 clustered_points AS
 (
-    SELECT `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom), 5) AS cluster_arr
+    SELECT `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom), 5) AS cluster_arr
     FROM data
 )
 SELECT cluster_element.cluster, ST_UNION_AGG(cluster_element.geom) AS geo FROM clustered_points, UNNEST(cluster_arr) AS cluster_element GROUP BY cluster_element.cluster
@@ -38,10 +38,10 @@ WITH data AS(
 ),
 clustered_points AS
 (
-    SELECT `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom), 5) AS cluster_arr
+    SELECT `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom), 5) AS cluster_arr
     FROM data
 )
-SELECT cluster_element.cluster, `carto-un`.transformations.ST_CENTERMEDIAN(ST_UNION_AGG(cluster_element.geom)) AS center FROM clustered_points, UNNEST(cluster_arr) AS cluster_element GROUP BY cluster_element.cluster
+SELECT cluster_element.cluster, `carto-un`.carto.ST_CENTERMEDIAN(ST_UNION_AGG(cluster_element.geom)) AS center FROM clustered_points, UNNEST(cluster_arr) AS cluster_element GROUP BY cluster_element.cluster
 ```
 
 We can see the result in the following visualization, where the bigger dots represent the police stations we have decided to open based on our analysis:

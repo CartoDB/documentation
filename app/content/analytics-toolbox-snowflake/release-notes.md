@@ -1,15 +1,22 @@
 ## Release notes
 
+### December 15, 2021
+
+#### Module data
+
+Changed
+- Missing subscriptions are reported by name in DATAOBS_ENRICH_* procedures
+
 ### December 10, 2021
 
-#### Module random v1.1.1
+#### Module random
 
 Changed
 - ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
 
 ### December 3, 2021
 
-#### Module accessors v1.1.0
+#### Module accessors
 
 Changed
 - Deployment schema "carto" instead of "accessors".
@@ -18,7 +25,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module constructors v1.1.0
+#### Module constructors
 
 Changed
 - Deployment schema "carto" instead of "constructors".
@@ -26,7 +33,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module h3 v1.1.0
+#### Module h3
 
 Changed
 - Deployment schema "carto" instead of "h3".
@@ -48,7 +55,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module measurements v1.1.0
+#### Module measurements
 
 Changed
 - Deployment schema "carto" instead of "measurements".
@@ -58,7 +65,7 @@ Changed
 - Remove ST_AZIMUTH, already present in Snowflake.
 - Remove VERSION function.
 
-#### Module placekey v1.1.0
+#### Module placekey
 
 Changed
 - Deployment schema "carto" instead of "placekey".
@@ -69,7 +76,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module processing v1.1.0
+#### Module processing
 
 Changed
 - Deployment schema "carto" instead of "processing".
@@ -77,7 +84,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module quadkey v1.1.0
+#### Module quadkey
 
 Changed
 - Deployment schema "carto" instead of "quadkey".
@@ -97,7 +104,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module s2 v1.1.0
+#### Module s2
 
 Changed
 - Deployment schema "carto" instead of "s2".
@@ -110,7 +117,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module transformations v1.1.0
+#### Module transformations
 
 Changed
 - Deployment schema "carto" instead of "transformations".
@@ -118,7 +125,7 @@ Changed
 Remove
 - Remove VERSION function.
 
-#### Module clustering v1.1.0
+#### Module clustering
 
 Changed
 - Deployment schema "carto" instead of "clustering".
@@ -126,7 +133,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module data v1.0.0-beta.4
+#### Module data
 
 Changed
 - Deployment schema "carto" instead of "data".
@@ -134,7 +141,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module random v1.1.0
+#### Module random
 
 Changed
 - Deployment schema "carto" instead of "random".
@@ -144,15 +151,27 @@ Removed
 
 ### November 25, 2021
 
-#### Module clustering v1.1.0
+#### Module clustering
 
 Changed
 - Deployment schema "carto" instead of "clustering".
 - Remove VERSION function.
 
+#### Module data
+
+Changed
+- Deployment schema "carto" instead of "data".
+- Remove VERSION function.
+
+#### Module random
+
+Changed
+- Deployment schema "carto" instead of "random".
+- Remove VERSION function.
+
 ### November 24, 2021
 
-#### Module data v1.0.0-beta.3
+#### Module data
 
 Feature
 - Add DATAOBS_ENRICH_POINTS procedure.
@@ -164,7 +183,7 @@ Feature
 
 ### November 5, 2021
 
-#### Module data v1.0.0-beta.2
+#### Module data
 
 Changes
 - Fields named `dimension`, `total`, `intersection` and `input_area` are now
@@ -177,7 +196,7 @@ Fixed
 
 ### November 4, 2021
 
-#### Module data v1.0.0-beta.1
+#### Module data
 
 Feature
 - Create data module.
@@ -191,7 +210,7 @@ Feature
 
 ### September 22, 2021
 
-#### Module h3 v1.0.3
+#### Module h3
 
 Feature
 - Add KRING_DISTANCES function.
@@ -199,7 +218,7 @@ Feature
 Changed
 - Review HEXRING, KRING functions.
 
-#### Module quadkey v1.0.3
+#### Module quadkey
 
 Feature
 - Add KRING_DISTANCES function.
@@ -209,42 +228,42 @@ Changed
 
 ### September 14, 2021
 
-#### Module s2 v1.0.1
+#### Module s2
 
 Changes
 - Compute ST_BOUNDARY from WKT.
 
 ### September 9, 2021
 
-#### Module quadkey v1.0.2
+#### Module quadkey
 
 Changed
 - Performance improvement in ST_ASQUADINT_POLYFILL.
 
 ### August 24, 2021
 
-#### Module h3 v1.0.2
+#### Module h3
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
 ### August 11, 2021
 
-#### Module quadkey v1.0.1
+#### Module quadkey
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
 
 ### June 2, 2021
 
-#### Module h3 v1.0.1
+#### Module h3
 
 Changed
 - Reduce bundle size for every function.
 
 ### May 26, 2021
 
-#### Module processing v1.0.0
+#### Module processing
 
 Feature
 - Create processing module.
@@ -257,14 +276,14 @@ Feature
 
 ### May 24, 2021
 
-#### Module clustering v1.0.0
+#### Module clustering
 
 Feature
 - Create clustering module.
 - Add VERSION function.
 - Add ST_CLUSTERKMEANS function.
 
-#### Module random v1.0.0
+#### Module random
 
 Feature
 - Create random module.
@@ -273,7 +292,7 @@ Feature
 
 ### May 21, 2021
 
-#### Module accessors v1.0.0
+#### Module accessors
 
 Feature
 - Create accessors module.
@@ -282,7 +301,7 @@ Feature
 
 ### May 20, 2021
 
-#### Module constructors v1.0.0
+#### Module constructors
 
 Feature
 - Create constructors module.
@@ -292,7 +311,7 @@ Feature
 - Add ST_TILEENVELOPE function.
 - Add VERSION function.
 
-#### Module measurements v1.0.0
+#### Module measurements
 
 Feature
 - Create measurements module.
@@ -301,7 +320,7 @@ Feature
 - Add ST_MINKOWSKIDISTANCE function.
 - Add VERSION function.
 
-#### Module transformations v1.0.0
+#### Module transformations
 
 Feature
 - Create transformations module.
@@ -316,7 +335,7 @@ Feature
 
 ### April 16, 2021
 
-#### Module placekey v1.0.0
+#### Module placekey
 
 Feature
 - Create placekey module.
@@ -327,7 +346,7 @@ Feature
 
 ### April 12, 2021
 
-#### Module s2 v1.0.0
+#### Module s2
 
 Feature
 - Create s2 module.
@@ -340,7 +359,7 @@ Feature
 
 ### April 7, 2021
 
-#### Module h3 v1.0.0
+#### Module h3
 
 Feature
 - Create h3 module.
@@ -361,7 +380,7 @@ Feature
 
 ### March 31, 2021
 
-#### Module quadkey v1.0.0
+#### Module quadkey
 
 Feature
 - Create quadkey module.

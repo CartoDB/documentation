@@ -11,23 +11,39 @@ To get access to the entire collection of modules of the CARTO Analytics Toolbox
    * A CARTO account. If you still don't have one, you can create a trial account [here](https://app.carto.com/signup).
    * A Google Cloud Platform account. Find [here](https://cloud.google.com/gcp/getting-started) more information about how to get one.
 
-Access to the Analytics Toolbox for BigQuery is granted to every service account that is used to create a connection with BigQuery from the CARTO Workspace. You can find step-by-step instructions on how to create a connection with BigQuery [here](/carto-user-manual/connections/creating-a-connection/#connection-to-bigquery).
+#### Getting access for a Google user
+
+Access to the Analytics Toolbox for BigQuery is granted to all Google users that create a connection to BigQuery from the CARTO Workspace using OAuth. You can find step-by-step instructions on how to create a connection with BigQuery [here](/carto-user-manual/connections/creating-a-connection/#connection-to-bigquery).
 
 <div style="text-align:center" >
-<img src="/img/cloud-native-workspace/connections/the_connections_bigquery_first.png" alt="Creating a connection with BigQuery from the CARTO Workspace" style="width:100%">
+<img src="/img/bq-analytics-toolbox/create_connection_bq_oauth.png" alt="Creating a connection with BigQuery from the CARTO Workspace" style="width:100%">
 </div>
 
+Once you create a connection, your user will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery available in the `carto-un` and `carto-un-eu` projects, under the `carto` dataset, directly from the BigQuery console. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
 
-These service accounts will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery available in the `carto-un` and `carto-un-eu` projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data.
+#### Getting access for a Service Account
 
-To start using the Analytics Toolbox from the CARTO Workspace, you can:
-* Create tilesets from the Data Explorer following [this guide](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/#from-the-carto-workspace).
-* Create custom SQL layers in Builder following [this guide](/analytics-toolbox-bq/guides/running-queries-from-builder/).
+Access to the Analytics Toolbox for BigQuery is granted to every service account that is used to create a connection to BigQuery from the CARTO Workspace (Service Account option). You can find step-by-step instructions on how to create a connection with BigQuery [here](/carto-user-manual/connections/creating-a-connection/#connection-to-bigquery).
+
+<div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/create_connection_bq_sa.png" alt="Creating a connection with BigQuery from the CARTO Workspace" style="width:100%">
+</div>
+
+These service accounts will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery available in the `carto-un` and `carto-un-eu` projects, under the `carto` dataset. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
+
+#### Running the Analytics Toolbox
+
+The Analytics Toolbox can be run from:
+
+* your BigQuery console, after creating an OAuth connection to BigQuery from the Workspace.
+* any BigQuery client, authenticated using a Service Account that has been previously used to create a connection to BigQuery from the Workspace. 
+* directly from the Workspace, by:
+  * Creating tilesets from the Data Explorer following [this guide](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/#from-the-carto-workspace).
+  * Creating custom SQL layers in Builder following [this guide](/analytics-toolbox-bq/guides/running-queries-from-builder/).
 
 {{% bannerNote title="CONTACT SUPPORT" type="info" %}}
 Please contact [support@carto.com](mailto:support@carto.com) if you are a CARTO customer and you:
 
-* need access to the Analytics Toolbox for a Google account (not a service account).
 * need access to the Analytics Toolbox in a different region.
 * wish to install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls).
 {{%/ bannerNote %}}
