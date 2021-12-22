@@ -1,5 +1,14 @@
 ## Release notes
 
+### December 22, 2021
+
+#### Module retail
+
+Feature
+- Add BUILD_REVENUE_MODEL_DATA procedure.
+- Add BUILD_REVENUE_MODEL procedure.
+- Add PREDICT_REVENUE_AVERAGE procedure.
+
 ### December 16, 2021
 
 #### Module accessors
