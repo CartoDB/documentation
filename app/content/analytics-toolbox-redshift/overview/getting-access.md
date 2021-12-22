@@ -52,7 +52,7 @@ This step is required to run the next SQL scripts. Connect to the database that 
 
 #### 2. Download the package file
 
-Download the [package file]](https://storage.googleapis.com/carto-analytics-toolbox-core/redshift/carto-analytics-toolbox-core-redshift-latest.zip) and unzip it in your local storage.
+Download the [package file](https://storage.googleapis.com/carto-analytics-toolbox-core/redshift/carto-analytics-toolbox-core-redshift-latest.zip) and unzip it in your local storage.
 
 {{% bannerNote title="TIP" type="tip" %}}
 If you have a previously installed version of the Analytics Toolbox, you can check the installed version by running `SELECT carto.VERSION_CORE()`.
