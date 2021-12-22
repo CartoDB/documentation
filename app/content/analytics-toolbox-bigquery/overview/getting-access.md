@@ -42,10 +42,7 @@ The Analytics Toolbox can be run from:
   * Creating custom SQL layers in Builder following [this guide](/analytics-toolbox-bq/guides/running-queries-from-builder/).
 
 {{% bannerNote title="CONTACT SUPPORT" type="info" %}}
-Please contact [support@carto.com](mailto:support@carto.com) if you are a CARTO customer and you:
-
-* need access to the Analytics Toolbox in a different region.
-* wish to install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls).
+If you are a CARTO customer and need access to the Analytics Toolbox in a different BigQuery region or wish to install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls), please follow the [manual installation guide](#manual-installation).
 {{%/ bannerNote %}}
 
 
@@ -116,33 +113,38 @@ If you need access to the Analytics Toolbox in a different region or install it 
 
 If you are not a CARTO customer you can still use the **core** modules of the Analytics Toolbox. These modules are available to all BigQuery authenticated users through the `carto-os` and `carto-os-eu` projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data.
 
+
 ### Manual Installation
 
-The Analytics Toolbox can be installed manually in any GCP project in any region by using a package file provided by CARTO.
+The Analytics Toolbox is currently available in GCP's US and EU multi-regions, but it can also be installed manually in any GCP project in any region by using a package file provided by CARTO.
 
 The CARTO Analytics Toolbox contains two packages:
 * **core**: this is the public and open-source package. It contains all the core GIS functions that complement the GIS native functions available in BigQuery.
 * **advanced**: this is a premium package. It contains advanced GIS functions to power high-level GIS analytics in BigQuery.
 
 {{% bannerNote title="NOTE" type="note" %}}
-This guide explains how to install the core package which is publicly available. In order to access the **advanced** features, please contact support@carto.com.
+This guide explains how to install the core package which is publicly available. If you are a CARTO customer and wish to access the **advanced** features, please contact support@carto.com.
 {{%/ bannerNote %}}
 
 We can divide the process into three steps: preparation, setup and installation. The setup must be done only the first time, then the installation must be done every time you want to install a new version of the packages.
 
-In this guide we'll use Google Cloud Shell to setup and install the toolbox.
-You'll need to open the [GCP console](https://console.cloud.google.com) and select the project to install the toolbox, then use the ">_" button (top right) to "Activate Cloud Shell".
+In this guide we will use Google Cloud Shell to setup and install the toolbox.
+Please open the [GCP console](https://console.cloud.google.com) and select the project to install the toolbox, then use the ">_" button (top right) to "Activate Cloud Shell".
+
+<div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/gcp-cloud-shell.png" alt="GCP Cloud Shell" style="width:100%">
+</div>
 
 #### Preparation
 
-You'll need a GCP project to install the toolbox, as well as a storage bucket in the same project to store the JavasScript libraries needed. Users of the toolbox will need permission to read both the dataset set and bucket in order to run the CARTO Analytic Toolbox functions and procedures.
+You will need a GCP project to install the Toolbox, as well as a storage bucket in the same project to store the JavasScript libraries needed. Users of the Toolbox will need permissions to read both the BigQuery dataset (where the functions and procedures will be installed) and the bucket in order to run the CARTO Analytics Toolbox.
 
-We'll set this information as well as the location where the toolbox will be created (should be the same as the bucket) into Cloud Shell environment variables:
+We will set the project and bucket names as well as the [location](https://cloud.google.com/bigquery/docs/locations) where the toolbox will be created (should be the same as the bucket) as Cloud Shell environment variables:
 
-* `TARGET_PROJECT`: The id of the project where the toolbox dataset will be created
-* `TARGET_BUCKET`: The name of the bucket to store the toolbox JavasScript libraries
-  (don't use a protocol prefix like `gs://`)
-* `TARGET_REGION`: The region of the bucket, where the toolbox dataset will be created
+* `TARGET_PROJECT`: Project id where the toolbox dataset will be created
+* `TARGET_BUCKET`: Name of the bucket to store the JavasScript libraries needed by the Toolbox
+  (please omit any protocol prefix like `gs://`)
+* `TARGET_REGION`: Location of the BigQuery dataset that will be created to install the Analytics Toolbox
 
 Set these variables by executing the following in Cloud Shell (after replacing the appropriate values):
 
@@ -153,21 +155,21 @@ export TARGET_BUCKET="<my-bucket>"
 ```
 
 {{% bannerNote title="WARNING" type="warning" %}}
-After a while without using the Cloud Shell you may need to reconnect it; in this case you'll need to set the environment variables again.
+After a while without using the Cloud Shell you may need to reconnect it; if that happens, you will need to set the environment variables again.
 {{%/ bannerNote %}}
 
 #### Setup
 
-This step will be required only before the first installation. Activate the Cloud Shell in the target project and make sure the environment variables from the preparation above are set.
+This step is only required before the first installation. Activate the Cloud Shell in the target project and make sure the environment variables from the preparation step above are set.
 
-Before starting the process make sure the target GCP project exists and is the correct one:
+Before starting the process make sure the target GCP project exists and that it is the correct one by executing the following:
 
 ```bash
-# check project existence
+# Check project existence
 gcloud projects describe $TARGET_PROJECT
 ```
 
-Then we need to create a dataset named `carto` to contain the toolbox:
+Then, create a BigQuery dataset named `carto`, where the Toolbox will be installed:
 
 ```bash
 # Create dataset "carto"
@@ -176,9 +178,9 @@ bq mk --location=$TARGET_REGION --description="CARTO dataset" -d $TARGET_PROJECT
 
 #### Installation
 
-Each time a new release of the toolbox is available, a [new package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip) should be installed in the `carto` dataset.
+To install the Analytics Toolbox in the `carto` dataset we will use the [this installation package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip) and follow the instructions below. Please note that this process should be repeated every time a new version of the Toolbox is available.
 
-To do so, access the Cloud Shell and set the environment variables as described above, then run the following commands:
+Access the Cloud Shell and set the environment variables as described in the preparation step above, then run the following commands:
 
 ```bash
 # Download package
@@ -197,12 +199,12 @@ bq --location=$TARGET_REGION --project_id=$TARGET_PROJECT query --use_legacy_sql
 ```
 
 {{% bannerNote title="WARNING" type="warning" %}}
-This file will remove all the previous functions and procedures in the "carto" dataset.
+This will remove all the previous functions and procedures in the "carto" dataset.
 {{%/ bannerNote %}}
 
 #### Check the installed version
 
-Execute the following in the BigQuery console: (in the project where the toolbox was installed)
+Execute the following in the BigQuery console, in the same project where the Toolbox was installed:
 
 ```sql
 SELECT carto.VERSION_CORE();
