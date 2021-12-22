@@ -8,11 +8,11 @@
     ],
     "redirects": [{
       "source": "/spatial-extension-bq",
-      "destination": "/analytics-toolbox-bq",
+      "destination": "/analytics-toolbox-bigquery",
       "type": 301
     }, {
       "source": "/spatial-extension-bq/**",
-      "destination": "/analytics-toolbox-bq",
+      "destination": "/analytics-toolbox-bigquery",
       "type": 301
     }, {
       "source": "/spatial-extension-bq/**/",
