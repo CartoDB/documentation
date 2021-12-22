@@ -178,7 +178,7 @@ bq mk --location=$TARGET_REGION --description="CARTO dataset" -d $TARGET_PROJECT
 
 #### Installation
 
-To install the Analytics Toolbox in the `carto` dataset we will make use of [this installation package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip) and follow the instructions below. Please note that this process should be repeated every time a new version of the Toolbox is available.
+To install the Analytics Toolbox in the `carto` dataset we will use the [this installation package](https://storage.googleapis.com/carto-analytics-toolbox-core/bigquery/carto-analytics-toolbox-core-bigquery-2021.12.13.zip) and follow the instructions below. Please note that this process should be repeated every time a new version of the Toolbox is available.
 
 Access the Cloud Shell and set the environment variables as described in the preparation step above, then run the following commands:
 
