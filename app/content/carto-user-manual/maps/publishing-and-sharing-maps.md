@@ -17,7 +17,7 @@ Once you have added data and a title to your map, the *Share* button will be ena
 
 A new dialog screen will open allowing you to select who you want to share your maps with:
 
-![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_private.png) 
+![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_private_by_default.png) 
 
 Here you'll find three different sharing options:
 
@@ -31,9 +31,9 @@ Public maps have some extra options: to share the link with the public, to get D
 
 ![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_public_map.png) 
 
-![Publish options share link copied](/img/cloud-native-workspace/maps/map_sharing_options_public_map_sharelinkcopied.png)
+![Publish options share link copied](/img/cloud-native-workspace/maps/map_public_map_sharelinkcopied.png)
 
-![Publish options developers](/img/cloud-native-workspace/maps/map_sharing_options_public_map_developers.png)
+![Publish options developers](/img/cloud-native-workspace/maps/map_public_map_developers_options.png)
 #### Publishing updates for shared and public maps
 
 Once your map is shared or public, you can manage the state of the map for your viewers (so your editing doesn't affect their experience). When you're ready to push an update, click on the *Publish Updates* icon:
