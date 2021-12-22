@@ -74,7 +74,7 @@ function updateReleaseNotes () {
         content += `### ${formatDate(date)}\n\n`;
         const items = changelogs.filter(c => c.date === date);
         for (const item of items) {
-            content += `#### Module ${item.module} v${item.version}\n\n`;
+            content += `#### Module ${item.module}\n\n`;
             content += `${item.changes.replace(/Added/g, 'Feature').replace(/### /g, '')}\n\n`;
         }
     }

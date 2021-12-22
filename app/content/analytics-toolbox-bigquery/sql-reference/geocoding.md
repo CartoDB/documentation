@@ -62,7 +62,7 @@ CALL `carto-un`.carto.GEOCODE_BATCH(
 Geocode states. In this case `admin` should be NULL and the `topadmin` option must be used.
 
 ```sql
-CALL `carto-un`.geocoding.GEOCODE_BATCH(
+CALL `carto-un`.carto.GEOCODE_BATCH(
   'SELECT id, state, country FROM `my-project.my-dataset.my-table`',
   'state', 'country', NULL ,
   'my-project.my-dataset.my-geocoded-table',
@@ -74,7 +74,7 @@ CALL `carto-un`.geocoding.GEOCODE_BATCH(
 Geocode countries. Both `country` and `admin` should be NULL and the `topadmin` option must be used.
 
 ```sql
-CALL `carto-un`.geocoding.GEOCODE_BATCH(
+CALL `carto-un`.carto.GEOCODE_BATCH(
   'SELECT id, country FROM `my-project.my-dataset.my-table`',
   'country', NULL, NULL ,
   'my-project.my-dataset.my-geocoded-table',

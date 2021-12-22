@@ -35,7 +35,7 @@ Now let's create a compacted network. During this process all nodes with only tw
 We are going to use the [`GENERATE_NETWORK_TABLE`](../../sql-reference/routing/#generate_network_table) procedure:
 
 ```sql
-CALL ``carto-un`.routing.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestrings', 
+CALL `carto-un`.carto.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestrings', 
 'mydataset.liberty_island_network');
 ```
 
@@ -47,7 +47,7 @@ CREATE OR REPLACE TABLE
 WITH
   T AS(
   SELECT
-    ``carto-un`.routing.GENERATE_NETWORK`(ARRAY_AGG(STRUCT(geometry, 1.))) generate_network
+    `carto-un`.carto.GENERATE_NETWORK`(ARRAY_AGG(STRUCT(geometry, 1.))) generate_network
   FROM
     `mydataset.my_test_linestrings` )
 SELECT
@@ -83,7 +83,7 @@ You can use the [`FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`](../../sql-reference/ro
 
 ```sql
 CALL
-  ``carto-un`.routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
+  `carto-un`.carto.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
     "mydataset.my_shortest_path",
     "ST_geogpoint(-74.04665, 40.68983)",
     "ST_geogpoint(-74.0438, 40.68874)" )
@@ -96,7 +96,7 @@ Our you can use the [`FIND_SHORTEST_PATH_FROM_NETWORK`](../../sql-reference/rout
 WITH
   T AS(
   SELECT
-    ``carto-un`.routing.FIND_SHORTEST_PATH_FROM_NETWORK`(ARRAY_AGG(flatten_links),
+    `carto-un`.carto.FIND_SHORTEST_PATH_FROM_NETWORK`(ARRAY_AGG(flatten_links),
       ST_geogpoint(-74.04665,
         40.68983),
       ST_geogpoint(-74.0438,
@@ -126,7 +126,7 @@ You can use the [`DISTANCE_MAP_FROM_NETWORK_TABLE`](../../sql-reference/routing/
 
 ```sql
 CALL
-  ``carto-un`.routing.DISTANCE_MAP_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
+  `carto-un`.carto.DISTANCE_MAP_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
     "mydataset.my_distance_map",
     "ST_geogpoint(-74.0438, 40.68874)" )
 ```
@@ -137,7 +137,7 @@ Or you can use the [`DISTANCE_MAP_FROM_NETWORK`](../../sql-reference/routing/#di
 WITH
   T AS(
   SELECT
-    ``carto-un`.routing.DISTANCE_MAP_FROM_NETWORK`(ARRAY_AGG(flatten_links),
+    `carto-un`.carto.DISTANCE_MAP_FROM_NETWORK`(ARRAY_AGG(flatten_links),
       ST_geogpoint(-74.0438,
         40.68874)) distance_map
   FROM

@@ -7,10 +7,8 @@ mkdir $CHECKOUT_DIR
 
 echo -e "\nCheckout Analytics Toolbox for BigQuery"
 echo "---------------------------------------"
-git clone --branch bigquery-naming-refactor --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-master
-git clone --branch bigquery-naming-refactor --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-master
-# git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-master
-# git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-master
+git clone --branch master --depth 1 git@github.com:CartoDB/carto-spatial-extension.git $CHECKOUT_DIR/at-core-bigquery-master
+git clone --branch master --depth 1 git@github.com:CartoDB/carto-advanced-spatial-extension.git $CHECKOUT_DIR/at-advanced-bigquery-master
 
 echo -e "\nCheckout Analytics Toolbox for BigQuery prev"
 echo "--------------------------------------------"

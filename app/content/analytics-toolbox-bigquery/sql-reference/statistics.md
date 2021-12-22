@@ -120,7 +120,7 @@ where:
 ```sql
 SELECT *
 FROM UNNEST((
-    SELECT `carto-un`.statistics.GFUN(myarray)
+    SELECT `carto-un`.carto.GFUN(myarray)
     FROM (
         SELECT ARRAY_AGG(position_geom) myarray
         FROM `bigquery-public-data.catalonian_mobile_coverage.mobile_data_2015_2017`
@@ -178,7 +178,7 @@ The output table will contain a column with the cell id, a column for each featu
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.statistics.GWR_GRID(
+CALL `carto-un`.carto.GWR_GRID(
     'cartobq.docs.airbnb_berlin_h3_qk',
     ['bedrooms', 'bathrooms'], -- [ beds feature, bathrooms feature ]
     'price', -- price (target variable)
@@ -188,7 +188,7 @@ CALL `carto-un`.statistics.GWR_GRID(
 ```
 
 ```sql
-CALL `carto-un`.statistics.GWR_GRID(
+CALL `carto-un`.carto.GWR_GRID(
     'cartobq.docs.airbnb_berlin_h3_qk',
     ['bedrooms', 'bathrooms'], -- [ beds feature, bathrooms feature ]
     'price', -- price (target variable)
@@ -229,7 +229,7 @@ where:
 ```sql
 SELECT *
 FROM UNNEST((
-    SELECT `carto-un`.statistics.KNN(myarray, 10)
+    SELECT `carto-un`.carto.KNN(myarray, 10)
     FROM (
         SELECT ARRAY_AGG(STRUCT(format('%08x', uid),position_geom)) myarray
         FROM (
@@ -295,7 +295,7 @@ where:
 ```sql
 SELECT *
 FROM UNNEST((
-    SELECT `carto-un`.statistics.LOF(myarray, 10)
+    SELECT `carto-un`.carto.LOF(myarray, 10)
     FROM (
         SELECT ARRAY_AGG(STRUCT(format('%08x', uid),position_geom)) myarray
         FROM (
@@ -334,7 +334,7 @@ This function computes the [Local Outlier Factor](https://en.wikipedia.org/wiki/
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.statistics.LOF_TABLE(
+CALL `carto-un`.carto.LOF_TABLE(
   'bigquery-public-data.new_york_subway.stations',
   'myproject.mydataset.my_output_table',
   'station_id',

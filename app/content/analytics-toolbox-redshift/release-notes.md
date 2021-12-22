@@ -1,8 +1,15 @@
 ## Release notes
 
+### December 16, 2021
+
+#### Module transformations
+
+Fixed
+- Refactor of internal __ST_GEOMFROMGEOJSON function to avoid UDFs nestig Redshift limitations
+
 ### December 10, 2021
 
-#### Module constructors v1.1.0
+#### Module constructors
 
 Changed
 - Deployment schema "carto" instead of "constructors".
@@ -10,7 +17,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module placekey v1.1.0
+#### Module placekey
 
 Changed
 - Deployment schema "carto" instead of "placekey".
@@ -21,7 +28,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module processing v1.1.0
+#### Module processing
 
 Changed
 - Deployment schema "carto" instead of "processing".
@@ -29,7 +36,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module quadkey v1.1.0
+#### Module quadkey
 
 Changed
 - Deployment schema "carto" instead of "quadkey".
@@ -49,7 +56,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module s2 v1.1.0
+#### Module s2
 
 Changed
 - Deployment schema "carto" instead of "s2".
@@ -70,7 +77,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module transformations v1.1.0
+#### Module transformations
 
 Changed
 - Deployment schema "carto" instead of "transformations".
@@ -78,7 +85,7 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module clustering v1.1.0
+#### Module clustering
 
 Changed
 - Deployment schema "carto" instead of "clustering".
@@ -86,7 +93,15 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module random v1.1.0
+#### Module clustering
+
+Changed
+- Deployment schema "carto" instead of "clustering".
+
+Removed
+- Remove VERSION function.
+
+#### Module random
 
 Changed
 - Deployment schema "carto" instead of "random".
@@ -94,21 +109,21 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module random v1.0.1
+#### Module random
 
 Changed
 - ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
 
 ### October 21, 2021
 
-#### Module clustering v1.0.1
+#### Module clustering
 
 Changed
 - ST_CLUSTERKMEANS returning an Array.
 
 ### October 6, 2021
 
-#### Module processing v1.0.0
+#### Module processing
 
 Feature
 - Create processing module.
@@ -119,7 +134,7 @@ Feature
 - Add ST_VORONOILINES function.
 - Add ST_VORONOIPOLYGONS function.
 
-#### Module transformations v1.0.0
+#### Module transformations
 
 Feature
 - Create transformations module.
@@ -133,14 +148,14 @@ Feature
 
 ### October 5, 2021
 
-#### Module clustering v1.0.0
+#### Module clustering
 
 Feature
 - Create clustering module.
 - Add VERSION function.
 - Add ST_CLUSTERKMEANS function.
 
-#### Module random v1.0.0
+#### Module random
 
 Feature
 - Create random module.
@@ -149,7 +164,7 @@ Feature
 
 ### September 23, 2021
 
-#### Module s2 v1.0.0
+#### Module s2
 
 Feature
 - Create s2 module.
@@ -170,7 +185,7 @@ Feature
 
 ### September 22, 2021
 
-#### Module quadkey v1.0.1
+#### Module quadkey
 
 Feature
 - Add KRING_DISTANCES function.
@@ -180,7 +195,7 @@ Changed
 
 ### September 17, 2021
 
-#### Module constructors v1.0.0
+#### Module constructors
 
 Feature
 - Create constructors module.
@@ -192,7 +207,7 @@ Feature
 
 ### September 9, 2021
 
-#### Module quadkey v1.0.0
+#### Module quadkey
 
 Feature
 - Create quadkey module.
@@ -213,7 +228,7 @@ Feature
 
 ### September 7, 2021
 
-#### Module placekey v1.0.0
+#### Module placekey
 
 Feature
 - Create placekey module.

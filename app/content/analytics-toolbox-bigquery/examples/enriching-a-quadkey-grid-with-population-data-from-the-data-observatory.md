@@ -24,7 +24,7 @@ JOIN (
     ON d.geoid = g.geoid
     WHERE shop = 'supermarket' )
   SELECT
-    `carto-un`.quadkey.ST_ASQUADINT(geom, 15) AS qid,
+    `carto-un`.carto.QUADINT_FROMGEOGPOINT(geom, 15) AS qid,
     COUNT(*) AS agg_total
   FROM data
   GROUP BY qid 
