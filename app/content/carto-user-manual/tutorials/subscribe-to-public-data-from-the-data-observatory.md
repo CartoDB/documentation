@@ -3,7 +3,7 @@ title: "Subscribe to public data from the Data Observatory"
 description: "In this tutorial we are going to showcase how to leverage the public data offering from our Data Observatory and use the data from a subscription to build an interactive dashboard in our map-making tool, Builder."
 image: "/img/tutorials/chicago-spatial-features.png"
 type: tutorials
-date: "2021-04-12"
+date: "2021-08-12"
 # categories:
 #     - easy
 #     - transformations
