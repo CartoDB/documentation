@@ -53,13 +53,13 @@ Required. Either a SQL query or a name of dataset/tileset.
 
 Required. Data type. Possible values are:
 
-- `MAP_TYPES.QUERY`, if `data` is a SQL query. 
+- `MAP_TYPES.QUERY`, if `data` is a SQL query.
 - `MAP_TYPES.TILESET`, if `data` is a tileset name.
 - `MAP_TYPES.TABLE`, if `data` is a dataset name. Only supported with API v3.
 
 #### `connection` (String)
 
-Required when apiVersion is `API_VERSIONS.V3`. 
+Required when apiVersion is `API_VERSIONS.V3`.
 
 Name of the connection registered in the CARTO workspace.
 
@@ -77,7 +77,7 @@ Names of columns to fetch. By default, all columns are fetched.
 
 #### `uniqueIdProperty` (String)
 
-* Default: `cartodb_id`
+- Default: `cartodb_id`
 
 Optional. A string pointing to a unique attribute at the result of the query. A unique attribute is needed for highlighting with vector tiles when a feature is split across two or more tiles.
 
@@ -89,26 +89,124 @@ Optional. Overrides the configuration to connect with CARTO. Check the parameter
 
 `onDataLoad` is called when the request to the CARTO Maps API was completed successfully.
 
-* Default: `data => {}`
+- Default: `data => {}`
 
 Receives arguments:
 
-* `data` (Object) - Data received from CARTO Maps API
+- `data` (Object) - Data received from CARTO Maps API
 
 #### `onDataError` (Function, optional)
 
 `onDataError` is called when the request to the CARTO Maps API failed. By default the Error is thrown.
 
-* Default: `null`
+- Default: `null`
 
 Receives arguments:
 
-* `error` (`Error`)
+- `error` (`Error`)
 
 #### Source
 
 [modules/carto/src/layers/carto-layer.js](https://github.com/visgl/deck.gl/tree/master/modules/carto/src/layers/carto-layer.js)
 
+
+### fetchMap
+
+{{% bannerNote type="warning" title="Only available in v8.7 alpha"%}}
+This function is only available in deck.gl v8.7 alpha.
+{{%/ bannerNote %}}
+
+`fetchMap` is an API that instantiates layers configured in CARTO Builder for use with deck.gl. You just need to add your data sources in Builder, style your layers and share your map. Then you need to copy the map ID and use it to retrieve the map configuration from the platform. It is available starting with CARTO Maps API version v3.
+
+<div align="center">
+  <div>
+    <img src="https://user-images.githubusercontent.com/453755/143416216-4f1f8ddb-6ba3-4ed2-a026-d89c0f3e1ec7.gif" />
+    <p><i>CARTO Builder demo</i></p>
+  </div>
+</div>
+
+#### Static display of a CARTO map
+
+```js
+import {Deck} from '@deck.gl/core';
+import {fetchMap} from '@deck.gl/carto';
+const cartoMapId = 'ff6ac53f-741a-49fb-b615-d040bc5a96b8';
+fetchMap({cartoMapId}).then(map => new Deck(map));
+```
+
+#### Integration with basemap
+
+```js
+import mapboxgl from 'mapbox-gl';
+fetchMap({cartoMapId}).then(({initialViewState, mapStyle, layers}) => {
+  const deck = new Deck({canvas: 'deck-canvas', controller: true, initialViewState, layers});
+  // Add Mapbox GL for the basemap. It's not a requirement if you don't need a basemap.
+  const MAP_STYLE = `https://basemaps.cartocdn.com/gl/${mapStyle.styleType}-gl-style/style.json`;
+  const map = new mapboxgl.Map({container: 'map', style: MAP_STYLE, interactive: false});
+  deck.setProps({
+    onViewStateChange: ({viewState}) => {
+      const {longitude, latitude, ...rest} = viewState;
+      map.jumpTo({center: [longitude, latitude], ...rest});
+    }
+  });
+});
+```
+
+#### Parameters
+
+```js
+const map = await fetchMap({cartoMapId, credentials, autoRefresh, onNewData});
+```
+
+- `cartoMapId` (String) - identifier of public map created in CARTO Builder
+  
+- `credentials` (Object, Optional) - [CARTO Credentials](/docs/api-reference/carto/overview.md#carto-credentials) to use in API requests
+  
+- `autoRefresh` (Number, Optional) - Interval in seconds at which to autoRefresh the data. If provided, `onNewData` must also be provided
+  
+- `onNewData` (Function, Optional) - Callback function that will be invoked whenever data in layers is changed. If provided, `autoRefresh` must also be provided
+
+#### Return value
+
+When invoked with a given `cartoMapId`, `fetchMap` will retrieve the information about the map from CARTO, generate appropriate layers and populate them with data. The properties of the `map` are as follows:
+
+- `id` (String) - the `cartoMapId`
+  
+- `title` (String) - the title given to the map in CARTO Builder
+
+- `description` (String) - the description given to the map in CARTO Builder
+
+- `createdAt` (String) - when the map was created
+
+- `updatedAt` (String) - when the map was last updated
+
+- `initialViewState` (String) - the [view state](https://deck.gl/docs/developer-guide/views.md#view-state)
+
+- `mapStyle` (String) - an identifier describing the [basemap](#basemaps) configured in CARTO Builder
+
+- `layers` (Array) - a collection of deck.gl [layers](https://deck.gl/docs/api-reference/layers.md)
+
+- `stopAutoRefresh` (Function) - a function to invoke to stop auto-refreshing. Only present if `autoRefresh` option was provided to `fetchMap`
+
+#### Auto-refreshing
+
+With dynamic data sources, the `autoRefresh` option to `fetchMap` makes it simple to create a live-updating map.
+
+```js
+const deck = new Deck({canvas: 'deck-canvas'});
+const mapConfiguration = {
+  autoRefresh: 5,
+  cartoMapId,
+  onNewData: ({layers}) => {
+    deck.setProps({layers});
+  }
+};
+const {initialViewState, layers, stopAutoRefresh} = await fetchMap(mapConfiguration);
+deck.setProps({controller: true, initialViewState, layers});
+buttonElement.addEventListener('click', () => {
+  stopAutoRefresh();
+});
+```
 
 ### Basemaps
 
@@ -137,7 +235,7 @@ import {StaticMap} from 'react-map-gl';
 import {BASEMAP} from '@deck.gl/carto';
 <DeckGL initialViewState={INITIAL_VIEW_STATE} controller={true} layers={layers}>
   <StaticMap mapStyle={BASEMAP.POSITRON} />
-</DeckGL>
+</DeckGL>;
 ```
 
 #### Usage standalone
@@ -157,37 +255,37 @@ To use pre-bundled scripts:
 
 ```javascript
 const deckgl = new deck.DeckGL({
-    container: 'map',
-    mapStyle: deck.carto.BASEMAP.POSITRON,
-    initialViewState: {
-      latitude: 0,
-      longitude: 0,
-      zoom: 1
-    },
-    controller: true
-  });
+  container: 'map',
+  mapStyle: deck.carto.BASEMAP.POSITRON,
+  initialViewState: {
+    latitude: 0,
+    longitude: 0,
+    zoom: 1
+  },
+  controller: true
+});
 ```
 
 #### Supported basemaps
 
 There are several basemaps available today:
 
-* POSITRON
-* DARK_MATTER
-* VOYAGER
-* POSITRON_NOLABELS
-* DARK_MATTER_NOLABELS
-* VOYAGER_NOLABELS
+- POSITRON
+- DARK_MATTER
+- VOYAGER
+- POSITRON_NOLABELS
+- DARK_MATTER_NOLABELS
+- VOYAGER_NOLABELS
 
 
-| NAME | PREVIEW | STYLE URL  |
-| -----|---------| ---------- |
-| POSITRON | <img src="https://carto.com/help/images/building-maps/basemaps/positron_labels.png"  /> | https://basemaps.cartocdn.com/gl/positron-gl-style/style.json |
-| DARK_MATTER | <img src="https://carto.com/help/images/building-maps/basemaps/dark_labels.png"  /> | https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json |
-| VOYAGER | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_labels.png"  /> | https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json |
-| POSITRON_NOLABELS | <img src="https://carto.com/help/images/building-maps/basemaps/positron_no_labels.png"  /> | https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json |
-| DARK_MATTER_NOLABELS | <img src="https://carto.com/help/images/building-maps/basemaps/dark_no_labels.png"  /> | https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json |
-| VOYAGER_NOLABELS | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_no_labels.png"  /> | https://basemaps.cartocdn.com/gl/voyager-nolabels-gl-style/style.json |
+| NAME                 | PREVIEW                                                                                    | STYLE URL                                                                 |
+| -------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| POSITRON             | <img src="https://carto.com/help/images/building-maps/basemaps/positron_labels.png"  />    | https://basemaps.cartocdn.com/gl/positron-gl-style/style.json             |
+| DARK_MATTER          | <img src="https://carto.com/help/images/building-maps/basemaps/dark_labels.png"  />        | https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json          |
+| VOYAGER              | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_labels.png"  />     | https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json              |
+| POSITRON_NOLABELS    | <img src="https://carto.com/help/images/building-maps/basemaps/positron_no_labels.png"  /> | https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json    |
+| DARK_MATTER_NOLABELS | <img src="https://carto.com/help/images/building-maps/basemaps/dark_no_labels.png"  />     | https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json |
+| VOYAGER_NOLABELS     | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_no_labels.png"  />  | https://basemaps.cartocdn.com/gl/voyager-nolabels-gl-style/style.json     |
 
 
 ### Style Helpers
@@ -198,7 +296,7 @@ These helpers take advantage of [CARTOColors](https://carto.com/carto-colors/), 
 
 #### colorBins
 
-Helper function for quickly creating a color bins style.
+Helper function for quickly creating a color bins style based on [d3 scaleThreshold](https://github.com/d3/d3-scale/blob/main/README.md#scaleThreshold).
 
 Data values of each attribute are rounded down to the nearest value in the domain and are then styled with the corresponding color.
 
@@ -212,6 +310,15 @@ new CartoLayer({
     colors: 'Teal'
   })
 });
+```
+
+In this example, using colors from the `Teal` palette with length `domain.length + 1`, the range/color equivalence is:
+
+```
+[, 1e5)     -> Teal[0]
+[1e5, 2e5)  -> Teal[1]
+[2e5, 3e5)  -> Teal[2]
+[3e5,]      -> Teal[3]
 ```
 
 ##### Arguments

@@ -7,7 +7,7 @@ This module contains functions that perform geocoding: taking a text-based descr
 ### GEOCODE_BATCH
 
 {{% bannerNote type="code" %}}
-geocoding.GEOCODE_BATCH(input_query, search, country, admin, output, max_multiple_results, source, max_resolution)
+geocoding.GEOCODE_BATCH(input_query, search, country, admin, output, max_multiple_results, max_resolution)
 {{%/ bannerNote %}}
 
 **Description**
@@ -18,9 +18,8 @@ This procedure can be used to either geocode an input query and produce a new ta
 * `search`: `STRING` SQL expression (e.g. input query column name, literal, etc.) that specifies the search text to be geocoded.
 * `country`: `STRING` SQL expression that specifies the country; can be NULL.
 * `admin`: `STRING` SQL expression that specifies the admin division (state/province/...); can be NULL.
-* `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. If this parameter is NULL, then the `input_query` parameter must specify an existing table (also including project and dataset), to which the geocode columns will be added.
+* `output`: `STRING` containing the name of an output table to store the results. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. If this parameter is NULL, then the `input_query` parameter must specify an existing table (also including project and dataset), to which the geocode columns will be added.
 * `max_multiple_results`: `INT64`. Set it to NULL to return only a single best match geocode result per row. Geocoding attributes will appear as separate columns of the result. If you pass an integer greater than 0 multiple geocoding result per row will be returned in a `__carto_geocode`column. Geocoding attributes will appear as STRUCT fields. The integer passed will define the maximum geocode matches per row; note that if you pass 1 you will get single best matches, but in a single column with the same format as for multiple results.
-* `source`: STRING that should always be formed as `<analytics-toolbox-project>.geocoding`. For example, if you are using the Analytics Toolbox from `carto-un`, this parameter should be `carto-un.geocoding`.
 * `max_resolution`: `STRING`. By default, if this parameter is NULL, the highest resolution (i.e. more detailed) entity found that matches the search expression (and country/admin if present) will be used. Currently the highest resolution corresponds to cities, followed by administrative divisions and countries. Sometimes, for example if the entities to geocode are states or countries, it's preferable to limit the maximum resolution level to match and give priority to lower resolutions. The value `topadmin` can be assigned to this parameter to geocode administrative divisions in general, where the _largest_ (lower resolution) entities are given priority and cities are excluded.
 
 **Result**,
@@ -43,24 +42,52 @@ If `max_multiple_results` is NULL the following columns will be added to either 
 If `max_multiple_results` is an integer, then multiple results will appear in a single column `__carto_geocode` of type ARRAY, containing objects with fields corresponding to the columns mentioned above (but without the `__carto_` prefixes in their names).
 
 {{% customSelector %}}
-**Example**
+**Examples**
 {{%/ customSelector %}}
 
+Geocode cities. Note that `country` & `state` are optional, but it's highly
+recommendable to provide at least the country. Otherwise results may not only
+be inaccurate, but processing time can be very long, since each input has to be search globally.
+
 ```sql
-CALL bqcarto.geocoding.GEOCODE_BATCH(
+CALL `carto-un`.geocoding.GEOCODE_BATCH(
   'SELECT id, city, state, country FROM `my-project.my-dataset.my-table`',
   'city', 'country', 'state',
-  ['`my-project.my-dataset.my-geododed-table`'],
+  'my-project.my-dataset.my-geocoded-table',
   NULL,
-  'my-dataobs-project.my-dataobs-dataset',
   NULL
 );
 ```
 
+Geocode states. In this case `admin` should be NULL and the `topadmin` option must be used.
+
+```sql
+CALL `carto-un`.geocoding.GEOCODE_BATCH(
+  'SELECT id, state, country FROM `my-project.my-dataset.my-table`',
+  'state', 'country', NULL ,
+  'my-project.my-dataset.my-geocoded-table',
+  NULL,
+  'topadmin'
+);
+```
+
+Geocode countries. Both `country` and `admin` should be NULL and the `topadmin` option must be used.
+
+```sql
+CALL `carto-un`.geocoding.GEOCODE_BATCH(
+  'SELECT id, country FROM `my-project.my-dataset.my-table`',
+  'country', NULL, NULL ,
+  'my-project.my-dataset.my-geocoded-table',
+  NULL,
+  'topadmin'
+);
+```
+
+
 ### GEOCODE_PC_BATCH
 
 {{% bannerNote type="code" %}}
-geocoding.GEOCODE_PC_BATCH(input_query, search, country, output, max_multiple_results, source)
+geocoding.GEOCODE_PC_BATCH(input_query, search, country, output, max_multiple_results)
 {{%/ bannerNote %}}
 
 **Description**
@@ -70,10 +97,9 @@ This procedure can be used to either geocode postal codes an input query and pro
 * `input_query`: `STRING` Either a query that selects the data to be geocoded, or, if the `output` parameter is NULL, the full name of a table to geocode.
 * `search`: `STRING` SQL expression (e.g. input query column name, literal, etc.) that specifies the postal code to be geocoded.
 * `country`: `STRING` SQL expression that specifies the country; can be NULL.
-* `output`: `ARRAY<STRING>` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'PARTITION BY number'`. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. If this parameter is NULL, then the `input_query` parameter must specify an existing table (also including project and dataset), to which the geocode columns will be added.
+* `output`: `STRING` containing the name of an output table to store the results. The name of the output table should include project and dataset: `project-id.dataset-id.table-name`. If this parameter is NULL, then the `input_query` parameter must specify an existing table (also including project and dataset), to which the geocode columns will be added.
 * `max_multiple_results`: `INT64`. Set it to NULL to return only a single best match geocode result per row. Geocoding attributes will appear as separate columns of the result. If you pass an integer greater than 0 multiple geocoding result per row will be returned in a `__carto_geocode`column. Geocoding attributes will appear as STRUCT fields. The integer passed will define the maximum geocode matches per row;
 note that if you pass 1 you will get single best matches, but in a single column with the same format as for multiple results.
-* `source`: STRING that should always be formed as `<analytics-toolbox-project>.geocoding`. For example, if you are using the Analytics Toolbox from `carto-un`, this parameter should be `carto-un.geocoding`.
 
 **Result**
 
@@ -92,12 +118,11 @@ If `max_multiple_results` is an integer, then multiple results will appear in a 
 {{%/ customSelector %}}
 
 ```sql
-CALL bqcarto.geocoding.GEOCODE_PC_BATCH(
+CALL `carto-un`.geocoding.GEOCODE_PC_BATCH(
   'SELECT id, zip, FROM `my-project.my-dataset.my-table`',
   'zip', "'US'",
-  ['`my-project.my-dataset.my-geododed-table`'],
-  NULL,
-  'my-dataobs-project.my-dataobs-dataset'
+  'my-project.my-dataset.my-geododed-table',
+  NULL
 );
 ```
 
@@ -121,6 +146,6 @@ Returns the current version of the geocoding module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT bqcarto.geocoding.VERSION();
+SELECT `carto-un`.geocoding.VERSION();
 -- 1.0.0-beta.2
 ```

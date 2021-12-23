@@ -6,10 +6,10 @@
 
 You can learn more about Placekey on [their website](https://www.placekey.io/) or in the [Overview section](/spatial-extension-sf/sql-reference/placekey/#placekey) of this documentation.
 
-### PLACEKEY_FROMH3
+### H3_ASPLACEKEY
 
 {{% bannerNote type="code" %}}
-carto.PLACEKEY_FROMH3(h3index)
+placekey.H3_ASPLACEKEY(h3index)
 {{%/ bannerNote %}}
 
 **Description**
@@ -25,14 +25,14 @@ Returns the placekey equivalent to the given H3 index.
 **Example**
 
 ```sql
-SELECT carto.PLACEKEY_FROMH3('847b59dffffffff');
+SELECT sfcarto.placekey.H3_ASPLACEKEY('847b59dffffffff');
 -- @ff7-swh-m49
 ```
 
-### PLACEKEY_ISVALID
+### ISVALID
 
 {{% bannerNote type="code" %}}
-carto.PLACEKEY_ISVALID(placekey)
+placekey.ISVALID(placekey)
 {{%/ bannerNote %}}
 
 **Description**
@@ -48,24 +48,24 @@ Returns a boolean value `true` when the given string represents a valid Placekey
 **Examples**
 
 ```sql
-SELECT carto.PLACEKEY_ISVALID('@ff7-swh-m49');
+SELECT sfcarto.placekey.ISVALID('@ff7-swh-m49');
 -- true
 ```
 
 ```sql
-SELECT carto.PLACEKEY_ISVALID('ff7-swh-m49');
+SELECT sfcarto.placekey.ISVALID('ff7-swh-m49');
 -- true
 ```
 
 ```sql
-SELECT carto.PLACEKEY_ISVALID('x');
+SELECT sfcarto.placekey.ISVALID('x');
 -- false
 ```
 
-### PLACEKEY_TOH3
+### PLACEKEY_ASH3
 
 {{% bannerNote type="code" %}}
-carto.PLACEKEY_TOH3(placekey)
+placekey.PLACEKEY_ASH3(placekey)
 {{%/ bannerNote %}}
 
 **Description**
@@ -81,6 +81,26 @@ Returns the H3 index equivalent to the given placekey.
 **Example**
 
 ```sql
-SELECT carto.PLACEKEY_TOH3('@ff7-swh-m49');
+SELECT sfcarto.placekey.PLACEKEY_ASH3('@ff7-swh-m49');
 -- 8a7b59dffffffff
 ```
+
+### VERSION
+
+{{% bannerNote type="code" %}}
+placekey.VERSION()
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the current version of the placekey module.
+
+**Return type**
+
+`STRING`
+
+**Example**
+
+```sql
+SELECT sfcarto.placekey.VERSION();
+-- 1.0.0

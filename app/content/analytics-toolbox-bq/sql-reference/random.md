@@ -14,6 +14,8 @@ random.ST_GENERATEPOINTS(geog, npoints)
 
 Generates randomly placed points inside a polygon and returns them in an array of geographies.
 
+The distribution of the generated points is spherically uniform (i.e. if the coordinates are interpreted as longitude and latitude on a sphere); this means that WGS84 coordinates will be only approximately uniformly distributed, since WGS84 is based on an ellipsoidal model.
+
 {{% bannerNote type="warning" title="warning"%}}
 It never generates more than the requested number of points, but there is a small chance of generating less points.
 {{%/ bannerNote %}}
@@ -37,7 +39,7 @@ WITH blocks AS (
   WHERE g.county_name = 'Sonoma County'
 ),
 point_lists AS (
-  SELECT carto-st.random.ST_GENERATEPOINTS(blockgroup_geom, CAST(total_pop AS INT64)) AS points
+  SELECT `carto-un`.random.ST_GENERATEPOINTS(blockgroup_geom, CAST(total_pop AS INT64)) AS points
   FROM blocks
 )
 SELECT points FROM point_lists CROSS JOIN point_lists.points
@@ -62,6 +64,6 @@ Returns the current version of the random module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.random.VERSION();
+SELECT `carto-un`.random.VERSION();
 -- 1.0.0
 ```

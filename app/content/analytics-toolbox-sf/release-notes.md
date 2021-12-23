@@ -1,163 +1,8 @@
 ## Release notes
 
-### December 3, 2021
-
-#### Module accessors v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "accessors".
-- Rename ST_ENVELOPE function to ST_ENVELOPE_ARR.
-
-Removed
-- Remove VERSION function.
-
-#### Module constructors v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "constructors".
-
-Removed
-- Remove VERSION function.
-
-#### Module h3 v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "h3".
-- Rename ST_ASH3 function to H3_FROMGEOGPOINT.
-- Rename LONGLAT_ASH3 function to H3_FROMLONGLAT.
-- Rename ST_ASH3_POLYFILL function to H3_POLYFILL.
-- Rename ST_BOUNDARY function to H3_BOUNDARY.
-- Rename ISVALID function to H3_ISVALID.
-- Rename COMPACT function to H3_COMPACT.
-- Rename UNCOMPACT function to H3_UNCOMPACT.
-- Rename TOPARENT function to H3_TOPARENT.
-- Rename TOCHILDREN function to H3_TOCHILDREN.
-- Rename ISPENTAGON function to H3_ISPENTAGON.
-- Rename DISTANCE function to H3_DISTANCE.
-- Rename KRING function to H3_KRING.
-- Rename KRING_DISTANCES function to H3_KRING_DISTANCES.
-- Rename HEXRING function to H3_HEXRING.
-
-Removed
-- Remove VERSION function.
-
-#### Module measurements v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "measurements".
-
-#Removed
-- Remove ST_ANGLE, already present in Snowflake.
-- Remove ST_AZIMUTH, already present in Snowflake.
-- Remove VERSION function.
-
-#### Module placekey v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "placekey".
-- Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
-- Rename PLACEKEY_ASH3 function to PLACEKEY_TOH3.
-- Rename ISVALID function to PLACEKEY_ISVALID.
-
-Removed
-- Remove VERSION function.
-
-#### Module processing v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "processing".
-
-Removed
-- Remove VERSION function.
-
-#### Module quadkey v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "quadkey".
-- Rename ZXY_FROMQUADINT function to QUADINT_TOZXY.
-- Rename LONGLAT_ASQUADINT function to QUADINT_FROMLONGLAT.
-- Rename QUADKEY_FROMQUADINT function to QUADINT_TOQUADKEY.
-- Rename TOPARENT function to QUADINT_TOPARENT.
-- Rename TOCHILDREN function to QUADINT_TOCHILDREN.
-- Rename SIBLING function to QUADINT_SIBLING.
-- Rename KRING function to QUADINT_KRING.
-- Rename KRING_DISTANCES function to QUADINT_KRING_DISTANCES.
-- Rename BBOX function to QUADINT_BBOX.
-- Rename ST_ASQUADINT function to QUADINT_FROMGEOGPOINT.
-- Rename ST_ASQUADINT_POLYFILL function to QUADINT_POLYFILL.
-- Rename ST_BOUNDARY function to QUADINT_BOUNDARY.
-
-Removed
-- Remove VERSION function.
-
-#### Module s2 v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "s2".
-- Rename ID_FROMHILBERTQUADKEY function to S2_FROMHILBERTQUADKEY.
-- Rename HILBERTQUADKEY_FROMID function to S2_TOHILBERTQUADKEY.
-- Rename LONGLAT_ASID function to S2_FROMLONGLAT.
-- Rename ST_ASID function to S2_FROMGEOGPOINT.
-- Rename ST_BOUNDARY function to S2_BOUNDARY.
-
-Removed
-- Remove VERSION function.
-
-#### Module transformations v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "transformations".
-
-Remove
-- Remove VERSION function.
-
-#### Module clustering v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "clustering".
-
-Removed
-- Remove VERSION function.
-
-#### Module data v1.0.0-beta.4
-
-Changed
-- Deployment schema "carto" instead of "data".
-
-Removed
-- Remove VERSION function.
-
-#### Module random v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "random".
-
-Removed
-- Remove VERSION function.
-
-### November 25, 2021
-
-#### Module clustering v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "clustering".
-- Remove VERSION function.
-
-#### Module data v1.0.0-beta.4
-
-Changed
-- Deployment schema "carto" instead of "data".
-- Remove VERSION function.
-
-#### Module random v1.1.0
-
-Changed
-- Deployment schema "carto" instead of "random".
-- Remove VERSION function.
-
 ### November 24, 2021
 
-#### Module data v1.0.0-beta.3
+#### Module data
 
 Feature
 - Add DATAOBS_ENRICH_POINTS procedure.
@@ -169,7 +14,7 @@ Feature
 
 ### November 5, 2021
 
-#### Module data v1.0.0-beta.2
+#### Module data
 
 Changes
 - Fields named `dimension`, `total`, `intersection` and `input_area` are now
@@ -182,7 +27,7 @@ Fixed
 
 ### November 4, 2021
 
-#### Module data v1.0.0-beta.1
+#### Module data
 
 Feature
 - Create data module.
@@ -196,7 +41,7 @@ Feature
 
 ### September 22, 2021
 
-#### Module h3 v1.0.3
+#### Module h3
 
 Feature
 - Add KRING_DISTANCES function.
@@ -204,7 +49,7 @@ Feature
 Changed
 - Review HEXRING, KRING functions.
 
-#### Module quadkey v1.0.3
+#### Module quadkey
 
 Feature
 - Add KRING_DISTANCES function.
@@ -214,42 +59,42 @@ Changed
 
 ### September 14, 2021
 
-#### Module s2 v1.0.1
+#### Module s2
 
 Changes
 - Compute ST_BOUNDARY from WKT.
 
 ### September 9, 2021
 
-#### Module quadkey v1.0.2
+#### Module quadkey
 
 Changed
 - Performance improvement in ST_ASQUADINT_POLYFILL.
 
 ### August 24, 2021
 
-#### Module h3 v1.0.2
+#### Module h3
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
 ### August 11, 2021
 
-#### Module quadkey v1.0.1
+#### Module quadkey
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
 
 ### June 2, 2021
 
-#### Module h3 v1.0.1
+#### Module h3
 
 Changed
 - Reduce bundle size for every function.
 
 ### May 26, 2021
 
-#### Module processing v1.0.0
+#### Module processing
 
 Feature
 - Create processing module.
@@ -262,14 +107,14 @@ Feature
 
 ### May 24, 2021
 
-#### Module clustering v1.0.0
+#### Module clustering
 
 Feature
 - Create clustering module.
 - Add VERSION function.
 - Add ST_CLUSTERKMEANS function.
 
-#### Module random v1.0.0
+#### Module random
 
 Feature
 - Create random module.
@@ -278,7 +123,7 @@ Feature
 
 ### May 21, 2021
 
-#### Module accessors v1.0.0
+#### Module accessors
 
 Feature
 - Create accessors module.
@@ -287,7 +132,7 @@ Feature
 
 ### May 20, 2021
 
-#### Module constructors v1.0.0
+#### Module constructors
 
 Feature
 - Create constructors module.
@@ -297,7 +142,7 @@ Feature
 - Add ST_TILEENVELOPE function.
 - Add VERSION function.
 
-#### Module measurements v1.0.0
+#### Module measurements
 
 Feature
 - Create measurements module.
@@ -306,7 +151,7 @@ Feature
 - Add ST_MINKOWSKIDISTANCE function.
 - Add VERSION function.
 
-#### Module transformations v1.0.0
+#### Module transformations
 
 Feature
 - Create transformations module.
@@ -321,7 +166,7 @@ Feature
 
 ### April 16, 2021
 
-#### Module placekey v1.0.0
+#### Module placekey
 
 Feature
 - Create placekey module.
@@ -332,7 +177,7 @@ Feature
 
 ### April 12, 2021
 
-#### Module s2 v1.0.0
+#### Module s2
 
 Feature
 - Create s2 module.
@@ -345,7 +190,7 @@ Feature
 
 ### April 7, 2021
 
-#### Module h3 v1.0.0
+#### Module h3
 
 Feature
 - Create h3 module.
@@ -366,7 +211,7 @@ Feature
 
 ### March 31, 2021
 
-#### Module quadkey v1.0.0
+#### Module quadkey
 
 Feature
 - Create quadkey module.
@@ -383,5 +228,6 @@ Feature
 - Add ST_ASQUADINT function.
 - Add ST_ASQUADINT_POLYFILL function.
 - Add ST_BOUNDARY function.
+- Add LONGLAT_ASQUADINTLIST_RESOLUTION function.
 - Add VERSION function.
 

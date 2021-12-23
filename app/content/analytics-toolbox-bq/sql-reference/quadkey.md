@@ -25,7 +25,7 @@ Returns an array with the boundary box of a given quadint. This boundary box con
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.BBOX(4388);
+SELECT `carto-os`.quadkey.BBOX(4388);
 -- 22.5
 -- -21.943045533438177
 -- 45.0
@@ -54,7 +54,7 @@ Returns all cell indexes in a **filled square k-ring** centered at the origin in
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.KRING(4388, 1);
+SELECT `carto-os`.quadkey.KRING(4388, 1);
 -- 3844
 -- 3876
 -- 3908
@@ -88,7 +88,7 @@ Returns all cell indexes and their distances in a **filled square k-ring** cente
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.KRING_DISTANCES(4388, 1);
+SELECT `carto-os`.quadkey.KRING_DISTANCES(4388, 1);
 -- {"index": "4388", "distance": "0"}
 -- {"index": "4932", "distance": "1"}
 -- {"index": "4900", "distance": "1"}
@@ -127,7 +127,7 @@ Returns the quadint representation for a given level of detail and geographic co
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
+SELECT `carto-os`.quadkey.LONGLAT_ASQUADINT(40.4168, -3.7038, 4);
 -- 4388
 ```
 
@@ -157,7 +157,7 @@ Returns the quadint index for the given point for each zoom level requested, at 
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
+SELECT `carto-os`.quadkey.LONGLAT_ASQUADINTLIST_RESOLUTION(40.4168, -3.7038, 3, 6, 1, 4);
 -- id        z  x   y
 -- 268743    3  4   4
 -- 1069960   4  9   8
@@ -186,7 +186,7 @@ Returns the quadint equivalent to the input quadkey.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.QUADINT_FROMQUADKEY("3001");
+SELECT `carto-os`.quadkey.QUADINT_FROMQUADKEY("3001");
 -- 4388
 ```
 
@@ -217,7 +217,7 @@ Tile coordinates `x` and `y` depend on the zoom level `z`. For both coordinates,
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.QUADINT_FROMZXY(4, 9, 8);
+SELECT `carto-os`.quadkey.QUADINT_FROMZXY(4, 9, 8);
 -- 4388
 ```
 
@@ -242,7 +242,7 @@ Returns the quadkey equivalent to the input quadint.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.QUADKEY_FROMQUADINT(4388);
+SELECT `carto-os`.quadkey.QUADKEY_FROMQUADINT(4388);
 -- 3001
 ```
 
@@ -268,7 +268,7 @@ Returns the quadint directly next to the given quadint at the same zoom level. T
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.SIBLING(4388, 'up');
+SELECT `carto-os`.quadkey.SIBLING(4388, 'up');
 -- 3876
 ```
 
@@ -294,7 +294,7 @@ Returns the quadint of a given point at a given level of detail.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
+SELECT `carto-os`.quadkey.ST_ASQUADINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
 -- 4388
 ```
 
@@ -320,7 +320,7 @@ Returns an array of quadints that intersect with the given geography at a given 
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.ST_ASQUADINT_POLYFILL(
+SELECT `carto-os`.quadkey.ST_ASQUADINT_POLYFILL(
     ST_MAKEPOLYGON(ST_MAKELINE([ST_GEOGPOINT(-363.71219873428345, 40.413365349070865), ST_GEOGPOINT(-363.7144088745117, 40.40965661286395), ST_GEOGPOINT(-363.70659828186035, 40.409525904775634), ST_GEOGPOINT(-363.71219873428345, 40.413365349070865)])), 
     17);
 -- 207301334801
@@ -352,7 +352,7 @@ Returns the boundary for a given quadint. We extract the boundary in the same wa
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.ST_BOUNDARY(4388);
+SELECT `carto-os`.quadkey.ST_BOUNDARY(4388);
 -- POLYGON((22.5 0, 22.5 -21.9430455334382, 22.67578125 ...
 ```
 
@@ -377,7 +377,7 @@ Returns the centroid for a given quadint.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.ST_GEOGPOINTFROMQUADINT(4388);
+SELECT `carto-os`.quadkey.ST_GEOGPOINTFROMQUADINT(4388);
 -- 	POINT(33.75 22.2982994295938)
 ```
 
@@ -403,7 +403,7 @@ Returns an array with the children quadints of a given quadint for a specific re
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.TOCHILDREN(1155, 4);
+SELECT `carto-os`.quadkey.TOCHILDREN(1155, 4);
 -- 4356
 -- 4868
 -- 4388
@@ -432,7 +432,7 @@ Returns the parent quadint of a given quadint for a specific resolution. A paren
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.TOPARENT(4388, 3);
+SELECT `carto-os`.quadkey.TOPARENT(4388, 3);
 -- 1155
 ```
 
@@ -455,7 +455,7 @@ Returns the current version of the quadkey module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.VERSION();
+SELECT `carto-os`.quadkey.VERSION();
 -- 1.0.5
 ```
 
@@ -480,7 +480,7 @@ Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.quadkey.ZXY_FROMQUADINT(4388);
+SELECT `carto-os`.quadkey.ZXY_FROMQUADINT(4388);
 -- z  x  y
 -- 4  9  8
 ```

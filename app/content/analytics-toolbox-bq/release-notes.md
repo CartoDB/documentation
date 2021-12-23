@@ -1,15 +1,41 @@
 ## Release notes
 
+### December 13, 2021
+
+#### Module tiler
+
+Changed
+- Add support for legacy project names that contain dots or other special characters.
+
+### December 10, 2021
+
+#### Module geocoding
+
+Changed
+* The `output` parameter in `GEOCODE_BATCH` and `GEOCODE_PC_BATCH` is now a STRING, not an ARRAY.
+* The `source` parameter has been removed from `GEOCODE_BATCH` and `GEOCODE_PC_BATCH`.
+
+Fixed
+* GEOCODE_PC_BATCH bug
+
+#### Module statistics
+
+Feature
+- Add KNN function.
+- Add GFUN function.
+- Add LOF function.
+- Add LOF_TABLE procedure.
+
 ### December 3, 2021
 
-#### Module geocoding v1.0.0-beta.4
+#### Module geocoding
 
 Fixed
 * GEOCODE_BATCH optimization
 
 ### December 2, 2021
 
-#### Module geocoding v1.0.0-beta.3
+#### Module geocoding
 
 Feature
 * New output column/fields `__carto_geocode_matched_name`/`matched_name` and `__carto_num_equal_matches`/`num_equal_matches` in `GEOCODE_BATCH`
@@ -28,31 +54,31 @@ Fixed
 
 ### November 30, 2021
 
-#### Module tiler v1.12.5
+#### Module tiler
 
 Fixed
 - Escape single-quoted properties in the `CREATE_TILESET` metadata when obtaining the geometry type.
 
 ### November 25, 2021
 
-#### Module statistics v1.1.0
+#### Module statistics
 
 Feature
 - Add GWR_GRID function.
 
 ### November 16, 2021
 
-#### Module tiler v1.12.4
+#### Module tiler
 
 Fixed
 - Use `zoom_min_column` as `zoom_min` and `zoom_max_column` as `zoom_max` when provided.
-  
+
 Changed
 - Optimize simplification method instead of the native BigQuery.
 
 ### November 5, 2021
 
-#### Module data v1.1.2
+#### Module data
 
 Changes
 - Fields named `dimension`, `total`, `intersection` and `input_area` are now
@@ -65,7 +91,7 @@ Fixed
 
 ### November 2, 2021
 
-#### Module data v1.1.1
+#### Module data
 
 Changes
 - Add `associated_geography_slug` column to `DATAOBS_SUBSCRIPTIONS`.
@@ -83,7 +109,7 @@ Fixed
 
 ### October 15, 2021
 
-#### Module data v1.1.0
+#### Module data
 
 Fixed
 - Enrichment results could mix input rows and values, specially for large inputs due
@@ -94,26 +120,26 @@ Changes
 
 ### October 1, 2021
 
-#### Module quadkey v1.0.6
+#### Module quadkey
 
 fixed
 - Fix ST_BOUNDARY for level 1 and 2.
 
 ### September 24, 2021
 
-#### Module geocoding v1.0.0-beta.2
+#### Module geocoding
 
 Feature
 - Add GEOCODING_PC_BATCH procedure.
 
 ### September 23, 2021
 
-#### Module s2 v1.1.2
+#### Module s2
 
 Changed
 - Rename functions ID_FROMUINT64REPR, UINT64REPR_FROMID to follow convention.
 
-#### Module statistics v1.0.0
+#### Module statistics
 
 Feature
 - Create statistics module.
@@ -125,13 +151,13 @@ Feature
 
 ### September 22, 2021
 
-#### Module h3 v1.0.4
+#### Module h3
 
 Changed
 - Review HEXRING, KRING functions.
 - Change KRING_INDEXED to KRING_DISTANCES.
 
-#### Module quadkey v1.0.5
+#### Module quadkey
 
 Changed
 - Review KRING function.
@@ -139,7 +165,7 @@ Changed
 
 ### September 17, 2021
 
-#### Module tiler v1.12.3
+#### Module tiler
 
 Fixed
 - Fix support for DATE in `CREATE_TILESET`.
@@ -150,7 +176,7 @@ Feature
 
 ### September 16, 2021
 
-#### Module data v1.0.1
+#### Module data
 
 Changes
 - Support `sub_` (table) subscriptions in:
@@ -162,14 +188,14 @@ Changes
 
 ### September 14, 2021
 
-#### Module s2 v1.1.1
+#### Module s2
 
 Fixed
 - Avoid keeping planar shape in spherical coordinates in ST_BOUNDARY.
 
 ### September 10, 2021
 
-#### Module geocoding v1.0.0-beta.1
+#### Module geocoding
 
 Feature
 - Create geocoding module.
@@ -178,21 +204,21 @@ Feature
 
 ### September 9, 2021
 
-#### Module quadkey v1.0.4
+#### Module quadkey
 
 Changed
 - Performance improvement in ST_ASQUADINT_POLYFILL.
 
 ### September 3, 2021
 
-#### Module data v1.0.0
+#### Module data
 
 Changes
 - Search for tables in DATAOBS_SAMPLES, DATAOBS_SUBSCRIPTIONS, DATAOBS_SUBSCRIPTIONS_VARIABLES.
 
 ### August 31, 2021
 
-#### Module data v1.0.0-beta.7
+#### Module data
 
 Changed
 - DATAOBS_ENRICH_* procedures are now optimized to reduce the amount of data processed by taking advantage of clusterization by geography in the Data Observatory.
@@ -208,13 +234,13 @@ Changed
 
 ### August 26, 2021
 
-#### Module data v1.0.0-beta.6
+#### Module data
 
 Changed
 - ENRICH_GRID and DATAOBS_ENRICH_GRID procedures take `input_query` and `input_index_column` parameters instead of the `indices` array.
 - DATAOBS_ENRICH_* procedures now report missing subscriptions in a more user-friendly way.
 
-#### Module routing v1.0.0-beta.2
+#### Module routing
 
 Changed
 - Pass network to JS UDF natively
@@ -224,7 +250,7 @@ Changed
 
 ### August 25, 2021
 
-#### Module tiler v1.12.2
+#### Module tiler
 
 Fixed
 - Fix support for TIMESTAMP,DATETIME in CREATE_TILESET and CREATE_SIMPLE_TILESET.
@@ -232,21 +258,21 @@ Fixed
 
 ### August 24, 2021
 
-#### Module h3 v1.0.3
+#### Module h3
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
 ### August 11, 2021
 
-#### Module quadkey v1.0.3
+#### Module quadkey
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
 
 ### August 6, 2021
 
-#### Module data v1.0.0-beta.5
+#### Module data
 
 Feature
 - Add DATAOBS_ENRICH_GRID procedure.
@@ -254,12 +280,12 @@ Feature
 
 ### August 4, 2021
 
-#### Module h3 v1.0.2
+#### Module h3
 
 Feature
 - Add KRING_INDEXED function.
 
-#### Module quadkey v1.0.2
+#### Module quadkey
 
 Feature
 - Add KRING_INDEXED function.
@@ -267,28 +293,28 @@ Feature
 
 ### July 30, 2021
 
-#### Module geohash v1.0.0
+#### Module geohash
 
 Feature
 - Create geohash module.
 - Add VERSION function.
 - Add ST_BOUNDARY function.
 
-#### Module tiler v1.12.1
+#### Module tiler
 
 Changed
 - Checking if the output table exists before running the tiler.
 
 ### July 13, 2021
 
-#### Module data v1.0.0-beta.4
+#### Module data
 
 Changed
 - DATAOBS_ENRICH_* procedures take single `source` parameter with default `carto-customers` project.
 
 ### July 9, 2021
 
-#### Module data v1.0.0-beta.3
+#### Module data
 
 Feature
 - Add DATAOBS_SAMPLES procedure.
@@ -296,7 +322,7 @@ Feature
 Changed
 - DATAOBS_SUBSCRIPTIONS and DATAOBS_SUBSCRIPTION_VARIABLES take single `source` parameter with default `carto-customers` project. Views with `sub_` prefix are supported.
 
-#### Module routing v1.0.0-beta.1
+#### Module routing
 
 Feature
 - Create routing module.
@@ -312,7 +338,7 @@ Feature
 
 ### July 8, 2021
 
-#### Module data v1.0.0-beta.2
+#### Module data
 
 Fixed
 - Fix DATAOBS_SUBSCRIPTIONS and DATAOBS_SUBSCRIPTION_VARIABLES not working with subscriptions in which the
@@ -320,14 +346,14 @@ Fixed
 
 ### July 1, 2021
 
-#### Module tiler v1.12.0
+#### Module tiler
 
 Feature
 - Add new automatic tileset generator `CREATE_TILESET`.
 
 ### June 23, 2021
 
-#### Module data v1.0.0-beta.1
+#### Module data
 
 Feature
 - Add DATAOBS_SUBSCRIPTIONS procedure.
@@ -343,7 +369,7 @@ Changed
 
 ### June 2, 2021
 
-#### Module data v1.0.0-alpha.1
+#### Module data
 
 Feature
 - Create data module.
@@ -359,7 +385,7 @@ Feature
 
 ### June 1, 2021
 
-#### Module s2 v1.1.0
+#### Module s2
 
 Feature
 - Add TOKEN_FROMID function.
@@ -369,7 +395,7 @@ Feature
 
 ### May 19, 2021
 
-#### Module tiler v1.11.0
+#### Module tiler
 
 Changed
 - Use semantic versioning.
@@ -377,21 +403,21 @@ Changed
 
 ### May 6, 2021
 
-#### Module clustering v1.0.1
+#### Module clustering
 
 Changed
 - Change ST_CLUSTERKMEANS returning cluster and geom
 
 ### May 4, 2021
 
-#### Module accessors v1.0.0
+#### Module accessors
 
 Feature
 - Create accessors module.
 - Add ST_ENVELOPE function.
 - Add VERSION function.
 
-#### Module processing v1.0.0
+#### Module processing
 
 Feature
 - Create processing module.
@@ -402,14 +428,14 @@ Feature
 - Add ST_POLYGONIZE function.
 - Add VERSION function.
 
-#### Module transformations v1.2.0
+#### Module transformations
 
 Feature
 - Add ST_CONCAVEHULL function.
 
 ### April 30, 2021
 
-#### Module clustering v1.0.0
+#### Module clustering
 
 Feature
 - Create clustering module.
@@ -418,13 +444,13 @@ Feature
 
 ### April 29, 2021
 
-#### Module constructors v1.1.0
+#### Module constructors
 
 Feature
 - Add ST_BEZIERSPLINE function.
 - Add ST_MAKEELLIPSE function.
 
-#### Module measurements v1.0.0
+#### Module measurements
 
 Feature
 - Create measurements module.
@@ -432,7 +458,7 @@ Feature
 - Add ST_AZIMUTH function.
 - Add ST_MINKOWSKIDISTANCE function.
 
-#### Module transformations v1.1.0
+#### Module transformations
 
 Feature
 - Rename module to transformations.
@@ -443,14 +469,14 @@ Feature
 - Add ST_GREATCIRCLE function.
 - Add ST_LINE_INTERPOLATE_POINT function.
 
-#### Module tiler v10
+#### Module tiler
 
 Removed
 - Remove quota & project checking.
 
 ### April 28, 2021
 
-#### Module constructors v1.0.0
+#### Module constructors
 
 Feature
 - Create constructors module.
@@ -460,21 +486,28 @@ Feature
 
 ### April 16, 2021
 
-#### Module quadkey v1.0.1
+#### Module quadkey
 
 Changed
 - Changed TOPARENT implementation to pure SQL.
 
-#### Module transformations v1.0.0
+#### Module transformations
 
 Feature
 - Create transformation module.
 - Add ST_BUFFER function.
 - Add VERSION function.
 
+### April 10, 2021
+
+#### Module random
+
+Changed
+- ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
+
 ### April 9, 2021
 
-#### Module h3 v1.0.1
+#### Module h3
 
 Changed
 - Use hexadecimal as default type instead of int for h3 indexes.
@@ -482,12 +515,12 @@ Changed
 Fixed
 - Fix ST_BOUNDARY generating error when not able to parse geometry.
 
-#### Module placekey v1.0.1
+#### Module placekey
 
 Changed
 - Placekey conversions works with hexadecimal h3 indexes instead of int.
 
-#### Module random v1.0.0
+#### Module random
 
 Feature
 - Create random module.
@@ -496,7 +529,7 @@ Feature
 
 ### March 31, 2021
 
-#### Module h3 v1.0.0
+#### Module h3
 
 Feature
 - Create h3 module.
@@ -515,7 +548,7 @@ Feature
 - Add HEXRING function.
 - Add VERSION function.
 
-#### Module placekey v1.0.0
+#### Module placekey
 
 Feature
 - Create placekey module.
@@ -524,7 +557,7 @@ Feature
 - Add ISVALID function.
 - Add VERSION function.
 
-#### Module quadkey v1.0.0
+#### Module quadkey
 
 Feature
 - Create quadkey module.
@@ -544,7 +577,7 @@ Feature
 - Add LONGLAT_ASQUADINTLIST_RESOLUTION function.
 - Add VERSION function.
 
-#### Module s2 v1.0.0
+#### Module s2
 
 Feature
 - Create s2 module.
@@ -555,7 +588,7 @@ Feature
 - Add ST_BOUNDARY function.
 - Add VERSION function.
 
-#### Module tiler v9
+#### Module tiler
 
 Feature
 - Add QUOTA procedure in order to display the monthly quota and quota available.
@@ -580,7 +613,7 @@ Fixed
 
 ### February 10, 2021
 
-#### Module tiler v8
+#### Module tiler
 
 Feature
 - Add tileset type to metadata and BigQuery labels.

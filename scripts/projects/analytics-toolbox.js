@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 const cloud = process.env.CLOUD || '';
-const cloudCode = { bigquery: 'bq', snowflake: 'sf', redshift: 'redshift' }[cloud];
-const targetPath = path.join(`./app/content/analytics-toolbox-${cloudCode}`);
+const branch = process.env.BRANCH || '';
+const targetPath = process.env.TARGETPATH || '';
 
 const index = [];
 let changelogs = [];
@@ -16,8 +16,7 @@ updateOverview();
 updateReleaseNotes();
 
 function updateModules (type) {
-    const repo = { core: 'carto-spatial-extension', advanced: 'carto-advanced-spatial-extension' }[type];
-    const sourcePath = path.join(`./repos/${repo}/modules`);
+    const sourcePath = path.join(`./.checkout/at-${type}-${cloud}-${branch}/modules`);
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {
         const docPath = path.join(sourcePath, module, cloud, 'doc');
@@ -75,7 +74,7 @@ function updateReleaseNotes () {
         content += `### ${formatDate(date)}\n\n`;
         const items = changelogs.filter(c => c.date === date);
         for (const item of items) {
-            content += `#### Module ${item.module} v${item.version}\n\n`;
+            content += `#### Module ${item.module}\n\n`;
             content += `${item.changes.replace(/Added/g, 'Feature').replace(/### /g, '')}\n\n`;
         }
     }
