@@ -1,5 +1,15 @@
+---
+title: "Creating simple tilesets"
+description: "We provide a set of examples that showcase how to easily create simple tilesets allowing you to process and visualize very large spatial datasets stored in BigQuery. You should use it if you have a dataset with any geography type (point, line, or polygon) and you want to visualize it at an appropriate zoom level."
+image: "/img/bq-analytics-toolbox/examples/covid19-vaccination.png"
+type: examples
+date: "2021-11-12"
+categories:
+    - tiler
+---
 ## Creating simple tilesets
 
+We provide a set of examples that showcase how to easily create simple tilesets allowing you to process and visualize very large spatial datasets stored in BigQuery. You should use it if you have a dataset with any geography type (point, line, or polygon) and you want to visualize it at an appropriate zoom level.
 ### COVID-19 vaccination progress in the USA (points)
 
 In this example we are creating a tileset in which every inhabitant in the US is represented by means of a point. Each point is tagged with a _vaccinated_ (blue) or _non-vaccinated_ (purple) tag. This visualization enables us to depict at a glance which parts of the country are progressing better with the vaccination rollout.

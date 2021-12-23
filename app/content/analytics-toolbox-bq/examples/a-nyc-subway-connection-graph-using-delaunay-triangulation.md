@@ -9,7 +9,7 @@ categories:
 ---
 ## A NYC subway connection graph using Delaunay triangulation
 
-Providing a good network connection between subway stations is critical to ensure an efficient mobility system in big areas. Let's imagine we need to design a well-distributed subway network to connect the stations of a brand-new subway system. A simple and effective solution to this problem is to build a [Delaunay triangulation](/analytics-toolbox-bq/sql-reference/processing/#st_delaunaylines) of the predefined stations, which ensures a good connection distribution.
+Providing a good network connection between subway stations is critical to ensure an efficient mobility system in big areas. Let's imagine we need to design a well-distributed subway network to connect the stations of a brand-new subway system. A simple and effective solution to this problem is to build a Delaunay triangulation of the predefined stations, which ensures a good connection distribution.
 
 For this particular example we are choosing the New York city subway stations to build the cited triangulation. The following query will construct the triangulation using the `ST_DELAUNAYLINES` function from the processing module of the Analytics Toolbox.
 

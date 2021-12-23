@@ -9,8 +9,7 @@ categories:
 ---
 ## Creating aggregation tilesets
 
-We provide a set of examples that showcase how to easily create [aggregation tilesets](/analytics-toolbox-bq/overview/tilesets/#tileset-types-and-procedures) allowing you to process and visualize very large spatial datasets stored in BigQuery. You can use this procedure if you have a point dataset (or anything that can be converted to points, such as polygon centroids) and you want to see it aggregated. 
-
+We provide a set of examples that showcase how to easily create aggregation tilesets allowing you to process and visualize very large spatial datasets stored in BigQuery. You can use this procedure if you have a point dataset (or anything that can be converted to points, such as polygon centroids) and you want to see it aggregated.
 ### OSM buildings
 
 We want are going to create a Point Aggregation Tileset to visualise all the features tagged as ‘building' in the OSM BigQuery Dataset. Since this dataset has different types of geometries for the buildings, we are going to use `ST_CENTROID` to ensure they all are points.

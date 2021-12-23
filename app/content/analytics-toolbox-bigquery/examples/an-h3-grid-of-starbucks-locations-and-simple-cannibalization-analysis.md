@@ -1,8 +1,17 @@
+---
+title: "An H3 grid of Starbucks locations and simple cannibalization analysis"
+description: "We are going to demonstrate how fast and easy it is to make a visualization of an H3 grid to identify the concentration of Starbucks locations in the US."
+image: "/img/bq-analytics-toolbox/examples/starbucks-h3-grid.png"
+type: examples
+date: "2021-09-12"
+categories:
+    - h3
+---
 ## An H3 grid of Starbucks locations and simple cannibalization analysis
 
 ### Bulding the H3 grid
 
-We are going to demonstrate how fast and easy it is to make a visualization of an H3 grid to identify the concentration of Starbucks locations in the US.
+We are going to demonstrate how fast and easy it is to make a visualization of an h3 grid to identify the concentration of Starbucks locations in the US.
 
 The first step is to [import](https://cloud.google.com/bigquery/docs/batch-loading-data#loading_data_from_local_files) the Starbucks locations [dataset](https://libs.cartocdn.com/spatial-extension/samples/starbucks-locations-usa.csv) into a BigQuery table called `starbucks_locations_usa`. If you want to skip this step, you can use the publicly available table `cartobq.docs.starbucks_locations_usa` instead. Then, with a single query, we are going to calculate how many Starbucks locations fall within each H3 grid cell of resolution 4.
 

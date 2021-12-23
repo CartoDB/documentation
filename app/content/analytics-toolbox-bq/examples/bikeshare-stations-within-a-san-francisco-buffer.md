@@ -9,7 +9,7 @@ categories:
 ---
 ## Bikeshare stations within a San Francisco buffer
 
-In this example we are going to showcase how easily we can compute [buffers](/analytics-toolbox-bq/sql-reference/transformations/#st_buffer) around geometries using the Analytics Toolbox.
+In this example we are going to showcase how easily we can compute buffers around geometries using the Analytics Toolbox.
 
 ### Creating a buffer of a neighborhood
 

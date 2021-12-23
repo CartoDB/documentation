@@ -9,7 +9,7 @@ categories:
 ---
 ## Creating simple tilesets
 
-We provide a set of examples that showcase how to easily create [simple tilesets](/analytics-toolbox-bq/overview/tilesets/#tileset-types-and-procedures) allowing you to process and visualize very large spatial datasets stored in BigQuery. You should use it if you have a dataset with any geography type (point, line, or polygon) and you want to visualize it at an appropriate zoom level.
+We provide a set of examples that showcase how to easily create simple tilesets allowing you to process and visualize very large spatial datasets stored in BigQuery. You should use it if you have a dataset with any geography type (point, line, or polygon) and you want to visualize it at an appropriate zoom level.
 
 ### COVID-19 vaccination progress in the USA (points)
 
