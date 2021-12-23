@@ -19,6 +19,8 @@ navbar:
         url: /analytics-toolbox-databricks
   - name: Dev tools
     subelements:
+      - name: CARTO API
+        url: https://api-docs.carto.com
       - name: CARTO for React
         url: /react
       - name: CARTO for deck.gl

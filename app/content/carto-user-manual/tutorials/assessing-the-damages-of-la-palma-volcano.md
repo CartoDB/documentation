@@ -1,3 +1,14 @@
+---
+title: "Assessing the damages of La Palma Volcano"
+description: "Since 11 September 2021, a swarm of seismic activity had been ongoing in the southern part of the Spanish Canary Island of La Palma (Cumbre Vieja region). The increasing frequency, magnitude, and shallowness of the seismic events were an indication of a pending volcanic eruption; which occurred on 16th September, leading to evacuation of people living in the vicinity. In this tutorial we are going to assess the number of buildings and population that may get affected by the lava flow and its deposits. We'll also estimate the value of damaged residential properties affected by the volcano eruption."
+image: "/img/tutorials/volcano.png"
+type: tutorials
+date: "2021-10-12"
+# categories:
+#     - easy
+#     - transformations
+---
+
 ## Assessing the damages of La Palma Volcano
 
 **Context**

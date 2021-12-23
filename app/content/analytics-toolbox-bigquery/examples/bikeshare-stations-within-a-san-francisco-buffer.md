@@ -1,3 +1,12 @@
+---
+title: "Bikeshare stations within a San Francisco buffer"
+description: "In this example we are going to showcase how easily we can compute buffers around geometries using the Analytics Toolbox."
+image: "/img/bq-analytics-toolbox/examples/bikeshare-stations-sf-buffer.png"
+type: examples
+date: "2021-03-12"
+categories:
+    - transformations
+---
 ## Bikeshare stations within a San Francisco buffer
 
 In this example we are going to showcase how easily we can compute buffers around geometries using the Analytics Toolbox.
