@@ -38,8 +38,8 @@ The Analytics Toolbox can be run from:
 * your BigQuery console, after creating an OAuth connection to BigQuery from the Workspace.
 * any BigQuery client, authenticated using a Service Account that has been previously used to create a connection to BigQuery from the Workspace. 
 * directly from the Workspace, by:
-  * Creating tilesets from the Data Explorer following [this guide](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/#from-the-carto-workspace).
-  * Creating custom SQL layers in Builder following [this guide](/analytics-toolbox-bq/guides/running-queries-from-builder/).
+  * Creating tilesets from the Data Explorer following [this guide](/analytics-toolbox-bigquery/guides/creating-and-visualizing-tilesets/#from-the-carto-workspace).
+  * Creating custom SQL layers in Builder following [this guide](/analytics-toolbox-bigquery/guides/running-queries-from-builder/).
 
 {{% bannerNote title="CONTACT SUPPORT" type="info" %}}
 If you are a CARTO customer and need access to the Analytics Toolbox in a different BigQuery region or wish to install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls), please follow the [manual installation guide](#manual-installation).
@@ -90,7 +90,7 @@ Additionally, the following predefined roles need to be granted to your account 
 * **BigQuery Data Owner** (`bigquery.dataOwner`) role for changing permission on the tilesets from the Map Viewer.
   * This is needed for publishing maps with tileset layers on the web, available to anyone with the link. That means editing the tileset's permissions to grant CARTO APIs reading access to the tileset.
   * This role is also required for unpublishing a public map.
-  * Learn more about creating public maps out of tilesets [here](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/#from-the-carto-dashboard-legacy).
+  * Learn more about creating public maps out of tilesets [here](/analytics-toolbox-bigquery/guides/creating-and-visualizing-tilesets/#from-the-carto-dashboard-legacy).
 * **BigQuery Job User** (`bigquery.jobUser`) role for listing your projects, datasets and tilesets in the Dashboard.
 * **BigQuery Read Session User** (`bigquery.readSessionUser`) role for importing data from BigQuery as tables into CARTO's embedded database.
 

@@ -27,7 +27,7 @@ The CARTO Analytics Toolbox for BigQuery is a set of UDFs and Stored Procedures 
     <area target="" alt="" title="" href="/analytics-toolbox-bigquery/sql-reference/geohash/" coords="1728,1226,2086,1409" shape="rect">
 </map>
 
-Visit the [SQL Reference](../../sql-reference/) to see the full list of available modules and functions. If you already have a CARTO account, please refer to [this guide](/analytics-toolbox-bq/overview/getting-access/#access-from-the-new-carto-workspace) on how to get access to the entire collection of modules of the Analytics Toolbox. If you don't have a CARTO account and are looking to access the _core_ modules for free, please [follow these instructions](/analytics-toolbox-bq/overview/getting-access/#free-access-to-the-core-modules) instead.
+Visit the [SQL Reference](../../sql-reference/) to see the full list of available modules and functions. If you already have a CARTO account, please refer to [this guide](/analytics-toolbox-bigquery/overview/getting-access/#access-from-the-new-carto-workspace) on how to get access to the entire collection of modules of the Analytics Toolbox. If you don't have a CARTO account and are looking to access the _core_ modules for free, please [follow these instructions](/analytics-toolbox-bigquery/overview/getting-access/#free-access-to-the-core-modules) instead.
 
 {{% bannerNote title="STAY IN THE LOOP" type="tip" %}}
 Join our [Google Group](https://groups.google.com/a/cartodb.com/g/bigquery-spatial-extension) to stay informed of any new feature launches and relevant changes to the Analytics Toolbox.

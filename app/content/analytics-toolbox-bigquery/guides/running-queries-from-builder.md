@@ -1,6 +1,6 @@
 ## Running queries from Builder
 
-Once you have created your BigQuery connection in the CARTO Workspace (see [_Getting Access_](analytics-toolbox-bq/overview/getting-access/#access-from-the-carto-workspace) for details), you can create custom SQL layers in Builder that make use of the Analytics Toolbox for BigQuery.
+Once you have created your BigQuery connection in the CARTO Workspace (see [_Getting Access_](analytics-toolbox-bigquery/overview/getting-access/#access-from-the-carto-workspace) for details), you can create custom SQL layers in Builder that make use of the Analytics Toolbox for BigQuery.
 
 {{% bannerNote title="From the CARTO Data Warehouse connection" type="tip" %}}
 You can also run queries from Builder using the Analytics Toolbox for BigQuery from your CARTO Data Warehouse connection. This connection is available and ready-to-use for all CARTO accounts.
@@ -8,7 +8,7 @@ You can also run queries from Builder using the Analytics Toolbox for BigQuery f
 
 The Analytics Toolbox functions are available from the `carto-un` and `carto-un-eu` BigQuery projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
 
-To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bq/sql-reference/clustering/#st_clusterkmeans) function. 
+To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans) function. 
 
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
@@ -48,5 +48,5 @@ SELECT cluster_element.cluster, cluster_element.geom AS geom FROM clustered_poin
 
 
 {{% bannerNote title="MORE EXAMPLES" type="note" %}}
-For more examples, visit the [Examples](/analytics-toolbox-bq/examples/) section or try executing any of the queries included in every function definition in the [SQL Reference](/analytics-toolbox-bq/sql-reference).
+For more examples, visit the [Examples](/analytics-toolbox-bigquery/examples/) section or try executing any of the queries included in every function definition in the [SQL Reference](/analytics-toolbox-bigquery/sql-reference).
 {{%/ bannerNote %}}
