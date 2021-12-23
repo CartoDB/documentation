@@ -1,3 +1,13 @@
+---
+title: "Create a tileset and build a basic visualization"
+description: "Understanding the urban areas has important implications in a wide range of geospatial analysis, for example, to inform decision-makers in sectors such as urban planning. In this example we are creating a tileset in which each building in Madrid is represented by a polygon and each of them is assigned a graduated color from the lowest to the highest value of the gross floor area. This visualisation allows us to represent at a glance how the surface area in Madrid is distributed." 
+image: "/img/tutorials/tileset.png"
+type: tutorials
+date: "2021-07-12"
+# categories:
+#     - easy
+#     - tileset
+---
 ## Create a tileset and build a basic visualization
 
 **Context**
@@ -51,26 +61,33 @@ In this example we are creating a tileset in which each building in Madrid is re
 
 9. Tilesets take a while to process. Once the process is completed you will see the message in the “Processing jobs” tab on the top right corner of the screen (blue tab).
 
-   ![Data Explorer processing running](/img/cloud-native-workspace/tutorials/tutorial6_de_processing_running.png)
+   ![Data Explorer tileset processing running](/img/cloud-native-workspace/tutorials/tutorial6_de_tileset_processing_running.png)
 
 10. Once the job has completed we can access the tileset in the Data Explorer and create a map visualization with all that data. 
 
-    ![Data Explorer processing successfully](/img/cloud-native-workspace/tutorials/tutorial6_de_processing_successfully.png)
+    ![Data Explorer tileset processing successfully](/img/cloud-native-workspace/tutorials/tutorial6_de_tileset_processing_successfully.png)
 
 11. Click on *Create map* and this source will be added as a layer in Builder.
 
-    ![Data Explorer create map from new tileset](/img/cloud-native-workspace/tutorials/tutorial6_de_create_map_from_new_tileset.png)
+    ![Data Explorer create map from the new tileset](/img/cloud-native-workspace/tutorials/tutorial6_de_create_map_from_the_new_tileset.png)
 
-    ![Map created from new tileset](/img/cloud-native-workspace/tutorials/tutorial6_de_map_created_from_new_tileset.png)
+    ![Map created from the new tileset](/img/cloud-native-workspace/tutorials/tutorial6_de_map_created_from_the_new_tileset.png)
 
 12. Now let's style this layer as we want to build a cool visualization.
 
-    ![Map fill based on](/img/cloud-native-workspace/tutorials/tutorial6_map_fill_based_on.png)
+    ![Map fill based on](/img/cloud-native-workspace/tutorials/tutorial6_map_fill_color_based_on.png)
+
+
+13. Finally we can change our basemap. Go to Basemaps tab and select “Dark matter” from Google Maps.
+
+    ![Map basemap google maps](/img/cloud-native-workspace/tutorials/tutorial6_map_basemap_google_maps.png)
 
 13. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial6_map_public.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial6_map_public_map.png)
 
 14. Finally, we can visualize the result.
 
-    <iframe width="800px" height="400px" src="https://gcp-europe-west1.app.carto.com/map/c04ec4da-1b01-4133-99fb-5daa8044b6cf"></iframe>
+    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/8c4b5450-de0d-41ed-8485-4b6a2b0e6614"></iframe>
+
+ <!--   <iframe width="800px" height="400px" src="https://gcp-europe-west1.app.carto.com/map/c04ec4da-1b01-4133-99fb-5daa8044b6cf"></iframe> -->

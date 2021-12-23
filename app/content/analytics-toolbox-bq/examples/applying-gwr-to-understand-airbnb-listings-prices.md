@@ -1,8 +1,17 @@
+---
+title: "Applying GWR to understand Airbnb listings prices"
+description: "Geographically Weighted Regression (GWR) is a statistical regression method that models the local (e.g. regional or sub-regional) relationships between a set of predictor variables and an outcome of interest. Therefore, it should be used in lieu of a global model in those scenarios where these relationships vary spatially."
+image: "/img/bq-analytics-toolbox/examples/gwr-airbnb-listings-prices.png"
+type: examples
+date: "2021-01-12"
+categories:
+    - statistics
+---
 ## Applying GWR to understand Airbnb listings prices
 
 [Geographically Weighted Regression](https://en.wikipedia.org/wiki/Spatial_analysis#Spatial_regression) (GWR) is a statistical regression method that models the local (e.g. regional or sub-regional) relationships between a set of predictor variables and an outcome of interest. Therefore, it should be used in lieu of a global model in those scenarios where these relationships vary spatially. 
 
-In this example we are going to analyze the local relationships between Airbnb's listings in Berlin and the number of bedrooms and bathrooms available at these listings using the [GWR_GRID](../sql-reference/statistics/#gwr_grid) procedure. Our input dataset, publicly available from `cartobq.docs.airbnb_berlin_h3_qk`, contains the Airbnb listing's locations in H3 and quadkey cells at different resolutions, their prices, and their number of bedrooms and bathrooms. 
+In this example we are going to analyze the local relationships between Airbnb's listings in Berlin and the number of bedrooms and bathrooms available at these listings using the [GWR_GRID](/analytics-toolbox-bq/sql-reference/statistics/#gwr_grid) procedure. Our input dataset, publicly available from `cartobq.docs.airbnb_berlin_h3_qk`, contains the Airbnb listing's locations in H3 and quadkey cells at different resolutions, their prices, and their number of bedrooms and bathrooms. 
 
 We can run our GWR analysis by simply running this query:
 

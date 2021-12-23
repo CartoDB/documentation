@@ -1,3 +1,13 @@
+---
+title: "Build an animated visualization with time series"
+description: "There is an increasing need for conservation and connection with nature in cities. In this sense, geospatial analysis plays an important role in the effective management of our natural resources. In this tutorial we are going to represent the distribution of tree species in the streets of San Francisco by color and we will add some interaction through widgets, which will allow us to explore the map by selecting targered filters of interest. In this example, filters are applied by specie and date of planting." 
+image: "/img/tutorials/animated.png" 
+type: tutorials
+date: "2021-07-12"
+# categories:
+#     - easy
+#     - widgets
+---
 ## Build an animated visualization with time series
 
 **Context**
@@ -27,13 +37,13 @@ In this tutorial we are going to represent the distribution of tree species in t
 
 4. Selected "san_francisco_street_trees" and explore the preview of the map and the details of the table. 
 
-   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial2_map_preview.png)
+   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial2_de_map_preview.png)
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial2_data_preview.png)
+   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial2_de_map_preview.png)
 
-5. Create a map by clicking on the *Create > Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
+5. Create a map by clicking on the *Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
-   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial2_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial2_map_from_table.png)
 
 6. Change layer name to “San Francisco trees”.
 
@@ -41,7 +51,7 @@ In this tutorial we are going to represent the distribution of tree species in t
 
 7. Change the basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
 
-    ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial2_map_basemap.png)
+    ![Map basemap carto](/img/cloud-native-workspace/tutorials/tutorial2_map_basemap_carto.png)
 
 8. Click on *Layer style* to start styling the layer.
 
@@ -59,31 +69,46 @@ In this tutorial we are going to represent the distribution of tree species in t
 
 11. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
 
-    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_add_new_widget.png)
+    ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_new_widget.png)
 
-12. Add a widget based on the column `species`. Now we can filter the data based on type of tree.
+11. Click on *New widget* button and select "populated_places".
 
-    ![Map widgets first widget](/img/cloud-native-workspace/tutorials/tutorial2_map_first_widget.png)
+    ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial2_map_widget_select_source.png)
 
-    ![Map widgets first widget_values in](/img/cloud-native-workspace/tutorials/tutorial2_map_first_widget_valuesin.png)
+    When you add a widget, it´s always the Formula widget by default:
 
-13. Add a second widget, now based on `plant_date`. This will generate a time-series widget directly on the map.
+    ![Map widget formula by default](/img/cloud-native-workspace/tutorials/tutorial2_map_widget_formula_by_default.png)
 
-    ![Map widgets second widget](/img/cloud-native-workspace/tutorials/tutorial2_map_second_widget.png)
+12. Select CATEGORY widget, choose `COUNT` operation from the list and select the column `species`. 
 
-14. Modify the time window to be “incremental”.
+    ![Map category widget select field](/img/cloud-native-workspace/tutorials/tutorial2_map_category_widget_select_field.png)
 
-    ![Map widgets second widget incremental](/img/cloud-native-workspace/tutorials/tutorial2_map_second_widget_incremental.png)
+    Now we can filter the data based on the country.
 
+    ![Map category widget selected field](/img/cloud-native-workspace/tutorials/tutorial2_map_category_widget_selected_field.png)
+
+13. Click on the *Back* arrow and then click on *Add widget* to add a second widget (TIME-SERIES), now based on `plant_date`. You will get a time-series widget in order to be able to filter the species based on their plant date.
+
+    ![Map time-series widget selected field](/img/cloud-native-workspace/tutorials/tutorial2_map_time-series_widget_selected_field.png)
+
+14. Change the default bucket size to "Years" to display different groups of data. You can also include some animation by clicking on *Play/Pause control (animation)*:
+
+    ![Map widgets animation](/img/cloud-native-workspace/tutorials/tutorial2_map_widgets_animation.png)
+
+15. Let´s the names of both widgets for "Nº of Species" and “Plant date”. Click on the *Back* arrow and then click on the “three dots” icon to configure rename your widgets.
+
+    ![Map widgets rename](/img/cloud-native-workspace/tutorials/tutorial2_map_widgets_rename.png)
 
 14. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the field `species`. 
 
-    ![Map widgets new tooltip](/img/cloud-native-workspace/tutorials/tutorial2_map_tooltip.png)
+    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial2_map_tooltip.png)
 
 15. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial2_map_public.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial2_map_public_map.png)
 
 16. Finally, we can visualize the result.
 
-    <iframe width="800x" height="400px" src="https://gcp-europe-west1.app.carto.com/map/7bcfaa45-137f-4ecc-8527-5f40f54ada7d"></iframe>
+   <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/28cf32ed-9901-4865-a523-d2ec48fc36b9"></iframe>
+
+<!--    <iframe width="800x" height="400px" src="https://gcp-europe-west1.app.carto.com/map/7bcfaa45-137f-4ecc-8527-5f40f54ada7d"></iframe> -->

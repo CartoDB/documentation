@@ -1,3 +1,13 @@
+---
+title: "A Quadkey grid of stores locations and simple cannibalization analysis"
+description: "PWe are going to demonstrate how fast and easy it is to make a visualization of a Quadkey grid to identify the concentration of Starbucks locations in the US."
+image: "/img/sf-analytics-toolbox/examples/starbucks-usa-quadkey-grid.png"
+type: examples
+date: "2021-10-12"
+categories:
+    - quadkey
+---
+
 ## A Quadkey grid of stores locations and simple cannibalization analysis
 
 ### Bulding the Quadkey grid
