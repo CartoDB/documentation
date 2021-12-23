@@ -22,15 +22,18 @@ In the next sections we show how to configure connections to the supported cloud
 ### Connection to BigQuery
 
 CARTO uses access credentials to connect to BigQuery in order to run queries on your behalf.
-You can use features of CARTO directly by using the BigQuery console through the CARTO Analytics Toolbox, or you can use the CARTO Workspace to launch the different processes, like tileset generation.
+You can use features of CARTO directly by using the BigQuery console through the CARTO Analytics Toolbox, or you can use the CARTO Workspace to launch different processes, like tileset generation.
 
-We will use a Google Cloud Service Account for other operations such as exploring your projects and fetching data for visualization.
+There are two ways to set up a connection to Google BigQuery:
 
-When you access BigQuery, the billing account associated with the selected billing project will be charged. Unless you have a flat-rate pricing agreement with Google, we recommend you configure specific limits in BigQuery to avoid any unexpected charges.
+* **Service Account**: these are JSON credentials generated in Google Cloud Console, and are usually granted specific permissions to certain projects or datasets.
+* **Sign in with Google**: connect your own Google account and use the Google BigQuery projects that you already have access to.
+
+When you access BigQuery through Google Cloud Service Account, the billing account associated with the selected billing project will be charged. Unless you have a flat-rate pricing agreement with Google, we recommend you configure specific limits in BigQuery to avoid any unexpected charges.
 
 When you select the BigQuery connector in the *New connection* dialog, you will see the following page:
 
-![BigQuery Connection](/img/cloud-native-workspace/connections/the_connections_bigquery_first.png)
+![BigQuery Connection overview](/img/cloud-native-workspace/connections/the_connections_bigquery_overview.png)
 
 Click the *Connect using a service account* button. You will see the form where you need to provide your connection parameters:
 
@@ -39,6 +42,27 @@ Click the *Connect using a service account* button. You will see the form where 
 - **Billing project**: having entered the previous parameters, a selector for choosing the billing project will be enabled, enabling CARTO to run queries using your service account.
 
 ![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
+
+To connect using "Sign in with Google" simply click the *Sign in with Google* button. This will open a Google login modal that will request the necessary scopes for CARTO to connect to your BigQuery. You can connect with your previous account or use a new one.
+
+![BigQuery oauth](/img/cloud-native-workspace/connections/the_connections_bq_oauth_first.png)
+
+Once you have selected an account, a new dialog will appear allowing you to confirm that you trust CARTO and you give it necessary permissions. Click on *Allow* button to confirm and be authenticated directly using your google credentials or click *Cancel* if you don’t want to continue.
+
+![BigQuery oauth](/img/cloud-native-workspace/connections/the_connections_bq_oauth_second.png)
+
+{{% bannerNote type="note" title="Note"%}}
+If you use "Sign in with Google" you might be asked to reconnect at any time, for example, after a few months or after changing your password. This is because this type of connection is linked to your Google account consent, which you can also revoke at any moment.
+
+Also, because this type of connection is tied to a Google Account, it can't be shared with the rest of the organization.
+{{%/ bannerNote %}}
+
+After allowing CARTO to  access your Google Account, you will see the form where you need to provide your connection parameters:
+
+- **Name** for your connection: You can register different connections with the BigQuery connector. You can use the name to identify the different connections.
+- **Billing project**: having entered the previous parameters, a selector for choosing the billing project will be enabled, enabling CARTO to run queries using your service account.
+
+![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bq_oauth_the_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your BigQuery server. If everything is OK, your new connection will be registered.
 

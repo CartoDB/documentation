@@ -25,3 +25,7 @@ Once you have shared your connection, it will be available to all users in your 
 You can always change the privacy of your connection. When you select the private mode, a message will appear warning you that by making the connection private, it will break the data sources added by other users, affecting their maps. Click on *Confirm* to accept this or click on *Cancel* to continue:
 
 ![Connection confirmation deletion](/img/cloud-native-workspace/connections/the_connections_private_warning.png)
+
+{{% bannerNote title="About sharing OAuth connections" type="info"%}}
+Connections created using OAuth credentials (such as "Sign in with Google") can't be shared with the organization since they're tied to a single OAuth account (eg: a Google account)
+{{%/ bannerNote %}}
