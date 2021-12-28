@@ -64,7 +64,11 @@ This query computes five clusters from the points of the `sample_customer_home_l
 ![Map add query](/img/cloud-native-workspace/maps/map_custom-query-analytics-toolbox-clustering.png)
 
 
-To learn more, please visit the Documentation page of the [Analytics Toolbox for BigQuery](/analytics-toolbox-bq) (also valid for the CARTO Data Warehouse) and [Analytics Toolbox for Snowflake](/analytics-toolbox-snowflake).
+To learn more, please visit the Documentation page of the CARTO Analytics Toolbox for each provider: 
+* [Analytics Toolbox for BigQuery](/analytics-toolbox-bigquery) (also valid for the CARTO Data Warehouse)
+* [Analytics Toolbox for Snowflake](/analytics-toolbox-snowflake)
+* [Analytics Toolbox for Redshift](/analytics-toolbox-redshift)
+* [Analytics Toolbox for Databricks](/analytics-toolbox-databricks)
 
 ### Add source from a local or remote file
 
