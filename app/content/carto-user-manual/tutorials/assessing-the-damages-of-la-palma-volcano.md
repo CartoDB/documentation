@@ -56,7 +56,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     This will open CARTO Builder with this table added as a layer to a map. 
 
-   ![Data Explorer created map from table](/img/cloud-native-workspace/tutorials/tutorial7_created_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial7_create_map_from_table.png)
 
 9.  Let's start by having a look at the Data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed.
 
@@ -76,7 +76,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
 12. We can style the layer, by changing for example the color of the geometries.
 
-    ![Map fill color](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_color.png)
+    ![Map fill color](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_one_color.png)
 
 13. Let's now add another layer by clicking on the “Add source from…” button from Sources. Select Table/Tileset, then select the `CARTO Data Warehouse`connection and click on *demo data > demo_tables > lapalma_sociodemo_parcels* from the collapsible tree. Click on *Add Source*.
 
@@ -150,7 +150,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ```sql
     WITH lava_buffer AS
-    (SELECT `carto-un`.transformations.ST_BUFFER(geom,0.5,"kilometers",1) AS geom
+    (SELECT `carto-un`.carto.ST_BUFFER(geom,0.5,"kilometers",1) AS geom
     FROM `carto-demo-data.demo_tables.lapalma_volcano_lavaflow`),
  
     affected_properties AS 
