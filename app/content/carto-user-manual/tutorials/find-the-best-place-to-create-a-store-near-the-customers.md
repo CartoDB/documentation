@@ -61,7 +61,7 @@ In this example we are going to use points clustering to analyze how to find the
 
 8. Optionally, you could spend some time and style this layer based on the `customer_value` feature, either with the fill color of the points or their radius.
 
-    ![Map style fill based on and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_fill_based_on_and_radius.png)
+    ![Map style fill based on and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_fill_color_based_on_and_radius.png)
 
 9. Now we are going to modify the SQL Query used to generate the map layer, and we are going to use the  [`clustering functions`](/analytics-toolbox-bq/sql-reference/clustering/) 
 in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of stores we want to open).
@@ -70,7 +70,7 @@ in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of st
     WITH
     clustered_points AS (
     SELECT
-        `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
+        `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
     FROM `carto-demo-data.demo_tables.sample_customer_home_locations`
     )
     SELECT
@@ -79,7 +79,7 @@ in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of st
     FROM clustered_points,UNNEST(cluster_arr) AS cluster_element 
     GROUP BY cluster_element.cluster
     ```
-    ![Map sql query cluster](/img/cloud-native-workspace/tutorials/tutorial5_map_sql_query_cluster.png)
+    ![Map sql query cluster](/img/cloud-native-workspace/tutorials/tutorial5_map_sql_query_clustering.png)
 
 10. Let's now change the name of the layer to “Clusters of customer homes”.
 
@@ -87,7 +87,7 @@ in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of st
 
 11. Style the layer by modifying the fill color of the points based on the feature `cluster`. You can change the color and width of the stroke in order to polish the visualization. 
 
-    ![Map fill style based on and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_cluster_fill_based_on_and_radius.png)
+    ![Map fill style based on and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_cluster_fill_color_based_on_and_radius.png)
 
 12. You can also add a HISTOGRAM Widget to be able to filter the home locations based on the cluster.
 
@@ -112,7 +112,7 @@ in the `Analytics Toolbox`; this would give us a potentially optimal location to
     ```sql
     WITH clustered_points AS (
     SELECT 
-        `carto-un`.clustering.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
+        `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
     FROM `carto-demo-data.demo_tables.sample_customer_home_locations`
     )
     SELECT 
@@ -121,13 +121,14 @@ in the `Analytics Toolbox`; this would give us a potentially optimal location to
     FROM clustered_points, UNNEST(cluster_arr) AS cluster_element 
     GROUP BY cluster_element.cluster
     ```
+
 17. Let's rename this second layer as “Cluster centers”.
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial5_map_second_layer_rename.png)
 
 18. Finally, we are going to style this layer by changing the fill color and increasing the radius of the points in order to make them more visible.
 
-    ![Map style centroid fill color and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_centroid_fill_color_and_radius.png)
+    ![Map style centroid fill color and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_centroid_fill_one_color_and_radius.png)
 
 19. We can also make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
