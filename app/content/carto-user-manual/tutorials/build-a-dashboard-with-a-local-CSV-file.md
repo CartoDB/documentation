@@ -10,9 +10,13 @@ date: "2021-08-12"
 ---
 ## Build a dashboard with a local CSV file
 
+**Context**
+
 In this tutorial we are going to showcase how to upload a local CSV file to your CARTO Data Warehouse and then use it to build an interactive dashboard with our map-making tool, Builder.
 
 As a local CSV file in this example we are going to use a dataset with a sample of [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/dataset/cdb_spatial_fea_94e6b1f/) dataset in Las Vegas. You can download this file from [here](https://drive.google.com/file/d/1ezUqybFlQJNIz2fhT9QimEn7XO_7fZOO/view).
+
+**Steps To Reproduce**
 
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
    - Click on *Log in*.
