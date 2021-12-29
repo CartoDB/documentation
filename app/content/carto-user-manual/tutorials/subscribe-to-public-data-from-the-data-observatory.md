@@ -104,9 +104,9 @@ Note that when modifying the query you should keep the table IDs as defined for 
 
 15. Click on the “three dots” icon next to Color in order to open the option style the “Color Based On”, we pick for example the feature `Population`. We can also select the color palette of our preference. 
 
-    ![DO fill select field](/img/cloud-native-workspace/tutorials/tutorial4_do_fill_select_field.png)
+    ![DO fill select field](/img/cloud-native-workspace/tutorials/tutorial4_do_fill_color_based_on.png)
 
-    ![DO fill based on](/img/cloud-native-workspace/tutorials/tutorial4_do_fill_based_on.png)
+    ![DO fill based on](/img/cloud-native-workspace/tutorials/tutorial4_do_layer_styled.png)
 
 16. We can now also add a widget in order to be able to filter the H3 cells based on the population and other features in the table. For that we click in the tab for “Widgets”.
 

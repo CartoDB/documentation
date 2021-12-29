@@ -51,15 +51,13 @@ In this tutorial we are going to represent the distribution of the most populate
 
    ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial1_map_layer_options.png)
 
-   ![Map layers style](/img/cloud-native-workspace/tutorials/tutorial1_map_layer_style.png)
-
 8. Click on the “three dots” icon in the Fill Color section and select “Color Based On” feature `featurecla`. It has information about what kind of places there are. Pick a palette for a categorical variable (versus a gradient).  
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial1_map_fill_based_on.png)
+   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial1_map_fill_color_based_on_field.png)
 
 9. Now click on the options for the Radius configuration and in the section “Radius Based On” pick the column `pop_max`. Play with the minimum/maximum size to style the layer as you like.
  
-   ![Map style radius additional features](/img/cloud-native-workspace/tutorials/tutorial1_map_radius_based_on.png)
+   ![Map style radius additional features](/img/cloud-native-workspace/tutorials/tutorial1_map_radius_based_on_field.png)
 
 10. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
 
