@@ -75,7 +75,7 @@ In this example we are creating a tileset in which each building in Madrid is re
 
 12. Now let's style this layer as we want to build a cool visualization.
 
-    ![Map fill based on](/img/cloud-native-workspace/tutorials/tutorial6_map_fill_color_based_on.png)
+    ![Map fill based on](/img/cloud-native-workspace/tutorials/tutorial6_map_fill_color_based_on_field.png)
 
 
 13. Finally we can change our basemap. Go to Basemaps tab and select “Dark matter” from Google Maps.

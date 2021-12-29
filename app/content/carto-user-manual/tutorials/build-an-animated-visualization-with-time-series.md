@@ -57,15 +57,13 @@ In this tutorial we are going to represent the distribution of tree species in t
 
    ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial2_map_layer_options.png)
 
-   ![Map layers style](/img/cloud-native-workspace/tutorials/tutorial2_map_layer_style.png)
-
 9. Click on the “three dots” icon in the Fill Color section and select “Color Based On” feature `species`. Pick a palette for a categorical variable (versus a gradient).  
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial2_map_fill_based_on.png)
+   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial2_map_fill_color_based_on.png)
 
 10. Modify the Radius of the points to make them smaller.
  
-   ![Map style radius](/img/cloud-native-workspace/tutorials/tutorial2_map_radius.png)
+   ![Map style radius](/img/cloud-native-workspace/tutorials/tutorial2_map_change_radius.png)
 
 11. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
 

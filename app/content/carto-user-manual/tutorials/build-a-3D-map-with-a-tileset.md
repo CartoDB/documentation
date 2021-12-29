@@ -54,11 +54,9 @@ In this example we are building a map from a tileset createad by CARTO from a ne
 
    ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial3_map_layer_option.png)
 
-   ![Map layers style](/img/cloud-native-workspace/tutorials/tutorial3_map_layer_style.png)
-
 8. Click on the “three dots” icon in the Fill Color section and select “Color Based On” feature `elevation`. Select a sequential color palette for this type of feature. 
 
-   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_fill_color_based_on.png)
+   ![Map fill style based on field](/img/cloud-native-workspace/tutorials/tutorial3_map_fill_color_based_on_field.png)
 
 9. In order to be able to visualize this data on a 3D map, we need to detail what feature should be used to obtain the “height” information. Click on the “three dots” icon in the Height section and in the field “Height Based On” pick the feature `elevation` with a linear scale. 
 
@@ -67,7 +65,7 @@ In this example we are building a map from a tileset createad by CARTO from a ne
    You can change the height using the height slider or by directly inputting the height in the 
 text input.
 
-   ![Map height slider](/img/cloud-native-workspace/tutorials/tutorial3_map_height_using_slider.png)
+   ![Map height slider](/img/cloud-native-workspace/tutorials/tutorial3_map_height_slider.png)
 
 10. Finally, modify the map visualization to be in 3D by clicking on the “cube” icon in the top bar. 
 
