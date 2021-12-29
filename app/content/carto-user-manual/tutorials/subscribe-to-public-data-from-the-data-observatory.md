@@ -11,6 +11,10 @@ date: "2021-07-12"
 
 ## Subscribe to public data from the Data Observatory
 
+**Context**
+
+In this tutorial we are going to showcase how to leverage the public data offering from our Data Observatory and use the data from a subscription to build an interactive dashboard in our map-making tool, Builder.
+
 **Steps To Reproduce**
 
 1. Go to the <a href="http://app.carto.com/signup" target="_blank">CARTO signup</a> page.
