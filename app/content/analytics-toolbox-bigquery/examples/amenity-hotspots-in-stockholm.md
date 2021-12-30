@@ -1,6 +1,6 @@
 ---
 title: "Identifying amenity hotspots in Stockholm"
-description: "In this example we are going to identify hotspots of amenity POIs in Stockholm using OpenStreetMap data and the GETIS_ORD_H3 function of the statistics module. "
+description: "In this example we identify hotspots of amenity POIs in Stockholm using OpenStreetMap data and the GETIS_ORD_H3 function of the statistics module. "
 image: "/img/bq-analytics-toolbox/examples/hotspots_amenity_pois_stockholm.png"
 type: examples
 date: "2021-27-12"
