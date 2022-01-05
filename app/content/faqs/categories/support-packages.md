@@ -31,7 +31,7 @@ These Packages are structured to help organizations at any stage of using locati
       <td style="text-align: center">mail or telephone</td>
     </tr>
     <tr>
-      <td><strong>Help and Developer Center</strong></td>
+      <td><strong>Documentation</strong></td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
       <td style="text-align: center">✓</td>
@@ -143,9 +143,9 @@ CARTO classifies support issues as follows:
 
 | **Classification** | **Description** |
 | :---: | :--- |
-| P1 | Critical issue; full service is unusable |
-| P2 | Issue with significant operational impact |
-| P3 | Issue with limited operational impact and general questions |
+| **P1** | Critical issue; full service is unusable |
+| **P2** | Issue with significant operational impact |
+| **P3** | Issue with limited operational impact and general questions |
 
 Customers should indicate the level of impact being experienced when submitting their support request. This will give CARTO’s Support Engineering team a sense of the potential impact and urgency of the issue. CARTO’s Support Engineering team will ultimately determine the issue severity based on initial investigation and correspondence with the issue submitter.
 
@@ -153,9 +153,9 @@ Customers should indicate the level of impact being experienced when submitting 
 
 | **Severity** | **Individual** | **Standard** | **Premium** | **Elite** |
 | :---: | :---: | :---: | :---: |:---: |
-| P1 | 8  | 4  | 2  | 1* |
-| P2 | 12  | 6  | 4  | 2*|
-| P3 | 24 | 16 | 8  | 6  |
+| **P1** | 8  | 4  | 2  | 1* |
+| **P2** | 12  | 6  | 4  | 2*|
+| **P3** | 24 | 16 | 8  | 6  |
 
 All response times are expressed in business hours, except for Elite P1 and P2 issues (\*) that are expressed in regular hours. 
 
