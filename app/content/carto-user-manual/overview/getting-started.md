@@ -180,7 +180,7 @@ Once you have registered a connection to a data warehouse, you can start using y
 
 Go to the *Connections* section in the Workspace, where you can find the list of all your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module cartodw](/img/cloud-native-workspace/connections/the_connections_cartodw.png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_the_cartodw.png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
@@ -190,11 +190,11 @@ To add a new connection, click on *New connection* and follow these steps:
 
 The following screen shows the connection setup options for Google Cloud BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bq_the_parameters.png)
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections with the new one added:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_connection_successful.png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_bqconnection_successful.png)
 
 #### Create a map
 
