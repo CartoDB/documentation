@@ -9,11 +9,26 @@ To create a new connection follow these steps:
 
 The following screen shows the connection setup options for Google Cloud BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bq_the_parameters.png)
+
+When you create a connection, it’s always **private** by default.
+
+To be able to share a connection, go to Sharing options and click on *Change*. A new dialog screen will open allowing you to select who you want to share your connection with:
+
+![Sharing options private](/img/cloud-native-workspace/connections/the_connections_sharing_options_private_default.png) 
+
+Here you’ll find two different sharing options:
+
+- **Private**: Only you can view and edit it.
+- **Organization**: The connection will be visible and available to all users in your organization.
+
+{{% bannerNote title="WARNING" type="warning"%}}
+Note that if you share the connection with your organization, you're effectively granting users access to any permissions that might be also available in this connection, such as updating or deleting data through SQL queries.
+{{%/ bannerNote %}}
 
 After you have provided the connection parameters, click *Connect*. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_connection_successful.png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_bqconnection_successful.png)
 
 Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the  *Data Explorer* ).
 

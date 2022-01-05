@@ -41,6 +41,7 @@ cascade:
         - title: "CARTO Data Warehouse"
         - title: "Creating a connection"
         - title: "Editing a connection"
+        - title: "Sharing a connection"
         - title: "Deleting a connection"
     - title: "Applications"
       folder:
