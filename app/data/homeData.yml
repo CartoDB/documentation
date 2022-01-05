@@ -36,6 +36,12 @@ getStarted:
       # - name: "Maps API"
       #   url: "https://api-docs.carto.com/#75feef02-1e8d-4d95-be36-17276228544a"
 
+support:
+  - title: "Contact Support"
+    description: "Get in touch with our team of first-class geospatial specialists"
+    url: "/faqs/categories/support-packages/#how-to-submit-an-issue-to-our-support-team"
+    image: "carto.png"
+
 products:
   - title: "CARTO User Manual"
     description: "Manage your datasets and maps, access your account settings, manage your API keys, and access your public profile."

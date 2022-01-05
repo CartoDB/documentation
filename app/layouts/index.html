@@ -92,6 +92,23 @@
 
   <div class="container grid u-justify-center u-mb32">
     <div class="grid-cell grid-cell--col10">
+      <h2 id="dev-tools" class="title f20 is-txtBaseGrey">Get Help</h2>
+    </div>
+    <ul class="grid-cell--col10 grid u-mt24">
+      {{range $elem := $data.support}}
+        <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20">
+          <a href="{{$elem.url}}" class="clickable-card clickable-card--small {{if $elem.highlighted}}clickable-card--highlighted{{end}}">
+            <img src="/img/icons/{{$elem.image}}"/>
+            <h3 class="title f16 is-txtBaseGrey u-mt16">{{$elem.title}}</h3>
+            <p class="text f16 is-txtTypo2 u-mt8">{{$elem.description}}</p>
+          </a>
+        </li>
+      {{end}}
+    </ul>
+  </div>
+
+  <div class="container grid u-justify-center u-mb32">
+    <div class="grid-cell grid-cell--col10">
       <h2 id="dev-tools" class="title f20 is-txtBaseGrey">Development tools</h2>
     </div>
     <ul class="grid-cell--col10 grid u-mt24">
@@ -145,7 +162,7 @@
   </div>
 </section>
 
-<section class="is-bgSoftGrey">
+<!-- <section class="is-bgSoftGrey">
   <div class="container grid u-justify-center">
     <ul class="grid-cell--col10 grid u-mt120 u-mb120 u-mt48--tablet u-mb48--tablet">
       <li class="grid-cell grid-cell--col4 grid-cell--col6--tablet grid-cell--col12--mobile u-mb20 u-flex u-flex-column u-align-start">
@@ -173,6 +190,6 @@
       </li>
     </ul>
   </div>
-</section>
+</section> -->
 
 {{end}}
