@@ -82,10 +82,12 @@ To add a new widget to the map, click on *Add widget* button and select the data
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_source.png)
 
-At this moment, there are three advanced widgets available to customize your visual representation and get a rich interaction with your data: 
+At this moment, there are four types of widgets available to customize your visualization and enable a richer interaction with your data: 
 - **Formula**: Shows aggregated numerical data from the features in the map's viewport.
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
+- **Time-Series**: Shows the frequency distribution aggregated by a fixed temporal period (Days, Weeks, Months or Years). It also allows to create animated maps.
+
 
 #### Formula Widget
 
@@ -146,6 +148,36 @@ For advanced analysis, you can all widgets in a single map so you can combine yo
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together.png)
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together_filtered.png)
+#### Time-Series Widget
+
+From Data, choose the operation from the list and select a field from your source dataset that you want to analyze.
+The selected column for the widget must be of type date, and you can define how the date is aggregated (by Years, Months, Weeks, Years) to visualize a selected range of time.
+
+In this example, we aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
+
+![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_time-series.png)
+
+{{% bannerNote title="NOTE" type="note"%}}
+Bear in mind that the most important requirement is that your date column contains valid timestamp values, otherwise the data may not appear correctly.
+{{%/ bannerNote %}}
+
+From the widget, you can play, pause or stop the animation and filter by a selected range of values. To activate the animation, toggle on *Animation controls*.
+
+![Map widgets time-series animation control](/img/cloud-native-workspace/maps/map_widget_time-series_animation_controls.png)
+
+![Map widgets time-series animation controls activated](/img/cloud-native-workspace/maps/map_widget_time-series_animation_controls_activated.png)
+
+To change the speed of the animation, click on the clock icon and select the speed: 0.5x, 1x, 2x or 3x.
+
+![Map widgets time-series clock icon](/img/cloud-native-workspace/maps/map_widget_time-series_animation_clock.png)
+
+You can also filter your data within a given range. The selected range is distributed across your map to display groups of data aggregated by the selected date type.
+
+![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_filter.png)
+
+This enables you to click and drag the start and end range of selected data. In this example, we add a second widget to display the number of earthquakes filtered in each range.
+
+![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_and_formula.png)
 ### Interactions
 
 ![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
