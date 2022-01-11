@@ -82,11 +82,13 @@ To add a new widget to the map, click on *Add widget* button and select the data
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_source.png)
 
-At this moment, there are three advanced widgets available to customize your visual representation and get a rich interaction with your data: 
+At this moment, there are four types of widgets available to customize your visualization and enable a richer interaction with your data: 
 - **Formula**: Shows aggregated numerical data from the features in the map's viewport.
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
-- **Time-Series**: Shows animated data (by aggregation) over a specified date range.
+- **Time-Series**: Shows the frequency distribution aggregated by a fixed temporal period (Days, Weeks, Months or Years). It also allows to create animated maps.
+
+
 #### Formula Widget
 
 From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze. 
