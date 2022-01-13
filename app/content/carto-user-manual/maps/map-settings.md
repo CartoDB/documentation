@@ -151,7 +151,7 @@ For advanced analysis, you can all widgets in a single map so you can combine yo
 #### Time-Series Widget
 
 From Data, choose the operation from the list and select a field from your source dataset that you want to analyze.
-The selected column for the widget must be of type date, and you can define how the date is aggregated (by Years, Months, Weeks, Years) to visualize a selected range of time.
+The selected column for the widget must be of type date, and you can define how the date is aggregated (by Years, Months, Weeks, Days) to visualize a selected range of time.
 
 In this example, we aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
 
