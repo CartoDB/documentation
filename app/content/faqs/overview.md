@@ -8,11 +8,13 @@
 * [Will all my data in the previous platform be readily available when I access the new version of CARTO?](../categories/carto-accounts/#will-all-my-data-in-the-previous-platform-be-readily-available-when-i-access-the-new-version-of-carto)
 * [Will I be forced to move all my data to the new version of the CARTO platform?](../categories/carto-accounts/#will-i-be-forced-to-move-all-my-data-to-the-new-version-of-the-carto-platform)
 * [Is CARTO’s Student Package still available?](../categories/carto-accounts/#is-cartos-student-package-still-available)
+* [Can I setup a Single Sign-On integration in the new platform?](../categories/carto-accounts/#can-i-setup-a-single-sign-on-integration-in-the-new-platform)
 
 
 
 ##### Workspace
 * [What cloud data warehouses can I use with CARTO?](../categories/workspace/#what-cloud-data-warehouses-can-i-use-with-carto)
+* [When I connect to a data warehouse, do you copy or store any data?](../categories/workspace/#when-i-connect-to-a-data-warehouse-do-you-copy-or-store-any-data)
 * [What happens if I do not have any cloud data warehouse platform to connect?](../categories/workspace/#what-happens-if-i-do-not-have-any-cloud-data-warehouse-platform-to-connect)
 * [Can I import geospatial files into CARTO’s new platform? ](../categories/workspace/#can-i-import-geospatial-files-into-cartos-new-platform)
 * [What is a tileset, and when should I create one?](../categories/workspace/#what-is-a-tileset-and-when-should-i-create-one)
