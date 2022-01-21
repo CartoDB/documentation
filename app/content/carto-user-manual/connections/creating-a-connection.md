@@ -192,27 +192,35 @@ The region (tenant) is specified when creating the organization. Your region is 
 {{%/ bannerNote %}}
 
 ##### 🇺🇸 us-east1
-You can validate these IP addresses <a href="https://workspace-gcp-us-east1.app.carto.com/meta" target="_blank">here</a>.
 * `35.185.63.239`
 * `104.196.59.4`
 * `34.73.63.7`
 * `34.139.239.104`
 
+Get this list via <a href="https://workspace-gcp-us-east1.app.carto.com/meta" target="_blank">API</a>.
+
+
 ##### 🇪🇺 europe-west1
-You can validate these IP addresses <a href="https://workspace-gcp-europe-west1.app.carto.com/meta" target="_blank">here</a>.
 * `34.79.53.57`
 * `35.195.132.75`
 * `34.78.167.2`
 * `35.187.123.190`
 
+Get this list via <a href="https://workspace-gcp-europe-west1.app.carto.com/meta" target="_blank">API</a>.
+
+
 
 ##### 🇯🇵 asia-northeast1 
-You can validate these IP addresses <a href="https://workspace-gcp-asia-northeast1.app.carto.com/meta" target="_blank">here</a>.
 * `34.85.15.12`
 * `35.200.23.186`
 
+Get this list via <a href="https://workspace-gcp-asia-northeast1.app.carto.com/meta" target="_blank">API</a>.
+
+
 ##### 🇦🇺 australia-southeast1 
-You can validate these IP addresses <a href="https://workspace-gcp-australia-southeast1.app.carto.com/meta" target="_blank">here</a>.
 * `34.151.87.148`
 * `35.201.15.104`
+
+Get this list via <a href="https://workspace-gcp-australia-southeast1.app.carto.com/meta" target="_blank">API</a>.
+
 
