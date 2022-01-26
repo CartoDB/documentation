@@ -1,6 +1,6 @@
 ## Data enrichment using the Data Observatory
 
-In this guide you will learn how to perform data enrichment using Data Observatory data and the Analytics Toolbox.
+In this guide you will learn how to perform data enrichment using Data Observatory data and the Analytics Toolbox. You can also access and run this guide using [this Google Colab notebook](https://colab.research.google.com/drive/1tpJlOlGIeAmQBQumXlr1nrTcPqbDyoEf).
 
 ### 1. Create a connection with BigQuery in the CARTO Workspace
 
