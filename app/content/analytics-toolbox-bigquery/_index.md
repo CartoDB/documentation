@@ -19,8 +19,10 @@ cascade:
     - title: "Guides"
       folder:
         - title: "Creating and visualizing tilesets"
-        - title: "Using the routing module"
+        - title: "Data enrichment using the Data Observatory"
         - title: "Running queries from Builder"
+        - title: "Using the routing module"
+        
     - title: "Examples"
       # folder:
       #   - title: "Creating simple tilesets"
