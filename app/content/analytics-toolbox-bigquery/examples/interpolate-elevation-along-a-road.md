@@ -1,8 +1,6 @@
 ---
 title: "Interploate elevation along a road"
 description: "In this example, we will perform, using the Analytics Toolbox, kriging interpolation of the elevation along the so-called roller coaster road on the island of Hokkaido, Japan. from a nearby elevation measurement."
-
-Interploate elevation along a road
 image: "/img/bq-analytics-toolbox/examples/rollercoaster_road.png"
 type: examples
 date: "2022-01-27"
