@@ -23,6 +23,7 @@ cascade:
         - title: "Map settings"
         - title: "Map styles"
         - title: "Publishing and sharing maps"
+        - title: "Duplicating maps"
     - title: "Data Explorer"
       folder:
         - title: "Introduction"
