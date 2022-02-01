@@ -149,6 +149,9 @@ View your latest content. This module displays the latest maps that you have bee
 
 ![Recent maps](/img/cloud-native-workspace/get-started/recent_maps.png)
 
+If you are the owner of the map, you will have access to the quick actions menu to manage your map by clicking on the three point icon in the top right hand corner. There are 3 options available: Edit name & description, Duplicate map and Delete.
+
+![Recent maps](/img/cloud-native-workspace/get-started/recent_maps_options.png)
 #### Getting started
 
 In this section, you also have quick access to different content pieces to help you get started with CARTO, such as creating maps from your data, developing spatial applications, or learning how to use the Analytics Toolbox.
