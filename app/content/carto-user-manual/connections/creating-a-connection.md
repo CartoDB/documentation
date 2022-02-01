@@ -56,7 +56,7 @@ Click the *Connect using a service account* button. You will see the form where 
 - **Service account key file** in JSON format. Please read the following instructions to create a <a href="https://cloud.google.com/iam/docs/creating-managing-service-accounts" target="_blank">service account</a> and a service account <a href="https://cloud.google.com/iam/docs/creating-managing-service-account-keys" target="_blank">key file</a>. We will use this service account to list tilesets, visualize them privately, and grant publishing permissions. Be sure that the service account has <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Data Owner</a> (bigquery.dataOwner) and <a href="https://cloud.google.com/iam/docs/understanding-roles#bigquery-roles" target="_blank">BigQuery Job User</a> (bigquery.jobUser). Read our <a href="https://docs.carto.com/analytics-toolbox-bq/overview/getting-started/" target="_blank">documentation</a> if you want to learn about the specific permissions CARTO requires.
 - **Billing project**: having entered the previous parameters, a selector for choosing the billing project will be enabled, enabling CARTO to run queries using your service account.
 
-![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
+![BigQuery connection parameters](/img/cloud-native-workspace/connections/the_connections_bq_the_parameters.png)
 
 To connect using "Sign in with Google" simply click the *Sign in with Google* button. This will open a Google login modal that will request the necessary scopes for CARTO to connect to your BigQuery. You can connect with your previous account or use a new one.
 

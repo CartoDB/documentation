@@ -62,7 +62,7 @@ You can access the quick actions menu to manage your widgets by clicking on the 
 
 You can also manage your widgets by clicking on the “three dots” icon in the top-right corner of the widget. There are two options available: Widget options and Delete widget.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickmenu_widget.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_quick_menu_widget.png)
 
 Click on the top-right icon to show or hide the list of your widgets from the map:
 
