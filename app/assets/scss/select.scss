@@ -11,11 +11,17 @@
 }
 
 .select-trigger {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  width: auto;
   height: 36px;
-  border: 2px solid #e7e9ec;
-  border-radius: 4px;
+  margin-left: auto;
+  padding: 0 16px 0 12px;
+  border-bottom: 2px solid $navyBlue;
   background-color: transparent;
+  background-image: url("/img/chevron.svg");
+  background-repeat: no-repeat;
+  background-position: right 14px;
   transition: border-color 0.2s ease-in-out;
 
   &.active,
@@ -48,20 +54,39 @@
   list-style: none;
   transition: background-color 0.2s ease-in-out;
   
-  &:not(:last-child) {
-    border-bottom: 1px solid #e7e9ec;
-  }
+  // &:not(:last-child) {
+  //   border-bottom: 1px solid #e7e9ec;
+  // }
   
-  &.active,
-  &:hover {
+  &.active {
     background-color: $softblue;
   }
+
+  // &.active,
+  // &:hover {
+  //   background-color: $softblue;
+  // }
 
   &.active {
     pointer-events: none;
 
     a {
       opacity: 0.5;
+    }
+  }
+
+  &.view-all {
+    background-color: $softblue;
+    border-top: 1px solid #e7e9ec;
+
+    a {
+      justify-content: center;
+      text-transform: uppercase;
+      color: $builder-blue;
+    }
+
+    &:hover a {
+      text-decoration: underline;
     }
   }
   
