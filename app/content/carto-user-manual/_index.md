@@ -20,6 +20,7 @@ cascade:
         - title: "Introduction"
         - title: "Add source"
         #- title: "View data table"
+        - title: "Exporting data"
         - title: "Map settings"
         - title: "Map styles"
         - title: "Publishing and sharing maps"
