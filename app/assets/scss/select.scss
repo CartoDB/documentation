@@ -1,0 +1,103 @@
+
+.relative-posistion {
+  position: relative;
+}
+
+.select {
+  position: absolute;
+  width: 220px;
+  right: 0;
+  z-index: 1;
+}
+
+.select-trigger {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 36px;
+  margin-left: auto;
+  padding: 0 16px 0 12px;
+  border-bottom: 2px solid $navyBlue;
+  background-color: transparent;
+  background-image: url("/img/chevron.svg");
+  background-repeat: no-repeat;
+  background-position: right 14px;
+  transition: border-color 0.2s ease-in-out;
+
+  &.active,
+  &:hover {
+    border-color: $navyBlue;
+  }
+
+  span.current {
+    text-transform: capitalize;
+  }
+}
+
+.select-options {
+  display: none;
+  margin: 0;
+  margin-top: 2px;
+  padding: 0;
+  background-color: $white;
+  border: 1px solid #e7e9ec;
+  border-radius: 4px;
+  box-shadow: 0px 6px 10px 0px rgba($navyBlue, 0.24);
+  overflow: hidden;
+
+  &.active {
+    display: block;
+  }
+}
+
+.select-option {
+  list-style: none;
+  transition: background-color 0.2s ease-in-out;
+  
+  // &:not(:last-child) {
+  //   border-bottom: 1px solid #e7e9ec;
+  // }
+  
+  &.active {
+    background-color: $softblue;
+  }
+
+  // &.active,
+  // &:hover {
+  //   background-color: $softblue;
+  // }
+
+  &.active {
+    pointer-events: none;
+
+    a {
+      opacity: 0.5;
+    }
+  }
+
+  &.view-all {
+    background-color: $softblue;
+    border-top: 1px solid #e7e9ec;
+
+    a {
+      justify-content: center;
+      text-transform: uppercase;
+      color: $builder-blue;
+    }
+
+    &:hover a {
+      text-decoration: underline;
+    }
+  }
+  
+  a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    padding: 0 12px;
+    color: $base-grey;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+}

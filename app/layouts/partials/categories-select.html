@@ -1,0 +1,41 @@
+<div class="select">
+  <button class="select-trigger">
+    {{ if .current }}
+      <span class="title f12 current">{{ .current }}</span>
+    {{ else }}
+      <span class="title f12">Filter by Module</span>
+    {{ end }}
+  </button>
+  {{ $dir := .dir }}
+  {{ $current := .current }}
+  <ul class="select-options">
+    {{ range $category := .categories }}
+      {{ if $category }}
+      <li class="select-option {{ if eq $current $category }}active{{ end }}">
+        <a class="text f12" href="{{ $dir | relURL }}categories/{{ $category | urlize}}">{{$category}}</a>
+      </li>
+      {{ end }}
+    {{ end }}
+    {{ if $current }}
+      <li class="select-option view-all">
+        <a class="title f12" href="{{ $dir | relURL }}">All Modules</a>
+      </li>
+    {{ end }}
+  </ul>
+</div>
+
+<script>
+  var trigger = document.querySelector('.select-trigger');
+  var options = document.querySelector('.select-options');
+  trigger.addEventListener('click', function () {
+    trigger.classList.add('active');
+    options.classList.add('active');
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.select-trigger')) {
+      trigger.classList.remove('active');
+      options.classList.remove('active');
+    }
+  });
+</script>
