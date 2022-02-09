@@ -48,4 +48,9 @@
 * [What is the issue and severity classification? ](../categories/support-packages/#what-is-the-issue-and-severity-classification)
 * [What are CARTO’s Target Response Times (business hours)?](../categories/support-packages/#what-are-cartos-target-response-times-business-hours)
 
+##### CARTO for Education
+* [How can I get a Student account in CARTO?](../categories/carto-for-education/#how-can-i-get-a-student-account-in-carto)
+* [How can I get an Educator acccount?](../categories/carto-for-education/#how-can-i-get-an-educator-account)
+* [We need Enterprise capabilities for our institution or academic research, can you help?](../categories/carto-for-education/#we-need-enterprise-capabilities-for-our-institution-or-academic-research-can-you-help)
+* [What is the process for getting a CARTO Student account? ](../categories/carto-for-education/#what-is-the-process-for-getting-a-carto-student-account)
 
