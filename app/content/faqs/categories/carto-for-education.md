@@ -18,7 +18,7 @@ We routinely hear from students, teachers, professors, and university administra
 Students can create a free CARTO account via [GitHub’s Student Developer Pack](http://education.github.com/pack). When they sign up for the pack, they’ll also get access to a ton of other free development tools! See the process and eligibility requirements below.
 
 
-##### How can I get an Educator acccount? 
+##### How can I get an Educator account? 
 Educators are also eligible for a free CARTO account. Request an Educator account by emailing marketing@carto.com together with a document that accredits your educator status. We welcome educators from accredited institutions as well as bootcamps and similar training organizations.
 
 ##### We need Enterprise capabilities for our institution or academic research, can you help?
