@@ -24,7 +24,7 @@ Educators are also eligible for a free CARTO account. Request an Educator accoun
 ##### We need Enterprise capabilities for our institution or academic research, can you help?
 Academic researchers and others in the education field, whether at a school, university, independent research center, or boot camp, can make use of CARTO Enterprise at a discount. [Contact sales](https://carto.com/#request-demo) to learn more.
 
-##### What's the process for getting a CARTO Student account? 
+##### What is the process for getting a CARTO Student account? 
 
 To verify that only eligible students are accessing CARTO, we take advantage of Github’s verification system. This means you will need to go through their channels to ensure you receive the proper student account:
 {{<interactiveTutorial>}}
