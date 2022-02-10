@@ -5,10 +5,10 @@ by importing files from your computer or via URL. Once a file is imported, the r
 
 
 ### Supported formats
-Currently, the import of CSV, GeoJSON and Shapefiles (in a zip package) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
+Currently, the import of CSV, GeoJSON and Shapefiles (in a zip package) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit.
 
-For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
-* For *geometry*: `geom,Geom,geometry,the_geom,wkt,wkb`
+For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are:
+* For *geometry*: `geom,Geom,geometry,the_geom,wkt,wkb,wkt_geometry,wkb_geometry`
 * For *latitude*: `latitude,lat,Latitude`
 * For *longitude*: `longitude,lon,Lon,Longitude,lng,Lng`
 
@@ -19,7 +19,7 @@ To import your data, go to Data Explorer section, select *Connections* panel and
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
 
-A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
+A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection.
 
 ![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
@@ -35,7 +35,7 @@ This interface will allow you to upload a supported file, such as GeoJSON or Sha
 
 ![Data Explorer import select file local](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
-Once you have completed this configuration, click on *Continue*: 
+Once you have completed this configuration, click on *Continue*:
 
 ![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_select_local_file_continue.png)
 
@@ -43,11 +43,11 @@ The next screen will show you a summary of the configuration of the table for yo
 
 ![Data Explorer import confirmation local](/img/cloud-native-workspace/data-explorer/de_import_confirmation_local.png)
 
-Once you click on Import, a new dialog will open informing you that the import may take a while to process and giving you the option to follow the status from a new dialogue box that appears at the top right corner of the screen. 
+Once you click on Import, a new dialog will open informing you that the import may take a while to process and giving you the option to follow the status from a new dialogue box that appears at the top right corner of the screen.
 
 ![Data Explorer importing local to carto dw](/img/cloud-native-workspace/data-explorer/de_importing_local_to_cartodw.png)
 
-There are three possible status: importing, imported successfully or dataset creation error. 
+There are three possible status: importing, imported successfully or dataset creation error.
 
 ![Data Explorer importing local](/img/cloud-native-workspace/data-explorer/de_importing_local.png)
 
@@ -73,7 +73,7 @@ This interface will allow you to enter your supported URL file, such as GeoJSON 
 
 ![Data Explorer import select file url](/img/cloud-native-workspace/data-explorer/de_import_select_url.png)
 
-Once you have completed this configuration, click on *Continue*: 
+Once you have completed this configuration, click on *Continue*:
 
 ![Data Explorer import selected file continue url](/img/cloud-native-workspace/data-explorer/de_import_select_url_continue.png)
 n
@@ -85,7 +85,7 @@ Once you click on Import, a new dialog will open informing you that the import m
 
 ![Data Explorer importing url to carto dw](/img/cloud-native-workspace/data-explorer/de_importing_url_to_cartodw.png)
 
-There are three possible status: importing, imported successfully or dataset creation error. 
+There are three possible status: importing, imported successfully or dataset creation error.
 
 ![Data Explorer importing url](/img/cloud-native-workspace/data-explorer/de_importing_url.png)
 
