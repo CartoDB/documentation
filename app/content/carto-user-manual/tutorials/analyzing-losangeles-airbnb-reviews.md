@@ -29,6 +29,10 @@ Additionally, we'll analyze more in-depth the areas where the _location_ score d
 
 In this first step we will go through basic setup, including creating a CARTO account and importing the data that will be used for this tutorial.
 
+{{% bannerNote type="note" title="note" %}}
+The dataset used for this training corresponds with [open data from Airbnb](http://insideairbnb.com/get-the-data.html) that has been pre-filtered specifically for this exercise.
+{{%/ bannerNote %}}
+
 1. Go to the new CARTO platform access page: https://app.carto.com
 
    ![Log in Email and password](/img/cloud-native-workspace/get-started/login.png)
