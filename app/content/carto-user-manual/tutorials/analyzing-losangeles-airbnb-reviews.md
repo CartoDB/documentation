@@ -29,10 +29,6 @@ Additionally, we'll analyze more in-depth the areas where the _location_ score d
 
 In this first step we will go through basic setup, including creating a CARTO account and importing the data that will be used for this tutorial.
 
-{{% bannerNote type="note" title="note" %}}
-The dataset used for this training corresponds with [open data from Airbnb](http://insideairbnb.com/get-the-data.html) that has been pre-filtered specifically for this exercise.
-{{%/ bannerNote %}}
-
 1. Go to the new CARTO platform access page: https://app.carto.com
 
    ![Log in Email and password](/img/cloud-native-workspace/get-started/login.png)
@@ -61,19 +57,23 @@ https://storage.googleapis.com/carto-academy-public-data/listings_la_2021_5_revi
 
 Import the file into your connection or CARTO Data Warehouse as `listings_la_2021_5_reviews`.
 
+{{% bannerNote type="note" title="note" %}}
+The dataset used for this training corresponds with [open data from Airbnb](http://insideairbnb.com/get-the-data.html) that has been pre-filtered specifically for this exercise.
+{{%/ bannerNote %}}
+
 #### Exploring Airbnb listings distribution through Spatial Indexes (H3)
 
 We will inspect how Airbnb listings are distributed accross Los Angeles and aggregate the raw data to have a better understanding on how different variables vary geographically within the city.
 
 6. Inspect the data from the `listings_la_2021_5_reviews` dataset view within the Data Explorer, then click on the _Create map_ button.
 
-7. Rename the map to `1 Airbnb initial data exploration`. Then click on _Layer 1_ and apply the next style changes.
+7. Rename the map to `Map 1 Airbnb initial data exploration`. Then click on _Layer 1_ and apply the next style changes.
 
     - Name: `Airbnb listings`
     - Color: Dark yellow
     - Radius: `2,5`
 
-![Style map layer](/img/cloud-native-workspace/tutorials/tutorial10_airbnb_layer_styling_1.gif)
+![Style map layer](/img/cloud-native-workspace/tutorials/tutorial10_initial_map_styling.gif)
 
 8. Add a new layer with source ‘Your connection’ and type 'SQL query'. Input the SQL query below.
 
@@ -141,7 +141,7 @@ This model will allow us to extract insights of what the overall impression of A
 
 We will also visualize where the *location* *score* variable influences the ‘Overall rating’ result the most.
 
-10. To save map results and continue working on a separate map, let's duplicate the map, disable the 3D view and rename the map copy to `2 GWR Model map`
+10. To save map results and continue working on a separate map, let's duplicate the map, disable the 3D view and rename the map copy to `Map 2 GWR Model map`
 
     ![Map duplicate](/img/cloud-native-workspace/tutorials/tutorial10_map_duplicate.png)
 
@@ -200,7 +200,7 @@ This dataset holds information that can be useful to explore the influence of di
 
 We will use CARTO Analytics Toolbox BigQuery Tiler to create a [Tileset](../../../analytics-toolbox-bigquery/overview/tilesets/), a special type of table that allows visualizing large spatial datasets such as this one.
 
-15. To save map results and continue working on a separate map, let's duplicate the previous map once again, and disable the dual map view (close the left panel), then rename the map copy to `3 Airbnb Spatial Features map`
+15. To save map results and continue working on a separate map, let's duplicate the previous map once again, and disable the dual map view (close the left panel), then rename the map copy to `Map 3 Airbnb Spatial Features map`
 
 16. From the main menu, click on ‘Data Observatory’ to browse the [Spatial Data Catalog](../../../data-observatory/guides/accessing-and-browsing-the-spatial-data-catalog/) and apply these filters:
 
@@ -218,7 +218,7 @@ Select the `Spatial Features - United States of America (H3 Resolution 8)` datas
     - Zoom: 9-12
     - Columns: `geoid`, `population`, `tourism` and `urbanity`
 
-    ![Tileset Spatial Features](/img/cloud-native-workspace/tutorials/tutorial10_tileset_spatial_features_z9_z12.png)
+    ![Tileset Spatial Features](/img/cloud-native-workspace/tutorials/tutorial10_create_tileset_z9_z12_spatialfeatures.gif)
 
 18. Once the Tileset has been created, we can add it to our map. To do so first open the map and then click on _Add source from..._ and select the tileset from the tree menu.
 
@@ -259,9 +259,7 @@ Optionally, style the layer as desired to visualize how different variables beha
 
 Navigate the map and observe how widget values vary depending on the viewport area. Check out specific areas by hovering over them and review pop-up attributes.
 
-The final map would look similar to the next one.
-
-<iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/bf86fead-32e1-47d2-8c4c-41ec1fcb6372"></iframe>
+See how the final map would look like [here](https://gcp-us-east1.app.carto.com/map/bf86fead-32e1-47d2-8c4c-41ec1fcb6372)
 
 21. Optionally, use the Lasso tool to create geometries and filter more specific areas of interest.
 
