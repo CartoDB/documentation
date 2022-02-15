@@ -175,7 +175,7 @@ Optionally, style the layer by different attributes.
 
 14. Click on the _Dual map view_ button to toggle the split map option.
 
-    ![Dual map view button](/img/cloud-native-workspace/tutorials/tutorial10_split_map_view_button.png)
+    ![Dual map view button](/img/cloud-native-workspace/tutorials/tutorial10_switch_dual_map_view_menu.png)
 
     - Left map: disable the `Location relevance (Model)` and `Airbnb listings` layers
     - Right map: disable the `H3 AirBnB aggregation` and `Airbnb listings` layers
