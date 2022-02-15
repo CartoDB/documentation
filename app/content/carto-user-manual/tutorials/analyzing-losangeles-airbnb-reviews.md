@@ -139,7 +139,7 @@ Next we will apply a Geospatially Weighted Regression (GWR) model using the [GWR
 
 This model will allow us to extract insights of what the overall impression of Airbnb users depends on, by relating the overall rating score with different variables (specifically we will use: value, cleanliness and location)
 
-We will also visualize where the *location* *score* variable influences the ‘Overall rating’ result the most.
+We will also visualize where the *location* *score* variable significantly influences the ‘Overall rating’ result.
 
 10. To save map results and continue working on a separate map, lets duplicate the map, disable the 3D view and rename the map copy to `Map 2 GWR Model map`
 
