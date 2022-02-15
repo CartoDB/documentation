@@ -141,7 +141,7 @@ This model will allow us to extract insights of what the overall impression of A
 
 We will also visualize where the *location* *score* variable influences the ‘Overall rating’ result the most.
 
-10. To save map results and continue working on a separate map, let's duplicate the map, disable the 3D view and rename the map copy to `Map 2 GWR Model map`
+10. To save map results and continue working on a separate map, lets duplicate the map, disable the 3D view and rename the map copy to `Map 2 GWR Model map`
 
     ![Map duplicate](/img/cloud-native-workspace/tutorials/tutorial10_map_duplicate.png)
 
