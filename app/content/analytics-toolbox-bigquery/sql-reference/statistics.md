@@ -35,9 +35,9 @@ SELECT `carto-un`.carto.GETIS_ORD_H3(
     ],
     3, 'gaussian'
 );
--- {"index": "89394460323ffff", "gi": 1.110941099464319}
--- {"index": "89394460c37ffff", "gi": -0.28278500713637167}
--- {"index": "89394460077ffff", "gi": -0.8281560923279462}
+-- {"index": "89394460323ffff", "gi": 1.3606194139870573}
+-- {"index": "89394460c37ffff", "gi": -0.34633948719670526}
+-- {"index": "89394460077ffff", "gi": -1.0142799267903515}
 ```
 
 ```sql
@@ -79,9 +79,9 @@ SELECT `carto-un`.carto.GETIS_ORD_QUADKEY(
     ],
     3, 'gaussian'
 );
--- {"index": 205405577137, "gi": 1.110941099464319}
--- {"index": 205430743409, "gi": -0.28278500713637167}
--- {"index": 205292330897, "gi": -0.8281560923279462}
+-- {"index": 205405577137, "gi": 1.3606194139870573}
+-- {"index": 205430743409, "gi": -0.34633948719670526}
+-- {"index": 205292330897, "gi": -1.0142799267903515}
 ```
 
 ```sql
@@ -265,6 +265,110 @@ ORDER BY geoid
 --  "knn": "3"
 --},
 -- ...
+```
+
+### LOCAL_MORANS_I_H3
+
+{{% bannerNote type="code" %}}
+carto.LOCAL_MORANS_I_H3(input, size, decay)
+{{%/ bannerNote %}}
+
+**Description**
+
+This function computes the local Moran's I spatial autocorrelation from the input array of H3 indexes.
+
+* `input`: `ARRAY<STRUCT<index STRING, value FLOAT64>>` input data with the indexes and values of the cells.
+* `size`: `INT64` size of the H3 kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
+
+**Return type**
+
+ARRAY<STRUCT<index STRING, value FLOAT64>>
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
+    [
+        STRUCT('89394460323ffff', 51.0),
+        STRUCT('8939446033bffff', 28.0),
+        STRUCT('8939446032bffff', 19.0)
+    ],
+    3, 'exponential'
+);
+--{
+--  "index": "89394460323ffff",
+--  "value": "-0.6170950632394939"
+--},
+--{
+--  "index": "8939446033bffff",
+--  "value": "-0.03998368013055897"
+--},
+--{
+--  "index": "8939446032bffff",
+--  "value": "-0.342921256629947"
+--}
+```
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
+    ARRAY(SELECT AS STRUCT index, value FROM mytable),
+    3, 'exponential'
+)
+```
+
+### LOCAL_MORANS_I_QUADKEY
+
+{{% bannerNote type="code" %}}
+carto.LOCAL_MORANS_I_QUADKEY(input, size, decay)
+{{%/ bannerNote %}}
+
+**Description**
+
+This function computes the local Moran's I spatial autocorrelation from the input array of quadkey indexes.
+
+* `input`: `ARRAY<STRUCT<index INT64, value FLOAT64>>` input data with the indexes and values of the cells.
+* `size`: `INT64` size of the quadkey kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
+
+**Return type**
+
+ARRAY<STRUCT<index INT64, value FLOAT64>>
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADKEY(
+    [
+        STRUCT(205401382801, 51.0),
+        STRUCT(205401382833, 28.0),
+        STRUCT(205401382865, 19.0)
+    ],
+    3, 'exponential'
+);
+--{
+--  "index": "205401382801",
+--  "value": "-0.47710241156036"
+--},
+--{
+--  "index": "205401382833",
+--  "value": "-0.03998368013055897"
+--},
+--{
+--  "index": "205401382865",
+--  "value": "-0.07622818484525352"
+--}
+```
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADKEY(
+    ARRAY(SELECT AS STRUCT index, value FROM mytable),
+    3, 'exponential'
+)
 ```
 
 ### LOF
