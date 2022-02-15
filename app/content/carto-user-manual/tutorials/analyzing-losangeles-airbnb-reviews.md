@@ -50,7 +50,7 @@ Check this [guide](../../data-explorer/importing-data/) on importing data if it'
 {{%/ bannerNote %}}
 
 ```text
-https://storage.googleapis.com/carto-academy-public-data/listings_la_2021_5_reviews.geojson
+https://storage.googleapis.com/carto-academy-public-data/b02_pub_airbnb_reviews_gwr/01_listings_la_2021_5_reviews.geojson
 ```
 
 ![Import file from URL](/img/cloud-native-workspace/tutorials/tutorial10_import_dataset_url.png)
