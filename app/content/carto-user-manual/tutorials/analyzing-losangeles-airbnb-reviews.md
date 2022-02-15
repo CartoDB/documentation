@@ -55,7 +55,7 @@ https://storage.googleapis.com/carto-academy-public-data/listings_la_2021_5_revi
 
 ![Import file from URL](/img/cloud-native-workspace/tutorials/tutorial10_import_dataset_url.png)
 
-Import the file into your connection or CARTO Data Warehouse as `listings_la_2021_5_reviews`.
+Import the file into your connection or CARTO Data Warehouse as `01_listings_la_2021_5_reviews`.
 
 {{% bannerNote type="note" title="note" %}}
 The dataset used for this training corresponds with [open data from Airbnb](http://insideairbnb.com/get-the-data.html) that has been pre-filtered specifically for this exercise.
@@ -65,7 +65,7 @@ The dataset used for this training corresponds with [open data from Airbnb](http
 
 We will inspect how Airbnb listings are distributed accross Los Angeles and aggregate the raw data to have a better understanding on how different variables vary geographically within the city.
 
-6. Inspect the data from the `listings_la_2021_5_reviews` dataset view within the Data Explorer, then click on the _Create map_ button.
+6. Inspect the data from the `01_listings_la_2021_5_reviews` dataset view within the Data Explorer, then click on the _Create map_ button.
 
 7. Rename the map to `Map 1 Airbnb initial data exploration`. Then click on _Layer 1_ and apply the next style changes.
 
@@ -80,7 +80,7 @@ We will inspect how Airbnb listings are distributed accross Los Angeles and aggr
 With this SQL query we will create an H3 grid and aggregate the AirBnB listings into it by computing the average on our key variables. Read more information on Spatial Indexes such as H3 [here](../../../analytics-toolbox-bigquery/overview/spatial-indexes).
 
 {{% bannerNote type="note" title="note" %}}
-Replace `carto-academy.academy_tables.listings_la_2021_5_reviews` with the project and dataset name where the `listings_la_2021_5_reviews` had been imported.
+Replace `carto-academy.b02_pub_airbnb_reviews_gwr.01_listings_la_2021_5_reviews` with the project and dataset name where the `01_listings_la_2021_5_reviews` had been imported.
 
 It is possible to get the qualified table name including the project and dataset name from the Data Explorer.
 {{%/ bannerNote %}}
@@ -93,7 +93,7 @@ WITH
       8) AS h3_id,
       *
   FROM
-    `carto-academy.academy_tables.listings_la_2021_5_reviews`),
+    `carto-academy.b02_pub_airbnb_reviews_gwr.01_listings_la_2021_5_reviews`),
   aggregated_h3 AS (
   SELECT
     h3_id,
@@ -124,10 +124,10 @@ FROM
     - Toggle the _Height_ button and style this parameter using:
 
         - Method: `sqrt`
-        - Value: `30`
+        - Value: `20`
         - Column: `total_listings`
 
-    <iframe width="860px" height="480px" src="https://gcp-us-east1.app.carto.com/map/c1d8970f-6927-4285-bae2-35a07cd970d7"></iframe>
+    <iframe width="860px" height="480px" src="https://gcp-us-east1.app.carto.com/map/6fe40d3a-35c4-436d-83be-f1cc5404878a"></iframe>
 
 Inspect the map results carefully. Notice where most listings are located and where the areas with highest prices are.
 
@@ -152,7 +152,7 @@ We will use a materialized version of the H3 aggregation SQL query that we appli
 
 ```sql
 CALL `carto-un`.carto.GWR_GRID(
-    'carto-academy.academy_tables.listings_la_2021_5_reviews_h3_z8_agg',
+    'carto-academy.b02_pub_airbnb_reviews_gwr.02_listings_la_2021_5_reviews_h3_z8_agg',
     ['value_vs_price_rating', 'cleanliness_rating', 'location_rating'], -- [ different ratings features ]
     'overall_rating', -- overall rating (target variable)
     'h3_z8', 'h3', 3, 'gaussian', TRUE,
@@ -184,7 +184,7 @@ Optionally, style the layer by different attributes.
 
     The map result would be similar to the following.
 
-    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/1300ea30-1375-4954-99f2-717944e7f379"></iframe>
+    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/23925504-ba88-4a74-9cb7-1b1cec5e481c"></iframe>
 
     Inspect the model results in detail to understand where the location matters the most for users' overall rating score and how the location rating values are distributed.
 
@@ -200,7 +200,7 @@ This dataset holds information that can be useful to explore the influence of di
 
 We will use CARTO Analytics Toolbox BigQuery Tiler to create a [Tileset](../../../analytics-toolbox-bigquery/overview/tilesets/), a special type of table that allows visualizing large spatial datasets such as this one.
 
-15. To save map results and continue working on a separate map, let's duplicate the previous map once again, and disable the dual map view (close the left panel), then rename the map copy to `Map 3 Airbnb Spatial Features map`
+15. To save map results and continue working on a separate map, let's duplicate the previous map once again, and disable the dual map view (close the left panel), then rename the map copy to `Map 3 Airbnb Spatial Features`
 
 16. From the main menu, click on ‘Data Observatory’ to browse the [Spatial Data Catalog](../../../data-observatory/guides/accessing-and-browsing-the-spatial-data-catalog/) and apply these filters:
 
@@ -259,7 +259,7 @@ Optionally, style the layer as desired to visualize how different variables beha
 
 Navigate the map and observe how widget values vary depending on the viewport area. Check out specific areas by hovering over them and review pop-up attributes.
 
-See how the final map would look like [here](https://gcp-us-east1.app.carto.com/map/bf86fead-32e1-47d2-8c4c-41ec1fcb6372)
+See how the final map would look like [here](https://gcp-us-east1.app.carto.com/map/522dc94c-e2c3-48a1-a7a9-f4be02fb683d).
 
 21. Optionally, use the Lasso tool to create geometries and filter more specific areas of interest.
 
