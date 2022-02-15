@@ -127,7 +127,7 @@ FROM
         - Value: `20`
         - Column: `total_listings`
 
-    <iframe width="860px" height="480px" src="https://gcp-us-east1.app.carto.com/map/6fe40d3a-35c4-436d-83be-f1cc5404878a"></iframe>
+    <iframe width="860px" height="480px" src="https://gcp-us-east1.app.carto.com/map/46a32407-8647-4dd5-ac3c-05306f4cdc22"></iframe>
 
 Inspect the map results carefully. Notice where most listings are located and where the areas with highest prices are.
 
@@ -184,7 +184,7 @@ Optionally, style the layer by different attributes.
 
     The map result would be similar to the following.
 
-    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/23925504-ba88-4a74-9cb7-1b1cec5e481c"></iframe>
+    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/b9d45f83-6620-4d73-921b-c99e81434c49"></iframe>
 
     Inspect the model results in detail to understand where the location matters the most for users' overall rating score and how the location rating values are distributed.
 
@@ -259,7 +259,7 @@ Optionally, style the layer as desired to visualize how different variables beha
 
 Navigate the map and observe how widget values vary depending on the viewport area. Check out specific areas by hovering over them and review pop-up attributes.
 
-See how the final map would look like [here](https://gcp-us-east1.app.carto.com/map/522dc94c-e2c3-48a1-a7a9-f4be02fb683d).
+See how the final map would look like [here](https://gcp-us-east1.app.carto.com/map/db7734fa-0440-4a5f-9728-6bd301400da7).
 
 21. Optionally, use the Lasso tool to create geometries and filter more specific areas of interest.
 
