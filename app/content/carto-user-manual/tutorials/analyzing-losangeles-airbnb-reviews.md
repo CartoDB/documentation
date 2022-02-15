@@ -222,7 +222,7 @@ Select the `Spatial Features - United States of America (H3 Resolution 8)` datas
 
 18. Once the Tileset has been created, we can add it to our map. To do so first open the map and then click on _Add source from..._ and select the tileset from the tree menu.
 
-    ![Add Tileset source](/img/cloud-native-workspace/tutorials/tutorial10_add_tileset_source.png)
+    ![Add Tileset source](/img/cloud-native-workspace/tutorials/tutorial10_add_tileset_source_menu.png)
 
 Once the tileset layer has been added, rename the layer to `Spatial Features` and zoom into the Los Angeles area.
 
