@@ -14,7 +14,7 @@ carto.BUILD_REVENUE_MODEL(revenue_model_data, options, output_prefix)
 
 This procedure is the second step of the Revenue Prediction analysis workflow. It creates the model and its description tables from the input model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure). It performs the following steps:
 1. Compute the model from the input query and options.
-2. Compute the revenue `model_shap`, `model_stats`, and `model_features` tables (see the output description for more details).
+2. Compute the revenue `model_shap`, `model_stats` tables (see the output description for more details).
 
 **Input parameters**
 
@@ -28,7 +28,6 @@ The procedure will output the following:
 1. Model: contains the trained model to be used for the revenue prediction. The name of the model includes the suffix `_model`, for example `<my-project>.<my-dataset>.<output-prefix>_model`.
 2. Shap table: contains a list of the features and their attribution to the model, computed with [`ML.GLOBAL_EXPLAIN`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-global-explain). The name of the table includes the suffix `_model_shap`, for example `<my-project>.<my-dataset>.<output-prefix>_model_shap`.
 3. Stats table: contains the model stats (mean_error, variance, etc.), computed with [`ML.EVALUATE`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-evaluate). The name of the table includes the suffix `_model_stats`, for example `<my-project>.<my-dataset>.<output-prefix>_model_stats`.
-3. Features table: contains the model feature importance (weight, gain, cover), computed with [`ML.FEATURE_IMPORTANCE`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-importance). The name of the table includes the suffix `_model_features`, for example `<my-project>.<my-dataset>.<output-prefix>_model_features`.
 
 To learn more about how to evaluate the results of your model through the concept of _explainability_, refer to [this article](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-xai-overview) (https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-xai-overview).
 
@@ -48,8 +47,8 @@ CALL carto.BUILD_REVENUE_MODEL(
 -- Model `<my-project>.<my-dataset>.<output-prefix>_model` will be created
 -- Table `<my-project>.<my-dataset>.<output-prefix>_model_shap` will be created
 -- Table `<my-project>.<my-dataset>.<output-prefix>_model_stats` will be created
--- Table `<my-project>.<my-dataset>.<output-prefix>_model_features` will be created
 ```
+
 
 ### BUILD_REVENUE_MODEL_DATA
 
@@ -85,7 +84,7 @@ This procedure is the first step of the Revenue Prediction analysis workflow. It
 
 The procedure will output two tables:
 1. Model data table: contains an `index` column with the cell ids and all the enriched columns: `revenue_avg`, `store_count`, `competitor_count`, DO variables and custom variables. The name of the table includes the suffix `_model_data`, for example `<my-project>.<my-dataset>.<output-prefix>_model_data`.
-2. Model data stats table: contains the `moransI` value computed for the `revenue_avg` column, computed with kring 1 and decay `uniform`. The name of the table includes the suffix `_model_data_stats`, for example `<my-project>.<my-dataset>.<output-prefix>_model_data_stats`.
+2. Model data stats table: contains the `morans_i` value computed for the `revenue_avg` column, computed with kring 1 and decay `uniform`. The name of the table includes the suffix `_model_data_stats`, for example `<my-project>.<my-dataset>.<output-prefix>_model_data_stats`.
 
 {{% customSelector %}}
 **Example**
@@ -115,7 +114,66 @@ CALL carto.BUILD_REVENUE_MODEL_DATA(
 -- Table `<my-project>.<my-dataset>.<output-prefix>_model_data` will be created
 -- with columns: index, revenue_avg, store_count, competitor_count, POPCY_4534fac4_sum, INCCYPCAP_7c8377cf_avg, var1_sum, var2_avg
 -- Table `<my-project>.<my-dataset>.<output-prefix>_model_data_stats` will be created
--- with the column: moransI
+-- with the column: morans_i
+```
+
+### FIND_WHITESPACE_AREAS
+
+{{% bannerNote type="code" %}}
+carto.FIND_WHITESPACE_AREAS(
+    revenue_model,
+    revenue_model_data,
+    generator_query,
+    with_competitors,
+    with_own_stores,
+    aoi_query,
+    minimum_revenue,
+    max_results
+)
+{{%/ bannerNote %}}
+
+**Description**
+
+This is a postprocessing step that may be used after completing a Revenue Prediction analysis workflow. It allows you to identify cells with the highest potential revenue (_whitespaces_), while satisfying a series of criteria (e.g. presence of competitors).
+
+It requires as input the model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure) and the trained model (output of the [`BUILD_REVENUE_MODEL`](#build_revenue_model) procedure), as well as a query with points to use as generators for the area of applicability of the model, plus a series of optional filters.
+
+A cell is eligible to be considered a _whitespace_ if it complies with the filtering criteria (minimum revenue, presence of competitors, etc.) and is within the [area of applicability](https://arxiv.org/abs/2005.07939) of the revenue model provided. 
+
+**Input parameters**
+
+* `revenue_model`: `STRING` with the fully qualified `model` name.
+* `revenue_model_data`: `STRING` with the fully qualified `model_data` table name.
+* `generator_query`: `STRING` query with the location of a set of generator points as a geography column named geom. The algorithm will look for whitespaces in the surroundings of these locations, therefore avoiding offering results in locations that are not of the interest of the user. Good options to use as generator locations are, for instance, the location of the stores and competitors, or a collection of POIs that are known to drive commercial activity to an area.
+* `aoi_query`: `STRING` query with the geography of the area of interest in which to perform the search. May be `NULL`, in which case no spatial filter will be applied.
+* `minimum_revenue`: `FLOAT64` the minimum revenue to filter results by. May be `NULL`, in which case no revenue threshold will be applied.
+* `max_results`: `INT64` of the maximum number of results, ordered by decreasing predicted revenue. May be `NULL`, in which case all eligible cells are returned.
+* `with_own_stores`: `BOOL` specifying whether to consider cells that already have own stores in them. If `NULL`, defaults to `TRUE`.
+* `with_competitors`: `BOOL` specifying whether to consider cells that already have competitors in them. If `NULL`, defaults to `TRUE`.
+
+**Output**
+
+The procedure will output a table of cells with the following columns:
+* `index`: identifying the H3 or quadkey cell.
+* `predicted_revenue_avg`: average revenue of an additional store located in the grid cell.
+* `store_count`: number of own stores present in the grid cell.
+* `competitor_count`: number of competitors present in the grid cell.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL carto.FIND_WHITESPACE_AREAS(
+    '<my-project>.<my-dataset>.<output-prefix>_model',
+    '<my-project>.<my-dataset>.<output-prefix>_model_data'
+    'SELECT geom FROM <my-project>.<my-dataset>.<generator-table>',
+    'SELECT geom FROM <my-project>.<my-dataset>.<area_of_interest_table>', -- Area of Interest filter
+    10000, -- Minimum predicted revenue filter
+    5, -- Maximum number of results
+    TRUE, -- Whether to include cells with own stores
+    FALSE -- Whether to include cells with competitors
+)
 ```
 
 ### PREDICT_REVENUE_AVERAGE

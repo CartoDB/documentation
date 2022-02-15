@@ -1,5 +1,16 @@
 ## Release notes
 
+### January 10, 2022
+
+#### Module data
+
+Feature
+- Add DATAOBS_SUBSCRIPTIONS procedure.
+- Add DATABOS_SUBSCRIPTION_VARIABLES procedure.
+
+Changed
+- Read spatial_catalog tables in source.
+
 ### December 15, 2021
 
 #### Module data
