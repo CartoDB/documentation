@@ -1,5 +1,14 @@
 ## Release notes
 
+### February 16, 2022
+
+#### Module statistics
+
+Fixed
+- Add VARIOGRAM function.
+- Add ORDINARY_KRIGING function.
+- Add ORDINARY_KRIGING_TABLE procedure.
+
 ### February 15, 2022
 
 #### Module h3
