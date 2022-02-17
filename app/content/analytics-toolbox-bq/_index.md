@@ -35,6 +35,7 @@ cascade:
       #   - title: "Bikeshare stations within a San Francisco buffer"
       #   - title: "Census areas in the UK within tiles of multiple resolutions"
       #   - title: "Interploate elevation along a road"
+      #   - title: "Smoothing meteorological data using Markov Random Field and H3"
     - title: "SQL Reference"
       folder:
         - title: "Overview"
