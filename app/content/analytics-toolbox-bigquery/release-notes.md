@@ -4,7 +4,7 @@
 
 #### Module statistics
 
-Fixed
+Feature
 - Add VARIOGRAM function.
 - Add ORDINARY_KRIGING function.
 - Add ORDINARY_KRIGING_TABLE procedure.
@@ -20,7 +20,7 @@ Feature
 #### Module retail
 
 Feature
-- Add FIND_REVENUE_WHITESPACES procedure.
+- Add FIND_WHITESPACE_AREAS procedure.
 
 ### February 3, 2022
 
