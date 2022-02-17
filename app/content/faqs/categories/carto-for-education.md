@@ -1,0 +1,84 @@
+## CARTO for Education
+
+<!-- Using level 5 headers to avoid the title being listed in the tree -->
+{{% bannerNote title="Why do you need this?" type="note" %}}
+🎓 You are a student
+
+🏫 You are an educator or academic institution
+{{%/ bannerNote %}}
+
+We routinely hear from students, teachers, professors, and university administrators that they’d love to use CARTO in the classroom. Here is how schools and individual students may make use of CARTO:
+
+- Individual Student Accounts: free CARTO accounts via GitHub Student Developer Pack
+- Educator Accounts: free CARTO accounts by request
+- Enterprise Accounts for Education: discounts and grants on a case by case basis
+
+
+##### How can I get a Student account in CARTO? 
+Students can create a free CARTO account via [GitHub’s Student Developer Pack](http://education.github.com/pack). When they sign up for the pack, they’ll also get access to a ton of other free development tools! See the process and eligibility requirements below.
+
+
+##### How can I get an Educator account? 
+Educators are also eligible for a free CARTO account. Request an Educator account by emailing marketing@carto.com together with a document that accredits your educator status. We welcome educators from accredited institutions as well as bootcamps and similar training organizations.
+
+##### We need Enterprise capabilities for our institution or academic research, can you help?
+Academic researchers and others in the education field, whether at a school, university, independent research center, or boot camp, can make use of CARTO Enterprise at a discount. [Contact sales](https://carto.com/#request-demo) to learn more.
+
+##### What is the process for getting a CARTO Student account? 
+
+To verify that only eligible students are accessing CARTO, we take advantage of Github’s verification system. This means you will need to go through their channels to ensure you receive the proper student account:
+{{<interactiveTutorial>}}
+
+{{% tutorialStep stepName="Sign up in GitHub"%}}
+
+Sign up for a free Github account, using your university issued email to do so: https://github.com/signup
+
+✅ `yourname@university.edu`
+
+❌ `yourname@gmail.com`
+
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Apply for the Github Student Developer Pack"%}}
+
+##### Apply for the Github Education Pack
+
+- [Apply here](https://education.github.com/pack) with your GitHub account
+
+
+**To be eligible, you must**
+
+- Be a student aged 13+ and enrolled in a degree or diploma granting course of study
+- Verify who you are with one of the following:
+    - a school-issued email address
+    - provide a valid student identification card
+    - other official proof of enrollment
+
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Wait for verification and confirm"%}}
+
+Once you apply, Github will need to verify you are, in fact, a student. This could take from *1 hour to several days*. Please be patient and wait for your official verification, it is important for the process.
+
+Upon verification, you will receive an email from Github that you have access to the Education Pack
+
+If you have any questions regarding Github’s verification process, please reach out to their support team at education@github.com. Please also keep an eye on your spam folder, as your university email policies might route the verification message there.
+
+
+{{%/ tutorialStep %}}
+{{% tutorialStep stepName="Claim your CARTO Student account"%}}
+
+🎉 Congratulations! You can now claim your free CARTO Student account here: https://app.carto.com/students
+
+This process will connect your GitHub account. Remember you should that URL for login too, although it will always be available from the general login page.
+
+![Students login](/img/faqs/student-login.png)  
+
+
+{{%/ tutorialStep %}}
+
+{{</interactiveTutorial>}}
+{{% bannerNote title="Remember" type="note" %}}
+To login to your CARTO Student account you'll need to always use this specific URL: https://app.carto.com/students
+
+{{%/ bannerNote %}}

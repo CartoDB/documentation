@@ -18,3 +18,5 @@ CARTO Builder contains many features that guide you through the process of creat
 - View your data table [guide](../../maps/view-data-table)
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
+- Publish and share your maps [guide](../../maps/publishing-and-sharing-maps)
+- Duplicate a map [guide](../../maps/duplicating-maps)
