@@ -6,8 +6,8 @@
       rel="stylesheet"
     />
     
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.7.0-beta/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0-beta/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -21,8 +21,7 @@
     async function initialize() {
       deck.carto.setDefaultCredentials({
         apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-        apiVersion: deck.carto.API_VERSIONS.V3,
-        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       // Fetch Data from CARTO

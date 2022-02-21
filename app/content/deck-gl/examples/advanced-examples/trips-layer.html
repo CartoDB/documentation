@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.7.0-beta/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0-beta/dist.min.js"></script>
 
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -19,6 +19,7 @@
       deck.carto.setDefaultCredentials({
         username: 'public',
         apiKey: 'default_public',
+        apiVersion: deck.carto.API_VERSIONS.V2,
       });
 
       // Fetch Data from CARTO
