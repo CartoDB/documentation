@@ -13,12 +13,14 @@ cascade:
     - title: "Getting started"
     - title: "Using the CartoLayer"
     - title: "Customizing the CartoLayer style"
+    - title: "Prototyping visualizations with Builder"
     - title: "Examples"
       folder:
         - title: "Gallery"
         - title: "Basic examples"
           folder:
           - title: "Hello World"
+          - title: "Builder Map"
           - title: "BigQuery Tileset Layer"
           - title: "Data Observatory Tileset Layer"
           - title: "CARTO Basemap"
