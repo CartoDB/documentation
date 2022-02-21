@@ -1,5 +1,52 @@
 ## Release notes
 
+### February 16, 2022
+
+#### Module statistics
+
+Feature
+- Add VARIOGRAM function.
+- Add ORDINARY_KRIGING function.
+- Add ORDINARY_KRIGING_TABLE procedure.
+
+### February 15, 2022
+
+#### Module h3
+
+Feature
+- Add H3_CENTER function.
+- Add H3_RESOLUTION function.
+
+#### Module retail
+
+Feature
+- Add FIND_WHITESPACE_AREAS procedure.
+
+### February 3, 2022
+
+#### Module retail
+
+Feature
+- Remove features importance tables from BUILD_REVENUE_MODEL procedure.
+
+### February 1, 2022
+
+#### Module statistics
+
+Feature
+- Add LOCAL_MORANS_I_H3 function.
+- Add LOCAL_MORANS_I_QUADKEY function.
+
+Changed
+- Improve MORANS_I_H3 and MORANS_I_QUADKEY implementation.
+
+### January 10, 2022
+
+#### Module statistics
+
+Fixed
+- Replace STDDEV by STDDEV_POP in GETIS_ORD_H3 and GETIS_ORD_QUADKEY.
+
 ### December 22, 2021
 
 #### Module retail

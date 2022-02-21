@@ -28,6 +28,9 @@ No, you won’t. If you are an existing CARTO customer you can enjoy both versio
 ##### Is CARTO’s Student Package still available?
 Yes, it is. Until March 2022 you can still sign up to our previous version of the platform as well as to the new one. From March 2022 onwards, Student accounts will only be available for our new platform. Therefore, please make sure you adapt the contents of your course or project to the new CARTO platform. 
 
+##### Can I setup a Single Sign-On integration in the new platform?
+Yes, just get in touch with your contact or with support@carto.com and we'll guide you through the process. In the end, users in your organization will see your SSO integration as the only way to access your organization.
+
 
 
 

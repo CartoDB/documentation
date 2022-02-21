@@ -35,9 +35,9 @@ SELECT `carto-un`.carto.GETIS_ORD_H3(
     ],
     3, 'gaussian'
 );
--- {"index": "89394460323ffff", "gi": 1.110941099464319}
--- {"index": "89394460c37ffff", "gi": -0.28278500713637167}
--- {"index": "89394460077ffff", "gi": -0.8281560923279462}
+-- {"index": "89394460323ffff", "gi": 1.3606194139870573}
+-- {"index": "89394460c37ffff", "gi": -0.34633948719670526}
+-- {"index": "89394460077ffff", "gi": -1.0142799267903515}
 ```
 
 ```sql
@@ -79,9 +79,9 @@ SELECT `carto-un`.carto.GETIS_ORD_QUADKEY(
     ],
     3, 'gaussian'
 );
--- {"index": 205405577137, "gi": 1.110941099464319}
--- {"index": 205430743409, "gi": -0.28278500713637167}
--- {"index": 205292330897, "gi": -0.8281560923279462}
+-- {"index": 205405577137, "gi": 1.3606194139870573}
+-- {"index": 205430743409, "gi": -0.34633948719670526}
+-- {"index": 205292330897, "gi": -1.0142799267903515}
 ```
 
 ```sql
@@ -267,6 +267,110 @@ ORDER BY geoid
 -- ...
 ```
 
+### LOCAL_MORANS_I_H3
+
+{{% bannerNote type="code" %}}
+carto.LOCAL_MORANS_I_H3(input, size, decay)
+{{%/ bannerNote %}}
+
+**Description**
+
+This function computes the local Moran's I spatial autocorrelation from the input array of H3 indexes.
+
+* `input`: `ARRAY<STRUCT<index STRING, value FLOAT64>>` input data with the indexes and values of the cells.
+* `size`: `INT64` size of the H3 kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
+
+**Return type**
+
+ARRAY<STRUCT<index STRING, value FLOAT64>>
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
+    [
+        STRUCT('89394460323ffff', 51.0),
+        STRUCT('8939446033bffff', 28.0),
+        STRUCT('8939446032bffff', 19.0)
+    ],
+    3, 'exponential'
+);
+--{
+--  "index": "89394460323ffff",
+--  "value": "-0.6170950632394939"
+--},
+--{
+--  "index": "8939446033bffff",
+--  "value": "-0.03998368013055897"
+--},
+--{
+--  "index": "8939446032bffff",
+--  "value": "-0.342921256629947"
+--}
+```
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
+    ARRAY(SELECT AS STRUCT index, value FROM mytable),
+    3, 'exponential'
+)
+```
+
+### LOCAL_MORANS_I_QUADKEY
+
+{{% bannerNote type="code" %}}
+carto.LOCAL_MORANS_I_QUADKEY(input, size, decay)
+{{%/ bannerNote %}}
+
+**Description**
+
+This function computes the local Moran's I spatial autocorrelation from the input array of quadkey indexes.
+
+* `input`: `ARRAY<STRUCT<index INT64, value FLOAT64>>` input data with the indexes and values of the cells.
+* `size`: `INT64` size of the quadkey kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
+
+**Return type**
+
+ARRAY<STRUCT<index INT64, value FLOAT64>>
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADKEY(
+    [
+        STRUCT(205401382801, 51.0),
+        STRUCT(205401382833, 28.0),
+        STRUCT(205401382865, 19.0)
+    ],
+    3, 'exponential'
+);
+--{
+--  "index": "205401382801",
+--  "value": "-0.47710241156036"
+--},
+--{
+--  "index": "205401382833",
+--  "value": "-0.03998368013055897"
+--},
+--{
+--  "index": "205401382865",
+--  "value": "-0.07622818484525352"
+--}
+```
+
+```sql
+SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADKEY(
+    ARRAY(SELECT AS STRUCT index, value FROM mytable),
+    3, 'exponential'
+)
+```
+
 ### LOF
 
 {{% bannerNote type="code" %}}
@@ -428,4 +532,202 @@ FROM (
     SELECT ARRAY_AGG(STRUCT(index, value)) AS input_data
     FROM mytable
 )
+```
+
+### ORDINARY_KRIGING
+
+{{% bannerNote type="code" %}}
+carto.ORDINARY_KRIGING(sample_points, interp_points, max_distance, variogram_params, n_neighbors, model)
+{{%/ bannerNote %}}
+
+**Description**
+
+This function uses [Ordinary kriging](https://en.wikipedia.org/wiki/Kriging) to compute the interpolated values of an array of points, given another array of points with known associated values and a variogram. This variogram may be computed with the [#variogram] function.
+
+* `sample_points`: `ARRAY<STRUCT<point GEOGRAPHY, value FLOAT64>>` input array with the sample points and their values.
+* `interp_points`: `ARRAY<GEOGRAPHY>` input array with the points whose values will be interpolated.
+* `max_distance`: `FLOAT64` maximum distance to compute the semivariance.
+* `variogram_params`: `ARRAY<FLOAT64>` parameters [P0, P1, P2] of the variogram model.
+* `n_neighbors`: `INT64` maximum number of neighbors of a point to be taken into account for interpolation.
+* `model`: `STRING` type of model for fitting the semivariance. It can be either `exponential` or `spherical` and it should be the same type of model as the one used to compute the variogram:
+  * `exponential`: `P0 * (1. - exp(-xi / (P1 / 3.0))) + P2`
+  * `spherical`: `P1 * (1.5 * (xi / P0) - 0.5 * (xi / P0)**3) + P2`.
+
+**Return type**
+
+`ARRAY<STRUCT<point GEOGRAPHY, value FLOAT64>>`
+
+{{% customSelector %}}
+**Examples**
+{{%/ customSelector %}}
+
+Here is a standalone example:
+
+```sql
+SELECT
+  `carto-un`.carto.ORDINARY_KRIGING(
+             [STRUCT(st_geogpoint(0.26,1.02) as point, 1.0 as value),
+              STRUCT(st_geogpoint(0.91,0.74) as point, 3.1 as value),
+              STRUCT(st_geogpoint(-0.59,0.51) as point, 1.5 as value),
+              STRUCT(st_geogpoint(0.86,0.92) as point, 3.6 as value),
+              STRUCT(st_geogpoint(0.37,1.07) as point, 1.1 as value),
+              STRUCT(st_geogpoint(0.69,-0.52) as point, 1.2 as value)],
+             [st_geogpoint(0.,0.),
+              st_geogpoint(0.,1.)],
+             1.0E5,
+             [0.1,1E8,0.1],
+             20,
+             'exponential')
+-- {"point": "POINT(0 0)", "value": "1.357680916212768"},
+-- {"point": "POINT(0 1)", "value": "1.07161192146499"}
+```
+
+Here is an example using the `ORDINARY_KRIGING` function along with a `VARIOGRAM` estimation:
+
+```sql
+
+DECLARE sample_points ARRAY<STRUCT<point GEOGRAPHY, value FLOAT64>>;
+DECLARE variogram_output STRUCT<params ARRAY<FLOAT64>, x ARRAY<FLOAT64>, y ARRAY<FLOAT64>, yp ARRAY<FLOAT64>, count ARRAY<INT64>>;
+DECLARE interp_points ARRAY<GEOGRAPHY>;
+
+# generate the spatially correlated values
+SET sample_points = ARRAY(SELECT AS STRUCT st_geogpoint(lon_sqrt+0.1*RAND(),lat_sqrt+0.1*RAND()) point,
+            pow(sin(lon_sqrt)*sin(lat_sqrt),2)+0.1*RAND() value
+        FROM
+            UNNEST(GENERATE_ARRAY(-10,10,0.1)) lon_sqrt,
+            UNNEST(GENERATE_ARRAY(-10,10,0.1)) lat_sqrt
+        ORDER BY RAND()
+        LIMIT 1000);
+
+# compute parameters of the variogram
+SET variogram_output = `carto-un`.carto.VARIOGRAM(sample_points, 20, 1.0E5, 'spherical');
+    
+# generate the points to be interpolated
+SET interp_points = ARRAY(SELECT st_geogpoint(lon_sqrt,lat_sqrt) point
+        FROM
+            UNNEST(GENERATE_ARRAY(-5,5,0.25)) lon_sqrt,
+            UNNEST(GENERATE_ARRAY(-5,5,0.25)) lat_sqrt
+            );
+
+# Calculate interpolated values
+SELECT
+  point, value
+FROM
+  UNNEST(`carto-un`.carto.ORDINARY_KRIGING(
+         sample_points,
+         interp_points,
+         1.0E5,
+         variogram_output.params,
+         20,
+         'spherical')) WITH OFFSET pos
+ORDER BY pos
+
+-- {"point": POINT(-5 -5), "value": 0.568294714734378},
+-- {"point": POINT(-5 -4.75), "value": 0.8303238799265198},
+-- {"point": POINT(-5 -4.5), "value": 0.8876712348264676},
+-- {"point": POINT(-5 -4.25), "value": 0.7437099678173889},
+-- {"point": POINT(-5 -4), "value": 0.5543380644791405},
+-- {"point": POINT(-5 -3.75), "value": 0.45182050244159944}
+-- ...
+```
+
+
+### ORDINARY_KRIGING_TABLE
+
+{{% bannerNote type="code" %}}
+carto.ORDINARY_KRIGING_TABLE(input_table, interp_table, target_table, n_bins, max_distance, n_neighbors, model)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure uses [Ordinary kriging](https://en.wikipedia.org/wiki/Kriging) to compute the interpolated values of a set of points stored in a table, given another set of points with known associated values.
+
+* `input_table`: `STRING` name of the table with the sample points locations and their values stored in a column named `point` (type `GEOGRAPHY`) and `value` (type `FLOAT`), respectively. It should be a qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`.
+* `interp_table`: `STRING` name of the table with the point locations whose values will be interpolated stored in a column named `point` of type `GEOGRAPHY`. It should be a qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`.
+* `target_table`: `STRING` name of the output table where the result of the kriging will be stored. It should be a qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the target table already exists. If NULL, the result will be returned by the procedure and won't be persisted.
+* `n_bins`: `INT64` number of bins to compute the semivariance.
+* `max_distance`: `FLOAT64` maximum distance to compute the semivariance.
+* `n_neighbors`: `INT64` maximum number of neighbors of a point to be taken into account for interpolation.
+* `model`: `STRING` type of model for fitting the semivariance. It can be either:
+  * `exponential`: `P0 * (1. - exp(-xi / (P1 / 3.0))) + P2`
+  * `spherical`: `P1 * (1.5 * (xi / P0) - 0.5 * (xi / P0)**3) + P2`.
+
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.ORDINARY_KRIGING_TABLE(
+         'cartobq.docs.nasadem_jp_extract',
+         'cartobq.docs.interp_points',
+         NULL,
+         50,
+         1000,
+         20,
+         'exponential');
+-- {"point": "POINT(142.4277 43.51606)", "value": "288.531297133198"},
+-- {"point": "POINT(142.4181 43.50518)", "value": "306.62910397500843"},
+-- {"point": "POINT(142.4175 43.5045)", "value": "306.9708080004128"},
+-- {"point": "POINT(142.4121 43.49838)", "value": "328.37518451985943"},
+-- {"point": "POINT(142.4172 43.50416)", "value": "307.1771955935104"},
+-- ...
+```
+
+
+### VARIOGRAM
+
+{{% bannerNote type="code" %}}
+carto.VARIOGRAM(input, n_bins, max_distance, model)
+{{%/ bannerNote %}}
+
+**Description**
+
+This function computes the [Variogram](https://en.wikipedia.org/wiki/Variogram) from the input array of points and their associated values.
+
+It returns a STRUCT with the parameters of the variogram, the _x_ values, the _y_ values, the predicted _y_ values and the number of values aggregated per bin. 
+
+* `input`: `ARRAY<STRUCT<point GEOGRAPHY, value FLOAT64>>` input array with the points and their associated values.
+* `n_bins`: `INT64` number of bins to compute the semivariance.
+* `max_distance`: `FLOAT64` maximum distance to compute the semivariance.
+* `model`: `STRING` type of model for fitting the semivariance. It can be either:
+  * `exponential`: `P0 * (1. - exp(-xi / (P1 / 3.0))) + P2`
+  * `spherical`: `P1 * (1.5 * (xi / P0) - 0.5 * (xi / P0)**3) + P2`.
+
+**Return type**
+
+`STRUCT<variogram_params ARRAY<FLOAT64>, x ARRAY<FLOAT64>, y ARRAY<FLOAT64>, yp ARRAY<FLOAT64>, count ARRAY<INT64>>`
+
+where:
+* `variogram_params`: array containing the parameters [P0, P1, P2] fitted to the `model`.
+* `x`: array with the _x_ values used to fit the `model`.
+* `y`: array with the _y_ values used to fit the `model`.
+* `yp`: array with the _y_ values as predicted by the `model`.
+* `count`: array with the number of elements aggregated in the bin.
+
+{{% customSelector %}}
+**Examples**
+{{%/ customSelector %}}
+
+```sql
+DECLARE sample_points ARRAY<STRUCT<point GEOGRAPHY, value FLOAT64>>;
+
+# generate the spatially correlated values
+SET sample_points = ARRAY(SELECT AS STRUCT st_geogpoint(lon_sqrt+0.1*RAND(),lat_sqrt+0.1*RAND()) point,
+            pow(sin(lon_sqrt)*sin(lat_sqrt),2)+0.1*RAND() value
+        FROM
+            UNNEST(GENERATE_ARRAY(-10,10,0.1)) lon_sqrt,
+            UNNEST(GENERATE_ARRAY(-10,10,0.1)) lat_sqrt
+        ORDER BY RAND()
+        LIMIT 1000);
+
+# compute parameters of the variogram
+SELECT `carto-un`.carto.VARIOGRAM(sample_points, 20, 1.0E5, 'exponential');
+-- {
+--   variogram_params: [1.8656766501394384, 9890263.713521793, -0.007675798653736552],
+--   x: [13433.902872564133, 20772.802451664986, 56973.516169567, 67627.90034684369, 70363.43483710312, 78689.64706974, ...],
+--   y: [0.005, 0.125, 3.125, 3.380, 2.0, 2.205, ...],
+--   yp: [-0.14889750150153813, 0.49581158712413576, 2.351461086006329, 2.635658071286461, 2.696612846710653, 2.857216896041544, ...],
+--   count: [162, 308, 328, 326, 312, 305, ...]
+-- }
 ```

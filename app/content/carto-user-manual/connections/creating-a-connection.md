@@ -9,11 +9,26 @@ To create a new connection follow these steps:
 
 The following screen shows the connection setup options for Google Cloud BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bq_the_parameters.png)
+
+When you create a connection, it’s always **private** by default.
+
+To be able to share a connection, go to Sharing options and click on *Change*. A new dialog screen will open allowing you to select who you want to share your connection with:
+
+![Sharing options private](/img/cloud-native-workspace/connections/the_connections_sharing_options_private_default.png) 
+
+Here you’ll find two different sharing options:
+
+- **Private**: Only you can view and edit it.
+- **Organization**: The connection will be visible and available to all users in your organization.
+
+{{% bannerNote title="WARNING" type="warning"%}}
+Note that if you share the connection with your organization, you're effectively granting users access to any permissions that might be also available in this connection, such as updating or deleting data through SQL queries.
+{{%/ bannerNote %}}
 
 After you have provided the connection parameters, click *Connect*. Then you will see the list of your current connections:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_connection_successful.png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_bqconnection_successful.png)
 
 Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the  *Data Explorer* ).
 
@@ -167,3 +182,45 @@ Please visit the documentation of the Databricks [connection parameters](/analyt
 ![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Databricks cluster. If everything is OK, your new connection will be registered.
+
+### IP Whitelisting
+
+CARTO will connect to your databases using a set of static IPs for each region. These static IPs can be whitelisted in your security setups as needed. Here's the list of static IPs, with an endpoint that you can use to validate or retrieve them.
+
+{{% bannerNote title="What is my organization region?" type="note" %}}
+The region (tenant) is specified when creating the organization. Your region is always at the start of the url, for example if you go to your Workspace and the URL is: `https://gcp-us-east1.app.carto.com...`, it means your organization is in `us-east1`.
+{{%/ bannerNote %}}
+
+##### 🇺🇸 us-east1
+* `35.185.63.239`
+* `104.196.59.4`
+* `34.73.63.7`
+* `34.139.239.104`
+
+Get this list via <a href="https://workspace-gcp-us-east1.app.carto.com/meta" target="_blank">API</a>.
+
+
+##### 🇪🇺 europe-west1
+* `34.79.53.57`
+* `35.195.132.75`
+* `34.78.167.2`
+* `35.187.123.190`
+
+Get this list via <a href="https://workspace-gcp-europe-west1.app.carto.com/meta" target="_blank">API</a>.
+
+
+
+##### 🇯🇵 asia-northeast1 
+* `34.85.15.12`
+* `35.200.23.186`
+
+Get this list via <a href="https://workspace-gcp-asia-northeast1.app.carto.com/meta" target="_blank">API</a>.
+
+
+##### 🇦🇺 australia-southeast1 
+* `34.151.87.148`
+* `35.201.15.104`
+
+Get this list via <a href="https://workspace-gcp-australia-southeast1.app.carto.com/meta" target="_blank">API</a>.
+
+

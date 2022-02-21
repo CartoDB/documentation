@@ -3,7 +3,10 @@
 <!-- Using level 5 headers to avoid the title being listed in the tree -->
 
 ##### What cloud data warehouses can I use with CARTO?
-CARTO's new platform is designed to give you a fully cloud native experience, allowing you to run CARTO on top of your leading cloud data warehouse platform of choice ((i.e. Google BigQuery, Snowflake, AWS Redshift, and any PostgreSQL-based data warehouse platform). 
+CARTO's new platform is designed to give you a fully cloud native experience, allowing you to run CARTO on top of your leading cloud data warehouse platform of choice (i.e. Google BigQuery, Snowflake, AWS Redshift, and any PostgreSQL-based data warehouse platform). 
+
+##### When I connect to a data warehouse, do you copy or store any data?
+No, your connection allow us to perform queries against your data on your behalf, and the results are either stored again in your data warehouse or rendered in the client, as visible maps. CARTO being fully cloud native means no storage needs, less security concerns and no need for data replication or complex ETL processing.
 
 ##### What happens if I do not have any cloud data warehouse platform to connect?
 For users who do not have any cloud data warehouse platform to which they want to connect CARTO, we are offering cloud storage and computing resources in what we call the CARTO Data Warehouse. A CARTO Data Warehouse connection is offered by default with your CARTO subscription. 
