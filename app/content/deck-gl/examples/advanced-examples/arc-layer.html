@@ -14,17 +14,19 @@
   <script type="text/javascript">
     async function initialize() {
       deck.carto.setDefaultCredentials({
-        username: 'public',
-        apiKey: 'default_public',
-        apiVersion: deck.carto.API_VERSIONS.V2,
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       // Fetch Data from CARTO
-      // Notice that you can use any Deck.gl layer with CARTO datasets getting GeoJSON data from CARTO's API.
-      const url = 'https://public.carto.com/api/v2/sql?q=SELECT the_geom, scalerank FROM airports_to_london WHERE scalerank > 7&format=geojson';
-      const geojsonData = await fetch(url).then(response => response.json());
+      const geojsonData =  await deck.carto.getData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT geom, scalerank FROM cartobq.public_account.airports_to_london WHERE scalerank > 7`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.GEOJSON
+      });
 
-      // Create Deck.GL map
+      // Create deck.gl map
       const deckgl = new deck.DeckGL({
         container: 'map',
         mapStyle: deck.carto.BASEMAP.DARK_MATTER,

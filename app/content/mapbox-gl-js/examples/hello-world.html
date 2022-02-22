@@ -3,10 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <title>CARTO + Mapbox GL JS - Hello World</title>
+  <title>CARTO 3 + Mapbox GL JS - Hello World</title>
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+  <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -33,17 +35,28 @@
       zoom: 1 
     });
 
+    deck.carto.setDefaultCredentials({
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      apiVersion: deck.carto.API_VERSIONS.V3,
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+    });
+
     map.on('load', async () => {
-      const query = 'SELECT the_geom_webmercator, name FROM populated_places';
-      const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public&rand=3435334`;
+      // Fetch Data from CARTO
+      const data =  await deck.carto.getData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT geom, name FROM cartobq.public_account.populated_places`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.GEOJSON
+      });
+      map.addSource('populated-places', {
+        'type': 'geojson',
+        'data': data
+      });
       map.addLayer({
         'id': 'populated-places',
         'type': 'circle',
-        'source': {
-          'type': 'vector',
-          url: tilejsonUrl
-        },
-        'source-layer': 'default',
+        'source': 'populated-places',
         'paint': {
           'circle-radius': 3,
           'circle-color': '#FF0000',

@@ -19,9 +19,8 @@
 
   <script type="text/javascript">
     deck.carto.setDefaultCredentials({
-      username: 'public',
-      apiKey: 'default_public',
-      apiVersion: deck.carto.API_VERSIONS.V2,
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
     });
 
     const deckgl = new deck.DeckGL({
@@ -38,8 +37,9 @@
       layers: [
         new deck.carto.CartoLayer({
           id: 'temps',
+          connection: 'bqconn',
           type: deck.carto.MAP_TYPES.QUERY,
-          data: 'SELECT the_geom_webmercator, value FROM temps',
+          data: 'SELECT geom, value FROM cartobq.public_account.temps',
           getFillColor: deck.carto.colorContinuous({
             attr: 'value',
             domain: [70, 75, 80, 85, 90, 95, 100],

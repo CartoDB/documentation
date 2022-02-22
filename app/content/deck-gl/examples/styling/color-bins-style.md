@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "color-bins-style-carto2"
+  - title: CARTO 3
     url: "color-bins-style"
     active: true
-  - title: CARTO 3
-    url: "color-bins-style-carto3"
 ---
 ## Color Bins Style

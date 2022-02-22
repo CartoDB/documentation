@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/deck.gl@^8.7.0-beta/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0-beta/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+
+  </head>
+
+  <body style="margin: 0; padding: 0">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  </body>
+
+  <script type="text/javascript">
+    deck.carto.setDefaultCredentials({
+      apiVersion: deck.carto.API_VERSIONS.V2,
+    });
+
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
+
+      initialViewState: {
+        latitude: 40.73,
+        longitude: -73.8,
+        zoom: 9,
+      },
+      controller: true,
+      layers: [
+        new deck.carto.CartoLayer({
+          type: deck.carto.MAP_TYPES.TILESET,
+          data: 'cartobq.maps.nyc_taxi_points_demo_id',
+          getFillColor: deck.carto.colorBins({
+            attr: 'aggregated_total',
+            domain: [10, 1e2, 1e3, 1e4, 1e5, 1e6],
+            colors: 'Temps'
+          }),
+          pointRadiusMinPixels: 2,
+          stroked: false,
+        }),
+      ],
+    });
+  </script>
+</html>

@@ -52,23 +52,27 @@
     });
 
     deck.carto.setDefaultCredentials({
-      username: 'public',
-      apiKey: 'default_public',
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      apiVersion: deck.carto.API_VERSIONS.V3,
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
     });
 
-    // Fetch data from CARTO
-    const query = 'SELECT the_geom, vendor, timestamps FROM new_york_trips';
-    const url = `https://public.carto.com/api/v2/sql?q=${query}&format=geojson`;
-    fetch(url)
-      .then(response => response.json())
-      .then((geojsonData) => {
-        // TripsLayer needs data in the following format
-        layerData = geojsonData.features.map(f => ({
-          vendor: f.properties.vendor,
-          timestamps: f.properties.timestamps,
-          path: f.geometry.coordinates[0]
-        }));
-      });
+    // Fetch Data from CARTO
+    deck.carto.getData({
+      type: deck.carto.MAP_TYPES.QUERY,
+      source: `SELECT geom, vendor, 
+                        TO_JSON_STRING(timestamps) AS timestamps 
+                   FROM cartobq.public_account.new_york_trips`,
+      connection: 'bqconn',
+      format: deck.carto.FORMATS.GEOJSON
+    }).then((geojsonData) => {
+      // TripsLayer needs data in the following format
+      layerData = geojsonData.features.map(f => ({
+        vendor: f.properties.vendor,
+        timestamps: JSON.parse(f.properties.timestamps),
+        path: f.geometry.coordinates
+      }));
+    });
 
     deckOverlay = new deck.GoogleMapsOverlay({});
 

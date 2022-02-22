@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "zoom-based-styling-carto2"
+  - title: CARTO 3
     url: "zoom-based-styling"
     active: true
-  - title: CARTO 3
-    url: "zoom-based-styling-carto3"
 ---
 ## Zoom Based Styling

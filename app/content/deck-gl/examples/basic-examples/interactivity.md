@@ -8,10 +8,10 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "interactivity-carto2"
+  - title: CARTO 3
     url: "interactivity"
     active: true
-  - title: CARTO 3
-    url: "interactivity-carto3"
 ---
 
 ## Interactivity

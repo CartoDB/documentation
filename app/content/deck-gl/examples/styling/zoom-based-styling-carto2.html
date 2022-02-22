@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://unpkg.com/deck.gl@^8.7.0-beta/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0-beta/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0; font-family: 'Open Sans', Helvetica, sans-serif;">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  </body>
+
+  <script type="text/javascript">
+    deck.carto.setDefaultCredentials({
+      username: 'public',
+      apiKey: 'default_public',
+      apiVersion: deck.carto.API_VERSIONS.V2,
+    });
+
+    let zoom = 1.5;
+    let deckgl;
+
+    const renderLayer = () => {
+      const layer = new deck.carto.CartoLayer({
+        id: 'world_population',
+        type: deck.carto.MAP_TYPES.QUERY,
+        data: `SELECT the_geom_webmercator, country_name, continent_name, pop_2015 
+                  FROM world_population_2015 
+                ORDER BY pop_2015 DESC`,
+        opacity: 0.7,
+        getFillColor: deck.carto.colorCategories({
+          attr: 'continent_name',
+          domain: [
+            'Africa',
+            'Asia',
+            'Europe',
+            'North America',
+            'Oceania',
+            'South America'
+          ],
+          colors: [
+            [117, 68, 92],
+            [175, 100, 88],
+            [213, 167, 91],
+            [115, 111, 76],
+            [91, 120, 142],
+            [76, 78, 143]
+          ]
+        }),
+        getLineColor: [255, 255, 255, 204],
+        pointRadiusUnits: 'pixels',
+        getPointRadius: (d) => {
+          // Proportional symbol map + zoom based styling
+          // Maximum symbol size: 30 px * zoom level
+          // Maximum population square root (China): 27620.2642999664
+          return 30.0 * zoom * Math.sqrt(d.properties.pop_2015) / 27620.2642999664;
+        },
+        lineWidthMinPixels: 1,
+        updateTriggers: {
+          getPointRadius: [zoom]
+        },
+        pickable: true,
+      });
+
+      deckgl.setProps({
+        layers: [layer]
+      });
+    };
+
+    deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
+
+      initialViewState: {
+        latitude: 15,
+        longitude: 10,
+        zoom: zoom,
+      },
+      controller: true,
+
+      onViewStateChange: ({viewState}) => {
+        zoom = viewState.zoom;
+        renderLayer();
+      },
+
+      getTooltip: ({ object }) => {
+        if (!object) return false;
+        return {
+          html: `${object.properties.country_name}: ${object.properties.pop_2015}`,
+        };
+      },
+    });
+
+  </script>
+</html>

@@ -46,13 +46,15 @@
       });
 
       deck.carto.setDefaultCredentials({
-        username: 'public',
-        apiKey: 'default_public'
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+        apiVersion: deck.carto.API_VERSIONS.V3,
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       const deckOverlay = new deck.GoogleMapsOverlay({
         layers: [
           new deck.carto.CartoLayer({
+            connection: 'bqconn',
             type: deck.carto.MAP_TYPES.TILESET,
             data: 'carto-do-public-tilesets.carto.derived_spatialfeatures_usa_quadgrid15_v1_yearly_2020_tileset_002',
             getFillColor: deck.carto.colorBins({

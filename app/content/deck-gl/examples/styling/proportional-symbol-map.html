@@ -19,9 +19,8 @@
 
   <script type="text/javascript">
     deck.carto.setDefaultCredentials({
-      username: 'public',
-      apiKey: 'default_public',
-      apiVersion: deck.carto.API_VERSIONS.V2,
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
     });
 
     const deckgl = new deck.DeckGL({
@@ -38,9 +37,10 @@
       layers: [
         new deck.carto.CartoLayer({
           id: 'world_population',
+          connection: 'bqconn',
           type: deck.carto.MAP_TYPES.QUERY,
-          data: `SELECT the_geom_webmercator, country_name, continent_name, pop_2015 
-                   FROM world_population_2015 
+          data: `SELECT geom, country_name, continent_name, pop_2015 
+                   FROM cartobq.public_account.world_population_2015 
                   ORDER BY pop_2015 DESC`,
           opacity: 0.7,
           getFillColor: deck.carto.colorCategories({

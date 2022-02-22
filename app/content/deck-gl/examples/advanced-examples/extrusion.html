@@ -13,9 +13,8 @@
 
   <script type="text/javascript">
     deck.carto.setDefaultCredentials({
-      username: "public",
-      apiKey: "8l-WraD-0s4A5FJj9W7uIg",
-      apiVersion: deck.carto.API_VERSIONS.V2,
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
     });
 
     const POLYGON_COLORS = [
@@ -28,7 +27,7 @@
       [253, 255, 208],
     ];
 
-    // Create Deck.GL map
+    // Create deck.gl map
     const deckgl = new deck.DeckGL({
       container: 'map',
       mapStyle: deck.carto.BASEMAP.DARK_MATTER,
@@ -44,10 +43,9 @@
       layers: [
         new deck.carto.CartoLayer({
           id: 'mrli',
+          connection: 'bqconn',
           type: deck.carto.MAP_TYPES.QUERY,
-          data: `SELECT geoid, the_geom_webmercator, avg(txn_amt) as index
-            FROM public.mrli_ny_jan WHERE industry ='ret'
-            group by geoid, the_geom_webmercator`,
+          data: `SELECT geom, index FROM cartobq.public_account.mrli_ny_jan`,
           getFillColor: deck.carto.colorBins({
             attr: 'index',
             domain: [0, 50, 150, 300, 600, 1000],

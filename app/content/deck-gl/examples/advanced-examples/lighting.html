@@ -42,9 +42,8 @@
 
     async function initialize() {
       deck.carto.setDefaultCredentials({
-        username: 'public',
-        apiKey: 'default_public',
-        apiVersion: deck.carto.API_VERSIONS.V2,
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       const deckgl = new deck.DeckGL({
@@ -69,8 +68,9 @@
           }),
           new deck.carto.CartoLayer({
             id: 'buildings-layer',
+            connection: 'bqconn',
             type: deck.carto.MAP_TYPES.QUERY,
-            data: 'SELECT the_geom_webmercator, height FROM lower_manhattan_buildings',
+            data: 'SELECT geom, height FROM cartobq.public_account.lower_manhattan_buildings',
             extruded: true,
             getElevation: f => f.properties.height,
             getFillColor: theme.buildingColor
