@@ -6,8 +6,8 @@
       rel="stylesheet"
     />
     
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -20,16 +20,19 @@
   <script type="text/javascript">
     async function initialize() {
       deck.carto.setDefaultCredentials({
-        username: 'public',
-        apiKey: 'default_public',
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       // Fetch Data from CARTO
-      // Notice that you can use any Deck.gl layer with CARTO datasets getting GeoJSON data from CARTO's API.
-      const url = 'https://public.carto.com/api/v2/sql?q=SELECT the_geom FROM uber_pickup_locations WHERE weight > 8&format=geojson';
-      const geojsonData = await fetch(url).then(response => response.json());
+      const geojsonData =  await deck.carto.fetchLayerData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT geom FROM cartobq.public_account.uber_pickup_locations WHERE weight > 8`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.GEOJSON
+      });
 
-      // Create Deck.GL map
+      // Create deck.gl map
       const deckgl = new deck.DeckGL({
         container: 'map',
         mapStyle: deck.carto.BASEMAP.DARK_MATTER,

@@ -6,7 +6,7 @@ The CARTO submodule for deck.gl is open source, so we maintain the [documentatio
 
 This is a function to define the connection to CARTO, including the credentials (and optionally the parameters to point to specific api endpoints). The configuration properties that must be defined depend on the CARTO API version used:
 
-* [apiVersion](/deck-gl/reference/#api_versions) (optional): API version. Default: `API_VERSIONS.V2`.
+* [apiVersion](/deck-gl/reference/#api_versions) (optional): API version. Default: `API_VERSIONS.V3`.
 
 #### CARTO 2
 
@@ -36,7 +36,7 @@ If using API v3, these are the available properties:
 
 * `apiBaseUrl` (required): base URL for requests to the API (can be obtained in the CARTO 3 Workspace)
 * `accessToken` (required): token to authenticate/authorize requests to the Maps API (private datasets)
-* `mapsUrl` (optional): Maps API URL Template. Default: `https://{apiBaseUrl}/v3/maps` 
+
 
 
 ### CartoLayer
@@ -258,14 +258,14 @@ import {BASEMAP} from '@deck.gl/carto';
 To use pre-bundled scripts:
 
 ```html
-<script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
 
 <!-- or -->
-<script src="https://unpkg.com/@deck.gl/core@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/layers@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/geo-layers@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/core@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/layers@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/geo-layers@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
 ```
 
 ```javascript

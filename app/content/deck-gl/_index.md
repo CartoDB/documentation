@@ -13,7 +13,7 @@ cascade:
     - title: "Getting started"
     - title: "Using the CartoLayer"
     - title: "Customizing the CartoLayer style"
-    - title: "Prototyping visualizations with Builder"
+    - title: "Rapid map prototyping"
     - title: "Examples"
       folder:
         - title: "Gallery"

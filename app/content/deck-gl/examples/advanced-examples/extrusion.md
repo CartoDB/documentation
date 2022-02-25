@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "extrusion-carto2"
+  - title: CARTO 3
     url: "extrusion"
     active: true
-  - title: CARTO 3
-    url: "extrusion-carto3"
 ---
 ## Extrusion
