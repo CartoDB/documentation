@@ -15,11 +15,11 @@
     async function initialize() {
       deck.carto.setDefaultCredentials({
         apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       // Fetch Data from CARTO
-      const geojsonData =  await deck.carto.getData({
+      const geojsonData =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT geom, scalerank FROM cartobq.public_account.airports_to_london WHERE scalerank > 7`,
         connection: 'bqconn',

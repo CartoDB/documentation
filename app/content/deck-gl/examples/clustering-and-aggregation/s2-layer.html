@@ -24,7 +24,7 @@
       });
 
       // Fetch Data from CARTO
-      const jsonData =  await deck.carto.getData({
+      const jsonData =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT token, value FROM cartobq.public_account.sf_s2_cells`,
         connection: 'bqconn',

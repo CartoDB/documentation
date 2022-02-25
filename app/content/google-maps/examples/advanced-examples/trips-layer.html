@@ -58,7 +58,7 @@
     });
 
     // Fetch Data from CARTO
-    deck.carto.getData({
+    deck.carto.fetchLayerData({
       type: deck.carto.MAP_TYPES.QUERY,
       source: `SELECT geom, vendor, 
                         TO_JSON_STRING(timestamps) AS timestamps 

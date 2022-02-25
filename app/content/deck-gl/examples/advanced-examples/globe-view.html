@@ -108,13 +108,13 @@
       });
 
       // Fetch Data from CARTO
-      const jsonFlightsData =  await deck.carto.getData({
+      const jsonFlightsData =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT time1, time2, lat1, lat2, lon1, lon2, alt1, alt2 FROM cartobq.public_account.animated_deckgl_layer_flights`,
         connection: 'bqconn',
         format: deck.carto.FORMATS.JSON
       });
-      const geoJsonWorldLandData =  await deck.carto.getData({
+      const geoJsonWorldLandData =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT geom FROM cartobq.public_account.ne_50m_land_world`,
         connection: 'bqconn',

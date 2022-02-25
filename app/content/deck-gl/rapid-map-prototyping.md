@@ -1,23 +1,4 @@
-## Prototyping visualizations with Builder
-
-{{% bannerNote type="warning" title="Only available in v8.7 beta"%}}
-This feature is only available in deck.gl v8.7 beta.
-
-If using the scripting flavor, you can load the beta version like this:
-
-```html
-<script src="https://unpkg.com/deck.gl@beta/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@beta/dist.min.js"></script>
-```
-
-If using the React or Pure JS flavors, you need to add the following dependencies to your package.json file:
-
-```json
-"deck.gl": "beta",
-"@deck.gl/carto": "beta",
-```
-
-{{%/ bannerNote %}}
+## Rapid map prototyping
 
 ### Introduction
 
@@ -29,7 +10,7 @@ You create a new map in Builder, add your data sources and style your layers as 
 
 <div align="center">
   <div>
-    <img src="https://user-images.githubusercontent.com/453755/143416216-4f1f8ddb-6ba3-4ed2-a026-d89c0f3e1ec7.gif" />
+    <img src="https://raw.githubusercontent.com/visgl/deck.gl-data/master/images/docs/fetch-map.gif" />
     <p><i>CARTO Builder demo</i></p>
   </div>
 </div>
@@ -68,7 +49,7 @@ The `fetchMap` function has a required parameter (`cartoMapId`) and admits sever
 
 ### Loading private and shared maps
 
-In the previous examples we are loading public Builder maps. In some cases you will want to load private or shared maps in your application. In those cases you need to specify a valid access token in the `credentials` object provided to the `fetchMap` function. Private maps will be accessible only through tokens generated for the particular user that created the map. Shared maps are accessible using tokens generated for all the users that the map has been shared with or you can also use tokens generated using a client ID / client secret pair from a machine-to-machine application. 
+In the previous examples we are loading public Builder maps. In some cases you will want to load private or shared maps in your application. In those cases you need to specify a valid access token in the `credentials` object provided to the `fetchMap` function. 
 
 ### Auto-refreshing
 

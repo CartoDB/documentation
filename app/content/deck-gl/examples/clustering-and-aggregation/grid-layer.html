@@ -25,7 +25,7 @@
       });
 
       // Fetch Data from CARTO
-      const geojsonData =  await deck.carto.getData({
+      const geojsonData =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT geom FROM cartobq.public_account.uber_pickup_locations WHERE weight > 8`,
         connection: 'bqconn',

@@ -22,7 +22,7 @@
       });
 
       // Fetch Data from CARTO
-      const geojsonData =  await deck.carto.getData({
+      const geojsonData =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT geom, vendor, 
                         TO_JSON_STRING(timestamps) AS timestamps 

@@ -60,7 +60,7 @@
         accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
-      const jsonData = deck.carto.getData({
+      const jsonData = deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT AVG(water) AS avg_wa, SUM(water) AS sum_wa, COUNT(*) AS c, \`carto-un\`.h3.ST_ASH3(geo,9) AS hex 
                  FROM cartobq.earthengine.first_dataset
