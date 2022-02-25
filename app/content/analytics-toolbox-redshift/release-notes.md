@@ -1,5 +1,17 @@
 ## Release notes
 
+### February 17, 2022
+
+#### Module lds
+
+Feature
+- Create Location Data Services (lds) module.
+- Add GEOCODE_TABLE procedure.
+- Add GEOCODE function.
+- Add GEOCODE_REVERSE function.
+- Add ISOLINE function.
+- Add LDS_QUOTA_INFO function.
+
 ### December 16, 2021
 
 #### Module transformations
