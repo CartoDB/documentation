@@ -1,6 +1,6 @@
 ## lds
 
-<div class="badges"><div class="experimental"><div class="advanced"></div></div>
+<div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
 
 This module contains functions and procedures that make use of location data services, such as geocoding, reverse geocoding and isolines computation.
 
@@ -71,9 +71,7 @@ Performs a reverse geocoding of the point received as input.
 
 This function performs requests to the CARTO Location Data Services API. When using this function, Redshift makes parallel requests depending on the number of records you are trying to reverse geocode, potentially hitting the limit of the number of requests per seconds allowed for your account. To avoid this error, please try processing smaller volumes of data.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
