@@ -63,7 +63,7 @@
         layers: [
           new deck.ArcLayer({
             id: 'arc-layer',
-            data: geojsonData.then(data => data.features),
+            data: geojsonData.then(({ data }) => data.features),
             getSourcePosition: f => [-0.4531566, 51.4709959], // London
             getTargetPosition: f => f.geometry.coordinates,
             getSourceColor: [0, 128, 200],

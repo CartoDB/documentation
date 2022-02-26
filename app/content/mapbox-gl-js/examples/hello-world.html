@@ -43,7 +43,7 @@
 
     map.on('load', async () => {
       // Fetch Data from CARTO
-      const data =  await deck.carto.fetchLayerData({
+      const { data } =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT geom, name FROM cartobq.public_account.populated_places`,
         connection: 'bqconn',

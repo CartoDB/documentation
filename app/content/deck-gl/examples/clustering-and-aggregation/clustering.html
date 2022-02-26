@@ -89,7 +89,7 @@
       }
 
       // Fetch Data from CARTO
-      const data =  await deck.carto.fetchLayerData({
+      const { data } = await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT cartodb_id, geom FROM cartobq.public_account.meteorites`,
         connection: 'bqconn',

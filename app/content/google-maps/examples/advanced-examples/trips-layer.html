@@ -65,7 +65,7 @@
                    FROM cartobq.public_account.new_york_trips`,
       connection: 'bqconn',
       format: deck.carto.FORMATS.GEOJSON
-    }).then((geojsonData) => {
+    }).then(({ data: geojsonData }) => {
       // TripsLayer needs data in the following format
       layerData = geojsonData.features.map(f => ({
         vendor: f.properties.vendor,
