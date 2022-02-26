@@ -60,7 +60,7 @@
       });
 
       // Fetch Data from CARTO
-      const geojsonData =  await deck.carto.fetchLayerData({
+      const { data: geojsonData } =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT geom, casesbyweek, population FROM cartobq.public_account.eeuu_covid_by_county`,
         connection: 'bqconn',

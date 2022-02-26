@@ -26,7 +26,7 @@
       });
 
       // Fetch Data from CARTO
-      const jsonData =  await deck.carto.fetchLayerData({
+      const { data: jsonData } =  await deck.carto.fetchLayerData({
         type: deck.carto.MAP_TYPES.QUERY,
         source: `SELECT hex, count FROM cartobq.public_account.sf_h3_cells`,
         connection: 'bqconn',
