@@ -1,10 +1,10 @@
 ## Tilesets
 
-Tilesets enable to process and visualize very large spatial datasets (millions or even billions of rows) stored in your Snowflake database.
+Tilesets enable to process and visualize very large spatial datasets (millions or even billions of rows) stored in your Redshift database.
 
 ### How it works
 
-The tiler procedures will process your data and create a complete tileset out of it. All the map tiles for the specified zoom range will be stored in a Snowflake table in GeoJSON format. Each individual tile is a row in this table, with the tile coordinates and the corresponding geometry data stored in different columns:
+The tiler procedures will process your data and create a complete tileset out of it. All the map tiles for the specified zoom range will be stored in a Redshift table in GeoJSON format. Each individual tile is a row in this table, with the tile coordinates and the corresponding geometry data stored in different columns:
 
 | Row | z | x | y | data |
 |-----|---|---|---|-----------------|
@@ -13,7 +13,7 @@ The tiler procedures will process your data and create a complete tileset out of
 
 Visualizing and publishing your tilesets is straight-forward using [Builder](/carto-user-manual/maps/add-source/#add-source-from-a-connection), the map making tool integrated into the CARTO Workspace.
 
-The integration of tilesets with custom web map applications is also possible with CARTO Maps API, which will connect to Snowflake using your connection's credentials to fetch and serve the tiles.
+The integration of tilesets with custom web map applications is also possible with CARTO Maps API, which will connect to Redshift using your connection's credentials to fetch and serve the tiles.
 
 
 ### Tileset types and procedures
@@ -26,7 +26,7 @@ Aggregation tilesets can be created using the [CREATE_POINT_AGGREGATION_TILESET]
 
 The tiler is:
 
-* **Convenient** -- It can be run directly as SQL commands in Snowflake. The data never leaves Snowflake so you won't have to worry about security and additional ETLs.
-* **Fast** -- It benefits from the massive scalability capabilities of Snowflake and can process hundreds of millions of rows in a few minutes.
+* **Convenient** -- It can be run directly as SQL commands in Redshift. The data never leaves Redshift so you won't have to worry about security and additional ETLs.
+* **Fast** -- It benefits from the massive scalability capabilities of Redshift and can process hundreds of millions of rows in a few minutes.
 * **Scalable** -- This solution works well for 1M points or 100B points.
-* **Cost-effective** -- Since Snowflake separates storage from computing, the actual cost of hosting these tilesets is very low. Additionally, since the tiling process runs on-demand, you'll only pay for that processing and you won't need to have a warehouse available 24/7.
+* **Cost-effective** -- Since Redshift separates storage from computing, the actual cost of hosting these tilesets is very low. Additionally, since the tiling process runs on-demand, you'll only pay for that processing and you won't need to have a warehouse available 24/7.

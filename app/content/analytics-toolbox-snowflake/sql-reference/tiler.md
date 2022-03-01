@@ -2,7 +2,8 @@
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
 
-We currently provide a procedure to create aggregation tilesets, useful to generate aggregated point visualizations. We will soon support the creation of simple tilesets to visualize features individually. Visit the [Overview section](/analytics-toolbox-snowflake/overview/tilesets/) to learn more about tileset types.
+We currently provide procedures to create two types of tilesets: _simple_ and _aggregation_ tilesets, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview section](/analytics-toolbox-snowflake/overview/tilesets/) to learn more about tileset types.
+
 
 ### CREATE_POINT_AGGREGATION_TILESET
 
@@ -30,10 +31,6 @@ Generates a point aggregation tileset.
 
 {{% bannerNote title="FEATURES PER TILE LIMITS" type="warning" %}}
 The value of `aggregation_resolution` sets an upper bound for how many features can be present in a tile. For a value of _n_, 4^_n_ (4 raised to n) features can be present at most in a tile, for example, for an aggregation resolution of 8, the maximum number of features (points) will be 65536 per tile.
-
-Currently Snowflake limits to 16MB the maximum size of a LOB (large object). This kind of object is used for each tile's data. If the limit is exceeded an error will occur when trying to generate the tileset.
-
-Within this limit, a tile can contain about 135.000 points without any property; this number can be reached if the aggregation resolution is greater than 8. If the tileset includes properties, fewer points per tile will be possible before the limit is reached, so it may be necessary to lower the aggregation resolution to avoid errors.
 {{%/ bannerNote %}}
 
 **Result**
@@ -52,15 +49,15 @@ Additionally, there is a row identified with `Z=-1` which contains metadata abou
 * `zmax`: maximum zoom level in the tileset.
 * `tilestats`: stats about the feature's properties. In addition to its name (`attribute`) and `type`, it contains `min`, `max`, `average`, `sum` and `quantiles` for numeric attributes and `categories` for text attributes.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.CREATE_POINT_AGGREGATION_TILESET(
   'SELECT geom, population FROM mypopulationtable',
   'MYDB.MYSCHEMA.population_tileset',
-  '''{
+  '{
     "geom_column": "geom",
     "zoom_min": 0, "zoom_max": 6,
     "aggregation_resolution": 5,
@@ -68,5 +65,51 @@ CALL carto.CREATE_POINT_AGGREGATION_TILESET(
     "properties": {
       "population_sum": { "formula": "SUM(population)", "type": "NUMBER" }
     }
-  }'''
+  }'
+)
+```
+
+
+### CREATE_SIMPLE_TILESET
+
+{{% bannerNote type="code" %}}
+carto.CREATE_SIMPLE_TILESET(input, output_table, options)
+{{%/ bannerNote %}}
+
+**Description**
+
+Generates a simple tileset.
+
+* `input`: `VARCHAR` that can either contain a table name (e.g. `database.schema.tablename`) or a full query (e.g.<code>'SELECT * FROM db.schema.tablename'</code>).
+* `output_table`: Where the resulting table will be stored. It must be a `VARCHAR` of the form <code>'database.schema.tablename'</code>.
+* `options`: `VARCHAR` containing a valid JSON with the different options. Valid options are described the table below.
+
+| Option | Description |
+| :----- | :------ |
+|`geom_column`| Default: `"geom"`. A `VARCHAR` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
+|`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
+|`zoom_max`| Default: `10`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
+|`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
+|`max_tile_features`| Default: `100000`. A `NUMBER` that sets the maximum number of features a tile might contain. This limit is applied only for points. To configure in which order are features kept, use in conjunction with `tile_feature_order`.|
+|`max_tile_vertices`| Default: `500000`. A `NUMBER` that sets the maximum number of vertices a tile might contain. This limit is applied only for lines or polygons. Entire features will be dropped when this limit is reached. To configure in which order are features kept, use in conjunction with `tile_feature_order`.|
+|`tile_feature_order`| Default: `RANDOM()` for points, `ST_AREA() DESC` for polygons, `ST_LENGTH() DESC` for lines. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part must not be included. You can use any source column no matter if it's included in the tile as property or not.|
+
+
+**Example**
+
+
+```sql
+CALL carto.CREATE_SIMPLE_TILESET(
+  'SELECT geom, population FROM mypopulationtable',
+  'MYDB.MYSCHEMA.population_tileset',
+  '{
+    "geom_column": "geom",
+    "zoom_min": 0, "zoom_max": 6,
+    "properties": {
+      "population": "Number",
+      "category": "String"
+    }
+  }'
+)
 ```
