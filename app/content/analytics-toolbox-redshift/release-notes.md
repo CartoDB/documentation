@@ -1,5 +1,13 @@
 ## Release notes
 
+### February 25, 2022
+
+#### Module tiler
+
+Feature
+- Create tiler module.
+- Add CREATE_POINT_AGGREGATION_TILESET procedure.
+
 ### December 16, 2021
 
 #### Module transformations
