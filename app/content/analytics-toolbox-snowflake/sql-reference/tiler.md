@@ -49,9 +49,9 @@ Additionally, there is a row identified with `Z=-1` which contains metadata abou
 * `zmax`: maximum zoom level in the tileset.
 * `tilestats`: stats about the feature's properties. In addition to its name (`attribute`) and `type`, it contains `min`, `max`, `average`, `sum` and `quantiles` for numeric attributes and `categories` for text attributes.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.CREATE_POINT_AGGREGATION_TILESET(
@@ -95,9 +95,9 @@ Generates a simple tileset.
 |`max_tile_vertices`| Default: `500000`. A `NUMBER` that sets the maximum number of vertices a tile might contain. This limit is applied only for lines or polygons. Entire features will be dropped when this limit is reached. To configure in which order are features kept, use in conjunction with `tile_feature_order`.|
 |`tile_feature_order`| Default: `RANDOM()` for points, `ST_AREA() DESC` for polygons, `ST_LENGTH() DESC` for lines. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part must not be included. You can use any source column no matter if it's included in the tile as property or not.|
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.CREATE_SIMPLE_TILESET(

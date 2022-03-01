@@ -42,9 +42,7 @@ Additionally, there is a row identified with `Z=-1` which contains metadata abou
 * `zmax`: maximum zoom level in the tileset.
 * `tilestats`: stats about the feature's properties. In addition to its name (`attribute`) and `type`, it contains `min`, `max`, `average` and `sum`.
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL carto.CREATE_POINT_AGGREGATION_TILESET(
