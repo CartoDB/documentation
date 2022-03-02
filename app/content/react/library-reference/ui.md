@@ -10,13 +10,16 @@ A set of UI elements to build CARTO for React applications.
 
 The package includes 2 main elements: a set of values to use a Material UI theme with CARTO brand (`cartoThemeOptions`) + a group of widgets:
 
-- `WrapperWidgetUI`: a collapsible panel with a title, useful to wrap other UI elements.
-- `CategoryWidgetUI`: to display with horizontal bars a magnitude for each selected category (eg. population sum per country).
-- `FormulaWidgetUI`: to represent a single value (eg. average income in $).
-- `HistogramWidgetUI`: to display the distribution of values, with arbitrary bins (eg. number of stores per annual income).
-- `LegendWidgetUI`: to provide layer switching functionality and display legends for layers.
-- `PieWidgetUI`: to represent structure, using also 'category' groups, this time displayed with a donut chart.
-- `ScatterPlotWidgetUI`: to visualize the correlation between two different fields from a dataset.
+- [`CategoryWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-categorywidgetui--default): to display with horizontal bars a magnitude for each selected category (eg. population sum per country).
+- [`FeatureSelectionWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-featureselectionwidgetui--default): to specify a shape and use it to filter features spatially.
+- [`FormulaWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-formulawidgetui--empty): to represent a single value (eg. average income in $).
+- [`HistogramWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-histogramwidgetui--empty): to display the distribution of values, with arbitrary bins (eg. number of stores per annual income).
+- [`LegendWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-legendwidgetui--playground): to provide layer switching functionality and display legends for layers.
+- [`PieWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-piewidgetui--default): to represent structure, using also 'category' groups, this time displayed with a donut chart.
+- [`ScatterPlotWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-scatterplotwidgetui--default): to visualize the correlation between two different fields from a dataset.
+- [`TableWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-tablewidgetui--playground): to show feature column values in a tabular view.
+- [`TimeSeriesWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-timeserieswidgetui--default): to visualize the evolution through time of features containing a column with timestamp values.
+- [`WrapperWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-wrapperwidgetui--default): a collapsible panel with a title, useful to wrap other UI elements.
 
 This package, `@carto/react-ui` contains the user interface components for the widgets and the `@carto/react-widgets` package contains the widgets business logic. The UI is decoupled from the business logic so you can provide your own user interface or modify the business logic.
 
