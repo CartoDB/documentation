@@ -27,9 +27,10 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
 | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | [props.operationColumn] | <code>string</code>   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`.                                      |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This property is not applicable to the `LegendWidget`. |
+| [props.animation]       | `bool`                | `true`          | (optional) Indicates whether the widget update is animated or jumps directly to the new state. |
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
+| [props.filterable]      | `bool`                | `true`          | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.onError]         | <code>function</code> |                 | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps]    | <code>Object</code>   |                 | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
 {{%/ tableWrapper %}}
@@ -74,7 +75,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
 | props.column         | <code>string</code>        |         | Name of the data source's column to get the data from.                                                                              |
 | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.animation]    | `bool`                     | `true`  | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.onError]      | <code>errorCallback</code> |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps] | <code>Object</code>        |         | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
@@ -118,7 +119,8 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 | props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
 | props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
 | props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.animation]      | `bool`                            | `true`  | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.filterable]     | `bool`                            | `true`  | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.xAxisFormatter] | <code>function</code>             |         | (optional) _formatterCallback_: Function to format X axis values.                                                        |
 | [props.formatter]      | <code>function</code>             |         | (optional) _formatterCallback_: Function to format tooltip and Y axis values.                                            |
 | [props.onError]        | <code>function</code>             |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                           |
@@ -287,10 +289,11 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.operationColumn]  | <code>string</code>            |                    | Name of the data source's column to operate with. If not defined it will default to the one defined in `column`.                    |
-| [colors]                 | `Array<string>`                | CARTO colors bold palette | Array of colors to show for each category. |
-| [labels]                 | `Array<string>`                | Column values      | Labels to show for each category |
+| [colors]                 | `Array<string>`                | CARTO colors bold palette | (optional) Array of colors to show for each category. |
+| [labels]                 | `Array<string>`                | Column values      | (optional) Labels to show for each category |
+| [props.animation]        | `bool`                         | `true`             | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.filterable]       | `bool`                         | `true`             | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.formatter]        | <code>function</code>          |                    | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.tooltipFormatter] | <code>formatterCallback</code> |                    | (optional) _formatterCallback_: Function to format the tooltip values.                                                         |
 | [props.onError]          | <code>errorCallback</code>     |                    | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
