@@ -82,3 +82,30 @@ This process will connect your GitHub account. Remember you should that URL for 
 To login to your CARTO Student account you'll need to always use this specific URL: https://app.carto.com/students
 
 {{%/ bannerNote %}}
+
+##### I'm an educator and my materials use the previous version of CARTO. What can I do?
+
+First of all, thank you for using CARTO to teach the potential of geospatial analysis. We believe the new version of CARTO will crave a new path for GIS for the years to come — Happy to have you onboard!
+
+Follow these steps to update your materials to the new version of CARTO. For example, if your course consisted of 5 datasets and 10 maps, it shouldn't take longer than a couple hours.
+
+1. First, access your previous CARTO account: https://carto.com/login
+2. Open the dataset(s) you need and export them in CSV format. More info [here](https://carto.com/help/tutorials/export-data-guide/).
+3. Access your new CARTO account: https://app.carto.com
+4. Import the CSV datasets
+    - If you don't have a data warehouse you can use the provided CARTO Data Warehouse
+    - Find a detailed guide for importing [here](/carto-user-manual/data-explorer/importing-data/)
+5. Finally, recreate the maps you need for your course
+
+We know the update requires some time on your side, so rest assured: we won't be cutting access to your previous CARTO account in the meantime, any time soon.
+
+{{% bannerNote title="If you're in a rush" type="warning" %}}
+For this semester: don't panic! Students can sign up for the previous version of CARTO using the student pack until March 31st. They just need to follow this link: https://carto.com/student-pack/signup/?plan=student-engine
+
+March 31st onwards the signup process will be closed, but existing student and educator accounts will remain active. You can use them for this semester and update your materials for the next academic year.
+{{%/ bannerNote %}}
+
+    
+
+
+
