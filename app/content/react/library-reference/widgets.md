@@ -31,6 +31,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
 | [props.filterable]      | `bool`                | `true`          | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
+| [props.searchable]      | `bool`                | `true`          | (optional) Indicates whether the functionality for searching in categories not displayed is available or not.                       |
 | [props.onError]         | <code>function</code> |                 | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps]    | <code>Object</code>   |                 | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
 {{%/ tableWrapper %}}
