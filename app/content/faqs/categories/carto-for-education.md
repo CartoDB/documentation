@@ -83,7 +83,7 @@ To login to your CARTO Student account you'll need to always use this specific U
 
 {{%/ bannerNote %}}
 
-##### I'm an educator and my materials use the previous version of CARTO. What can I do?
+##### I am an educator and my materials use the previous version of CARTO. What can I do?
 
 First of all, thank you for using CARTO to teach the potential of geospatial analysis. We believe the new version of CARTO will crave a new path for GIS for the years to come — Happy to have you onboard!
 
