@@ -193,8 +193,6 @@ You can control the legend options through the following properties that must be
   
   2. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action. It is important that we call the original `onDataLoad` handler defined in the `useCartoLayerProps` hook for the other widgets in the app to work.
   
-  3. Make sure the layer visibility is controlled through the `visible` attribute in the store
-
   ```js
   import { LEGEND_TYPES } from "@carto/react-ui";
   import { updateLayer } from "@carto/react-redux";
@@ -234,7 +232,6 @@ You can control the legend options through the following properties that must be
     return new CartoLayer({
       ...cartoLayerProps,
       id: MY_LAYER_ID,
-      visible: myLayer.visible,
       getFillColor: colorBins({
         attr: layerConfig.legend.attr,
         domain: [100e6, 500e6, 1e9, 1.5e9],
@@ -247,7 +244,7 @@ You can control the legend options through the following properties that must be
             layerAttributes: { ...layerConfig },
           })
         );
-        cartoLayerProps.onDataLoad(data);
+        cartoLayerProps.onDataLoad && cartoLayerProps.onDataLoad(data);
       }
     });
   }
