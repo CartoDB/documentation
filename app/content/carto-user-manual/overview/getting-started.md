@@ -168,7 +168,7 @@ Announcements of new features, interesting articles, and the latest news related
 
 In the left panel, you can find the *Navigation Menu* with all the available options to access the CARTO components: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
 
-![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
+![Menu sections](/img/cloud-native-workspace/get-started/the_menu_sections.png)
 ### Quickstart guide to create your first map
 
 #### Introduction
