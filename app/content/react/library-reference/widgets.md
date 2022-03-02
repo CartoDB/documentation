@@ -171,6 +171,8 @@ You can control the legend options through the following properties that must be
 | ------------- | -------------- | ------------- | --------------------------------------------------------- |
 | title         | `string`       |               | Layer title                                               |
 | visible       | `boolean`      | `true`        | Indicates whether the layer is visible by default or not. |
+| opacity       | `Number`       | `1`           | Initial opacity for the layer.                            |
+| showOpacityControl | `boolean` | `true`        | Indicates whether the opacity control is shown or not.    |
 | switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown             |
 | legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
 | legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
@@ -216,6 +218,8 @@ You can control the legend options through the following properties that must be
   const layerConfig = {
     title: 'Layer Name',
     visible: true,
+    showOpacityControl: true,
+    opacity: 0.6,
     legend: {
       attr: 'revenue',
       type: LEGEND_TYPES.BINS,
@@ -226,7 +230,7 @@ You can control the legend options through the following properties that must be
 
   const { myLayer } = useSelector((state) => state.carto.layers);
   const source = useSelector((state) => selectSourceById(state, myLayer?.source));
-  const cartoLayerProps = useCartoLayerProps({ source });
+  const cartoLayerProps = useCartoLayerProps({ source, layerConfig });
 
   if (myLayer && source) {
     return new CartoLayer({
