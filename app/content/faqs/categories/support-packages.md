@@ -1,5 +1,21 @@
 ## Support Packages
 
+[What support packages are available at CARTO?](#what-support-packages-are-available-at-carto)
+
+[Who is entitled to Support?](../categories/support-packages/#who-is-entitled-to-support)
+
+[What are CARTO Business Hours?](../categories/support-packages/#what-are-carto-business-hours)
+
+[What are Customer Success Managers (CSMs)?](#what-are-customer-success-managers-csms)
+
+[How to submit an issue to our Support team?](#how-to-submit-an-issue-to-our-support-team)
+
+[What is the issue and severity classification? ](#what-is-the-issue-and-severity-classification)
+
+[What are CARTO’s Target Response Times (business hours)?](#what-are-cartos-target-response-times-business-hours)
+
+---
+
 <!-- Using level 5 headers to avoid the title being listed in the tree -->
 
 ##### What support packages are available at CARTO?
@@ -117,9 +133,11 @@ These Packages are structured to help organizations at any stage of using locati
   </tbody>
 </table>
 
+---
 ##### Who is entitled to Support?
 Users of the CARTO Platform are entitled to support according to their Support Package, described above. CARTO is not responsible for providing support to end users of CARTO-powered applications.
 
+---
 ##### What are CARTO Business Hours?
 CARTO Support provides business hours coverage across 2 regions:
 * European Region ( 9am - 6pm Central European Time (CET) )
@@ -128,15 +146,18 @@ CARTO Support provides business hours coverage across 2 regions:
 Standard Business hours coverage is determined by your selected Support Package. For those customers on a Standard Package, you will be offered the option of selecting 1 of the regions as you indicated coverage times. For those customers on a Premium Package, “business hours” are defined by the indicated hours across both regions. CARTO works in good faith to respond to all submitted issues in a timely fashion.
 Customers with an Elite Support Package are provided with 24/7 support for P1 and P2 priority issues (see more below on issue classification). Customers with an Elite Support Package will be given specific access to information and guidance regarding how and when to leverage 24/7 support.
 
+---
 ##### What are Customer Success Managers (CSMs)?
 Customer Success Managers at CARTO bring geospatial expertise and hands-on guidance in applying Location Intelligence to business needs, based on our experience working with hundreds of enterprise customers in diverse industries and fields. CSM’s also act as the “voice of the customer” communicating to and, as required, connecting customers with Product, Support, and other CARTO teams.
 
+---
 ##### How to submit an issue to our Support team?
 Support issues should be submitted via the indicated email address based on your selected Support Package. Customers with an Elite Support Package are given access to a telephone number where support issues can be submitted as well.
 * Individual plan users will contact the Support team, writing to support@carto.com.
 * Enterprise account users will contact Support with enterprise-support@carto.com.
 * Premium and Elite accounts will have dedicated email addresses for P1 and P2 issues, for P3 they will contact support with enterprise-support@carto.com.
 
+---
 ##### What is the issue and severity classification? 
 All support issues received will be first triaged and assigned a prioritization level based on the severity of the reported issue. CARTO will work to first investigate and understand the issue at hand to ensure the appropriate severity level is assigned.
 CARTO classifies support issues as follows:
@@ -149,6 +170,7 @@ CARTO classifies support issues as follows:
 
 Customers should indicate the level of impact being experienced when submitting their support request. This will give CARTO’s Support Engineering team a sense of the potential impact and urgency of the issue. CARTO’s Support Engineering team will ultimately determine the issue severity based on initial investigation and correspondence with the issue submitter.
 
+---
 ##### What are CARTO’s Target Response Times (business hours)?
 
 | **Severity** | **Individual** | **Standard** | **Premium** | **Elite** |

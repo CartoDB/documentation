@@ -1,10 +1,17 @@
 ## Analytics Toolbox
 
+[What is CARTO’s Analytics Toolbox?](#what-is-cartos-analytics-toolbox)
+
+[How can I use the functions available in the Analytics Toolbox?](#how-can-i-use-the-functions-available-in-the-analytics-toolbox)
+
+---
+
 <!-- Using level 5 headers to avoid the title being listed in the tree -->
 
 ##### What is CARTO’s Analytics Toolbox?
 CARTO’s Analytics Toolbox is a set of UDFs and Store Procedures to unlock Spatial Analytics directly on top of your cloud data warehouse platform. It is organized in a set of modules based on the functionality they offer. 
 
+---
 ##### How can I use the functions available in the Analytics Toolbox?
 You can use the functions in the Analytics Toolbox via CARTO Builder, SQL Notebooks, and directly in the console of your cloud data warehouse platform. 
 

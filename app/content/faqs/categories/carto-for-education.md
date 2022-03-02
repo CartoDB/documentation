@@ -1,6 +1,17 @@
 ## CARTO for Education
 
-<!-- Using level 5 headers to avoid the title being listed in the tree -->
+[How can I get a Student account in CARTO?](#how-can-i-get-a-student-account-in-carto)
+
+[How can I get an Educator acccount?](#how-can-i-get-an-educator-account)
+
+[We need Enterprise capabilities for our institution or academic research, can you help?](#we-need-enterprise-capabilities-for-our-institution-or-academic-research-can-you-help)
+
+[What is the process for getting a CARTO Student account?](#what-is-the-process-for-getting-a-carto-student-account)
+
+[I am an educator and my materials use the previous version of CARTO. What can I do?](#i-am-an-educator-and-my-materials-use-the-previous-version-of-carto-what-can-i-do)
+
+---
+
 {{% bannerNote title="Why do you need this?" type="note" %}}
 🎓 You are a student
 
@@ -13,16 +24,21 @@ We routinely hear from students, teachers, professors, and university administra
 - Educator Accounts: free CARTO accounts by request
 - Enterprise Accounts for Education: discounts and grants on a case by case basis
 
-
+---
+<!-- Using level 5 headers to avoid the title being listed in the tree -->
 ##### How can I get a Student account in CARTO? 
 Students can create a free CARTO account via [GitHub’s Student Developer Pack](http://education.github.com/pack). When they sign up for the pack, they’ll also get access to a ton of other free development tools! See the process and eligibility requirements below.
 
+---
 
 ##### How can I get an Educator account? 
 Educators are also eligible for a free CARTO account. Request an Educator account by emailing marketing@carto.com together with a document that accredits your educator status. We welcome educators from accredited institutions as well as bootcamps and similar training organizations.
 
+---
 ##### We need Enterprise capabilities for our institution or academic research, can you help?
 Academic researchers and others in the education field, whether at a school, university, independent research center, or boot camp, can make use of CARTO Enterprise at a discount. [Contact sales](https://carto.com/#request-demo) to learn more.
+
+---
 
 ##### What is the process for getting a CARTO Student account? 
 
@@ -83,9 +99,10 @@ To login to your CARTO Student account you'll need to always use this specific U
 
 {{%/ bannerNote %}}
 
+---
 ##### I am an educator and my materials use the previous version of CARTO. What can I do?
 
-First of all, thank you for using CARTO to teach the potential of geospatial analysis. We believe the new version of CARTO will crave a new path for GIS for the years to come — Happy to have you onboard!
+First of all, thank you for using CARTO to teach the potential of geospatial analysis. We believe the new version of CARTO will carve out a new path for GIS for the years to come — Happy to have you onboard!
 
 Follow these steps to update your materials to the new version of CARTO. For example, if your course consisted of 5 datasets and 10 maps, it shouldn't take longer than a couple hours.
 
