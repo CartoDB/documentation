@@ -61,6 +61,57 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
   ```
 
+#### FeatureSelectionWidget
+
+Renders a `<FeatureSelectionWidget />` component. The widget allows the user to draw a shape on the map and apply a filter to select the features within the shape. Once a shape has been drawn, it can be selected and modified by adding/removing vertices or translated to a new location. By default the mask is active but it can be disabled temporarily and re-enabled again.
+
+There are different selection modes supporting different shapes. The mode selected by default is `FEATURE_SELECTION_MODES.POLYGON`. If you want to choose a different default selection mode, you can set the `featureSelectionMode` prop in the `initialStateSlice`.
+
+If you want to use this widget in your app, you need to do two different things:
+
+1. Add the `<FeatureSelectionWidget>` component to the view where you want to have it available. If you are using one of the CARTO for React templates and you want to use it in all of your views, you can add it to the `<MapContainer>` component.
+
+2. Add the `FeatureSelectionLayer` to your layers list. If you are using one of the CARTO for React templates, you need to add it to the `src/components/layers/index.js` file like this:
+
+   ```js
+   import { FeatureSelectionLayer } from '@carto/react-widgets';
+
+   export const getLayers = () => {
+     return [
+       ...,
+       FeatureSelectionLayer(),
+     ];
+   }; 
+   ```
+
+- **Input**:
+
+{{% tableWrapper tab="true" %}}
+| Param                | Type                | Default        | Description                                        |
+| -------------------- | ------------------- | -------------- | -------------------------------------------------- |
+| props                | <code>Object</code> |                |                                                    |
+| [props.className] | <code>string</code>   |         | (optional) Material-UI withStyle class for styling |
+| [props.selectionModes] | `Array<FEATURE_SELECTION_MODES>`  | `[FEATURE_SELECTION_MODES.CIRCLE, FEATURE_SELECTION_MODES.LASSO_TOOL, FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]`   | Available selection modes.    |
+| [props.editModes]      | `EDIT_MODES`        | `[EDIT_MODES.EDIT]               | Available edit modes.          |  
+| [props.tooltipPlacement] | <code>string</code>      | `'bottom'` | Tooltip placement. Allowed values available [here](https://mui.com/api/tooltip/) |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, we add a `FeatureSelectionWidget` supporting just two selection modes using a specific CSS class.
+
+  ```js
+  import { FeatureSelectionWidget } from "@carto/react-widgets";
+  import { FEATURE_SELECTION_MODES } from '@carto/react-core';
+  
+  return (
+    <FeatureSelectionWidget 
+      className={myCSSClassName} 
+      selectionModes={[FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]} />
+    />
+  );
+  ```
+
 #### FormulaWidget
 
 Renders a `<FormulaWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features.
