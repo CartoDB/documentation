@@ -167,14 +167,15 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 You can control the legend options through the following properties that must be added to the `layerAttributes` property for the layer in the store:
 
 {{% tableWrapper tab="true" %}}
-| Param         | Type           | Default       | Description    |
-| ------------- | -------------- | ------------- | -------------- |
-| title         | `string`       |               | Layer title    |
-| switchable    | `boolean`      | `true`        | Whether the layer can be hide/shown |
+| Param         | Type           | Default       | Description                                               |
+| ------------- | -------------- | ------------- | --------------------------------------------------------- |
+| title         | `string`       |               | Layer title                                               |
+| visible       | `boolean`      | `true`        | Indicates whether the layer is visible by default or not. |
+| switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown             |
 | legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
 | legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
-| legend.attr   | `string`       |               | Attribute used for styling the layer |
-| legend.colors | `Array` or `string` |               | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP` |
+| legend.attr   | `string`       |               | Attribute used for styling the layer                      |
+| legend.colors | `Array` or `string` |          | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`                          |
 | legend.labels | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
 |               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps). |
 |               |                |               | - Array of `[min, max]` numbers for `LEGEND_TYPES.PROPORTION`. |
