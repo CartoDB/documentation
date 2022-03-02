@@ -77,7 +77,7 @@ Constants for the different legend types available.
   - `CONTINUOUS_RAMP`. Use this type when you are visualizing a layer using a continuous color ramp based on a numeric property.
   - `BINS`. Use this type when you are visualizing a layer assigning colors to bins/intervals based on a numeric property.
   - `PROPORTION`. Use this type when you are visualizing a point layer using proportional symbols (size-varying).
-  - `CUSTOM`. Use this type when you have a custom visualization that does not fit with the other legend types.
+  - `CUSTOM`. Use this type when you have a custom visualization that does not fit with the other legend types. It allows you to provide your own legend component.
 
 - **Example**:
 
