@@ -480,7 +480,7 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | props.title | `string` |   | Title to show in the widget header.|
 | props.dataSource | `string` | | ID of the data source to get the data from. |
 | props.column | `string` |  | Name of the data source's column with the timestamp/date values |
-| props.stepSize | `GroupDateTypes` |  | Time interval size |
+| props.stepSize | `GroupDateTypes` |  | Time interval size. Available groupings are: GroupDateTypes.YEARS, GroupDateTypes.MONTHS, GroupDateTypes.WEEKS, GroupDateTypes.DAYS, GroupDateTypes.HOURS, GroupDateTypes.MINUTES.  |
 | [props.operation] | `string` | AggregationTypes.COUNT | (optional) Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object. |
 | [props.operationColumn] | `string` |  | (optional) Column to use in the aggregation operation |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This does not apply to the animation when the widget is in play mode. Applies only when the data visualized in the chart changes (i.e. when we select a different step size). |
