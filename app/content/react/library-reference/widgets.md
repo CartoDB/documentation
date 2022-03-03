@@ -211,10 +211,11 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 - **Input**:
 
 {{% tableWrapper tab="true" %}}
-| Param         | Type           | Default       | Description    |
-| ------------- | -------------- | ------------- | -------------- |
-| props         | <code>Object</code>               |               |                |
-| [props.className] | <code>string</code>   |         | (optional) Material-UI withStyle class for styling |
+| Param                    | Type                | Default       | Description                                         |
+| ------------------------ | ------------------- | ------------- | --------------------------------------------------- |
+| props                    | <code>Object</code> |               |                                                     |
+| [props.className]        | <code>string</code> |               | (optional) Material-UI withStyle class for styling. |
+| [props.initialCollapsed] | <code>bool</code>   | `false`       | (optional) Indicates whether the widget is initially collapsed or not. |
 {{%/ tableWrapper %}}
 
 You can control the legend options through the following properties that must be added to the `layerAttributes` property for the layer in the store:
