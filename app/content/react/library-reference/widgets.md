@@ -416,6 +416,51 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
   );
   ```
 
+#### TableWidget
+
+Renders a `<TableWidget />` component, binded to a source at redux. The widget allows to configure the source columns that will be displayed. It includes functionality for data pagination and ordering by column.
+
+- **Input**:
+
+{{% tableWrapper tab="true" %}}
+| Param                    | Type                | Default            | Description                                      |
+| ------------------------ | ------------------- | ------------------ | ------------------------------------------------ |
+| props                    | <code>Object</code> |                    |                                                  |
+| props.id                 | <code>string</code> |                    | ID for the widget instance.                      |
+| props.title              | <code>string</code> |                    | Title to show in the widget header.              |
+| props.dataSource         | <code>string</code> |                    | ID of the data source to get the data from.      |
+| [props.columns]          | `Array<object>`     | All columns        | (optional) List of source columns to display. The object allows to configure horizontal alignment and the label to display for each column. See example below. |
+| [props.height]           | <code>string</code> | Takes available height in the container. | (optional) Height of the table in CSS format.  |
+| [props.dense]            | <code>bool</code>   | `false`            | (optional) Indicates whether to use a denser layout or not. |
+| [props.initialPageSize]  | <code>number</code> | `10`               | (optional) Initial number of rows per page.  |
+| [props.onError]          | <code>errorCallback</code> |             | (optional) _errorCallback_: Function to handle error messages from the widget. |
+| [props.wrapperProps]     | <code>Object</code> |                    | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, the widget would display a table with three columns for each store. All the columns are renamed and aligned to the left. The initial page size is set to 5 rows.
+
+  ```js
+  import { TableWidget } from "@carto/react-widgets";
+
+  return (
+    <TableWidget
+      id='storesTable'
+      title='Stores list'
+      dataSource={storesSource.id}
+      initialPageSize={5}
+      columns={[
+        { field: 'revenue', headerName: 'Revenue', align: 'left' },
+        { field: 'size_m2', headerName: 'Size (m2)', align: 'left' },
+        { field: 'storetype', headerName: 'Type', align: 'left' },
+      ]}
+    />
+  );
+
+  ```
+
 #### TimeSeriesWidget
 
 Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features. From a data perspective, the TimeSeriesWidget groups the features in time intervals and allows to play an animation that filters the features displayed based on the current interval.
