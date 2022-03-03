@@ -32,18 +32,18 @@
     if (selectors.length > 0) {
       const selector = selectors[0];
       if (selector.options && selector.options.length === 0) {
-        if (bigqueryNew()) {
-          selector.options[selector.options.length] = new Option(options['custom'], 'custom');
-        }
+        selector.options[selector.options.length] = new Option(options['un'], 'un');
         if (!isAdvanced) {
           // carto-os project does not contain advanced modules
           selector.options[selector.options.length] = new Option(options['os'], 'os');
         }
-        selector.options[selector.options.length] = new Option(options['un'], 'un');
+        if (bigqueryNew()) {
+          selector.options[selector.options.length] = new Option(options['custom'], 'custom');
+        }
       }
     }
     createCustomSelector(id);
-    const defaultValue = bigqueryNew() ? 'custom' : 'os'
+    const defaultValue = bigqueryNew() ? 'un' : 'os'
     let value = localStorage.getItem(localStorageKey) || defaultValue;
     if (value === 'os' && isAdvanced) {
       // carto-os project does not contain advanced modules

@@ -34,7 +34,7 @@ This interface will allow you to upload a supported file, such as GeoJSON or Sha
 
 ![Data Explorer import select file local](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
 
-Once you have completed this configuration, click on *Continue*: 
+Once you have completed this configuration, click on *Continue*:
 
 ![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_select_local_file_continue.png)
 
@@ -42,11 +42,11 @@ The next screen will show you a summary of the configuration of the table for yo
 
 ![Data Explorer import confirmation local](/img/cloud-native-workspace/data-explorer/de_import_confirmation_local.png)
 
-Once you click on Import, a new dialog will open informing you that the import may take a while to process and giving you the option to follow the status from a new dialogue box that appears at the top right corner of the screen. 
+Once you click on Import, a new dialog will open informing you that the import may take a while to process and giving you the option to follow the status from a new dialogue box that appears at the top right corner of the screen.
 
 ![Data Explorer importing local to carto dw](/img/cloud-native-workspace/data-explorer/de_importing_local_to_cartodw.png)
 
-There are three possible status: importing, imported successfully or dataset creation error. 
+There are three possible status: importing, imported successfully or dataset creation error.
 
 ![Data Explorer importing local](/img/cloud-native-workspace/data-explorer/de_importing_local.png)
 
@@ -72,7 +72,7 @@ This interface will allow you to enter your supported URL file, such as GeoJSON 
 
 ![Data Explorer import select file url](/img/cloud-native-workspace/data-explorer/de_import_select_url.png)
 
-Once you have completed this configuration, click on *Continue*: 
+Once you have completed this configuration, click on *Continue*:
 
 ![Data Explorer import selected file continue url](/img/cloud-native-workspace/data-explorer/de_import_select_url_continue.png)
 n
@@ -84,7 +84,7 @@ Once you click on Import, a new dialog will open informing you that the import m
 
 ![Data Explorer importing url to carto dw](/img/cloud-native-workspace/data-explorer/de_importing_url_to_cartodw.png)
 
-There are three possible status: importing, imported successfully or dataset creation error. 
+There are three possible status: importing, imported successfully or dataset creation error.
 
 ![Data Explorer importing url](/img/cloud-native-workspace/data-explorer/de_importing_url.png)
 

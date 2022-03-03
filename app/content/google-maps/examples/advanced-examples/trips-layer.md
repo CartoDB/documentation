@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "trips-layer-carto2"
+  - title: CARTO 3
     url: "trips-layer"
     active: true
-  - title: CARTO 3
-    url: "trips-layer-carto3"
 ---
 ## Trips Layer

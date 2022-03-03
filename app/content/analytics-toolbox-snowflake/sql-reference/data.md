@@ -34,8 +34,8 @@ For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_
 * `input_query`: `VARCHAR` query to be enriched; this query must produce
    valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
-* `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog table `SPATIAL_CATALOG_VARIABLES` can be used to find variables and their slugs and default aggregation.
-* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
+* `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
+* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
@@ -43,9 +43,9 @@ For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.DATAOBS_ENRICH_GRID(
@@ -59,7 +59,7 @@ CALL carto.DATAOBS_ENRICH_GRID(
     OBJECT_CONSTRUCT('variable', 'population_14d9cf55', 'aggregation', 'SUM')
   ),
   TO_ARRAY('MYENRICHEDTABLE'),
-  `MY_DATAOBS_DB.MY_DATAOBS_SCHEMA`
+  'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
 )
 -- The table MYENRICHEDTABLE will be created
 -- with columns: INDEX, POPULATION_14D9CF55_SUM
@@ -85,8 +85,8 @@ As a result of this process, each input grid cell will be enriched with the data
 * `input_query`: `VARCHAR` query to be enriched; this query must produce
    valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
-* `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog table `SPATIAL_CATALOG_VARIABLES` can be used to find available variables and their slugs and default aggregation.
-* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
+* `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
+* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
@@ -100,9 +100,9 @@ The array contains OBJECTs with one field for each variable, using the variable 
 
 Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.DATAOBS_ENRICH_GRID_RAW(
@@ -114,7 +114,7 @@ CALL carto.DATAOBS_ENRICH_GRID_RAW(
   'INDEX',
   ARRAY_CONSTRUCT('population_14d9cf55'),
   TO_ARRAY('MYENRICHEDTABLE'),
-  `MY_DATAOBS_DB.MY_DATAOBS_SCHEMA`
+  'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
 )
 -- The table MYENRICHEDTABLE will be created
 -- with columns: INDEX, and WP_GRID100M_10955184.
@@ -143,8 +143,8 @@ For other types of aggregation, the [`DATAOBS_ENRICH_POINTS_RAW`](#dataobs_enric
 
 * `input_query`: `VARCHAR` query to be enriched.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
-* `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input points. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog table `SPATIAL_CATALOG_VARIABLES` can be used to find variables and their slugs and default aggregation.
-* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
+* `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input points. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
+* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
@@ -152,9 +152,9 @@ For other types of aggregation, the [`DATAOBS_ENRICH_POINTS_RAW`](#dataobs_enric
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POINTS(
@@ -164,7 +164,7 @@ CALL carto.DATAOBS_ENRICH_POINTS(
    ),
    NULL,
    TO_ARRAY('MYENRICHEDTABLE'),
-   `MY_DATAOBS_DB.MY_DATAOBS_SCHEMA`
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, POPULATION_93405AD7_SUM
@@ -187,8 +187,8 @@ As a result of this process, each input point will be enriched with the data of 
 
 * `input_query`: `VARCHAR` query to be enriched.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
-* `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog table `SPATIAL_CATALOG_VARIABLES` can be used to find available variables and their slugs and default aggregation.
-* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
+* `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
+* `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
@@ -199,9 +199,9 @@ The array contains OBJECTs with one field for each variable, using the variable 
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POINTS_RAW(
@@ -209,7 +209,7 @@ CALL carto.DATAOBS_ENRICH_POINTS_RAW(
    ARRAY_CONSTRUCT('population_93405ad7'),
    NULL,
    TO_ARRAY('MYENRICHEDTABLE'),
-   `MY_DATAOBS_DB.MY_DATAOBS_SCHEMA`
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, and WP_GRID100M_10955184.
@@ -242,7 +242,7 @@ For other types of aggregation, the [`DATAOBS_ENRICH_POLYGONS_RAW`](#dataobs_enr
 
 * `input_query`: `VARCHAR` query to be enriched.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
-* `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog table `SPATIAL_CATALOG_VARIABLES` can be used to find variables and their slugs and default aggregation.
+* `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
@@ -253,9 +253,9 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS(
@@ -265,7 +265,7 @@ CALL carto.DATAOBS_ENRICH_POLYGONS(
    ),
    NULL,
    TO_ARRAY('MYENRICHEDTABLE'),
-   `MY_DATAOBS_DB.MY_DATAOBS_SCHEMA`
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, POPULATION_93405AD7_SUM
@@ -288,7 +288,7 @@ As a result of this process, each input polygon will be enriched with the data o
 
 * `input_query`: `VARCHAR` query to be enriched.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
-* `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog table `SPATIAL_CATALOG_VARIABLES` can be used to find available variables and their slugs and default aggregation.
+* `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
@@ -305,9 +305,9 @@ The array contains OBJECTs with one field for each variable, using the variable 
 
 Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
@@ -316,7 +316,7 @@ CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
    ),
    NULL,
    TO_ARRAY('MYENRICHEDTABLE'),
-   `MY_DATAOBS_DB.MY_DATAOBS_SCHEMA`
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, __CARTO_INPUT_AREA and WP_GRID100M_10955184.
@@ -369,6 +369,76 @@ GROUP BY NAME
 ```
 
 
+### DATAOBS_SUBSCRIPTIONS
+
+{{% bannerNote type="code" %}}
+carto.DATAOBS_SUBSCRIPTIONS(source, filters)
+{{%/ bannerNote %}}
+
+**Description**
+
+When calling this procedure, the result shows a list of the DO subscriptions available.
+
+* `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
+* `filters`: `VARCHAR` SQL expression to filter the results, e.g. `$$category='Housing'$$`.
+  And empty string `''` or `NULL` can be used to omit the filtering.
+
+**Output**
+
+The result is an array of objects with the following fields:
+* `dataset_slug` Internal identifier of the DO dataset.
+* `dataset_name` name of the DO dataset.
+* `dataset_country` name of the country the dataset belongs to.
+* `dataset_category` name of the dataset category.
+* `dataset_license` type of license, either "Public data" or "Premium data".
+* `dataset_provider` name of the dataset provider.
+* `dataset_version` version of the dataset.
+* `dataset_geo_type` type of geometry used by the geography: "POINT"/"MULTIPOINT"/"LINESTRING"/"MULTILINESTRING"/"POLYGON"/"MULTIPOLYGON"/"GEOMETRYCOLLECTION".
+* `dataset_table` name of the user BigQuery subscription table to access the dataset.
+* `associated_geography_table` geography associated with the dataset (NULL if category is `Geography` meaning the dataset itself is a geography); contains a subscription table/view if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
+* `associated_geography_slug` internal identifier of the geography associated with the dataset (NULL if category is `Geography`).
+
+
+**Example**
+
+
+```sql
+CALL carto.DATAOBS_SUBSCRIPTIONS('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
+```
+
+### DATAOBS_SUBSCRIPTION_VARIABLES
+
+{{% bannerNote type="code" %}}
+carto.DATAOBS_SUBSCRIPTION_VARIABLES(source, filters)
+{{%/ bannerNote %}}
+
+**Description**
+
+When calling this procedure, the result shows a list of the DO subscriptions and variables available.
+
+* `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
+* `filters`: `VARCHAR` SQL expression to filter the results, e.g. `$$type='STRING'$$`.
+  And empty string `''` or `NULL` can be used to omit the filtering.
+
+**Output**
+
+The result is an array of objects with the following fields:
+* `variable_slug` unique identifier of the variable. This can be used for enrichment.
+* `variable_name` column name of the variable.
+* `variable_description` description of the variable.
+* `variable_type` type of the variable column.
+* `variable_aggregation` default aggregation method for the variable.
+* `dataset_slug` identifier of the dataset the variable belongs to.
+* `associated_geography_slug` identifier of the corresponding geography. Note that this is NULL if the dataset itself is a geography..
+
+
+**Example**
+
+
+```sql
+CALL carto.DATAOBS_SUBSCRIPTION_VARIABLES('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
+```
+
 ### ENRICH_GRID
 
 {{% bannerNote type="code" %}}
@@ -406,9 +476,9 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.ENRICH_GRID(
@@ -461,9 +531,9 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.ENRICH_GRID_RAW(
@@ -512,9 +582,9 @@ For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.ENRICH_POINTS(
@@ -559,9 +629,9 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.ENRICH_POINTS_RAW(
@@ -611,9 +681,9 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.ENRICH_POLYGONS(
@@ -663,9 +733,9 @@ The output table will contain all the input columns provided in the `input_query
 
 Moreover, another field named `__carto_input_area` will be included in `__CARTO_ENRICHMENT`, containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 CALL carto.ENRICH_POLYGONS_RAW(

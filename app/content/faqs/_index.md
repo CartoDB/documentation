@@ -19,5 +19,6 @@ cascade:
         - title: "Analytics Toolbox"
         - title: "Development Tools"
         - title: "Support Packages"
+        - title: "CARTO for Education"
 
 ---

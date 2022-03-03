@@ -15,6 +15,7 @@ cascade:
         - title: "Getting started"
         - title: "Getting access"
         - title: "Spatial indexes"
+        - title: "Tilesets"
     - title: "Guides"
       folder:
         - title: "Running queries from Builder"
@@ -40,6 +41,7 @@ cascade:
         - title: "quadkey"
         - title: random
         - title: "s2"
+        - title: "tiler"
         - title: "transformations"
     - title: "Release notes" 
 ---

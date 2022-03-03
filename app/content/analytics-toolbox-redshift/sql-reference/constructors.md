@@ -101,9 +101,9 @@ Creates a rectangular Polygon from the minimum and maximum values for X and Y.
 
 `GEOMETRY`
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 SELECT carto.ST_MAKEENVELOPE(0,0,1,1);
@@ -127,9 +127,9 @@ Returns the boundary polygon of a tile given its zoom level and its X and Y indi
 
 `VARCHAR`
 
-{{% customSelector %}}
+
 **Example**
-{{%/ customSelector %}}
+
 
 ```sql
 SELECT carto.ST_TILEENVELOPE(10, 384, 368);

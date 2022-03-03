@@ -6,7 +6,7 @@ The CARTO submodule for deck.gl is open source, so we maintain the [documentatio
 
 This is a function to define the connection to CARTO, including the credentials (and optionally the parameters to point to specific api endpoints). The configuration properties that must be defined depend on the CARTO API version used:
 
-* [apiVersion](/deck-gl/reference/#api_versions) (optional): API version. Default: `API_VERSIONS.V2`.
+* [apiVersion](/deck-gl/reference/#api_versions) (optional): API version. Default: `API_VERSIONS.V3`.
 
 #### CARTO 2
 
@@ -36,7 +36,7 @@ If using API v3, these are the available properties:
 
 * `apiBaseUrl` (required): base URL for requests to the API (can be obtained in the CARTO 3 Workspace)
 * `accessToken` (required): token to authenticate/authorize requests to the Maps API (private datasets)
-* `mapsUrl` (optional): Maps API URL Template. Default: `https://{apiBaseUrl}/v3/maps` 
+
 
 
 ### CartoLayer
@@ -112,8 +112,23 @@ Receives arguments:
 
 ### fetchMap
 
-{{% bannerNote type="warning" title="Only available in v8.7 alpha"%}}
-This function is only available in deck.gl v8.7 alpha.
+{{% bannerNote type="warning" title="Only available in v8.7 beta"%}}
+This function is only available in deck.gl v8.7 beta.
+
+If using the scripting flavor, you can load the beta version like this:
+
+```html
+<script src="https://unpkg.com/deck.gl@beta/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@beta/dist.min.js"></script>
+```
+
+If using the React or Pure JS flavors, you need to add the following dependencies to your package.json file:
+
+```json
+"deck.gl": "beta",
+"@deck.gl/carto": "beta",
+```
+
 {{%/ bannerNote %}}
 
 `fetchMap` is an API that instantiates layers configured in CARTO Builder for use with deck.gl. You just need to add your data sources in Builder, style your layers and share your map. Then you need to copy the map ID and use it to retrieve the map configuration from the platform. It is available starting with CARTO Maps API version v3.
@@ -243,14 +258,14 @@ import {BASEMAP} from '@deck.gl/carto';
 To use pre-bundled scripts:
 
 ```html
-<script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
 
 <!-- or -->
-<script src="https://unpkg.com/@deck.gl/core@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/layers@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/geo-layers@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/core@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/layers@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/geo-layers@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
 ```
 
 ```javascript

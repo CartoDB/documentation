@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
+    
+    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
+    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0">
+    <div id="map" style="width: 100vw; height: 100vh;"></div>
+  </body>
+
+  <script type="text/javascript">
+
+    const ICON_MAPPING = {
+      marker: {x: 0, y: 0, width: 24, height: 24, mask: true}
+      // ... you can set different mappings and use them by key at getIcon function
+    };
+
+    deck.carto.setDefaultCredentials({
+      username: 'public',
+      apiKey: 'default_public',
+      apiVersion: deck.carto.API_VERSIONS.V2,
+    });
+
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      mapStyle: deck.carto.BASEMAP.VOYAGER,
+
+      initialViewState: {
+        latitude: 0,
+        longitude: 0,
+        zoom: 1
+      },
+      controller: true,
+
+      layers: [
+        new deck.carto.CartoLayer({
+          type: deck.carto.MAP_TYPES.QUERY,
+          data: 'SELECT the_geom_webmercator, country_name FROM world_population_2015',
+
+          pointType: 'icon',
+
+          pickable: true,
+          getIconSize: d => 24,
+          getIconColor: d => [255, 140, 0], // Remember to set mask to true in your icon mapping to enable colouring
+          getIcon: d => 'marker',
+          iconMapping: ICON_MAPPING,
+          
+          iconAtlas: 'https://s3.amazonaws.com/com.cartodb.users-assets.production/maki-icons/marker-stroked-24.svg?req=markup'
+        })
+      ]
+    });
+
+  </script>
+</html>

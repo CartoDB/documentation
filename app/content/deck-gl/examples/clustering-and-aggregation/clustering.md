@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "clustering-carto2"
+  - title: CARTO 3
     url: "clustering"
     active: true
-  - title: CARTO 3
-    url: "clustering-carto3"
 ---
 ## Clustering

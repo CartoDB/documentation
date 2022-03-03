@@ -34,6 +34,7 @@ cascade:
       #   - title: "Identifying earthquake-prone areas in the state of California"
       #   - title: "Bikeshare stations within a San Francisco buffer"
       #   - title: "Census areas in the UK within tiles of multiple resolutions"
+      #   - title: "Interploate elevation along a road"
     - title: "SQL Reference"
       folder:
         - title: "Overview"
