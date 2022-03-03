@@ -87,8 +87,7 @@ At this moment, there are four types of widgets available to customize your visu
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
 - **Time-Series**: Shows the frequency distribution aggregated by a fixed temporal period (Days, Weeks, Months or Years). It also allows to create animated maps.
-
-
+- **Table Widget**: It shows tabular information of the features in the viewport.
 #### Formula Widget
 
 From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze. 
@@ -178,6 +177,23 @@ You can also filter your data within a given range. The selected range is distri
 This enables you to click and drag the start and end range of selected data. In this example, we add a second widget to display the number of earthquakes filtered in each range.
 
 ![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_and_formula.png)
+
+#### Table Widget
+
+From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select all columns. 
+
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table.png)
+
+From the widget, you can select the number of rows per page and use pagination to visualize the rest of the results.
+
+![Map widgets table rows and pagination](/img/cloud-native-workspace/maps/map_widget_table_rows_and_pagination.png)
+
+You can also sort the data in ascending or descending order. To activate the sorting option, hover the mouse over the columns and select the ascending (up arrow) or descending (down arrow) option.
+
+![Map widgets table ascending order](/img/cloud-native-workspace/maps/map_widget_table_ascending_order.png)
+
+![Map widgets table descending order](/img/cloud-native-workspace/maps/map_widget_table_descending_order.png)
+
 ### Interactions
 
 ![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
