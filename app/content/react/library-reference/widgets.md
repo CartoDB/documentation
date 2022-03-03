@@ -91,10 +91,20 @@ If you want to use this widget in your app, you need to do two different things:
 | Param                | Type                | Default        | Description                                        |
 | -------------------- | ------------------- | -------------- | -------------------------------------------------- |
 | props                | <code>Object</code> |                |                                                    |
-| [props.className] | <code>string</code>   |         | (optional) Material-UI withStyle class for styling |
+| [props.className]    | <code>string</code> |                | (optional) Material-UI withStyle class for styling |
 | [props.selectionModes] | `Array<FEATURE_SELECTION_MODES>`  | `[FEATURE_SELECTION_MODES.CIRCLE, FEATURE_SELECTION_MODES.LASSO_TOOL, FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]`   | Available selection modes.    |
-| [props.editModes]      | `EDIT_MODES`        | `[EDIT_MODES.EDIT]               | Available edit modes.          |  
+| [props.editModes]    | `EDIT_MODES`        | `[EDIT_MODES.EDIT]` | Available edit modes.                         |  
 | [props.tooltipPlacement] | <code>string</code>      | `'bottom'` | Tooltip placement. Allowed values available [here](https://mui.com/api/tooltip/) |
+{{%/ tableWrapper %}}
+
+The `FeatureSelectionLayer` accepts the following optional props:
+
+{{% tableWrapper tab="true" overflow-layout="true" %}}
+| Param                | Type                | Default        | Description                                        |
+| -------------------- | ------------------- | -------------- | -------------------------------------------------- |
+| props                | <code>Object</code> |                |                                                    |
+| [props.eventManager] | <code>EventManager</code> |  nebula.gl event manager | (optional) This prop allows using a different event manager instead of the one provided by nebula.gl. It is used for integration with other mapping libraries like Google Maps JavaScript API. |
+| [props.mask]         | <code>bool</code>   | `true`         | Indicates whether to apply a mask or not to hide the features outside the shape drawn by the user.  |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -211,33 +221,35 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 - **Input**:
 
 {{% tableWrapper tab="true" %}}
-| Param                    | Type                | Default       | Description                                         |
-| ------------------------ | ------------------- | ------------- | --------------------------------------------------- |
-| props                    | <code>Object</code> |               |                                                     |
-| [props.className]        | <code>string</code> |               | (optional) Material-UI withStyle class for styling. |
-| [props.initialCollapsed] | <code>bool</code>   | `false`       | (optional) Indicates whether the widget is initially collapsed or not. |
+| Param                     | Type                | Default       | Description                                         |
+| ------------------------- | ------------------- | ------------- | --------------------------------------------------- |
+| props                     | <code>Object</code> |               |                                                     |
+| [props.className]         | <code>string</code> |               | (optional) Material-UI withStyle class for styling. |
+| [props.customLegendTypes] | <code>Object.<string, function></code> |   | (optional) Object with custom legend types and the components to be used with these types. |
+| [props.initialCollapsed]  | <code>bool</code>   | `false`       | (optional) Indicates whether the widget is initially collapsed or not. |
 {{%/ tableWrapper %}}
 
 You can control the legend options through the following properties that must be added to the `layerAttributes` property for the layer in the store:
 
 {{% tableWrapper tab="true" %}}
-| Param         | Type           | Default       | Description                                               |
-| ------------- | -------------- | ------------- | --------------------------------------------------------- |
-| title         | `string`       |               | Layer title                                               |
-| visible       | `boolean`      | `true`        | Indicates whether the layer is visible by default or not. |
-| opacity       | `Number`       | `1`           | Initial opacity for the layer.                            |
-| showOpacityControl | `boolean` | `true`        | Indicates whether the opacity control is shown or not.    |
-| switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown             |
+| Param         | Type           | Default       | Description                                                    |
+| ------------- | -------------- | ------------- | -------------------------------------------------------------- |
+| title         | `string`       |               | Layer title                                                    |
+| visible       | `boolean`      | `true`        | Indicates whether the layer is visible by default or not.      |
+| opacity       | `Number`       | `1`           | Initial opacity for the layer.                                 |
+| showOpacityControl | `boolean` | `true`        | Indicates whether the opacity control is shown or not.         |
+| switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown                  |
 | legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
 | legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
-| legend.attr   | `string`       |               | Attribute used for styling the layer                      |
-| legend.colors | `Array` or `string` |          | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`                          |
+| legend.attr   | `string`       |               | Attribute used for styling the layer                           |
+| legend.colors | `Array` or `string` |          | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`                                   |
 | legend.labels | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
-|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps). |
+|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps).      |
 |               |                |               | - Array of `[min, max]` numbers for `LEGEND_TYPES.PROPORTION`. |
 | legend.icons  | `Array`        |               | Array of string with icons URLs. Used for `LEGEND_TYPES.ICON`. |
-| legend.note   | `string`       |               | Note to show below th  legend to add additional explanations. |
-| legend.collapsible | `boolean` | `true`        | Whether the legend is collapsible or not. |
+| legend.note   | `string`       |               | Note to show below th  legend to add additional explanations.  |
+| legend.collapsed | `boolean`   | `false`       | Indicates whether the legend component is collapsed or not.    |
+| legend.collapsible | `boolean` | `true`        | Indicates whether the legend component is collapsible or not.  |
 {{%/ tableWrapper %}}
 
 
@@ -284,12 +296,11 @@ You can control the legend options through the following properties that must be
 
   const { myLayer } = useSelector((state) => state.carto.layers);
   const source = useSelector((state) => selectSourceById(state, myLayer?.source));
-  const cartoLayerProps = useCartoLayerProps({ source, layerConfig });
+  const cartoLayerProps = useCartoLayerProps({ source, layerConfig: myLayer });
 
   if (myLayer && source) {
     return new CartoLayer({
       ...cartoLayerProps,
-      id: MY_LAYER_ID,
       getFillColor: colorBins({
         attr: layerConfig.legend.attr,
         domain: [100e6, 500e6, 1e9, 1.5e9],
