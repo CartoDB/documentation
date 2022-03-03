@@ -87,7 +87,7 @@ If you want to use this widget in your app, you need to do two different things:
 
 - **Input**:
 
-{{% tableWrapper tab="true" %}}
+{{% tableWrapper tab="true" overflow-layout="true" %}}
 | Param                | Type                | Default        | Description                                        |
 | -------------------- | ------------------- | -------------- | -------------------------------------------------- |
 | props                | <code>Object</code> |                |                                                    |
