@@ -40,7 +40,7 @@ support:
   - title: "Contact Support"
     description: "Get in touch with our team of first-class geospatial specialists"
     url: "/faqs/categories/support-packages/#how-to-submit-an-issue-to-our-support-team"
-    image: "carto.png"
+    image: "contact-support.png"
 
 products:
   - title: "CARTO User Manual"
