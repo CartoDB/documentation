@@ -19,8 +19,8 @@ platform:
 documentation:
   - title: Documentation
     url: 'https://docs.carto.com/'
-  - title: Help Center
-    url: 'https://carto.com/help'
+  # - title: Help Center
+  #   url: 'https://carto.com/help'
 
 solutions:
   - title: 'AEC'
