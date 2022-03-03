@@ -34,6 +34,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | [props.searchable]      | `bool`                | `true`          | (optional) Indicates whether the functionality for searching in categories not displayed is available or not.                       |
 | [props.onError]         | <code>function</code> |                 | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps]    | <code>Object</code>   |                 | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -177,6 +178,7 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 | [props.formatter]      | <code>function</code>             |         | (optional) _formatterCallback_: Function to format tooltip and Y axis values.                                            |
 | [props.onError]        | <code>function</code>             |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                           |
 | [props.wrapperProps]   | <code>Object</code>               |         | Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -352,6 +354,7 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | [props.tooltipFormatter] | <code>formatterCallback</code> |                    | (optional) _formatterCallback_: Function to format the tooltip values.                                                         |
 | [props.onError]          | <code>errorCallback</code>     |                    | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps]     | <code>Object</code>            |                    | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -396,6 +399,7 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 | [props.tooltipFormatter] | <code>formatterCallback</code> |  | (optional) _formatterCallback_: Function to format the tooltip values. |
 | [props.onError] | <code>errorCallback</code> |  | (optional) _errorCallback_: Function to handle error messages from the widget. |
 | [props.wrapperProps] | <code>Object</code> |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -482,6 +486,7 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | [props.formatter]   | `function` |  | (optional) _formatterCallback_: Function to format each value returned.  |
 | [props.onError]      | `errorCallback` |  | (optional) _errorCallback_: Function to handle error messages from the widget.   |
 | [props.wrapperProps] | `Object` |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 | [props.height]     | `string` | '300px' | (optional) Chart height (CSS) |
 | [props.tooltipFormatter] | `formatterCallback` | | (optional) _formatterCallback_: Function to format the tooltip values. |               
 | [props.stepSizeOptions] | `Array<GroupDateTypes>` | `[]` | (optional) Available time interval sizes |
