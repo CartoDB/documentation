@@ -61,7 +61,7 @@ Async function that executes a SQL query against [CARTO SQL API](https://carto.c
 React hook that allows a more powerful use of CARTO deck.gl layers, creating a set of layer props (see [@deck.gl/carto module](https://deck.gl/docs/api-reference/carto/overview)). It manages automatically filtering and viewport-related calculations, for common use cases.
 
 - **Input**:
-{{% tableWrapper tab="true" %}}
+{{% tableWrapper tab="true" overflow-layout="true" %}}
 | Param              | Type                | Default       | Description                                    |
 | ------------------ | ------------------- | ------------- | ---------------------------------------------- |
 | props              | <code>Object</code> |               | { source, [layerConfig], [uniqueIdProperty], [viewportFeatures], [viewportFeaturesDebounceTimeout]}  |
