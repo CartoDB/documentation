@@ -53,5 +53,5 @@
 * [How can I get an Educator acccount?](../categories/carto-for-education/#how-can-i-get-an-educator-account)
 * [We need Enterprise capabilities for our institution or academic research, can you help?](../categories/carto-for-education/#we-need-enterprise-capabilities-for-our-institution-or-academic-research-can-you-help)
 * [What is the process for getting a CARTO Student account?](../categories/carto-for-education/#what-is-the-process-for-getting-a-carto-student-account)
-* [I am an educator and my materials use the previous version of CARTO. What can I do?](../categories/carto-for-education/#i-am-an-educator-and-my-materials-use-the-previous-version-of-carto-what-can-i-do)
+* [I am an educator and my course materials use the previous version of CARTO. What can I do?](../categories/carto-for-education/#i-am-an-educator-and-my-materials-use-the-previous-version-of-carto-what-can-i-do)
 

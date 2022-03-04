@@ -8,7 +8,7 @@
 
 [What is the process for getting a CARTO Student account?](#what-is-the-process-for-getting-a-carto-student-account)
 
-[I am an educator and my materials use the previous version of CARTO. What can I do?](#i-am-an-educator-and-my-materials-use-the-previous-version-of-carto-what-can-i-do)
+[I am an educator and my course materials use the previous version of CARTO. What can I do?](#i-am-an-educator-and-my-course-materials-use-the-previous-version-of-carto-what-can-i-do)
 
 ---
 
@@ -100,26 +100,26 @@ To login to your CARTO Student account you'll need to always use this specific U
 {{%/ bannerNote %}}
 
 ---
-##### I am an educator and my materials use the previous version of CARTO. What can I do?
+##### I am an educator and my course materials use the previous version of CARTO. What can I do?
 
-First of all, thank you for using CARTO to teach the potential of geospatial analysis. We believe the new version of CARTO will carve out a new path for GIS for the years to come — Happy to have you onboard!
+First of all, thank you for using CARTO to unlock the potential of geospatial analysis with your students. We believe the new version of CARTO will carve out a new path for cloud native Location Intelligence for the years to come — Happy to have you onboard!
 
-Follow these steps to update your materials to the new version of CARTO. For example, if your course consisted of 5 datasets and 10 maps, it shouldn't take longer than a couple hours.
+To update your teaching materials to reflect the new version of CARTO, we recommend you follow these simple steps.  As an example, if your course content consisted of 5 datasets and 10 maps, updating content to the new CARTO platform shouldn’t take longer than a couple of hours.
 
 1. First, access your previous CARTO account: https://carto.com/login
 2. Open the dataset(s) you need and export them in CSV format. More info [here](https://carto.com/help/tutorials/export-data-guide/).
-3. Access your new CARTO account: https://app.carto.com
-4. Import the CSV datasets
-    - If you don't have a data warehouse you can use the provided CARTO Data Warehouse
-    - Find a detailed guide for importing [here](/carto-user-manual/data-explorer/importing-data/)
-5. Finally, recreate the maps you need for your course
+3. Use your new credentials to access your CARTO account: https://app.carto.com
+4. Import the .CSV datasets you have exported
+    - If you don't have a data warehouse, you can use the CARTO Data Warehouse provided by us
+    - Follow our detailed guide for importing [here](/carto-user-manual/data-explorer/importing-data/)
+5. Finally, using our new Builder tool, recreate the maps you’ll need for your course content.
 
-We know the update requires some time on your side, so rest assured: we won't be cutting access to your previous CARTO account in the meantime, any time soon.
+We appreciate these updates require some time and effort on your side, but rest assured, we won’t be limiting access to your previous CARTO account any time soon.
 
 {{% bannerNote title="If you're in a rush" type="warning" %}}
-For this semester: don't panic! Students can sign up for the previous version of CARTO using the student pack until March 31st. They just need to follow this link: https://carto.com/student-pack/signup/?plan=student-engine
+For this semester: don't panic! Students can still sign up for the previous version of CARTO using the student pack until April 30th 2022. They just need to follow this link: https://carto.com/student-pack/signup/?plan=student-engine
 
-March 31st onwards the signup process will be closed, but existing student and educator accounts will remain active. You can use them for this semester and update your materials for the next academic year.
+From May 1st onwards, the signup process will be closed, but existing student and educator accounts will remain active. You can continue to use them for this semester, giving you time to update your materials for the next academic year.
 {{%/ bannerNote %}}
 
     
