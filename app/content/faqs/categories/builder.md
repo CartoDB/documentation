@@ -13,7 +13,7 @@ To add a data source to a map as a new layer you can either:
 
 * Pick a table or tileset from one of your active connections to cloud data warehouses
 * Add data resulting from applying a custom SQL Query. You can also leverage the SQL functions available in CARTO’s [Analytics Toolbox](https://docs.carto.com/carto-user-manual/maps/add-source/#custom-queries-using-the-analytics-toolbox).
-* Importing data from a local or remote file. Right now we currently support GeoJSON and Shapefiles (in a zip package), and soon also CSV files.
+* Importing data from a local or remote file. Right now we currently support GeoJSON, Shapefile (in a zip package), and CSV files. We're working to support more formats in the future.
 
 ---
 
