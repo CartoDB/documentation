@@ -62,22 +62,26 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
 
 - **Input**:
 {{% tableWrapper tab="true" %}}
-| Param              | Type                | Description              |
-| ------------------ | ------------------- | ------------------------ |
-| props              | <code>Object</code> | Object properties        |
-| props.source       | <code>Object</code> | Data source              |
-| props.source.id    | <code>string</code> | Unique source ID         |
-| props.source.type  | <code>string</code> | Source type. Check available types [here](/deck-gl/reference#type-string)  |
-| props.source.connection  | <code>string</code> | Connection name. Required only for CARTO 3.  |
-| props.source.data  | <code>string</code> |  Table name, tileset name or SQL query                                           |
-| props.source.credentials | <code>string</code> |  Credentials for accessing the source (check the parameters [here](/deck-gl/reference#setdefaultcredentials))                                           |
-| [props.uniqueIdProperty] | <code>string</code> | (optional) Name of the column for identity. To be used internally when getting viewportFeatures (used by widget computations) |
-| [props.viewportFeatures] | <code>boolean</code> | (optional) Default: `true`. Whether to calculate viewport features for this layer or not.  |
-| [props.viewportFeaturesDebounceTimeout] | <code>number</code> | (optional) Default: `500`. Timeout for calculating viewport features when there's a change. It's used to avoid repeated viewport calculations in a short amount of time.  |
+| Param              | Type                | Default       | Description                                    |
+| ------------------ | ------------------- | ------------- | ---------------------------------------------- |
+| props              | <code>Object</code> |               | { source, [layerConfig], [uniqueIdProperty], [viewportFeatures], [viewportFeaturesDebounceTimeout]}  |
+| props.source       | <code>Object</code> |               | { id, type, connection, data, [credentials] }  |
+| props.source.id    | <code>string</code> |               | Unique source ID.                              |
+| props.source.type  | <code>string</code> |               | Source type. Check available types [here](/deck-gl/reference#type-string)  |
+| props.source.connection  | <code>string</code> |         | Connection name. Required only for CARTO 3.    |
+| props.source.data  | <code>string</code> |               | Table name, tileset name or SQL query.         |
+| [props.source.credentials] | <code>object</code> |       | (optional) Credentials for accessing the source (check the object props [here](/deck-gl/reference#setdefaultcredentials)).                                                          |
+| [props.layerConfig] | <code>Object</code> |              | (optional) { id, opacity, visible }            |
+| [props.layerConfig.id]    | <code>string</code> |        | (optional) Unique layer ID.                    |
+| [props.layerConfig.opacity]  | <code>number</code> | `1` | (optional) Initial layer opacity.              |
+| [props.layerConfig.visible]  | <code>boolean</code> | `true` | (optional) Indicates whether the layer is visible by default or not. |
+| [props.uniqueIdProperty] | <code>string</code> |         | (optional) Name of the column for identifying features uniquely. See note below. |
+| [props.viewportFeatures] | <code>boolean</code> | `true` | (optional) Whether to calculate viewport features for this layer or not.  |
+| [props.viewportFeaturesDebounceTimeout] | <code>number</code> | `250` | (optional) Timeout for calculating viewport features when there's a change. It's used to avoid repeated viewport calculations in a short amount of time.  |
 {{%/ tableWrapper %}}
 
    {{% bannerNote title="tip" %}}
-   About `uniqueIdProperty`: the uniqueIdProperty allows to identify a feature unequivocally. When using tiles, it allows to detect portions of a same feature present in different tiles (think about a road segment crossing 2 tiles) and apply correct calculations (eg. avoid counting the same feature more than once). These are the rules used internally, in this precise order:
+   About `uniqueIdProperty`: the uniqueIdProperty allows to identify a feature uniquely. When using tiles, it allows to detect portions of a same feature present in different tiles (think about a road segment crossing 2 tiles) and apply correct calculations (eg. avoid counting the same feature more than once). These are the rules used internally, in this precise order:
 
    1. if user indicates a particular property, it will be honoured.
    2. if `cartodb_id` is present, it will be used (all features coming from a `CartoLayer` with Maps API version v2 have this field, just be sure to include it in the SQL you use)

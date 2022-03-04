@@ -239,14 +239,15 @@ Action to add a filter on a given `source` by a `column`. This is done internall
 - **Input**:
 
 {{% tableWrapper tab="true" %}}
-| Param         | Type                    | Description                                                               |
-| ------------- | ----------------------- | ------------------------------------------------------------------------- |
-| props         | <code>Object</code>     | { id, column, type, values, [owner]}                                      |
-| props.id      | <code>string</code>     | sourceId of the source to apply the filter on                             |
-| props.column  | <code>string</code>     | column from the source to use by the filter                               |
-| props.type    | <code>FilterType</code> | 'in' or 'between'                                                         |
-| props.values  | <code>array</code>      | Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between') |
-| [props.owner] | <code>FilterType</code> | (optional) id of the widget triggering the filter (to be excluded)        |
+| Param          | Type                    | Description                                                                |
+| -------------- | ----------------------- | -------------------------------------------------------------------------- |
+| props          | <code>Object</code>     | { id, column, type, values, [owner], [params]}                             |
+| props.id       | <code>string</code>     | Identifier of the source to apply the filter on                            |
+| props.column   | <code>string</code>     | Column from the source to use by the filter                                |
+| props.type     | <code>FilterType</code> | Type of filter                                                             |
+| props.values   | <code>array</code>      | Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between')  |
+| [props.owner]  | <code>string</code>     | (optional) Identifier of the widget triggering the filter (to be excluded) |
+| [props.params] | <code>object</code>     | (optional) Additional filter parameters (depending on filter type)         |
 {{%/ tableWrapper %}}
 
 - **Example**:

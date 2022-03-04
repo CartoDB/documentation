@@ -27,11 +27,14 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
 | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | [props.operationColumn] | <code>string</code>   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`.                                      |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This property is not applicable to the `LegendWidget`. |
+| [props.animation]       | `bool`                | `true`          | (optional) Indicates whether the widget update is animated or jumps directly to the new state. |
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
+| [props.filterable]      | `bool`                | `true`          | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
+| [props.searchable]      | `bool`                | `true`          | (optional) Indicates whether the functionality for searching in categories not displayed is available or not.                       |
 | [props.onError]         | <code>function</code> |                 | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps]    | <code>Object</code>   |                 | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -59,6 +62,67 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
   ```
 
+#### FeatureSelectionWidget
+
+Renders a `<FeatureSelectionWidget />` component. The widget allows the user to draw a shape on the map and apply a filter to select the features within the shape. Once a shape has been drawn, it can be selected and modified by adding/removing vertices or translated to a new location. By default the mask is active but it can be disabled temporarily and re-enabled again.
+
+There are different selection modes supporting different shapes. The mode selected by default is `FEATURE_SELECTION_MODES.POLYGON`. If you want to choose a different default selection mode, you can set the `featureSelectionMode` prop in the `initialStateSlice`.
+
+If you want to use this widget in your app, you need to do two different things:
+
+1. Add the `<FeatureSelectionWidget>` component to the view where you want to have it available. If you are using one of the CARTO for React templates and you want to use it in all of your views, you can add it to the `<MapContainer>` component.
+
+2. Add the `FeatureSelectionLayer` to your layers list. If you are using one of the CARTO for React templates, you need to add it to the `src/components/layers/index.js` file like this:
+
+   ```js
+   import { FeatureSelectionLayer } from '@carto/react-widgets';
+
+   export const getLayers = () => {
+     return [
+       ...,
+       FeatureSelectionLayer(),
+     ];
+   }; 
+   ```
+
+- **Input**:
+
+{{% tableWrapper tab="true" overflow-layout="true" %}}
+| Param                | Type                | Default        | Description                                        |
+| -------------------- | ------------------- | -------------- | -------------------------------------------------- |
+| props                | <code>Object</code> |                |                                                    |
+| [props.className]    | <code>string</code> |                | (optional) Material-UI withStyle class for styling |
+| [props.selectionModes] | `Array<FEATURE_SELECTION_MODES>`  | `[FEATURE_SELECTION_MODES.CIRCLE, FEATURE_SELECTION_MODES.LASSO_TOOL, FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]`   | Available selection modes.    |
+| [props.editModes]    | `EDIT_MODES`        | `[EDIT_MODES.EDIT]` | Available edit modes.                         |  
+| [props.tooltipPlacement] | <code>string</code>      | `'bottom'` | Tooltip placement. Allowed values available [here](https://mui.com/api/tooltip/) |
+{{%/ tableWrapper %}}
+
+The `FeatureSelectionLayer` accepts the following optional props:
+
+{{% tableWrapper tab="true" overflow-layout="true" %}}
+| Param                | Type                | Default        | Description                                        |
+| -------------------- | ------------------- | -------------- | -------------------------------------------------- |
+| props                | <code>Object</code> |                |                                                    |
+| [props.eventManager] | <code>EventManager</code> |  nebula.gl event manager | (optional) This prop allows using a different event manager instead of the one provided by nebula.gl. It is used for integration with other mapping libraries like Google Maps JavaScript API. |
+| [props.mask]         | <code>bool</code>   | `true`         | Indicates whether to apply a mask or not to hide the features outside the shape drawn by the user.  |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, we add a `FeatureSelectionWidget` supporting just two selection modes using a specific CSS class.
+
+  ```js
+  import { FeatureSelectionWidget } from "@carto/react-widgets";
+  import { FEATURE_SELECTION_MODES } from '@carto/react-core';
+  
+  return (
+    <FeatureSelectionWidget 
+      className={myCSSClassName} 
+      selectionModes={[FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]} />
+    />
+  );
+  ```
+
 #### FormulaWidget
 
 Renders a `<FormulaWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features.
@@ -74,7 +138,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
 | props.column         | <code>string</code>        |         | Name of the data source's column to get the data from.                                                                              |
 | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.animation]    | `bool`                     | `true`  | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.onError]      | <code>errorCallback</code> |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps] | <code>Object</code>        |         | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
@@ -118,11 +182,13 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 | props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
 | props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
 | props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.animation]      | `bool`                            | `true`  | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.filterable]     | `bool`                            | `true`  | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.xAxisFormatter] | <code>function</code>             |         | (optional) _formatterCallback_: Function to format X axis values.                                                        |
 | [props.formatter]      | <code>function</code>             |         | (optional) _formatterCallback_: Function to format tooltip and Y axis values.                                            |
 | [props.onError]        | <code>function</code>             |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                           |
 | [props.wrapperProps]   | <code>Object</code>               |         | Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -155,29 +221,35 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 - **Input**:
 
 {{% tableWrapper tab="true" %}}
-| Param         | Type           | Default       | Description    |
-| ------------- | -------------- | ------------- | -------------- |
-| props         | <code>Object</code>               |               |                |
-| [props.className] | <code>string</code>   |         | (optional) Material-UI withStyle class for styling |
+| Param                     | Type                | Default       | Description                                         |
+| ------------------------- | ------------------- | ------------- | --------------------------------------------------- |
+| props                     | <code>Object</code> |               |                                                     |
+| [props.className]         | <code>string</code> |               | (optional) Material-UI withStyle class for styling. |
+| [props.customLegendTypes] | <code>Object.<string, function></code> |   | (optional) Object with custom legend types and the components to be used with these types. |
+| [props.initialCollapsed]  | <code>bool</code>   | `false`       | (optional) Indicates whether the widget is initially collapsed or not. |
 {{%/ tableWrapper %}}
 
 You can control the legend options through the following properties that must be added to the `layerAttributes` property for the layer in the store:
 
 {{% tableWrapper tab="true" %}}
-| Param         | Type           | Default       | Description    |
-| ------------- | -------------- | ------------- | -------------- |
-| title         | `string`       |               | Layer title    |
-| switchable    | `boolean`      | `true`        | Whether the layer can be hide/shown |
+| Param         | Type           | Default       | Description                                                    |
+| ------------- | -------------- | ------------- | -------------------------------------------------------------- |
+| title         | `string`       |               | Layer title                                                    |
+| visible       | `boolean`      | `true`        | Indicates whether the layer is visible by default or not.      |
+| opacity       | `Number`       | `1`           | Initial opacity for the layer.                                 |
+| showOpacityControl | `boolean` | `true`        | Indicates whether the opacity control is shown or not.         |
+| switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown                  |
 | legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
 | legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
-| legend.attr   | `string`       |               | Attribute used for styling the layer |
-| legend.colors | `Array` or `string` |               | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP` |
+| legend.attr   | `string`       |               | Attribute used for styling the layer                           |
+| legend.colors | `Array` or `string` |          | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`                                   |
 | legend.labels | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
-|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps). |
+|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps).      |
 |               |                |               | - Array of `[min, max]` numbers for `LEGEND_TYPES.PROPORTION`. |
 | legend.icons  | `Array`        |               | Array of string with icons URLs. Used for `LEGEND_TYPES.ICON`. |
-| legend.note   | `string`       |               | Note to show below th  legend to add additional explanations. |
-| legend.collapsible | `boolean` | `true`        | Whether the legend is collapsible or not. |
+| legend.note   | `string`       |               | Note to show below th  legend to add additional explanations.  |
+| legend.collapsed | `boolean`   | `false`       | Indicates whether the legend component is collapsed or not.    |
+| legend.collapsible | `boolean` | `true`        | Indicates whether the legend component is collapsible or not.  |
 {{%/ tableWrapper %}}
 
 
@@ -189,8 +261,6 @@ You can control the legend options through the following properties that must be
   
   2. When data is loaded for the layer, we add the legend information from the `layerConfig` object to the layer attributes in the Redux store by dispatching the `updateLayer` action. It is important that we call the original `onDataLoad` handler defined in the `useCartoLayerProps` hook for the other widgets in the app to work.
   
-  3. Make sure the layer visibility is controlled through the `visible` attribute in the store
-
   ```js
   import { LEGEND_TYPES } from "@carto/react-ui";
   import { updateLayer } from "@carto/react-redux";
@@ -214,6 +284,8 @@ You can control the legend options through the following properties that must be
   const layerConfig = {
     title: 'Layer Name',
     visible: true,
+    showOpacityControl: true,
+    opacity: 0.6,
     legend: {
       attr: 'revenue',
       type: LEGEND_TYPES.BINS,
@@ -224,13 +296,11 @@ You can control the legend options through the following properties that must be
 
   const { myLayer } = useSelector((state) => state.carto.layers);
   const source = useSelector((state) => selectSourceById(state, myLayer?.source));
-  const cartoLayerProps = useCartoLayerProps({ source });
+  const cartoLayerProps = useCartoLayerProps({ source, layerConfig: myLayer });
 
   if (myLayer && source) {
     return new CartoLayer({
       ...cartoLayerProps,
-      id: MY_LAYER_ID,
-      visible: myLayer.visible,
       getFillColor: colorBins({
         attr: layerConfig.legend.attr,
         domain: [100e6, 500e6, 1e9, 1.5e9],
@@ -243,7 +313,7 @@ You can control the legend options through the following properties that must be
             layerAttributes: { ...layerConfig },
           })
         );
-        cartoLayerProps.onDataLoad(data);
+        cartoLayerProps.onDataLoad && cartoLayerProps.onDataLoad(data);
       }
     });
   }
@@ -287,14 +357,16 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
-| [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.operationColumn]  | <code>string</code>            |                    | Name of the data source's column to operate with. If not defined it will default to the one defined in `column`.                    |
-| [colors]                 | `Array<string>`                | CARTO colors bold palette | Array of colors to show for each category. |
-| [labels]                 | `Array<string>`                | Column values      | Labels to show for each category |
+| [colors]                 | `Array<string>`                | CARTO colors bold palette | (optional) Array of colors to show for each category. |
+| [labels]                 | `Array<string>`                | Column values      | (optional) Labels to show for each category |
+| [props.animation]        | `bool`                         | `true`             | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
+| [props.filterable]       | `bool`                         | `true`             | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.formatter]        | <code>function</code>          |                    | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.tooltipFormatter] | <code>formatterCallback</code> |                    | (optional) _formatterCallback_: Function to format the tooltip values.                                                         |
 | [props.onError]          | <code>errorCallback</code>     |                    | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps]     | <code>Object</code>            |                    | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -339,6 +411,7 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 | [props.tooltipFormatter] | <code>formatterCallback</code> |  | (optional) _formatterCallback_: Function to format the tooltip values. |
 | [props.onError] | <code>errorCallback</code> |  | (optional) _errorCallback_: Function to handle error messages from the widget. |
 | [props.wrapperProps] | <code>Object</code> |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -359,6 +432,51 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
   );
   ```
 
+#### TableWidget
+
+Renders a `<TableWidget />` component, binded to a source at redux. The widget allows to configure the source columns that will be displayed. It includes functionality for data pagination and ordering by column.
+
+- **Input**:
+
+{{% tableWrapper tab="true" %}}
+| Param                    | Type                | Default            | Description                                      |
+| ------------------------ | ------------------- | ------------------ | ------------------------------------------------ |
+| props                    | <code>Object</code> |                    |                                                  |
+| props.id                 | <code>string</code> |                    | ID for the widget instance.                      |
+| props.title              | <code>string</code> |                    | Title to show in the widget header.              |
+| props.dataSource         | <code>string</code> |                    | ID of the data source to get the data from.      |
+| [props.columns]          | `Array<object>`     | All columns        | (optional) List of source columns to display. The object allows to configure horizontal alignment and the label to display for each column. See example below. |
+| [props.height]           | <code>string</code> | Takes available height in the container. | (optional) Height of the table in CSS format.  |
+| [props.dense]            | <code>bool</code>   | `false`            | (optional) Indicates whether to use a denser layout or not. |
+| [props.initialPageSize]  | <code>number</code> | `10`               | (optional) Initial number of rows per page.  |
+| [props.onError]          | <code>errorCallback</code> |             | (optional) _errorCallback_: Function to handle error messages from the widget. |
+| [props.wrapperProps]     | <code>Object</code> |                    | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, the widget would display a table with three columns for each store. All the columns are renamed and aligned to the left. The initial page size is set to 5 rows.
+
+  ```js
+  import { TableWidget } from "@carto/react-widgets";
+
+  return (
+    <TableWidget
+      id='storesTable'
+      title='Stores list'
+      dataSource={storesSource.id}
+      initialPageSize={5}
+      columns={[
+        { field: 'revenue', headerName: 'Revenue', align: 'left' },
+        { field: 'size_m2', headerName: 'Size (m2)', align: 'left' },
+        { field: 'storetype', headerName: 'Type', align: 'left' },
+      ]}
+    />
+  );
+
+  ```
+
 #### TimeSeriesWidget
 
 Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features. From a data perspective, the TimeSeriesWidget groups the features in time intervals and allows to play an animation that filters the features displayed based on the current interval.
@@ -373,13 +491,14 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | props.title | `string` |   | Title to show in the widget header.|
 | props.dataSource | `string` | | ID of the data source to get the data from. |
 | props.column | `string` |  | Name of the data source's column with the timestamp/date values |
-| props.stepSize | `GroupDateTypes` |  | Time interval size |
+| props.stepSize | `GroupDateTypes` |  | Time interval size. Available groupings are: GroupDateTypes.YEARS, GroupDateTypes.MONTHS, GroupDateTypes.WEEKS, GroupDateTypes.DAYS, GroupDateTypes.HOURS, GroupDateTypes.MINUTES.  |
 | [props.operation] | `string` | AggregationTypes.COUNT | (optional) Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object. |
 | [props.operationColumn] | `string` |  | (optional) Column to use in the aggregation operation |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This does not apply to the animation when the widget is in play mode. Applies only when the data visualized in the chart changes (i.e. when we select a different step size). |
 | [props.formatter]   | `function` |  | (optional) _formatterCallback_: Function to format each value returned.  |
 | [props.onError]      | `errorCallback` |  | (optional) _errorCallback_: Function to handle error messages from the widget.   |
 | [props.wrapperProps] | `Object` |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+| [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 | [props.height]     | `string` | '300px' | (optional) Chart height (CSS) |
 | [props.tooltipFormatter] | `formatterCallback` | | (optional) _formatterCallback_: Function to format the tooltip values. |               
 | [props.stepSizeOptions] | `Array<GroupDateTypes>` | `[]` | (optional) Available time interval sizes |
