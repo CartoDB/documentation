@@ -8,6 +8,36 @@ menu:
     url: "news-developers"
 ---
 
+### CARTO for React 1.2 and deck.gl 8.7 have been released
+
+##### 2022-03-04
+
+CARTO for React 1.2 and deck.gl 8.7 are now available.
+
+The new release of deck.gl includes the following features:
+
+- [fetchMap](https://deck.gl/docs/api-reference/carto/fetch-map) function, making it easy to load a Builder map to improvehe collaboration between map designers and developers.
+  
+- [Dynamic tiling](https://deck.gl/docs/api-reference/carto/carto-layer#map_typestable) support, to visualize larger tables, up to millions of rows, without the need for pre-generating a tileset.
+  
+- [MaskExtension](https://deck.gl/docs/api-reference/extensions/mask-extension), spatial masking on the GPU.
+
+- [QuadkeyLayer](https://deck.gl/docs/api-reference/geo-layers/quadkey-layer), new layer for visualizing data using the Quadkey spatial indexing system.
+
+CARTO for React 1.2 comes with many improvements and these new features:
+
+- [FeatureSelectionWidget](https://docs.carto.com/react/library-reference/widgets#featureselectionwidget), allows the user to draw a shape to define a spatial filter.
+
+- [TableWidget](https://docs.carto.com/react/library-reference/widgets#tablewidget), to display source features in a tabular way.
+
+- Support for sources with vector tiles using WGS84 coordinates, including dynamic tiling and pre-generated tilesets in BigQuery, Snowflake and Redshift.
+
+<img src="https://docs.carto.com/img/news-developers/mask-extension.gif" />
+
+For additional information check the documentation ([CARTO for deck.gl](https://docs.carto.com/deck-gl) / [CARTO for React](https://docs.carto.com/react) and the release notes ([CARTO for deck.gl](https://docs.carto.com/deck-gl/release-notes/) / [CARTO for React](https://docs.carto.com/react/release-notes/)). You can also check the full changelog with the complete list of improvements and bug fixes for [deck.gl](https://github.com/visgl/deck.gl/blob/master/CHANGELOG.md) and the CARTO for React [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md) and [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md).
+
+---
+
 ### CARTO for React 1.1 has been released
 
 ##### 2021-10-29
