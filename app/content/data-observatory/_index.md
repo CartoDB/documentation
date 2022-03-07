@@ -20,6 +20,5 @@ cascade:
         - title: "Managing your subscriptions"
         - title: "Accessing your subscriptions from your data warehouse"
         - title: "Visualizing Data Observatory datasets"
-        - title: "Creating Data Observatory tilesets"
     - title: "Example tilesets"
 ---

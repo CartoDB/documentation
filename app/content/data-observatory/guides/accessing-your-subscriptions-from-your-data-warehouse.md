@@ -48,7 +48,7 @@ This option is only available after you have created a [connection to Snowflake]
 
 #### Requesting access
 
-In order for you to access any of your Data Observatory subscriptions from Snowflake, the data needs to be imported into your database. This import process is performed by our engineering team on a request basis. 
+In order for you to access any of your Data Observatory subscriptions from Snowflake, the data first needs to be imported into your database. This import process is performed by our engineering team on a request basis. 
 
 To request it, go to the subscription's page, click on the _Access in_ button and choose the _Snowflake_ option. 
 
