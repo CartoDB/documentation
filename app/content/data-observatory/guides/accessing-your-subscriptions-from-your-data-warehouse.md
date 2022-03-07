@@ -1,26 +1,17 @@
 ## Accessing your subscriptions from your data warehouse
 
-You can access your Data Observatory subscriptions directly from BigQuery, AWS S3 and Azure Blob Storage. For BigQuery, you will be given access to the table(s) of your subscription. For AWS and Azure, your subscription will be uploaded to either of their storages as AVRO files.
-
-{{% bannerNote title="WARNING: YOU MAY NEED AN EXTENDED LICENSE" type="tip" %}}
-A small proportion of datasets require an Extended license in order to use this feature. Please refer to [this section](#requesting-an-extended-license) to know more.
-{{%/ bannerNote %}}
-
+You can access your subscriptions directly from your data warehouses [connected to CARTO](/carto-user-manual/connections/creating-a-connection). This is currently supported for BigQuery and Snowflake; Redshift and Databricks support is coming soon. 
 
 ### Access in BigQuery
 
-If you haven't already, please create a BigQuery connection from _Your connections_ section, **otherwise this functionality won't be available**.
+{{% bannerNote type="warning" title="warning"%}}
+This option is only available after you have created a [connection to BigQuery](/carto-user-manual/connections/creating-a-connection/#connection-to-bigquery) from the Connections section.  
+{{%/ bannerNote %}}
 
-Go to Your Subscriptions page, click on the three dots to expand the menu and then on _Access in BigQuery_.
-
-<div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-bq-menu-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:90%">
-</div>
-
-Alternatively, you can access this option directly from the dataset page.
+Go to your subscription's detail page in the Data Observatory section of the Data Explorer, then click on the _Access in_ button and select the _BigQuery_ option. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-bq-menu-2.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
+<img src="/img/data-observatory/access-in-bq-menu-1.png" alt="Access in BigQuery from your subscription page." style="width:100%">
 </div>
 
 The following information will be displayed:
@@ -30,64 +21,75 @@ The following information will be displayed:
 * Example query to join the data and geography tables.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:90%">
+<img src="/img/data-observatory/access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:100%">
 </div>
 
 {{% bannerNote title="TIP" type="tip" %}}
 Remember that your subscription is composed of a data and a geography table that you need to join in order to work with the data (read more about it [here](../../overview/terminology/#dataset)). Please use the example query provided to get started.
 {{%/ bannerNote %}}
 
-#### If your subscription is a geography
-
 If your dataset subscription is a geography, such as [Australia's States by CARTO](https://carto.com/spatial-data-catalog/browser/geography/cdb_state_6b52fa47/), then only one table location will be shown:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
+<img src="/img/data-observatory/access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:100%">
 </div>
 
-#### A note on BigQuery permissions
+#### Permissions
 
-If the BigQuery connection you have set up in your CARTO Dashboard is of type OAuth, you will be granted permissions to query the BigQuery tables provided with your Google user (i.e. logged in on your BigQuery console). If your connection uses a Service Account instead, these tables can only be accessed using those credentials.
+You can use the provided access information (table locations and sample query) to query your Data Observatory subscriptions directly from BigQuery. To do so, you need to operate with BigQuery authenticated with the same credentials you have used to set up your BigQuery connection(s) in CARTO:
+* If you have set up a connection of type OAuth (using the "Sign in with Google" option), you will be granted permissions to query your Data Observatory subscriptions using the BigQuery console while you are logged in with the same Google user. 
+* If your have set up a connection using a Service Account instead, you will be granted permissions to query your Data Observatory subscriptions from any BigQuery client while you are logged in using such Service Account.
 
-### Access in AWS or Azure
+### Access in Snowflake
 
-Since the process of accessing your subscription in AWS or Azure is similar, we will only detail that of AWS in the following description.
+{{% bannerNote type="warning" title="warning"%}}
+This option is only available after you have created a [connection to Snowflake](/carto-user-manual/connections/creating-a-connection/#connection-to-snowflake) from the Connections section.  
+{{%/ bannerNote %}}
 
-Go to Your Subscriptions page, click on the three dots to expand the menu and then on _Access in AWS_.
+#### Requesting access
+
+In order for you to access any of your Data Observatory subscriptions from Snowflake, the data needs to be imported into your database. This import process is performed by our engineering team on a request basis. 
+
+To request it, go to the subscription's page, click on the _Access in_ button and choose the _Snowflake_ option. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-aws-menu-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:90%">
+<img src="/img/data-observatory/access-in-sf-menu.png" alt="Access in Snowflake from your subscription page." style="width:100%">
 </div>
 
-Alternatively, you can access this option directly from the dataset page.
+If you have several Snowflake connections, you will be asked to select one to perform this action:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-aws-menu-2.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
+<img src="/img/data-observatory/access-in-sf-choose-connection.png" alt="Choose connection to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
-The following screen will be shown, where you can confirm your request by clickin on the _Request access_ button. You will receive a confirmation email.
+Finally, you will be asked to request access to the dataset from your Snowflake database. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-aws-request.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
+<img src="/img/data-observatory/access-in-sf-request.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
-Once your data has been uploaded to an AWS S3 bucket, you will be able to access its location by coming back to your subscription and clickin on the _Access in AWS_ button. 
+Once we receive your request, we will get in touch with you to coordinate the import process. The data will be imported into a schema called `CARTO` that will be created in the Snowflake database you have set up in your Snowflake connection.
+
+{{% bannerNote type="note" title="note"%}}
+If you would like to access more than one of your Data Observatory subscriptions from your Snowflake database, it is not necessary to request access for each of them individually, as we can import several datasets at once during the same process. 
+{{%/ bannerNote %}}
+
+
+#### Checking access details
+
+Once we have imported your Data Observatory subscription into your Snowflake database, you can check its access details through the _Access in_ button, following the same steps described in the previous section. 
+
+The following information will be displayed:
+
+* Location of the data table in your Snowflake database, in the format `YOURDATABASE.CARTO.TABLE`.
+* Location of the geography table in your Snowflake database, in the format `YOURDATABASE.CARTO.TABLE`.
+* Example query to join the data and geography tables.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-aws-access-details.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
+<img src="/img/data-observatory/access-in-sf-access-details.png" alt="Access details for Snowflake." style="width:100%">
 </div>
 
-### Requesting an Extended license
 
-Although most of the datasets in our Spatial Data Catalog are eligible to be accessed directly in the different cloud data storages and warehouses detailed here, for some of them it is necessary to update your existing license to an _Extended_ type.
-
-You will be able to identify when this additional step is necessary when trying to access your subscription from BigQuery, AWS or Azure, as the following screen will be shown:
-
-<div style="text-align:center" >
-<img src="/img/data-observatory/carto2/access-in-bq-request-extended.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
-</div>
-
-After you confirm your request by clicking on the _Request extended license_ button you will receive a confirmation email and a member of our team will get in touch with you to make the necessary adjustments to your license. Once this process is finished, you will be able to access this functionality as with any other of your subscriptions.
 
 
 
