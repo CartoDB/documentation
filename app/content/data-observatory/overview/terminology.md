@@ -14,7 +14,7 @@ A dataset is composed of two separate tables: the Data table and the Geography t
 
 ![Data Observatory tables](/img/data-observatory/do_data_geography_tables.png)
 
- Most of the times this operation is managed automatically by CARTO interfaces, but it should be carried out manually by the user [when a Dataset is accessed directly via the user's data warehouse connected to CARTO](../../guides/accessing-your-subscriptions-from-your-data-warehouse).
+ Most of the times this operation is managed automatically by CARTO interfaces, such as CARTO Builder and the Analytics Toolbox, but it should be carried out manually by the user [when a Dataset is accessed directly via the user's data warehouse connected to CARTO](../../guides/accessing-your-subscriptions-from-your-data-warehouse).
 
 #### Data vs Geography tables
 
@@ -22,7 +22,7 @@ A dataset is composed of two separate tables: the Data table and the Geography t
 
 * The Geography table contains the data for each unique geometry (e.g. point, polygon, line).
 
-As mentioned above, the data and geography tables can be joined by the `geoid`. Most of the times this operation is managed automatically by CARTO interfaces, but it should be carried out manually by the user [when a Dataset is accessed directly via the user's data warehouse connected to CARTO](../../guides/accessing-your-subscriptions-from-your-data-warehouse).
+As mentioned above, the data and geography tables can be joined by the `geoid`. Most of the times this operation is managed automatically by CARTO interfaces, such as CARTO Builder and the Analytics Toolbox, but it should be carried out manually by the user [when a Dataset is accessed directly via the user's data warehouse connected to CARTO](../../guides/accessing-your-subscriptions-from-your-data-warehouse).
 
 
 

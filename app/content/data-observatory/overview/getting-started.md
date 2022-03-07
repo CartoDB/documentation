@@ -13,7 +13,7 @@ In the following sections you will find a collection of resources where you can 
 <br/>
 
 {{% bannerNote type="note" title="NOTE" %}}
-Some of these actions require the usage of CARTO tools and libraries that integrate with the Data Observatory, such as [CARTOframes](https://carto.com/developers/cartoframes).
+Some of these actions require the usage of CARTO tools and libraries that integrate with the Data Observatory, such as the [Analytics Toolbox](/analytics-toolbox-bigquery).
 {{%/ bannerNote %}}
 
 
@@ -30,76 +30,55 @@ Check out the following guides to learn how to find and subscribe to Data Observ
 
 ### Data access and analysis
 
-#### From your CARTO Dashboard
+You can access your subscriptions directly from your data warehouses [connected to CARTO](/carto-user-manual/connections/creating-a-connection). The Data Observatory is currently supported for BigQuery and Snowflake; Redshift and Databricks support is coming soon. 
 
-Data Observatory datasets that are smaller than 2GB are synced into a table in your CARTO account upon subscription. You can identify these tables as those with a `subscription` tag.
-
-<div style="text-align:center" >
-<img src="/img/data-observatory/carto2/do-table-sync.png" alt="Data Observatory sync table." style="width:90%">
-</div>
-
-You can access these tables from any of the tools available in your CARTO Dashboard, including Builder, where you can create custom dashboards and analyses. Read more in [this guide](../../guides/managing-your-subscriptions).
-
-
-#### From CARTOframes
-
-Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) is a great tool to access Data Observatory datasets of any size from your Python code or notebook. To get started, please refer to [this guide from the CARTOframes documentation page](https://carto.com/developers/cartoframes/guides/Data-Observatory/#data-access) or download the example notebook provided in the _Your subscriptions_ page of the Dashboard.
+Access information can be checked through the _Access in_ button available in the dataset's detail page. Please refer to [this step-by-step guide](../../guides/accessing-your-subscriptions-from-your-data-warehouse) to learn more. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/do-cartoframes-example-notebook.png" alt="Data Observatory example notebook for CARTOframes." style="width:100%">
+<img src="/img/data-observatory/do-access-in-menu.png" alt="Data Observatory access in menu." style="width:100%">
 </div>
-
-CARTOframes also offers a set of functions to enrich your datasets with any of the [variables](../terminology/#variable) from your Data Observatory subscriptions by performing a spatial join between them and your own data. Enrichment is an essential step to incorporate Data Observatory data into your spatial analysis workflows. You can learn more in [this guide](https://carto.com/developers/cartoframes/guides/Data-Observatory/#data-enrichment).
-
-#### From your cloud data storage or warehouse
-
-You can also access your subscriptions directly from BigQuery, AWS, or Azure. Refer to [this step-by-step guide](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure) to learn more. If you are a BigQuery user, you can also leverage the [Analytics Toolbox for BigQuery](/analytics-toolbox-bq) to perform spatial analysis using your Data Observatory datasets without leaving your BigQuery console.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/do-access-in-menu.png" alt="Data Observatory access in menu." style="width:100%">
+<img src="/img/data-observatory/do-access-in-details.png" alt="Data Observatory access in details." style="width:100%">
 </div>
+
+The Analytics Toolbox for [BigQuery](/analytics-toolbox-bigquery) and [Snowflake](/analytics-toolbox-snowflake) offer a set of functions to enrich your datasets with any of the [variables](../terminology/#variable) from your Data Observatory subscriptions by performing a spatial join between them and your own data. Enrichment is an essential step to incorporate Data Observatory data into your spatial analysis workflows. 
+
+<div style="text-align:center" >
+<img src="/img/data-observatory/do-enrichment-bq.png" alt="Data Observatory enrichment example using the Analytics Toolbox for Bigquery." style="width:80%">
+</div>
+
+Please check out the following resources to learn more: 
+
+* BigQuery: [data enrichment functions](/analytics-toolbox-bigquery/sql-reference/data) and [step-by-step guide](/analytics-toolbox-bigquery/guides/data-enrichment-using-the-data-observatory).
+* Snowflake: [data enrichment functions](/analytics-toolbox-snowflake/sql-reference/data).
+
 
 ### Data visualization
 
-#### From your CARTO Dashboard
-
-Data Observatory datasets that are smaller than 2GB can be visualized within Builder. You can easily do so by clicking on the _Create map_ action in the _Your subscriptions_ page of the Dashboard.
+Data Observatory datasets can be visualized from the CARTO Workspace using Builder. You can easily do so by clicking on the _Create map_ action in the subscription's detail page, available from the Data Observatory section of the Data Explorer: 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/do-create-map.png" alt="Using Builder to create a map from Data Observatory data." style="width:100%">
+<img src="/img/data-observatory/do-create-map.png" alt="Using Builder to create a map from Data Observatory data." style="width:100%">
 </div>
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/do-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
+<img src="/img/data-observatory/do-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
 </div>
 
-
-#### From CARTOframes
-
-Our Python library [CARTOframes](https://carto.com/developers/cartoframes/) allows you to create and embed interactive maps with your CARTO data, including Data Observatory datasets, directly from your notebooks. Please refer to [this guide](https://carto.com/developers/cartoframes/guides/Data-Visualization/) to learn more.
+Or by adding a new Data Observatory source to an existing map:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/carto2/do-cartoframes-map.png" alt="Data Observatory example map in CARTOframes." style="width:100%">
+<img src="/img/data-observatory/do-dataset-as-source.png" alt="Adding a Data Observatory subscription to an existing map" style="width:90%">
 </div>
 
-#### Using tilesets
+Those datasets whose size is within platform limits will be visualized in full. Bigger datasets will be applied a spatial filter (a buffer around the centroid of the most populated city of the dataset's country) and will require a tileset to be visualized in full. 
 
-Some of the spatial datasets offered in the Data Observatory are massive (a few TB), either due to their global coverage, such as [WorldPop](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_e683f5e4/) or [NASADEM](https://carto.com/spatial-data-catalog/browser/dataset/nasa_nasadem_ec3517d7/), or their fine granularity, such as [ACS Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9/) at census block group level, and their visualization requires the creation of [tilesets](/analytics-toolbox-bq/overview/tilesets/) using the [Analytics Toolbox for BigQuery](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/).
-
-<div class="figures-table" style="text-align:center">
-    <figure>
-        <img src="/img/data-observatory/carto2/nasadem-elevation-tileset.png" alt="Multiresolution quadkeys">
-        <figcaption class="figcaption" style="text-align:center"><a href="https://public.carto.com/viewer/user/public/bigquery?config=eyJpbml0aWFsVmlld1N0YXRlIjp7ImxhdGl0dWRlIjowLjMyODkxMjAyMjc2NTkzLCJsb25naXR1ZGUiOjE5LjY2OTQ5MjI4MzU3Njk4Miwiem9vbSI6MS43NTkxOTg3NjI4ODQxMTY0LCJwaXRjaCI6MCwiYmVhcmluZyI6MCwiZHJhZ1JvdGF0ZSI6ZmFsc2UsIndpZHRoIjoxMzQ0LCJoZWlnaHQiOjk1MywiYWx0aXR1ZGUiOjEuNSwibWF4Wm9vbSI6MjAsIm1pblpvb20iOjAsIm1heFBpdGNoIjo2MCwibWluUGl0Y2giOjAsInRyYW5zaXRpb25EdXJhdGlvbiI6MCwidHJhbnNpdGlvbkludGVycnVwdGlvbiI6MX0sInZpZXdzIjpbeyJAQHR5cGUiOiJNYXBWaWV3IiwiY29udHJvbGxlciI6dHJ1ZX1dLCJsYXllcnMiOlt7IkBAdHlwZSI6IkNhcnRvQlFUaWxlckxheWVyIiwiZGF0YSI6ImNhcnRvLWRvLXB1YmxpYy10aWxlc2V0cy5uYXNhLmVudmlyb25tZW50YWxfbmFzYWRlbV9nbG9fcXVhZGdyaWQxNV92MV9zdGF0aWNfdjFfdGlsZXNldF8wMDAiLCJjcmVkZW50aWFscyI6eyJ1c2VybmFtZSI6InB1YmxpYyIsImFwaUtleSI6ImRlZmF1bHRfcHVibGljIn0sImdldEZpbGxDb2xvciI6eyJAQGZ1bmN0aW9uIjoiY29sb3JCaW5zIiwiYXR0ciI6ImVsZXZhdGlvbiIsImRvbWFpbiI6WzAsMSwxMCw1MCwxMDAsMTAwMCwyMDAwLDUwMDAsMTAwMDBdLCJjb2xvcnMiOiJTdW5zZXQifSwicG9pbnRSYWRpdXNNaW5QaXhlbHMiOjEsInN0cm9rZWQiOmZhbHNlLCJsaW5lV2lkdGhNaW5QaXhlbHMiOjAuNSwiZ2V0TGluZUNvbG9yIjpbMjU1LDI1NSwyNTVdLCJwaWNrYWJsZSI6dHJ1ZSwiYmluYXJ5Ijp0cnVlfV19" target="_blank">NASADEM worldwide elevation tileset.</a></figcaption>
-    </figure>
+<div style="text-align:center" >
+<img src="/img/data-observatory/do-example-map-buffer.png" alt="Data Observatory example map in Builder." style="width:100%">
 </div>
 
-To create your own Data Observatory tilesets, from either your public or premium subscriptions, simply find the location of your subscription in BigQuery using the [“Access in BigQuery”](../../guides/accessing-your-subscriptions-from-bigquery-aws-or-azure/#access-in-bigquery) functionality and run the Tiler from your console. [Here](../../guides/creating-data-observatory-tilesets) is a step-by-step guide that will help you through the process.
+Please refer to [this guide](../../guides/visualizing-data-observatory-datasets) to learn more on how to visualize Data Observatory datasets using Builder.
 
-Tilesets can be visualized directly [from the CARTO Workspace](/analytics-toolbox-bq/guides/creating-and-visualizing-tilesets) or integrated into your custom spatial applications using [CARTO for deck.gl](/deck-gl) following [this example code](/deck-gl/examples/basic-examples/data-observatory-tileset-layer/).
 
-</br>
-
-{{% bannerNote type="tip" title="TIP" %}}
-We have created a collection of ready-to-use Data Observatory tilesets from public datasets that are directly available in the BigQuery project `carto-do-public-tilesets`. Visit [this page](../../example-tilesets) for a gallery of visualizations and the full list of available lilesets. 
-{{%/ bannerNote %}}
 
