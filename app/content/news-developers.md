@@ -8,7 +8,7 @@ menu:
     url: "news-developers"
 ---
 
-### CARTO for React 1.2 and deck.gl 8.7 have been released
+### CARTO for React 1.2 and deck.gl 8.7 now available
 
 ##### 2022-03-04
 
