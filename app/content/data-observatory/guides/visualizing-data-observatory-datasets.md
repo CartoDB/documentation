@@ -18,7 +18,7 @@ Or by adding a new Data Observatory source to an existing map:
 <img src="/img/data-observatory/do-dataset-as-source.png" alt="Adding a Data Observatory subscription to an existing map" style="width:90%">
 </div>
 
-Those datasets whose size is within platform limits will be visualized in full. Bigger datasets will be applied a spatial filter (a buffer around the centroid of the most populated city of the dataset's country), but this filter can be modified at your own will through the provided SQL query. These datasets will require a tileset to be visualized in full. Please refer to the [_Creating Data Observatory tilesets_](#creating-tilesets) section to learn more.
+Those datasets whose size is within platform limits will be visualized in full. Bigger datasets will be applied a spatial filter (a buffer around the centroid of the most populated city of the dataset's country), but this filter can be modified at your own will through the provided SQL query (check out [this tutorial](/carto-user-manual/tutorials/subscribe-to-public-data-from-the-data-observatory/) for more details). These datasets will require a tileset to be visualized in full. Please refer to the [_Creating Data Observatory tilesets_](#creating-tilesets) section to learn more.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-example-map-buffer.png" alt="Data Observatory example map in Builder." style="width:100%">

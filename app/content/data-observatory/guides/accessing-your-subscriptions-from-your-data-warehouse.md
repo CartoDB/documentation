@@ -34,6 +34,10 @@ If your dataset subscription is a geography, such as [Australia's States by CART
 <img src="/img/data-observatory/access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:100%">
 </div>
 
+{{% bannerNote type="warning" title="warning"%}}
+All Data Observatory data is stored in BigQuery's US region. You can learn more about regions [here](https://cloud.google.com/bigquery/docs/locations). 
+{{%/ bannerNote %}}
+
 #### Permissions
 
 You can use the provided access information (table locations and sample query) to query your Data Observatory subscriptions directly from BigQuery. To do so, you need to operate with BigQuery authenticated with the same credentials you have used to set up your BigQuery connection(s) in CARTO:

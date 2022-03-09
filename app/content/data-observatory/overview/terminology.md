@@ -25,7 +25,6 @@ A dataset is composed of two separate tables: the Data table and the Geography t
 As mentioned above, the data and geography tables can be joined by the `geoid`. Most of the times this operation is managed automatically by CARTO interfaces, such as CARTO Builder and the Analytics Toolbox, but it should be carried out manually by the user [when a Dataset is accessed directly via the user's data warehouse connected to CARTO](../../guides/accessing-your-subscriptions-from-your-data-warehouse).
 
 
-
 ### Variable
 
 A variable is the most basic unit of information within a Dataset, which we also refer to as *column*, and as *feature* in the Data Science world. 
@@ -82,10 +81,8 @@ Every dataset of the Data Observatory belongs to a specific category. These cate
 
 * **Environmental** -- Historical weather data, general climate statistics, weather forecasts and exposure to weather hazards can help discover the weather's influence in some activities and events and also allow risk prevention analysis.
 
-* **Behavorial** -- Also called geosocial, these datasets are built using data from different social networks and defines audiences and segments of people by their interests and likeness. That can help companies target the right audience. 
+* **Behavioral** -- Also called geosocial, these datasets are built using data from different social networks and defines audiences and segments of people by their interests and likeness. That can help companies target the right audience. 
 
-* **Derived data** -- Datasets created from different sources, delivered in a common geographic support system curated by CARTO’s data scientists and providing an added value to the users. 
-
-* **Covid-19** -- CARTO is trying to help governments, administrations, and businesses to make more informed decisions when adapting to the new status quo and optimising resources for the fastest possible recovery. This category allows all CARTO clients to access covid-19 related data to help overcome its impact. 
+* **Derived data** -- Datasets created from different sources, delivered in a common geographic support system curated by CARTO’s data scientists and providing an added value to the users.  
 
 * **Boundaries** -- Boundaries for postal codes, administrative regions and statistical areas to help users define the different geographical areas.  
