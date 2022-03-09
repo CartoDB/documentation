@@ -3,7 +3,7 @@
 In this guide you will learn how to create tilesets from your Data Observatory datasets. Tilesets are necessary for the visualization of datasets that are too big to be visualized directly in Builder, specifically those that have the _Create map_ action disabled in _Your Subscriptions_ page.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-subs-create-map-disabled.png" alt="Create Map action disabled in Your Subscription page." style="width:90%">
+<img src="/img/data-observatory/carto2/do-subs-create-map-disabled.png" alt="Create Map action disabled in Your Subscription page." style="width:90%">
 </div>
 
 
@@ -20,13 +20,13 @@ In addition to creating your own tilesets, you can also use any of the tilesets 
 In order to be able to create a tileset from your Data Observatory dataset you first need to create a connection of type OAuth from your CARTO Dashboard. To do so, go to _Your Connections_ page, click on _New Connection_ and choose the type BigQuery:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-bq-connection.png" alt="Create a BigQuery connection from the Dashboard." style="width:75%">
+<img src="/img/data-observatory/carto2/do-create-bq-connection.png" alt="Create a BigQuery connection from the Dashboard." style="width:75%">
 </div>
 
 Then, choose to create a connection of type OAuth and follow the steps to complete the configuration. Please note that the email associated with your CARTO account should be the same as the one you use to create the BigQuery connection.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-bq-connection-oauth.png" alt="Create a BigQuery connection of type OAuth from the Dashboard." style="width:75%">
+<img src="/img/data-observatory/carto2/do-create-bq-connection-oauth.png" alt="Create a BigQuery connection of type OAuth from the Dashboard." style="width:75%">
 </div>
 
 
@@ -37,7 +37,7 @@ Once your BigQuery connection has been set up, the Google user that you have use
 Go to Your Subscriptions page and identify the dataset that you want to create the tileset from. Click on the three dots to expand the menu and then on _Access in BigQuery_.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-access-in-bq-tileset-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:75%">
+<img src="/img/data-observatory/carto2/do-access-in-bq-tileset-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:75%">
 </div>
 
 The following information will be displayed:
@@ -47,7 +47,7 @@ The following information will be displayed:
 * Example query to join the data and geography tables.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-access-in-bq-tileset-2.png" alt="Access details for BigQuery" style="width:75%">
+<img src="/img/data-observatory/carto2/do-access-in-bq-tileset-2.png" alt="Access details for BigQuery" style="width:75%">
 </div>
 
 
@@ -64,7 +64,7 @@ Both of the aforementioned procedures take as input a SQL query specifying the d
 Here is a GIF showcasing how the full process works:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do_tileset_creation.gif" alt="Creating a Data Observatory tileset" style="width:90%">
+<img src="/img/data-observatory/carto2/do_tileset_creation.gif" alt="Creating a Data Observatory tileset" style="width:90%">
 </div>
 
 ### Create a visualization

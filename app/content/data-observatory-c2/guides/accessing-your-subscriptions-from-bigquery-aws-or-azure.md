@@ -14,13 +14,13 @@ If you haven't already, please create a BigQuery connection from _Your connectio
 Go to Your Subscriptions page, click on the three dots to expand the menu and then on _Access in BigQuery_.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-menu-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-bq-menu-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:90%">
 </div>
 
 Alternatively, you can access this option directly from the dataset page.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-menu-2.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-bq-menu-2.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
 </div>
 
 The following information will be displayed:
@@ -30,7 +30,7 @@ The following information will be displayed:
 * Example query to join the data and geography tables.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:90%">
 </div>
 
 {{% bannerNote title="TIP" type="tip" %}}
@@ -42,7 +42,7 @@ Remember that your subscription is composed of a data and a geography table that
 If your dataset subscription is a geography, such as [Australia's States by CARTO](https://carto.com/spatial-data-catalog/browser/geography/cdb_state_6b52fa47/), then only one table location will be shown:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
 </div>
 
 #### A note on BigQuery permissions
@@ -56,25 +56,25 @@ Since the process of accessing your subscription in AWS or Azure is similar, we 
 Go to Your Subscriptions page, click on the three dots to expand the menu and then on _Access in AWS_.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-aws-menu-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-aws-menu-1.png" alt="Access in BigQuery from Your Subscriptions." style="width:90%">
 </div>
 
 Alternatively, you can access this option directly from the dataset page.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-aws-menu-2.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-aws-menu-2.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
 </div>
 
 The following screen will be shown, where you can confirm your request by clickin on the _Request access_ button. You will receive a confirmation email.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-aws-request.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-aws-request.png" alt="Access in BigQuery from the Dataset page." style="width:90%">
 </div>
 
 Once your data has been uploaded to an AWS S3 bucket, you will be able to access its location by coming back to your subscription and clickin on the _Access in AWS_ button. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-aws-access-details.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-aws-access-details.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
 </div>
 
 ### Requesting an Extended license
@@ -84,7 +84,7 @@ Although most of the datasets in our Spatial Data Catalog are eligible to be acc
 You will be able to identify when this additional step is necessary when trying to access your subscription from BigQuery, AWS or Azure, as the following screen will be shown:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-request-extended.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
+<img src="/img/data-observatory/carto2/access-in-bq-request-extended.png" alt="Access details for BigQuery when your subscription is a geography." style="width:90%">
 </div>
 
 After you confirm your request by clicking on the _Request extended license_ button you will receive a confirmation email and a member of our team will get in touch with you to make the necessary adjustments to your license. Once this process is finished, you will be able to access this functionality as with any other of your subscriptions.
