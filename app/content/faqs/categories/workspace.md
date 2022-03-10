@@ -25,7 +25,7 @@ No, your connection allow us to perform queries against your data on your behalf
 ---
 
 ##### What happens if I do not have any cloud data warehouse platform to connect?
-For users who do not have any cloud data warehouse platform to which they want to connect CARTO, we are offering cloud storage and computing resources in what we call the CARTO Data Warehouse. A CARTO Data Warehouse connection is offered by default with your CARTO subscription. 
+For users who do not have any cloud data warehouse platform to which they want to connect CARTO, we are offering cloud storage and computing resources in what we call the CARTO Data Warehouse. A CARTO Data Warehouse connection is based on Google BigQuery and it is offered by default with your CARTO subscription.
 
 ---
 
