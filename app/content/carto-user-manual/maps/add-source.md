@@ -44,9 +44,6 @@ In this example we are going to use a table accessible via a BigQuery connection
 	
 ![Map add query](/img/cloud-native-workspace/maps/map_add_query.png)
 
-{{% bannerNote title=Note type="Note" %}}
-Remember that you can make use of [BigQuery GIS functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/geography_functions) in your queries when using the demo data from CARTO Data Warehouse
-{{%/ bannerNote %}}
 
 #### Custom queries using the Analytics Toolbox
 

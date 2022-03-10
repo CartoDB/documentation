@@ -139,7 +139,7 @@ When you log in to your CARTO user account, you will be presented with your Work
 
 #### Homepage
 
-The first time that you access the Workspace, you will see a *Welcome* banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. By clicking the link in this banner, you can easily connect your data warehouse(s) to start using CARTO. Check the [Quickstart guide to connect data and create maps](#quickstart-guide-to-create-your-first-map) to get started.
+The first time that you access the Workspace, you will see a *Welcome* banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. By clicking the link in this banner, you can easily connect your data warehouse(s) to start using CARTO. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
 
 ![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png)
 
@@ -175,7 +175,7 @@ In the left panel, you can find the *Navigation Menu* with all the available opt
 
 This is a quick guide to help you get started and is a step-by-step overview on how to connect CARTO to your data warehouse, explore your data, and create maps.
 
-The CARTO Workspace includes functionalities for registering and managing connections to your data warehouse(s). Additionally, for each organization we also provision resources from the `CARTO Data Warehouse` (based on Google BigQuery) to ensure you can get going with our technology from the beginning.
+The CARTO Workspace includes functionalities for registering and managing connections to your data warehouse(s). Additionally, for each organization we also provision resources from the CARTO Data Warehouse to ensure you can get going with our technology from the beginning.
 
 Once you have registered a connection to a data warehouse, you can start using your data with all components of the CARTO platform, such as running advanced spatial analysis with our Analytics Toolbox or creating stunning maps with Builder.
 
