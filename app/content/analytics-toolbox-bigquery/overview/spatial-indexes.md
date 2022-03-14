@@ -41,7 +41,7 @@ Quadkeys were developed by Microsoft to provide interactive mapping solutions. Y
 
 Quadkeys have as many digits as the zoom level to which they belong, which can lead to a lot of storage waste for high zoom levels and prevents fast comparison as they are internally treated as `STRING`, requiring a digit-by-digit evaluation. To overcome this limitation, in this module we use quadints, an encoded version of [quadkeys](https://wiki.openstreetmap.org/wiki/QuadTiles) stored in an `INT64`. Quadints offer faster comparison as the whole number is compared all at once.
 
-To encode a quadkey into a quadint we transform into an `INT64` the bits referring to the tile Y, then the ones concerning tile Y and finally we reserve 5 bits for storing the zoom level, i.e., `[ Bits Tile Y | Bits Tile X | 5 Bits for zoom ]`. This encoding introduces the limitation of not being able to encode tiles for zoom levels higher than 29, as they cannot be stored in 64 bits. 
+To encode a quadkey into a quadint we transform into an `INT64` the bits referring to the tile Y, then the ones concerning tile X and finally we reserve 5 bits for storing the zoom level, i.e., `[ Bits Tile Y | Bits Tile X | 5 Bits for zoom ]`. This encoding introduces the limitation of not being able to encode tiles for zoom levels higher than 29, as they cannot be stored in 64 bits. 
 
 In this module, we also provide the functions necessary to convert quadints into quadkeys and vice-versa.
 
