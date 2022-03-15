@@ -2,9 +2,9 @@
 
 [What support packages are available at CARTO?](#what-support-packages-are-available-at-carto)
 
-[Who is entitled to Support?](../categories/support-packages/#who-is-entitled-to-support)
+[Who is entitled to Support?](#who-is-entitled-to-support)
 
-[What are CARTO Business Hours?](../categories/support-packages/#what-are-carto-business-hours)
+[What are CARTO Business Hours?](#what-are-carto-business-hours)
 
 [What are Customer Success Managers (CSMs)?](#what-are-customer-success-managers-csms)
 
