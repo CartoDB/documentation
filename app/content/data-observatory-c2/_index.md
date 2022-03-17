@@ -7,7 +7,7 @@ url: data-observatory-c2
 indexPage: "overview/getting-started.md"
 
 cascade:
-  basePath: data-observatory
+  basePath: data-observatory-c2
   menu:
     - title: "Overview"
       folder:
