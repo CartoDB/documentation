@@ -166,7 +166,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.onError]      | <code>errorCallback</code> |         | (optional) _errorCallback_: Function to handle error messages from the widget.                                                      |
 | [props.wrapperProps] | <code>Object</code>        |         | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
-|{{%/ tableWrapper %}}||||
+|{{%/ tableWrapper %}}
 
 - **Example**:
 
@@ -580,7 +580,7 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | [props.onStop] | `functionCallback` |   | (optional) Handler to receive the event emitted when the animation is stopped |
 | [props.onTimelineUpdate] | `functionCallback` |   | (optional) Handler to receive the event emitted when the animation moves to the next time interval |
 | [props.onTimeWindowUpdate] | `functionCallback` |   | (optional) Handler to receive the event emitted when the time window moves to the next time interval |
-|{{%/ tableWrapper %}}||||
+|{{%/ tableWrapper %}}
 
 - **Example**:
 
