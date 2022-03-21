@@ -723,7 +723,7 @@ This implementation is based on the work of Christopher J. Paciorek: "Spatial mo
 
 {{% bannerNote title="TIP" type="tip" %}}
 if your data is in lat/long format, you can still use this procedure by first converting your points to H3 cell indexes by using the [H3_FROMLONGLAT](../h3/#h3_fromlonglat) function.
-{{%/ bannerNote %}
+{{%/ bannerNote %}}
 
 
 * `input`: `STRING` name of the source table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`.
@@ -774,7 +774,7 @@ This implementation is based on the work of Christopher J. Paciorek: "Spatial mo
 
 {{% bannerNote title="TIP" type="tip" %}}
 if your data is in lat/long format, you can still use this procedure by first converting your points to QUADINT cell indexes by using the [QUADINT_FROMLONGLAT](../quadkey/#quadint_fromlonglat) function.
-{{%/ bannerNote %}
+{{%/ bannerNote %}}
 
 * `input`: `STRING` name of the source table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`.
 * `output `: `STRING` name of the output table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the table already exists. If NULL, the result will be returned directly by the procedure and not persisted.
