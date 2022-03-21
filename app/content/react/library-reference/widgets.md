@@ -141,7 +141,7 @@ The `FeatureSelectionLayer` accepts the following optional props:
   return (
     <FeatureSelectionWidget 
       className={myCSSClassName} 
-      selectionModes={[FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]} />
+      selectionModes={[FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]}
     />
   );
   ```
