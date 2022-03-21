@@ -203,9 +203,9 @@ Returns all cell indexes and their distances in a **filled square k-ring** cente
 
 `ARRAY`
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 SELECT carto.QUADINT_KRING_DISTANCES(4388, 1);
