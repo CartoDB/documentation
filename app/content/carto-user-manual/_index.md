@@ -25,6 +25,7 @@ cascade:
         - title: "Map styles"
         - title: "Publishing and sharing maps"
         - title: "Duplicating maps"
+        - title: "Performance considerations"
     - title: "Data Explorer"
       folder:
         - title: "Introduction"
