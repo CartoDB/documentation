@@ -1,5 +1,12 @@
 ## Release notes
 
+### March 10, 2022
+
+#### Module tiler
+
+Feature
+- Add CREATE_SIMPLE_TILESET procedure.
+
 ### February 25, 2022
 
 #### Module tiler

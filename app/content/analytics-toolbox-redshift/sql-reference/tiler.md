@@ -62,3 +62,47 @@ CALL carto.CREATE_POINT_AGGREGATION_TILESET(
     "metadata": {"name": "population_tileset", "description": "A description"}
   }'''
 ```
+
+
+### CREATE_SIMPLE_TILESET
+
+{{% bannerNote type="code" %}}
+carto.CREATE_SIMPLE_TILESET(input, output_table, options)
+{{%/ bannerNote %}}
+
+**Description**
+
+Generates a simple tileset.
+
+* `input`: `VARCHAR` that can either contain a table name (e.g. `database.schema.tablename`) or a full query (e.g.<code>'SELECT * FROM db.schema.tablename'</code>).
+* `output_table`: Where the resulting table will be stored. It must be a `VARCHAR` of the form <code>'database.schema.tablename'</code>.
+* `options`: `VARCHAR` containing a valid JSON with the different options. Valid options are described the table below.
+
+| Option | Description |
+| :----- | :------ |
+|`geom_column`| Default: `"geom"`. A `VARCHAR` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
+|`zoom_min`| Default: `0`. A `INTEGER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
+|`zoom_max`| Default: `10`. A `INTEGER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
+|`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
+|`max_tile_vertices`| Default: `500000`. A `INTEGER` that sets the maximum number of vertices a tile might contain. This limit is applied only for lines or polygons. Entire features will be dropped when this limit is reached. To configure in which order are features kept, use in conjunction with `tile_feature_order`.|
+|`tile_feature_order`| Default: `RANDOM()` for points, `ST_AREA() DESC` for polygons, `ST_LENGTH() DESC` for lines. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part must not be included. You can use any source column no matter if it's included in the tile as property or not.|
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL carto.CREATE_SIMPLE_TILESET(
+  'SELECT geom, population FROM mypopulationtable',
+  'MYDB.MYSCHEMA.population_tileset',
+  '{
+    "geom_column": "geom",
+    "zoom_min": 0, "zoom_max": 6,
+    "properties": {
+      "population": "Number",
+      "category": "String"
+    }
+  }'
+)
+```

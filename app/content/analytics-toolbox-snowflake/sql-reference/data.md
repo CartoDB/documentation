@@ -43,9 +43,9 @@ For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_ENRICH_GRID(
@@ -100,9 +100,9 @@ The array contains OBJECTs with one field for each variable, using the variable 
 
 Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the area of the input polygon in square meters.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_ENRICH_GRID_RAW(
@@ -152,9 +152,9 @@ For other types of aggregation, the [`DATAOBS_ENRICH_POINTS_RAW`](#dataobs_enric
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POINTS(
@@ -199,9 +199,9 @@ The array contains OBJECTs with one field for each variable, using the variable 
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POINTS_RAW(
@@ -253,9 +253,9 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS(
@@ -305,9 +305,9 @@ The array contains OBJECTs with one field for each variable, using the variable 
 
 Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the area of the input polygon in square meters.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
@@ -398,9 +398,9 @@ The result is an array of objects with the following fields:
 * `associated_geography_table` geography associated with the dataset (NULL if category is `Geography` meaning the dataset itself is a geography); contains a subscription table/view if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
 * `associated_geography_slug` internal identifier of the geography associated with the dataset (NULL if category is `Geography`).
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_SUBSCRIPTIONS('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
@@ -431,9 +431,9 @@ The result is an array of objects with the following fields:
 * `dataset_slug` identifier of the dataset the variable belongs to.
 * `associated_geography_slug` identifier of the corresponding geography. Note that this is NULL if the dataset itself is a geography..
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_SUBSCRIPTION_VARIABLES('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
@@ -476,9 +476,9 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.ENRICH_GRID(
@@ -531,9 +531,9 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.ENRICH_GRID_RAW(
@@ -582,9 +582,9 @@ For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.ENRICH_POINTS(
@@ -629,9 +629,9 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.ENRICH_POINTS_RAW(
@@ -681,9 +681,9 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.ENRICH_POLYGONS(
@@ -733,9 +733,9 @@ The output table will contain all the input columns provided in the `input_query
 
 Moreover, another field named `__carto_input_area` will be included in `__CARTO_ENRICHMENT`, containing the area of the input polygon in square meters.
 
-
+{{% customSelector %}}
 **Example**
-
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.ENRICH_POLYGONS_RAW(
