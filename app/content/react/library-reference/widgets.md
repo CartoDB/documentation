@@ -26,7 +26,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | props.dataSource        | <code>string</code>   |                 | ID of the data source to get the data from.                                                                                         |
 | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
 | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-| [props.operationColumn] | `string | Array<string>`   |                 | (optional) Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
+| [props.operationColumn] | `string | Array<string>`   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
 | [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | [props.animation]             | `bool`                | `true`          |  Indicates whether the widget update is animated or jumps directly to the new state. |
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
@@ -159,7 +159,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | props.id             | <code>string</code>        |         | ID for the widget instance.                                                                                                         |
 | props.title          | <code>string</code>        |         | Title to show in the widget header.                                                                                                 |
 | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
-| props.column         | `string | Array<string>`        |         | Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
+| props.column         | `string | Array<string>`        |         | Name of the data source's column to operate with. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
 | [props.joinOperation] | `string` | | Operation applied to aggregate multiple columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | [props.animation]    | `bool`                     | `true`  | Indicates whether the widget update is animated or jumps directly to the new state |
@@ -225,7 +225,7 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 | props.title            | <code>string</code>               |         | Title to show in the widget header.                                                                                      |
 | props.dataSource       | <code>string</code>               |         | ID of the data source to get the data from.                                                                              |
 | props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
-| props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
+| props.operation        | <code>string</code>               |         | Operation to apply to the column. Must be one of those defined in `AggregationTypes` object.                    |
 | props.ticks            | <code>Array&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
 | [props.animation]      | `bool`                            | `true`  | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.filterable]     | `bool`                            | `true`  | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
@@ -402,7 +402,7 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
-| [props.operationColumn]  | `string | Array<string>`            |                    | (optional) Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property.                    |
+| [props.operationColumn]  | `string | Array<string>`            |                    | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property.                    |
 | [props.joinOperation]    | `string`                       |                           | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | [props.colors]                 | `Array<string>`                | CARTO colors bold palette | (optional) Array of colors to show for each category. |
 | [props.labels]                 | `Array<string>`                | Column values      | (optional) Labels to show for each category |
@@ -559,7 +559,7 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | props.column | `string` |  | Name of the data source's column with the timestamp/date values |
 | props.stepSize | `GroupDateTypes` |  | Time interval size. Available groupings are: GroupDateTypes.YEARS, GroupDateTypes.MONTHS, GroupDateTypes.WEEKS, GroupDateTypes.DAYS, GroupDateTypes.HOURS, GroupDateTypes.MINUTES.  |
 | [props.operation] | `string` | AggregationTypes.COUNT | (optional) Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object. |
-| [props.operationColumn] | `string | Array<string>` |  | (optional) Name of the data source's column to operate with. If not defined it will default to the one defined in `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
+| [props.operationColumn] | `string | Array<string>` |  | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
 | [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This does not apply to the animation when the widget is in play mode. Applies only when the data visualized in the chart changes (i.e. when we select a different step size). |
 | [props.formatter]   | `function` |  | (optional) _formatterCallback_: Function to format each value returned.  |
