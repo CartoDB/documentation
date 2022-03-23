@@ -77,7 +77,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
       dataSource="countriesSourceId"
       column="continent"
       operationColumn={["population_m", "population_f"]}
-  		joinOperation={AggregationTypes.SUM}
+      joinOperation={AggregationTypes.SUM}
       operation={AggregationTypes.SUM}
       formatter={customFormatter}
       onError={console.error}
