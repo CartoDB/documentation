@@ -26,8 +26,8 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | props.dataSource        | <code>string</code>   |                 | ID of the data source to get the data from.                                                                                         |
 | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
 | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-| [props.operationColumn] | `string | Array<string>`   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
-| [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
+| [props.operationColumn] | `string | Array<string>`   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | [props.animation]             | `bool`                | `true`          |  Indicates whether the widget update is animated or jumps directly to the new state. |
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
@@ -159,8 +159,8 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | props.id             | <code>string</code>        |         | ID for the widget instance.                                                                                                         |
 | props.title          | <code>string</code>        |         | Title to show in the widget header.                                                                                                 |
 | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
-| props.column         | `string | Array<string>`        |         | Name of the data source's column to operate with. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
-| [props.joinOperation] | `string` | | Operation applied to aggregate multiple columns into a single one. Must be one of those defined in `AggregationTypes` object. |
+| props.column         | `string | Array<string>`        |         | Name of the data source's column to operate with. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.joinOperation] | `string` | | Operation applied to aggregate multiple columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | [props.animation]    | `bool`                     | `true`  | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
@@ -402,8 +402,8 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
-| [props.operationColumn]  | `string | Array<string>`            |                    | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property.                    |
-| [props.joinOperation]    | `string`                       |                           | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
+| [props.operationColumn]  | `string | Array<string>`            |                    | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_                    |
+| [props.joinOperation]    | `string`                       |                           | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | [props.colors]                 | `Array<string>`                | CARTO colors bold palette | (optional) Array of colors to show for each category. |
 | [props.labels]                 | `Array<string>`                | Column values      | (optional) Labels to show for each category |
 | [props.animation]        | `bool`                         | `true`             | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
@@ -436,6 +436,8 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
   ```
   
+  > Available beginning with v1.3
+
   In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum the values from both columns using the `joinOperation` property. With this approach you can make calculations on widgets using multiple columns.
   
   ```js
@@ -467,10 +469,10 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 | props.id     | <code>string</code> |            | ID for the widget instance. |
 | props.title  | <code>string</code> |            | Title to show in the widget header. |
 | props.dataSource | <code>string</code> |        | ID of the data source to get the data from. |
-| props.xAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the X axis from. If multiple columns are provided, they will be combined using the operation specified with the `xAxisJoinOperation` property. |
-| [props.xAxisJoinOperation] | `string` | | Operation applied to aggregate multiple xAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. |
-| props.yAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the Y axis from. If multiple columns are provided, they will be combined using the operation specified with the `yAxisJoinOperation` property. |
-| [props.yAxisJoinOperation] | `string` | | Operation applied to aggregate multiple yAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. |
+| props.xAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the X axis from. If multiple columns are provided, they will be combined using the operation specified with the `xAxisJoinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.xAxisJoinOperation] | `string` | | Operation applied to aggregate multiple xAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
+| props.yAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the Y axis from. If multiple columns are provided, they will be combined using the operation specified with the `yAxisJoinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.yAxisJoinOperation] | `string` | | Operation applied to aggregate multiple yAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.xAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values.  |
 | [props.yAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values. |
@@ -559,8 +561,8 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | props.column | `string` |  | Name of the data source's column with the timestamp/date values |
 | props.stepSize | `GroupDateTypes` |  | Time interval size. Available groupings are: GroupDateTypes.YEARS, GroupDateTypes.MONTHS, GroupDateTypes.WEEKS, GroupDateTypes.DAYS, GroupDateTypes.HOURS, GroupDateTypes.MINUTES.  |
 | [props.operation] | `string` | AggregationTypes.COUNT | (optional) Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object. |
-| [props.operationColumn] | `string | Array<string>` |  | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
-| [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
+| [props.operationColumn] | `string | Array<string>` |  | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This does not apply to the animation when the widget is in play mode. Applies only when the data visualized in the chart changes (i.e. when we select a different step size). |
 | [props.formatter]   | `function` |  | (optional) _formatterCallback_: Function to format each value returned.  |
 | [props.onError]      | `errorCallback` |  | (optional) _errorCallback_: Function to handle error messages from the widget.   |
