@@ -63,7 +63,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
   ```
   
-  In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum them into a single column using `joinOperation`. By this way, you avoid to have duplicated data in your dataset and you can compose widgets using multiple columns.
+  In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum the values from both columns using the `joinOperation` property. With this approach you can make calculations on widgets using multiple columns.
   
   ```js
   import { CategoryWidget } from "@carto/react-widgets";
@@ -436,7 +436,7 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
   ```
   
-  In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum them into a single column using `joinOperation`. By this way, you avoid to have duplicated data in your dataset and you can compose widgets using multiple columns.
+  In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum the values from both columns using the `joinOperation` property. With this approach you can make calculations on widgets using multiple columns.
   
   ```js
   import { PieWidget } from "@carto/react-widgets";
