@@ -226,7 +226,7 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 | props.dataSource       | <code>string</code>               |         | ID of the data source to get the data from.                                                                              |
 | props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
 | props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
-| props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
+| props.ticks            | <code>Array&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
 | [props.animation]      | `bool`                            | `true`  | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.filterable]     | `bool`                            | `true`  | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.xAxisFormatter] | <code>function</code>             |         | (optional) _formatterCallback_: Function to format X axis values.                                                        |
