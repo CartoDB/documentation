@@ -26,8 +26,9 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | props.dataSource        | <code>string</code>   |                 | ID of the data source to get the data from.                                                                                         |
 | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
 | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-| [props.operationColumn] | <code>string</code>   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`.                                      |
-| [props.animation]       | `bool`                | `true`          | (optional) Indicates whether the widget update is animated or jumps directly to the new state. |
+| [props.operationColumn] | `string | Array<string>`   |                 | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
+| [props.animation]             | `bool`                | `true`          |  Indicates whether the widget update is animated or jumps directly to the new state. |
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
 | [props.labels]          | <code>Object</code>   | <code>{}</code> | (optional) Overwrite category labels.                                                                                                          |
 | [props.filterable]      | `bool`                | `true`          | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
@@ -39,13 +40,13 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 
 - **Example**:
 
-  In this example, the widget would display the SUM of population for all the countries, grouped by continent
+  In this example, the widget would display the SUM of population for all the countries, grouped by continent:
 
   ```js
   import { CategoryWidget } from "@carto/react-widgets";
-
+  
   const customFormatter = (value) => `${value} people`;
-
+  
   return (
     <CategoryWidget
       id="populationByContinent"
@@ -58,8 +59,31 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
       onError={console.error}
     />
   );
-
+  
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
+  ```
+  > Available beginning with v1.3
+
+  In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum the values from both columns using the `joinOperation` property. With this approach you can make calculations on widgets using multiple columns.
+  
+  ```js
+  import { CategoryWidget } from "@carto/react-widgets";
+  
+  const customFormatter = (value) => `${value} people`;
+  
+  return (
+    <CategoryWidget
+      id="populationByContinent"
+      title="Population by continent"
+      dataSource="countriesSourceId"
+      column="continent"
+      operationColumn={["population_m", "population_f"]}
+      joinOperation={AggregationTypes.SUM}
+      operation={AggregationTypes.SUM}
+      formatter={customFormatter}
+      onError={console.error}
+    />
+  );
   ```
 
 #### FeatureSelectionWidget
@@ -118,7 +142,7 @@ The `FeatureSelectionLayer` accepts the following optional props:
   return (
     <FeatureSelectionWidget 
       className={myCSSClassName} 
-      selectionModes={[FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]} />
+      selectionModes={[FEATURE_SELECTION_MODES.POLYGON, FEATURE_SELECTION_MODES.RECTANGLE]}
     />
   );
   ```
@@ -136,7 +160,8 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | props.id             | <code>string</code>        |         | ID for the widget instance.                                                                                                         |
 | props.title          | <code>string</code>        |         | Title to show in the widget header.                                                                                                 |
 | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
-| props.column         | <code>string</code>        |         | Name of the data source's column to get the data from.                                                                              |
+| props.column         | `string | Array<string>`        |         | Name of the data source's column to operate with. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.joinOperation] | `string` | | Operation applied to aggregate multiple columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | [props.animation]    | `bool`                     | `true`  | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.formatter]    | <code>function</code>      |         | (optional) _formatterCallback_: Function to format each value returned.                                                             |
@@ -146,19 +171,41 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 
 - **Example**:
 
-  In this example, the widget would display the AVG sales for all the stores on screen
+  In this example, the widget would display the AVG sales for all the stores on screen:
 
   ```js
   import { FormulaWidget } from "@carto/react-widgets";
-
+  
   const customFormatter = (value) => `${value} $`;
-
+  
   return (
     <FormulaWidget
       id="averageRevenue"
       title="Average revenue"
       dataSource="storesSourceId"
       column="revenue"
+      operation={AggregationTypes.AVG}
+      formatter={customFormatter}
+      onError={console.error}
+    />
+  );
+  ```
+  > Available beginning with v1.3
+  
+  In case you have the revenue splitted in multiple columns, you can provide an array in `column` property and merge them into a single one using joinOperation:
+  
+  ```js
+  import { FormulaWidget } from "@carto/react-widgets";
+  
+  const customFormatter = (value) => `${value} $`;
+  
+  return (
+    <FormulaWidget
+      id="averageRevenue"
+      title="Average revenue"
+      dataSource="storesSourceId"
+      column={["revenue_2021", "revenue_2022"]}
+      joinOperation={AggregationTypes.SUM}
       operation={AggregationTypes.AVG}
       formatter={customFormatter}
       onError={console.error}
@@ -180,8 +227,8 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 | props.title            | <code>string</code>               |         | Title to show in the widget header.                                                                                      |
 | props.dataSource       | <code>string</code>               |         | ID of the data source to get the data from.                                                                              |
 | props.column           | <code>string</code>               |         | Name of the data source's column to get the data from.                                                                   |
-| props.operation        | <code>string</code>               |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                    |
-| props.ticks            | <code>Array.&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
+| props.operation        | <code>string</code>               |         | Operation to apply to the column. Must be one of those defined in `AggregationTypes` object.                    |
+| props.ticks            | <code>Array&lt;number&gt;</code> |         | Array of numbers to build intervals (eg 1, 5, 10 will define 4 intervals: <1, [1,5), [5-10) and >= 10)                   |
 | [props.animation]      | `bool`                            | `true`  | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.filterable]     | `bool`                            | `true`  | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.xAxisFormatter] | <code>function</code>             |         | (optional) _formatterCallback_: Function to format X axis values.                                                        |
@@ -197,9 +244,9 @@ Renders a `<HistogramWidget />` component, binded to a source at redux. The widg
 
   ```js
   import { HistogramWidget } from "@carto/react-widgets";
-
+  
   const customFormatter = (value) => `${value} $`;
-
+  
   return (
     <HistogramWidget
       id="storesByNumberOfSales"
@@ -265,7 +312,7 @@ You can control the legend options through the following properties that must be
   import { LEGEND_TYPES } from "@carto/react-ui";
   import { updateLayer } from "@carto/react-redux";
   import { CartoLayer, colorBins } from "@deck.gl/carto";
-
+  
   export const COLORS = [
     [247, 254, 174],
     [183, 230, 165],
@@ -273,14 +320,14 @@ You can control the legend options through the following properties that must be
     [70, 174, 160],
     [4, 82, 117],
   ];
-
+  
   export const LABELS = [
     '$100M',
     '$500M',
     '$1B',
     '$1.5B',
   ];
-
+  
   const layerConfig = {
     title: 'Layer Name',
     visible: true,
@@ -293,7 +340,7 @@ You can control the legend options through the following properties that must be
       colors: COLORS,
     },
   };
-
+  
   const { myLayer } = useSelector((state) => state.carto.layers);
   const source = useSelector((state) => selectSourceById(state, myLayer?.source));
   const cartoLayerProps = useCartoLayerProps({ source, layerConfig: myLayer });
@@ -323,7 +370,7 @@ You can control the legend options through the following properties that must be
 
   ```js
   import { LegendWidget } from "@carto/react-widgets";
-
+  
   return (
     <LegendWidget className={myCSSClassName} />
   );
@@ -357,9 +404,10 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
-| [props.operationColumn]  | <code>string</code>            |                    | Name of the data source's column to operate with. If not defined it will default to the one defined in `column`.                    |
-| [colors]                 | `Array<string>`                | CARTO colors bold palette | (optional) Array of colors to show for each category. |
-| [labels]                 | `Array<string>`                | Column values      | (optional) Labels to show for each category |
+| [props.operationColumn]  | `string | Array<string>`            |                    | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_                    |
+| [props.joinOperation]    | `string`                       |                           | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
+| [props.colors]                 | `Array<string>`                | CARTO colors bold palette | (optional) Array of colors to show for each category. |
+| [props.labels]                 | `Array<string>`                | Column values      | (optional) Labels to show for each category |
 | [props.animation]        | `bool`                         | `true`             | (optional) Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.filterable]       | `bool`                         | `true`             | (optional) Indicates whether filtering capabilities are enabled or not.                                                              |
 | [props.formatter]        | <code>function</code>          |                    | (optional) _formatterCallback_: Function to format each value returned.                                                             |
@@ -371,11 +419,11 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 
 - **Example**:
 
-  In this example, the widget would display a pie chart by continent with the SUM of population for all the countries in that continent
+  In this example, the widget would display a pie chart by continent with the SUM of population for all the countries in that continent:
 
   ```js
   import { PieWidget } from "@carto/react-widgets";
-
+  
   return (
     <PieWidget
       id="populationByContinent"
@@ -386,8 +434,28 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
       operation={AggregationTypes.SUM}
     />
   );
-
+  
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
+  ```
+  
+  > Available beginning with v1.3
+
+  In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum the values from both columns using the `joinOperation` property. With this approach you can make calculations on widgets using multiple columns.
+  
+  ```js
+  import { PieWidget } from "@carto/react-widgets";
+  
+  return (
+    <PieWidget
+      id="populationByContinent"
+      title="Population by continent"
+      dataSource="countriesSourceId"
+      column="continent"
+      operationColumn={["population_m", "population_f"]}
+      joinOperation={AggregationTypes.SUM}
+      operation={AggregationTypes.SUM}
+    />
+  );
   ```
 
 #### ScatterPlotWidget
@@ -403,8 +471,10 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 | props.id     | <code>string</code> |            | ID for the widget instance. |
 | props.title  | <code>string</code> |            | Title to show in the widget header. |
 | props.dataSource | <code>string</code> |        | ID of the data source to get the data from. |
-| props.xAxisColumn | <code>string</code> |            | Name of the data source's column to get the data for the X axis from. |
-| props.yAxisColumn | <code>string</code> |            | Name of the data source's column to get the data for the Y axis from. |
+| props.xAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the X axis from. If multiple columns are provided, they will be combined using the operation specified with the `xAxisJoinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.xAxisJoinOperation] | `string` | | Operation applied to aggregate multiple xAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
+| props.yAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the Y axis from. If multiple columns are provided, they will be combined using the operation specified with the `yAxisJoinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.yAxisJoinOperation] | `string` | | Operation applied to aggregate multiple yAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.xAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values.  |
 | [props.yAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values. |
@@ -420,7 +490,7 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 
   ```js
   import { ScatterPlotWidget } from "@carto/react-widgets";
-
+  
   return (
     <ScatterPlotWidget
       id="sizeRevenueCorrelation"
@@ -493,14 +563,15 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
 | props.column | `string` |  | Name of the data source's column with the timestamp/date values |
 | props.stepSize | `GroupDateTypes` |  | Time interval size. Available groupings are: GroupDateTypes.YEARS, GroupDateTypes.MONTHS, GroupDateTypes.WEEKS, GroupDateTypes.DAYS, GroupDateTypes.HOURS, GroupDateTypes.MINUTES.  |
 | [props.operation] | `string` | AggregationTypes.COUNT | (optional) Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object. |
-| [props.operationColumn] | `string` |  | (optional) Column to use in the aggregation operation |
+| [props.operationColumn] | `string | Array<string>` |  | (optional) Name of the data source's column to operate with. If not defined, same as `column`. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. _Note: support for multiple columns is only available beginning with v1.3_ |
+| [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. _Note: this property is only available beginning with v1.3_ |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state. This does not apply to the animation when the widget is in play mode. Applies only when the data visualized in the chart changes (i.e. when we select a different step size). |
 | [props.formatter]   | `function` |  | (optional) _formatterCallback_: Function to format each value returned.  |
 | [props.onError]      | `errorCallback` |  | (optional) _errorCallback_: Function to handle error messages from the widget.   |
 | [props.wrapperProps] | `Object` |  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
 | [props.noDataAlertProps] | <code>Object</code> | `{ title: 'No data available', body: 'There are no results for the combination of filters applied to your data. Try tweaking your filters, or zoom and pan the map to adjust the Map View.' }` | (optional) Message (title and body) to show when there is no data available for the widget. |
 | [props.height]     | `string` | '300px' | (optional) Chart height (CSS) |
-| [props.tooltipFormatter] | `formatterCallback` | | (optional) _formatterCallback_: Function to format the tooltip values. |               
+| [props.tooltipFormatter] | `formatterCallback` | | (optional) _formatterCallback_: Function to format the tooltip values. |
 | [props.stepSizeOptions] | `Array<GroupDateTypes>` | `[]` | (optional) Available time interval sizes |
 | [props.chartType] | `enum` | `TIME_SERIES_CHART_TYPES.LINE` | (optional) Selected chart type (line or bar) |
 | [props.tooltip] | `boolean` | `true` | (optional) Whether to show or not the tooltip |
@@ -522,7 +593,7 @@ Renders a `<TimeSeriesWidget />` component, binded to a source at redux. The wid
   ```js
   import { TimeSeriesWidget } from "@carto/react-widgets";
   import { GroupDateTypes } from "@carto/react-core";
-
+  
   return (
     <TimeSeriesWidget
       id="events"
