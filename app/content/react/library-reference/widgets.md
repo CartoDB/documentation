@@ -62,7 +62,8 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
   
   // The operationColumn wouldn't be required if using AggregationTypes.COUNT, to count the number of countries per continent
   ```
-  
+  > Available beginning with v1.3
+
   In case you have the `population` disaggregated by gender: `population_m` and `population_f`, you can use an array in `operationColumn` and sum the values from both columns using the `joinOperation` property. With this approach you can make calculations on widgets using multiple columns.
   
   ```js
@@ -189,6 +190,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
     />
   );
   ```
+  > Available beginning with v1.3
   
   In case you have the revenue splitted in multiple columns, you can provide an array in `column` property and merge them into a single one using joinOperation:
   
