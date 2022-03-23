@@ -26,7 +26,7 @@ Renders a `<CategoryWidget />` component, binded to a source at redux. The widge
 | props.dataSource        | <code>string</code>   |                 | ID of the data source to get the data from.                                                                                         |
 | props.column            | <code>string</code>   |                 | Name of the data source's column to get the data from.                                                                              |
 | props.operation         | <code>string</code>   |                 | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
-| [props.operationColumn] | <code>string | Array<string></code>   |                 | (optional) Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
+| [props.operationColumn] | `string | Array<string>`   |                 | (optional) Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
 | [props.joinOperation] | `string` | | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | [props.animation]             | `bool`                | `true`          |  Indicates whether the widget update is animated or jumps directly to the new state. |
 | [props.formatter]       | <code>function</code> |                 | (optional) _formatterCallback_: Function to format each value returned.                                                             |
@@ -159,7 +159,7 @@ Renders a `<FormulaWidget />` component, binded to a source at redux. The widget
 | props.id             | <code>string</code>        |         | ID for the widget instance.                                                                                                         |
 | props.title          | <code>string</code>        |         | Title to show in the widget header.                                                                                                 |
 | props.dataSource     | <code>string</code>        |         | ID of the data source to get the data from.                                                                                         |
-| props.column         | <code>string | Array<string></code>        |         | Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
+| props.column         | `string | Array<string>`        |         | Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property. |
 | [props.joinOperation] | `string` | | Operation applied to aggregate multiple columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | props.operation      | <code>string</code>        |         | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | [props.animation]    | `bool`                     | `true`  | Indicates whether the widget update is animated or jumps directly to the new state |
@@ -402,7 +402,7 @@ Renders a `<PieWidget />` component, binded to a source at redux. The widget dis
 | props.column             | <code>string</code>            |                    | Name of the data source's column to get the data from.                                                                              |
 | props.operation          | <code>string</code>            |                    | Operation to apply to the operationColumn. Must be one of those defined in `AggregationTypes` object.                               |
 | props.height             | <code>string</code>            | <code>300px</code> | Height of the chart in CSS format.                                                                                                  |
-| [props.operationColumn]  | <code>string | Array<string></code>            |                    | (optional) Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property.                    |
+| [props.operationColumn]  | `string | Array<string>`            |                    | (optional) Name of the data source's column to operate with. If not defined, same as column. If multiple columns are provided, they will be combined using the operation specified with the `joinOperation` property.                    |
 | [props.joinOperation]    | `string`                       |                           | Operation applied to aggregate multiple operation columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | [props.colors]                 | `Array<string>`                | CARTO colors bold palette | (optional) Array of colors to show for each category. |
 | [props.labels]                 | `Array<string>`                | Column values      | (optional) Labels to show for each category |
@@ -467,9 +467,9 @@ Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The wi
 | props.id     | <code>string</code> |            | ID for the widget instance. |
 | props.title  | <code>string</code> |            | Title to show in the widget header. |
 | props.dataSource | <code>string</code> |        | ID of the data source to get the data from. |
-| props.xAxisColumn | <code>string | Array<string></code> |            | Name of the data source's column to get the data for the X axis from. If multiple columns are provided, they will be combined using the operation specified with the `xAxisJoinOperation` property. |
+| props.xAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the X axis from. If multiple columns are provided, they will be combined using the operation specified with the `xAxisJoinOperation` property. |
 | [props.xAxisJoinOperation] | `string` | | Operation applied to aggregate multiple xAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. |
-| props.yAxisColumn | <code>string | Array<string></code> |            | Name of the data source's column to get the data for the Y axis from. If multiple columns are provided, they will be combined using the operation specified with the `yAxisJoinOperation` property. |
+| props.yAxisColumn | `string | Array<string>` |            | Name of the data source's column to get the data for the Y axis from. If multiple columns are provided, they will be combined using the operation specified with the `yAxisJoinOperation` property. |
 | [props.yAxisJoinOperation] | `string` | | Operation applied to aggregate multiple yAxis columns into a single one. Must be one of those defined in `AggregationTypes` object. |
 | [props.animation]             | `bool`                | `true`          | Indicates whether the widget update is animated or jumps directly to the new state |
 | [props.xAxisFormatter] | <code>function</code> |  | (optional) _formatterCallback_: Function to format X axis values.  |
