@@ -37,6 +37,7 @@ cascade:
       #   - title: "Bikeshare stations within a San Francisco buffer"
       #   - title: "Census areas in the UK within tiles of multiple resolutions"
       #   - title: "Applying GWR to understand Airbnb listings prices"
+      #   - title: "Looking for twin areas of a prolific business"
     - title: "SQL Reference"
       folder:
         - title: "Overview"
