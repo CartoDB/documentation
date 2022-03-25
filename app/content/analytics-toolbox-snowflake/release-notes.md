@@ -1,5 +1,25 @@
 ## Release notes
 
+### March 25, 2022
+
+#### Module tiler
+
+Changed
+- Run the simple tiler in a single query.
+- Add `fraction_dropped_per_zoom` to the metadata.
+
+Fixed
+- Fix empty properties causing errors.
+- Fix `drop_fraction_as_needed` in the simple tiler.
+- Fix problems with GeometryCollections received after ST_Simplify.
+
+### March 21, 2022
+
+#### Module transformations
+
+Changed
+- ST_CONCAVEHULL now allows arrays with one/two points as input.
+
 ### February 24, 2022
 
 #### Module tiler
