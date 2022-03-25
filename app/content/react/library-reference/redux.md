@@ -66,6 +66,7 @@ Action to add a **source** to the store.
 | props.type        | <code>string</code> | Source type. Check available types [here](/deck-gl/reference#type-string)  |
 | props.credentials | <code>string</code> |  Credentials for accessing the source                                    |
 | props.connection  | <code>string</code> | Connection name. Used only for CARTO 3.  |
+| props.filtersLogicalOperator | <code>FiltersLogicalOperators</code> | Logical operation to use for combining filters. Can take the values `FiltersLogicalOperators.AND` and `FiltersLogicalOperators.OR`. Default value is `AND`. _Note: this property is only available beginning with v1.3_
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -79,6 +80,7 @@ Action to add a **source** to the store.
     type: MAP_TYPES.QUERY,
     connection: 'bqconn',
     data: "SELECT * FROM my_table",
+    filtersLogicalOperator: FiltersLogicalOperators.OR
   };
 
   const action = addSource(source);
