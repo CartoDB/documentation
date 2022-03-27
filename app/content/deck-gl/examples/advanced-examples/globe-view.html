@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -102,14 +102,24 @@
     }
 
     async function initialize() {
-      // Fetch Data from CARTO
-      const flightsQuery = 'SELECT time1, time2, lat1, lat2, lon1, lon2, alt1, alt2 FROM animated_deckgl_layer_flights';
-      const flightsUrl = `https://public.carto.com/api/v2/sql?q=${flightsQuery}&format=json`;
-      const jsonFlightsData = await fetch(flightsUrl).then(response => response.json());
+      deck.carto.setDefaultCredentials({
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+      });
 
-      const worldLandQuery = 'SELECT the_geom FROM ne_50m_land_world';
-      const worldLandUrl = `https://public.carto.com/api/v2/sql?q=${worldLandQuery}&format=geojson`;
-      const geoJsonWorldLandData = await fetch(worldLandUrl).then(response => response.json());
+      // Fetch Data from CARTO
+      const { data: jsonFlightsData } =  await deck.carto.fetchLayerData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT time1, time2, lat1, lat2, lon1, lon2, alt1, alt2 FROM cartobq.public_account.animated_deckgl_layer_flights`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.JSON
+      });
+      const { data: geoJsonWorldLandData } =  await deck.carto.fetchLayerData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT geom FROM cartobq.public_account.ne_50m_land_world`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.GEOJSON
+      });
 
       const backgroundLayers = [
         new deck.SimpleMeshLayer({
@@ -130,7 +140,7 @@
         })
       ];
 
-      // Create Deck.GL map
+      // Create deck.gl map
       const deckgl = new deck.DeckGL({
         views: new deck._GlobeView(),
         initialViewState: INITIAL_VIEW_STATE,
@@ -158,7 +168,7 @@
             ...backgroundLayers,
             new AnimatedArcLayer({
               id: 'flights-layer',
-              data: jsonFlightsData.rows,
+              data: jsonFlightsData,
               visible: MIN_TIME < currentTime && MAX_TIME > currentTime + TIME_WINDOW,
               getSourcePosition: d => [d.lon1, d.lat1, d.alt1],
               getTargetPosition: d => [d.lon2, d.lat2, d.alt2],

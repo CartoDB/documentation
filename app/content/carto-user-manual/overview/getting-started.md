@@ -168,7 +168,7 @@ Announcements of new features, interesting articles, and the latest news related
 
 In the left panel, you can find the *Navigation Menu* with all the available options to access the CARTO components: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
 
-![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
+![Menu sections](/img/cloud-native-workspace/get-started/the_menu_sections.png)
 ### Quickstart guide to create your first map
 
 #### Introduction
@@ -308,6 +308,19 @@ CARTO Builder contains many features that guide you through the process of creat
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
 
+#### Export data
+
+CARTO Builder allows you to export your data.
+
+To export your data, add a source to the map and click on the *Export viewport data* button.
+
+![Export data button enabled](/img/cloud-native-workspace/maps/map_export_data_enable.png) 
+
+A new dialog screen will open informing you that the resulting CSV files will contain data from the current features in the viewport. Click the *Export data* button to confirm the download of the data or click on *Cancel* if you don’t want to continue exporting.
+
+![Export data dialog](/img/cloud-native-workspace/maps/map_export_data_dialog.png) 
+
+The result of the export will be a compressed file containing all visible features in the viewport in csv format.
 #### Publish and share your map
 
 By default all maps you create are set as private. With CARTO you can share your maps with your organization or publish them for anyone with the link.

@@ -27,7 +27,7 @@ Geocodes an address into a point with its geographic coordinates (latitude and l
 
 **Constraints**
 
-This function performs requests to the CARTO Location Data Services API. When using this function, Snowflake makes parallel requests depending on the number of records you are trying to geocode, potentially hitting the limit of the number of requests per seconds allowed for your account. To avoid this error, please try geocoding smaller volumes of data or using the procedure [`GEOCODE_TABLE`](#geocode_table) instead. This procedure manages concurrency and payload size to avoid exceeding this limit.
+This function performs requests to the CARTO Location Data Services API. Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. The payload size of these requests depends on the number of records and could cause a timeout in the external function, with the error message `External function timeout`. Unexpected server errors will force Snowflake to retry the requests. The limit is around 500 records but could vary with the provider. To avoid this error, please try geocoding smaller volumes of data or using the procedure [`GEOCODE_TABLE`](#geocode_table) instead. This procedure manages concurrency and payload size to avoid exceeding this limit.
 
 **Examples**
 
@@ -69,7 +69,7 @@ Performs a reverse geocoding of the point received as input.
 
 **Constraints**
 
-This function performs requests to the CARTO Location Data Services API. When using this function, Snowflake makes parallel requests depending on the number of records you are trying to reverse geocode, potentially hitting the limit of the number of requests per seconds allowed for your account. To avoid this error, please try processing smaller volumes of data.
+This function performs requests to the CARTO Location Data Services API. Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. The payload size of these requests depends on the number of records and could cause a timeout in the external function, with the error message `External function timeout`. Unexpected server errors will force Snowflake to retry the requests. The limit is around 500 records but could vary with the provider. To avoid this error, please try processing smaller volumes of data.
 
 **Example**
 
@@ -90,7 +90,7 @@ This function consumes geocoding quota. Each call consumes as many units of quot
 
 **Description**
 
-Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) of a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format.
+Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) of a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 500.
 
 * `input_table`: `VARCHAR` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
 * `address_column`: `VARCHAR` name of the column from the input table that contains the addresses to be geocoded.
@@ -172,7 +172,7 @@ Creates an isoline from the provided origin.
 
 **Constraints**
 
-This function performs requests to the CARTO Location Data Services API. When using this function, Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. To avoid this error, please try processing smaller volumes of data.
+This function performs requests to the CARTO Location Data Services API. Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. The payload size of these requests depends on the number of records and could cause a timeout in the external function, with the error message `External function timeout`. Unexpected server errors will force Snowflake to retry the requests. The limit is around 500 records but could vary with the provider. To avoid this error, please try processing smaller volumes of data.
 
 **Example**
 

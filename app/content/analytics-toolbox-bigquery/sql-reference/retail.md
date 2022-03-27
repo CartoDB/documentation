@@ -117,6 +117,72 @@ CALL carto.BUILD_REVENUE_MODEL_DATA(
 -- with the column: morans_i
 ```
 
+### COMMERCIAL_HOTSPOTS
+
+{{% bannerNote type="code" %}}
+carto.COMMERCIAL_HOTSPOTS(input, output, index_column, index_type, variable_columns, variable_weights, kring, pvalue_thresh)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or quadkey grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi* statistic for each cell will be computed by taking into account the neighboring cells within the kring of size `kring`.
+
+Only those cells where the Gi* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi* values.
+
+**Input parameters**
+
+* `input`: `STRING` name of the table containing the input data. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`.
+* `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted. 
+* `index_column`: `STRING` name of the column containing the H3 or quadkey indexes.
+* `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3' and 'quadkey'.
+* `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi* statistic.
+* `variable_weights`: `ARRAY<FLOAT64>` containing the weights associated with each of the variables. These weights can take any value but will be normalized to sum up to 1. If NULL, uniform weights will be considered
+* `kring`: `INT64` size of the kring (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi* statistic. If NULL, uniform weights will be considered.
+* `pvalue_thresh`: Threshold for the Gi* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned. 
+
+**Output**
+The output will contain the following columns:
+* `index`: `STRING` containing the cell index.
+* `combined_gi`: `FLOAT64` with the resulting combined Gi*.
+* `p_value`: `FLOAT64` with the p-value associated with the combined Gi* statistic.
+ 
+If the output table is not specified when calling the procedure, the result will be returned but it won't be persisted.
+
+{{% customSelector %}}
+**Examples**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
+    'project_id.dataset_id.my_input_table',
+    'project_id.dataset_id.my_output_table',
+    'store_location_cell',
+    'h3',
+    ['raw_visit_counts','population'],
+    [0.7, 0.3],
+     3,
+     0.01
+)
+-- Table project_id.dataset_id.my_output_table will be created.
+-- with columns: index, combined_gi, p_value
+```
+
+```sql
+CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
+    'project_id.dataset_id.my_table',
+     NULL,
+    'index_id',
+    'quadkey',
+    ['feature_0','feature_1', 'feature_2'],
+     NULL,
+     1,
+     NULL
+)
+-- {"index": 12802315855, "combined_gi": 4.192, "p_value": 0.000123}
+-- {"index": 12807558543, "combined_gi": 4.991, "p_value": 3.01e-07}
+-- {"index": 12812801743, "combined_gi": 5.243, "p_value": 1.09e-05}
+```
+
 ### FIND_WHITESPACE_AREAS
 
 {{% bannerNote type="code" %}}
@@ -124,11 +190,11 @@ carto.FIND_WHITESPACE_AREAS(
     revenue_model,
     revenue_model_data,
     generator_query,
-    with_competitors,
-    with_own_stores,
     aoi_query,
     minimum_revenue,
-    max_results
+    max_results,
+    with_competitors,
+    with_own_stores
 )
 {{%/ bannerNote %}}
 
@@ -179,7 +245,7 @@ CALL carto.FIND_WHITESPACE_AREAS(
 ### PREDICT_REVENUE_AVERAGE
 
 {{% bannerNote type="code" %}}
-carto.PREDICT_REVENUE_AVERAGE(index, predicted_expression, revenue_model, revenue_model_data)
+carto.PREDICT_REVENUE_AVERAGE(index, revenue_model, revenue_model_data)
 {{%/ bannerNote %}}
 
 **Description**

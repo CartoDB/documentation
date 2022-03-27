@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "carto-basemap-carto2"
+  - title: CARTO 3
     url: "carto-basemap"
     active: true
-  - title: CARTO 3
-    url: "carto-basemap-carto3"
 ---
 ## CARTO Basemap

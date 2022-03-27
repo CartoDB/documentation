@@ -8,10 +8,10 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "hello-world-carto2"
+  - title: CARTO 3
     url: "hello-world"
     active: true
-  - title: CARTO 3
-    url: "hello-world-carto3"
 ---
 
 ## Hello World

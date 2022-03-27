@@ -6,8 +6,8 @@
       rel="stylesheet"
     />
 
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -19,8 +19,8 @@
 
   <script type="text/javascript">
     deck.carto.setDefaultCredentials({
-      username: 'public',
-      apiKey: 'default_public',
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
     });
 
     let zoom = 1.5;
@@ -29,9 +29,10 @@
     const renderLayer = () => {
       const layer = new deck.carto.CartoLayer({
         id: 'world_population',
+        connection: 'bqconn',
         type: deck.carto.MAP_TYPES.QUERY,
-        data: `SELECT the_geom_webmercator, country_name, continent_name, pop_2015 
-                  FROM world_population_2015 
+        data: `SELECT geom, country_name, continent_name, pop_2015 
+                  FROM cartobq.public_account.world_population_2015 
                 ORDER BY pop_2015 DESC`,
         opacity: 0.7,
         getFillColor: deck.carto.colorCategories({
