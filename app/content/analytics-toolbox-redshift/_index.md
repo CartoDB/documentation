@@ -32,6 +32,7 @@ cascade:
         - title: "Overview"
         - title: "clustering"
         - title: "constructors"
+        - title: "lds"
         - title: "placekey"
         - title: "processing"
         - title: "quadkey"

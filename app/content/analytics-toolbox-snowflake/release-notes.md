@@ -46,6 +46,18 @@ Feature
 Changed
 - Read spatial_catalog tables in source.
 
+### January 9, 2022
+
+#### Module lds
+
+Feature
+- Create Location Data Services (lds) module.
+- Add GEOCODE_TABLE procedure.
+- Add GEOCODE function.
+- Add GEOCODE_REVERSE function.
+- Add ISOLINE function.
+- Add LDS_QUOTA_INFO function.
+
 ### December 15, 2021
 
 #### Module data
