@@ -1,7 +1,7 @@
 ---
 title: "Opening a new Pizza Hut location in Honolulu"
 description: "We find the best new location for a specific target demographics using spatial indexes and advanced statistical functions."
-image: "/img/bq-analytics-toolbox/examples/starbucks-h3-grid.png"
+image: "/img/bq-analytics-toolbox/examples/pizza-hut-location-in-honolulu.png"
 type: examples
 date: "2022-03-24"
 categories:
