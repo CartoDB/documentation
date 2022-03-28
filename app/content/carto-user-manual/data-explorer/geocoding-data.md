@@ -1,44 +1,45 @@
 ## Geocoding data
 
-To geocode your data, select a connection and click on a specific object (database/project(s), schemas/datasets and tables) from the collapsible tree. 
+To geocode your data, select a connection and click on a specific object (database/project(s), schemas/datasets and tables) from the collapsible tree. Once your table is selected, you can geocode your data by clicking on the *Geocode data* button at the top right of the screen. 
 
-Once your table is selected, you can geocode your data by clicking on the *Geocode* button at the top right of the screen. 
+![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_data_button.png)
 
 {{% bannerNote title="ONLY FOR TABLES WITHOUT geographic coordinates" type="tip" %}}
-Please note that this option will only be available for those tables that require converting an address description (eg: the name of a city or a postal code) into geographic coordinates that CARTO can visualize.
+Please note that this option will only be available for those tables that require assigning longitude and latitude values to street addresses or converting an address description (eg: the name of a city or a postal code) into geographic coordinates that CARTO can visualize.
 {{%/ bannerNote %}}
 
 <!-- screenshot needed -->
 
-A new dialog will open so you can geocode your data from different geocoding types: Admin unit, Latitude/Longitude and Postal Code. You are initially presented with a *Admin unit* type to geocode your data. 
+A new dialog will open so you can geocode your data from different geocoding types: Address or Latitude/longitude.
 
-<!-- screenshot needed -->
+![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_latitude_longitude(bq).png)
 
-### Geocode table using Admin unit
+{{% bannerNote title="Note" type="note" %}}
+Please note that Geocode table from Data Explorer is only available for BigQuery (Latitude/longitude), Snowflake and Redshift; PostgreSQL and Databricks availability is coming soon.
+{{%/ bannerNote %}}
 
-Requires a single parameter column with administrative region names to generate location points. You can also specify a column to be used for country names (if all are unique).
+![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address(bq).png)
 
-In Builder: For country names, you can enter custom values by typing in the name (if the data is within a single region or country. For example, manually type in and select United States).
+### Geocode table by Address
 
-To geocode your data, select Geocode by *Administrative unit* on the left:
+To geocode your data, select Geocode by *Address*, select an `Address`column and click on *Continue*. You can optionally select a country for more accurate geocoding and the `geom` column name.
 
-<!-- screenshot needed -->
+![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address(sf).png)
 
-This interface will allow you to set the name of the output table. Once you have completed this configuration, click on *Continue*
+A new dialog will appear allowing you to confirm that you want to geocode your data. Click the *Geocode* button to confirm or click *Cancel* if you don't want the changes to be applied.
 
-<!-- screenshot needed -->
+![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address_ok(sf).png)
 
-The next screen requires you to select a single parameter column with administrative region names to generate location points.
+Two new columns will be added to your table: a `geometry` column and `metadata` column with additional information regarding the geocoding results.
+### Geocode table by Latitude / Longitude
 
+To geocode your data, select Geocode by Latitude/longitude, select the `latitude` and `longitude` columns and click on *Continue*. You can optionally select a the `geom` column name.
 
+![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_latitude_longitude(bq).png)
 
-### Geocode table using Latitude / Longitude
+A new dialog will appear allowing you to confirm that you want to geocode your data. Click the Geocode button to confirm or click Cancel if you don’t want the changes to be applied. 
 
-Generates location points using two parameter columns, one for latitude values and one for longitude values.
+![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address_ok(sf).png)
 
-### Geocode table using Postal Code
-
-If your dataset consists of a column with postal codes, this option geocodes those values to generate location points. Your input data must be a text column. You can also specify a column to be used as a country names, similar to the Administrative Regions option.
-
-
+A new `geometry`column will be added to your existing table.
 
