@@ -1,5 +1,5 @@
 ---
-title: "Build an interactive map and embedded it"
+title: "Build an interactive map and embed it"
 description: "In this section, we provide a tutorial that showcases how easy it is to create an interactive map using CARTO Builder and share it, embed it on your web page, or using a low code tool to create a story map."
 image: "/img/tutorials/tutorial11_share_pitch_bearing.png" 
 type: tutorials
@@ -8,7 +8,7 @@ date: "2022-03-10"
 #     - easy
 #     - embedded capabilities
 ---
-## Build an interactive map and embedded it
+## Build an interactive map and embed it
 
 **Context**
 
