@@ -2,6 +2,11 @@
 
 ### March 21, 2022
 
+#### Module transformations
+
+Changed
+- ST_CONCAVEHULL now allows arrays with one/two points as input.
+
 #### Module retail
 
 Feature

@@ -1,5 +1,14 @@
 ## Release notes
 
+### March 25, 2022
+
+#### Module tiler
+
+Changed
+- Raise improper qualified tables errors.
+- Limit GeoJSON precision to 6 to comply Redshift VARCHAR size limitations.
+- Add ST_Simplify to the tiler.
+
 ### March 10, 2022
 
 #### Module tiler
@@ -14,6 +23,18 @@ Feature
 Feature
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
+
+### February 17, 2022
+
+#### Module lds
+
+Feature
+- Create Location Data Services (lds) module.
+- Add GEOCODE_TABLE procedure.
+- Add GEOCODE function.
+- Add GEOCODE_REVERSE function.
+- Add ISOLINE function.
+- Add LDS_QUOTA_INFO function.
 
 ### December 16, 2021
 
