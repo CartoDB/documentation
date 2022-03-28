@@ -1,5 +1,5 @@
 ---
-title: "Build an interactive map and embed it"
+title: "Build an interactive map and embedded it"
 description: "In this section, we provide a tutorial that showcases how easy it is to create an interactive map using CARTO Builder and share it, embed it on your web page, or using a low code tool to create a story map."
 image: "/img/tutorials/tutorial11_share_pitch_bearing.png" 
 type: tutorials
@@ -8,7 +8,7 @@ date: "2022-03-10"
 #     - easy
 #     - embedded capabilities
 ---
-## Build an interactive map and embed it
+## Build an interactive map and embedded it
 
 **Context**
 
@@ -122,7 +122,7 @@ In this section, we provide a tutorial that showcases how easy it is to create a
 
     ![Map published map](/img/cloud-native-workspace/tutorials/tutorial111_map_published_map.png)
 	
-19. You can also control how it is displayed using URL parameters. This is especially helpful for integration with no/low-code tools, and story-telling with maps. We can control the center, zoom level, pitch, bearing, and visible layers of a public map by adding `lat` and `lng`, `center`, `pitch`, `bearing` and `layers` parameters. Take a look at the [Embed API documentation](/carto-user-manual/maps/publishing-and-sharing-maps/#embed-api) for the full reference. Some examples:
+19. You can also control how it is displayed using URL parameters. This is especially helpful for integration with no/low-code tools, and story-telling with maps. We can control the center, zoom level, pitch, bearing, and visible layers of a public map by adding `lat` and `lng`, `center`, `pitch`, `bearing` and `layers` parameters. Some examples:
 
     - Control the center and zoom level: https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15
 
@@ -133,10 +133,17 @@ In this section, we provide a tutorial that showcases how easy it is to create a
 
     <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90"></iframe>
 
-20. We can also embed this map in a website by Copy and Paste the HTML code into documents to show map on web pages. As we have done with the embedded maps on Step 19.
+20. We can also embed this map in a website by Copy and Paste the HTML code into documents to show map on web pages. As we have done with the embedded maps shown on Step 19.
 
     ![Map embed map](/img/cloud-native-workspace/tutorials/tutorial111_map_embed_map.png)
 	
-	This is especially useful if you want to use your CARTO maps on your website, or to build a story map using a no/low-code tools (like Webflow, SquareSpace, etc.) or presentations tools (like Slides.com). In the following link, you can see <a href="https://maps.carto.io/analyzing-cycling-network.html?controls=false&progress=false" target="_blank">a story map example created</a> in Slides.com, using the previous dataset along with additional data from <a href="https://carto.com/spatial-data-catalog/" target="_blank">CARTO Data Observatory</a>.
+	This is especially useful if you want to use your CARTO maps on your website, or to build a story map using a no/low-code tools (like Webflow, SquareSpace, etc.) or presentations tools (like Slides.com). <a href="https://slides.com/" target="_blank">Slides.com</a> is a tool for creating, presenting and sharing modern presentations. It enables anyone with a web browser to easily create beautiful presentations with interactivity (click, hover, etc.) that can simulate buttons, images, animations, iframes, and much more.
+
+    ![Slides.com features](/img/cloud-native-workspace/tutorials/tutorial11_embedded_slides_settings_menu.png)
+	
+	In the iframes you can include the link to published CARTO Builder maps, as explained in step 18, like you can see in the following image:
+	![Slides.com features](/img/cloud-native-workspace/tutorials/tutorial11_embedded_slides_settings.png)
+	
+	Check the <a href="https://maps.carto.io/analyzing-cycling-network.html?controls=false&progress=false" target="_blank">story map</a> that we created in Slides.com, using the "Paris cycling network" dataset of this tutorial, along with additional data from <a href="https://carto.com/spatial-data-catalog/" target="_blank">CARTO Data Observatory</a>.
 	
 	<a href="https://maps.carto.io/analyzing-cycling-network.html?controls=false&progress=false" target="_blank"><img src="/img/cloud-native-workspace/tutorials/tutorial11_embedded_app.png" alt="Ebedded Map Application"></a>
