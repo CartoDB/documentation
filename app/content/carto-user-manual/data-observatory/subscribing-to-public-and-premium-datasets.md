@@ -1,7 +1,6 @@
 ## Subscribing to public and premium datasets
 
 From the Spatial Data Catalog, you can instantly subscribe to any of our public datasets and submit requests to start the licensing process of premium datasets from our vetted data sources.
-
 ### Public datasets
 
 If the dataset license is public, within the dataset page in the Spatial Data Catalog you can click on *Subscribe for free* to start the subscription process. 
@@ -35,11 +34,3 @@ Once that process is completed, the premium data subscription will be automatica
 From the Data Explorer, go to the Data Observatory panel, from where you can explore your current subscriptions as well as your connections and sample data.
 
 ![Data Observatory sample dataset](/img/cloud-native-workspace/data-observatory/do-premium-subscription.png)
-
-
-<!-- {{% bannerNote type="note" title="note" %}}
-Subscriptions are synced to a CARTO table when the dataset is smaller than 2GB. For public datasets this counts against your available storage quota. However, for premium datasets the necessary storage quota is provided by CARTO as part of the premium data license, which is added to the storage quota of your account. You can check this in your Usage Metrics.
-{{%/ bannerNote %}}
-
-![Data Observatory usage metrics](/img/data-observatory/do-syncs-usage-metrics.png)
- -->

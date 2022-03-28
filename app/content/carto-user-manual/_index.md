@@ -29,9 +29,11 @@ menu:
       - title: "Importing data"
   - title: "Data Observatory"
     folder:
-      - title: "Browsing the Spatial Data Catalog"
+      - title: "Introduction"
+      - title: "Accessing free sample of data"
       - title: "Subscribing to public and premium datasets"
       - title: "Managing your subscriptions"
+      - title: "Accessing your subscriptions from your data warehouse"
   - title: "Connections" 
     folder:
       - title: "Introduction"
