@@ -122,7 +122,7 @@ In this section, we provide a tutorial that showcases how easy it is to create a
 
     ![Map published map](/img/cloud-native-workspace/tutorials/tutorial111_map_published_map.png)
 	
-19. You can also control how it is displayed using URL parameters. This is especially helpful for integration with no/low-code tools, and story-telling with maps. We can control the center, zoom level, pitch, bearing, and visible layers of a public map by adding `lat` and `lng`, `center`, `pitch`, `bearing` and `layers` parameters. Some examples:
+19. You can also control how it is displayed using URL parameters. This is especially helpful for integration with no/low-code tools, and story-telling with maps. We can control the center, zoom level, pitch, bearing, and visible layers of a public map by adding `lat` and `lng`, `center`, `pitch`, `bearing` and `layers` parameters. Check the complete reference [here](/carto-user-manual/maps/publishing-and-sharing-maps/#embed-api). Some examples:
 
     - Control the center and zoom level: https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15
 

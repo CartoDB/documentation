@@ -52,12 +52,11 @@ CARTO embed maps can be controlled via URL parameters. These parameters allow to
 
 |Parameter  |Functionality   |Example   |
 |---|---|---|
-|`lat` / `lng`|Define the coordinates where the map should be centered| https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647
-|`zoom`|Define the zoom level when loading the map|https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15
-|`pitch`|Control the vertical angle in degrees. From `0` (orthogonal to the ground) to `60`|https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40
-|`bearing`|Control the horizontal angle measured clockwise as an angle from `0` (North). East is 90° , south is 180°, and west is 270| https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90
-|`layers`|Select the layers that are visible in the map. Starts at `0` with the first layer in the Builder map |https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90&layers=0
-
+|`lat` / `lng`|Define the coordinates where the map should be centered|[...?lat=48.856&lng=2.348](https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856&lng=2.348)
+|`zoom`|Define the zoom level when loading the map|[...?zoom=15](https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15)
+|`pitch`|Control the vertical angle in degrees. From `0` (orthogonal to the ground) to `60`|[...?pitch=40](https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40)
+|`bearing`|Control the horizontal angle measured clockwise as an angle from `0` (North). East is 90° , south is 180°, and west is 270°|[...?bearing=90](https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90)
+|`layers`|Select the layers that are visible in the map as a list of visible layers. Starts at `0` with the first layer in the Builder map | [...?layers=0,1](https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90&layers=0)
 
 
 
