@@ -26,7 +26,7 @@ Takes a set of points and partition them into clusters using the k-mean. It uses
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.clustering.ST_CLUSTERKMEANS([ST_GEOGPOINT(0, 0), ST_GEOGPOINT(0, 1), ST_GEOGPOINT(5, 0), ST_GEOGPOINT(1, 0)], 2);
+SELECT `carto-un`.clustering.ST_CLUSTERKMEANS([ST_GEOGPOINT(0, 0), ST_GEOGPOINT(0, 1), ST_GEOGPOINT(5, 0), ST_GEOGPOINT(1, 0)], 2);
 -- {cluster: 1, geom: POINT(0 0)}
 -- {cluster: 1, geom: POINT(0 1)}
 -- {cluster: 0, geom: POINT(5 0)}
@@ -52,6 +52,6 @@ Returns the current version of the clustering module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.clustering.VERSION();
+SELECT `carto-un`.clustering.VERSION();
 -- 1.0.1
 ```

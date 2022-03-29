@@ -1,3 +1,4 @@
 app/_site/
 app/resources/
+.checkout/
 .DS_Store

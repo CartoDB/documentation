@@ -6,17 +6,19 @@ icon: "/img/icons/data-observatory.png"
 url: data-observatory
 indexPage: "overview/getting-started.md"
 
-menu:
-  - title: "Overview"
-    folder:
-    - title: "Getting started"
-    - title: "Terminology"
-  - title: "Guides"  
-    folder:
-      - title: "Accessing and browsing the Spatial Data Catalog"
-      - title: "Subscribing to public and premium datasets"
-      - title: "Managing your subscriptions"
-      - title: "Accessing your subscriptions from BigQuery, AWS or Azure"
-      - title: "Creating Data Observatory tilesets"
-  - title: "Example tilesets"
+cascade:
+  basePath: data-observatory
+  menu:
+    - title: "Overview"
+      folder:
+      - title: "Getting started"
+      - title: "Terminology"
+    - title: "Guides"  
+      folder:
+        - title: "Accessing and browsing the Spatial Data Catalog"
+        - title: "Subscribing to public and premium datasets"
+        - title: "Managing your subscriptions"
+        - title: "Accessing your subscriptions from your data warehouse"
+        - title: "Visualizing Data Observatory datasets"
+    - title: "Example tilesets"
 ---

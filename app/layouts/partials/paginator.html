@@ -1,0 +1,13 @@
+{{ $paginator := .paginator }}
+
+<div class="pagination u-mt48">
+   <ul class="pagination__list">
+     {{ range $paginator.Pagers }}
+     <li class="pagination__item {{ if eq . $paginator }}pagination__item--current{{ end }}">
+       <a href="{{ .URL }}" class="pagination__link text f16">
+         {{ .PageNumber }}
+       </a>
+     </li>
+     {{ end }}
+   </ul>
+ </div>

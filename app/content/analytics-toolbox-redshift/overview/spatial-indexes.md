@@ -2,7 +2,7 @@
 
 Hierarchical grid systems, such as Quadkey, H3, and S2, are an essential tool for analysing large spatial datasets, especially when dealing with data sources in different spatial aggregations. These systems are based on geospatial indexes that provide a direct relationship between grid cells at different resolutions, enabling extremely performant spatial operations.
 
-CARTO's Analytics Toolbox provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are public to everyone and ready to be used on your regular SQL on BigQuery.
+CARTO's Analytics Toolbox provides access to the most popular spatial indexes libraries through User Defined Functions (UDFs):
 
 <div class="figures-table">
     <figure class="figure">
@@ -41,7 +41,7 @@ Quadkeys were developed by Microsoft to provide interactive mapping solutions. Y
 
 Quadkeys have as many digits as the zoom level to which they belong, which can lead to a lot of storage waste for high zoom levels and prevents fast comparison as they are internally treated as `STRING`, requiring a digit-by-digit evaluation. To overcome this limitation, in this module we use quadints, an encoded version of [quadkeys](https://wiki.openstreetmap.org/wiki/QuadTiles) stored in an `INT64`. Quadints offer faster comparison as the whole number is compared all at once.
 
-To encode a quadkey into a quadint we transform into an `INT64` the bits referring to the tile Y, then the ones concerning tile Y and finally we reserve 5 bits for storing the zoom level, i.e., `[ Bits Tile Y | Bits Tile X | 5 Bits for zoom ]`. This encoding introduces the limitation of not being able to encode tiles for zoom levels higher than 29, as they cannot be stored in 64 bits. 
+To encode a quadkey into a quadint we transform into an `INT64` the bits referring to the tile Y, then the ones concerning tile X and finally we reserve 5 bits for storing the zoom level, i.e., `[ Bits Tile Y | Bits Tile X | 5 Bits for zoom ]`. This encoding introduces the limitation of not being able to encode tiles for zoom levels higher than 29, as they cannot be stored in 64 bits. 
 
 In this module, we also provide the functions necessary to convert quadints into quadkeys and vice-versa.
 

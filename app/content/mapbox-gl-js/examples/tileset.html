@@ -35,7 +35,10 @@
 
     map.on('load', async () => {
       const tileset = 'cartobq.public_account.nyc_taxi_points_demo_id';
-      const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/bigquery/tileset?source=${tileset}&format=tilejson&api_key=default_public&rand=3435334`;
+      const accessTokenCarto = 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c';
+      const apiBaseUrl = 'https://gcp-us-east1.api.carto.com';
+      const connectionName = 'bqconn';
+      const tilejsonUrl = `${apiBaseUrl}/v3/maps/${connectionName}/tileset?format=tilejson&name=${tileset}&access_token=${accessTokenCarto}`;
       map.addLayer({
         'id': 'taxi-data',
         'type': 'circle',

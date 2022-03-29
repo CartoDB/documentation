@@ -149,6 +149,9 @@ View your latest content. This module displays the latest maps that you have bee
 
 ![Recent maps](/img/cloud-native-workspace/get-started/recent_maps.png)
 
+If you are the owner of the map, you will have access to the quick actions menu to manage your map by clicking on the three point icon in the top right hand corner. There are 3 options available: Edit name & description, Duplicate map and Delete.
+
+![Recent maps](/img/cloud-native-workspace/get-started/recent_maps_options.png)
 #### Getting started
 
 In this section, you also have quick access to different content pieces to help you get started with CARTO, such as creating maps from your data, developing spatial applications, or learning how to use the Analytics Toolbox.
@@ -165,7 +168,7 @@ Announcements of new features, interesting articles, and the latest news related
 
 In the left panel, you can find the *Navigation Menu* with all the available options to access the CARTO components: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
 
-![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
+![Menu sections](/img/cloud-native-workspace/get-started/the_menu_sections.png)
 ### Quickstart guide to create your first map
 
 #### Introduction
@@ -180,7 +183,7 @@ Once you have registered a connection to a data warehouse, you can start using y
 
 Go to the *Connections* section in the Workspace, where you can find the list of all your current connections. If you haven’t registered a connection yet, you will see the following page:
 
-![Connections module cartodw](/img/cloud-native-workspace/connections/the_connections_module_cartodw.png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_the_cartodw.png)
 
 To add a new connection, click on *New connection* and follow these steps:
 
@@ -190,11 +193,11 @@ To add a new connection, click on *New connection* and follow these steps:
 
 The following screen shows the connection setup options for Google Cloud BigQuery:
 
-![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bigquery_the_parameters.png)
+![Connection setup with BigQuery](/img/cloud-native-workspace/connections/the_connections_bq_the_parameters.png)
 
 After you have provided the connection parameters, click the *Connect* button. Then you will see the list of your current connections with the new one added:
 
-![Successful connection](/img/cloud-native-workspace/connections/the_connections_connection_successful.png)
+![Successful connection](/img/cloud-native-workspace/connections/the_connections_bqconnection_successful.png)
 
 #### Create a map
 
@@ -310,6 +313,19 @@ CARTO Builder contains many features that guide you through the process of creat
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
 
+#### Export data
+
+CARTO Builder allows you to export your data.
+
+To export your data, add a source to the map and click on the *Export viewport data* button.
+
+![Export data button enabled](/img/cloud-native-workspace/maps/map_export_data_enable.png) 
+
+A new dialog screen will open informing you that the resulting CSV files will contain data from the current features in the viewport. Click the *Export data* button to confirm the download of the data or click on *Cancel* if you don’t want to continue exporting.
+
+![Export data dialog](/img/cloud-native-workspace/maps/map_export_data_dialog.png) 
+
+The result of the export will be a compressed file containing all visible features in the viewport in csv format.
 #### Publish and share your map
 
 By default all maps you create are set as private. With CARTO you can share your maps with your organization or publish them for anyone with the link.
@@ -317,3 +333,25 @@ By default all maps you create are set as private. With CARTO you can share your
 Once you publish a map, you obtain a URL to share access to the map or HTML code to embed it on a website or blog. You can also get the map token to call the map when developing an application in CARTO. 
 
 For details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+
+#### Duplicate your map
+
+This guide describes how you can duplicate existing maps from CARTO Workspace, the organization area; and also from CARTO Builder, our map editor. This option is available for all maps, whether you have admin or edit access.
+
+![Duplicate map from Workspace (viewer)](/img/cloud-native-workspace/maps/map_duplicate_from_workspace(admin-editor).png)
+
+![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_from_builder.png)
+
+Copied maps will always start as `Copy of` plus the original map name, and will always started as private maps for yourself. 
+
+When duplicating a map, you'll receive a warning if any of the sources is not shared with you (eg: a private connection) — You can continue anyway, but the private sources will load with errors and the corresponding layers will not be visible, leaving you the choice of fully removing them or asking for access. 
+
+![Duplicate map - Data warning](/img/cloud-native-workspace/maps/map_duplicate_warning.png)
+
+This ensures security across data sources, even when making editable map copies between users. 
+
+
+
+
+
+

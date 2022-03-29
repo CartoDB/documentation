@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "h3-hexagon-layer-carto2"
+  - title: CARTO 3
     url: "h3-hexagon-layer"
     active: true
-  - title: CARTO 3
-    url: "h3-hexagon-layer-carto3"
 ---
 ## H3 Hexagon Layer

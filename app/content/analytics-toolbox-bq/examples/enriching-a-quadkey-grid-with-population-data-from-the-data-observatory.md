@@ -1,3 +1,12 @@
+---
+title: "Enriching a quadkey grid with population data from the Data Observatory"
+description: "The pains of working with data in different spatial aggregations can be greatly eased by using spatial indexes. In this example we showcase how, in a single query, we can create a quadkey grid of resolution 15 of all supermarket POIs in the US and enrich it with population data."
+image: "/img/bq-analytics-toolbox/examples/do-quadkey-grid.png"
+type: examples
+date: "2021-08-12"
+categories:
+    - quadkey
+---
 ## Enriching a quadkey grid with population data from the Data Observatory
 
 The pains of working with data in different spatial aggregations can be greatly eased by using spatial indexes. In this example we showcase how, in a single query, we can create a quadkey grid of resolution 15 of all supermarket POIs in the US and enrich it with population data. Both datasets, [OpenStreetMap POIs](https://carto.com/spatial-data-catalog/browser/dataset/osm_nodes_74461e34/) and [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/dataset/cdb_spatial_fea_640a6186/) for the US, are publicly available in BigQuery as part of our Data Observatory offering. You can learn more about our Spatial Features dataset in this [blog post](https://carto.com/blog/spatial-features-new-derived-dataset-from-carto/).
@@ -31,3 +40,6 @@ JOIN (
   ) d
 ON qid = geoid
 ```
+<iframe height=480px width=100%  src="https://gcp-us-east1.app.carto.com/map/65a4b2ef-6f74-42b8-9d88-09ea19639552"></iframe>
+
+

@@ -38,7 +38,7 @@
         center: { lat: 40.7368521, lng: -73.9936065 },
         zoom: 12,
         tilt: 70,
-        mapId: '716bc8b1cc71ef3b',
+        mapId: '74fb72d0338f9316',
         fullscreenControl: false,
         streetViewControl: false,
         zoomControlOptions: {
@@ -47,8 +47,9 @@
       });
 
       deck.carto.setDefaultCredentials({
-        username: "public",
-        apiKey: "8l-WraD-0s4A5FJj9W7uIg",
+        apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+        apiVersion: deck.carto.API_VERSIONS.V3,
+        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
       });
 
       const POLYGON_COLORS = [
@@ -65,10 +66,9 @@
         layers: [
           new deck.carto.CartoLayer({
             id: 'mrli',
+            connection: 'bqconn',
             type: deck.carto.MAP_TYPES.QUERY,
-            data: `SELECT geoid, the_geom_webmercator, avg(txn_amt) as index
-            FROM public.mrli_ny_jan WHERE industry ='ret'
-            group by geoid, the_geom_webmercator`,
+            data: `SELECT geom, index FROM cartobq.public_account.mrli_ny_jan`,
             getFillColor: deck.carto.colorBins({
               attr: 'index',
               domain: [0, 50, 150, 300, 600, 1000],
