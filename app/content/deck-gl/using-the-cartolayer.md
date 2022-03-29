@@ -40,7 +40,6 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
    ```javascript
    setDefaultCredentials({
      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
-     apiVersion: API_VERSIONS.V3,
      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
    });
    ```
@@ -118,15 +117,15 @@ This function receives an object with the following properties:
 - [source](../reference#data-string) (equivalent to the `data` property for `CartoLayer`)
 - [format](../reference#formats)
 
-If the format is not explicitly specified, `getData` will pick a format automatically, depending on what is available from the CARTO API. The `getData` function returns an `Object` with the following properties:
+If the format is not explicitly specified, `fetchLayerData` will pick a format automatically, depending on what is available from the CARTO API. The `fetchLayerData` function returns an `Object` with the following properties:
   - `format`: the format of the returned data 
   - `data`: the actual data response
   
 ```javascript
-import { getData, FORMATS } from '@deck.gl/carto';
+import { fetchLayerData, FORMATS } from '@deck.gl/carto';
 import { H3HexagonLayer } from '@deck.gl/geo-layers/';
 
-const result =  await getData({
+const result =  await fetchLayerData({
   type: MAP_TYPES.QUERY,
   source: `SELECT `carto-un`.h3.ST_ASH3(internal_point_geom, 4) as h3, count(*) as count
               FROM bigquery-public-data.geo_us_census_places.us_national_places 
@@ -147,6 +146,6 @@ new H3HexagonLayer({
 
 {{% bannerNote title="note" %}}
 
-If you are using CARTO 2, there isn't an equivalent function to the `getData` function but you can use the SQL API to retrieve the data in JSON or GeoJSON format depending on the layer you want to use. Please check the `ArcLayer` [example](/deck-gl/examples/advanced-examples/arc-layer) to see how it works.
+If you are using CARTO 2, there isn't an equivalent function to the `fetchLayerData` function but you can use the SQL API to retrieve the data in JSON or GeoJSON format depending on the layer you want to use. Please check the `ArcLayer` [example](/deck-gl/examples/advanced-examples/arc-layer) to see how it works.
 
 {{%/ bannerNote %}}

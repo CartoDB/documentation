@@ -1,0 +1,32 @@
+<div class="grid-cell grid-cell--col6 grid-cell--col6--desktop-s grid-cell--col12--mobile example-card">
+  <div class="example-card__content__wrapper">
+    <a href="{{ .RelPermalink }}">
+      <div class="example-card__image">
+        <img src="{{ .Params.image }}" />
+      </div>
+    </a>
+    <div class="example-card__content">
+      <a href="{{ .RelPermalink }}" class="title f24">
+        {{ .Title }}
+      </a>
+      <p class="text f16 is-txtTypo2 u-mt8">{{ .Params.description }}</p>
+    </div>
+  </div>
+  <p>
+  </p>
+  {{ $baseDir := .Dir}}
+  {{ $path := path.Join $baseDir "categories" }}
+  {{ if .Params.categories }}
+  <div class="example-card__tags u-mt32">
+    {{ range .Params.categories }}
+    <a href="{{ $path | relURL }}/{{ . | urlize}}" class="title example-tag u-mb4 u-mr4">
+      {{ $icon := printf "%s%s%s" "/img/icons/categories/" . ".png" }}
+      {{ if fileExists (printf "%s%s" "static" $icon) }}
+        <img src="{{ $icon }}" alt="">
+      {{ end }}
+      {{ . }}
+    </a>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>

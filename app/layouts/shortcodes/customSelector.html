@@ -1,4 +1,4 @@
-{{$type := .Get "type" | default "bigquery"}}
+{{$dir := .Page.Dir}}
 {{$id := delimit (shuffle (seq 1 9)) ""}}
 
 <div class="code-examples">
@@ -9,14 +9,15 @@
 <!-- TODO: move JS code to a common place -->
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script>
-  if ('{{$type}}' === 'bigquery') {
+  if (bigqueryNew() || bigqueryOld()) {
     domReady(() => {
       initializeCustomSelector('id{{$id}}'); 
     });
-  };
+  }
 
   localStorageKey = 'carto-analytics-toolbox-plan';
   options = {
+    custom: 'custom',
     os: 'carto-os',
     // st: 'carto-st',
     // sm: 'carto-sm',
@@ -31,19 +32,19 @@
     if (selectors.length > 0) {
       const selector = selectors[0];
       if (selector.options && selector.options.length === 0) {
+        selector.options[selector.options.length] = new Option(options['un'], 'un');
         if (!isAdvanced) {
           // carto-os project does not contain advanced modules
           selector.options[selector.options.length] = new Option(options['os'], 'os');
         }
-        // selector.options[selector.options.length] = new Option(options['st'], 'st');
-        // selector.options[selector.options.length] = new Option(options['sm'], 'sm');
-        // selector.options[selector.options.length] = new Option(options['me'], 'me');
-        // selector.options[selector.options.length] = new Option(options['la'], 'la');
-        selector.options[selector.options.length] = new Option(options['un'], 'un');
+        if (bigqueryNew()) {
+          selector.options[selector.options.length] = new Option(options['custom'], 'custom');
+        }
       }
     }
     createCustomSelector(id);
-    let value = localStorage.getItem(localStorageKey) || 'os';
+    const defaultValue = bigqueryNew() ? 'un' : 'os'
+    let value = localStorage.getItem(localStorageKey) || defaultValue;
     if (value === 'os' && isAdvanced) {
       // carto-os project does not contain advanced modules
       value = 'un';
@@ -56,10 +57,21 @@
     const selectors = document.getElementsByClassName(`custom-select-trigger`);
 
     Array.from(examples).forEach(example => {
-      example.innerHTML = example.innerHTML.replace(
-        /<span class="n">\`?carto<\/span><span class="o">-<\/span><span class="n">.*?\`?<\/span>/,
-        `<span class="n">\`carto</span><span class="o">-</span><span class="n">${value}\`</span>`
-      );
+      if (value === 'custom') {
+        example.innerHTML = example.innerHTML.replace(
+          /\s<span class="o">`<\/span><span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span><span class="o">`<\/span><span class="p">.<\/span><span class="n">carto<\/span><span class="p">.<\/span>/,
+          ' <span class="n">carto</span><span class="p">.</span>'
+        );
+      } else {
+        example.innerHTML = example.innerHTML.replace(
+          /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/,
+          `<span class="n">carto</span><span class="o">-</span><span class="n">${value}</span>`
+        );
+        example.innerHTML = example.innerHTML.replace(
+          /\s<span class="n">carto<\/span><span class="p">.<\/span>/,
+          ` <span class="o">\`</span><span class="n">carto</span><span class="o">-</span><span class="n">${value}</span><span class="o">\`</span><span class="p">.</span><span class="n">carto</span><span class="p">.</span>`
+        );
+      }
     });
 
     Array.from(selectors).forEach(selector => {
@@ -102,5 +114,12 @@
       localStorage.setItem(localStorageKey, value);
       updateCustomSelector(value);
     });
+  }
+
+  function bigqueryOld () {
+    return '{{$dir}}'.startsWith('analytics-toolbox-bq');
+  }
+  function bigqueryNew () {
+    return '{{$dir}}'.startsWith('analytics-toolbox-bigquery');
   }
 </script>

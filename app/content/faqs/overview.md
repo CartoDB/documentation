@@ -8,11 +8,13 @@
 * [Will all my data in the previous platform be readily available when I access the new version of CARTO?](../categories/carto-accounts/#will-all-my-data-in-the-previous-platform-be-readily-available-when-i-access-the-new-version-of-carto)
 * [Will I be forced to move all my data to the new version of the CARTO platform?](../categories/carto-accounts/#will-i-be-forced-to-move-all-my-data-to-the-new-version-of-the-carto-platform)
 * [Is CARTO’s Student Package still available?](../categories/carto-accounts/#is-cartos-student-package-still-available)
+* [Can I setup a Single Sign-On integration in the new platform?](../categories/carto-accounts/#can-i-setup-a-single-sign-on-integration-in-the-new-platform)
 
 
 
 ##### Workspace
 * [What cloud data warehouses can I use with CARTO?](../categories/workspace/#what-cloud-data-warehouses-can-i-use-with-carto)
+* [When I connect to a data warehouse, do you copy or store any data?](../categories/workspace/#when-i-connect-to-a-data-warehouse-do-you-copy-or-store-any-data)
 * [What happens if I do not have any cloud data warehouse platform to connect?](../categories/workspace/#what-happens-if-i-do-not-have-any-cloud-data-warehouse-platform-to-connect)
 * [Can I import geospatial files into CARTO’s new platform? ](../categories/workspace/#can-i-import-geospatial-files-into-cartos-new-platform)
 * [What is a tileset, and when should I create one?](../categories/workspace/#what-is-a-tileset-and-when-should-i-create-one)
@@ -46,4 +48,10 @@
 * [What is the issue and severity classification? ](../categories/support-packages/#what-is-the-issue-and-severity-classification)
 * [What are CARTO’s Target Response Times (business hours)?](../categories/support-packages/#what-are-cartos-target-response-times-business-hours)
 
+##### CARTO for Education
+* [How can I get a Student account in CARTO?](../categories/carto-for-education/#how-can-i-get-a-student-account-in-carto)
+* [How can I get an Educator acccount?](../categories/carto-for-education/#how-can-i-get-an-educator-account)
+* [We need Enterprise capabilities for our institution or academic research, can you help?](../categories/carto-for-education/#we-need-enterprise-capabilities-for-our-institution-or-academic-research-can-you-help)
+* [What is the process for getting a CARTO Student account?](../categories/carto-for-education/#what-is-the-process-for-getting-a-carto-student-account)
+* [I am an educator and my course materials use the previous version of CARTO. What can I do?](../categories/carto-for-education/#i-am-an-educator-and-my-materials-use-the-previous-version-of-carto-what-can-i-do)
 

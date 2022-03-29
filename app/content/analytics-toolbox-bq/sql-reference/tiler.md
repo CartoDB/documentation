@@ -44,7 +44,7 @@ Generates a point aggregation tileset.
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_POINT_AGGREGATION_TILESET(
+CALL `carto-un`.tiler.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
     SELECT ST_CENTROID(geometry) as geom
     FROM `bigquery-public-data.geo_openstreetmap.planet_features`
@@ -147,7 +147,7 @@ If `drop_fraction_as_needed` is used, a `fraction_dropped_per_zoom` property wil
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_SIMPLE_TILESET(
+CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -254,7 +254,7 @@ It should be taken into account that `CREATE_TILESET` will not be executed for a
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_TILESET(
+CALL `carto-un`.tiler.CREATE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -268,7 +268,7 @@ CALL carto-st.tiler.CREATE_TILESET(
 If any of the options introduced above are required, the remaining fields should also be provided or set to `NULL`. Here is an example of a valid structure for the `options` parameter (the field alias can be ignored):
 
 ```sql
-CALL carto-st.tiler.CREATE_TILESET(
+CALL `carto-un`.tiler.CREATE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -320,6 +320,6 @@ Returns the current version of the tiler module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.tiler.VERSION();
+SELECT `carto-un`.tiler.VERSION();
 -- 1.12.4
 ```

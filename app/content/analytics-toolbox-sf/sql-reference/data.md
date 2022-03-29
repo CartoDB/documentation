@@ -377,7 +377,7 @@ data.ENRICH_GRID(grid_type, input_query, input_index_column, data_query data_geo
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2) with data from another enrichment query. The cells are identified by their indices.
+This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2, geohash) with data from another enrichment query. The cells are identified by their indices.
 
 As a result of this process, each input grid cell will be enriched with the data of the enrichment query that spatially intersects it. When the input cell intersects with more than one feature of the enrichment query, the data is aggregated using the aggregation methods specified.
 
@@ -392,7 +392,7 @@ For other types of aggregation, the [`ENRICH_GRID_RAW`](#enrich_grid_raw) proced
 
 **Input parameters**
 
-* `grid_type`: Type of grid: "h3", "quadkey" or "s2".
+* `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
@@ -440,11 +440,11 @@ data.ENRICH_GRID_RAW(grid_type, input_query, input_index_column, data_query data
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2) with data from another enrichment query. The cells are identified by their indices.
+This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2, geohash) with data from another enrichment query. The cells are identified by their indices.
 
 **Input parameters**
 
-* `grid_type`: Type of grid: "h3", "quadkey" or "s2".
+* `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.

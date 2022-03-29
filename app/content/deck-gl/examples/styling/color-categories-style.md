@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "color-categories-style-carto2"
+  - title: CARTO 3
     url: "color-categories-style"
     active: true
-  - title: CARTO 3
-    url: "color-categories-style-carto3"
 ---
 ## Color Categories Style

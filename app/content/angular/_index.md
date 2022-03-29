@@ -6,7 +6,9 @@ icon: "/img/icons/angular.png"
 url: angular
 indexPage: "getting-started.md"
 
-menu:
-  - title: "Getting Started"
-  - title: "Whats New"
+cascade:
+  basePath: angular
+  menu:
+    - title: "Getting Started"
+    - title: "Whats New"
 ---

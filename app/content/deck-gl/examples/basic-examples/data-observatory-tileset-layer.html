@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
     
     <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
     <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
@@ -13,9 +13,15 @@
   </body>
 
   <script type="text/javascript">
+  
+    deck.carto.setDefaultCredentials({
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+    });
+
     const deckgl = new deck.DeckGL({
       container: 'map',
-      mapStyle: deck.carto.BASEMAP.VOYAGER,
+      mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
 
       initialViewState: {
         latitude: 38.302222210685656,
@@ -25,6 +31,7 @@
       controller: true,
       layers: [
         new deck.carto.CartoLayer({
+          connection: 'bqconn',
           type: deck.carto.MAP_TYPES.TILESET,
           data: 'carto-do-public-tilesets.carto.derived_spatialfeatures_usa_quadgrid15_v1_yearly_2020_tileset_002',
           getFillColor: deck.carto.colorBins({

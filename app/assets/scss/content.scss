@@ -58,7 +58,7 @@
 
   h6 {
     @include text();
-    font-family: "Open sans";
+    font-family: 'Open sans';
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
@@ -72,6 +72,14 @@
 
   a {
     color: $emerald;
+  }
+
+  hr {
+    border: none; // reset
+    border-top: 2px solid $softgrey;
+    background: none;
+    margin-top: 36px;
+    margin-bottom: 36px;
   }
 
   .highlight,
@@ -221,7 +229,7 @@
   justify-content: center;
 
   &:after {
-    content: "";
+    content: '';
     width: 6px;
     height: 6px;
     border-radius: 6px;
@@ -304,7 +312,7 @@
     }
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       width: 7px;
       height: 7px;
@@ -319,7 +327,7 @@
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       width: 0;
       height: 0;
@@ -371,7 +379,7 @@
     color: rgba($navyBlue, 0.48);
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       height: calc(100% - 24px);
       border-right: 1px solid #c5ccd5;
@@ -419,13 +427,13 @@ a.arrow-link {
   display: inline-block;
   overflow: hidden;
   padding-right: 28px;
-  background-image: url("/img/resources/link-arrow.png");
+  background-image: url('/img/resources/link-arrow.png');
   background-size: 20px;
   background-position: right center;
   background-repeat: no-repeat;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     transition: transform 0.3s ease;
     left: -1px;
@@ -450,7 +458,7 @@ td,
 th,
 li {
   > code {
-    font-family: "Overpass Mono", monospace;
+    font-family: 'Overpass Mono', monospace;
     background-color: $softblue;
     border-radius: 2px;
     padding: 1px 4px;
@@ -475,11 +483,11 @@ li {
 
   p {
     max-height: 150px;
-    overflow: hidden; 
+    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
   }
 }
 
@@ -495,14 +503,17 @@ li {
   }
 }
 
-.tutorial-card {
-  display: block;
-  height: 100%;
+.example-card {
+  // display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-.tutorial-card__image {
+.example-card__image {
   height: 144px;
-  border-radius: 0;
+  border-radius: 4px;
   overflow: hidden;
 
   &:hover img {
@@ -517,22 +528,49 @@ li {
   }
 }
 
-.tutorial-card__content {
+.example-card__content {
   margin-top: 24px;
-  
+
   a {
     color: $base-grey;
     letter-spacing: -0.1px;
   }
-  
+
   p {
     display: -webkit-box;
     -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
     max-height: 150px;
     color: $base-grey;
     text-overflow: ellipsis;
-    overflow: hidden; 
+    overflow: hidden;
+  }
+}
+
+.example-card__tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .example-tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: $softblue;
+    padding: 4px 12px 4px 10px;
+    border-radius: 4px;
+    margin-top: 0;
+    font-size: 11px;
+    color: $typo1;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    img {
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      margin-right: 6px;
+    }
   }
 }
 
@@ -592,7 +630,7 @@ li {
 
   &.overflow-layout {
     table-layout: fixed;
-    overflow-wrap: break-word;   
+    overflow-wrap: break-word;
   }
 }
 
@@ -657,16 +695,23 @@ li {
 
       &:hover,
       &.is-active,
-      &.is-current {
+      &.active,
+      &.is-current,
+      &.current {
         color: $navyBlue;
       }
 
       &:hover,
-      &.is-current {
+      &.is-current,
+      &current {
         text-decoration: none;
         background-color: $softblue;
       }
     }
+  }
+
+  .toc--link.level-one.is-tutorial {
+    color: $navyBlue;
   }
 
   .toc--link.level-one,
@@ -690,7 +735,8 @@ li {
     @include text();
     padding: 8px 8px 8px 48px;
 
-    &.is-current {
+    &.is-current,
+    &.current {
       font-weight: 600;
     }
   }
@@ -701,7 +747,8 @@ li {
     @include text();
     padding: 8px 8px 8px 64px;
 
-    &.is-current {
+    &.is-current,
+    &.current {
       font-weight: 600;
     }
   }
@@ -823,7 +870,7 @@ li {
   padding: 4px;
   border: 1px solid #e7e9ec;
   border-radius: 4px;
-  
+
   .swtitch-button {
     display: flex;
     align-items: center;
@@ -845,6 +892,57 @@ li {
     &.active {
       color: $emerald;
       background-color: rgba(42, 172, 2, 0.1);
+    }
+  }
+}
+
+.tutorial-single {
+  .go-back {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    svg {
+      margin-right: 4px;
+      transform: rotate(180deg);
+    }
+  }
+
+  h2 {
+    margin-top: 28px;
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .pagination__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-left: 1px solid #e6e8eb;
+  }
+
+  .pagination__item {
+    width: 48px;
+    height: 46px;
+    border: 1px solid #e6e8eb;
+    border-left: none;
+
+    &.pagination__item--current {
+      background-color: #f2f6f9;
+    }
+
+    .pagination__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: $base-grey;
     }
   }
 }

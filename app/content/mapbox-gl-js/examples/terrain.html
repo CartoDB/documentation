@@ -7,6 +7,8 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
+  <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
   <style>
     body {
       margin: 0;
@@ -62,16 +64,27 @@
           }
         });
         
-        const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
-        const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public&rand=3435334`;
+        // Fetch Data from CARTO
+        deck.carto.setDefaultCredentials({
+          apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+          apiVersion: deck.carto.API_VERSIONS.V3,
+          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+        });
+
+        const { data } =  await deck.carto.fetchLayerData({
+          type: deck.carto.MAP_TYPES.QUERY,
+          source: `SELECT geom FROM cartobq.public_account.grca_trans_trail_ln`,
+          connection: 'bqconn',
+          format: deck.carto.FORMATS.GEOJSON
+        });
+        map.addSource('trails', {
+          'type': 'geojson',
+          'data': data
+        });
         map.addLayer({
           'id': 'grca-trail-layer',
           'type': 'line',
-          'source': {
-            'type': 'vector',
-            url: tilejsonUrl
-          },
-          'source-layer': 'default',
+          'source': 'trails',
           'paint': {
             'line-color': 'orange',
             'line-width': 3

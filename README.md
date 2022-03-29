@@ -22,15 +22,15 @@ docker-compose up build
 
 ## How to fetch
 
-Some projects have external files to be included in the documentation. Those files, generally the reference files, live in the main source code repository. We have included those repositories as submodules in the `repos` directory.
+Some projects have external files to be included in the documentation. Those files, generally the reference files, live in the main source code repository.
 
-To pull the latest changes run
+To checkout the latest changes run:
 
 ```
-./scripts/pull.sh
+./scripts/checkout.sh
 ```
 
-and to update the reference files run
+To update the reference files run:
 
 ```
 ./scripts/update.sh

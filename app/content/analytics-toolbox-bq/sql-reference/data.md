@@ -46,7 +46,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_GRID(
+CALL `carto-un`.data.DATAOBS_ENRICH_GRID(
   'h3',
   R'''
   SELECT * FROM UNNEST(['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff']) AS index
@@ -96,7 +96,7 @@ The array contains STRUCTs with one field for each variable, using the variable 
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_GRID_RAW(
+CALL `carto-un`.data.DATAOBS_ENRICH_GRID_RAW(
   'h3',
   R'''
   SELECT * FROM UNNEST(['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff']) AS index
@@ -148,7 +148,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POINTS(
+CALL `carto-un`.data.DATAOBS_ENRICH_POINTS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
@@ -197,7 +197,7 @@ Moreover, another column named `__carto_input_area` will be added containing the
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POINTS_RAW(
+CALL `carto-un`.data.DATAOBS_ENRICH_POINTS_RAW(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
@@ -215,7 +215,7 @@ CALL carto-st.data.DATAOBS_ENRICH_POINTS_RAW(
 Imagine that you need some information about your points of interest. We'll get population information from the Data Observatory at those points:
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_RAW(
+CALL `carto-un`.data.DATAOBS_ENRICH_POLYGONS_RAW(
   R'''
     SELECT
       'Point1' AS name, ST_GEOGPOINT(1,42) AS geom
@@ -281,7 +281,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POLYGONS(
+CALL `carto-un`.data.DATAOBS_ENRICH_POLYGONS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
@@ -331,7 +331,7 @@ Moreover, another column named `__carto_input_area` will be added containing the
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_RAW(
+CALL `carto-un`.data.DATAOBS_ENRICH_POLYGONS_RAW(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-table`
    ''',
@@ -350,15 +350,15 @@ CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_RAW(
 Imagine that you need some information about the population in two areas of interest defined as a 100-meter buffer around two given points.
 
 ```sql
-CALL carto-st.data.DATAOBS_ENRICH_POLYGONS_RAW(
+CALL `carto-un`.data.DATAOBS_ENRICH_POLYGONS_RAW(
   R'''
     SELECT
       'Area1' AS name,
-      carto-st.transformations.ST_BUFFER(ST_GEOGPOINT(1,42),100,'meters',6) AS geom
+      `carto-un`.transformations.ST_BUFFER(ST_GEOGPOINT(1,42),100,'meters',6) AS geom
     UNION ALL
     SELECT
       'Area2',
-      carto-st.transformations.ST_BUFFER(ST_GEOGPOINT(-2,40),100,'meters',6)
+      `carto-un`.transformations.ST_BUFFER(ST_GEOGPOINT(-2,40),100,'meters',6)
   ''',
   ['population_f9004c56'],
   NULL,
@@ -415,7 +415,7 @@ The result is a table with these columns:`
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_SAMPLES('myproject.mydataset', '');
+CALL `carto-un`.data.DATAOBS_SAMPLES('myproject.mydataset', '');
 ```
 
 ### DATAOBS_SUBSCRIPTIONS
@@ -452,7 +452,7 @@ The result is a table with these columns:
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_SUBSCRIPTIONS('myproject.mydataset', '');
+CALL `carto-un`.data.DATAOBS_SUBSCRIPTIONS('myproject.mydataset', '');
 ```
 
 ### DATAOBS_SUBSCRIPTION_VARIABLES
@@ -485,7 +485,7 @@ The result is a table with one row per variable and these columns:
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.DATAOBS_SUBSCRIPTION_VARIABLES('myproject.mydataset','');
+CALL `carto-un`.data.DATAOBS_SUBSCRIPTION_VARIABLES('myproject.mydataset','');
 ```
 
 ### ENRICH_GRID
@@ -530,7 +530,7 @@ The resulting table has all the input columns and one additional column for each
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.ENRICH_GRID(
+CALL `carto-un`.data.ENRICH_GRID(
    'h3',
    R'''
    SELECT * FROM UNNEST(['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff']) AS index
@@ -582,7 +582,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.ENRICH_GRID(
+CALL `carto-un`.data.ENRICH_GRID(
    'h3',
    R'''
    SELECT * FROM UNNEST(['8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff']) AS index
@@ -635,7 +635,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.ENRICH_POINTS(
+CALL `carto-un`.data.ENRICH_POINTS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -682,7 +682,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.ENRICH_POINTS(
+CALL `carto-un`.data.ENRICH_POINTS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -738,7 +738,7 @@ The output table will contain all the input columns provided in the `input_query
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.ENRICH_POLYGONS(
+CALL `carto-un`.data.ENRICH_POLYGONS(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -788,7 +788,7 @@ Moreover, another column named `__carto_input_area` will be added containing the
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.data.ENRICH_POLYGONS_RAW(
+CALL `carto-un`.data.ENRICH_POLYGONS_RAW(
    R'''
    SELECT id, geom FROM `my-project.my-dataset.my-input`
    ''',
@@ -823,6 +823,6 @@ Returns the current version of the data module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.data.VERSION();
+SELECT `carto-un`.data.VERSION();
 -- 1.0.0-beta.1
 ```

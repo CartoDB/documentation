@@ -1,10 +1,19 @@
 ## Release notes
 
+### v8.7 - February 25, 2022
+
+- New `fetchMap` function for loading a Builder map
+- New `MaskExtension` to apply a spatial mask to layers
+- Support for dynamic tiling with `MAP_TYPES.TABLE` data sources
+- New `QuadkeyLayer` supporting visualization of data using the Quadkey spatial indexing scheme
+- Changes in configuration defaults: `apiBaseUrl` now defaults to `https://gcp-us-east1.api.carto.com` and `apiVersion` to `API_VERSIONS.V3`. If you have code using a CARTO 2 dataset and you have not specified the `apiVersion` property, your code needs to be updated in order to work with the new version.
+- New `format` and `formatTiles` props in `CartoLayer`
+
 ### v8.6 - October 12, 2021
 
 - Default to binary mode in `MVTLayer`
 - Include API error at the exception message
-- Add geoColumn & columns props to `CartoLayer`
+- New `geoColumn`and `columns` props in `CartoLayer`
 - Fix `MVTLayer` autoHighlight with binary data
 - Check for correct layerName when highlighting in `MVTLayer`
 

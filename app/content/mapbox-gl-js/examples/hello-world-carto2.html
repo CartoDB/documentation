@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>CARTO + Mapbox GL JS - Hello World</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2FydG9kYmluYyIsImEiOiJja202bHN2OXMwcGYzMnFrbmNkMzVwMG5rIn0.Zb3J4JTdJS-oYNXlR3nvnQ';
+    var map = new mapboxgl.Map({
+      container: 'map', 
+      style: 'mapbox://styles/mapbox/light-v10', 
+      center: [0, 0], 
+      zoom: 1 
+    });
+
+    map.on('load', async () => {
+      const query = 'SELECT the_geom_webmercator, name FROM populated_places';
+      const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public&rand=3435334`;
+      map.addLayer({
+        'id': 'populated-places',
+        'type': 'circle',
+        'source': {
+          'type': 'vector',
+          url: tilejsonUrl
+        },
+        'source-layer': 'default',
+        'paint': {
+          'circle-radius': 3,
+          'circle-color': '#FF0000',
+          'circle-stroke-color': 'white',
+          'circle-stroke-width': 1,
+          'circle-opacity': 0.5
+        }
+      });
+    });
+
+  </script>
+
+</body>
+
+</html>

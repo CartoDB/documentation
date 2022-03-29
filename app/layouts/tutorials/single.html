@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{- partial "header.html" . -}}
+
+  <div class="is-bgWhite is-txtBaseGrey tutorial-single">
+    <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
+      {{- partial "aside-menu.html" . -}}
+
+      <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
+        <a class="title f12 go-back" href="javascript:history.back()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#2aac02">
+            <path fill-rule="evenodd" d="M10.293 4.294L8.879 5.708 12.172 9 4 9v2h8.172l-3.293 3.293 1.414 1.414L16 10z"/>
+          </svg>
+          Go back
+        </a>
+        {{.Content}}
+      </div>
+    </div>
+  </div>
+{{end}}
