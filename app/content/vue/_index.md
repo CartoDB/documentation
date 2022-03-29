@@ -6,7 +6,9 @@ icon: "/img/icons/vue.png"
 url: vue
 indexPage: "getting-started.md"
 
-menu:
-  - title: "Getting Started"
-  - title: "Whats New"
+cascade:
+  basePath: vue
+  menu:
+    - title: "Getting Started"
+    - title: "Whats New"
 ---

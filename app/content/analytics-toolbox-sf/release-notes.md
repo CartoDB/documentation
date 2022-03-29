@@ -1,8 +1,47 @@
 ## Release notes
 
+### November 24, 2021
+
+#### Module data
+
+Feature
+- Add DATAOBS_ENRICH_POINTS procedure.
+- Add DATAOBS_ENRICH_POINTS_RAW procedure.
+- Add DATAOBS_ENRICH_POLYGON procedure.
+- Add DATAOBS_ENRICH_POLYGON_RAW procedure.
+- Add DATAOBS_ENRICH_GRID procedure.
+- Add DATAOBS_ENRICH_GRID_RAW procedure.
+
+### November 5, 2021
+
+#### Module data
+
+Changes
+- Fields named `dimension`, `total`, `intersection` and `input_area` are now
+  `__carto_dimension`, `__carto_total` and `__carto_intersection` and `__carto_input_area`.
+  Also the column `_carto_enrichment_` is now `__carto_enrichment`.
+  This affects all the _raw_ enrichment procedures: `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`.
+
+Fixed
+- User provided queries can now have columns named `dimension`, `total`, `intersection`, `input_area`, `_nonglobal`, which could have collided previously with internal columns. All internal columns are now prefixed with `__carto_`. This affects all the enrichment procedures: `ENRICH_POINTS`, `ENRICH_POLYGONS`, `ENRICH_GRID`, `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`.
+
+### November 4, 2021
+
+#### Module data
+
+Feature
+- Create data module.
+- Add VERSION function.
+- Add ENRICH_POINTS procedure.
+- Add ENRICH_POINTS_RAW procedure.
+- Add ENRICH_POLYGON procedure.
+- Add ENRICH_POLYGON_RAW procedure.
+- Add ENRICH_GRID procedure.
+- Add ENRICH_GRID_RAW procedure.
+
 ### September 22, 2021
 
-#### Module h3 v1.0.3
+#### Module h3
 
 Feature
 - Add KRING_DISTANCES function.
@@ -10,7 +49,7 @@ Feature
 Changed
 - Review HEXRING, KRING functions.
 
-#### Module quadkey v1.0.3
+#### Module quadkey
 
 Feature
 - Add KRING_DISTANCES function.
@@ -20,42 +59,42 @@ Changed
 
 ### September 14, 2021
 
-#### Module s2 v1.0.1
+#### Module s2
 
 Changes
 - Compute ST_BOUNDARY from WKT.
 
 ### September 9, 2021
 
-#### Module quadkey v1.0.2
+#### Module quadkey
 
 Changed
 - Performance improvement in ST_ASQUADINT_POLYFILL.
 
 ### August 24, 2021
 
-#### Module h3 v1.0.2
+#### Module h3
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
 ### August 11, 2021
 
-#### Module quadkey v1.0.1
+#### Module quadkey
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
 
 ### June 2, 2021
 
-#### Module h3 v1.0.1
+#### Module h3
 
 Changed
 - Reduce bundle size for every function.
 
 ### May 26, 2021
 
-#### Module processing v1.0.0
+#### Module processing
 
 Feature
 - Create processing module.
@@ -68,14 +107,14 @@ Feature
 
 ### May 24, 2021
 
-#### Module clustering v1.0.0
+#### Module clustering
 
 Feature
 - Create clustering module.
 - Add VERSION function.
 - Add ST_CLUSTERKMEANS function.
 
-#### Module random v1.0.0
+#### Module random
 
 Feature
 - Create random module.
@@ -84,7 +123,7 @@ Feature
 
 ### May 21, 2021
 
-#### Module accessors v1.0.0
+#### Module accessors
 
 Feature
 - Create accessors module.
@@ -93,7 +132,7 @@ Feature
 
 ### May 20, 2021
 
-#### Module constructors v1.0.0
+#### Module constructors
 
 Feature
 - Create constructors module.
@@ -103,7 +142,7 @@ Feature
 - Add ST_TILEENVELOPE function.
 - Add VERSION function.
 
-#### Module measurements v1.0.0
+#### Module measurements
 
 Feature
 - Create measurements module.
@@ -112,7 +151,7 @@ Feature
 - Add ST_MINKOWSKIDISTANCE function.
 - Add VERSION function.
 
-#### Module transformations v1.0.0
+#### Module transformations
 
 Feature
 - Create transformations module.
@@ -127,7 +166,7 @@ Feature
 
 ### April 16, 2021
 
-#### Module placekey v1.0.0
+#### Module placekey
 
 Feature
 - Create placekey module.
@@ -138,7 +177,7 @@ Feature
 
 ### April 12, 2021
 
-#### Module s2 v1.0.0
+#### Module s2
 
 Feature
 - Create s2 module.
@@ -151,7 +190,7 @@ Feature
 
 ### April 7, 2021
 
-#### Module h3 v1.0.0
+#### Module h3
 
 Feature
 - Create h3 module.
@@ -172,7 +211,7 @@ Feature
 
 ### March 31, 2021
 
-#### Module quadkey v1.0.0
+#### Module quadkey
 
 Feature
 - Create quadkey module.

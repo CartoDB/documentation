@@ -28,7 +28,7 @@ If you are reusing the same network for multiple calls, using the GENERATE_NETWO
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.routing.DISTANCE_MAP(ARRAY_AGG(STRUCT(geom, speed)), ST_GEOGPOINT(-74.0, 40.0))
+SELECT `carto-un`.routing.DISTANCE_MAP(ARRAY_AGG(STRUCT(geom, speed)), ST_GEOGPOINT(-74.0, 40.0))
 FROM (
   SELECT ST_MAKELINE(ARRAY_AGG(ST_geogpoint(lon, lat))) geom, 1. speed
   FROM unnest(GENERATE_ARRAY(-74.00, -73.90, 0.01)) lon, unnest(GENERATE_ARRAY(40.60, 40.85, 0.03)) lat
@@ -65,9 +65,9 @@ Takes a network and a reference point as input. Returns the cost and geometry of
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.routing.DISTANCE_MAP_FROM_NETWORK(network, ST_GEOGPOINT(-74.0, 40.0))
+SELECT `carto-un`.routing.DISTANCE_MAP_FROM_NETWORK(network, ST_GEOGPOINT(-74.0, 40.0))
 FROM (
-  SELECT carto-st.routing.GENERATE_NETWORK(ARRAY_AGG(STRUCT(geo, speed))) network
+  SELECT `carto-un`.routing.GENERATE_NETWORK(ARRAY_AGG(STRUCT(geo, speed))) network
   FROM (
     SELECT ST_MAKELINE(ARRAY_AGG(ST_geogpoint( lon, lat ))) geo, 1. speed
     FROM unnest(GENERATE_ARRAY(-74.00, -73.90, 0.01)) lon, unnest(GENERATE_ARRAY(40.60, 40.85, 0.01)) lat
@@ -108,7 +108,7 @@ Procedure that takes a network table and a reference point as input. Returns a t
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.routing.DISTANCE_MAP_FROM_NETWORK_TABLE(
+CALL `carto-un`.routing.DISTANCE_MAP_FROM_NETWORK_TABLE(
   'mydataset.network_table',
   'mydataset.distance_map_table',
   'ST_GEOGPOINT(-74.5, 40.5)'
@@ -142,7 +142,7 @@ If you are reusing the same network for multiple calls, using the GENERATE_NETWO
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.routing.FIND_SHORTEST_PATH(
+SELECT `carto-un`.routing.FIND_SHORTEST_PATH(
   ARRAY_AGG(STRUCT(geom, speed)), ST_GEOGPOINT(-74.0, 40.0), ST_GEOGPOINT(-73.5, 41.0)
 )
 FROM (
@@ -180,11 +180,11 @@ Takes a network, a source point and a destination point as input. Returns the le
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.routing.FIND_SHORTEST_PATH_FROM_NETWORK(
+SELECT `carto-un`.routing.FIND_SHORTEST_PATH_FROM_NETWORK(
   network, ST_GEOGPOINT(-73.0, 40.0), ST_GEOGPOINT(-75.0, 41.0)
 )
 FROM (
-  SELECT carto-st.routing.GENERATE_NETWORK(ARRAY_AGG(STRUCT(geom, speed))) network
+  SELECT `carto-un`.routing.GENERATE_NETWORK(ARRAY_AGG(STRUCT(geom, speed))) network
   FROM (
     SELECT ST_MAKELINE(ARRAY_AGG(ST_geogpoint( lon, lat ))) geom, 1. speed
     FROM unnest(GENERATE_ARRAY(-74.00, -73.90, 0.01)) lon, unnest(GENERATE_ARRAY(40.60, 40.85, 0.01)) lat
@@ -222,7 +222,7 @@ Procedure that takes a network, a source point and a destination point as input.
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE(
+CALL `carto-un`.routing.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE(
   "mydataset.network_table",
   "mydataset.shortest_path_table",
   "ST_GEOGPOINT(-74.0, 40.0)",
@@ -253,7 +253,7 @@ Generates a network graph from an aggregation of LineStrings and their correspon
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.routing.GENERATE_NETWORK(ARRAY_AGG(STRUCT(geom, speed)))
+SELECT `carto-un`.routing.GENERATE_NETWORK(ARRAY_AGG(STRUCT(geom, speed)))
 FROM (
   SELECT ST_MAKELINE(ARRAY_AGG(ST_geogpoint(lon, lat))) geom, 1. speed
   FROM unnest(GENERATE_ARRAY(-74.00, -73.90, 0.01)) lon, unnest(GENERATE_ARRAY(40.60, 40.85, 0.03)) lat
@@ -290,7 +290,7 @@ This procedure implements the same functionality as the `GENERATE_NETWORK` funct
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.routing.GENERATE_NETWORK_TABLE(
+CALL `carto-un`.routing.GENERATE_NETWORK_TABLE(
   'mydataset.linestring_collection_table', 'mydataset.network_table'
 );
 ```
@@ -329,6 +329,6 @@ Returns the current version of the routing module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.routing.VERSION();
+SELECT `carto-un`.routing.VERSION();
 -- 1.0.0-beta.2
 ```

@@ -1,7 +1,7 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
 
     <script src="https://unpkg.com/supercluster@6.0.2/dist/supercluster.min.js"></script>
     
@@ -14,6 +14,11 @@
   </body>
 
   <script type="text/javascript">
+    deck.carto.setDefaultCredentials({
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+    });
+
     (async ()=>{
       const {DeckGL, CompositeLayer, IconLayer} = deck;
       const {CartoSQLLayer, setDefaultCredentials} = deck.carto;
@@ -84,11 +89,14 @@
       }
 
       // Fetch Data from CARTO
-      // Notice that you can use any Deck.gl layer with CARTO datasets getting GeoJSON data from CARTO's API. This method is recommended for complex layers with datasets below 50Mb
-      const dataResponse = await fetch('https://public.carto.com/api/v2/sql?q=SELECT cartodb_id, the_geom FROM meteorites&format=geojson');
-      const data = await dataResponse.json();
+      const { data } = await deck.carto.fetchLayerData({
+        type: deck.carto.MAP_TYPES.QUERY,
+        source: `SELECT cartodb_id, geom FROM cartobq.public_account.meteorites`,
+        connection: 'bqconn',
+        format: deck.carto.FORMATS.GEOJSON
+      });
 
-      // Create a Deck.gl map and use your IconClusterLayer with your CARTO dataset
+      // Create a deck.gl map and use your IconClusterLayer with your CARTO dataset
       const deckgl = new DeckGL({
         container: 'map',
         mapStyle: deck.carto.BASEMAP.VOYAGER,

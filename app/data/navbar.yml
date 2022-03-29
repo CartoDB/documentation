@@ -10,11 +10,17 @@ navbar:
   - name: Analytics Toolbox
     subelements:
       - name: Analytics Toolbox for BigQuery
-        url: /analytics-toolbox-bq
+        url: /analytics-toolbox-bigquery
       - name: Analytics Toolbox for Snowflake
-        url: /analytics-toolbox-sf
+        url: /analytics-toolbox-snowflake
+      - name: Analytics Toolbox for Redshift
+        url: /analytics-toolbox-redshift
+      - name: Analytics Toolbox for Databricks
+        url: /analytics-toolbox-databricks
   - name: Dev tools
     subelements:
+      - name: CARTO API
+        url: https://api-docs.carto.com
       - name: CARTO for React
         url: /react
       - name: CARTO for deck.gl

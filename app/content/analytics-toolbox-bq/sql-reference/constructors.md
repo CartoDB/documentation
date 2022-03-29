@@ -23,7 +23,7 @@ Takes a line and returns a curved version by applying a Bezier spline algorithm.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.constructors.ST_BEZIERSPLINE(ST_GEOGFROMTEXT("LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)"), 10000, 0.9);
+SELECT `carto-os`.constructors.ST_BEZIERSPLINE(ST_GEOGFROMTEXT("LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)"), 10000, 0.9);
 -- LINESTRING(-76.091308 18.427501, -76.0916216712943 ... 
 ```
 
@@ -49,7 +49,7 @@ Takes a Point and calculates the ellipse polygon given two semi-axes expressed i
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.constructors.ST_MAKEELLIPSE(ST_GEOGPOINT(-73.9385,40.6643), 5, 3, -30, "miles", 80);
+SELECT `carto-os`.constructors.ST_MAKEELLIPSE(ST_GEOGPOINT(-73.9385,40.6643), 5, 3, -30, "miles", 80);
 -- POLYGON((-73.8558575786687 40.7004828957859 ... 
 ```
 
@@ -77,7 +77,7 @@ Creates a rectangular Polygon from the minimum and maximum values for X and Y.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.constructors.ST_MAKEENVELOPE(0,0,1,1);
+SELECT `carto-os`.constructors.ST_MAKEENVELOPE(0,0,1,1);
 -- POLYGON((1 0, 1 1, 0 1, 0 0, 1 0)) 
 ```
 
@@ -103,7 +103,7 @@ Returns the boundary polygon of a tile given its zoom level and its X and Y indi
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.constructors.ST_TILEENVELOPE(10,384,368);
+SELECT `carto-os`.constructors.ST_TILEENVELOPE(10,384,368);
 -- POLYGON((-45 45.089035564831, -45 44.840290651398, -44.82421875 44.840290651398, -44.6484375 44.840290651398, -44.6484375 45.089035564831, -44.82421875 45.089035564831, -45 45.089035564831))
 ```
 
@@ -126,6 +126,6 @@ Returns the current version of the constructors module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-os.constructors.VERSION();
+SELECT `carto-os`.constructors.VERSION();
 -- 1.1.0
 ```

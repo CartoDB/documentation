@@ -23,8 +23,8 @@ Generates a point aggregation tileset.
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `0`. A `NUMBER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
-|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
-|`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
+|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_min will be used). When provided, if its value is greater than `zoom_min`, it will take precedence and be used as the actual minimum.|
+|`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). When provided, if its value is lower than `zoom_max`, it will be taken as the real maximum zoom level.|
 |`target_partitions`| Default: `4000`. Max: `4000`. A `NUMBER` that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
 |`target_tilestats`| Default: `true`. A `BOOLEAN` to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:<br/><ul><li>Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).</li><li>String / Boolean: List of the top 10 most common values and their count.</li></ul>For aggregation tilesets, these statistics refer to the cells at the maximum zoom generated.|
 |`tile_extent`| Default: `4096`. A `NUMBER` defining the extent of the tile in integer coordinates as defined by the MVT spec.
@@ -44,7 +44,7 @@ Generates a point aggregation tileset.
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_POINT_AGGREGATION_TILESET(
+CALL `carto-un`.tiler.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
     SELECT ST_CENTROID(geometry) as geom
     FROM `bigquery-public-data.geo_openstreetmap.planet_features`
@@ -124,8 +124,8 @@ To avoid issues in the process when building the queries that will be executed i
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
-|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_miin will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
-|`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
+|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_min will be used). When provided, if its value is greater than `zoom_min`, it will take precedence and be used as the actual minimum.|
+|`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). When provided, if its value is lower than `zoom_max`, it will be taken as the real maximum zoom level.|
 |`target_partitions`| Default: `4000`. Max: `4000`. A `NUMBER` that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
 |`target_tilestats`| Default: `true`. A `BOOLEAN` to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:<br/><ul><li>Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).</li><li>String / Boolean: List of the top 10 most common values and their count.</li></ul>In Simple Tilesets, these statistics are based on the source data.|
 |`tile_extent`| Default: `4096`. A `NUMBER` defining the extent of the tile in integer coordinates as defined by the MVT spec.
@@ -147,7 +147,7 @@ If `drop_fraction_as_needed` is used, a `fraction_dropped_per_zoom` property wil
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_SIMPLE_TILESET(
+CALL `carto-un`.tiler.CREATE_SIMPLE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -245,14 +245,16 @@ Any option left as `NULL` will take its default value. This also applies for geo
 A `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level as a result of applying the `drop_fraction_as_needed` strategy. Please bear in mind that the exact percentages can be up to 5% higher. 
 {{%/ bannerNote %}}
 
-
+{{% bannerNote type="note" title="warning"%}}
+It should be taken into account that `CREATE_TILESET` will not be executed for any level that reaches more than 10 millions tiles. This threshold is set in order to avoid some BigQuery limitations. This could occur if the input dataset is very sparse or `zoom_max` is quite large. 
+{{%/ bannerNote %}}
 
 {{% customSelector %}}
 **Examples**
 {{%/ customSelector %}}
 
 ```sql
-CALL carto-st.tiler.CREATE_TILESET(
+CALL `carto-un`.tiler.CREATE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -266,7 +268,7 @@ CALL carto-st.tiler.CREATE_TILESET(
 If any of the options introduced above are required, the remaining fields should also be provided or set to `NULL`. Here is an example of a valid structure for the `options` parameter (the field alias can be ignored):
 
 ```sql
-CALL carto-st.tiler.CREATE_TILESET(
+CALL `carto-un`.tiler.CREATE_TILESET(
   R'''(
     SELECT geom, type
     FROM `carto-do-public-data.natural_earth.geography_glo_roads_410`
@@ -295,6 +297,10 @@ CALL carto-st.tiler.CREATE_TILESET(
 );
 ```
 
+{{% bannerNote type="note" title="warning"%}}
+In case of `source_table` is set as a query, it should be taken into account that (CTEs)[https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte] are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
+{{%/ bannerNote %}}
+
 ### VERSION
 
 {{% bannerNote type="code" %}}
@@ -314,6 +320,6 @@ Returns the current version of the tiler module.
 {{%/ customSelector %}}
 
 ```sql
-SELECT carto-st.tiler.VERSION();
--- 1.12.2
+SELECT `carto-un`.tiler.VERSION();
+-- 1.12.4
 ```

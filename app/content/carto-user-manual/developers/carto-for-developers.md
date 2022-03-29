@@ -1,6 +1,6 @@
 ## CARTO for developers
 
-The CARTO Workspace has been designed to make the development of web-based spatial applications as easy as possible. To achieve this, the *Developers* section provides access to a complete set of app development tools that includes APIs, SDKs, development frameworks, and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
+The CARTO Workspace has been designed to make the development of web-based spatial applications as easy as possible. To achieve this, the Developers section provides access to a complete set of app development tools that includes APIs, SDKs, development frameworks, and database connectors to simplify the analysis of massive spatial datasets and the development of powerful Location Intelligence applications.
 
 The developer toolkit includes industry-leading visualization, mapping, and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences for desktop and mobile.
 
@@ -106,7 +106,7 @@ In the *Built applications* section of the Workspace, you will see the list of y
 
 ![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
-You can access the quick actions menu to manafe your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete. You can also copy the application ID by hovering your mouse over and clicking on it.
+If you are the owner of the application, you will have access to the quick actions menu to manage your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete. You can also copy the application ID by hovering your mouse over and clicking on it.
 
 ![Developers application actions](/img/cloud-native-workspace/developers/developers_application_actions.png)
 
@@ -122,7 +122,7 @@ In the *Built applications* section of the Workspace, you will see the list of y
 
 ![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
-You can access the quick actions menu to manage your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete.
+If you are the owner of the application, you will have access to the quick actions menu to manage your built applications by clicking on the three point icon in the top right hand corner. There are 2 options available: Edit and Delete.
 
 ![Developers application actions](/img/cloud-native-workspace/developers/developers_application_actions.png)
 
