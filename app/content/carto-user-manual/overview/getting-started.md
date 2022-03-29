@@ -291,11 +291,19 @@ You can import your data through two different methods: Local or Remote. For mor
 
 The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.
 
-Check out the following guides to learn how to find and subscribe to Data Observatory datasets:
+We strongly recommend reading through the [Terminology](https://docs.carto.com/data-observatory/overview/terminology/) to get familiar with all the components of the Data Observatory.
+
+In the following sections you will find a collection of resources where you can learn how to:
+
+* [subscribe to Data Observatory data](https://docs.carto.com/data-observatory/overview/getting-started/#data-subscriptions),
+* [access and introduce the data in your analysis workflows](https://docs.carto.com/data-observatory/overview/getting-started/#data-access-and-analysis),
+* [visualize it](https://docs.carto.com/data-observatory/overview/getting-started/#data-visualization). 
+
+<!-- Check out the following guides to learn how to find and subscribe to Data Observatory datasets:
 
 - Browsing the Spatial Data Catalog [guide](../../data-observatory/browsing-the-spatial-data-catalog)
 - Subscribing to public and premium datasets [guide](../../data-observatory/subscribing-to-public-and-premium-datasets)
-- Managing your subscriptions [guide](../../data-observatory/managing-your-subscriptions)
+- Managing your subscriptions [guide](../../data-observatory/managing-your-subscriptions) -->
 #### Add data and style your maps
 
 CARTO Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears rendered on a map. Use the following task list as a guide for some of the main features of CARTO Builder:
