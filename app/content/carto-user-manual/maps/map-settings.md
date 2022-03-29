@@ -212,13 +212,20 @@ It shows the coordinates where you click with the mouse. The coordinates will ap
 
 ### Legend
 
-Legends help you to describe your data on the map and they are an essential part of how viewers understand your published visualization. This guide describes how to add a legend to your map in CARTO Builder.
+Legends help you to describe your data on the map and they are a essential for understanding geospatial data visualizations. This guide describes how to add and configure a legend to your map in CARTO Builder.
 
 In the Legend tab of Builder, you will see the list of your current legends. If you haven’t added any layer yet, you will see the following page:
 
 ![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_a_legend.png)
 
-Once your data is added as a layer to the map, as explained in this [guide](../../maps/add-source), the legend is automatically generated and it is displayed in a fixed position at the bottom left of the map. By default, the legend is collapsed so you need to click on the layers icon to expand it.
+Once your data is added as a layer to the map, as explained in this [guide](../../maps/add-source), the legend is automatically generated and it is displayed in a fixed position at the bottom left of the map. 
+
+When choosing a style based on a property on your data (check [this section](/carto-user-manual/maps/map-styles/) for more information about it), a legend will be automatically generated based on the type of visualization:
+* Discrete color bins for categories and quantile data classifications.
+* Continuous color ramps for quantize classifications.
+* Proportional symbols for point radius. 
+
+By default, the legend is collapsed so you need to click on the layers icon to expand it.
 
 ![Map legend](/img/cloud-native-workspace/maps/map_show_layer_panel.png)
 
