@@ -36,15 +36,62 @@ From the Layers tab, go to the Sources panel and click on *Add source from...*. 
 
 ![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_an_analysis_query.png)
 
-Once the process is finished, the SQL console appears in the Builder interface, where you can type your query and then click *Run*. Please make sure to use *Fully Qualified Table* names.
+Once the process is finished, the SQL Editor appears in the Builder interface, where you can type your query and then click *Run* when it is active. Please make sure to use *Fully Qualified Table* names.
 
-![Map sql console](/img/cloud-native-workspace/maps/map_sql_console.png)
+![Map sql console](/img/cloud-native-workspace/maps/map_new_sql_panel.png)
 
-In this example we are going to use a table accessible via a BigQuery connection. The BigQuery table is included in the Builder map tool as a new layer. You can add additional layers, or apply styling and analysis features.
-	
-![Map add query](/img/cloud-native-workspace/maps/map_add_query.png)
+From the SQL Editor, you can easily toggle to full screen mode, minimize and maximize or close the panel.
+
+<!-- ![Map sql console](/img/cloud-native-workspace/maps/map_sql_console.png) -->
+
+<!-- ![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_enter_full_screen.png) -->
+
+![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_enter_fullscreen.png)
+
+<!-- ![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_minimize.png) -->
+
+![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_minimizescreen.png)
+
+![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_close.png)
+
+Full screen mode allows you to easily work with long SQL queries. Once your query has already been executed, you can always restore to default screen by clicking on *Exit full screen*.
+
+![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_fullscreen.png)
+
+In this example we are going to use a table accessible via a BigQuery connection. The BigQuery table is included in the Builder map tool as a new layer. 
+
+![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_add_query.png)
+
+For BigQuery data sources, when you enter a query in the SQL Editor, a query validator (`dry-run`) verifies the query syntax and provides an estimate of the number of bytes read. 
+
+If the query is valid, then a check mark automatically appears along with the amount of data that the query will process. 
+
+![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_valid_query(bq).png)
+
+![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_add_query.png)
+
+If the query is invalid, then an exclamation point appears along with an error message (syntax error, permission issues, etc.).
+
+![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_syntax_error(bq).png)
+
+![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_sintax_error.png)
+
+{{% bannerNote title="NOTE" type="note"%}}
+Bear in mind that the `dry-run` option is only available for BigQuery data sources ([CARTO Data Warehouse](../../connections/carto-data-warehouse) and [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery))
+{{%/ bannerNote %}}
+
+When you click on *Run*, a timer will appear while the query is running informing you how long the query is taking until it's finished. 
+
+![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_running_query.png)
+
+Click on *Cancel* to stop executing the query.
+
+![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_cancel_query.png)
 
 
+
+
+<!-- ![Map add query](/img/cloud-native-workspace/maps/map_add_query.png) -->
 #### Custom queries using the Analytics Toolbox
 
 You can also use the Analytics Toolbox functions in your custom SQL queries. For example, you can perform a simple clustering using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bq/sql-reference/clustering/#st_clusterkmeans) function by running this query from your CARTO Data Warehouse connection:
