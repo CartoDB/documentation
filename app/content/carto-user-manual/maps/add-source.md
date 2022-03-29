@@ -58,10 +58,6 @@ Full screen mode allows you to easily work with long SQL queries. Once your quer
 
 ![Map sql panel full screen](/img/cloud-native-workspace/maps/map_sql_panel_fullscreen.png)
 
-<!-- In this example we are going to use a table accessible via a BigQuery connection.
-
-![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_add_query.png) -->
-
 Also note that while typing the query, a label will indicate that the SQL Editor is in edit mode.
 
 ![Map sqñ panel edited](/img/cloud-native-workspace/maps/map_sql_panel_edited.png)
@@ -117,8 +113,6 @@ Select the location and click on *Create table from query*.
 Once the process is finished, the table is included in the Builder map as a new layer. The map displays the basemap and the new layer on top. You can add additional layers, or start applying styling and analysis features.
 
 ![Map sql panel table from query created](/img/cloud-native-workspace/maps/map_sql_table_from_query_created.png)
-
-<!-- ![Map add query](/img/cloud-native-workspace/maps/map_add_query.png) -->
 #### Custom queries using the Analytics Toolbox
 
 You can also use the Analytics Toolbox functions in your custom SQL queries. For example, you can perform a simple clustering using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bq/sql-reference/clustering/#st_clusterkmeans) function by running this query from your CARTO Data Warehouse connection:
