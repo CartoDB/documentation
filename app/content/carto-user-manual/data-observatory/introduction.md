@@ -9,7 +9,7 @@ The Data Observatory section of the Workspace allows users to find the best data
 From the Spatial Data Catalog, you can:
 * [Explore the catalog](/data-observatory/guides/accessing-and-browsing-the-spatial-data-catalog/) to find the data that best suits your needs.
 * [Access free samples](/data-observatory/guides/accessing-free-data-samples/) of most public and premium datasets.
-* [Subscribe to any of our public datasets](data-observatory/guides/subscribing-to-public-and-premium-datasets/#public-datasets) or [submit requests](/data-observatory/guides/subscribing-to-public-and-premium-datasets/#premium-datasets) to start the licensing process of premium datasets from our vetted data sources.
+* [Subscribe to any of our public datasets](/data-observatory/guides/subscribing-to-public-and-premium-datasets/#public-datasets) or [submit requests](/data-observatory/guides/subscribing-to-public-and-premium-datasets/#premium-datasets) to start the licensing process of premium datasets from our vetted data sources.
 
 ### Your subscriptions and samples
 
