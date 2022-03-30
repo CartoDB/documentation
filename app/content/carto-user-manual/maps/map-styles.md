@@ -124,8 +124,3 @@ In the example, we can now explore as a 3D map those polygons with a higher popu
 You can choose either a Additive, Normal, or Substractive.
 
 ![Map style layer blending](/img/cloud-native-workspace/maps/map_layer_blending.png)
-### Legend
-
-Apply a map legend to show symbols and text that describe your data in CARTO Builder.
-
-A legend displays symbols and text about your data in a fixed position on your map, and is an essential part of how viewers understand your published visualization.
