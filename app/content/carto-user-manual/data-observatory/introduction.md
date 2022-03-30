@@ -8,8 +8,8 @@ The Data Observatory section of the Workspace allows users to find the best data
 
 From the Spatial Data Catalog, you can:
 * [Explore the catalog](/data-observatory/guides/accessing-and-browsing-the-spatial-data-catalog/) to find the data that best suits your needs.
-* [Access free samples](/data-observatory/accessing-free-sample-of-data/) of most public and premium datasets.
-* [Subscribe to any of our public datasets](data-observatory/subscribing-to-public-and-premium-datasets/#public-datasets) or [submit requests](/data-observatory/subscribing-to-public-and-premium-datasets/#premium-datasets) to start the licensing process of premium datasets from our vetted data sources.
+* [Access free samples](/data-observatory/guides/accessing-free-data-samples/) of most public and premium datasets.
+* [Subscribe to any of our public datasets](data-observatory/guides/subscribing-to-public-and-premium-datasets/#public-datasets) or [submit requests](/data-observatory/guides/subscribing-to-public-and-premium-datasets/#premium-datasets) to start the licensing process of premium datasets from our vetted data sources.
 
 ### Your subscriptions and samples
 
@@ -19,7 +19,7 @@ You subscriptions and samples can be accessed through the Data Observatory secti
 
 From there, you can:
 * [Manage your subscriptions](/data-observatory/guides/managing-your-subscriptions) and samples.
-* [Access your subscriptions from your own data warehouse](/data-observatory/accessing-your-subscriptions-from-your-data-warehouse).
+* [Access your subscriptions from your own data warehouse](/data-observatory/guides/accessing-your-subscriptions-from-your-data-warehouse).
 
 {{% bannerNote type="tip" title="TIP" %}}
 To learn more about the Data Observatory, please visit its dedicated [documentation page](/data-observatory).
