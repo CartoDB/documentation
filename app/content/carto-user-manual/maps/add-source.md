@@ -141,7 +141,6 @@ To learn more, please visit the Documentation page of the CARTO Analytics Toolbo
 ### Add source from a local or remote file
 
 CARTO allows to create geospatial tables in an organization's CARTO Datawarehouse by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
-
 #### Supported formats
 Currently, the import of CSV, KML, KMZ, TAB, GeoJSON, GeoPackage and Shapefiles (in a zip file) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
 
@@ -211,10 +210,25 @@ Once the data has been imported, the dataset is included in the Builder map tool
 
 ![Map add source import rivers](/img/cloud-native-workspace/maps/map_import_rivers.png)
 
+### Add source from Data Observatory
 
+From the Layers tab, go to the Sources panel and click on *Add source from…*. Go to the "Data Observatory" tab. A new dialog screen will open allowing you to select your subscriptions or samples from one of your connections. Select a subscription or a sample and click on *Add source*.
 
+![Add source select a connection bq](/img/cloud-native-workspace/maps/map_add_source_from_do_select_a_connection.png)
 
+![Add source select a table](/img/cloud-native-workspace/maps/map_add_source_from_do_tree.png)
 
+{{% bannerNote title="NOTE" type="note"%}}
+Bear in mind that **subscriptions** are only available from CARTO Data Warehouse, BigQuery and Snowflake connections, while **samples** are only available from CARTO Data Warehouse and BigQuery connections.
+{{%/ bannerNote %}}
+
+If you try to visualize a sample from a unavailable connection, a message will appear warning you that this sample is not available from that connection.
+
+![Add source select a table](/img/cloud-native-workspace/maps/map_add_source_from_do_sample_warning_sf.png)
+
+To learn more about how to visualize your Data Observatory datasets in Builder, please visit its dedicated [documentation page](/data-observatory/guides/visualizing-data-observatory-datasets/#visualizing-data-observatory-datasets).
+
+<!-- Read our [documentation] if you want to learn about the specific permissions CARTO requires. -->
 
 
 

@@ -16,6 +16,7 @@ cascade:
     - title: "Guides"  
       folder:
         - title: "Accessing and browsing the Spatial Data Catalog"
+        - title: "Accessing free data samples"
         - title: "Subscribing to public and premium datasets"
         - title: "Managing your subscriptions"
         - title: "Accessing your subscriptions from your data warehouse"

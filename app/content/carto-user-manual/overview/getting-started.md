@@ -220,14 +220,6 @@ The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
 	
 ![Map created](/img/cloud-native-workspace/maps/map_created.png)
-
-CARTO Builder contains many features that guide you through the process of creating an interactive map, changing the styling, and customising how your data appears and behaves in a map. Use the following task list as a guide to some of the main features of CARTO Builder:
-
-- Add your source [guide](../../maps/add-source)
-- View your data table [guide](../../maps/view-data-table)
-- Configure your map settings [guide](../../maps/map-settings)
-- Style your maps [guide](../../maps/map-styles)
-
 #### Explore your spatial data
 
 The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven’t connected your own data warehouse yet, you will see the provisioned CARTO data warehouse connection with access to some demo data:
@@ -299,6 +291,19 @@ You can import your data through two different methods: Local or Remote. For mor
 
 The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.
 
+We strongly recommend reading through the [Terminology](https://docs.carto.com/data-observatory/overview/terminology/) to get familiar with all the components of the Data Observatory.
+
+In the following sections you will find a collection of resources where you can learn how to:
+
+* [subscribe to Data Observatory data](https://docs.carto.com/data-observatory/overview/getting-started/#data-subscriptions),
+* [access and introduce the data in your analysis workflows](https://docs.carto.com/data-observatory/overview/getting-started/#data-access-and-analysis),
+* [visualize it](https://docs.carto.com/data-observatory/overview/getting-started/#data-visualization). 
+
+<!-- Check out the following guides to learn how to find and subscribe to Data Observatory datasets:
+
+- Browsing the Spatial Data Catalog [guide](../../data-observatory/browsing-the-spatial-data-catalog)
+- Subscribing to public and premium datasets [guide](../../data-observatory/subscribing-to-public-and-premium-datasets)
+- Managing your subscriptions [guide](../../data-observatory/managing-your-subscriptions) -->
 #### Add data and style your maps
 
 CARTO Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears rendered on a map. Use the following task list as a guide for some of the main features of CARTO Builder:
