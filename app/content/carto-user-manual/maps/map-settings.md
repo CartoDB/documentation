@@ -210,6 +210,52 @@ It shows the coordinates where you click with the mouse. The coordinates will ap
 
 ![Map interactions coordinates](/img/cloud-native-workspace/maps/interactions_coordinates.png)
 
+### Legend
+
+Legends help you to describe your data on the map and they are a essential for understanding geospatial data visualizations. This guide describes how to add and configure a legend to your map in CARTO Builder.
+
+In the Legend tab of Builder, you will see the list of your current legends. If you haven’t added any layer yet, you will see the following page:
+
+![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_a_legend.png)
+
+Once your data is added as a layer to the map, as explained in this [guide](../../maps/add-source), the legend is automatically generated and it is displayed in a fixed position at the bottom left of the map. 
+
+When choosing a style based on a property on your data (check [this section](/carto-user-manual/maps/map-styles/) for more information about it), a legend will be automatically generated based on the type of visualization:
+* Discrete color bins for categories and quantile data classifications.
+* Continuous color ramps for quantize classifications.
+* Proportional symbols for point radius. 
+
+By default, the legend is collapsed so you need to click on the layers icon to expand it.
+
+![Map legend](/img/cloud-native-workspace/maps/map_show_layer_panel.png)
+
+![Map legend](/img/cloud-native-workspace/maps/map_layer_added_legend.png)
+
+From the Legend tab, you can manage the visibility of the legends and change the text of the labels. Click on *Remove from legend* to not show the legend of a specific layer or click on the default layer name to change the text label.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_remove_from_leyend.png)
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_change_text_label.png)
+
+You can always revert to the default name by clicking on *Revert overrides*.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_revert_overrides.png)
+
+From "More legend options" you can manage the visibility of each layer and how the layers panel is displayed on the map. By activating "Layer selector", you will be able to control the visibility of layers from the layer panel, and by activating "Open when loading the map", you will be able to display the layer panel expanded by default when loading the map.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_moreoptions_activated.png)
+
+You can also select different style options from the Layer style panel to enable different types of legends that can be managed through the Legend tab.
+ 
+In this example, we style the layer based on the column `store_type`. The legend shows a symbol and a label per category that we can edit from the Legend Tab.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_style_by_color.png)
+
+You can also add other properties to the legend, such as the radius of the point based on a column. In this example, we show the radius of the stores based on the column `revenue`.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_style_by_color_radius.png)
+
+<!-- You can also select different style options in Builder (from the Layer style panel) to enable different types of legends that can be managed through the Legend tab. -->
 ### Basemaps
 
 Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.

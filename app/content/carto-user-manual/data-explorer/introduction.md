@@ -11,3 +11,5 @@ From *Connections* panel, select a connection to view content (database/project(
 From *Data Observatory* panel at the bottom of the page, you can access the different Data Observatory datasets you subscribed to. If you haven’t subscribed to any dataset yet, you will see the following page:
 
 ![Data Explorer no subscriptions](/img/cloud-native-workspace/data-explorer/de_nosubscriptions.png)
+
+This dataset is as any other table in the Data Explorer. Meaning, that you can access the map and data preview of the table as well as creating a map in Builder. 

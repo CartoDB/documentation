@@ -83,6 +83,7 @@ cascade:
         - title: "Exporting data"
         - title: "Map settings"
         - title: "Map styles"
+        - title: "Feature selection tool"
         - title: "Publishing and sharing maps"
         - title: "Duplicating maps"
         - title: "Performance considerations"
@@ -95,9 +96,7 @@ cascade:
         - title: "Importing data"
     - title: "Data Observatory"
       folder:
-        - title: "Browsing the Spatial Data Catalog"
-        #- title: "Subscribing to public and premium datasets"
-        #- title: "Managing your subscriptions"
+        - title: "Introduction"
     - title: "Connections" 
       folder:
         - title: "Introduction"
