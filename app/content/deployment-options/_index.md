@@ -16,10 +16,12 @@ cascade:
     - title: "SaaS"
       folder:
         - title: "Overview"
-    - title: "Custom Deployment"
+    - title: "Self-Hosted"
       folder:
         - title: "Overview"
         - title: "Installation"
-        - title: "Operations"     
-        - title: "Release Notes"
+        # - title: "Operations"     
+        # - title: "Release Notes"
+
+        ## commented out the above to hide from the menu, but the content it's still available via URL
 ---
