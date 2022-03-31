@@ -1,45 +1,52 @@
 ## Geocoding data
 
-To geocode your data, select a connection and click on a specific object (database/project(s), schemas/datasets and tables) from the collapsible tree. Once your table is selected, you can geocode your data by clicking on the *Geocode data* button at the top right of the screen. 
+Two types of geocoding are available: address-level geocoding, which transforms a given address into its corresponding point location, and latitude/longitude geocoding, which converts a pair of latitude and longitude coordinates into a point geometry.
+
+{{% bannerNote title="note" type="note" %}}
+Address level geocoding is currently available for Snowflake and Redshift connections, whereas lat/lon geocoding is also available for BigQuery. PostgreSQL and Databricks support is coming soon.
+{{%/ bannerNote %}}
+
+To geocode your data, select a connection and click on the table you would like to geocode from the collapsible tree. Then, click on the *Geocode data* button at the top right of the screen. Please note that this option will only be available if your table does not have a geography column.
 
 ![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_data_button.png)
 
-{{% bannerNote title="ONLY FOR TABLES WITHOUT geographic coordinates" type="tip" %}}
-Please note that this option will only be available for those tables that require assigning longitude and latitude values to street addresses or converting an address description (eg: the name of a city or a postal code) into geographic coordinates that CARTO can visualize.
-{{%/ bannerNote %}}
-
-<!-- screenshot needed -->
-
-A new dialog will open so you can geocode your data from different geocoding types: Address or Latitude/longitude.
+A new dialog will open for you to choose whether to geocode your table by address or by latitude/longitude.
 
 ![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_latitude_longitude(bq).png)
 
-{{% bannerNote title="Note" type="note" %}}
-Please note that Geocode table from Data Explorer is only available for BigQuery (Latitude/longitude), Snowflake and Redshift; PostgreSQL and Databricks availability is coming soon.
-{{%/ bannerNote %}}
 
-![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address(bq).png)
+### By address
 
-### Geocode table by Address
+To geocode your data, select geocode by *Address* and fill in the options:
 
-To geocode your data, select Geocode by *Address*, select an `Address`column and click on *Continue*. You can optionally select a country for more accurate geocoding and the `geom` column name.
+* select the column of your table that contains the addresses to geocode.
+* optionally, select the country where your addresses are located. This is recommended as it generally improves the geocoding results. 
+* optionally, specify the name of the geometry column (`geom` by default) where the result of the geocoding will be stored. 
 
 ![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address(sf).png)
 
-A new dialog will appear allowing you to confirm that you want to geocode your data. Click the *Geocode* button to confirm or click *Cancel* if you don't want the changes to be applied.
+Then, click on *Continue*. A new dialog will appear allowing you to confirm your selection. Click on the *Geocode* button to confirm or click *Cancel* to abort the process.
 
 ![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address_ok(sf).png)
 
-Two new columns will be added to your table: a `geometry` column and `metadata` column with additional information regarding the geocoding results.
-### Geocode table by Latitude / Longitude
+As a result of the geocoding process, two new columns will be added to your existing table: a geometry column with the locations of your addresses, and a `carto_geocode_metadata` column with additional information regarding the geocoding results.
 
-To geocode your data, select Geocode by Latitude/longitude, select the `latitude` and `longitude` columns and click on *Continue*. You can optionally select a the `geom` column name.
+{{% bannerNote title="warning" type="warning" %}}
+Address-level geocoding requires the advanced Analytics Toolbox for [Snowflake](/analytics-toolbox-snowflake)/[Redshift](/analytics-toolbox-redshift) to be available for your connection. Please get in touch at support@carto.com and we will guide you through the installation process.
+{{%/ bannerNote %}}
+
+### By latitude / longitude
+
+To geocode your data, select geocode by *Address* and fill in the options:
+
+* select the columns of your table where the latitude and longitude coordinates are stored. 
+* optionally, specify the name of the geometry column (`geom` by default) where the result of the geocoding will be stored.
 
 ![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_latitude_longitude(bq).png)
 
-A new dialog will appear allowing you to confirm that you want to geocode your data. Click the Geocode button to confirm or click Cancel if you don’t want the changes to be applied. 
+Then, click on *Continue*. A new dialog will appear allowing you to confirm your selection. Click on the *Geocode* button to confirm or click *Cancel* to abort the process.
 
 ![Data Explorer geocode data](/img/cloud-native-workspace/data-explorer/de_geocode_address_ok(sf).png)
 
-A new `geometry`column will be added to your existing table.
+As a result of the geocoding process, a new geometry column will be added to your existing table containing the points corresponding to your latitude/longitude coordinates.
 
