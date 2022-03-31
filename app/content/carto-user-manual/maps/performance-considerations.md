@@ -10,8 +10,8 @@ The limits for this mode depend on the type of source and the data warehouse use
 
 |   |**BigQuery**|**Redshift**|**Snowflake**|**Databricks**|**PostgreSQL**|
 |---|---|---|---|---|---|
-|**Tables**|50MB|200k rows|200k rows|200k rows|200k rows|
-|**SQL Queries**|50MB|200k rows|200k rows|200k rows|200k rows|
+|**Tables**|30MB|200k rows|200k rows|200k rows|200k rows|
+|**SQL Queries**|30MB|200k rows|200k rows|200k rows|200k rows|
 
 #### Tips for small datasets performance
 
