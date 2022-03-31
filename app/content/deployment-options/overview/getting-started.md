@@ -2,7 +2,9 @@
 
 CARTO is a cloud native [Location Intelligence platform](https://carto.com/platform/), where Data Scientists, Analysts, and Developers create competitive advantage, optimize business processes, and predict future outcomes by using CARTO’s technology, data, and services.
 
-## Get an account
+<!--TO DO: UPDATE WITH CURRENT PLANS -->
+
+<!-- ## Get an account
 
 ### Free accounts
 
@@ -47,8 +49,8 @@ Enterprise accounts can be provisioned in the [SaaS platform](../../saas/overvie
 
 If you’re looking to get a quote for an enterprise plan, then you can drop us a message [here](https://carto.com/contact/). 
 
-<!-- ### Cloud Marketplaces
+### Cloud Marketplaces
 
 #### GCP
 
-#### AWS -->
+#### AWS --> 
