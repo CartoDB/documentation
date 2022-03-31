@@ -34,6 +34,7 @@ cascade:
         - title: "Creating a map from your data"  
         - title: "Creating a tileset from your data"  
         - title: "Importing data"
+        - title: "Geocoding data"
     - title: "Data Observatory"
       folder:
         - title: "Introduction"
