@@ -196,19 +196,31 @@ You can also sort the data in ascending or descending order. To activate the sor
 
 ### Interactions
 
-![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
+This guide describes how to add interactions to your map in CARTO Builder.
+
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_by_default.png)
 
 **Tooltip**
 
-The tooltip is an info window that appears when you hover your mouse over a map feature. A tooltip appears where the mouse cursor is located on the map. You can customize the content of the tooltip by defining the source columns and the formatting.
+The tooltip is an info window that appears when you hover your mouse over a map feature. You can customize the content of the tooltip by defining the source columns and the formatting. By default the tooltip is activated. 
 
-![Map interactions tooltip](/img/cloud-native-workspace/maps/interactions_tooltip.png)
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip.png)
+
+The comparison mode helps you to compare numeric values between two different features on the map through the tooltips. The results can be compared in absolute or relative values. You can change it from the comparison type option.
+
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip_comparison_type.png)
+
+Activate the comparison mode and then click on a map feature. The tooltip will stays fixed. Then, hover the mouse over another feature without clicking it.
+
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip_comparison_mode.png)
+
+In this example, the tooltip on the right (Primary) remains fixed (until you click on another area of the map).The tooltip on the left is the feature you want to compare with. The number in green is the difference between both parameters. In this case, the column `cartodb_id` in absolute values.
 
 **Coordinates**
 
 It shows the coordinates where you click with the mouse. The coordinates will appear in the tooltip, so you need to activate the tooltip first.
 
-![Map interactions coordinates](/img/cloud-native-workspace/maps/interactions_coordinates.png)
+![Map interactions coordinates](/img/cloud-native-workspace/maps/map_interactions_coordinates.png)
 
 ### Legend
 
