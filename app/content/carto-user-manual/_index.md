@@ -23,6 +23,7 @@ cascade:
         - title: "Exporting data"
         - title: "Map settings"
         - title: "Map styles"
+        - title: "Map view modes"
         - title: "Feature selection tool"
         - title: "Publishing and sharing maps"
         - title: "Duplicating maps"
