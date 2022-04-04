@@ -6,7 +6,7 @@ To import your data, go to Data Explorer section, select *Connections* panel and
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
 
-A new dialog will open allowing you to import your data from your computer into the available connections.
+A new dialog will open allowing you to import your data into the available connections.
 
 ![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file.png)
 
@@ -16,7 +16,7 @@ Once you have selected your file, click on *Continue*:
 
 ![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_select_file_continue.png)
 
-The next screen will allow you to set the location and name of the output table.
+The next screen will allow you to set the location and name of the output table. Once you have completed this configuration, click on *Save here*.
 
 ![Data Explorer import select file local continue](/img/cloud-native-workspace/data-explorer/de_import_destination_connection.png)
 
@@ -44,9 +44,9 @@ When an error occurs, you can click on *Read more* to get more information about
 
 Once the your data has been imported, it will be available as a table on your selected folder and you will have access the map and data preview as well as creating map in Builder.
 
-![Data Explorer import populated places](/img/cloud-native-workspace/data-explorer/de_import_populated_places.png)
-
-<!-- new screenshot needed -->
+<!-- ![Data Explorer import populated places](/img/cloud-native-workspace/data-explorer/de_import_populated_places.png)
+ -->
+![Data Explorer import populated places](/img/cloud-native-workspace/data-explorer/de_mappreview_populated_places.png)
 
 You can also overwrite existing files. When you import a file with an existing name, a message will appear warning you that the table already exists in the destination folder. Click on *Save here* to continue and overwrite it or click on *Cancel* if you don't want the changes to be applied.
 
