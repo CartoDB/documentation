@@ -4,7 +4,7 @@ This guide describes how to switch between different map view modes in Builder. 
 
 ![Map view modes normal view](/img/cloud-native-workspace/maps/map_normal_view.png)
 
-To switch to 3D view, click on *3D view* from the "Map view" options.
+To switch to 3D map view, click on *3D view* from the "Map view" options.
 
 ![Map 3D map view](/img/cloud-native-workspace/maps/map_3D_view.png)
 
@@ -12,7 +12,7 @@ Also, another cool functionality of CARTO Builder is the ability to have a dual 
 
 ![Map dual map view](/img/cloud-native-workspace/maps/map_dual_view.png)
 
-You can always back to the single map configuration by clicking on *Exit dual map view* and selecting the panel you want to close.
+You can always back to the single map configuration by clicking on *Exit dual map view* and selecting the panel you want to close, left or right.
 
 ![Map dual view exit](/img/cloud-native-workspace/maps/map_dual_view_exit.png)
 
