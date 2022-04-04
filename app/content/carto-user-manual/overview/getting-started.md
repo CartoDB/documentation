@@ -275,15 +275,15 @@ Please note that if you edit the SQL query and go back to the form, a message ap
 ![Data Explorer create tileset disable sql editor](/img/cloud-native-workspace/data-explorer/de_disable_sql_editor.png)
 #### Import data
 
-The Data Explorer section enables you to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse) from your imported data and used them in Builder and external applications to create maps. 
+CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
 To import your data, go to Data Explorer section, select  *Connections* panel and click on *Import data* button on the top left:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
 
-A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
+A new dialog will open allowing you to import your data into the available connections. Check [suppported formats](../../data-explorer/importing-data/#supported-formats) guide for more details.
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file.png)
 
 You can import your data through two different methods: Local or Remote. For more details, check [Importing data](../../data-explorer/importing-data) guide.
 
