@@ -66,6 +66,7 @@ Action to add a **source** to the store.
 | props.type        | <code>string</code> | Source type. Check available types [here](/deck-gl/reference#type-string)  |
 | props.credentials | <code>string</code> |  Credentials for accessing the source                                    |
 | props.connection  | <code>string</code> | Connection name. Used only for CARTO 3.  |
+| props.filtersLogicalOperator | <code>FiltersLogicalOperators</code> | Logical operation to use for combining filters. Can take the values `FiltersLogicalOperators.AND` and `FiltersLogicalOperators.OR`. Default value is `AND`. _Note: this property is only available beginning with v1.3_
 {{%/ tableWrapper %}}
 
 - **Example**:
@@ -79,6 +80,7 @@ Action to add a **source** to the store.
     type: MAP_TYPES.QUERY,
     connection: 'bqconn',
     data: "SELECT * FROM my_table",
+    filtersLogicalOperator: FiltersLogicalOperators.OR
   };
 
   const action = addSource(source);
@@ -239,14 +241,15 @@ Action to add a filter on a given `source` by a `column`. This is done internall
 - **Input**:
 
 {{% tableWrapper tab="true" %}}
-| Param         | Type                    | Description                                                               |
-| ------------- | ----------------------- | ------------------------------------------------------------------------- |
-| props         | <code>Object</code>     | { id, column, type, values, [owner]}                                      |
-| props.id      | <code>string</code>     | sourceId of the source to apply the filter on                             |
-| props.column  | <code>string</code>     | column from the source to use by the filter                               |
-| props.type    | <code>FilterType</code> | 'in' or 'between'                                                         |
-| props.values  | <code>array</code>      | Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between') |
-| [props.owner] | <code>FilterType</code> | (optional) id of the widget triggering the filter (to be excluded)        |
+| Param          | Type                    | Description                                                                |
+| -------------- | ----------------------- | -------------------------------------------------------------------------- |
+| props          | <code>Object</code>     | { id, column, type, values, [owner], [params]}                             |
+| props.id       | <code>string</code>     | Identifier of the source to apply the filter on                            |
+| props.column   | <code>string</code>     | Column from the source to use by the filter                                |
+| props.type     | <code>FilterType</code> | Type of filter                                                             |
+| props.values   | <code>array</code>      | Values for the filter (eg: ['a', 'b'] for 'in' or [10, 20] for 'between')  |
+| [props.owner]  | <code>string</code>     | (optional) Identifier of the widget triggering the filter (to be excluded) |
+| [props.params] | <code>object</code>     | (optional) Additional filter parameters (depending on filter type)         |
 {{%/ tableWrapper %}}
 
 - **Example**:

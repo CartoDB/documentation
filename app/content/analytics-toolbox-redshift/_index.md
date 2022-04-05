@@ -2,7 +2,7 @@
 title: Analytics Toolbox for Redshift
 description: "Unlock Spatial Analytics in Redshift"
 icon: "/img/icons/redshift-analytics-toolbox.png"
-repoUrl: https://github.com/CartoDB/carto-spatial-extension
+repoUrl: https://github.com/CartoDB/analytics-toolbox-core
 
 url: analytics-toolbox-redshift
 indexPage: "overview/getting-started.md"
@@ -15,6 +15,7 @@ cascade:
         - title: "Getting started"
         - title: "Getting access"
         - title: "Spatial indexes"
+        - title: "Tilesets"
     # - title: "Guides"
     #   folder:
     #     - title: "Running queries from Builder"
@@ -31,11 +32,13 @@ cascade:
         - title: "Overview"
         - title: "clustering"
         - title: "constructors"
+        - title: "lds"
         - title: "placekey"
         - title: "processing"
         - title: "quadkey"
         - title: "random"
         - title: "s2"
+        - title: "tiler"
         - title: "transformations"
-    # - title: "Release notes" 
+    - title: "Release notes"
 ---

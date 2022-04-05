@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "proportional-symbol-map-carto2"
+  - title: CARTO 3
     url: "proportional-symbol-map"
     active: true
-  - title: CARTO 3
-    url: "proportional-symbol-map-carto3"
 ---
 ## Proportional Symbol Map

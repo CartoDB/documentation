@@ -1,5 +1,23 @@
 ## Release notes
 
+### March 21, 2022
+
+#### Module transformations
+
+Changed
+- ST_CONCAVEHULL now allows arrays with one/two points as input.
+
+#### Module retail
+
+Feature
+- Add COMMERCIAL_HOTSPOTS procedure.
+
+#### Module statistics
+
+Feature
+- Add SMOOTHING_MRF_H3 procedure.
+- Add SMOOTHING_MRF_QUADKEY procedure.
+
 ### February 16, 2022
 
 #### Module statistics

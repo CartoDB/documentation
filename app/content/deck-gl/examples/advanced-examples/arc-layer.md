@@ -8,10 +8,10 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "arc-layer-carto2"
+  - title: CARTO 3
     url: "arc-layer"
     active: true
-  - title: CARTO 3
-    url: "arc-layer-carto3"
 ---
 
 ## Arc Layer

@@ -62,7 +62,7 @@ You can access the quick actions menu to manage your widgets by clicking on the 
 
 You can also manage your widgets by clicking on the “three dots” icon in the top-right corner of the widget. There are two options available: Widget options and Delete widget.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickmenu_widget.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_quick_menu_widget.png)
 
 Click on the top-right icon to show or hide the list of your widgets from the map:
 
@@ -87,8 +87,7 @@ At this moment, there are four types of widgets available to customize your visu
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
 - **Time-Series**: Shows the frequency distribution aggregated by a fixed temporal period (Days, Weeks, Months or Years). It also allows to create animated maps.
-
-
+- **Table Widget**: It shows tabular information of the features in the viewport.
 #### Formula Widget
 
 From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze. 
@@ -178,22 +177,97 @@ You can also filter your data within a given range. The selected range is distri
 This enables you to click and drag the start and end range of selected data. In this example, we add a second widget to display the number of earthquakes filtered in each range.
 
 ![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_and_formula.png)
+
+#### Table Widget
+
+From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select all columns. 
+
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table.png)
+
+From the widget, you can select the number of rows per page and use pagination to visualize the rest of the results.
+
+![Map widgets table rows and pagination](/img/cloud-native-workspace/maps/map_widget_table_rows_and_pagination.png)
+
+You can also sort the data in ascending or descending order. To activate the sorting option, hover the mouse over the columns and select the ascending (up arrow) or descending (down arrow) option.
+
+![Map widgets table ascending order](/img/cloud-native-workspace/maps/map_widget_table_ascending_order.png)
+
+![Map widgets table descending order](/img/cloud-native-workspace/maps/map_widget_table_descending_order.png)
+
 ### Interactions
 
-![Map interactions](/img/cloud-native-workspace/maps/map_interactions.png)
+This guide describes how to add interactions to your map in CARTO Builder.
+
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_by_default.png)
 
 **Tooltip**
 
-The tooltip is an info window that appears when you hover your mouse over a map feature. A tooltip appears where the mouse cursor is located on the map. You can customize the content of the tooltip by defining the source columns and the formatting.
+The tooltip is an info window that appears when you hover your mouse over a map feature. You can customize the content of the tooltip by defining the source columns and the formatting. By default the tooltip is activated. 
 
-![Map interactions tooltip](/img/cloud-native-workspace/maps/interactions_tooltip.png)
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip.png)
+
+The comparison mode helps you to compare numeric values between two different features on the map through the tooltips. The results can be compared in absolute or relative values. You can change it from the comparison type option.
+
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip_comparison_type.png)
+
+Activate the comparison mode and then click on a map feature. The tooltip will stays fixed. Then, hover the mouse over another feature without clicking it.
+
+![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip_comparison_mode.png)
+
+In this example, the tooltip on the right (Primary) remains fixed (until you click on another area of the map).The tooltip on the left is the feature you want to compare with. The number in green is the difference between both parameters. In this case, the column `cartodb_id` in absolute values.
 
 **Coordinates**
 
 It shows the coordinates where you click with the mouse. The coordinates will appear in the tooltip, so you need to activate the tooltip first.
 
-![Map interactions coordinates](/img/cloud-native-workspace/maps/interactions_coordinates.png)
+![Map interactions coordinates](/img/cloud-native-workspace/maps/map_interactions_coordinates.png)
 
+### Legend
+
+Legends help you to describe your data on the map and they are a essential for understanding geospatial data visualizations. This guide describes how to add and configure a legend to your map in CARTO Builder.
+
+In the Legend tab of Builder, you will see the list of your current legends. If you haven’t added any layer yet, you will see the following page:
+
+![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_a_legend.png)
+
+Once your data is added as a layer to the map, as explained in this [guide](../../maps/add-source), the legend is automatically generated and it is displayed in a fixed position at the bottom left of the map. 
+
+When choosing a style based on a property on your data (check [this section](/carto-user-manual/maps/map-styles/) for more information about it), a legend will be automatically generated based on the type of visualization:
+* Discrete color bins for categories and quantile data classifications.
+* Continuous color ramps for quantize classifications.
+* Proportional symbols for point radius. 
+
+By default, the legend is collapsed so you need to click on the layers icon to expand it.
+
+![Map legend](/img/cloud-native-workspace/maps/map_show_layer_panel.png)
+
+![Map legend](/img/cloud-native-workspace/maps/map_layer_added_legend.png)
+
+From the Legend tab, you can manage the visibility of the legends and change the text of the labels. Click on *Remove from legend* to not show the legend of a specific layer or click on the default layer name to change the text label.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_remove_from_leyend.png)
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_change_text_label.png)
+
+You can always revert to the default name by clicking on *Revert overrides*.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_revert_overrides.png)
+
+From "More legend options" you can manage the visibility of each layer and how the layers panel is displayed on the map. By activating "Layer selector", you will be able to control the visibility of layers from the layer panel, and by activating "Open when loading the map", you will be able to display the layer panel expanded by default when loading the map.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_moreoptions_activated.png)
+
+You can also select different style options from the Layer style panel to enable different types of legends that can be managed through the Legend tab.
+ 
+In this example, we style the layer based on the column `store_type`. The legend shows a symbol and a label per category that we can edit from the Legend Tab.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_style_by_color.png)
+
+You can also add other properties to the legend, such as the radius of the point based on a column. In this example, we show the radius of the stores based on the column `revenue`.
+
+![Map legend](/img/cloud-native-workspace/maps/map_legend_style_by_color_radius.png)
+
+<!-- You can also select different style options in Builder (from the Layer style panel) to enable different types of legends that can be managed through the Legend tab. -->
 ### Basemaps
 
 Basemaps are image tiles that are used to render the graphical representation of your map background. Basemaps include the natural and cultural features of the world; such as water bodies, topography, park areas, terrains, roads, streets, and sometimes buildings.

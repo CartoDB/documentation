@@ -11,12 +11,12 @@ const index = [];
 let changelogs = [];
 
 updateModules('core');
-updateModules('advanced');
+updateModules('');
 updateOverview();
 updateReleaseNotes();
 
 function updateModules (type) {
-    const sourcePath = path.join(`./.checkout/at-${type}-${cloud}-${branch}/modules`);
+    const sourcePath = path.join(`./.checkout/at${type ? '-'+type : ''}-${cloud}-${branch}/modules`);
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {
         const docPath = path.join(sourcePath, module, cloud, 'doc');
@@ -31,7 +31,7 @@ function updateModules (type) {
             fs.writeFileSync(path.join(targetPath, 'sql-reference', `${module}.md`), content);
             index.push({
                 module,
-                type,
+                type: type || 'advanced',
                 functions: files.map(f => path.parse(f).name).filter(f => !f.startsWith('_'))
             });
             const changelogPath = path.join(sourcePath, module, cloud, 'CHANGELOG.md');

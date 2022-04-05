@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "color-continuous-style-carto2"
+  - title: CARTO 3
     url: "color-continuous-style"
     active: true
-  - title: CARTO 3
-    url: "color-continuous-style-carto3"
 ---
 ## Color Continuous Style

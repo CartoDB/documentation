@@ -4,52 +4,85 @@ The CARTO submodule for deck.gl is open source, so we maintain the [documentatio
 
 ### setDefaultCredentials
 
-This is a function to define the connection to CARTO, including the credentials (and optionally the parameters to point to specific api endpoints). The configuration properties that must be defined depend on the CARTO API version used:
+This function defines the default credentials/configuration to be used when connecting with the CARTO platform. The configuration properties that must be defined depend on the CARTO API version used:
 
-* [apiVersion](/deck-gl/reference/#api_versions) (optional): API version. Default: `API_VERSIONS.V2`.
-
-#### CARTO 2
+- `apiVersion` (optional): API version. Default: `API_VERSIONS.V3`. Possible values are:
+  - API_VERSIONS.V1
+  - API_VERSIONS.V2
+  - API_VERSIONS.V3 (**CARTO 3**)
 
 If using API v1 or v2, the following properties are used:
 
-* `username` (required): unique username in the platform
-* `apiKey` (optional): api key. Default: `default_public`
-* `region` (optional): region where the user database is located, possible values are `us` or `eu`. Default: `us`, only need to be specified if you've specifically requested an account in `eu`. The database location can be found in the user's profile settings
-* `mapsUrl` (optional): Maps API URL Template. Default: 
-  * `https://{username}.carto.com/api/v1/map` for v1
-  * `https://maps-api-v2.{region}.carto.com/user/{username}` for v2
+- `username` (required): unique username in the platform
+- `apiKey` (optional): api key. Default: `default_public`
+- `region` (optional): region where the user database is located, possible values are `us` or `eu`. Default: `us`, only need to be specified if you've specifically requested an account in `eu`
+- `mapsUrl` (optional): Maps API URL Template. Default:
+  - `https://{username}.carto.com/api/v1/map` for v1
+  - `https://maps-api-v2.{region}.carto.com/user/{username}` for v2
 
+If using API v3, these are the available properties:
 
-If you have a custom CARTO deployment (on-premise user or you're running CARTO from [Google Cloud Marketplace](https://console.cloud.google.com/marketplace/product/cartodb-public/carto-enterprise-byol)), you need to set the URLs to point to your instance. 
+- `apiBaseUrl` (optional): base URL for requests to the API (can be obtained in the CARTO 3 Workspace). Default: `https://gcp-us-east1.api.carto.com`.
+- `accessToken` (optional): token to authenticate/authorize requests to the Maps API (private datasets)
+- `mapsUrl` (optional): Maps API URL Template. By default it is derived from `apiBaseUrl`:
+  - `https://{apiBaseUrl}/v3/maps`
+
+If you have a custom CARTO deployment (an on-premise user or you're running CARTO from [Google Cloud Marketplace](https://console.cloud.google.com/marketplace/product/cartodb-public/carto-enterprise-byol)), you’ll need to set the URLs to point to your instance.
 
 ```js
 setDefaultCredentials({
   username: 'public',
   apiKey: 'default_public',
-  mapsUrl: 'https://<domain>/maps-v2/user/{user}',
+  mapsUrl: 'https://<domain>/maps-v2/user/{user}'
 });
 ```
 
-#### CARTO 3
+### fetchLayerData
 
-If using API v3, these are the available properties:
+The CARTO submodule includes the CartoLayer that simplifies the interaction with the CARTO platform. If you want to use other deck.gl layers (i.e. ArcLayer, H3HexagonLayer...), there are two possibilities depending on the API version you are using:
 
-* `apiBaseUrl` (required): base URL for requests to the API (can be obtained in the CARTO 3 Workspace)
-* `accessToken` (required): token to authenticate/authorize requests to the Maps API (private datasets)
-* `mapsUrl` (optional): Maps API URL Template. Default: `https://{apiBaseUrl}/v3/maps` 
+- If you are using the API v3, you can directly retrieve the data in the format expected by the layer using the `fetchLayerData` function:
+
+  ```js
+  import {fetchLayerData} from '@deck.gl/carto';
+  import {H3HexagonLayer} from '@deck.gl/geo-layers/';
+
+  const {data} = await fetchLayerData({
+    type: MAP_TYPES.QUERY,
+    source: `SELECT bqcarto.h3.ST_ASH3(internal_point_geom, 4) as h3, count(*) as count
+                FROM bigquery-public-data.geo_us_census_places.us_national_places 
+              GROUP BY h3`,
+    connection: 'connection_name',
+    format: 'json'
+  });
+
+  new H3HexagonLayer({
+    data,
+    filled: true,
+    getHexagon: d => d.h3,
+    getFillColor: d => [0, (1 - d.count / 10) * 255, 0],
+    getLineColor: [0, 0, 0, 200]
+  });
+  ```
+
+  The formats available are JSON, GEOJSON, TILEJSON, and NDJSON. [NDJSON](http://ndjson.org/) (Newline Delimited JSON) allows to handle incremental data loading https://deck.gl/docs/developer-guide/performance#handle-incremental-data-loading.
+
+- If not using the CARTO 3 API version, you can use the SQL API to retrieve the data in the required format. Please check the examples [here](https://docs.carto.com/deck-gl/examples/clustering-and-aggregation/h3-hexagon-layer/)
 
 
 ### CartoLayer
 
-`CartoLayer` is the layer to visualize data using the CARTO Maps API. This layer allows to work with the different CARTO Maps API versions (v1, v2, and v3). When using version v1 and v2, the layer always works with vector tiles so it inherits all properties from [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer.md). When using v3, the layer works with vector tiles if the `type` property is `MAP_TYPES.TILESET` and with GeoJSON data if the `type` is `MAP_TYPES.QUERY` or `MAP_TYPES.TABLE`. When using GeoJSON data, the layer inherits all properties from [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer.md).
+`CartoLayer` is the layer to visualize data using the CARTO Maps API. This layer allows to work with the different CARTO Maps API versions (v1, v2, and v3). 
 
-> **CARTO 3** is our new cloud-native platform. If you'd like to get access, click on the following link for more information: [https://carto.com/carto3](https://carto.com/carto3).
+It inherits the properties of the [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
 
-#### `data` (String)
+Additional properties may be available depending on the configuration. For details see: [Sublayer details](#sublayers).
+
+##### `data` (String)
 
 Required. Either a SQL query or a name of dataset/tileset.
 
-#### `type` (String)
+##### `type` (String)
 
 Required. Data type. Possible values are:
 
@@ -57,35 +90,43 @@ Required. Data type. Possible values are:
 - `MAP_TYPES.TILESET`, if `data` is a tileset name.
 - `MAP_TYPES.TABLE`, if `data` is a dataset name. Only supported with API v3.
 
-#### `connection` (String)
+##### `connection` (String)
 
 Required when apiVersion is `API_VERSIONS.V3`.
 
 Name of the connection registered in the CARTO workspace.
 
-#### `geoColumn` (String, optional)
+##### `format` (String, optional)
+
+Only supported when `apiVersion` is `API_VERSIONS.V3`. Use it to override the default data format. Possible values are: `FORMATS.GEOJSON`, `FORMATS.JSON` and `FORMATS.TILEJSON`. 
+
+##### `formatTiles` (String, optional)
+
+Only supported when `apiVersion` is `API_VERSIONS.V3` and `format` is `FORMATS.TILEJSON`. Use it to override the default tile data format. Possible values are: `TILE_FORMATS.BINARY`, `TILE_FORMATS.GEOJSON` and `TILE_FORMATS.MVT`.
+
+##### `geoColumn` (String, optional)
 
 Only supported when apiVersion is `API_VERSIONS.V3` and `type` is `MAP_TYPES.TABLE`.
 
 Name of the `geo_column` in the CARTO platform. Use this override the default column ('geom'), from which the geometry information should be fetched.
 
-#### `columns` (Array, optional)
+##### `columns` (Array, optional)
 
 Only supported when apiVersion is `API_VERSIONS.V3` and `type` is `MAP_TYPES.TABLE`.
 
 Names of columns to fetch. By default, all columns are fetched.
 
-#### `uniqueIdProperty` (String)
+##### `uniqueIdProperty` (String)
 
 - Default: `cartodb_id`
 
 Optional. A string pointing to a unique attribute at the result of the query. A unique attribute is needed for highlighting with vector tiles when a feature is split across two or more tiles.
 
-#### `credentials` (Object)
+##### `credentials` (Object)
 
 Optional. Overrides the configuration to connect with CARTO. Check the parameters [here](#setdefaultcredentials).
 
-#### `onDataLoad` (Function, optional)
+##### `onDataLoad` (Function, optional)
 
 `onDataLoad` is called when the request to the CARTO Maps API was completed successfully.
 
@@ -95,7 +136,7 @@ Receives arguments:
 
 - `data` (Object) - Data received from CARTO Maps API
 
-#### `onDataError` (Function, optional)
+##### `onDataError` (Function, optional)
 
 `onDataError` is called when the request to the CARTO Maps API failed. By default the Error is thrown.
 
@@ -105,6 +146,34 @@ Receives arguments:
 
 - `error` (`Error`)
 
+#### SubLayers
+
+The `CartoLayer` is a [`CompositeLayer`](https://deck.gl/docs/api-reference/core/composite-layer), and will generate different sublayers depending on the configuration. In all cases, properties of the [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer) will be inherited.
+
+##### API v1 & v2
+
+`CartoLayer` works with the different CARTO Maps API versions (v1, v2, and v3). When using version v1 and v2, the layer always works with vector tiles so it inherits all properties from [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer).
+
+##### API v3
+
+When using v3, the behavior depends on the `type` property.
+
+###### `MAP_TYPES.QUERY`
+
+GeoJSON/JSON data will be used, depending on `format`. A [`GeoJSONLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer.md) will be created.
+
+###### `MAP_TYPES.TILESET`
+
+Tiled data will be used, depending on `formatTiles`. A [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer) will be created and all properties will be inherited.
+
+###### `MAP_TYPES.TABLE`
+
+Automatically based on the size of the table CARTO will decide whether to use tiles or a full document.
+
+For a full document a [`GeoJSONLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer) will be created, while for tiles a vector tile layer that extends the current [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer) and inherits all the properties will be created.
+
+Tiles can be forced by setting `format` to `FORMATS.TILEJSON`.
+
 #### Source
 
 [modules/carto/src/layers/carto-layer.js](https://github.com/visgl/deck.gl/tree/master/modules/carto/src/layers/carto-layer.js)
@@ -112,31 +181,12 @@ Receives arguments:
 
 ### fetchMap
 
-{{% bannerNote type="warning" title="Only available in v8.7 beta"%}}
-This function is only available in deck.gl v8.7 beta.
-
-If using the scripting flavor, you can load the beta version like this:
-
-```html
-<script src="https://unpkg.com/deck.gl@beta/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@beta/dist.min.js"></script>
-```
-
-If using the React or Pure JS flavors, you need to add the following dependencies to your package.json file:
-
-```json
-"deck.gl": "beta",
-"@deck.gl/carto": "beta",
-```
-
-{{%/ bannerNote %}}
-
-`fetchMap` is an API that instantiates layers configured in CARTO Builder for use with deck.gl. You just need to add your data sources in Builder, style your layers and share your map. Then you need to copy the map ID and use it to retrieve the map configuration from the platform. It is available starting with CARTO Maps API version v3.
+`fetchMap` is an API that instantiates layers configured in CARTO Builder for use with deck.gl. You just need to add your data sources in Builder, style your layers and share your map. Then you need to copy the map ID and use it to retrieve the map configuration from the platform. It is available starting with CARTO Maps API version v3 and deck.gl 8.7.
 
 <div align="center">
   <div>
-    <img src="https://user-images.githubusercontent.com/453755/143416216-4f1f8ddb-6ba3-4ed2-a026-d89c0f3e1ec7.gif" />
-    <p><i>CARTO Builder demo</i></p>
+    <img src="https://raw.githubusercontent.com/visgl/deck.gl-data/master/images/docs/fetch-map.gif" />
+    <p><i>Loading a Builder map with deck.gl</i></p>
   </div>
 </div>
 
@@ -145,16 +195,19 @@ If using the React or Pure JS flavors, you need to add the following dependencie
 ```js
 import {Deck} from '@deck.gl/core';
 import {fetchMap} from '@deck.gl/carto';
+
 const cartoMapId = 'ff6ac53f-741a-49fb-b615-d040bc5a96b8';
 fetchMap({cartoMapId}).then(map => new Deck(map));
 ```
 
-#### Integration with basemap
+#### Integration with CARTO basemaps
 
 ```js
 import mapboxgl from 'mapbox-gl';
+
 fetchMap({cartoMapId}).then(({initialViewState, mapStyle, layers}) => {
   const deck = new Deck({canvas: 'deck-canvas', controller: true, initialViewState, layers});
+
   // Add Mapbox GL for the basemap. It's not a requirement if you don't need a basemap.
   const MAP_STYLE = `https://basemaps.cartocdn.com/gl/${mapStyle.styleType}-gl-style/style.json`;
   const map = new mapboxgl.Map({container: 'map', style: MAP_STYLE, interactive: false});
@@ -173,35 +226,61 @@ fetchMap({cartoMapId}).then(({initialViewState, mapStyle, layers}) => {
 const map = await fetchMap({cartoMapId, credentials, autoRefresh, onNewData});
 ```
 
-- `cartoMapId` (String) - identifier of public map created in CARTO Builder
-  
-- `credentials` (Object, Optional) - [CARTO Credentials](/docs/api-reference/carto/overview.md#carto-credentials) to use in API requests
-  
-- `autoRefresh` (Number, Optional) - Interval in seconds at which to autoRefresh the data. If provided, `onNewData` must also be provided
-  
-- `onNewData` (Function, Optional) - Callback function that will be invoked whenever data in layers is changed. If provided, `autoRefresh` must also be provided
+##### `cartoMapId` (String) 
+
+Required. Identifier of map created in CARTO Builder. 
+
+##### `credentials` (Object, optional)
+
+[CARTO Credentials](#setdefaultcredentials) to use in API requests.
+
+##### `autoRefresh` (Number, optional)
+
+Interval in seconds at which to autoRefresh the data. If provided, `onNewData` must also be provided.
+
+##### `onNewData` (Function, Optional)
+
+Callback function that will be invoked whenever data in layers is changed. If provided, `autoRefresh` must also be provided.
 
 #### Return value
 
 When invoked with a given `cartoMapId`, `fetchMap` will retrieve the information about the map from CARTO, generate appropriate layers and populate them with data. The properties of the `map` are as follows:
 
-- `id` (String) - the `cartoMapId`
+##### `id` (String)
+
+The `cartoMapId`.
+
+##### `title` (String)
+
+The title given to the map in CARTO Builder.
+
+##### `description` (String)
+
+The description given to the map in CARTO Builder.
+
+##### `createdAt` (String)
+
+When the map was created.
+
+##### `updatedAt` (String)
+
+When the map was last updated.
+
+##### `initialViewState` (String)
+
+The [view state](https://deck.gl/docs/developer-guide/views#view-state).
+
+##### `mapStyle` (String)
+
+An identifier describing the [basemap](https://deck.gl/docs/api-reference/carto/basemap#supported-basemaps) configured in CARTO Builder.
+
+##### `layers` (Array)
+
+A collection of deck.gl [layers](https://deck.gl/docs/api-reference/layers).
   
-- `title` (String) - the title given to the map in CARTO Builder
+##### `stopAutoRefresh` (Function)
 
-- `description` (String) - the description given to the map in CARTO Builder
-
-- `createdAt` (String) - when the map was created
-
-- `updatedAt` (String) - when the map was last updated
-
-- `initialViewState` (String) - the [view state](https://deck.gl/docs/developer-guide/views.md#view-state)
-
-- `mapStyle` (String) - an identifier describing the [basemap](#basemaps) configured in CARTO Builder
-
-- `layers` (Array) - a collection of deck.gl [layers](https://deck.gl/docs/api-reference/layers.md)
-
-- `stopAutoRefresh` (Function) - a function to invoke to stop auto-refreshing. Only present if `autoRefresh` option was provided to `fetchMap`
+A function to invoke to stop auto-refreshing. Only present if `autoRefresh` option was provided to `fetchMap`.
 
 #### Auto-refreshing
 
@@ -216,8 +295,10 @@ const mapConfiguration = {
     deck.setProps({layers});
   }
 };
+
 const {initialViewState, layers, stopAutoRefresh} = await fetchMap(mapConfiguration);
 deck.setProps({controller: true, initialViewState, layers});
+
 buttonElement.addEventListener('click', () => {
   stopAutoRefresh();
 });
@@ -232,9 +313,9 @@ Ensure you follow the [Terms and Conditions](https://drive.google.com/file/d/1P7
 
 #### Usage on React
 
-**Important Note:** Mapbox-GL-JS v2.0 changed to a license that requires an API key for loading the library, which will prevent you from using `react-map-gl` (a higher level library). They have an in-depth guide about it [here](https://github.com/visgl/react-map-gl/blob/v6.0.0/docs/get-started/mapbox-tokens.md).
+**Important Note:** Mapbox-GL-JS v2.0 changed to a license that requires an API key for loading the library, which will prevent you from using `react-map-gl` (a higher level library). They have an in-depth guide about it [here](https://github.com/visgl/react-map-gl/blob/master/docs/get-started/mapbox-tokens.md).
 
-In short, if you want to use the library without a Mapbox token, then you have two options: use a `react-map-gl` version less than 6.0 (`npm i react-map-gl@5`), or [substitute `mapbox-gl` with a fork](https://github.com/visgl/react-map-gl/blob/v6.0.0/docs/get-started/get-started.md#using-with-a-mapbox-gl-fork).
+In short, if you want to use the library without a Mapbox token, then you have two options: use a `react-map-gl` version less than 6.0 (`npm i react-map-gl@5`), or [substitute `mapbox-gl` with a fork](https://github.com/visgl/react-map-gl/blob/master/docs/get-started/get-started.md#using-with-a-mapbox-gl-fork).
 
 To install the dependencies from NPM:
 
@@ -258,14 +339,14 @@ import {BASEMAP} from '@deck.gl/carto';
 To use pre-bundled scripts:
 
 ```html
-<script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
 
 <!-- or -->
-<script src="https://unpkg.com/@deck.gl/core@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/layers@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/geo-layers@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/core@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/layers@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/geo-layers@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
 ```
 
 ```javascript
@@ -295,13 +376,12 @@ There are several basemaps available today:
 
 | NAME                 | PREVIEW                                                                                    | STYLE URL                                                                 |
 | -------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| POSITRON             | <img src="https://carto.com/help/images/building-maps/basemaps/positron_labels.png"  />    | https://basemaps.cartocdn.com/gl/positron-gl-style/style.json             |
-| DARK_MATTER          | <img src="https://carto.com/help/images/building-maps/basemaps/dark_labels.png"  />        | https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json          |
-| VOYAGER              | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_labels.png"  />     | https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json              |
-| POSITRON_NOLABELS    | <img src="https://carto.com/help/images/building-maps/basemaps/positron_no_labels.png"  /> | https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json    |
-| DARK_MATTER_NOLABELS | <img src="https://carto.com/help/images/building-maps/basemaps/dark_no_labels.png"  />     | https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json |
-| VOYAGER_NOLABELS     | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_no_labels.png"  />  | https://basemaps.cartocdn.com/gl/voyager-nolabels-gl-style/style.json     |
-
+| POSITRON             | <img src="https://carto.com/help/images/building-maps/basemaps/positron_labels.png"  style="margin-bottom: 0px; vertical-align: middle;" />    | https://basemaps.cartocdn.com/gl/positron-gl-style/style.json             |
+| DARK_MATTER          | <img src="https://carto.com/help/images/building-maps/basemaps/dark_labels.png"  style="margin-bottom: 0px; vertical-align: middle;" />        | https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json          |
+| VOYAGER              | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_labels.png"  style="margin-bottom: 0px; vertical-align: middle;" />     | https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json              |
+| POSITRON_NOLABELS    | <img src="https://carto.com/help/images/building-maps/basemaps/positron_no_labels.png"  style="margin-bottom: 0px; vertical-align: middle;" /> | https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json    |
+| DARK_MATTER_NOLABELS | <img src="https://carto.com/help/images/building-maps/basemaps/dark_no_labels.png"  style="margin-bottom: 0px; vertical-align: middle;" />     | https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json |
+| VOYAGER_NOLABELS     | <img src="https://carto.com/help/images/building-maps/basemaps/voyager_no_labels.png"  style="margin-bottom: 0px; vertical-align: middle;" />  | https://basemaps.cartocdn.com/gl/voyager-nolabels-gl-style/style.json     |
 
 ### Style Helpers
 
@@ -329,12 +409,12 @@ new CartoLayer({
 
 In this example, using colors from the `Teal` palette with length `domain.length + 1`, the range/color equivalence is:
 
-```
-[, 1e5)     -> Teal[0]
-[1e5, 2e5)  -> Teal[1]
-[2e5, 3e5)  -> Teal[2]
-[3e5,]      -> Teal[3]
-```
+| BIN          | COLOR    |
+| ------------ | -------- |
+| [, 1e5)      | Teal[0]  |
+| [1e5, 2e5)   | Teal[1]  |
+| [2e5, 3e5)   | Teal[2]  |
+| [3e5,]       | Teal[3]  |
 
 ##### Arguments
 
@@ -458,14 +538,18 @@ Default: `[204, 204, 204]`
 
 To make it easier to work with the CARTO module the following constants are provided:
 
-#### API_VERSIONS
-
-Enumeration values: V1, V2, V3.
-
-#### MAP_TYPES
-
-Enumeration values: QUERY, TABLE, TILESET
-
-#### FORMATS
-
-Enumeration values: GEOJSON, JSON, TILEJSON, NDJSON
+| ENUMERATION  | VALUES   |
+| ------------ | -------- |
+| API_VERSIONS | V1       |
+|              | V2       |
+|              | V3       |
+| MAP_TYPES    | QUERY    |
+|              | TABLE    |
+|              | TILESET  |
+| FORMATS      | GEOJSON  |
+|              | JSON     |
+|              | TILEJSON |
+|              | NDJSON   |
+| TILE_FORMATS | BINARY   |
+|              | GEOJSON  |
+|              | MVT      |

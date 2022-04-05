@@ -16,9 +16,10 @@ cascade:
     - title: "Guides"  
       folder:
         - title: "Accessing and browsing the Spatial Data Catalog"
+        - title: "Accessing free data samples"
         - title: "Subscribing to public and premium datasets"
         - title: "Managing your subscriptions"
-        - title: "Accessing your subscriptions from BigQuery, AWS or Azure"
-        - title: "Creating Data Observatory tilesets"
+        - title: "Accessing your subscriptions from your data warehouse"
+        - title: "Visualizing Data Observatory datasets"
     - title: "Example tilesets"
 ---

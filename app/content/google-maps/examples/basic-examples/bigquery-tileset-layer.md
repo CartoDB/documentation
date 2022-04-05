@@ -8,9 +8,9 @@ exampleGithub: "https://github.com/CartoDB/documentation/tree/master/app/content
 
 versions:
   - title: CARTO 2
+    url: "bigquery-tileset-layer-carto2"
+  - title: CARTO 3
     url: "bigquery-tileset-layer"
     active: true
-  - title: CARTO 3
-    url: "bigquery-tileset-layer-carto3"
 ---
 ## BigQuery Tileset Layer

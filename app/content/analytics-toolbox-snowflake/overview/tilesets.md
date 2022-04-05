@@ -8,8 +8,8 @@ The tiler procedures will process your data and create a complete tileset out of
 
 | Row | z | x | y | data |
 |-----|---|---|---|-----------------|
-| 1   | 16 | 45340 | 24576 | {"features":[{"geometry":{"coordinates":[-138.50516208988,... |
-| 2   | 16 | 45292 | 24576 | {"features":[{"geometry":{"coordinates":[-164.87444768784,... |
+| 1   | 16 | 45340 | 24576 | {"geometry":{"coordinates":[-138.50516208988,... |
+| 2   | 16 | 45292 | 24576 | {"geometry":{"coordinates":[-164.87444768784,... |
 
 Visualizing and publishing your tilesets is straight-forward using [Builder](/carto-user-manual/maps/add-source/#add-source-from-a-connection), the map making tool integrated into the CARTO Workspace.
 

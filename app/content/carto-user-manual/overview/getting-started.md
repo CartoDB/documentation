@@ -168,7 +168,7 @@ Announcements of new features, interesting articles, and the latest news related
 
 In the left panel, you can find the *Navigation Menu* with all the available options to access the CARTO components: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
 
-![Menu features](/img/cloud-native-workspace/get-started/the_menu_features.png)
+![Menu sections](/img/cloud-native-workspace/get-started/the_menu_sections.png)
 ### Quickstart guide to create your first map
 
 #### Introduction
@@ -220,14 +220,6 @@ The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
 	
 ![Map created](/img/cloud-native-workspace/maps/map_created.png)
-
-CARTO Builder contains many features that guide you through the process of creating an interactive map, changing the styling, and customising how your data appears and behaves in a map. Use the following task list as a guide to some of the main features of CARTO Builder:
-
-- Add your source [guide](../../maps/add-source)
-- View your data table [guide](../../maps/view-data-table)
-- Configure your map settings [guide](../../maps/map-settings)
-- Style your maps [guide](../../maps/map-styles)
-
 #### Explore your spatial data
 
 The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven’t connected your own data warehouse yet, you will see the provisioned CARTO data warehouse connection with access to some demo data:
@@ -283,15 +275,15 @@ Please note that if you edit the SQL query and go back to the form, a message ap
 ![Data Explorer create tileset disable sql editor](/img/cloud-native-workspace/data-explorer/de_disable_sql_editor.png)
 #### Import data
 
-The Data Explorer section enables you to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse) from your imported data and used them in Builder and external applications to create maps. 
+CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
 To import your data, go to Data Explorer section, select  *Connections* panel and click on *Import data* button on the top left:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
 
-A new dialog will open allowing you to import your data from your computer into the provisioned `CARTO Data Warehouse` connection. 
+A new dialog will open allowing you to import your data into the available connections. Check [suppported formats](../../data-explorer/importing-data/#supported-formats) guide for more details.
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_local_file.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file.png)
 
 You can import your data through two different methods: Local or Remote. For more details, check [Importing data](../../data-explorer/importing-data) guide.
 
@@ -299,6 +291,19 @@ You can import your data through two different methods: Local or Remote. For mor
 
 The Data Observatory is a spatial data platform that enables you to augment your data with the latest and greatest in spatial data. With a [catalog](https://carto.com/data) of thousands of spatial datasets from public and premium sources that have been vetted by our Data team, the Data Observatory provides a streamlined process to reduce the operational inefficiencies of discovering, licensing, and accessing spatial data.
 
+We strongly recommend reading through the [Terminology](https://docs.carto.com/data-observatory/overview/terminology/) to get familiar with all the components of the Data Observatory.
+
+In the following sections you will find a collection of resources where you can learn how to:
+
+* [subscribe to Data Observatory data](https://docs.carto.com/data-observatory/overview/getting-started/#data-subscriptions),
+* [access and introduce the data in your analysis workflows](https://docs.carto.com/data-observatory/overview/getting-started/#data-access-and-analysis),
+* [visualize it](https://docs.carto.com/data-observatory/overview/getting-started/#data-visualization). 
+
+<!-- Check out the following guides to learn how to find and subscribe to Data Observatory datasets:
+
+- Browsing the Spatial Data Catalog [guide](../../data-observatory/browsing-the-spatial-data-catalog)
+- Subscribing to public and premium datasets [guide](../../data-observatory/subscribing-to-public-and-premium-datasets)
+- Managing your subscriptions [guide](../../data-observatory/managing-your-subscriptions) -->
 #### Add data and style your maps
 
 CARTO Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears rendered on a map. Use the following task list as a guide for some of the main features of CARTO Builder:
@@ -308,6 +313,19 @@ CARTO Builder contains many features that guide you through the process of creat
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
 
+#### Export data
+
+CARTO Builder allows you to export your data.
+
+To export your data, add a source to the map and click on the *Export viewport data* button.
+
+![Export data button enabled](/img/cloud-native-workspace/maps/map_export_data_enable.png) 
+
+A new dialog screen will open informing you that the resulting CSV files will contain data from the current features in the viewport. Click the *Export data* button to confirm the download of the data or click on *Cancel* if you don’t want to continue exporting.
+
+![Export data dialog](/img/cloud-native-workspace/maps/map_export_data_dialog.png) 
+
+The result of the export will be a compressed file containing all visible features in the viewport in csv format.
 #### Publish and share your map
 
 By default all maps you create are set as private. With CARTO you can share your maps with your organization or publish them for anyone with the link.
