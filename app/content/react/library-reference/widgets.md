@@ -291,7 +291,7 @@ You can control the legend options through the following properties that must be
 | legend.attr   | `string`       |               | Attribute used for styling the layer                           |
 | legend.colors | `Array` or `string` |          | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`                                   |
 | legend.labels | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
-|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps).      |
+|               |                |               | - Array of `numbers` or Array of `{ value: number; label: string }` to use formatted labels for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps).      |
 |               |                |               | - Array of `[min, max]` numbers for `LEGEND_TYPES.PROPORTION`. |
 | legend.icons  | `Array`        |               | Array of string with icons URLs. Used for `LEGEND_TYPES.ICON`. |
 | legend.note   | `string`       |               | Note to show below th  legend to add additional explanations.  |
