@@ -1,3 +1,8 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/
+    - /analytics-toolbox-bq/sql-reference/overview/
+---
 ## Overview
 
 The CARTO Analytics Toolbox's functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/measurements/
+---
 ## measurements
 
 <div class="badges"><div class="core"></div></div>

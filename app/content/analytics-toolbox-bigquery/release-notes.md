@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/release-notes/
+---
 ## Release notes
 
 ### March 21, 2022

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/data/
+---
 ## data
 
 <div class="badges"><div class="advanced"></div></div>
