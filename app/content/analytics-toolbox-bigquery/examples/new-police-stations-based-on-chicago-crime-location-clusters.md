@@ -7,6 +7,8 @@ date: "2021-07-12"
 categories:
     - clustering
     - transformations
+aliases:
+    - /analytics-toolbox-bq/examples/new-police-stations-based-on-chicago-crime-location-clusters/
 ---
 ## New police stations based on Chicago crime location clusters
 

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/guides/using-the-routing-module/
+---
 ## Using the routing module
 
 ### Creating a network

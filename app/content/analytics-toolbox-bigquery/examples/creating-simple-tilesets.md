@@ -6,6 +6,8 @@ type: examples
 date: "2021-11-12"
 categories:
     - tiler
+aliases:
+    - /analytics-toolbox-bq/examples/creating-simple-tilesets/
 ---
 ## Creating simple tilesets
 

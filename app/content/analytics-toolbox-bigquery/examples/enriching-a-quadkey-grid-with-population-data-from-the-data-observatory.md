@@ -6,6 +6,8 @@ type: examples
 date: "2021-08-12"
 categories:
     - quadkey
+aliases:
+    - /analytics-toolbox-bq/examples/enriching-a-quadkey-grid-with-population-data-from-the-data-observatory/
 ---
 ## Enriching a quadkey grid with population data from the Data Observatory
 

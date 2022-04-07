@@ -6,6 +6,8 @@ type: examples
 date: "2021-05-12"
 categories:
     - processing
+aliases:
+    - /analytics-toolbox-bq/examples/a-nyc-subway-connection-graph-using-delaunay-triangulation/
 ---
 
 ## A NYC subway connection graph using Delaunay triangulation

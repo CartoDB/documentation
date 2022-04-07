@@ -7,6 +7,10 @@ repoUrl: https://github.com/CartoDB/analytics-toolbox-core
 url: analytics-toolbox-bigquery
 indexPage: "overview/getting-started.md"
 
+aliases:
+    - /analytics-toolbox-bq/
+    - /analytics-toolbox-bq/overview/getting-started/
+
 cascade:
   basePath: analytics-toolbox-bigquery
   menu:

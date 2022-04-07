@@ -6,6 +6,8 @@ type: examples
 date: "2021-06-12"
 categories:
     - processing
+aliases:
+    - /analytics-toolbox-bq/examples/analyzing-weather-stations-coverage-using-a-voronoi-diagram/
 ---
 ## Analyzing weather stations coverage using a Voronoi diagram
 

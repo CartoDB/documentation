@@ -7,6 +7,8 @@ date: "2021-02-12"
 categories:
     - quadkey
     - constructors
+aliases:
+    - /analytics-toolbox-bq/examples/census-areas-in-the-uk-within-tiles-of-multiple-resolutions/
 ---
 ## Census areas in the UK within tiles of multiple resolutions
 

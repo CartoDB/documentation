@@ -6,6 +6,8 @@ type: examples
 date: "2021-05-12"
 categories:
     - transformations
+aliases:
+    - /analytics-toolbox-bq/examples/computing-us-airport-connections-and-route-interpolations/
 ---
 ## Computing US airport connections and route interpolations
 

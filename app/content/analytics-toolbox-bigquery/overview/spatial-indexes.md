@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/overview/spatial-indexes/
+---
 ## Spatial indexes
 
 Hierarchical grid systems, such as Quadkey, H3, and S2, are an essential tool for analysing large spatial datasets, especially when dealing with data sources in different spatial aggregations. These systems are based on geospatial indexes that provide a direct relationship between grid cells at different resolutions, enabling extremely performant spatial operations.
