@@ -1,3 +1,8 @@
+---
+aliases:
+    - /analytics-toolbox-bq/overview/getting-access/
+---
+
 ## Getting access
 
 ### Access from the new CARTO Workspace

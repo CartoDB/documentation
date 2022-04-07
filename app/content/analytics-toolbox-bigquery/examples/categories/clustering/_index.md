@@ -5,4 +5,6 @@ icon: "/img/icons/bigquery-analytics-toolbox.png"
 type: examples
 category: clustering
 layout: categories/list
+aliases:
+    - /analytics-toolbox-bq/examples/categories/clustering/
 ---

@@ -6,6 +6,8 @@ type: examples
 date: "2021-01-12"
 categories:
     - statistics
+aliases:
+    - /analytics-toolbox-bq/examples/applying-gwr-to-understand-airbnb-listings-prices/
 ---
 ## Applying GWR to understand Airbnb listings prices
 

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/tiler/
+---
 ## tiler
 
 <div class="badges"><div class="advanced"></div></div>

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/constructors/
+---
 ## constructors
 
 <div class="badges"><div class="core"></div></div>

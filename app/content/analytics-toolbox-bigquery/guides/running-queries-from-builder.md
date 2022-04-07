@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/guides/running-queries-from-builder/
+---
 ## Running queries from Builder
 
 Once you have created your BigQuery connection in the CARTO Workspace (see [_Getting Access_](analytics-toolbox-bigquery/overview/getting-access/#access-from-the-carto-workspace) for details), you can create custom SQL layers in Builder that make use of the Analytics Toolbox for BigQuery.

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/overview/tilesets/
+---
 ## Tilesets
 
 CARTO BigQuery Tiler is a module of the Analytics Toolbox for BigQuery that allows to process and visualize very large spatial datasets stored in BigQuery.
