@@ -1,5 +1,12 @@
 ## Release notes
 
+### March 30, 2022
+
+#### Module tiler
+
+Fix
+- Escape special characters in generated properties.
+
 ### March 25, 2022
 
 #### Module tiler

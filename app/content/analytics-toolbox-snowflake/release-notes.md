@@ -1,5 +1,12 @@
 ## Release notes
 
+### April 7, 2022
+
+#### Module transformations
+
+Feature
+- Add ST_BUFFER function.
+
 ### March 25, 2022
 
 #### Module tiler
