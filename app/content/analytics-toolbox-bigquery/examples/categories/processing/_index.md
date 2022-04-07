@@ -5,4 +5,6 @@ icon: "/img/icons/bigquery-analytics-toolbox.png"
 type: examples
 category: processing
 layout: categories/list
+aliases:
+    - /analytics-toolbox-bq/examples/categories/processing/
 ---
