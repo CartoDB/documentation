@@ -31,12 +31,11 @@ Feature
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
 
-### February 17, 2022
+### February 18, 2022
 
 #### Module lds
 
 Feature
-- Create Location Data Services (lds) module.
 - Add GEOCODE_TABLE procedure.
 - Add GEOCODE function.
 - Add GEOCODE_REVERSE function.

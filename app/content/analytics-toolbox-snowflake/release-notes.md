@@ -34,6 +34,17 @@ Changed
 Feature
 - Add CREATE_SIMPLE_TILESET procedure.
 
+### February 18, 2022
+
+#### Module lds
+
+Feature
+- Add GEOCODE_TABLE procedure.
+- Add GEOCODE function.
+- Add GEOCODE_REVERSE function.
+- Add ISOLINE function.
+- Add LDS_QUOTA_INFO function.
+
 ### February 16, 2022
 
 #### Module tiler
@@ -52,18 +63,6 @@ Feature
 
 Changed
 - Read spatial_catalog tables in source.
-
-### January 9, 2022
-
-#### Module lds
-
-Feature
-- Create Location Data Services (lds) module.
-- Add GEOCODE_TABLE procedure.
-- Add GEOCODE function.
-- Add GEOCODE_REVERSE function.
-- Add ISOLINE function.
-- Add LDS_QUOTA_INFO function.
 
 ### December 15, 2021
 

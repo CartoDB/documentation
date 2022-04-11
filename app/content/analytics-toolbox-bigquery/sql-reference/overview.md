@@ -1,6 +1,5 @@
 ---
 aliases:
-    - /analytics-toolbox-bq/sql-reference/
     - /analytics-toolbox-bq/sql-reference/overview/
 ---
 ## Overview

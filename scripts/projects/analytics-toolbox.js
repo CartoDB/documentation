@@ -27,7 +27,8 @@ function updateModules (type) {
                 if (second.startsWith('_') || first > second) return 1;
                 return 0;
             });
-            const content = files.map(f => fs.readFileSync(path.join(docPath, f)).toString()).join('\n\n');
+            let content = aliasesHeader(`sql-reference/${module}`)
+            content += files.map(f => fs.readFileSync(path.join(docPath, f)).toString()).join('\n\n');
             fs.writeFileSync(path.join(targetPath, 'sql-reference', `${module}.md`), content);
             index.push({
                 module,
@@ -41,8 +42,21 @@ function updateModules (type) {
     });
 }
 
+function aliasesHeader (path) {
+    let content = '';
+    if (cloud === 'bigquery') {
+        content = `---
+aliases:
+    - /analytics-toolbox-bq/${path}/
+---
+`;
+    }
+    return content;
+}
+
 function updateOverview () {
-    let content = `## Overview
+    let content = aliasesHeader(`sql-reference/overview`)
+    content += `## Overview
 
 The CARTO Analytics Toolbox's functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.
 
@@ -60,13 +74,14 @@ The CARTO Analytics Toolbox's functions are organized in modules based on the fu
     });
 
     content += '{{%/ tableWrapper %}}'
-    
+
     console.log(`- Update overview`);
     fs.writeFileSync(path.join(targetPath, 'sql-reference', 'overview.md'), content);
 }
 
 function updateReleaseNotes () {
-    let content = `## Release notes\n\n`;
+    let content = aliasesHeader(`release-notes`)
+    content += `## Release notes\n\n`;
 
     const dates = [ ...new Set(changelogs.map(c => c.date).sort().reverse()) ];
 
