@@ -8,7 +8,7 @@ How can we make them work when there is not a geometry data type available? This
 
 ### Storing geospatial data
 
-CARTO Maps API can work directly with geospatial data represented as <!-- [GeoJSON](https://geojson.org/), --> [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) or [WKB](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry#Well-known_binary) strings. 
+CARTO Maps API can work directly with geospatial data represented as <!-- [GeoJSON](https://geojson.org/), --> [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) strings. 
 
 That means you can preview your data in Data Explorer, load it in Builder to create maps and use it in your custom applications, if it's stored as a text string in any of those formats.
 
