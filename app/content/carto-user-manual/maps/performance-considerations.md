@@ -43,7 +43,7 @@ Widget data is calculated client-side with the data that is included in the tile
 
 #### Tips for medium size datasets performance
 
-* In BigQuery, use clustering by the geometry column to ensure that data is structured in a way that is fast to access. Check out [this documentation page](https://cloud.google.com/bigquery/docs/clustered-tables) for more information. 
+* In **BigQuery**, use clustering by the geometry column to ensure that data is structured in a way that is fast to access. Check out [this documentation page](https://cloud.google.com/bigquery/docs/clustered-tables) for more information. 
 In order to create a clustered table out of an existing table with geometries, you can try with something like: 
 ```sql
 CREATE TABLE your_dataset.clustered_table
@@ -51,13 +51,20 @@ CLUSTER BY geom
 AS 
 (SELECT * FROM your_original_table)
 ```
-* In PostgreSQL (with PostGIS), [spatial indexes](http://postgis.net/workshops/postgis-intro/indexing.html) will also help with performance. For example: 
+* In **PostgreSQL** (with PostGIS), [spatial indexes](http://postgis.net/workshops/postgis-intro/indexing.html) will also help with performance. For example: 
 
 ```sql
 CREATE INDEX nyc_census_blocks_geom_idx
   ON nyc_census_blocks
   USING GIST (geom);
 ```
+* In **Snowflake**, the [Search Optimization Service](https://docs.snowflake.com/en/user-guide/search-optimization-service.html#) can help getting faster results when querying geospatial data. In order to profit from this feature, it **needs to be enabled in your Snowflake account**. Additionally, it requires that the table is ordered in a specific way that takes into account the coordinates of each geometry:
+
+```sql
+CREATE OR REPLACE TABLE POINTS_SORTED
+AS SELECT * FROM POINTS_10M ORDER BY ST_XMIN(geom), ST_YMIN(geom);
+```
+
 * For other cloud data warehouses, geospatial clustering and/or similar functionality will eventually be added by their providers.
 
 ### Large tables
