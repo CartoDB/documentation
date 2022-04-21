@@ -17,6 +17,8 @@ navbar:
         url: /analytics-toolbox-redshift
       - name: Analytics Toolbox for Databricks
         url: /analytics-toolbox-databricks
+      - name: Analytics Toolbox for PostgreSQL
+        url: /analytics-toolbox-postgresql
   - name: Dev tools
     subelements:
       - name: CARTO API

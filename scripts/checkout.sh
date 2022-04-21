@@ -29,3 +29,8 @@ echo -e "\nCheckout Analytics Toolbox for Redshift"
 echo "---------------------------------------"
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-redshift-master
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-redshift-master
+
+echo -e "\nCheckout Analytics Toolbox for PostgreSQL"
+echo "---------------------------------------"
+git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-postgres-master
+git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-postgres-master
