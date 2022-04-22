@@ -96,12 +96,13 @@ Generates a simple tileset.
 |`max_tile_features`| Default: `10000`. A `NUMBER` that sets the maximum number of features a tile can contain. This limit only applies when the input geometries are points. When this limit is reached, the procedure will stop adding features into the tile. You can configure in which order the features are kept by setting the `tile_feature_order` property.|
 |`max_tile_vertices`| Default: `200000`. A `NUMBER` that sets the maximum number of vertices a tile can contain. This limit only applies when the input geometries are lines or polygons. When this limit is reached, the procedure will stop adding features into the tile. You can configure in which order the features are kept by setting the `tile_feature_order` property.|
 |`tile_feature_order`| Default: `RANDOM()` for points, `ST_AREA() DESC` for polygons, `ST_LENGTH() DESC` for lines. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`. The `"ORDER BY"` part must not be included. You can use any source column even if it is not included in the tileset as a property.|
+|`max_tile_size_strategy`| Default: `"throw_error"`. A `VARCHAR` that specifies how to apply the limit defined by `max_tile_features` or `max_tile_vertices`. There are four options available:<br/><ul><li>`"drop_features"`: In each tile the features that exceed the limit are dropped. Different fractions of the total features may be dropped in each tile, which on a map can appear as noticeable differences in feature density between tiles.</li><li>`"drop_fraction_as_needed"`: For every zoom level, this process will drop a consistent fraction of features in every tile to make sure all generated tiles are below the limit. Since a constant fraction of the features is dropped for all tiles of a given zoom level, this will in general drop more features in less populated tiles than the the `"drop_features"` strategy.</li><li>`"return_null"`: A row with a NULL data column will be produced for all tiles that exceed the limit.</li><li>`"throw_error"`: The procedure execution will be aborted if any tile exceeds the limit.</li></ul><br/>. For the `drop_` strategies, features will be retained according to the `tile_feature_order` specified.|
 
 **Example**
 
 ```sql
 CALL carto.CREATE_SIMPLE_TILESET(
-  'SELECT geom, population FROM mypopulationtable',
+  'SELECT geom, population, category FROM mypopulationtable',
   'MYDB.MYSCHEMA.population_tileset',
   '{
     "geom_column": "geom",

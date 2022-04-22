@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### April 20, 2022
+
+#### Module retail
+
+Fixed
+- Fix BUILD_REVENUE_MODEL_DATA k-ring buffer computation.
+
 ### March 21, 2022
 
 #### Module transformations

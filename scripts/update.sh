@@ -24,3 +24,8 @@ echo -e "\nUpdate Analytics Toolbox for Redshift"
 echo "-------------------------------------"
 CLOUD=redshift BRANCH=master TARGETPATH=./app/content/analytics-toolbox-redshift \
 node ./scripts/projects/analytics-toolbox.js
+
+echo -e "\nUpdate Analytics Toolbox for PostgreSQL"
+echo "-------------------------------------"
+CLOUD=postgres BRANCH=master TARGETPATH=./app/content/analytics-toolbox-postgres \
+node ./scripts/projects/analytics-toolbox.js

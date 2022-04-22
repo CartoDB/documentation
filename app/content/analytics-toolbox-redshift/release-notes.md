@@ -1,10 +1,20 @@
 ## Release notes
 
+### April 21, 2022
+
+#### Module tiler
+
+Feature
+- Add max_tile_size_strategy support for CREATE_SIMPLE_TILESET.
+
+Fixed
+- Fix tile_feature_order not being taken into account for CREATE_POINT_AGGREGATION_TILESET and CREATE_POINT_AGGREGATION_TILESET.
+
 ### March 30, 2022
 
 #### Module tiler
 
-Fix
+Fixed
 - Escape special characters in generated properties.
 
 ### March 25, 2022
