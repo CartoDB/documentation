@@ -63,7 +63,10 @@ CALL CREATE_POINT_AGGREGATION_TILESET(
     "zoom_min": 0, "zoom_max": 6,
     "aggregation_resolution": 5,
     "aggregation_placement": "features-centroid",
-    "metadata": {"name": "population_tileset", "description": "A description"},
+    "metadata": {
+      "name": "population_tileset",
+      "description": "A description"
+    },
     "properties": {
       "total_count": {"type": "Number", "formula": "COUNT(*)"},
       "total_vaccinated": {"type": "Number", "formula": "COUNT(*) FILTER (WHERE vaccinated = ''true'')"}
@@ -73,6 +76,7 @@ CALL CREATE_POINT_AGGREGATION_TILESET(
 ```
 
 In the example above, for all features we would get a property `"total_count"` with the number of points that fall within it, as well as the count of points where the "vaccinated" property is true (`"total_vaccinated"`).
+
 
 ### CREATE_SIMPLE_TILESET
 
@@ -124,16 +128,20 @@ Additionally, there is a row in the `data` column identified with `Z=-1` which c
 
 ```sql
 CALL carto.CREATE_SIMPLE_TILESET(
-  '(select * from MYDB.MYSCHEMA.carto_geography_usa_censustract)',
+  'select * from MYDB.MYSCHEMA.carto_geography_usa_censustract',
   'MYDB.MYSCHEMA.carto_geography_usa_censustract_tileset',
- '{ 
-	"zoom_min":0, 
-	"zoom_max":5,
-  "metadata": {"name": "censustract_tileset", "description": "A description"},
-	"properties":{
-		"geoid":"String", 
-		"do_perimeter":"Number",
-		"do_label":"String"
-	}
+  '{
+    "zoom_min":0,
+    "zoom_max":5,
+    "metadata": {
+      "name": "censustract_tileset",
+      "description": "A description"
+    },
+    "properties":{
+      "geoid":"String",
+      "do_perimeter":"Number",
+      "do_label":"String"
+    }
   }'
-)```
+);
+```
