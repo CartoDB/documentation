@@ -32,5 +32,5 @@ git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-cor
 
 echo -e "\nCheckout Analytics Toolbox for PostgreSQL"
 echo "---------------------------------------"
-git clone --branch margara/pg-tiler-doc-review --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-postgres-master
+git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-postgres-master
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-postgres-master

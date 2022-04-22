@@ -1,6 +1,6 @@
 ## Release notes
 
-### April 20, 2022
+### April 22, 2022
 
 #### Module tiler
 
@@ -11,7 +11,6 @@ Feature
 - Set `tile_feature_order` empty as default.
 - Input query without parenthesis allowed.
 - Use of MD5 hash for temporary tables naming.
-- Bug fixes
 
 ### April 7, 2022
 

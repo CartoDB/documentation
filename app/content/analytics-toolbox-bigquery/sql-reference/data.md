@@ -750,6 +750,7 @@ CALL `carto-un`.carto.ENRICH_POLYGONS(
    R'''
    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
    ''',
+   'geom',
    [('var1', 'sum'), ('var2', 'sum'), ('var2', 'max')],
    ['`my-project.my-dataset.my-enriched-table`']
 );

@@ -102,7 +102,7 @@ Generates a simple tileset.
 
 ```sql
 CALL carto.CREATE_SIMPLE_TILESET(
-  'SELECT geom, population FROM mypopulationtable',
+  'SELECT geom, population, category FROM mypopulationtable',
   'MYDB.MYSCHEMA.population_tileset',
   '{
     "geom_column": "geom",
