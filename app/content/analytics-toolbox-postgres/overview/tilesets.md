@@ -18,13 +18,13 @@ The integration of tilesets with custom web map applications is also possible wi
 
 ### Tileset types and procedures
 
-We currently support the creation of *aggregation* tilesets, which encode aggregations over the input features, and *simple* tilesets, which instead encode all the input features _as is_. In a nutshell, you should use _simple_ tilesets for visualizing a dataset of world rivers, but use an _aggregation_ tileset to visualize a heatmap of the trees distribution in New York City. 
+We currently support the creation of *aggregation* tilesets, which encode aggregations over the input features, and *simple* tilesets, which instead encode all the input features _as is_. In a nutshell, you should use _simple_ tilesets for visualizing a dataset of world rivers, but use an _aggregation_ tileset to visualize a heatmap of the trees distribution in New York City.
 
 We provide the following set of procedures to create tilesets:
 
 1. `carto.CREATE_SIMPLE_TILESET`
     * This procedure creates a _simple_ tileset. You should use it if you have a dataset with any geography type (point, line, or polygon) and you want to visualize it at an appropriate zoom level.
-    * The geographies will be represented exactly as stored in BigQuery, which means that if they are too small to be visible at a certain zoom level they won't be included in the tiles at that zoom level.
+    * The geographies will be represented exactly as stored in PostgreSQL, which means that if they are too small to be visible at a certain zoom level they won't be included in the tiles at that zoom level.
     * The values associated with each feature are the same as the ones available in the source dataset.
 
 3. `carto.CREATE_POINT_AGGREGATION_TILESET`

@@ -18,7 +18,7 @@ navbar:
       - name: Analytics Toolbox for Databricks
         url: /analytics-toolbox-databricks
       - name: Analytics Toolbox for PostgreSQL
-        url: /analytics-toolbox-postgresql
+        url: /analytics-toolbox-postgres
   - name: Dev tools
     subelements:
       - name: CARTO API
@@ -53,4 +53,4 @@ navbar:
   #       url: https://carto.com/developers/auth-api
   #     - name: Federated Tables API
   #       url: https://carto.com/developers/federated-tables-api
-    
+

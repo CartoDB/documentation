@@ -21,7 +21,7 @@ Generates a point aggregation tileset.
 
 | Option | Description |
 | :----- | :------ |
-|`geom_column`| Default: `"geom"`. A `VARCHAR` that indicates the name of the geography column that will be used. The geography column must be of type `GEOGRAPHY` and contain only points. |
+|`geom_column`| Default: `"GEOM"`. A `VARCHAR` that indicates the name of the geography column that will be used. The geography column must be of type `GEOGRAPHY` and contain only points. The capitalization (uppercase/lowercase letters) of the name must match exactly the column name; note that Snowflake by default converts names to uppercase. |
 |`zoom_min`| Default: `0`. An `INTEGER` that defines the minimum zoom level at which tiles will be generated. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `15`; maximum: `20`. An `INTEGER` that defines the maximum zoom level at which tiles will be generated. Any zoom level over this level won't be generated.|
 |`aggregation_resolution`| Default: `6`. An `INTEGER` that specifies the resolution of the spatial aggregation.<br/><br/>Aggregation for zoom `z` is based on quadkey cells at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells, which is the maximum number of resulting features (aggregated) that the tiles will contain.<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
@@ -59,12 +59,12 @@ CALL carto.CREATE_POINT_AGGREGATION_TILESET(
   'SELECT geom, population FROM mypopulationtable',
   'MYDB.MYSCHEMA.population_tileset',
   '{
-    "geom_column": "geom",
+    "geom_column": "GEOM",
     "zoom_min": 0, "zoom_max": 6,
     "aggregation_resolution": 5,
     "aggregation_placement": "features-centroid",
     "properties": {
-      "population_sum": { "formula": "SUM(population)", "type": "NUMBER" }
+      "population_sum": { "formula": "SUM(POPULATION)", "type": "Number" }
     }
   }'
 )
@@ -87,11 +87,11 @@ Generates a simple tileset.
 
 | Option | Description |
 | :----- | :------ |
-|`geom_column`| Default: `"geom"`. A `VARCHAR` that specifies the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
+|`geom_column`| Default: `"GEOM"`. A `VARCHAR` that specifies the name of the geography column that will be used. It must be of type `GEOGRAPHY`. The capitalization (uppercase/lowercase letters) of the name must match exactly the column name; note that Snowflake by default will use only uppercase letters for the column names, but this can be altered if column names are quoted in their definition. Do not use quotes here, just mutch the capitalization. |
 |`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level at which tiles will be generated. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `10`. A `NUMBER` that defines the maximum zoom level at which tiles will be generated. Any zoom level over this level won't be generated.|
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
-|`properties`| Default: {}. A JSON object that defines the properties that will be included associated with each cell feature. Each property is defined by its name and type (Number, String, etc.). Please note that every property different from Number will be casted to String.|
+|`properties`| Default: {}. A JSON object that defines the properties that will be included associated with each cell feature. Each property is defined by its name and type (Number, String, etc.). Please note that every property different from Number will be casted to String. Property names must correspond to column names in the input and match it's capitalization exactly; note by default Snowflake will use only uppercase letters for the column names but this can altered if column names where quoted in their definitions. Do not use quotes here, just mutch the capitalization. The properties will appear in the GeoJSON data with the same capitalization as the column names. |
 |`max_tile_features`| Default: `10000`. A `NUMBER` that sets the maximum number of features a tile can contain. This limit only applies when the input geometries are points. When this limit is reached, the procedure will stop adding features into the tile. You can configure in which order the features are kept by setting the `tile_feature_order` property.|
 |`max_tile_vertices`| Default: `200000`. A `NUMBER` that sets the maximum number of vertices a tile can contain. This limit only applies when the input geometries are lines or polygons. When this maximum is reached, the procedure will drop features according to the chosen `max_tile_size_strategy`. You can configure in which order the features are kept by setting the `tile_feature_order` property.|
 |`tile_feature_order`| Default: `RANDOM()` for points, `ST_AREA() DESC` for polygons, `ST_LENGTH() DESC` for lines. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`. The `"ORDER BY"` part must not be included. You can use any source column even if it is not included in the tileset as a property.|
@@ -104,10 +104,10 @@ CALL carto.CREATE_SIMPLE_TILESET(
   'SELECT geom, population FROM mypopulationtable',
   'MYDB.MYSCHEMA.population_tileset',
   '{
-    "geom_column": "geom",
+    "geom_column": "GEOM",
     "zoom_min": 0, "zoom_max": 6,
     "properties": {
-      "population": "Number",
+      "POPULATION": "Number",
       "category": "String"
     }
   }'
