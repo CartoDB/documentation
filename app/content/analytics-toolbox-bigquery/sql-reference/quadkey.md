@@ -61,6 +61,31 @@ SELECT `carto-os`.carto.QUADINT_BOUNDARY(4388);
 -- POLYGON((22.5 0, 22.5 -21.9430455334382, 22.67578125 ...
 ```
 
+### QUADINT_CENTER
+
+{{% bannerNote type="code" %}}
+carto.QUADINT_CENTER(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the center for a given quadint. The center is defined as the intersection point of the four immediate children quadint. 
+
+* `quadint`: `INT64` quadint to get the center from.
+
+**Return type**
+
+`GEOGRAPHY`
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-os`.carto.QUADINT_CENTER(4388);
+-- POINT(33.75 -11.1784018737118)
+```
+
 ### QUADINT_FROMGEOGPOINT
 
 {{% bannerNote type="code" %}}
@@ -307,6 +332,31 @@ SELECT `carto-os`.carto.QUADINT_POLYFILL(
 -- 207305529137
 -- 207305529169
 -- 207301334833
+```
+
+### QUADINT_RESOLUTION
+
+{{% bannerNote type="code" %}}
+carto.QUADINT_RESOLUTION(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the resolution of the input quadint.
+
+* `quadint`: `INT64` quadint from which to get resolution.
+
+**Return type**
+
+`INT64`
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-os`.carto.QUADINT_RESOLUTION(4388);
+-- 4
 ```
 
 ### QUADINT_SIBLING
