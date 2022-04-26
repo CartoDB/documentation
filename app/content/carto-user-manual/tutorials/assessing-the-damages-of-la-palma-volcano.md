@@ -27,11 +27,13 @@ In this tutorial we are going to assess the number of buildings and population t
 
 3. The first time that you access the Workspace, you will see a Welcome banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. 
 
-    ![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png)
+    <!-- ![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png) -->
+
+    ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_first_new_landing.png)
 
 4. From the Navigation Menu in the left panel, select Data Explorer. 
 
-   ![Menu features data explorer](/img/cloud-native-workspace/tutorials/tutorial1_the_menu_features_data_explorer.png)
+    ![Menu features data explorer](/img/cloud-native-workspace/tutorials/tutorial1_the_menu_features_data_explorer.png)
 
 5. Select the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection and click on *demo data > demo_tables* from the collapsible tree. 
 
