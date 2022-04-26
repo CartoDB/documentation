@@ -42,13 +42,21 @@ You can explore additional fill color features by clicking on the *three dots* i
     
     <!-- or *confirm* the choices of customized colors. -->
 
-- **Color scale**: For your color palette, you can choose either a quantile or quantized color scale.
+- **Color scale**: For your color palette, you can choose a quantile, quantize or a custom color scale.
 
-![Map style fill color scale](/img/cloud-native-workspace/maps/map_fill_color_by_scale.png)
+<!-- ![Map style fill color scale](/img/cloud-native-workspace/maps/map_fill_color_by_scale.png) -->
+
+![Map style fill color scale](/img/cloud-native-workspace/maps/map_fill_color_by_new_color_scale.png)
 
 **Quantile**: A quantile color scale is determined by rank. A quantile classification is well suited to linearly distributed data. Each quantile class contains an equal number of features. There are no empty classes or classes with too few or too many values. This can be misleading sometimes, since similar features can be placed in adjacent classes or widely different values can be in the same class, due to equal number grouping.
 
-**Quantized**: Quantized color scale is determined by value. To Quantize means to group values with discrete increments. It allows to transform an initial continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
+**Quantize**: Quantized color scale is determined by value. To Quantize means to group values with discrete increments. It allows to transform an initial continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
+
+**Custom**: Custom color scale is determined by customized values. A custom classification is well suited to tweak their color ramps, adjusting the values to fine tune their visualizations.
+
+The follow example give a small demonstration of how the new custom color scale easily allows you to customize the color ramps and the data clasiffications in Builder.
+
+![Custom color scale](/img/cloud-native-workspace/maps/custom-color-scale.gif) 
 
 - **Opacity**: Change the transparency of a layer. 1 = opaque, 0 = invisible. You can change the predefined opacity using the *opacity slider* or by directly writting the level of opacity in the *text input*. ![Map style fill opacity](/img/cloud-native-workspace/maps/map_fill_color_opacity.png)
 ### Stroke color
