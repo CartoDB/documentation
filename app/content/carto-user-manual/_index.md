@@ -27,6 +27,7 @@ cascade:
         - title: "Feature selection tool"
         - title: "Publishing and sharing maps"
         - title: "Duplicating maps"
+        - title: "Deleting maps"
         - title: "Performance considerations"
     - title: "Data Explorer"
       folder:
