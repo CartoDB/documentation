@@ -5,53 +5,6 @@
 You can learn more about quadkeys and quandints in the [Overview section](/spatial-extension-rs/overview/spatial-indexes/#quadkey) of the documentation.
 
 
-### QUADINT_ASQUADKEY
-
-{{% bannerNote type="code" %}}
-carto.QUADINT_ASQUADKEY(quadint)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the quadkey equivalent to the input quadint.
-
-* `quadint`: `BIGINT` quadint to be converted into quadkey.
-
-**Return type**
-
-`VARCHAR`
-
-**Example**
-
-```sql
-SELECT carto.QUADINT_ASQUADKEY(4388);
--- 3001
-```
-
-### QUADINT_ASZXY
-
-{{% bannerNote type="code" %}}
-carto.QUADINT_ASZXY(quadint)
-{{%/ bannerNote %}}
-
-**Description**
-
-Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
-
-* `quadint`: `BIGINT` quadint we want to extract tile information from.
-
-**Return type**
-
-`SUPER`
-
-**Example**
-
-```sql
-SELECT carto.QUADINT_ASZXY(4388);
--- z  x  y
--- 4  9  8
-```
-
 ### QUADINT_BBOX
 
 {{% bannerNote type="code" %}}
@@ -374,4 +327,51 @@ Returns the parent quadint of a given quadint for a specific resolution. A paren
 ```sql
 SELECT carto.QUADINT_TOPARENT(4388, 3);
 -- 1155
+```
+
+### QUADINT_TOQUADKEY
+
+{{% bannerNote type="code" %}}
+carto.QUADINT_TOQUADKEY(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the quadkey equivalent to the input quadint.
+
+* `quadint`: `BIGINT` quadint to be converted into quadkey.
+
+**Return type**
+
+`VARCHAR`
+
+**Example**
+
+```sql
+SELECT carto.QUADINT_TOQUADKEY(4388);
+-- 3001
+```
+
+### QUADINT_TOZXY
+
+{{% bannerNote type="code" %}}
+carto.QUADINT_TOZXY(quadint)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns the zoom level `z` and coordinates `x`, `y` for a given quadint.
+
+* `quadint`: `BIGINT` quadint we want to extract tile information from.
+
+**Return type**
+
+`SUPER`
+
+**Example**
+
+```sql
+SELECT carto.QUADINT_TOZXY(4388);
+-- z  x  y
+-- 4  9  8
 ```
