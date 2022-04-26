@@ -1,26 +1,26 @@
-## SQL Analysis UI
+## SQL Analyses
 
 CARTO Builder offers a UI that helps building SQL queries to perform geospatial analysis operations. 
 
-To get started with SQL Analysis, add a source to your Builder map and click on the three dots to find the *Add SQL Analyis* option: 
+To get started with SQL Analysis, add a source to your Builder map and click on the three dots to find the *Add SQL Analysis* option: 
 
 ![](/img/cloud-native-workspace/maps/add_sql_analysis.png)
-After that, you will see a list of analysis compatible with your source. Compatibility depends on some factors, like whether or not the CARTO Analytics Toolbox is needed, or the connection's cloud data warehouse. 
+After that, you will see a list of analyses compatible with your source. Compatibility depends on some factors, like whether or not the CARTO Analytics Toolbox is needed, or the connection's cloud data warehouse. 
 
 ![](/img/cloud-native-workspace/maps/add_sql_analysis_panel.png)
 
-Check this table to find out which analysis are available for each data warehouse: 
+Check this table to find out which analyses are available for each data warehouse: 
 
-|   |**BigQuery**|**Redshift**|**Snowflake**
-|---|---|---|---|
-|**Intersect and Aggregate**|✅|✅|Coming soon
-|**Create buffers**|✅|Coming soon|✅  [(\*) _more info_](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/transformations/#st_buffer)
-|**Add column from second source**|✅|✅|✅
-|**Filter by column value**|✅|✅|✅|
+|   |**BigQuery**|**CARTO DW**|**Redshift**|**Snowflake**
+|---|---|---|---|---|
+|**Intersect and Aggregate**|✅|✅|✅|Coming soon
+|**Create buffers**|✅|✅|Coming soon|✅  [(\*) _more info_](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/transformations/#st_buffer)
+|**Add column from second source**|✅|✅|✅|✅
+|**Filter by column value**|✅|✅|✅|✅|
 
 _(*) Requires the CARTO Analytics Toolbox to be installed_
 
-Each analysis will create a SQL query that performs the geospatial operation. These SQL queries will use [CTEs (Common Table Expressions)](https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL#Common_table_expression) to be able to chain different analysis and create a more complex sequence. 
+Each analysis will create a SQL query that performs the geospatial operation. These SQL queries will use [CTEs (Common Table Expressions)](https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL#Common_table_expression) to be able to chain different analyses and create a more complex sequence. 
 
 <!-- TO DO copy SQL query -->
 

@@ -24,7 +24,7 @@ cascade:
         - title: "Map settings"
         - title: "Map styles"
         - title: "Map view modes"
-        - title: "SQL Analysis UI"
+        - title: "SQL Analyses"
         - title: "Feature selection tool"
         - title: "Publishing and sharing maps"
         - title: "Duplicating maps"
