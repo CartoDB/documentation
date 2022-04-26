@@ -1,4 +1,4 @@
-## PostgreSQL Tiler
+## Tiler
 
 <div class="badges"><div class="advanced"></div></div>
 
