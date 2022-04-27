@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/geocoding/
+---
 ## geocoding
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>

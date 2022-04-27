@@ -2,7 +2,7 @@
 title: Analytics Toolbox for Snowflake
 description: "Unlock Spatial Analytics in Snowflake"
 icon: "/img/icons/snowflake-analytics-toolbox.png"
-repoUrl: https://github.com/CartoDB/carto-spatial-extension
+repoUrl: https://github.com/CartoDB/analytics-toolbox-core
 
 url: analytics-toolbox-snowflake
 indexPage: "overview/getting-started.md"
@@ -35,6 +35,7 @@ cascade:
         - title: "constructors"
         - title: "data"
         - title: "h3"
+        - title: "lds"
         - title: "measurements"
         - title: "placekey"
         - title: "processing"

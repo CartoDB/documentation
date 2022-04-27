@@ -1,11 +1,63 @@
 ## Release notes
 
+### April 21, 2022
+
+#### Module tiler
+
+Changed
+- Add support for non-uppercase column names
+
+### April 20, 2022
+
+#### Module tiler
+
+Changed
+- Errors used to be reported with a procedure result message. Now they raise exceptions.
+
+### April 7, 2022
+
+#### Module transformations
+
+Feature
+- Add ST_BUFFER function.
+
+### March 25, 2022
+
+#### Module tiler
+
+Changed
+- Run the simple tiler in a single query.
+- Add `fraction_dropped_per_zoom` to the metadata.
+
+Fixed
+- Fix empty properties causing errors.
+- Fix `drop_fraction_as_needed` in the simple tiler.
+- Fix problems with GeometryCollections received after ST_Simplify.
+
+### March 21, 2022
+
+#### Module transformations
+
+Changed
+- ST_CONCAVEHULL now allows arrays with one/two points as input.
+
 ### February 24, 2022
 
 #### Module tiler
 
 Feature
 - Add CREATE_SIMPLE_TILESET procedure.
+
+### February 18, 2022
+
+#### Module lds
+
+Feature
+- Add GEOCODE_TABLE procedure.
+- Add GEOCODE function.
+- Add GEOCODE_REVERSE function.
+- Add ISOLINE function.
+- Add LDS_QUOTA_INFO function.
 
 ### February 16, 2022
 

@@ -23,6 +23,9 @@ cascade:
         - title: "Exporting data"
         - title: "Map settings"
         - title: "Map styles"
+        - title: "Map view modes"
+        - title: "SQL Analyses"
+        - title: "Feature selection tool"
         - title: "Publishing and sharing maps"
         - title: "Duplicating maps"
         - title: "Performance considerations"
@@ -33,11 +36,10 @@ cascade:
         - title: "Creating a map from your data"  
         - title: "Creating a tileset from your data"  
         - title: "Importing data"
+        - title: "Geocoding data"
     - title: "Data Observatory"
       folder:
-        - title: "Browsing the Spatial Data Catalog"
-        #- title: "Subscribing to public and premium datasets"
-        #- title: "Managing your subscriptions"
+        - title: "Introduction"
     - title: "Connections" 
       folder:
         - title: "Introduction"

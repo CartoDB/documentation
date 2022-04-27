@@ -4,6 +4,36 @@
 
 This module contains functions that compute geometric constructions, or alter geometry size or shape.
 
+### ST_BUFFER
+
+{{% bannerNote type="code" %}}
+carto.ST_BUFFER(geog, distance [, segments])
+{{%/ bannerNote %}}
+
+**Description**
+
+Calculates a buffer for the input features for a given distance.
+
+* `geog`: `GEOGRAPHY` input to be buffered.
+* `distance`: `DOUBLE` distance of the buffer around the input geography. The value is in meters. Negative values are allowed.
+* `segments` (optional): `INTEGER` number of segments used to approximate a quarter circle. The default value is `8`.
+
+**Return type**
+
+`GEOGRAPHY`
+
+**Example**
+
+``` sql
+SELECT carto.ST_BUFFER(ST_POINT(-74.00, 40.7128), 1000);
+-- { "coordinates": [ [ [ -73.98813543746913, 40.712799392649444 ], ...
+```
+
+``` sql
+SELECT carto.ST_BUFFER(ST_POINT(-74.00, 40.7128), 1000, 10);
+-- { "coordinates": [ [ [ -73.98813543746913, 40.712799392649444 ], ...
+```
+
 ### ST_CENTERMEAN
 
 {{% bannerNote type="code" %}}
@@ -81,7 +111,7 @@ carto.ST_CONCAVEHULL(geojsons [, maxEdge] [, units])
 
 **Description**
 
-Takes a set of points and returns a concave hull Polygon or MultiPolygon.
+Takes a set of points and returns a concave hull Polygon or MultiPolygon. In case of a single or a couple of points are passed as input, the function will return that point or a segment respectively.
 
 * `geojsons`: `ARRAY` array of features in GeoJSON format casted to STRING.
 * `maxEdge` (optional): `DOUBLE` the length (in 'units') of an edge necessary for part of the hull to become concave. By default `maxEdge` is `infinity`.
@@ -106,6 +136,11 @@ SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.28
 ``` sql
 SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING, ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING), 100, 'kilometers');
 -- { "coordinates": [ [ [ -75.833, 39.284 ], [ -75.6, 39.984 ], ...
+```
+
+``` sql
+SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING));
+--  { "coordinates": [ -75.833, 39.284 ], "type": "Point" }
 ```
 
 ### ST_DESTINATION

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/clustering/
+---
 ## clustering
 
 <div class="badges"><div class="advanced"></div></div>

@@ -8,6 +8,8 @@ categories:
     - constructors
     - transformations
     - processing
+aliases:
+    - /analytics-toolbox-bq/examples/identifying-earthquake-prone-areas-in-the-state-of-california/
 ---
 ## Identifying earthquake-prone areas in the state of California
 

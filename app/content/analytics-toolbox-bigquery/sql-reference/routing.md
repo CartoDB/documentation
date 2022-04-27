@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-bq/sql-reference/routing/
+---
 ## routing
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>

@@ -1,6 +1,44 @@
+---
+aliases:
+    - /analytics-toolbox-bq/release-notes/
+---
 ## Release notes
 
+### April 22, 2022
+
+#### Module data
+
+Feature
+- Add in place enrichment.
+- Allow using tables as input.
+- Accept NULL as output.
+
+### April 20, 2022
+
+#### Module retail
+
+Fixed
+- Fix BUILD_REVENUE_MODEL_DATA k-ring buffer computation.
+
+### April 11, 2022
+
+#### Module quadkey
+
+Feature
+- Add QUADINT_CENTER.
+- Add QUADINT_RESOLUTION.
+
+Fixed
+- Fixed QUADINT_KRING.
+- Fixed QUADINT_KRING_DISTANCES.
+- Fixed QUADINT_SIBLING.
+
 ### March 21, 2022
+
+#### Module transformations
+
+Changed
+- ST_CONCAVEHULL now allows arrays with one/two points as input.
 
 #### Module retail
 

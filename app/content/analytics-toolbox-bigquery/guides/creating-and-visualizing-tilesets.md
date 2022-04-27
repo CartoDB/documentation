@@ -1,3 +1,8 @@
+---
+aliases:
+    - /analytics-toolbox-bq/guides/
+    - /analytics-toolbox-bq/guides/creating-and-visualizing-tilesets/
+---
 ## Creating and visualizing tilesets
 
 ### Creating a tileset

@@ -6,6 +6,8 @@ type: examples
 date: "2021-09-12"
 categories:
     - h3
+aliases:
+    - /analytics-toolbox-bq/examples/an-h3-grid-of-starbucks-locations-and-simple-cannibalization-analysis/
 ---
 ## An H3 grid of Starbucks locations and simple cannibalization analysis
 

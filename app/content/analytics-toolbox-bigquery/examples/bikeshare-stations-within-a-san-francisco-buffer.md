@@ -6,6 +6,8 @@ type: examples
 date: "2021-03-12"
 categories:
     - transformations
+aliases:
+    - /analytics-toolbox-bq/examples/bikeshare-stations-within-a-san-francisco-buffer/
 ---
 ## Bikeshare stations within a San Francisco buffer
 

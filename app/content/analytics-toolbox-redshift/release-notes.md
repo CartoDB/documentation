@@ -1,5 +1,31 @@
 ## Release notes
 
+### April 21, 2022
+
+#### Module tiler
+
+Feature
+- Add max_tile_size_strategy support for CREATE_SIMPLE_TILESET.
+
+Fixed
+- Fix tile_feature_order not being taken into account for CREATE_POINT_AGGREGATION_TILESET and CREATE_POINT_AGGREGATION_TILESET.
+
+### March 30, 2022
+
+#### Module tiler
+
+Fixed
+- Escape special characters in generated properties.
+
+### March 25, 2022
+
+#### Module tiler
+
+Changed
+- Raise improper qualified tables errors.
+- Limit GeoJSON precision to 6 to comply Redshift VARCHAR size limitations.
+- Add ST_Simplify to the tiler.
+
 ### March 10, 2022
 
 #### Module tiler
@@ -14,6 +40,17 @@ Feature
 Feature
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
+
+### February 18, 2022
+
+#### Module lds
+
+Feature
+- Add GEOCODE_TABLE procedure.
+- Add GEOCODE function.
+- Add GEOCODE_REVERSE function.
+- Add ISOLINE function.
+- Add LDS_QUOTA_INFO function.
 
 ### December 16, 2021
 
