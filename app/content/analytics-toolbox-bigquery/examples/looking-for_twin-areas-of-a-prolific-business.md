@@ -5,9 +5,9 @@ In this example we are going to find twin area candidate for a well performing s
 ### Gridify and enrich origin areas
 
 ```sql
-CALL `cartodb-gcp-backend-data-team.fbaptiste_carto.GRIDIFY_ENRICH`(
+CALL `carto-un.carto.GRIDIFY_ENRICH`(
     -- Biqquery inputs
-    'cartodb-gcp-backend-data-team.fbaptiste_carto',
+    'carto-un.carto',
     -- Input query
     '''
       WITH
@@ -26,7 +26,7 @@ CALL `cartodb-gcp-backend-data-team.fbaptiste_carto.GRIDIFY_ENRICH`(
     'point',
     'geom','index',
     -- Grid params: grid type and level
-    'quadkey', 15, 
+    'quadkey', 15,
     -- Data Observatory enrichment
     [('total_pop_3409f36f','sum'),('households_d7d24db5','sum')],
     'carto-data.ac_7xhfwyml',
@@ -64,15 +64,15 @@ CALL `cartodb-gcp-backend-data-team.fbaptiste_carto.GRIDIFY_ENRICH`(
 ### Gridify and enrich target areas
 
 ```sql
-    CALL `cartodb-gcp-backend-data-team.fbaptiste_carto.GRIDIFY_ENRICH`(
+    CALL `carto-un.carto.GRIDIFY_ENRICH`(
     -- Biqquery inputs
-    'cartodb-gcp-backend-data-team.fbaptiste_carto',
+    'carto-un.carto',
     -- Input query
     'SELECT geom FROM  `cartodb-on-gcp-datascience.giulia.twin_areas_test_data_target_poly`',
     'polygon',
     'geom','index',
     -- Grid params: grid type and level
-    'quadkey', 15, 
+    'quadkey', 15,
     -- Data Observatory enrichment
     [('total_pop_3409f36f','sum'),('households_d7d24db5','sum')],
     'carto-data.ac_7xhfwyml',
@@ -112,9 +112,9 @@ CALL `cartodb-gcp-backend-data-team.fbaptiste_carto.GRIDIFY_ENRICH`(
 Once we have gridify the origin and the target areas, we can easily get the cell of the Hy-Vee store that sells the most in 2019 in Iowa and look for twin cells in the target area.
 
 ```sql
-    CALL `cartodb-gcp-backend-data-team.fbaptiste_carto.TWIN_AREAS`(
+    CALL `carto-un.carto.TWIN_AREAS`(
     -- Bigquery inputs
-    'cartodb-gcp-backend-data-team.fbaptiste_carto',
+    'carto-un.carto',
     -- Index and geom columns names
     'index','geom',
     -- Input queries
@@ -128,10 +128,10 @@ Once we have gridify the origin and the target areas, we can easily get the cell
     LIMIT 1
         )
     SELECT T.*
-    FROM `cartodb-gcp-backend-data-team.fbaptiste_carto.twin_areas_test_data_origin_lonlat_quadkeyz15_enriched` T, selected_location
+    FROM `carto-un.carto.twin_areas_test_data_origin_lonlat_quadkeyz15_enriched` T, selected_location
     WHERE ST_WITHIN(store_location, T.geom)
     ''',
-    'SELECT * FROM `cartodb-gcp-backend-data-team.fbaptiste_carto.twin_areas_test_data_target_poly_quadkeyz15_enriched`',
+    'SELECT * FROM `carto-un.carto.twin_areas_test_data_target_poly_quadkeyz15_enriched`',
     -- Twin areas model inputs
     'twin_areas_test_model_quadkeyz15_polygon',0.90,NULL);
 ```
