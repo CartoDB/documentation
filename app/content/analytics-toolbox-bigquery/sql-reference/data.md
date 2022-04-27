@@ -1020,7 +1020,7 @@ carto.GRIDIFY_ENRICH(input_query, grid_type, grid_level, do_variables, do_source
 
 **Description**
 
-This procedure converts the input geometries into a grid of the specified type and resolution, and enriches it with Data Observatory and custom data. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. 
+This procedure converts the input geometries into a grid of the specified type and resolution, and enriches it with Data Observatory and custom data. The user must be subscribed to all the Data Observatory datasets involved in the enrichment.
 
 The enrichment operations performed using Data Observatory data and custom data are those described in the [`DATAOBS_ENRICH_GRID`](#dataobs_enrich_grid) and [`ENRICH_GRID`](#enrich_grid) procedures, respectively. Please refer to their definition for more detailed information on the process.
 
@@ -1046,9 +1046,9 @@ The output table will contain all the input columns enriched with Data Observato
 ```sql
 CALL `carto-un`.carto.GRIDIFY_ENRICH`(
     -- Input query
-     'SELECT geom FROM `cartobq.docs.twin_areas_target`',
+    'SELECT geom FROM `cartobq.docs.twin_areas_target`',
     -- Grid params: grid type and level
-    'quadkey', 15, 
+    'quadkey', 15,
     -- Data Observatory enrichment
     [('population_14d9cf55', 'sum')],
     'my-dataobs-project.my-dataobs-dataset',
@@ -1058,9 +1058,10 @@ CALL `carto-un`.carto.GRIDIFY_ENRICH`(
     ''',
     [('var1', 'sum'), ('var2', 'sum'), ('var2', 'max')],
     -- Smoothing parameters
-    1,"uniform",
+    1, "uniform",
     -- Output table
-    'my-project.my-dataset.my-enriched-table');
+    'my-project.my-dataset.my-enriched-table'
+);
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: index, population_14d9cf55_sum, var1_sum, var2_sum, var2_max
 ```

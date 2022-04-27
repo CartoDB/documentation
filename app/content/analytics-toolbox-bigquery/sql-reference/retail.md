@@ -204,28 +204,32 @@ The output twin areas are those of the target area considered to be the most sim
 * `origin_query`: `STRING` query to provide the origin cell (`index` column) and its associated data columns. No NULL values should be contained in any of the data columns provided. The cell can be an h3 or a quadkey index. For quadkey, the value should be cast to `STRING` (`CAST(index AS STRING)`). Example origin queries are:
     ```sql
     -- When selecting the origin cell from a dataset of gridified data
-    SELECT * FROM `<project>.<dataset>.<origin_table>` WHERE index_column = <cell_id>
+    SELECT * FROM `<project>.<dataset>.<origin_table>`
+    WHERE index_column = <cell_id>
     ```
 
     ```sql
     -- When the input H3 cell ID is inferred from a (longitude, latitude) pair
-    SELECT * FROM `<project>.<dataset>.<origin_table>` WHERE ST_INTERSECTS(`carto-un`.H3_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
+    SELECT * FROM `<project>.<dataset>.<origin_table>`
+    WHERE ST_INTERSECTS(`carto-un`.H3_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
     ```
 
     ```sql
     -- When the input quadkey cell ID is inferred from a (longitude, latitude) pair
-    SELECT * FROM `<project>.<dataset>.<origin_table>` WHERE ST_INTERSECTS(`carto-un`.carto.QUADINT_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
+    SELECT * FROM `<project>.<dataset>.<origin_table>`
+    WHERE ST_INTERSECTS(`carto-un`.carto.QUADINT_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
     ```
 
     ```sql
     -- When the cell ID is a quadkey and requires to be cast
-    SELECT * EXCEPT(index_column), CAST(index_column AS STRING) FROM `<project>.<dataset>.<origin_table>`
+    SELECT * EXCEPT(index_column), CAST(index_column AS STRING)
+    FROM `<project>.<dataset>.<origin_table>`
     ```
 * `target_query`: STRING query to provide the target area grid cells (`index` column) and their associated data columns, e.g. `SELECT * FROM <project>.<dataset>.<target_table>`. The data columns should be similar to those provided in the `origin_query`, otherwise the procedure will fail. Grid cells with any NULL values will be excluded from the analysis.
 * `index_column`: `STRING` name of the index column for both the `origin_query` and the `target_query`.
 * `pca_explained_variance_ratio`: `FLOAT64` of the explained variance retained in the PCA analysis. It defaults to 0.9 if set to`NULL`.
-* `max_results`: `INT64` of the maximum number of twin areas returned. If set to `NULL`, all target cells are returned. 
-* `output_prefix`: `STRING` destination and prefix for the output tables. It must contain the project, dataset and prefix: `<project>.<dataset>.<prefix>`.  
+* `max_results`: `INT64` of the maximum number of twin areas returned. If set to `NULL`, all target cells are returned.
+* `output_prefix`: `STRING` destination and prefix for the output tables. It must contain the project, dataset and prefix: `<project>.<dataset>.<prefix>`.
 
 **Output**
 
@@ -240,20 +244,17 @@ The procedure outputs the following:
 {{%/ customSelector %}}
 
 ```sql
-CALL
-  `carto-un`.carto.FIND_TWIN_AREAS(
+CALL `carto-un`.carto.FIND_TWIN_AREAS(
     -- Input queries
-    '''SELECT * FROM `cartobq.docs.twin_areas_target_enriched`
-                    LIMIT 1''',
+    '''SELECT * FROM `cartobq.docs.twin_areas_target_enriched` LIMIT 1''',
     '''SELECT * FROM `cartobq.docs.twin_areas_origin_enriched`''',
     -- Twin areas model inputs
     'index',
     0.90,
     NULL,
-    'my-project.my-dataset.my-prefix' );
+    'my-project.my-dataset.my-prefix'
+);
 ```
-
-
 
 ### FIND_WHITESPACE_AREAS
 

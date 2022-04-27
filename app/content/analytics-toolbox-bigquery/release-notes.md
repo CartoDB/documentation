@@ -4,6 +4,18 @@ aliases:
 ---
 ## Release notes
 
+### April 27, 2022
+
+#### Module data
+
+Feature
+- Add GRIDIFY_ENRICH procedure.
+
+#### Module retail
+
+Feature
+- Add FIND_TWIN_AREAS procedure.
+
 ### April 22, 2022
 
 #### Module data
