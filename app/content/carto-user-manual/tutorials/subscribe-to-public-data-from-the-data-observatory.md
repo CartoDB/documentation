@@ -66,7 +66,11 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
 10. Once we click on *Create*, the application will open a new tab with a Builder map having this dataset as a source with a SQL applied. This default SQL query is filtering the data by applying a buffer of 1000 meters around a point in the center of Manhattan in New York City. 
 
-    ![DO source with sql applied](/img/cloud-native-workspace/tutorials/tutorial4_do_source_with_sql_applied.png)
+    ![DO source with sql applied](/img/cloud-native-workspace/tutorials/tutorial4_do_source_with_sql.png)
+
+{{% bannerNote type="note" title="note" %}}
+Remember that you can also persist the query as a table by clicking on *Create table from query* button that will be available when the query is successfully completed or when it takes too long. 
+{{%/ bannerNote %}}
 
 11. In case our analysis should be applied in another US region, we can just modify the SQL query to filter out the data in another area. For example, we can apply a 5km buffer in the center of Chicago, using the point location for the buffer in the coordinates (-87.687020,41.871550) and modifying the start of the filter SQL query as such: 
 
@@ -75,7 +79,7 @@ In this tutorial we are going to showcase how to leverage the public data offeri
     buffer AS (SELECT ST_BUFFER(ST_GEOGPOINT(-87.687020,41.871550), 10000) AS buffer_geom), ... 
     ```
 
-    ![DO source with second sql applied](/img/cloud-native-workspace/tutorials/tutorial4_do_source_with_second_sql_applied.png)
+    ![DO source with second sql applied](/img/cloud-native-workspace/tutorials/tutorial4_do_source_with_second_sql.png)
 
 12. Alternatively we can also modify the SQL query in order to filter the data in a bounding box. For example by defining this bounding box in Los Angeles (-118.341567,33.972640,-118.093688,34.089010) and changing the SQL query to: 
 
@@ -91,8 +95,7 @@ In this tutorial we are going to showcase how to leverage the public data offeri
     ON do_data.geoid=do_geom.geoid 
     ```
 
-    ![DO source with bounding box sql applied](/img/cloud-native-workspace/tutorials/tutorial4_do_source_with_boundingbox_sql_applied.png)
-
+    ![DO source with bounding box sql applied](/img/cloud-native-workspace/tutorials/tutorial4_do_source_with_boundingbox_sql.png)
 
 {{% bannerNote type="warning" title="Warning" %}}
 Note that when modifying the query you should keep the table IDs as defined for your own account, not based on the ones we showcase in this example (e.g. `carto-data.ac_lqe3zwgu`). The important part is the introduction of  `ST_INTERSECTSBOX(geom, -118.341567,33.972640,-118.093688,34.089010)`. 
@@ -110,58 +113,44 @@ Note that when modifying the query you should keep the table IDs as defined for 
 
     ![DO fill select field](/img/cloud-native-workspace/tutorials/tutorial4_do_fill_color_based_on.png)
 
-    ![DO fill based on](/img/cloud-native-workspace/tutorials/tutorial4_do_layer_styled.png)
+    ![DO fill based on](/img/cloud-native-workspace/tutorials/tutorial4_do_layer_style.png)
 
 16. We can now also add a widget in order to be able to filter the H3 cells based on the population and other features in the table. For that we click in the tab for “Widgets”.
 
-    ![DO widget tab](/img/cloud-native-workspace/tutorials/tutorial4_do_widget_tab.png)
+    ![DO widget tab](/img/cloud-native-workspace/tutorials/tutorial4_do_the_widget_tab.png)
 
-17. We select the HISTOGRAM widget and the field `Population`. We can also modify the number of bins to 12.
+17. We select the HISTOGRAM widget and the field `Population`. We can also modify the number of bins to 12 and we can also rename the title of the widget to reflect the selected field. 
 
-    ![DO histogram widget](/img/cloud-native-workspace/tutorials/tutorial4_do_histogram_widget.png)
+    ![DO widget rename](/img/cloud-native-workspace/tutorials/tutorial4_do_widget_renamed.png)
 
-18. We can rename the title of the widget to reflect the selected field. 
+18. We can add a second widget for one of the category features that we have in our dataset. Select the field `Urbanity`. Change the name of the widget to `Urbanity level`.
 
-    ![DO widget options](/img/cloud-native-workspace/tutorials/tutorial4_do_widget_options.png)
+    ![DO widget rename](/img/cloud-native-workspace/tutorials/tutorial4_do_category_widget_renamed.png)
 
-    ![DO widget rename](/img/cloud-native-workspace/tutorials/tutorial4_do_widget_rename.png)
+19. We can go ahead and also customize our tooltip/infowindows. For that we access the tab named “Interactions”.
 
-19. We can add a second widget for one of the category features that we have in our dataset. We click on the *Add widget* button.
+    ![DO interactions tab](/img/cloud-native-workspace/tutorials/tutorial4_do_the_interactions_tab.png)
 
-    ![DO add widget](/img/cloud-native-workspace/tutorials/tutorial4_do_add_widget.png)
+20. We are going to select the following fields: `Population`, `Male`, `Female`, `Retail`, `Elevation` and `Urbanity`.
 
-20. We are going to select the Category widget and the field `Urbanity`. 
+    ![DO add interactions](/img/cloud-native-workspace/tutorials/tutorial4_do_show_interactions.png)
 
-    ![DO category widget](/img/cloud-native-workspace/tutorials/tutorial4_do_category_widget.png)
+21. We can change the basemap for another type, for example the Dark Matter version of a Google Maps basemap. 
 
-21. We change the name of the widget to `Urbanity level`.
+    ![DO basemap google maps](/img/cloud-native-workspace/tutorials/tutorial4_do_basemap_dark_google_maps.png)
 
-    ![DO widget rename](/img/cloud-native-workspace/tutorials/tutorial4_do_widget_rename.png)
-
-22. We can go ahead and also customize our tooltip/infowindows. For that we access the tab named “Interactions”.
-
-    ![DO interactions tab](/img/cloud-native-workspace/tutorials/tutorial4_do_interactions_tab.png)
-
-23. We are going to select the following fields: `Population`, `Male`, `Female`, `Retail`, `Elevation` and `Urbanity`.
-
-    ![DO add interactions](/img/cloud-native-workspace/tutorials/tutorial4_do_add_interactions.png)
-
-24. We can change the basemap for another type, for example the Dark Matter version of a Google Maps basemap. 
-
-    ![DO basemap google maps](/img/cloud-native-workspace/tutorials/tutorial4_do_basemap_google_maps.png)
-
-25.  When we are done with our dashboard, we can go ahead and change the sharing options. 
+22.  When we are done with our dashboard, we can go ahead and change the sharing options. 
 
      ![DO share map](/img/cloud-native-workspace/tutorials/tutorial4_do_share_map.png)
 
-26. We can share the map with the rest of our CARTO organization or make the map public. 
+23. We can share the map with the rest of our CARTO organization or make the map public. 
 
     ![DO share with organization](/img/cloud-native-workspace/tutorials/tutorial4_do_share_with_organization.png)
 
-27. We can also make our map public so people outside your CARTO organization can interact with it.
+24. We can also make our map public so people outside your CARTO organization can interact with it.
 
-    ![DO public map](/img/cloud-native-workspace/tutorials/tutorial4_do_public_map.png)
+    ![DO public map](/img/cloud-native-workspace/tutorials/tutorial4_do_share_public_map.png)
 
-28. Finally, we can visualize the result.
+25. Finally, we can visualize the result.
 
-    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/1a5df119-c536-4b9c-a657-c0b372d8f89d"></iframe>
+   <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/0c75abf7-a3f0-4ca1-9d26-225188f0a270"></iframe>
