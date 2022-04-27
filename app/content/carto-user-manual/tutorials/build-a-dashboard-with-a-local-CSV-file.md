@@ -33,142 +33,150 @@ As a local CSV file in this example we are going to use a dataset with a sample 
 
     ![Data explorer import button](/img/cloud-native-workspace/tutorials/tutorial8_de_import_button.png)
 
-4. In the modal screen, select the local file you want to upload and give a name to the imported table. The file will be uploaded to the CARTO Data Warehouse, and as mentioned in the introduction of this tutorial, we are going to use a dataset with a sample of CARTO Spatial Features that you can download from [here](https://drive.google.com/file/d/1ezUqybFlQJNIz2fhT9QimEn7XO_7fZOO/view). Click on *Continue*.
+4. In the modal screen, select the local file you want to upload and give a name to the imported table. The file will be uploaded to the CARTO Data Warehouse, and as mentioned in the introduction of this tutorial, we are going to use a dataset with a sample of CARTO Spatial Features that you can download from [here](https://drive.google.com/file/d/1ezUqybFlQJNIz2fhT9QimEn7XO_7fZOO/view). Once you have selected your file, lick on *Continue*.
 
-    ![Data explorer import data select file](/img/cloud-native-workspace/tutorials/tutorial8_de_import_data_select_file.png)
+    ![Data explorer import data select file](/img/cloud-native-workspace/tutorials/tutorial8_de_import_select_file.png)
 
-5. Review the details before starting the importing process and then click on *Import*. This will start the importing process, you can minimise the modal screen and continue working in CARTO while the file is being imported. 
+{{% bannerNote type="note" title="note" %}}
+When you import a file, the **Auto-guessing** option is always enabled by default. 
+This option allows you to automatically guess column data types in the imported table.
+ {{%/ bannerNote %}}
 
-    ![Data explorer import data confirmation](/img/cloud-native-workspace/tutorials/tutorial8_de_import_data_confirmation.png)
+5. Set the location and name of the output table. Once you have completed this configuration, click on *Save here*.
+
+    ![Data explorer import data destination](/img/cloud-native-workspace/tutorials/tutorial8_de_import_destination.png)
+
+6. Review the details before starting the importing process and then click on *Import*. This will start the importing process, you can minimise the modal screen and continue working in CARTO while the file is being imported. 
+
+    ![Data explorer import data confirmation](/img/cloud-native-workspace/tutorials/tutorial8_de_import_confirmation.png)
 
     ![Data explorer import data importing](/img/cloud-native-workspace/tutorials/tutorial8_de_import_data_importing.png)
 
-6. When the import process completes, we can click on *Access Dataset* from the process window, and it will take you to the page of the imported table in the Data Explorer.
+7. When the import process completes, we can click on *Access Dataset* from the process window, and it will take you to the page of the imported table in the Data Explorer.
 
     ![Data explorer process window view dataset](/img/cloud-native-workspace/tutorials/tutorial8_de_process_window_view_dataset.png)
 
     ![Data explorer imported table](/img/cloud-native-workspace/tutorials/tutorial8_de_imported_table.png)
 
-7. We click on *Create map* in order to start a map in CARTO Builder with the table loaded as a first layer. 
+8. We click on *Create map* in order to start a map in CARTO Builder with the table loaded as a first layer. 
 
-    ![Map create map from table](/img/cloud-native-workspace/tutorials/tutorial8_map_from_table.png)
+    ![Map create map from table](/img/cloud-native-workspace/tutorials/tutorial8_de_map_from_table.png)
 
-8. We can change the layer name to something like “Spatial Features - Las Vegas”.
+9. We can change the layer name to something like “Spatial Features - Las Vegas”.
 
-    ![Map rename layer](/img/cloud-native-workspace/tutorials/tutorial8_map_rename_layer.png)
+    ![Map rename layer](/img/cloud-native-workspace/tutorials/tutorial8_map_rename_h3layer.png)
 
-9. We can also then start styling the layer. We click on *Layer style* and we are going to start by styling the hexagons based on one attribute. For that we click on the “three dots” icon in the Color section and we select that “Color Based On” the field `population`. 
+10. We can also then start styling the layer. We click on *Layer style* and we are going to start by styling the hexagons based on one attribute. For that we click on the “three dots” icon in the Color section and we select that “Color Based On” the field `population`. 
 
     ![Map fill color based on](/img/cloud-native-workspace/tutorials/tutorial8_map_fill_color_based_on.png)
 
-10. We change the Opacity to 0,6 to be able to visualize the information from the basemap (which we will change on a later step).
+11. We change the Opacity to 0,6 to be able to visualize the information from the basemap (which we will change on a later step).
 
     ![Map change opacity](/img/cloud-native-workspace/tutorials/tutorial8_map_change_opacity.png)
 
-11. We are going to activate the “Height” option and define “Height Based On” the field `elevation`. We configure the “Elevation Scale” to be 20 and the “Height Range” between 0 and 500.
+12. We are going to activate the “Height” option and define “Height Based On” the field `elevation`. We configure the “Elevation Scale” to be 20 and the “Height Range” between 0 and 500.
 
     ![Map height](/img/cloud-native-workspace/tutorials/tutorial8_map_height.png)
 
-12. We can modify the visualization to be a map in 3D by modifying the “Map view” options.
+13. We can modify the visualization to be a map in 3D by modifying the “Map view” options.
 
-    ![Map 3D view](/img/cloud-native-workspace/tutorials/tutorial8_map_3D_view.png)
+    ![Map 3D view](/img/cloud-native-workspace/tutorials/tutorial8_map_icon_3D_view.png)
 
-    ![Map 3D](/img/cloud-native-workspace/tutorials/tutorial8_map_3D.png)
+    ![Map 3D](/img/cloud-native-workspace/tutorials/tutorial8_map_in_3D.png)
 
-13. We are now going to add some widgets to the map in order to be able to filter out the data and get some insights. Let’s now move to the “Widgets” section.
+14. We are now going to add some widgets to the map in order to be able to filter out the data and get some insights. Let’s now move to the “Widgets” section.
 
-    ![Map widgets tab](/img/cloud-native-workspace/tutorials/tutorial8_map_widgets_tab.png)
+    ![Map widgets tab](/img/cloud-native-workspace/tutorials/tutorial8_map_the_widgets_tab.png)
 
-14. We are going to first add a Formula widget that sums the total population. We modify the “Formatting” to the “12.3k” format.
+15. We are going to first add a Formula widget that sums the total population. We modify the “Formatting” to the “12.3k” format.
 
     ![Map formula widget](/img/cloud-native-workspace/tutorials/tutorial8_map_formula_widget.png)
 
-15. We change the widget name to “Total Population”.
+16. We change the widget name to “Total Population”.
 
     ![Map rename formula widget](/img/cloud-native-workspace/tutorials/tutorial8_map_rename_formula_widget.png)
 
-    ![Map formula widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_formula_widget_renamed.png)
+    ![Map formula widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_formula_widget_population.png)
 
-16. We add a second widget to the map, now based on the “Histogram” type. We select the field `elevation` and modify the number of buckets to 12. We rename the widget to “Elevation”.
+17. We add a second widget to the map, now based on the “Histogram” type. We select the field `elevation` and modify the number of buckets to 12. We rename the widget to “Elevation”.
 
-    ![Map histogram widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_histogram_widget_renamed.png)
+    ![Map histogram widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_histogram_widget_elevation.png)
 
-17. Let’s add a third widget to the map! We will now select the type “Category” and select the field `urbanity` from our table, leaving the operation to “Count”. We change the widget name to “Urbanity level”.
+18. Let’s add a third widget to the map! We will now select the type “Category” and select the field `urbanity` from our table, leaving the operation to “Count”. We change the widget name to “Urbanity level”.
 
-    ![Map category widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_category_widget_renamed.png)
+    ![Map category widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_category_widget_urbanity.png)
 
-18. We are going to add a final “Histogram” widget. For this one, we are going to pick the field `prec_apr` from our table and change the number of buckets to 12. We change the name of the widget to “Avg. Precipitation April”. 
+19. We are going to add a final “Histogram” widget. For this one, we are going to pick the field `prec_apr` from our table and change the number of buckets to 12. We change the name of the widget to “Avg. Precipitation April”. 
     
-    ![Map second histogram widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_second_histogram_widget_renamed.png)
+    ![Map second histogram widget renamed](/img/cloud-native-workspace/tutorials/tutorial8_map_second_histogram_widget_precipitation.png)
 
-19. We are now going to design the popup/info-windows that appear when we hover over the hexagon cells from the H3 grid. For that we move to the “Interactions” section.
+20. We are now going to design the popup/info-windows that appear when we hover over the hexagon cells from the H3 grid. For that we move to the “Interactions” section.
 
-    ![Map interactions tab](/img/cloud-native-workspace/tutorials/tutorial8_map_interactions_tab.png)
+    ![Map interactions tab](/img/cloud-native-workspace/tutorials/tutorial8_map_the_interactions_tab.png)
 
-20. In the Tooltip we are going to select the following fields: `population`, `urbanity`, `elevation` and `prec_apr`. 
+21. In the Tooltip we are going to select the following fields: `population`, `urbanity`, `elevation` and `prec_apr`. 
 
     ![Map interactions selected fields](/img/cloud-native-workspace/tutorials/tutorial8_map_interactions_selected_fields.png)
 
-21. Check that now when we hover our cursor over the cells we see the information from the selected fields in the previous step. 
+22. Check that now when we hover our cursor over the cells we see the information from the selected fields in the previous step. 
 
     ![Map interactions window](/img/cloud-native-workspace/tutorials/tutorial8_map_interactions_window.png)
 
-22. We are now going to select the type of basemap that we want for our map. We move to the “Base maps” section. 
+23. We are now going to select the type of basemap that we want for our map. We move to the “Base maps” section. 
 
-    ![Map basemaps tab](/img/cloud-native-workspace/tutorials/tutorial8_map_basemaps_tab.png)
+    ![Map basemaps tab](/img/cloud-native-workspace/tutorials/tutorial8_map_the_basemaps_tab.png)
 
-23. We can pick basemaps from different providers, such as CARTO, Google Maps and Amazon Location. For example we are going to modify the default basemap by CARTO’s Voyager edition. 
+24. We can pick basemaps from different providers, such as CARTO, Google Maps and Amazon Location. For example we are going to modify the default basemap by CARTO’s Voyager edition. 
 
-    ![Map basemaps carto voyager](/img/cloud-native-workspace/tutorials/tutorial8_map_basemaps_carto_voyager.png)
+    ![Map basemaps carto voyager](/img/cloud-native-workspace/tutorials/tutorial8_map_basemaps_cartovoyager.png)
 
-24. Another cool functionality of CARTO Builder is the ability to have a dual map configuration. We can switch to this mode by selecting it from the “Map view” options.
+25. Another cool functionality of CARTO Builder is the ability to have a dual map configuration. We can switch to this mode by selecting it from the “Map view” options.
 
-    ![Map dual view](/img/cloud-native-workspace/tutorials/tutorial8_map_dual_view.png)
+    ![Map dual view](/img/cloud-native-workspace/tutorials/tutorial8_map_icon_dual_view.png)
 
-    ![Map dual](/img/cloud-native-workspace/tutorials/tutorial8_map_dual.png)
+    ![Map dual](/img/cloud-native-workspace/tutorials/tutorial8_map_in_dual_view.png)
 
-25. In order to have a different visualization in each of the maps. We are going to duplicate our current layer. 
+26. In order to have a different visualization in each of the maps. We are going to duplicate our current layer. 
 
-    ![Map duplicate layer](/img/cloud-native-workspace/tutorials/tutorial8_map_duplicate_layer.png)
+    ![Map duplicate layer](/img/cloud-native-workspace/tutorials/tutorial8_map_duplicate_the_layer.png)
 
-26. We rename the layer as “B Layer”. 
+27. We rename the layer as “B Layer”. 
 
-    ![Map rename duplicated layer](/img/cloud-native-workspace/tutorials/tutorial8_map_rename_duplicated_layer.png)
+    ![Map rename duplicated layer](/img/cloud-native-workspace/tutorials/tutorial8_map_rename_the_duplicated_layer.png)
 
-27. We now ensure that each of the 2 maps is visualizing a different layer. For this we click on the button *Show layer panel*.
+28. We now ensure that each of the 2 maps is visualizing a different layer. For this we click on the button *Show layer panel*.
 
-    ![Map show layer panel](/img/cloud-native-workspace/tutorials/tutorial8_map_show_layer_panel.png)
+    ![Map show layer panel](/img/cloud-native-workspace/tutorials/tutorial8_map_icon_show_layer_panel.png)
 
-28. In each of the maps we make visible only one of the layers.
+29. In each of the maps we make visible only one of the layers.
 
-    ![Map visible layers](/img/cloud-native-workspace/tutorials/tutorial8_map_visible_layers.png)
+    ![Map visible layers](/img/cloud-native-workspace/tutorials/tutorial8_map_select_visible_layers.png)
 
+30. We are going to modify the second layer. For that we click on *Layer style* in one of the options for the layer named “B Layer”.
 
-29. We are going to modify the second layer. For that we click on *Layer style* in one of the options for the layer named “B Layer”.
+    ![Map layer style](/img/cloud-native-workspace/tutorials/tutorial8_map_select_layer_style.png)
 
-    ![Map layer style](/img/cloud-native-workspace/tutorials/tutorial8_map_layer_style.png)
-
-30. We are going to style the color of the layer based on the field `tavg_apr` (i.e. average temperature in the months of April over a period of 20 years). We can pick a different color palette.
+31. We are going to style the color of the layer based on the field `tavg_apr` (i.e. average temperature in the months of April over a period of 20 years). We can pick a different color palette.
 
     ![Map second layer fill color](/img/cloud-native-workspace/tutorials/tutorial8_map_second_layer_fill_color.png)
 
-31. We are going to use the attribute `prec_apr` (i.e. average precipitation in the months of April over a period of 20 years) as the Height. 
+32. We are going to use the attribute `prec_apr` (i.e. average precipitation in the months of April over a period of 20 years) as the Height. 
 
     ![Map second layer height](/img/cloud-native-workspace/tutorials/tutorial8_map_second_layer_height.png)
 
-    ![Map dual styled](/img/cloud-native-workspace/tutorials/tutorial8_map_dual_styled.png)
+    ![Map dual styled](/img/cloud-native-workspace/tutorials/tutorial8_map_dual_style.png)
 
-32. Now that we are done styling our layers, we can hide the editor panel by clicking on the icon below and start operating the dashboard through the widgets.
+33. Now that we are done styling our layers, we can hide the editor panel by clicking on the icon below and start operating the dashboard through the widgets.
 
-    ![Map editor panel hidden](/img/cloud-native-workspace/tutorials/tutorial8_map_editor_panel_hidden.png)
+    ![Map editor panel hidden](/img/cloud-native-workspace/tutorials/tutorial8_map_the_editor_panel_hidden.png)
 
-33. For example we can filter the layers in order to analyse the Rural and Remote areas with higher precipitations in April. 
+34. For example we can filter the layers in order to analyse the Rural and Remote areas with higher precipitations in April. 
 
-    ![Map first filter](/img/cloud-native-workspace/tutorials/tutorial8_map_first_filter.png)
+    ![Map first filter](/img/cloud-native-workspace/tutorials/tutorial8_map_the_first_filter.png)
 
 35. Or we can filter the Very high density urban, High density urban and Medium density urban areas at higher elevations.
 
-    ![Map second filter](/img/cloud-native-workspace/tutorials/tutorial8_map_second_filter.png)
+    ![Map second filter](/img/cloud-native-workspace/tutorials/tutorial8_map_the_second_filter.png)
 
 36. We can finally change the privacy settings of the map or even publishing it online by clicking on the “Share” options.
 
@@ -176,10 +184,10 @@ As a local CSV file in this example we are going to use a dataset with a sample 
 
 37. We select the option to make this a “Public map”, which we then can share by providing an URL.
 
-    ![Map public option](/img/cloud-native-workspace/tutorials/tutorial8_map_public_option.png)
+    ![Map public option](/img/cloud-native-workspace/tutorials/tutorial8_map_public_options.png)
 
-    ![Map public option](/img/cloud-native-workspace/tutorials/tutorial8_map_public_map.png)
+    ![Map public option](/img/cloud-native-workspace/tutorials/tutorial8_map_the_public_map.png)
 
 38. Finally, we can visualize the result.
 
-    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/37911dd4-613e-4aa2-bbe7-c9694a50281b"></iframe>
+    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/3f836de1-9de5-448e-9383-e79d3568d822"></iframe>
