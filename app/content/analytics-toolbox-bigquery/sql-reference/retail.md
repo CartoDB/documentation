@@ -187,6 +187,74 @@ CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
 -- {"index": 12812801743, "combined_gi": 5.243, "p_value": 1.09e-05}
 ```
 
+### FIND_TWIN_AREAS
+
+{{% bannerNote type="code" %}}
+carto.FIND_TWIN_AREAS(origin_query, target_query, index_column, pca_explained_variance_ratio, max_results, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+Procedure to obtain the twin areas for a given origin location in a target area. The full description of the method, based on Principal Component Analysis (PCA), can be found [here](https://carto.com/blog/spatial-data-science-site-planning).
+
+The output twin areas are those of the target area considered to be the most similar to the origin location, based on the values of a set of variables. Only variables with numerical values are supported. Both origin and target areas should be provided in grid format (h3 or quadkey) of the same resolution. We recommend using the [data.GRIDIFY_ENRICH](../data/#gridify_enrich) procedure to prepare the data in the format expected by this procedure.
+
+**Input**
+
+* `origin_query`: `STRING` query to provide the origin cell (`index` column) and its associated data columns. No NULL values should be contained in any of the data columns provided. The cell can be an h3 or a quadkey index. For quadkey, the value should be cast to `STRING` (`CAST(index AS STRING)`). Example origin queries are:
+    ```sql
+    -- When selecting the origin cell from a dataset of gridified data
+    SELECT * FROM `<project>.<dataset>.<origin_table>` WHERE index_column = <cell_id>
+    ```
+
+    ```sql
+    -- When the input H3 cell ID is inferred from a (longitude, latitude) pair
+    SELECT * FROM `<project>.<dataset>.<origin_table>` WHERE ST_INTERSECTS(`carto-un`.H3_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
+    ```
+
+    ```sql
+    -- When the input quadkey cell ID is inferred from a (longitude, latitude) pair
+    SELECT * FROM `<project>.<dataset>.<origin_table>` WHERE ST_INTERSECTS(`carto-un`.carto.QUADINT_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
+    ```
+
+    ```sql
+    -- When the cell ID is a quadkey and requires to be cast
+    SELECT * EXCEPT(index_column), CAST(index_column AS STRING) FROM `<project>.<dataset>.<origin_table>`
+    ```
+* `target_query`: STRING query to provide the target area grid cells (`index` column) and their associated data columns, e.g. `SELECT * FROM <project>.<dataset>.<target_table>`. The data columns should be similar to those provided in the `origin_query`, otherwise the procedure will fail. Grid cells with any NULL values will be excluded from the analysis.
+* `index_column`: `STRING` name of the index column for both the `origin_query` and the `target_query`.
+* `pca_explained_variance_ratio`: `FLOAT64` of the explained variance retained in the PCA analysis. It defaults to 0.9 if set to`NULL`.
+* `max_results`: `INT64` of the maximum number of twin areas returned. If set to `NULL`, all target cells are returned. 
+* `output_prefix`: `STRING` destination and prefix for the output tables. It must contain the project, dataset and prefix: `<project>.<dataset>.<prefix>`.  
+
+**Output**
+
+The procedure outputs the following:
+
+* Twin area model, named `<project>.<dataset>.<prefix>_model`. Please note that the model computation only depends on the `target_query` and therefore the same model can be used if the procedure is re-run for a different `origin_query`. To allow for this scenario in which the model is reused, if the output model already exists, it won't be recomputed. To avoid this behavior, simply choose a different `<prefix>` in the `output_prefix` parameter.
+
+* Results table, named `<project>.<dataset>.<prefix>_<origin_index>_results`, containing in each row the index of the target cells (`index_column`) and its associated `similarity_score` and `similarity_skill_score`. The `similarity_score` corresponds to the distance between the origin and target cell in the Principal Component (PC) Scores spaces; the `similarity_skill_score` for a given target cell `*t*` is computed as `1 - similarity_score(*t*) / similarity_score(<*t*>)`, where `<*t*>` is the average target cell, computed by averaging each retained PC score for all the target cells. This `similarity_skill_score` represents a relative measure: the score will be positive if and only if the target cell is more similar to the origin than the mean vector data, with a score of 1 meaning perfect matching or zero distance. Therefore, a target cell with a larger score will be more similar to the origin under this scoring rule.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL
+  `carto-un`.carto.FIND_TWIN_AREAS(
+    -- Input queries
+    '''SELECT * FROM `cartobq.docs.twin_areas_target_enriched`
+                    LIMIT 1''',
+    '''SELECT * FROM `cartobq.docs.twin_areas_origin_enriched`''',
+    -- Twin areas model inputs
+    'index',
+    0.90,
+    NULL,
+    'my-project.my-dataset.my-prefix' );
+```
+
+
+
 ### FIND_WHITESPACE_AREAS
 
 {{% bannerNote type="code" %}}

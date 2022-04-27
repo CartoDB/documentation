@@ -1011,3 +1011,56 @@ CALL `carto-un`.carto.ENRICH_POLYGONS_RAW(
 -- The new column will contain STRUCTs with the fields var1, var2,
 -- __carto_intersection, __carto_total, and __carto_dimension.
 ```
+
+### GRIDIFY_ENRICH
+
+{{% bannerNote type="code" %}}
+carto.GRIDIFY_ENRICH(input_query, grid_type, grid_level, do_variables, do_source, custom_query, custom_variables, output))
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure converts the input geometries into a grid of the specified type and resolution, and enriches it with Data Observatory and custom data. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. 
+
+The enrichment operations performed using Data Observatory data and custom data are those described in the [`DATAOBS_ENRICH_GRID`](#dataobs_enrich_grid) and [`ENRICH_GRID`](#enrich_grid) procedures, respectively. Please refer to their definition for more detailed information on the process.
+
+**Input parameters**
+
+* `input_query`: `STRING` query containing the geometries to be gridified and enriched, stored in a column named `geom`. The geometries can be either a set of points, a polygon or a collection of polygons (Polygons or MultiPolygons).
+* `grid_type`: `STRING` type of grid. Supported values are "h3" and "quadkey".
+* `grid_level`: `INT64` level or resolution of the cell grid. Check the available [H3 levels](https://h3geo.org/docs/core-library/restable/) and [quadkey levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid?tabs=csharp).
+* `do_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable’s default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure [DATAOBS_SUBSCRIPTION_VARIABLES](../data/#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
+* `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
+* `custom_query`: `STRING` query that contains a geography column called `geom` and the columns with the custom data that will be used to enrich the grid cells. It can be set to `NULL` or `''`.
+* `custom_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` list with the columns of the `custom_query` and their corresponding aggregation method (`sum`, `avg`, `max`, `min`, `count`) that will be used to enrich the grid cells. It can be set to NULL.
+* `output`: `STRING` containing the name of the output table to store the results of the gridification and the enrichment processes performed by the procedure. The name of the output table should include project and dataset: `project.dataset.table_name`.
+
+**Output**
+
+The output table will contain all the input columns enriched with Data Observatory and custom data for each cell of the specified grid.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.GRIDIFY_ENRICH`(
+    -- Input query
+     'SELECT geom FROM `cartobq.docs.twin_areas_target`',
+    -- Grid params: grid type and level
+    'quadkey', 15, 
+    -- Data Observatory enrichment
+    [('population_14d9cf55', 'sum')],
+    'my-dataobs-project.my-dataobs-dataset',
+    -- Custom data enrichment
+    '''
+    SELECT geom, var1, var2 FROM `my-project.my-dataset.my-data`
+    ''',
+    [('var1', 'sum'), ('var2', 'sum'), ('var2', 'max')],
+    -- Smoothing parameters
+    1,"uniform",
+    -- Output table
+    'my-project.my-dataset.my-enriched-table');
+-- The table `my-project.my-dataset.my-enriched-table` will be created
+-- with columns: index, population_14d9cf55_sum, var1_sum, var2_sum, var2_max
+```
