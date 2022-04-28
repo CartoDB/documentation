@@ -58,29 +58,29 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
    ![DO view variables](/img/cloud-native-workspace/tutorials/tutorial9_do_view_variables.png)
 
-9. Now, we are going to click on the *Create* button. Note that the table of this dataset is too large to be loaded entirely in Builder of map creation. For this reason, CARTO offers you two options, either to add this dataset with a SQL query filtering the amount of data or creating first a tileset and then leverage this tileset for building your map. 
-
-{{% bannerNote type="note" title="note" %}}
-Check the <a href="/analytics-toolbox-bq/overview/tilesets/" target="_blank">Tileset</a> reference reference documentation for a better understanding of what a tileset is and how it works, as well as to get started using the BigQuery Tiler as a solution to visualise massive datasets hosted in BigQuery and CARTO Data Warehouse connections. 
-{{%/ bannerNote %}}
+9. Now, we are going to click on *Create* button. Note that the table of this dataset is too large to be loaded entirely in Builder of map creation. For this reason, CARTO offers you two options, either to create a map and add this dataset with the [dynamic tile generation](../../maps/performance-considerations/#medium-size-datasets) or [creating a tileset](../../data-explorer/creating-a-tileset-from-your-data) and then leverage this tileset for building your map. 
 
    ![DO table too large](/img/cloud-native-workspace/tutorials/tutorial9_do_warning_table_too_large.png)
 
-10. Click on *Create a tileset*. This will open a new modal screen for you to manage the tileset creation process. The first step is to select which connection you want to use for processing the data and create the tileset. In this example we are going to select the `CARTO Data Warehouse` connection. Please note that at the moment tilesets can be created only in Google BigQuery or in the CARTO Data Warehouse. Click on *Continue*.
+{{% bannerNote type="note" title="note" %}}
+Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-your-data-warehouse/" target="_blank">Accesing subscriptions</a> reference documentation for a better understanding of how you can directly access your suscriptions from your data warehoues connected to CARTO. This is currently supported for BigQuery and Snowflake; Redshift and Databricks support is coming soon.
+{{%/ bannerNote %}}
 
-    ![DO create tileset connection](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_connection.png)
+10. Click on *Create a tileset*. This will open a new modal screen for you to manage the tileset creation process. The first step is to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. Once you have completed this configuration, click on *Continue*.
 
-11. In the next step we should select the location of the output tileset and the name we want it to have. We should also select the column we want to use for processing the geometry (e.g. in case there’s more than one) and the output zoom levels for which we want the tileset to work (which we are going to change to be between level 2 and level 10 for this example). We can also add a custom description to the tileset. Click on *Continue*.
+    ![DO create tileset settings](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_destination.png)
 
-    ![DO create tileset settings](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_settings.png)
+11. In the next step we should select the output zoom levels for which we want the tileset to work (which we are going to change to be between level 2 and level 10 for this example). We can also add a custom description to the tileset. Click on *Continue*.
+
+    ![DO create tileset settings](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_the_settings.png)
 
 12. Now it is time to select which columns we want to include in the tileset. In this example we are going to select: `c0001_t (Population, 2016)`, `c0005_t (Private dwellings occupied by usual residents)`, and `c1677_t (Average value of dwellings)`. After selecting the columns we click on *Continue*. 
 
-    ![DO create tileset attributes](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_attributes.png)
+    ![DO create tileset attributes](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_the_attributes.png)
 
 13. We confirm that the details are correct and click on *Create*.
 
-    ![DO create tileset confirmation](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_confirmation.png)
+    ![DO create tileset confirmation](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_the_confirmation.png)
 
 14. While the tileset creation process is running you can minimize the progress window and continue working in CARTO. 
 
@@ -96,19 +96,19 @@ Check the <a href="/analytics-toolbox-bq/overview/tilesets/" target="_blank">Til
 
 17. In the Builder interface, you will see that a new map has been created with the tileset as the source of data.
 
-    ![DO map created from tileset](/img/cloud-native-workspace/tutorials/tutorial9_do_map_from_tileset.png)
+    ![DO map created from tileset](/img/cloud-native-workspace/tutorials/tutorial9_de_map_from_tileset.png)
 
 18. We can change the name of the layer.
 
-    ![DO map layer renamed](/img/cloud-native-workspace/tutorials/tutorial9_do_map_layer_renamed.png)
+    ![DO map layer renamed](/img/cloud-native-workspace/tutorials/tutorial9_do_map_layer_renaming.png)
 
 19. We can access the layer styling options to work in our visualization by clicking on “Layer style”.
 
-    ![DO map layer style](/img/cloud-native-workspace/tutorials/tutorial9_do_map_layer_style.png)
+    ![DO map layer style](/img/cloud-native-workspace/tutorials/tutorial9_do_map_select_layer_style.png)
 
 20. We can for example style the layer based on the values of the Population field (c0001_t) and select the color palette and opacity that we want for our visualization. 
 
-    ![DO map fill color based on](/img/cloud-native-workspace/tutorials/tutorial9_do_map_fill_color_based_on.png)
+    ![DO map fill color based on](/img/cloud-native-workspace/tutorials/tutorial9_do_map_fill_color_based_on_field.png)
 
 21. We can also style the stroke around each polygon.
 
@@ -116,36 +116,26 @@ Check the <a href="/analytics-toolbox-bq/overview/tilesets/" target="_blank">Til
 
 22. Once we are happy with the style of our layer we click on *Back*.
 
-    ![DO map layer styled](/img/cloud-native-workspace/tutorials/tutorial9_do_map_layer_styled.png)
+    ![DO map layer styled](/img/cloud-native-workspace/tutorials/tutorial9_do_map_styled.png)
 
-23. Next we are going to add a series of widgets to interact with the data. For that, we go to the “Widgets” section.
-
-    ![DO map widgets tab](/img/cloud-native-workspace/tutorials/tutorial9_do_map_widgets_tab.png)
-
-24. We are going to add both a Formula and Histogram widget base on the `c0001_t`. For the Formula widget we are going to select the operation “SUM” and modify the Formatting to be in the format “12.3k”. We rename the widget to “Total Population, 2016”.
+23. Next we are going to add a series of widgets to interact with the data. For that, we go to the “Widgets” section. We are going to add both a Formula and Histogram widget base on the `c0001_t`. For the Formula widget we are going to select the operation “SUM” and modify the Formatting to be in the format “12.3k”. We rename the widget to “Total Population, 2016”.
 
     ![DO map formula widget](/img/cloud-native-workspace/tutorials/tutorial9_do_map_formula_widget.png)
 
-25. We then add a new widget with the Histogram type based on also on the “c0001_t” field (i.e. Population, 2016). We leave the buckets to 6.
+24. We then add a new widget with the Histogram type based on also on the “c0001_t” field (i.e. Population, 2016). We leave the buckets to 6.
 
     ![DO map histogram widget](/img/cloud-native-workspace/tutorials/tutorial9_do_map_histogram_widget.png)
 
-    ![DO map formula and histogram widgets](/img/cloud-native-workspace/tutorials/tutorial9_do_map_formula_and_histogram_widgets.png)
+    ![DO map formula and histogram widgets](/img/cloud-native-workspace/tutorials/tutorial9_do_map_formula_and_histogram_widget.png)
 
-26. We are now going to change the basemap. For that, we go to the “Base maps” section.
+25. We are now going to change the basemap. For that, we go to the “Base maps” section. We can change it for example to Google Maps in the Positron edition.
 
-    ![DO map basemaps tab](/img/cloud-native-workspace/tutorials/tutorial9_do_map_basemaps_tab.png)
+    ![DO map basemap google maps positron](/img/cloud-native-workspace/tutorials/tutorial9_do_map_googlemaps_positron.png)
 
-27. We can change it for example to Google Maps in the Positron edition.
+26. Finally we can click on *Share* and modify the privacy settings of our map. We can also make the map public, which can then be accessed online with an associated url. 
 
-    ![DO map basemap google maps positron](/img/cloud-native-workspace/tutorials/tutorial9_do_map_google_maps_positron.png)
+    ![DO map public option](/img/cloud-native-workspace/tutorials/tutorial9_do_map_public_map_options.png)
 
-28. Finally we can click on *Share* and modify the privacy settings of our map. We can also make the map public, which can then be accessed online with an associated url. 
-
-    ![DO map public option](/img/cloud-native-workspace/tutorials/tutorial9_do_map_public_option.png)
-
-    ![DO map public map](/img/cloud-native-workspace/tutorials/tutorial9_do_map_public_map.png)
-
-29. Finally, we can visualize the result.
+27. Finally, we can visualize the result.
 
     <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/20bcf2b8-b50b-426b-a918-cc31e2400027"></iframe>
