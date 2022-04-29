@@ -76,5 +76,6 @@ Generating a tileset basically means that the table (or SQL query) will be pre-p
 * Tilesets in [BigQuery](https://docs.carto.com/analytics-toolbox-bigquery/overview/tilesets/)
 * Tilesets in [Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/overview/tilesets/)
 * Tilesets in [Redshift](https://docs.carto.com/analytics-toolbox-redshift/overview/tilesets/)
-* Support for tilesets in PostgreSQL and Databricks is coming soon.
+* Tilesets in [PostgreSQL](https://docs.carto.com/analytics-toolbox-postgres/overview/tilesets/)
+* Support for tilesets in Databricks is coming soon.
 
