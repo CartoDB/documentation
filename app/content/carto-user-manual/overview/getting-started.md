@@ -139,9 +139,39 @@ When you log in to your CARTO user account, you will be presented with your Work
 
 #### Homepage
 
-The first time that you access the Workspace, you will see a *Welcome* banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map. By clicking the link in this banner, you can easily connect your data warehouse(s) to start using CARTO. Check the [Quick guide to connect data and create maps](#quick-guide-to-connect-data-and-create-maps) to get started.
+The first time that you access the Workspace, you will see a *Welcome* banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map, or starting with your spatial analysis in an easy guided way from our editable pre-built demo maps.
 
-![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png)
+<!-- ![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png) -->
+
+ ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_first_new_landing.png)
+
+ <!-- ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_first_new_landing2.png) -->
+
+ From the **"Connect your data warehouse"** banner, you can easily connect your data warehouse(s) to start using CARTO  by clicking on *Create new connection* button. Check the <a href="#quickstart-guide-to-create-your-first-map" target="_blank">Quick guide to connect data and create maps</a> to get started. 
+ 
+ After creating your connection, you can also **upload local files** right from the homepage by clicking on *Import your data* button. Check this [guide](../../data-explorer/importing-data/) to start importing your data into your data warehouse.
+
+ From **"Whats´new"** section, you will find announcements of new features, interesting articles, and the latest news related to CARTO from our blog. Stay tuned and don't miss out on the latest news!
+
+ ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_first_new_landing_2.png)
+
+#### Getting started
+
+In this section you have a checklist with five quick steps to guide you to the different content pieces to help you get started with CARTO. Once you have completed all the steps, it will be marked as completed and you can close the panel by clicking on *Close*. If you want to skip the steps, just click on *I´m ready, skip onboarding* to close the panel.
+
+ ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_onboarding_checklist.png)
+
+<!-- In this section, you also have quick access to different content pieces to help you get started with CARTO, such as creating maps from your data, developing spatial applications, or learning how to use the Analytics Toolbox. -->
+
+<!-- ![Getting started](/img/cloud-native-workspace/get-started/getting_started.png) -->
+#### Help sidebar
+
+New section with feature updates so you can stay up to date with the latest additions to CARTO. You can also find links to relevant documentation and webinars.
+
+ ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_help_sidebar.png)
+#### Recent Datasets
+
+View your latest datasets for easy access. This module displays the latest datasets that you have been working on, so that you can quickly access and continue working on them.
 
 #### Recent maps
 
@@ -152,18 +182,6 @@ View your latest content. This module displays the latest maps that you have bee
 If you are the owner of the map, you will have access to the quick actions menu to manage your map by clicking on the three point icon in the top right hand corner. There are 3 options available: Edit name & description, Duplicate map and Delete.
 
 ![Recent maps](/img/cloud-native-workspace/get-started/recent_maps_options.png)
-#### Getting started
-
-In this section, you also have quick access to different content pieces to help you get started with CARTO, such as creating maps from your data, developing spatial applications, or learning how to use the Analytics Toolbox.
-
-![Getting started](/img/cloud-native-workspace/get-started/getting_started.png)
-
-#### What’s new
-
-Announcements of new features, interesting articles, and the latest news related to CARTO from our <a href="https://carto.com/blog" target="_blank">blog</a>.
-
-![What is new](/img/cloud-native-workspace/get-started/what_is_new.png)
-
 #### Navigation Menu
 
 In the left panel, you can find the *Navigation Menu* with all the available options to access the CARTO components: Home, Maps, Data Explorer, Data Observatory, Connections, Settings, and Developers. In the bottom part of the menu, you have additional options to join the "CARTO Users" Slack channel, send us direct product feedback, or access the Documentation portal.
