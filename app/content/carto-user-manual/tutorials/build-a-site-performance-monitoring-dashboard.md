@@ -1,5 +1,5 @@
 ---
-title: "Build a retail store performance monitoring dashboard"
+title: "Build a store performance monitoring dashboard"
 description: "In this tutorial we are going to vizualize revenue performance and surface area of retail stores across the USA. We will construct two views, one of individual store performance using bubbles, and one of aggregated performance using hexagons. By vizualizing this information on a map we can easily identify where our business is performing better and which are the most successful stores (revenue inversely correlated with surface area)."
 image: "/img/tutorials/retail-stores-usa.png" 
 type: tutorials
