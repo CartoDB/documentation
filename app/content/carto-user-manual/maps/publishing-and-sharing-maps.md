@@ -27,13 +27,27 @@ Here you'll find three different sharing options:
 
 Remember that if your map is "shared" or "public" you'll need to push your changes with the "Publish Updates" button, next to the sharing button in the top-right menu. 
 
+![Publish map refresh button](/img/cloud-native-workspace/maps/map_publish_updates.png)
+
 Public maps have some extra options: to share the link with the public, to get Developers information for embedding, or to work with CARTO for developers. You can toggle between these subtabs and select the option you are interested in. 
 
-![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_options_public_map.png) 
+![Publish options share link](/img/cloud-native-workspace/maps/map_new_sharing_options_public_map.png)
 
-![Publish options share link copied](/img/cloud-native-workspace/maps/map_public_map_sharelinkcopied.png)
+![Publish options share link](/img/cloud-native-workspace/maps/map_new_sharing_options_developers.png)
 
-![Publish options developers](/img/cloud-native-workspace/maps/map_public_map_developers_options.png)
+### Password protected maps
+
+You can also protect your maps before sharing them by enabling password protection and setting a map password. 
+
+![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_enabling_password_protection.png)
+
+Once you have set your map password, select your public map option and click on *Apply*.
+
+![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_with_password.png)
+
+When someone opens the link, they will be asked to enter the map password before loading the map. Insert the map password and click on *Continue* to visualize the map or contact the owner if you need access.
+
+![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_dialog_enter_password.png)
 ### Publishing updates for shared and public maps
 
 Once your map is shared or public, you can manage the state of the map for your viewers (so your editing doesn't affect their experience). When you're ready to push an update, click on the *Publish Updates* icon:
