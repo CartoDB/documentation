@@ -50,11 +50,11 @@ You can explore additional fill color features by clicking on the *three dots* i
 
 **Quantile**: A quantile color scale is determined by rank. A quantile classification is well suited to linearly distributed data. Each quantile class contains an equal number of features. There are no empty classes or classes with too few or too many values. This can be misleading sometimes, since similar features can be placed in adjacent classes or widely different values can be in the same class, due to equal number grouping.
 
-**Quantize**: Quantized color scale is determined by value. To Quantize means to group values with discrete increments. It allows to transform an initial continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
+**Quantize**: A quantized color scale is determined by grouping values in discrete increments. It allows to transform an initially continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
 
-**Custom**: Custom color scale is determined by customized values. A custom classification is well suited to tweak their color ramps, adjusting the values to fine tune their visualizations.
+**Custom**: A custom color scale is determined by arbitrary breaks in the classification. A custom scale is well suited to tweak color ramps, adjusting the values to fine tune the visualizations.
 
-The follow example give a small demonstration of how the new custom color scale easily allows you to customize the color ramps and the data clasiffications in Builder.
+The following example shows a short demonstration of how custom breaks allow you to customize a color ramp and the data clasiffications in Builder.
 
 ![Custom color scale](/img/cloud-native-workspace/maps/custom-color-scale.gif) 
 
