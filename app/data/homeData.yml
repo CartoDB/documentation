@@ -108,7 +108,7 @@ developmentTools:
 
 dataAndAnalysis:
   - title: "Analytics Toolbox"
-    description: "Our set of SQL UDFs for spatial analysis"
+    description: "Our suite of functions for cloud-native spatial analysis"
     url: "/analytics-toolbox"
     image: "analytics-toolbox.png"
   - title: "Analytics Toolbox for BigQuery"
