@@ -9,6 +9,8 @@ navbar:
     url: https://carto.com/developers/cartoframes
   - name: Analytics Toolbox
     subelements:
+      - name: About the Analytics Toolbox
+        url: /analytics-toolbox
       - name: Analytics Toolbox for BigQuery
         url: /analytics-toolbox-bigquery
       - name: Analytics Toolbox for Snowflake

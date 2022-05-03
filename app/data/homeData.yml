@@ -107,6 +107,10 @@ developmentTools:
     image: "mobile-sdk.png"
 
 dataAndAnalysis:
+  - title: "Analytics Toolbox"
+    description: "Our set of SQL UDFs for spatial analysis"
+    url: "/analytics-toolbox"
+    image: "analytics-toolbox.png"
   - title: "Analytics Toolbox for BigQuery"
     description: "Unlock Spatial Analytics on your BigQuery"
     url: "/analytics-toolbox-bigquery"
