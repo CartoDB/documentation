@@ -11,10 +11,3 @@ Once your table or tileset is selected, you can explore a preview of the map and
 In this example, we have created a map from the tileset that was selected in the previous step:
 
 ![Data Explorer create map from tileset](/img/cloud-native-workspace/data-explorer/de_create_map_from_tileset.png)
-
-CARTO Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data renders. Use the following task list as guide for some of the main CARTO Builder features:
-
-- Add your source [guide](../../maps/add-source)
-- View your data table [guide](../../maps/view-data-table)
-- Configure your map settings [guide](../../maps/map-settings)
-- Style your maps [guide](../../maps/map-styles)

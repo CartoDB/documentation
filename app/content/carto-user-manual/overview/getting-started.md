@@ -27,7 +27,7 @@ Follow these simple steps to access the CARTO Workspace:
 
     ![Organization setup detected multiple](/img/cloud-native-workspace/get-started/organization_setup_detected_multiple.png)
 
-    **Create a new organization**:
+    #### Create a new organization
 
     To create a new organization follow these steps:
 
@@ -64,7 +64,7 @@ Follow these simple steps to access the CARTO Workspace:
 	
     You are ready to start using CARTO! 
 
-    **Joining an existing organization**:
+   #### Joining an existing organization
 
    To join an existing organization follow these steps:
 
@@ -236,23 +236,23 @@ Once your table or tileset is selected, you can access a preview of the map and 
 
 The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 
-1. From your *Maps* page, click *Create your first map*. This will open the CARTO map-making tool, Builder.
+From your *Maps* page, click *Create your first map*. This will open the CARTO map-making tool, Builder.
 	
-![Map module](/img/cloud-native-workspace/get-started/the_map_create_first_map.png)
+   ![Map module](/img/cloud-native-workspace/get-started/the_map_create_first_map.png)
 
 You can also getting some ideas from our sample maps.
 
-![Map module](/img/cloud-native-workspace/get-started/the_map_try_sample_maps.png)
+   ![Map module](/img/cloud-native-workspace/get-started/the_map_try_sample_maps.png)
 
-2. From the *Layers* tab on the left side, you can add data as a map layer from any of your existing data warehouse connections. In this example, we are using the BigQuery connection created in the previous step of this guide. With BigQuery we can use a custom SQL Query to retrieve data, add an entire table, or a tileset.
+From the *Layers* tab on the left side, you can add data as a map layer from any of your existing data warehouse connections. In this example, we are using the BigQuery connection created in the previous step of this guide. With BigQuery we can use a custom SQL Query to retrieve data, add an entire table, or a tileset.
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
 		
-3. A new dialog will open so you can select your connection and your data source. 
+A new dialog will open so you can select your connection and your data source. 
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_select_connection.png)
 
-4. In this example we are going to use a table from our BigQuery connection. Select the table from the list and click *Add source*.
+In this example we are going to use a table from our BigQuery connection. Select the table from the list and click *Add source*.
 
 ![Add source table](/img/cloud-native-workspace/maps/map_add_source_select_data_source.png)
 
@@ -260,18 +260,16 @@ Once the process is finished, the BigQuery table is included in Builder as a new
 	
 ![Map created](/img/cloud-native-workspace/maps/map_layer_added.png)
 
-CARTO Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears rendered on a map. 
-
-For more details, see [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data). From this guide, you will find information about how to add your data or style your maps.
-
-#### Add data and style your maps
-
 CARTO Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears rendered on a map. Use the following task list as a guide for some of the main features of CARTO Builder:
 
 - Add your data [guide](../../maps/add-source)
-- View your data table [guide](../../maps/view-data-table)
 - Configure your map settings [guide](../../maps/map-settings)
 - Style your maps [guide](../../maps/map-styles)
+- Customize your map views [guide](../../maps/map-view-modes)
+- Apply a mask to your map and filter out your data [guide](../../maps/feature-selection-tool)
+- Add spatial sql analysis [guide](../../maps/sql-analyses)
+
+For more details, see [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data). From this guide, you will find information about how to add your data or style your maps.
 
 #### Create a tileset
 
@@ -356,7 +354,7 @@ CARTO Builder allows you to export your data.
 
 To export your data, add a source to the map and click on the *Export viewport data* button.
 
-![Export data button enabled](/img/cloud-native-workspace/maps/map_export_data_enable.png) 
+![Export data button enabled](/img/cloud-native-workspace/maps/map_export_data_button.png) 
 
 A new dialog screen will open informing you that the resulting CSV files will contain data from the current features in the viewport. Click the *Export data* button to confirm the download of the data or click on *Cancel* if you don’t want to continue exporting.
 
@@ -374,7 +372,7 @@ To make a copy of an existing map from **CARTO Workspace**, go to “Maps” and
 
 To make a copy of an existing map from **CARTO Builder**, add data or a title to the map and click on the three-dotted menu in the top right of Builder. 
 
-![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_from_builder.png)
+![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_button.png) 
 
 Copied maps will always start as `Copy of` plus the original map name, and will always started as private maps for yourself. 
 
@@ -396,7 +394,7 @@ To delete an existing map from **CARTO Workspace**, go to “Maps” and click o
 
 To delete an existing map from **CARTO Builder**, click on the three-dotted menu in the top right of Builder.
 
-![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_from_builder.png)
+![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_delete_button.png)
 
 For more details, see [Deleting maps](../../maps/deleting-maps).
 
