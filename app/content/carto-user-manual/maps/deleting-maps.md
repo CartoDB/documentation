@@ -6,13 +6,13 @@ This guide describes how you can delete existing maps from CARTO Workspace, the 
 
 To delete an existing map, go to “Maps” and click on the three-dotted menu in each map card. If you are the owner of the map, you will have access to the 3 available options: Edit name & description, Duplicate map and Delete.
 
-![Delete map from Workspace (admin-editor)](/img/cloud-native-workspace/maps/map_delete_from_workspace(admin-editor).png)
+![Recent maps](/img/cloud-native-workspace/get-started/recent_maps_new_options.png)
 
 #### Deleting a map in Builder
 
 To be able to delete a map from Builder, click on the three-dotted menu in the top right of Builder.
 
-![Delete action from Builder](/img/cloud-native-workspace/maps/delete_action_from_builder.png)
+![Delete action from Builder](/img/cloud-native-workspace/maps/map_delete_button.png)
 
 <!-- A new dialog screen will open allowing you to delete your map. -->
 

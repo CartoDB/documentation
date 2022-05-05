@@ -8,7 +8,7 @@ Copied maps will always start as `Copy of` plus the original map name, and will 
 
 To make a copy of an existing map, go to "Maps" and click on the three-dotted menu in each map card. If you are the owner of the map, you will have access to the 3 available options: Edit name & description, Duplicate map and Delete.
 
-![Duplicate map from Workspace (viewer)](/img/cloud-native-workspace/maps/map_duplicate_from_workspace(admin-editor).png)
+![Recent maps](/img/cloud-native-workspace/get-started/recent_maps_new_options.png)
 
 In the following example, the map has been shared and therefore the option is limited to "Duplicate map". This option is available for all maps, whether you have admin or edit access.
 
@@ -18,11 +18,11 @@ In the following example, the map has been shared and therefore the option is li
 
 To be able to duplicate a map, you need to add data or a title to the map:
 
-![Duplicate button disabled](/img/cloud-native-workspace/maps/map_duplicate_button_disable.png)
+![Duplicate button disabled](/img/cloud-native-workspace/maps/map_duplicate_button_when_disabled.png)
 
 Once you have added data or a title to your map, the Duplicate button will be enabled and you will be able to duplicate your maps with your organization by clicking on the three-dotted menu in the top right of Builder. If you want to duplicate your map, click on *Duplicate map*.
 
-![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_from_builder.png)
+![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_button.png)
 
 #### Current limitations when duplicating maps
 
