@@ -269,7 +269,7 @@ CARTO Builder contains many features that guide you through the process of creat
 - Apply a mask to your map and filter out your data [guide](../../maps/feature-selection-tool)
 - Add spatial sql analysis [guide](../../maps/sql-analyses)
 
-For more details, see [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data). From this guide, you will find information about how to add your data or style your maps.
+For more details, see [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data).
 
 #### Create a tileset
 
