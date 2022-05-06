@@ -11,11 +11,11 @@ From the Layers tab, go to the Sources panel and click on *Add source from...*. 
 
 ![Add source select a connection bq](/img/cloud-native-workspace/maps/map_add_source_select_a_bq_connection.png)
 
-![Add source select a table](/img/cloud-native-workspace/maps/map_add_source_select_table.png)
+![Add source table](/img/cloud-native-workspace/maps/map_add_source_select_data_source.png)
 
 Once the process is finished, the table or tileset is included in the Builder map as a new layer. The map displays the basemap and the new layer on top. You can add additional layers, or start applying styling and analysis features.
 	
-![Map created](/img/cloud-native-workspace/maps/map_created.png)
+![Map created](/img/cloud-native-workspace/maps/map_layer_added.png)
 
 Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
 
@@ -138,7 +138,7 @@ To learn more, please visit the Documentation page of the CARTO Analytics Toolbo
 * [Analytics Toolbox for Snowflake](/analytics-toolbox-snowflake)
 * [Analytics Toolbox for Redshift](/analytics-toolbox-redshift)
 * [Analytics Toolbox for Databricks](/analytics-toolbox-databricks)
-
+* [Analytics Toolbox for PostgreSQL ](/analytics-toolbox-postgres)
 ### Add source from a local or remote file
 
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
