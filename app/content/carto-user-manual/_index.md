@@ -25,6 +25,7 @@ cascade:
         - title: "Map view modes"
         - title: "SQL Analyses"
         - title: "Feature selection tool"
+        - title: "Address search bar"
         - title: "Exporting data"
         - title: "Duplicating maps"
         - title: "Deleting maps"
