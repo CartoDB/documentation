@@ -4,8 +4,8 @@ description: "Understanding & analyzing spatial data is critical to the future o
 image: "/img/tutorials/stores.png"
 type: tutorials
 date: "2021-04-12"
-categories:
-    - retail
+# categories:
+#    - retail
 #    - clustering
 ---
 ## Pinpoint new store locations closest to your customers 
