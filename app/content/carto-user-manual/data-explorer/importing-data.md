@@ -18,7 +18,7 @@ Once you have selected your file, click on *Continue*:
 
 The next screen will allow you to set the location and name of the output table. Once you have completed this configuration, click on *Save here*.
 
-![Data Explorer import destination connection](/img/cloud-native-workspace/data-explorer/de_import_destination_check_connection.png) -->
+![Data Explorer import destination connection](/img/cloud-native-workspace/data-explorer/de_import_destination_check_connection.png)
 
 ![Data Explorer import destination save here](/img/cloud-native-workspace/data-explorer/de_import_destination_check_save_here.png)
 
@@ -52,7 +52,7 @@ You can also overwrite existing files. When you import a file with an existing n
 
 If you do not have permissions, a message will appear warning you that the table already exists in the destination folder. Select a new location or click on *Cancel* if you don't want the changes to be applied.
 
-![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_import_check_permissions.png) -->
+![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_import_check_permissions.png)
 
 ### Importing methods
 
