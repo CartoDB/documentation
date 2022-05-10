@@ -268,6 +268,8 @@ CARTO Builder contains many features that guide you through the process of creat
 - Customize your map views [guide](../../maps/map-view-modes)
 - Apply a mask to your map and filter out your data [guide](../../maps/feature-selection-tool)
 - Add spatial sql analysis [guide](../../maps/sql-analyses)
+- Publish and share your maps [guide](../../maps/publishing-and-sharing-maps)
+
 
 For more details, see [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data).
 

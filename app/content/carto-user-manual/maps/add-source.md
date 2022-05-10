@@ -3,13 +3,11 @@
 When you open a map, the Layers tab will appear on the left side panel. There you can add data as layers to the map by clicking on *Add source from*, where you can access the contents from your existing data warehouse connections. If you haven’t added a data layer to the map yet, you will see the following page:
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
-
-<!-- ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_to_your_map.png) -->
 ### Add source from a connection
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from on of your connections. Insert the *Fully Qualified Table* or the *Tileset Name* and click *Add source*.
 
-![Add source select a connection bq](/img/cloud-native-workspace/maps/map_add_source_select_a_bq_connection.png)
+![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_select_connection.png)
 
 ![Add source table](/img/cloud-native-workspace/maps/map_add_source_select_data_source.png)
 
@@ -19,23 +17,21 @@ Once the process is finished, the table or tileset is included in the Builder ma
 
 Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
 
-![Map source options view data table](/img/cloud-native-workspace/maps/map_source_options.png)
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_new_options.png)
 
 By clicking the *tree dots* icon the Column Context menu will reveal additional options such as: Sort on this column, ascending or descending, Pin the column so you can freeze it in the first position, and copy column data.
 
 ![Map table column](/img/cloud-native-workspace/maps/map_table_column.png)
 
-Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*.
+Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*. When you click the Delete quick action, a dialog will appear allowing you to confirm that you want to delete the selected data source and warning you that it will be affect the layers created with this source.
 
-![Map source options delete source](/img/cloud-native-workspace/maps/map_source_options.png)
+![Map source options delete source](/img/cloud-native-workspace/maps/map_source_warning_delete.png)
 
 ### Add source from a custom query
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
 
-![Add source custom query](/img/cloud-native-workspace/maps/map_add_source_a_custom_query.png)
-
-![Add source analysis query](/img/cloud-native-workspace/maps/map_add_source_an_analysis_query.png)
+![Add source custom query](/img/cloud-native-workspace/maps/map_add_source_a_custom_sql_query.png)
 
 Once the process is finished, the SQL Editor appears in the Builder interface, where you can type your query and then click *Run* when it is active to execute the query. Please make sure to use *Fully Qualified Table* names.
 
@@ -43,13 +39,7 @@ Once the process is finished, the SQL Editor appears in the Builder interface, w
 
 From the SQL Editor, you can easily toggle to full screen mode, minimize, maximize or close the panel.
 
-<!-- ![Map sql console](/img/cloud-native-workspace/maps/map_sql_console.png) -->
-
-<!-- ![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_enter_full_screen.png) -->
-
 ![Map sql panel enter full screen](/img/cloud-native-workspace/maps/map_sql_panel_enter_fullscreen.png)
-
-<!-- ![Map sql console](/img/cloud-native-workspace/maps/map_sql_panel_minimize.png) -->
 
 ![Map sql panel minimize screen](/img/cloud-native-workspace/maps/map_sql_panel_minimizescreen.png)
 
@@ -85,13 +75,9 @@ Bear in mind that the `dry-run` option is only available for BigQuery data sourc
 
 When you click on *Run*, a timer will appear while the query is running informing you how long the query is taking until it's finished. A label will also appear along indicating the connection being used to execute the query. In this example, the BigQuery connection named as `custom_name`.
 
-<!-- ![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_running_query.png) -->
-
 ![Map sql panel run query](/img/cloud-native-workspace/maps/map_sql_panel_run_query.png)
 
 You can click on *Cancel* at any time to stop running the query. At this poing, the layer loading will also be cancelled.
-
-<!-- ![Map add query](/img/cloud-native-workspace/maps/map_sql_panel_cancel_query.png) -->
 
 ![Map add cancel query](/img/cloud-native-workspace/maps/map_sql_panel_cancelling_query.png)
 
@@ -183,7 +169,7 @@ The last screen will show you a summary with the import details. Click on *Add S
 
 A new dialog will open informing you that the import may take a while to process and giving you the option to follow the status from a new dialogue box that appears at the top right corner of the screen.
 
-![Map importing file](/img/cloud-native-workspace/maps/map_importing_file.png)
+![Map importing file](/img/cloud-native-workspace/maps/map_importing_local_file.png)
 
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. You can then add additional layers, or apply styling and analysis features.
 

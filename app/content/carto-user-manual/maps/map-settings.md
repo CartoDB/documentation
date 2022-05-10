@@ -48,7 +48,7 @@ This guide describes how to add interactive widgets to your map in CARTO Builder
 
 In the Widgets tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map widgets new widget](/img/cloud-native-workspace/maps/map_new_widget.png)
+![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_new_widget.png)
 
 Click on *New widget* button to start interacting with your data. When you add a widget, it´s always the Formula widget by default:
 
