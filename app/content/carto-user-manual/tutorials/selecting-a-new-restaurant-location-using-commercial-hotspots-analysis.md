@@ -3,12 +3,12 @@ title: "Selecting a new restaurant location using analytics"
 description: "We find the best new location for a specific target demographics using spatial indexes and advanced statistical functions such as Commercial Hotspots."
 image: "/img/tutorials/pizza-hut-location-in-honolulu.png"
 type: tutorials
-date: "2022-05-02"
-categories:
+date: "2022-05-10"
+# categories:
 #     - hard
 #     - h3
 #     - statistics
-    - retail
+#     - retail
 ---
 
 ## Selecting a new restaurant location using Commercial Hotspots analysis
