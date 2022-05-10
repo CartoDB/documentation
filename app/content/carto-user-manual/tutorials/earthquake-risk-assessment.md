@@ -1,7 +1,8 @@
 ---
-title: "Earthquake risk assessment"
-description: "We find the best new location for a specific target demographics using spatial indexes and advanced statistical functions."
-image: "/img/tutorials/pizza-hut-location-in-honolulu.png"
+title: "Identifying urban areas at risk of earthquakes"
+description: "In this section, we provide a tutorial that showcases how easy it is to perform geospatial analysis operations using CARTO Builder. 
+In this example,  we will analyse the total of urban areas affected in Spain by earthquakes over 2021. This type of analysis can be useful to show the general situation of risks threatening a given population in order to be able to plan measures and actions to mitigate their possible negative effects (human, economic and environmental)."
+image: "/img/tutorials/spain_earthquakes.png"
 type: tutorials
 date: "2022-05-09"
 # categories:
@@ -11,13 +12,15 @@ date: "2022-05-09"
 #     - retail
 ---
 
-## Earthquake risk assessment
+## Identifying urban areas at risk of earthquakes
+
+<!-- Earthquake risk assessment -->
 
 **Context**
 
 In this section, we provide a tutorial that showcases how easy it is to perform geospatial analysis operations using CARTO Builder. 
 
-In this example,  we will analyse the number of urban areas affected by (the most intense) earthquakes during 2021. This type of risk analysis maps can be useful to show the general situation of risks threatening a given population and to be able to plan measures and actions to mitigate their possible negative effects (human, economic and environmental)
+In this example,  we will analyse the total of urban areas affected in Spain by earthquakes over 2021. This type of analysis can be useful to show the general situation of risks threatening a given population in order to be able to plan measures and actions to mitigate their possible negative effects (human, economic and environmental)
 
 **Steps To Reproduce**
 
@@ -95,31 +98,31 @@ When you import a file, the Auto-guessing option is always enabled by default. T
 
    ![Map fill color](/img/cloud-native-workspace/tutorials/tutorial14_map_second_layer_fill_color.png)
 
-16. Now let´s started with our analysis by clicking on the three dots in the "spain_earthquakes" data source to find the Add SQL Analysis option.  For more details, check the [SQL Analyses](../../maps/sql-analyses/) guide.
+17. Now let´s started with our analysis by clicking on the three dots in the "spain_earthquakes" data source to find the Add SQL Analysis option.  For more details, check the [SQL Analyses](../../maps/sql-analyses/) guide.
 
    ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_addsqlanalysis_button.png)
 
 
-17.  You will see a list of analyses compatible with your source. Select **Filter by column** and click on *Continue*.
+18.  You will see a list of analyses compatible with your source. Select **Filter by column** and click on *Continue*.
 
      ![Map add sql analysis filter by column](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_filterbycolumn.png)
 
-18. Select `date` as target column, type "2021" manually in the values and press enter. Leave the keep option selected in the results and click on *Run SQL analysis*.
+19. Select `date` as target column, type "2021" manually in the values and press enter. Leave the keep option selected in the results and click on *Run SQL analysis*.
 
      ![Map add sql analysis filter by column parameters](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_filterbycolumn_parameters.png)
 
-19. Once the analysis has finished, the dataset is included in the Builder map tool as a new layer. As we have run the analysis directly, the SQL editor will appear but in a collapsed mode. You can open it to check the SQL analysis or close
+20. Once the analysis has finished, the dataset is included in the Builder map tool as a new layer. As we have run the analysis directly, the SQL editor will appear but in a collapsed mode. You can open it to check the SQL analysis or close
 it if you don't need the query.
 
-    ![Map add sql analysis filter by column new layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_filter_newlayer.png)
+    ![Map add sql analysis filter by column new layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_filterbycolumn_newlayer.png)
 
-20. Close the SQL editor, disable the layer "Spain earthquakes" and rename the layer name to “Spain earthquakes (2021)”. Now the earthquakes on the map have been filtered to those occured in 2021.
+21. Close the SQL editor, disable the layer "Spain earthquakes" and rename the layer name to “Spain earthquakes (2021)”. Now the earthquakes on the map have been filtered to those occured in 2021.
 
-    ![Map add sql analysis filter by column rename layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_filter_renamelayer.png)
+    ![Map add sql analysis filter by column rename layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_filterbycolumn_renamelayer.png)
 
- <!-- ![Map add sql analysis filter by column rename layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_filter_rename_layer.png) -->
+22. Let´s change the color based on `magnitude` (the same as in step 8) and the radius of the points in order to make them more visible.
 
-22. Now we can change the radius of the points in order to make them more visible.
+    ![Map fill color based on field](/img/cloud-native-workspace/tutorials/tutorial14_map_fill_color_based_on.png)
 
     ![Map radius](/img/cloud-native-workspace/tutorials/tutorial14_change_radius.png)
 
@@ -127,21 +130,17 @@ it if you don't need the query.
 
     ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_second_addsqlanalysis_button.png)
 
-22. Select **Create Buffers** and click on *Continue*.
+24. Select **Create Buffers** and click on *Continue*.
 
-    ![Map add sql analysis create buffers](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_createbuffers.png)
+    ![Map add sql analysis create buffers](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_createbuffer.png)
 
-   <!-- ![Map add sql analysis create buffers](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_create_buffers.png) -->
+25. Leave the default parameters, click on the arrow and select *Preview SQL analysis query*.
 
-23. Leave the default parameters, click on the arrow and select *Preview SQL analysis query*.
+    ![Map add sql analysis create buffers parameters](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_createbuffers_theparameters.png)
 
-    ![Map add sql analysis create buffers preview sql query](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_createbuffers_preview_sql.png)
+26. As we have clicked on preview the analysis, the SQL editor will appear in a expanded mode and the layer will not be added until we run the analysis. You can either change the parameters or leave them as they are and click on *Run*.
 
-   <!-- ![Map add sql analysis create buffers](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_createbuffers_parameters.png) -->
-
-24. As we have clicked on preview the analysis, the SQL editor will appear in a expanded mode and the layer will not be added until we run the analysis. You can either change the parameters or leave them as they are and click on *Run*.
-
-    ![Map add sql analysis create buffers preview sql editor](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_createbuffers_preview_editor.png)
+    ![Map add sql analysis create buffers preview query](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_createbuffers_preview_query.png)
 
     The resulting SQL query will be the initial analysis with the new analysis added.
 
@@ -162,24 +161,23 @@ it if you don't need the query.
         SELECT * FROM __q3
     ```
 
-24. Run the analysis and rename the new layer to "Spain earthquakes (2021) buffer". What this SQL does is to create a 10km buffer around the epicentres of the earthquakes.
+27. Run the analysis, close the SQL editor and rename the new layer to "Spain earthquakes (2021) buffer". What this SQL does is to create a 10km buffer around the earthquakes.
 
-    ![Map add sql analysis create buffers new layer](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_createbuffers_new_layer.png)
+    ![Map add sql analysis create buffers new layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_createbuffers_newlayer.png)
 
-25. Additionally, we are going to intersect the buffer with the table with Urban Areas data (“urban_areas”) and aggregate total urban area affecting by the earthquakes. Click on the three dots in the "SQL Query 2" data source and select the Add SQL Analysis option.  
+28. Additionally, we are going to intersect the buffer with the table with Urban Areas data (“urban_areas”) and aggregate the total urban area affecting by the earthquakes. Click on the three dots in the "SQL Query 2" data source and select the Add SQL Analysis option.  
 
      ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_third_addsqlanalysis_button.png)
 
+29. Select **Intersect and aggregate** and click on *Continue*.
 
-26. Select **Intersect and aggregate** and click on *Continue*.
+      ![Map add sql analysis intersect and aggregate](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_interesect_and_aggregate.png)
 
-      ![Map add sql analysis intersect and aggregate](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_interesect_aggregate.png)
+30. Select `urban_areas` as second source, `SUM` as the aggregation operation AND `area_sqkm` as the aggregation column. Click on *Preview SQL analysis query*.
 
-27. Select `urban_areas` as second source, `SUM` as the aggregation operation AND `area_sqkm` as the aggregation column. Click on *Preview SQL analysis query*.
+      ![Map add sql analysis intersect and aggregate parameters](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_interesect_and_aggregate_parameters.png)
 
-      ![Map add sql analysis intersect and aggregate parameters](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_interesect_aggregate_parameters.png)
-
-28. Alternatively, we can also modify the SQL query in order to give the column resulting from the aggregation a more suitable alias. For example, by renaming the default alias `aggregated_value` to `affected_area` and changing the SQL query to: 
+31. We can also modify the SQL query in order to give the column resulting from the aggregation a more suitable alias. For example, by renaming the default alias `aggregated_value` to `affected_area` and changing the SQL query to: 
 
     ```sql
     WITH __q1 AS (
@@ -224,7 +222,7 @@ it if you don't need the query.
     SELECT * FROM __q5
     ```
 
-29. Rename this new layer layer (E) as “Spain earthquakes (2021) buffer-intersect” and disable the layer “Spain earthquakes (2021) buffer”. 
+32. Rename this new layer layer (E) as “Spain earthquakes (2021) buffer-intersect” and disable the layer “Spain earthquakes (2021) buffer”. 
 
     ![Map add sql analysis intersect and aggregate rename layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_aggregate_renamelayer.png)
 
@@ -232,25 +230,68 @@ it if you don't need the query.
 
     ![Map add sql analysis intersect and aggregate popup layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_aggregate_popup_layer.png)
 
-30. Let’s change the ordering of the layers and place the layer "Spain earthquakes (2021)" to the top of the list so the other layers render at the bottom of this layer. You should only drag & drop the “C" layer on the layer panel.
+33. Let’s change the ordering of the layers and place the layer "Spain earthquakes (2021)" to the top of the list so the other layers render at the bottom of this layer. You should only drag & drop the “C" layer on the layer panel.
 
     ![Map add sql analysis intersect and aggregate reorder layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_aggregate_reorder_layer.png)
 
-31. Let´s also minimize the "Sources" panel and close the SQL editor for better visibility.
+34. Let´s also minimize the "Sources" panel and close the SQL editor for better visibility.
 
-    ![Map add sql analysis intersect and aggregate minimize panels](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_aggregate_minimize_panels.png)
+    ![Map add sql analysis intersect and aggregate minimize panels](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_aggregate_minimize_panel.png)
+
+35. Click the “three dots” icon in the Fill Color section and select "Fill color Based on” feature `affected_area`. Pick a palette for a sequential variable (gradient) and a quantize color scale. Now the earthquake buffers of 10 km on the map will display a ramp color based on the total affected area. Change the opacity to 0,5.
+
+   ![Map fill color based on field and opacity](/img/cloud-native-workspace/tutorials/tutorial14_map_fill_color_based_on_opacity.png)
 
 
+36. In case it’s not activated by default, let’s activate a tooltip for this layer ("Spain earthquakes (2021) buffer-intersect"), in order to show the to show the place of occurrence of the earthquake and the affected urban area when hovering on top of the earthquake buffer zones.
 
+    For that, go to the Interactions tab and activate the tooltip option. Press on Clear All and delete the tooltips except for the fifth source “SQL Query 3” and leave the fields `location` and `affected_area` as shown below:
 
-30. Go to the *Widget tab*. If you haven’t created a widget yet, you will see the following page:
+    ![Map tooltip](/img/cloud-native-workspace/tutorials/tutorial14_map_showing_tooltip.png)
+
+37. Alternatively, we can also an create a table from this last analysis by clicking on the three dots in the "SQL Query 3" data source to find the Open SQL Editor. Once the SQL editor is opened, click on *Create table from query* button at the bottom right.
+
+    ![Map create table from query button](/img/cloud-native-workspace/tutorials/tutorial14_map_create_table_from_query_button.png)
+
+38. Set the location and name of the output table and click on *Create table from query*.
+
+    ![Map create table from query](/img/cloud-native-workspace/tutorials/tutorial14_map_create_table_from_query.png)
+
+39. Once the process is finished, the table is included in the Builder map as a new layer. 
+
+    ![Map table from query](/img/cloud-native-workspace/tutorials/tutorial14_map_new_table_from_query.png)
+
+40. Go to the *Widget tab*. If you haven’t created a widget yet, you will see the following page:
  
-    ![Map widgets new widget](/img/cloud-native-workspace/tutorials/tutorial11_map_new_widget.png)
+    ![Map widgets new widget](/img/cloud-native-workspace/tutorials/tutorial14_map_new_widget.png)
 
-10. Click the *New widget* button and select "paris_cycling_network".
+41. Click the *New widget* button and select "SQL Query 1". When you add a widget, it´s always the Formula widget by default, based on a Count operation on the number of features displayed on the map viewport. Rename the widget to “Nº of earthquakes in Spain (2021)”.
 
-    ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial11_map_widget_select_source.png)
+    ![Map widgets formula rename](/img/cloud-native-workspace/tutorials/tutorial14_map_widget_formula_rename.png)
 
-    When you add a widget, it´s always the Formula widget by default, based on a Count operation on the number of features displayed on the map viewport:
+42. Now we are going to add a few more interactive widgets (HISTOGRAM). Click the Add widget button and select “SQL Query 1”.
 
-    ![Map widgets formula by default](/img/cloud-native-workspace/tutorials/tutorial11_map_widget_formula_by_default.png)
+    ![Map widgets select source histogram](/img/cloud-native-workspace/tutorials/tutorial14_map_widget_select_source_histogram.png)
+
+    Select the HISTOGRAM widget and choose the field `magnitude` from the list You will get a histogram widget in order to be able to filter the earthquakes in Spain based on their magnitude. Rename the widget to “Spain earthquakes by magnitude”.
+
+    ![Map histogram widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_histogram_widget_select_field.png)
+
+43. We are going to add the last widget. For that, go back to the widget’s list, click the Add widget button and select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
+
+    ![Map time series widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_timeseries_widget_select_field.png)
+
+44. Rename the map to “Earthquakes in Spain over 2021” and open the legend.
+
+    ![Map rename title and legend](/img/cloud-native-workspace/tutorials/tutorial14_map_rename_title_legend.png)
+
+    <!-- ![Map rename title and legend](/img/cloud-native-workspace/tutorials/tutorial14_map_rename_title.png) -->
+
+45. We can make the map public and share it online with our colleagues. In this case, we are going to protect our map before sharing it by enabling password protection and setting a map password. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps/#password-protected-maps) .
+
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial14_map_sharing_options.png)
+
+46. Finally, we can visualize the result.
+
+<iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/4f00d0ce-09e5-49f5-9a35-3e0e21d7755f"></iframe>
+
