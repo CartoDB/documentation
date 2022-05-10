@@ -4,7 +4,8 @@ description: "In this tutorial we are going to vizualize revenue performance and
 image: "/img/tutorials/retail-stores-usa.png" 
 type: tutorials
 date: "2022-04-28"
-# categories:
+categories:
+    - retail
 #     - easy
 #     - widgets
 ---
