@@ -230,7 +230,7 @@ it if you don't need the query.
 
     ![Map add sql analysis create buffers new layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_createbuffers_earthquakes_newlayer.png)
 
-18. Additionally, we are going to intersect the buffer with the table with Urban Areas data (“urban_areas”) and aggregate the total urban area affecting by the earthquakes. Click on the three dots in the "SQL Query 2" data source and select the Add SQL Analysis option. Select **Intersect and aggregate** and click on *Continue*.
+18. Additionally, we are going to intersect the buffer with the table with Urban Areas data (“urban_areas”) and aggregate the total urban area affecting by the earthquakes. Click on the three dots in the "SQL Query 3" data source and select the Add SQL Analysis option. Select **Intersect and aggregate** and click on *Continue*.
 
      <!-- ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_third_addsqlanalysis_button.png) -->
 
@@ -363,7 +363,7 @@ it if you don't need the query.
 
 28. In case it’s not activated by default, let’s activate a tooltip for this layer ("Spain earthquakes (2021) buffer-intersect"), in order to show the to show the place of occurrence of the earthquake and the affected urban area when hovering on top of the earthquake buffer zones.
 
-    For that, go to the Interactions tab and activate the tooltip option. Press on Clear All and delete the tooltips except for the fifth source “SQL Query 3” and leave the fields `location` and `affected_area` as shown below:
+    For that, go to the Interactions tab and activate the tooltip option. Press on Clear All and delete the tooltips except for the fifth source “SQL Query 4” and leave the fields `location` and `affected_area` as shown below:
 
     ![Map tooltip](/img/cloud-native-workspace/tutorials/tutorial14_map_show_tooltip.png)
 
