@@ -1,5 +1,5 @@
 ---
-title: "Identifying urban areas at risk of earthquakes"
+title: "Analysing urban areas affected by earthquakes"
 description: "In this section, we provide a tutorial that showcases how easy it is to perform geospatial analysis operations using CARTO Builder. 
 In this example,  we will analyse the total of urban areas affected in Spain by earthquakes over 2021. This type of analysis can be useful to show the general situation of risks threatening a given population in order to be able to plan measures and actions to mitigate their possible negative effects (human, economic and environmental)."
 image: "/img/tutorials/spain_earthquakes_2021.png"
@@ -12,7 +12,7 @@ date: "2022-05-09"
 #     - retail
 ---
 
-## Identifying urban areas at risk of earthquakes
+## Analysing urban areas affected by earthquakes
 
 <!-- Earthquake risk assessment -->
 
