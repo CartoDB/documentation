@@ -148,7 +148,7 @@ it if you don't need the query.
     ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_and_aggregate_earthquakes_previewquery.png)
 
 
-    The resulting SQL query will be the initial analysis with the new analysis added.
+    The resulting SQL query will be the initial analysis with the new analysis added. We are analysing earthquakes occurring in 2021 that intersect with urban areas. 
 
     ```sql
     WITH __q1 AS (
