@@ -287,9 +287,9 @@ it if you don't need the query.
 
     <!-- ![Map rename title and legend](/img/cloud-native-workspace/tutorials/tutorial14_map_rename_title.png) -->
 
-45. We can make the map public and share it online with our colleagues. In this case, we are going to protect our map before sharing it by enabling password protection and setting a map password. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps/#password-protected-maps) .
+45. We can make the map public and share it online with our colleagues. We could also protect our map before sharing it by enabling password protection and setting a map password. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps/) .
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial14_map_sharing_options.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial14_map_public_options.png)
 
 46. Finally, we can visualize the result.
 
