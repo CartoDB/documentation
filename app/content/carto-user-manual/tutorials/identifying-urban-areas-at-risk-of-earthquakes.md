@@ -273,15 +273,15 @@ it if you don't need the query.
 
     ![Map widgets select source histogram](/img/cloud-native-workspace/tutorials/tutorial14_map_widget_select_source_histogram.png)
 
-    Select the HISTOGRAM widget and choose the field `magnitude` from the list You will get a histogram widget in order to be able to filter the earthquakes in Spain based on their magnitude. Rename the widget to “Spain earthquakes by magnitude”.
+    Select the HISTOGRAM widget and choose the field `magnitude` from the list. You will get a histogram widget in order to be able to filter the earthquakes in Spain based on their magnitude. Rename the widget to “Spain earthquakes by magnitude”.
 
     ![Map histogram widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_histogram_widget_select_field.png)
 
-43. We are going to add the last widget. For that, go back to the widget’s list, click the Add widget button and select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
+43. We are going to add the last widget. For that, go back to the widget’s list, click on *Add widget* button, select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
 
     ![Map time series widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_timeseries_widget_select_field.png)
 
-44. Rename the map to “Earthquakes in Spain over 2021” and open the legend.
+44. Rename the map to “Earthquakes in Spain over 2021”.
 
     ![Map rename title and legend](/img/cloud-native-workspace/tutorials/tutorial14_map_rename_title_legend.png)
 
