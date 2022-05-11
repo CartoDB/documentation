@@ -59,7 +59,7 @@ In this example,  we will analyse the total of urban areas affected in Spain by 
 
 8. Click the “three dots” icon in the Stroke Color section and select “Stroke color Based on” feature `magnitude`. Pick a palette for a sequential variable (gradient). Now the earthquakes on the map will display a ramp color based on on the magnitude at which they occur.
 
-   ![Map stroke style based on field](/img/cloud-native-workspace/tutorials/tutorial14_map_stroke_color_based_on_field.png)
+   ![Map fill color based on field](/img/cloud-native-workspace/tutorials/tutorial14_map_fill_color_based_on_field.png)
 
 9. Now we can change the radius of the points in order to make them more visible.
 
