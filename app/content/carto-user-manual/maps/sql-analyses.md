@@ -16,7 +16,9 @@ Check this table to find out which analyses are available for each data warehous
 |**Intersect and Aggregate**|✅|✅|✅|Coming soon
 |**Create buffers**|✅|✅|Coming soon|✅  [(\*) _more info_](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/transformations/#st_buffer)
 |**Add column from second source**|✅|✅|✅|✅
-|**Filter by column value**|✅|✅|✅|✅|
+|**Filter by column value**|✅|✅|✅|✅
+|**Calculate Centroids**|✅|✅|✅|✅
+|**Clustering K-Means**|✅ [(\*) _more info_](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans)|Coming soon|Coming soon|Coming soon
 
 _(*) Requires the CARTO Analytics Toolbox to be installed_
 
@@ -89,9 +91,27 @@ This analysis creates a distance buffer around your existing geometries. It work
 * **Individual/Combined result:** Select between having an individual buffer created for each row, or combine them all in a single polygon. 
 
 
+### Compute centroids
+
+This analysis will produce a point that represent the centroid of the geometries in your source. By default, it will produce a single point. Using the _Categorize_ optional parameter we can get a centroid per category in the dataset.
+
+![](/img/cloud-native-workspace/maps/parameters_compute_centroids.png)
+
+**Parameters**
+* **Categorize:** Select a column that contains categories to create one centroid per category in your dataset. 
+* **Aggregation:** Aggregate data from the original dataset into the resulting centroids. The result of the analysis will include a column `aggregated_value` that contains the value of the aggregation.
+  * Aggreation Operation: Select an aggregation operation from the list.
+  * Aggregatio Column: Select a column to be aggregated.
+
+### K-Means Clustering
+
+This analysis uses the [`ST_CLUSTERKMEANS`](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans) function from the CARTO Analytics Toolbox for BigQuery, taking a set of points and finding a defined number of clusters based on the k-means algorithim. It generates a `cluster_no` column that indicates the cluster that each point belongs to.
+
+![](/img/cloud-native-workspace/maps/k_means_clustering.png)
 
 
+**Parameters**
+* **Number of clusters:** Define the number of clusters that will be 
 
-
-
+This analysis can be performed safely with up to \~700K rows. Bigger sources can cause the resulting SQL query to hit some limits BigQuery.
 
