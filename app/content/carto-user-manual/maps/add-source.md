@@ -81,7 +81,11 @@ You can click on *Cancel* at any time to stop running the query. At this poing, 
 
 ![Map add cancel query](/img/cloud-native-workspace/maps/map_sql_panel_cancelling_query.png)
 
-If you keep the query running and it executes successfully, the table will be included in the Builder map tool as a layer. You can also persist the query as a table by clicking on *Create table from query* button that will be available when the query is successfully completed.
+If you keep the query running and it executes successfully, the table will be included in the Builder map tool as a layer. 
+
+#### Create a table from query
+
+Additionally, you can also persist the query as a table by clicking on *Create table from query* button that will be available when the query is successfully completed.
 
 ![Map sql panel create table from query](/img/cloud-native-workspace/maps/map_sql_panel_create_table_from_query.png)
 
