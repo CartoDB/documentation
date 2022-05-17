@@ -1,5 +1,12 @@
 ## Release notes
 
+### May 13, 2022
+
+#### Module tiler
+
+Feature
+- Add max_simplification_zoom and coordinates_precision parameters.
+
 ### April 21, 2022
 
 #### Module tiler
