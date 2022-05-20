@@ -1,5 +1,12 @@
 ## Release notes
 
+### May 19, 2022
+
+#### Module lds
+
+Changed
+- Add optional `language` parameter to GEOCODE_REVERSE function.
+
 ### April 21, 2022
 
 #### Module tiler

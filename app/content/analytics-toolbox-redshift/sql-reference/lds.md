@@ -50,7 +50,7 @@ SELECT address, carto.GEOCODE(address) AS geom FROM my_table
 ### GEOCODE_REVERSE
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE_REVERSE(geom)
+carto.GEOCODE_REVERSE(geom [, language])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -62,6 +62,7 @@ This function consumes geocoding quota. Each call consumes one unit of quota. Be
 Performs a reverse geocoding of the point received as input.
 
 * `geom`: `GEOMETRY` input point to obtain the address.
+* `language` (optional): `VARCHAR(MAX)` language in which results should be returned.
 
 **Return type**
 
