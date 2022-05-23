@@ -1,9 +1,9 @@
 ---
 title: 'Creating spatial index tilesets'
 description: 'We provide a set of examples that showcase how to easily create tilesets based on spatial indexes allowing you to process and visualize very large spatial datasets stored in BigQuery. You should use this procedure if you have a dataset that contains a column with a spatial index identifier instead of a geometry and you want to visualize it at an appropriate zoom level.'
-image: '/img/bq-analytics-toolbox/examples/covid19-vaccination.png'
+image: '/img/bq-analytics-toolbox/examples/uk_spatial_index'
 type: examples
-date: '2021-11-12'
+date: '2022-05-21'
 categories:
     - tiler
 aliases:
@@ -25,15 +25,13 @@ The query used to produce the tileset is the following:
 
 ```sql
 CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
-  `carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_quadgrid15_v1_yearly_v2`,
+  "`carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_quadgrid15_v1_yearly_v2`",
   'my_project.my_dataset.uk_spatial_features_tileset_quadkey',
   '''
   {
       'resolution_min': 2,
       'resolution_max': 8,
-      'spatial_index': 'quadkey',
-      'spatial_index_type': 'quadint',
-      'spatial_index_column': 'geoid',
+      'spatial_index_column': 'quadint:geoid',
       'resolution': 15,
       'aggregation_resolution': 4,
       'properties': {
@@ -56,15 +54,13 @@ The following query can be used to create a tileset similar to the one described
 
 ```sql
 CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
-  `carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_h3res8_v1_yearly_v2`,
+  "`carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_h3res8_v1_yearly_v2`",
   'my_project.my_dataset.uk_spatial_features_tileset_h3',
   '''
   {
       'resolution_min': 1,
       'resolution_max': 4,
-      'spatial_index': 'h3',
-      'spatial_index_type': 'h3',
-      'spatial_index_column': 'geoid',
+      'spatial_index_column': 'geoid:h3',
       'resolution': 8,
       'aggregation_resolution': 4,
       'properties': {
