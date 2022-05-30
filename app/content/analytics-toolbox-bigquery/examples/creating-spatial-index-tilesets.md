@@ -27,15 +27,15 @@ CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
   "my_project.my_dataset.uk_spatial_features_tileset_quadkey",
   '''
   {
-      'resolution_min': 2,
-      'resolution_max': 8,
-      'spatial_index_column': 'quadint:geoid',
-      'resolution': 15,
-      'aggregation_resolution': 4,
-      'properties': {
-          'population': {
-              'formula':'sum(population)',
-              'type':'Number'
+      "resolution_min": 2,
+      "resolution_max": 8,
+      "spatial_index_column": "quadint:geoid",
+      "resolution": 15,
+      "aggregation_resolution": 4,
+      "properties": {
+          "population": {
+              "formula":"sum(population)",
+              "type":"Number"
           }
       }
   }
@@ -52,19 +52,19 @@ The following query can be used to create a tileset similar to the one described
 
 ```sql
 CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
-  "`carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_h3res8_v1_yearly_v2`",
-  'my_project.my_dataset.uk_spatial_features_tileset_h3',
+  "carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_h3res8_v1_yearly_v2",
+  "my_project.my_dataset.uk_spatial_features_tileset_h3",
   '''
   {
-      'resolution_min': 1,
-      'resolution_max': 4,
-      'spatial_index_column': 'geoid:h3',
-      'resolution': 8,
-      'aggregation_resolution': 4,
-      'properties': {
-          'population': {
-              'formula':'sum(population)',
-              'type':'Number'
+      "resolution_min": 1,
+      "resolution_max": 4,
+      "spatial_index_column": 'geoid:h3',
+      "resolution": 8,
+      "aggregation_resolution": 4,
+      "properties": {
+          "population": {
+              "formula":"sum(population)",
+              "type":"Number"
           }
       }
   }
