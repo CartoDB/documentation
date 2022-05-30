@@ -6,8 +6,6 @@ type: examples
 date: '2022-05-21'
 categories:
     - tiler
-aliases:
-    - /analytics-toolbox-bq/examples/creating-spatial-index-tilesets/
 ---
 ## Creating spatial index tilesets
 
@@ -25,8 +23,8 @@ The query used to produce the tileset is the following:
 
 ```sql
 CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
-  "`carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_quadgrid15_v1_yearly_v2`",
-  'my_project.my_dataset.uk_spatial_features_tileset_quadkey',
+  "carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_quadgrid15_v1_yearly_v2",
+  "my_project.my_dataset.uk_spatial_features_tileset_quadkey",
   '''
   {
       'resolution_min': 2,
