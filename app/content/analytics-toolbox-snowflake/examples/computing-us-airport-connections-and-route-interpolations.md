@@ -6,6 +6,8 @@ type: examples
 date: "2021-08-12"
 categories:
     - transformations
+aliases:
+    - /analytics-toolbox-sf/examples/computing-us-airport-connections-and-route-interpolations/
 ---
 ## Computing US airport connections and route interpolations
 
@@ -15,7 +17,7 @@ In this example we will showcase how easily we can compute all the paths that in
 
 ```sql
 WITH data AS(
-  SELECT 'SEA' AS abbrev, TO_GEOGRAPHY('POINT(-122.302289722924 47.4435819127259)') as geog UNION 
+  SELECT 'SEA' AS abbrev, TO_GEOGRAPHY('POINT(-122.302289722924 47.4435819127259)') as geog UNION
   SELECT 'MIA', TO_GEOGRAPHY('POINT(-80.2789718277441 25.7949407212406)') UNION
   SELECT 'LAX', TO_GEOGRAPHY('POINT(-118.402468548522 33.9441742543586)') UNION
   SELECT 'JFK', TO_GEOGRAPHY('POINT(-73.7863268609295 40.6459595584081)')
@@ -30,7 +32,7 @@ This query first creates all the possible combinations between airports and then
 
 The result is displayed in this visualization. Notice that we are not using straight lines to interconnect the different airports, but great circles instead.
 
-<iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/8d5fabb5-6d8f-4933-b970-9ba637222cf5" title="US airports connections."></iframe> 
+<iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/8d5fabb5-6d8f-4933-b970-9ba637222cf5" title="US airports connections."></iframe>
 
 
 ### Routes interpolation
@@ -39,12 +41,12 @@ Now let's put to the test how to perform line interpolations using the `ST_LINE_
 
 ```sql
 WITH data AS(
-  SELECT 'SEA' AS abbrev, TO_GEOGRAPHY('POINT(-122.302289722924 47.4435819127259)') as geog UNION 
+  SELECT 'SEA' AS abbrev, TO_GEOGRAPHY('POINT(-122.302289722924 47.4435819127259)') as geog UNION
   SELECT 'MIA', TO_GEOGRAPHY('POINT(-80.2789718277441 25.7949407212406)') UNION
   SELECT 'LAX', TO_GEOGRAPHY('POINT(-118.402468548522 33.9441742543586)') UNION
   SELECT 'JFK', TO_GEOGRAPHY('POINT(-73.7863268609295 40.6459595584081)')
 )
-SELECT CONCAT(t1.abbrev, ' - ', t2.abbrev) as route, 
+SELECT CONCAT(t1.abbrev, ' - ', t2.abbrev) as route,
   carto.ST_LINE_INTERPOLATE_POINT(carto.ST_GREATCIRCLE(t1.geog, t2.geog, 25), 500) AS geom
 FROM data AS t1
 CROSS JOIN data AS t2

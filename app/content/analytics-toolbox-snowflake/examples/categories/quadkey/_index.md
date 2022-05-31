@@ -5,4 +5,6 @@ icon: "/img/icons/snowflake-analytics-toolbox.png"
 type: examples
 category: quadkey
 layout: categories/list
+aliases:
+    - /analytics-toolbox-sf/examples/categories/quadkey/
 ---

@@ -7,6 +7,8 @@ date: "2021-05-12"
 categories:
     - quadkey
     - constructors
+aliases:
+    - /analytics-toolbox-sf/examples/enrichment-of-catchment-areas-for-store-characterization/
 ---
 ## Enrichment of catchment areas for store characterization
 
@@ -22,10 +24,10 @@ SELECT ST_MAKEPOINT(LONGITUDE, LATITUDE) as geom FROM CDA26920_STARBUCKS_CORE_PL
 <img src="/img/sf-analytics-toolbox/examples/sf-enrichment-example-1.png" alt="Store locations." style="width:90%">
 </div>
 
-To quickly explore this data, using the Analytics Toolbox, we can easily compute an aggregation of these locations using Quadkeys at resolution 15, which lets us visualize the result as a heatmap. Here is a close-up of the Manhattan area, where we can easily identify the areas of highest concentration of Starbucks stores. 
+To quickly explore this data, using the Analytics Toolbox, we can easily compute an aggregation of these locations using Quadkeys at resolution 15, which lets us visualize the result as a heatmap. Here is a close-up of the Manhattan area, where we can easily identify the areas of highest concentration of Starbucks stores.
 
 ```sql
-WITH qks AS 
+WITH qks AS
 (SELECT carto.QUADINT_FROMLONGLAT(LONGITUDE, LATITUDE, 15) AS qk
 FROM CDA26920_STARBUCKS_CORE_PLACES_SAMPLE.PUBLIC.CORE_POI)
 SELECT count(*) as num_stores, carto.QUADINT_BOUNDARY(qk) AS geom FROM qks GROUP BY qk
@@ -121,7 +123,7 @@ INNER JOIN CDA26920_STARBUCKS_CORE_PLACES_SAMPLE.PUBLIC.CORE_POI t2
 ON t1.store_id = t2.SAFEGRAPH_PLACE_ID
 ```
 
-The result is a beautiful map visualization, where each Starbucks location is represented by a point and whose catchment is proportional to the total population within a 3km radius: 
+The result is a beautiful map visualization, where each Starbucks location is represented by a point and whose catchment is proportional to the total population within a 3km radius:
 
 <div style="text-align:center" >
 <img src="/img/sf-analytics-toolbox/examples/sf-enrichment-example-result.png" alt="Store characterization by population covered by catchment area." style="width:100%">
