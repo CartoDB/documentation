@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/release-notes/
+---
 ## Release notes
 
 ### May 19, 2022
