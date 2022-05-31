@@ -58,7 +58,7 @@ CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
   {
       "resolution_min": 1,
       "resolution_max": 4,
-      "spatial_index_column": 'geoid:h3',
+      "spatial_index_column": "h3:geoid",
       "resolution": 8,
       "aggregation_resolution": 4,
       "properties": {
