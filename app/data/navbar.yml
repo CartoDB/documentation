@@ -8,17 +8,7 @@ navbar:
   - name: CARTOframes
     url: https://carto.com/developers/cartoframes
   - name: Analytics Toolbox
-    subelements:
-      - name: Analytics Toolbox for BigQuery
-        url: /analytics-toolbox-bigquery
-      - name: Analytics Toolbox for Snowflake
-        url: /analytics-toolbox-snowflake
-      - name: Analytics Toolbox for Redshift
-        url: /analytics-toolbox-redshift
-      - name: Analytics Toolbox for Databricks
-        url: /analytics-toolbox-databricks
-      - name: Analytics Toolbox for PostgreSQL
-        url: /analytics-toolbox-postgres
+    url: /analytics-toolbox
   - name: Dev tools
     subelements:
       - name: CARTO API
