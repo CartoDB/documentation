@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/sql-reference/tiler/
+---
 ## tiler
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
