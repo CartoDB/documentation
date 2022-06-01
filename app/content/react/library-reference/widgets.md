@@ -273,6 +273,7 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 | props                     | <code>Object</code> |               |                                                     |
 | [props.className]         | <code>string</code> |               | (optional) Material-UI withStyle class for styling. |
 | [props.customLegendTypes] | <code>Object.<string, function></code> |   | (optional) Object with custom legend types and the components to be used with these types. |
+| [props.customLayerOptions] | <code>Object.<string, function></code> |   | (optional) Object with custom layer options and the components to be used with these options. |  
 | [props.initialCollapsed]  | <code>bool</code>   | `false`       | (optional) Indicates whether the widget is initially collapsed or not. |
 {{%/ tableWrapper %}}
 
@@ -285,6 +286,7 @@ You can control the legend options through the following properties that must be
 | visible       | `boolean`      | `true`        | Indicates whether the layer is visible by default or not.      |
 | opacity       | `Number`       | `1`           | Initial opacity for the layer.                                 |
 | showOpacityControl | `boolean` | `true`        | Indicates whether the opacity control is shown or not.         |
+| options       | `Array`        |               | Array of keys from the `customLayerOptions` passed to `LegendWidget`. Indicates which of the `customLayerOptions` components to render in the legend for this layer |  
 | switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown                  |
 | legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
 | legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
