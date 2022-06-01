@@ -515,3 +515,5 @@ SELECT `carto-os`.carto.QUADINT_TOZXY(4388);
 -- z  x  y
 -- 4  9  8
 ```
+
+{{% euFlagFunding %}}

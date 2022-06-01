@@ -48,3 +48,5 @@ point_lists AS (
 )
 SELECT points FROM point_lists CROSS JOIN point_lists.points
 ```
+
+{{% euFlagFunding %}}

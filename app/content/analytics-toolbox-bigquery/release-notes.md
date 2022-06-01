@@ -925,4 +925,3 @@ Removed
 - Remove compression levels 10-12 to reduce library size.
 - Remove ST prefix from functions not using geographies.
 - Remove unused functions like st_tileenvelope or st_tileenvelope_bbox.
-

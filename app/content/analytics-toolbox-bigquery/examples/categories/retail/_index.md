@@ -5,4 +5,5 @@ icon: "/img/icons/bigquery-analytics-toolbox.png"
 type: examples
 category: retail
 layout: categories/list
+euFlag: true
 ---

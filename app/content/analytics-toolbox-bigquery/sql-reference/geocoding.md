@@ -129,3 +129,5 @@ CALL `carto-un`.carto.GEOCODE_PC_BATCH(
   NULL
 );
 ```
+
+{{% euFlagFunding %}}

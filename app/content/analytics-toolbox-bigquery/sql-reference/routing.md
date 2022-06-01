@@ -313,3 +313,5 @@ CREATE TABLE mydataset.linestring_collection_table AS
   WHERE lon+lat<-73.95+40.75 --remove some nodes of the grid
   GROUP BY lat;
 ```
+
+{{% euFlagFunding %}}

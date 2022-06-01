@@ -60,3 +60,4 @@ We can see the result in the following visualization, where the bigger dots repr
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/e35bf735-8b57-4b52-b455-dcda5f61b493" title="Chicago crime clusters centers."></iframe>
 
+{{% euFlagFunding %}}

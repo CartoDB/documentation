@@ -40,3 +40,5 @@ We can see that overall, where listings are equipped with more bedrooms and bath
 {{% bannerNote title="Note" %}}
 Check out this [blogpost](https://carto.com/blog/geographically-weighted-regression/) for examples on the application of GWR to explore the spatially-varying relationships between crime occurrence and the number of unemployed population and average house prices.
 {{%/ bannerNote %}}
+
+{{% euFlagFunding %}}

@@ -40,3 +40,5 @@ GROUP BY census.geoid
 ```
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://team.carto.com/u/agraciano/builder/2febc1c3-e3b6-45e1-ab11-9e6dd910a601/layers#/" title="Census areas intersected by the tile envelopes."></iframe>
+
+{{% euFlagFunding %}}

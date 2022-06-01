@@ -33,4 +33,4 @@ Visit the [SQL Reference](../../sql-reference/) to see the full list of availabl
 Join our [Google Group](https://groups.google.com/a/cartodb.com/g/bigquery-spatial-extension) to stay informed of any new feature launches and relevant changes to the Analytics Toolbox.
 {{%/ bannerNote %}}
 
-
+{{% euFlagFunding %}}

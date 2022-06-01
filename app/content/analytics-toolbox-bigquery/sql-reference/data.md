@@ -1065,3 +1065,5 @@ CALL `carto-un`.carto.GRIDIFY_ENRICH`(
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: index, population_14d9cf55_sum, var1_sum, var2_sum, var2_max
 ```
+
+{{% euFlagFunding %}}

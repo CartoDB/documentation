@@ -102,3 +102,5 @@ S2 cells are uniquely identified by a 64-bit ID, following a numbering system op
 The *What* part of a placekey is composed of two sets of three characters encoding the address and the POI, to account for the fact that multiple places can share the same address. For example, a Starbucks and a Subway in 555 Main Street will share the first three characters but differ on the other three, therefore having different *What* parts. 
 
 Finally, the *Where* part encodes the H3 hexagonal cell where the place is located. To learn more about Placekey, visit the [project's website](https://www.placekey.io).
+
+{{% euFlagFunding %}}

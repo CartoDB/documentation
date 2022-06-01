@@ -54,3 +54,5 @@ SELECT cluster_element.cluster, cluster_element.geom AS geom FROM clustered_poin
 {{% bannerNote title="MORE EXAMPLES" type="note" %}}
 For more examples, visit the [Examples](/analytics-toolbox-bigquery/examples/) section or try executing any of the queries included in every function definition in the [SQL Reference](/analytics-toolbox-bigquery/sql-reference).
 {{%/ bannerNote %}}
+
+{{% euFlagFunding %}}

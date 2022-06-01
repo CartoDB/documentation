@@ -304,3 +304,5 @@ CALL `carto-un`.carto.CREATE_TILESET(
 {{% bannerNote type="note" title="warning"%}}
 In case of `source_table` is set as a query, it should be taken into account that (CTEs)[https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte] are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
 {{%/ bannerNote %}}
+
+{{% euFlagFunding %}}

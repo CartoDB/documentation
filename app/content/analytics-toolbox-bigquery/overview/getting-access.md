@@ -225,6 +225,8 @@ SELECT * FROM carto.INFORMATION_SCHEMA.ROUTINES;
 
 **Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your BigQuery project. Now you can start [using the functions](/analytics-toolbox-bigquery/sql-reference/overview/).
 
+{{% euFlagFunding %}}
+
 <style>
 .highlight {
   position: relative;
