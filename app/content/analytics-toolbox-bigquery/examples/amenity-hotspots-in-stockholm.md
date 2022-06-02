@@ -41,3 +41,4 @@ The results can be explored in the map below, where we can use the histogram wid
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/e3702384-809c-4d0d-847c-af71c8b4a30a" title="Identifying amenity hotspots in Stockholm"></iframe>
 
+{{% euFlagFunding %}}

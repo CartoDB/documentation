@@ -165,3 +165,5 @@ In this GIF we can see all the destination points of the network that are reacha
 <div style="text-align:center" >
 <img src="/img/bq-analytics-toolbox/routing/distance_map_gif.gif" alt="Distance map visualization gif." style="width:70%">
 </div>
+
+{{% euFlagFunding %}}

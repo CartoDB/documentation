@@ -32,6 +32,10 @@
       {{ if (gt $paginator.TotalPages 1) }}
       {{ partial "paginator.html" (dict "context" . "paginator" $paginator) }}
       {{ end }}
+
+      {{ if .Page.Params.euFlag }}
+        {{ partial "eu-flag-funding.html"}}
+      {{ end }}
     </div>
   </div>
 </div>

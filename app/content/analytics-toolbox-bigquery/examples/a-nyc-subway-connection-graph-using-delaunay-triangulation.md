@@ -44,3 +44,4 @@ In the visualization above each subway station is represented by a point whose c
 
 As a curiosity, the average number of connections between the existing New Yorks subway stations is close to six, which indicates a balanced distribution of the stations according to the [Delaunay triangulation properties](https://en.wikipedia.org/wiki/Delaunay_triangulation#Properties).
 
+{{% euFlagFunding %}}

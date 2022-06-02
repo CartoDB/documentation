@@ -443,3 +443,5 @@ carto-bq-tiler view -e
 ```
 
 You can also modify the port of the viewer with the `--port` option.
+
+{{% euFlagFunding %}}

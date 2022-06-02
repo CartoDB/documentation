@@ -54,3 +54,4 @@ This query uses the `ST_LINE_INTERPOLATE_POINT` function over each great circle 
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/b5c490e8-81ec-4c6f-ad67-864509d734d6" title="US airports routes interpolation."></iframe>
 
+{{% euFlagFunding %}}

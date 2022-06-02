@@ -47,3 +47,5 @@ CALL `carto-un`.carto.ORDINARY_KRIGING_TABLE(
 In this visualization we can see the computed elevation along the route accentuated by a factor of 10.
 
 <iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/9f285926-6e77-4e42-826d-f0e2683f9fae" title="Kriging result"></iframe>
+
+{{% euFlagFunding %}}

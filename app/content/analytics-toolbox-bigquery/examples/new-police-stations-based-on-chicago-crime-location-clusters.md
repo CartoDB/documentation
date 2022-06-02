@@ -47,3 +47,5 @@ SELECT cluster_element.cluster, `carto-un`.carto.ST_CENTERMEDIAN(ST_UNION_AGG(cl
 We can see the result in the following visualization, where the bigger dots represent the police stations we have decided to open based on our analysis:
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/8630e041-82bb-4100-8af6-6fc1ea1362bd" title="Chicago crime clusters centers."></iframe>
+
+{{% euFlagFunding %}}
