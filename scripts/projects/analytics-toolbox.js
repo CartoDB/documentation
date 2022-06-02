@@ -81,6 +81,10 @@ The CARTO Analytics Toolbox's functions are organized in modules based on the fu
 
     content += '{{%/ tableWrapper %}}'
 
+    if (cloud === 'bigquery') {
+        content += ' {{% euFlagFunding %}}'
+    }
+
     console.log(`- Update overview`);
     fs.writeFileSync(path.join(targetPath, 'sql-reference', 'overview.md'), content);
 }
