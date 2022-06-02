@@ -871,4 +871,5 @@ SELECT `carto-un`.carto.VARIOGRAM(sample_points, 20, 1.0E5, 'exponential');
 -- }
 ```
 
+
 {{% euFlagFunding %}}
