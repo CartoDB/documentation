@@ -15,11 +15,6 @@ echo "----------------------------------------"
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-snowflake-master
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-snowflake-master
 
-echo -e "\nCheckout Analytics Toolbox for Snowflake prev"
-echo "---------------------------------------------"
-git clone --branch sf-prev --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-snowflake-sf-prev
-git clone --branch sf-prev --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-snowflake-sf-prev
-
 echo -e "\nCheckout Analytics Toolbox for Redshift"
 echo "---------------------------------------"
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-redshift-master

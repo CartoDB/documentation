@@ -1,5 +1,12 @@
 ## Release notes
 
+### June 2, 2022
+
+#### Module lds
+
+Feature
+- Add CREATE_ISOLINES procedure.
+
 ### May 19, 2022
 
 #### Module lds
