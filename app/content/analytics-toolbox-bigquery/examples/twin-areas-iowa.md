@@ -97,3 +97,5 @@ Traditionally, discovering new areas for businesses represented a difficult and 
 {{% bannerNote title="Note" %}}
 Check out this [blogpost](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/retail/#find_twin_areas) for more information on the application of the Twin Areas analysis to this use case.
 {{%/ bannerNote %}}
+
+{{% euFlagFunding %}}

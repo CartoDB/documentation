@@ -1,4 +1,30 @@
+---
+aliases:
+    - /analytics-toolbox-sf/release-notes/
+---
 ## Release notes
+
+### May 19, 2022
+
+#### Module lds
+
+Changed
+- Add optional `language` parameter to GEOCODE_REVERSE function.
+
+### May 6, 2022
+
+#### Module data
+
+Changed
+- Errors used to be reported with a procedure result message. Now they raise exceptions.
+
+### April 28, 2022
+
+#### Module data
+
+Feature
+- Allow using tables as input, not just queries.
+- Add in place enrichment.
 
 ### April 21, 2022
 

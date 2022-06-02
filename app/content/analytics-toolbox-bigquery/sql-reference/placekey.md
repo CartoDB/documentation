@@ -94,3 +94,5 @@ Returns the H3 index equivalent to the given placekey.
 SELECT `carto-os`.carto.PLACEKEY_TOH3('@ff7-swh-m49');
 -- 8a7b59dffffffff
 ```
+
+{{% euFlagFunding %}}

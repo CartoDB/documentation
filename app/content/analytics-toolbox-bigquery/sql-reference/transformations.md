@@ -69,7 +69,7 @@ carto.ST_CENTERMEDIAN(geog)
 
 **Description**
 
-Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that is requires the least total travel from all other points.
+Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that requires the least total travel from all other points.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -223,3 +223,5 @@ Takes a LineString and returns a Point at a specified distance along the line.
 SELECT `carto-os`.carto.ST_LINE_INTERPOLATE_POINT(ST_GEOGFROMTEXT("LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)"), 250, 'miles');
 -- POINT(-74.297592068938 19.4498107103156) 
 ```
+
+{{% euFlagFunding %}}

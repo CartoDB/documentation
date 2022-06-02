@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/sql-reference/transformations/
+---
 ## transformations
 
 <div class="badges"><div class="core"></div></div>
@@ -65,7 +69,7 @@ carto.ST_CENTERMEDIAN(geog)
 
 **Description**
 
-Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that is requires the least total travel from all other points.
+Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that requires the least total travel from all other points.
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 

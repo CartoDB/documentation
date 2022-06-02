@@ -32,3 +32,5 @@ SELECT `carto-un`.carto.MORANS_I_H3(ARRAY_AGG(STRUCT(h3, n_pois)),
     1, 'exponential')
 FROM berlin 
 ```
+
+{{% euFlagFunding %}}

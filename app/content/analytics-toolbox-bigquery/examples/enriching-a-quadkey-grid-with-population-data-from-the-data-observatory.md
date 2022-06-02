@@ -44,3 +44,5 @@ ON qid = geoid
 ```
 
 <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/65a4b2ef-6f74-42b8-9d88-09ea19639552"></iframe>
+
+{{% euFlagFunding %}}

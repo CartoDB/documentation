@@ -6,6 +6,8 @@ type: examples
 date: "2021-10-12"
 categories:
     - quadkey
+aliases:
+    - /analytics-toolbox-sf/examples/a-quadkey-grid-of-stores-locations-and-simple-cannibalization-analysis/
 ---
 ## A Quadkey grid of stores locations and simple cannibalization analysis
 
@@ -23,14 +25,14 @@ WITH data AS (
   GROUP BY qk
 )
 SELECT
-  qk, 
+  qk,
   agg_total,
   carto.QUADINT_BOUNDARY(qk) AS geom
 FROM
   data
 ```
 
-This query adds two new columns to our dataset: `geom`, representing the boundary of each of the Quadkey grid cells where there’s at least one Starbucks, and `agg_total`, containing the total number of locations that fall within each cell. Finally, we can visualize the result. 
+This query adds two new columns to our dataset: `geom`, representing the boundary of each of the Quadkey grid cells where there’s at least one Starbucks, and `agg_total`, containing the total number of locations that fall within each cell. Finally, we can visualize the result.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/ad949347-876c-4ea0-88df-e4113e5dcc91" title="Starbucks locations in the US aggregated in an quadkey grid of resolution 10."></iframe>
 
@@ -49,7 +51,7 @@ WITH data AS (
 ),
 flat_qks AS(
   SELECT VALUE::BIGINT as qk,
-  count(*) AS agg_total, 
+  count(*) AS agg_total,
   carto.QUADINT_BOUNDARY(VALUE) AS geom
   FROM data, lateral FLATTEN(input => qk)
   GROUP BY VALUE
@@ -72,7 +74,7 @@ WITH data AS (
 ),
 flat_qks AS(
   SELECT VALUE::BIGINT as qk,
-  count(*) AS agg_total, 
+  count(*) AS agg_total,
   carto.QUADINT_BOUNDARY(VALUE) AS geom
   FROM data, lateral FLATTEN(input => qk)
   GROUP BY VALUE

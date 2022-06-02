@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/sql-reference/quadkey/
+---
 ## quadkey
 
 <div class="badges"><div class="core"></div></div>
@@ -121,7 +125,7 @@ Returns the quadint equivalent to the input quadkey.
 **Example**
 
 ```sql
-SELECT carto.QUADINT_FROMQUADKEY("3001");
+SELECT carto.QUADINT_FROMQUADKEY('3001');
 -- 4388
 ```
 

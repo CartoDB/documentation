@@ -7,6 +7,10 @@ repoUrl: https://github.com/CartoDB/analytics-toolbox-core
 url: analytics-toolbox-snowflake
 indexPage: "overview/getting-started.md"
 
+aliases:
+    - /analytics-toolbox-sf/
+    - /analytics-toolbox-sf/overview/getting-started/
+
 cascade:
   basePath: analytics-toolbox-snowflake
   menu:
@@ -44,5 +48,5 @@ cascade:
         - title: "s2"
         - title: "tiler"
         - title: "transformations"
-    - title: "Release notes" 
+    - title: "Release notes"
 ---

@@ -7,6 +7,8 @@ date: "2021-07-12"
 categories:
     - clustering
     - transformations
+aliases:
+    - /analytics-toolbox-sf/examples/new-supplier-offices-based-on-store-locations-clusters/
 ---
 ## New supplier offices based on store locations clusters
 
@@ -28,7 +30,7 @@ clustered_points AS
     SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
     FROM data
 )
-SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geom 
+SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geom
 FROM clustered_points, lateral FLATTEN(input => cluster_arr)
 ```
 
@@ -38,7 +40,7 @@ This query gathers the geometries of the Starbucks locations in order to establi
 
 ### Calculating the clusters' centers
 
-Once we have split the sample of points into clusters, we can easily work with them to calculate their centers, envelopes, concave/convex hulls and other different transformations. In this particular example we are interested in finding the center of the clusters, since that is where we are going to place the offices. The Analytics Toolbox offers different functions for this task, for example `ST_CENTERMEAN`, `ST_CENTERMEDIAN` and `ST_CENTEROFMASS`. 
+Once we have split the sample of points into clusters, we can easily work with them to calculate their centers, envelopes, concave/convex hulls and other different transformations. In this particular example we are interested in finding the center of the clusters, since that is where we are going to place the offices. The Analytics Toolbox offers different functions for this task, for example `ST_CENTERMEAN`, `ST_CENTERMEDIAN` and `ST_CENTEROFMASS`.
 
 In this case we are going to use `ST_CENTEROFMASS` to calculate the location of the new offices:
 
@@ -54,7 +56,7 @@ clustered_points AS
     SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 10) AS cluster_arr
     FROM data
 )
-SELECT GET(VALUE, 'cluster') AS cluster, carto.ST_CENTEROFMASS(ST_COLLECT(TO_GEOGRAPHY(GET(VALUE, 'geom')))) AS geom 
+SELECT GET(VALUE, 'cluster') AS cluster, carto.ST_CENTEROFMASS(ST_COLLECT(TO_GEOGRAPHY(GET(VALUE, 'geom')))) AS geom
 FROM clustered_points, lateral FLATTEN(input => cluster_arr)
 GROUP BY cluster
 ```

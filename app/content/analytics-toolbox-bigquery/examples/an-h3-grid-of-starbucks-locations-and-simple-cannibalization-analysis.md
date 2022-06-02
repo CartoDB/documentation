@@ -96,3 +96,5 @@ FROM data
 WHERE h3id IN UNNEST(`carto-un`.carto.H3_KRING('8928d542c17ffff', 1))
 -- 13
 ```
+
+{{% euFlagFunding %}}

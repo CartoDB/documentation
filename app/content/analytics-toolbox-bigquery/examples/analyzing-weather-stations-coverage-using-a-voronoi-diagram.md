@@ -50,6 +50,4 @@ Prior to the calculation of the Voronoi diagrams, the weather stations belonging
 
 With this simple analysis we can identify at a glance areas where the coverage should be improved and therefore new stations are needed.
 
-
-
-
+{{% euFlagFunding %}}
