@@ -1,3 +1,8 @@
+---
+aliases:
+    - /analytics-toolbox-sf/overview/getting-access/
+---
+
 ## Getting access
 
 ### Manual installation (for CARTO customers)
@@ -18,7 +23,7 @@ The process consists of two steps: [setup](#setup) and [installation](#installat
 
 This step consists of setting up the Snowflake database where you want to install the toolbox. A Snowflake account is required.
 
-We'll create a schema named `carto` in the database where you want the CARTO Analytics Toolbox installed. We also recommend creating a dedicated Snowflake user called `carto` to manage the CARTO Analytics Toolbox. 
+We'll create a schema named `carto` in the database where you want the CARTO Analytics Toolbox installed. We also recommend creating a dedicated Snowflake user called `carto` to manage the CARTO Analytics Toolbox.
 
 The following script will create the user, schema and role to be used for the installation in your database. Please note that this script must be executed by an [account administrator](https://docs.snowflake.com/en/user-guide/security-access-control-considerations.html#using-the-accountadmin-role).
 
@@ -85,7 +90,7 @@ During this installation step you are going to need the following information fr
 
 ##### 1. Connect to the database
 
-This step is required to run the installation SQL script. 
+This step is required to run the installation SQL script.
 
 First, connect to your Snowflake account using the `carto` user and password. Then, please set the role and database that will be used to install the toolbox:
 
@@ -104,7 +109,7 @@ Download the [package file](https://storage.googleapis.com/carto-analytics-toolb
 If you have a previously installed version of the Analytics Toolbox, you can check the installed version by running `SELECT carto.VERSION_CORE()`.
 {{%/ bannerNote %}}
 
-To install the functions and procedures of the Analytics Toolbox in the `carto` schema of your database, execute the downloaded file `modules.sql`. Please note that you must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide. 
+To install the functions and procedures of the Analytics Toolbox in the `carto` schema of your database, execute the downloaded file `modules.sql`. Please note that you must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide.
 
 You can load the script into a Worksheet by using the dropdown menu on the top right and choosing "Load Script". The "All Queries" check seems to work unreliably with large scripts, so we advice to select all the text instead (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
 
@@ -126,7 +131,7 @@ SHOW USER PROCEDURES IN SCHEMA carto;
 
 ##### 4. Import sample data (optional)
 
-In order to be able to reproduce the queries included in the [Guides](../../guides) and [Examples](../../examples) sections, you can optionally import into the `carto` schema a sample table containing the Starbucks locations in the US. 
+In order to be able to reproduce the queries included in the [Guides](../../guides) and [Examples](../../examples) sections, you can optionally import into the `carto` schema a sample table containing the Starbucks locations in the US.
 
 To do so, please run the following script in the same Worksheet you have used for the installation of the Analytics Toolbox:
 

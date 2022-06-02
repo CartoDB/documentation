@@ -4,6 +4,12 @@ aliases:
 ---
 ## Release notes
 
+### May 16, 2022
+
+#### Module tiler
+
+- Bug fixing when the geometry early collapse
+
 ### April 27, 2022
 
 #### Module data
@@ -21,6 +27,7 @@ Feature
 #### Module data
 
 Feature
+- Allow using tables as input, not just queries.
 - Add in place enrichment.
 - Allow using tables as input.
 - Accept NULL as output.

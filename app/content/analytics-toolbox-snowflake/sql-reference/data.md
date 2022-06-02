@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/sql-reference/data/
+---
 ## data
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
@@ -32,37 +36,32 @@ For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_
 
 * `grid_type`: `VARCHAR` Type of grid: "h3", "quadkey", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce
-   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
+   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.DATAOBS_ENRICH_GRID(
   'h3',
-  $$
-  SELECT VALUE AS INDEX FROM TABLE(FLATTEN(ARRAY_CONSTRUCT(
-    '8718496d8ffffff','873974865ffffff','87397486cffffff','8718496daffffff','873974861ffffff','8718496dbffffff','87397494bffffff','8718496ddffffff','873974864ffffff')))
-  $$,
+  'mydb.myschema.mytable',
   'INDEX',
   ARRAY_CONSTRUCT(
     OBJECT_CONSTRUCT('variable', 'population_14d9cf55', 'aggregation', 'SUM')
   ),
-  TO_ARRAY('MYENRICHEDTABLE'),
+  TO_ARRAY('mydb.myschema.mytable'),
   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
 )
--- The table MYENRICHEDTABLE will be created
--- with columns: INDEX, POPULATION_14D9CF55_SUM
+-- The table `mydb.myschema.mytable` will be augmented
+-- with column POPULATION_14D9CF55_SUM
 ```
 
 ### DATAOBS_ENRICH_GRID_RAW
@@ -83,11 +82,11 @@ As a result of this process, each input grid cell will be enriched with the data
 
 * `grid_type`: `VARCHAR` Type of grid: "h3", "quadkey", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce
-   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
+   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
 **Output**
@@ -100,9 +99,7 @@ The array contains OBJECTs with one field for each variable, using the variable 
 
 Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.DATAOBS_ENRICH_GRID_RAW(
@@ -119,6 +116,21 @@ CALL carto.DATAOBS_ENRICH_GRID_RAW(
 -- The table MYENRICHEDTABLE will be created
 -- with columns: INDEX, and WP_GRID100M_10955184.
 -- The latter will be of OBJECT type with the fields population_93405ad7,
+-- __carto_dimension, __carto_intersection and __carto_total.
+```
+
+```sql
+CALL carto.DATAOBS_ENRICH_GRID_RAW(
+  'h3',
+  'mydb.myschema.mytable',
+  'INDEX',
+  ARRAY_CONSTRUCT('population_14d9cf55'),
+  TO_ARRAY('mydb.myschema.mytable'),
+  'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
+)
+-- The table `mydb.myschema.mytable` will be augmented
+-- with the column WP_GRID100M_10955184.
+-- It will be of OBJECT type with the fields population_93405ad7,
 -- __carto_dimension, __carto_intersection and __carto_total.
 ```
 
@@ -141,20 +153,18 @@ For other types of aggregation, the [`DATAOBS_ENRICH_POINTS_RAW`](#dataobs_enric
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input points. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POINTS(
@@ -168,6 +178,20 @@ CALL carto.DATAOBS_ENRICH_POINTS(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, POPULATION_93405AD7_SUM
+```
+
+```sql
+CALL carto.DATAOBS_ENRICH_POINTS(
+   'mydb.myschema.mytable', 'GEOM',
+   ARRAY_CONSTRUCT(
+     OBJECT_CONSTRUCT('variable', 'population_93405ad7', 'aggregation', 'SUM')
+   ),
+   NULL,
+   TO_ARRAY('mydb.myschema.mytable'),
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with column POPULATION_93405AD7_SUM
 ```
 
 
@@ -185,11 +209,11 @@ As a result of this process, each input point will be enriched with the data of 
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
 **Output**
@@ -199,9 +223,7 @@ The array contains OBJECTs with one field for each variable, using the variable 
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POINTS_RAW(
@@ -213,6 +235,19 @@ CALL carto.DATAOBS_ENRICH_POINTS_RAW(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, and WP_GRID100M_10955184.
+-- Column WP_GRID100M_10955184 will have the fields population_93405ad7, __carto_dimension and __carto_total.
+```
+
+```sql
+CALL carto.DATAOBS_ENRICH_POINTS_RAW(
+   'mydb.myschema.mytable', 'GEOM',
+   ARRAY_CONSTRUCT('population_93405ad7'),
+   NULL,
+   TO_ARRAY('mydb.myschema.mytable'),
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with columns WP_GRID100M_10955184.
 -- Column WP_GRID100M_10955184 will have the fields population_93405ad7, __carto_dimension and __carto_total.
 ```
 
@@ -240,11 +275,11 @@ For other types of aggregation, the [`DATAOBS_ENRICH_POLYGONS_RAW`](#dataobs_enr
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
 Note that GeometryCollection/FeatureCollection geographies are not supported at the moment.
@@ -253,9 +288,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS(
@@ -269,6 +302,20 @@ CALL carto.DATAOBS_ENRICH_POLYGONS(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, POPULATION_93405AD7_SUM
+```
+
+```sql
+CALL carto.DATAOBS_ENRICH_POLYGONS(
+   'mydb.myschema.mytable', 'GEOM',
+   ARRAY_CONSTRUCT(
+     OBJECT_CONSTRUCT('variable', 'population_93405ad7', 'aggregation', 'SUM')
+   ),
+   NULL,
+   TO_ARRAY('mydb.myschema.mytable'),
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with column POPULATION_93405AD7_SUM
 ```
 
 
@@ -286,11 +333,11 @@ As a result of this process, each input polygon will be enriched with the data o
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog tables `SPATIAL_CATALOG_VARIABLES` and `SPATIAL_CATALOG_DATASETS` can be used to find both the column names and the corresponding table slugs.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 * `source`: `VARCHAR` name of the location where the Data Observatory subscriptions of the user are stored, in `DATABASE.SCHEMA` format. If only the `SCHEMA` is included, it uses the database where the Analytics Toolbox is installed by default.
 
 Note that GeometryCollection/FeatureCollection geographies are not supported at the moment.
@@ -305,9 +352,7 @@ The array contains OBJECTs with one field for each variable, using the variable 
 
 Moreover, another column named `__CARTO_INPUT_AREA` will be added containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
@@ -368,6 +413,22 @@ FROM FLATENRICHMENT
 GROUP BY NAME
 ```
 
+### In-place enrichment
+
+```sql
+CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
+   'mydb.myschema.mytable', 'GEOM',
+   ARRAY_CONSTRUCT('population_93405ad7'),
+   ),
+   NULL,
+   TO_ARRAY('mydb.myschema.mytable'),
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with columns __CARTO_INPUT_AREA and WP_GRID100M_10955184.
+-- The latter will be of OBJECT type with the fields population_93405ad7,
+-- __carto_dimension, __carto_intersection and __carto_total.
+```
 
 ### DATAOBS_SUBSCRIPTIONS
 
@@ -398,9 +459,7 @@ The result is an array of objects with the following fields:
 * `associated_geography_table` geography associated with the dataset (NULL if category is `Geography` meaning the dataset itself is a geography); contains a subscription table/view if available for the geography or the original (public) BigQuery dataset qualified name otherwise.
 * `associated_geography_slug` internal identifier of the geography associated with the dataset (NULL if category is `Geography`).
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_SUBSCRIPTIONS('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
@@ -431,9 +490,7 @@ The result is an array of objects with the following fields:
 * `dataset_slug` identifier of the dataset the variable belongs to.
 * `associated_geography_slug` identifier of the corresponding geography. Note that this is NULL if the dataset itself is a geography..
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 CALL carto.DATAOBS_SUBSCRIPTION_VARIABLES('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
@@ -463,12 +520,12 @@ For other types of aggregation, the [`ENRICH_GRID_RAW`](#enrich_grid_raw) proced
 **Input parameters**
 
 * `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
-* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
+* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`). Each element in this array should be an `OBJECT` with fields `column` and `aggregation`.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 
 Note that GeometryCollection/FeatureCollection geographies are not supported at the moment.
 
@@ -476,9 +533,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.ENRICH_GRID(
@@ -501,6 +556,23 @@ CALL carto.ENRICH_GRID(
 -- with columns: INDEX, VAR1_SUM, VAR2_SUM, VAR2_MAX
 ```
 
+```sql
+CALL carto.ENRICH_GRID(
+   'h3',
+   'mydb.myschema.mytable',
+   'index',
+   'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
+   ARRAY_CONSTRUCT(
+     OBJECT_CONSTRUCT('column', 'VAR1', 'aggregation', 'sum'),
+     OBJECT_CONSTRUCT('column', 'VAR2', 'aggregation', 'sum'),
+     OBJECT_CONSTRUCT('column', 'VAR2', 'aggregation', 'max')
+   ),
+   TO_ARRAY('mydb.myschema.mytable')
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with columns: VAR1_SUM, VAR2_SUM, VAR2_MAX
+```
+
 
 ### ENRICH_GRID_RAW
 
@@ -515,12 +587,12 @@ This procedure enriches a set of grid cells of one of the supported types (h3, q
 **Input parameters**
 
 * `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
-* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved.
+* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` of `VARCHAR` elements with names of the columns in the enrichment query that will be added to the enriched results.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 
 Note that GeometryCollection/FeatureCollection geographies are not supported at the moment.
 
@@ -531,9 +603,7 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.ENRICH_GRID_RAW(
@@ -550,6 +620,19 @@ CALL carto.ENRICH_GRID_RAW(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: INDEX, __CARTO_ENRICHMENT. The latter will contain OBJECTSs with the fields VAR1, VAR2, __carto_intersection, __carto_total and __carto_dimension.
+```
+
+```sql
+CALL carto.ENRICH_GRID_RAW(
+   'h3',
+   'mydb.myschema.mytable',
+   'index',
+   'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
+   ARRAY_CONSTRUCT('VAR1', 'VAR2'),
+   TO_ARRAY('mydb.myschema.mytable')
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with column __CARTO_ENRICHMENT which will contain OBJECTSs with the fields VAR1, VAR2, __carto_intersection, __carto_total and __carto_dimension.
 ```
 
 
@@ -571,20 +654,18 @@ For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) 
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`). Each element in this array should be an `OBJECT` with fields `column` and `aggregation`.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.ENRICH_POINTS(
@@ -599,6 +680,21 @@ CALL carto.ENRICH_POINTS(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, VAR1_SUM, VAR2_SUM, VAR2_MAX
+```
+
+```sql
+CALL carto.ENRICH_POINTS(
+   'mydb.myschema.mytable', 'GEOM',
+   'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
+   ARRAY_CONSTRUCT(
+     OBJECT_CONSTRUCT('column', 'VAR1', 'aggregation', 'sum'),
+     OBJECT_CONSTRUCT('column', 'VAR2', 'aggregation', 'sum'),
+     OBJECT_CONSTRUCT('column', 'VAR2', 'aggregation', 'max')
+   ),
+   TO_ARRAY('mydb.myschema.mytable')
+);
+-- The table `mydb.myschema.mytable` will be created
+-- with columns: VAR1_SUM, VAR2_SUM, VAR2_MAX
 ```
 
 
@@ -616,12 +712,12 @@ As a result of this process, each input polygon will be enriched with the data f
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` of `VARCHAR` elements with names of the columns in the enrichment query that will be added to the enriched results.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 
 **Output**
 
@@ -629,9 +725,7 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.ENRICH_POINTS_RAW(
@@ -642,6 +736,17 @@ CALL carto.ENRICH_POINTS_RAW(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, __CARTO_ENRICHMENT. The latter will contain OBJECTSs with the fields VAR1, VAR2, __carto_total and __carto_dimension.
+```
+
+```sql
+CALL carto.ENRICH_POINTS_RAW(
+   'mydb.myschema.mytable', 'GEOM',
+   'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
+   ARRAY_CONSTRUCT('VAR1', 'VAR2'),
+   TO_ARRAY('mydb.myschema.mytable')
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with column __CARTO_ENRICHMENT which will contain OBJECTSs with the fields VAR1, VAR2, __carto_total and __carto_dimension.
 ```
 
 
@@ -668,12 +773,12 @@ For other types of aggregation, the [`ENRICH_POLYGONS_RAW`](#enrich_polygons_raw
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`). Each element in this array should be an `OBJECT` with fields `column` and `aggregation`.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 
 Note that GeometryCollection/FeatureCollection geographies are not supported at the moment.
 
@@ -681,9 +786,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.ENRICH_POLYGONS(
@@ -698,6 +801,21 @@ CALL carto.ENRICH_POLYGONS(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, VAR1_SUM, VAR2_SUM, VAR2_MAX
+```
+
+```sql
+CALL carto.ENRICH_POLYGONS(
+   'mydb.myschema.mytable', 'GEOM',
+   'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
+   ARRAY_CONSTRUCT(
+     OBJECT_CONSTRUCT('column', 'VAR1', 'aggregation', 'sum'),
+     OBJECT_CONSTRUCT('column', 'VAR2', 'aggregation', 'sum'),
+     OBJECT_CONSTRUCT('column', 'VAR2', 'aggregation', 'max')
+   ),
+   TO_ARRAY('mydb.myschema.mytable')
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with columns: VAR1_SUM, VAR2_SUM, VAR2_MAX
 ```
 
 
@@ -715,12 +833,12 @@ As a result of this process, each input polygon will be enriched with the data o
 
 **Input parameters**
 
-* `input_query`: `VARCHAR` query to be enriched.
+* `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` of `VARCHAR` elements with names of the columns in the enrichment query that will be added to the enriched results.
-* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. This parameter cannot be NULL or empty.
+* `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
 
 Note that GeometryCollection/FeatureCollection geographies are not supported at the moment.
 
@@ -733,9 +851,7 @@ The output table will contain all the input columns provided in the `input_query
 
 Moreover, another field named `__carto_input_area` will be included in `__CARTO_ENRICHMENT`, containing the area of the input polygon in square meters.
 
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
+**Examples**
 
 ```sql
 CALL carto.ENRICH_POLYGONS_RAW(
@@ -746,4 +862,15 @@ CALL carto.ENRICH_POLYGONS_RAW(
 );
 -- The table `MYENRICHEDTABLE` will be created
 -- with columns: ID, GEOM, __CARTO_ENRICHMENT. The latter will contain OBJECTSs with the fields VAR1, VAR2, __carto_intersection, __carto_total, dimension and __carto_input_area.
+```
+
+```sql
+CALL carto.ENRICH_POLYGONS_RAW(
+   'mydb.myschema.mytable', 'GEOM',
+   'SELECT GEOM, VAR1, VAR2 FROM MYDATATABLE', 'GEOM',
+   ARRAY_CONSTRUCT('VAR1', 'VAR2'),
+   TO_ARRAY('mydb.myschema.mytable')
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with columns __CARTO_ENRICHMENT which will contain OBJECTSs with the fields VAR1, VAR2, __carto_intersection, __carto_total, dimension and __carto_input_area.
 ```

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/sql-reference/lds/
+---
 ## lds
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
@@ -50,7 +54,7 @@ SELECT ADDRESS, carto.GEOCODE(ADDRESS) AS GEOM FROM my_table
 ### GEOCODE_REVERSE
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE_REVERSE(geom)
+carto.GEOCODE_REVERSE(geom [, language])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -62,6 +66,7 @@ This function consumes geocoding quota. Each call consumes one unit of quota. Be
 Performs a reverse geocoding of the point received as input.
 
 * `geom`: `GEOGRAPHY` input point to obtain the address.
+* `language` (optional): `VARCHAR` language in which results should be returned.
 
 **Return type**
 

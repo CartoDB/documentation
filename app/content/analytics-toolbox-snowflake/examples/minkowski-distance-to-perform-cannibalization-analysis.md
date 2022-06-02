@@ -6,6 +6,8 @@ type: examples
 date: "2021-09-12"
 categories:
     - measurements
+aliases:
+    - /analytics-toolbox-sf/examples/minkowski-distance-to-perform-cannibalization-analysis/
 ---
 ## Minkowski distance to perform cannibalization analysis
 
@@ -16,10 +18,10 @@ The first step consists of cross joining the data in order to extract the differ
 ```sql
 WITH starbucks AS
 (
-  SELECT geog, 
+  SELECT geog,
   ROW_NUMBER() OVER(ORDER BY (SELECT NULL)) - 1 AS id,
   uniform(1, 10, random()) AS starbucks_size
-  FROM carto.STARBUCKS_LOCATIONS_USA 
+  FROM carto.STARBUCKS_LOCATIONS_USA
   WHERE CITY = 'Los Angeles' AND geog IS NOT NULL
   ORDER BY id
 ),
@@ -36,8 +38,8 @@ business_impact AS(
   GROUP BY t1_id
 )
 SELECT geog as geom, starbucks_size, received_cannibalization
-FROM starbucks t1 
-INNER JOIN business_impact t2 
+FROM starbucks t1
+INNER JOIN business_impact t2
 ON t1.id = t2.t1_id
 ```
 

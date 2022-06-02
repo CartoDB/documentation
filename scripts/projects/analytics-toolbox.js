@@ -50,6 +50,12 @@ aliases:
     - /analytics-toolbox-bq/${path}/
 ---
 `;
+    } else if (cloud === 'snowflake') {
+        content = `---
+aliases:
+    - /analytics-toolbox-sf/${path}/
+---
+`;
     }
     return content;
 }

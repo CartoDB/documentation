@@ -1,8 +1,14 @@
+---
+aliases:
+    - /analytics-toolbox-sf/guides/
+    - /analytics-toolbox-sf/guides/running-queries-from-builder/
+---
+
 ## Running queries from Builder
 
 Once you have gained access to the Analytics Toolbox through the Snowflake Data Marketplace (see [_Getting Access_](/analytics-toolbox-snowflake/overview/getting-access) for details), you can create custom SQL layers in Builder that make use of any of the available spatial functions.
 
-To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-snowflake/sql-reference/clustering/#st_clusterkmeans) function from the _clustering_ module. 
+To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-snowflake/sql-reference/clustering/#st_clusterkmeans) function from the _clustering_ module.
 
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
@@ -39,11 +45,11 @@ clustered_points AS
     SELECT carto.ST_CLUSTERKMEANS(ARRAY_AGG(ST_ASGEOJSON(geog)::STRING), 8) AS cluster_arr
     FROM data
 )
-SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geom 
+SELECT GET(VALUE, 'cluster') AS cluster, TO_GEOGRAPHY(GET(VALUE, 'geom')) AS geom
 FROM clustered_points, lateral FLATTEN(input => cluster_arr)
 ```
 
-5. Run the query. This query computes eight clusters from the points of the `starbucks_locations_usa` table, provided as sample data within the Analytics Toolbox. As a result, each point is assigned a `cluster` ID. 
+5. Run the query. This query computes eight clusters from the points of the `starbucks_locations_usa` table, provided as sample data within the Analytics Toolbox. As a result, each point is assigned a `cluster` ID.
 
 6. Style the layer by the `cluster` attribute.
 
