@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### June 2, 2022
+
+#### Module tiler
+
+Feature
+- Add spatial index tileset generator `CREATE_SPATIAL_INDEX_TILESET`.
+
 ### May 16, 2022
 
 #### Module tiler
