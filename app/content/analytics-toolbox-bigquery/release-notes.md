@@ -4,6 +4,16 @@ aliases:
 ---
 ## Release notes
 
+### June 3, 2022
+
+#### Module retail
+
+Feature
+- Add store features and competitors stores features into BUILD_REVENUE_MODEL_DATA procedure.
+
+Fixed
+- Fixing bugs calling other routines
+
 ### June 2, 2022
 
 #### Module tiler

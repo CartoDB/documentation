@@ -57,7 +57,7 @@ CALL carto.BUILD_REVENUE_MODEL(
 ### BUILD_REVENUE_MODEL_DATA
 
 {{% bannerNote type="code" %}}
-carto.BUILD_REVENUE_MODEL_DATA(store_query, competitor_query, aoi_query, grid_type, grid_level, kring, decay, do_variables, do_source, custom_variables, custom_query, output_prefix)
+carto.BUILD_REVENUE_MODEL_DATA(stores_query, competitors_query, aoi_query, grid_type, grid_level, kring, decay, do_variables, do_source, custom_variables, custom_query, output_prefix)
 {{%/ bannerNote %}}
 
 **Description**
@@ -71,8 +71,9 @@ This procedure is the first step of the Revenue Prediction analysis workflow. It
 
 **Input parameters**
 
-* `store_query`: `STRING` query with the revenue per store information to be used in the model. It must contain the columns `revenue` (revenue of the store), `store` (store unique id) and `geom` (the geographical point of the store).
-* `competitor_query`: `STRING` query with the competitors information to be used in the model. It must contain the columns `competitor` (competitor store unique id) and `geom` (the geographical point of the store).
+* `stores_query`: `STRING` query with variables related to the stores to be used in the model, including their revenue per store (required) and other variables (optional) variables. It must contain the columns `revenue` (revenue of the store), `store` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
+* `stores_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` list with the columns of the `stores_query` and their corresponding aggregation method (`sum`, `avg`, `max`, `min`, `count`) that will be used to enrich the grid cells. It can be set to `NULL`.
+* `competitors_query`: `STRING` query with the competitors information to be used in the model. It must contain the columns `competitor` (competitor store unique id) and `geom` (the geographical point of the store).
 * `aoi_query`: `STRING` query with the geography of the area of interest. It must contain a column `geom` with a single area (Polygon or MultiPolygon).
 * `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadkey`.
 * `grid_level`: `INT64` level or resolution of the cell grid. Check the available [h3 levels](https://h3geo.org/docs/core-library/restable/) and [quadkey levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid?tabs=csharp).
@@ -87,7 +88,7 @@ This procedure is the first step of the Revenue Prediction analysis workflow. It
 **Output**
 
 The procedure will output two tables:
-1. Model data table: contains an `index` column with the cell ids and all the enriched columns: `revenue_avg`, `store_count`, `competitor_count`, DO variables and custom variables. The name of the table includes the suffix `_model_data`, for example `<my-project>.<my-dataset>.<output-prefix>_model_data`.
+1. Model data table: contains an `index` column with the cell ids and all the enriched columns: `revenue_avg`, `store_count`, `competitor_count`, `stores_variables` suffixed by aggregation method, DO variables and custom variables. The name of the table includes the suffix `_model_data`, for example `<my-project>.<my-dataset>.<output-prefix>_model_data`.
 2. Model data stats table: contains the `morans_i` value computed for the `revenue_avg` column, computed with kring 1 and decay `uniform`. The name of the table includes the suffix `_model_data_stats`, for example `<my-project>.<my-dataset>.<output-prefix>_model_data_stats`.
 
 {{% customSelector %}}
@@ -96,8 +97,10 @@ The procedure will output two tables:
 
 ```sql
 CALL carto.BUILD_REVENUE_MODEL_DATA(
-    -- Stores: revenue, store, geom
-    '''SELECT revenue, store, geom FROM `<project>.<dataset>.input_stores_data`''',
+    -- Stores: revenue, store, geom and optional store information
+    '''SELECT revenue, store, geom, store_area FROM `<project>.<dataset>.input_stores_data`''',
+    -- Stores information variables
+    [('store_area','sum')], 
     -- Competitors: competitor, geom
     '''SELECT competitor, geom FROM `<project>.<dataset>.input_competitors_data`''',
     -- Area of interest: geom
@@ -120,6 +123,7 @@ CALL carto.BUILD_REVENUE_MODEL_DATA(
 -- Table `<my-project>.<my-dataset>.<output-prefix>_model_data_stats` will be created
 -- with the column: morans_i
 ```
+
 
 ### COMMERCIAL_HOTSPOTS
 
@@ -330,6 +334,8 @@ This procedure is the third and final step of the Revenue Prediction analysis wo
 * `index`: `STRING` cell index where the new store will be located. It can be an `h3` or a `quadkey` index. For `quadkey`, the value should be cast to string: `CAST(index AS STRING)`. It can also be `'ALL'`, in which case the prediction for all the grid cells of the model data are returned.
 * `revenue_model`: `STRING` the fully qualified `model` name.
 * `revenue_model_data`: `STRING` the fully qualified `model_data` table name.
+* `candidate_data`: `STRING` the fully qualified `candidate_data` table name. It can be set to `NULL`.
+* `stores_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` list with the columns of the `stores_query` and their corresponding aggregation method (`sum`, `avg`, `max`, `min`, `count`) that will be used to enrich the grid cells. It can be set to `NULL`.
 
 **Output**
 
@@ -340,10 +346,14 @@ The procedure will output the `index` and `predicted_revenue_avg` value in the c
 {{%/ customSelector %}}
 
 ```sql
+CREATE TABLE '<my-project>.<my-dataset>.<output-prefix>_candidate_data'  AS (SELECT 25 store_area);
+
 CALL carto.PREDICT_REVENUE_AVERAGE(
     '862676d1fffffff',
     '<my-project>.<my-dataset>.<output-prefix>_model',
-    '<my-project>.<my-dataset>.<output-prefix>_model_data'
+    '<my-project>.<my-dataset>.<output-prefix>_model_data',
+    '<my-project>.<my-dataset>.<output-prefix>_candidate_data',
+    [('store_area','sum')]
 );
 -- index, predicted_revenue_avg
 ```
