@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### June 9, 2022
+
+#### Module lds
+
+Feature
+- Add CREATE_ISOLINES procedure.
+
 ### May 19, 2022
 
 #### Module lds

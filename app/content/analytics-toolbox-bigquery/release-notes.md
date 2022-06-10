@@ -4,6 +4,20 @@ aliases:
 ---
 ## Release notes
 
+### June 9, 2022
+
+#### Module data
+
+Fixed
+- Report missing subscription geographies in DATAOBS_ENRICH_ procedures.
+
+### June 6, 2022
+
+#### Module data
+
+Fixed
+- Fix stability issues in GRIDIFY_ENRICH procedure.
+
 ### June 3, 2022
 
 #### Module retail

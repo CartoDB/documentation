@@ -1,5 +1,13 @@
 ## Release notes
 
+### June 9, 2022
+
+#### Module tiler
+
+Fixed
+- Fix metadata tilestats to include only columns in properties
+- Fix numeric metadata tilestats which were treated as categories
+
 ### April 22, 2022
 
 #### Module tiler

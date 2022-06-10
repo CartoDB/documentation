@@ -1,5 +1,19 @@
 ## Release notes
 
+### June 7, 2022
+
+#### Module lds
+
+Fixed
+- Fix chunks in CREATE_ISOLINES.
+
+### June 6, 2022
+
+#### Module lds
+
+Changed
+- Check if the user has enough credits to execute CREATE_ISOLINES.
+
 ### June 2, 2022
 
 #### Module lds
