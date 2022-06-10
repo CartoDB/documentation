@@ -4,6 +4,16 @@ aliases:
 ---
 ## Release notes
 
+### June 10, 2022
+
+#### Module tiler
+
+Fixed
+- Fix global stats in `CREATE_SPATIAL_INDEX_TILESET`.
+
+Changed
+- Check input resolution limits in `CREATE_SPATIAL_INDEX_TILESET`.
+
 ### June 9, 2022
 
 #### Module data
