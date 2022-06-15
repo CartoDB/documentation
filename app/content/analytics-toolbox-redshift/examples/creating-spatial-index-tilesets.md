@@ -22,7 +22,7 @@ Population for each cell is stored in a column named `population`. We will use a
 The query used to produce the tileset is the following:
 
 ```sql
-CALL vdelacruz_carto.CREATE_SPATIAL_INDEX_TILESET(
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
   'demo_tables.sub_carto_derived_spatialfeatures_gbr_quadgrid15_v1_yearly_v2',
   'demo_tables.sub_carto_derived_spatialfeatures_gbr_quadgrid15_v1_yearly_v2_tileset',
   '
