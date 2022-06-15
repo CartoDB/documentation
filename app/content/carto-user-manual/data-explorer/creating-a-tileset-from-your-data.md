@@ -1,7 +1,7 @@
 ## Creating a tileset from your data
 
 {{% bannerNote title="AVAILABLE FOR BIGQUERY, SNOWFLAKE, REDSHIFT AND POSTGRESQL CONNECTIONS" type="tip" %}}
-Creating tilesets is currently available from BigQuery, Snowflake and PostgreSQL connections. Support for Databricks connections will come soon.
+Creating tilesets is currently available from BigQuery, Snowflake, Redshift and PostgreSQL connections. Support for Databricks connections will come soon.
 {{%/ bannerNote %}}
 
 To create a tileset from your data, select a BigQuery or CARTO Data Warehouse connection and click on a specific table (database/project(s), schemas/datasets and tables) from the collapsible tree.

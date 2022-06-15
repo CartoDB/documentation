@@ -276,7 +276,7 @@ For more details, see [Creating a map from your data](../../data-explorer/creati
 #### Create a tileset
 
 {{% bannerNote title="AVAILABLE FOR BIGQUERY, SNOWFLAKE, REDSHIFT AND POSTGRESQL CONNECTIONS" type="tip" %}}
-Creating tilesets is currently available from BigQuery, Snowflake and PostgreSQL connections. Support for Databricks connections will come soon.
+Creating tilesets is currently available from BigQuery, Snowflake, Redshift and PostgreSQL connections. Support for Databricks connections will come soon.
 {{%/ bannerNote %}}
 
 <!-- {{% bannerNote title="ONLY FOR BIGQUERY AND CARTO DATA WAREHOUSE CONNECTIONS" type="tip" %}}
