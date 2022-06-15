@@ -12,7 +12,7 @@ To illustrate the case of enriching polygons, as in the image below, imagine tha
 
 If you still do not have any active data subscription from the Data Observatory, start browsing our [Spatial Data Catalog](https://carto.com/spatial-data-catalog/browser/), where you will find information about the +11k spatial datasets from public and premium sources that we have in our offering.   
 
-To enrich one of your data tables, from the Data Explorer, select a connection and click on the table you would like to enrich from the collapsible tree. Then, click on the Enrich table button from the available options at the top right of the screen.  
+To enrich one of your data tables, from the Data Explorer, select a connection and click on the table you would like to enrich from the collapsible tree. Then, click on the *Enrich table* button from the available options at the top right of the screen.  
 
 ![Data Explorer enrich table](/img/cloud-native-workspace/data-explorer/de_enrich_table.png)
 
@@ -24,7 +24,7 @@ The data table you want to enrich and the dataset from the Data Observatory subs
 
 ![Data Explorer enrichment data source](/img/cloud-native-workspace/data-explorer/de_enrichment_datasource.png)
 
-Once you have selected the Data Observatory subscription, it is time to select the specific variables with which you want to enrich your table. You will notice that some variables/columns from the dataset are disabled since they are not applicable for the enrichment operation - this includes variables such as geoid and do_date that are internal to CARTO and variables that cannot be aggregated such as those in string data type. 
+Once you have selected the Data Observatory subscription, it is time to select the specific variables with which you want to enrich your table. You will notice that some variables/columns from the dataset are disabled since they are not applicable for the enrichment operation - this includes variables such as *geoid* and *do_date* that are internal to CARTO and variables that cannot be aggregated such as those in *string* data type. 
 
 ![Data Explorer enrichment variables](/img/cloud-native-workspace/data-explorer/de_enrichment_variabless.png)
 
