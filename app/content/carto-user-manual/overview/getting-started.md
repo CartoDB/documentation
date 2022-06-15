@@ -275,22 +275,23 @@ For more details, see [Creating a map from your data](../../data-explorer/creati
 
 #### Create a tileset
 
-{{% bannerNote title="AVAILABLE FOR BIGQUERY, SNOWFLAKE AND REDSHIFT CONNECTIONS" type="tip" %}}
-Creating tilesets is currently only available from BigQuery, Snowflake and Redshift connections.
+{{% bannerNote title="AVAILABLE FOR BIGQUERY, SNOWFLAKE, REDSHIFT AND POSTGRESQL CONNECTIONS" type="tip" %}}
+Creating tilesets is currently available from BigQuery, Snowflake and PostgreSQL connections. Support for Databricks connections will come soon.
 {{%/ bannerNote %}}
 
 <!-- {{% bannerNote title="ONLY FOR BIGQUERY AND CARTO DATA WAREHOUSE CONNECTIONS" type="tip" %}}
 Creating tilesets is currently only available from BigQuery and CARTO Data Warehouse connections.
 {{%/ bannerNote %}} -->
 
-Check this [reference documentation](../../data-explorer/creating-a-tileset-from-your-data) to get started using the Tiler module as a solution to visualise massive datasets hosted in BigQuery, Snowflake and Redshift connections.
+Check this [reference documentation](../../data-explorer/creating-a-tileset-from-your-data) to get started using the Tiler module as a solution to visualise massive datasets hosted in BigQuery, Snowflake, Redshift and PostgreSQL connections.
 
 <!-- for a better understanding of what a tileset is and how it works, as well as  -->
 
-To learn more, please visit the Documentation page of the CARTO Analytics Toolbox for each provider: 
+To learn more, please visit the Documentation page of the [CARTO Analytics Toolbox](/analytics-toolbox/about-the-analytics-toolbox/) for each provider: 
 * <a href="/analytics-toolbox-bigquery/overview/tilesets/" target="_blank"> CARTO BigQuery Tiler</a> (also valid for the CARTO Data Warehouse)
 - <a href="/analytics-toolbox-snowflake/overview/tilesets/" target="_blank"> CARTO Snowflake Tiler</a>
 - <a href="/analytics-toolbox-redshift/overview/tilesets/" target="_blank"> CARTO Redshift Tiler</a> 
+- <a href="/analytics-toolbox-postgres/overview/tilesets/" target="_blank"> CARTO PostgreSQL Tiler</a> 
 
 <!-- BigQuery and CARTO Data Warehouse connections. -->
 
