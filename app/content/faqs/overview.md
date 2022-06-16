@@ -39,6 +39,11 @@
 * [Are “CARTO for deck.gl” and “CARTO for React” compatible with the new version of the platform?](../categories/development-tools/#are-carto-for-deckgl-and-carto-for-react-compatible-with-the-new-version-of-the-platform)
 
 
+##### Deployment Options
+* [What are the different deployment options for the CARTO platform?](../categories/deployment-options/#what-are-the-different-deployment-options-for-the-CARTO-platform)
+* [Where can I find information about the requirements for deploying CARTO as Self-hosted?](../categories/deployment-options/#where-can-i-find-information-about-the-requirements-for-deploying-CARTO-as-self-hosted)
+* [How are updates and product releases managed in a Self-hosted deployment?](../categories/deployment-options/#how-are-updates-and-product-releases-managed-in-a-Self-Hosted-deployment)
+
 ##### Support Packages
 * [What support packages are available at CARTO?](../categories/support-packages/#what-support-packages-are-available-at-carto)
 * [Who is entitled to Support?](../categories/support-packages/#who-is-entitled-to-support)

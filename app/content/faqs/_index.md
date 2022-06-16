@@ -18,6 +18,7 @@ cascade:
         - title: "Data Observatory"
         - title: "Analytics Toolbox"
         - title: "Development Tools"
+        - title: "Deployment Options"
         - title: "Support Packages"
         - title: "CARTO for Education"
 
