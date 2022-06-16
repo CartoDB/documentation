@@ -13,7 +13,7 @@ cascade:
       folder:
         - title: "Getting Started"
         - title: "Compliance"
-    - title: "SaaS"
+    - title: "Cloud"
       folder:
         - title: "Overview"
     - title: "Self-Hosted"
