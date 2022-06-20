@@ -522,7 +522,7 @@ For other types of aggregation, the [`ENRICH_GRID_RAW`](#enrich_grid_raw) proced
 * `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
-* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
+* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`). Each element in this array should be an `OBJECT` with fields `column` and `aggregation`.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
@@ -589,7 +589,7 @@ This procedure enriches a set of grid cells of one of the supported types (h3, q
 * `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
-* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
+* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` of `VARCHAR` elements with names of the columns in the enrichment query that will be added to the enriched results.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
@@ -656,7 +656,7 @@ For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) 
 
 * `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
-* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
+* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`). Each element in this array should be an `OBJECT` with fields `column` and `aggregation`.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
@@ -714,7 +714,7 @@ As a result of this process, each input polygon will be enriched with the data f
 
 * `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the points to be enriched.
-* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
+* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` of `VARCHAR` elements with names of the columns in the enrichment query that will be added to the enriched results.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
@@ -775,7 +775,7 @@ For other types of aggregation, the [`ENRICH_POLYGONS_RAW`](#enrich_polygons_raw
 
 * `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
-* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
+* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`). Each element in this array should be an `OBJECT` with fields `column` and `aggregation`.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.
@@ -835,7 +835,7 @@ As a result of this process, each input polygon will be enriched with the data o
 
 * `input_query`: `VARCHAR` query to be enriched. A qualified table name can be given as well.
 * `input_geography_column`: `VARCHAR` name of the GEOGRAPHY column in the query containing the polygons to be enriched.
-* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query.
+* `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY` of `VARCHAR` elements with names of the columns in the enrichment query that will be added to the enriched results.
 * `output`: `ARRAY` of `VARCHAR` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it, e.g. `'CLUSTER BY number'`. When the output table is the same than then input, the input table will be enriched in place.

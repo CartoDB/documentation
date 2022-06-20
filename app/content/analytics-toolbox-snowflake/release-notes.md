@@ -11,6 +11,16 @@ aliases:
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### June 15, 2022
+
+#### Module data
+
+- ENRICH_ procedures require all the enrich data query rows to be of the same geometry kind (points/lines/polygons) .
+- Various optimizations for performance and preventing out-of-memory errors
+
+Changed
+- Errors used to be reported with a procedure result message. Now they raise exceptions.
+
 ### May 19, 2022
 
 #### Module lds

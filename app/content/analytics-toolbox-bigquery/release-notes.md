@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### June 13, 2022
+
+#### Module data
+
+Fixed
+- Fix order of `__KRING_DECAY` parameters.
+
 ### June 10, 2022
 
 #### Module tiler
