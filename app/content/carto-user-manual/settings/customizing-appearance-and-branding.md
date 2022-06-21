@@ -12,7 +12,7 @@ To customize the appearance of CARTO, go to **Settings** > **Appearance**. Then 
 
 You can define the following styles:
 
-- **Logo**: 
+- **Logo**: the logo in the header. It needs to be a square image file (like an avatar) with a minimum dimensions of 256x256 pixels and a maximum file size of 1MB.
 
 - **Primary color**: the primary color used in the UI. Buttons in Workspace and Builder will use this color.
 
@@ -20,9 +20,11 @@ You can define the following styles:
 
 - **Use primary colors for the App bar (header)**: enable this option if you want to reuse the primary color for the header in Builder and Workspace. Disable that option if you want to customize the header.
 
-- **App bar background**: if the "Use primary colors..." setting is disabled, then you can set this color to customize the header background.
+If the "Use primary colors..." setting is disabled:
 
-- **App bar contrast text**: if the "Use primary colors..." setting is disabled, then you can set this color to customize some components that need contrast with the background in the header.
+- **App bar background**: set this color to customize the header background.
+
+- **App bar contrast text**: set this color to customize some components that need contrast with the background in the header.
 
 ![Appearance Settings Detail](/img/cloud-native-workspace/settings/settings_branding_settings_detail.png)
 
