@@ -3,7 +3,7 @@
 Customers that require custom styles and logos can change the appearance of both Workspace and Builder to their needs. This effectively reduces the presence of CARTO to attribution-only, allowing scenarios where white-labeling is interesting, such as publicly shared maps.
 
 {{% bannerNote title="NOTE" type="note"%}}
-Branding customizations are only available to selected customers in **Enterprise Large** plans or above, and it needs to be manually enabled by CARTO. If you're interested in this feature, please [get in touch](mailto:hello@carto.com).
+Branding customizations are only available to selected customers in **Enterprise Large** plans or above, and it needs to be manually enabled by CARTO. If you're interested in this feature, please [get in touch](mailto:support@carto.com).
 {{%/ bannerNote %}}
 
 To customize the appearance of CARTO, go to **Settings** > **Appearance**. Then click on **Customize appearance**.
