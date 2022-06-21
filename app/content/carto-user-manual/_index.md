@@ -60,6 +60,7 @@ cascade:
         - title: "Managing registered apps"
         - title: "Inviting users to your organization"
         - title: "Managing user roles"
+        - title: "Customizing appearance and branding"
         - title: "Deleting your organization"
     - title: "Developers" 
       folder:
