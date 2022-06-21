@@ -21,6 +21,13 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### June 20, 2022
+
+#### Module tiler
+
+Feature
+- Add CREATE_SPATIAL_INDEX_TILESET procedure.
+
 ### May 19, 2022
 
 #### Module lds
