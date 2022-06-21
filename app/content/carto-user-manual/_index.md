@@ -39,6 +39,7 @@ cascade:
         - title: "Creating a tileset from your data"  
         - title: "Importing data"
         - title: "Geocoding data"
+        - title: "Enriching data"
     - title: "Data Observatory"
       folder:
         - title: "Introduction"

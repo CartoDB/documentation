@@ -351,6 +351,8 @@ In the following sections you will find a collection of resources where you can 
 * [access and introduce the data in your analysis workflows](https://docs.carto.com/data-observatory/overview/getting-started/#data-access-and-analysis),
 * [visualize it](https://docs.carto.com/data-observatory/overview/getting-started/#data-visualization). 
 
+You can follow up the steps for the enrichment creation process in the [Enriching data](../../data-explorer/enriching-data) guide.
+
 #### Export data
 
 CARTO Builder allows you to export your data.
