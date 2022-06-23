@@ -117,3 +117,58 @@ CALL carto.CREATE_SIMPLE_TILESET(
   }'
 )
 ```
+
+
+### CREATE_SPATIAL_INDEX_TILESET
+
+{{% bannerNote type="code" %}}
+carto.CREATE_SPATIAL_INDEX_TILESET(source_table, target_table, options)
+{{%/ bannerNote %}}
+
+**Description**
+
+Creates a tileset that uses a spatial index (H3 and QUADKEYS are currently supported), aggregating data from an input table that uses that same spatial index.
+
+Aggregated data is computed for all levels between `resolution_min` and `resolution_max`. For each resolution level, all tiles for the area covered by the source table are added, with data aggregated at level `resolution + aggregation resolution`.
+
+* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`database.schema.tablename\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`database.schema.tablename\`)</code>).
+* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectID.dataset.tablename\`</code>. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
+* `options`: `STRING` containing a valid JSON with the different options. Valid options are described the table below.
+| Option | Description |
+| :----- | :------ |
+|`resolution_min`| Default: `2`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
+|`resolution_max`| Default: `15`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`spatial_index_column`| A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadint` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADINT (for spatial index type `quadint`) or H3 (for spatial index type `h3`).|
+|`resolution`| A `NUMBER` defining the resolution of the tiles in the input table.|
+|`aggregation_resolution`| Defaults: `6` for QUADKEY tilesets, `4` for H3 tilesets. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
+|`properties`| A JSON object containing the aggregated properties to add to each tile in the output table. It cannot be empty, since at least one property is needed for aggregating the original values|
+|`extra_metadata`| Default: `{}`. A JSON object to specify the custom metadata of the tileset.|
+|`per_level_metadata`| Default: `false`. A `BOOLEAN` indicating whether or not to compute metadata tilestats separately for each computed level, or just for the full output table.|
+
+{{% bannerNote type="note" title="tip"%}}
+Any option left as `NULL` will take its default value if available.
+{{%/ bannerNote %}}
+
+{{% customSelector %}}
+**Examples**
+{{%/ customSelector %}}
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET`(
+  'your-database.your-schema.quadkeys_test_dataset_level15',
+  'your-database.your-schema.spatial_index_tileset_test_output',
+  '{
+    "resolution_min": 4,
+    "resolution_max": 8,
+    "spatial_index_column": 'quadint:geoid',
+    "resolution": 15,
+    "aggregation_resolution": 4,
+    "properties": {
+      "pop": {
+        "formula":"sum(population)",
+        "type":"Number"
+      }
+    }
+  }'
+);
+```

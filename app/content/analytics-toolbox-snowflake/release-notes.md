@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### June 23, 2022
+
+#### Module tiler
+
+Changed
+- Add CREATE_SPATIAL_INDEX_TILESET procedure.
+
 ### June 9, 2022
 
 #### Module lds

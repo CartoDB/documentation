@@ -4,6 +4,18 @@ aliases:
 ---
 ## Release notes
 
+### June 21, 2022
+
+#### Module data
+
+Fixed
+- Fix BQ inplace enrichment with uppercase column names.
+
+#### Module tiler
+
+Changed
+- Support H3 integer in `CREATE_SPATIAL_INDEX_TILESET`.
+
 ### June 13, 2022
 
 #### Module data
