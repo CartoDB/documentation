@@ -687,7 +687,7 @@ carto.P_VALUE(z_score)
 
 **Description**
 
-This function computes the p-value of a given z-score assuming the population follows a normal distribution where the mean is 0 and the standard deviation is 1.
+This function computes the one tail p-value (upper-tail test) of a given z-score assuming the population follows a normal distribution where the mean is 0 and the standard deviation is 1.
 The [z-score](https://en.wikipedia.org/wiki/Standard_score) is a measure of how many standard deviations below or above the population mean a value is. It gives you an idea of how far from the mean a data point is.
 The [p-value](https://en.wikipedia.org/wiki/P-value) is the probability that a randomly sampled point has a value at least as extreme as the point whose z-score is being tested.
 

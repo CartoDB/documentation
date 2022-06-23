@@ -1,5 +1,51 @@
 ## Release notes
 
+### June 9, 2022
+
+#### Module lds
+
+Feature
+- Add CREATE_ISOLINES procedure.
+
+### June 23, 2022
+
+#### Module tiler
+
+Changed
+- Add CREATE_SPATIAL_INDEX_TILESET procedure.
+
+### June 15, 2022
+
+#### Module data
+
+- ENRICH_ procedures require all the enrich data query rows to be of the same geometry kind (points/lines/polygons) .
+- Various optimizations for performance and preventing out-of-memory errors
+
+Changed
+- Errors used to be reported with a procedure result message. Now they raise exceptions.
+
+### May 19, 2022
+
+#### Module lds
+
+Changed
+- Add optional `language` parameter to GEOCODE_REVERSE function.
+
+### May 6, 2022
+
+#### Module data
+
+Changed
+- Errors used to be reported with a procedure result message. Now they raise exceptions.
+
+### April 28, 2022
+
+#### Module data
+
+Feature
+- Allow using tables as input, not just queries.
+- Add in place enrichment.
+
 ### April 21, 2022
 
 #### Module tiler

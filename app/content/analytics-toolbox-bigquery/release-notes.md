@@ -4,6 +4,72 @@ aliases:
 ---
 ## Release notes
 
+### June 21, 2022
+
+#### Module data
+
+Fixed
+- Fix BQ inplace enrichment with uppercase column names.
+
+#### Module tiler
+
+Changed
+- Support H3 integer in `CREATE_SPATIAL_INDEX_TILESET`.
+
+### June 13, 2022
+
+#### Module data
+
+Fixed
+- Fix order of `__KRING_DECAY` parameters.
+
+### June 10, 2022
+
+#### Module tiler
+
+Fixed
+- Fix global stats in `CREATE_SPATIAL_INDEX_TILESET`.
+
+Changed
+- Check input resolution limits in `CREATE_SPATIAL_INDEX_TILESET`.
+
+### June 9, 2022
+
+#### Module data
+
+Fixed
+- Report missing subscription geographies in DATAOBS_ENRICH_ procedures.
+
+### June 6, 2022
+
+#### Module data
+
+Fixed
+- Fix stability issues in GRIDIFY_ENRICH procedure.
+
+### June 3, 2022
+
+#### Module retail
+
+Feature
+- Add store features and competitors stores features into BUILD_REVENUE_MODEL_DATA procedure.
+
+Fixed
+- Fixing bugs calling other routines
+
+### June 2, 2022
+
+#### Module tiler
+
+Feature
+- Add spatial index tileset generator `CREATE_SPATIAL_INDEX_TILESET`.
+
+### May 16, 2022
+
+#### Module tiler
+
+- Bug fixing when the geometry early collapse
+
 ### April 27, 2022
 
 #### Module data
@@ -21,6 +87,7 @@ Feature
 #### Module data
 
 Feature
+- Allow using tables as input, not just queries.
 - Add in place enrichment.
 - Allow using tables as input.
 - Accept NULL as output.

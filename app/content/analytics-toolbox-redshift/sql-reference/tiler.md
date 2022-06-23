@@ -97,6 +97,8 @@ Generates a simple tileset.
 |`max_tile_vertices`| Default: `200000`. A `NUMBER` that sets the maximum number of vertices a tile can contain. This limit only applies when the input geometries are lines or polygons. When this limit is reached, the procedure will stop adding features into the tile. You can configure in which order the features are kept by setting the `tile_feature_order` property.|
 |`tile_feature_order`| Default: `RANDOM()` for points, `ST_AREA() DESC` for polygons, `ST_LENGTH() DESC` for lines. A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`. The `"ORDER BY"` part must not be included. You can use any source column even if it is not included in the tileset as a property.|
 |`max_tile_size_strategy`| Default: `"throw_error"`. A `VARCHAR` that specifies how to apply the limit defined by `max_tile_features` or `max_tile_vertices`. There are four options available:<br/><ul><li>`"drop_features"`: In each tile the features that exceed the limit are dropped. Different fractions of the total features may be dropped in each tile, which on a map can appear as noticeable differences in feature density between tiles.</li><li>`"drop_fraction_as_needed"`: For every zoom level, this process will drop a consistent fraction of features in every tile to make sure all generated tiles are below the limit. Since a constant fraction of the features is dropped for all tiles of a given zoom level, this will in general drop more features in less populated tiles than the the `"drop_features"` strategy.</li><li>`"return_null"`: A row with a NULL data column will be produced for all tiles that exceed the limit.</li><li>`"throw_error"`: The procedure execution will be aborted if any tile exceeds the limit.</li></ul><br/>. For the `drop_` strategies, features will be retained according to the `tile_feature_order` specified.|
+|`max_simplification_zoom`| Default: 11. A `NUMBER` that specifies the maximum zoom level in which the simplification will be carried out.|
+|`coordinates_precision`| Default: 8. A `NUMBER` that indicates the geometry coordinates precision stored in the final GeoJSON tiles. This parameter should be carefully choosen in order to obtain a good trade-off between the tile size and the geometry precision, since an excessive low precision can lead to geometry collapse and excessive high precision can hit some Redshift size limits (64 KB for GeoJSON).|
 
 **Example**
 
@@ -112,5 +114,61 @@ CALL carto.CREATE_SIMPLE_TILESET(
       "category": "String"
     }
   }'
-)
+);
+```
+
+
+### CREATE_SPATIAL_INDEX_TILESET
+
+{{% bannerNote type="code" %}}
+carto.CREATE_SPATIAL_INDEX_TILESET(input, output_table, options)
+{{%/ bannerNote %}}
+
+**Description**
+
+Creates a tileset that uses a spatial index (H3 and QUADKEYS are currently supported), aggregating data from an input table that uses that same spatial index.
+
+Aggregated data is computed for all levels between `resolution_min` and `resolution_max`. For each resolution level, all tiles for the area covered by the source table are added, with data aggregated at level `resolution + aggregation resolution`.
+
+* `input`: `VARCHAR` that can either contain a table name (e.g. `database.schema.tablename`) or a full query (e.g.<code>'SELECT * FROM db.schema.tablename'</code>).
+* `output_table`: `VARCHAR` of the format `database.schema.tablename` where the resulting tileset will be stored.
+* `options`: `VARCHAR` containing a valid JSON with the different options. Valid options are described in the table below.
+
+| Option | Description |
+| :----- | :------ |
+|`resolution_min`| Default: `2`. A `INTEGER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
+|`resolution_max`| Default: `15`. A `INTEGER` that defines the minimum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`spatial_index_column`| A `VARCHAR` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadint` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADINT (for spatial index type `quadint`) or H3 (for spatial index type `h3`).|
+|`resolution`| A `INTEGER` defining the resolution of the tiles in the input table.|
+|`aggregation_resolution`| Defaults: `6` for QUADKEY tilesets, `4` for H3 tilesets. A `INTEGER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
+|`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
+|`properties`| Default: {}. A JSON object that defines the properties that will be included associated with each cell feature. Each property is defined by its name and type (Number, Boolean, String, etc.). Please note that every property different from Number will be casted to String.|
+
+{{% bannerNote type="note" title="tip"%}}
+Any option left as `NULL` will take its default value if available.
+{{%/ bannerNote %}}
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  'SELECT geoid, population FROM mypopulationtable',
+  'MYDB.MYSCHEMA.population_tileset',
+  '{
+    "resolution_min": 4,
+    "resolution_max": 8,
+    "spatial_index_column": "quadint:geoid",
+    "resolution": 15,
+    "aggregation_resolution": 4,
+    "properties": {
+      "pop": {
+          "formula":"sum(population)",
+          "type":"Number"
+      }
+    },
+    "metadata": {"name": "population_tileset", "description": "A description"}
+  }'
+);
 ```

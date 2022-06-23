@@ -4,6 +4,53 @@
 
 This module contains functions and procedures that make use of location data services, such as geocoding, reverse geocoding and isolines computation.
 
+### CREATE_ISOLINES
+
+{{% bannerNote type="code" %}}
+carto.CREATE_ISOLINES(input, output_table, geom_column, mode, range, range_type)
+{{%/ bannerNote %}}
+
+{{% bannerNote type="warning" title="warning"%}}
+This function consumes isolines quota. Each call consumes as many units of quota as the number of rows your input table or query has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+{{%/ bannerNote %}}
+
+**Description**
+
+Calculates the isolines (polygons) from given origins (points) in a table or query. It creates a new table with the columns of the input table or query except the `geom_column` plus the isolines in the column `geom` (if the input already contains a `geom` column, it will be overwritten). It calculates isolines sequentially in chunks of 100 rows.
+
+* `input`: `VARCHAR` name of the input table or query.
+* `output_table`: `VARCHAR` name of the output table. It will raise an error if the table already exists.
+* `geom_column`: `VARCHAR` column name for the origin geography column.
+* `mode`: `VARCHAR` type of transport. Supported: 'walk', 'car'.
+* `range`: `INT` range of the isoline in seconds (for `range_type` 'time') or meters (for `range_type` 'distance').
+* `range_type`: `VARCHAR` type of range. Supported: 'time' (for isochrones), 'distance' (for isodistances).
+
+**Examples**
+
+```sql
+CALL carto.CREATE_ISOLINES(
+    'my-schema.my-table',
+    'my-schema.my-output-table',
+    'my_geom_column',
+    'car', 60, 'time'
+);
+-- The table `my-schema.my-output-table` will be created
+-- with the columns of the input table except `my_geom_column`.
+-- Isolines will be added in the "geom" column.
+```
+
+```sql
+CALL carto.CREATE_ISOLINES(
+    'select * from my-schema.my-table',
+    'my-schema.my-output-table',
+    'my_geom_column',
+    'car', 60, 'time'
+);
+-- The table `my-schema.my-output-table` will be created
+-- with the columns of the input query except `my_geom_column`.
+-- Isolines will be added in the "geom" column.
+```
+
 ### GEOCODE
 
 {{% bannerNote type="code" %}}
@@ -50,7 +97,7 @@ SELECT ADDRESS, carto.GEOCODE(ADDRESS) AS GEOM FROM my_table
 ### GEOCODE_REVERSE
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE_REVERSE(geom)
+carto.GEOCODE_REVERSE(geom [, language])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -62,6 +109,7 @@ This function consumes geocoding quota. Each call consumes one unit of quota. Be
 Performs a reverse geocoding of the point received as input.
 
 * `geom`: `GEOGRAPHY` input point to obtain the address.
+* `language` (optional): `VARCHAR` language in which results should be returned.
 
 **Return type**
 
