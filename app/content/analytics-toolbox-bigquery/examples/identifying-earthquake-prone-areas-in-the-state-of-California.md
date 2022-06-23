@@ -44,3 +44,5 @@ SELECT unnested FROM polygon_array, UNNEST(geom) AS unnested
 ```
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://team.carto.com/u/agraciano/builder/3e6b32e2-0049-42b9-ba20-d26342f4d14d/layers#/" title="Earthquake-prone area in the state of California"></iframe>
+
+{{% euFlagFunding %}}

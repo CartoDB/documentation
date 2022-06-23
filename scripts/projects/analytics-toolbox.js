@@ -29,6 +29,9 @@ function updateModules (type) {
             });
             let content = aliasesHeader(`sql-reference/${module}`)
             content += files.map(f => fs.readFileSync(path.join(docPath, f)).toString()).join('\n\n');
+            if (cloud === 'bigquery') {
+                content += '\n\n{{% euFlagFunding %}}'
+            }
             fs.writeFileSync(path.join(targetPath, 'sql-reference', `${module}.md`), content);
             index.push({
                 module,
@@ -48,6 +51,12 @@ function aliasesHeader (path) {
         content = `---
 aliases:
     - /analytics-toolbox-bq/${path}/
+---
+`;
+    } else if (cloud === 'snowflake') {
+        content = `---
+aliases:
+    - /analytics-toolbox-sf/${path}/
 ---
 `;
     }
@@ -75,6 +84,10 @@ The CARTO Analytics Toolbox's functions are organized in modules based on the fu
 
     content += '{{%/ tableWrapper %}}'
 
+    if (cloud === 'bigquery') {
+        content += '\n\n{{% euFlagFunding %}}'
+    }
+
     console.log(`- Update overview`);
     fs.writeFileSync(path.join(targetPath, 'sql-reference', 'overview.md'), content);
 }
@@ -92,6 +105,10 @@ function updateReleaseNotes () {
             content += `#### Module ${item.module}\n\n`;
             content += `${item.changes.replace(/Added/g, 'Feature').replace(/### /g, '')}\n\n`;
         }
+    }
+
+    if (cloud === 'bigquery') {
+        content += '\n\n{{% euFlagFunding %}}'
     }
 
     console.log(`- Update release notes`);

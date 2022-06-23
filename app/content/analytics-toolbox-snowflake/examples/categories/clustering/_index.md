@@ -5,4 +5,7 @@ icon: "/img/icons/snowflake-analytics-toolbox.png"
 type: examples
 category: clustering
 layout: categories/list
+euFlag: true
+aliases:
+    - /analytics-toolbox-sf/examples/categories/clustering/
 ---

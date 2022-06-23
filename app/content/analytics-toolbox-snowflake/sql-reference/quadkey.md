@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/sql-reference/quadkey/
+---
 ## quadkey
 
 <div class="badges"><div class="core"></div></div>

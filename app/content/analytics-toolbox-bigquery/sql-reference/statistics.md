@@ -870,3 +870,6 @@ SELECT `carto-un`.carto.VARIOGRAM(sample_points, 20, 1.0E5, 'exponential');
 --   count: [162, 308, 328, 326, 312, 305, ...]
 -- }
 ```
+
+
+{{% euFlagFunding %}}

@@ -7,10 +7,12 @@ date: "2021-06-12"
 categories:
     - accessors
     - processing
+aliases:
+    - /analytics-toolbox-sf/examples/analyzing-store-location-coverage-using-a-voronoi-diagram/
 ---
 ## Analyzing store location coverage using a Voronoi diagram
 
-Voronoi diagrams are a very useful tool to build influence regions from a set of points and the Analytics Toolbox provides a convenient function to build them. An example application of these diagrams is the calculation of the coverage areas of a series of Starbucks stores. In the following query we are going to calculate these influence areas in Atlanta. 
+Voronoi diagrams are a very useful tool to build influence regions from a set of points and the Analytics Toolbox provides a convenient function to build them. An example application of these diagrams is the calculation of the coverage areas of a series of Starbucks stores. In the following query we are going to calculate these influence areas in Atlanta.
 
 The result can be seen in the visualization below, where the color of each polygon indicates its area, which gives an insight on the coverage provided by each store.
 
@@ -18,11 +20,11 @@ The result can be seen in the visualization below, where the color of each polyg
 WITH starbucks AS
 (
   SELECT geog
-  FROM carto.STARBUCKS_LOCATIONS_USA 
+  FROM carto.STARBUCKS_LOCATIONS_USA
   WHERE CITY = 'Atlanta' AND geog IS NOT NULL
   ORDER BY id
 ),
-starbucks_array AS ( 
+starbucks_array AS (
   SELECT ARRAY_AGG(ST_ASGEOJSON(geog)::STRING) AS geog_array
   FROM starbucks
 ),

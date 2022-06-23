@@ -53,3 +53,5 @@ CARTO BigQuery Tilers is:
 * **Fast** -- CARTO BigQuery Tiler benefits from the massive scalability capabilities of BigQuery and can process hundreds of millions of rows in a few minutes.
 * **Scalable** -- This solution works well for 1M points or 100B points.
 * **Cost-effective** -- Since BigQuery separates storage from computing, the actual cost of hosting these tilesets is very low. Additionally, since the tiling process runs on-demand, you'll only pay for that processing and you won't need to have a cluster available 24/7. Finally, we have optimized how we serve the tiles, thanks to our partitioning algorithms.
+
+{{% euFlagFunding %}}

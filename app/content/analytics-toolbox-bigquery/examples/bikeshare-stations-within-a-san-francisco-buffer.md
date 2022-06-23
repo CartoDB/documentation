@@ -38,3 +38,5 @@ WHERE d1.neighborhood = "Financial District" AND ST_CONTAINS(`carto-un`.carto.ST
 This query uses the `ST_BUFFER` and `ST_CONTAINS` functions in order to filter those bikeshare stations that are contained inside the buffered geometry. The result is displayed below, where bikeshare stations are represented as yellow dots.
 
 <iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/aca3efb9-c0dd-4dc1-9679-9f71a4632af3" title="US airports routes interpolation."></iframe>
+
+{{% euFlagFunding %}}

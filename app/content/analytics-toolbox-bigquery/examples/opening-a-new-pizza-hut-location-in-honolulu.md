@@ -214,3 +214,5 @@ SELECT lof.* FROM lof_output, UNNEST(lof_output.lof) AS lof
 We can look for suitable new locations for Pizza Hut by plotting all the information of our analysis using a CARTO Builder map. In the map below, we can explore where our target population lives in the context of the identified commercial hotspots and the location of Pizza Hut's competitors: 
 
 <iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/44d79880-aa02-48ab-9b5d-c6499946e2aa" title="Spatially-varying relationship between Airbnb's listing prices and their number of bedrooms and bathrooms."></iframe>
+
+{{% euFlagFunding %}}

@@ -28,3 +28,5 @@ The CARTO Analytics Toolbox's functions are organized in modules based on the fu
 | tiler | advanced |<ul style="list-style:none"><li><a href="../tiler/#create_point_aggregation_tileset">CREATE_POINT_AGGREGATION_TILESET</a></li><li><a href="../tiler/#create_simple_tileset">CREATE_SIMPLE_TILESET</a></li><li><a href="../tiler/#create_spatial_index_tileset">CREATE_SPATIAL_INDEX_TILESET</a></li><li><a href="../tiler/#create_tileset">CREATE_TILESET</a></li></ul>|
 | transformations | core |<ul style="list-style:none"><li><a href="../transformations/#st_buffer">ST_BUFFER</a></li><li><a href="../transformations/#st_centermean">ST_CENTERMEAN</a></li><li><a href="../transformations/#st_centermedian">ST_CENTERMEDIAN</a></li><li><a href="../transformations/#st_centerofmass">ST_CENTEROFMASS</a></li><li><a href="../transformations/#st_concavehull">ST_CONCAVEHULL</a></li><li><a href="../transformations/#st_destination">ST_DESTINATION</a></li><li><a href="../transformations/#st_greatcircle">ST_GREATCIRCLE</a></li><li><a href="../transformations/#st_line_interpolate_point">ST_LINE_INTERPOLATE_POINT</a></li></ul>|
 {{%/ tableWrapper %}}
+
+{{% euFlagFunding %}}

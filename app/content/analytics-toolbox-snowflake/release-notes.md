@@ -1,11 +1,8 @@
+---
+aliases:
+    - /analytics-toolbox-sf/release-notes/
+---
 ## Release notes
-
-### June 9, 2022
-
-#### Module lds
-
-Feature
-- Add CREATE_ISOLINES procedure.
 
 ### June 23, 2022
 
@@ -13,6 +10,13 @@ Feature
 
 Changed
 - Add CREATE_SPATIAL_INDEX_TILESET procedure.
+
+### June 9, 2022
+
+#### Module lds
+
+Feature
+- Add CREATE_ISOLINES procedure.
 
 ### June 15, 2022
 

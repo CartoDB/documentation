@@ -357,3 +357,5 @@ CALL carto.PREDICT_REVENUE_AVERAGE(
 );
 -- index, predicted_revenue_avg
 ```
+
+{{% euFlagFunding %}}

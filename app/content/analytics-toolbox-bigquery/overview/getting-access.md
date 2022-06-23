@@ -59,7 +59,7 @@ Access to the Analytics Toolbox for BigQuery is granted to every CARTO account w
 
 Upon creating a new connection to BigQuery, the email address associated with your CARTO account will be granted access to the Analytics Toolbox. For that to work successfully, this email address should be the same as the one you use to log into your BigQuery. This happens automatically when you sign in to CARTO using your Google Account.
 
-Once this access is granted, you can call any of the Analytics Toolbox functions or procedures available in the `bqcarto` (US multi-region) and `bqcartoeu` (EU multi-region) projects directly from your BigQuery console.
+Once this access is granted, you can call any of the Analytics Toolbox functions or procedures available in the `carto-un` (US multi-region) and `carto-un-eu` (EU multi-region) projects directly from your BigQuery console.
 
 
 ##### Connecting to BigQuery
@@ -77,12 +77,12 @@ From the list of available connections, choose BigQuery and complete the connect
 Now you can go to your [BigQuery console](https://console.cloud.google.com/bigquery) and check that you have access to the Analytics Toolbox. Running this query should return the Tiler module version.
 
 ```sql
-SELECT bqcarto.tiler.VERSION()
+SELECT `carto-un`.carto.VERSION_ADVANCED()
 ```
 If you get a permission error, please make sure that your account's email address matches your Google Account and create the BigQuery connection again. If you still can't access it, get in touch at [support@carto.com](mailto:support@carto.com)
 
 {{% bannerNote title="tip" %}}
-The project `bqcarto` is deployed in GCP's US multi-region. If you need to use the Analytics Toolbox from GCP's EU multi-region, use `bqcartoeu` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
+The project `carto-un` is deployed in GCP's US multi-region. If you need to use the Analytics Toolbox from GCP's EU multi-region, use `carto-un-eu` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
 {{%/ bannerNote %}}
 
 ##### Required permissions
@@ -104,11 +104,11 @@ Take a look at the BigQuery [documentation](https://cloud.google.com/bigquery/do
 
 ##### Deployment options
 
-The Analytics Toolbox is currently available in GCP's US (`bqcarto`) and EU (`bqcartoeu`) multi-regions. As an example, the following queries should return the version number for the Tiler module for each region.
+The Analytics Toolbox is currently available in GCP's US (`carto-un`) and EU (`carto-un-eu`) multi-regions. As an example, the following queries should return the version number for the Tiler module for each region.
 
 ```sql
-SELECT bqcarto.tiler.VERSION() -- US multi-region
-SELECT bqcartoeu.tiler.VERSION() -- EU multi-region
+SELECT `carto-un`.carto.VERSION_ADVANCED() -- US multi-region
+SELECT `carto-un-eu`.carto.VERSION_ADVANCED() -- EU multi-region
 ```
 
 If you need access to the Analytics Toolbox in a different region or install it on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls), please get in touch at [support@carto.com](mailto:support@carto.com).
@@ -224,6 +224,8 @@ SELECT * FROM carto.INFORMATION_SCHEMA.ROUTINES;
 ```
 
 **Congratulations!** you have successfully installed the CARTO Analytics Toolbox in your BigQuery project. Now you can start [using the functions](/analytics-toolbox-bigquery/sql-reference/overview/).
+
+{{% euFlagFunding %}}
 
 <style>
 .highlight {

@@ -1,3 +1,7 @@
+---
+aliases:
+    - /analytics-toolbox-sf/sql-reference/random/
+---
 ## random
 
 <div class="badges"><div class="advanced"></div></div>
