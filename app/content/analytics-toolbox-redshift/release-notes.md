@@ -21,6 +21,27 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### June 24, 2022
+
+#### Module quadbin
+
+Feature
+- Add QUADBIN_BBOX function.
+- Add QUADBIN_BOUNDARY function.
+- Add QUADBIN_CENTER function.
+- Add QUADBIN_FROMGEOGPOINT function.
+- Add QUADBIN_FROMLONGLAT function.
+- Add QUADBIN_FROMZXY function.
+- Add QUADBIN_ISVALID function.
+- Add QUADBIN_KRING function.
+- Add QUADBIN_KRING_DISTANCES function.
+- Add QUADBIN_POLYFILL function.
+- Add QUADBIN_RESOLUTION function.
+- Add QUADBIN_SIBLING function.
+- Add QUADBIN_TOCHILDREN function.
+- Add QUADBIN_TOPARENT function.
+- Add QUADBIN_TOZXY function.
+
 ### June 20, 2022
 
 #### Module tiler
@@ -126,26 +147,6 @@ Removed
 
 Changed
 - Deployment schema "carto" instead of "processing".
-
-Removed
-- Remove VERSION function.
-
-#### Module quadkey
-
-Changed
-- Deployment schema "carto" instead of "quadkey".
-- Rename ZXY_FROMQUADINT function to QUADINT_TOZXY.
-- Rename LONGLAT_ASQUADINT function to QUADINT_FROMGEOGPOINT.
-- Rename QUADKEY_FROMQUADINT function to QUADINT_TOQUADKEY.
-- Rename TOPARENT function to QUADINT_TOPARENT.
-- Rename TOCHILDREN function to QUADINT_TOCHILDREN.
-- Rename SIBLING function to QUADINT_SIBLING.
-- Rename KRING function to QUADINT_KRING.
-- Rename KRING_DISTANCES function to QUADINT_KRING_DISTANCES.
-- Rename BBOX function to QUADINT_BBOX.
-- Rename ST_ASQUADINT function to QUADINT_FROMGEOGPOINT.
-- Rename ST_ASQUADINT_POLYFILL function to QUADINT_POLYFILL.
-- Rename ST_BOUNDARY function to QUADINT_BOUNDARY.
 
 Removed
 - Remove VERSION function.
@@ -277,16 +278,6 @@ Feature
 - Add UINT64REPR_FROMID function.
 - Add VERSION function.
 
-### September 22, 2021
-
-#### Module quadkey
-
-Feature
-- Add KRING_DISTANCES function.
-
-Changed
-- Review KRING function.
-
 ### September 17, 2021
 
 #### Module constructors
@@ -297,27 +288,6 @@ Feature
 - Add ST_MAKEELLIPSE function.
 - Add ST_MAKEENVELOPE function.
 - Add ST_TILEENVELOPE function.
-- Add VERSION function.
-
-### September 9, 2021
-
-#### Module quadkey
-
-Feature
-- Create quadkey module.
-- Add QUADINT_FROMZXY function.
-- Add ZXY_FROMQUADINT function.
-- Add LONGLAT_ASQUADINT function.
-- Add QUADINT_FROMQUADKEY function.
-- Add QUADKEY_FROMQUADINT function.
-- Add TOPARENT function.
-- Add TOCHILDREN function.
-- Add SIBLING function.
-- Add KRING function.
-- Add BBOX function.
-- Add ST_ASQUADINT function.
-- Add ST_ASQUADINT_POLYFILL function.
-- Add ST_BOUNDARY function.
 - Add VERSION function.
 
 ### September 7, 2021

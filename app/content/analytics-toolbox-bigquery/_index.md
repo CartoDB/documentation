@@ -18,7 +18,7 @@ cascade:
       folder:
         - title: "Getting started"
         - title: "Getting access"
-        - title: "Tilesets" 
+        - title: "Tilesets"
         - title: "Spatial indexes"
     - title: "Guides"
       folder:
@@ -26,7 +26,7 @@ cascade:
         - title: "Data enrichment using the Data Observatory"
         - title: "Running queries from Builder"
         - title: "Using the routing module"
-        
+
     - title: "Examples"
       # folder:
       #   - title: "Creating simple tilesets"
@@ -55,7 +55,7 @@ cascade:
         - title: "measurements"
         - title: "placekey"
         - title: "processing"
-        - title: "quadkey"
+        - title: "quadbin"
         - title: "random"
         - title: "retail"
         - title: "routing"

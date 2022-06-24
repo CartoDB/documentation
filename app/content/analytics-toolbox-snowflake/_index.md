@@ -43,7 +43,7 @@ cascade:
         - title: "measurements"
         - title: "placekey"
         - title: "processing"
-        - title: "quadkey"
+        - title: "quadbin"
         - title: random
         - title: "s2"
         - title: "tiler"
