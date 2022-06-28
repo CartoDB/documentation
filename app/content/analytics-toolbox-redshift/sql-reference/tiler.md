@@ -138,7 +138,7 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 | :----- | :------ |
 |`resolution_min`| Default: `2`. A `INTEGER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
 |`resolution_max`| Default: `15`. A `INTEGER` that defines the minimum resolution level for tiles. Any resolution level over this level won't be generated.|
-|`spatial_index_column`| A `VARCHAR` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadint` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADINT (for spatial index type `quadint`) or H3 (for spatial index type `h3`).|
+|`spatial_index_column`| A `VARCHAR` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadbin` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADBIN (for spatial index type `quadbin`) or H3 (for spatial index type `h3`).|
 |`resolution`| A `INTEGER` defining the resolution of the tiles in the input table.|
 |`aggregation_resolution`| Defaults: `6` for QUADKEY tilesets, `4` for H3 tilesets. A `INTEGER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
@@ -159,7 +159,7 @@ CALL carto.CREATE_SPATIAL_INDEX_TILESET(
   '{
     "resolution_min": 4,
     "resolution_max": 8,
-    "spatial_index_column": "quadint:geoid",
+    "spatial_index_column": "quadbin:geoid",
     "resolution": 15,
     "aggregation_resolution": 4,
     "properties": {

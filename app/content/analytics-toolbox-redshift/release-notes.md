@@ -21,6 +21,13 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### June 27, 2022
+
+#### Module tiler
+
+Changed
+- Support quadbin from CREATE_SPATIAL_INDEX_TILESET instead of quadint.
+
 ### June 24, 2022
 
 #### Module quadbin
