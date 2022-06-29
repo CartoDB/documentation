@@ -62,7 +62,7 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
 
    <iframe
        id="getting-started-final-result"
-       src="../examples/basic-examples/hello-world-carto3.html"
+       src="../examples/basic-examples/hello-world.html"
        width="100%"
        height="500"
        frameBorder="0">
@@ -100,15 +100,15 @@ If you are using CARTO 2, there are some differences you need to take into accou
 
 ### Geometry column
 
-By default, the data source you specify in the `data` property must contain a column named "geom" with the geometry. If the column containing the geometry has a different name, you can still use it but you need to do the following:
+By default, the data source you specify in the `data` property must contain a column named "geom" with the geometry. If the column containing the geometry has a different name or you are using spatial indices instead of regular geometries, you can still use it but you need to do the following:
 
 - If the `type` is `MAP_TYPES.QUERY`, you need to alias the geometry column to `geom`
 
-- If the `type` is `MAP_TYPES.TABLE`, you need to specify the name of the column containing the geometry using the [`geoColumn`](/deck-gl/reference#geocolumn-string-optional) property.
+- If the `type` is `MAP_TYPES.TABLE`, you need to specify the name of the column containing the geometry or the spatial index using the [`geoColumn`](/deck-gl/reference#geocolumn-string-optional) property.
 
 ### Support for other deck.gl layers
 
-The `CartoLayer` uses the `GeoJsonLayer` for rendering but you can also use any other deck.gl layer for rendering using the `getData` function from the CARTO module. This works for datasets with less than 200k rows but not for bigger datasets where you need to use a tileset.
+The `CartoLayer` uses the `GeoJsonLayer` for rendering but you can also use any other deck.gl layer for rendering using the [`fetchLayerData`](/deck-gl/reference#fetchlayerdata) function from the CARTO module. 
 
 This function receives an object with the following properties:
 
