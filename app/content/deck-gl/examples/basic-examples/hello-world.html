@@ -1,11 +1,10 @@
 <html>
   <head>
-    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
-    
-    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
-    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/deck.gl@^8.8.0-beta.4/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.8.0-beta.4/dist.min.js"></script>
 
+    <script src="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
 
   <body style="margin: 0; padding: 0">
@@ -13,7 +12,6 @@
   </body>
 
   <script type="text/javascript">
-    // CARTO 3
     deck.carto.setDefaultCredentials({
       apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
       accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
@@ -21,6 +19,7 @@
 
     const deckgl = new deck.DeckGL({
       container: 'map',
+      map: maplibregl,
       mapStyle: deck.carto.BASEMAP.VOYAGER,
 
       initialViewState: {
