@@ -39,7 +39,7 @@ cascade:
             - title: "Grid Layer"
             - title: "H3 Cluster Layer"
             - title: "H3 Indexed Data"
-            - title: "Quadkey Indexed Data"
+            - title: "Quadbin Indexed Data"
             - title: "Heatmap Layer"
             - title: "Hexagon Layer"
             - title: "S2 Layer"

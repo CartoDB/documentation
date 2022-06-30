@@ -6,7 +6,7 @@ The rendering options available to specify the style for a [CartoLayer](/deck-gl
 
 - Data stored as traditional geometries defined by longitude-latitude coordinate pairs
 
-- Data stored using geospatial indices from a discrete global grid system like H3 or Quadkey
+- Data stored using geospatial indices from a discrete global grid system like H3 or Quadbin
 
 When working with traditional geometries, the [CartoLayer](/deck-gl/reference/#cartolayer) uses deck.gl [GeoJsonLayer](https://deck.gl/docs/api-reference/layers/geojson-layer) for rendering. All the rendering options from the GeoJsonLayer can be used to customize the styling properties of your `CartoLayer`.
 
