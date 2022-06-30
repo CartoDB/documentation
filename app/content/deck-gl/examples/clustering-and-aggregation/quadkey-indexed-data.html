@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/deck.gl@^8.8.0-beta.5/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.8.0-beta.5/dist.min.js"></script>
+    
+    <script src="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.css" rel="stylesheet" />
+  </head>
+
+  <body style="margin: 0; padding: 0; overflow: hidden; font-family: 'Open Sans', sans-serif">
+    <div id="map" style="width: 100vw; height: 100vh"></div>
+  </body>
+
+  <script type="text/javascript">
+    let zoom = 3;
+
+    deck.carto.setDefaultCredentials({
+      apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+      accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+    });
+
+    const deckgl = new deck.DeckGL({
+      container: 'map',
+      map: maplibregl,
+      mapStyle: deck.carto.BASEMAP.DARK_MATTER,
+      initialViewState: {
+        latitude: 40,
+        longitude: -100,
+        zoom: zoom,
+      },
+      controller: true,
+      onViewStateChange: ({viewState}) => {
+        zoom = viewState.zoom
+      },
+
+      layers: [
+        new deck.carto.CartoLayer({
+          connection: 'bqconn',
+          type: deck.carto.MAP_TYPES.TABLE,
+          data: `cartobq.public_account.derived_spatialfeatures_usa_quadgrid15_v1_yearly_v2_quadbin`,
+          geoColumn: 'quadbin',
+          aggregationExp: 'SUM(population) as population',
+          getFillColor: (d) => {
+            let domain;
+            if (zoom < 6) {
+              domain = [1, 10000, 20000, 50000, 100000, 200000];
+            }
+            else if (zoom < 8) {
+              domain = [1, 1000, 2000, 5000, 10000, 20000];
+            }
+            else if (zoom < 10) {
+              domain = [1, 200, 500, 1000, 2000, 5000];
+            }
+            else {
+              domain = [1, 50, 100, 200, 500, 1000];
+            }
+            return deck.carto.colorBins({
+              attr: 'population',
+              domain: domain,
+              colors: 'Teal'
+            })(d);
+          },
+          getLineColor: [180, 180, 180],
+          stroked: true,
+          lineWidthMinPixels: 1,
+          pickable: true
+        }),
+      ],
+
+      getTooltip: ({ object }) => 
+        object && 
+        `Quadbin: ${object.id}\n Population: ${object.properties.population}`
+    });
+  </script>
+</html>
