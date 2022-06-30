@@ -4,7 +4,7 @@
 
 A common workflow when building a spatial application involves a cartographer that designs a visualization with a map making tool and then hands it to a developer that needs to recreate it with the library used in the application.
 
-With the new version of CARTO Builder and deck.gl, you can easily replicate this workflow without having to specify the different properties to instantiate the deck.gl layers. In order to create the visualization, the developer just needs to call the `fetchMap` function with the map ID in the CARTO platform.
+With the new version of CARTO Builder and deck.gl, you can easily replicate this workflow without having to specify the different properties to instantiate the deck.gl layers. In order to create the visualization, the developer just needs to call the [`fetchMap`](../reference#fetchmap) function with the map ID in the CARTO platform.
 
 You create a new map in Builder, add your data sources and style your layers as desired. Then you need to copy the map ID and use it to retrieve the map configuration from the platform. It is available starting with CARTO Maps API version v3.
 
@@ -53,7 +53,7 @@ In the previous examples we are loading public Builder maps. In some cases you w
 
 ### Auto-refreshing
 
-Sometimes you have a map that is using one or more data sources that are continuously updated. In those cases you can use  the `autoRefresh` parameter to create a live-updating map. This parameter specifies how often is the map fetched in minutes. You also need to define the handler for the `onNewData` event to indicate what to do when new data arrives. In most cases you would like to update the `layers` property as we are doing here. You can stop the auto-refresh by calling the `stopAutoRefresh` function returned by `fetchMap`.
+Sometimes you have a map that is using one or more data sources that are continuously updated. In those cases you can use the `autoRefresh` parameter to create a live-updating map. This parameter specifies how often is the map fetched in minutes. You also need to define the handler for the `onNewData` event to indicate what to do when new data arrives. In most cases you would like to update the `layers` property as we are doing here. You can stop the auto-refresh by calling the `stopAutoRefresh` function returned by `fetchMap`.
 
 ```js
 const deck = new Deck({canvas: 'deck-canvas'});
