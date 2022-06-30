@@ -17,7 +17,7 @@ It is compatible with the different versions of the CARTO Maps API (v1, v2, and 
   {{%/ bannerNote %}}
   
 
-2. Create a token using our token API with access to the required table.
+2. Create a token using our token API with access to the required table. To make the request to the `tokens` endpoint, you need to get an access token first. Please read the [API documentation](https://api-docs.carto.com) to know how to get it. 
 
    ```shell
    curl --location -g --request POST 'https://gcp-us-east1.api.carto.com/v3/tokens?access_token=eyJhb...' \
