@@ -18,7 +18,7 @@ It is important that you begin by learning the core deck.gl concepts. Please che
 
 
 {{% bannerNote title="Are you a React user?" %}}
-If you are a React user and want to build a web application using CARTO, we recommend you to use [CARTO for React](/react/overview/).
+If you are a React user and want to build a web application using CARTO, we recommend you to check [CARTO for React](/react/overview/).
 {{%/ bannerNote %}}
 
 ### What does CARTO provide
