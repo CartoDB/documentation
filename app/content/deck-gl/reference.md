@@ -393,14 +393,14 @@ import {BASEMAP} from '@deck.gl/carto';
 To use pre-bundled scripts:
 
 ```html
-<script src="https://unpkg.com/deck.gl@^8.8.0-beta.5/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.8.0-beta.5/dist.min.js"></script>
+<script src="https://unpkg.com/deck.gl@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>
 
 <!-- or -->
-<script src="https://unpkg.com/@deck.gl/core@^8.8.0-beta.5/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/layers@^8.8.0-beta.5/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/geo-layers@^8.8.0-beta.5/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.8.0-beta.5/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/core@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/layers@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/geo-layers@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>
 ```
 
 ```javascript
