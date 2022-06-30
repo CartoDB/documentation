@@ -1,5 +1,11 @@
 ## Release notes
 
+### v8.8 - June 30, 2022
+
+- The `CartoLayer` now works only with dynamic tiles. The `format` property has been removed. If you want to keep using GeoJSON instead of tiles, you need to use the `fetchLayerData` function.
+- Dynamic tiles support for SQL queries
+- Support for dynamic and static tilesets with data aggregated using H3 and Quadkey discrete global grids. New `aggregationExp` and `aggregationResLevel` props in `CartoLayer`
+
 ### v8.7 - February 25, 2022
 
 - New `fetchMap` function for loading a Builder map
