@@ -4,14 +4,13 @@ Builder will always try and get the data in the most convenient format for a per
 
 ### Small datasets
 
-For small tables and SQL queries, the complete dataset will be loaded client-side, in the browser's memory. This means that no further request to the server is needed when panning the map and moving across different zoom levels. Once loaded, this methods offers very good performance and a very smooth user experience across zoom levels. 
+For small tables, the complete dataset will be loaded client-side, in the browser's memory. This means that no further request to the server is needed when panning the map and moving across different zoom levels. Once loaded, this methods offers very good performance and a very smooth user experience across zoom levels. 
 
 The limits for this mode depend on the type of source and the data warehouse used for the connection: 
 
 |   |**BigQuery**|**Redshift**|**Snowflake**|**Databricks**|**PostgreSQL**|
 |---|---|---|---|---|---|
-|**Tables**|30MB|30k rows|30MB|30MB|30MB|
-|**SQL Queries**|30MB|200k rows|200k rows|200k rows|200k rows|
+|**Table size**|30MB|30k rows|30MB|30MB|30MB|
 
 #### Tips for small datasets performance
 
@@ -19,13 +18,13 @@ The limits for this mode depend on the type of source and the data warehouse use
 * Aggregating data before visualization helps dealing with big volumes of data.
 * Sometimes you won't need very precise geometries, try simplifying them.
 
-### Medium size datasets
+### Medium size datasets and SQL Queries
 
-For datasets bigger than the limits in the chart above, data needs to be loaded progressively as vector tiles. These tiles will be dynamically generated via SQL, directly from a table in your data warehouse and rendered client-side as you pan the map.
+For all SQL queries, and datasets bigger than the limits in the chart above, data needs to be loaded progressively as vector tiles. These tiles will be dynamically generated via SQL queries pushed down to your data warehouse and rendered client-side as you pan the map.
 
 Response times and general performance for dynamic tiles will be different depending on many factors: 
-* The size of the table
-* The size and complexity of the individual geometries
+* The size of the table or query result.
+* The size and complexity of the individual geometries.
 * The zoom level. The lower the zoom level, the more geometries fit in a single tile and the more costly is the query that needs to be performed.
 * The data structure. Different mechanisms such as indexing, clusterization or partitions depending on the data warehouse will help a lot with the execution performance of the queries when generating dynamic tiles. 
 
@@ -43,7 +42,10 @@ Widget data is calculated client-side with the data that is included in the tile
 
 #### Tips for medium size datasets performance
 
-* In **BigQuery**, use clustering by the geometry column to ensure that data is structured in a way that is fast to access. Check out [this documentation page](https://cloud.google.com/bigquery/docs/clustered-tables) for more information. 
+There are optimizations that can be applied to a table to improve query performance and reduce processing cost:
+
+##### BigQuery
+Use clustering by the geometry column to ensure that data is structured in a way that is fast to access. Check out [this documentation page](https://cloud.google.com/bigquery/docs/clustered-tables) for more information. 
 In order to create a clustered table out of an existing table with geometries, you can try with something like: 
 ```sql
 CREATE TABLE your_dataset.clustered_table
@@ -51,21 +53,80 @@ CLUSTER BY geom
 AS 
 (SELECT * FROM your_original_table)
 ```
-* In **PostgreSQL** (with PostGIS), [spatial indexes](http://postgis.net/workshops/postgis-intro/indexing.html) will also help with performance. For example: 
 
-```sql
-CREATE INDEX nyc_census_blocks_geom_idx
-  ON nyc_census_blocks
-  USING GIST (geom);
-```
-* In **Snowflake**, the [Search Optimization Service](https://docs.snowflake.com/en/user-guide/search-optimization-service.html#) can help getting faster results when querying geospatial data. In order to profit from this feature, it **needs to be enabled in your Snowflake account**. Additionally, it requires that the table is ordered in a specific way that takes into account the coordinates of each geometry:
+##### Snowflake
+The [Search Optimization Service](https://docs.snowflake.com/en/user-guide/search-optimization-service.html#) can help getting faster results when querying geospatial data. In order to profit from this feature, it **needs to be enabled in your Snowflake account**. Additionally, it requires that the table is ordered in a specific way that takes into account the coordinates of each geometry:
 
 ```sql
 CREATE OR REPLACE TABLE POINTS_SORTED
 AS SELECT * FROM POINTS_10M ORDER BY ST_XMIN(geom), ST_YMIN(geom);
 ```
 
-* For other cloud data warehouses, geospatial clustering and/or similar functionality will eventually be added by their providers.
+##### PostgreSQL (with PostGIS) 
+[Database indexes](http://postgis.net/workshops/postgis-intro/indexing.html) will also help with performance. For example: 
+
+```sql
+CREATE INDEX nyc_census_blocks_geom_idx
+  ON nyc_census_blocks
+  USING GIST (geom);
+```
+
+
+For other cloud data warehouses, geospatial clustering and/or similar functionality will eventually be added by their providers.
+
+#### Tips for spatial index tables
+
+Working with spatial indexes has many performance advantages by itself, but there are some optimizations that can be applied to your tables to improve query performance and reduce the processing cost. 
+
+##### BigQuery
+Clustering the tables by the column containing the spatial index: 
+```sql
+CREATE TABLE table_name CLUSTER BY (h3) AS SELECT h3 from table_name
+```
+or 
+```sql
+CREATE TABLE table_name CLUSTER BY (quadbin) AS SELECT quadbin from table_name
+```
+---
+##### Snowflake
+Clustering the tables by the column containing the spatial index: 
+```sql
+ALTER TABLE table_name CLUSTER BY (h3)
+```
+or 
+```sql
+ALTER TABLE table_name CLUSTER BY (quadbin)
+```
+---
+##### Databricks
+Optimizing the table using `ZORDER BY` expression, like:
+```sql
+OPTIMIZE table_name  ZORDER BY h3
+```
+---
+##### Redshift
+Using the `SORTKEY`:
+```sql
+ALTER TABLE table_name ALTER SORTKEY (h3);
+```
+or
+```sql
+ALTER TABLE table_name ALTER SORTKEY (quadbin);
+```
+---
+##### PostgreSQL 
+Creating an index and using it to cluster the table:
+```sql
+CREATE INDEX index_name ON table_name (h3);
+```
+or 
+```sql
+CREATE INDEX index_name ON table_name (quadbin);
+```
+and 
+```sql
+CLUSTER table_name USING index_name;
+```
 
 ### Large tables
 
