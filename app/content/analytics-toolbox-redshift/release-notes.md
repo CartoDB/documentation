@@ -21,6 +21,49 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### June 27, 2022
+
+#### Module tiler
+
+Changed
+- Support quadbin from CREATE_SPATIAL_INDEX_TILESET instead of quadint.
+
+### June 24, 2022
+
+#### Module quadbin
+
+Feature
+- Add QUADBIN_BBOX function.
+- Add QUADBIN_BOUNDARY function.
+- Add QUADBIN_CENTER function.
+- Add QUADBIN_FROMGEOGPOINT function.
+- Add QUADBIN_FROMLONGLAT function.
+- Add QUADBIN_FROMZXY function.
+- Add QUADBIN_ISVALID function.
+- Add QUADBIN_KRING function.
+- Add QUADBIN_KRING_DISTANCES function.
+- Add QUADBIN_POLYFILL function.
+- Add QUADBIN_RESOLUTION function.
+- Add QUADBIN_SIBLING function.
+- Add QUADBIN_TOCHILDREN function.
+- Add QUADBIN_TOPARENT function.
+- Add QUADBIN_TOZXY function.
+
+### June 23, 2022
+
+#### Module quadkey
+
+Fixed
+- Fix wrong distances in QUADINT_KRING_DISTANCES.
+- Allow any input SRID in ST_ASQUADINT_POLYFILL
+
+### June 20, 2022
+
+#### Module tiler
+
+Feature
+- Add CREATE_SPATIAL_INDEX_TILESET procedure.
+
 ### May 19, 2022
 
 #### Module lds
