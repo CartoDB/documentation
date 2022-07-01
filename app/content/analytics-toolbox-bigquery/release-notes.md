@@ -4,6 +4,53 @@ aliases:
 ---
 ## Release notes
 
+### June 29, 2022
+
+#### Module retail
+
+Fixed
+- Fixing bugs when not providing store variables to BUILD_REVENUE_MODEL_DATA
+
+### June 23, 2022
+
+#### Module quadbin
+
+Feature
+- Add QUADBIN_BBOX function.
+- Add QUADBIN_BOUNDARY function.
+- Add QUADBIN_CENTER function.
+- Add QUADBIN_FROMGEOGPOINT function.
+- Add QUADBIN_FROMLONGLAT function.
+- Add QUADBIN_FROMZXY function.
+- Add QUADBIN_ISVALID function.
+- Add QUADBIN_KRING function.
+- Add QUADBIN_KRING_DISTANCES function.
+- Add QUADBIN_POLYFILL function.
+- Add QUADBIN_RESOLUTION function.
+- Add QUADBIN_SIBLING function.
+- Add QUADBIN_TOCHILDREN function.
+- Add QUADBIN_TOPARENT function.
+- Add QUADBIN_TOZXY function.
+
+### June 21, 2022
+
+#### Module data
+
+Fixed
+- Fix BQ inplace enrichment with uppercase column names.
+
+#### Module tiler
+
+Changed
+- Support H3 integer in `CREATE_SPATIAL_INDEX_TILESET`.
+
+### June 13, 2022
+
+#### Module data
+
+Fixed
+- Fix order of `__KRING_DECAY` parameters.
+
 ### June 10, 2022
 
 #### Module tiler
