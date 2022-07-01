@@ -117,6 +117,10 @@ FROM 10M_points_table
 GROUP BY quadbin
 ```
 
+Learn more about using the CARTO Analytics Toolbox to work with spatial indexes [here](../../../analytics-toolbox/about-the-analytics-toolbox/). 
+
+Also, when working with spatial indexes, there are a few important details to take into account in order to optimize performance and reduce the associated computing cost. Learn more about it [here](../performance-considerations/#tips-for-spatial-index-tables).
+
 #### Create a table from query
 
 Additionally, you can also persist the query as a table by clicking on *Create table from query* button that will be available when the query is successfully completed.
