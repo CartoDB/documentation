@@ -413,7 +413,7 @@ FROM FLATENRICHMENT
 GROUP BY NAME
 ```
 
-### In-place enrichment
+#### In-place enrichment
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
