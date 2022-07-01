@@ -83,6 +83,40 @@ You can click on *Cancel* at any time to stop running the query. At this poing, 
 
 If you keep the query running and it executes successfully, the table will be included in the Builder map tool as a layer. 
 
+Remember, when using running queries that return geometries, you should use an alias in the query to make sure the column that contains the geometry is called `geom`. For example:
+
+```sql
+SELECT population, geometry as geom FROM demographic_data
+```
+
+#### Use spatial indexes in custom queries
+
+CARTO supports H3 and Quadbin spatial indexes. In order to render a map from a data source that contains a spatial index instead of a geometry, there are some nuances to take into account. 
+
+First, if you are going to type a query that returns an spatial index (H3 or Quadbin), you should use the spatial data type selector on your SQL Panel to select the type of data that you're working with: 
+
+![Spatial data type selector](/img/cloud-native-workspace/maps/spatial_data_type_selector.png)
+
+* If your query is going to return H3 indexes, select `H3` and make sure the column that contains the H3 indexes is called `h3`. For example: 
+
+```sql
+SELECT 
+  carto.H3_FROMGEOGPOINT(geom, 10) as h3,
+  count(*) as num_points
+FROM 10M_points_table
+GROUP BY h3
+```
+
+* If your query is going to return Quadbin indexes, select `Quadbin` and make sure the column that contains the indexes is called `quadbin`. For example: 
+
+```sql
+SELECT 
+  carto.QUADBIN_FROMGEOGPOINT(geom, 15) as quadbin,
+  count(*) as num_points
+FROM 10M_points_table
+GROUP BY quadbin
+```
+
 #### Create a table from query
 
 Additionally, you can also persist the query as a table by clicking on *Create table from query* button that will be available when the query is successfully completed.
