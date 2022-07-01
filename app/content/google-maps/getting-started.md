@@ -38,8 +38,8 @@ At this point you will have a simple map:
 The first step you need to perform is to add the [deck.gl](https://deck.gl) dependencies, including the CARTO [submodule](https://deck.gl/docs/api-reference/carto/overview):
 
 ```html
-<script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>
+<script src="https://unpkg.com/deck.gl@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>
 ```
 
 {{% bannerNote title="About CARTO platform versions" %}}
@@ -120,8 +120,8 @@ deckOverlay.setMap(map);
   <head>
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://unpkg.com/deck.gl@^8.6.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.6.0/dist.min.js"></script>  
+    <script src="https://unpkg.com/deck.gl@^8.8.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>  
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
