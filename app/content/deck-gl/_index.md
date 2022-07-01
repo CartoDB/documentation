@@ -39,9 +39,9 @@ cascade:
             - title: "Grid Layer"
             - title: "H3 Cluster Layer"
             - title: "H3 Indexed Data"
-            - title: "Quadbin Indexed Data"
             - title: "Heatmap Layer"
             - title: "Hexagon Layer"
+            - title: "Quadbin Indexed Data"
             - title: "S2 Layer"
         - title: "Advanced examples"
           folder:
