@@ -39,6 +39,7 @@ cascade:
         - title: "Creating a tileset from your data"  
         - title: "Importing data"
         - title: "Geocoding data"
+        - title: "Enriching data"
     - title: "Data Observatory"
       folder:
         - title: "Introduction"
@@ -60,6 +61,7 @@ cascade:
         - title: "Managing registered apps"
         - title: "Inviting users to your organization"
         - title: "Managing user roles"
+        - title: "Customizing appearance and branding"
         - title: "Deleting your organization"
     - title: "Developers" 
       folder:

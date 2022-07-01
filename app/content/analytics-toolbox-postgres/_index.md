@@ -14,9 +14,11 @@ cascade:
       folder:
         - title: "Getting started"
         - title: "Tilesets"
+        - title: "Spatial indexes"
     - title: "SQL Reference"
       folder:
         - title: "Overview"
+        - title: "quadbin"
         - title: "tiler"
     - title: "Release notes"
 ---

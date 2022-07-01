@@ -233,26 +233,6 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module quadkey
-
-Changed
-- Deployment schema "carto" instead of "quadkey".
-- Rename ZXY_FROMQUADINT function to QUADINT_TOZXY.
-- Rename LONGLAT_ASQUADINT function to QUADINT_FROMLONGLAT.
-- Rename QUADKEY_FROMQUADINT function to QUADINT_TOQUADKEY.
-- Rename TOPARENT function to QUADINT_TOPARENT.
-- Rename TOCHILDREN function to QUADINT_TOCHILDREN.
-- Rename SIBLING function to QUADINT_SIBLING.
-- Rename KRING function to QUADINT_KRING.
-- Rename KRING_DISTANCES function to QUADINT_KRING_DISTANCES.
-- Rename BBOX function to QUADINT_BBOX.
-- Rename ST_ASQUADINT function to QUADINT_FROMGEOGPOINT.
-- Rename ST_ASQUADINT_POLYFILL function to QUADINT_POLYFILL.
-- Rename ST_BOUNDARY function to QUADINT_BOUNDARY.
-
-Removed
-- Remove VERSION function.
-
 #### Module s2
 
 Changed
@@ -367,14 +347,6 @@ Feature
 Changed
 - Review HEXRING, KRING functions.
 
-#### Module quadkey
-
-Feature
-- Add KRING_DISTANCES function.
-
-Changed
-- Review KRING function.
-
 ### September 14, 2021
 
 #### Module s2
@@ -382,26 +354,12 @@ Changed
 Changes
 - Compute ST_BOUNDARY from WKT.
 
-### September 9, 2021
-
-#### Module quadkey
-
-Changed
-- Performance improvement in ST_ASQUADINT_POLYFILL.
-
 ### August 24, 2021
 
 #### Module h3
 
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
-
-### August 11, 2021
-
-#### Module quadkey
-
-Fixed
-- Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
 
 ### June 2, 2021
 
@@ -525,26 +483,5 @@ Feature
 - Add DISTANCE function.
 - Add KRING function.
 - Add HEXRING function.
-- Add VERSION function.
-
-### March 31, 2021
-
-#### Module quadkey
-
-Feature
-- Create quadkey module.
-- Add QUADINT_FROMZXY function.
-- Add ZXY_FROMQUADINT function.
-- Add LONGLAT_ASQUADINT function.
-- Add QUADINT_FROMQUADKEY function.
-- Add QUADKEY_FROMQUADINT function.
-- Add TOPARENT function.
-- Add TOCHILDREN function.
-- Add SIBLING function.
-- Add KRING function.
-- Add BBOX function.
-- Add ST_ASQUADINT function.
-- Add ST_ASQUADINT_POLYFILL function.
-- Add ST_BOUNDARY function.
 - Add VERSION function.
 

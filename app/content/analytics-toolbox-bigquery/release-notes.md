@@ -127,19 +127,6 @@ Feature
 Fixed
 - Fix BUILD_REVENUE_MODEL_DATA k-ring buffer computation.
 
-### April 11, 2022
-
-#### Module quadkey
-
-Feature
-- Add QUADINT_CENTER.
-- Add QUADINT_RESOLUTION.
-
-Fixed
-- Fixed QUADINT_KRING.
-- Fixed QUADINT_KRING_DISTANCES.
-- Fixed QUADINT_SIBLING.
-
 ### March 21, 2022
 
 #### Module transformations
@@ -286,27 +273,6 @@ Removed
 
 Changed
 - Deployment schema "carto" instead of "processing".
-
-Removed
-- Remove VERSION function.
-
-#### Module quadkey
-
-Changed
-- Deployment schema "carto" instead of "quadkey".
-- Rename ZXY_FROMQUADINT function to QUADINT_TOZXY.
-- Rename LONGLAT_ASQUADINT function to QUADINT_FROMLONGLAT.
-- Rename LONGLAT_ASQUADINTLIST_RESOLUTION function to QUADINT_FROMLONGLAT_ZOOMRANGE.
-- Rename QUADKEY_FROMQUADINT function to QUADINT_TOQUADKEY.
-- Rename TOPARENT function to QUADINT_TOPARENT.
-- Rename TOCHILDREN function to QUADINT_TOCHILDREN.
-- Rename SIBLING function to QUADINT_SIBLING.
-- Rename KRING function to QUADINT_KRING.
-- Rename KRING_DISTANCES function to QUADINT_KRING_DISTANCES.
-- Rename BBOX function to QUADINT_BBOX.
-- Rename ST_ASQUADINT function to QUADINT_FROMGEOGPOINT.
-- Rename ST_ASQUADINT_POLYFILL function to QUADINT_POLYFILL.
-- Rename ST_BOUNDARY function to QUADINT_BOUNDARY.
 
 Removed
 - Remove VERSION function.
@@ -509,13 +475,6 @@ Fixed
 Changes
 - New API, with consistent naming of procedures `
 
-### October 1, 2021
-
-#### Module quadkey
-
-fixed
-- Fix ST_BOUNDARY for level 1 and 2.
-
 ### September 24, 2021
 
 #### Module geocoding
@@ -546,12 +505,6 @@ Feature
 
 Changed
 - Review HEXRING, KRING functions.
-- Change KRING_INDEXED to KRING_DISTANCES.
-
-#### Module quadkey
-
-Changed
-- Review KRING function.
 - Change KRING_INDEXED to KRING_DISTANCES.
 
 ### September 17, 2021
@@ -592,13 +545,6 @@ Feature
 - Create geocoding module.
 - Add VERSION function.
 - Add GEOCODING_BATCH procedure.
-
-### September 9, 2021
-
-#### Module quadkey
-
-Changed
-- Performance improvement in ST_ASQUADINT_POLYFILL.
 
 ### September 3, 2021
 
@@ -654,13 +600,6 @@ Fixed
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
-### August 11, 2021
-
-#### Module quadkey
-
-Fixed
-- Support GEOMETRYCOLLECTION from ST_ASQUADINT_POLYFILL.
-
 ### August 6, 2021
 
 #### Module data
@@ -675,12 +614,6 @@ Feature
 
 Feature
 - Add KRING_INDEXED function.
-
-#### Module quadkey
-
-Feature
-- Add KRING_INDEXED function.
-- Add ST_GEOGPOINTFROMQUADINT function.
 
 ### July 30, 2021
 
@@ -877,11 +810,6 @@ Feature
 
 ### April 16, 2021
 
-#### Module quadkey
-
-Changed
-- Changed TOPARENT implementation to pure SQL.
-
 #### Module transformations
 
 Feature
@@ -946,26 +874,6 @@ Feature
 - Add H3_ASPLACEKEY function.
 - Add PLACEKEY_ASH3 function.
 - Add ISVALID function.
-- Add VERSION function.
-
-#### Module quadkey
-
-Feature
-- Create quadkey module.
-- Add QUADINT_FROMZXY function.
-- Add ZXY_FROMQUADINT function.
-- Add LONGLAT_ASQUADINT function.
-- Add QUADINT_FROMQUADKEY function.
-- Add QUADKEY_FROMQUADINT function.
-- Add TOPARENT function.
-- Add TOCHILDREN function.
-- Add SIBLING function.
-- Add KRING function.
-- Add BBOX function.
-- Add ST_ASQUADINT function.
-- Add ST_ASQUADINT_POLYFILL function.
-- Add ST_BOUNDARY function.
-- Add LONGLAT_ASQUADINTLIST_RESOLUTION function.
 - Add VERSION function.
 
 #### Module s2

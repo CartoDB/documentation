@@ -5,6 +5,7 @@ icon: "/img/icons/snowflake-analytics-toolbox.png"
 type: examples
 category: constructors
 layout: categories/list
+euFlag: true
 aliases:
     - /analytics-toolbox-sf/examples/categories/constructors/
 ---
