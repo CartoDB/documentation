@@ -74,9 +74,67 @@ The CARTO submodule includes the CartoLayer that simplifies the interaction with
 
 `CartoLayer` is the layer to visualize data using the CARTO Maps API. This layer allows to work with the different CARTO Maps API versions (v1, v2, and v3). 
 
-It inherits the properties of the [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer).
+By default the `CartoLayer` expects the data to be stored as pair of longitude-latitude coordinates. In this case, vector tiles will be used, with the format depending on `formatTiles`. An [`MVTLayer`](/docs/api-reference/geo-layers/mvt-layer.md) will be created and all properties will be inherited, including the rendering properties available in the [GeoJsonLayer](https://deck.gl/docs/api-reference/layers/geojson-layer).
 
-Additional properties may be available depending on the configuration. For details see: [Sublayer details](#sublayers).
+```js
+import DeckGL from '@deck.gl/react';
+import {CartoLayer, setDefaultCredentials, MAP_TYPES, API_VERSIONS} from '@deck.gl/carto';
+
+setDefaultCredentials({
+  accessToken: 'XXX'
+  apiBaseUrl: 'https://gcp-us-east1.api.carto.com' // Default value (optional)
+});
+
+function App({viewState}) {
+  const layer = new CartoLayer({
+    type: MAP_TYPES.QUERY,
+    connection: 'bigquery',
+    data: 'SELECT * FROM cartobq.testtables.points_10k',
+    pointRadiusMinPixels: 2,
+    getLineColor: [0, 0, 0, 200],
+    getFillColor: [238, 77, 90],
+    lineWidthMinPixels: 1
+  })
+
+  return <DeckGL viewState={viewState} layers={[layer]} />;
+}
+```
+
+CARTO 3 also supports storing data using a spatial index. The `geoColumn` prop is used to specify a database column that contains geographic data. When `geoColumn` has one of the following values, the data will be interpreted as a spatial index:
+
+- `'h3'` [H3](https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#h3) indexing system will be used
+- `'quadbin'` [Quadbin](https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#quadbin) indexing system will be used
+
+Tiled data will be used, with the layer created depending on the spatial index used:
+
+- `'h3'` [`H3HexagonLayer`](/docs/api-reference/geo-layers/h3-hexagon-layer.md) will be created and all properties will be inherited.
+- `'quadbin'` [`QuadkeyLayer`](/docs/api-reference/geo-layers/quadkey-layer.md) will be created and all properties will be inherited. _Note the `getQuadkey` accessor is replaced with `getQuadbin`_.
+
+```js
+import DeckGL from '@deck.gl/react';
+import {CartoLayer, setDefaultCredentials, MAP_TYPES, API_VERSIONS} from '@deck.gl/carto';
+
+setDefaultCredentials({
+  accessToken: 'XXX'
+  apiBaseUrl: 'https://gcp-us-east1.api.carto.com' // Default value (optional)
+});
+
+function App({viewState}) {
+  const layer = new CartoLayer({
+    type: MAP_TYPES.TABLE,
+    connection: 'bigquery',
+    data: 'cartobq.testtables.h3',
+    geoColumn: 'h3',
+    aggregationExp: 'AVG(population) as population',
+    getFillColor: [238, 77, 90],
+    getElevation: d => d.properties.population
+  })
+
+  return <DeckGL viewState={viewState} layers={[layer]} />;
+}
+```
+
+The rendering properties available depend on the format used to store the spatial data. For details see: [Sublayer details](#sublayers).
 
 ##### `data` (String)
 
@@ -95,10 +153,6 @@ Required. Data type. Possible values are:
 Required when apiVersion is `API_VERSIONS.V3`.
 
 Name of the connection registered in the CARTO workspace.
-
-##### `format` (String, optional)
-
-Only supported when `apiVersion` is `API_VERSIONS.V3`. Use it to override the default data format. Possible values are: `FORMATS.GEOJSON`, `FORMATS.JSON` and `FORMATS.TILEJSON`. 
 
 ##### `formatTiles` (String, optional)
 
@@ -126,6 +180,14 @@ Optional. A string pointing to a unique attribute at the result of the query. A 
 
 Optional. Overrides the configuration to connect with CARTO. Check the parameters [here](#setdefaultcredentials).
 
+##### `aggregationExp` (String, optional)
+
+Optional. Aggregation SQL expression. Only used for spatial index datasets.
+
+##### `aggregationResLevel` (Number, optional)
+
+Optional. Aggregation resolution level. Only used for spatial index datasets, defaults to 6 for quadbins, 4 for h3.
+
 ##### `onDataLoad` (Function, optional)
 
 `onDataLoad` is called when the request to the CARTO Maps API was completed successfully.
@@ -148,31 +210,23 @@ Receives arguments:
 
 #### SubLayers
 
-The `CartoLayer` is a [`CompositeLayer`](https://deck.gl/docs/api-reference/core/composite-layer), and will generate different sublayers depending on the configuration. In all cases, properties of the [`GeoJsonLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer) will be inherited.
+The `CartoLayer` is a [`CompositeLayer`](https://deck.gl/docs/api-reference/core/composite-layer), and will generate different sublayers depending on the API version and the format used to store the spatial data, as explained above.
 
 ##### API v1 & v2
 
-`CartoLayer` works with the different CARTO Maps API versions (v1, v2, and v3). When using version v1 and v2, the layer always works with vector tiles so it inherits all properties from [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer).
+When using version v1 and v2, the layer always works with vector tiles so it inherits all properties from [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer).
 
 ##### API v3
 
-When using v3, the behavior depends on the `type` property.
+When using v3, the behavior depends on the format used to specify the spatial data:
 
-###### `MAP_TYPES.QUERY`
-
-GeoJSON/JSON data will be used, depending on `format`. A [`GeoJSONLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer.md) will be created.
-
-###### `MAP_TYPES.TILESET`
-
-Tiled data will be used, depending on `formatTiles`. A [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer) will be created and all properties will be inherited.
-
-###### `MAP_TYPES.TABLE`
-
-Automatically based on the size of the table CARTO will decide whether to use tiles or a full document.
-
-For a full document a [`GeoJSONLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer) will be created, while for tiles a vector tile layer that extends the current [`MVTLayer`](https://deck.gl/docs/api-reference/geo-layers/mvt-layer) and inherits all the properties will be created.
-
-Tiles can be forced by setting `format` to `FORMATS.TILEJSON`.
+- Pairs of longitude-latitude coordinates: the [`GeoJSONLayer`](https://deck.gl/docs/api-reference/layers/geojson-layer.md) is used for rendering.
+  
+- Spatial data using spatial indices:
+  
+   - H3 indices: the [`H3HexagonLayer`](/docs/api-reference/geo-layers/h3-hexagon-layer.md) will be used.
+   
+   - Quadbins: the [`QuadkeyLayer`](/docs/api-reference/geo-layers/quadkey-layer.md) will be used. _Note the `getQuadkey` accessor is replaced with `getQuadbin`_.
 
 #### Source
 
@@ -339,14 +393,14 @@ import {BASEMAP} from '@deck.gl/carto';
 To use pre-bundled scripts:
 
 ```html
-<script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/deck.gl@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>
 
 <!-- or -->
-<script src="https://unpkg.com/@deck.gl/core@^8.7.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/layers@^8.7.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/geo-layers@^8.7.0/dist.min.js"></script>
-<script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/core@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/layers@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/geo-layers@^8.8.0/dist.min.js"></script>
+<script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>
 ```
 
 ```javascript

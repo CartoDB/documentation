@@ -3,8 +3,8 @@
     <script src="https://unpkg.com/deck.gl@beta/dist.min.js"></script>
     <script src="https://unpkg.com/@deck.gl/carto@beta/dist.min.js"></script>
     
-    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
-    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.css" rel="stylesheet" />
 
   </head>
 
@@ -24,6 +24,7 @@
 
         const deckgl = new deck.DeckGL({
           container: 'map',
+          map: maplibregl,
           controller: true,
           mapStyle: MAP_STYLE,
           initialViewState,

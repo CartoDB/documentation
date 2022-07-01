@@ -6,11 +6,11 @@
       rel="stylesheet"
     />
 
-    <script src="https://unpkg.com/deck.gl@^8.7.0/dist.min.js"></script>
-    <script src="https://unpkg.com/@deck.gl/carto@^8.7.0/dist.min.js"></script>
+    <script src="https://unpkg.com/deck.gl@^8.8.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>
     
-    <script src="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.js"></script>
-    <link href="https://libs.cartocdn.com/mapbox-gl/v1.13.0/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.js"></script>
+    <link href="https://unpkg.com/maplibre-gl@2.1.9/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
 
   <body style="margin: 0; padding: 0; font-family: 'Open Sans', Helvetica, sans-serif;">
@@ -25,6 +25,7 @@
 
     const deckgl = new deck.DeckGL({
       container: 'map',
+      map: maplibregl,
       mapStyle: deck.carto.BASEMAP.DARK_MATTER,
 
       initialViewState: {

@@ -2,7 +2,21 @@
 
 ### Introduction
 
-The [CartoLayer](/deck-gl/reference/#cartolayer) uses deck.gl [GeoJsonLayer](https://deck.gl/docs/api-reference/layers/geojson-layer) for rendering. All the rendering options from the GeoJsonLayer can be used to customize the styling properties of your `CartoLayer`.
+The rendering options available to specify the style for a [CartoLayer](/deck-gl/reference/#cartolayer) depend on the way the spatial information is stored. The CARTO platform supports spatial data defined using two different methods:
+
+- Data stored as traditional geometries defined by longitude-latitude coordinate pairs
+
+- Data stored using geospatial indices from a discrete global grid system like H3 or Quadbin
+
+When working with traditional geometries, the [CartoLayer](/deck-gl/reference/#cartolayer) uses deck.gl [GeoJsonLayer](https://deck.gl/docs/api-reference/layers/geojson-layer) for rendering. All the rendering options from the GeoJsonLayer can be used to customize the styling properties of your `CartoLayer`.
+
+When working with data using geospatial indices, the layer used for rendering depends on the discrete global grid system used:
+
+- If you are using the `CartoLayer` with data stored as [H3 indices]((https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#h3), the [H3HexagonLayer](https://deck.gl/docs/api-reference/geo-layers/h3-hexagon-layer) is used. 
+
+- If you are using it with data stored as [quadbins](https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#quadbin), the [QuadkeyLayer](https://deck.gl/docs/api-reference/geo-layers/quadkey-layer) is used.
+
+This guide mainly focus on working with traditional geometries but most of the rendering properties used are also available in the spatial indices layers and most of the content is applicable to them.
 
 In this guide you will learn about the main options available and how to use them to create great visualizations. We have added links to the properties documentation in the main deck.gl docs site that includes useful information like data type or default values.
 
@@ -64,7 +78,7 @@ This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#geteleva
 
 The CartoLayer uses vector rendering. This means the feature geometry is available client-side so we can easily know if the user is hovering over a feature and highlight it.
 
-Highlighting requires to set the layer [`pickable`](https://deck.gl/docs/api-reference/core/layer#pickable) property to `true`. If the CartoLayer is using vector tiles (`type == MAP_TYPES.TILESET` and/or `format == FORMATS.TILEJSON`), you also need to set the [`uniqueIdProperty`](https://deck.gl/docs/api-reference/carto/carto-layer#uniqueidproperty) to the feature property name that allows to identify each feature uniquely. 
+Highlighting requires to set the layer [`pickable`](https://deck.gl/docs/api-reference/core/layer#pickable) property to `true`. You also need to set the [`uniqueIdProperty`](https://deck.gl/docs/api-reference/carto/carto-layer#uniqueidproperty) to the feature property name that allows to identify each feature uniquely. 
 
 The color to be used for highlighting is specified using the [`highlightColor`](https://deck.gl/docs/api-reference/core/layer#highlightcolor) property. This property is an [accessor](#accessors): you can specify a color to be used always or you can decide which color to use depending on the feature and current visualization properties. 
 
@@ -73,6 +87,12 @@ If you set the [`autoHighlight`](https://deck.gl/docs/api-reference/core/layer#a
 We can also manually highlight a feature using the [`highlightedObjectIndex`](https://deck.gl/docs/api-reference/core/layer#highlightedobjectindex) property.
 
 ### Point types
+
+{{% bannerNote title="Not applicable to data using spatial indices" %}}
+
+The content in this section is not applicable to datasets using spatial indices.
+
+{{%/ bannerNote %}}
 
 When working with point features, the `GeoJsonLayer` allows to render the points using circles, icons, and texts, or a combination of them, using the [`pointType`](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtype) property. 
 
@@ -96,7 +116,7 @@ This property allows to specify the minimum radius in pixels to use for circles.
 
 #### Icons
 
-If you set the `pointType` property to `'icon'`, you can then use [icons]((https://deck.gl/docs/api-reference/layers/geojson-layer#pointtypeicon-options)) to style your point features. If you have multiple icons, the most efficient approach is to use an icon atlas with pre-packed icons and the corresponding mapping with icon positions in the atlas. You can also specify individual URLs to fetch icons.
+If you set the `pointType` property to `'icon'`, you can then use [icons](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtypeicon-options) to style your point features. If you have multiple icons, the most efficient approach is to use an icon atlas with pre-packed icons and the corresponding mapping with icon positions in the atlas. You can also specify individual URLs to fetch icons.
 
 Please check the [Icon Layer example](/deck-gl/examples/basic-examples/icon-layer) to see how you can use pre-packed icons.
 
@@ -126,9 +146,9 @@ This [accessor](https://deck.gl/docs/api-reference/layers/text-layer#gettext) is
 
 ### Extrusions
 
-Extruded polygons in a 3D visualization can help the users to understand better the information they are exploring. Using deck.gl is straightforward to extrude polygon features. You just need to set the [`extrude`](https://deck.gl/docs/api-reference/layers/geojson-layer#extruded) property to `true` and use the [`getElevation`](https://deck.gl/docs/api-reference/layers/geojson-layer#getelevation) accessor to specify the height for each feature. This accessor expects a value in meters if you are using the default [`MapView`](https://deck.gl/docs/api-reference/core/map-view).
+Extruded polygons in a 3D visualization can help the users to understand better the information they are exploring. Using deck.gl is straightforward to extrude polygon features. You just need to set the [`extruded`](https://deck.gl/docs/api-reference/layers/geojson-layer#extruded) property to `true` and use the [`getElevation`](https://deck.gl/docs/api-reference/layers/geojson-layer#getelevation) accessor to specify the height for each feature. This accessor expects a value in meters if you are using the default [`MapView`](https://deck.gl/docs/api-reference/core/map-view).
 
-You can provide the same `getElevation` value for all features buy you will usually want to make the `getElevation` accessor dependent on some feature property. For instance, if we have a layer with polygon features representing building footprints and we have a property indicating the building height, we can use the value of this property to extrude buildings according to their heights.
+You can provide the same `getElevation` value for all features but you will usually want to make the `getElevation` accessor dependent on some feature property. For instance, if we have a layer with polygon features representing building footprints and we have a property indicating the building height, we can use the value of this property to extrude buildings according to their heights.
 
 Depending on the feature property values, you might want to scale them to visualize the information in a more meaningful way. You can use the [`elevationScale`](https://deck.gl/docs/api-reference/layers/geojson-layer#elevationscale) property to achieve that.
 
@@ -140,11 +160,11 @@ If you want to create a choropleth map or a proportional symbol map, you can use
 
 There are many classification rules that can be used like equal intervals, jenks natural breaks or classification by quantiles. The choice of classification rule depends on the data and has a great impact on the visualization. These rules can be implemented using accessors like `getFillColor` or `getPointRadius` but you need to be able to calculate the thresholds for each class.
 
-When the `CartoLayer` `type` property is set to `MAP_TYPES.QUERY` or `MAP_TYPES.TABLE`, all the data from the query or the table is retrieved and you can perform threshold calculations client-side. When the `type` property is set to `MAP_TYPES.TILESET`, only the vector tiles corresponding to the current viewport and zoom level are downloaded to the client, so you can only determine the thresholds for the whole dataset if the server provides them.
+The CartoLayer only works with vector tiles so only the information corresponding to the current viewport and zoom level is downloaded to the client. You can only determine the information needed to calculate the thresholds (min, max, quantiles...) for the whole dataset if the server provides them.
 
 #### Client-side calculations
 
-You can perform the threshold calculations yourself but our recommendation is to use a library that already implements this functionality such as [d3-scale](https://github.com/d3/d3-scale). This library includes support for many different scales such as linear, threshold, quantile or quantize scales.
+If you already have the information you need to calculate thresholds, you can do this client-side. You can perform the threshold calculations yourself but our recommendation is to use a library that already implements this functionality such as [d3-scale](https://github.com/d3/d3-scale). This library includes support for many different scales such as linear, threshold, quantile or quantize scales.
 
 These scales map the domain of values into a range. The range can be an array of colors in RGB[A] format if you want to create a choropleth map or an array of numbers if you want to create a proportional symbol map.
 
@@ -173,9 +193,11 @@ layer = new deck.carto.CartoLayer({
 
 #### Server-side calculations
 
-If you are using vector tiles, you just have in the client the data for the current viewport, so you cannot calculate thresholds taking into account the whole dataset. In this case, you have only two options: use the statistics provided by the map server (if available) or implement your own calculations using the data from the tileset source table.
+With the `CartoLayer` you are using vector tiles, so you just have in the client the data for the current viewport. You cannot calculate thresholds taking into account the whole dataset. In this case, you have only two options: use the statistics provided by the map server (if available) or implement your own calculations using the data from the source table.
 
-If you are going to visualize a tileset created with the CARTO Analytics Toolbox, the tileset metadata includes information about quantiles for each property. You can retrieve this information using the `CartoLayer` [`onDataLoad`](https://deck.gl/docs/api-reference/carto/carto-layer#ondataload) handler that receives the tileset metadata in [TileJSON](https://github.com/mapbox/tilejson-spec) format as the argument.
+If you are going to visualize a static tileset created with the CARTO Analytics Toolbox, the tileset metadata includes information about quantiles for each property. You can retrieve this information using the `CartoLayer` [`onDataLoad`](https://deck.gl/docs/api-reference/carto/carto-layer#ondataload) handler that receives the tileset metadata in [TileJSON](https://github.com/mapbox/tilejson-spec) format as the argument.
+
+If you are using dynamic tiles, you can use the Stats API. You can make a request with the table or query that you are going to use and it is going to return some statistics useful for calculating scales and defining classes.
 
 {{% bannerNote title="Statistical functions in CARTO 2" %}}
 
@@ -193,7 +215,7 @@ If you already have a string property that represents a categorical or qualitati
 
 It is important to choose a color palette adequate to the type of choropleth map / variable you are using. We have defined a set of data-driven color schemes called [CARTO Colors](https://carto.com/carto-colors/) that you can use in your choropleth maps.
 
-There is a set of schemes appropriate to represent numeric values from low to high (sequential schemes). We provide another set suitable for visualizing categorical differences in qualitative data (qualitative schemes). Finally, we also have defined diverging schemes for those cases where we have an interesting mid-point in quantitative data. 
+There is a set of schemes appropriate to represent numeric values from low to high (sequential schemes). We provide another set suitable for visualizing categorical differences in qualitative data (qualitative schemes). Finally, we also have defined diverging schemes for those cases where we have an interesting mid-point when using quantitative data. 
 
 In order to create the choropleth map, you can use the [`getFillColor`](#getfillcolor) accessor to provide the color for each feature as shown above in the [Scales/Classification](#scales-classification) section. 
 
@@ -204,6 +226,12 @@ These style helpers allow you to specify the feature property you want to use to
 Take a look at the [Styling](https://docs.carto.com/deck-gl/examples/gallery/) examples section to see how you can use these style helpers.
 
 ### Proportional symbol maps
+
+{{% bannerNote title="Not applicable to data using spatial indices" %}}
+
+The content in this section is not applicable to datasets using spatial indices.
+
+{{%/ bannerNote %}}
 
 Proportional symbol maps assign a larger or smaller symbol to features depending on the value of some property. If you use a circle as the symbol, they are sometimes known as bubble maps. 
 

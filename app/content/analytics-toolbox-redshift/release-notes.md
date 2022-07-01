@@ -49,6 +49,14 @@ Feature
 - Add QUADBIN_TOPARENT function.
 - Add QUADBIN_TOZXY function.
 
+### June 23, 2022
+
+#### Module quadkey
+
+Fixed
+- Fix wrong distances in QUADINT_KRING_DISTANCES.
+- Allow any input SRID in ST_ASQUADINT_POLYFILL
+
 ### June 20, 2022
 
 #### Module tiler

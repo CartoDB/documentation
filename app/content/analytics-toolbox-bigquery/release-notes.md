@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### June 29, 2022
+
+#### Module retail
+
+Fixed
+- Fixing bugs when not providing store variables to BUILD_REVENUE_MODEL_DATA
+
 ### June 23, 2022
 
 #### Module quadbin
