@@ -260,6 +260,7 @@ CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET`(
           "type":"Number"
       }
   }
+}
   '''
 );
 ```
@@ -289,7 +290,7 @@ Creates a simple tileset. It differs from `carto.CREATE_SIMPLE_TILESET` in that 
 |`description`| Default: `""`. A `STRING` that contains a description for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`legend`| Default: `""`. A `STRING` that contains a legend for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`zoom_min`| Default: `0` for `POINTS` datasets and `2` for `POLYGON/LINESTRING` datasets. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
-|`zoom_max`| Default: `15`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`zoom_max`| Default: `15`. A `NUMBER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
 |`geom_column_name`| Default: `"geom"`. A `STRING` that contains the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then `zoom_min` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then `zoom_max` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
