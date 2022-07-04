@@ -23,6 +23,7 @@ Here you'll find three different sharing options:
 
 * **Private**: Only you can view and open it.
 * **Organization**: The map will be visible to all users in your organization.
+    * **Sharing with specific groups**: The map will be visible to only specific groups of users in your organization. [Read more on this option](#sharing-with-certain-groups).
 * **Public Map**: The map will be visible to anyone in the internet with the link.
 
 Remember that if your map is "shared" or "public" you'll need to push your changes with the "Publish Updates" button, next to the sharing button in the top-right menu. 
@@ -35,6 +36,14 @@ Public maps have some extra options: to share the link with the public, to get D
 
 ![Publish options share link](/img/cloud-native-workspace/maps/map_new_sharing_options_developers.png)
 
+### Sharing with certain groups
+
+If you have Single-Sign On (SSO) enabled at your organization, you will be able to share maps only with specific groups inside your organization, instead with all users belonging to it.
+
+![Map sharing with specific groups](/img/cloud-native-workspace/maps/map_sharing_options_groups.png)
+
+
+To understand how groups are synchronized between CARTO and your SSO Identity Provider, please read our documentation on [Managing User Groups](/carto-user-manual/settings/managing-user-groups).
 ### Password protected maps
 
 You can also protect your maps before sharing them by enabling password protection and setting a map password. 
@@ -59,6 +68,20 @@ You will see the date for the last time the map changes were pushed to the viewe
 ![Publish map refresh button](/img/cloud-native-workspace/maps/map_publish_map_last_published.png)
 
 Viewers will see always the version of the map that you last updated.
+
+### Publishing options
+
+When sharing your map with other people as viewers (ie: a public map or a map shared with the organization) you can control the final experience for the viewers using the following settings:
+
+- Export viewport data: when enabled, viewers will be able to export the data available in the viewport in CSV format. [Read more about exporting data](/carto-user-manual/maps/exporting-data/).
+- Address search bar: use this setting if you want to let viewers use the search bar in the top left to focus the map at a given address. [Read more about searching addresses](http://localhost:1313/carto-user-manual/maps/address-search-bar/).
+- Scroll wheel zoom: when enabled, viewers will be able to use their mouse wheel to zoom in or out.
+- Feature selection tool: when enabled, viewers will be able to filter the map using squares, circles, or drawing their own polygons. [Read more about the feature selection tool](http://localhost:1313/carto-user-manual/maps/feature-selection-tool/).
+- Show performance warnings: checking this option will make warnings regarding performance appear for viewers too, for example, when using large datasets or zooming too far away.
+
+Finally, press "save" to confirm your changes.
+
+![Published map options](/img/cloud-native-workspace/maps/map_sharing_options_published_settings.png)
 
 ### Embed API
 
