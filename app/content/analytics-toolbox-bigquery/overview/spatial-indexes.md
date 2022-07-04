@@ -23,7 +23,7 @@ CARTO's Analytics Toolbox provides access to the most popular spatial indexes li
     </figure>
 </div>
 
-Go to the [Reference](../../sql-reference/quadbin) for the full list of available functions and the [Examples](../../examples/spatial-indexes) to access sample code. If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor.
+Go to the [Reference](../../sql-reference/quadbin) for the full list of available functions and the [Examples](https://docs.carto.com/analytics-toolbox-bigquery/examples/) to access sample code. If you can't find what you need, please let us know by opening an issue in our [Github repository](https://github.com/CartoDB/carto-spatial-extension) or become a contributor.
 
 
 ### Quadbin
