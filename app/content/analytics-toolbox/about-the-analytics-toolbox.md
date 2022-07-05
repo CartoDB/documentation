@@ -22,8 +22,8 @@ Check the documentation for each data warehouse (listed below) for a complete SQ
 
 ```SQL
 WITH q AS (
-  SELECT `carto-un`.h3.COMPACT(
-  `carto-un`.h3.ST_ASH3_POLYFILL(geom,11)) as h3
+  SELECT `carto-os`.H3_COMPACT(
+  `carto-os`.H3_POLYFILL(geom,11)) as h3
   FROM `carto-do-public-data.carto.geography_usa_censustract_2019`
   WHERE geoid='36061009900'
 ) 
