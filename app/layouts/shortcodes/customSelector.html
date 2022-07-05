@@ -11,19 +11,20 @@
 <script>
   if (bigqueryNew() || bigqueryOld()) {
     domReady(() => {
-      initializeCustomSelector('id{{$id}}'); 
+      initializeCustomSelector('id{{$id}}');
     });
   }
 
   localStorageKey = 'carto-analytics-toolbox-plan';
   options = {
-    custom: 'custom',
+    manual: 'manual',
     os: 'carto-os',
     // st: 'carto-st',
     // sm: 'carto-sm',
     // me: 'carto-me',
     // la: 'carto-la',
-    un: 'carto-un'
+    un: 'carto-un',
+    eu: 'carto-eu'
   };
 
   function initializeCustomSelector (id) {
@@ -32,15 +33,17 @@
     if (selectors.length > 0) {
       const selector = selectors[0];
       if (selector.options && selector.options.length === 0) {
-        selector.options[selector.options.length] = new Option(options['un'], 'un');
+        if (bigqueryNew()) {
+          selector.options[selector.options.length] = new Option(options['manual'], 'manual');
+        }
         if (!isAdvanced) {
           // carto-os project does not contain advanced modules
           selector.options[selector.options.length] = new Option(options['os'], 'os');
         }
-        if (bigqueryNew()) {
-          selector.options[selector.options.length] = new Option(options['custom'], 'custom');
-        }
+        selector.options[selector.options.length] = new Option(options['un'], 'un');
+        selector.options[selector.options.length] = new Option(options['eu'], 'eu');
       }
+      selector.options[selector.options.length] = new Option('...', 'https://docs.carto.com/analytics-toolbox-bigquery/overview/tilesets/');
     }
     createCustomSelector(id);
     const defaultValue = bigqueryNew() ? 'un' : 'os'
@@ -57,7 +60,7 @@
     const selectors = document.getElementsByClassName(`custom-select-trigger`);
 
     Array.from(examples).forEach(example => {
-      if (value === 'custom') {
+      if (value === 'manual') {
         example.innerHTML = example.innerHTML.replace(
           /\s<span class="o">`<\/span><span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span><span class="o">`<\/span><span class="p">.<\/span><span class="n">carto<\/span><span class="p">.<\/span>/,
           ' <span class="n">carto</span><span class="p">.</span>'
@@ -110,9 +113,14 @@
     });
     $(`.custom-option.${id}`).on('click', function() {
       $(this).parents(`.custom-select.${id}`).removeClass('opened');
+      const text = $(this).text();
       const value = $(this).data('value');
-      localStorage.setItem(localStorageKey, value);
-      updateCustomSelector(value);
+      if (text === '...') {
+        location.href = value;
+      } else {
+        localStorage.setItem(localStorageKey, value);
+        updateCustomSelector(value);
+      }
     });
   }
 
