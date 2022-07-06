@@ -40,7 +40,7 @@ Public maps have some extra options: to share the link with the public, to get D
 
 If you have Single-Sign On (SSO) enabled at your organization, you will be able to share maps only with specific groups inside your organization, instead with all users belonging to it.
 
-![Map sharing with specific groups](/img/cloud-native-workspace/maps/map_sharing_options_groups.png)
+![Map sharing with specific groups](/img/cloud-native-workspace/maps/map_sharing_options_with_groups.png)
 
 
 To understand how groups are synchronized between CARTO and your SSO Identity Provider, please read our documentation on [Managing User Groups](/carto-user-manual/settings/managing-user-groups).

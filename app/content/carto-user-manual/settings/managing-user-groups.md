@@ -6,7 +6,7 @@ When a Single Sign-On (SSO) is configured to access CARTO, we can also synchroni
 Single Sign-On and Groups integrations are only available for Enterprise Medium plans and above. Please get in touch at hello@carto.com if you're interested in this feature.
 {{%/ bannerNote %}}
 
-![Settings groups list](/img/cloud-native-workspace/settings/settings_groups_list.png)
+![Settings groups list](/img/cloud-native-workspace/settings/settings_groups_listed.png)
 
 ##### How are groups synchronized with the SSO?
 
