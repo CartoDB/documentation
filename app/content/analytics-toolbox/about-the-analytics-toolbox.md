@@ -16,7 +16,7 @@ Technically speaking, the CARTO Analytics Toolbox is a set of SQL UDFs and Store
 
 The functions can be executed directly from the CARTO Workspace or in your cloud data warehouse console and APIs, using SQL commands.
 
-Here's an example of a query that returns the compact H3 cells for a given region, using Analytics Toolbox functions such as `h3.ST_ASH3_POLYFILL()` or `h3.COMPACT()` from our H3 module. 
+Here's an example of a query that returns the compact H3 cells for a given region, using Analytics Toolbox functions such as `H3_POLYFILL()` or `H3_COMPACT()` from our H3 module. 
 
 Check the documentation for each data warehouse (listed below) for a complete SQL reference, guides, and examples.
 
