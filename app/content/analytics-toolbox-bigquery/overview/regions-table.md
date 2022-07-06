@@ -1,5 +1,6 @@
 ## Regions 
 
+The Analytics Toolbox is available in different BigQuery projects depending on the cloud region. Choose the optimal one depending on the location of your data:
 
 |**Region**|**Analytics Toolbox - Project name**|
 |---|---|
@@ -36,3 +37,14 @@
 |Europe Central 2|carto-un-eu-ce2|
 
 
+#### Example
+
+Here is an example of how can you adapt a code snippet to use it in your own region:
+
+```sql
+/*Code snippet to use the Analytics Toolbox in the US multi-region*/
+SELECT `carto-un`.carto.H3_CENTER('847b59dffffffff');
+
+/*Code snippet adapted to use the Analytics Tolbox in US West 1 region*/
+SELECT `carto-un-us-we1`.carto.H3_CENTER('847b59dffffffff');
+```

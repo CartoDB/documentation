@@ -24,7 +24,8 @@ Access to the Analytics Toolbox for BigQuery is granted to all Google users that
 <img src="/img/bq-analytics-toolbox/create_connection_bq_oauth.png" alt="Creating a connection with BigQuery from the CARTO Workspace" style="width:100%">
 </div>
 
-Once you create a connection, your user will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery available in the `carto-un` and `carto-un-eu` projects, under the `carto` dataset, directly from the BigQuery console. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
+Once you create a connection, your user will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery directly from the BigQuery console. They will be available in a specific project depending on the region of your BigQuery account and always under the `carto` dataset. For example, in the US and EU multi-regions, the analytics toolbox functions are available in the `carto-un` and `carto-un-eu` projects respectively. Please check the [full list of projects](../regions-table) for the different cloud regions in order to choose the optimal one depending on the location of your data.
+
 
 #### Getting access for a Service Account
 
@@ -34,7 +35,8 @@ Access to the Analytics Toolbox for BigQuery is granted to every service account
 <img src="/img/bq-analytics-toolbox/create_connection_bq_sa.png" alt="Creating a connection with BigQuery from the CARTO Workspace" style="width:100%">
 </div>
 
-These service accounts will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery available in the `carto-un` and `carto-un-eu` projects, under the `carto` dataset. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
+These service accounts will have the necessary permissions to run all the functions and procedures of the Analytics Toolbox for BigQuery available in a specific project depending on the region of your BigQuery account and always under the `carto` dataset. For example, in the US and EU multi-regions, the analytics toolbox functions are available in the `carto-un` and `carto-un-eu` projects respectively. Please check the [full list of projects](../regions-table) for the different cloud regions in order to choose the optimal one depending on the location of your data.
+
 
 #### Running the Analytics Toolbox
 
