@@ -13,15 +13,17 @@ Check this table to find out which analyses are available for each data warehous
 
 |   |**BigQuery**|**CARTO DW**|**Redshift**|**Snowflake**
 |---|---|---|---|---|
-|**Intersect and Aggregate**|✅|✅|✅|Coming soon
-|**Create buffers**|✅|✅|Coming soon|✅  [(\*) _more info_](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/transformations/#st_buffer)
+|**Intersect and Aggregate**|✅|✅|✅|
+|**Create buffers**|✅|✅||✅ (\*)
 |**Add column from second source**|✅|✅|✅|✅
 |**Filter by column value**|✅|✅|✅|✅
 |**Calculate Centroids**|✅|✅|✅|✅
-|**Clustering K-Means**|✅ [(\*) _more info_](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans)|Coming soon|Coming soon|Coming soon
+|**Clustering K-Means**|✅ (\*)|✅ (\*)|✅
+|**Trade Areas**|||✅ (\*)|✅ (\*)
 
 _(*) Requires the CARTO Analytics Toolbox to be installed_
 
+---
 Each analysis will create a SQL query that performs the geospatial operation. These SQL queries will use [CTEs (Common Table Expressions)](https://en.wikipedia.org/wiki/Hierarchical_and_recursive_queries_in_SQL#Common_table_expression) to be able to chain different analyses and create a more complex sequence. 
 
 <!-- TO DO copy SQL query -->
@@ -115,3 +117,23 @@ This analysis uses the [`ST_CLUSTERKMEANS`](https://docs.carto.com/analytics-too
 
 This analysis can be performed safely with up to \~700K rows. Bigger sources can cause the resulting SQL query to hit some limits BigQuery.
 
+### Trade Areas
+
+This analysis leverages the `CREATE_ISOLINES` function in the CARTO Analytics Toolbox for [Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#create_isolines) and [Redshift](https://docs.carto.com/analytics-toolbox-redshift/sql-reference/lds/#create_isolines) to generate time or distance isolines based on different modes of transportation. 
+
+The input source for this analysis should contain point geometries that will be taken as the origin point for the isoline generation. 
+
+This SQL Analysis is only available for Snowflake and Redshift connections, and it requires a specific version of the CARTO Analytics Toolbox Advanced module to be installed:
+* Snowflake: `2022.06.09`
+* Redshift: `2022.06.07`
+
+The result from this analysis can only be saved as a new table.
+
+![](/img/cloud-native-workspace/maps/parameters_trade_areas.png)
+
+**Parameters**
+
+* **Mode:** Define the transportation mode that will be used for the isoline computation.
+* **Range Type:** Define the type of range that will be be used for the isoline computation:
+  * Distance: The resulting isoline will describe the area that can be covered by travelling a specific distance set in meters. 
+  * Time: The resulting isoline will describe the area that can be covered by travelling during a specific time set in seconds.
