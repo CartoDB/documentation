@@ -24,7 +24,7 @@
     // me: 'carto-me',
     // la: 'carto-la',
     un: 'carto-un',
-    eu: 'carto-un-eu'
+    'un-eu': 'carto-un-eu'
   };
 
   function initializeCustomSelector (id) {
@@ -41,7 +41,7 @@
           selector.options[selector.options.length] = new Option(options['os'], 'os');
         }
         selector.options[selector.options.length] = new Option(options['un'], 'un');
-        selector.options[selector.options.length] = new Option(options['eu'], 'un-eu');
+        selector.options[selector.options.length] = new Option(options['un-eu'], 'un-eu');
       }
       selector.options[selector.options.length] = new Option('...', 'https://docs.carto.com/analytics-toolbox-bigquery/overview/regions-table/');
     }
