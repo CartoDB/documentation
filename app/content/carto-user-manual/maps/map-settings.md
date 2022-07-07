@@ -196,15 +196,13 @@ You can also sort the data in ascending or descending order. To activate the sor
 
 ### Interactions
 
-This guide describes how to add interactions (tooltips) to your map in CARTO Builder.
+The _Interactions_ menu allows to configure different kinds of pop-ups that appear when you click or hover on a map feature. You can customize the content of the pop-up by renaming and formatting the properties, or changing the style (light, dark...) of the window. 
 
-The tooltip is a pop-up window that appears when you click on a map feature or when hover your mouse over it. You can customize the content of the tooltip by renaming and formatting the properties, or changing the style (light, dark...) of the window. In addition, you can change the position of the tooltip to display the information more clearly in a fixed panel. 
-
-In the Interactions tab of Builder, you will see the list of your current layers. The tooltips will be configured individually for each layer. By default, the tooltip is deactivated.
+In the Interactions tab of Builder, you will see the list of your current layers. The pop-ups will be configured individually for each layer. By default, they're deactivated.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_bydefault.png)
 
-If you activate the tooltip, you can select different configurations for Click and Hover. For both configurations, the default style is `None` and no pop-up will be applied .
+If you activate the pop-up, you can select different configurations for Click and Hover. For both configurations, the default style is `None` and no pop-up will be shown.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_stylebydefault.png)
 
@@ -212,7 +210,7 @@ Click on the dropdown to see all available styling options. The styles for the P
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_styling_options.png)
 
-To add a tooltip to the map, select a style and add the properties you want to be displayed in the tooltip by clicking on *Add a field*.
+To add a pop-up to the map, select a style and add the properties you want to be displayed by clicking on *Add a field*.
 
 In this example, we have selected the 'Click' configuration with a black style, using the `storetype` property.
 
@@ -222,16 +220,15 @@ To add all properties at once, click on *Add all* or *None* to add or remove all
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_options.png)
 
-Once you have configured the tooltip, click on any feature on the map and the tooltip will appear as a pop-up window.
+Once you have configured the content, click on any feature on the map and it will be displayed in a pop-up window.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_popup-window.png)
 
-Now, let´s change the location of the tooltip and display it on the right side of the map viewport by selecting the option 'Info panel' from the dropdown.
+Now, let´s display the information on a slider that appears from the right side of the screen by selecting the option 'Info panel' from the dropdown.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_select_infopanel.png)
 
-In this example, the tooltip has changed its previous configuration and now the selected feature 
-is identified by a marker and the information is displayed more clearly in a new info panel.
+In this example, the information is displayed more clearly in a new info panel, and a pin marks the location of the selected feature in the map.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_infopanel.png)
 
