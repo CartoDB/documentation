@@ -52,6 +52,13 @@ Most data warehouses support simple features through different data types, such 
 
 Simple features are widely spread and have been traditionally used by GIS software to store the shape and properties of phenomena that occur on the surface of the Earth.
 
+CARTO supports simple features stored as `geometry` or `geography` in cloud data warehouses. There are different methods to load a data source that contains simple features in a Builder map. These methods ensure the most performance when rendering data on a map, and they're selected automatically based on the type and size of the data source:
+
+* For small data sources, data can be fully loaded at once on the map.
+* For bigger data sources, and also those defined as arbitray SQL queries, data is loaded progressively via vector tiles. The data for these tiles is extracted by pushing down SQL queries to the data warehouse, and they're are requested as you zoom in and out or pan the map. 
+
+Find more information about the different methods mentioned above in [this section](../performance-considerations/).
+
 ### Add source from a connection
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from one of your connections and click on .
