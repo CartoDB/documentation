@@ -196,17 +196,53 @@ You can also sort the data in ascending or descending order. To activate the sor
 
 ### Interactions
 
-This guide describes how to add interactions to your map in CARTO Builder.
+The _Interactions_ menu allows to configure different kinds of pop-ups that appear when you click or hover on a map feature. You can customize the content of the pop-up by renaming and formatting the properties, or changing the style (light, dark...) of the window. 
 
-![Map interactions](/img/cloud-native-workspace/maps/map_interactions_by_default.png)
+In the Interactions tab of Builder, you will see the list of your current layers. The pop-ups will be configured individually for each layer. By default, they're deactivated.
 
-**Tooltip**
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_bydefault.png)
 
-The tooltip is an info window that appears when you hover your mouse over a map feature. You can customize the content of the tooltip by defining the source columns and the formatting. By default the tooltip is activated. 
+If you activate the pop-up, you can select different configurations for Click and Hover. For both configurations, the default style is `None` and no pop-up will be shown.
 
-![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_stylebydefault.png)
 
-The comparison mode helps you to compare numeric values between two different features on the map through the tooltips. The results can be compared in absolute or relative values. You can change it from the comparison type option.
+Click on the dropdown to see all available styling options. The styles for the Pop-up window are available in both configurations, but the Info Panel is only available for the ‘Click’ configuration.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_styling_options.png)
+
+To add a pop-up to the map, select a style and add the properties you want to be displayed by clicking on *Add a field*.
+
+In this example, we have selected the 'Click' configuration with a black style, using the `storetype` property.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_dark_store.png)
+
+To add all properties at once, click on *Add all* or *None* to add or remove all of them. Also, you can customise the name of the label to be displayed by clicking on the default name.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_options.png)
+
+Once you have configured the content, click on any feature on the map and it will be displayed in a pop-up window.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_popup-window.png)
+
+Now, let´s display the information on a slider that appears from the right side of the screen by selecting the option 'Info panel' from the dropdown.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_select_infopanel.png)
+
+In this example, the information is displayed more clearly in a new info panel, and a pin marks the location of the selected feature in the map.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_infopanel.png)
+
+We are going to add some additional properties and rename all of them with a more suitable label. Go to *Add a field* and select the properties `revenue` and `size_m2`. As shown in the image below, the new changes are updated directly in the Info Panel.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_infopanel_more_info.png)
+
+At any time, you can close the info panel by clicking on the “X” or you can revert to the default property values by clicking on the *reset overrides* button from the Iterations tab.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_close_infopanel.png)
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_reset_properties.png)
+
+<!-- The comparison mode helps you to compare numeric values between two different features on the map through the tooltips. The results can be compared in absolute or relative values. You can change it from the comparison type option.
 
 ![Map interactions](/img/cloud-native-workspace/maps/map_interactions_tooltip_comparison_type.png)
 
@@ -220,7 +256,7 @@ In this example, the tooltip on the right (Primary) remains fixed (until you cli
 
 It shows the coordinates where you click with the mouse. The coordinates will appear in the tooltip, so you need to activate the tooltip first.
 
-![Map interactions coordinates](/img/cloud-native-workspace/maps/map_interactions_coordinates.png)
+![Map interactions coordinates](/img/cloud-native-workspace/maps/map_interactions_coordinates.png) -->
 
 ### Legend
 

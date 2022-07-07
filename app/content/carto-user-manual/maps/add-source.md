@@ -4,9 +4,57 @@ When you open a map, the Layers tab will appear on the left side panel. There yo
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
 
+### Data source types
+
+#### Aggregated grids
+
+Based on Discrete Global Grid (DGG) systems, this kind of data source uses a spatial index (H3 or Quadbin) to reference each cell of the grid. 
+Think of a spatial index as an id that always makes reference to the same portion of the surface on Earth. 
+
+* this portion of the Earth is called a **cell**.
+* the **shape** of the cell depends on the **type of index**. For example, H3 uses hexagons; while Quadbin use squares.
+* the **size** of the cell depends on the **resolution**. The higher the resolution, the smaller the size of the cell.
+
+DGG systems are hierarchical, which means that every cell contains a constant number of smaller cells at a higher resolution: 
+
+![Source types H3](/img/cloud-native-workspace/maps/data_source_types_h3.png)
+
+The above is an example of how each H3 cell is sub-divided into smaller cells at higher resolutions.
+
+One of the advantages of working with spatial indexes is that operating with them in data warehouses is way more efficient and cost-effective than computing geometries. They are also smaller in size and help saving storage and reducing data transfer.
+
+When working with DGGs, Builder will dynamically aggregate your data into cells at a meaningful resolution depending on the current map's zoom level. See the animation below for an example:
+
+ <p align="center">
+  <img src="/img/cloud-native-workspace/maps/h3_aggregation.gif" />
+</p>
+
+This is what a table containing H3 indexes looks like, with some additional columns that contain aggregated socio-demographic data for each hexagon:
+|**h3**|**population**|**avg_rent**
+|---|---|---|
+|8a0c0036a49ffff|103.0|1344.56
+|8a0c002e4c0ffff|1093.0|2087.04
+|8a0c002e4caffff|209.0|3098.39
+
+The `h3` column contains the indexes for H3 cells at level 10. That's what we call the _native resolution of the data_. 
+
+However, if you load the table in a Builder map and zoom out to a low zoom level, it will be shown at a lower resolution, which means we would actually be visualizing **an aggregated version of our table**. This aggregation will be generated on the fly, using SQL queries that are pushed from CARTO into the data warehouse where the table lives.
+
+The above implies that **hexagons will be aggregated into their parents**: the bigger hexagons that contain them at a lower resolutions. 
+
+But data also **needs to be aggregated**, so Builder will always need you to pick an aggregation method for the data used in the map. This applies to all selectors where you can pick a property for cartography settings, pop-ups and widgets.
+
+#### Simple features
+
+Simple features are defined as a standard which specifies digital storage of geographical data (usually point, line or polygon) with both spatial and non-spatial attributes. 
+
+Most data warehouses support simple features through different data types, such as `geometry` or `geography`. 
+
+Simple features are widely spread and have been traditionally used by GIS software to store the shape and properties of phenomena that occur on the surface of the Earth.
+
 ### Add source from a connection
 
-From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from on of your connections. Insert the *Fully Qualified Table* or the *Tileset Name* and click *Add source*.
+From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from one of your connections and click on .
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_select_connection.png)
 
@@ -243,6 +291,7 @@ A new dialog will open informing you that the import may take a while to process
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. You can then add additional layers, or apply styling and analysis features.
 
 ![Map imported remote file](/img/cloud-native-workspace/maps/map_imported_remote_file.png)
+
 ### Add source from Data Observatory
 
 From the Layers tab, go to the Sources panel and click on *Add source from…*. Go to the "Data Observatory" tab. A new dialog screen will open allowing you to select your subscriptions or samples from one of your connections. Select a subscription or a sample and click on *Add source*.
