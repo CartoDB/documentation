@@ -10,11 +10,23 @@ You will see tthe differentstyling options that you can set for your map dependi
 
 ![Map layers settings](/img/cloud-native-workspace/maps/map_layer_settings.png)
 
+### Visibility by zoom level
+
+With this setting, you can control the zoom range where a layer should be visible. Simply set the lower zoom level where a layer would start appearing on the map; and the higher zoom level where the layer should disappear from the map. 
+
+This is specially useful for combining different types of sources: aggregated data for lower zoom levels and non-aggregated at the higher levels, administrative regions of different levels, etc. 
+
+![Map style zoom range slider](/img/cloud-native-workspace/maps/slider_visibility_by_zoom.png)
+
 ### Fill color
 
-When activated, geometry shapes are filled in with colors. By default, Builder assigns a **predefined fill color**. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
+When activated, features on the map are filled in with colors. By default, Builder assigns a color automatically. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
 
-![Map style fill color basic](/img/cloud-native-workspace/maps/map_fill_color_basic.png)
+![Map style fill color picker](/img/cloud-native-workspace/maps/fill_color_colorpicker.png)
+
+Our you could also pick one from the predefined set of colors available:
+
+![Map style fill color preset](/img/cloud-native-workspace/maps/fill_color_preset_colors.png)
 
 You can explore additional fill color features by clicking on the *three dots* icon:
 

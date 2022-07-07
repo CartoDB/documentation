@@ -291,6 +291,7 @@ A new dialog will open informing you that the import may take a while to process
 Once the data has been imported, the dataset is included in the Builder map tool as a new layer. You can then add additional layers, or apply styling and analysis features.
 
 ![Map imported remote file](/img/cloud-native-workspace/maps/map_imported_remote_file.png)
+
 ### Add source from Data Observatory
 
 From the Layers tab, go to the Sources panel and click on *Add source from…*. Go to the "Data Observatory" tab. A new dialog screen will open allowing you to select your subscriptions or samples from one of your connections. Select a subscription or a sample and click on *Add source*.
