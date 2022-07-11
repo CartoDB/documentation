@@ -1,5 +1,16 @@
 ## Release notes
 
+### v1.3 - July 11, 2022
+
+- New BarWidget
+- Support for GeocoderWidget with CARTO 3
+- Support for global mode in widgets
+- Support for sources using dynamic tiling
+- Support for sources using spatial indexes (H3 and Quadbins)
+- Support for SSO in CARTO 3 templates
+- Updated sample-app-3 template with new features
+- Minor improvements and bug fixes in the [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md#13) and the [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md#13).
+
 ### v1.2 - February 28, 2022
 
 - New widgets: feature selection and table
