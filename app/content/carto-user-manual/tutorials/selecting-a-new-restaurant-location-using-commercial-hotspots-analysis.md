@@ -54,33 +54,26 @@ In-depth content and more technical information regarding the exercise found at 
 6. We then extract our current store assets and display on the map. In this example, we will extract Pizza Hut stores from a sample dataset including points of interest in Honolulu (subset of [OpenStreetMaps's Planet Nodes dataset](https://carto.com/spatial-data-catalog/browser/dataset/osm_nodes_74461e34/)). Add a new custom query, as we did in the buffer example, and introduce the query below:
 
    ```sql
-    DECLARE honolulu_buffer GEOGRAPHY;
-    -- We use the ST_BUFFER to define a 5 km buffer centered in Honolulu
-    SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
+    -- We identify all store locations within a 5 km buffer centered in Honolulu
     SELECT
     tag.value AS brand, geometry,
     FROM
     `cartobq.docs.honolulu_planet_nodes` d,
     UNNEST(all_tags) as tag
-    WHERE ST_CONTAINS(honolulu_buffer, geometry)
+    WHERE ST_CONTAINS(ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000), geometry)
     AND ((tag.value in ("Pizza Hut") AND tag.key = 'brand'))
     ```
 
-    Rename the layer to "Own stores", and style the buffer according to the config seen below
+    Rename the layer to "Own restaurant locations in Honolulu", and style the buffer according to the config seen below
 
    ![Map import own stores](/img/cloud-native-workspace/tutorials/tutorial13_map_import_own_stores.png)
 
 7.  Next we will subdivide the area of study into H3 grid cells of resolution 10 using the query below:
 
     ```sql
-    DECLARE honolulu_buffer GEOGRAPHY;
-    -- We use the ST_BUFFER to define a 5 km buffer centered in Honolulu
-    SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
     CREATE TABLE `cartobq.docs.honolulu_pizza_aos` AS (
-        SELECT h3id
-        FROM UNNEST(`carto-un`.carto.H3_POLYFILL(honolulu_buffer, 10)) h3id
+        SELECT h3
+        FROM UNNEST(`carto-un`.carto.H3_POLYFILL(ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000), 10)) h3
     )
     ```
     We have already created the table for you, named `cartobq.docs.honolulu_pizza_aos`. You only need to add a new custom query, and run the query below:
@@ -103,7 +96,7 @@ In-depth content and more technical information regarding the exercise found at 
     SELECT * FROM cartobq.docs.honolulu_pizza_aos_enriched
     ```
 
-    Rename the layer "Demographics enrichment" and reorder the layer to place as the bottom layer. Hover over a hexagon to see that there is data on population of age groups.
+    Rename the layer "Demographics enriched area of study" and reorder the layer to place as the bottom layer. Hover over a hexagon to see that there is data on population of age groups.
 
     Hide the layer we have just created by clicking on the "eye" icon next to the 3 dots of each layer.
 
@@ -147,16 +140,13 @@ In-depth content and more technical information regarding the exercise found at 
 10. In addition to target population, we also want to consider the distance to the closest own store, in order to avoid cannibalization. To do this we calculate the distance of each hexagon to each store, and keep the minimum.
 
     ```sql
-    DECLARE honolulu_buffer GEOGRAPHY;
-    SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
     CREATE TABLE `cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist` AS
     (
     WITH t1 AS (
         SELECT `carto-un`.carto.H3_FROMGEOGPOINT(geometry, 10) as h3id,
         FROM `cartobq.docs.honolulu_planet_nodes` d,
         UNNEST(all_tags) as tag
-        WHERE ST_CONTAINS(honolulu_buffer, geometry)
+        WHERE ST_CONTAINS(ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000), geometry)
         AND ((tag.value in ("Pizza Hut") AND tag.key = 'brand'))
     ),
  
@@ -178,7 +168,7 @@ In-depth content and more technical information regarding the exercise found at 
     SELECT * FROM cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist
     ```
 
-    Rename the layer "Demographics and distance to closest store" and reorder the layer to place below "Own stores" and "Area of study". Hover over a hexagon to see that there is now one population value and distance value per hexagon (population between 15 and 34, and distance to closest own store).
+    Rename the layer "Demographics and distance to closest location" and reorder the layer to place below "Own restaurant locations" and "Area of study". Hover over a hexagon to see that there is now one population value and distance value per hexagon (population between 15 and 34, and distance to closest own store).
 
     Style the hexagons according to the config seen below, applying a gradient palette to represent with darker colour the areas with the lowest population. 
 
@@ -203,7 +193,7 @@ In-depth content and more technical information regarding the exercise found at 
     ```sql
     SELECT ST_UNION_AGG(`carto-un`.carto.H3_BOUNDARY(index)) FROM `cartobq.docs.honolulu_pizza_hotspots`
     ```
-    Rename the layer "Proposed locations" and reorder the layer to place below "Own stores" and "Area of study". 
+    Rename the layer "Proposed restaurant locations" and reorder the layer to place below "Own retsaurant locations" and "Area of study". 
 
     Style the boundary according to the config seen below.
 
@@ -216,15 +206,12 @@ In-depth content and more technical information regarding the exercise found at 
 11. We are going to extract competitors from the `cartobq.docs.honolulu_planet_nodes` table and compute the local outlier factor (using the [LOF](/analytics-toolbox-bigquery/sql-reference/statistics/#lof) function) to identify those that are very close to one another and those far from the others.
 
     ```sql
-    DECLARE honolulu_buffer GEOGRAPHY;
-    SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
     -- We get all amenities tagged as restaurants or fast_food POIS in Honolulu
     WITH fast_food AS (
         SELECT CAST(id AS STRING) AS id , tag.value, geometry as geom
         FROM `cartobq.docs.honolulu_planet_nodes` d,
         UNNEST(all_tags) as tag
-        WHERE ST_CONTAINS(honolulu_buffer, geometry)
+        WHERE ST_CONTAINS(ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000), geometry)
         AND ((tag.value in ('fast_food', 'restaurant') AND tag.key = 'amenity'))
     ),
  
@@ -239,7 +226,7 @@ In-depth content and more technical information regarding the exercise found at 
     ```sql
     SELECT * FROM `cartobq.docs.honolulu_competitors_lof`
     ```
-    Rename the layer "Competitor LOF analysis" and reorder the layer to place below "Own stores". 
+    Rename the layer "Competitor LOF analysis" and reorder the layer to place below "Own restaurant locations". 
 
     Style the boundary according to the config seen below.
 
@@ -250,15 +237,12 @@ In-depth content and more technical information regarding the exercise found at 
     We adapt the SQL query as such:
 
     ```sql
-    DECLARE honolulu_buffer GEOGRAPHY;
-    SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
     -- We get all amenities tagged as restaurants or fast_food POIS in Honolulu
     WITH fast_food AS (
         SELECT CAST(id AS STRING) AS id , tag.value, geometry as geom
         FROM `cartobq.docs.honolulu_planet_nodes` d,
         UNNEST(all_tags) as tag
-        WHERE ST_CONTAINS(honolulu_buffer, geometry)
+        WHERE ST_CONTAINS(ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000), geometry)
         AND ((tag.value in ('fast_food', 'restaurant') AND tag.key = 'amenity'))
     ),
  
@@ -291,7 +275,7 @@ In-depth content and more technical information regarding the exercise found at 
 
 15. Finally, we can visualize the result.
 
-    <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/bf3846cc-aa71-42f2-88da-fe98233072d1"></iframe>
+   <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/bf3846cc-aa71-42f2-88da-fe98233072d1"></iframe>
 
 
 

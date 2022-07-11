@@ -21,9 +21,9 @@ DGG systems are hierarchical, which means that every cell contains a constant nu
 
 The above is an example of how each H3 cell is sub-divided into smaller cells at higher resolutions.
 
-One of the advantages of working with spatial indexes is that operating with them in data warehouses is way more efficient and cost-effective than computing geometries. They are also smaller in size and help saving storage and reducing data transfer.
+One of the advantages of working with spatial indexes is that operating with them in data warehouses is way more efficient and cost-effective than computing geometries. They are also smaller in size and help saving storage and reducing the volume of transfered data.
 
-When working with DGGs, Builder will dynamically aggregate your data into cells at a meaningful resolution depending on the current map's zoom level. See the animation below for an example:
+When working with DGGs, Builder will dynamically aggregate your data into cells at a meaningful resolution depending on the current map zoom level. See the animation below for an example:
 
  <p align="center">
   <img src="/img/cloud-native-workspace/maps/h3_aggregation.gif" />
@@ -44,6 +44,15 @@ The above implies that **hexagons will be aggregated into their parents**: the b
 
 But data also **needs to be aggregated**, so Builder will always need you to pick an aggregation method for the data used in the map. This applies to all selectors where you can pick a property for cartography settings, pop-ups and widgets.
 
+{{% bannerNote title="NOTE" type="note"%}}
+When loading a table that contains a spatial index, there is a column name convention that should followed to ensure that CARTO can fully support it. 
+* For `H3` ids, the column should be named `h3`
+* For `Quadbin` ids, the column should be named `quadbin`
+{{%/ bannerNote %}}
+
+
+There are some performance and processing cost optimizations that should be applied to this kind of table. Find them in [this section](../performance-considerations/#tips-for-spatial-index-tables).
+
 #### Simple features
 
 Simple features are defined as a standard which specifies digital storage of geographical data (usually point, line or polygon) with both spatial and non-spatial attributes. 
@@ -58,6 +67,13 @@ CARTO supports simple features stored as `geometry` or `geography` in cloud data
 * For bigger data sources, and also those defined as arbitray SQL queries, data is loaded progressively via vector tiles. The data for these tiles is extracted by pushing down SQL queries to the data warehouse, and they're are requested as you zoom in and out or pan the map. 
 
 Find more information about the different methods mentioned above in [this section](../performance-considerations/).
+
+{{% bannerNote title="NOTE" type="note"%}}
+When loading a table that contains simple features, there is a column name convention that should followed to ensure that CARTO can fully support it. 
+
+CARTO expects to find a column named `geom` that will be used to render the features in the map.
+{{%/ bannerNote %}}
+
 
 ### Add source from a connection
 
