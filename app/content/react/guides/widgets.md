@@ -175,12 +175,13 @@ Creates a widget for switching layers on/off and showing legends. The legend rep
 
 Accepts the following optional property:
 
-| Property            | Description          |
-| ------------------- | -------------------- |
-| `className`         | Material-UI withStyle class for styling |
-| `customLegendTypes` | Object with custom legend types and the components to be used with these types. |
-| `initialCollapsed`  | Indicates whether the widget is initially collapsed or not. |
-| `layerOrder`        | Array of layer identifiers. Defines the order of layers in the legend. |
+| Property             | Description          |
+| -------------------- | -------------------- |
+| `className`          | Material-UI withStyle class for styling |
+| `customLegendTypes`  | Object with custom legend types and the components to be used with these types. |
+| `customLayerOptions` | Object with custom layer options and the components to be used with these options. |  
+| `initialCollapsed`   | Indicates whether the widget is initially collapsed or not. |
+| `layerOrder`         | Array of layer identifiers. Defines the order of layers in the legend. |
 
 ### Pie widget
 

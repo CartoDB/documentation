@@ -398,6 +398,7 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 | props                     | `Object`            |               |                                                     |
 | [props.className]         | `string`            |               | (optional) Material-UI withStyle class for styling. |
 | [props.customLegendTypes] | `Object.<string, function>` |       | (optional) Object with custom legend types and the components to be used with these types. |
+| [props.customLayerOptions] | `Object.<string, function>` |      | (optional) Object with custom layer options and the components to be used with these options. |  
 | [props.initialCollapsed]  | `bool`              | `false`       | (optional) Indicates whether the widget is initially collapsed or not. |
 | [props.layerOrder]        | `Array<string>`     | `[]`          | Array of layer identifiers. Defines the order of layers in the legend. |
 {{%/ tableWrapper %}}
