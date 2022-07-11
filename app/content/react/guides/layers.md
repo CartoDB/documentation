@@ -12,7 +12,7 @@ If you use the code generator for adding your layers (see [below](#creating-a-la
 
 If you are working with the ([CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer)), you need to associate it with a data source. The source provides `data`, `type`, `connection`, and, optionally, `credentials` properties that are used by CARTO for deck.gl to retrieve the vector tiles.
 
-If you want to sync the layer with one or more widgets, you can only use CARTO for deck.gl layers because filters are applied through the source.
+In order to to link the layer with one or more widgets, the [`useCartoLayerProps`](#usecartolayerprops) hook adds a callback to process the data used for visualization when it arrives (when using viewport mode). This only works with the `CartoLayer` and layers compatible with this hook, like the `GeoJsonLayer`.
 
 Sources are usually created with the code generator. If you use `stores` as the name for your source, the code generator will create a new file named `storesSource.js` in the `src/data` folder with the following content:
 
@@ -137,6 +137,15 @@ This is one of the benefits of reactive programming: we can add the layer from a
 
 If you use the code generator, the code will create a `CartoLayer` with default styling properties. To learn more about customizing the style properties for your layers, please read the [Customizing the CartoLayer style](/deck-gl/customizing-the-cartolayer-style) guide in the CARTO for deck.gl documentation.
 
+### Spatial Indexes
+
+In addition to traditional geometries defined by pairs of coordinates, the `CartoLayer` also supports data sources using spatial indexes from discrete global grid systems, like H3 or Quadbins. If you create the layer using the code generator, the `CartoLayer` expects to find a column name `geom` in the data source containing traditional geometries. If your data source contains spatial indexes instead of traditional geometries, you need to add two properties to the `CartoLayer` in the generated code: 
+
+- `geoColumn`. The table/query must contain a column called with the spatial index for each feature. You need to set this property to `'h3'` whe using H3 or `'quadbin`' when using Quadbins.
+
+- `aggregationExp`. When we are visualizing a data source that is using spatial indexes, the data is aggregated at different resolutions depending on the zoom level. We need to set this property to define how we are going to aggregate the attributes.
+
+You can find more information about these properties in the [deck.gl reference](/deck-gl/reference#cartolayer).
 ### useCartoLayerProps
 
 The first parameter passed to the layer constructor when using the code generator is `...cartoLayerProps`. This is a set of default properties that are used mainly for setting the source properties, and filtering and highlighting features. You can get more details about the `useCartoLayerProps` hook in the [library reference](../../library-reference/api/#usecartolayerprops). 
