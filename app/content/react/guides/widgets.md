@@ -155,12 +155,15 @@ Groups features into buckets after executing an aggregation operation on a colum
 
 Requires/accepts the following additional properties:
 
-| Property     | Description          |
-| ------------ | -------------------- |
-| `column`     | Name of the data source’s column to get the data from |
-| `operation`  | Aggregation operation to apply on the `column` values |
-| `formatter`  | Formatter for the aggregated value |
-| `ticks`      | Breaks to define the buckets |
+| Property          | Description          |
+| ----------------- | -------------------- |
+| `column`          | Name of the data source’s column to get the data from |
+| `operation`       | Aggregation operation to apply on the `column` values |
+| `formatter`       | Formatter for the aggregated value |
+| `min`             | Set this property to use this value as the minimum value instead of calculating it from the dataset. |
+| `max`             | Set this property to use this value as the maximum value instead of calculating it from the dataset. |
+| `bins`            | Number of bins to use. Incompatible with the `ticks` prop. |
+| `ticks`           | Breaks to define the buckets |
 | `xAxisFormatter`  | Formatter for X axis values |
 
 
@@ -172,9 +175,12 @@ Creates a widget for switching layers on/off and showing legends. The legend rep
 
 Accepts the following optional property:
 
-| Property    | Description          |
-| ----------- | -------------------- |
-| `className` | Material-UI withStyle class for styling |
+| Property            | Description          |
+| ------------------- | -------------------- |
+| `className`         | Material-UI withStyle class for styling |
+| `customLegendTypes` | Object with custom legend types and the components to be used with these types. |
+| `initialCollapsed`  | Indicates whether the widget is initially collapsed or not. |
+| `layerOrder`        | Array of layer identifiers. Defines the order of layers in the legend. |
 
 ### Pie widget
 
@@ -226,6 +232,7 @@ Requires/accepts the following additional properties:
 | `onPageSizeChange` | Callback function to be called when the page size changes |
 | `height`           | Table height (CSS) |
 | `dense`            | Indicates whether to use a dense layout (less margin/padding) |
+| `pageSize`         | Used to set the page size |
 
 ### TimeSeries widget
 
