@@ -126,7 +126,7 @@ At this moment, we only provide a complete solution with templates and widgets f
 
 **When should I use the CARTO 3 platform vs the CARTO 2 platform?**
 
-CARTO 3 is the next version of the CARTO Platform and is still in beta. The main difference is that it provides full cloud native support to Datawarehouses, pushing down queries. If you are starting a new application we recommend that you use the latest version of CARTO by [requesting access](https://carto.com/carto3). Or [contact us](support@carto.com) if you have questions. 
+CARTO 3 is the next version of the CARTO Platform. The main difference is that it provides full native support for cloud data warehouses and platforms, pushing down queries. If you are starting a new application, we recommend you to use the latest version of CARTO by [requesting access](https://carto.com/carto3). Or [contact us](support@carto.com) if you have questions. 
 
 **Can I use the library with my own Create React App template?**
 Yes, the library can be used independently. You will need to ensure you have added the required dependencies and you won't be able to use the code generator, but you can take advantage of the functionality offered by the library: user interface components, widgets, state management, interaction with the CARTO platform...
