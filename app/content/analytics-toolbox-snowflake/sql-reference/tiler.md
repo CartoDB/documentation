@@ -141,7 +141,7 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 |`spatial_index_column`| A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadbin` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADBIN (for spatial index type `quadbin`) or H3 (for spatial index type `h3`).|
 |`resolution`| A `NUMBER` defining the resolution of the tiles in the input table.|
 |`aggregation_resolution`| Defaults: `6` for QUADBIN tilesets, `4` for H3 tilesets. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
-|`properties`| A JSON object containing the aggregated properties to add to each tile in the output table. It cannot be empty, since at least one property is needed for aggregating the original values|
+|`properties`| A JSON object containing the aggregated properties to add to each tile in the output table. It cannot be empty, since at least one property is needed for aggregating the original values. Properties are case sensitive.|
 |`extra_metadata`| Default: `{}`. A JSON object to specify the custom metadata of the tileset.|
 |`per_level_metadata`| Default: `false`. A `BOOLEAN` indicating whether or not to compute metadata tilestats separately for each computed level, or just for the full output table.|
 
@@ -154,21 +154,55 @@ Any option left as `NULL` will take its default value if available.
 {{%/ customSelector %}}
 
 ```sql
-CALL carto.CREATE_SPATIAL_INDEX_TILESET`(
-  'your-database.your-schema.quadbin_test_dataset_level15',
-  'your-database.your-schema.spatial_index_tileset_test_output',
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  'YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_QUADBIN_LEVEL14',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_QUADBIN_LEVEL14',
   '{
-    "resolution_min": 4,
+    "spatial_index_column": "quadbin:INDEX",
+    "resolution": 14,
+    "resolution_min": 0,
     "resolution_max": 8,
-    "spatial_index_column": 'quadbin:geoid',
-    "resolution": 15,
-    "aggregation_resolution": 4,
+    "aggregation_resolution": 6,
     "properties": {
-      "pop": {
-        "formula":"sum(population)",
-        "type":"Number"
+      "POPULATION": {
+        "formula": "SUM(POPULATION)",
+        "type": "Number"
       }
     }
   }'
 );
+```
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  '(SELECT * FROM YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_H3_LEVEL10)',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_H3_LEVEL10',
+  '{
+    "spatial_index_column": "h3:INDEX",
+    "resolution": 10,
+    "resolution_min": 0,
+    "resolution_max": 6,
+    "aggregation_resolution": 4,
+    "properties": {
+      "POPULATION": {
+        "formula": "SUM(POPULATION)",
+        "type": "Number"
+      }
+    }
+  }'
+);
+```
+
+Snowflake treats columns uppercase by default, to set explicit lowercase use the following syntax:
+
+```
+'{
+  "spatial_index_column": "quadbin:\\"index\\"",
+  "properties": {
+    "population": {
+      "formula": "SUM(\\"population\\")",
+      "type": "Number"
+    }
+  }
+}'
 ```

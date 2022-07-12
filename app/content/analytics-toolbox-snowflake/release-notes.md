@@ -11,6 +11,31 @@ aliases:
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### July 12, 2022
+
+#### Module tiler
+
+Fixed
+- Fix quoting and letter case in spatial index tiler.
+
+### July 8, 2022
+
+#### Module tiler
+
+Fixed
+- Fix wrong uppercase in spatial index tiler.
+
+Changed
+- Use core functions to convert H3 from int to string.
+
+### July 7, 2022
+
+#### Module h3
+
+Fixed
+- Correctly handle large polygons in H3_POLYFILL.
+- Fixed wrong uppercase for quadbin and h3 tile ids
+
 ### June 24, 2022
 
 #### Module quadbin

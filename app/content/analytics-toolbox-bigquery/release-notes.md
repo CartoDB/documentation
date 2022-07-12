@@ -4,6 +4,33 @@ aliases:
 ---
 ## Release notes
 
+### July 8, 2022
+
+#### Module tiler
+
+Changed
+- Use core functions to convert H3 from int to string.
+
+### July 7, 2022
+
+#### Module h3
+
+Fixed
+- Correctly handle large polygons in H3_POLYFILL.
+- Fixed wrong uppercase for quadbin and h3 tile ids
+
+#### Module tiler
+
+Fixed
+- Fixed tablename quoting in BigQuery tiler
+
+### July 6, 2022
+
+#### Module retail
+
+Fixed
+- Fix quadkey support in FIND_WHITESPACE_AREAS
+
 ### June 29, 2022
 
 #### Module retail

@@ -21,6 +21,13 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### July 1, 2022
+
+#### Module tiler
+
+Changed
+- Support h3int from CREATE_SPATIAL_INDEX_TILESET.
+
 ### June 27, 2022
 
 #### Module tiler
@@ -48,14 +55,6 @@ Feature
 - Add QUADBIN_TOCHILDREN function.
 - Add QUADBIN_TOPARENT function.
 - Add QUADBIN_TOZXY function.
-
-### June 23, 2022
-
-#### Module quadkey
-
-Fixed
-- Fix wrong distances in QUADINT_KRING_DISTANCES.
-- Allow any input SRID in ST_ASQUADINT_POLYFILL
 
 ### June 20, 2022
 

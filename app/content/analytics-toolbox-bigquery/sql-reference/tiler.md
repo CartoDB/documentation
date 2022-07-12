@@ -228,7 +228,7 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 | Option | Description |
 | :----- | :------ |
 |`resolution_min`| Default: `2`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
-|`resolution_max`| Default: `15`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`resolution_max`| Default: `15`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level over this level won't be generated.|
 |`spatial_index_column`| A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadbin` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADBIN (for spatial index type `quadbin`) or H3 (for spatial index type `h3`).|
 |`resolution`| A `NUMBER` defining the resolution of the tiles in the input table.|
 |`aggregation_resolution`| Defaults: `6` for QUADBIN tilesets, `4` for H3 tilesets. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
@@ -260,7 +260,6 @@ CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET`(
           "type":"Number"
       }
   }
-}
   '''
 );
 ```
@@ -290,7 +289,7 @@ Creates a simple tileset. It differs from `carto.CREATE_SIMPLE_TILESET` in that 
 |`description`| Default: `""`. A `STRING` that contains a description for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`legend`| Default: `""`. A `STRING` that contains a legend for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`zoom_min`| Default: `0` for `POINTS` datasets and `2` for `POLYGON/LINESTRING` datasets. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
-|`zoom_max`| Default: `15`. A `NUMBER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`zoom_max`| Default: `15`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
 |`geom_column_name`| Default: `"geom"`. A `STRING` that contains the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then `zoom_min` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then `zoom_max` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
