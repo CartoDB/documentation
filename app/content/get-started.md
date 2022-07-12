@@ -347,13 +347,30 @@ In this guide we will show you how easy it is to create a great looking spatial 
 
 {{% tutorialStep stepName="Kickstart your app"%}}
 
-CARTO for React provides templates for Create React App. To create a new app in a folder called `my-app` using the template for CARTO 3 (our fully cloud native platform), you need to execute the following command in your terminal (requires Node.js):
+CARTO for React provides templates for Create React App. The basic pre-requisite is to have [Node.js](https://nodejs.org/) installed in your computer, preferably using a version manager like [nvm](https://github.com/nvm-sh/nvm). You also need a package manager; by default Node.js comes with [npm](https://www.npmjs.com/) but you can also use other package managers like [yarn](https://yarnpkg.com/). To create a new app in a folder called `my-app` using the template for CARTO 3, you need to execute the following command in your terminal:
+
+If you want to use npm:
 
 ```shell
 ~ npx create-react-app my-app --template @carto/base-3
 ```
 
-Then you can start a development server by changing the current directory and executing the following command (requires the yarn package manager):
+If you want to use yarn:
+
+```shell
+~ yarn create react-app my-app --template @carto/base-3
+```
+
+Then you can start a development server by changing the current directory and executing the following command:
+
+For npm:
+
+```shell
+~ cd my-app
+~ npm start
+```
+
+For yarn:
 
 ```shell
 ~ cd my-app

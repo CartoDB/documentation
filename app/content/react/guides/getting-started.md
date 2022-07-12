@@ -6,12 +6,12 @@ This guide shows how you to create a private application with layers and widgets
 
 ### Creating an application
 
-CARTO for React applications are created using [Create React App](https://create-react-app.dev/) with one of the CARTO for React templates. The basic prerequisite for using Create React App is to have a package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)) previously installed.
+CARTO for React applications are created using [Create React App](https://create-react-app.dev/) with one of the CARTO for React templates. The basic prerequisite for using Create React App is to have [Node.js](https://nodejs.org) with a package manager ([npm](https://www.npmjs.com/get-npm) or [yarn](https://yarnpkg.com/)) previously installed. In this guide we are going to use yarn.
 
 We are going to create a new application in the `my-app` folder using the `@carto/base-3` template:
 
 ```bash
-npx create-react-app my-app --template @carto/base-3
+yarn create react-app my-app --template @carto/base-3
 ```
 
 ### Understanding the folder structure
