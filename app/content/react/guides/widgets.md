@@ -92,7 +92,7 @@ A particular use case that often arises when dealing with socio-demographics dat
 
 Groups features into categories (column) and executes an operation on another column (`operationColumn`) for each group. The categories are then visualized using vertical bars.
 
-![Category Widget](/img/react/category-widget.png)
+![Bar Widget](/img/react/bar-widget.png)
 
 ### Category widget
 
@@ -112,7 +112,7 @@ When the results are returned, the widget performs an automatic zoom to the best
 
 Provides functionality to filter spatially the features by drawing a shape on the map.
 
-![Feature Selection Widget](/img/react/geocoder-widget.png)
+![Feature Selection Widget](/img/react/feature-selection-widget.png)
 
 ### Formula widget
 
@@ -148,7 +148,7 @@ Represents two properties/columns in a cartesian chart from a data source to hel
 
 Displays the column values for the current features visualized in the map in a tabular way. 
 
-![Table Widget](/img/react/time-series-widget.png)
+![Table Widget](/img/react/table-widget.png)
 
 ### TimeSeries widget
 
