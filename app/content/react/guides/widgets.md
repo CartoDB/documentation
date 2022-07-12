@@ -58,17 +58,35 @@ Since deck.gl v8.8, included by default in CARTO for React 1.3, the `CartoLayer`
 
 There are some properties that are used by all the data-driven widgets. You can check the full API reference for each widget [here](../../library-reference/widgets):
 
-| Property           | Description          |
-| ------------------ | -------------------- |
-| `id`               | ID for the widget instance |
-| `title`            | Title to show in the widget header |
-| `dataSource`       | ID of the data source to get the data from |
-| `global`           | Indicates whether the widget is using the global mode |
-| `animation`        | Indicates whether the widget update is animated or jumps directly to the new state |
-| `wrapperProps`     | Props to pass to the WrapperWidgetUI |
-| `noDataAlertProps` | Message (title and body) to show when there is no data available for the widget |
+| Property                     | Description          |
+| ---------------------------- | -------------------- |
+| `id`                         | ID for the widget instance |
+| `title`                      | Title to show in the widget header |
+| `dataSource`                 | ID of the data source to get the data from |
+| `global`                     | Indicates whether the widget is using the global mode |
+| `animation`                  | Indicates whether the widget update is animated or jumps directly to the new state |
+| `wrapperProps`               | Props to pass to the WrapperWidgetUI |
+| `noDataAlertProps`           | Message (title and body) to show when there is no data available for the widget |
 | `droppingFeaturesAlertProps` | Extra props to pass to the `NoDataAlert` component when features have been dropped in the data source |
-| `onError`          | Event emitted when an error is thrown while the widget is doing calculations |
+| `onError`                    | Event emitted when an error is thrown while the widget is doing calculations |
+
+### Usage recommendations for data-driven widgets
+
+Every data-driven widget provides different functionality so you should consider carefully which widget you want to use depending on the goals you have:
+
+- If you just want to show the number of features in the current viewport/dataset or you want to make a simple aggregation on a numeric column like calculating the sum or the average, you can use the `FormulaWidget`.
+  
+- If you are dealing with data that you need to group by category (string values) like store types before making a calculation, you should use a widget that supports columns with categorical values (`BarWidget`, `CategoryWidget`, `PieWidget`).
+
+- If you are interested in understanding the distribution of numeric column values like store revenues, you should use the `HistogramWidget`.
+
+- If you have a column with timestamp values in your dataset and you want to understand trends or evolution through time, you can use the `TimeSeriesWidget`.
+
+- If you want to understand the correlation between two numeric columns of the same dataset, you should use the `ScatterPlotWidget`.
+
+- If you want to display the data in a tabular view and be able to order it by column values, you can use the `TableWidget`.
+
+A particular use case that often arises when dealing with socio-demographics data is how to analyze data by age (i.e. population, employment status...). If we are just interested in the distribution, we should use the `HistogramWidget`, but if we want to define our own ranges/groups, what we are doing is to create categories (those ranges), so we should use a widget that supports categorical data. The main difference is that bars in a `HistogramWidget` cannot be re-ordered, the X axis has numerical values so you need to keep the order; but with widgets supporting categorical data, it might make sense to reorder to show first the category with more elements or to order alphabetically the categorical values.
 
 ### Bar widget
 
@@ -76,31 +94,11 @@ Groups features into categories (column) and executes an operation on another co
 
 ![Category Widget](/img/react/category-widget.png)
 
-Requires/accepts the following additional properties:
-
-| Property     | Description          |
-| ------------ | -------------------- |
-| `column`     | Name of the data source’s column to get the data from |
-| `operation`  | Aggregation operation to apply on the `operationColumn` values |
-| `operationColumn`  | Column to use in the aggregation operation |
-| `formatter`  | Formatter for the aggregated value |
-| `labels`     | Labels to show for each category |
-
 ### Category widget
 
 Groups features into categories (column) and executes an operation on another column (`operationColumn`) for each group. The categories are then visualized using horizontal bars. Displays 5 categories at the same time.
 
 ![Category Widget](/img/react/category-widget.png)
-
-Requires/accepts the following additional properties:
-
-| Property     | Description          |
-| ------------ | -------------------- |
-| `column`     | Name of the data source’s column to get the data from |
-| `operation`  | Aggregation operation to apply on the `operationColumn` values |
-| `operationColumn`  | Column to use in the aggregation operation |
-| `formatter`  | Formatter for the aggregated value |
-| `labels`     | Labels to show for each category |
 
 ### Geocoder widget 
 
@@ -110,28 +108,11 @@ Provides geocoding functionality through a search bar, requiring credentials/tok
 
 When the results are returned, the widget performs an automatic zoom to the best result (no autocomplete) and adds a marker.
 
-Requires/accepts the following additional properties:
-
-| Property     | Description          |
-| ------------ | -------------------- |
-| `className`  | Name of the CSS class to customize the widget style |
-
 ### Feature Selection widget 
 
 Provides functionality to filter spatially the features by drawing a shape on the map.
 
 ![Feature Selection Widget](/img/react/geocoder-widget.png)
-
-Requires/accepts the following additional properties:
-
-| Property     | Description          |
-| ------------ | -------------------- |
-| `className`  | Name of the CSS class to customize the widget style |
-| `selectionModes`  | Available selection modes |
-| `editModes`  | Available edit modes |
-| `defaultEnabled`  | Indicates whether the widget is enabled by default |
-| `defaultSelectedMode`  | Selection default mode |
-| `tooltipPlacement` | Sets the position where the tooltip is placed |
 
 ### Formula widget
 
@@ -139,33 +120,11 @@ Calculates a value executing an aggregation operation on a data source column.
 
 ![Formula Widget](/img/react/formula-widget.png)
 
-Requires/accepts the following additional properties:
-
-| Property     | Description          |
-| ------------ | -------------------- |
-| `column`     | Name of the data source’s column to get the data from |
-| `operation`  | Aggregation operation to apply on the `column` values |
-| `formatter`  | Formatter for the aggregated value |
-
 ### Histogram widget
 
 Groups features into buckets after executing an aggregation operation on a column.
 
 ![Histogram Widget](/img/react/histogram-widget.png)
-
-Requires/accepts the following additional properties:
-
-| Property          | Description          |
-| ----------------- | -------------------- |
-| `column`          | Name of the data source’s column to get the data from |
-| `operation`       | Aggregation operation to apply on the `column` values |
-| `formatter`       | Formatter for the aggregated value |
-| `min`             | Set this property to use this value as the minimum value instead of calculating it from the dataset. |
-| `max`             | Set this property to use this value as the maximum value instead of calculating it from the dataset. |
-| `bins`            | Number of bins to use. Incompatible with the `ticks` prop. |
-| `ticks`           | Breaks to define the buckets |
-| `xAxisFormatter`  | Formatter for X axis values |
-
 
 ### Legend widget
 
@@ -173,34 +132,11 @@ Creates a widget for switching layers on/off and showing legends. The legend rep
 
 ![Legend Widget](/img/react/legend-widget.png)
 
-Accepts the following optional property:
-
-| Property             | Description          |
-| -------------------- | -------------------- |
-| `className`          | Material-UI withStyle class for styling |
-| `customLegendTypes`  | Object with custom legend types and the components to be used with these types. |
-| `customLayerOptions` | Object with custom layer options and the components to be used with these options. |  
-| `initialCollapsed`   | Indicates whether the widget is initially collapsed or not. |
-| `layerOrder`         | Array of layer identifiers. Defines the order of layers in the legend. |
-
 ### Pie widget
 
 Groups features into categories (column) and executes an operation on another column (`operationColumn`) for each group.
 
 ![Pie Widget](/img/react/pie-widget.png)
-
-Requires/accepts the following additional properties:
-
-| Property     | Description          |
-| ------------ | -------------------- |
-| `column`     | Name of the data source’s column to get the data from |
-| `operation`  | Aggregation operation to apply on the `operationColumn` values |
-| `operationColumn`  | Column to use in the aggregation operation |
-| `formatter`  | Formatter for the aggregated value |
-| `height`     | Chart height (CSS) |
-| `tooltipFormatter`  | Formatter for the tooltip |
-| `colors`     | Array of colors to show for each category.  |
-| `labels`     | Labels to show for each category |
 
 ### ScatterPlot widget
 
@@ -208,60 +144,14 @@ Represents two properties/columns in a cartesian chart from a data source to hel
 
 ![ScatterPlot Widget](/img/react/scatterplot-widget.png)
 
-Requires/accepts the following additional properties:
-
-| Property           | Description          |
-| ------------------ | -------------------- |
-| `xAxisColumn`      | Name of the data source's column to get the data for the X axis from. |
-| `yAxisColumn`      | Name of the data source's column to get the data for the Y axis from. |
-| `xAxisFormatter`   | Function to format X axis values.  |
-| `yAxisFormatter`   | Function to format X axis values. |
-| `tooltipFormatter` | Function to format the tooltip values. |
-
 ### Table widget
 
 Displays the column values for the current features visualized in the map in a tabular way. 
 
 ![Table Widget](/img/react/time-series-widget.png)
 
-Requires/accepts the following additional properties:
-
-| Property           | Description          |
-| ------------------ | -------------------- |
-| `columns`          | Array of column names to show in the table. |
-| `initialPageSize`  | Initial page size for pagination |
-| `onPageSizeChange` | Callback function to be called when the page size changes |
-| `height`           | Table height (CSS) |
-| `dense`            | Indicates whether to use a dense layout (less margin/padding) |
-| `pageSize`         | Used to set the page size |
-
 ### TimeSeries widget
 
 Groups features into time intervals and allows to play an animation that filters the features displayed based on the current interval. 
 
 ![TimeSeries Widget](/img/react/time-series-widget.png)
-
-Requires/accepts the following additional properties:
-
-| Property           | Description          |
-| ------------------ | -------------------- |
-| `column`           | Column containing the timestamp/date values |
-| `operation`        | Aggregation operation to apply on the `operationColumn` values. Default: COUNT |
-| `operationColumn`  | Column to use in the aggregation operation |
-| `formatter`        | Formatter for the aggregated value |
-| `height`           | Chart height (CSS) |
-| `tooltipFormatter` | Formatter for the tooltip |
-| `stepSize`         | Time interval size |
-| `stepSizeOptions`  | Available time interval sizes |
-| `chartType`        | Selected chart type: line chart (default) or bar chart |
-| `tooltip`          | Whether to show or not the tooltip |
-| `timeWindow`       | Interval for the currently selected time window |
-| `showControls`     | Whether to show or not the controls (play, pause, stop, speed selection...) |
-| `isPlaying`        | Whether to set the widget to play mode |
-| `isPaused`         | Whether to set the widget to pause mode |
-| `onPlay`           | Event emitted when the animation starts to play |
-| `onPause`          | Event emitted when the animation is paused |
-| `onStop`           | Event emitted when the animation is stopped |
-| `onTimelineUpdate` | Event emitted when the animation moves to the next time interval |
-| `onTimeWindowUpdate` | Event emitted when the time window moves to the next time interval |
-
