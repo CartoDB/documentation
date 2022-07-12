@@ -78,10 +78,18 @@ CARTO for React includes the following Create React App templates for kickstarti
 
 - The sample app templates for CARTO 2 and CARTO 3 that create a more complex application with several views, layers, and widgets. The purpose of these templates is to demonstrate how you can implement common Location Intelligence functionalities in a CARTO for React app.
 
-The command to create a new application is the following:
+The command to create a new application depends on the package manager we are using.
+
+If using npm as the package manager:
 
 ```shell
 npx create-react-app [application_name] --template [template_name]
+```
+
+If using yarn:
+
+```shell
+yarn create react-app [application_name] --template [template_name]
 ```
 
 - `application_name` is the name of the folder that will be created for your application
@@ -91,14 +99,6 @@ npx create-react-app [application_name] --template [template_name]
   - `@carto/sample-app-3` for the sample app template for CARTO 3.
   - `@carto/base-2` for the CARTO 2 template 
   - `@carto/sample-app-2` for the sample app template for CARTO 2.
-
-{{% bannerNote title="note" %}}
-In Windows environments, when using PowerShell as the shell (including the integrated terminal in Visual Studio Code), we need to wrap the `template_name` parameter in single quotes when selecting the default template:
-
-```shell
-npx create-react-app my-app --template '@carto'
-```
-{{%/ bannerNote %}}
 
 ### Library
 
@@ -126,7 +126,7 @@ At this moment, we only provide a complete solution with templates and widgets f
 
 **When should I use the CARTO 3 platform vs the CARTO 2 platform?**
 
-CARTO 3 is the next version of the CARTO Platform and is still in beta. The main difference is that it provides full cloud native support to Datawarehouses, pushing down queries. If you are starting a new application we recommend that you use the latest version of CARTO by [requesting access](https://carto.com/carto3). Or [contact us](support@carto.com) if you have questions. 
+CARTO 3 is the next version of the CARTO Platform. The main difference is that it provides full native support for cloud data warehouses and platforms, pushing down queries. If you are starting a new application, we recommend you to use the latest version of CARTO by [requesting access](https://carto.com/carto3). Or [contact us](support@carto.com) if you have questions. 
 
 **Can I use the library with my own Create React App template?**
 Yes, the library can be used independently. You will need to ensure you have added the required dependencies and you won't be able to use the code generator, but you can take advantage of the functionality offered by the library: user interface components, widgets, state management, interaction with the CARTO platform...
