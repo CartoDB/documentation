@@ -246,11 +246,11 @@ You can also customise your popups by adding images or modifying the styling. Le
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_mode_button.png)
 
-A template will be generated to reflect the selected fields, and the apparence of the popup will be the same. Click on *Edit HTML* to start editing. 
+A template will be generated to reflect the selected fields, and the appearance of the popup will be the same. Click on *Edit HTML* to start editing. 
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_edit_html_button.png)
 
-When you click on *Edit HTML*, a new edition dialog will appear. You can modify the content (change markup, add some images, add new field names from the source, etc.)
+When you click on *Edit HTML*, a new dialog will appear. You can modify the content directly by typing on the template in a quick and easy way.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_new_dialog.png)
 
