@@ -206,14 +206,9 @@ If you activate the pop-up, you can select different configurations for Click an
 
 ![Map interactions tooltip activated](/img/cloud-native-workspace/maps/map_interactions_tooltip_activated.png)
 
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_stylebydefault.png) -->
-
 Click on the dropdown to see all available styling options. The styles for the Pop-up window are available in both configurations, but the Info Panel is only available for the ‘Click’ configuration.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_styling_options.png)
-
-
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_styling_options.png) -->
 
 To add a pop-up to the map, select a style and add the properties you want to be displayed by clicking on *Add a field*.
 
@@ -221,46 +216,31 @@ In this example, we have selected the 'Click' configuration with a black style, 
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_dark_storetype.png)
 
-
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_dark_store.png) -->
-
 To add all properties at once, click on *Add all* or *None* to add or remove all of them. Also, you can customise the name of the label to be displayed by clicking on the default name.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_customise_options.png)
-
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_options.png) -->
 
 Once you have configured the content, click on any feature on the map and it will be displayed in a pop-up window.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_popup_window.png)
 
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_popup-window.png) -->
-
 Now, let´s display the information on a slider that appears from the right side of the screen by selecting the option 'Info panel' from the dropdown.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_select_the_infopanel.png)
-
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_select_infopanel.png) -->
 
 In this example, the information is displayed more clearly in a new info panel, and a pin marks the location of the selected feature in the map.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_the_infopanel.png)
 
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_infopanel.png) -->
-
 We are going to add some additional properties and rename all of them with a more suitable label. Go to *Add a field* and select the properties `revenue` and `size_m2`. As shown in the image below, the new changes are updated directly in the Info Panel.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_customise_infopanel.png)
-
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_infopanel_more_info.png) -->
 
 At any time, you can close the info panel by clicking on the “X” or you can revert to the default property values by clicking on the *reset overrides* button from the Iterations tab.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_close_infopanel.png)
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_reset_the_configuration.png)
-
-<!-- ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_reset_properties.png) -->
 
 You can also customise your popups by adding images or modifying the styling. Let´s show an example of how to edit the HTML of the pop-ups. For this purpose, click on *Switch to HTML mode* button.
 
