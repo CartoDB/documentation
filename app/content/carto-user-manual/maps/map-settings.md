@@ -182,7 +182,9 @@ This enables you to click and drag the start and end range of selected data. In 
 
 From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select all columns. 
 
-![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table.png)
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_allcolumns.png)
+
+<!-- ![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table.png) -->
 
 From the widget, you can select the number of rows per page and use pagination to visualize the rest of the results.
 
@@ -193,6 +195,10 @@ You can also sort the data in ascending or descending order. To activate the sor
 ![Map widgets table ascending order](/img/cloud-native-workspace/maps/map_widget_table_ascending_order.png)
 
 ![Map widgets table descending order](/img/cloud-native-workspace/maps/map_widget_table_descending_order.png)
+
+You can also add several table widgets at the same time in Builder maps. Each one will create a new tab that can be selected. When a tab is selected, the others will remain disabled.
+
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_multiple_tabs.png)
 
 ### Interactions
 
