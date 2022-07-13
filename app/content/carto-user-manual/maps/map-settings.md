@@ -200,47 +200,71 @@ The _Interactions_ menu allows to configure different kinds of pop-ups that appe
 
 In the Interactions tab of Builder, you will see the list of your current layers. The pop-ups will be configured individually for each layer. By default, they're deactivated.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_bydefault.png)
+![Map interactions tooltip](/img/cloud-native-workspace/maps/map_interactions_tooltip_bydefault.png)
 
 If you activate the pop-up, you can select different configurations for Click and Hover. For both configurations, the default style is `None` and no pop-up will be shown.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_stylebydefault.png)
+![Map interactions tooltip activated](/img/cloud-native-workspace/maps/map_interactions_tooltip_activated.png)
 
 Click on the dropdown to see all available styling options. The styles for the Pop-up window are available in both configurations, but the Info Panel is only available for the ‘Click’ configuration.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_styling_options.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_styling_options.png)
 
 To add a pop-up to the map, select a style and add the properties you want to be displayed by clicking on *Add a field*.
 
 In this example, we have selected the 'Click' configuration with a black style, using the `storetype` property.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_dark_store.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_click_dark_storetype.png)
 
 To add all properties at once, click on *Add all* or *None* to add or remove all of them. Also, you can customise the name of the label to be displayed by clicking on the default name.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_options.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_customise_options.png)
 
 Once you have configured the content, click on any feature on the map and it will be displayed in a pop-up window.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_popup-window.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_popup_window.png)
 
 Now, let´s display the information on a slider that appears from the right side of the screen by selecting the option 'Info panel' from the dropdown.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_select_infopanel.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_select_the_infopanel.png)
 
 In this example, the information is displayed more clearly in a new info panel, and a pin marks the location of the selected feature in the map.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_infopanel.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_the_infopanel.png)
 
 We are going to add some additional properties and rename all of them with a more suitable label. Go to *Add a field* and select the properties `revenue` and `size_m2`. As shown in the image below, the new changes are updated directly in the Info Panel.
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_infopanel_more_info.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_customise_infopanel.png)
 
 At any time, you can close the info panel by clicking on the “X” or you can revert to the default property values by clicking on the *reset overrides* button from the Iterations tab.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_close_infopanel.png)
 
-![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_reset_properties.png)
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_reset_the_configuration.png)
+
+You can also customise your popups by adding images or modifying the styling. Let´s show an example of how to edit the HTML of the pop-ups. For this purpose, click on *Switch to HTML mode* button.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_mode_button.png)
+
+A template will be generated to reflect the selected fields, and the appearance of the popup will be the same. Click on *Edit HTML* to start editing. 
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_edit_html_button.png)
+
+When you click on *Edit HTML*, a new dialog will appear. You can modify the content directly by typing on the template in a quick and easy way.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_new_dialog.png)
+
+Let´s do some changes in the content, for example, we can add an image and change the background color. Then, click on *Apply changes*.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_edited_dialog.png)
+
+If you want to go back to the standard mode, click on *Switch to field list mode* button.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_standard_mode_button.png)
+
+A new message will appear warning you that the current changes applied will be lost when switching back to the standard mode. Click on *Continue* to keep the new changes or click on *Cancel* if you don’t want to keep them.
+
+![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_warning_switching_mode.png)
 
 <!-- The comparison mode helps you to compare numeric values between two different features on the map through the tooltips. The results can be compared in absolute or relative values. You can change it from the comparison type option.
 
