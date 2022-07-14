@@ -2,7 +2,7 @@
 
 The CARTO Cloud platform is a fully managed, subscription-based, multitenant platform for Spatial Analytics.
 
-CARTO is currently hosted on Google Cloud Platform and available in two regions: the European Economic Area and North America, inheriting all managed data governance rules and regulations from GCP.
+CARTO is currently hosted on Google Cloud Platform and available in four regions: the European Economic Area, North America, Australia and Japan; inheriting all managed data governance rules and regulations from GCP.
 
 ### Limits
 
