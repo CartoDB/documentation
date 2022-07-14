@@ -21,6 +21,20 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### July 12, 2022
+
+#### Module tiler
+
+Changed
+- Improve speed of CREATE_SPATIAL_INDEX_TILESET.
+
+### July 8, 2022
+
+#### Module quadbin
+
+Changed
+- Release SQL version of QUADBIN_TOZXY.
+
 ### July 1, 2022
 
 #### Module tiler

@@ -52,18 +52,18 @@ FROM (
 )
 ```
 
-### GETIS_ORD_QUADKEY
+### GETIS_ORD_QUADBIN
 
 {{% bannerNote type="code" %}}
-carto.GETIS_ORD_QUADKEY(input, size, kernel)
+carto.GETIS_ORD_QUADBIN(input, size, kernel)
 {{%/ bannerNote %}}
 
 **Description**
 
-This function computes the Getis-Ord Gi* statistic for each quadkey index in the input array.
+This function computes the Getis-Ord Gi* statistic for each quadbin index in the input array.
 
 * `input`: `ARRAY<STRUCT<index STRING, value FLOAT64>>` input data with the indexes and values of the cells.
-* `size`: `INT64` size of the quadkey kring (distance from the origin). This defines the area around each index cell that will be taken into account to compute its Gi* statistic.
+* `size`: `INT64` size of the quadbin kring (distance from the origin). This defines the area around each index cell that will be taken into account to compute its Gi* statistic.
 * `kernel`: `STRING` [kernel function](https://en.wikipedia.org/wiki/Kernel_(statistics)) to compute the spatial weights across the kring. Available functions are: uniform, triangular, quadratic, quartic and gaussian.
 
 **Return type**
@@ -75,21 +75,21 @@ This function computes the Getis-Ord Gi* statistic for each quadkey index in the
 {{%/ customSelector %}}
 
 ```sql
-SELECT `carto-un`.carto.GETIS_ORD_QUADKEY(
+SELECT `carto-un`.carto.GETIS_ORD_QUADBIN(
     [
-        STRUCT(205405577137, 51.0),
-        STRUCT(205430743409, 28.0),
-        STRUCT(205292330897, 19.0)
+        STRUCT(5266443791933898751, 51.0),
+        STRUCT(5266443803500740607, 28.0),
+        STRUCT(5266443790415822847, 19.0)
     ],
     3, 'gaussian'
 );
--- {"index": 205405577137, "gi": 1.3606194139870573, "p_value": 0.08681705806539952}
--- {"index": 205430743409, "gi": -0.34633948719670526, "p_value": 0.6354561359951527}
--- {"index": 205292330897, "gi": -1.0142799267903515, "p_value": 0.8447753848825513}
+-- {"index": 5266443791933898751, "gi": 1.360619413987058, "p_value": 0.086817058065399522}
+-- {"index": 5266443803500740607, "gi": -0.3463394871967051, "p_value": 0.63545613599515272}
+-- {"index": 5266443790415822847, "gi": -1.0142799267903515, "p_value": 0.84477538488255133}
 ```
 
 ```sql
-SELECT `carto-un`.carto.GETIS_ORD_QUADKEY(input_data, 3, 'gaussian')
+SELECT `carto-un`.carto.GETIS_ORD_QUADBIN(input_data, 3, 'gaussian')
 FROM (
     SELECT ARRAY_AGG(STRUCT(index, value)) AS input_data
     FROM mytable
@@ -167,7 +167,7 @@ This procedures performs a local least squares regression for every input cell. 
 * `features_columns`: `ARRAY<STRING>` array of column names from `input_table` to be used as features in the GWR.
 * `label_column`: `STRING` name of the target variable column.
 * `cell_column`: `STRING` name of the column containing the cell ids.
-* `cell_type`: `STRING` spatial index type as 'h3' or 'quadkey'.
+* `cell_type`: `STRING` spatial index type as 'h3', 'quadbin'.
 * `kring_distance`: `INT64` distance of the neighboring cells whose data will be included in the local regression of each cell.
 * `kernel_function`: `STRING` [kernel function](https://en.wikipedia.org/wiki/Kernel_(statistics)) to compute the spatial weights across the kring. Available functions are: 'uniform', 'triangular', 'quadratic', 'quartic' and 'gaussian'.
 * `fit_intercept `: `BOOL` whether to calculate the interception of the model or to force it to zero if, for example, the input data is already supposed to be centered. If NULL, `fit_intercept` will be considered as `TRUE`.
@@ -183,7 +183,7 @@ The output table will contain a column with the cell id, a column for each featu
 
 ```sql
 CALL `carto-un`.carto.GWR_GRID(
-    'cartobq.docs.airbnb_berlin_h3_qk',
+    'cartobq.docs.airbnb_berlin_h3_qk_qb',
     ['bedrooms', 'bathrooms'], -- [ beds feature, bathrooms feature ]
     'price', -- price (target variable)
     'h3_z6', 'h3', 3, 'gaussian', TRUE,
@@ -193,10 +193,10 @@ CALL `carto-un`.carto.GWR_GRID(
 
 ```sql
 CALL `carto-un`.carto.GWR_GRID(
-    'cartobq.docs.airbnb_berlin_h3_qk',
+    'cartobq.docs.airbnb_berlin_h3_qk_qb',
     ['bedrooms', 'bathrooms'], -- [ beds feature, bathrooms feature ]
     'price', -- price (target variable)
-    'qk_z12', 'quadkey', 3, 'gaussian', TRUE,
+    'qb_z12', 'quadbin', 3, 'gaussian', TRUE,
     '<project-id>.<dataset-id>.<table-name>'
 );
 ```
@@ -323,18 +323,18 @@ SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
 )
 ```
 
-### LOCAL_MORANS_I_QUADKEY
+### LOCAL_MORANS_I_QUADBIN
 
 {{% bannerNote type="code" %}}
-carto.LOCAL_MORANS_I_QUADKEY(input, size, decay)
+carto.LOCAL_MORANS_I_QUADBIN(input, size, decay)
 {{%/ bannerNote %}}
 
 **Description**
 
-This function computes the local Moran's I spatial autocorrelation from the input array of quadkey indexes.
+This function computes the local Moran's I spatial autocorrelation from the input array of quadbin indexes.
 
 * `input`: `ARRAY<STRUCT<index INT64, value FLOAT64>>` input data with the indexes and values of the cells.
-* `size`: `INT64` size of the quadkey kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `size`: `INT64` size of the quadbin kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
 * `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
 
 **Return type**
@@ -346,30 +346,30 @@ ARRAY<STRUCT<index INT64, value FLOAT64>>
 {{%/ customSelector %}}
 
 ```sql
-SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADKEY(
+SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADBIN(
     [
-        STRUCT(205401382801, 51.0),
-        STRUCT(205401382833, 28.0),
-        STRUCT(205401382865, 19.0)
+        STRUCT(5266443791927869439, 51.0),
+        STRUCT(5266443791928131583, 28.0),
+        STRUCT(5266443791928918015, 19.0)
     ],
     3, 'exponential'
 );
 --{
---  "index": "205401382801",
+--  "index": "5266443791927869439",
 --  "value": "-0.47710241156036"
 --},
 --{
---  "index": "205401382833",
---  "value": "-0.03998368013055897"
+--  "index": "5266443791928131583",
+--  "value": "-0.039983680130558967"
 --},
 --{
---  "index": "205401382865",
---  "value": "-0.07622818484525352"
+--  "index": "5266443791928918015",
+--  "value": "-0.076228184845253524"
 --}
 ```
 
 ```sql
-SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADKEY(
+SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADBIN(
     ARRAY(SELECT AS STRUCT index, value FROM mytable),
     3, 'exponential'
 )
@@ -496,18 +496,18 @@ FROM (
 )
 ```
 
-### MORANS_I_QUADKEY
+### MORANS_I_QUADBIN
 
 {{% bannerNote type="code" %}}
-carto.MORANS_I_QUADKEY(input, size, decay)
+carto.MORANS_I_QUADBIN(input, size, decay)
 {{%/ bannerNote %}}
 
 **Description**
 
-This function computes the [Moran's I spatial autocorrelation](https://en.wikipedia.org/wiki/Moran%27s_I) from the input array of quadkey indexes.
+This function computes the [Moran's I spatial autocorrelation](https://en.wikipedia.org/wiki/Moran%27s_I) from the input array of quadbin indexes.
 
 * `input`: `ARRAY<STRUCT<index INT64, value FLOAT64>>` input data with the indexes and values of the cells.
-* `size`: `INT64` size of the quadkey kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `size`: `INT64` size of the quadbin kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
 * `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
 
 **Return type**
@@ -519,19 +519,19 @@ This function computes the [Moran's I spatial autocorrelation](https://en.wikipe
 {{%/ customSelector %}}
 
 ```sql
-SELECT `carto-un`.carto.MORANS_I_QUADKEY(
+SELECT `carto-un`.carto.MORANS_I_QUADBIN(
     [
-        STRUCT(205405577137, 51.0),
-        STRUCT(205430743409, 28.0),
-        STRUCT(205292330897, 19.0)
+        STRUCT(5266443791927869439, 51.0),
+        STRUCT(5266443791928131583, 28.0),
+        STRUCT(5266443791928918015, 19.0)
     ],
     3, 'exponential'
 );
--- 0.05514467303662483
+-- -0.29665713826808621
 ```
 
 ```sql
-SELECT `carto-un`.carto.MORANS_I_QUADKEY(input_data, 3, 'exponential')
+SELECT `carto-un`.carto.MORANS_I_QUADBIN(input_data, 3, 'exponential')
 FROM (
     SELECT ARRAY_AGG(STRUCT(index, value)) AS input_data
     FROM mytable
@@ -764,33 +764,33 @@ CALL
 ```
 
 
-### SMOOTHING_MRF_QUADKEY
+### SMOOTHING_MRF_QUADBIN
 
 {{% bannerNote type="code" %}}
-carto.SMOOTHING_MRF_QUADKEY(input, output, index_column, variable_column, options)
+carto.SMOOTHING_MRF_QUADBI (input, output, index_column, variable_column, options)
 {{%/ bannerNote %}}
 
 **Description**
 
-This procedure computes a Markov Random Field (MRF) smoothing for a table containing QUADINT cell indices and their associated values.
+This procedure computes a Markov Random Field (MRF) smoothing for a table containing QUADBIN cell indices and their associated values.
 
 This implementation is based on the work of Christopher J. Paciorek: "Spatial models for point and areal data using Markov random fields on a fine grid." Electron. J. Statist. 7 946 - 972, 2013. https://doi.org/10.1214/13-EJS791
 
 {{% bannerNote title="TIP" type="tip" %}}
-if your data is in lat/long format, you can still use this procedure by first converting your points to QUADINT cell indexes by using the [QUADINT_FROMLONGLAT](../quadkey/#quadint_fromlonglat) function.
+if your data is in lat/long format, you can still use this procedure by first converting your points to QUADINT cell indexes by using the [QUADBIN_FROMLONGLAT](../quadbin/#quadbin_fromlonglat) function.
 {{%/ bannerNote %}}
 
 * `input`: `STRING` name of the source table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`.
-* `output `: `STRING` name of the output table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the table already exists. If NULL, the result will be returned directly by the procedure and not persisted.
+* `output `: `STRING` name of the output table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the table already exists.
 * `index_column`: `STRING` name of the column containing the cell ids.
 * `variable_column`: `STRING` name of the target variable column.
-* `options`: `STRING` JSON string to overwrite the model's default options. If set to NULL or empty, it will use the default values. 
+* `options`: `STRING` JSON string to overwrite the model's default options. If set to NULL or empty, it will use the default values.
   * `closing_distance`: `INT64` distance of closing. It defaults to 0. If strictly positive, the algorithm performs a [morphological closing](https://en.wikipedia.org/wiki/Closing_(morphology)) on the cells by the `closing_distance`, defined in number of cells, before performing the smoothing. No closing is performed otherwise.
   * `output_closing_cell`: `BOOL` controls whether the cells generated by the closing are added to the output. If defaults to `FALSE`.
   * `lambda`: `FLOAT64` iteration update factor. It defaults to 1.6. For more details, see https://doi.org/10.1214/13-EJS791, page 963.
-  * `iter`: `INT64` number of iterative queries to perform the smoothing. It defaults to 10. Increasing this parameter might help if the `convergence_limit` is not reached by the end of the procedure's execution. Tip: if this limit has ben reached, the status of the second-to-last step of the procedure will throw an error. 
+  * `iter`: `INT64` number of iterative queries to perform the smoothing. It defaults to 10. Increasing this parameter might help if the `convergence_limit` is not reached by the end of the procedure's execution. Tip: if this limit has ben reached, the status of the second-to-last step of the procedure will throw an error.
   * `intra_iter`: `INT64` number of iterations per query. It defaults to 50. Reducing this parameter might help if a resource error is reached during the procedure's execution.
-  * `convergence_limit`: `FLOAT64` threshold condition to stop iterations. If this threshold is not reached, then the procedure will finish its execution after the maximum number of iterations (`iter`) is reached. It defaults to 10e-5. For more details, see https://doi.org/10.1214/13-EJS791, page 963. 
+  * `convergence_limit`: `FLOAT64` threshold condition to stop iterations. If this threshold is not reached, then the procedure will finish its execution after the maximum number of iterations (`iter`) is reached. It defaults to 10e-5. For more details, see https://doi.org/10.1214/13-EJS791, page 963.
 
 
 **Return type**
@@ -802,15 +802,22 @@ if your data is in lat/long format, you can still use this procedure by first co
 {{%/ customSelector %}}
 
 ```sql
-CALL
-  `carto-un`.SMOOTHING_MRF_QUADKEY( "cartobq.docs.airbnb_berlin_QUADKEY_qk",
-    NULL,
-    'QUADKEY_z7',
-    'price',
-    '{"closing_distance":0, "output_closing_cell":"true", "lambda":1.6, "iter":10, "intra_iter":5, "convergence_limit":10e-5}');
--- {"id": 871f18840ffffff, "beta": 64.56696796809489}
--- {"id": 871f18841ffffff, "beta": 62.61498241759014}
--- {"id": 871f18844ffffff, "beta": 65.47069449331353}
+CALL `carto-un`.carto.SMOOTHING_MRF_QUADBIN(
+  'cartobq.docs.airbnb_berlin_h3_qk_qb',
+  'my-project.my-dataset.my-smoothing-table',
+  'qb_z11',
+  'price',
+  '''{
+    "closing_distance": 0,
+    "output_closing_cell": "true",
+    "lambda": 1.6,
+    "iter": 10,
+    "intra_iter": 5,
+    "convergence_limit": 10e-5
+  }'''
+);
+-- The table `my-project.my-dataset.my-smoothing-table` will be created
+-- with columns: id, price_smoothed
 ```
 
 

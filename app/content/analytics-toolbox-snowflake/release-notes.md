@@ -11,6 +11,12 @@ aliases:
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### July 13, 2022
+
+#### Module data
+
+- Add quadbin support to module.
+
 ### July 12, 2022
 
 #### Module tiler

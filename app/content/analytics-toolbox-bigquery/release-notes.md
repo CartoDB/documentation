@@ -6,6 +6,21 @@ aliases:
 
 ### July 8, 2022
 
+#### Module data
+
+Add
+- Add quadbin support to module.
+
+#### Module retail
+
+Add
+- Add quadbin support
+
+#### Module tiler
+
+Add
+- Support of quadgrid as alias in `CREATE_POINT_AGGREGATION_TILESET`.
+
 #### Module tiler
 
 Changed
@@ -18,6 +33,15 @@ Changed
 Fixed
 - Correctly handle large polygons in H3_POLYFILL.
 - Fixed wrong uppercase for quadbin and h3 tile ids
+
+#### Module statistics
+
+Feature
+- Add SMOOTHING_MRF_QUADBIN procedure.
+- Add LOCAL_MORANS_I_QUADBIN function.
+- Add MORANS_I_QUADBIN function.
+- Add GETIS_ORD_QUADBIN function.
+- Quadbin support in GWR_GRID function.
 
 #### Module tiler
 
