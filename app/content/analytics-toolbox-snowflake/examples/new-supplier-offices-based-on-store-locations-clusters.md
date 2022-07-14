@@ -21,7 +21,7 @@ First, we calculate Starbucks locations clusters using the `ST_CLUSTERKMEANS` 
 ```sql
 WITH data AS(
   SELECT geog
-  FROM carto.starbucks_locations_usa
+  FROM sfcarto.public.starbucks_locations_usa
   WHERE geog IS NOT null
   ORDER BY id
 ),
@@ -47,7 +47,7 @@ In this case we are going to use `ST_CENTEROFMASS` to calculate the location o
 ```sql
 WITH data AS(
   SELECT geog
-  FROM carto.starbucks_locations_usa
+  FROM sfcarto.public.starbucks_locations_usa
   WHERE geog IS NOT null
   ORDER BY id
 ),
