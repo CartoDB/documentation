@@ -15,6 +15,7 @@ cascade:
         - title: "Getting started"
         - title: "Tilesets"
         - title: "Spatial indexes"
+    - title: "Examples"
     - title: "SQL Reference"
       folder:
         - title: "Overview"

@@ -1,5 +1,11 @@
 ## Release notes
 
+### July 15, 2022
+
+#### Module tiler
+
+Feature
+- Add spatial index tileset generator `CREATE_SPATIAL_INDEX_TILESET`.
 ### June 24, 2022
 
 #### Module quadbin
