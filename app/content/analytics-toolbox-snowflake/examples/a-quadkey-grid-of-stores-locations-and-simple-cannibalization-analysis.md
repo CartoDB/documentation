@@ -20,7 +20,7 @@ With a single query, we are going to calculate how many Starbucks locations fall
 WITH data AS (
   SELECT carto.QUADINT_FROMGEOGPOINT(geog, 10) AS qk,
   COUNT(*) as agg_total
-  FROM carto.starbucks_locations_usa
+  FROM sfcarto.public.starbucks_locations_usa
   WHERE geog IS NOT null
   GROUP BY qk
 )
@@ -46,7 +46,7 @@ The first method uses the `QUADINT_KRING` function with distance 1 to define an 
 WITH data AS (
   SELECT carto.QUADINT_KRING(
   carto.QUADINT_FROMGEOGPOINT(geog, 15), 1) AS qk
-  FROM carto.starbucks_locations_usa
+  FROM sfcarto.public.starbucks_locations_usa
   WHERE city = 'Las Vegas' AND geog IS NOT null
 ),
 flat_qks AS(
@@ -69,7 +69,7 @@ The second approach calculates how many Starbucks fall within a radius of three 
 WITH data AS (
   SELECT carto.QUADINT_POLYFILL(
   carto.ST_MAKEELLIPSE(geog, 3, 3, 0, 'kilometers', 12), 15) AS qk
-  FROM carto.starbucks_locations_usa
+  FROM sfcarto.public.starbucks_locations_usa
   WHERE city = 'Las Vegas' AND geog IS NOT null
 ),
 flat_qks AS(

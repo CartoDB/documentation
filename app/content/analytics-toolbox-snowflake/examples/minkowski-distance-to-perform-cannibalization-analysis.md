@@ -21,7 +21,7 @@ WITH starbucks AS
   SELECT geog,
   ROW_NUMBER() OVER(ORDER BY (SELECT NULL)) - 1 AS id,
   uniform(1, 10, random()) AS starbucks_size
-  FROM carto.STARBUCKS_LOCATIONS_USA
+  FROM sfcarto.public.STARBUCKS_LOCATIONS_USA
   WHERE CITY = 'Los Angeles' AND geog IS NOT NULL
   ORDER BY id
 ),
