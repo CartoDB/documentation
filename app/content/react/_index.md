@@ -14,6 +14,8 @@ cascade:
     - title: "Guides"
       folder:
         - title: "Getting Started"
+        - title: "Views"
+        - title: "Data Sources"
         - title: "Layers"
         - title: "Widgets"
         - title: "Authentication and Authorization"
