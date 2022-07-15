@@ -1,4 +1,4 @@
-## Tiler
+## tiler
 
 <div class="badges"><div class="advanced"></div></div>
 
@@ -141,6 +141,79 @@ CALL carto.CREATE_SIMPLE_TILESET(
       "geoid":"String",
       "do_perimeter":"Number",
       "do_label":"String"
+    }
+  }'
+);
+```
+
+
+### CREATE_SPATIAL_INDEX_TILESET
+
+{{% bannerNote type="code" %}}
+carto.CREATE_SPATIAL_INDEX_TILESET(source_table, target_table, options)
+{{%/ bannerNote %}}
+
+**Description**
+
+Creates a tileset that uses a spatial index (H3 and QUADBIN are currently supported), aggregating data from an input table that uses that same spatial index.
+
+Aggregated data is computed for all levels between `resolution_min` and `resolution_max`. For each resolution level, all tiles for the area covered by the source table are added, with data aggregated at level `resolution + aggregation_resolution`.
+
+* `source_table`: `TEXT` that can either be a table name (e.g. `schema.tablename` or a full query (e.g.<code>SELECT * FROM database.schema.tablename</code>).
+* `target_table`: Where the resulting table will be stored. It must be a `TEXT` of the form <code>database.schema.tablename</code>. The `database` can be omitted (in which case the current one will be used). The `schema` can also be omitted and the first on the `search_path` will be used. The schema must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
+* `options`: `TEXT` containing a valid JSON with the different options. Valid options are described the table below.
+| Option | Description |
+| :----- | :------ |
+|`resolution_min`| Default: `2`. An `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
+|`resolution_max`| Default: `15`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`spatial_index_column`| A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can only be `quadbin` at the moment), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADBIN (for spatial index type `quadbin`).|
+|`resolution`| A `NUMBER` defining the resolution of the tiles in the input table.|
+|`aggregation_resolution`| Defaults: `6` for QUADBIN tilesets, `4` for H3 tilesets. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
+|`properties`| A JSON object containing the aggregated properties to add to each tile in the output table. It cannot be empty, since at least one property is needed for aggregating the original values|
+|`extra_metadata`| Default: `{}`. A JSON object to specify the custom metadata of the tileset.|
+|`per_level_metadata`| Default: `false`. A `BOOLEAN` indicating whether or not to compute metadata tilestats separately for each computed level, or just for the full output table.|
+
+{{% bannerNote type="note" title="tip"%}}
+Any option left as `NULL` will take its default value if available.
+{{%/ bannerNote %}}
+
+**Examples**
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  'YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_QUADBIN_LEVEL14',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_QUADBIN_LEVEL14',
+  '{
+    "spatial_index_column": "quadbin:index",
+    "resolution": 14,
+    "resolution_min": 0,
+    "resolution_max": 8,
+    "aggregation_resolution": 6,
+    "properties": {
+      "population": {
+        "formula": "SUM(population)",
+        "type": "Number"
+      }
+    }
+  }'
+);
+```
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  'SELECT * FROM YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_H3_LEVEL10',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_H3_LEVEL10',
+  '{
+    "spatial_index_column": "h3:index",
+    "resolution": 10,
+    "resolution_min": 0,
+    "resolution_max": 6,
+    "aggregation_resolution": 4,
+    "properties": {
+      "population": {
+        "formula": "SUM(population)",
+        "type": "Number"
+      }
     }
   }'
 );

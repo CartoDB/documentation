@@ -21,6 +21,14 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### July 14, 2022
+
+#### Module quadbin
+
+Changed
+- Update functions volatility.
+- QUADBIN_FROMZXY accepting BIGINTs as params instead of INTs.
+
 ### July 12, 2022
 
 #### Module tiler

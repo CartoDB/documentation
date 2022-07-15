@@ -228,7 +228,7 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 | Option | Description |
 | :----- | :------ |
 |`resolution_min`| Default: `2`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
-|`resolution_max`| Default: `15`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`resolution_max`| Default: `15`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
 |`spatial_index_column`| A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadbin` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADBIN (for spatial index type `quadbin`) or H3 (for spatial index type `h3`).|
 |`resolution`| A `NUMBER` defining the resolution of the tiles in the input table.|
 |`aggregation_resolution`| Defaults: `6` for QUADBIN tilesets, `4` for H3 tilesets. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
@@ -245,22 +245,42 @@ Any option left as `NULL` will take its default value if available.
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET`(
-  "your-project.your-dataset.quadbin_test_dataset_level15",
-  "your-project.your-dataset.spatial_index_tileset_test_output",
-  R'''{
-  "resolution_min": 4,
-  "resolution_max": 8,
-  "spatial_index_column": 'quadbin:geoid',
-  "resolution": 15,
-  "aggregation_resolution": 4,
-  "properties": {
-      "pop": {
-          "formula":"sum(population)",
-          "type":"Number"
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  'YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_QUADBIN_LEVEL14',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_QUADBIN_LEVEL14',
+  '{
+    "spatial_index_column": "quadbin:index",
+    "resolution": 14,
+    "resolution_min": 0,
+    "resolution_max": 8,
+    "aggregation_resolution": 6,
+    "properties": {
+      "population": {
+        "formula": "SUM(population)",
+        "type": "Number"
       }
-  }
-  '''
+    }
+  }'
+);
+```
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  '(SELECT * FROM YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_H3_LEVEL10)',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_H3_LEVEL10',
+  R'''{
+    "spatial_index_column": "h3:index",
+    "resolution": 10,
+    "resolution_min": 0,
+    "resolution_max": 6,
+    "aggregation_resolution": 4,
+    "properties": {
+      "population": {
+        "formula": "SUM(population)",
+        "type": "Number"
+      }
+    }
+  }'''
 );
 ```
 
