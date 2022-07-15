@@ -4,7 +4,7 @@ The CARTO Analytics Toolbox for PostgreSQL is currently composed of a single mod
 
 ### Requirements
 
-The PostgreSQL server version must be at least 12. The database where the Analytics Toolbox is installed must have the PostGIS extension, version 2.5 or later.
+The PostgreSQL server version must be at least 11. The database where the Analytics Toolbox is installed must have the PostGIS extension, version 2.5 or later.
 
 {{% bannerNote title="NOTE" type="note" %}}
 If you are a CARTO customer and want to install the Analytics Toolbox in your PostgreSQL database, please contact support@carto.com.
