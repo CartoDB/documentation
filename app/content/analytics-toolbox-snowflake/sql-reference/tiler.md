@@ -28,7 +28,7 @@ Generates a point aggregation tileset.
 |`geom_column`| Default: `"GEOM"`. A `VARCHAR` that indicates the name of the geography column that will be used. The geography column must be of type `GEOGRAPHY` and contain only points. The capitalization (uppercase/lowercase letters) of the name must match exactly the column name; note that Snowflake by default converts names to uppercase. |
 |`zoom_min`| Default: `0`. An `INTEGER` that defines the minimum zoom level at which tiles will be generated. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `15`; maximum: `20`. An `INTEGER` that defines the maximum zoom level at which tiles will be generated. Any zoom level over this level won't be generated.|
-|`aggregation_resolution`| Default: `6`. An `INTEGER` that specifies the resolution of the spatial aggregation.<br/><br/>Aggregation for zoom `z` is based on quadkey cells at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells, which is the maximum number of resulting features (aggregated) that the tiles will contain.<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
+|`aggregation_resolution`| Default: `6`. An `INTEGER` that specifies the resolution of the spatial aggregation.<br/><br/>Aggregation for zoom `z` is based on quadgrid cells at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells, which is the maximum number of resulting features (aggregated) that the tiles will contain.<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
 |`aggregation_placement`| Default: `"cell-centroid"`. A `VARCHAR` that defines what type of geometry will be used to represent the cells generated in the aggregation, which will be the features of the resulting tileset. There are currently four options:<br/><ul><li>`"cell-centroid"`: Each feature will be defined as the centroid of the cell, that is, all points that are aggregated together into the cell will be represented in the tile by a single point positioned at the centroid of the cell.</li><li>`"cell"`: Each feature will be defined as the entire cell's polygon, thus the final representation in the tile will be a polygon. This provides more precise coordinates but takes more space in the tile and requires more CPU to process it in the renderer.</li><li>`"features-any"`: The aggregation cell will be represented by any random point from the source data contained within it. That is, if 10 points fall inside a cell, the procedure will randomly choose the location of one of them to represent the aggregation cell.</li><li>`"features-centroid"`: The feature will be defined as the centroid (point) of the collection of points within the cell.</li></ul>|
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`properties`| Default: {}. A JSON object that defines the properties that will be included associated with each cell feature. Each `property` is defined by its name, type (Number, Boolean, String, etc.) and formula to be applied to the values of the points that fall under the cell. This formula can be any SQL formula that uses an [aggregate function]((https://docs.aws.amazon.com/redshift/latest/dg/c_Aggregate_Functions.html)) supported by Redshift and returns the expected type. Please note that every property different from Number will be casted to String.|
@@ -137,38 +137,66 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 | Option | Description |
 | :----- | :------ |
 |`resolution_min`| Default: `2`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
-|`resolution_max`| Default: `15`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`resolution_max`| Default: `15`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
 |`spatial_index_column`| A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can be `quadbin` or `h3`), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADBIN (for spatial index type `quadbin`) or H3 (for spatial index type `h3`).|
 |`resolution`| A `NUMBER` defining the resolution of the tiles in the input table.|
 |`aggregation_resolution`| Defaults: `6` for QUADBIN tilesets, `4` for H3 tilesets. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
-|`properties`| A JSON object containing the aggregated properties to add to each tile in the output table. It cannot be empty, since at least one property is needed for aggregating the original values|
+|`properties`| A JSON object containing the aggregated properties to add to each tile in the output table. It cannot be empty, since at least one property is needed for aggregating the original values. Properties are case sensitive.|
 |`extra_metadata`| Default: `{}`. A JSON object to specify the custom metadata of the tileset.|
 |`per_level_metadata`| Default: `false`. A `BOOLEAN` indicating whether or not to compute metadata tilestats separately for each computed level, or just for the full output table.|
 
-{{% bannerNote type="note" title="tip"%}}
-Any option left as `NULL` will take its default value if available.
-{{%/ bannerNote %}}
-
-{{% customSelector %}}
 **Examples**
-{{%/ customSelector %}}
 
 ```sql
-CALL carto.CREATE_SPATIAL_INDEX_TILESET`(
-  'your-database.your-schema.quadbin_test_dataset_level15',
-  'your-database.your-schema.spatial_index_tileset_test_output',
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  'YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_QUADBIN_LEVEL14',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_QUADBIN_LEVEL14',
   '{
-    "resolution_min": 4,
+    "spatial_index_column": "quadbin:INDEX",
+    "resolution": 14,
+    "resolution_min": 0,
     "resolution_max": 8,
-    "spatial_index_column": 'quadbin:geoid',
-    "resolution": 15,
-    "aggregation_resolution": 4,
+    "aggregation_resolution": 6,
     "properties": {
-      "pop": {
-        "formula":"sum(population)",
-        "type":"Number"
+      "POPULATION": {
+        "formula": "SUM(POPULATION)",
+        "type": "Number"
       }
     }
   }'
 );
+```
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  '(SELECT * FROM YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_H3_LEVEL10)',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_H3_LEVEL10',
+  '{
+    "spatial_index_column": "h3:INDEX",
+    "resolution": 10,
+    "resolution_min": 0,
+    "resolution_max": 6,
+    "aggregation_resolution": 4,
+    "properties": {
+      "POPULATION": {
+        "formula": "SUM(POPULATION)",
+        "type": "Number"
+      }
+    }
+  }'
+);
+```
+
+Snowflake treats columns uppercase by default, to set explicit lowercase use the following syntax:
+
+```
+'{
+  "spatial_index_column": "quadbin:\\"index\\"",
+  "properties": {
+    "population": {
+      "formula": "SUM(\\"population\\")",
+      "type": "Number"
+    }
+  }
+}'
 ```

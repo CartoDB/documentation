@@ -37,9 +37,9 @@ Generates a point aggregation tileset.
 |`max_tile_size_strategy`| Default: `"throw_error"`. A `STRING` that determines what to do when the maximum size of a tile is reached while it is still processing data. There are three options available:<br/><ul><li>`"return_null"`: The process will return a NULL buffer. This might appear as empty in the map.</li><li>`"throw_error"`: The process will throw an error cancelling the aggregation, so no tiles or table will be generated.</li><li>`"drop_fraction_as_needed"`: For every zoom level, this process will drop a consistent fraction of features in every tile to make sure all generated tiles are below the maximum size set in `max_tile_size_kb.` This could lead to features disappearing at different zoom levels. Features will be dropped according to the `tile_feature_order` parameter, which becomes mandatory when using this strategy.</li></ul>|
 |`max_tile_features`| Default: `0` (disabled). A `NUMBER` that sets the maximum number of features a tile might contain. This limit is applied before `max_tile_size_kb`, i.e., the tiler will first drop as many features as needed to keep this amount, and then continue with the size limits (if required). To configure in which order features are kept, use in conjunction with `tile_feature_order`.|
 |`tile_feature_order`| Default: `""` (disabled). A `STRING` defining the order in which properties are added to a tile. This expects the SQL ORDER BY keyword definition, such as "aggregated_total DESC", the "ORDER BY" part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. **This is an expensive operation, so it's recommended to only use it when necessary.**|
-|`aggregation_type`| Default: `"quadkey"`. A `STRING` defining what kind of spatial aggregation is to be used. Currently only [quadkey](https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system#tile-coordinates-and-quadkeys) is supported.|
-|`aggregation_resolution`| Default: `6`. A `NUMBER` that specifies the resolution of the spatial aggregation.<br/><br/>For quadkey the aggregation for zoom `z` is done at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells.<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
-|`aggregation_placement`| Default: `"cell-centroid"`. A `STRING` that defines what type of geometry will be used for the cells generated in the aggregation. For a quadkey aggregation, there are currently four options:<br/><ul><li>`"cell-centroid"`: Each feature will be defined as the centroid of the cell, that is, all points that are aggregated together into the cell will be represented in the tile by a single point.</li><li>`"cell"`: Each feature will be defined as the whole cell, thus the final representation in the tile will be a polygon. This gives more precise coordinates but takes more space in the tile and requires more CPU to process it in the renderer.</li><li>`"features-any"`: The point representing a feature will be any random point from the source data, that is, if 10 points fall inside a cell it will use the location of one of them to represent the cell itself</li><li>`"features-centroid"`: The feature will be defined as the centroid (point) of the points that fall into the cell. Note that this only takes into account the points aggregated under a cell, and not the cell shape (as "cell-centroid" does).</li></ul>|
+|`aggregation_type`| Default: `"quadgrid"`. A `STRING` defining what kind of spatial aggregation is to be used. Currently only [quadgrid](https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#quadbin) is supported.|
+|`aggregation_resolution`| Default: `6`. A `NUMBER` that specifies the resolution of the spatial aggregation.<br/><br/>For quadgrid the aggregation for zoom `z` is done at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells.<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
+|`aggregation_placement`| Default: `"cell-centroid"`. A `STRING` that defines what type of geometry will be used for the cells generated in the aggregation. For a quadgrid aggregation, there are currently four options:<br/><ul><li>`"cell-centroid"`: Each feature will be defined as the centroid of the cell, that is, all points that are aggregated together into the cell will be represented in the tile by a single point.</li><li>`"cell"`: Each feature will be defined as the whole cell, thus the final representation in the tile will be a polygon. This gives more precise coordinates but takes more space in the tile and requires more CPU to process it in the renderer.</li><li>`"features-any"`: The point representing a feature will be any random point from the source data, that is, if 10 points fall inside a cell it will use the location of one of them to represent the cell itself</li><li>`"features-centroid"`: The feature will be defined as the centroid (point) of the points that fall into the cell. Note that this only takes into account the points aggregated under a cell, and not the cell shape (as "cell-centroid" does).</li></ul>|
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`properties`| Default: {}. A JSON object that defines the extra properties that will be included associated to each cell feature. In Point Aggregation Tilesets we have two kinds of `properties`: the main ones, `"properties"`, which are the result of an aggregate function, and `"single_point_properties"`, which are properties that are only applied when there is a single point in the cell, therefore, they are columns from the source data points themselves, not an aggregation.<br/><br/>Each main `property` is defined by its name, type (Number, Boolean or String) and formula (any formula that uses an [aggregate function]((https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#aggregate_functions)) supported by BigQuery and returns the expected type) to generate the properties from all the values of the points that fall under the cell. Only name and type are necessary for `"single_point_properties"`. Check out the examples included below. |
 
@@ -59,7 +59,7 @@ CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
     {
       "zoom_min": 0,
       "zoom_max": 14,
-      "aggregation_type": "quadkey",
+      "aggregation_type": "quadgrid",
       "aggregation_resolution": 7,
       "aggregation_placement": "cell-centroid",
       "properties":{
@@ -72,7 +72,7 @@ CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
   ''');
 ```
 
-Here is an example of valid `properties` for a Point Aggregation Tileset: 
+Here is an example of valid `properties` for a Point Aggregation Tileset:
 
 ```sql
 R'''
@@ -89,7 +89,7 @@ R'''
         "has_other_ethnicities": {
             "formula":"countif(ethnicity = 'other_race') > 0",
             "type":"Boolean"
-        } 
+        }
     },
     "single_point_properties": {
         "name":"String",
@@ -245,23 +245,42 @@ Any option left as `NULL` will take its default value if available.
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET`(
-  "your-project.your-dataset.quadbin_test_dataset_level15",
-  "your-project.your-dataset.spatial_index_tileset_test_output",
-  R'''{
-  "resolution_min": 4,
-  "resolution_max": 8,
-  "spatial_index_column": 'quadbin:geoid',
-  "resolution": 15,
-  "aggregation_resolution": 4,
-  "properties": {
-      "pop": {
-          "formula":"sum(population)",
-          "type":"Number"
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  'YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_QUADBIN_LEVEL14',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_QUADBIN_LEVEL14',
+  '{
+    "spatial_index_column": "quadbin:index",
+    "resolution": 14,
+    "resolution_min": 0,
+    "resolution_max": 8,
+    "aggregation_resolution": 6,
+    "properties": {
+      "population": {
+        "formula": "SUM(population)",
+        "type": "Number"
       }
-  }
-}
-  '''
+    }
+  }'
+);
+```
+
+```sql
+CALL carto.CREATE_SPATIAL_INDEX_TILESET(
+  '(SELECT * FROM YOUR_DATABASE.YOUR_SCHEMA.INPUT_TABLE_H3_LEVEL10)',
+  'YOUR_DATABASE.YOUR_SCHEMA.OUTPUT_TILESET_H3_LEVEL10',
+  R'''{
+    "spatial_index_column": "h3:index",
+    "resolution": 10,
+    "resolution_min": 0,
+    "resolution_max": 6,
+    "aggregation_resolution": 4,
+    "properties": {
+      "population": {
+        "formula": "SUM(population)",
+        "type": "Number"
+      }
+    }
+  }'''
 );
 ```
 
@@ -290,7 +309,7 @@ Creates a simple tileset. It differs from `carto.CREATE_SIMPLE_TILESET` in that 
 |`description`| Default: `""`. A `STRING` that contains a description for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`legend`| Default: `""`. A `STRING` that contains a legend for the tileset to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`zoom_min`| Default: `0` for `POINTS` datasets and `2` for `POLYGON/LINESTRING` datasets. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
-|`zoom_max`| Default: `15`. A `NUMBER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`zoom_max`| Default: `15`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
 |`geom_column_name`| Default: `"geom"`. A `STRING` that contains the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then `zoom_min` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|
 |`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then `zoom_max` will be used). It must be a positive number between `zoom_min` and `zoom_max`.|

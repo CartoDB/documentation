@@ -17,7 +17,7 @@ carto.DATAOBS_ENRICH_GRID(grid_type, input_query, input_index_column, variables,
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2, geohash) with data from the  Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells are identified by their indices.
+This procedure enriches a set of grid cells of one of the supported types (h3, quadbin, s2, geohash) with data from the  Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells are identified by their indices.
 
 The Data Observatory Catalog tables (`SPATIAL_CATALOG_DATASETS` and `SPATIAL_CATALOG_VARIABLES`) must also be present in the same schema as the procedures.
 
@@ -34,9 +34,9 @@ For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_
 
 **Input parameters**
 
-* `grid_type`: `VARCHAR` Type of grid: "h3", "quadkey", "s2" or "geohash".
+* `grid_type`: `VARCHAR` Type of grid: "h3", "quadbin", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce
-   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
+   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadbin or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `variables`: `ARRAY` of `OBJECT`s with fields `variable` and `aggregation`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, and `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
@@ -72,7 +72,7 @@ carto.DATAOBS_ENRICH_GRID_RAW(grid_type, input_query, input_index_column, variab
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2, geohash) with data from the  Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells are identified by their indices.
+This procedure enriches a set of grid cells of one of the supported types (h3, quadbin, s2, geohash) with data from the  Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells are identified by their indices.
 
 The Data Observatory Catalog tables (`SPATIAL_CATALOG_DATASETS` and `SPATIAL_CATALOG_VARIABLES`) must also be present in the same schema as the procedures.
 
@@ -80,9 +80,9 @@ As a result of this process, each input grid cell will be enriched with the data
 
 **Input parameters**
 
-* `grid_type`: `VARCHAR` Type of grid: "h3", "quadkey", "s2" or "geohash".
+* `grid_type`: `VARCHAR` Type of grid: "h3", "quadbin", "s2" or "geohash".
 * `input_query`: `VARCHAR` query to be enriched; this query must produce
-   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
+   valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadbin or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `variables`: `ARRAY` of VARCHAR with slugs (unique identifiers) of the Data Observatory variables to enrich the input polygons. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY` of `OBJECT`s with fields `dataset` and `expression`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
@@ -413,7 +413,7 @@ FROM FLATENRICHMENT
 GROUP BY NAME
 ```
 
-#### In-place enrichment
+### In-place enrichment
 
 ```sql
 CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
@@ -504,7 +504,7 @@ carto.ENRICH_GRID(grid_type, input_query, input_index_column, data_query data_ge
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2, geohash) with data from another enrichment query. The cells are identified by their indices.
+This procedure enriches a set of grid cells of one of the supported types (h3, quadbin, s2, geohash) with data from another enrichment query. The cells are identified by their indices.
 
 As a result of this process, each input grid cell will be enriched with the data of the enrichment query that spatially intersects it. When the input cell intersects with more than one feature of the enrichment query, the data is aggregated using the aggregation methods specified.
 
@@ -519,8 +519,8 @@ For other types of aggregation, the [`ENRICH_GRID_RAW`](#enrich_grid_raw) proced
 
 **Input parameters**
 
-* `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
-* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
+* `grid_type`: Type of grid: "h3", "quadbin", "s2" or "geohash".
+* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT8 for quadbin or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.
@@ -582,12 +582,12 @@ carto.ENRICH_GRID_RAW(grid_type, input_query, input_index_column, data_query dat
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadkey, s2, geohash) with data from another enrichment query. The cells are identified by their indices.
+This procedure enriches a set of grid cells of one of the supported types (h3, quadbin, s2, geohash) with data from another enrichment query. The cells are identified by their indices.
 
 **Input parameters**
 
-* `grid_type`: Type of grid: "h3", "quadkey", "s2" or "geohash".
-* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadkey or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
+* `grid_type`: Type of grid: "h3", "quadbin", "s2" or "geohash".
+* `input_query`: `VARCHAR` query to be enriched; this query must produce valid grid indices for the selected grid type in a column of the proper type (VARCHAR for h3 or geohash, and INT for quadbin or s2). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well.
 * `input_index_column`: `VARCHAR` name of a column in the query that contains the grid indices.
 * `data_query`: `VARCHAR` query that contains both a geography column and the columns with the data that will be used to enrich the polygons provided in the input query. All rows in the table must contain the same kind of geometry (points/lines/polygons) in the geography column.
 * `data_geography_column`: `VARCHAR` name of the GEOGRAPHY column provided in the `data_query`.

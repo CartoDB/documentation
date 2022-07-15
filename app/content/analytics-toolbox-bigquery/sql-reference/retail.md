@@ -75,8 +75,8 @@ This procedure is the first step of the Revenue Prediction analysis workflow. It
 * `stores_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` list with the columns of the `stores_query` and their corresponding aggregation method (`sum`, `avg`, `max`, `min`, `count`) that will be used to enrich the grid cells. It can be set to `NULL`.
 * `competitors_query`: `STRING` query with the competitors information to be used in the model. It must contain the columns `competitor` (competitor store unique id) and `geom` (the geographical point of the store).
 * `aoi_query`: `STRING` query with the geography of the area of interest. It must contain a column `geom` with a single area (Polygon or MultiPolygon).
-* `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadkey`.
-* `grid_level`: `INT64` level or resolution of the cell grid. Check the available [h3 levels](https://h3geo.org/docs/core-library/restable/) and [quadkey levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid?tabs=csharp).
+* `grid_type`: `STRING` type of the cell grid. Supported values are `h3`, and `quadbin`.
+* `grid_level`: `INT64` level or resolution of the cell grid. Check the available [h3 levels](https://h3geo.org/docs/core-library/restable/), and [quadbin levels](https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#quadbin).
 * `kring`: `INT64` size of the kring where the decay function will be applied. This value can be 0, in which case no kring will be computed and the decay function won't be applied.
 * `decay`: `STRING` decay function. Supported values are `uniform`, `inverse`, `inverse_square` and `exponential`. If set to `NULL` or `''`, `uniform` is used by default.
 * `do_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore train the revenue prediction model in the subsequent step of the Revenue Prediction workflow. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable's default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure `DATAOBS_SUBSCRIPTION_VARIABLES` can be used to find available variables and their slugs and default aggregation. It can be set to `NULL`.
@@ -96,11 +96,11 @@ The procedure will output two tables:
 {{%/ customSelector %}}
 
 ```sql
-CALL carto.BUILD_REVENUE_MODEL_DATA(
+CALL `carto-un`.carto.BUILD_REVENUE_MODEL_DATA(
     -- Stores: revenue, store, geom and optional store information
     '''SELECT revenue, store, geom, store_area FROM `<project>.<dataset>.input_stores_data`''',
     -- Stores information variables
-    [('store_area','sum')], 
+    [('store_area','sum')],
     -- Competitors: competitor, geom
     '''SELECT competitor, geom FROM `<project>.<dataset>.input_competitors_data`''',
     -- Area of interest: geom
@@ -133,27 +133,27 @@ carto.COMMERCIAL_HOTSPOTS(input, output, index_column, index_type, variable_colu
 
 **Description**
 
-This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or quadkey grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi* statistic for each cell will be computed by taking into account the neighboring cells within the kring of size `kring`.
+This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or quadbin grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi* statistic for each cell will be computed by taking into account the neighboring cells within the kring of size `kring`.
 
 Only those cells where the Gi* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi* values.
 
 **Input parameters**
 
 * `input`: `STRING` name of the table containing the input data. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`.
-* `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted. 
-* `index_column`: `STRING` name of the column containing the H3 or quadkey indexes.
-* `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3' and 'quadkey'.
+* `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted.
+* `index_column`: `STRING` name of the column containing the H3, or quadbin indexes.
+* `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3', or 'quadbin'.
 * `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi* statistic.
 * `variable_weights`: `ARRAY<FLOAT64>` containing the weights associated with each of the variables. These weights can take any value but will be normalized to sum up to 1. If NULL, uniform weights will be considered
 * `kring`: `INT64` size of the kring (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi* statistic. If NULL, uniform weights will be considered.
-* `pvalue_thresh`: Threshold for the Gi* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned. 
+* `pvalue_thresh`: Threshold for the Gi* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned.
 
 **Output**
 The output will contain the following columns:
 * `index`: `STRING` containing the cell index.
 * `combined_gi`: `FLOAT64` with the resulting combined Gi*.
 * `p_value`: `FLOAT64` with the p-value associated with the combined Gi* statistic.
- 
+
 If the output table is not specified when calling the procedure, the result will be returned but it won't be persisted.
 
 {{% customSelector %}}
@@ -164,9 +164,9 @@ If the output table is not specified when calling the procedure, the result will
 CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
     'project_id.dataset_id.my_input_table',
     'project_id.dataset_id.my_output_table',
-    'store_location_cell',
+    'index',
     'h3',
-    ['raw_visit_counts','population'],
+    ['feature_0', 'feature_1'],
     [0.7, 0.3],
      3,
      0.01
@@ -177,18 +177,17 @@ CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
 
 ```sql
 CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
-    'project_id.dataset_id.my_table',
-     NULL,
-    'index_id',
-    'quadkey',
-    ['feature_0','feature_1', 'feature_2'],
-     NULL,
-     1,
-     NULL
-)
--- {"index": 12802315855, "combined_gi": 4.192, "p_value": 0.000123}
--- {"index": 12807558543, "combined_gi": 4.991, "p_value": 3.01e-07}
--- {"index": 12812801743, "combined_gi": 5.243, "p_value": 1.09e-05}
+    'project_id.dataset_id.my_input_table',
+    'project_id.dataset_id.my_output_table',
+    'index',
+    'quadbin',
+    ['feature_0', 'feature_1'],
+    [0.5, 0.5],
+    1,
+    0.05
+);
+-- Table project_id.dataset_id.my_output_table will be created.
+-- with columns: index, combined_gi, p_value
 ```
 
 ### FIND_TWIN_AREAS
@@ -201,11 +200,11 @@ carto.FIND_TWIN_AREAS(origin_query, target_query, index_column, pca_explained_va
 
 Procedure to obtain the twin areas for a given origin location in a target area. The full description of the method, based on Principal Component Analysis (PCA), can be found [here](https://carto.com/blog/spatial-data-science-site-planning).
 
-The output twin areas are those of the target area considered to be the most similar to the origin location, based on the values of a set of variables. Only variables with numerical values are supported. Both origin and target areas should be provided in grid format (h3 or quadkey) of the same resolution. We recommend using the [data.GRIDIFY_ENRICH](../data/#gridify_enrich) procedure to prepare the data in the format expected by this procedure.
+The output twin areas are those of the target area considered to be the most similar to the origin location, based on the values of a set of variables. Only variables with numerical values are supported. Both origin and target areas should be provided in grid format (h3, or quadbin) of the same resolution. We recommend using the [data.GRIDIFY_ENRICH](../data/#gridify_enrich) procedure to prepare the data in the format expected by this procedure.
 
 **Input**
 
-* `origin_query`: `STRING` query to provide the origin cell (`index` column) and its associated data columns. No NULL values should be contained in any of the data columns provided. The cell can be an h3 or a quadkey index. For quadkey, the value should be cast to `STRING` (`CAST(index AS STRING)`). Example origin queries are:
+* `origin_query`: `STRING` query to provide the origin cell (`index` column) and its associated data columns. No NULL values should be contained in any of the data columns provided. The cell can be an h3, or a quadbin index. For quadbin, the value should be cast to `STRING` (`CAST(index AS STRING)`). Example origin queries are:
     ```sql
     -- When selecting the origin cell from a dataset of gridified data
     SELECT * FROM `<project>.<dataset>.<origin_table>`
@@ -219,13 +218,13 @@ The output twin areas are those of the target area considered to be the most sim
     ```
 
     ```sql
-    -- When the input quadkey cell ID is inferred from a (longitude, latitude) pair
+    -- When the input quadbin cell ID is inferred from a (longitude, latitude) pair
     SELECT * FROM `<project>.<dataset>.<origin_table>`
-    WHERE ST_INTERSECTS(`carto-un`.carto.QUADINT_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
+    WHERE ST_INTERSECTS(`carto-un`.carto.QUADBIN_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
     ```
 
     ```sql
-    -- When the cell ID is a quadkey and requires to be cast
+    -- When the cell ID is a quadbin and requires to be cast
     SELECT * EXCEPT(index_column), CAST(index_column AS STRING)
     FROM `<project>.<dataset>.<origin_table>`
     ```
@@ -250,14 +249,16 @@ The procedure outputs the following:
 ```sql
 CALL `carto-un`.carto.FIND_TWIN_AREAS(
     -- Input queries
-    '''SELECT * FROM `cartobq.docs.twin_areas_target_enriched` LIMIT 1''',
-    '''SELECT * FROM `cartobq.docs.twin_areas_origin_enriched`''',
+    '''SELECT * FROM `cartobq.docs.twin_areas_origin_enriched_quadbin` LIMIT 1''',
+    '''SELECT * FROM `cartobq.docs.twin_areas_target_enriched_quadbin`''',
     -- Twin areas model inputs
-    'index',
+    'quadbin',
     0.90,
     NULL,
     'my-project.my-dataset.my-prefix'
 );
+-- Table `<my-project>.<my-dataset>.<output-prefix>_{ID}_results` will be created
+-- with the column: quadbin, similarity_score, similarity_skill_score
 ```
 
 ### FIND_WHITESPACE_AREAS
@@ -281,7 +282,7 @@ This is a postprocessing step that may be used after completing a Revenue Predic
 
 It requires as input the model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure) and the trained model (output of the [`BUILD_REVENUE_MODEL`](#build_revenue_model) procedure), as well as a query with points to use as generators for the area of applicability of the model, plus a series of optional filters.
 
-A cell is eligible to be considered a _whitespace_ if it complies with the filtering criteria (minimum revenue, presence of competitors, etc.) and is within the [area of applicability](https://arxiv.org/abs/2005.07939) of the revenue model provided. 
+A cell is eligible to be considered a _whitespace_ if it complies with the filtering criteria (minimum revenue, presence of competitors, etc.) and is within the [area of applicability](https://arxiv.org/abs/2005.07939) of the revenue model provided.
 
 **Input parameters**
 
@@ -297,7 +298,7 @@ A cell is eligible to be considered a _whitespace_ if it complies with the filte
 **Output**
 
 The procedure will output a table of cells with the following columns:
-* `index`: identifying the H3 or quadkey cell.
+* `index`: identifying the H3, or quadbin cell.
 * `predicted_revenue_avg`: average revenue of an additional store located in the grid cell.
 * `store_count`: number of own stores present in the grid cell.
 * `competitor_count`: number of competitors present in the grid cell.
@@ -307,16 +308,16 @@ The procedure will output a table of cells with the following columns:
 {{%/ customSelector %}}
 
 ```sql
-CALL carto.FIND_WHITESPACE_AREAS(
+CALL `carto-un`.carto.FIND_WHITESPACE_AREAS(
     '<my-project>.<my-dataset>.<output-prefix>_model',
-    '<my-project>.<my-dataset>.<output-prefix>_model_data'
-    'SELECT geom FROM <my-project>.<my-dataset>.<generator-table>',
-    'SELECT geom FROM <my-project>.<my-dataset>.<area_of_interest_table>', -- Area of Interest filter
+    '<my-project>.<my-dataset>.<output-prefix>_model_data',
+    'SELECT geom FROM `<my-project>.<my-dataset>.<generator-table>`',
+    'SELECT geom FROM `<my-project>.<my-dataset>.<area_of_interest_table>`', -- Area of Interest filter
     10000, -- Minimum predicted revenue filter
     5, -- Maximum number of results
     TRUE, -- Whether to include cells with own stores
     FALSE -- Whether to include cells with competitors
-)
+);
 ```
 
 ### PREDICT_REVENUE_AVERAGE
@@ -331,7 +332,7 @@ This procedure is the third and final step of the Revenue Prediction analysis wo
 
 **Input parameters**
 
-* `index`: `STRING` cell index where the new store will be located. It can be an `h3` or a `quadkey` index. For `quadkey`, the value should be cast to string: `CAST(index AS STRING)`. It can also be `'ALL'`, in which case the prediction for all the grid cells of the model data are returned.
+* `index`: `STRING` cell index where the new store will be located. It can be an `h3` or a `quadbin` index. For `quadbin`, the value should be cast to string: `CAST(index AS STRING)`. It can also be `'ALL'`, in which case the prediction for all the grid cells of the model data are returned.
 * `revenue_model`: `STRING` the fully qualified `model` name.
 * `revenue_model_data`: `STRING` the fully qualified `model_data` table name.
 * `candidate_data`: `STRING` the fully qualified `candidate_data` table name. It can be set to `NULL`.
@@ -348,7 +349,7 @@ The procedure will output the `index` and `predicted_revenue_avg` value in the c
 ```sql
 CREATE TABLE '<my-project>.<my-dataset>.<output-prefix>_candidate_data'  AS (SELECT 25 store_area);
 
-CALL carto.PREDICT_REVENUE_AVERAGE(
+CALL `carto-un`.carto.PREDICT_REVENUE_AVERAGE(
     '862676d1fffffff',
     '<my-project>.<my-dataset>.<output-prefix>_model',
     '<my-project>.<my-dataset>.<output-prefix>_model_data',

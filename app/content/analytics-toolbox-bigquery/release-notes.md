@@ -4,6 +4,57 @@ aliases:
 ---
 ## Release notes
 
+### July 8, 2022
+
+#### Module data
+
+Add
+- Add quadbin support to module.
+
+#### Module retail
+
+Add
+- Add quadbin support
+
+#### Module tiler
+
+Add
+- Support of quadgrid as alias in `CREATE_POINT_AGGREGATION_TILESET`.
+
+#### Module tiler
+
+Changed
+- Use core functions to convert H3 from int to string.
+
+### July 7, 2022
+
+#### Module h3
+
+Fixed
+- Correctly handle large polygons in H3_POLYFILL.
+- Fixed wrong uppercase for quadbin and h3 tile ids
+
+#### Module statistics
+
+Feature
+- Add SMOOTHING_MRF_QUADBIN procedure.
+- Add LOCAL_MORANS_I_QUADBIN function.
+- Add MORANS_I_QUADBIN function.
+- Add GETIS_ORD_QUADBIN function.
+- Quadbin support in GWR_GRID function.
+
+#### Module tiler
+
+Fixed
+- Fixed tablename quoting in BigQuery tiler
+
+### July 6, 2022
+
+#### Module retail
+
+Fixed
+- Fix quadkey support in FIND_WHITESPACE_AREAS
+
 ### June 29, 2022
 
 #### Module retail
