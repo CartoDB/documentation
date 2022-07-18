@@ -222,7 +222,9 @@ To add your first connection, you can follow the previous <a href="#create-a-con
 
 Once you have added a connection, go back to the *Data Explorer* section, where you will see the list with all of your current connections:
 
-![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_bigquery.png)
+![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_bigquery_test.png)
+
+<!-- ![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_bigquery.png) -->
 
 Select a connection and start exploring the content (database/project(s), schemas/datasets, and tables) in a collapsible tree:
 
