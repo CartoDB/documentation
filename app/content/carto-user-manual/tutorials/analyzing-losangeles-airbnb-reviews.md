@@ -147,10 +147,9 @@ We will also visualize where the *location* *score* variable significantly influ
 
     ![Map duplicate](/img/cloud-native-workspace/tutorials/tutorial10_map_duplicate.png)
 
+11. (Optional) Run the model in your Data Warehouse
 
-11. Add a new layer with source ‘Your connection’ and type 'SQL query'. Input the following SQL query
-
-We will use a materialized version of the H3 aggregation SQL query that we applied before as input,  choose `value_vs_price_rating`, `cleanliness_rating` and `location_rating` as input variables and `overall_rating` as the target variable.
+Using the CARTO Analytics Toolbox in your Google BigQuery console, run the GWR model using a materialized version of the H3 aggregation SQL query that we applied before as input. Choose `value_vs_price_rating`, `cleanliness_rating` and `location_rating` as input variables and `overall_rating` as the target variable. All of that means the following query
 
 ```sql
 CALL `carto-un`.carto.GWR_GRID(
@@ -162,7 +161,23 @@ CALL `carto-un`.carto.GWR_GRID(
 )
 ```
 
-12. Style the layer.
+Once you've run this query in your Google BigQuery console, feel free to save it or simply use our materialized results
+
+12. Add a new layer with source ‘Your connection’ and type 'SQL query'. Choose `h3` as the sptial data type. Now use the results of the GWR model with the following query:
+
+```sql
+SELECT 
+  h3_z8 as h3,
+  value_vs_price_rating_coef_estimate,
+  cleanliness_rating_coef_estimate,
+  location_rating_coef_estimate,
+  intercept
+FROM `cartobq.docs.airbnb_la_h3_gwr`
+```
+
+Where `cartobq.docs.airbnb_la_h3_gwr` is the result from step 11. Run this query.
+
+13. Style the layer.
 
     - Name: `Location relevance (Model)`
     - Order: 3
@@ -171,11 +186,11 @@ CALL `carto-un`.carto.GWR_GRID(
 
 Optionally, style the layer by different attributes.
 
-13. Change the basemap to Google Maps Roadmap basemap.
+14. Change the basemap to Google Maps Roadmap basemap.
 
     ![Google Basemap Roadmap change](/img/cloud-native-workspace/tutorials/tutorial10_basemap_option_roadmap.png)
 
-14. Click on the _Dual map view_ button to toggle the split map option.
+15. Click on the _Dual map view_ button to toggle the split map option.
 
     ![Dual map view button](/img/cloud-native-workspace/tutorials/tutorial10_switch_dual_map_view_menu.png)
 
