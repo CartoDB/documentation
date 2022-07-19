@@ -216,19 +216,21 @@ You can manage your connections to your data warehouse(s) through different opti
 
 The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven’t connected your own data warehouse yet, you will see the provisioned `CARTO data warehouse connection` with access to some demo data:
 
-![Data Explorer carto data warehouse](/img/cloud-native-workspace/data-explorer/de_carto_datawarehouse.png)
+![Data Explorer carto data warehouse](/img/cloud-native-workspace/data-explorer/de_carto_dw.png)
 
 To add your first connection, you can follow the previous <a href="#create-a-connection" target="_blank">Guide</a> to create a data warehouse connection.
 
 Once you have added a connection, go back to the *Data Explorer* section, where you will see the list with all of your current connections:
 
+![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connection_list.png) 
+
 Select a connection and start exploring the content (database/project(s), schemas/datasets, and tables) in a collapsible tree:
 
-![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_content.png)
+![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_connection_content.png)
 
 Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
 
-![Data Explorer preview table](/img/cloud-native-workspace/data-explorer/de_preview_map.png)
+![Data Explorer preview map](/img/cloud-native-workspace/data-explorer/de_preview_the_map.png)
 
 #### Create a map
 
