@@ -222,11 +222,13 @@ To add your first connection, you can follow the previous <a href="#create-a-con
 
 Once you have added a connection, go back to the *Data Explorer* section, where you will see the list with all of your current connections:
 
-![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connection_list.png) 
+![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connections_list.png) 
+<!-- 
+![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connection_list.png)  -->
 
 Select a connection and start exploring the content (database/project(s), schemas/datasets, and tables) in a collapsible tree:
 
-![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_connection_content.png)
+![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_connections_content.png)
 
 Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
 
