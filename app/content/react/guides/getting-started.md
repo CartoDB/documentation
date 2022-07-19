@@ -20,7 +20,7 @@ These are the main folders:
 
 * **src/components/common**: common components as Header, Footer, Menus, etc
 
-* **src/components/layers**: deck.gl layers that area available to the Map component.
+* **src/components/layers**: deck.gl layers that are available to the Map component.
 
 * **src/components/views**: pages which match with routes.
 
