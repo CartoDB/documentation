@@ -216,7 +216,7 @@ You can manage your connections to your data warehouse(s) through different opti
 
 The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven’t connected your own data warehouse yet, you will see the provisioned `CARTO data warehouse connection` with access to some demo data:
 
-![Data Explorer carto data warehouse](/img/cloud-native-workspace/data-explorer/de_carto_dw.png)
+![Data Explorer carto data warehouse](/img/cloud-native-workspace/data-explorer/de_cartodw_connection.png)
 
 To add your first connection, you can follow the previous <a href="#create-a-connection" target="_blank">Guide</a> to create a data warehouse connection.
 
