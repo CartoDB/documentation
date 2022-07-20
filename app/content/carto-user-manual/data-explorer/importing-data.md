@@ -88,12 +88,10 @@ In the *Data Explorer* section of the Workspace, you can view the list of your c
 
 ![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_table_menu.png)
 
-<!-- ![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_table_menu.png) -->
-
 ![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_tileset_menu.png)
-
-<!-- ![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_tileset_menu.png) -->
 
 If you click the *Delete* quick action, a dialog will appear allowing you to confirm that you want to delete the selected table or tileset. It includes information about data sources, layers, applications and API calls related to the existing dataset that could potentially be affected by the action. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 
-![Data Explorer dialog delete table](/img/cloud-native-workspace/data-explorer/de_delete_table.png)
+![Data Explorer dialog delete table](/img/cloud-native-workspace/data-explorer/de_the_delete_table.png)
+
+<!-- ![Data Explorer dialog delete table](/img/cloud-native-workspace/data-explorer/de_delete_table.png) -->
