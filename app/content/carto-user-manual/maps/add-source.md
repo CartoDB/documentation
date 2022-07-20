@@ -115,7 +115,7 @@ Note that you cannot leave a source unnamed. In this case, the last name set wil
 
 <!-- Note that if you leave the source unnamed, the previous name will be set by default. -->
 
-Once the source has been renamed, the new name will replace the old one in the data table or when we add a new widget.
+Once the source is renamed, the new name will replace the old one in the data table or when we add a new widget.
 
 ![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed_datatable.png)
 
