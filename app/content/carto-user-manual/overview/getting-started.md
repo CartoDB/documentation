@@ -223,8 +223,6 @@ To add your first connection, you can follow the previous <a href="#create-a-con
 Once you have added a connection, go back to the *Data Explorer* section, where you will see the list with all of your current connections:
 
 ![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connections_list.png) 
-<!-- 
-![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connection_list.png)  -->
 
 Select a connection and start exploring the content (database/project(s), schemas/datasets, and tables) in a collapsible tree:
 
@@ -331,13 +329,25 @@ You can follow up your tileset creation process and check the status: creating t
 
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
-To import your data, go to Data Explorer section, select  *Connections* panel and click on *Import data* button on the top left:
+To import your data, go to Data Explorer section, and click in the view page the *Import data* button on the top right:
 
-![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_button1.png)
+
+<!-- ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png) -->
+
+Please note if you have selected a dataset, the import data button is visualised with an icon:
+
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_icon.png)
+
+You can also import your data from the Home section, clicking in the *Import data* button in Recent datasets:
+
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_button2.png)
 
 A new dialog will open allowing you to import your data into the available connections. Check [suppported formats](../../data-explorer/importing-data/#supported-formats) guide for more details.
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_check.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_the_import_select_file_check.png)
+
+<!-- ![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_check.png) -->
 
 You can import your data through two different methods: Local or Remote. For more details, check [Importing data](../../data-explorer/importing-data) guide.
 
