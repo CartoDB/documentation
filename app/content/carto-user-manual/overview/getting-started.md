@@ -333,21 +333,17 @@ To import your data, go to Data Explorer section, and click in the view page the
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_button1.png)
 
-<!-- ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png) -->
-
 Please note if you have selected a dataset, the import data button is visualised with an icon:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_icon.png)
 
-You can also import your data from the Home section, clicking in the *Import data* button in Recent datasets:
+You can also import your data from the Home section, clicking in the *Import dataset* button in Recent datasets:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_button2.png)
 
-A new dialog will open allowing you to import your data into the available connections. Check [suppported formats](../../data-explorer/importing-data/#supported-formats) guide for more details.
+A new dialog will open allowing you to import your data into the available connections. Check [supported formats](../../data-explorer/importing-data/#supported-formats) guide for more details.
 
 ![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_the_import_select_file_check.png)
-
-<!-- ![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_check.png) -->
 
 You can import your data through two different methods: Local or Remote. For more details, check [Importing data](../../data-explorer/importing-data) guide.
 
