@@ -14,7 +14,9 @@ The `CARTO Data Warehouse` connection is limited to a certain amount of computin
 
 The `CARTO Data Warehouse` connection grants access to a set of demo tables and tilesets that can be used to start creating maps and exploring the tools from the very beginning. They're available and ready to be used in the Data Explorer.
 
-![Connections module](/img/cloud-native-workspace/connections/the_connections_cartodw_folders.png)
+![Connections module](/img/cloud-native-workspace/connections/the_connections_cartodw_folders_tree.png)
+
+<!-- ![Connections module](/img/cloud-native-workspace/connections/the_connections_cartodw_folders.png) -->
 
 {{% bannerNote type="note" title="Note"%}}
 If your CARTO account has been provisioned on a cloud region outside the US (e.g., Europe-West, Asia-Northeast), you will find available an additional dataset called `shared-us` in your CARTO Data Warehouse connection. With the tables stored in `shared-us` you will be able to access certain functionalities, such as creating tilesets and performing data enrichment with Data Observatory subscriptions, that are only available at the moment for data tables stored in the US multi-region. In case of questions, please contact support@carto.com.
