@@ -110,8 +110,10 @@ Then, press enter to save your changes.
 ![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed.png)
 
 {{% bannerNote type="note" title=""%}}
-Note that if you leave the source unnamed, the original name will be displayed again by default. 
+Note that you cannot leave a source unnamed. In this case, the last name set will be the default name.  
 {{%/ bannerNote %}}
+
+<!-- Note that if you leave the source unnamed, the previous name will be set by default. -->
 
 Once the source has been renamed, the new name will replace the old one in the data table or when we add a new widget.
 
