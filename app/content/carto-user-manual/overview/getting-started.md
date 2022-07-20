@@ -297,33 +297,33 @@ To learn more, please visit the Documentation page of the [CARTO Analytics Toolb
 
 <!-- BigQuery and CARTO Data Warehouse connections. -->
 
-You can create a tileset by clicking on the *Create tileset* button at the top right of the screen. Please note that this option will only be available for those tables that require a tileset to be visualized entirely due to their size. 
+You can create a tileset by clicking on the *Create tileset* button at the top of the screen. Please note that this option will only be available for those tables that require a tileset to be visualized entirely due to their size. 
 
-![Data Explorer create tileset button](/img/cloud-native-workspace/data-explorer/de_create_tileset.png)
+![Data Explorer create tileset button](/img/cloud-native-workspace/data-explorer/de_create_the_tileset.png)
 
 Now from this interface will allow you to set the location and name of the output tileset in a directory where the user has write permissions. Once you have completed this configuration, click on *Save here*.
 
-![Data Explorer tileset destination](/img/cloud-native-workspace/data-explorer/de_tileset_destination.png)
+![Data Explorer tileset destination](/img/cloud-native-workspace/data-explorer/de_the_tileset_destination.png)
 
 A new dialog will open so you can create the tileset from a *form* mode or from a *sql* mode. You are initially presented with a *form* mode to configure the tileset. You need to select the tileset zoom levels and choose the geometry column. You can also add a custom description to the tileset. Once you have completed this configuration, click on *Continue*.
 
-![Data Explorer tileset settings](/img/cloud-native-workspace/data-explorer/de_tileset_settings.png)
+![Data Explorer tileset settings](/img/cloud-native-workspace/data-explorer/de_the_tileset_settings.png)
 
 The next screen will allow you to easily select the attributes of your table that will be included in the tileset. After completing this step, click on *Continue* :
 
-![Data Explorer tileset attributes](/img/cloud-native-workspace/data-explorer/de_tileset_attributes.png)
+![Data Explorer tileset attributes](/img/cloud-native-workspace/data-explorer/de_the_tileset_attributes.png)
 
 The last screen will show you a summary of the configuration of the tileset for your confirmation. To confirm, click on *Create* :
 
-![Data Explorer tileset confirmation](/img/cloud-native-workspace/data-explorer/de_tileset_confirmation.png)
+![Data Explorer tileset confirmation](/img/cloud-native-workspace/data-explorer/de_the_tileset_confirmation.png)
 
 At any point of the process you can switch to enable the *SQL editor*. This editor allows you to configure your tileset directly on the query that will be run to create it, therefore allowing you to edit all of the advanced options available. Once you have finished editing the SQL query, click on *Create*:
 
-![Data Explorer create tileset sql editor](/img/cloud-native-workspace/data-explorer/de_create_tileset_sql_editor.png)
+![Data Explorer create tileset sql editor](/img/cloud-native-workspace/data-explorer/de_create_the_tileset_sql_editor.png)
 
 Please note that if you edit the SQL query and go back to the form, a message appears warning you that all changes will be lost. Click on *Clear* to accept this or click on *Cancel* to continue editing:
 
-![Data Explorer create tileset disable sql editor](/img/cloud-native-workspace/data-explorer/de_disable_sql_editor.png)
+![Data Explorer create tileset disable sql editor](/img/cloud-native-workspace/data-explorer/de_the_disable_sql_editor.png)
 
 You can follow up your tileset creation process and check the status: creating tileset, tileset created successfully or tileset creation error. For more details, check the [Creating a tileset from your data](../../data-explorer/creating-a-tileset-from-your-data) guide.
 
