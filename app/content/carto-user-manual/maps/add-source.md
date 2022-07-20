@@ -89,7 +89,9 @@ Once the process is finished, the table or tileset is included in the Builder ma
 
 Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
 
-![Map source options view data table](/img/cloud-native-workspace/maps/map_source_new_options.png)
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_more_options.png)
+
+<!-- ![Map source options view data table](/img/cloud-native-workspace/maps/map_source_new_options.png) -->
 
 By clicking the *tree dots* icon the Column Context menu will reveal additional options such as: Sort on this column, ascending or descending, Pin the column so you can freeze it in the first position, and copy column data.
 
@@ -98,6 +100,24 @@ By clicking the *tree dots* icon the Column Context menu will reveal additional 
 Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*. When you click the Delete quick action, a dialog will appear allowing you to confirm that you want to delete the selected data source and warning you that it will be affect the layers created with this source.
 
 ![Map source options delete source](/img/cloud-native-workspace/maps/map_source_warning_delete.png)
+
+You can also rename a source by clicking on the "Rename" option. 
+
+![Map source options rename source](/img/cloud-native-workspace/maps/map_source_rename.png)
+
+Then, press enter to save your changes.
+
+![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed.png)
+
+{{% bannerNote type="note" title=""%}}
+Note that if you leave the source unnamed, the original name will be displayed again by default. 
+{{%/ bannerNote %}}
+
+Once the source has been renamed, the new name will replace the old one in the data table or when we add a new widget.
+
+![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed_datatable.png)
+
+![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed_widget.png)
 
 ### Add source from a custom query
 
