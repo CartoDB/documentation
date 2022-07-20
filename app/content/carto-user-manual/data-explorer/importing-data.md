@@ -46,15 +46,21 @@ When an error occurs, you can click on *Read more* to get more information about
 
 Once the your data has been imported, it will be available as a table on your selected folder and you will have access the map and data preview as well as creating map in Builder.
 
-![Data Explorer map preview](/img/cloud-native-workspace/data-explorer/de_mappreview_populated_places.png)
+![Data Explorer map preview](/img/cloud-native-workspace/data-explorer/de_the_mappreview_populated_places.png)
+
+<!-- ![Data Explorer map preview](/img/cloud-native-workspace/data-explorer/de_mappreview_populated_places.png) -->
 
 You can also overwrite existing files. When you import a file with an existing name, a message will appear warning you that the table already exists in the destination folder. Click on *Save here* to continue and overwrite it or click on *Cancel* if you don't want the changes to be applied.
 
 ![Data Explorer import existing files](/img/cloud-native-workspace/data-explorer/de_import_existing_file.png)
 
+<!-- ![Data Explorer import existing files](/img/cloud-native-workspace/data-explorer/de_import_existing_file.png) -->
+
 If you do not have permissions, a message will appear warning you that the table already exists in the destination folder. Select a new location or click on *Cancel* if you don't want the changes to be applied.
 
-![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_import_check_permissions.png)
+![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_the_import_check_permissions.png)
+
+<!-- ![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_import_check_permissions.png) -->
 
 ### Importing methods
 
