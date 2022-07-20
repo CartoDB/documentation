@@ -48,8 +48,6 @@ Once the your data has been imported, it will be available as a table on your se
 
 ![Data Explorer map preview](/img/cloud-native-workspace/data-explorer/de_the_mappreview_populated_places.png)
 
-<!-- ![Data Explorer map preview](/img/cloud-native-workspace/data-explorer/de_mappreview_populated_places.png) -->
-
 You can also overwrite existing files. When you import a file with an existing name, a message will appear warning you that the table already exists in the destination folder. Click on *Save here* to continue and overwrite it or click on *Cancel* if you don't want the changes to be applied.
 
 ![Data Explorer import existing files](/img/cloud-native-workspace/data-explorer/de_import_existing_file.png)
@@ -59,8 +57,6 @@ You can also overwrite existing files. When you import a file with an existing n
 If you do not have permissions, a message will appear warning you that the table already exists in the destination folder. Select a new location or click on *Cancel* if you don't want the changes to be applied.
 
 ![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_the_import_check_permissions.png)
-
-<!-- ![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_import_check_permissions.png) -->
 
 ### Importing methods
 
@@ -90,9 +86,13 @@ The expected delimiters are: comma (`,`), semi-colon (`;`) or a tabulation.
 
 In the *Data Explorer* section of the Workspace, you can view the list of your current data warehouse(s) and data observatory subscriptions. You can access the quick actions menu to manage your data by clicking on the "three dots" icon in the top-right corner. There are different options available depending on whether it is a table or a tileset.
 
-![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_table_menu.png)
+![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_table_menu.png)
 
-![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_tileset_menu.png)
+<!-- ![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_table_menu.png) -->
+
+![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_tileset_menu.png)
+
+<!-- ![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_tileset_menu.png) -->
 
 If you click the *Delete* quick action, a dialog will appear allowing you to confirm that you want to delete the selected table or tileset. It includes information about data sources, layers, applications and API calls related to the existing dataset that could potentially be affected by the action. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 
