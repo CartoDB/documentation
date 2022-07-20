@@ -2,33 +2,35 @@
 
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
-To import your data, go to Data Explorer section, select *Connections* panel and click on *Import data* button on the top left:
+To import your data, go to Data Explorer section, select *Connections* tab and click on *Import data* button on the top right (or the import data icon, if you have a provider selected):
 
-![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_icon.png)
+
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_button1.png)
 
 A new dialog will open allowing you to import your data into the available connections.
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_check.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_the_import_select_file_check.png)
 
 When you import a file, the *Auto-guessing* option is always **enabled** by default. This option allows you to automatically guess column data types in the imported table.
 
 Once you have selected your file, click on *Continue*:
 
-![Data Explorer import select file continue](/img/cloud-native-workspace/data-explorer/de_import_select_file_check_continue.png)
+![Data Explorer import select file continue](/img/cloud-native-workspace/data-explorer/de_the_import_select_file_check_continue.png)
 
 The next screen will allow you to set the location and name of the output table. Once you have completed this configuration, click on *Save here*.
 
-![Data Explorer import destination connection](/img/cloud-native-workspace/data-explorer/de_import_destination_check_connection.png)
+![Data Explorer import destination connection](/img/cloud-native-workspace/data-explorer/de_the_import_destination_check_connection.png)
 
-![Data Explorer import destination save here](/img/cloud-native-workspace/data-explorer/de_import_destination_check_save_here.png)
+![Data Explorer import destination save here](/img/cloud-native-workspace/data-explorer/de_the_import_destination_check_save_here.png)
 
 The last screen will show you a summary of the details for your confirmation. To confirm, click on *Import*.
 
-![Data Explorer import confirmation](/img/cloud-native-workspace/data-explorer/de_import_check_confirmation.png)
+![Data Explorer import confirmation](/img/cloud-native-workspace/data-explorer/de_the_import_check_confirmation.png)
 
 A new dialog will open informing you that the import may take a while to process and giving you the option to follow the status from a new dialogue box that appears at the top right corner of the screen.
 
-![Data Explorer importing process](/img/cloud-native-workspace/data-explorer/de_importing_process.png)
+![Data Explorer importing process](/img/cloud-native-workspace/data-explorer/de_the_importing_process.png)
 
 There are three possible status: importing, imported successfully or dataset creation error.
 
