@@ -155,7 +155,7 @@ Customer Success Managers at CARTO bring geospatial expertise and hands-on guida
 Support issues should be submitted via the indicated email address based on your selected Support Package. Customers with an Elite Support Package are given access to a telephone number where support issues can be submitted as well.
 * Individual plan users will contact the Support team, writing to support@carto.com.
 * Enterprise account users will contact Support with enterprise-support@carto.com.
-* Premium and Elite accounts will have dedicated email addresses for P1 and P2 issues, for P3 they will contact support with enterprise-support@carto.com.
+* Elite accounts will have dedicated email addresses for P1, for P3 they will contact support with enterprise-support@carto.com.
 
 ---
 ##### What is the issue and severity classification? 
