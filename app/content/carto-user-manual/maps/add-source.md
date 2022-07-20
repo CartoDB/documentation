@@ -103,9 +103,11 @@ Once you have added your datasets to the map, you can always add a new layer or 
 
 You can also rename a source by clicking on the "Rename" option. 
 
-![Map source options rename source](/img/cloud-native-workspace/maps/map_source_rename.png)
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_more_options.png)
 
-Then, press enter to save your changes.
+Rename the source and press enter to save your changes.
+
+![Map source options rename source](/img/cloud-native-workspace/maps/map_source_rename.png)
 
 ![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed.png)
 
