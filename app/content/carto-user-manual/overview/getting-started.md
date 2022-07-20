@@ -230,7 +230,7 @@ Select a connection and start exploring the content (database/project(s), schema
 
 ![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_connections_content.png)
 
-Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. You can create a map by clicking on the *Create map* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
+Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. You can create a map by clicking on the *Create map* or *Create a tileset* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
 
 ![Data Explorer preview map](/img/cloud-native-workspace/data-explorer/de_preview_the_map.png)
 
