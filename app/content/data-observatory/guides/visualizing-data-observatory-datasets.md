@@ -5,7 +5,7 @@
 Data Observatory datasets can be visualized from the CARTO Workspace using Builder. You can easily do so by clicking on the _Create map_ action in the subscription's detail page, available from the Data Observatory section of the Data Explorer: 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-map.png" alt="Using Builder to create a map from Data Observatory data." style="width:100%">
+<img src="/img/data-observatory/do-the-create-map.png" alt="Using Builder to create a map from Data Observatory data." style="width:100%">
 </div>
 
 <div style="text-align:center" >
@@ -29,7 +29,7 @@ Those datasets whose size is within platform limits will be visualized in full. 
 You will be asked to select the connection that will be used to create a map with your Data Observatory subscription. The chosen connection will be used to retrieve the necessary data to add the layer to the map. Currently, CARTO Data Warehouse, BigQuery and Snowflake connections are supported; Redshift and Databricks support is coming soon.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-map-choose-connection.png" alt="Choose a connection to create a map with your Data Observatory subscription." style="width:100%">
+<img src="/img/data-observatory/do-the-create-map-choose-connection.png" alt="Choose a connection to create a map with your Data Observatory subscription." style="width:100%">
 </div>
 
 In order to be able to use a Snowflake connection to create a map, the data first needs to be imported into your database. This import process is performed by our engineering team on a request basis. 
@@ -37,14 +37,18 @@ In order to be able to use a Snowflake connection to create a map, the data firs
 To request it, go to the subscription's page, click on the _Create map_ button and choose the desired Snowflake connection. You will be asked to request access to the dataset. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
+<img src="/img/data-observatory/do-the-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
 Once we receive your request, we will get in touch with you to coordinate the import process. The data will be imported into a schema called `CARTO` that will be created in the Snowflake database you have set up in your Snowflake connection. Finallly, you will be able to create a map using such connection.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-map-sf-access-granted.png" alt="Create map of your Data Observatory subscription using a Snowflake connection." style="width:100%">
+<img src="/img/data-observatory/do-the-create-map-sf-access-granted.png" alt="Create map of your Data Observatory subscription using a Snowflake connection." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/do-create-map-sf-access-granted.png" alt="Create map of your Data Observatory subscription using a Snowflake connection." style="width:100%">
+</div> -->
 
 {{% bannerNote type="note" title="note"%}}
 If you would like to access more than one of your Data Observatory subscriptions from your Snowflake database, it is not necessary to request access for each of them individually, as we can import several datasets at once during the same process. 
@@ -67,8 +71,12 @@ Some of the spatial datasets offered in the Data Observatory are massive (a few 
 When a Data Observatory subscription requires a tileset to be visualized in full, a _Create tileset_ option will be available from the subscription's page.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-menu.png" alt="Create tileset menu option." style="width:100%">
+<img src="/img/data-observatory/do-the-create-tileset-menu.png" alt="Create tileset menu option." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/do-create-tileset-menu.png" alt="Create tileset menu option." style="width:100%">
+</div> -->
 
 Clicking on this option will display a wizard that will guide you through the tileset creation process:
 

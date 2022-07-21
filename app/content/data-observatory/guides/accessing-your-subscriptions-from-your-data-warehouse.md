@@ -57,19 +57,19 @@ In order for you to access any of your Data Observatory subscriptions from Snowf
 To request it, go to the subscription's page, click on the _Access in_ button and choose the _Snowflake_ option. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-sf-menu.png" alt="Access in Snowflake from your subscription page." style="width:100%">
+<img src="/img/data-observatory/the-access-in-sf-menu.png" alt="Access in Snowflake from your subscription page." style="width:100%">
 </div>
 
 If you have several Snowflake connections, you will be asked to select one to perform this action:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-sf-choose-connection.png" alt="Choose connection to access your subscriptions in Snowflake." style="width:100%">
+<img src="/img/data-observatory/the-access-in-sf-choose-connection.png" alt="Choose connection to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
 Finally, you will be asked to request access to the dataset from your Snowflake database. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-sf-request.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
+<img src="/img/data-observatory/the-access-in-sf-request.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
 Once we receive your request, we will get in touch with you to coordinate the import process. The data will be imported into a schema called `CARTO` that will be created in the Snowflake database you have set up in your Snowflake connection.
@@ -90,9 +90,8 @@ The following information will be displayed:
 * Example query to join the data and geography tables.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-sf-access-details.png" alt="Access details for Snowflake." style="width:100%">
+<img src="/img/data-observatory/the-access-in-sf-access-details.png" alt="Access details for Snowflake." style="width:100%">
 </div>
-
 
 
 
