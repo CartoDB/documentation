@@ -52,11 +52,15 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
 7. Once we confirm the subscription, we are going to have access to the data from its relevant section in the Data Explorer.
 
-   ![DO access data](/img/cloud-native-workspace/tutorials/tutorial9_do_access_data.png)
+   ![DO access data](/img/cloud-native-workspace/tutorials/tutorial9_do_the_access_data.png)
+
+   !<!-- [DO access data](/img/cloud-native-workspace/tutorials/tutorial9_do_access_data.png) -->
 
 8. We have a look at the structure of the dataset to identify what are the main variables we are interseted to analyse. For example: `c0001_t (Population, 2016)`, `c0005_t (Private dwellings occupied by usual residents)`, and `c1677_t (Average value of dwellings)`.
 
-   ![DO view variables](/img/cloud-native-workspace/tutorials/tutorial9_do_view_variables.png)
+   ![DO view variables](/img/cloud-native-workspace/tutorials/tutorial9_do_the_view_variables.png)
+
+   <!--    ![DO view variables](/img/cloud-native-workspace/tutorials/tutorial9_do_view_variables.png) -->
 
 9. Now, we are going to click on *Create* button. Note that the table of this dataset is too large to be loaded entirely in Builder of map creation. For this reason, CARTO offers you two options, either to create a map and add this dataset with the [dynamic tile generation](../../maps/performance-considerations/#medium-size-datasets) or [creating a tileset](../../data-explorer/creating-a-tileset-from-your-data) and then leverage this tileset for building your map. 
 
@@ -66,7 +70,7 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-your-data-warehouse/" target="_blank">Accesing subscriptions</a> reference documentation for a better understanding of how you can directly access your suscriptions from your data warehoues connected to CARTO. This is currently supported for BigQuery and Snowflake; Redshift and Databricks support is coming soon.
 {{%/ bannerNote %}}
 
-10. Click on *Create a tileset*. This will open a new modal screen for you to manage the tileset creation process. The first step is to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. Once you have completed this configuration, click on *Save Here*.
+10. Click on *Create a tileset*. This will open a new modal screen for you to manage the tileset creation process. The first step is to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. Once you have completed this configuration, click on *Save here*.
 
     ![DO create tileset settings](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_destination.png)
 

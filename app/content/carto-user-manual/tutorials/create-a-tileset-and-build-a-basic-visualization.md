@@ -47,7 +47,7 @@ In this example we are creating a tileset in which each building in Madrid is re
 
    ![Data Explorer create tileset](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_button.png)
 
-6. Now from this interface will allow you to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. In the case of the `CARTO Data Warehouse` connection for this user account the directory is `carto-dw-ac-t4cgd7ox.data`. Once you have completed this configuration, click on *Continue*.
+6. Now from this interface will allow you to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. In the case of the `CARTO Data Warehouse` connection for this user account the directory is `carto-dw-ac-t4cgd7ox.data`. Once you have completed this configuration, click on *Save here*.
 
    ![Data Explorer create tileset settings](/img/cloud-native-workspace/tutorials/tutorial6_de_create_tileset_destination.png)
 
