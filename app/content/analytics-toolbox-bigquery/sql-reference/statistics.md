@@ -274,20 +274,22 @@ ORDER BY geoid
 ### LOCAL_MORANS_I_H3
 
 {{% bannerNote type="code" %}}
-carto.LOCAL_MORANS_I_H3(input, size, decay)
+carto.LOCAL_MORANS_I_H3(input, size, decay, permutations)
 {{%/ bannerNote %}}
 
 **Description**
 
 This function computes the local Moran's I spatial autocorrelation from the input array of H3 indexes.
+It outputs the H3 `index`, local Moran's I spatial autocorrelation `value`, simulated p value `psim`, Conditional randomization null - expectation `EIc`, Conditional randomization null - variance `VIc`, Total randomization null - expectation `EI`, Total randomization null - variance `VI`, and the quad HH=1, LL=2, LH=3, HL=4.
 
 * `input`: `ARRAY<STRUCT<index STRING, value FLOAT64>>` input data with the indexes and values of the cells.
 * `size`: `INT64` size of the H3 kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
 * `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
+* `permutations`: `INT64` number of permutations for the estimation of p-value.
 
 **Return type**
 
-ARRAY<STRUCT<index STRING, value FLOAT64>>
+ARRAY<STRUCT<index STRING, value FLOAT64, psim FLOAT64, EIc FLOAT64, VIc FLOAT64, EI FLOAT64, VI FLOAT64, quad INT64>>
 
 {{% customSelector %}}
 **Example**
@@ -300,26 +302,25 @@ SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
         STRUCT('8939446033bffff', 28.0),
         STRUCT('8939446032bffff', 19.0)
     ],
-    3, 'exponential'
+    3, 'exponential', 100
 );
---{
---  "index": "89394460323ffff",
---  "value": "-0.6170950632394939"
---},
---{
---  "index": "8939446033bffff",
---  "value": "-0.03998368013055897"
---},
---{
---  "index": "8939446032bffff",
---  "value": "-0.342921256629947"
---}
+-- {
+--   "index": "8939446032bffff",
+--   "value": "-0.342921256629947",
+--   "psim": "0.0099009900990099011",
+--   "EIc": "-1.0287637698898404",
+--   "VIc": "-1.0",
+--   "EI": "0.0",
+--   "VI": "-0.64721503525401447",
+--   "quad": "3"
+-- },
+-- ...
 ```
 
 ```sql
 SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
     ARRAY(SELECT AS STRUCT index, value FROM mytable),
-    3, 'exponential'
+    3, 'exponential', 100
 )
 ```
 
@@ -331,15 +332,16 @@ carto.LOCAL_MORANS_I_QUADBIN(input, size, decay)
 
 **Description**
 
-This function computes the local Moran's I spatial autocorrelation from the input array of quadbin indexes.
+This function computes the local Moran's I spatial autocorrelation from the input array of quadbin indexes. It outputs the quadbin `index`, local Moran's I spatial autocorrelation `value`, simulated p value `psim`, Conditional randomization null - expectation `EIc`, Conditional randomization null - variance `VIc`, Total randomization null - expectation `EI`, Total randomization null - variance `VI`, and the quad HH=1, LL=2, LH=3, HL=4.
 
 * `input`: `ARRAY<STRUCT<index INT64, value FLOAT64>>` input data with the indexes and values of the cells.
 * `size`: `INT64` size of the quadbin kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
 * `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
+* `permutations`: `INT64` number of permutations for the estimation of p-value.
 
 **Return type**
 
-ARRAY<STRUCT<index INT64, value FLOAT64>>
+ARRAY<STRUCT<index INT64, value FLOAT64, psim FLOAT64, EIc FLOAT64, VIc FLOAT64, EI FLOAT64, VI FLOAT64, quad INT64>>
 
 {{% customSelector %}}
 **Example**
@@ -352,27 +354,26 @@ SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADBIN(
         STRUCT(5266443791928131583, 28.0),
         STRUCT(5266443791928918015, 19.0)
     ],
-    3, 'exponential'
+    3, 'exponential', 100
 );
---{
---  "index": "5266443791927869439",
---  "value": "-0.47710241156036"
---},
---{
---  "index": "5266443791928131583",
---  "value": "-0.039983680130558967"
---},
---{
---  "index": "5266443791928918015",
---  "value": "-0.076228184845253524"
---}
+-- {
+--   "index": "5266443791928918015",
+--   "value": "-0.076228184845253524",
+--   "psim": "0.0099009900990099011",
+--   "EIc": "-0.70361240532717062",
+--   "VIc": "-0.68393972058572117",
+--   "EI": "0.29943435718277039",
+--   "VI": "0.19089112237884748",
+--   "quad": "3"
+-- },
+-- ...
 ```
 
 ```sql
 SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADBIN(
     ARRAY(SELECT AS STRUCT index, value FROM mytable),
-    3, 'exponential'
-)
+    3, 'exponential', 100
+);
 ```
 
 ### LOF

@@ -21,6 +21,13 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### July 20, 2022
+
+#### Module clustering
+
+Add
+- Add CREATE_CLUSTERKMEANS procedure.
+
 ### July 14, 2022
 
 #### Module quadbin

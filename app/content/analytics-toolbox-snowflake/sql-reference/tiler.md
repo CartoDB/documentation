@@ -145,7 +145,9 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 |`extra_metadata`| Default: `{}`. A JSON object to specify the custom metadata of the tileset.|
 |`per_level_metadata`| Default: `false`. A `BOOLEAN` indicating whether or not to compute metadata tilestats separately for each computed level, or just for the full output table.|
 
+{{% customSelector %}}
 **Examples**
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.CREATE_SPATIAL_INDEX_TILESET(

@@ -1,5 +1,22 @@
 ## Release notes
 
+### July 20, 2022
+
+#### Module tiler
+
+Fixed
+- CREATE_SPATIAL_INDEX_TILESET Metadata center is now computed for PostgreSQL as for other providers
+
+Fixed
+- Improved performance for quadbin tilesets in  `CREATE_SPATIAL_INDEX_TILESET`.
+
+### July 19, 2022
+
+#### Module tiler
+
+Fixed
+- Improved performance for quadbin tilesets in  `CREATE_SPATIAL_INDEX_TILESET`.
+
 ### July 15, 2022
 
 #### Module tiler

@@ -55,6 +55,81 @@ CALL carto.CREATE_ISOLINES(
 -- Isolines will be added in the "geom" column.
 ```
 
+### GEOCODE
+
+{{% bannerNote type="code" %}}
+carto.GEOCODE(address [, country])
+{{%/ bannerNote %}}
+
+{{% bannerNote type="warning" title="warning"%}}
+This function consumes geocoding quota. Each call consumes one unit of quota. Before running, check the size of the data to be geocoded and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
+{{%/ bannerNote %}}
+
+**Description**
+
+Geocodes an address into a point with its geographic coordinates (latitude and longitude).
+
+* `address`: `VARCHAR` input address to geocode.
+* `country` (optional): `VARCHAR` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
+
+**Return type**
+
+`GEOGRAPHY`
+
+**Constraints**
+
+This function performs requests to the CARTO Location Data Services API. Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. The payload size of these requests depends on the number of records and could cause a timeout in the external function, with the error message `External function timeout`. Unexpected server errors will force Snowflake to retry the requests. The limit is around 500 records but could vary with the provider. To avoid this error, please try geocoding smaller volumes of data or using the procedure [`GEOCODE_TABLE`](#geocode_table) instead. This procedure manages concurrency and payload size to avoid exceeding this limit.
+
+**Examples**
+
+```sql
+SELECT carto.GEOCODE('Madrid');
+-- { "coordinates": [ -3.69196, 40.41956 ], "type": "Point" }
+```
+
+```sql
+SELECT carto.GEOCODE('Madrid', 'es');
+-- { "coordinates": [ -3.69196, 40.41956 ], "type": "Point" }
+```
+
+```sql
+CREATE TABLE my_geocoded_table AS
+SELECT ADDRESS, carto.GEOCODE(ADDRESS) AS GEOM FROM my_table
+-- Table my_geocoded_table successfully created.
+```
+
+### GEOCODE_REVERSE
+
+{{% bannerNote type="code" %}}
+carto.GEOCODE_REVERSE(geom [, language])
+{{%/ bannerNote %}}
+
+{{% bannerNote type="warning" title="warning"%}}
+This function consumes geocoding quota. Each call consumes one unit of quota. Before running, check the size of the data to be reverse geocoded and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
+{{%/ bannerNote %}}
+
+**Description**
+
+Performs a reverse geocoding of the point received as input.
+
+* `geom`: `GEOGRAPHY` input point to obtain the address.
+* `language` (optional): `VARCHAR` language in which results should be returned.
+
+**Return type**
+
+`VARCHAR`
+
+**Constraints**
+
+This function performs requests to the CARTO Location Data Services API. Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. The payload size of these requests depends on the number of records and could cause a timeout in the external function, with the error message `External function timeout`. Unexpected server errors will force Snowflake to retry the requests. The limit is around 500 records but could vary with the provider. To avoid this error, please try processing smaller volumes of data.
+
+**Example**
+
+```sql
+SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
+-- 254 Broadway, New York, NY 10007, USA
+```
+
 ### GEOCODE_TABLE
 
 {{% bannerNote type="code" %}}
@@ -131,8 +206,6 @@ carto.ISOLINE(origin, mode, range, range_type)
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
-**We recommend using this function only with an input of up to 10 records. In order to calculate isolines for larger sets of locations, we strongly recommend using the [CREATE_ISOLINES](/analytics-toolbox-snowflake/sql-reference/lds/#create_isolines) procedure. Likewise, in order to materialize the results in a table.**
-
 This function consumes isolines quota. Each call consumes one unit quota. Before running, check the size of the data and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
 {{%/ bannerNote %}}
 
@@ -158,83 +231,6 @@ This function performs requests to the CARTO Location Data Services API. Snowfla
 ```sql
 SELECT carto.ISOLINE(ST_MAKEPOINT(-3,40), 'car', 10, 'time');
 -- { "coordinates": [ [ [ -2.999868, 40.001907 ], [ -2.999439, 40.001736 ], [ -2.999096, 40.000706 ], [ -2.998066, 40.000362 ], [ ...
-```
-
-### GEOCODE
-
-{{% bannerNote type="code" %}}
-carto.GEOCODE(address [, country])
-{{%/ bannerNote %}}
-
-{{% bannerNote type="warning" title="warning"%}}
-**We recommend using this function only with an input of up to 10 records. In order to geocode larger sets of locations, we strongly recommend using the [GEOCODE_TABLE](/analytics-toolbox-snowflake/sql-reference/lds/#geocode_table) procedure. Likewise, in order to materialize the results in a table.**
-
-This function consumes geocoding quota. Each call consumes one unit of quota. Before running, check the size of the data to be geocoded and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
-{{%/ bannerNote %}}
-
-**Description**
-
-Geocodes an address into a point with its geographic coordinates (latitude and longitude).
-
-* `address`: `VARCHAR` input address to geocode.
-* `country` (optional): `VARCHAR` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
-
-**Return type**
-
-`GEOGRAPHY`
-
-**Constraints**
-
-This function performs requests to the CARTO Location Data Services API. Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. The payload size of these requests depends on the number of records and could cause a timeout in the external function, with the error message `External function timeout`. Unexpected server errors will force Snowflake to retry the requests. The limit is around 500 records but could vary with the provider. To avoid this error, please try geocoding smaller volumes of data or using the procedure [`GEOCODE_TABLE`](#geocode_table) instead. This procedure manages concurrency and payload size to avoid exceeding this limit.
-
-**Examples**
-
-```sql
-SELECT carto.GEOCODE('Madrid');
--- { "coordinates": [ -3.69196, 40.41956 ], "type": "Point" }
-```
-
-```sql
-SELECT carto.GEOCODE('Madrid', 'es');
--- { "coordinates": [ -3.69196, 40.41956 ], "type": "Point" }
-```
-
-```sql
-CREATE TABLE my_geocoded_table AS
-SELECT ADDRESS, carto.GEOCODE(ADDRESS) AS GEOM FROM my_table
--- Table my_geocoded_table successfully created.
-```
-
-### GEOCODE_REVERSE
-
-{{% bannerNote type="code" %}}
-carto.GEOCODE_REVERSE(geom [, language])
-{{%/ bannerNote %}}
-
-{{% bannerNote type="warning" title="warning"%}}
-This function consumes geocoding quota. Each call consumes one unit of quota. Before running, check the size of the data to be reverse geocoded and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
-{{%/ bannerNote %}}
-
-**Description**
-
-Performs a reverse geocoding of the point received as input.
-
-* `geom`: `GEOGRAPHY` input point to obtain the address.
-* `language` (optional): `VARCHAR` language in which results should be returned.
-
-**Return type**
-
-`VARCHAR`
-
-**Constraints**
-
-This function performs requests to the CARTO Location Data Services API. Snowflake makes parallel requests depending on the number of records you are processing, potentially hitting the limit of the number of requests per seconds allowed for your account. The payload size of these requests depends on the number of records and could cause a timeout in the external function, with the error message `External function timeout`. Unexpected server errors will force Snowflake to retry the requests. The limit is around 500 records but could vary with the provider. To avoid this error, please try processing smaller volumes of data.
-
-**Example**
-
-```sql
-SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
--- 254 Broadway, New York, NY 10007, USA
 ```
 
 ### LDS_QUOTA_INFO

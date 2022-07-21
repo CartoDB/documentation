@@ -1,4 +1,4 @@
-## tiler
+## Tiler
 
 <div class="badges"><div class="advanced"></div></div>
 
@@ -177,7 +177,9 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 Any option left as `NULL` will take its default value if available.
 {{%/ bannerNote %}}
 
+{{% customSelector %}}
 **Examples**
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.CREATE_SPATIAL_INDEX_TILESET(

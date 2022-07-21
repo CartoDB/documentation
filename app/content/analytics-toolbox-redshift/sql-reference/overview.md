@@ -5,7 +5,7 @@ The CARTO Analytics Toolbox's functions are organized in modules based on the fu
 {{% tableWrapper %}}
 | Module | Type | Function or Procedure |
 | :----- | :------ | :------ |
-| clustering | advanced |<ul style="list-style:none"><li><a href="../clustering/#st_clusterkmeans">ST_CLUSTERKMEANS</a></li></ul>|
+| clustering | advanced |<ul style="list-style:none"><li><a href="../clustering/#create_clusterkmeans">CREATE_CLUSTERKMEANS</a></li><li><a href="../clustering/#st_clusterkmeans">ST_CLUSTERKMEANS</a></li></ul>|
 | constructors | core |<ul style="list-style:none"><li><a href="../constructors/#st_bezierspline">ST_BEZIERSPLINE</a></li><li><a href="../constructors/#st_makeellipse">ST_MAKEELLIPSE</a></li><li><a href="../constructors/#st_makeenvelope">ST_MAKEENVELOPE</a></li><li><a href="../constructors/#st_tileenvelope">ST_TILEENVELOPE</a></li></ul>|
 | lds | advanced |<ul style="list-style:none"><li><a href="../lds/#create_isolines">CREATE_ISOLINES</a></li><li><a href="../lds/#geocode">GEOCODE</a></li><li><a href="../lds/#geocode_reverse">GEOCODE_REVERSE</a></li><li><a href="../lds/#geocode_table">GEOCODE_TABLE</a></li><li><a href="../lds/#isoline">ISOLINE</a></li><li><a href="../lds/#lds_quota_info">LDS_QUOTA_INFO</a></li></ul>|
 | placekey | core |<ul style="list-style:none"><li><a href="../placekey/#placekey_ash3">PLACEKEY_ASH3</a></li><li><a href="../placekey/#placekey_fromh3">PLACEKEY_FROMH3</a></li><li><a href="../placekey/#placekey_isvalid">PLACEKEY_ISVALID</a></li></ul>|

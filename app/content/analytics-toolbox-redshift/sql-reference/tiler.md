@@ -144,7 +144,9 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 |`metadata`| Default: {}. A JSON object to specify the associated metadata of the tileset. Use this to set the `name`, `description` and `legend` to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0).|
 |`properties`| Default: {}. A JSON object that defines the properties that will be included associated with each cell feature. Each property is defined by its name and type (Number, Boolean, String, etc.). Please note that every property different from Number will be casted to String.|
 
+{{% customSelector %}}
 **Examples**
+{{%/ customSelector %}}
 
 ```sql
 CALL carto.CREATE_SPATIAL_INDEX_TILESET(
