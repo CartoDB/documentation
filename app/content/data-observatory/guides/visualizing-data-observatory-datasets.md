@@ -70,10 +70,6 @@ When a Data Observatory subscription requires a tileset to be visualized in full
 <img src="/img/data-observatory/do-the-create-tileset-menu.png" alt="Create tileset menu option." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-menu.png" alt="Create tileset menu option." style="width:100%">
-</div> -->
-
 Clicking on this option will display a wizard that will guide you through the tileset creation process:
 
 1. Choose the name and location of the output tileset. Please note that you should have writing permissions in the destination dataset.
@@ -86,19 +82,11 @@ Tileset creation through the Workspace interface is only available for CARTO Dat
 <img src="/img/data-observatory/do-the-create-tileset-step-1.png" alt="Create tileset wizard: step 1." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-1.png" alt="Create tileset wizard: step 1." style="width:100%">
-</div> -->
-
 2. Select the zoom range for which the tileset will be created.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-the-create-tileset-step-2.png" alt="Create tileset wizard: step 2." style="width:100%">
 </div>
-
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-2.png" alt="Create tileset wizard: step 2." style="width:100%">
-</div> -->
 
 3. Select the attributes (data columns) that will be included in the tileset.
 
@@ -106,29 +94,17 @@ Tileset creation through the Workspace interface is only available for CARTO Dat
 <img src="/img/data-observatory/do-the-create-tileset-step-3.png" alt="Create tileset wizard: step 3." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-3.png" alt="Create tileset wizard: step 3." style="width:100%">
-</div> -->
-
 4. Launch tileset creation.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-the-create-tileset-step-4.png" alt="Create tileset wizard: step 4." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-4.png" alt="Create tileset wizard: step 4." style="width:100%">
-</div> -->
-
 Once the tileset creation has been launched, you can check its status using the processing jobs menu available at the top right of the page.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-the-create-tileset-job.png" alt="Create tileset job progress." style="width:100%">
 </div>
-
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-job.png" alt="Create tileset job progress." style="width:100%">
-</div> -->
 
 Finally, once the tileset is created, you can add it as a layer to any of your maps as with any other tileset. Please refer to [this guide](/carto-user-manual/maps/add-source/#add-source-from-a-connection) for more information.
 
