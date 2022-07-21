@@ -331,15 +331,11 @@ CARTO allows to create geospatial tables in an organization's [CARTO Data Wareho
 
 To import your data, go to Data Explorer section, and click in the view page the *Import data* button on the top right:
 
-![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_icon.png)
-
-<!-- ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_button1.png) -->
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_button_data.png)
 
 Please note if you have selected a provider or folder, the import data button is visualised with an icon:
 
-![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_button_data.png)
-
-<!-- ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_data_icon.png) -->
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_icon.png)
 
 You can also import your data from the Home section, clicking in the *Import dataset* button in Recent datasets:
 

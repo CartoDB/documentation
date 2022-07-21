@@ -34,7 +34,7 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
    ![DO Spatial data catalog filters](/img/cloud-native-workspace/tutorials/tutorial9_do_spatial_data_catalog_filters.png)
 
-4. For this example we are going to look for a dataset in Cada with a public license. In particular we are going to select the dataset from Statistics Canada in the “Demographic” category named “Sociodemographics - Canada (Census Division). 
+4. For this example we are going to look for a dataset in Canada with a public license. In particular we are going to select the dataset from Statistics Canada in the “Demographic” category named “Sociodemographics - Canada (Census Division). 
 
    ![DO Spatial data catalog filtered](/img/cloud-native-workspace/tutorials/tutorial9_do_spatial_data_catalog_filtered.png)
 
@@ -66,7 +66,7 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-your-data-warehouse/" target="_blank">Accesing subscriptions</a> reference documentation for a better understanding of how you can directly access your suscriptions from your data warehoues connected to CARTO. This is currently supported for BigQuery and Snowflake; Redshift and Databricks support is coming soon.
 {{%/ bannerNote %}}
 
-10. Click on *Create a tileset*. This will open a new modal screen for you to manage the tileset creation process. The first step is to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. Once you have completed this configuration, click on *Continue*.
+10. Click on *Create a tileset*. This will open a new modal screen for you to manage the tileset creation process. The first step is to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. Once you have completed this configuration, click on *Save Here*.
 
     ![DO create tileset settings](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_destination.png)
 
