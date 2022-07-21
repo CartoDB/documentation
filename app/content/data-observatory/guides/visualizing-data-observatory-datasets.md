@@ -46,10 +46,6 @@ Once we receive your request, we will get in touch with you to coordinate the im
 <img src="/img/data-observatory/do-the-create-map-sf-access-granted.png" alt="Create map of your Data Observatory subscription using a Snowflake connection." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-map-sf-access-granted.png" alt="Create map of your Data Observatory subscription using a Snowflake connection." style="width:100%">
-</div> -->
-
 {{% bannerNote type="note" title="note"%}}
 If you would like to access more than one of your Data Observatory subscriptions from your Snowflake database, it is not necessary to request access for each of them individually, as we can import several datasets at once during the same process. 
 {{%/ bannerNote %}}
@@ -87,32 +83,52 @@ Tileset creation through the Workspace interface is only available for CARTO Dat
 {{%/ bannerNote %}}
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-1.png" alt="Create tileset wizard: step 1." style="width:100%">
+<img src="/img/data-observatory/do-the-create-tileset-step-1.png" alt="Create tileset wizard: step 1." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/do-create-tileset-step-1.png" alt="Create tileset wizard: step 1." style="width:100%">
+</div> -->
 
 2. Select the zoom range for which the tileset will be created.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-2.png" alt="Create tileset wizard: step 2." style="width:100%">
+<img src="/img/data-observatory/do-the-create-tileset-step-2.png" alt="Create tileset wizard: step 2." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/do-create-tileset-step-2.png" alt="Create tileset wizard: step 2." style="width:100%">
+</div> -->
 
 3. Select the attributes (data columns) that will be included in the tileset.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-3.png" alt="Create tileset wizard: step 3." style="width:100%">
+<img src="/img/data-observatory/do-the-create-tileset-step-3.png" alt="Create tileset wizard: step 3." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/do-create-tileset-step-3.png" alt="Create tileset wizard: step 3." style="width:100%">
+</div> -->
 
 4. Launch tileset creation.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-step-4.png" alt="Create tileset wizard: step 4." style="width:100%">
+<img src="/img/data-observatory/do-the-create-tileset-step-4.png" alt="Create tileset wizard: step 4." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/do-create-tileset-step-4.png" alt="Create tileset wizard: step 4." style="width:100%">
+</div> -->
 
 Once the tileset creation has been launched, you can check its status using the processing jobs menu available at the top right of the page.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-tileset-job.png" alt="Create tileset job progress." style="width:100%">
+<img src="/img/data-observatory/do-the-create-tileset-job.png" alt="Create tileset job progress." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/do-create-tileset-job.png" alt="Create tileset job progress." style="width:100%">
+</div> -->
 
 Finally, once the tileset is created, you can add it as a layer to any of your maps as with any other tileset. Please refer to [this guide](/carto-user-manual/maps/add-source/#add-source-from-a-connection) for more information.
 
