@@ -11,7 +11,7 @@ This option is only available after you have created a [connection to BigQuery](
 Go to your subscription's detail page in the Data Observatory section of the Data Explorer, then click on the _Access in_ button and select the _BigQuery_ option. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-menu-1.png" alt="Access in BigQuery from your subscription page." style="width:100%">
+<img src="/img/data-observatory/the-access-in-bq-menu-1.png" alt="Access in BigQuery from your subscription page." style="width:100%">
 </div>
 
 The following information will be displayed:
@@ -21,7 +21,7 @@ The following information will be displayed:
 * Example query to join the data and geography tables.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:100%">
+<img src="/img/data-observatory/the-access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:100%">
 </div>
 
 {{% bannerNote title="TIP" type="tip" %}}
@@ -31,7 +31,7 @@ Remember that your subscription is composed of a data and a geography table that
 If your dataset subscription is a geography, such as [Australia's States by CARTO](https://carto.com/spatial-data-catalog/browser/geography/cdb_state_6b52fa47/), then only one table location will be shown:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:100%">
+<img src="/img/data-observatory/the-access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:100%">
 </div>
 
 {{% bannerNote type="warning" title="warning"%}}

@@ -15,9 +15,7 @@ From the Spatial Data Catalog, you can:
 
 You subscriptions and samples can be accessed through the Data Observatory section of the Data Explorer. 
 
-![Your Data Observatory subscriptions](/img/data-observatory/do_your_subs.png)
-
-<!-- ![Your Data Observatory subscriptions](/img/data-observatory/do-your-subscriptions.png) -->
+![Your Data Observatory subscriptions](/img/data-observatory/do_your_subscriptions_samples.png)
 
 From there, you can:
 * [Manage your subscriptions](/data-observatory/guides/managing-your-subscriptions) and samples.
