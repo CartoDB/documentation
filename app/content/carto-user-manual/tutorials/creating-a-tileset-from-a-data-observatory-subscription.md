@@ -54,13 +54,9 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
    ![DO access data](/img/cloud-native-workspace/tutorials/tutorial9_do_the_access_data.png)
 
-   !<!-- [DO access data](/img/cloud-native-workspace/tutorials/tutorial9_do_access_data.png) -->
-
 8. We have a look at the structure of the dataset to identify what are the main variables we are interseted to analyse. For example: `c0001_t (Population, 2016)`, `c0005_t (Private dwellings occupied by usual residents)`, and `c1677_t (Average value of dwellings)`.
 
    ![DO view variables](/img/cloud-native-workspace/tutorials/tutorial9_do_the_view_variables.png)
-
-   <!--    ![DO view variables](/img/cloud-native-workspace/tutorials/tutorial9_do_view_variables.png) -->
 
 9. Now, we are going to click on *Create* button. Note that the table of this dataset is too large to be loaded entirely in Builder of map creation. For this reason, CARTO offers you two options, either to create a map and add this dataset with the [dynamic tile generation](../../maps/performance-considerations/#medium-size-datasets) or [creating a tileset](../../data-explorer/creating-a-tileset-from-your-data) and then leverage this tileset for building your map. 
 
