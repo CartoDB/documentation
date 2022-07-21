@@ -89,13 +89,6 @@ These Packages are structured to help organizations at any stage of using locati
       <td style="text-align: center">✓</td>
     </tr>
     <tr>
-      <td><strong>Value Project(s)</strong></td>
-      <td style="text-align: center">&nbsp;</td>
-      <td style="text-align: center">&nbsp;</td>
-      <td style="text-align: center">max 10 h.</td>
-      <td style="text-align: center">max 30 h.</td>
-    </tr>
-    <tr>
       <td><strong>Quarterly Business Reviews</strong></td>
       <td style="text-align: center">&nbsp;</td>
       <td style="text-align: center">&nbsp;</td>
