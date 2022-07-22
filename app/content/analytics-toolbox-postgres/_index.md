@@ -1,6 +1,6 @@
 ---
-title: Analytics Toolbox for PostgreSQL
-description: "Unlock Spatial Analytics in PostgreSQL"
+title: Analytics Toolbox for Postgres
+description: "Unlock Spatial Analytics in Postgres"
 icon: "/img/icons/postgres-analytics-toolbox.png"
 repoUrl: https://github.com/CartoDB/analytics-toolbox-core
 
