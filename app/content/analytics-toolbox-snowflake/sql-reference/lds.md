@@ -8,6 +8,75 @@ aliases:
 
 This module contains functions and procedures that make use of location data services, such as geocoding, reverse geocoding and isolines computation.
 
+### GEOCODE_TABLE
+
+{{% bannerNote type="code" %}}
+carto.GEOCODE_TABLE(input_table, address_column [, geom_column] [, country])
+{{%/ bannerNote %}}
+
+{{% bannerNote type="warning" title="warning"%}}
+This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows of your input table. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+{{%/ bannerNote %}}
+
+**Description**
+
+Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) of a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 500.
+
+* `input_table`: `VARCHAR` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
+* `address_column`: `VARCHAR` name of the column from the input table that contains the addresses to be geocoded.
+* `geom_column` (optional): `VARCHAR` column name for the geometry column. Defaults to `'geom'`.
+* `country` (optional): `VARCHAR` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
+
+If the input table already contains a geometry column with the name `geom_column`, only those rows with NULL values will be geocoded.
+
+**Examples**
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: geom, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: geom, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: my_geom_column, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', 'my_country');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: my_geom_column, carto_geocode_metadata.
+```
+
+**Troubleshooting**
+
+For the `GEOCODE_TABLE` procedure to work, the input table should be owned by the same role as the procedure. The procedure may not have access to update the table, for example, if the table was created with the `ACCOUNTADMIN role`, but the  procedure is owned by the `SYSADMIN` role. In such scenario, the following error will be raised:
+
+```
+SQL access control error: Insufficient privileges to operate on table 'my-table'
+```
+
+You can check the `OWNERSHIP` of the table with the following query:
+
+```sql
+SHOW GRANTS ON TABLE "my-schema"."my-table";
+```
+
+To change the `OWNERSHIP` of to table to the `SYSADMIN role`, execute:
+
+```sql
+GRANT OWNERSHIP ON TABLE "my-schema"."my-table" TO ROLE SYSADMIN COPY CURRENT GRANTS;
+```
+
+After performing this operation, you will be able to run `GEOCODE_TABLE` without running into privilege issues.
+
 ### CREATE_ISOLINES
 
 {{% bannerNote type="code" %}}
@@ -129,75 +198,6 @@ This function performs requests to the CARTO Location Data Services API. Snowfla
 SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
 -- 254 Broadway, New York, NY 10007, USA
 ```
-
-### GEOCODE_TABLE
-
-{{% bannerNote type="code" %}}
-carto.GEOCODE_TABLE(input_table, address_column [, geom_column] [, country])
-{{%/ bannerNote %}}
-
-{{% bannerNote type="warning" title="warning"%}}
-This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows of your input table. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
-{{%/ bannerNote %}}
-
-**Description**
-
-Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) of a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 500.
-
-* `input_table`: `VARCHAR` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
-* `address_column`: `VARCHAR` name of the column from the input table that contains the addresses to be geocoded.
-* `geom_column` (optional): `VARCHAR` column name for the geometry column. Defaults to `'geom'`.
-* `country` (optional): `VARCHAR` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
-
-If the input table already contains a geometry column with the name `geom_column`, only those rows with NULL values will be geocoded.
-
-**Examples**
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table');
--- The table `my-schema.my-table` will be updated
--- adding the columns: geom, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column');
--- The table `my-schema.my-table` will be updated
--- adding the columns: geom, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column');
--- The table `my-schema.my-table` will be updated
--- adding the columns: my_geom_column, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', 'my_country');
--- The table `my-schema.my-table` will be updated
--- adding the columns: my_geom_column, carto_geocode_metadata.
-```
-
-**Troubleshooting**
-
-For the `GEOCODE_TABLE` procedure to work, the input table should be owned by the same role as the procedure. The procedure may not have access to update the table, for example, if the table was created with the `ACCOUNTADMIN role`, but the  procedure is owned by the `SYSADMIN` role. In such scenario, the following error will be raised:
-
-```
-SQL access control error: Insufficient privileges to operate on table 'my-table'
-```
-
-You can check the `OWNERSHIP` of the table with the following query:
-
-```sql
-SHOW GRANTS ON TABLE "my-schema"."my-table";
-```
-
-To change the `OWNERSHIP` of to table to the `SYSADMIN role`, execute:
-
-```sql
-GRANT OWNERSHIP ON TABLE "my-schema"."my-table" TO ROLE SYSADMIN COPY CURRENT GRANTS;
-```
-
-After performing this operation, you will be able to run `GEOCODE_TABLE` without running into privilege issues.
 
 ### ISOLINE
 
