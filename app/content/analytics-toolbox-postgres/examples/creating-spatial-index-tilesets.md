@@ -1,7 +1,7 @@
 ---
 title: "Creating spatial index tilesets"
-description: "We provide a set of examples that showcase how to easily create tilesets based on spatial indexes allowing you to process and visualize very large spatial datasets stored in Redshift. You should use this procedure if you have a dataset that contains a column with a spatial index identifier instead of a geometry and you want to visualize it at an appropriate zoom level."
-image: "/img/rs-analytics-toolbox/examples/uk_spatial_index_tileset.png"
+description: "We provide a set of examples that showcase how to easily create tilesets based on spatial indexes allowing you to process and visualize very large spatial datasets stored in Postgres. You should use this procedure if you have a dataset that contains a column with a spatial index identifier instead of a geometry and you want to visualize it at an appropriate zoom level."
+image: "/img/pg-analytics-toolbox/examples/uk_spatial_index_tileset.png"
 type: examples
 date: "2022-06-15"
 categories:
