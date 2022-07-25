@@ -16,7 +16,7 @@ After that, you will have to read an approve the license terms of that data sour
 
 Once the subscription is confirmed, you will be redirected to the Data Observatory section of the Data Explorer, from where you will be able to operate with your subscription. 
 
-![Data Observatory subscription from Data Explorer](/img/data-observatory/do-public-subscription-de.png)
+![Data Observatory subscription from Data Explorer](/img/data-observatory/do-the-public-subscription-de.png)
 
 #### Unsubscribing
 
