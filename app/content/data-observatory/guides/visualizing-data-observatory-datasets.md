@@ -74,8 +74,8 @@ Clicking on this option will display a wizard that will guide you through the ti
 
 1. Choose the name and location of the output tileset. Please note that you should have writing permissions in the destination dataset.
 
-{{% bannerNote type="warning" title="warning"%}}
-Tileset creation through the Workspace interface is only available for CARTO Data Warehouse and BigQuery connections.
+{{% bannerNote type="" title=""%}}
+Tileset creation through the Workspace interface is currently available for CARTO Data Warehouse, BigQuery, Snowflake, Redshift and PostgreSQL connections. Support for Databricks connections will come soon.
 {{%/ bannerNote %}}
 
 <div style="text-align:center" >
