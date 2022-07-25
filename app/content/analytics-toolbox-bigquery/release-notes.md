@@ -4,6 +4,20 @@ aliases:
 ---
 ## Release notes
 
+### July 21, 2022
+
+#### Module statistics
+
+Changes
+- Feature HH, LL, LH, HL detection in LOCAL_MORANS_I functions.
+
+### July 20, 2022
+
+#### Module tiler
+
+Fixed
+- Fixed bug when passing multiline input to `CREATE_SPATIAL_INDEX_TILESET`.
+
 ### July 8, 2022
 
 #### Module data

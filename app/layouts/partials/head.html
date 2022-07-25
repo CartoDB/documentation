@@ -40,7 +40,10 @@
   {{else if eq .CurrentSection.Params.title "Analytics Toolbox for Redshift"}}
     {{ $styles := resources.Get "scss/main-sf.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
-  {{else}}
+  {{else if eq .CurrentSection.Params.title "Analytics Toolbox for Postgres"}}
+    {{ $styles := resources.Get "scss/main-sf.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
+  {{else }}
     {{ $styles := resources.Get "scss/main.scss" | toCSS "css/hugo/main.css" | minify | fingerprint}}
     <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" media="screen">
   {{end}}
