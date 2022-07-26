@@ -274,27 +274,43 @@ And you can check in the *Type column* the kind of dataset you can choose:
 
 Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. In the details you can check the address in the collapsible tree where you can find the selected dataset. This means that you can use the *Copy qualified name* link in order to use the full address where the dataset is stored, but also you can explore by clicking in the different folders from the address:
 
-
+![Data Explorer copy qualified name](/img/cloud-native-workspace/data-explorer/copy_qualified_name.png)
 
 Just above the address, you can find an arrow in top left corner from the view page that you can click it to go back to the previous page you were:
 
+![Data Explorer previous page](/img/cloud-native-workspace/data-explorer/previous_page.png)
 
+Just under the address, if you have selected a table you can find the title of the dataset, and some details related with the type of dataset, the provider, the number of rows, the size and the date added:
 
-Just under the address, if you have selected a table you can find the title of the dataset, and some details related with the type of dataset, the provider, the number of rows, the size and the date added. In here, you can visualise a map preview and a table or data preview through the tabs *Map* and *Data preview*:
+![Data Explorer details table](/img/cloud-native-workspace/data-explorer/details_table.png)
 
+In here, you can visualise a map preview and a table or data preview through the tabs *Map* and *Data preview*.
 
+Map tab:
 
-On the other hand, if you have selected a tileset, under the address you will find the tilset title, and some details related with the type of dataset, the provider, the type of aggregation method and the date added. In here, you can visualise a map preview, a details page with some different metrics and the metadata through the tabs *Map*, *Details* and *Metadata*: 
+![Data Explorer map table tab](/img/cloud-native-workspace/data-explorer/map_table_tab.png)
 
+Data preview tab:
 
+![Data Explorer data preview tab](/img/cloud-native-workspace/data-explorer/data_preview_tab.png)
+
+On the other hand, if you have selected a tileset, under the address you will find the tilset title, and some details related with the type of dataset, the provider, the type of aggregation method and the date added. 
+
+![Data Explorer details tileset](/img/cloud-native-workspace/data-explorer/details_tileset.png)
+
+In here, you can visualise a map preview, a details page with some different metrics and the metadata through the tabs *Map*, *Details* and *Metadata*. 
+
+Map tab:
+
+![Data Explorer map tileset tab](/img/cloud-native-workspace/data-explorer/map_tileset_tab.png)
 
 Details tab:
 
-
+![Data Explorer details tab](/img/cloud-native-workspace/data-explorer/details_tab.png)
 
 Metadata tab:
 
-
+![Data Explorer metadata tab](/img/cloud-native-workspace/data-explorer/metadata_tab.png)
 
 Finally, you can create a map by clicking on the *Create map* or *Create a tileset* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
 
