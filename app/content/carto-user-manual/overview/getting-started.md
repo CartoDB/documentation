@@ -234,6 +234,22 @@ If you haven't select any connection, or you want to select a different connecti
 
 ![Data Explorer add new subscriptions](/img/cloud-native-workspace/data-explorer/add_the_new_subscriptions.png) 
 
+On the other hand, if what you need is to import a dataset from your computer, you can use from here the *import icon* that appears in the top right corner from the view page:
+
+![Data Explorer import icon](/img/cloud-native-workspace/data-explorer/import_icon.png) 
+
+Besides the import icon, you can see there is two more icons in the top right corner. The refresh icon to update any change in the collapsible tree/view page:
+
+![Data Explorer update_icon](/img/cloud-native-workspace/data-explorer/update_icon.png) 
+
+And the view grid icon, where the datasets appears as cards in the view page:
+
+![Data Explorer grid_view](/img/cloud-native-workspace/data-explorer/grid_view.png) 
+
+You can also go back to the mode list view clicking in the list view icon, in the top right corner too: 
+
+![Data Explorer list_view](/img/cloud-native-workspace/data-explorer/list_view.png) 
+
 Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. You can create a map by clicking on the *Create map* or *Create a tileset* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
 
 ![Data Explorer preview map](/img/cloud-native-workspace/data-explorer/de_preview_the_map.png)
