@@ -228,11 +228,11 @@ Select a connection and start exploring the content (database/project(s), schema
 
 ![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_connections_content.png)
 
-If you haven't select any connection, or you want to select a different connection, you can use the button *Add new connection* that appears at the bottom of the tree in the Connection tab:
+If you need to <a href="https://docs.carto.com/carto-user-manual/connections/creating-a-connection/" target="_blank">create a connection</a> from any of our providers, you can use the button *Add new connection* that appears at the bottom of the tree in the Connection tab:
 
 ![Data Explorer add new connection](/img/cloud-native-workspace/data-explorer/add_the_new_connection.png) 
 
-In the same way you can use the button *Add new subscriptions* from Data Observatory tab, in order to add a new subscription from the **Spatial Catalog**:
+In the same way you can use the button *Add new subscriptions* from Data Observatory tab, in order to add a new subscription from the <a href="https://docs.carto.com/carto-user-manual/data-observatory/introduction/" target="_blank">Spatial Catalog</a>:
 
 ![Data Explorer add new subscriptions](/img/cloud-native-workspace/data-explorer/add_the_new_subscriptions.png) 
 
