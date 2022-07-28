@@ -1,6 +1,6 @@
 ## Tilesets
 
-The tiler is a module of the Analytics Toolbox for PostgreSQL that allows to process and visualize very large spatial datasets (millions or even billions of rows) stored in your PostgreSQL database.
+The tiler is a module of the Analytics Toolbox for PostgreSQL that allows to process and visualize very large spatial datasets stored in your PostgreSQL database.
 
 ### How it works
 
@@ -41,6 +41,5 @@ We provide the following set of procedures to create tilesets:
 The tiler is:
 
 * **Convenient** -- It can be run directly as SQL commands in PostgreSQL. The data never leaves PostgreSQL so you won't have to worry about security and additional ETLs.
-* **Fast** -- It benefits from the massive scalability capabilities of PostgreSQL and can process hundreds of millions of rows in a few minutes.
-* **Scalable** -- This solution works well for 1M points or 100B points.
-* **Cost-effective** -- Since PostgreSQL separates storage from computing, the actual cost of hosting these tilesets is very low. Additionally, since the tiling process runs on-demand, you'll only pay for that processing and you won't need to have a warehouse available 24/7.
+* **Fast** -- It benefits from the massive scalability capabilities of PostgreSQL and can process a lot of data in a few minutes.
+* **Cost-effective** -- It allows to freely manage the resources assigned to your database according to your processing demands.
