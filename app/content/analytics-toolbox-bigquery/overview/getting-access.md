@@ -5,11 +5,7 @@ aliases:
 
 ## Getting access
 
-### Access from the new CARTO Workspace
-
-{{% bannerNote title="WARNING" type="warning" %}}
-If you are still using the previous version of the CARTO platform and wish to get access to the Analytics Toolbox through the classic CARTO Dashboard, please refer to [this section](#access-from-the-carto-dashboard).
-{{%/ bannerNote %}}
+### Access from CARTO Workspace
 
 To get access to the entire collection of modules of the CARTO Analytics Toolbox (both core and advanced) you will need:
 
@@ -47,21 +43,11 @@ The Analytics Toolbox can be run from:
 * directly from the Workspace, by:
   * Creating tilesets from the Data Explorer following [this guide](/analytics-toolbox-bigquery/guides/creating-and-visualizing-tilesets/#from-the-carto-workspace).
   * Creating custom SQL layers in Builder following [this guide](/analytics-toolbox-bigquery/guides/running-queries-from-builder/).
+  * Enriching your data with Data Observatory subscriptions following [this guide](/carto-user-manual/data-explorer/enriching-data/). 
 
 {{% bannerNote title="CONTACT SUPPORT" type="info" %}}
 If you are a CARTO customer and need access to the Analytics Toolbox in a different BigQuery region or wish to install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls), please follow the [manual installation guide](#manual-installation).
 {{%/ bannerNote %}}
-
-
-### Access from the CARTO Dashboard
-
-If you are using the previous version of the CARTO platform (CARTO Dashboard) you can also get access to the Analytics Toolbox for BigQuery. However, for the best experience we strongly recommend its usage from the the newest version of the platform (CARTO Workspace).
-
-Access to the Analytics Toolbox for BigQuery is granted to every CARTO account when adding a new connection to BigQuery from your CARTO Dashboard. Please refer to the [_Connecting to BigQuery_](#connecting-to-bigquery) section for step-by-step instructions.
-
-Upon creating a new connection to BigQuery, the email address associated with your CARTO account will be granted access to the Analytics Toolbox. For that to work successfully, this email address should be the same as the one you use to log into your BigQuery. This happens automatically when you sign in to CARTO using your Google Account.
-
-Once this access is granted, you can call any of the Analytics Toolbox functions or procedures available in the `carto-un` (US multi-region) and `carto-un-eu` (EU multi-region) projects directly from your BigQuery console.
 
 
 ##### Connecting to BigQuery
@@ -123,7 +109,7 @@ If you are not a CARTO customer you can still use the **core** modules of the An
 
 ### Manual Installation
 
-The Analytics Toolbox is currently available in GCP's US and EU multi-regions, but it can also be installed manually in any GCP project in any region by using a package file provided by CARTO.
+The Analytics Toolbox is available in a specific project depending on the region of your BigQuery account. Please check the full [list of projects](/analytics-toolbox-bigquery/overview/regions-table/) for the different cloud regions in order to choose the optimal one depending on the location of your data.
 
 The CARTO Analytics Toolbox contains two packages:
 * **core**: this is the public and open-source package. It contains all the core GIS functions that complement the GIS native functions available in BigQuery.

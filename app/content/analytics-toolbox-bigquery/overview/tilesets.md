@@ -6,11 +6,11 @@ aliases:
 
 The tiler is a module of the Analytics Toolbox for BigQuery that allows to process and visualize very large spatial datasets stored in BigQuery.
 
-If you have small datasets in BigQuery (few megabytes), there are solutions such as [BigQuery Geo Viz](https://cloud.google.com/bigquery/docs/gis-visualize) to visualize them; but if you have millions or even billions of rows, you will need a system to load them progressively on a map. CARTO BigQuery Tiler allows you to do that without having to move your data out of BigQuery. 
+If you have small datasets in BigQuery (few megabytes), there are solutions such as [BigQuery Geo Viz](https://cloud.google.com/bigquery/docs/gis-visualize) to visualize them; but if you have millions or even billions of rows, you will need a system to load them progressively on a map. The Tiler allows you to do that without having to move your data out of BigQuery. 
 
 ### How it works
 
-The Tiler will process your data and create a complete tileset out of it. All the map tiles for the specified zoom range will be stored in a BigQuery table in [MVT format](https://docs.mapbox.com/vector-tiles/specification/). Each individual tile is a row in this table, with the tile coordinates and the encoded MVT stored in different columns:
+The Tiler will process your data and create a complete tileset out of it. Each individual tile is a row in this table, with the tile coordinates and the encoded MVT stored in different columns:
 
 | Row | z | x | y | carto_partition | data |
 |-----|---|---|---|-----------------|------|
