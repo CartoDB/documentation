@@ -230,109 +230,19 @@ Select a connection and start exploring the content (database/project(s), schema
 
 Click on *Show more...* button if you want to expand the list and visualize more results.
 
-<!-- results you just need to scroll down to the bottom in the view page, or use the *Show more...* link that appears at the bottom of a list in the collapsible tree: -->
+![Data Explorer show more](/img/cloud-native-workspace/data-explorer/de_show_more.png)
 
-![Data Explorer show more](/img/cloud-native-workspace/data-explorer/show_more.png)
-
-If you need to <a href="https://docs.carto.com/carto-user-manual/connections/creating-a-connection/" target="_blank">create a connection</a> from any of our providers, you can use the button *Add new connection* that appears at the bottom of the tree in the Connection tab:
-
-![Data Explorer add new connection](/img/cloud-native-workspace/data-explorer/add_the_new_connection.png) 
-
-In the same way you can use the button *Add new subscriptions* from Data Observatory tab, in order to [add a subscription](../../data-observatory/introduction/#your-subscriptions-and-samples) from the <a href="https://docs.carto.com/carto-user-manual/data-observatory/introduction/" target="_blank">Spatial Catalog</a>:
-
-![Data Explorer add new subscriptions](/img/cloud-native-workspace/data-explorer/add_the_new_subscriptions.png) 
-
-When selecting a project/database or a dataset/schema, you have three buttons ont the top right corner that allow you to perform different actions: *Import*, *Refresh* and *Grid view*.
-
-![Data Explorer new buttons](/img/cloud-native-workspace/data-explorer/de_new_buttons.png) 
-
-The *Import* button will allow you to import your data into the available connections through two different methods: Local or Remote.
-
-<!-- On the other hand, if what you need is to import a dataset, you can use the *Import* icon that appears on the top right corner from the view page: -->
-
-![Data Explorer import icon](/img/cloud-native-workspace/data-explorer/import_icon.png) 
-
-The *Refresh* button will allow you to update any change in the collapsible tree/view page:
-
-![Data Explorer update icon](/img/cloud-native-workspace/data-explorer/update_icon.png) 
-
-You can also change the page view. By default the view is displayed as a table. 
-
-![Data Explorer grid view](/img/cloud-native-workspace/data-explorer/grid_view.png) 
-
-When you click on the *Grid view* button, your content will be displayed as cards.
-
-<!-- You can also go back to the mode list view by clicking in the list view icon, in the top right corner too:  -->
-
-![Data Explorer list view](/img/cloud-native-workspace/data-explorer/list_view.png) 
-
-In order to search for an specific content (database/project, schema/dataset or table/tileset), you can use the search bar to type the one you are looking for.
-
-![Data Explorer search bar](/img/cloud-native-workspace/data-explorer/search_bar.png)
-
-You can also check the number of results that you are currently viewing on the list.
-
-![Data Explorer order arrow](/img/cloud-native-workspace/data-explorer/order_arrow.png)
-
-Click on the up/down arrow if you want to sort alphabetically in ascending or descending order.
-
-![Data Explorer number results](/img/cloud-native-workspace/data-explorer/number_results.png)
-
-<!-- You can also can visualize the number of results that you are currently on the list (table or grid view)
-
-currently viewing from the list or grid view in the view page:
-
-Also, just under the search bar you can watch the number of results (folders or datasets) you are currently viewing from the list or grid view in the view page: -->
-
-From the list, you can also check whether it is a table or a tileset from the *Type* column.
-
-![Data Explorer type dataset](/img/cloud-native-workspace/data-explorer/type_dataset.png) 
-
-Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. In the details you can check the address in the collapsible tree where you can find the selected dataset. This means that you can use the *Copy qualified name* link in order to use the full address where the dataset is stored, but also you can explore by clicking in the different folders from the address:
-
-![Data Explorer copy qualified name](/img/cloud-native-workspace/data-explorer/copy_qualified_name.png)
-
-Just above the address, you can find an arrow in top left corner from the view page that you can click it to go back to the previous page you were:
-
-![Data Explorer previous page](/img/cloud-native-workspace/data-explorer/previous_page.png)
-
-Just under the address, if you have selected a table you can find the title of the dataset, and some details related with the type of dataset, the provider, the number of rows, the size and the date added:
-
-![Data Explorer details table](/img/cloud-native-workspace/data-explorer/details_table.png)
-
-In here, you can visualise a map preview and a table or data preview through the tabs *Map* and *Data preview*.
-
-Map tab:
-
-![Data Explorer map table tab](/img/cloud-native-workspace/data-explorer/map_table_tab.png)
-
-Data preview tab:
-
-![Data Explorer data preview tab](/img/cloud-native-workspace/data-explorer/data_preview_tab.png)
-
-On the other hand, if you have selected a tileset, under the address you will find the tilset title, and some details related with the type of dataset, the provider, the type of aggregation method and the date added. 
-
-![Data Explorer details tileset](/img/cloud-native-workspace/data-explorer/details_tileset.png)
-
-In here, you can visualise a map preview, a details page with some different metrics and the metadata through the tabs *Map*, *Details* and *Metadata*. 
-
-Map tab:
-
-![Data Explorer map tileset tab](/img/cloud-native-workspace/data-explorer/map_tileset_tab.png)
-
-Details tab:
-
-![Data Explorer details tab](/img/cloud-native-workspace/data-explorer/details_tab.png)
-
-Metadata tab:
-
-![Data Explorer metadata tab](/img/cloud-native-workspace/data-explorer/metadata_tab.png)
-
-Finally, you can create a map by clicking on the *Create map* or *Create a tileset* button on the top. This will open the CARTO map-making tool, Builder. In case of large amounts of data, the user will be notified of the possibility to create a map with a dataset added as SQL query with a filter applied on it, or to create a tileset to visualize larger volumes of data from the table. 
+Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. 
 
 ![Data Explorer preview map](/img/cloud-native-workspace/data-explorer/de_preview_the_map.png)
 
+![Data Explorer data preview tab](/img/cloud-native-workspace/data-explorer/de_data_preview_tab.png)
 
+![Data Explorer map tileset tab](/img/cloud-native-workspace/data-explorer/de_map_tileset_tab.png)
+
+![Data Explorer metadata tab](/img/cloud-native-workspace/data-explorer/de_metadata_tileset_tab.png)
+
+You can create a map by clicking on the *Create map* or *Create a tileset* button on the top to visualize larger volumes of data from a table. This will open the CARTO map-making tool, Builder.  
 
 #### Create a map
 
