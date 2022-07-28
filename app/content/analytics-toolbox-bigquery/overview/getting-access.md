@@ -50,58 +50,6 @@ If you are a CARTO customer and need access to the Analytics Toolbox in a differ
 {{%/ bannerNote %}}
 
 
-##### Connecting to BigQuery
-
-CARTO connects to BigQuery and runs some queries for actions such as listing projects, datasets and tables or publishing maps on the web.
-
-This connection can be established using your GCP account via **OAuth** authentication or using a Google Cloud **service account**. The account or service account that you choose to create the connection should have the permissions described [here](#required-permissions).
-
-To create a connection with BigQuery from the CARTO Dashboard, go to _Data_, click on _Your Connections_ and create a _New connection_.
-
-![New Connection](/img/bq-analytics-toolbox/overview-new-connection.png)
-
-From the list of available connections, choose BigQuery and complete the connection steps. If you choose the _Service Account_ option, it will ask you to upload a service account key in JSON format.
-
-Now you can go to your [BigQuery console](https://console.cloud.google.com/bigquery) and check that you have access to the Analytics Toolbox. Running this query should return the Tiler module version.
-
-```sql
-SELECT `carto-un`.carto.VERSION_ADVANCED()
-```
-If you get a permission error, please make sure that your account's email address matches your Google Account and create the BigQuery connection again. If you still can't access it, get in touch at [support@carto.com](mailto:support@carto.com)
-
-{{% bannerNote title="tip" %}}
-The project `carto-un` is deployed in GCP's US multi-region. If you need to use the Analytics Toolbox from GCP's EU multi-region, use `carto-un-eu` instead. Learn more about BigQuery locations [here](https://cloud.google.com/bigquery/docs/locations).
-{{%/ bannerNote %}}
-
-##### Required permissions
-
-Please make sure that your account has the `bigquery.jobs.list` permission on your project. This is needed to get metadata about the execution of the Analytics Toolbox procedures.
-
-Additionally, the following predefined roles need to be granted to your account or service account:
-
-* **BigQuery Data Viewer** (`bigquery.dataViewer`) role for visualizing your tilesets privately from the Map Viewer or in a custom application.
-* **BigQuery Data Owner** (`bigquery.dataOwner`) role for changing permission on the tilesets from the Map Viewer.
-  * This is needed for publishing maps with tileset layers on the web, available to anyone with the link. That means editing the tileset's permissions to grant CARTO APIs reading access to the tileset.
-  * This role is also required for unpublishing a public map.
-  * Learn more about creating public maps out of tilesets [here](/analytics-toolbox-bigquery/guides/creating-and-visualizing-tilesets/#from-the-carto-dashboard-legacy).
-* **BigQuery Job User** (`bigquery.jobUser`) role for listing your projects, datasets and tilesets in the Dashboard.
-* **BigQuery Read Session User** (`bigquery.readSessionUser`) role for importing data from BigQuery as tables into CARTO's embedded database.
-
-Take a look at the BigQuery [documentation](https://cloud.google.com/bigquery/docs/access-control#bq-permissions) for more information about roles and permissions.
-
-
-##### Deployment options
-
-The Analytics Toolbox is currently available in GCP's US (`carto-un`) and EU (`carto-un-eu`) multi-regions. As an example, the following queries should return the version number for the Tiler module for each region.
-
-```sql
-SELECT `carto-un`.carto.VERSION_ADVANCED() -- US multi-region
-SELECT `carto-un-eu`.carto.VERSION_ADVANCED() -- EU multi-region
-```
-
-If you need access to the Analytics Toolbox in a different region or install it on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls), please get in touch at [support@carto.com](mailto:support@carto.com).
-
-
 ### Free access to the core modules
 
 If you are not a CARTO customer you can still use the **core** modules of the Analytics Toolbox. These modules are available to all BigQuery authenticated users through the `carto-os` and `carto-os-eu` projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data.
