@@ -228,47 +228,63 @@ Select a connection and start exploring the content (database/project(s), schema
 
 ![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_connections_content.png)
 
+Click on *Show more...* button if you want to expand the list and visualize more results.
+
+<!-- results you just need to scroll down to the bottom in the view page, or use the *Show more...* link that appears at the bottom of a list in the collapsible tree: -->
+
+![Data Explorer show more](/img/cloud-native-workspace/data-explorer/show_more.png)
+
 If you need to <a href="https://docs.carto.com/carto-user-manual/connections/creating-a-connection/" target="_blank">create a connection</a> from any of our providers, you can use the button *Add new connection* that appears at the bottom of the tree in the Connection tab:
 
 ![Data Explorer add new connection](/img/cloud-native-workspace/data-explorer/add_the_new_connection.png) 
 
-In the same way you can use the button *Add new subscriptions* from Data Observatory tab, in order to add a new subscription from the <a href="https://docs.carto.com/carto-user-manual/data-observatory/introduction/" target="_blank">Spatial Catalog</a>:
+In the same way you can use the button *Add new subscriptions* from Data Observatory tab, in order to [add a subscription](../../data-observatory/introduction/#your-subscriptions-and-samples) from the <a href="https://docs.carto.com/carto-user-manual/data-observatory/introduction/" target="_blank">Spatial Catalog</a>:
 
 ![Data Explorer add new subscriptions](/img/cloud-native-workspace/data-explorer/add_the_new_subscriptions.png) 
 
-On the other hand, if what you need is to import a dataset from your computer, you can use from here the *import icon* that appears in the top right corner from the view page:
+When selecting a project/database or a dataset/schema, you have three buttons ont the top right corner that allow you to perform different actions: *Import*, *Refresh* and *Grid view*.
+
+![Data Explorer new buttons](/img/cloud-native-workspace/data-explorer/de_new_buttons.png) 
+
+The *Import* button will allow you to import your data into the available connections through two different methods: Local or Remote.
+
+<!-- On the other hand, if what you need is to import a dataset, you can use the *Import* icon that appears on the top right corner from the view page: -->
 
 ![Data Explorer import icon](/img/cloud-native-workspace/data-explorer/import_icon.png) 
 
-Besides the import icon, you can see there is two more icons in the top right corner. The refresh icon to update any change in the collapsible tree/view page:
+The *Refresh* button will allow you to update any change in the collapsible tree/view page:
 
 ![Data Explorer update icon](/img/cloud-native-workspace/data-explorer/update_icon.png) 
 
-And the view grid icon, where the datasets appears as cards in the view page:
+You can also change the page view. By default the view is displayed as a table. 
 
 ![Data Explorer grid view](/img/cloud-native-workspace/data-explorer/grid_view.png) 
 
-You can also go back to the mode list view by clicking in the list view icon, in the top right corner too: 
+When you click on the *Grid view* button, your content will be displayed as cards.
+
+<!-- You can also go back to the mode list view by clicking in the list view icon, in the top right corner too:  -->
 
 ![Data Explorer list view](/img/cloud-native-workspace/data-explorer/list_view.png) 
 
-In order to search for an specific database/project, schema/dataset, and tables/tileset, you can use the bar search from the view page to type the one you are looking for:
+In order to search for an specific content (database/project, schema/dataset or table/tileset), you can use the search bar to type the one you are looking for.
 
 ![Data Explorer search bar](/img/cloud-native-workspace/data-explorer/search_bar.png)
 
-Also, just under the search bar you can watch the number of results (folders or datasets) you are currently viewing from the list or grid view in the view page:
-
-![Data Explorer number results](/img/cloud-native-workspace/data-explorer/number_results.png)
-
-If you need to visualise more results you just need to scroll down to the bottom in the view page, or use the *Show more...* link that appears at the bottom of a list in the collapsible tree:
-
-![Data Explorer show more](/img/cloud-native-workspace/data-explorer/show_more.png)
-
-Furthermore, if you are in the list view you can click in the up/down arrow to order alphabetically by name in ascendent or descendent order:
+You can also check the number of results that you are currently viewing on the list.
 
 ![Data Explorer order arrow](/img/cloud-native-workspace/data-explorer/order_arrow.png)
 
-And you can check in the *Type column* the kind of dataset you can choose:
+Click on the up/down arrow if you want to sort alphabetically in ascending or descending order.
+
+![Data Explorer number results](/img/cloud-native-workspace/data-explorer/number_results.png)
+
+<!-- You can also can visualize the number of results that you are currently on the list (table or grid view)
+
+currently viewing from the list or grid view in the view page:
+
+Also, just under the search bar you can watch the number of results (folders or datasets) you are currently viewing from the list or grid view in the view page: -->
+
+From the list, you can also check whether it is a table or a tileset from the *Type* column.
 
 ![Data Explorer type dataset](/img/cloud-native-workspace/data-explorer/type_dataset.png) 
 
