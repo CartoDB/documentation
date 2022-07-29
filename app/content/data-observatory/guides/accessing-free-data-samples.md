@@ -10,10 +10,10 @@ A new dialog will open for you to accept the terms of use of the data (e.g. it c
 
 You will be redirected to the Data Explorer section, from where you can explore your current connections as well as your Data Observatory subscriptions and samples. 
 
-![Data Observatory sample dataset](/img/cloud-native-workspace/data-observatory/do-the-private-sample-dataset.png)
+![Data Observatory sample dataset](/img/cloud-native-workspace/data-observatory/do-private-sample-dataset.png)
 
 You can create a map with your sample data by clicking on the *Create map* button at the top right of the screen. You can also delete it by clicking on the three points and choosing the _Delete sample_ option.
 
-![Data Observatory sample dataset](/img/cloud-native-workspace/data-observatory/do-the-private-sample-delete.png)
+![Data Observatory sample dataset](/img/cloud-native-workspace/data-observatory/do-private-sample-delete.png)
 
 Finally, if you click on *View dataset*, you will be redirected to the dataset's page on the Spatial Data Catalog, where you can complete the [subscription process](../subscribing-to-public-and-premium-datasets/) if you wish to do so.

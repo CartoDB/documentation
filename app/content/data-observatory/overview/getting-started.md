@@ -38,17 +38,9 @@ Access information can be checked through the _Access in_ button available in th
 <img src="/img/data-observatory/do-access-in-menu.png" alt="Data Observatory access in menu." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-access-in-menu.png" alt="Data Observatory access in menu." style="width:100%">
-</div> -->
-
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-access-in-details.png" alt="Data Observatory access in details." style="width:100%">
 </div>
-
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-access-in-details.png" alt="Data Observatory access in details." style="width:100%">
-</div> -->
 
 The Analytics Toolbox for [BigQuery](/analytics-toolbox-bigquery) and [Snowflake](/analytics-toolbox-snowflake) offer a set of functions to enrich your datasets with any of the [variables](../terminology/#variable) from your Data Observatory subscriptions by performing a spatial join between them and your own data. Enrichment is an essential step to incorporate Data Observatory data into your spatial analysis workflows. 
 
