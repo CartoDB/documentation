@@ -32,30 +32,53 @@ In this tutorial we are showcasing an example where we want to find the panels w
     ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial13_map_new_map_instance.png)
 
 
-3. We will first import all panels for the New York City area. We have already created a dataset for this. Click on the "Add Source from..." button and select the CARTO datawarehouse connection.  Select the "ooh_panels_ny" table from within "demo_data", "demo_tables_ooh" folders.
+3. We will first import all panels for the New York City area. We have already created a dataset for all panels in New York and New Jersey. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection. Run the query below: 
 
+    ```sql
+    SELECT * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+    WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
+    ```
 
-    ![Map load panel layer](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_panel.png)
+    ![Map load panel layer](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_panels.png)
    
    You will notice that we are looking at panel locations in the NY metropolitan area. Rename the panels layer "NY Panels"
 
 
-4. Then we import the locations corresponding to Starbucks stores in NY. Click on the "Add Source from..." button and select the CARTO datawarehouse connection.  Select the "ooh_starbucks_ny" table from within "demo_data", "demo_tables_ooh" folders.
+4. Then we import the locations corresponding to Starbucks stores in NY. Select the “Add source from…” at the bottom left of the page. Select the tab named “Custom Query (SQL)”, and click on the “CARTO Data Warehouse” connection. Run the query below:
+
+    ```sql
+    --Filtering all the available Starbucks inside NY dense urban area
+    --Also, filtering by date as there are several Starbucks in the same position with different dates.
+    select * from (
+        SELECT *, ROW_NUMBER() OVER(PARTITION BY geoid ORDER BY do_date DESC) as rn
+        FROM `carto-demo-data.demo_tables.safegraph_coreplaces_starbucks_ny`
+        WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
+    )
+    where rn = 1
+    ```
 
     ![Map load starbucks layer](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_starbucks.png)
 
     Rename this new layer "NY Starbucks"
 
+    You can hide these two layers when performing the next steps of this analysis by clicking on the "eye" icon on each layer entry.
 
-5. As we said in our introduction, we would like to find all panels which are within 400m of each Starbucks. To do this, we have run the query below and created a new table.
+
+5. As we said in our introduction, we would like to find all panels which are within 400m of each Starbucks. To do this, we have run a new custom query, the query below:
 
    ```sql
     WITH starbucks AS (
-        select * from `carto-demo-data.demo_tables_ooh.ooh_starbucks_ny`
+        select * from (
+            SELECT *, ROW_NUMBER() OVER(PARTITION BY geoid ORDER BY do_date DESC) as rn
+            FROM `carto-demo-data.demo_tables.safegraph_coreplaces_starbucks_ny`
+            WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
+        )
+        where rn = 1
     ),
 
     panels AS (
-        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh.ooh_panels_ny`
+        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+        WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     ),
     
     panels_unique AS(
@@ -70,8 +93,6 @@ In this tutorial we are showcasing an example where we want to find the panels w
     SELECT * FROM panels_unique
     ```
 
-    We have already created the table so you can click on the "Add Source from..." button and select the CARTO datawarehouse connection.  Select the "ooh_panels-400mFromStarbucks" table from within "demo_data", "demo_tables_ooh" folders.
-
     Rename the layer to "Panels within 400m of a Starbucks", and style the layer according to the config seen below. Place the layer to the top of the layer list to give prominence.
 
    ![Map keep panels less than 400m from Starbucks1](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_panels_less_than_400m.png)
@@ -85,32 +106,30 @@ In this tutorial we are showcasing an example where we want to find the panels w
 
     ![Map Panel tooltip](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_panel_tooltip.png)
 
-9.  Next we will perform the same for Starbucks locations, ie. create a layer with only the locations within 400m distance from a panel. To do this, we have run the query below and created a new table.
+9.  Next we will perform the same for Starbucks locations, ie. create a layer with only the locations within 400m distance from a panel. To do this, we have run a custom query, as seen below:
 
     ```sql
     WITH starbucks AS (
-        select * from `carto-demo-data.demo_tables_ooh.ooh_starbucks_ny`
+        select * from (
+            SELECT *, ROW_NUMBER() OVER(PARTITION BY geoid ORDER BY do_date DESC) as rn
+            FROM `carto-demo-data.demo_tables.safegraph_coreplaces_starbucks_ny`
+            WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
+        )
+        where rn = 1
     ),
-
     panels AS (
-        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh.ooh_panels_ny`
-    ),
-
+        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+        WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
+    )
     SELECT  s.street_address, s.open_hours,ST_UNION_AGG(s.geom) AS geom
     FROM starbucks s, panels p 
     WHERE ST_DWITHIN(p.geom, s.geom, 400)
     GROUP BY 1,2
     ```
 
-    We have already created the table so you can click on the "Add Source from..." button and select the CARTO datawarehouse connection.  Select the "ooh_starbucks-400mFromPanels" table from within "demo_data", "demo_tables_ooh" folders.
-
-    Rename the layer "Starbucks within 400m distance of a panel" and reorder the layer to place as the second layer.
+    Rename the layer "Starbucks within 400m distance of a panel" and reorder the layer to place as the second layer. Style as seen below.
 
     ![Map keep Starbucks less than 400m from a panel](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_starbucks_less_than_400m.png)
-
-    At this point hide the layers "NY panels" and "NY Starbucks" we have created by clicking on the "eye" icon next to the 3 dots of each layer.
-
-    ![Map hide original layers](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_hide_layers.png)
 
 
 10. We will need to see Starbucks info when we hover over each one. Navigate to the interactions section and switch on interactions for the "Starbucks within 400m" layer. We will want to see basic address info when we hover over a Starbucks location. Configure as seen in the screenshot below
@@ -124,11 +143,16 @@ In this tutorial we are showcasing an example where we want to find the panels w
 
     ```sql
     WITH starbucks AS (
-        select * from `carto-demo-data.demo_tables_ooh.ooh_starbucks_ny`
+        select * from (
+            SELECT *, ROW_NUMBER() OVER(PARTITION BY geoid ORDER BY do_date DESC) as rn
+            FROM `carto-demo-data.demo_tables.safegraph_coreplaces_starbucks_ny`
+            WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
+        )
+        where rn = 1
     ),
-
     panels AS (
-        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh.ooh_panels_ny`
+        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+        WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     ),
 
     nclosest AS (
@@ -187,7 +211,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
 
 16. Finally, we can visualize the result.
 
-   <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/33f9e1d0-1e0f-4dc2-919a-6343d5a6ca8e"></iframe>
+   <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/a3e312cd-c231-415b-91ca-bb65ebaa91e2"></iframe>
 
 
 
