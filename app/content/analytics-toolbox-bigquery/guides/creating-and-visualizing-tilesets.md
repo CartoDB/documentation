@@ -168,7 +168,7 @@ For the latter option, you simply need to follow these simple steps:
 <img src="/img/bq-analytics-toolbox/tiler/tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
-#### From the CARTO Dashboard
+<!--- #### From the CARTO Dashboard
 
 After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
 
@@ -323,7 +323,7 @@ By unpublishing the tileset, we will revoke the permission mentioned above and d
 It can take up to 5 minutes to remove the map from the CDN cache.
 {{%/ bannerNote %}}
 
-Once published, you will find different options to publish the map URL on social networks, as well as the HTML code to embed the map on a website. 
+Once published, you will find different options to publish the map URL on social networks, as well as the HTML code to embed the map on a website. -->
 
 ### CLI tool
 
