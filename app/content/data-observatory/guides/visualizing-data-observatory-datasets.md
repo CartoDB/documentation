@@ -5,7 +5,7 @@
 Data Observatory datasets can be visualized from the CARTO Workspace using Builder. You can easily do so by clicking on the _Create map_ action in the subscription's detail page, available from the Data Observatory section of the Data Explorer: 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-map.png" alt="Using Builder to create a map from Data Observatory data." style="width:100%">
+<img src="/img/data-observatory/do-create-map.png" alt="Using Builder to create a map from Data Observatory data." style="width:100%">
 </div>
 
 <div style="text-align:center" >
@@ -29,7 +29,7 @@ Those datasets whose size is within platform limits will be visualized in full. 
 You will be asked to select the connection that will be used to create a map with your Data Observatory subscription. The chosen connection will be used to retrieve the necessary data to add the layer to the map. Currently, CARTO Data Warehouse, BigQuery and Snowflake connections are supported; Redshift and Databricks support is coming soon.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-map-choose-connection.png" alt="Choose a connection to create a map with your Data Observatory subscription." style="width:100%">
+<img src="/img/data-observatory/do-create-map-choose-connection.png" alt="Choose a connection to create a map with your Data Observatory subscription." style="width:100%">
 </div>
 
 In order to be able to use a Snowflake connection to create a map, the data first needs to be imported into your database. This import process is performed by our engineering team on a request basis. 
@@ -37,7 +37,7 @@ In order to be able to use a Snowflake connection to create a map, the data firs
 To request it, go to the subscription's page, click on the _Create map_ button and choose the desired Snowflake connection. You will be asked to request access to the dataset. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
+<img src="/img/data-observatory/do-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
 Once we receive your request, we will get in touch with you to coordinate the import process. The data will be imported into a schema called `CARTO` that will be created in the Snowflake database you have set up in your Snowflake connection. Finallly, you will be able to create a map using such connection.
@@ -67,7 +67,7 @@ Some of the spatial datasets offered in the Data Observatory are massive (a few 
 When a Data Observatory subscription requires a tileset to be visualized in full, a _Create tileset_ option will be available from the subscription's page.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-tileset-menu.png" alt="Create tileset menu option." style="width:100%">
+<img src="/img/data-observatory/do-create-tileset-menu.png" alt="Create tileset menu option." style="width:100%">
 </div>
 
 Clicking on this option will display a wizard that will guide you through the tileset creation process:
@@ -79,31 +79,31 @@ Tileset creation through the Workspace interface is currently available for CART
 {{%/ bannerNote %}}
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-tileset-step-1.png" alt="Create tileset wizard: step 1." style="width:100%">
+<img src="/img/data-observatory/do-create-tileset-step-1.png" alt="Create tileset wizard: step 1." style="width:100%">
 </div>
 
 2. Select the zoom range for which the tileset will be created.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-tileset-step-2.png" alt="Create tileset wizard: step 2." style="width:100%">
+<img src="/img/data-observatory/do-create-tileset-step-2.png" alt="Create tileset wizard: step 2." style="width:100%">
 </div>
 
 3. Select the attributes (data columns) that will be included in the tileset.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-tileset-step-3.png" alt="Create tileset wizard: step 3." style="width:100%">
+<img src="/img/data-observatory/do-create-tileset-step-3.png" alt="Create tileset wizard: step 3." style="width:100%">
 </div>
 
 4. Launch tileset creation.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-tileset-step-4.png" alt="Create tileset wizard: step 4." style="width:100%">
+<img src="/img/data-observatory/do-create-tileset-step-4.png" alt="Create tileset wizard: step 4." style="width:100%">
 </div>
 
 Once the tileset creation has been launched, you can check its status using the processing jobs menu available at the top right of the page.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-tileset-job.png" alt="Create tileset job progress." style="width:100%">
+<img src="/img/data-observatory/do-create-tileset-job.png" alt="Create tileset job progress." style="width:100%">
 </div>
 
 Finally, once the tileset is created, you can add it as a layer to any of your maps as with any other tileset. Please refer to [this guide](/carto-user-manual/maps/add-source/#add-source-from-a-connection) for more information.
