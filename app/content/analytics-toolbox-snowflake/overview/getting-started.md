@@ -5,7 +5,7 @@ aliases:
 
 ## Getting started
 
-The CARTO Analytics Toolbox for Snowflake is composed of a set of user-defined functions and procedures organized in a set of modules based on the functionality they offer. There are two types of modules: _core_ modules, which are [open source](https://github.com/CartoDB/analytics-toolbox-core) and _advanced_.
+The CARTO Analytics Toolbox for Snowflake is composed of a set of user-defined functions and procedures organized in a set of modules based on the functionality they offer. There are two types of modules: _core_ modules, which is [open source](https://github.com/CartoDB/analytics-toolbox-core) and _advanced_.
 
 <div style="text-align:center" >
 <img src="/img/sf-analytics-toolbox/sf-at-modules-diagram.png" alt="Modules of the CARTO Analytics Toolbox for Snowflake" style="width:100%">
