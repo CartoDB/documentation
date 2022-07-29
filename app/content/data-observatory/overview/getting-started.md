@@ -63,7 +63,7 @@ Data Observatory datasets can be visualized from the CARTO Workspace using Build
 </div>
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
+<img src="/img/data-observatory/do-the-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
 </div>
 
 Or by adding a new Data Observatory source to an existing map:
