@@ -60,6 +60,8 @@ From the list, you can also check whether it is a table or a tileset from the *T
 
 Once your table or tileset is selected, you can check the full path of the table/tileset and click on the *Copy qualified name* link to copy it. You can also move through the path by clicking on the different folders (database/project and schema/dataset) or go back to the previous page by clicking on the arrow on the top left corner.
 
-![Data Explorer breadcrumbs](/img/cloud-native-workspace/data-explorer/de_breadcrumbs.png)
+![Data Explorer breadcrumbs](/img/cloud-native-workspace/data-explorer/de_the_breadcrumbs.png)
+
+<!-- ![Data Explorer breadcrumbs](/img/cloud-native-workspace/data-explorer/de_breadcrumbs.png) -->
 
 
