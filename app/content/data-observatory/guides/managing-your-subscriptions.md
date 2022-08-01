@@ -8,8 +8,6 @@ From a subscription's detail page you can access the dataset's metadata and perf
 
 ![Your Data Observatory subscriptions actions](/img/data-observatory/do-subscriptions-actions.png)
 
-<!-- ![Your Data Observatory subscriptions actions](/img/data-observatory/do-the-subscriptions-actions.png) -->
-
 * Check the dataset's expiration date.
 * Copy the [dataset's unique ID](../../overview/terminology/#dataset).
 * Check how to access your subscription from your data warehouse using the information provided through the _Access in_ button. Please refer to [this guide](../../guides/accessing-your-subscriptions-from-your-data-warehouse) to learn more. 

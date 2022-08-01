@@ -24,8 +24,6 @@ Public subscriptions will automatically expire after a year. However, you can al
 
 ![Unsubscribe from Data Observatory subscription](/img/data-observatory/do-dataset-unsubscribe-confirm.png)
 
-<!-- ![Unsubscribe from Data Observatory subscription](/img/data-observatory/do-the-dataset-unsubscribe-confirm.png) -->
-
 ### Premium datasets
 
 For premium dataset, the user can place a subscription request, after which our team of experts will get in touch to help you understand all the details about the dataset to ensure it is the best fit for the use-case and to guarantee a hassle-free subscription process. Once that process is completed, the premium data subscription will be automatically created and you will have access to a ready-to-query and always up-to-date version of the premium dataset of your choice.
