@@ -14,10 +14,6 @@ Go to your subscription's detail page in the Data Observatory section of the Dat
 <img src="/img/data-observatory/access-in-bq-menu-1.png" alt="Access in BigQuery from your subscription page." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/the-access-in-bq-menu-1.png" alt="Access in BigQuery from your subscription page." style="width:100%">
-</div> -->
-
 The following information will be displayed:
 
 * Location of the data table in BigQuery, in the format `project.dataset.table`.
@@ -28,10 +24,6 @@ The following information will be displayed:
 <img src="/img/data-observatory/access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/the-access-in-bq-access-details.png" alt="Access details for BigQuery." style="width:100%">
-</div> -->
-
 {{% bannerNote title="TIP" type="tip" %}}
 Remember that your subscription is composed of a data and a geography table that you need to join in order to work with the data (read more about it [here](../../overview/terminology/#dataset)). Please use the example query provided to get started.
 {{%/ bannerNote %}}
@@ -41,10 +33,6 @@ If your dataset subscription is a geography, such as [Australia's States by CART
 <div style="text-align:center" >
 <img src="/img/data-observatory/access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:100%">
 </div>
-
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/the-access-in-bq-access-details-geo.png" alt="Access details for BigQuery when your subscription is a geography." style="width:100%">
-</div> -->
 
 {{% bannerNote type="warning" title="warning"%}}
 All Data Observatory data is stored in BigQuery's US region. You can learn more about regions [here](https://cloud.google.com/bigquery/docs/locations). 
@@ -72,29 +60,17 @@ To request it, go to the subscription's page, click on the _Access in_ button an
 <img src="/img/data-observatory/access-in-sf-menu.png" alt="Access in Snowflake from your subscription page." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/the-access-in-sf-menu.png" alt="Access in Snowflake from your subscription page." style="width:100%">
-</div> -->
-
 If you have several Snowflake connections, you will be asked to select one to perform this action:
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/access-in-sf-choose-connection.png" alt="Choose connection to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/the-access-in-sf-choose-connection.png" alt="Choose connection to access your subscriptions in Snowflake." style="width:100%">
-</div> -->
-
 Finally, you will be asked to request access to the dataset from your Snowflake database. 
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/access-in-sf-request.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
 </div>
-
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/the-access-in-sf-request.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
-</div> -->
 
 Once we receive your request, we will get in touch with you to coordinate the import process. The data will be imported into a schema called `CARTO` that will be created in the Snowflake database you have set up in your Snowflake connection.
 
