@@ -6,7 +6,9 @@ You can manage all your Data Observatory subscriptions from the _Data Observator
 
 From a subscription's detail page you can access the dataset's metadata and perform a series of actions.
 
-![Your Data Observatory subscriptions actions](/img/data-observatory/do-the-subscriptions-actions.png)
+![Your Data Observatory subscriptions actions](/img/data-observatory/do-subscriptions-actions.png)
+
+<!-- ![Your Data Observatory subscriptions actions](/img/data-observatory/do-the-subscriptions-actions.png) -->
 
 * Check the dataset's expiration date.
 * Copy the [dataset's unique ID](../../overview/terminology/#dataset).
