@@ -90,8 +90,12 @@ The following information will be displayed:
 * Example query to join the data and geography tables.
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/the-access-in-sf-access-details.png" alt="Access details for Snowflake." style="width:100%">
+<img src="/img/data-observatory/access-in-sf-access-details.png" alt="Access details for Snowflake." style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/data-observatory/the-access-in-sf-access-details.png" alt="Access details for Snowflake." style="width:100%">
+</div> -->
 
 
 
