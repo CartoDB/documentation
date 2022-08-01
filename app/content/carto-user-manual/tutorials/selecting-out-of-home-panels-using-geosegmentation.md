@@ -137,6 +137,8 @@ In this example, we will use spciodemographic and income data to perform geosegm
 
     ![Map new variable consolidated age stats](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_age.png)
 
+    You can now delete the previous source and layer and keep the new one, as we will keep building on it.
+
 13. Let´s now add variables to represent geographies where the median annual income is above $70,000, and subsequently normalize it. As before, we will write a custom query, but we will run this in the same layer as before, on other words we will perform further analysis on the same layer. Replace the previous query with the query below:
 
     ```sql
@@ -158,13 +160,13 @@ In this example, we will use spciodemographic and income data to perform geosegm
 	    SELECT *, CASE
   		    WHEN median_income_6eb619a2_avg <70000 THEN 0
   		    WHEN median_income_6eb619a2_avg >= 70000 THEN median_income_6eb619a2_avg-70000
-  		    END AS income_fixed
+  		    END AS income_adj
 	    FROM pop_stats_norm
 	    WHERE geom IS NOT NULL AND median_income_6eb619a2_avg IS NOT NULL
     ),
 
     normed_income AS (
-        SELECT *, ML.MIN_MAX_SCALER(income_fixed) OVER() AS income_norm FROM income
+        SELECT *, ML.MIN_MAX_SCALER(income_adj) OVER() AS income_norm FROM income
         WHERE geom IS NOT NULL
     )
 
@@ -173,7 +175,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
 
     Style the resulting layer as seen below. As we can see, income is higher in lower Manhattan and Brooklyn.
 
-    ![Map new variable income stats](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_income.png)
+    ![Map new variable income stats](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_income_new.png)
 
 14. Finally, let´s create an index score to represent both income and audience population levels within our geography. We will use the normalized values for both population and income level, and we will combine both in a single score by allocating the population value double the weight to the income value. We will once again normalize the resulting score. 
 
@@ -192,19 +194,19 @@ In this example, we will use spciodemographic and income data to perform geosegm
         WHERE geom IS NOT NULL
     ), 
 
-    -- Since we're only interested in incomes over 70000, doing this is a form of normalization
+    -- Since we're only interested in income over 70000, doing this is a form of normalization
     -- to remove positive impact of incomes <70000 on the final index score 
     income AS (
 	    SELECT *, CASE
   		    WHEN median_income_6eb619a2_avg <70000 THEN 0
   		    WHEN median_income_6eb619a2_avg >= 70000 THEN median_income_6eb619a2_avg-70000
-  		    END AS income_fixed
+  		    END AS income_adj
 	    FROM pop_stats_norm
 	    WHERE geom IS NOT NULL AND median_income_6eb619a2_avg IS NOT NULL
     ),
 
     normed_income AS (
-        SELECT *, ML.MIN_MAX_SCALER(income_fixed) OVER() AS income_norm FROM income
+        SELECT *, ML.MIN_MAX_SCALER(income_adj) OVER() AS income_norm FROM income
         WHERE geom IS NOT NULL
     ),
 
@@ -215,7 +217,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
     ),
 
     build_index_norm AS (
-        SELECT *, ML.MIN_MAX_SCALER(index_score) OVER() * 100 as score FROM build_index
+        SELECT *, ML.MIN_MAX_SCALER(index_score) OVER() * 100 as norm_score FROM build_index
         WHERE geom IS NOT NULL
     )
 
@@ -228,41 +230,117 @@ In this example, we will use spciodemographic and income data to perform geosegm
 
     Style the resulting layer as seen below. 
 
-    ![Map new variable score](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_score.png)
+    ![Map new variable score](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_score_new.png)
 
     Set the colours to a custom colour scale, as seen below. 
 
-    ![Map new variable score custom colour](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_score_custom_colour.png)
+    ![Map new variable score custom colour](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_score_custom_colour_new.png)
 
-    Rename the layer to "Demographic suitability score". As we can see the score is highest in Lower Manhattan and Brooklyn, but there are also some interesting areas in Queens and Upper Manhattan.
+    Rename the layer to "Audience index score". As we can see the score is highest in Lower Manhattan and Brooklyn, but there are also some interesting areas in Queens and Upper Manhattan.
 
     You can load the work we have done so far separately, as we have created already this table. You can access it by navigating to the "demo_tables" folder in the Data Explorer, and creating a map using the "ooh_geosegmentation_starbucks_audience_score". Once you load the table, you can style as above.
 
 15. Let´s create a tooltip for this layer, so that we can see the score, population and median income within each geography. Navigate to the Interactions section, and enable the tooltip for the latest layer. Configure the tooltip to show values when hovering, and add the variables as below:
 
-    ![Map index score tooltip](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_index_score_tooltip.png)
+    ![Map index score tooltip](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_index_score_tooltip_1.png)
 
-16. We have our demographics score layer. It is now time to add the panel inventory. We already have a sample table with panels in New York and New Jersey, extracted from Open Street Maps. You can load only the panels located within our area of interest by creating a new layer and running the custom query below:
+16. We have our demographics score layer. It is now time to add the panel inventory. We already have a sample table with panels in New York and New Jersey, extracted from Open Street Maps. You can load only the panels located within our area of interest by intersecting the panel dataset with our latest layer. Create a new source and run the custom query below:
 
     ```sql
     SELECT
     t.*
     FROM
     `carto-dw-ac-dp1glsh.shared.ooh_geosegmentation_starbucks_audience` n,
-    `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels` t
+    `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey` t
     WHERE
     ST_INTERSECTS(n.geom,t.geom)
     ```
 
-13. Change the name of the map to "Selecting a new restaurant location using Commercial Hotspots analysis"
+    Rename the layer "Area of Interest panels". Leave the default styling for now.
 
-14. Finally we can make the map public and share the link to anybody in the organization. For that you should go to “Share” on the top right corner and set the map as Public. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+    ![Map area of interest panels](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panels.png)
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial13_map_public_sharelink.png)
+17. We now need to assign a score to each of the panels, to understand which are best located with respect to the audience we have constructed. To do that, we need to take into account a catchment area around all panels, and aggregated the scores of all hexagons overlapping with the defined catchment area. To start, let´s create the catchment areas around each panel. In this case we can simulate them as buffers of 500m (roughly a 5min walk). 
 
-15. Finally, we can visualize the result.
+    Click on the three dots on the "Area of interest panels" source, and select "Add SQL analysis". Select "Create Buffers" and click on Continue.
 
-   <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/bf3846cc-aa71-42f2-88da-fe98233072d1"></iframe>
+    ![Map create panel buffers](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panel_buffers.png)
+
+
+18. When the dialog box opens, select 0.5km as the distance of the buffers, we keep the number of tracts as 1 (one concentric buffer created), and keep the configuration for individual rather than combined buffers (we need to perform the analysis for each buffer individually). For more information on the Create Buffers analysis please visit the page [here] (/carto-user-manual/maps/sql-analyses/#create-buffers)
+
+    ![Map create panel buffers step 2](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panel_buffers_step2.png)
+
+19. After finishing with the configuration of the analysis, click on "Run SQL analysis". You will see we ow have buffers around each panel. 
+
+    Rename the layer "Panel 500m buffers" and shift above the "Audience index score" layer to give prominence. Style as seen below.
+
+    ![Map create panel buffers style](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panel_buffers_style.png)
+
+20. Next we should intersect the panel buffers with h3 layer to generate an average score for each panel buffer.
+
+    Click on the three dots on the "Panel 500m buffers" source, and select "Add SQL analysis". Select "Intersect and aggregate" and click on Continue.
+
+    ![Map aggregate score for each panel](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_buffers_score.png)
+
+    For more information on the Intersect and Aggregate analysis please visit the page [here] (/carto-user-manual/maps/sql-analyses/#intersect-and-aggregate)
+
+21. Next we should select the "Audience index score" as the second source we will be getting data from (first being the buffer source). We will aggregate normalized scores for each buffer using an averaging operation, rather than summing up, so that we can get a final score between 0 and 100 for each panel. 
+
+    ![Map aggregate score for each panel step 2](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_buffers_score_step2.png)
+
+    Click on "Run SQL analysis". This action will create another layer. Leave layer in its current styling for now. Click on the 3 dots on the right of the new layer and select "Show data table". Explore the table and observe the resulting column for average normalized score.
+
+     ![Map aggregate score for each panel final](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_buffers_score_final.png)
+
+22. Now that we have the score, let´s allocate it to the panels so that we can explore which ones have the highest score. For this we will use a third analysis, which is to join the "avg_norm_score" column to the Source with all panels.
+
+    Click on the three dots on the "Area of interest panels" source, and select "Add SQL analysis". Select "Add columns from second source" and click on Continue.    
+
+    ![Map join score column into with panels table](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panels_join_score.png)
+
+    For more information on the join analysis please visit the page [here] (/carto-user-manual/maps/sql-analyses/#add-column-from-second-source)    
+
+23. In the resulting dialog box, select the second source as the latest layer we have created, and configure column "full_id" in both tables as the key column as the one we will use to join. On the right hand side, keep all columns from base source, and add column "avg_norm_score" from the second source.
+
+    ![Map join score column into with panels table step 2](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panels_join_score_step2.png)
+
+    Click on "Run SQL analysis". Rename the resulting layer as "Panel audience score". 
+    Keep only the layers and sources named "Audience index score" (third in prominence), "Panel 500m buffers" (second in prominence, hidden) and "Panel audience score" (first in prominence), delete the rest. 
+
+    ![Map join score column into with panels table step 3](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panels_join_score_step3.png)
+
+24. Style the "Panel audience score" layer as seen below
+
+    ![Map panel audience score layer styling](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_audience_score.png)
+
+    As we can see on the map, the panels with the highest scores are concentrated in Manhattan and Brooklyn, however we can take further steps to cherry pick the panels based on their score or on their type. 
+
+25. First let´s create a tooltip for the panels, to explore their characteristics and score. Navigate to the Interactions section, and enable the tooltip for the "Panel audience score" layer. Configure the tooltip to show values when hovering, and add the variables as below:
+
+    ![Map panel tooltip](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_tooltip.png)
+
+26. One way we can start narrowing down our inventory is to filter by panel type. Navigate to the Widgets section, create a new widget using Source "Panel audience score". Create a categorical widget, COUNTING on the "panel type" column. Style as seen below. 
+
+    ![Map panel type widget](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_type_widget.png)
+
+27. Finally, and most importantly, we can filter by the constructed audience score. Create another widget, again on the "Panel audience score" source. Create a histogram widget on the "avg_norm_score" column. 
+
+    ![Map panel score widget](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_score_widget.png)
+
+28. Time to select some panels. Let´s say we want to focus on panels with a score of more than 30. You can see the result below. We have identified 65 panels, well-distributed across Manhattan. Most importantly we have eliminated a lot of the panels within Manhattan and Brooklyn which score less on our constructed score. In this way we are able to strategically select panels, cut costs and increase the likelihood of achieving a high ROI for our campaigns.
+
+    ![Map results](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_results.png)
+
+29. Change the name of the map to "Selecting out-of-home panels using geosegmentation"
+
+30. Finally we can make the map public and share the link to anybody in the organization. For that you should go to “Share” on the top right corner and set the map as Public. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+
+    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_public_share.png)
+
+31. Finally, we can visualize the result.
+
+   <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/b63e5753-1e89-44fd-b74b-b7910f84fc27"></iframe>
 
 
 
