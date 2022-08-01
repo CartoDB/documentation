@@ -40,19 +40,11 @@ To request it, go to the subscription's page, click on the _Create map_ button a
 <img src="/img/data-observatory/do-the-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
-</div> -->
-
 Once we receive your request, we will get in touch with you to coordinate the import process. The data will be imported into a schema called `CARTO` that will be created in the Snowflake database you have set up in your Snowflake connection. Finallly, you will be able to create a map using such connection.
 
 <div style="text-align:center" >
 <img src="/img/data-observatory/do-create-map-sf-access-granted.png" alt="Create map of your Data Observatory subscription using a Snowflake connection." style="width:100%">
 </div>
-
-<!-- <div style="text-align:center" >
-<img src="/img/data-observatory/do-the-create-map-sf-access-granted.png" alt="Create map of your Data Observatory subscription using a Snowflake connection." style="width:100%">
-</div> -->
 
 {{% bannerNote type="note" title="note"%}}
 If you would like to access more than one of your Data Observatory subscriptions from your Snowflake database, it is not necessary to request access for each of them individually, as we can import several datasets at once during the same process. 
