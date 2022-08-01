@@ -22,7 +22,9 @@ Once the subscription is confirmed, you will be redirected to the Data Observato
 
 Public subscriptions will automatically expire after a year. However, you can also unsubscribe at any point by clicking on the _Unsubscribe_ button. Please note that this action will remove the subscription for all members of the organization and will affect all maps that contain layers that make use of this data.
 
-![Unsubscribe from Data Observatory subscription](/img/data-observatory/do-the-dataset-unsubscribe-confirm.png)
+![Unsubscribe from Data Observatory subscription](/img/data-observatory/do-dataset-unsubscribe-confirm.png)
+
+<!-- ![Unsubscribe from Data Observatory subscription](/img/data-observatory/do-the-dataset-unsubscribe-confirm.png) -->
 
 ### Premium datasets
 
