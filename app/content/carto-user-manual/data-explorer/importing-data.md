@@ -2,7 +2,7 @@
 
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
-To import your data, go to Data Explorer section and click on the *Import data* button on the top right (or the import data icon, if you have a provider or folder selected):
+To import your data, go to Data Explorer section and click on the *Import data* button on the top right (or the import data icon, if you have a connection or folder selected):
 
 ![Data Explorer import button data](/img/cloud-native-workspace/data-explorer/de_the_import_button_data.png)
 

@@ -214,17 +214,17 @@ You can manage your connections to your data warehouse(s) through different opti
 
 #### Explore your spatial data
 
-The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven’t connected your own data warehouse yet, you will see the provisioned `CARTO data warehouse connection` with access to some demo data:
+The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven’t connected your own data warehouse yet, you will see the provisioned `CARTO data warehouse connection` with access to some demo data.
 
 ![Data Explorer carto data warehouse](/img/cloud-native-workspace/data-explorer/de_cartodw_connection.png)
 
 To add your first connection, you can follow the previous <a href="#create-a-connection" target="_blank">Guide</a> to create a data warehouse connection.
 
-Once you have added a connection, go back to the *Data Explorer* section, where you will see the list with all of your current connections:
+Once you have added a connection, go back to the *Data Explorer* section, where you will see the list with all of your current connections.
 
 ![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connections_list.png) 
 
-Select a connection and start exploring the content (database/project(s), schemas/datasets, and tables) in a collapsible tree:
+Select a connection and start exploring the content (database/project(s), schemas/datasets, and tables) in a collapsible tree.
 
 ![Data Explorer content](/img/cloud-native-workspace/data-explorer/de_connections_content.png)
 
@@ -307,7 +307,8 @@ To learn more, please visit the Documentation page of the [CARTO Analytics Toolb
 
 <!-- BigQuery and CARTO Data Warehouse connections. -->
 
-You can create a tileset by clicking on the *Create tileset* button at the top of the screen. Please note that this option will only be available for those tables that require a tileset to be visualized entirely due to their size. 
+You can create a tileset by clicking on the *Create tileset* button at the top of the screen.
+<!-- Please note that this option will only be available for those tables that require a tileset to be visualized entirely due to their size.  -->
 
 ![Data Explorer create tileset button](/img/cloud-native-workspace/data-explorer/de_create_the_tileset.png)
 
@@ -345,11 +346,11 @@ To import your data, go to Data Explorer section and click on the *Import data* 
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_button_data.png)
 
-Please note that if you have selected a provider or folder, the *Import data* button will be displayed with an icon:
+Please note that if you have selected a connection or folder, the *Import data* button will be displayed with an icon:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_icon.png)
 
-You can also import your data from the Home section, clicking in the *Import dataset* button in Recent datasets:
+You can also import your data from the Home section, by clicking on the *Import dataset* button in Recent datasets:
 
 ![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_button_dataset.png)
 

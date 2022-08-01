@@ -4,19 +4,19 @@
 
 The Data Explorer section in the Workspace allows users to explore their data warehouse(s) and data observatory subscriptions as well as creating maps from their data. 
 
-From *Connections* tab, select a connection to view content (database/project(s), schemas/datasets, and tables) from top to bottom in a collapsible tree. If you haven’t registered a connection yet, you will see the following page:
+From *Connections* tab, select a connection to view content (database/project(s), schemas/datasets, and tables) from top to bottom in a collapsible tree. If you haven’t registered a connection yet, you will see the following page.
 
 ![Data Explorer cartodw](/img/cloud-native-workspace/data-explorer/de_the_cartodw.png)
 
-If you want to <a href="https://docs.carto.com/carto-user-manual/connections/creating-a-connection/" target="_blank">create a connection</a> you can use the *Add new connection* button that appears at the bottom of the tree in the Connection tab:
+If you want to <a href="https://docs.carto.com/carto-user-manual/connections/creating-a-connection/" target="_blank">create a connection</a> you can use the *Add new connection* button that appears at the bottom of the tree in the Connection tab.
 
 ![Data Explorer add new connection](/img/cloud-native-workspace/data-explorer/de_add_the_new_connection.png) 
 
-From *Data Observatory* tab, you can access the different Data Observatory datasets you subscribed to. If you haven’t subscribed to any dataset yet, you will see the following page:
+From *Data Observatory* tab, you can access the different Data Observatory datasets you subscribed to. If you haven’t subscribed to any dataset yet, you will see the following page.
 
 ![Data Explorer no subscriptions](/img/cloud-native-workspace/data-explorer/de_no_subscriptions.png)
 
-In the same way, you can use the *Add new subscriptions* button from Data Observatory tab, in order to [add a subscription](../../data-observatory/introduction/#your-subscriptions-and-samples) from the <a href="https://docs.carto.com/carto-user-manual/data-observatory/introduction/" target="_blank">Spatial Catalog</a>:
+In the same way, you can use the *Add new subscriptions* button from Data Observatory tab, in order to [add a subscription](../../data-observatory/introduction/#your-subscriptions-and-samples) from the <a href="https://docs.carto.com/carto-user-manual/data-observatory/introduction/" target="_blank">Spatial Catalog</a>.
 
 ![Data Explorer add new subscriptions](/img/cloud-native-workspace/data-explorer/de_add_the_new_subscriptions.png) 
 
@@ -30,7 +30,7 @@ The *Import* button will allow you to import your data into the available connec
 
 ![Data Explorer import icon](/img/cloud-native-workspace/data-explorer/de_import_icon.png) 
 
-The *Refresh* button will allow you to update any change in the collapsible tree/view page:
+The *Refresh* button will allow you to update any change in the collapsible tree/view page.
 
 ![Data Explorer refresh icon](/img/cloud-native-workspace/data-explorer/de_refresh_icon.png) 
 
