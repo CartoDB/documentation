@@ -26,9 +26,13 @@ Here you'll find three different sharing options:
     * **Sharing with specific groups**: The map will be visible to only specific groups of users in your organization. [Read more on this option](#sharing-with-certain-groups).
 * **Public Map**: The map will be visible to anyone in the internet with the link.
 
-Remember that if your map is "shared" or "public" you'll need to push your changes with the "Publish Updates" button, next to the sharing button in the top-right menu. 
+Remember that if your map is "shared" or "public" you'll need to push your changes. So, if there is an small green dot in the top right corner of the *Share button* means there are changes that has not been updated yet:
 
-![Publish map refresh button](/img/cloud-native-workspace/maps/map_publish_updates.png)
+![Publish map updates button](/img/cloud-native-workspace/maps/share_button_the_updates.png)
+
+In order to save the changes and publish them we must click in the "Publish Updates" button, once you click in the previuos sharing button:
+
+![Publish map share button](/img/cloud-native-workspace/maps/map_publish_the_updates.png)
 
 Public maps have some extra options: to share the link with the public, to get Developers information for embedding, or to work with CARTO for developers. You can toggle between these subtabs and select the option you are interested in. 
 
@@ -59,13 +63,13 @@ When someone opens the link, they will be asked to enter the map password before
 ![Publish options share link](/img/cloud-native-workspace/maps/map_sharing_dialog_enter_password.png)
 ### Publishing updates for shared and public maps
 
-Once your map is shared or public, you can manage the state of the map for your viewers (so your editing doesn't affect their experience). When you're ready to push an update, click on the *Publish Updates* icon:
+Once your map is shared or public, you can manage the state of the map for your viewers (so your editing doesn't affect their experience). When you're ready to push an update, click on the *Share* button:
 
-![Publish map refresh button](/img/cloud-native-workspace/maps/map_publish_updates.png)
+![Publish map share button](/img/cloud-native-workspace/maps/share_button_the_updates.png)
 
 You will see the date for the last time the map changes were pushed to the viewers. If you want to update it and push the current version, click on *Publish Updates*:
 
-![Publish map refresh button](/img/cloud-native-workspace/maps/map_publish_map_last_published.png)
+![Publish map update button](/img/cloud-native-workspace/maps/map_publish_the_last_published.png)
 
 Viewers will see always the version of the map that you last updated.
 

@@ -9,13 +9,13 @@ Data Observatory datasets can be visualized from the CARTO Workspace using Build
 </div>
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
+<img src="/img/data-observatory/do-the-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
 </div>
 
 Or by adding a new Data Observatory source to an existing map:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-dataset-as-source.png" alt="Adding a Data Observatory subscription to an existing map" style="width:90%">
+<img src="/img/data-observatory/do-the-dataset-as-source.png" alt="Adding a Data Observatory subscription to an existing map" style="width:100%">
 </div>
 
 Those datasets whose size is within platform limits will be visualized in full. Bigger datasets will be applied a spatial filter (a buffer around the centroid of the most populated city of the dataset's country), but this filter can be modified at your own will through the provided SQL query (check out [this tutorial](/carto-user-manual/tutorials/subscribe-to-public-data-from-the-data-observatory/) for more details). These datasets will require a tileset to be visualized in full. Please refer to the [_Creating Data Observatory tilesets_](#creating-tilesets) section to learn more.
@@ -37,7 +37,7 @@ In order to be able to use a Snowflake connection to create a map, the data firs
 To request it, go to the subscription's page, click on the _Create map_ button and choose the desired Snowflake connection. You will be asked to request access to the dataset. 
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
+<img src="/img/data-observatory/do-the-create-map-sf-request-access.png" alt="Request to access your subscriptions in Snowflake." style="width:100%">
 </div>
 
 Once we receive your request, we will get in touch with you to coordinate the import process. The data will be imported into a schema called `CARTO` that will be created in the Snowflake database you have set up in your Snowflake connection. Finallly, you will be able to create a map using such connection.
@@ -74,8 +74,8 @@ Clicking on this option will display a wizard that will guide you through the ti
 
 1. Choose the name and location of the output tileset. Please note that you should have writing permissions in the destination dataset.
 
-{{% bannerNote type="warning" title="warning"%}}
-Tileset creation through the Workspace interface is only available for CARTO Data Warehouse and BigQuery connections.
+{{% bannerNote type="" title=""%}}
+Tileset creation through the Workspace interface is currently available for CARTO Data Warehouse, BigQuery, Snowflake, Redshift and PostgreSQL connections. Support for Databricks connections will come soon.
 {{%/ bannerNote %}}
 
 <div style="text-align:center" >

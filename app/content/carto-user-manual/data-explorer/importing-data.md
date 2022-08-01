@@ -2,33 +2,35 @@
 
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
-To import your data, go to Data Explorer section, select *Connections* panel and click on *Import data* button on the top left:
+To import your data, go to Data Explorer section and click on the *Import data* button on the top right (or the import data icon, if you have a connection or folder selected):
 
-![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_import_data_icon.png)
+![Data Explorer import button data](/img/cloud-native-workspace/data-explorer/de_the_import_button_data.png)
+
+![Data Explorer import data icon](/img/cloud-native-workspace/data-explorer/de_the_import_icon.png)
 
 A new dialog will open allowing you to import your data into the available connections.
 
-![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_import_select_file_check.png)
+![Data Explorer import select file](/img/cloud-native-workspace/data-explorer/de_the_import_select_file_check.png)
 
 When you import a file, the *Auto-guessing* option is always **enabled** by default. This option allows you to automatically guess column data types in the imported table.
 
 Once you have selected your file, click on *Continue*:
 
-![Data Explorer import select file continue](/img/cloud-native-workspace/data-explorer/de_import_select_file_check_continue.png)
+![Data Explorer import select file continue](/img/cloud-native-workspace/data-explorer/de_the_import_select_file_check_continue.png)
 
 The next screen will allow you to set the location and name of the output table. Once you have completed this configuration, click on *Save here*.
 
-![Data Explorer import destination connection](/img/cloud-native-workspace/data-explorer/de_import_destination_check_connection.png)
+![Data Explorer import destination connection](/img/cloud-native-workspace/data-explorer/de_the_import_destination_check_connection.png)
 
-![Data Explorer import destination save here](/img/cloud-native-workspace/data-explorer/de_import_destination_check_save_here.png)
+![Data Explorer import destination save here](/img/cloud-native-workspace/data-explorer/de_the_import_destination_check_save_here.png)
 
 The last screen will show you a summary of the details for your confirmation. To confirm, click on *Import*.
 
-![Data Explorer import confirmation](/img/cloud-native-workspace/data-explorer/de_import_check_confirmation.png)
+![Data Explorer import confirmation](/img/cloud-native-workspace/data-explorer/de_the_import_check_confirmation.png)
 
 A new dialog will open informing you that the import may take a while to process and giving you the option to follow the status from a new dialogue box that appears at the top right corner of the screen.
 
-![Data Explorer importing process](/img/cloud-native-workspace/data-explorer/de_importing_process.png)
+![Data Explorer importing process](/img/cloud-native-workspace/data-explorer/de_the_importing_process.png)
 
 There are three possible status: importing, imported successfully or dataset creation error.
 
@@ -44,15 +46,17 @@ When an error occurs, you can click on *Read more* to get more information about
 
 Once the your data has been imported, it will be available as a table on your selected folder and you will have access the map and data preview as well as creating map in Builder.
 
-![Data Explorer map preview](/img/cloud-native-workspace/data-explorer/de_mappreview_populated_places.png)
+![Data Explorer map preview](/img/cloud-native-workspace/data-explorer/de_the_mappreview_populated_places.png)
 
 You can also overwrite existing files. When you import a file with an existing name, a message will appear warning you that the table already exists in the destination folder. Click on *Save here* to continue and overwrite it or click on *Cancel* if you don't want the changes to be applied.
 
 ![Data Explorer import existing files](/img/cloud-native-workspace/data-explorer/de_import_existing_file.png)
 
+<!-- ![Data Explorer import existing files](/img/cloud-native-workspace/data-explorer/de_import_existing_file.png) -->
+
 If you do not have permissions, a message will appear warning you that the table already exists in the destination folder. Select a new location or click on *Cancel* if you don't want the changes to be applied.
 
-![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_import_check_permissions.png)
+![Data Explorer import no permissions](/img/cloud-native-workspace/data-explorer/de_the_import_check_permissions.png)
 
 ### Importing methods
 
@@ -82,10 +86,12 @@ The expected delimiters are: comma (`,`), semi-colon (`;`) or a tabulation.
 
 In the *Data Explorer* section of the Workspace, you can view the list of your current data warehouse(s) and data observatory subscriptions. You can access the quick actions menu to manage your data by clicking on the "three dots" icon in the top-right corner. There are different options available depending on whether it is a table or a tileset.
 
-![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_table_menu.png)
+![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_table_menu.png)
 
-![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_quick_actions_tileset_menu.png)
+![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_tileset_menu.png)
 
 If you click the *Delete* quick action, a dialog will appear allowing you to confirm that you want to delete the selected table or tileset. It includes information about data sources, layers, applications and API calls related to the existing dataset that could potentially be affected by the action. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 
-![Data Explorer dialog delete table](/img/cloud-native-workspace/data-explorer/de_delete_table.png)
+![Data Explorer dialog delete table](/img/cloud-native-workspace/data-explorer/de_the_delete_table.png)
+
+<!-- ![Data Explorer dialog delete table](/img/cloud-native-workspace/data-explorer/de_delete_table.png) -->

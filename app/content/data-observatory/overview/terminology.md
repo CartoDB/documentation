@@ -8,7 +8,7 @@ A dataset is the equivalent to a data product. It is the licensable entity for w
 The [Spatial Data Catalog](http://www.carto.com/data) offers a list of all datasets available via the Data Observatory.
 Each dataset has a unique identifier which should be used to access the data in different interfaces across the CARTO stack. 
 
-![Data Observatory dataset unique identifier](/img/data-observatory/do_unique_id.png)
+![Data Observatory dataset unique identifier](/img/data-observatory/do_the_unique_id.png)
 
 A dataset is composed of two separate tables: the Data table and the Geography table, which can be joined by their shared field _geoid_, as depicted in the diagram below:
 
@@ -51,8 +51,7 @@ Please visit this [guide](../../guides/subscribing-to-public-and-premium-dataset
 
 An active end-user license granting access to a dataset during a specific period of time. All active subscriptions are listed in the Data Observatory section of the Data Explorer, organized by provider. Every subscription's expiration date is shown in the subscription's details page, as seen below:
 
-![Data Observatory subscription status](/img/data-observatory/do_subscriptions_list_expiration.png)
-
+![Data Observatory subscription status](/img/data-observatory/do_the_subscriptions_list_expiration.png)
 
 ### Spatial Data Catalog
 

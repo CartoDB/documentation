@@ -2,7 +2,7 @@
 
 You can manage all your Data Observatory subscriptions from the _Data Observatory_ section of the _Data Explorer_ within the CARTO Workspace:
 
-![Your Data Observatory subscriptions](/img/data-observatory/do-your-subscriptions.png)
+![Your Data Observatory subscriptions](/img/data-observatory/do_your_subscriptions_samples.png)
 
 From a subscription's detail page you can access the dataset's metadata and perform a series of actions.
 

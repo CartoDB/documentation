@@ -63,13 +63,13 @@ Data Observatory datasets can be visualized from the CARTO Workspace using Build
 </div>
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
+<img src="/img/data-observatory/do-the-example-map.png" alt="Data Observatory example map in Builder." style="width:100%">
 </div>
 
 Or by adding a new Data Observatory source to an existing map:
 
 <div style="text-align:center" >
-<img src="/img/data-observatory/do-dataset-as-source.png" alt="Adding a Data Observatory subscription to an existing map" style="width:90%">
+<img src="/img/data-observatory/do-the-dataset-as-source.png" alt="Adding a Data Observatory subscription to an existing map" style="width:100%">
 </div>
 
 Those datasets whose size is within platform limits will be visualized in full. Bigger datasets will be applied a spatial filter (a buffer around the centroid of the most populated city of the dataset's country) and will require a tileset to be visualized in full. 
