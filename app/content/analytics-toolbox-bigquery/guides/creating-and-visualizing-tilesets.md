@@ -151,19 +151,19 @@ For the latter option, you simply need to follow these simple steps:
 3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_choose_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_choosing_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
 </div>
 
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_loading.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_style.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_styles.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!--- #### From the CARTO Dashboard
