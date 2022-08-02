@@ -1,16 +1,14 @@
 ## Data enrichment using the Data Observatory
 
-In this guide you will learn how to perform data enrichment using Data Observatory data and the Analytics Toolbox. You can also access and run this guide using [this Google Colab notebook](https://colab.research.google.com/drive/1tpJlOlGIeAmQBQumXlr1nrTcPqbDyoEf).
+In this guide you will learn how to perform data enrichment using Data Observatory data and the Analytics Toolbox. 
 
-### 1. Create a connection with BigQuery in the CARTO Workspace
+### 1. Create a connection with Snowflake in the CARTO Workspace
 
 1. Sign into your CARTO Workspace. If you still don't have an account, you can sign-up [here](https://carto.com/signup) for a 14-day trial.
 2. Navigate to the Connections section.
-3. Create a new connection with BigQuery. You may choose the Service Account (SA) or the "Sign in with Google" options depending on where you are planning to run your queries:
-    * If you are going to use the BigQuery console, please use the "Sign in with Google" option. 
-    * If you are going to use a BigQuery client instead (a Python notebook for instance), please use the SA option and make sure you use that same SA to authenticate in the client.
+3. Create a new connection with Snowflake.
 
-For more details, please refer to the [documentation](https://docs.carto.com/carto-user-manual/connections/creating-a-connection/#connection-to-bigquery).
+For more details, please refer to the [documentation](https://docs.carto.com/carto-user-manual/connections/creating-a-connection/#connection-to-snowflake).
 
 
 ### 2. Subscribe to the Data Observatory datasets
