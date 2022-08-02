@@ -36,7 +36,9 @@ By vizualizing this information on a map we can easily identify where our busine
 
 4. Selected "retail_stores" and explore the preview of the map and the details of the table. 
 
-   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial12_de_map_preview.png)
+   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/the_tutorial12_de_map_preview.png)
+
+  <!--  ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial12_de_map_preview.png) -->
 
    ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial12_de_data_preview.png)
 
