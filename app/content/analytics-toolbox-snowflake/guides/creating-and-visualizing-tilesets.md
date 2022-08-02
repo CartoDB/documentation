@@ -50,6 +50,7 @@ The result will be a tileset with the geometry and the total population per coun
 
 
 ```sql
+USE DATABASE <ANALYTICS_TOOLBOX_DB>;
 CALL carto.CREATE_SIMPLE_TILESET(
   'SELECT g.GEOM, d.TOTAL_POP FROM CARTO-DO-PUBLIC-DATA.CARTO.GEOGRAPHY_USA_COUNTY_2019 g 
    LEFT JOIN CARTO-DO-PUBLIC-DATA.USA_ACS.DEMOGRAPHICS_SOCIODEMOGRAPHICS_USA_COUNTY_2015_YEARLY_2018 d 
@@ -63,7 +64,7 @@ CALL carto.CREATE_SIMPLE_TILESET(
       "TOTAL_POP": "Number",
     }
   }'
-)
+);
 ```
 ### Visualizing a tileset
 
