@@ -32,7 +32,9 @@ By vizualizing this information on a map we can easily identify where our busine
 
 3. Select the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection and click on *demo data > demo_tables* from the collapsible tree. 
 
-   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/tutorial1_content_carto_dw.png)
+   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/the_tutorial1_content_carto_dw.png)
+
+   <!-- ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/tutorial1_content_carto_dw.png) -->
 
 4. Selected "retail_stores" and explore the preview of the map and the details of the table. 
 
