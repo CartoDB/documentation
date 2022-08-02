@@ -27,8 +27,12 @@ For more details, please refer to the [documentation](https://docs.carto.com/car
 3. Navigate to the Data Explorer and expand the Data Observatory section. Choose any of the your data subscriptions and click on the "Access in" button on the top right of the page. Copy the BigQuery project and dataset from any of the table locations that you see on the screen.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/guides/enrichment_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_enrichment_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/guides/enrichment_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
+</div> -->
 
 4. Confirm that you can see all of your data subscriptions by running the command below, which makes use of the [`DATAOBS_SUBSCRIPTIONS`](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/data/#dataobs_subscriptions) procedure. **Please replace the BigQuery project and dataset with those you copied in the previous step.**
 
