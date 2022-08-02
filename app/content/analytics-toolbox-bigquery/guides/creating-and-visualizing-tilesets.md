@@ -163,7 +163,7 @@ For the latter option, you simply need to follow these simple steps:
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!--- #### From the CARTO Dashboard
