@@ -144,7 +144,7 @@ For the latter option, you simply need to follow these simple steps:
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
+<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_choosing_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div>
 
 2. Choose the BigQuery connection from where your tileset is accessible.
