@@ -12,7 +12,7 @@ CARTO Maps API can work directly with geospatial data represented as <!-- [GeoJS
 
 That means you can preview your data in Data Explorer, load it in Builder to create maps and use it in your custom applications, if it's stored as a text string in any of those formats.
 
-{{% bannerNote title="NOTE" type="tip" %}}
+{{% bannerNote title="NOTE" type="note" %}}
 In order to preview your tables from Data Explorer, the column that contains the geometry string needs to be called `geom` or `geometry`
 {{%/ bannerNote %}} 
 
