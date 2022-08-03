@@ -19,7 +19,7 @@ For more details, please refer to the [documentation](https://docs.carto.com/car
    * *PC 4-digit - Belgium* from Michael Bauer International.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_subscriptions_new.png" alt="Create Data Observatory subscriptions" style="width:95%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:95%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -29,7 +29,7 @@ For more details, please refer to the [documentation](https://docs.carto.com/car
 3. Navigate to the Data Explorer and expand the Data Observatory section. Choose any of the your data subscriptions and click on the "Access in" button on the top right of the page. Copy the Snowflake project and dataset from any of the table locations that you see on the screen.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_access_in_new.png" alt="Find the location of your Data Observatory subscriptions" style="width:95%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:95%">
 </div>
 
 <!-- <div style="text-align:center" >
