@@ -13,7 +13,7 @@ aliases:
 The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-snowflake/overview/tilesets/#tileset-types-and-procedures). The option _Create tileset_ is available from the Data Explorer for those tables that are too big to be visualized directly and therefore require the creation of a tileset.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/create_tileset_sf_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/create_tileset_sf_button_data_explorer_new3.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -24,7 +24,7 @@ The CARTO Workspace offers a user interface that you can use to create [simple t
 Clicking on the _Create tileset_ button will trigger a tileset creation wizard that you can follow along to configure your tileset. For step-by-step instructions, please visit [this guide](/carto-user-manual/data-explorer/creating-a-tileset-from-your-data/).
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/create_tileset_sf_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/create_tileset_sf_ui_data_explorer_new5.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -55,7 +55,7 @@ CALL carto.CREATE_SIMPLE_TILESET(
   'SELECT g.GEOM, d.TOTAL_POP FROM CARTO-DO-PUBLIC-DATA.CARTO.GEOGRAPHY_USA_COUNTY_2019 g 
    LEFT JOIN CARTO-DO-PUBLIC-DATA.USA_ACS.DEMOGRAPHICS_SOCIODEMOGRAPHICS_USA_COUNTY_2015_YEARLY_2018 d 
    ON (d.GEOID = g.GEOID)',
-  'MYDB.MYSCHEMA.TILESET_GEOGRAPHY_USA_COUNTY_2019_TILESET',
+  'MYDB.MYSCHEMA.TILESET_GEOGRAPHY_USA_COUNTY_2019_AREA_POPL',
   '{
     "geom_column": "GEOM",
     "zoom_min": 0, 
@@ -77,7 +77,7 @@ The CARTO Workspace offers access to the Data Explorer, where you will be able t
 The Data Explorer offers a preview of your tilesets and displays their associated details and metadata, such as their size, number of records and statistics regarding the tile sizes per zoom level. Please refer to [this page](/carto-user-manual/data-explorer/introduction/) for more information regarding the Data Explorer.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_sf_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_sf_preview_data_explorer_new3.png" alt="Tileset preview from the Data Explorer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -103,11 +103,11 @@ For the latter option, you simply need to follow these simple steps:
 <img src="/img/bq-analytics-toolbox/tiler/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div> -->
 
-2. Choose the BigQuery connection from where your tileset is accessible.
+2. Choose the Snowflake connection from where your tileset is accessible.
 3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_layer_choose_sf_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_layer_choose_sf_tileset_new2.png" alt="Choosing tileset to add as layer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -117,7 +117,7 @@ For the latter option, you simply need to follow these simple steps:
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_loaded_new2.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -127,7 +127,7 @@ For the latter option, you simply need to follow these simple steps:
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_styled_new.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >

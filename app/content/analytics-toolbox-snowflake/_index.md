@@ -25,7 +25,6 @@ cascade:
         - title: "Creating and visualizing tilesets"
         - title: "Data enrichment using the Data Observatory"
         - title: "Running queries from Builder"
-        - title: "Using the routing module"
     - title: "Examples"
       # folder:
       #   - title: "A Quadkey grid of stores locations and simple cannibalization analysis"

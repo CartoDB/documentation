@@ -15,6 +15,9 @@ cascade:
         - title: "Getting started"
         - title: "Tilesets"
         - title: "Spatial indexes"
+    - title: "Guides"
+      folder:
+        - title: "Creating and visualizing tilesets"
     - title: "Examples"
     - title: "SQL Reference"
       folder:
