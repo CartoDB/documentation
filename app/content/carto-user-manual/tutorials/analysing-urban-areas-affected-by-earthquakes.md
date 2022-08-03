@@ -262,11 +262,11 @@ it if you don't need the query.
 
 27. Select the "Spain earthquakes (2021)" layer and click the “three dots” icon. Select *Layer style* to start styling the layer.
 
-   ![Map layers options](/img/cloud-native-workspace/tutorials/the_tutorial14_map_layer_menu_options.png)
+   ![Map layers options](/img/cloud-native-workspace/tutorials/the_tutorial14_map_layers_menu_options.png)
 
 28. Click the “three dots” icon in the Stroke Color section and select “Stroke color Based on” feature `magnitude`. Pick a palette for a sequential variable (gradient). Now the earthquakes on the map will display a ramp color based on on the magnitude at which they occur.
 
-   ![Map layers options](/img/cloud-native-workspace/tutorials/the_tutorial14_map_layer_style_options.png)
+   ![Map layers options](/img/cloud-native-workspace/tutorials/the_tutorial14_map_layers_style_options.png)
 
 29. We can change the radius of the points in order to make them more visible.
 
@@ -274,7 +274,7 @@ it if you don't need the query.
 
 30. Now let´s change the opacity of the layer "Spain earthquakes (2021 buffer-intersect)" Change the opacity to 0,2.
 
-   ![Map fill color based on field and opacity](/img/cloud-native-workspace/tutorials/the_tutorial14_map_change_opacity.png)
+   ![Map fill color based on field and opacity](/img/cloud-native-workspace/tutorials/the_tutorial14_map_changes_opacity.png)
 
 31. In case it’s not activated by default, let’s activate a tooltip for this layer ("Spain earthquakes (2021) buffer-intersect"), in order to show the to show the place of occurrence of the earthquake and the affected urban area when hovering on top of the earthquake buffer zones.
 
