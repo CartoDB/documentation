@@ -23,7 +23,7 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 </div>
 
 
-#### From the BigQuery console or client
+#### From the Postgres console or client
 
 As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Postgres console](https://sxa81489.us-east-1.snowflakecomputing.com/console).
 
@@ -88,7 +88,7 @@ For the latter option, you simply need to follow these simple steps:
 <img src="/img/pg-analytics-toolbox/guides/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div>
 
-2. Choose the BigQuery connection from where your tileset is accessible.
+2. Choose the Postgres connection from where your tileset is accessible.
 3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
