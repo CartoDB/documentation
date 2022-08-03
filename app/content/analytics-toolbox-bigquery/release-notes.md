@@ -4,6 +4,24 @@ aliases:
 ---
 ## Release notes
 
+### August 3, 2022
+
+#### Module retail
+
+Feature
+- Add BUILD_CANNIBALIZATION_DATA procedure.
+- Add CANNIBALIZATION_OVERLAP procedure.
+
+### July 26, 2022
+
+#### Module lds
+
+Feature
+- Add GEOCODE_TABLE procedure.
+- Add LDS_QUOTA_INFO procedure.
+- Add GEOCODE_REVERSE_TABLE procedure.
+- Add CREATE_ISOLINES procedure.
+
 ### July 21, 2022
 
 #### Module statistics
@@ -27,7 +45,7 @@ Add
 
 #### Module retail
 
-Add
+Feature
 - Add quadbin support
 
 #### Module tiler
