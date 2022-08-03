@@ -37,13 +37,13 @@ In this example,  we will analyse the total of urban areas affected in Spain by 
 
 3. Select the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection and click on *demo data > demo_tables* from the collapsible tree. 
 
-   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/tutorial1_content_carto_dw.png)
+   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/the_tutorial1_content_carto_dw.png)
 
 4. Select “spain_earthquakes” and explore the preview of the map and the details of the table. 
 
-   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial14_de_map_preview.png)
+   ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/the_tutorial14_de_map_preview.png)
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial14_de_data_preview.png)
+   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/the_tutorial14_de_data_preview.png)
 
 5. Create a map by clicking the *Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
@@ -262,11 +262,11 @@ it if you don't need the query.
 
 27. Select the "Spain earthquakes (2021)" layer and click the “three dots” icon. Select *Layer style* to start styling the layer.
 
-   ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial14_map_layer_menu_options.png)
+   ![Map layers options](/img/cloud-native-workspace/tutorials/the_tutorial14_map_layer_menu_options.png)
 
 28. Click the “three dots” icon in the Stroke Color section and select “Stroke color Based on” feature `magnitude`. Pick a palette for a sequential variable (gradient). Now the earthquakes on the map will display a ramp color based on on the magnitude at which they occur.
 
-   ![Map layers options](/img/cloud-native-workspace/tutorials/tutorial14_map_layer_style_options.png)
+   ![Map layers options](/img/cloud-native-workspace/tutorials/the_tutorial14_map_layer_style_options.png)
 
 29. We can change the radius of the points in order to make them more visible.
 
@@ -274,13 +274,13 @@ it if you don't need the query.
 
 30. Now let´s change the opacity of the layer "Spain earthquakes (2021 buffer-intersect)" Change the opacity to 0,2.
 
-   ![Map fill color based on field and opacity](/img/cloud-native-workspace/tutorials/tutorial14_map_change_opacity.png)
+   ![Map fill color based on field and opacity](/img/cloud-native-workspace/tutorials/the_tutorial14_map_change_opacity.png)
 
 31. In case it’s not activated by default, let’s activate a tooltip for this layer ("Spain earthquakes (2021) buffer-intersect"), in order to show the to show the place of occurrence of the earthquake and the affected urban area when hovering on top of the earthquake buffer zones.
 
     For that, go to the Interactions tab and activate the tooltip option. Press on Clear All and delete the tooltips except for the fifth source “SQL Query 4” and leave the fields `location` and `affected_area` as shown below:
 
-    ![Map tooltip](/img/cloud-native-workspace/tutorials/tutorial14_map_show_tooltip.png)
+    ![Map tooltip](/img/cloud-native-workspace/tutorials/the_tutorial14_map_show_tooltip.png)
 
 {{% bannerNote title=Note type="Note" %}}
 Alternatively, we can also persist any of the analyses by clicking on *Create table from query* button at the bottom right  of the SQL Editor. Once the process is finished, the table will be included in the Builder map as a new layer. Check the [Create table from query](../../maps/add-source/#create-a-table-from-query) guide for more information.
