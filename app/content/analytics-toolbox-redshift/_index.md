@@ -16,8 +16,9 @@ cascade:
         - title: "Getting access"
         - title: "Spatial indexes"
         - title: "Tilesets"
-    # - title: "Guides"
-    #   folder:
+    - title: "Guides"
+      folder:
+        - title: "Creating and visualizing tilesets"
     #     - title: "Running queries from Builder"
     - title: "Examples"
     #   folder:

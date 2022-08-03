@@ -1,7 +1,7 @@
 ---
 aliases:
-    - /analytics-toolbox-pg/guides/
-    - /analytics-toolbox-pg/guides/creating-and-visualizing-tilesets/
+    - /analytics-toolbox-rs/guides/
+    - /analytics-toolbox-rs/guides/creating-and-visualizing-tilesets/
 ---
 ## Creating and visualizing tilesets
 
@@ -9,23 +9,23 @@ aliases:
 
 #### From the CARTO Workspace
 
-The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-postgres/overview/tilesets/#tileset-types-and-procedures). 
+The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-redshift/overview/tilesets/#tileset-types-and-procedures). 
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/create_tileset_pg_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/create_tileset_rs_button_data_explorer_new2.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
 </div>
 
 
 Clicking on the _Create tileset_ button will trigger a tileset creation wizard that you can follow along to configure your tileset. For step-by-step instructions, please visit [this guide](/carto-user-manual/data-explorer/creating-a-tileset-from-your-data/).
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/create_tileset_pg_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/create_tileset_rs_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
 </div>
 
 
-#### From the Postgres console or client
+#### From the Redshift console or client
 
-As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Postgres console](https://sxa81489.us-east-1.snowflakecomputing.com/console).
+As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Redshift console](https://sxa81489.us-east-1.snowflakecomputing.com/console).
 
 <!-- or client of choice after connecting your CARTO account to BigQuery. -->
 
@@ -37,7 +37,7 @@ SELECT carto.VERSION_ADVANCED()
 
 Check the [Getting Access](../../overview/getting-started/#requirements) section if you run into any errors when running the query above.
 
-Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your Postgres console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
+Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your Redshift console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
 
 The result will be a tileset with the geometry and the total population per county:
 
@@ -45,21 +45,17 @@ The result will be a tileset with the geometry and the total population per coun
 ```sql
 USE DATABASE <analytics_toolbox_db>;
 CALL carto.CREATE_SIMPLE_TILESET(
-  '(SELECT g.geom, d.total_pop FROM carto-do-public-data.public.geography_usa_censustract_2019 g 
-   LEFT JOIN carto-do-public-data.usa_acs.demographics_sociodemographics_usa_censustract_2015_5yrs_20142018 d 
-   ON (d.geoid = g.geoid))',
-  'mydb.myschema.geography_usa_censustract_2019_tileset',
+  'SELECT g.geom g.do_area, d.t1_1 FROM carto-do-public-data.esp_ine.geography_esp_censussection_2011 g 
+   LEFT JOIN carto-do-public-data.esp_ine.demographics_sociodemographics_esp_censussection_2011_yearly_2011 d 
+   ON (d.geoid = g.geoid)',
+  'mydb.myschema.geography_usa_zcta5_2019_tileset',
   '{
     "geom_column": "geom",
     "zoom_min": 0, 
-    "zoom_max": 11,
-    "properties": {"total_pop": "Number"},
-    "tiling_scheme":"xyz",
-    "tile_extent":4096,
-    "max_tile_size_kb":1024,
-    "max_tile_features":0,
-    "tile_feature_order":"RANDOM()",
-    "max_tile_size_strategy":"drop_fraction_as_needed"
+    "zoom_max": 12,
+    "properties": {
+        "do_area": "Number",
+        "t1_1": "Number"
     }
   }'
 );
@@ -75,7 +71,7 @@ The CARTO Workspace offers access to the Data Explorer, where you will be able t
 The Data Explorer offers a preview of your tilesets and displays their associated details and metadata, such as their size, number of records and statistics regarding the tile sizes per zoom level. Please refer to [this page](/carto-user-manual/data-explorer/introduction/) for more information regarding the Data Explorer.
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/tileset_pg_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/tileset_rs_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
 </div>
 
 ##### Creating maps with tilesets using Builder
@@ -93,23 +89,23 @@ For the latter option, you simply need to follow these simple steps:
 <img src="/img/pg-analytics-toolbox/guides/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div>
 
-2. Choose the Postgres connection from where your tileset is accessible.
+2. Choose the Redshift connection from where your tileset is accessible.
 3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/tileset_layer_choose_pg_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/tileset_layer_choose_rs_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
 </div>
 
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/tileset_layer_rs_loaded.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/tileset_layer_rs_styled.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!--- #### From the CARTO Dashboard
