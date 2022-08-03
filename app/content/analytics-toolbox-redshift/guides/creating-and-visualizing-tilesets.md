@@ -48,7 +48,7 @@ CALL carto.CREATE_SIMPLE_TILESET(
   'SELECT g.geom g.do_area, d.t1_1 FROM carto-do-public-data.esp_ine.geography_esp_censussection_2011 g 
    LEFT JOIN carto-do-public-data.esp_ine.demographics_sociodemographics_esp_censussection_2011_yearly_2011 d 
    ON (d.geoid = g.geoid)',
-  'mydb.myschema.geography_usa_zcta5_2019_tileset',
+  'mydb.myschema.geography_esp_censussection_2011_tileset',
   '{
     "geom_column": "geom",
     "zoom_min": 0, 
@@ -99,13 +99,13 @@ For the latter option, you simply need to follow these simple steps:
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/rs-analytics-toolbox/guides/tileset_layer_rs_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/tileset_layer_rs_loaded_new.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/rs-analytics-toolbox/guides/tileset_layer_rs_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/tileset_layer_rs_styled_new.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!--- #### From the CARTO Dashboard

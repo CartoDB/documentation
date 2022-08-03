@@ -103,13 +103,13 @@ For the latter option, you simply need to follow these simple steps:
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_loaded_new.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_styled_new.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!--- #### From the CARTO Dashboard

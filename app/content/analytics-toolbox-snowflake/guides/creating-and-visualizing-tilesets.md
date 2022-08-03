@@ -117,7 +117,7 @@ For the latter option, you simply need to follow these simple steps:
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_loaded_new.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -127,7 +127,7 @@ For the latter option, you simply need to follow these simple steps:
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_styled_new.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
