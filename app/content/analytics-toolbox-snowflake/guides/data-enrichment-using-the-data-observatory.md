@@ -74,7 +74,7 @@ CALL carto.DATAOBS_SUBSCRIPTION_VARIABLES('carto_dev_data.carto','');
 
 In this particular example we are going to enrich our data with the following variables. Please note that these variables are uniquely identified by their `variable_slug`.
 * `population_23c282a0`, `retail_dba575bc`,`elevation_65d16a8a` and `tavg_jan_de4f1914`: these variables are from the [Applied Geographic Solutions](https://carto.com/spatial-data-catalog/browser/dataset/cdb_spatial_fea_a07a4ca5) for Belgium. As we can see in the `variable_description` column, they represent the total population, their female and male population, their average age and their average rent, respectively.
-* `name_c0d0f60f`. This variable is from the [PC 4-digit - Belgium](https://carto.com/spatial-data-catalog/browser/geography/mbi_pc_4_digit_d11546d7/data) for Belgium. 
+<!-- * `name_c0d0f60f`. This variable is from the [PC 4-digit - Belgium](https://carto.com/spatial-data-catalog/browser/geography/mbi_pc_4_digit_d11546d7/data) for Belgium.  -->
 
 ### 4. Run the enrichment
 
@@ -97,7 +97,7 @@ CALL carto.DATAOBS_ENRICH_POINTS
   OBJECT_CONSTRUCT('variable', 'tavg_jan_de4f1914', 'aggregation', 'AVG'),
   OBJECT_CONSTRUCT('variable', 'name_c0d0f60f', 'aggregation', 'ANY')), 
  NULL, 
- TO_ARRAY('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA.GEOGRAPHY_BEL_PC4DIGIT_2021_ENRICHED'), 
+ TO_ARRAY('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA.BEL_PC4DIGIT_2021_ENRICHED'), 
  'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA');
 -- The table `MYENRICHEDTABLE` will be created
 ```
@@ -112,7 +112,7 @@ CALL carto.DATAOBS_ENRICH_POINTS
 
 ### 5. Analyze the enrichment result
 
-The table resulting from running the previous query, publicly available at `cartobq.docs.nyc_boundary_h3z6_enriched`, will include all the columns of the input query plus four additional columns, containing the value of each enrichment variable in each H3 cell. As shown below, the enrichment result can be analyzed with the help of a map and a set of interactive widgets created using Builder, our map making tool available from the CARTO Workspace. 
+The table resulting from running the previous query,`BEL_PC4DIGIT_2021_ENRICHED`, will include all the columns of the input table plus four additional columns, containing the value of each enrichment variable in each polygon. As shown below, the enrichment result can be analyzed with the help of a map and a set of interactive widgets created using Builder, our map making tool available from the CARTO Workspace. 
 
 <iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/87557c15-2e11-4038-b084-fd096aa9aa12" title="Enrichment of Snowflake"></iframe>
 
