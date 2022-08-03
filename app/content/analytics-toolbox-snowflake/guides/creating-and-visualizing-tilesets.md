@@ -55,7 +55,7 @@ CALL carto.CREATE_SIMPLE_TILESET(
   'SELECT g.GEOM, d.TOTAL_POP FROM CARTO-DO-PUBLIC-DATA.CARTO.GEOGRAPHY_USA_COUNTY_2019 g 
    LEFT JOIN CARTO-DO-PUBLIC-DATA.USA_ACS.DEMOGRAPHICS_SOCIODEMOGRAPHICS_USA_COUNTY_2015_YEARLY_2018 d 
    ON (d.GEOID = g.GEOID)',
-  'MYDB.MYSCHEMA.TILESET_GEOGRAPHY_USA_COUNTY_2019_AREA_POPL',
+  'MYDB.MYSCHEMA.GEOGRAPHY_USA_COUNTY_2019_TILESET',
   '{
     "geom_column": "GEOM",
     "zoom_min": 0, 
@@ -77,7 +77,7 @@ The CARTO Workspace offers access to the Data Explorer, where you will be able t
 The Data Explorer offers a preview of your tilesets and displays their associated details and metadata, such as their size, number of records and statistics regarding the tile sizes per zoom level. Please refer to [this page](/carto-user-manual/data-explorer/introduction/) for more information regarding the Data Explorer.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_sf_preview_data_explorer_new5.png" alt="Tileset preview from the Data Explorer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_sf_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -117,7 +117,7 @@ For the latter option, you simply need to follow these simple steps:
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_loaded_new5.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/tileset_layer_sf_loaded.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >

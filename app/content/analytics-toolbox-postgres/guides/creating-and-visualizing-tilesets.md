@@ -9,117 +9,56 @@ aliases:
 
 #### From the CARTO Workspace
 
-The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-bigquery/overview/tilesets/#tileset-types-and-procedures). The option _Create tileset_ is available from the Data Explorer for those tables that are too big to be visualized directly and therefore require the creation of a tileset.
+The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-postgres/overview/tilesets/#tileset-types-and-procedures). 
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/create_tileset_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/create_tileset_pg_button_data_explorer_new.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
 </div>
 
 
 Clicking on the _Create tileset_ button will trigger a tileset creation wizard that you can follow along to configure your tileset. For step-by-step instructions, please visit [this guide](/carto-user-manual/data-explorer/creating-a-tileset-from-your-data/).
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/create_tileset_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/create_tileset_pg_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
 </div>
 
 
 #### From the BigQuery console or client
-As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [BigQuery console](https://console.cloud.google.com/bigquery) or client of choice after connecting your CARTO account to BigQuery.
 
-To check that your Google account or service account has access to the Tiler, try running this query:
+As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Postgres console](https://sxa81489.us-east-1.snowflakecomputing.com/console).
+
+<!-- or client of choice after connecting your CARTO account to BigQuery. -->
+
+To check that your account has access to the Tiler, try running this query:
 
 ```sql
-SELECT `carto-un`.carto.VERSION_ADVANCED()
---Use `carto-un-eu`.carto.VERSION_ADVANCED() if your data is in GCP's EU multi-region
+SELECT carto.VERSION_ADVANCED()
 ``` 
 
-Check the [Getting Access](../../overview/getting-access) section if you run into any errors when running the query above.
+Check the [Getting Access](../../overview/getting-started/#requirements) section if you run into any errors when running the query above.
 
-Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your BigQuery console or client and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
+Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your Postgres console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
 
-The result will be a tileset with the geometry and total population per blockgroup:
+The result will be a tileset with the geometry and the total population per county:
+
 
 ```sql
-CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
-  R'''
-  (
-    SELECT
-      d.geoid,
-      d.total_pop,
-      g.geom 
-    FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
-    JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
-      ON d.geoid = g.geoid
-  ) _input
-  ''',
-  R'''`cartobq.maps.blockgroup_pop`''',
-  R'''
-  {
-    "zoom_min": 0,
-    "zoom_max": 14,
-    "max_tile_size_kb": 3072,
-    "properties":{
-      "geoid": "String",
-      "total_pop": "Number"
+USE DATABASE <analytics_toolbox_db>;
+CALL carto.CREATE_SIMPLE_TILESET(
+  '(SELECT g.geom, d.total_pop FROM carto-do-public-data.public.geography_usa_censustract_2019 g 
+   LEFT JOIN carto-do-public-data.usa_acs.demographics_sociodemographics_usa_censustract_2015_5yrs_20142018 d 
+   ON (d.geoid = g.geoid))',
+  'mydb.myschema.geography_usa_censustract_2019_tileset',
+  '{
+    "geom_column": "geom",
+    "zoom_min": 0, 
+    "zoom_max": 11,
+    "properties": {
+      "total_pop": "Number",
     }
-  }'''
+  }'
 );
 ```
-
-Creating a tileset by means of `CREATE_SIMPLE_TILESET` can sometimes be cumbersome due to the large amount of parameters that users have to manage. In order to relieve them of this responsibility, we provide a wrapper function in which the tiler configuration is automatically set by performing a previous analysis of the input data. This analysis also serves as a validation step to avoid BigQuery limitations. As a result, the above generated tileset can also be obtained by executing:
-
-```sql
-CALL `carto-un`.carto.CREATE_TILESET(
-  R'''
-  (
-    SELECT
-      d.geoid,
-      d.total_pop,
-      g.geom 
-    FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
-    JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
-      ON d.geoid = g.geoid
-  ) _input
-  ''',
-  R'''`cartobq.maps.blockgroup_pop`''',
-  null
-);
-```
-
-or by defining explicitly the options if they are required:
-
-```sql
-CALL `carto-un`.carto.CREATE_TILESET(
-  R'''
-  (
-    SELECT
-      d.geoid,
-      d.total_pop,
-      g.geom 
-    FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
-    JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
-      ON d.geoid = g.geoid
-  ) _input
-  ''',
-  R'''`cartobq.maps.blockgroup_pop`''',
-  STRUCT
-  (
-    null AS name,
-    null AS description,
-    null AS legend,
-    0 AS zoom_min,
-    14 AS zoom_max,
-    null AS geom_column_name,
-    null AS zoom_min_column,
-    null AS zoom_max_column,
-    3072 AS max_tile_size_kb,
-    null AS tile_feature_order,
-    null AS drop_duplicates,
-    null AS extra_metadata
-  )
-);
-```
-
 ### Visualizing a tileset
 
 #### From the CARTO Workspace
@@ -131,7 +70,7 @@ The CARTO Workspace offers access to the Data Explorer, where you will be able t
 The Data Explorer offers a preview of your tilesets and displays their associated details and metadata, such as their size, number of records and statistics regarding the tile sizes per zoom level. Please refer to [this page](/carto-user-manual/data-explorer/introduction/) for more information regarding the Data Explorer.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/tileset_pg_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
 </div>
 
 ##### Creating maps with tilesets using Builder
@@ -146,26 +85,26 @@ For the latter option, you simply need to follow these simple steps:
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div>
 
 2. Choose the BigQuery connection from where your tileset is accessible.
 3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_choose_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/tileset_layer_choose_pg_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
 </div>
 
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_loaded.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/pg-analytics-toolbox/guides/tileset_layer_pg_styled.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!--- #### From the CARTO Dashboard
@@ -325,7 +264,7 @@ It can take up to 5 minutes to remove the map from the CDN cache.
 
 Once published, you will find different options to publish the map URL on social networks, as well as the HTML code to embed the map on a website. -->
 
-### CLI tool
+<!-- ### CLI tool
 
 We provide a Python Command Line tool called `carto-bq-tiler`. Think of it as a supplement to the [bq command-line tool](https://cloud.google.com/bigquery/docs/bq-command-line-tool) provided by Google, but with some specific functionality to work with Tilesets. It allows you to:
 
@@ -445,3 +384,4 @@ carto-bq-tiler view -e
 You can also modify the port of the viewer with the `--port` option.
 
 {{% euFlagFunding %}}
+ -->
