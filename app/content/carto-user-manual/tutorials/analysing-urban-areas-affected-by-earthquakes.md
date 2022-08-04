@@ -276,9 +276,9 @@ it if you don't need the query.
 
    ![Map fill color based on field and opacity](/img/cloud-native-workspace/tutorials/the_tutorial14_map_changes_opacity.png)
 
-31. In case it’s not activated by default, let’s activate a tooltip for this layer ("Spain earthquakes (2021) buffer-intersect"), in order to show the to show the place of occurrence of the earthquake and the affected urban area when hovering on top of the earthquake buffer zones.
+31. In case it’s not activated by default, let’s activate a tooltip for this layer ("Spain earthquakes (2021) buffer-intersect"), in order to show the to show the place of occurrence of the earthquake and the affected urban area when clicking or hovering on top of the earthquake buffer zones.
 
-    For that, go to the Interactions tab and activate the tooltip option. Press on Clear All and delete the tooltips except for the fifth source “SQL Query 4” and leave the fields `location` and `affected_area` as shown below:
+    For that, go to the Interactions tab and activate the tooltip option. Enable the layer "Spain earthquakes (2021) buffer-intersect" and add the fields `location` and `affected_area` as shown below:
 
     ![Map tooltip](/img/cloud-native-workspace/tutorials/the_tutorial14_map_show_tooltip.png)
 
@@ -302,7 +302,7 @@ Alternatively, we can also persist any of the analyses by clicking on *Create ta
 
     ![Map histogram widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_histogram_widget_selectfield.png)
 
-35. We are going to add the last widget. For that, go back to the widget’s list, click on *Add widget* button, select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
+35. We are going to add the last widget. For that, go back to the widget’s list, click on *Add widget* button, select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The time-series widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data. Rename the widget to “Earthquakes in Spain (2021)”.
 
     ![Map time series widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_timeseries_widget_selectfield.png)
 
@@ -316,4 +316,4 @@ Alternatively, we can also persist any of the analyses by clicking on *Create ta
 
 38. Finally, we can visualize the result.
 
-<iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/268588f6-37ca-4e5e-9670-d7b87747dfbb"></iframe>
+<iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/44bd0c45-07ea-4dd4-825c-298426166088"></iframe>
