@@ -296,23 +296,23 @@ Alternatively, we can also persist any of the analyses by clicking on *Create ta
 
 34. Now we are going to add a few more interactive widgets (HISTOGRAM). Click the Add widget button and select “SQL Query 1”.
 
-    ![Map widgets select source histogram](/img/cloud-native-workspace/tutorials/tutorial14_map_widget_histogram_select_source.png)
+    ![Map widgets select source histogram](/img/cloud-native-workspace/tutorials/the_tutorial14_map_widget_histogram_select_source.png)
 
     Select the HISTOGRAM widget and choose the field `magnitude` from the list. You will get a histogram widget in order to be able to filter the earthquakes in Spain based on their magnitude. Rename the widget to “Earthquakes in Spain by magnitude”.
 
-    ![Map histogram widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_histogram_widget_selectfield.png)
+    ![Map histogram widget select field](/img/cloud-native-workspace/tutorials/the_tutorial14_map_histogram_widget_selectfield.png)
 
 35. We are going to add the last widget. For that, go back to the widget’s list, click on *Add widget* button, select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The time-series widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data. Rename the widget to “Earthquakes in Spain (2021)”.
 
-    ![Map time series widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_timeseries_widget_selectfield.png)
+    ![Map time series widget select field](/img/cloud-native-workspace/tutorials/the_tutorial14_map_timeseries_widget_selectfield.png)
 
 36. Rename the map to “Earthquakes in Spain over 2021”.
 
-    ![Map rename title and legend](/img/cloud-native-workspace/tutorials/tutorial14_map_renaming_title.png)
+    ![Map rename title and legend](/img/cloud-native-workspace/tutorials/the_tutorial14_map_renaming_title.png)
 
 37. We can make the map public and share it online with our colleagues. We could also protect our map before sharing it by enabling password protection and setting a map password. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps/) .
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial14_map_publicsharing_options.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/the_tutorial14_map_publicsharing_options.png)
 
 38. Finally, we can visualize the result.
 
