@@ -10,7 +10,7 @@ aliases:
 
 #### From the CARTO Workspace
 
-The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-snowflake/overview/tilesets/#tileset-types-and-procedures). The option _Create tileset_ is available from the Data Explorer for those tables that are too big to be visualized directly and therefore require the creation of a tileset.
+The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-snowflake/overview/tilesets/#tileset-types-and-procedures). The option Create a tileset is available from the Data Explorer from the Connections tab. To create a tileset from your data, select an available connection and click on a specific table (database/project(s), schemas/datasets and tables) from the collapsible tree.
 
 <div style="text-align:center" >
 <img src="/img/sf-analytics-toolbox/guides/create_tileset_sf_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
@@ -31,7 +31,7 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 <img src="/img/bq-analytics-toolbox/tiler/create_tileset_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
 </div> -->
 
-#### From the Snowflake console or client
+#### From the Snowflake console
 As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Snowflake console](https://sxa81489.us-east-1.snowflakecomputing.com/console).
 
 <!-- or client of choice after connecting your CARTO account to BigQuery. -->
@@ -44,7 +44,7 @@ SELECT carto.VERSION_ADVANCED()
 
 Check the [Getting Access](../../overview/getting-access) section if you run into any errors when running the query above.
 
-Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your Snowflake console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
+Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your Snowflake console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the county level, the other containing the geometries of the counties.
 
 The result will be a tileset with the geometry and the total population per county:
 

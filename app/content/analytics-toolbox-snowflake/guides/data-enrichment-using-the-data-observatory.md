@@ -15,11 +15,11 @@ For more details, please refer to the [documentation](https://docs.carto.com/car
 
 1. Navigate to the Data Observatory section of the CARTO Workspace.
 2. Using the Spatial Data Catalog, subscribe to the following datasets. You can find these datasets by using the search bar or the filter column on the left of the screen: 
-   * *Spatial Features - Belgium (H3 Resolution 8* from CARTO.
+   * *Spatial Features - Belgium (H3 Resolution 8)* from CARTO.
    * *PC 4-digit - Belgium* from Michael Bauer International.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:95%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
@@ -29,14 +29,14 @@ For more details, please refer to the [documentation](https://docs.carto.com/car
 3. Navigate to the Data Explorer and expand the Data Observatory section. Choose any of the your data subscriptions and click on the "Access in" button on the top right of the page. Copy the Snowflake project and dataset from any of the table locations that you see on the screen.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:95%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
 <img src="/img/bq-analytics-toolbox/guides/enrichment_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
 </div> -->
 
-4. Confirm that you can see all of your data subscriptions by running the command below, which makes use of the [`DATAOBS_SUBSCRIPTIONS`](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/data/#dataobs_subscriptions) procedure. **Please replace the Snowflake project and dataset with those you copied in the previous step.**
+4. Confirm that you can see all of your data subscriptions by running the command below, which makes use of the [`DATAOBS_SUBSCRIPTIONS`](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/data/#dataobs_subscriptions) procedure. **Please replace the Snowflake database and schema with those you copied in the previous step.**
 
 ```sql
 USE DATABASE <ANALYTICS_TOOLBOX_DB>;
@@ -54,7 +54,7 @@ CALL carto.DATAOBS_SUBSCRIPTIONS('carto_dev_data.carto','');
 </div> -->
 
 ### 3. Choose variables for the enrichment
-We can list all the variables (data columns) available in our Data Observatory subscriptions by running the following query, which makes use of the [`DATAOBS_SUBSCRIPTION_VARIABLES`](../../sql-reference/data/#dataobs_subscription_variables) procedure. **Please remember to replace the Snowflake project and dataset with those you used in the previous command.**
+We can list all the variables (data columns) available in our Data Observatory subscriptions by running the following query, which makes use of the [`DATAOBS_SUBSCRIPTION_VARIABLES`](../../sql-reference/data/#dataobs_subscription_variables) procedure. **Please remember to replace the Snowflake database and schema with those you used in the previous command.**
 
 ```sql
 USE DATABASE <ANALYTICS_TOOLBOX_DB>;
@@ -73,7 +73,7 @@ CALL carto.DATAOBS_SUBSCRIPTION_VARIABLES('carto_dev_data.carto','');
 </div> -->
 
 In this particular example we are going to enrich our data with the following variables. Please note that these variables are uniquely identified by their `variable_slug`.
-* `population_23c282a0`, `retail_dba575bc`,`elevation_65d16a8a` and `tavg_jan_de4f1914`: these variables are from the [Applied Geographic Solutions](https://carto.com/spatial-data-catalog/browser/dataset/cdb_spatial_fea_a07a4ca5) for Belgium. As we can see in the `variable_description` column, they represent the total population, their female and male population, their average age and their average rent, respectively.
+* `population_23c282a0`, `retail_dba575bc`,`elevation_65d16a8a` and `tavg_jan_de4f1914`: these variables are from [CARTO](https://carto.com/spatial-data-catalog/browser/dataset/cdb_spatial_fea_a07a4ca5) for Belgium. As we can see in the `variable_description` column, they represent the total population, their female and male population, their average age and their average rent, respectively.
 <!-- * `name_c0d0f60f`. This variable is from the [PC 4-digit - Belgium](https://carto.com/spatial-data-catalog/browser/geography/mbi_pc_4_digit_d11546d7/data) for Belgium.  -->
 
 ### 4. Run the enrichment
@@ -84,7 +84,7 @@ The following inputs are needed:
 * The input table to be enriched.
 * The list of variables to be used for the enrichment and their aggregation method. As explained earlier, these variables are identified using their `variable_slug`. For more information about the aggregation methods, please refer to the [documentation](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/data/#dataobs_enrich_points).
 * Name of the output table where the result of the enrichment will be stored. 
-* Location of your Data Observatory subscriptions. This is the same `project.dataset` we used to run the `DATAOBS_SUBSCRIPTIONS` and `DATAOBS_SUBSCRIPTION_VARIABLES` in previous steps of this guide.
+* Location of your Data Observatory subscriptions. This is the same `database.schema` we used to run the `DATAOBS_SUBSCRIPTIONS` and `DATAOBS_SUBSCRIPTION_VARIABLES` in previous steps of this guide.
 
 ```sql
 USE DATABASE <ANALYTICS_TOOLBOX_DB>;
@@ -99,11 +99,11 @@ CALL carto.DATAOBS_ENRICH_POINTS
  NULL, 
  TO_ARRAY('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA.BEL_PC4DIGIT_2021_ENRICHED'), 
  'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA');
--- The table `MYENRICHEDTABLE` will be created
+-- The table `BEL_PC4DIGIT_2021_ENRICHED` will be created
 ```
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_result_new.png" alt="Preview of the enrichment result" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_result.png" alt="Preview of the enrichment result" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
