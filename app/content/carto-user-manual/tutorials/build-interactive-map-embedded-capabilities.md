@@ -128,24 +128,13 @@ In this section, we provide a tutorial that showcases how easy it is to create a
 
     <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/70fb96a7-b08d-4c5a-a3a8-fc3dec48ed2a?lat=48.856087&lng=2.348647&zoom=15"></iframe>
 
-<!--     - Control the center and zoom level: https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15
-
-    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15"></iframe> -->
-
-
     - Control the pitch and bearing: https://gcp-us-east1.app.carto.com/map/70fb96a7-b08d-4c5a-a3a8-fc3dec48ed2a?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90
 
     <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/70fb96a7-b08d-4c5a-a3a8-fc3dec48ed2a?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90"></iframe>
 
-    <!-- - Control the pitch and bearing: https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90
-
-    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/c869093a-4eea-4239-a3ec-7cce66eb015e?lat=48.856087&lng=2.348647&zoom=15&pitch=40&bearing=90"></iframe> -->
-
 20. We can also embed this map in a website by Copy and Paste the HTML code into documents to show map on web pages. As we have done with the embedded maps shown on Step 19.
 
     ![Map embed map](/img/cloud-native-workspace/tutorials/the_tutorial11_map_embed_map.png)
-
-    <!-- ![Map embed map](/img/cloud-native-workspace/tutorials/tutorial111_map_embed_map.png) -->
 	
 	This is especially useful if you want to use your CARTO maps on your website, or to build a story map using a no/low-code tools (like Webflow, SquareSpace, etc.) or presentations tools (like Slides.com). <a href="https://slides.com/" target="_blank">Slides.com</a> is a tool for creating, presenting and sharing modern presentations. It enables anyone with a web browser to easily create beautiful presentations with interactivity (click, hover, etc.) that can simulate buttons, images, animations, iframes, and much more.
 
