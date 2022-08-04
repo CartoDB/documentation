@@ -35,17 +35,11 @@ In this section, we provide a tutorial that showcases how easy it is to create a
 
    ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/the_tutorial11_de_map_preview.png)
 
-   <!-- ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial11_de_map_preview.png) -->
-
    ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/the_tutorial11_de_data_preview.png)
-
-   <!-- ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial11_de_data_preview.png) -->
 
 5. Create a map by clicking the *Create map* button on the top. This will open the table as a layer on a CARTO Builder map. Check [Creating a map from your data](../../data-explorer/creating-a-map-from-your-data) to get started.
 
    ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/the_tutorial11_de_map_from_table.png)
-
-   <!-- ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial11_de_map_from_table.png) -->
 
 6. Change layer name to “Paris cycling network”.
 
@@ -63,19 +57,13 @@ In this section, we provide a tutorial that showcases how easy it is to create a
  
     ![Map widgets new widget](/img/cloud-native-workspace/tutorials/the_tutorial11_map_new_widget.png)
 
-    <!-- ![Map widgets new widget](/img/cloud-native-workspace/tutorials/tutorial11_map_new_widget.png) -->
-
 10. Click the *New widget* button and select "paris_cycling_network".
 
     ![Map widgets select source](/img/cloud-native-workspace/tutorials/the_tutorial11_map_widget_select_source.png)
 
-    <!-- ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial11_map_widget_select_source.png) -->
-
     When you add a widget, it´s always the Formula widget by default, based on a Count operation on the number of features displayed on the map viewport:
 
     ![Map widgets formula by default](/img/cloud-native-workspace/tutorials/the_tutorial11_map_widget_formula_by_default.png)
-
-    <!-- ![Map widgets formula by default](/img/cloud-native-workspace/tutorials/tutorial11_map_widget_formula_by_default.png) -->
 	
 11. Click the “three dots” icon and select the Rename option.
 
@@ -84,8 +72,6 @@ In this section, we provide a tutorial that showcases how easy it is to create a
     Rename the widget to “Nº of cycling traces”.
 
     ![Map widgets formula rename](/img/cloud-native-workspace/tutorials/the_tutorial11_map_widget_formula_rename.png)
-
-    <!-- ![Map widgets formula rename](/img/cloud-native-workspace/tutorials/tutorial11_map_widget_formula_rename.png) -->
 
     Click the Back arrow to go back to the widget's list:
 
@@ -100,13 +86,9 @@ In this section, we provide a tutorial that showcases how easy it is to create a
 
     ![Map category widget select field](/img/cloud-native-workspace/tutorials/the_tutorial11_map_category_widget_select_field.png)
 
-    <!-- ![Map category widget select field](/img/cloud-native-workspace/tutorials/tutorial11_map_category_widget_select_field.png) -->
-
     Now using the category widget, we can filter the data based on the highway type. For example, we can select the “cycleway” category from the list to highlight this particular category and temporally remove the others from your visualization, getting those traces from the network that are only destinated to cycling paths:
 	
     ![Map category widget selected element](/img/cloud-native-workspace/tutorials/the_tutorial11_map_category_widget_selected_element.png)
-
-    <!-- ![Map category widget selected element](/img/cloud-native-workspace/tutorials/tutorial11_map_category_widget_selected_element.png) -->
 	
 	Click the “Clear” button to remove the selection.
 
@@ -116,43 +98,29 @@ In this section, we provide a tutorial that showcases how easy it is to create a
 
     ![Map histogram widget selected field](/img/cloud-native-workspace/tutorials/the_tutorial11_map_histogram_widget_selected_field.png)
 
-    <!-- ![Map histogram widget selected field](/img/cloud-native-workspace/tutorials/tutorial11_map_histogram_widget_selected_field.png) -->
-
     You will get a histogram widget where you can filter the cycling network traces based on their length.
 	
     ![Map histogram widget](/img/cloud-native-workspace/tutorials/the_tutorial11_map_histogram_widget.png)
-
-    <!-- ![Map histogram widget](/img/cloud-native-workspace/tutorials/tutorial11_map_histogram_widget.png) -->
 
 14. Now let's configure the tooltip (or info window). Go to Interactions tab, activate the tooltip and select the fields `longeur`, `Highway` and `revetement`. 
 
     ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/the_tutorial11_map_tooltip.png)
 
-    <!-- ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial11_map_tooltip.png) -->
-
 15. We can change our base map. Go to the Base maps tab and select “Voyager” from CARTO.
 
     ![Map basemap carto](/img/cloud-native-workspace/tutorials/the_tutorial11_map_basemap_carto.png)
-
-    <!-- ![Map basemap carto](/img/cloud-native-workspace/tutorials/tutorial11_map_basemap_carto.png) -->
 
 16. Finally, we can change the name of the map to “Paris cycling network”.
 
     ![Map rename](/img/cloud-native-workspace/tutorials/the_tutorial11_map_rename.png)
 
-    <!-- ![Map rename](/img/cloud-native-workspace/tutorials/tutorial11_map_rename.png) -->
-
 17. Once the map is ready, we can share it online with your teammates or make it public. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps). We are going to select the option “Public map”.
 
     ![Map public map](/img/cloud-native-workspace/tutorials/the_tutorial11_map_public_map.png)
-
-    <!-- ![Map public map](/img/cloud-native-workspace/tutorials/tutorial11_map_public_map.png) -->
 	
 18. In the *Shared Link* tab, there are different sharing options, by clicking the “Copy public share link” button, the public map link will be copied in your clipboard and you can share it. Anyone with this link will be able to access the map in a "view mode", without the possibility to make any change in the source map. Users with the link will be able to zoom in and out, visualize map features, explore using the tooltip, and filter the map using the widgets.
 
     ![Map published map](/img/cloud-native-workspace/tutorials/the_tutorial111_map_published_map.png)
-
-    <!-- ![Map published map](/img/cloud-native-workspace/tutorials/tutorial111_map_published_map.png) -->
 	
 19. You can also control how it is displayed using URL parameters. This is especially helpful for integration with no/low-code tools, and story-telling with maps. We can control the center, zoom level, pitch, bearing, and visible layers of a public map by adding `lat` and `lng`, `center`, `pitch`, `bearing` and `layers` parameters. Check the complete reference [here](/carto-user-manual/maps/publishing-and-sharing-maps/#embed-api). Some examples:
 
