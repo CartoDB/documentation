@@ -23,11 +23,9 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 </div>
 
 
-#### From the Postgres console or client
+#### From the Postgres console
 
-As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Postgres console](https://aws.amazon.com/rds/?p=ft&c=db&z=3).
-
-<!-- or client of choice after connecting your CARTO account to BigQuery. -->
+As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from a [psql terminal-based](https://www.postgresql.org/docs/current/app-psql.html) or from a database tool, such as [aws](https://aws.amazon.com/rds/?p=ft&c=db&z=3) or [dbeaver](https://dbeaver.io/).
 
 To check that your account has access to the Tiler, try running this query:
 
@@ -37,9 +35,9 @@ SELECT carto.VERSION_ADVANCED()
 
 Check the [Getting Access](../../overview/getting-started/#requirements) section if you run into any errors when running the query above.
 
-Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your Postgres console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the blockgroup level, the other containing the geometries of the blockgroups.
+Once you are all set getting access to the Tiler, creating a tileset is as easy as opening your Postgres console and running a query. In this case, we are going to create a *simple* tileset (see [Tileset procedures](../../overview/tilesets/#tileset-types-and-procedures)) from a couple of joined tables: one containing demographic information for the US at the census tract level, the other containing the geometries of the census tracts.
 
-The result will be a tileset with the geometry and the total population per county:
+The result will be a tileset with the geometry and the total population per census tract:
 
 
 ```sql
@@ -53,13 +51,7 @@ CALL carto.CREATE_SIMPLE_TILESET(
     "geom_column": "geom",
     "zoom_min": 0, 
     "zoom_max": 11,
-    "properties": {"total_pop": "Number"},
-    "tiling_scheme":"xyz",
-    "tile_extent":4096,
-    "max_tile_size_kb":1024,
-    "max_tile_features":0,
-    "tile_feature_order":"RANDOM()",
-    "max_tile_size_strategy":"drop_fraction_as_needed"
+    "properties": {"total_pop": "Number"}
     }
   }'
 );
