@@ -69,7 +69,7 @@ First, you need to subscribe to the chosen dataset from the Data Observatory sec
 Once subscribed to the dataset, navigate to the Data Explorer and expand the Data Observatory section. Pick any of your data subscriptions and click on the “Access in” button on the top right of the page. Copy the BigQuery project and dataset from any of the table locations that you see on the screen, as this is where your data subscriptions are. We are going to need this information in the next step. 
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/guides/enrichment_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_enrichment_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
 </div>
 
 Now you can go to your BigQuery console and double check that you are correctly subscribed to the dataset of choice by using the [DATAOBS_SUBSCRIPTIONS](../../sql-reference/data/#dataobs_subscriptions) procedure, which takes as input the location of your Data Observatory subscriptions that we found in the previous step. 

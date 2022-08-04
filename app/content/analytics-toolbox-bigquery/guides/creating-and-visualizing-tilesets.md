@@ -9,19 +9,17 @@ aliases:
 
 #### From the CARTO Workspace
 
-The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-bigquery/overview/tilesets/#tileset-types-and-procedures). The option _Create tileset_ is available from the Data Explorer for those tables that are too big to be visualized directly and therefore require the creation of a tileset.
+The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-bigquery/overview/tilesets/#tileset-types-and-procedures). The option _Create a tileset_ is available from the Data Explorer from the *Connections* tab. To create a tileset from your data, select an available connection and click on a specific table (database/project(s), schemas/datasets and tables) from the collapsible tree.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/create_tileset_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_create_tileset_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
 </div>
 
-
-Clicking on the _Create tileset_ button will trigger a tileset creation wizard that you can follow along to configure your tileset. For step-by-step instructions, please visit [this guide](/carto-user-manual/data-explorer/creating-a-tileset-from-your-data/).
+Clicking on the _Create a tileset_ button will trigger a tileset creation wizard that you can follow along to configure your tileset. For step-by-step instructions, please visit [this guide](/carto-user-manual/data-explorer/creating-a-tileset-from-your-data/).
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/create_tileset_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_create_tileset_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
 </div>
-
 
 #### From the BigQuery console or client
 As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [BigQuery console](https://console.cloud.google.com/bigquery) or client of choice after connecting your CARTO account to BigQuery.
@@ -131,7 +129,7 @@ The CARTO Workspace offers access to the Data Explorer, where you will be able t
 The Data Explorer offers a preview of your tilesets and displays their associated details and metadata, such as their size, number of records and statistics regarding the tile sizes per zoom level. Please refer to [this page](/carto-user-manual/data-explorer/introduction/) for more information regarding the Data Explorer.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_tileset_preview_data_explorer.png" alt="Tileset preview from the Data Explorer" style="width:100%">
 </div>
 
 ##### Creating maps with tilesets using Builder
@@ -146,26 +144,26 @@ For the latter option, you simply need to follow these simple steps:
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_choose_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_tileset_layer_choosing_connection.png" alt="Choosing connection to add tileset from" style="width:100%">
 </div>
 
 2. Choose the BigQuery connection from where your tileset is accessible.
 3. Browse your projects and datasets until you find your tileset in the data explorer tree.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_choose_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_tileset_layer_choosing_tileset.png" alt="Choosing tileset to add as layer" style="width:100%">
 </div>
 
 4. Select your tileset. Your tileset will then be added as a layer.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_loaded.png" alt="Tileset added as layer" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_tileset_layer_loading.png" alt="Tileset added as layer" style="width:100%">
 </div>
 
 5. Style your tileset like any other layer in Builder. For more details on how to style your layers, please visit [this page](/carto-user-manual/maps/map-styles/).
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/tileset_layer_styled.png" alt="Tileset added as layer and styled" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_tileset_layer_styles.png" alt="Tileset added as layer and styled" style="width:100%">
 </div>
 
 <!--- #### From the CARTO Dashboard
