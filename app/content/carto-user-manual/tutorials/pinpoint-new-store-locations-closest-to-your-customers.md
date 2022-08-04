@@ -74,14 +74,13 @@ in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of st
     WITH
     clustered_points AS (
     SELECT
-        `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
+    `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
     FROM `carto-demo-data.demo_tables.sample_customer_home_locations`
     )
     SELECT
     cluster_element.cluster,
-    ST_UNION_AGG(cluster_element.geom) AS geom
-    FROM clustered_points,UNNEST(cluster_arr) AS cluster_element 
-    GROUP BY cluster_element.cluster
+    cluster_element.geom AS geom
+    FROM clustered_points,UNNEST(cluster_arr) AS cluster_element
     ```
 
     ![Map sql query cluster](/img/cloud-native-workspace/tutorials/tutorial5_map_sql_query_cluster.png)
