@@ -115,12 +115,16 @@ Remember to hide the first layer to vizualize the second layer alone.
 
 22. Switch back to single map Normal view. Hide the Revenue grid layer. Rename the map to "Monitor retail store performance".
 
-    ![Map rename title](/img/cloud-native-workspace/tutorials/the_tutorial12_map_rename_title.png)
+    ![Map rename title](/img/cloud-native-workspace/tutorials/the_tutorial12_map_renamed_title.png)
+
+    <!-- ![Map rename title](/img/cloud-native-workspace/tutorials/the_tutorial12_map_rename_title.png) -->
 
 23. We can make the map public and share it online with our colleagues. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/the_tutorial12_map_sharing_options.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/the_tutorial12_map_share_options.png)
+
+    <!-- ![Map public map](/img/cloud-native-workspace/tutorials/the_tutorial12_map_sharing_options.png) -->
  
 24. Finally, we can visualize the result.
 
-      <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/f2653124-fdb3-4e93-a16b-b8edae70697d"></iframe>
+      <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/8a158442-9f01-447c-b32a-eb1aa657efb1"></iframe>
