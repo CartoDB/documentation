@@ -18,6 +18,7 @@ cascade:
     - title: "Guides"
       folder:
         - title: "Creating and visualizing tilesets"
+        - title: "Running queries from Builder"
     - title: "Examples"
     - title: "SQL Reference"
       folder:

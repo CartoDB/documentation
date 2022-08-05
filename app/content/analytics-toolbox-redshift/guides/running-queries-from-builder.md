@@ -13,7 +13,7 @@ To get started, let's run a simple example query to compute the paths that inter
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
-<img src="/img/rs-analytics-toolbox/guides/layer_choose_rs_connection.png" alt="Choosing a connection" style="width:100%">
+<img src="/img/rs-analytics-toolbox/guides/layer_choose_redshift_connection.png" alt="Choosing a connection" style="width:100%">
 </div>
 
 2. Select the second tab _Custom Query (SQL)_ and pick the Snowflake connection that you will use to run the query. Please make sure this connection has access to the Analytics Toolbox database.
@@ -42,7 +42,7 @@ FROM data AS t1
 CROSS JOIN data AS t2
 WHERE t1.iata != t2.iata
 ```
-You can also take advantage of this function directly from a table from your database.
+You can also take advantage of this function directly from a table from your database:
 
 ```sql
 WITH data AS(
