@@ -413,6 +413,23 @@ FROM FLATENRICHMENT
 GROUP BY NAME
 ```
 
+### In-place enrichment
+
+```sql
+CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
+   'mydb.myschema.mytable', 'GEOM',
+   ARRAY_CONSTRUCT('population_93405ad7'),
+   ),
+   NULL,
+   TO_ARRAY('mydb.myschema.mytable'),
+   'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA'
+);
+-- The table `mydb.myschema.mytable` will be augmented
+-- with columns __CARTO_INPUT_AREA and WP_GRID100M_10955184.
+-- The latter will be of OBJECT type with the fields population_93405ad7,
+-- __carto_dimension, __carto_intersection and __carto_total.
+```
+
 ### DATAOBS_SUBSCRIPTIONS
 
 {{% bannerNote type="code" %}}

@@ -50,7 +50,6 @@ cascade:
         - title: "constructors"
         - title: "data"
         - title: "geohash"
-        - title: "geocoding"
         - title: "h3"
         - title: "measurements"
         - title: "placekey"
