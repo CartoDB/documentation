@@ -25,7 +25,7 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 
 #### From the Redshift console or client
 
-As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Redshift console](https://aws.amazon.com/redshift/).
+As a CARTO Analytics Toolbox module, the Tiler's capabilities are available as SQL procedures that can be executed directly from your [Redshift console](https://aws.amazon.com/redshift/).
 
 <!-- or client of choice after connecting your CARTO account to BigQuery. -->
 

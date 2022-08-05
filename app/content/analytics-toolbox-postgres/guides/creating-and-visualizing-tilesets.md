@@ -25,7 +25,7 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 
 #### From the Postgres console
 
-As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from a [psql terminal-based](https://www.postgresql.org/docs/current/app-psql.html) or from a database tool, such as [aws](https://aws.amazon.com/rds/?p=ft&c=db&z=3) or [dbeaver](https://dbeaver.io/).
+As a CARTO Analytics Toolbox module, the Tiler's capabilities are available as SQL procedures that can be executed directly from a [psql terminal-based](https://www.postgresql.org/docs/current/app-psql.html) or from a database tool, such as [aws](https://aws.amazon.com/rds/?p=ft&c=db&z=3) or [dbeaver](https://dbeaver.io/).
 
 To check that your account has access to the Tiler, try running this query:
 

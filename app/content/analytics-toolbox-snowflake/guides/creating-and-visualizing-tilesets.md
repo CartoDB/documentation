@@ -32,7 +32,7 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 </div> -->
 
 #### From the Snowflake console
-As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [Snowflake console](https://sxa81489.us-east-1.snowflakecomputing.com/console).
+As a CARTO Analytics Toolbox module, the Tiler's capabilities are available as SQL procedures that can be executed directly from your [Snowflake console](https://sxa81489.us-east-1.snowflakecomputing.com/console).
 
 <!-- or client of choice after connecting your CARTO account to BigQuery. -->
 

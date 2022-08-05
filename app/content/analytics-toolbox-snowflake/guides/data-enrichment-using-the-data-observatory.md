@@ -1,6 +1,7 @@
 ## Data enrichment using the Data Observatory
 
-In this guide you will learn how to perform data enrichment using Data Observatory data and the Analytics Toolbox. 
+In this guide you will learn how to perform data enrichment using Data Observatory data and the Analytics Toolbox.
+In this guide you will learn how to perform data enrichment using Data Observatory data and the Analytics Toolbox from your Snowflake console. To use the Enrichment UI available in the Data Explorer, please refer to [this guide](https://docs.carto.com/carto-user-manual/data-explorer/enriching-data/).
 
 ### 1. Create a connection with Snowflake in the CARTO Workspace
 
@@ -15,16 +16,22 @@ For more details, please refer to the [documentation](https://docs.carto.com/car
 
 1. Navigate to the Data Observatory section of the CARTO Workspace.
 2. Using the Spatial Data Catalog, subscribe to the following datasets. You can find these datasets by using the search bar or the filter column on the left of the screen: 
-   * *Spatial Features - Belgium (H3 Resolution 8)* from CARTO.
-   * *PC 4-digit - Belgium* from Michael Bauer International.
+   * *Spatial Features - Spain (H3 Resolution 8)* from CARTO.
+   * *Census Sections (Spain), with displaced Canary Islands (2020)* from CARTO.
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_public_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:100%">
 </div>
 
 <!-- <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/guides/enrichment_guide_create_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:100%">
 </div> -->
+
+3. In order for you to access any of your Data Observatory subscriptions from Snowflake, the data first needs to be imported into your database. This import process is performed by our engineering team on a request basis.
+
+<div style="text-align:center" >
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_create_request_public_subscriptions.png" alt="Create Data Observatory subscriptions" style="width:100%">
+</div>
 
 3. Navigate to the Data Explorer and expand the Data Observatory section. Choose any of the your data subscriptions and click on the "Access in" button on the top right of the page. Copy the Snowflake project and dataset from any of the table locations that you see on the screen.
 
