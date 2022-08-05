@@ -37,7 +37,7 @@ In this tutorial we are going to assess the number of buildings and population t
 
 5. Select the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection and click on *demo data > demo_tables* from the collapsible tree. 
 
-   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/tutorial1_content_carto_dw.png)
+   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/the_tutorial1_content_carto_dw.png)
 
 6. In this tutorial, we are going to use the following 3 tables:
    - lapalma_buildings: it contains the buildings in La Palma as obtained from the Spanish cadaster website;
@@ -46,27 +46,29 @@ In this tutorial we are going to assess the number of buildings and population t
 
 7. Spend some time exploring the three tables in the Data Explorer.
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_data_preview_first_table.png)
+   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/the_tutorial7_de_data_preview_first_table.png)
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_data_preview_second_table.png)
+   <!-- ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_data_preview_first_table.png) -->
 
-   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/tutorial7_de_map_preview_third_table.png)
+   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/the_tutorial7_de_data_preview_second_table.png)
+
+   ![Data Explorer data prewiew](/img/cloud-native-workspace/tutorials/the_tutorial7_de_map_preview_third_table.png)
 
 8. Selected "lapalma_buildings" and click on *Create > Create map* button on the top.
 
-   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial7_de_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/the_tutorial7_de_create_map_from_table.png)
 
     This will open CARTO Builder with this table added as a layer to a map. 
 
-   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/tutorial7_create_map_from_table.png)
+   ![Data Explorer create map from table](/img/cloud-native-workspace/tutorials/the_tutorial7_create_map_from_table.png)
 
 9.  Let's start by having a look at the Data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed.
 
-    ![Map source options](/img/cloud-native-workspace/tutorials/tutorial7_map_source_options.png)
+    ![Map source options](/img/cloud-native-workspace/tutorials/the_tutorial7_map_source_options.png)
 
     Note that we have added a column called `estimated_prop_value` in which we have estimated the value of the residential buildings based on the average market value per square meter in each municipality and the surface area of each building (which is provided by the cadaster itself).
 
-    ![Map table column](/img/cloud-native-workspace/tutorials/tutorial7_map_table_column.png)
+    ![Map table column](/img/cloud-native-workspace/tutorials/the_tutorial7_map_table_column.png)
 
 10. Rename the layer to “La Palma Buildings”.
 
@@ -78,11 +80,11 @@ In this tutorial we are going to assess the number of buildings and population t
 
 12. We can style the layer, by changing for example the color of the geometries.
 
-    ![Map fill color](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_one_color.png)
+    ![Map fill color](/img/cloud-native-workspace/tutorials/the_tutorial7_map_fill_one_color.png)
 
 13. Let's now add another layer by clicking on the “Add source from…” button from Sources. Select Table/Tileset, then select the `CARTO Data Warehouse`connection and click on *demo data > demo_tables > lapalma_sociodemo_parcels* from the collapsible tree. Click on *Add Source*.
 
-    ![Add source table](/img/cloud-native-workspace/tutorials/tutorial7_add_source_table.png)
+    ![Add source table](/img/cloud-native-workspace/tutorials/the_tutorial7_add_source_table.png)
 
 14. Let's change the name of this second layer (B) to “La Palma demographics” 
 
@@ -90,17 +92,17 @@ In this tutorial we are going to assess the number of buildings and population t
 
 15. Now we change the style of this new layer, by changing the color (fill and outline) and size of the geometries.
 
-    ![Map color and radius](/img/cloud-native-workspace/tutorials/tutorial7_map_fillcolor_radius_second_layer.png)
+    ![Map color and radius](/img/cloud-native-workspace/tutorials/the_tutorial7_map_fillcolor_radius_second_layer.png)
 
 16. Note that at this point we could do more things such as styling the size of the points by the population living in the parcel. For that, click on the “three dots” icon on “Radius” and select `p_t` as the field to base the radius on. 
 
-    ![Map radius based on](/img/cloud-native-workspace/tutorials/tutorial7_map_second_layer_new_radius_based_on.png)
+    ![Map radius based on](/img/cloud-native-workspace/tutorials/the_tutorial7_map_second_layer_new_radius_based_on.png)
 
 17. Now we are going to add a new layer by creating a custom SQL Query that is going to aggregate the number of buildings and their estimated value (remember, only for residential properties) that fall within the volcano's lava flow. 
 
     For that, we click again on “Add source from…”, but now we select “Custom Query (SQL)”, we select the `CARTO Data Warehouse` connection, and the option “Type your own query”. Then we click on *Add Source*. 
    
-    ![Add source custom sql query](/img/cloud-native-workspace/tutorials/tutorial7_add_source_custom_sql_query.png)
+    ![Add source custom sql query](/img/cloud-native-workspace/tutorials/the_tutorial7_add_source_custom_sql_query.png)
     
 18. In the SQL panel, type the following query:
 
@@ -116,7 +118,7 @@ In this tutorial we are going to assess the number of buildings and population t
     ```
     Click on *Run*.
 
-    ![Map sql editor first query](/img/cloud-native-workspace/tutorials/tutorial7_map_sql_editor_firstquery.png)
+    ![Map sql editor first query](/img/cloud-native-workspace/tutorials/the_tutorial7_map_sql_editor_firstquery.png)
 
 19. This query should have generated a new layer with the volcano's lava flow and the following columns `num_properties` and `value_damage` . You can check the Data table from the “Source” to validate the result of your query.
 
@@ -124,21 +126,21 @@ In this tutorial we are going to assess the number of buildings and population t
 
 20. Let's rename this third layer (C) as “Lava flow”. 
 
-   ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_third_layer_rename.png)
+   ![Map layers rename](/img/cloud-native-workspace/tutorials/the_tutorial7_map_third_layer_rename.png)
 
 21. Let's change the ordering of the layers and place this third layer to the bottom of the list so the other layers render on top of the lava flow. You should only drag & drop the "C"layer on the layer panel.
 
-    ![Map layers order](/img/cloud-native-workspace/tutorials/tutorial7_map_layers_ordering.png)
+    ![Map layers order](/img/cloud-native-workspace/tutorials/the_tutorial7_map_layers_ordering.png)
 
 22. Let's change the styling of the Lava flow layer. Change the Fill and Stroke colors as suggested below:
 
-    ![Map fill stroke](/img/cloud-native-workspace/tutorials/tutorial7_map_fill_and_stroke_third_layer.png)
+    ![Map fill stroke](/img/cloud-native-workspace/tutorials/the_tutorial7_map_fill_and_stroke_third_layer.png)
 
 23. In case it's not activated by default, let's activate a tooltip for this third layer, in order to show the values of the number of damaged buildings and the estimated damaged value of residential properties when hovering on top of the lava flow polygon. 
 
     For that, go to the *Interactions* tab and activate the tooltip option. Press on *Clear All* and delete the tooltips except for the third source “SQL Query 1” and leave the fields `Num_properties` and `Value_damage` as shown below:
 
-    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial7_map_show_tooltip.png)
+    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/the_tutorial7_map_show_tooltip.png)
 
 24. Now let's add a last layer into the map. We are going to do again a Custom SQL query, so repeat the steps done before but now run the following query:
 
@@ -165,33 +167,35 @@ In this tutorial we are going to assess the number of buildings and population t
 
     It should generate a fourth layer such as the one illustrated below:
 
-    ![Map sql editor second query](/img/cloud-native-workspace/tutorials/tutorial7_map_sql_editor_secondquery.png)
+    ![Map sql editor second query](/img/cloud-native-workspace/tutorials/the_tutorial7_map_sql_editor_secondquery.png)
 
 25. Let's rename this fourth layer (D) as “Lava buffer” and place it at the bottom of all other layers. 
 
-    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial7_map_rename_fourth_layer.png)
+    ![Map layers rename](/img/cloud-native-workspace/tutorials/the_tutorial7_map_rename_fourth_layer.png)
    
-    ![Map layers order](/img/cloud-native-workspace/tutorials/tutorial7_map_layers_ordering_again.png)
+    ![Map layers order](/img/cloud-native-workspace/tutorials/the_tutorial7_map_layers_ordering_again.png)
 
 26. Let's apply some styling to the layer, for example as shown below:
 
-    ![Map fill stroke](/img/cloud-native-workspace/tutorials/tutorial7_map_color_stroke_fourth_layer.png)
+    ![Map fill stroke](/img/cloud-native-workspace/tutorials/the_tutorial7_map_color_stroke_fourth_layer.png)
 
 27. Make sure you have the tooltip enabled also on this “D” layer, to show the fields `Affected_population`, `Num_properties` and `Value_damage`.
 
-    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/tutorial7_map_show_second_tooltip.png)
+    ![Map tooltips new tooltip](/img/cloud-native-workspace/tutorials/the_tutorial7_map_show_second_tooltip.png)
 
 28. We can now also change the basemap of our map. Let's go to the *Basemap* tab and select Google Maps basemaps with the “Terrain” option:
     
-    ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial7_map_google_basemap.png)
+    ![Map basemap](/img/cloud-native-workspace/tutorials/the_tutorial7_map_google_basemap.png)
 
-29. Finally we can make the map public and share the link to anybody in the organization. For that you should go to “Share” on the top right corner and set the map as Public. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
+29. Now we can make the map public and share the link to anybody in the organization. For that you should go to “Share” on the top right corner and set the map as Public. For more details, see [Publishing and sharing maps](../../maps/publishing-and-sharing-maps).
 
-    ![Map public map](/img/cloud-native-workspace/tutorials/tutorial7_map_public_sharelink.png)
+    ![Map public map](/img/cloud-native-workspace/tutorials/the_tutorial7_map_public_sharelink.png)
 
-30. Finally, we can visualize the result.
+30. Finally we can rename the map as "La Palma Volcano" and visualize the result:
 
-    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/fbc81cb1-ebef-41b1-a98d-b5942847db88"></iframe>
+    ![Map title](/img/cloud-native-workspace/tutorials/tutorial7_map_title.png) 
+
+    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/4b3f8113-c83f-4436-90e5-16fafa5d991d"></iframe>
 
 
 
