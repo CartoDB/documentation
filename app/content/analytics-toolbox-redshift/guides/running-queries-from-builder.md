@@ -16,7 +16,7 @@ To get started, let's run a simple example query to compute the paths that inter
 <img src="/img/rs-analytics-toolbox/guides/layer_choose_redshift_connection.png" alt="Choosing a connection" style="width:100%">
 </div>
 
-2. Select the second tab _Custom Query (SQL)_ and pick the Snowflake connection that you will use to run the query. Please make sure this connection has access to the Analytics Toolbox database.
+2. Select the second tab _Custom Query (SQL)_ and pick the Redshift connection that you will use to run the query. Please make sure this connection has access to the Analytics Toolbox database.
 
 <div style="text-align:center" >
 <img src="/img/rs-analytics-toolbox/guides/builder_custom_query_option_rs.png" alt="Picking a connection to run a custom query" style="width:100%">
