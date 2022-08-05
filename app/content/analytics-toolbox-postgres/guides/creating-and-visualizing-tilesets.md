@@ -9,7 +9,7 @@ aliases:
 
 #### From the CARTO Workspace
 
-The CARTO Workspace offers a user interface that you can use to create [simple tilesets](/analytics-toolbox-postgres/overview/tilesets/#tileset-types-and-procedures). The option Create a tileset is available from the Data Explorer from the Connections tab. To create a tileset from your data, select an available connection and click on a specific table (database/project(s), schemas/datasets and tables) from the collapsible tree.
+The CARTO Workspace offers a user interface that you can use to create [tilesets](/analytics-toolbox-postgres/overview/tilesets/#tileset-types-and-procedures). The option *Create a tileset* is available in the Data Explorer section from the Connections tab. To create a tileset from your data, select an available connection and click on a specific table (database/project(s), schemas/datasets and tables) from the collapsible tree.
 
 <div style="text-align:center" >
 <img src="/img/pg-analytics-toolbox/guides/create_tileset_pg_button_data_explorer.png" alt="Create tileset button available from the Data Explorer" style="width:100%">
