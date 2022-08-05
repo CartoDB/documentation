@@ -120,9 +120,9 @@ In this tutorial we are going to assess the number of buildings and population t
 
     ![Map sql editor first query](/img/cloud-native-workspace/tutorials/the_tutorial7_map_sql_editor_firstquery.png)
 
-19. This query should have generated a new layer with the volcano's lava flow and the following columns `num_properties` and `value_damage` . You can check the Data table from the “Source” to validate the result of your query.
+19. This query should have generated a new layer with the volcano's lava flow. <!-- and the following columns `num_properties` and `value_damage` . You can check the Data table from the “Source” to validate the result of your query. -->
 
-    ![Map table results](/img/cloud-native-workspace/tutorials/tutorial7_map_table_results.png)
+    <!-- ![Map table results](/img/cloud-native-workspace/tutorials/tutorial7_map_table_results.png) -->
 
 20. Let's rename this third layer (C) as “Lava flow”. 
 
