@@ -45,18 +45,18 @@ In-depth content and more technical information regarding the exercise found at 
 5. First we define the area of study by creating a buffer of 5km around Honolulu downtown. Run the query below:
 
     ```sql
-    SELECT ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
+    SELECT ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000) as geom;
     ```
     Rename the layer to "Area of Study", and style the buffer according to the config seen below
 
-   ![Map define buffer](/img/cloud-native-workspace/tutorials/tutorial13_map_area_of_study_buffer.png)
+   ![Map define buffer](/img/cloud-native-workspace/tutorials/the_tutorial13_map_area_of_study_buffer.png)
 
 6. We then extract our current store assets and display on the map. In this example, we will extract Pizza Hut stores from a sample dataset including points of interest in Honolulu (subset of [OpenStreetMaps's Planet Nodes dataset](https://carto.com/spatial-data-catalog/browser/dataset/osm_nodes_74461e34/)). Add a new custom query, as we did in the buffer example, and introduce the query below:
 
    ```sql
     -- We identify all store locations within a 5 km buffer centered in Honolulu
     SELECT
-    tag.value AS brand, geometry,
+    tag.value AS brand, geometry as geom,
     FROM
     `cartobq.docs.honolulu_planet_nodes` d,
     UNNEST(all_tags) as tag
