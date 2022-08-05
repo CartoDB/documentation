@@ -37,8 +37,6 @@ In this first step we will go through basic setup, including creating a CARTO ac
 
 3. The first time that you access the Workspace, you will see a Welcome banner with links providing quick access to different actions to get you started with CARTO, like creating your first connection or your first map.
 
-    <!-- ![Welcome banner Homepage first landing](/img/cloud-native-workspace/get-started/homepage_first_landing.png) -->
-
     ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_first_new_landing.png)
 
 4. From the Navigation Menu in the left panel, select Data Explorer.
@@ -75,7 +73,7 @@ We will inspect how Airbnb listings are distributed accross Los Angeles and aggr
     - Color: Dark yellow
     - Radius: `2,5`
 
-![Style map layer](/img/cloud-native-workspace/tutorials/tutorial10_initial_map_styling.gif)
+![Style map layer](/img/cloud-native-workspace/tutorials/the_tutorial10_initial_map_styling.gif)
 
 8. Add a new layer with source ‘Your connection’ and type 'SQL query'. Input the SQL query below.
 
@@ -145,7 +143,7 @@ We will also visualize where the *location* *score* variable significantly influ
 
 10. To save map results and continue working on a separate map, lets duplicate the map, disable the 3D view and rename the map copy to `Map 2 GWR Model map`
 
-    ![Map duplicate](/img/cloud-native-workspace/tutorials/tutorial10_map_duplicate.png)
+    ![Map duplicate](/img/cloud-native-workspace/tutorials/the_tutorial10_map_duplicate.png)
 
 11. (Optional) Run the model in your Data Warehouse
 
