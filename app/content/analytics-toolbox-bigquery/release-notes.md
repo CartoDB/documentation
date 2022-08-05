@@ -401,14 +401,6 @@ Changed
 Removed
 - Remove VERSION function.
 
-#### Module geocoding
-
-Changed
-- Deployment schema "carto" instead of "geocoding".
-
-Removed
-- Remove VERSION function.
-
 #### Module random
 
 Changed
@@ -450,14 +442,6 @@ Changed
 
 ### December 10, 2021
 
-#### Module geocoding
-
-* The `output` parameter in `GEOCODE_BATCH` and `GEOCODE_PC_BATCH` is now a STRING, not an ARRAY.
-* The `source` parameter has been removed from `GEOCODE_BATCH` and `GEOCODE_PC_BATCH`.
-
-Fixed
-* GEOCODE_PC_BATCH bug
-
 #### Module statistics
 
 Feature
@@ -465,32 +449,6 @@ Feature
 - Add GFUN function.
 - Add LOF function.
 - Add LOF_TABLE procedure.
-
-### December 3, 2021
-
-#### Module geocoding
-
-Fixed
-* GEOCODE_BATCH optimization
-
-### December 2, 2021
-
-#### Module geocoding
-
-Feature
-* New output column/fields `__carto_geocode_matched_name`/`matched_name` and `__carto_num_equal_matches`/`num_equal_matches` in `GEOCODE_BATCH`
-* New parameter `max_resolution`  in `GEOCODE_BATCH`
-* `GEOCODE_BATCH` can now geocode a table in place when `output` is NULL
-
-Changed
-* Remove trailing `__` from all generated columns (of the form `_carto_XXX`)
-* The column/field `__carto_geocode_accuracy`/`accuracy` has been removed
-* Internal refactor of query generation
-* Internal changes of geocoding tables
-
-Fixed
-* Prevent inexact mathces of country codes
-* Allow multiple (equally good) admin matches
 
 ### November 30, 2021
 
@@ -558,13 +516,6 @@ Fixed
 Changes
 - New API, with consistent naming of procedures `
 
-### September 24, 2021
-
-#### Module geocoding
-
-Feature
-- Add GEOCODING_PC_BATCH procedure.
-
 ### September 23, 2021
 
 #### Module s2
@@ -619,15 +570,6 @@ Changes
 
 Fixed
 - Avoid keeping planar shape in spherical coordinates in ST_BOUNDARY.
-
-### September 10, 2021
-
-#### Module geocoding
-
-Feature
-- Create geocoding module.
-- Add VERSION function.
-- Add GEOCODING_BATCH procedure.
 
 ### September 3, 2021
 
