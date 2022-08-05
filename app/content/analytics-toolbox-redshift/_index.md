@@ -20,6 +20,7 @@ cascade:
       folder:
         - title: "Creating and visualizing tilesets"
     #     - title: "Running queries from Builder"
+        - title: "Running queries from Builder"
     - title: "Examples"
     #   folder:
     #     - title: "A Quadkey grid of stores locations and simple cannibalization analysis"
