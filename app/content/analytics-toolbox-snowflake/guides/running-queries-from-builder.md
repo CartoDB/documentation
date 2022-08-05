@@ -62,7 +62,7 @@ FROM clustered_points, lateral FLATTEN(input => cluster_arr)
 
 6. Style the layer by the `cluster` attribute.
 
-![Map add query](/img/sf-analytics-toolbox/builder_custom_query_clustering-sf.png)
+![Map add query](/img/sf-analytics-toolbox/guides/builder_custom_query_clustering-sf_new.png)
 
 
 {{% bannerNote title="MORE EXAMPLES" type="note" %}}
