@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### July 22, 2022
+
+#### Module lds
+
+Feature
+- Add GEOCODE_REVERSE_TABLE procedure.
+
 ### June 9, 2022
 
 #### Module lds

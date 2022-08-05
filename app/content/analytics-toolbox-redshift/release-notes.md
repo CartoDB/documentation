@@ -1,5 +1,12 @@
 ## Release notes
 
+### July 22, 2022
+
+#### Module lds
+
+Feature
+- Add GEOCODE_REVERSE_TABLE procedure.
+
 ### June 7, 2022
 
 #### Module lds
@@ -20,6 +27,14 @@ Changed
 
 Feature
 - Add CREATE_ISOLINES procedure.
+
+### July 22, 2022
+
+#### Module statistics
+
+Feature
+- Create statistics module.
+- Add MORANS_I_QUADBIN function.
 
 ### July 20, 2022
 

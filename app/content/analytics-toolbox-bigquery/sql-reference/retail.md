@@ -8,6 +8,65 @@ aliases:
 
 This module contains procedures to perform analysis to solve specific retail analytics use cases, such as revenue prediction.
 
+### BUILD_CANNIBALIZATION_DATA
+
+{{% bannerNote type="code" %}}
+carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is the first of two from the Cannibalization analysis workflow. It builds the dataset for the existing locations to be used by the procedure [`CANNIBALIZATION_OVERLAP`](#cannibalization_overlap) to estimate the overlap between existing stores and the potentially new ones.
+1. For each store location, the urbanity level based on CARTO Spatial Features dataset is retrieved.
+2. For each store location, given the radius specified, the cells of the influence area are found.
+3. All cells are enriched with the specified features from Data Observatory subscriptions (e.g. population, footfall, etc.).
+4. A table with store_id, cell_id, and features values are created.
+
+**Input parameters**
+
+* `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadbin`.
+* `store_query`: `STRING` query with variables related to the stores to be used in the model, including their id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
+* `resolution`: `INT64` level or resolution of the cell grid. Check the available [h3 levels](https://h3geo.org/docs/core-library/restable/) and [quadbin levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid?tabs=csharp).
+* `distances`: `ARRAY<FLOAT64>` An array with radiuses in Km for each type of urbanity. Sorted from lowest urbanity to highest. Three different types, for Remote/Rural/Low_density_urban - Medium_density_urban - High/Very_High_density_urban locations.
+* do_variables: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore compute the overlap between store locations in the subsequent step of the Cannibalization workflow. For each variable, its slug and the aggregation method must be provided. Use default to use the variable's default aggregation method. Valid aggregation methods are: sum, avg, max, min, count. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
+* do_urbanity_index: `STRING` urbanity index variable slug_id in a CARTO Spatial Features subscription from the Data Observatory.
+* do_source: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project carto-data by default. It can be set to NULL or ''.
+* `output_destination`: `STRING` destination prefix for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>`.
+* `output_prefix`: `STRING` the prefix for each table in the output destination.
+
+**Output**
+
+This procedure will output one table:
+* Table containing the store_id, cell_id, distance from store_id (integer) and the values for each Data Observatory feature. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output`.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL carto.BUILD_CANNIBALIZATION_DATA(
+    --grid_type
+    'h3',
+    --store_query
+    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
+    --resolution
+    8,
+    --distances
+    [5.,3.,1.],
+    --do_variables
+    [('population_f5b8d177','sum')],
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib'
+);
+```
+
+
 ### BUILD_REVENUE_MODEL
 
 {{% bannerNote type="code" %}}
@@ -122,6 +181,52 @@ CALL `carto-un`.carto.BUILD_REVENUE_MODEL_DATA(
 -- with columns: index, revenue_avg, store_count, competitor_count, POPCY_4534fac4_sum, INCCYPCAP_7c8377cf_avg, var1_sum, var2_avg
 -- Table `<my-project>.<my-dataset>.<output-prefix>_model_data_stats` will be created
 -- with the column: morans_i
+```
+
+
+### CANNIBALIZATION_OVERLAP
+
+{{% bannerNote type="code" %}}
+carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is the second step of the Cannibalization analysis workflow. It takes as input the generated table from [`CANNIBALIZATION_BUILD_DATA`](#cannibalization_build_data) and the location of the new store, and estimates the overlap of areas and spatial features that the new store would have with the existing stores included into the generated table.
+
+**Input parameters**
+
+* `data_table`: `STRING` Table with columns `store_id`, `cell_id`, `distance` from `store_id` (integer) and the values for each Data Observatory features.
+* `new_locations_query`: `STRING` query with store_id and location of new stores.
+* `do_urbanity_index`: `STRING` urbanity index variable name from the Data Observatory subscriptions.
+* `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
+* `output_destination`: `STRING` destination prefix for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>`.
+* `output_prefix`: `STRING` The prefix for each table in the output destination.
+
+**Output**
+
+This procedure  will output one table:
+* Table contains the store_id that receives the "cannibalization", store_id that causes the cannibalization, area overlap and features overlap for each Data Observatory features included in the analysis. The output table can be found at the output destination with the name `<output-prefix>_output_overlap`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output_overlap`.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL carto.CANNIBALIZATION_OVERLAP(
+    --data_table
+    '<my-project>.<my-dataset>.output_<suffix from step1>',
+    --new_locations_query
+     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',,
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib'
+);
 ```
 
 

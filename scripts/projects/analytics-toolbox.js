@@ -20,7 +20,7 @@ function updateModules (type) {
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {
         const docPath = path.join(sourcePath, module, cloud, 'doc');
-        if (fs.existsSync(docPath) && module != 'quadkey') {
+        if (fs.existsSync(docPath) && module != 'quadkey' && module != 'geocoding') {
             console.log(`- Update ${module} module`);
             const files = fs.readdirSync(docPath).filter(f => f.endsWith('.md')).sort((first, second) => {
                 if (first.startsWith('_') || first < second) return -1;
