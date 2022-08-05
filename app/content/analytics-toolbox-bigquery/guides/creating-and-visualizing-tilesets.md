@@ -22,7 +22,6 @@ Clicking on the _Create tileset_ button will trigger a tileset creation wizard t
 <img src="/img/bq-analytics-toolbox/tiler/create_tileset_ui_data_explorer.png" alt="Create tileset wizard from the Data Explorer" style="width:100%">
 </div>
 
-
 #### From the BigQuery console or client
 As a CARTO Analytics Toolbox module, the Tiler's capabilities will be available as SQL procedures that can be executed directly from your [BigQuery console](https://console.cloud.google.com/bigquery) or client of choice after connecting your CARTO account to BigQuery.
 
