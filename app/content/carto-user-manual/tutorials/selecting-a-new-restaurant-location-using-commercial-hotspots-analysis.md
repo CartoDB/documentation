@@ -32,15 +32,21 @@ In-depth content and more technical information regarding the exercise found at 
 
 2. From the Navigation Menu in the left panel, select Maps. On the top-right corner, select "New map". This should take you to a new instance of a Builder map:   
 
-    ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial13_map_new_map_instance.png)
+    ![Map new map instance](/img/cloud-native-workspace/tutorials/the_tutorial13_map_new_map_instance.png)
+
+    <!-- ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial13_map_new_map_instance.png) -->
 
 3. We will define the overall Area of study by running an SQL query. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection: 
 
-   ![Map select new source custom query](/img/cloud-native-workspace/tutorials/tutorial13_map_custom_query.png)
+   ![Map select new source custom query](/img/cloud-native-workspace/tutorials/the_tutorial13_map_custom_query.png)
+
+   <!-- ![Map select new source custom query](/img/cloud-native-workspace/tutorials/tutorial13_map_custom_query.png) -->
 
 4. We will write a custom SQL query, therefore select the "Type your own query" option and click on "Add source" on the bottom right. This should open the SQL Editor:
 
-   ![Map new map sql editor](/img/cloud-native-workspace/tutorials/tutorial13_map_new_sql_editor.png)
+   ![Map new map sql editor](/img/cloud-native-workspace/tutorials/the_tutorial13_map_new_sql_editor.png)
+
+   <!-- ![Map new map sql editor](/img/cloud-native-workspace/tutorials/tutorial13_map_new_sql_editor.png) -->
 
 5. First we define the area of study by creating a buffer of 5km around Honolulu downtown. Run the query below:
 
