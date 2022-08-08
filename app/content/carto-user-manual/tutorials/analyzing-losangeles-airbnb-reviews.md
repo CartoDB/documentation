@@ -190,7 +190,7 @@ Optionally, style the layer by different attributes.
 
 15. Click on the _Dual map view_ button to toggle the split map option.
 
-    ![Dual map view button](/img/cloud-native-workspace/tutorials/tutorial10_switch_dual_map_view_menu.png)
+    ![Dual map view button](/img/cloud-native-workspace/tutorials/the_tutorial10_switch_dual_map_view_menu.png)
 
     - Left map: disable the `Location relevance (Model)` and `Airbnb listings` layers
     - Right map: disable the `H3 AirBnB aggregation` and `Airbnb listings` layers
@@ -199,7 +199,7 @@ Optionally, style the layer by different attributes.
 
     The map result would be similar to the following.
 
-    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/b9d45f83-6620-4d73-921b-c99e81434c49"></iframe>
+    <iframe width="860px" height="680px" src="https://gcp-us-east1.app.carto.com/map/aacef89b-91cb-4103-8cb7-4739452445b5"></iframe>
 
     Inspect the model results in detail to understand where the location matters the most for users' overall rating score and how the location rating values are distributed.
 
