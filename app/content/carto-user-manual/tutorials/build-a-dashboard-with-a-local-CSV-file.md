@@ -90,7 +90,7 @@ This option allows you to automatically guess column data types in the imported 
 
 15. We are going to first add a Formula widget that sums the total population. We modify the “Formatting” to the “12.3k” format.
 
-    ![Map formula widget](/img/cloud-native-workspace/tutorials/tutorial8_map_formula_widget.png)
+    ![Map formula widget](/img/cloud-native-workspace/tutorials/the_tutorial8_map_formula_widget.png)
 
 16. We change the widget name to “Total Population”.
 
@@ -180,7 +180,7 @@ This option allows you to automatically guess column data types in the imported 
 
 36. We can finally change the privacy settings of the map or even publishing it online by clicking on the “Share” options.
 
-    ![Map share button](/img/cloud-native-workspace/tutorials/tutorial8_map_share_button.png)
+    ![Map share button](/img/cloud-native-workspace/tutorials/the_tutorial8_map_share_button.png)
 
 37. We select the option to make this a “Public map”, which we then can share by providing an URL.
 
