@@ -1,7 +1,7 @@
 ---
 title: "Selecting out-of-home panels using geosegmentation"
 description: "In this tutorial we explore the best locations to place panels for Starbucks advertisements, using geosegmentation and spatial indexes."
-image: "/img/tutorials/pizza-hut-location-in-honolulu.png"
+image: "/img/tutorials/ooh_tutorial_geosegmentation.png"
 type: tutorials
 date: "2022-07-25"
 # categories:
