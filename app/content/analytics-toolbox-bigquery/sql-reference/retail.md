@@ -66,6 +66,9 @@ CALL carto.BUILD_CANNIBALIZATION_DATA(
 );
 ```
 
+{{% bannerNote type="note" title="note"%}}
+In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
+{{%/ bannerNote %}}
 
 ### BUILD_REVENUE_MODEL
 
@@ -229,6 +232,9 @@ CALL carto.CANNIBALIZATION_OVERLAP(
 );
 ```
 
+{{% bannerNote type="note" title="note"%}}
+In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
+{{%/ bannerNote %}}
 
 ### COMMERCIAL_HOTSPOTS
 
