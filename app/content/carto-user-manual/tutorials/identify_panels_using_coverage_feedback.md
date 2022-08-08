@@ -110,9 +110,9 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
    ![Map visitors tooltip](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_visitors_tooltip.png)
 
-13. Let´s now import another layer, the panels within the same area, to understand where we could achieve coverage. Go to "Add source from...", choose the CARTO Datawarehouse, go to the "demo data" folder, then "data_tables_ooh_onboarding" and select the "ooh_visibility_polygons" table. Import the table into the map and style as seen below. 
+13. Let´s now import another layer, the panels within the same area, to understand where we could achieve coverage. Go to "Add source from...", choose the CARTO Datawarehouse, go to the "demo data" folder, then "data_tables" and select the "ooh_panels_madrid" table. Import the table into the map and style as seen below. 
 
-    ![Map panel visibility polygons](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_visibility_polygons.png)
+    ![Map panel visibility polygons](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_panels_madrid.png)
 
 14. Let´s create a widget for the panel layer. Create a new category widget but this time select the latest layer as the source. The new widget will be used to filter panels by type. Style as in the screen below. 
 
@@ -128,7 +128,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
 17. But let´s say we have a cutoff of visitors within the selected period we would consider. Let´s create a new Histogram widget, to filter quadbins based on the volumes of visitors attracted. 
 
-    Style the widget as seen below. 
+    Style the widget as seen below. Place the widget at the top of the widgets´ list.
 
     Note to base the histogram on the Logarithm of visitors rather than the number of visitors, so that we can achieve a normal distribution histogram.
 
@@ -142,11 +142,11 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
     In the example below we have chosen only Billboards and Screens.
 
-    ![Map panels filtered](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_panels_filtered.png)    
+    ![Map panels filtered](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_panels_filtered_new.png)    
 
 20. You can then use the selection tool to select the area of interest (north-east), and create a table widget to list all selected panels. See the result in the screen below. 
 
-    ![Map final selected area](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_selected_area.png)    
+    ![Map final selected area](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_selected_area_new.png)    
 
 21. Revert to step 19. Change the name of the map to "Idenitfying out-of-home panels using coverage information "
 
