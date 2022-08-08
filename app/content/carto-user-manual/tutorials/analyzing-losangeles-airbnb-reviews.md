@@ -225,7 +225,9 @@ We will use CARTO Analytics Toolbox BigQuery Tiler to create a [Tileset](../../.
 
 Select the `Spatial Features - United States of America (H3 Resolution 8)` dataset and click on _Subscribe for free_. This action will redirect us to the subscription level at the Data Explorer menu.
 
-![Subscribe Spatial Features](/img/cloud-native-workspace/tutorials/tutorial10_subscribe_spatial_features.gif)
+![Subscribe Spatial Features](/img/cloud-native-workspace/tutorials/the_tutorial10_subscribe_spatial_features.gif)
+
+<!-- ![Subscribe Spatial Features](/img/cloud-native-workspace/tutorials/tutorial10_subscribe_spatial_features.gif) -->
 
 17. From the subscription level at the Data Explorer menu, click on the _Create_ button, then select 'Create a tileset' and complete the steps with the following settings.
 
@@ -233,11 +235,15 @@ Select the `Spatial Features - United States of America (H3 Resolution 8)` datas
     - Zoom: 9-12
     - Columns: `geoid`, `population`, `tourism` and `urbanity`
 
-    ![Tileset Spatial Features](/img/cloud-native-workspace/tutorials/tutorial10_create_tileset_z9_z12_spatialfeatures.gif)
+    ![Tileset Spatial Features](/img/cloud-native-workspace/tutorials/the_tutorial10_create_tileset_z9_z12_spatialfeatures.gif)
+
+    <!-- ![Tileset Spatial Features](/img/cloud-native-workspace/tutorials/tutorial10_create_tileset_z9_z12_spatialfeatures.gif) -->
 
 18. Once the Tileset has been created, we can add it to our map. To do so first open the map and then click on _Add source from..._ and select the tileset from the tree menu.
 
-    ![Add Tileset source](/img/cloud-native-workspace/tutorials/tutorial10_add_tileset_source_menu.png)
+    ![Add Tileset source](/img/cloud-native-workspace/tutorials/the_tutorial10_add_tileset_source_menu.png)
+
+    <!-- ![Add Tileset source](/img/cloud-native-workspace/tutorials/tutorial10_add_tileset_source_menu.png) -->
 
 Once the tileset layer has been added, rename the layer to `Spatial Features` and zoom into the Los Angeles area.
 
