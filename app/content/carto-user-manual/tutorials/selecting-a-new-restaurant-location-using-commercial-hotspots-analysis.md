@@ -86,8 +86,6 @@ In-depth content and more technical information regarding the exercise found at 
 
     ![Map polyfill area of study](/img/cloud-native-workspace/tutorials/the_tutorial13_map_polyfill_area_of_study.png)
 
-    /* ![Map polyfill area of study](/img/cloud-native-workspace/tutorials/tutorial13_map_polyfill_area_of_study.png) */
-
     Hide the layer we have just created by clicking on the "eye" icon next to the 3 dots of each layer.
 
 8. We will then enrich the H3 grid with population variables, with the aim of looking for areas with a high density of males and females between 15 and 34 years old. For more detailed analysis of how we do that you can refer to [here](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu), under the heading "Enrich area of study".
