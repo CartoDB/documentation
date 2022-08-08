@@ -34,19 +34,13 @@ In-depth content and more technical information regarding the exercise found at 
 
     ![Map new map instance](/img/cloud-native-workspace/tutorials/the_tutorial13_map_new_map_instance.png)
 
-    <!-- ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial13_map_new_map_instance.png) -->
-
 3. We will define the overall Area of study by running an SQL query. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection: 
 
    ![Map select new source custom query](/img/cloud-native-workspace/tutorials/the_tutorial13_map_custom_query.png)
 
-   <!-- ![Map select new source custom query](/img/cloud-native-workspace/tutorials/tutorial13_map_custom_query.png) -->
-
 4. We will write a custom SQL query, therefore select the "Type your own query" option and click on "Add source" on the bottom right. This should open the SQL Editor:
 
    ![Map new map sql editor](/img/cloud-native-workspace/tutorials/the_tutorial13_map_new_sql_editor.png)
-
-   <!-- ![Map new map sql editor](/img/cloud-native-workspace/tutorials/tutorial13_map_new_sql_editor.png) -->
 
 5. First we define the area of study by creating a buffer of 5km around Honolulu downtown. Run the query below:
 
@@ -90,7 +84,9 @@ In-depth content and more technical information regarding the exercise found at 
 
     Rename the layer "Polyfill area of study" and reorder the layer to place as the bottom layer.
 
-    ![Map polyfill area of study](/img/cloud-native-workspace/tutorials/tutorial13_map_polyfill_area_of_study.png)
+    ![Map polyfill area of study](/img/cloud-native-workspace/tutorials/the_tutorial13_map_polyfill_area_of_study.png)
+
+    /* ![Map polyfill area of study](/img/cloud-native-workspace/tutorials/tutorial13_map_polyfill_area_of_study.png) */
 
     Hide the layer we have just created by clicking on the "eye" icon next to the 3 dots of each layer.
 
