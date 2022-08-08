@@ -48,13 +48,19 @@ This guide describes how to add interactive widgets to your map in CARTO Builder
 
 In the Widgets tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_new_widget.png)
+![Map widgets new widget disable](/img/cloud-native-workspace/maps/map_new_widget_button_disabled.png)
+
+<!-- ![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_new_widget.png) -->
 
 Click on *New widget* button to start interacting with your data. When you add a widget, it´s always the Formula widget by default:
 
-![Map widgets](/img/cloud-native-workspace/maps/map_new_widget_dropdown.png)
+![Map widgets select a source](/img/cloud-native-workspace/maps/map_new_widget_select_source.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_bydefault.png)
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_new_widget_dropdown.png) -->
+
+![Map widgets formula by default](/img/cloud-native-workspace/maps/map_widget_formula_default.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_bydefault.png) -->
 
 You can access the quick actions menu to manage your widgets by clicking on the “three dots” icon in the top-right corner. There are two options available: Rename and Delete widget. 
 
@@ -82,12 +88,31 @@ To add a new widget to the map, click on *Add widget* button and select the data
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_source.png)
 
-At this moment, there are four types of widgets available to customize your visualization and enable a richer interaction with your data: 
+#### Modes (behavior)
+
+The widgets can work in two different modes: viewport and global.
+
+- **Filter by viewport**: the widgets in viewport mode update the information when the viewport changes. They work with the data that has been downloaded for visualization so all the data needed to make the calculations is available locally in the browser.
+- **Global**: the widgets in global mode are static, they always show the same information. They get the data by performing a SQL query to the data warehouse.
+
+By default the widgets work in viewport mode, meaning they are showing information about the features in the current viewport.
+
+<!-- ![Map widgets viewport by default](/img/cloud-native-workspace/maps/map_widget_viewport_default.png) -->
+
+![Map widgets viewport by default](/img/cloud-native-workspace/maps/map_widget_viewport_mode.png)
+
+But you can also configure them to use the global mode where information is displayed for the full data source.
+
+![Map widgets viewport by default](/img/cloud-native-workspace/maps/map_widget_global_mode.png)
+
+At this moment, there are six types of widgets available to customize your visualization and enable a richer interaction with your data: 
 - **Formula**: Shows aggregated numerical data from the features in the map's viewport.
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
+- **Range Widget**:
 - **Time-Series**: Shows the frequency distribution aggregated by a fixed temporal period (Days, Weeks, Months or Years). It also allows to create animated maps.
 - **Table Widget**: It shows tabular information of the features in the viewport.
+
 #### Formula Widget
 
 From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze. 
@@ -147,6 +172,9 @@ For advanced analysis, you can all widgets in a single map so you can combine yo
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together.png)
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together_filtered.png)
+
+#### Range Widget
+
 #### Time-Series Widget
 
 From Data, choose the operation from the list and select a field from your source dataset that you want to analyze.
