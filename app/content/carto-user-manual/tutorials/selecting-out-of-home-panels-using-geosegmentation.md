@@ -251,7 +251,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
     t.*
     FROM
     `carto-dw-ac-dp1glsh.shared.ooh_geosegmentation_starbucks_audience` n,
-    `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey` t
+    `carto-demo-data.demo_tables.ooh_panels_newyork_newjersey` t
     WHERE
     ST_INTERSECTS(n.geom,t.geom)
     ```
