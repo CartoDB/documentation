@@ -27,7 +27,7 @@ This new platform works completely independent of the previous version of CARTO;
 ---
 
 ##### Is the previous version of CARTO going to be deprecated? 
-No, we don’t have plans to deprecate the previous version of our platform for our existing customers, so you don’t need to worry about that now. However, it is important to note that any new product developments will happen only in the new version of CARTO.
+No, we don’t have plans to deprecate the previous version of our platform for our existing Enterprise customers, so you don’t need to worry about that now. However, it is important to note that any new product developments will happen only in the new version of CARTO.
 
 You can continue to login to the previous version of CARTO by selecting the “CARTO Dashboard” option on our [Login page](https://carto.com/signin/). 
 
