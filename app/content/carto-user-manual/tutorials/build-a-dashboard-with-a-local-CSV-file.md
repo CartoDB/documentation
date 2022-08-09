@@ -192,4 +192,4 @@ This option allows you to automatically guess column data types in the imported 
 
     ![Map title](/img/cloud-native-workspace/tutorials/the_tutorial8_map_title.png)
 
-    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/dd01c3e6-042d-4fde-95f1-5b5c82dc211a"></iframe>
+    <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/dd01c3e6-042d-4fde-95f1-5b5c82dc211a"></iframe>
