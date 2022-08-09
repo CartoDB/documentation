@@ -14,6 +14,10 @@ This module contains procedures to perform analysis to solve specific retail ana
 carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
 {{%/ bannerNote %}}
 
+{{% bannerNote type="note" title="note"%}}
+In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
+{{%/ bannerNote %}}
+
 **Description**
 
 This procedure is the first of two from the Cannibalization analysis workflow. It builds the dataset for the existing locations to be used by the procedure [`CANNIBALIZATION_OVERLAP`](#cannibalization_overlap) to estimate the overlap between existing stores and the potentially new ones.
@@ -65,11 +69,6 @@ CALL carto.BUILD_CANNIBALIZATION_DATA(
     'test_cannib'
 );
 ```
-
-{{% bannerNote type="note" title="note"%}}
-In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
-{{%/ bannerNote %}}
-
 ### BUILD_REVENUE_MODEL
 
 {{% bannerNote type="code" %}}
@@ -193,6 +192,10 @@ CALL `carto-un`.carto.BUILD_REVENUE_MODEL_DATA(
 carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
 {{%/ bannerNote %}}
 
+{{% bannerNote type="note" title="note"%}}
+In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
+{{%/ bannerNote %}}
+
 **Description**
 
 This procedure is the second step of the Cannibalization analysis workflow. It takes as input the generated table from [`CANNIBALIZATION_BUILD_DATA`](#cannibalization_build_data) and the location of the new store, and estimates the overlap of areas and spatial features that the new store would have with the existing stores included into the generated table.
@@ -231,11 +234,6 @@ CALL carto.CANNIBALIZATION_OVERLAP(
     'test_cannib'
 );
 ```
-
-{{% bannerNote type="note" title="note"%}}
-In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
-{{%/ bannerNote %}}
-
 ### COMMERCIAL_HOTSPOTS
 
 {{% bannerNote type="code" %}}
