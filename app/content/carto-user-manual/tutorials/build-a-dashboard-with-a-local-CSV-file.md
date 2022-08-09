@@ -188,6 +188,8 @@ This option allows you to automatically guess column data types in the imported 
 
     ![Map public option](/img/cloud-native-workspace/tutorials/the_tutorial8_map_the_public_map.png)
 
-38. Finally, we can visualize the result.
+38. Finally, we can rename our map as "Las Vegas data" and visualize the result.
+
+    ![Map title](/img/cloud-native-workspace/tutorials/the_tutorial8_map_title.png)
 
     <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/dd01c3e6-042d-4fde-95f1-5b5c82dc211a"></iframe>
