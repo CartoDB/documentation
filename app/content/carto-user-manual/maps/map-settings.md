@@ -121,8 +121,7 @@ At this moment, there are six types of widgets available to customize your visua
 - **Formula**: Shows aggregated numerical data from the features in the map's viewport.
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
-- **Range Widget**: We have just enabled a new type of widget to every account: The Range widget allows to filter a map based on precise numeric values.
-
+- **Range Widget**: Shows a specific range of numerical data that is filtered by using a slider or manual inputs.
 - **Time-Series**: Shows the frequency distribution aggregated by a fixed temporal period (Days, Weeks, Months or Years). It also allows to create animated maps.
 - **Table Widget**: It shows tabular information of the features in the viewport.
 
@@ -208,6 +207,64 @@ For advanced analysis, you can add all widgets in a single map so you can combin
 
 #### Range Widget
 
+From Data, select a field from your source dataset that you want to analyze. The selected column for the widget must be a numeric data type.
+
+In this example, we divide the data range of the size_m2 column in 15 buckets. The histogram widget displays the number of features in each bucket, allowing you to select and visualize a specific range of data. 
+
+The widget will display the total range of the data in the selected column, indicating the minimum and maximum value.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_widget.png)
+
+You can filter the data using a slider or manual numeric inputs. In this example, we have kept the minimum and maximum values
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider.png)
+
+
+
+
+
+From Display options, you can also set customised minimum and maximum values. This is especially useful when you want to do some data preparation, for example to remove edge values.
+
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider.png)
+
+
+
+The range widget 
+
+displays the number of features in each bucket, allowing you to select and visualize a specific range of data.
+
+We have just enabled a new type of widget to every account: The Range widget allows to filter a map based on precise numeric values.
+Allows setting up the filter using a slider or manual numeric inputs
+Allows setting custom min. and max. values. This is specially useful to apply some quick and basic data preparation, removing edge values.
+
+
+From Display options, you can 
+
+
+We want to create a new widget in Carto for React, to allow filtering based on a numeric field, using 2 exclusive options:
+
+(a) filter by numeric ranger, eg values between [10, 20]
+(b) filter by percentile, value from 0 to 100 percentile
+As with other widgets, it should allow both ‘viewport’ (local) vs ‘global’ (remote api) modes.
+
+We want that widget to be available also as an addition to Builder.
+
+This task should focus on (a), ignoring for the moment the percentiles opti
+
+
+
+change the format as the values are displayed and add some notes to your widget. In this example, we aggregate the data by the average total of revenue based on the `revenue` column. 
+
+
+of type numeric.
+
+ date, and you can define how the date is aggregated (by Years, Months, Weeks, Days) to visualize a selected range of time.
+
+In this example, we divide the data range of the size_m2 column in 15 buckets. 
+
+
+
 #### Time-Series Widget
 
 From Data, choose the operation from the list and select a field from your source dataset that you want to analyze.
@@ -215,7 +272,9 @@ The selected column for the widget must be of type date, and you can define how 
 
 In this example, we aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
 
-![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_time-series.png)
+![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_timeseries.png)
+
+<!-- ![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_time-series.png) -->
 
 {{% bannerNote title="NOTE" type="note"%}}
 Bear in mind that the most important requirement is that your date column contains valid timestamp values, otherwise the data may not appear correctly.
@@ -225,7 +284,9 @@ From the widget, you can play, pause or stop the animation and filter by a selec
 
 ![Map widgets time-series animation control](/img/cloud-native-workspace/maps/map_widget_time-series_animation_controls.png)
 
-![Map widgets time-series animation controls activated](/img/cloud-native-workspace/maps/map_widget_time-series_animation_controls_activated.png)
+![Map widgets time-series animation controls activated](/img/cloud-native-workspace/maps/map_widget_time-series_animation_activated.png)
+
+<!-- ![Map widgets time-series animation controls activated](/img/cloud-native-workspace/maps/map_widget_time-series_animation_controls_activated.png) -->
 
 To change the speed of the animation, click on the clock icon and select the speed: 0.5x, 1x, 2x or 3x.
 
@@ -233,17 +294,23 @@ To change the speed of the animation, click on the clock icon and select the spe
 
 You can also filter your data within a given range. The selected range is distributed across your map to display groups of data aggregated by the selected date type.
 
-![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_filter.png)
+![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_filter_data.png)
+
+<!-- ![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_filter.png) -->
 
 This enables you to click and drag the start and end range of selected data. In this example, we add a second widget to display the number of earthquakes filtered in each range.
 
-![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_and_formula.png)
+![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_timeseries_and_formula.png)
+
+<!-- ![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_and_formula.png) -->
 
 #### Table Widget
 
-From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select all columns. 
+From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select some columns. 
 
-![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_allcolumns.png)
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_somecolumns.png)
+
+<!-- ![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_allcolumns.png) -->
 
 <!-- ![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table.png) -->
 
@@ -259,7 +326,9 @@ You can also sort the data in ascending or descending order. To activate the sor
 
 You can also add several table widgets at the same time in Builder maps. Each one will create a new tab that can be selected. When a tab is selected, the others will remain disabled.
 
-![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_multiple_tabs.png)
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_add_multiple_tabs.png)
+
+<!-- ![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_multiple_tabs.png) -->
 
 ### Interactions
 
