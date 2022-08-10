@@ -22,6 +22,8 @@ cascade:
         - title: "Tilesets"
     - title: "Guides"
       folder:
+        - title: "Creating and visualizing tilesets"
+        - title: "Data enrichment using the Data Observatory"
         - title: "Running queries from Builder"
     - title: "Examples"
       # folder:
