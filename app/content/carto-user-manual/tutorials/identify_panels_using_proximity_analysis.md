@@ -35,7 +35,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
 3. We will first import all panels for the New York City area. We have already created a dataset for all panels in New York and New Jersey. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection. Run the query below: 
 
     ```sql
-    SELECT * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+    SELECT * FROM `carto-demo-data.demo_tables.newyork_newjersey_ooh_panels`
     WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     ```
 
@@ -77,7 +77,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
     ),
 
     panels AS (
-        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables.newyork_newjersey_ooh_panels`
         WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     ),
     
@@ -118,7 +118,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
         where rn = 1
     ),
     panels AS (
-        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables.newyork_newjersey_ooh_panels`
         WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     )
     SELECT  s.street_address, s.open_hours,ST_UNION_AGG(s.geom) AS geom
@@ -151,7 +151,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
         where rn = 1
     ),
     panels AS (
-        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables_ooh_onboarding.ooh_panels_newyork_newjersey`
+        SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables.newyork_newjersey_ooh_panels`
         WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     ),
 
