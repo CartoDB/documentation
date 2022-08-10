@@ -101,21 +101,25 @@ The following inputs are needed:
 ```sql
 USE DATABASE <ANALYTICS_TOOLBOX_DB>;
 CALL carto.DATAOBS_ENRICH_POLYGONS
-('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA.BEL_PC4DIGIT_2021', 'GEOM', 
+('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA.CENSUSSECTIONDISPLACEDCANARYISLANDS_2020', 'GEOM', 
  ARRAY_CONSTRUCT(
   OBJECT_CONSTRUCT('variable', 'population_3c8da397', 'aggregation', 'SUM'),
   OBJECT_CONSTRUCT('variable', 'retail_4bcd08da', 'aggregation', 'SUM'),
   OBJECT_CONSTRUCT('variable', 'elevation_f0733359', 'aggregation', 'AVG'),
   OBJECT_CONSTRUCT('variable', 'tavg_jan_c35c48dc', 'aggregation', 'AVG')), 
  NULL, 
- TO_ARRAY('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA.BEL_PC4DIGIT_2021_ENRICHED'), 
+ TO_ARRAY('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA.CENSUSSECTIONDISPLACEDCANARYISLANDS_2020_ENRICHED'), 
  'MY_DATAOBS_DB.MY_DATAOBS_SCHEMA');
--- The table `BEL_PC4DIGIT_2021_ENRICHED` will be created
+-- The table `CENSUSSECTIONDISPLACEDCANARYISLANDS_2020_ENRICHED` will be created
 ```
 
 <div style="text-align:center" >
-<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_result.png" alt="Preview of the enrichment result" style="width:100%">
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_results.png" alt="Preview of the enrichment result" style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/sf-analytics-toolbox/guides/enrichment_sf_guide_result.png" alt="Preview of the enrichment result" style="width:100%">
+</div> -->
 
 <!-- <div style="text-align:center" >
 <img src="/img/bq-analytics-toolbox/guides/enrichment_guide_result.png" alt="Preview of the enrichment result" style="width:100%">
@@ -123,9 +127,9 @@ CALL carto.DATAOBS_ENRICH_POLYGONS
 
 ### 5. Analyze the enrichment result
 
-The table resulting from running the previous query,`BEL_PC4DIGIT_2021_ENRICHED`, will include all the columns of the input table plus four additional columns, containing the value of each enrichment variable in each polygon. As shown below, the enrichment result can be analyzed with the help of a map and a set of interactive widgets created using Builder, our map making tool available from the CARTO Workspace. 
+The table resulting from running the previous query,`CENSUSSECTIONDISPLACEDCANARYISLANDS_2020_ENRICHED`, will include all the columns of the input table plus four additional columns, containing the value of each enrichment variable in each polygon. As shown below, the enrichment result can be analyzed with the help of a map and a set of interactive widgets created using Builder, our map making tool available from the CARTO Workspace. 
 
-<iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/87557c15-2e11-4038-b084-fd096aa9aa12" title="Enrichment of Snowflake"></iframe>
+<iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/9e517844-c1d0-42ee-82c6-69e15601f438" title="Enrichment of Snowflake"></iframe>
 
 To get started creating maps, we recommend the following resources from the documentation:
 * [Guide to create your first map](https://docs.carto.com/carto-user-manual/overview/getting-started/#quickstart-guide-to-create-your-first-map).
