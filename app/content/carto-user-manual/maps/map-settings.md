@@ -180,23 +180,31 @@ Click on *Search in “X” elements* and then click the box next to the other v
 
 #### Histogram Widget
 
-From Data, select a field from your source dataset that you want to analyze. In this example, we divide the data range of the `size_m2` column in 9 buckets. The histogram widget displays the number of records in each bucket, allowing you to select and visualize a specific range of data.
+From Data, select a field from your source dataset that you want to analyze. In this example, we divide the data range of the `size_m2` column in 15 buckets. The histogram widget displays the number of features in each bucket, allowing you to select and visualize a specific range of data.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histograma.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram.png)
 
-When hovering over a Histogram widget, the number of records in each bucket appears. This is a good indicator of where you might want to filter data.
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_histograma.png) -->
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_hover_over.png)
+When hovering over a specific bucket, the number of features for that specific range is displayed. This is a good indicator of where you might want to filter data.
 
-Click once on the Histogram to display the range selector. Only the selected filters appear on your map, and any analyses are rerun and recalculated.
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_hover.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_range_selected.png)
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_hover_over.png) -->
 
-For advanced analysis, you can all widgets in a single map so you can combine your filters and get a better visualisation of your data:
+Click once on a bucket. Only the features for that specific range will be displayed on your map, and any analyses are rerun and recalculated.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_select_range.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together_filtered.png)
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_range_selected.png) -->
+
+For advanced analysis, you can add all widgets in a single map so you can combine your filters and get a better visualisation of your data:
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_all.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together.png)
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together_filtered.png) -->
 
 #### Range Widget
 
