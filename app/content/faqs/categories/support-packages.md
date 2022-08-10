@@ -136,7 +136,7 @@ CARTO Support provides business hours coverage across 2 regions:
 * European Region ( 9am - 6pm Central European Time (CET) )
 * American Region ( 9am - 5pm Eastern Standard Time (EST) )
 
-Standard Business hours coverage is determined by your selected Support Package. For those customers on a Standard Package, you will be offered the option of selecting 1 of the regions as you indicated coverage times. For those customers on a Premium Package, “business hours” are defined by the indicated hours across both regions. CARTO works in good faith to respond to all submitted issues in a timely fashion.
+Business hours coverage is determined by your selected Support Package. For those customers on a Standard Package, you will be offered the option of selecting 1 of the regions as you indicated coverage times. For those customers on a Premium Package, “business hours” are defined by the indicated hours across both regions. CARTO works in good faith to respond to all submitted issues in a timely fashion.
 Customers with an Elite Support Package are provided with 24/7 support for P1 and P2 priority issues (see more below on issue classification). Customers with an Elite Support Package will be given specific access to information and guidance regarding how and when to leverage 24/7 support.
 
 ---
@@ -148,7 +148,7 @@ Customer Success Managers at CARTO bring geospatial expertise and hands-on guida
 Support issues should be submitted via the indicated email address based on your selected Support Package. 
 * Individual plan users will contact the Support team, writing to support@carto.com.
 * Enterprise account users will contact Support with enterprise-support@carto.com.
-* Elite accounts will have dedicated email addresses for P1, for P3 and P2 they will contact support with enterprise-support@carto.com.
+* Elite accounts will have dedicated email addresses for P1. For P2 and P3 they will contact support with enterprise-support@carto.com.
 
 ---
 ##### What is the issue and severity classification? 
