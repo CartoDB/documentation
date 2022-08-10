@@ -1,6 +1,6 @@
 ---
-title: "Identifying Out-Of-Home panels using coverage information"
-description: "We find the OOH panels that best match the forecasted coverage of a target audience."
+title: "Shortlisting OOH panels using coverage information"
+description: "In this tutorial we find the Out-Of-Home panels in Madrid that best match the forecasted coverage of a target audience. We visualize coverage using quadints that represent visitor volumes"
 image: "/img/tutorials/ooh_coverage_analysis.png"
 type: tutorials
 date: "2022-07-20"
@@ -10,12 +10,12 @@ date: "2022-07-20"
 #     - out-of-home
 ---
 
-## Identifying Out-Of-Home panels using coverage information
+## Shortlisting OOH panels using coverage information
 
 **Context**
 
 A common use case of the Out-of-home advertising industry is coverage analysis, which is the identification of the best panels for a campaign based on forecasted audience visits. The use case can be useful both during campaign planning (select panels) and campaign monitoring and otpimization (adjust the panel inventory allocated to the campaign)
-In this tutorial we are showcasing an example where we vizualize forecasted visits of a certain audience on a heatmap, overlay with the visibility polygons of panel inventory, and select the best area to focus on bases on the results. 
+In this tutorial we are showcasing an example where we vizualize forecasted visits of a certain audience on a heatmap, overlay with the point locations of panel inventory, and select the best area to focus on bases on the results. 
 
 **Steps to reproduce**
 
@@ -33,18 +33,18 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
 3. Let´s first explore a table which includes data for visits and visitors for different locations in the central part of the Madrid metropolitan area, including the visitors´ sociodemographic characteristics.
 
-    Go to the Data Explorer, in the CARTO Datawarehouse, in the "demo_tables_ooh_onboarding" folder. Click on the "ooh_madrid_visitors_and_visits" table. and then "Data Preview" tab. You will see we have a Point geometry dataset visits, visitors and associated sociodemographics, for the weekdays of the first week of the year. 
+    Go to the Data Explorer, in the CARTO Datawarehouse, in the "demo_tables" folder. Click on the "madrid_est_pedestrian_traffic" table, and then "Data Preview" tab. You will see we have a Point geometry dataset visits, visitors and associated sociodemographics, for the weekdays of the first week of the year. 
 
     ![Map explore data table](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_visitors_table.png)
 
-4. To begin our analysis we will need to convert our point geometries to quadbins, so that we can vizualize the differences more clearly.
+4. To begin our analysis we will need to convert our point geometries to quadints, so that we can vizualize the differences more clearly.
 
     Click on the "Add Source from..." button and select "Custom Query (SQL)".  Select "Type your own query" and then click on "Add Source". Once you view the SQL editor paste the following and run the query:
 
     ```sql
     SELECT geoid, `carto-un`.carto.QUADINT_BOUNDARY(geoid) geom, 
     FROM (
-        SELECT distinct geoid FROM `cartodb-on-gcp-pm-team.antonis.sample__T1_laborable_eng`
+        SELECT distinct geoid FROM `carto-demo-data.demo_tables.madrid_est_pedestrian_traffic`
     )
     ```
 
@@ -59,7 +59,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
     ```sql
     SELECT geoid, geom, gender, age, income, visitors, LOG(visitors) as log_visitors
-    FROM `cartodb-on-gcp-pm-team.antonis.ooh_madrid_visitors_and_visits`
+    FROM `carto-demo-data.demo_tables.madrid_est_pedestrian_traffic`
     WHERE visitors > 0
     ```
     Let´s rename this layer "Pedestrian visitors".
@@ -67,7 +67,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
     ![Map import pedestrian visitor data](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_pedestrian_visitors.png)
 
 
-6. Next, let´s combine the two sources to create an quadbin layer with all the information of interest. Click on the 3 dots on the right of the first source we have created (the Area of Study source), selecting "Add SQL analysis". Select "Add columns from second source" and click on Continue.
+6. Next, let´s combine the two sources to create an quadint layer with all the information of interest. Click on the 3 dots on the right of the first source we have created (the Area of Study source), selecting "Add SQL analysis". Select "Add columns from second source" and click on Continue.
 
    ![Map select UI analysis to merge two sources](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_merge_tables.png)
 
@@ -110,7 +110,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
    ![Map visitors tooltip](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_visitors_tooltip.png)
 
-13. Let´s now import another layer, the panels within the same area, to understand where we could achieve coverage. Go to "Add source from...", choose the CARTO Datawarehouse, go to the "demo data" folder, then "data_tables" and select the "ooh_panels_madrid" table. Import the table into the map and style as seen below. 
+13. Let´s now import another layer, the panels within the same area, to understand where we could achieve coverage. Go to "Add source from...", choose the CARTO Datawarehouse, go to the "demo data" folder, then "data_tables" and select the "madrid_ooh_panels" table. Import the table into the map and style as seen below. 
 
     ![Map panel visibility polygons](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_panels_madrid.png)
 
@@ -126,7 +126,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
     ![Map panel audience](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_target_audience.png)    
 
-17. But let´s say we have a cutoff of visitors within the selected period we would consider. Let´s create a new Histogram widget, to filter quadbins based on the volumes of visitors attracted. 
+17. But let´s say we have a cutoff of visitors within the selected period we would consider. Let´s create a new Histogram widget, to filter quadints based on the volumes of visitors attracted. 
 
     Style the widget as seen below. Place the widget at the top of the widgets´ list.
 
