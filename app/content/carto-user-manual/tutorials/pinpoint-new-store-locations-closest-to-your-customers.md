@@ -79,8 +79,10 @@ in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of st
     )
     SELECT
     cluster_element.cluster,
-    cluster_element.geom AS geom
-    FROM clustered_points,UNNEST(cluster_arr) AS cluster_element
+    CAST(cluster_element.cluster AS string) AS cluster_str,
+    ST_UNION_AGG(cluster_element.geom) AS geom
+    FROM clustered_points,UNNEST(cluster_arr) AS cluster_element 
+    GROUP BY cluster_element.cluster
     ```
 
     ![Map sql query cluster](/img/cloud-native-workspace/tutorials/tutorial5_map_sql_query_cluster.png)
@@ -122,7 +124,7 @@ in the `Analytics Toolbox`; this would give us a potentially optimal location to
     )
     SELECT 
     cluster_element.cluster, 
-    `carto-un`.transformations.ST_CENTERMEAN(ST_UNION_AGG(cluster_element.geom)) AS geom 
+    `carto-un`.carto.ST_CENTERMEAN(ST_UNION_AGG(cluster_element.geom)) AS geom 
     FROM clustered_points, UNNEST(cluster_arr) AS cluster_element 
     GROUP BY cluster_element.cluster
     ```
@@ -141,4 +143,4 @@ in the `Analytics Toolbox`; this would give us a potentially optimal location to
 
 20. Finally, we can visualize the result.
 
-    <iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/f200c994-3b02-4bc0-b0c0-0199c928833f"></iframe>
+    <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/ec3b4c1c-3fb2-421b-a608-06e75794c6fb"></iframe>
