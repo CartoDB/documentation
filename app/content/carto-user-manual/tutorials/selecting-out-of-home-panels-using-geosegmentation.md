@@ -238,7 +238,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
 
     Rename the layer to "Audience index score". As we can see the score is highest in Lower Manhattan and Brooklyn, but there are also some interesting areas in Queens and Upper Manhattan.
 
-    You can load the work we have done so far separately, as we have created already this table. You can access it by navigating to the "demo_tables" folder in the Data Explorer, and creating a map using the "ooh_geosegmentation_starbucks_audience_score" table. Once you load the table, you can style as above.
+    You can load the work we have done so far separately, as we have created already this table. You can access it by navigating to the "demo_tables" folder in the Data Explorer, and creating a map using the "newyork_ooh_sample_audience_h3" table. Once you load the table, you can style as above.
 
 15. Let´s create a tooltip for this layer, so that we can see the score, population and median income within each geography. Navigate to the Interactions section, and enable the tooltip for the latest layer. Configure the tooltip to show values when hovering, and add the variables as below:
 
@@ -250,8 +250,8 @@ In this example, we will use spciodemographic and income data to perform geosegm
     SELECT
     t.*
     FROM
-    `carto-dw-ac-dp1glsh.shared.ooh_geosegmentation_starbucks_audience` n,
-    `carto-demo-data.demo_tables.ooh_panels_newyork_newjersey` t
+    `carto-demo-data.demo_tables.newyork_ooh_sample_audience_h3` n,
+    `carto-demo-data.demo_tables.newyork_newjersey_ooh_panels` t
     WHERE
     ST_INTERSECTS(n.geom,t.geom)
     ```
@@ -267,7 +267,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
     ![Map create panel buffers](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panel_buffers.png)
 
 
-18. When the dialog box opens, select 0.5km as the distance of the buffers, we keep the number of tracts as 1 (one concentric buffer created), and keep the configuration for individual rather than combined buffers (we need to perform the analysis for each buffer individually). For more information on the Create Buffers analysis please visit the page [here] (/carto-user-manual/maps/sql-analyses/#create-buffers)
+18. When the dialog box opens, select 0.5km as the distance of the buffers, we keep the number of tracts as 1 (one concentric buffer created), and keep the configuration for individual rather than combined buffers (we need to perform the analysis for each buffer individually). For more information on the Create Buffers analysis please visit the page [here](/carto-user-manual/maps/sql-analyses/#create-buffers).
 
     ![Map create panel buffers step 2](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panel_buffers_step2.png)
 
@@ -283,7 +283,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
 
     ![Map aggregate score for each panel](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_buffers_score.png)
 
-    For more information on the Intersect and Aggregate analysis please visit the page [here] (/carto-user-manual/maps/sql-analyses/#intersect-and-aggregate)
+    For more information on the Intersect and Aggregate analysis please visit the page [here](/carto-user-manual/maps/sql-analyses/#intersect-and-aggregate).
 
 21. Next we should select the "Audience index score" as the second source we will be getting data from (first being the buffer source). We will aggregate normalized scores for each buffer using an averaging operation, rather than summing up, so that we can get a final score between 0 and 100 for each panel. 
 
@@ -299,7 +299,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
 
     ![Map join score column into with panels table](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panels_join_score.png)
 
-    For more information on the join analysis please visit the page [here] (/carto-user-manual/maps/sql-analyses/#add-column-from-second-source)    
+    For more information on the join analysis please visit the page [here](/carto-user-manual/maps/sql-analyses/#add-column-from-second-source).    
 
 23. In the resulting dialog box, select the second source as the latest layer we have created, and configure column "full_id" in both tables as the key column as the one we will use to join. On the right hand side, keep all columns from base source, and add column "avg_norm_score" from the second source.
 
