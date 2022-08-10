@@ -238,7 +238,7 @@ In this example, we will use spciodemographic and income data to perform geosegm
 
     Rename the layer to "Audience index score". As we can see the score is highest in Lower Manhattan and Brooklyn, but there are also some interesting areas in Queens and Upper Manhattan.
 
-    You can load the work we have done so far separately, as we have created already this table. You can access it by navigating to the "demo_tables" folder in the Data Explorer, and creating a map using the "ooh_geosegmentation_starbucks_audience_score". Once you load the table, you can style as above.
+    You can load the work we have done so far separately, as we have created already this table. You can access it by navigating to the "demo_tables" folder in the Data Explorer, and creating a map using the "ooh_geosegmentation_starbucks_audience_score" table. Once you load the table, you can style as above.
 
 15. Let´s create a tooltip for this layer, so that we can see the score, population and median income within each geography. Navigate to the Interactions section, and enable the tooltip for the latest layer. Configure the tooltip to show values when hovering, and add the variables as below:
 
