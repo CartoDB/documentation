@@ -37,11 +37,12 @@ WITH data AS(
    union all select 'SEA','Seattle_Tacoma_International_Airport',ST_POINT(-122.30900,47.44900) 
    union all select 'MIA','Miami_International_Airport',ST_POINT(-80.29060,25.79320)
 )
-SELECT carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25) AS geom
+SELECT t1.iata as iata1, t2.iata as iata2, carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25) AS geom
 FROM data AS t1
 CROSS JOIN data AS t2
 WHERE t1.iata != t2.iata
 ```
+
 You can also take advantage of this function directly from a table from your database:
 
 ```sql
@@ -49,7 +50,7 @@ WITH data AS(
     SELECT *
     FROM mydatabase.myschema.table
 )
-SELECT carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25) AS geom
+SELECT t1.column as column1, t2.column as column2, carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25) AS geom
 FROM data AS t1
 CROSS JOIN data AS t2
 WHERE t1.column != t2.column
