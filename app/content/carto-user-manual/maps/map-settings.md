@@ -231,7 +231,7 @@ When you set a minimum or maximum value that it is out of range, the new value w
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_manually_outofrange.png)
 
-In this example, the same minimum value remanins and a new grey line appears reflecting values below or above the available data range.
+<!-- In this example, the same minimum value remanins and a new grey line appears reflecting values below or above the available data range. -->
 
 In this example, it keeps the same minimun value and the grey line reflects those values that are below the range of available data.
 
