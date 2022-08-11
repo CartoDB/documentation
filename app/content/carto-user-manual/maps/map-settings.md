@@ -207,72 +207,56 @@ For advanced analysis, you can add all widgets in a single map so you can combin
 
 #### Range Widget
 
-From Data, select a field from your source dataset that you want to analyze. The selected column for the widget must be a numeric data type.
-
-In this example, we divide the data range of the size_m2 column in 15 buckets. The histogram widget displays the number of features in each bucket, allowing you to select and visualize a specific range of data. 
-
-The widget will display the total range of the data in the selected column, indicating the minimum and maximum value.
+From Data, select a field from your source dataset that you want to analyze. The selected column must be a numeric data type. In this example, we filter the features on the map based on the `revenue` column. The default range is always the minimum and maximum value of the data that can be selected.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_widget.png)
 
-You can filter the data using a slider or manual numeric inputs. In this example, we have kept the minimum and maximum values
+![Range widget video](/img/cloud-native-workspace/maps/range_widget.gif)
+
+When dragging the pointer over the slider, the features for that specific range of values are displayed on the map. Values get smaller towards the left of the slider and larger towards the right of it. 
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider.png)
 
+The selected range is identified by a dark blue line  bounded by two dots. The lighter line is those data that have not been selected but they are within the available range of data.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_lightblue.png)
+
+When zoomed out, the map view changes. In this case, the selected range remains the same and the light line below it indicates the range of data visible in the current map view.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_zoom.png)
 
 
 
+From Display options, you can also manually set custom minimum and maximum values and these will be reflected in the range widget. 
 
-From Display options, you can also set customised minimum and maximum values. This is especially useful when you want to do some data preparation, for example to remove edge values.
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_manually.png)
 
+When you set a minimum or maximum value that it is out of range, the new value will not be reflected in the range widget. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_manually_outofrange.png)
 
+In this example, the same minimum value remanins and a new grey line appears reflecting values below or above the available data range.
 
+In this example, it keeps the same minimun value and the grey line reflects those values that are below the range of available data.
 
-The range widget 
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_slider_outofrange.png)
 
-displays the number of features in each bucket, allowing you to select and visualize a specific range of data.
+This means that there is no data for that specific range in the `revenue` column, so if we drag the pointer over that line, no data will be displayed on the map.
 
-We have just enabled a new type of widget to every account: The Range widget allows to filter a map based on precise numeric values.
-Allows setting up the filter using a slider or manual numeric inputs
-Allows setting custom min. and max. values. This is specially useful to apply some quick and basic data preparation, removing edge values.
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_no_data.png)
 
-
-From Display options, you can 
-
-
-We want to create a new widget in Carto for React, to allow filtering based on a numeric field, using 2 exclusive options:
-
-(a) filter by numeric ranger, eg values between [10, 20]
-(b) filter by percentile, value from 0 to 100 percentile
-As with other widgets, it should allow both ‘viewport’ (local) vs ‘global’ (remote api) modes.
-
-We want that widget to be available also as an addition to Builder.
-
-This task should focus on (a), ignoring for the moment the percentiles opti
+<!-- This is particularly useful when you want to do some data preparation, for example to remove edge values. -->
 
 
-
-change the format as the values are displayed and add some notes to your widget. In this example, we aggregate the data by the average total of revenue based on the `revenue` column. 
-
-
-of type numeric.
-
- date, and you can define how the date is aggregated (by Years, Months, Weeks, Days) to visualize a selected range of time.
-
-In this example, we divide the data range of the size_m2 column in 15 buckets. 
-
-
-
+The following video shows a short demonstration of how range widget allows to filter a map based on precise numeric values. This is particularly useful when you want to do some data preparation, for example to remove edge values. 
+ 
+![Range widget video](/img/cloud-native-workspace/maps/range_widget.gif)
 #### Time-Series Widget
 
 From Data, choose the operation from the list and select a field from your source dataset that you want to analyze.
 The selected column for the widget must be of type date, and you can define how the date is aggregated (by Years, Months, Weeks, Days) to visualize a selected range of time.
 
 In this example, we aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
-
-![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_timeseries.png)
 
 <!-- ![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_time-series.png) -->
 
