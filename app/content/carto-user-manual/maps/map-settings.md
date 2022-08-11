@@ -211,8 +211,6 @@ From Data, select a field from your source dataset that you want to analyze. The
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_widget.png)
 
-![Range widget video](/img/cloud-native-workspace/maps/range_widget.gif)
-
 When dragging the pointer over the slider, the features for that specific range of values are displayed on the map. Values get smaller towards the left of the slider and larger towards the right of it. 
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider.png)
@@ -224,8 +222,6 @@ The selected range is identified by a dark blue line  bounded by two dots. The l
 When zoomed out, the map view changes. In this case, the selected range remains the same and the light line below it indicates the range of data visible in the current map view.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_zoom.png)
-
-
 
 From Display options, you can also manually set custom minimum and maximum values and these will be reflected in the range widget. 
 
