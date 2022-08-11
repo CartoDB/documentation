@@ -32,7 +32,7 @@ In this example we are going to use points clustering to analyze how to find the
 
 3. Click on *New map*. This will open the CARTO map-making tool, Builder.
 
-    ![Maps section new map](/img/cloud-native-workspace/tutorials/tutorial5_maps_new_map.png)
+    ![Maps section new map](/img/cloud-native-workspace/tutorials/the_tutorial5_maps_new_map.png)
 
 4. Once in Builder, you can add data as layers to the map by clicking on “Add source from”, where you can access the contents from your existing data warehouse connections.
 
@@ -40,11 +40,11 @@ In this example we are going to use points clustering to analyze how to find the
 
 5. Select *Custom Query (SQL)* and “Type your own query” using the `CARTO Data Warehouse` connection and click on *Add Source*.
 
-    ![Add source custom sql query](/img/cloud-native-workspace/tutorials/tutorial5_add_source_custom_sql_query.png)
+    ![Add source custom sql query](/img/cloud-native-workspace/tutorials/the_tutorial5_add_source_custom_sql_query.png)
 
-6. Once the process is finished, the SQL panel appears in the Builder interface, where you can run queries in `CARTO Data Warehouse` (based on Google BigQuery) and see the result in the map. 
+6. Then, the SQL panel appears in the Builder interface, where you can run queries in `CARTO Data Warehouse` (based on Google BigQuery) and see the result in the map. 
 
-    ![Map sql panel](/img/cloud-native-workspace/tutorials/tutorial5_map_sql_editor.png)
+    ![Map sql panel](/img/cloud-native-workspace/tutorials/the_tutorial5_map_sql_editor.png)
 
 {{% bannerNote title="Note" type="note" %}}
    The following queries should be executed in order, and each of them will show a different result.
@@ -57,7 +57,7 @@ In this example we are going to use points clustering to analyze how to find the
     ```
     You can see how this query returns the table with the customer home locations that we will use in this analysis.
 
-   ![Map added layer from query](/img/cloud-native-workspace/tutorials/tutorial5_map_layer_from_query.png)
+   ![Map added layer from query](/img/cloud-native-workspace/tutorials/the_tutorial5_map_layer_from_query.png)
 
    {{% bannerNote type="note" title="note" %}}
 Remember that you can also persist the query as a table by clicking on *Create table from query* button that will be available when the query is successfully completed or when it takes too long. 
@@ -65,7 +65,7 @@ Remember that you can also persist the query as a table by clicking on *Create t
 
 8. Optionally, you could spend some time and style this layer based on the `customer_value` feature, either with the fill color of the points or their radius.
 
-    ![Map style fill based on and radius](/img/cloud-native-workspace/tutorials/tutorial5_map_layer_style.png)
+    ![Map style fill based on and radius](/img/cloud-native-workspace/tutorials/the_tutorial5_map_layer_style.png)
 
 9. Now we are going to modify the SQL Query used to generate the map layer, and we are going to use the  [`clustering functions`](/analytics-toolbox-bq/sql-reference/clustering/) 
 in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of stores we want to open).
