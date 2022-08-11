@@ -219,7 +219,7 @@ The selected range is identified by a dark blue line  bounded by two dots. The l
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_lightblue.png)
 
-When zoomed out, the map view changes. In this case, the selected range remains the same and the light line below it indicates the range of data visible in the current map view.
+When zoomed in, the map view changes. In this case, the selected range remains the same and the light line below it indicates the range of data visible in the current map view.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_zoom.png)
 
