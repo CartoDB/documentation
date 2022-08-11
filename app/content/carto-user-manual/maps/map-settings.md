@@ -117,6 +117,11 @@ But you can also configure them to use the global mode where information is disp
 
 ![Map widgets viewport by default](/img/cloud-native-workspace/maps/map_widget_global_mode.png)
 
+{{% bannerNote title="NOTE" type="note"%}}
+Global mode is not available for widgets linked to static (pre-generated) tilesets sources, only with dynamic tiling. The main reason for that is that static tilesets are usually created for extremely large datasets (i.e. billions of features) and the SQL query could have a processing time not suitable for an interactive applications. Another reason is that the source table(s) for the tileset might have been updated (or it might not be even available) so the tileset and the widget could potentially show different information.
+
+{{%/ bannerNote %}}
+
 At this moment, there are six types of widgets available to customize your visualization and enable a richer interaction with your data: 
 - **Formula**: Shows aggregated numerical data from the features in the map's viewport.
 - **Category**: Breaks down the data into categories and shows aggregated values.
