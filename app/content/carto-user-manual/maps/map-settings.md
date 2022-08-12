@@ -48,21 +48,31 @@ This guide describes how to add interactive widgets to your map in CARTO Builder
 
 In the Widgets tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
-![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_new_widget.png)
+![Map widgets new widget disable](/img/cloud-native-workspace/maps/map_new_widget_button_disabled.png)
+
+<!-- ![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_new_widget.png) -->
 
 Click on *New widget* button to start interacting with your data. When you add a widget, it´s always the Formula widget by default:
 
-![Map widgets](/img/cloud-native-workspace/maps/map_new_widget_dropdown.png)
+![Map widgets select a source](/img/cloud-native-workspace/maps/map_new_widget_select_source.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_bydefault.png)
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_new_widget_dropdown.png) -->
+
+![Map widgets formula by default](/img/cloud-native-workspace/maps/map_widget_formula_default.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_bydefault.png) -->
 
 You can access the quick actions menu to manage your widgets by clicking on the “three dots” icon in the top-right corner. There are two options available: Rename and Delete widget. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_quickmenu.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_quickactions.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_quickmenu.png) -->
 
 You can also manage your widgets by clicking on the “three dots” icon in the top-right corner of the widget. There are two options available: Widget options and Delete widget.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_quick_menu_widget.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_2quickactions.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_quick_menu_widget.png) -->
 
 Click on the top-right icon to show or hide the list of your widgets from the map:
 
@@ -70,51 +80,81 @@ Click on the top-right icon to show or hide the list of your widgets from the ma
 
 If you click on the *Back* arrow, you will exist the widget options and you will be redirected to the Widget tab of Builer from where you will see the list of your current widgets.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_back_to_list.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_back_arrow.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_back_to_list.png) -->
 
 Click on the “three dots” icon to configure your widgets. There are 3 options available: Widgets options, Rename and Delete widget.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickmenu_card.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickactions_card.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_quickmenu_card.png) -->
 
 To add a new widget to the map, click on *Add widget* button and select the data source:
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_add_widget.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_add_widget_icon.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_source.png)
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_add_widget.png) -->
 
-At this moment, there are four types of widgets available to customize your visualization and enable a richer interaction with your data: 
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_data_source.png)
+
+<!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_source.png) -->
+
+#### Modes (behavior)
+
+The widgets can work in two different modes: viewport and global.
+
+- **Filter by viewport**: the widgets in viewport mode update the information when the viewport changes. They work with the data that has been downloaded for visualization so all the data needed to make the calculations is available locally in the browser.
+- **Global**: the widgets in global mode are static, they always show the same information. They get the data by performing a SQL query to the data warehouse.
+
+By default the widgets work in viewport mode, meaning they are showing information about the features in the current viewport.
+
+![Map widgets viewport by default](/img/cloud-native-workspace/maps/map_widget_viewport_mode.png)
+
+But you can also configure them to use the global mode where information is displayed for the full data source.
+
+![Map widgets viewport by default](/img/cloud-native-workspace/maps/map_widget_global_mode.png)
+
+{{% bannerNote title="NOTE" type="note"%}}
+Global mode is not available for widgets linked to static (pre-generated) tilesets sources, only with dynamic tiling. The main reason for that is that static tilesets are usually created for extremely large datasets (i.e. billions of features) and the SQL query could have a processing time not suitable for an interactive applications. Another reason is that the source table(s) for the tileset might have been updated (or it might not be even available) so the tileset and the widget could potentially show different information.
+
+{{%/ bannerNote %}}
+
+At this moment, there are six types of widgets available to customize your visualization and enable a richer interaction with your data: 
 - **Formula**: Shows aggregated numerical data from the features in the map's viewport.
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
+- **Range Widget**: Shows a specific range of numerical data that is filtered by using a slider or manual inputs.
 - **Time-Series**: Shows the frequency distribution aggregated by a fixed temporal period (Days, Weeks, Months or Years). It also allows to create animated maps.
 - **Table Widget**: It shows tabular information of the features in the viewport.
+
 #### Formula Widget
 
 From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_by_count.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_count_operation.png)
 
 From Display options, you can also change the format as the values are displayed and add some notes to your widget. In this example, we aggregate the data by the average total of revenue based on the `revenue` column. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_by_avg.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_avg_operation.png)
 
 #### Category Widget
 
 From Data, choose the operation from the list and select a field from your dataset that you want to analyze. 
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_by_count.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_count_operation.png)
 
 From Display options, you can also change the format as the values are displayed and add some notes to your histagram. In this example, we aggregate the average `revenue` on each category from the `storetype` column.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_by_avg.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_average_operation.png)
 
 You can select one or more values from a category widget to highlight particular columns of interest. If you select an element from the list, only the selected filters appear styled on your map, and the rest of the categories are temporarily removed from your visualization.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_select_category_from_list.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_select.png)
 
 Click on the same filters again to deselect them, or click on *Clear* to show all relevant categories from the widget again. You can also *Lock* and *Unlock* to enable or disable the interactivity with the map.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_search_elements_from_list.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_selected.png)
 
 The Category widgets display the top five categories of data, based on the Map View of your visualization. The `Other` category groups together the less relevant values that may not be visible from your Map View. 
 
@@ -122,31 +162,64 @@ You can manually search for values from the `Other`category by clicking on *Sear
 
 Click on *Search in “X” elements* and then click the box next to the other value(s) to be included. You can type a value, or search through the list of available values.Then click *Apply* to filter the category widget by the selected values, or *Cancel*  if you don’t want the filters to be applied.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_search_elements_before_applying.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_search_elements.png)
 
-You can Unlock to view the default categories again.
-
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_search_elements_from_list.png)
-
+<!-- You can Unlock to view the default categories again. -->
 #### Histogram Widget
 
-From Data, select a field from your source dataset that you want to analyze. In this example, we divide the data range of the `size_m2` column in 9 buckets. The histogram widget displays the number of records in each bucket, allowing you to select and visualize a specific range of data.
+From Data, select a field from your source dataset that you want to analyze. In this example, we divide the data range of the `size_m2` column in 15 buckets. The histogram widget displays the number of features in each bucket, allowing you to select and visualize a specific range of data.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histograma.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram.png)
 
-When hovering over a Histogram widget, the number of records in each bucket appears. This is a good indicator of where you might want to filter data.
+When hovering over a specific bucket, the number of features for that specific range is displayed. This is a good indicator of where you might want to filter data.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_hover_over.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_hover.png)
 
-Click once on the Histogram to display the range selector. Only the selected filters appear on your map, and any analyses are rerun and recalculated.
+Click once on a bucket. Only the features for that specific range will be displayed on your map, and any analyses are rerun and recalculated.
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_range_selected.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_select_range.png)
 
-For advanced analysis, you can all widgets in a single map so you can combine your filters and get a better visualisation of your data:
+For advanced analysis, you can add all widgets in a single map so you can combine your filters and get a better visualisation of your data:
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together.png)
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_all.png)
 
-![Map widgets](/img/cloud-native-workspace/maps/map_widget_all_together_filtered.png)
+#### Range Widget
+
+From Data, select a field from your source dataset that you want to analyze. The selected column must be a numeric data type. In this example, we filter the features on the map based on the `revenue` column. The default range is always the minimum and maximum value of the data that can be selected.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_widget.png)
+
+When dragging the pointer over the slider, the features for that specific range of values are displayed on the map. Values get smaller towards the left of the slider and larger towards the right of it. 
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider.png)
+
+The selected range is identified by a dark blue line  bounded by two dots. The lighter line is those data that have not been selected but they are within the available range of data.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_lightblue.png)
+
+When zoomed in, the map view changes. In this case, the selected range remains the same and the light line below it indicates the range of data visible in the current map view.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_zoom.png)
+
+From Display options, you can also manually set custom minimum and maximum values and these will be reflected in the range widget. 
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_manually.png)
+
+When you set a minimum or maximum value that it is out of range, the new value will not be reflected in the range widget. 
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_manually_outofrange.png)
+
+In this example, it keeps the same minimun value and the grey line reflects those values that are below the range of available data.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_slider_outofrange.png)
+
+This means that there is no data for that specific range in the `revenue` column, so if we drag the pointer over that line, no data will be displayed on the map.
+
+![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_no_data.png)
+
+The following video shows a short demonstration of how range widget allows to filter a map based on precise numeric values. This is particularly useful when you want to do some data preparation, for example to remove edge values. 
+ 
+![Range widget video](/img/cloud-native-workspace/maps/range_widget.gif)
 #### Time-Series Widget
 
 From Data, choose the operation from the list and select a field from your source dataset that you want to analyze.
@@ -154,7 +227,7 @@ The selected column for the widget must be of type date, and you can define how 
 
 In this example, we aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
 
-![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_time-series.png)
+![Map widgets time-series](/img/cloud-native-workspace/maps/map_widget_timeseries.png)
 
 {{% bannerNote title="NOTE" type="note"%}}
 Bear in mind that the most important requirement is that your date column contains valid timestamp values, otherwise the data may not appear correctly.
@@ -164,7 +237,7 @@ From the widget, you can play, pause or stop the animation and filter by a selec
 
 ![Map widgets time-series animation control](/img/cloud-native-workspace/maps/map_widget_time-series_animation_controls.png)
 
-![Map widgets time-series animation controls activated](/img/cloud-native-workspace/maps/map_widget_time-series_animation_controls_activated.png)
+![Map widgets time-series animation controls activated](/img/cloud-native-workspace/maps/map_widget_time-series_animation_activated.png)
 
 To change the speed of the animation, click on the clock icon and select the speed: 0.5x, 1x, 2x or 3x.
 
@@ -172,19 +245,17 @@ To change the speed of the animation, click on the clock icon and select the spe
 
 You can also filter your data within a given range. The selected range is distributed across your map to display groups of data aggregated by the selected date type.
 
-![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_filter.png)
+![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_filter_data.png)
 
 This enables you to click and drag the start and end range of selected data. In this example, we add a second widget to display the number of earthquakes filtered in each range.
 
-![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_time-series_and_formula.png)
+![Map widgets time-series filter](/img/cloud-native-workspace/maps/map_widget_timeseries_and_formula.png)
 
 #### Table Widget
 
-From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select all columns. 
+From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select some columns. 
 
-![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_allcolumns.png)
-
-<!-- ![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table.png) -->
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_somecolumns.png)
 
 From the widget, you can select the number of rows per page and use pagination to visualize the rest of the results.
 
@@ -198,7 +269,7 @@ You can also sort the data in ascending or descending order. To activate the sor
 
 You can also add several table widgets at the same time in Builder maps. Each one will create a new tab that can be selected. When a tab is selected, the others will remain disabled.
 
-![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_multiple_tabs.png)
+![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_add_multiple_tabs.png)
 
 ### Interactions
 
