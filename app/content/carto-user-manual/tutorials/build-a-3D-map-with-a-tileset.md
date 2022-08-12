@@ -34,7 +34,7 @@ In this example we are building a map from a tileset createad by CARTO from a ne
 
 3. Select the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection and click on *demo data > demo_tilesets* from the collapsible tree. 
 
-   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/the_tutorial3_content_carto_dw_demo_tilesets.png)
+   ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/the_tutorial3_content_carto_dw_demo_tileset.png)
 
 4. Selected "nasadem_glo_quadgrid15" and explore the details and metadata of the tileset. 
 
@@ -65,7 +65,9 @@ In this example we are building a map from a tileset createad by CARTO from a ne
    You can change the height using the height slider or by directly inputting the height in the 
 text input.
 
-   ![Map height slider](/img/cloud-native-workspace/tutorials/the_tutorial3_map_height_slider.png)
+   ![Map height slider](/img/cloud-native-workspace/tutorials/the_tutorial3_map_height_slide.png)
+
+   <!-- ![Map height slider](/img/cloud-native-workspace/tutorials/the_tutorial3_map_height_slider.png) -->
 
 10. Finally, modify the map visualization to be in 3D by clicking on the “cube” icon in the top bar. 
 
