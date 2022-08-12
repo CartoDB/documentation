@@ -1,5 +1,5 @@
 ---
-title: "Selecting out-of-home panels using geosegmentation"
+title: "Score areas based on demographics to select advertising panels"
 description: "In this tutorial we explore the best locations to place panels for Starbucks advertisements, using geosegmentation and spatial indexes."
 image: "/img/tutorials/ooh_tutorial_geosegmentation.png"
 type: tutorials
@@ -12,13 +12,13 @@ date: "2022-07-25"
 #     - ooh advertising
 ---
 
-## Selecting out-of-home panels using geosegmentation
+## Scoring areas based on demographic data to select advertising panels for a campaign
 
 **Context**
 
 A common use case of Out-of-home advertising is goesegmentation. Geosegmentation helps in identifying where target audiences live in or commute through, and in association where panels should be located. This is particularly useful if the goal of the advertising campaign is not necessarily to direct traffic to nearby locations, but rather to maximize the population the panel appeals to. 
 
-In this example, we will use spciodemographic and income data to perform geosegmentation to identify where a theoretical target audience for Starbucks is located in New York. We will construct a spatial index score for the panels using the geosegmentation criteria, so that we prioritize panels based on their score.
+In this example, we will use sociodemographic and income data to identify where a theoretical target audience for Starbucks is located in New York. We will construct a spatial index score for the panels using the geosegmentation criteria, so that we prioritize panels based on their score.
 
 **Steps to reproduce**
 
