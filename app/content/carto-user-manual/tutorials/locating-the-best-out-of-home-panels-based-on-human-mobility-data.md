@@ -1,6 +1,6 @@
 ---
-title: "Shortlisting OOH panels using coverage information"
-description: "In this tutorial we find the Out-Of-Home panels in Madrid that best match the forecasted coverage of a target audience. We visualize coverage using quadints that represent visitor volumes"
+title: "Locating the best out-of-home panels using human mobility data"
+description: "In this tutorial we find the Out-Of-Home panels in Madrid that best match the forecasted mobility of a target audience. We visualize mobility using quadints that represent visitor volumes"
 image: "/img/tutorials/ooh_coverage_analysis.png"
 type: tutorials
 date: "2022-07-20"
@@ -10,12 +10,12 @@ date: "2022-07-20"
 #     - out-of-home
 ---
 
-## Shortlisting OOH panels using coverage information
+## Locating the best out-of-home panels based on human mobility data
 
 **Context**
 
-A common use case of the Out-of-home advertising industry is coverage analysis, which is the identification of the best panels for a campaign based on forecasted audience visits. The use case can be useful both during campaign planning (select panels) and campaign monitoring and otpimization (adjust the panel inventory allocated to the campaign)
-In this tutorial we are showcasing an example where we vizualize forecasted visits of a certain audience on a heatmap, overlay with the point locations of panel inventory, and select the best area to focus on bases on the results. 
+A common use case of the Out-of-home advertising industry is coverage analysis, which is the identification of the best panels for a campaign based on forecasted  visits of a chosen audience. The use case can be useful both during campaign planning (select panels) and campaign monitoring and otpimization (adjust the panel inventory allocated to the campaign)
+In this tutorial we are showcasing an example where we vizualize forecasted visits of a certain audience on a heatmap, overlay with the point locations of panel inventory, and select the best area to focus on based on the results. 
 
 **Steps to reproduce**
 

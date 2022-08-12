@@ -1,5 +1,5 @@
 ---
-title: "Identifying Out-Of-Home panels closest to Starbucks using proximity analysis"
+title: "Identifying billboards around POIs using proximity analysis"
 description: "We find the OOH panels closest to a certain point of interest, in this case Starbucks, using proximity analysis ."
 image: "/img/tutorials/ooh_proximity_analysis.png"
 type: tutorials
@@ -11,7 +11,7 @@ date: "2022-07-11"
 #     - out-of-home
 ---
 
-## Identifying Out-Of-Home panels closest to Starbucks using proximity analysis
+## Identifying billboards around points of interest using proximity analysis
 
 **Context**
 
