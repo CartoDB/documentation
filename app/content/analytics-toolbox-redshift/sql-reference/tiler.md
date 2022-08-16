@@ -27,7 +27,7 @@ Generates a point aggregation tileset.
 |`aggregation_resolution`| Default: `6`. An `INTEGER` that specifies the resolution of the spatial aggregation.<br/><br/>Aggregation for zoom `z` is based on quadgrid cells at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells, which is the maximum number of resulting features (aggregated) that the tiles will contain.<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
 |`aggregation_placement`| Default: `"cell-centroid"`. A `VARCHAR` that defines what type of geometry will be used to represent the cells generated in the aggregation, which will be the features of the resulting tileset. There are currently four options:<br/><ul><li>`"cell-centroid"`: Each feature will be defined as the centroid of the cell, that is, all points that are aggregated together into the cell will be represented in the tile by a single point positioned at the centroid of the cell.</li><li>`"cell"`: Each feature will be defined as the entire cell's polygon, thus the final representation in the tile will be a polygon. This provides more precise coordinates but takes more space in the tile and requires more CPU to process it in the renderer.</li><li>`"features-any"`: The aggregation cell will be represented by any random point from the source data contained within it. That is, if 10 points fall inside a cell, the procedure will randomly choose the location of one of them to represent the aggregation cell.</li><li>`"features-centroid"`: The feature will be defined as the centroid (point) of the collection of points within the cell.</li></ul>|
 |`metadata`| Default: `{}`. A JSON object to specify the associated metadata of the tileset. Use this to set the name, description and legend to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0). Other fields will be included in the object extra_metadata.|
-|`properties`| Default: `{}`. A JSON object that defines the properties that will be included associated with each cell feature. Each `property` is defined by its name, type (Number, Boolean, String, etc.) and formula to be applied to the values of the points that fall under the cell. This formula can be any SQL formula that uses an [aggregate function]((https://docs.aws.amazon.com/redshift/latest/dg/c_Aggregate_Functions.html)) supported by Redshift and returns the expected type. Please note that every property different from Number will be casted to String.|
+|`properties`| Default: `{}`. A JSON object that defines the properties that will be included associated with each cell feature. Each `property` is defined by its name, type (Number, Boolean, String, etc.) and formula to be applied to the values of the points that fall under the cell. This formula can be any SQL formula that uses an [aggregate function](https://docs.aws.amazon.com/redshift/latest/dg/c_Aggregate_Functions.html) supported by Redshift and returns the expected type. Note that every property different from Number will be casted to String.|
 |`max_tile_features`| Default: `100000`. A `NUMBER` that sets the maximum number of features (points) a tile can contain. When this maximum is reached, the procedure will drop features according to the chosen `max_tile_size_strategy`. You can configure in which order the features are kept by setting the `tile_feature_order` property. Any value lower than `4^aggregation_resolution` will be ineffective, therefore the default of 100000 only applies if `aggregation_resolution` is higher than 8.|
 |`tile_feature_order`| Default: `""` (disabled). A `STRING` defining the order in which features are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`. The `"ORDER BY"` part must not be included. You can use any source column even if it is not included in the tileset as a property. Please note that the default behavior will add features to the tile according to the order in which they appear in the input table or query.|
 |`max_tile_size_strategy`| Default: `"throw_error"`. A `STRING` that specifies how to apply the limit defined by `max_tile_features`. There are two options available:<br/><ul><li>`"drop_features"`: In each tile the features that exceed the limit are dropped. Different fractions of the total features may be dropped in each tile, which on a map can appear as noticeable differences in feature density between tiles.</li><li>`"drop_fraction_as_needed"`: For every zoom level, this process will drop a consistent fraction of features in every tile to make sure all generated tiles are below the limit. Since a constant fraction of the features is dropped for all tiles of a given zoom level, this will in general drop more features in less populated tiles than the the `"drop_features"` strategy.</li><li>`"return_null"`: A row with a NULL data column will be produced for all tiles that exceed the limit.</li><li>`"throw_error"`: The procedure execution will be aborted if any tile exceeds the limit.</li></ul><br/>. For the `drop_` strategies, features will be retained according to the `tile_feature_order` specified.|
@@ -56,21 +56,37 @@ Additionally, there is a row in the `data` column identified with `Z=-1` which c
 
 ```sql
 CALL carto.CREATE_POINT_AGGREGATION_TILESET(
-  'SELECT geom, population FROM mypopulationtable',
-  'MYDB.MYSCHEMA.population_tileset',
+  'SELECT * FROM database.schema.cities_table',
+  'database.schema.cities_tileset',
   '{
     "geom_column": "geom",
-    "zoom_min": 0, "zoom_max": 6,
+    "zoom_min": 0,
+    "zoom_max": 12,
     "aggregation_resolution": 5,
-    "aggregation_placement": "features-centroid",
+    "aggregation_placement": "cell-centroid",
     "properties": {
-      "population_sum": { "formula": "SUM(population)", "type": "NUMBER" }
+      "num_cities": {
+        "formula": "COUNT(*)",
+        "type": "Number"
+      },
+      "population_sum": {
+        "formula": "SUM(population)",
+        "type": "Number"
+      },
+      "city_name": {
+        "formula": "(CASE WHEN COUNT(*) <= 1 THEN ANY_VALUE(city_name) ELSE NULL END)",
+        "type": "String"
+      }
     },
-    "metadata": {"name": "population_tileset", "description": "A description"}
+    "metadata": {
+      "name": "Population",
+      "description": "Population in the cities"
+    }
   }'
 );
 ```
 
+In the example above, for all features we would get a property `"num_cities"` with the number of points that fall in it and `"population_sum"` with the sum of the population in those cities. In addition to this, when there is only one point that belongs to this property (and only in that case) we will also get the column values from the source data in `"city_name"`.
 
 ### CREATE_SIMPLE_TILESET
 

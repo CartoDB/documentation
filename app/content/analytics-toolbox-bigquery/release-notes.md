@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### August 16, 2022
+
+#### Module tiler
+
+Fixed
+- Fixed bug when parsing zoom columns in geography tilers.
+
 ### August 11, 2022
 
 #### Module tiler
