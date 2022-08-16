@@ -1,5 +1,12 @@
 ## Release notes
 
+### August 11, 2022
+
+#### Module tiler
+
+Changed
+- Unify `extra_metadata` into `metadata` in tiler metadata.
+
 ### July 20, 2022
 
 #### Module tiler

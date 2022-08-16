@@ -18,6 +18,13 @@ Feature
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### August 11, 2022
+
+#### Module tiler
+
+Changed
+- Unify `extra_metadata` into `metadata` in tiler metadata.
+
 ### July 13, 2022
 
 #### Module data

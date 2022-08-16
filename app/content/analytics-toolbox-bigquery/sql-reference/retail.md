@@ -14,10 +14,6 @@ This module contains procedures to perform analysis to solve specific retail ana
 carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
 {{%/ bannerNote %}}
 
-{{% bannerNote type="note" title="note"%}}
-In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
-{{%/ bannerNote %}}
-
 **Description**
 
 This procedure is the first of two from the Cannibalization analysis workflow. It builds the dataset for the existing locations to be used by the procedure [`CANNIBALIZATION_OVERLAP`](#cannibalization_overlap) to estimate the overlap between existing stores and the potentially new ones.
@@ -69,6 +65,8 @@ CALL carto.BUILD_CANNIBALIZATION_DATA(
     'test_cannib'
 );
 ```
+
+
 ### BUILD_REVENUE_MODEL
 
 {{% bannerNote type="code" %}}
@@ -84,7 +82,25 @@ This procedure is the second step of the Revenue Prediction analysis workflow. I
 **Input parameters**
 
 * `revenue_model_data`: `STRING` table with the revenue model data generated with the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure.
-* `options`: `STRING` JSON string to overwrite the model default options. If set to NULL or empty, it will use the default options. Available options are: NUM_PARALLEL_TREE, TREE_METHOD, COLSAMPLE_BYTREE, MAX_TREE_DEPTH, SUBSAMPLE, L1_REG, L2_REG, EARLY_STOP, MAX_ITERATIONS, DATA_SPLIT_METHOD. More information about the model options can be found [here](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#model_option_list).
+* `options`: `STRING` JSON string to overwrite the model default options. If set to NULL or empty, it will use the default options. The following fixed options cannot be modified:
+    * MODEL_TYPE: 'BOOSTED_TREE_REGRESSOR'
+    * BOOSTER_TYPE: 'GBTREE'
+    * ENABLE_GLOBAL_EXPLAIN: TRUE
+    * INPUT_LABEL_COLS: ['revenue_avg']
+
+    The following default options can be modified:
+    * NUM_PARALLEL_TREE: 1
+    * TREE_METHOD: 'AUTO'
+    * COLSAMPLE_BYTREE: 1
+    * MAX_TREE_DEPTH: 6
+    * SUBSAMPLE: 0.85
+    * L1_REG: 0
+    * L2_REG: 1
+    * EARLY_STOP: FALSE
+    * MAX_ITERATIONS: 50
+    * DATA_SPLIT_METHOD: 'NO_SPLIT'
+
+    This parameter allows using other options compatible with the model. Check the [model documentation](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#model_option_list) for more information.
 * `output_prefix`: `STRING` destination prefix for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>.<output-prefix>`.
 
 **Output**
@@ -118,7 +134,7 @@ CALL carto.BUILD_REVENUE_MODEL(
 ### BUILD_REVENUE_MODEL_DATA
 
 {{% bannerNote type="code" %}}
-carto.BUILD_REVENUE_MODEL_DATA(stores_query, competitors_query, aoi_query, grid_type, grid_level, kring, decay, do_variables, do_source, custom_variables, custom_query, output_prefix)
+carto.BUILD_REVENUE_MODEL_DATA(stores_query, stores_variables, competitors_query, aoi_query, grid_type, grid_level, kring, decay, do_variables, do_source, custom_variables, custom_query, output_prefix)
 {{%/ bannerNote %}}
 
 **Description**
@@ -192,10 +208,6 @@ CALL `carto-un`.carto.BUILD_REVENUE_MODEL_DATA(
 carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
 {{%/ bannerNote %}}
 
-{{% bannerNote type="note" title="note"%}}
-In order to use this function the user should have an active Data Observatory subscription to a [CARTO Spatial Features](https://carto.com/spatial-data-catalog/browser/?provider=carto&category=derived) dataset covering the area of interest for the analysis in order to access the urbanity level data that is required.
-{{%/ bannerNote %}}
-
 **Description**
 
 This procedure is the second step of the Cannibalization analysis workflow. It takes as input the generated table from [`CANNIBALIZATION_BUILD_DATA`](#cannibalization_build_data) and the location of the new store, and estimates the overlap of areas and spatial features that the new store would have with the existing stores included into the generated table.
@@ -234,6 +246,8 @@ CALL carto.CANNIBALIZATION_OVERLAP(
     'test_cannib'
 );
 ```
+
+
 ### COMMERCIAL_HOTSPOTS
 
 {{% bannerNote type="code" %}}

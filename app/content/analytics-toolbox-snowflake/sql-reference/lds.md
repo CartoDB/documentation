@@ -148,19 +148,19 @@ CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table');
 ```
 
 ```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_geom_column');
+CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column');
 -- The table `my-schema.my-table`, with a GEOGRAPHY column named `my_geom_column`, will be updated
 -- adding the column: `address`.
 ```
 
 ```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column');
+CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column');
 -- The table `my-schema.my-table`, with a GEOGRAPHY column named `my_geom_column`, will be updated
 -- adding the column: `my_address_column` if it doesn't previously exist.
 ```
 
 ```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column', 'en-US');
+CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column', 'en-US');
 -- The table `my-schema.my-table`, with a GEOGRAPHY column named `my_geom_column`, will be updated
 -- adding the column: `my_address_column` if it doesn't previously exist.
 -- The addresses will be in the (US) english language.

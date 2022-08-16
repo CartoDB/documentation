@@ -4,6 +4,34 @@ aliases:
 ---
 ## Release notes
 
+### August 11, 2022
+
+#### Module tiler
+
+Changed
+- Unify `extra_metadata` into `metadata` in tiler metadata.
+
+### August 9, 2022
+
+#### Module h3
+
+Fixed
+- Apply make_valid in H3_BOUNDARY.
+
+### August 8, 2022
+
+#### Module tiler
+
+Fixed
+- Fixed bug in metadata `CREATE_SPATIAL_INDEX_TILESET`.
+
+### August 5, 2022
+
+#### Module retail
+
+Changed
+- Check fixed model options in BUILD_REVENUE_MODEL procedure.
+
 ### August 3, 2022
 
 #### Module retail
