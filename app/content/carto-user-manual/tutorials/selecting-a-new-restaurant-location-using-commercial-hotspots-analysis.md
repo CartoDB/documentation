@@ -262,7 +262,7 @@ In-depth content and more technical information regarding the exercise found at 
     Or if you are querying directly from the `cartobq.docs.honolulu_competitors_lof` table
 
     ```sql
-    SELECT * FROM `cartobq.docs.honolulu_competitors_lof`
+    SELECT * EXCEPT (geo), geo as geom FROM `cartobq.docs.honolulu_competitors_lof`
     WHERE lof < 1.2
     ```
     Let´s investigate the result, seen below:
