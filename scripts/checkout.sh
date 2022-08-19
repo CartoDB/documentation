@@ -24,3 +24,7 @@ echo -e "\nCheckout Analytics Toolbox for PostgreSQL"
 echo "---------------------------------------"
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox.git $CHECKOUT_DIR/at-postgres-master
 git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-postgres-master
+
+echo -e "\nCheckout Analytics Toolbox for Databricks"
+echo "---------------------------------------"
+git clone --branch feature/sc-246044/migrate-at-core-databricks-modules --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-databricks-master
