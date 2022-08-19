@@ -45,7 +45,7 @@ In-depth content and more technical information regarding the exercise found at 
 5. First we define the area of study by creating a buffer of 5km around Honolulu downtown. Run the query below:
 
     ```sql
-    SELECT ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
+    SELECT ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000) as geom
     ```
     Rename the layer to "Area of Study", and style the buffer according to the config seen below
 
@@ -54,13 +54,18 @@ In-depth content and more technical information regarding the exercise found at 
 6. We then extract our current store assets and display on the map. In this example, we will extract Pizza Hut stores from a sample dataset including points of interest in Honolulu (subset of [OpenStreetMaps's Planet Nodes dataset](https://carto.com/spatial-data-catalog/browser/dataset/osm_nodes_74461e34/)). Add a new custom query, as we did in the buffer example, and introduce the query below:
 
    ```sql
+    WITH buffer AS (
+        SELECT ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000) as geom
+    )
+    
     -- We identify all store locations within a 5 km buffer centered in Honolulu
     SELECT
-    tag.value AS brand, geometry,
+    tag.value AS brand, d.geometry as geom,
     FROM
     `cartobq.docs.honolulu_planet_nodes` d,
-    UNNEST(all_tags) as tag
-    WHERE ST_CONTAINS(ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000), geometry)
+    UNNEST(all_tags) as tag,
+    buffer as b
+    WHERE ST_CONTAINS(b.geom, geometry)
     AND ((tag.value in ("Pizza Hut") AND tag.key = 'brand'))
     ```
 
@@ -81,6 +86,7 @@ In-depth content and more technical information regarding the exercise found at 
     ```sql
     SELECT * FROM cartobq.docs.honolulu_pizza_aos
     ````
+    Ensure you select the spatial data type of the query as H3, on the top right hand side of the SQL Editor (see image).
 
     Rename the layer "Polyfill area of study" and reorder the layer to place as the bottom layer.
 
@@ -93,7 +99,7 @@ In-depth content and more technical information regarding the exercise found at 
     We have already created the table for you, named `cartobq.docs.honolulu_pizza_aos_enriched`. You only need to add a new custom query, and run the query below:
 
     ```sql
-    SELECT * FROM cartobq.docs.honolulu_pizza_aos_enriched
+    SELECT * EXCEPT (h3id), h3id as h3 FROM cartobq.docs.honolulu_pizza_aos_enriched
     ```
 
     Rename the layer "Demographics enriched area of study" and reorder the layer to place as the bottom layer. Hover over a hexagon to see that there is data on population of age groups.
@@ -165,7 +171,7 @@ In-depth content and more technical information regarding the exercise found at 
     We have already created the table for you, named `cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist`. You only need to add a new custom query, and run the query below:
 
     ```sql
-    SELECT * FROM cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist
+    SELECT * EXCEPT (h3id), h3id as h3 FROM cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist
     ```
 
     Rename the layer "Demographics and distance to closest location" and reorder the layer to place below "Own restaurant locations" and "Area of study". Hover over a hexagon to see that there is now one population value and distance value per hexagon (population between 15 and 34, and distance to closest own store).
@@ -224,7 +230,7 @@ In-depth content and more technical information regarding the exercise found at 
     We have already created the table for you, named `cartobq.docs.honolulu_competitors_lof`. You only need to add a new custom query, and run the query below:
 
     ```sql
-    SELECT * FROM `cartobq.docs.honolulu_competitors_lof`
+    SELECT * EXCEPT (geo), geo as geom FROM `cartobq.docs.honolulu_competitors_lof`
     ```
     Rename the layer "Competitor LOF analysis" and reorder the layer to place below "Own restaurant locations". 
 
