@@ -56,30 +56,6 @@ SELECT carto.ST_ASTEXT(carto.ST_MAKEBOX2D(carto.ST_MAKEPOINT(-91.8554869, 29.506
 ```
 
 
-### ST_MAKELINE
-
-{{% bannerNote type="code" %}}
-carto.ST_MAKELINE(points)
-{{%/ bannerNote %}}
-
-**Description**
-
-Creates a `LineString` using the given sequence of vertices in points.
-
-* `points`: `Seq[Point]` input sequence of points for the line.
-
-**Return type**
-
-`LineString`
-
-**Example**
-
-```sql
-SELECT carto.ST_MAKELINE(carto.ST_MAKEPOINT(-93.477736, 33.642527), carto.ST_MAKEPOINT(-93.47825, 33.642768));
--- NOT WORKING!
-```
-
-
 ### ST_MAKEPOINT
 
 {{% bannerNote type="code" %}}

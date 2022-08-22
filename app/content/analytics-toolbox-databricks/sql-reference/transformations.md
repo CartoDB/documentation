@@ -28,7 +28,6 @@ WITH t AS (
 )
 SELECT carto.ST_ASTEXT(carto.ST_ANTIMERIDIANSAFEGEOM(geom)) FROM t;
 -- MULTIPOLYGON (((-180 0, -180 5, -170 5, -170 0, -180 0)), ((180 5, 180 0, 178 0, 178 5, 180 5)))
-
 ```
 
 ### ST_BOUNDARY
@@ -55,7 +54,6 @@ WITH t AS (
 )
 SELECT carto.ST_ASTEXT(carto.ST_BOUNDARY(geom)) FROM t;
 -- LINESTRING (0 0, 0 2, 2 2, 2 0, 0 0)
-
 ```
 
 ### ST_CENTROID
@@ -187,7 +185,6 @@ WITH t AS (
 )
 SELECT carto.ST_ASTEXT(carto.ST_IDLSAFEGEOM(geom)) AS geom FROM t;
 -- MULTIPOLYGON (((-180 0, -180 5, -170 5, -170 0, -180 0)), ((180 5, 180 0, 178 0, 178 5, 180 5)))
-
 ```
 
 ### ST_INTERIORRINGN
@@ -243,13 +240,8 @@ WITH t AS (
 )
 SELECT carto.ST_ASTEXT(carto.ST_INTERSECTION(geomA, geomB)) AS intersection FROM t;
 -- POLYGON ((1 2, 2 2, 2 1, 1 1, 1 2))
-
 ```
 
-### st_translate
-`Geometry st_translate(Geometry geom, Double deltaX, Double deltaY)`
-
-Returns the `Geometry` produced when _geom_ is translated by _deltaX_ and _deltaY_.
 ### ST_TRANSLATE
 
 {{% bannerNote type="code" %}}
