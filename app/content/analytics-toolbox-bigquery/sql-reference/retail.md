@@ -509,7 +509,7 @@ This procedure is the third and final step of the Revenue Prediction analysis wo
 
 **Input parameters**
 
-* `index`: `STRING` cell index where the new store will be located. It can be an `h3` or a `quadbin` index. For `quadbin`, the value should be cast to string: `CAST(index AS STRING)`. It can also be `'ALL'`, in which case the prediction for all the grid cells of the model data are returned.
+* `index`: `ANY TYPE` cell index where the new store will be located. It can be an `h3` or a `quadbin` index. For `quadbin`, the value should be  `INT64` whereas for `h3` the value should be `STRING`. It can also be `'ALL'`, in which case the prediction for all the grid cells of the model data are returned.
 * `revenue_model`: `STRING` the fully qualified `model` name.
 * `revenue_model_data`: `STRING` the fully qualified `model_data` table name.
 * `candidate_data`: `STRING` the fully qualified `candidate_data` table name. It can be set to `NULL`.
@@ -535,5 +535,6 @@ CALL `carto-un`.carto.PREDICT_REVENUE_AVERAGE(
 );
 -- index, predicted_revenue_avg
 ```
+
 
 {{% euFlagFunding %}}

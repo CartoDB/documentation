@@ -27,4 +27,4 @@ git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-cor
 
 echo -e "\nCheckout Analytics Toolbox for Databricks"
 echo "---------------------------------------"
-git clone --branch feature/sc-246044/migrate-at-core-databricks-modules --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-databricks-master
+git clone --branch master --depth 1 git@github.com:CartoDB/analytics-toolbox-core.git $CHECKOUT_DIR/at-core-databricks-master

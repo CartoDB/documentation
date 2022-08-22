@@ -4,6 +4,14 @@ aliases:
 ---
 ## Release notes
 
+### August 19, 2022
+
+#### Module retail
+
+Changed
+- Index parameter admits any type in PREDICT_REVENUE_AVERAGE.
+- Index from revenue_model_data is not casted in PREDICT_REVENUE_AVERAGE to reduce query data processing.
+
 ### August 16, 2022
 
 #### Module tiler

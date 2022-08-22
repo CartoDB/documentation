@@ -1,3 +1,9 @@
+## constructors
+
+<div class="badges"><div class="core"></div></div>
+
+This module contains functions that create geographies from coordinates or already existing geographies.
+
 ### ST_MAKEBBOX
 
 {{% bannerNote type="code" %}}
@@ -20,7 +26,7 @@ Creates a `Geometry` representing a bounding box with the given boundaries.
 **Example**
 
 ```sql
-select ST_ASTEXT(ST_MAKEBBOX(-91.8554869, 29.5060349, -91.8382077, 29.5307334)) as bbox
+SELECT carto.ST_ASTEXT(carto.ST_MAKEBBOX(-91.8554869, 29.5060349, -91.8382077, 29.5307334)) AS bbox;
 -- POLYGON ((-91.8554869 29.5060349, -91.8554869 29.5307334, -91.8382077 29.5307334, -91.8382077 29.5060349, -91.8554869 29.5060349))
 ```
 
@@ -45,7 +51,7 @@ Creates a `Geometry` representing a bounding box defined by the given `Points`.
 **Example**
 
 ```sql
-select ST_ASTEXT(ST_MAKEBOX2D(ST_MAKEPOINT(-91.8554869, 29.5060349), ST_MAKEPOINT(-91.8382077, 29.5307334))) as bbox          
+SELECT carto.ST_ASTEXT(carto.ST_MAKEBOX2D(carto.ST_MAKEPOINT(-91.8554869, 29.5060349), carto.ST_MAKEPOINT(-91.8382077, 29.5307334))) AS bbox;
 -- POLYGON ((-91.8554869 29.5060349, -91.8554869 29.5307334, -91.8382077 29.5307334, -91.8382077 29.5060349, -91.8554869 29.5060349))
 ```
 
@@ -69,7 +75,7 @@ Creates a `LineString` using the given sequence of vertices in points.
 **Example**
 
 ```sql
-select ST_MAKELINE(ST_MAKEPOINT(-93.477736, 33.642527), ST_MAKEPOINT(-93.47825, 33.642768))
+SELECT carto.ST_MAKELINE(carto.ST_MAKEPOINT(-93.477736, 33.642527), carto.ST_MAKEPOINT(-93.47825, 33.642768));
 -- NOT WORKING!
 ```
 
@@ -94,7 +100,7 @@ Creates a `Point` with an _x_ and _y_ coordinate.
 **Example**
 
 ```sql
-select ST_ASTEXT(ST_MAKEPOINT(-91.8554869, 29.5060349))
+SELECT carto.ST_ASTEXT(carto.ST_MAKEPOINT(-91.8554869, 29.5060349));
 -- POINT (-91.8554869 29.5060349)
 ```
 
@@ -120,7 +126,7 @@ Creates a `Point` with an _x_, _y_, and _m_ coordinate.
 **Example**
 
 ```sql
-select ST_MAKEPOINTM(-91.8554869, 29.5060349, 5)
+SELECT carto.ST_MAKEPOINTM(-91.8554869, 29.5060349, 5);
 -- BINARY OUTPUT - 4QgB6aOA7Ab6jbKZAgo=
 ```
 
@@ -144,7 +150,7 @@ Creates a `Polygon` formed by the given `LineString` shell, which must be closed
 **Example**
 
 ```sql
-SELECT ST_ASTEXT(ST_MAKEPOLYGON( ST_GEOMFROMWKT('LINESTRING(75 29,77 29,77 27, 75 29)')));
+SELECT carto.ST_ASTEXT(carto.ST_MAKEPOLYGON(carto.ST_GEOMFROMWKT('LINESTRING(75 29,77 29,77 27, 75 29)')));
 -- POLYGON ((75 29, 77 29, 77 27, 75 29))
 ```
 
@@ -169,6 +175,6 @@ Returns a `Point` with the given coordinate values. This is an OGC alias for st_
 **Example**
 
 ```sql
-select ST_ASTEXT(ST_POINT(-91.8554869, 29.5060349))
+SELECT carto.ST_ASTEXT(carto.ST_POINT(-91.8554869, 29.5060349));
 -- POINT (-91.8554869 29.5060349)
 ```

@@ -1,3 +1,9 @@
+## parsers
+
+<div class="badges"><div class="core"></div></div>
+
+This module contains functions that create different geometry types from an external format like WKT.
+
 ### ST_BOX2DFROMGEOHASH
 
 {{% bannerNote type="code" %}}
@@ -19,9 +25,9 @@ Alias of st_geomFromGeoHash.
 
 ```sql
 WITH t AS (
-  SELECT ST_ASGEOHASH(ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'), 8) AS geohash
+  SELECT carto.ST_ASGEOHASH(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'), 8) AS geohash
 )
-SELECT ST_ASTEXT(ST_BOX2DFROMGEOHASH(geohash, 5)) FROM t;
+SELECT carto.ST_ASTEXT(carto.ST_BOX2DFROMGEOHASH(geohash, 5)) FROM t;
 -- POLYGON ((-90 11.25, -90 22.5, -67.5 22.5, -67.5 11.25, -90 11.25))
 ```
 
@@ -43,7 +49,7 @@ Alias of st_geomFromWKT.
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_GEOMETRYFROMTEXT('POINT(-76.09130 18.42750)'))
+SELECT carto.ST_ASGEOJSON(carto.ST_GEOMETRYFROMTEXT('POINT(-76.09130 18.42750)'));
 -- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
 ```
 
@@ -68,9 +74,9 @@ Returns the `Geometry` of the bounding box corresponding to the Geohash string _
 
 ```sql
 WITH t AS (
-  SELECT ST_ASGEOHASH(ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'), 8) AS geohash
+  SELECT carto.ST_ASGEOHASH(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'), 8) AS geohash
 )
-SELECT ST_ASTEXT(ST_GEOMFROMGEOHASH(geohash, 8)) FROM t;
+SELECT carto.ST_ASTEXT(carto.ST_GEOMFROMGEOHASH(geohash, 8)) FROM t;
 -- POLYGON ((-90 11.25, -90 22.5, -67.5 22.5, -67.5 11.25, -90 11.25))
 ```
 
@@ -92,7 +98,7 @@ Creates a `Geometry` from the given GeoJSON.
 **Example**
 
 ```sql
-SELECT ST_ASTEXT(ST_GEOMFROMGEOJSON('{"type":"Point","coordinates":[-76.0913,18.4275,0.0]}'))
+SELECT carto.ST_ASTEXT(carto.ST_GEOMFROMGEOJSON('{"type":"Point","coordinates":[-76.0913,18.4275,0.0]}'));
 -- POINT (-76.0913 18.4275)
 ```
 
@@ -115,9 +121,9 @@ Creates a `Geometry` from the given Well-Known Binary representation (WKB).
 
 ```sql
 WITH t AS (
-  SELECT ST_ASBINARY(ST_GEOMFROMWKT('POINT(-76.09130 18.42750)')) AS wkb
+  SELECT carto.ST_ASBINARY(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)')) AS wkb
 )
-SELECT ST_GEOMFROMWKB(wkb) FROM t;
+SELECT carto.ST_GEOMFROMWKB(wkb) FROM t;
 -- 4QgBz/HU1QXwwN6vAQA=
 ```
 
@@ -140,7 +146,7 @@ Creates a `Geometry` from the given Well-Known Text representation (WKT).
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'))
+SELECT carto.ST_ASGEOJSON(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'));
 -- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
 ```
 
@@ -162,7 +168,7 @@ Creates a `LineString` from the given WKT representation.
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_LINEFROMTEXT('LINESTRING(0 0, 0 3, 5 3)'))
+SELECT carto.ST_ASGEOJSON(carto.ST_LINEFROMTEXT('LINESTRING(0 0, 0 3, 5 3)'));
 -- {"type":"LineString","coordinates":[[0.0,0.0,0.0],[0.0,3,0.0],[5,3,0.0]]}
 ```
 
@@ -184,7 +190,7 @@ Creates a `MultiLineString` corresponding to the given WKT representation.
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_MLINEFROMTEXT('MULTILINESTRING((1 1, 3 5), (-5 3, -8 -2))'))
+SELECT carto.ST_ASGEOJSON(carto.ST_MLINEFROMTEXT('MULTILINESTRING((1 1, 3 5), (-5 3, -8 -2))'));
 -- {"type":"MultiLineString","coordinates":[[[1,1,0.0],[3,5,0.0]],[[-5,3,0.0],[-8,-2,0.0]]]}
 ```
 
@@ -206,7 +212,7 @@ Creates a `MultiPoint` corresponding to the given WKT representation.
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_MPOINTFROMTEXT('MULTIPOINT (10 40, 40 30, 20 20, 30 10)'))
+SELECT carto.ST_ASGEOJSON(carto.ST_MPOINTFROMTEXT('MULTIPOINT (10 40, 40 30, 20 20, 30 10)'));
 -- {"type":"MultiPoint","coordinates":[[10,40,0.0],[40,30,0.0],[20,20,0.0],[30,10,0.0]]}
 ```
 
@@ -228,7 +234,7 @@ Creates a `MultiPolygon` corresponding to the given WKT representation.
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_MPOLYFROMTEXT('MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))'))
+SELECT carto.ST_ASGEOJSON(carto.ST_MPOLYFROMTEXT('MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))'));
 -- {"type":"MultiPolygon","coordinates":[[[[30,20,0.0],[45,40,0.0],[10,40,0.0],[30,20,0.0]]]...
 ```
 
@@ -252,9 +258,9 @@ Return the `Point` at the geometric center of the bounding box defined by the Ge
 
 ```sql
 WITH t AS (
-  SELECT ST_ASGEOHASH(ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'), 8) AS geohash
+  SELECT carto.ST_ASGEOHASH(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'), 8) AS geohash
 )
-SELECT ST_ASTEXT(ST_POINTFROMGEOHASH(geohash, 5)) FROM t;
+SELECT carto.ST_ASTEXT(carto.ST_POINTFROMGEOHASH(geohash, 5)) FROM t;
 -- POINT (-67.5 22.5)
 ```
 
@@ -276,7 +282,7 @@ Creates a `Point` corresponding to the given WKT representation.
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_POINTFROMTEXT('POINT(-76.09130 18.42750)'))
+SELECT carto.ST_ASGEOJSON(carto.ST_POINTFROMTEXT('POINT(-76.09130 18.42750)'));
 -- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
 ```
 
@@ -299,9 +305,9 @@ Creates a `Point` corresponding to the given WKB representation.
 
 ```sql
 WITH t AS (
-  SELECT ST_ASBINARY(ST_GEOMFROMWKT('POINT(-76.09130 18.42750)')) AS wkb
+  SELECT carto.ST_ASBINARY(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)')) AS wkb
 )
-SELECT ST_POINTFROMWKB(wkb) FROM t;
+SELECT carto.ST_POINTFROMWKB(wkb) FROM t;
 -- 4QgBz/HU1QXwwN6vAQA=
 ```
 
@@ -323,6 +329,6 @@ Creates a `Polygon` corresponding to the given WKT representation.
 **Example**
 
 ```sql
-SELECT ST_ASGEOJSON(ST_POLYGONFROMTEXT('POLYGON((-73.98955 40.71278, -73.98958 40.71299, -73.98955 40.71278))'))
+SELECT carto.ST_ASGEOJSON(carto.ST_POLYGONFROMTEXT('POLYGON((-73.98955 40.71278, -73.98958 40.71299, -73.98955 40.71278))'));
 -- {"type":"Polygon","coordinates":[[[-73.98955,40.71278,0.0],[-73.98958,40.71299,0.0],[-73.98955,40.71278,0.0]...
 ```

@@ -28,6 +28,13 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### August 19, 2022
+
+#### Module s2
+
+Fixed
+- Fix S2_BOUNDARY inverted coordinates.
+
 ### August 11, 2022
 
 #### Module tiler

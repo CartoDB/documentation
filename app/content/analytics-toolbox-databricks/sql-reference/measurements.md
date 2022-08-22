@@ -17,7 +17,7 @@ If `Geometry` _g_ is areal, returns the area of its surface in square units of t
 **Example**
 
 ```sql
-SELECT ST_AREA(ST_MAKEBBOX(0, 0, 2, 2))
+SELECT carto.ST_AREA(carto.ST_MAKEBBOX(0, 0, 2, 2));
 -- 4
 ```
 
@@ -41,7 +41,7 @@ Returns the 2D Cartesian distance between the two geometries in units of the coo
 **Example**
 
 ```sql
-SELECT ST_DISTANCE(ST_POINT(0, 0), ST_POINT(0, 5))
+SELECT carto.ST_DISTANCE(carto.ST_POINT(0, 0), carto.ST_POINT(0, 5));
 -- 5
 ```
 
@@ -65,7 +65,7 @@ Approximates the minimum distance (in meters) between two longitude/latitude geo
 **Example**
 
 ```sql
-SELECT ST_DISTANCESPHERE(ST_POINT(0, 0), ST_POINT(0, 5)) / 1000
+SELECT carto.ST_DISTANCESPHERE(carto.ST_POINT(0, 0), carto.ST_POINT(0, 5)) / 1000;
 -- 555.9753986718438 (distance in km)
 ```
 
@@ -88,7 +88,7 @@ Returns the 2D path length of linear geometries, or perimeter of areal geometrie
 **Example**
 
 ```sql
-SELECT ST_LENGTH(ST_GEOMFROMWKT('LINESTRING(0 0, 0 3, 5 3)'))
+SELECT carto.ST_LENGTH(carto.ST_GEOMFROMWKT('LINESTRING(0 0, 0 3, 5 3)'));
 -- 8
 ```
 
@@ -111,6 +111,6 @@ Approximates the 2D path length of a `LineString` geometry using a spherical ear
 **Example**
 
 ```sql
-SELECT ST_LENGTHSPHERE(ST_GEOMFROMWKT('LINESTRING(0 0, 0 3, 5 3)')) / 1000
+SELECT carto.ST_LENGTHSPHERE(carto.ST_GEOMFROMWKT('LINESTRING(0 0, 0 3, 5 3)')) / 1000;
 -- 888.7982099954688 (distance in km)
 ```

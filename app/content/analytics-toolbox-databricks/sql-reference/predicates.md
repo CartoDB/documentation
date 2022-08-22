@@ -1,3 +1,9 @@
+## predicates
+
+<div class="badges"><div class="core"></div></div>
+
+This module contains functions that return a boolean based on the relation between 2 geometries or its properties.
+
 ### ST_CONTAINS
 
 {{% bannerNote type="code" %}}
@@ -19,10 +25,10 @@ Returns `true` if and only if no points of _b_ lie in the exterior of _a_, and a
 
 ```sql
 WITH t AS (
-  select ST_MAKEBBOX(0, 0, 2, 2) as geom,
-  ST_MAKEPOINT(1, 1) as Point
+  SELECT carto.ST_MAKEBBOX(0, 0, 2, 2) AS geom,
+  carto.ST_MAKEPOINT(1, 1) as Point
 )
-SELECT ST_CONTAINS(geom, point) FROM t
+SELECT carto.ST_CONTAINS(geom, point) FROM t;
 -- true
 ```
 
@@ -47,10 +53,10 @@ Returns `true` if the supplied geometries have some, but not all, interior point
 
 ```sql
 WITH t AS (
-  select ST_GEOMFROMWKT("LINESTRING (1 0, 1 2)") as lineA,
-  ST_GEOMFROMWKT("LINESTRING (0 1, 2 1)") as lineB
+  SELECT carto.ST_GEOMFROMWKT("LINESTRING (1 0, 1 2)") AS lineA,
+  carto.ST_GEOMFROMWKT("LINESTRING (0 1, 2 1)") AS lineB
 )
-SELECT ST_CROSSES(lineA, lineB) FROM t
+SELECT carto.ST_CROSSES(lineA, lineB) FROM t;
 -- true
 ```
 
@@ -75,10 +81,10 @@ Returns `true` if the geometries do not “spatially intersect”; i.e., they do
 
 ```sql
 WITH t AS (
-  select ST_GEOMFROMWKT("LINESTRING (1 0, 1 2)") as lineA,
-  ST_GEOMFROMWKT("LINESTRING (0 1, 2 1)") as lineB
+  SELECT carto.ST_GEOMFROMWKT("LINESTRING (1 0, 1 2)") AS lineA,
+  carto.ST_GEOMFROMWKT("LINESTRING (0 1, 2 1)") AS lineB
 )
-SELECT ST_DISJOINT(lineA, lineB) as disjoint FROM t
+SELECT carto.ST_DISJOINT(lineA, lineB) AS disjoint FROM t;
 -- false
 ```
 
@@ -103,10 +109,10 @@ Returns `true` if the given `Geometries` represent the same logical `Geometry`. 
 
 ```sql
 WITH t AS (
-  select ST_GEOMFROMWKT("LINESTRING (0 0, 2 2)") as lineA,
-  ST_GEOMFROMWKT("LINESTRING (0 0, 1 1, 2 2)") as lineB
+  SELECT carto.ST_GEOMFROMWKT("LINESTRING (0 0, 2 2)") AS lineA,
+  carto.ST_GEOMFROMWKT("LINESTRING (0 0, 1 1, 2 2)") AS lineB
 )
-SELECT ST_EQUALS(lineA, lineB) FROM t
+SELECT carto.ST_EQUALS(lineA, lineB) FROM t;
 -- true
 ```
 
@@ -131,10 +137,10 @@ Returns `true` if the geometries spatially intersect in 2D (i.e. share any porti
 
 ```sql
 WITH t AS (
-  select ST_GEOMFROMWKT("LINESTRING (1 0, 1 2)") as lineA,
-  ST_GEOMFROMWKT("LINESTRING (0 1, 2 1)") as lineB
+  SELECT carto.ST_GEOMFROMWKT("LINESTRING (1 0, 1 2)") AS lineA,
+  carto.ST_GEOMFROMWKT("LINESTRING (0 1, 2 1)") AS lineB
 )
-SELECT ST_INTERSECTS(lineA, lineB) FROM t
+SELECT carto.ST_INTERSECTS(lineA, lineB) FROM t;
 -- true
 ```
 
@@ -159,10 +165,10 @@ Returns `true` if the `Geometries` have some but not all points in common, are o
 
 ```sql
 WITH t AS (
-  select ST_MAKEBBOX(0, 0, 2, 2) as geomA,
-  ST_MAKEBBOX(1, 1, 3, 3) as geomB
+  SELECT carto.ST_MAKEBBOX(0, 0, 2, 2) AS geomA,
+  carto.ST_MAKEBBOX(1, 1, 3, 3) AS geomB
 )
-SELECT ST_OVERLAPS(geomA, geomB) FROM t
+SELECT carto.ST_OVERLAPS(geomA, geomB) FROM t;
 -- true
 ```
 
@@ -188,10 +194,10 @@ Returns the DE-9IM 3x3 interaction matrix pattern describing the dimensionality 
 
 ```sql
 WITH t AS (
-  select ST_MAKEBBOX(0, 0, 2, 2) as geomA,
-  ST_MAKEBBOX(1, 1, 3, 3) as geomB
+  SELECT carto.ST_MAKEBBOX(0, 0, 2, 2) AS geomA,
+  carto.ST_MAKEBBOX(1, 1, 3, 3) AS geomB
 )
-SELECT ST_RELATE(geomA, geomB) FROM t
+SELECT carto.ST_RELATE(geomA, geomB) FROM t;
 -- true
 ```
 
@@ -217,10 +223,10 @@ Returns `true` if the DE-9IM interaction matrix mask matches the interaction mat
 
 ```sql
 WITH t AS (
-  select ST_MAKEBBOX(0, 0, 2, 2) as geomA,
-  ST_MAKEBBOX(1, 1, 3, 3) as geomB
+  SELECT carto.ST_MAKEBBOX(0, 0, 2, 2) AS geomA,
+  carto.ST_MAKEBBOX(1, 1, 3, 3) AS geomB
 )
-SELECT ST_RELATEBOOL(geomA, geomB, "212101212") FROM t
+SELECT carto.ST_RELATEBOOL(geomA, geomB, "212101212") FROM t;
 -- true
 ```
 
@@ -245,10 +251,10 @@ Returns `true` if the geometries have at least one `Point` in common, but their 
 
 ```sql
 WITH t AS (
-  select ST_MAKEBBOX(0, 0, 2, 2) as geomA,
-  ST_GEOMFROMWKT("LINESTRING (3 1, 1 3)") as geomB
+  SELECT carto.ST_MAKEBBOX(0, 0, 2, 2) AS geomA,
+  carto.ST_GEOMFROMWKT("LINESTRING (3 1, 1 3)") AS geomB
 )
-SELECT ST_TOUCHES(geomA, geomB) FROM t
+SELECT carto.ST_TOUCHES(geomA, geomB) FROM t;
 -- true
 ```
 
@@ -273,9 +279,9 @@ Returns _true_ if geometry _a_ is completely inside geometry _b_.
 
 ```sql
 WITH t AS (
-  select ST_POINT(1, 1) as geomA,
-  ST_MAKEBBOX(0, 0, 2, 2) as geomB
+  SELECT carto.ST_POINT(1, 1) AS geomA,
+  carto.ST_MAKEBBOX(0, 0, 2, 2) AS geomB
 )
-SELECT ST_WITHIN(geomA, geomB) FROM t
+SELECT carto.ST_WITHIN(geomA, geomB) FROM t;
 -- true
 ```
