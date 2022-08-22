@@ -19,3 +19,8 @@ echo -e "\nUpdate Analytics Toolbox for PostgreSQL"
 echo "-------------------------------------"
 CLOUD=postgres BRANCH=master TARGETPATH=./app/content/analytics-toolbox-postgres \
 node ./scripts/projects/analytics-toolbox.js
+
+echo -e "\nUpdate Analytics Toolbox for Databricks"
+echo "-------------------------------------"
+CLOUD=databricks BRANCH=master TARGETPATH=./app/content/analytics-toolbox-databricks \
+node ./scripts/projects/analytics-toolbox.js

@@ -7,19 +7,25 @@ const cloud = process.env.CLOUD || '';
 const branch = process.env.BRANCH || '';
 const targetPath = process.env.TARGETPATH || '';
 
+// More cloud providers can be added to the array when they are adapted to the new cloud structure
+let cloudStructure = ['databricks']
+const hasCloudStructure = cloudStructure.includes(cloud)
+
 const index = [];
 let changelogs = [];
 
 updateModules('core');
-updateModules('');
+// When databricks has advanced AT functions, the conditional can be removed
+if (cloud !== 'databricks') updateModules('');
 updateOverview();
 updateReleaseNotes();
 
 function updateModules (type) {
-    const sourcePath = path.join(`./.checkout/at${type ? '-'+type : ''}-${cloud}-${branch}/modules`);
+
+    const sourcePath = path.join(`./.checkout/at${type ? '-'+type : ''}-${cloud}-${branch}/${getModulesPath()}`);
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {
-        const docPath = path.join(sourcePath, module, cloud, 'doc');
+        const docPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud, 'doc');
         if (fs.existsSync(docPath) && module != 'quadkey' && module != 'geocoding') {
             console.log(`- Update ${module} module`);
             const files = fs.readdirSync(docPath).filter(f => f.endsWith('.md')).sort((first, second) => {
@@ -38,11 +44,19 @@ function updateModules (type) {
                 type: type || 'advanced',
                 functions: files.map(f => path.parse(f).name).filter(f => !f.startsWith('_'))
             });
-            const changelogPath = path.join(sourcePath, module, cloud, 'CHANGELOG.md');
+            const changelogPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud, 'CHANGELOG.md');
             const changelogContent = fs.readFileSync(changelogPath).toString();
             changelogs = changelogs.concat(parseChangelog(module, changelogContent));
         }
     });
+}
+
+function getModulesPath() {
+    if (hasCloudStructure) {
+        return `clouds/${cloud}/modules`
+    } else {
+        return 'modules'
+    }
 }
 
 function aliasesHeader (path) {
