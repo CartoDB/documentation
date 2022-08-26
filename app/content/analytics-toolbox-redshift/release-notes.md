@@ -28,6 +28,13 @@ Changed
 Feature
 - Add CREATE_ISOLINES procedure.
 
+### August 26, 2022
+
+#### Module statistics
+
+Feature
+- Add GETIS_ORD_QUADBIN function.
+
 ### August 19, 2022
 
 #### Module s2

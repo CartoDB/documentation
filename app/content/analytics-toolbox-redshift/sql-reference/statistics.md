@@ -5,6 +5,39 @@
 This module contains functions to perform spatial statistics calculations.
 
 
+### GETIS_ORD_QUADBIN
+
+{{% bannerNote type="code" %}}
+carto.GETIS_ORD_QUADBIN(input, size, kernel)
+{{%/ bannerNote %}}
+
+**Description**
+
+This function computes the Getis-Ord Gi* statistic for each quadbin index in the input array.
+
+* `input`: `SUPER` input data with the indexes and values of the cells.
+* `size`: `INT8` size of the quadbin kring (distance from the origin). This defines the area around each index cell that will be taken into account to compute its Gi* statistic.
+* `kernel`: `VARCHAR` [kernel function](https://en.wikipedia.org/wiki/Kernel_(statistics)) to compute the spatial weights across the kring. Available functions are: uniform, triangular, quadratic, quartic and gaussian.
+
+**Return type**
+
+`SUPER`
+
+**Example**
+
+```sql
+SELECT carto.GETIS_ORD_QUADBIN(
+    JSON_PARSE('[
+        {"index": 5266443791933898751, "value": 51.0},
+        {"index": 5266443803500740607, "value": 28.0},
+        {"index": 5266443790415822847, "value": 19.0}
+    ]'),
+    3, 'gaussian'
+);
+-- {"5266443790415822847":-1.0142799267903513, "5266443803500740607":-0.34633948719670504, "5266443791933898751":1.3606194139870578}
+```
+
+
 ### MORANS_I_QUADBIN
 
 {{% bannerNote type="code" %}}

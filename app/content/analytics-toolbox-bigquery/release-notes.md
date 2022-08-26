@@ -4,6 +4,13 @@ aliases:
 ---
 ## Release notes
 
+### August 26, 2022
+
+#### Module tiler
+
+Add
+- Add `generate_feature_id` parameter in `CREATE_SIMPLE_TILESET`.
+
 ### August 19, 2022
 
 #### Module retail
