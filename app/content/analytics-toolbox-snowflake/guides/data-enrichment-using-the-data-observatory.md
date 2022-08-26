@@ -97,7 +97,7 @@ CALL carto.DATAOBS_ENRICH_POLYGONS
 
 The table resulting from running the previous query, `CENSUSSECTIONDISPLACEDCANARYISLANDS_2020_ENRICHED`, will include all the columns of the input table plus four additional columns, containing the value of each enrichment variable in each polygon. As shown below, the enrichment result can be analyzed with the help of a map and a set of interactive widgets created using Builder, our map making tool available from the CARTO Workspace. 
 
-<iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/9e517844-c1d0-42ee-82c6-69e15601f438" title="Enrichment of Snowflake"></iframe>
+<iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/6a9f04c3-40b0-47b7-8619-0bdcd82152f4" title="Enrichment of Snowflake"></iframe>
 
 To get started creating maps, we recommend the following resources from the documentation:
 * [Guide to create your first map](https://docs.carto.com/carto-user-manual/overview/getting-started/#quickstart-guide-to-create-your-first-map).
