@@ -12,7 +12,9 @@ The API with the base CARTO URL is displayed. You can copy and use it by clickin
 
 ### LDS Token
 
-The LDS (Location Data Services) Token is displayed. This is the customer’s token for accessing the different LDS API services. You can copy and use it by clicking on the icon on the right.
+<!-- The LDS (Location Data Services) Token is displayed. This is the customer’s token for accessing the different LDS API services. You can copy and use it by clicking on the icon on the right.
+ -->
+The LDS (Location Data Services) Token is displayed. This is the customer’s token for accessing the different LDS API services and it is a required parameter in all of <a href="https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/" target="_blank">LDS functions in BigQuery</a>. You can copy and use it by clicking on the icon on the right.
 
 ![Developers LDS Token](/img/cloud-native-workspace/developers/developers_lds_copy_token.png)
 
