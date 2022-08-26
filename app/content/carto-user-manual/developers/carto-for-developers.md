@@ -10,6 +10,12 @@ The API with the base CARTO URL is displayed. You can copy and use it by clickin
 
 ![Developers API Base URL](/img/cloud-native-workspace/developers/developers_api_base_url.png)
 
+### LDS Token
+
+The LDS (Location Data Services) Token is displayed. This is the customer’s token for accessing the different LDS API services. You can copy and use it by clicking on the icon on the right.
+
+![Developers LDS Token](/img/cloud-native-workspace/developers/developers_lds_copy_token.png)
+
 ### Managing built applications
 
 The CARTO Workspace includes options for managing your applications. From the *Settings* section, you can create, edit, or delete applications.
