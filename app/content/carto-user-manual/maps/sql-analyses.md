@@ -119,11 +119,11 @@ This analysis can be performed safely with up to \~700K rows. Bigger sources can
 
 ### Trade Areas
 
-This analysis leverages the `CREATE_ISOLINES` function in the CARTO Analytics Toolbox for [Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#create_isolines) and [Redshift](https://docs.carto.com/analytics-toolbox-redshift/sql-reference/lds/#create_isolines) to generate time or distance isolines based on different modes of transportation. 
+This analysis leverages the `CREATE_ISOLINES` function in the CARTO Analytics Toolbox for [BigQuery](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#create_isolines), [Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#create_isolines) and [Redshift](https://docs.carto.com/analytics-toolbox-redshift/sql-reference/lds/#create_isolines) to generate time or distance isolines based on different modes of transportation. 
 
 The input source for this analysis should contain point geometries that will be taken as the origin point for the isoline generation. 
 
-This SQL Analysis is only available for Snowflake and Redshift connections, and it requires a specific version of the CARTO Analytics Toolbox Advanced module to be installed:
+This SQL Analysis is available for BigQuery, Snowflake and Redshift connections, and it requires a specific minimum version of the CARTO Analytics Toolbox Advanced module to be installed:
 * Snowflake: `2022.06.09`
 * Redshift: `2022.06.07`
 
