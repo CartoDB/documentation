@@ -3,7 +3,7 @@
 Two types of geocoding are available: address-level geocoding, which transforms a given address into its corresponding point location, and latitude/longitude geocoding, which converts a pair of latitude and longitude coordinates into a point geometry.
 
 {{% bannerNote title="note" type="note" %}}
-Address level geocoding is currently available for Snowflake and Redshift connections, whereas lat/lon geocoding is also available for BigQuery. PostgreSQL and Databricks support is coming soon.
+Address level geocoding is currently available for BigQuery, Snowflake and Redshift connections. PostgreSQL and Databricks support is coming soon.
 {{%/ bannerNote %}}
 
 To geocode your data, select a connection and click on the table you would like to geocode from the collapsible tree. Then, click on the *Geocode data* button at the top right of the screen. Please note that this option will only be available if your table does not have a geography column.
