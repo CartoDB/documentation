@@ -18,8 +18,8 @@ Check this table to find out which analyses are available for each data warehous
 |**Add column from second source**|✅|✅|✅|✅
 |**Filter by column value**|✅|✅|✅|✅
 |**Calculate Centroids**|✅|✅|✅|✅
-|**Clustering K-Means**|✅ (\*)|✅ (\*)|✅
-|**Trade Areas**|||✅ (\*)|✅ (\*)
+|**Clustering K-Means**|✅ (\*)|✅|✅ (\*)
+|**Trade Areas**|✅ (\*)|✅|✅ (\*)|✅ (\*)
 
 _(*) Requires the CARTO Analytics Toolbox to be installed_
 
