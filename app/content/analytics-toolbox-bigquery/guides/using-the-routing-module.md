@@ -8,69 +8,32 @@ aliases:
 
 #### Importing linestrings from OpenStreetMap
 
-To create a route, we need a network. Let's extract linestrings from New York's Liberty Island from OpenStreetMap planet ways table in BigQuery to build ourselves a playground.
+To create a route, we need a network. Let's build ourselves a playground from New York's Liberty Island from OpenStreetMap planet ways table available in the public BigQuery dataset.
+During this process nodes and links are created, and the speed between each path is evaluated from OpenStreetMap tags.
+We are going to use the [`GENERATE_NETWORK`](../../sql-reference/routing/#generate_network) procedure:
 
-Be careful, this query scans a lot of data (223GB). You may skip this query by creating directly the `mydataset.liberty_island_linestrings` table from this [Newline-delimited JSON](/img/bq-analytics-toolbox/routing/liberty_island_linestrings_data.json) using this [schema](/img/bq-analytics-toolbox/routing/liberty_island_linestrings_schema.json).
-
-
-```sql
-CREATE TABLE
-  mydataset.liberty_island_linestrings AS
-SELECT
-  geometry,
-  all_tags
-FROM
-  `bigquery-public-data.geo_openstreetmap.planet_ways`,
-  UNNEST(all_tags) tag
-WHERE
-  --Keep only highway, discard buildings, borders ...
-  key = 'highway'
-  AND ST_INTERSECTS(geometry,
-    --NY Liberty Island Bounding Box:
-    ST_GEOGFROMGEOJSON("""{"type": "Polygon", 
-    "coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158], 
-    [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") ) 
-```
-
-#### Creating the network from linestrings
-
-Now let's create a compacted network. During this process all nodes with only two links are removed, but total distances between nodes are kept. 
-
-We are going to use the [`GENERATE_NETWORK_TABLE`](../../sql-reference/routing/#generate_network_table) procedure:
+In the fowlowing example, to reduce the amount of scanned data in this guide, we have replace the table `bigquery-public-data.geo_openstreetmap.planet_ways` with the table `cartobq.docs.liberty_island_ways` which is a subset of it around NY Liberty Island.
 
 ```sql
-CALL `carto-un`.carto.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestrings', 
+DECLARE area_of_interest GEOGRAPHY;
+--NY Liberty Island area of interest:
+SET area_of_interest = ST_GEOGFROMTEXT("POLYGON((-74.05 40.685, -74.04 40.685, -74.04 40.695, -74.05 40.695, -74.05 40.685))");
+  
+
+CALL `cartodb-gcp-backend-data-team.fbaptiste_carto.GENERATE_NETWORK_TABLE`(
+"SELECT * FROM `cartobq.docs.liberty_island_ways`",
+area_of_interest,
+"foot",
 'mydataset.liberty_island_network');
-```
-
-If you prefer, you can also use the [`GENERATE_NETWORK`](../../sql-reference/routing/#generate_network) function instead, although it requires a slightly more advanced query:
-
-```sql
-CREATE OR REPLACE TABLE
-  `mydataset.liberty_island_network` AS
-WITH
-  T AS(
-  SELECT
-    `carto-un`.carto.GENERATE_NETWORK`(ARRAY_AGG(STRUCT(geometry, 1.))) generate_network
-  FROM
-    `mydataset.my_test_linestrings` )
-SELECT
-  myunnest.*
-FROM
-  T,
-  UNNEST(generate_network) myunnest
 ```
 
 #### Visualizing the network
 
-Let's see the difference between the collection of linestrings (in red) and the compacted network (in blue). Compaction reduces drastically the number of nodes and thus links, but it preserves the length of paths between the remaining nodes.
+Let's see the difference between the compacted links (in red) and the full geometry (in blue). Compaction reduces drastically the number of nodes and thus links, but it preserves the length of paths between the remaining nodes.
 
 ```sql
-SELECT
-    geometry, 0 compacted FROM `mydataset.liberty_island_linestrings`
-UNION ALL
-SELECT
-    ST_MAKELINE(src_geo, dest_geo) line, 1 compacted FROM `mydataset.liberty_island_network`
+SELECT linestring, ST_MAKELINE(start_geo,dest_geo) compacted
+FROM `mydataset.liberty_island_network`
 ```
 
 <div style="text-align:center" >
@@ -81,37 +44,19 @@ SELECT
 
 ### Calculating the shortest path
 
-Let's calculate the shortest path between two points. 
-
-You can use the [`FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`](../../sql-reference/routing/#find_shortest_path_from_network_table) procedure:
+Let's calculate the shortest path between two points using the [`MATRIX_ROUTING`](../../sql-reference/routing/#matrix_routing) procedure and stare it in 'mydataset.routing_result'.
 
 ```sql
 CALL
-  `carto-un`.carto.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
-    "mydataset.my_shortest_path",
-    "ST_geogpoint(-74.04665, 40.68983)",
-    "ST_geogpoint(-74.0438, 40.68874)" )
+  `carto-un`.carto.fbaptiste_carto.MATRIX_ROUTING`(
+    "SELECT * FROM `mydataset.liberty_island_network`",
+    [ST_geogpoint(-74.04665, 40.68983)],
+    [ST_geogpoint(-74.0438, 40.68874)],
+    NULL,
+    'mydataset.routing_result'
+);
 ```
 
-
-Our you can use the [`FIND_SHORTEST_PATH_FROM_NETWORK`](../../sql-reference/routing/#find_shortest_path_from_network) function, which is a bit trickier than using the procedure:
-
-```sql
-WITH
-  T AS(
-  SELECT
-    `carto-un`.carto.FIND_SHORTEST_PATH_FROM_NETWORK`(ARRAY_AGG(flatten_links),
-      ST_geogpoint(-74.04665,
-        40.68983),
-      ST_geogpoint(-74.0438,
-        40.68874)) myroutes
-  FROM
-    `mydataset.liberty_island_network` flatten_links )
-SELECT
-  myroutes.*
-FROM
-  T
-```
 
 Here is the result:
 
@@ -130,27 +75,13 @@ You can use the [`DISTANCE_MAP_FROM_NETWORK_TABLE`](../../sql-reference/routing/
 
 ```sql
 CALL
-  `carto-un`.carto.DISTANCE_MAP_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
-    "mydataset.my_distance_map",
-    "ST_geogpoint(-74.0438, 40.68874)" )
-```
-
-Or you can use the [`DISTANCE_MAP_FROM_NETWORK`](../../sql-reference/routing/#distance_map_from_network) function, which is a bit trickier than using the procedure:
-
-```sql
-WITH
-  T AS(
-  SELECT
-    `carto-un`.carto.DISTANCE_MAP_FROM_NETWORK`(ARRAY_AGG(flatten_links),
-      ST_geogpoint(-74.0438,
-        40.68874)) distance_map
-  FROM
-    `mydataset.liberty_island_network` flatten_links )
-SELECT
-  myunnest.*
-FROM
-  T,
-  UNNEST(distance_map) myunnest
+  `carto-un`.carto.fbaptiste_carto.MATRIX_ROUTING`(
+    "SELECT * FROM `mydataset.liberty_island_network`",
+    [ST_geogpoint(-74.0438, 40.68874)],
+    NULL,
+    NULL,
+    'mydataset.distance_map'
+);
 ```
 
 
