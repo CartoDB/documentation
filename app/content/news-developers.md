@@ -28,7 +28,7 @@ In CARTO for React 1.3 we have many new features, including:
 
 - Some of the widgets now support a [global mode](https://docs.carto.com/react/guides/widgets#modes-behavior) where calculations are made over the full dataset, not just with data for the current viewport.
 
-- Support for sources using dynamic tiling and [spatial indexed](https://docs.carto.com/react/guides/data-sources#spatial-indexes) geometries (H3 and Quadbin).
+- Support for sources using dynamic tiling and [spatially indexed](https://docs.carto.com/react/guides/data-sources#spatial-indexes) geometries (H3 and Quadbin).
 
 <img src="https://docs.carto.com/img/news-developers/tiling.mp4" />
 
