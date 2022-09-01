@@ -8,6 +8,34 @@ menu:
     url: "news-developers"
 ---
 
+### Announcing CARTO for React 1.3 and deck.gl 8.8
+
+##### 2022-07-11
+
+The new versions of CARTO for React (1.3) and deck.gl (8.8) have been released.
+
+These are the highlights of deck.gl 8.8 for CARTO users:
+
+- The [CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer) now works only with dynamic tiles. The `format` property has been removed. If you want to keep using GeoJSON instead of tiles, you can do it with the `fetchLayerData` function.
+  
+- Dynamic tiling is now supported when the map type is [QUERY](https://deck.gl/docs/api-reference/carto/carto-layer#type), in addition to TABLE.
+  
+- Dynamic and static tilesets can now use spatial indexed geometries (H3 and Quadbin), in addition to regular geometries. 
+
+In CARTO for React 1.3 we have many new features, including:
+
+- [BarWidget](https://docs.carto.com/react/library-reference/widgets#barwidget), providing a chart with vertical bars for qualitative/categorical data.
+
+- Some of the widgets now support a [global mode](https://docs.carto.com/react/guides/widgets#modes-behavior) where calculations are made over the full dataset, not just with data for the current viewport.
+
+- Support for sources using dynamic tiling and [spatial indexed](https://docs.carto.com/react/guides/data-sources#spatial-indexes) geometries (H3 and Quadbin).
+
+<img src="https://docs.carto.com/img/news-developers/tiling.mp4" />
+
+For additional information check the documentation ([CARTO for deck.gl](https://docs.carto.com/deck-gl) / [CARTO for React](https://docs.carto.com/react) and the release notes ([CARTO for deck.gl](https://docs.carto.com/deck-gl/release-notes/) / [CARTO for React](https://docs.carto.com/react/release-notes/)). You can also check the full changelog with the complete list of improvements and bug fixes for [deck.gl](https://github.com/visgl/deck.gl/blob/master/CHANGELOG.md) and the CARTO for React [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md) and [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md).
+
+---
+
 ### CARTO for React 1.2 and deck.gl 8.7 now available
 
 ##### 2022-03-04
