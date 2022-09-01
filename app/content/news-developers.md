@@ -30,7 +30,7 @@ In CARTO for React 1.3 we have many new features, including:
 
 - Support for sources using dynamic tiling and [spatially indexed](https://docs.carto.com/react/guides/data-sources#spatial-indexes) geometries (H3 and Quadbin).
 
-<img src="https://docs.carto.com/img/news-developers/tiling.mp4" />
+<video autoplay="" loop="" muted=""> <source src="https://docs.carto.com/img/news-developers/tiling.mp4" type="video/mp4"> Your browser does not support the video tag. </video>
 
 For additional information check the documentation ([CARTO for deck.gl](https://docs.carto.com/deck-gl) / [CARTO for React](https://docs.carto.com/react) and the release notes ([CARTO for deck.gl](https://docs.carto.com/deck-gl/release-notes/) / [CARTO for React](https://docs.carto.com/react/release-notes/)). You can also check the full changelog with the complete list of improvements and bug fixes for [deck.gl](https://github.com/visgl/deck.gl/blob/master/CHANGELOG.md) and the CARTO for React [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md) and [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md).
 
