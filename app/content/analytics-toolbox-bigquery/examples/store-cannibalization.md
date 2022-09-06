@@ -1,14 +1,14 @@
 ---
-title: "Store cannibalization: Quantifying the effect of opening new stores on your existing stores"
+title: "Store cannibalization: quantifying the effect of opening new stores on your existing network"
 description: "Cannibalization is a very common analysis in retail that consists in quantifying the impact of new store openings on existing stores."
 image: "/img/bq-analytics-toolbox/examples/store-cannibalization-0.png"
 type: examples
-date: "2022-09-05"
+date: "2022-09-06"
 categories:
     - h3
     - retail
 ---
-## Store cannibalization: Quantifying the effect of opening new stores on your existing stores
+## Store cannibalization: quantifying the effect of opening new stores on your existing network
 
 
 Cannibalization is a very common analysis in retail that consists in quantifying the impact of new store openings on existing stores. Depending on the business, the metric/s driving this impact can be different, e.g. population, footfall, or simply the overlapping area covered by the catchment area of two stores. 
