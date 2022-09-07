@@ -2,7 +2,7 @@
 title: Analytics Toolbox for Databricks
 description: "Unlock Spatial Analytics in Databricks"
 icon: "/img/icons/databricks-analytics-toolbox.png"
-repoUrl: https://github.com/CartoDB/analytics-toolbox-databricks
+repoUrl: https://github.com/CartoDB/analytics-toolbox-core
 
 url: analytics-toolbox-databricks
 indexPage: "overview/getting-started.md"
