@@ -14,7 +14,7 @@ To install the CARTO Analytics Toolbox in your Databricks cluster, follow the in
 
 * Click _Install_ to finish the process. Dependencies of the package will be installed transitively
 
-Once the package is installed, you need to create the SQL UDFs functions in your cluster, open a SQL console and run [this script](https://github.com/CartoDB/analytics-toolbox-databricks/blob/master/core/sql/createUDFs.sql):
+Once the package is installed, you need to create the SQL UDFs functions in your cluster, open a SQL console and run [this script](https://github.com/CartoDB/analytics-toolbox-core/blob/master/clouds/databricks/libraries/scala/core/src/main/resources/sql/createUDFs.sql):
 
 <div style="text-align:center" >
   <img src="/img/databricks-analytics-toolbox/databricks-install-udf.png" alt="SQL UDFs functions in your cluster" style="width:100%">
