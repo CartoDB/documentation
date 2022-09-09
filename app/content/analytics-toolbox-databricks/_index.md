@@ -23,6 +23,7 @@ cascade:
         - title: "accessors"
         - title: "constructors"
         - title: "formatters"
+        - title: "indexing"
         - title: "measurements"
         - title: "parsers"
         - title: "predicates"
