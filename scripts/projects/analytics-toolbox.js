@@ -143,11 +143,11 @@ function updateReleaseNotes () {
 function parseChangelog (module, content) {
     const pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[))/g;
     const output = [];
+    content += "## ["
     const matches = [ ...content.matchAll(pattern) ];
     for (const match of matches) {
         const { version, date, changes } = match.groups;
         output.push({ module, version, date, changes: trimChar(trimChar(changes.trim(), '#').trim(), '\n').trim() });
-        //
     }
     return output;
 }

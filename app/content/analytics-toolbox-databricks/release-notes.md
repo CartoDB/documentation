@@ -31,7 +31,7 @@ Feature
 
 ### August 19, 2022
 
-Added
+Feature
 - [accessors] Add ST_COORDDIM function.
 - [accessors] Add ST_DIMENSION function.
 - [accessors] Add ST_ENVELOPE function.
