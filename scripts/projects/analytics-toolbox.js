@@ -141,10 +141,9 @@ function updateReleaseNotes () {
 }
 
 function parseChangelog (module, content) {
-    const pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>[^\[]+)/g;
+    let pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>[^\[]+)/g;
     if ( hasCloudStructure) {
-        pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[))/g;
-        content += "## ["
+        pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[|$))/g;
     }
     const output = [];
     const matches = [ ...content.matchAll(pattern) ];
