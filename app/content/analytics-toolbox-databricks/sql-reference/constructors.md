@@ -134,7 +134,7 @@ SELECT carto.ST_ASTEXT(carto.ST_MAKEPOLYGON(carto.ST_GEOMFROMWKT('LINESTRING(75 
 ### ST_POINT
 
 {{% bannerNote type="code" %}}
-carto.ST_POINT(x. y)
+carto.ST_POINT(x, y)
 {{%/ bannerNote %}}
 
 **Description**

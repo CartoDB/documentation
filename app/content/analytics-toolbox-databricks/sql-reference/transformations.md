@@ -56,6 +56,32 @@ SELECT carto.ST_ASTEXT(carto.ST_BOUNDARY(geom)) FROM t;
 -- LINESTRING (0 0, 0 2, 2 2, 2 0, 0 0)
 ```
 
+### ST_BUFFERPOINT
+
+{{% bannerNote type="code" %}}
+carto.ST_BUFFERPOINT(point, radius)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns a `Geometry` covering all points within a given radius of Point _point_, where radius is given in meters.
+
+Returns the boundary, or an empty `Geometry` of appropriate dimension, if _geom_ is empty.
+
+* `point`: `Point` Center of the buffer.
+* `buffer`: `Double` radius in meters.
+
+**Return type**
+
+`Geometry`
+
+**Example**
+
+```sql
+SELECT carto.ST_ASTEXT(carto.ST_BUFFERPOINT(carto.ST_POINT(0, 0), 1));;
+-- POLYGON ((0.000009 0, 0.000009 0.0000006, 0.0000089 0.0000011, 0.0000088 0.0000017, ...
+```
+
 ### ST_CENTROID
 
 {{% bannerNote type="code" %}}
@@ -85,7 +111,7 @@ SELECT carto.ST_ASTEXT(carto.ST_CENTROID(geom)) FROM t;
 ### ST_CLOSESTPOINT
 
 {{% bannerNote type="code" %}}
-carto.ST_CLOSESTPOINT(geoA, geomB)
+carto.ST_CLOSESTPOINT(geomA, geomB)
 {{%/ bannerNote %}}
 
 **Description**
@@ -136,6 +162,34 @@ SELECT carto.ST_ASTEXT(carto.ST_CONVEXHULL(geom)) FROM t;
 -- POLYGON ((-5 -5, -5 -1, 3 5, -1 -5, -5 -5))
 ```
 
+### ST_DIFFERENCE
+
+{{% bannerNote type="code" %}}
+carto.ST_DIFFERENCE(geomA, geomB)
+{{%/ bannerNote %}}
+
+**Description**
+
+Return the part of geomA that does not intersect with geomB. 
+
+* `geomA`: `Geometry` input geom A.
+* `geomB`: `Geometry` input geom B.
+
+**Return type**
+
+`Geometry`
+
+**Example**
+
+```sql
+WITH t AS (
+  SELECT carto.ST_MAKEBBOX(0, 0, 2, 2) AS geomA,
+  carto.ST_MAKEBBOX(1, 1, 3, 3) AS geomB
+)
+SELECT carto.ST_ASTEXT(carto.ST_DIFFERENCE(geomA, geomB)) AS difference FROM t;
+-- POLYGON ((0 0, 0 2, 1 2, 1 1, 2 1, 2 0, 0 0))
+```
+
 ### ST_EXTERIORRING
 
 {{% bannerNote type="code" %}}
@@ -163,6 +217,7 @@ SELECT carto.ST_ASTEXT(carto.ST_EXTERIORRING(geom)) FROM t;
 ```
 
 ### ST_IDLSAFEGEOM
+
 {{% bannerNote type="code" %}}
 carto.ST_IDLSAFEGEOM(geom)
 {{%/ bannerNote %}}
@@ -240,6 +295,67 @@ WITH t AS (
 )
 SELECT carto.ST_ASTEXT(carto.ST_INTERSECTION(geomA, geomB)) AS intersection FROM t;
 -- POLYGON ((1 2, 2 2, 2 1, 1 1, 1 2))
+```
+
+### ST_SIMPLIFY
+
+{{% bannerNote type="code" %}}
+carto.ST_SIMPLIFY(geom, tolerance)
+{{%/ bannerNote %}}
+
+**Description**
+
+Returns a simplified version of the given `Geometry` using the Douglas-Peucker algorithm. This function does not preserve topology - e.g. polygons can be split, collapse to lines or disappear holes can be created or disappear, and lines can cross. To simplify geometry while preserving topology use ST_SIMPLIFYPRESERVETOPOLOGY. 
+
+* `geom`: `Geometry` input geom.
+* `tolerance`: `Double` input distance tolerance.
+double 
+
+**Return type**
+
+`Geometry`
+
+**Example**
+
+```sql
+WITH t AS (
+  SELECT carto.ST_BUFFERPOINT(carto.ST_POINT(0, 0), 10) AS geom
+)
+SELECT carto.ST_ASTEXT(carto.ST_SIMPLIFY(geom, 0.00001)) AS simplifiedGeom, 
+    carto.ST_NUMPOINTS(carto.ST_SIMPLIFY(geom, 0.00001)) AS simplifiedNumpoints, 
+    carto.ST_NUMPOINTS(geom) AS numPoints FROM t;
+-- POLYGON ((0.0000899 0, 0.0000656 0.0000616, 0 0.0000899, -0.0000616 0.0000656, -0.0000899 0, -0.0000656 -0.0000616, 0 -0.0000899, 0.0000616 -0.0000656, 0.0000899 0)) | 9 | 101
+```
+
+### ST_SIMPLIFYPRESERVETOPOLOGY
+
+{{% bannerNote type="code" %}}
+carto.ST_SIMPLIFYPRESERVETOPOLOGY(geom, tolerance)
+{{%/ bannerNote %}}
+
+**Description**
+
+Simplifies a `Geometry` and ensures that the result is a valid geometry having the same dimension and number of components as the input, and with the components having the same topological relationship.
+
+
+* `geom`: `Geometry` input geom.
+* `tolerance`: `Double` input distance tolerance.
+double 
+
+**Return type**
+
+`Geometry`
+
+**Example**
+
+```sql
+WITH t AS (
+  SELECT carto.ST_BUFFERPOINT(carto.ST_POINT(0, 0), 10) AS geom
+)
+SELECT carto.ST_ASTEXT(carto.ST_SIMPLIFYPRESERVETOPOLOGY(geom, 1)) AS simplifiedGeom, 
+    carto.ST_NUMPOINTS(carto.ST_SIMPLIFYPRESERVETOPOLOGY(geom, 1)) AS simplifiedNumpoints, 
+    carto.ST_NUMPOINTS(geom) AS numPoints FROM t;
+-- POLYGON ((0.0000899 0, 0 0.0000899, -0.0000899 0, 0 -0.0000899, 0.0000899 0)) | 5 | 101
 ```
 
 ### ST_TRANSLATE

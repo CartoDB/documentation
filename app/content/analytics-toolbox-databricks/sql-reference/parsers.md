@@ -31,28 +31,6 @@ SELECT carto.ST_ASTEXT(carto.ST_BOX2DFROMGEOHASH(geohash, 5)) FROM t;
 -- POLYGON ((-90 11.25, -90 22.5, -67.5 22.5, -67.5 11.25, -90 11.25))
 ```
 
-### ST_GEOMETRYFROMTEXT
-{{% bannerNote type="code" %}}
-carto.ST_GEOMETRYFROMTEXT(wkt)
-{{%/ bannerNote %}}
-
-**Description**
-
-Alias of st_geomFromWKT.
-
-* `wkt`: `String` WKT text.
-
-**Return type**
-
-`Geometry`
-
-**Example**
-
-```sql
-SELECT carto.ST_ASGEOJSON(carto.ST_GEOMETRYFROMTEXT('POINT(-76.09130 18.42750)'));
--- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
-```
-
 ### ST_GEOMFROMGEOHASH
 
 {{% bannerNote type="code" %}}
@@ -81,6 +59,7 @@ SELECT carto.ST_ASTEXT(carto.ST_GEOMFROMGEOHASH(geohash, 8)) FROM t;
 ```
 
 ### ST_GEOMFROMGEOJSON
+
 {{% bannerNote type="code" %}}
 carto.ST_GEOMFROMGEOJSON(geojson)
 {{%/ bannerNote %}}
@@ -102,7 +81,57 @@ SELECT carto.ST_ASTEXT(carto.ST_GEOMFROMGEOJSON('{"type":"Point","coordinates":[
 -- POINT (-76.0913 18.4275)
 ```
 
+### ST_GEOMFROMTEXT
+
+{{% bannerNote type="code" %}}
+carto.ST_GEOMFROMTEXT(wkt)
+{{%/ bannerNote %}}
+
+**Description**
+
+Alias of st_geomFromWKT.
+
+* `wkt`: `String` WKT text.
+
+**Return type**
+
+`Geometry`
+
+**Example**
+
+```sql
+SELECT carto.ST_ASGEOJSON(carto.ST_GEOMFROMTEXT('POINT(-76.09130 18.42750)'));
+-- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
+```
+
+### ST_GEOMFROMTWKB
+
+{{% bannerNote type="code" %}}
+carto.ST_GEOMFROMTWKB(wkb)
+{{%/ bannerNote %}}
+
+**Description**
+
+Creates a `Geometry` from the given Well-Known Binary representation (TWKB).
+
+* `wkb`: `Array[Byte]` geom in TWKB format.
+
+**Return type**
+
+`Geometry`
+
+**Example**
+
+```sql
+WITH t AS (
+  SELECT carto.ST_ASTWKB(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)')) AS twkb
+)
+SELECT carto.ST_GEOMFROMTWKB(twkb) FROM t;
+-- 4QgBz/HU1QXwwN6vAQA=
+```
+
 ### ST_GEOMFROMWKB
+
 {{% bannerNote type="code" %}}
 carto.ST_GEOMFROMWKB(wkb)
 {{%/ bannerNote %}}
@@ -173,6 +202,7 @@ SELECT carto.ST_ASGEOJSON(carto.ST_LINEFROMTEXT('LINESTRING(0 0, 0 3, 5 3)'));
 ```
 
 ### ST_MLINEFROMTEXT
+
 {{% bannerNote type="code" %}}
 carto.ST_MLINEFROMTEXT(wkt)
 {{%/ bannerNote %}}
@@ -195,6 +225,7 @@ SELECT carto.ST_ASGEOJSON(carto.ST_MLINEFROMTEXT('MULTILINESTRING((1 1, 3 5), (-
 ```
 
 ### ST_MPOINTFROMTEXT
+
 {{% bannerNote type="code" %}}
 carto.ST_MPOINTFROMTEXT(wkt)
 {{%/ bannerNote %}}
@@ -217,6 +248,7 @@ SELECT carto.ST_ASGEOJSON(carto.ST_MPOINTFROMTEXT('MULTIPOINT (10 40, 40 30, 20 
 ```
 
 ### ST_MPOLYFROMTEXT
+
 {{% bannerNote type="code" %}}
 carto.ST_MPOLYFROMTEXT(wkt)
 {{%/ bannerNote %}}
@@ -239,6 +271,7 @@ SELECT carto.ST_ASGEOJSON(carto.ST_MPOLYFROMTEXT('MULTIPOLYGON (((30 20, 45 40, 
 ```
 
 ### ST_POINTFROMGEOHASH
+
 {{% bannerNote type="code" %}}
 carto.ST_POINTFROMGEOHASH(geohash, prec)
 {{%/ bannerNote %}}
@@ -265,6 +298,7 @@ SELECT carto.ST_ASTEXT(carto.ST_POINTFROMGEOHASH(geohash, 5)) FROM t;
 ```
 
 ### ST_POINTFROMTEXT
+
 {{% bannerNote type="code" %}}
 carto.ST_POINTFROMTEXT(wkt)
 {{%/ bannerNote %}}
@@ -287,6 +321,7 @@ SELECT carto.ST_ASGEOJSON(carto.ST_POINTFROMTEXT('POINT(-76.09130 18.42750)'));
 ```
 
 ### ST_POINTFROMWKB
+
 {{% bannerNote type="code" %}}
 carto.ST_POINTFROMWKB(wkb)
 {{%/ bannerNote %}}
@@ -312,6 +347,7 @@ SELECT carto.ST_POINTFROMWKB(wkb) FROM t;
 ```
 
 ### ST_POLYGONFROMTEXT
+
 {{% bannerNote type="code" %}}
 carto.ST_POLYGONFROMTEXT(wkt)
 {{%/ bannerNote %}}
