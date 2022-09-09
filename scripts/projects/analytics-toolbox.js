@@ -8,7 +8,7 @@ const branch = process.env.BRANCH || '';
 const targetPath = process.env.TARGETPATH || '';
 
 // More cloud providers can be added to the array when they are adapted to the new cloud structure
-let cloudStructure = ['databricks']
+let cloudStructure = ['databricks', 'snowflake', 'redshift', 'postgres']
 const hasCloudStructure = cloudStructure.includes(cloud)
 
 const index = [];
@@ -25,7 +25,7 @@ function updateModules (type) {
     const sourcePath = path.join(`./.checkout/at${type ? '-'+type : ''}-${cloud}-${branch}/${getModulesPath()}`);
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {
-        const docPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud, 'doc');
+        const docPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud + '/doc');
         if (fs.existsSync(docPath) && module != 'quadkey' && module != 'geocoding') {
             console.log(`- Update ${module} module`);
             const files = fs.readdirSync(docPath).filter(f => f.endsWith('.md')).sort((first, second) => {
@@ -44,16 +44,25 @@ function updateModules (type) {
                 type: type || 'advanced',
                 functions: files.map(f => path.parse(f).name).filter(f => !f.startsWith('_'))
             });
-            const changelogPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud, 'CHANGELOG.md');
-            const changelogContent = fs.readFileSync(changelogPath).toString();
-            changelogs = changelogs.concat(parseChangelog(module, changelogContent));
+            if (!hasCloudStructure) {
+                const changelogPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud, 'CHANGELOG.md');
+                const changelogContent = fs.readFileSync(changelogPath).toString();
+                changelogs = changelogs.concat(parseChangelog(module, changelogContent));
+            }
+            
         }
     });
+
+    if (hasCloudStructure) {
+        const changelogPath = path.join(`./.checkout/at${type ? '-'+type : ''}-${cloud}-${branch}/clouds/${cloud}/CHANGELOG.md`);
+        const changelogContent = fs.readFileSync(changelogPath).toString();
+        changelogs = changelogs.concat(parseChangelog(module, changelogContent));
+    }
 }
 
 function getModulesPath() {
     if (hasCloudStructure) {
-        return `clouds/${cloud}/modules`
+        return `clouds/${cloud}/modules/doc`
     } else {
         return 'modules'
     }
@@ -116,7 +125,9 @@ function updateReleaseNotes () {
         content += `### ${formatDate(date)}\n\n`;
         const items = changelogs.filter(c => c.date === date);
         for (const item of items) {
-            content += `#### Module ${item.module}\n\n`;
+            if (!hasCloudStructure) {
+                content += `#### Module ${item.module}\n\n`;
+            }
             content += `${item.changes.replace(/Added/g, 'Feature').replace(/### /g, '')}\n\n`;
         }
     }
@@ -130,7 +141,10 @@ function updateReleaseNotes () {
 }
 
 function parseChangelog (module, content) {
-    const pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>[^\[]+)/g;
+    let pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>[^\[]+)/g;
+    if ( hasCloudStructure) {
+        pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[|$))/g;
+    }
     const output = [];
     const matches = [ ...content.matchAll(pattern) ];
     for (const match of matches) {
