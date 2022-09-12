@@ -50,10 +50,10 @@ SELECT carto.ST_ASGEOJSON(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'));
 -- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
 ```
 
-### ST_ASGEOJSON
+### ST_ASLATLONTEXT
 
 {{% bannerNote type="code" %}}
-carto.ST_ASGEOJSON(p)
+carto.ST_ASLATLONTEXT(p)
 {{%/ bannerNote %}}
 
 **Description**
@@ -73,7 +73,7 @@ SELECT carto.ST_ASLATLONTEXT(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'));
 -- 18°25'39.000"N 77°54'31.320"W
 ```
 
-### ST_ASGEOJSON
+### ST_ASTEXT
 
 {{% bannerNote type="code" %}}
 carto.ST_ASTEXT(geom)
