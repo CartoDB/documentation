@@ -39,11 +39,11 @@ These service accounts will have the necessary permissions to run all the functi
 The Analytics Toolbox can be run from:
 
 * your BigQuery console, after creating an OAuth connection to BigQuery from the Workspace.
-* any BigQuery client, authenticated using a Service Account that has been previously used to create a connection to BigQuery from the Workspace. 
+* any BigQuery client, authenticated using a Service Account that has been previously used to create a connection to BigQuery from the Workspace.
 * directly from the Workspace, by:
   * Creating tilesets from the Data Explorer following [this guide](/analytics-toolbox-bigquery/guides/creating-and-visualizing-tilesets/#from-the-carto-workspace).
   * Creating custom SQL layers in Builder following [this guide](/analytics-toolbox-bigquery/guides/running-queries-from-builder/).
-  * Enriching your data with Data Observatory subscriptions following [this guide](/carto-user-manual/data-explorer/enriching-data/). 
+  * Enriching your data with Data Observatory subscriptions following [this guide](/carto-user-manual/data-explorer/enriching-data/).
 
 {{% bannerNote title="CONTACT SUPPORT" type="info" %}}
 If you are a CARTO customer and need access to the Analytics Toolbox in a different BigQuery region or wish to install the Analytics Toolbox on your own projects if your BigQuery datasets are [within a VPC](https://cloud.google.com/vpc-service-controls), please follow the [manual installation guide](#manual-installation).
@@ -132,7 +132,7 @@ unzip carto-analytics-toolbox-core-bigquery-latest.zip
 cd $(unzip -Z -1 carto-analytics-toolbox-core-bigquery-latest.zip | head -1)
 
 # Prepare SQL code
-sed -e 's!<BUCKET>!'"$BUCKET"'!g'  modules.sql > modules_rep.sql
+sed -e 's!@@BUCKET@@!'"$BUCKET"'!g'  modules.sql > modules_rep.sql
 
 # Copy libs to bucket
 gsutil -m cp -r libs/ gs://$BUCKET/carto/
