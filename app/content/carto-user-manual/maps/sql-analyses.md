@@ -14,7 +14,7 @@ Check this table to find out which analyses are available for each data warehous
 |   |**BigQuery**|**CARTO DW**|**Redshift**|**Snowflake**
 |---|---|---|---|---|
 |**Intersect and Aggregate**|✅|✅|✅|
-|**Create buffers**|✅|✅||✅ (\*)
+|**Create buffers**|✅|✅||
 |**Add column from second source**|✅|✅|✅|✅
 |**Filter by column value**|✅|✅|✅|✅
 |**Calculate Centroids**|✅|✅|✅|✅
