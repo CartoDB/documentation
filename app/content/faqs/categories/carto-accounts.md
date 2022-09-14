@@ -16,6 +16,8 @@
 
 [Can I setup a Single Sign-On integration in the new platform?](#can-i-setup-a-single-sign-on-integration-in-the-new-platform)
 
+[Where can I see my current quotas and usage?](#where-can-i-see-my-current-quotas-and-usage)
+
 ---
 
 <!-- Using level 5 headers to avoid the title being listed in the tree -->
@@ -64,6 +66,12 @@ Yes, it is. Check [our guide here](/faqs/categories/carto-for-education/) and le
 Yes, just get in touch with your contact or with support@carto.com and we'll guide you through the process. In the end, users in your organization will see your SSO integration as the only way to access your organization.
 
 ---
+
+##### Where can I see my current quotas and usage?
+To understand the current plan limits (quotas) and how far are you from reaching them, there's a section located in Workspace > Settings > Subscription > Quotas where you can check all this information at any time. Check [Understanding your Organization Quotas](/carto-user-manual/settings/understanding-your-organization-settings/) for examples and 
+
+---
+
 
 
 
