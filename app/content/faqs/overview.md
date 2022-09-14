@@ -9,6 +9,7 @@
 * [Will I be forced to move all my data to the new version of the CARTO platform?](../categories/carto-accounts/#will-i-be-forced-to-move-all-my-data-to-the-new-version-of-the-carto-platform)
 * [Is CARTO’s Student Package still available?](../categories/carto-accounts/#is-cartos-student-package-still-available)
 * [Can I setup a Single Sign-On integration in the new platform?](../categories/carto-accounts/#can-i-setup-a-single-sign-on-integration-in-the-new-platform)
+* [Where can I see my current quotas and usage?](../categories/carto-accounts/#where-can-I-see-my-current-quotas-and-usage)
 
 
 

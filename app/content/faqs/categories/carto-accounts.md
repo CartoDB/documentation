@@ -68,7 +68,7 @@ Yes, just get in touch with your contact or with support@carto.com and we'll gui
 ---
 
 ##### Where can I see my current quotas and usage?
-To understand the current plan limits (quotas) and how far are you from reaching them, there's a section located in Workspace > Settings > Subscription > Quotas where you can check all this information at any time. Check [Understanding your Organization Quotas](/carto-user-manual/settings/understanding-your-organization-settings/) for examples and 
+To understand the current plan limits (quotas) and how far are you from reaching them, there's a section located in Workspace > Settings > Subscription > Quotas where you can check all this information at any time. Check [Understanding your Organization Quotas](/carto-user-manual/settings/understanding-your-organization-settings/) for examples and more information.
 
 ---
 
