@@ -57,7 +57,7 @@ cascade:
     - title: "Settings" 
       folder:
         - title: "Configuring your organization"
-        #- title: "Your subscription"
+        - title: "Understanding your organization quotas"
         - title: "Managing registered apps"
         - title: "Inviting users to your organization"
         - title: "Managing user roles"
