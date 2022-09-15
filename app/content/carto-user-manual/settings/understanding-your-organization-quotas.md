@@ -8,10 +8,12 @@ Let's review these quotas more in depth, with examples to help you predict usage
 
 #### Editor users
 
-An editor is a user that has permissions to create and edit maps, connections, applications... This is a hard quota, and will be enforced whenever you try to add new editors. For more information on how to manage users, check [Managing User Roles](/carto-user-manual/settings/managing-user-roles/).
+An editor is a user that has permissions to create and edit maps, connections, applications... This is a hard quota, and will be enforced whenever you try to add new editors or when new editors try join the organization. For more information on how to manage users, check [Managing User Roles](/carto-user-manual/settings/managing-user-roles/).
+
+Users set as "Admin" also count towards the editor quotas.
 
 {{% bannerNote title="Example"%}}
-If I already have 3 out of 3 editors available, I won't be able to invite new editors or promote viewers to editors.
+If I already have 3 out of 3 editors/admins available, I won't be able to invite new editors or promote viewers to editors or admins.
 {{%/ bannerNote %}}
 
 --- 
@@ -21,26 +23,24 @@ If I already have 3 out of 3 editors available, I won't be able to invite new ed
 A viewer is a user that can only view the objects (maps, applications...) produced in the organization. They can't create or edit anything in the organization... This is a hard quota, and will be enforced whenever users try to signup or whenever you try to add new viewers through invitations or roles. For more information on how to manage users, check [Managing User Roles](/carto-user-manual/settings/managing-user-roles/).
 
 {{% bannerNote title="Example"%}}
-If I already have 50 out of 50 editors available, I won't be able to invite viewers or demote editors to viewers. Also, users that try to join or request to join the organization will be blocked.
+If I already have 50 out of 50 viewers available, I won't be able to invite viewers or demote editors to viewers. Also, users that try to join or request to join the organization will be blocked.
 {{%/ bannerNote %}}
 
 --- 
 
 #### Total maps
 
-All maps (public, private or shared) from all users count towards this quota. A good practice to manage this quota is to have all the users delete unused maps. For more information on how to manage maps, check the [Maps documentation](/carto-user-manual/maps/introduction/).
+All maps (public, private or shared) from all users count towards this quota. A good practice to manage this quota is to encourage users to delete unused maps, drafts, duplicated... For more information on how to delete and duplicate maps, check the [Maps documentation](/carto-user-manual/maps/deleting-maps/).
 
 {{% bannerNote title="Example"%}}
-If I already have 100 out of 100 maps, I won't be able to create new maps or duplicate any existing maps. I will still be able to modify the sharing settings of existing maps.
+If I already have 100 out of 100 maps, I won't be able to create new maps or duplicate any existing maps. I will still be able to modify the styling, viewer settings and sharing settings of existing maps.
 {{%/ bannerNote %}}
 
 --- 
 
 #### Public maps
 
-Only maps that are shared as "Public" count towards this quota. For more information on sharing maps, check [Publishing and Sharing Maps](/carto-user-manual/maps/publishing-and-sharing-maps/).
-
-Maps shared only with the organization don't count towards this quota.
+Only maps that are shared as "Public" **outside** the organization count towards this quota. For more information on sharing maps, check [Publishing and Sharing Maps](/carto-user-manual/maps/publishing-and-sharing-maps/).
 
 {{% bannerNote title="Example"%}}
 If I already have 10 out of 10 public maps, I won't be able to share new maps as "Public" until I unpublish a existing map or increase the quota.
