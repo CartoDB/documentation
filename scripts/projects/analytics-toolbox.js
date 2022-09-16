@@ -4,28 +4,26 @@ const fs = require('fs');
 const path = require('path');
 
 const cloud = process.env.CLOUD || '';
-const branch = process.env.BRANCH || '';
 const targetPath = process.env.TARGETPATH || '';
-
-// More cloud providers can be added to the array when they are adapted to the new cloud structure
-let cloudStructure = ['databricks', 'snowflake', 'redshift', 'postgres']
-const hasCloudStructure = cloudStructure.includes(cloud)
 
 const index = [];
 let changelogs = [];
 
+// Execute script
 updateModules('core');
-// When databricks has advanced AT functions, the conditional can be removed
-if (cloud !== 'databricks') updateModules('');
+updateModules('', ['databricks']);
 updateOverview();
 updateReleaseNotes();
 
-function updateModules (type) {
-
-    const sourcePath = path.join(`./.checkout/at${type ? '-'+type : ''}-${cloud}-${branch}/${getModulesPath()}`);
+function updateModules (type, ignore) {
+    if (ignore && ignore.includes(cloud)) {
+        return;
+    }
+    const repo = `analytics-toolbox${type ? `-${type}` : ''}`;
+    const sourcePath = path.join('.', '.checkout', repo, 'clouds', cloud, 'modules', 'doc');
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {
-        const docPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud + '/doc');
+        const docPath = path.join(sourcePath, module);
         if (fs.existsSync(docPath) && module != 'quadkey' && module != 'geocoding') {
             console.log(`- Update ${module} module`);
             const files = fs.readdirSync(docPath).filter(f => f.endsWith('.md')).sort((first, second) => {
@@ -44,46 +42,12 @@ function updateModules (type) {
                 type: type || 'advanced',
                 functions: files.map(f => path.parse(f).name).filter(f => !f.startsWith('_'))
             });
-            if (!hasCloudStructure) {
-                const changelogPath = path.join(sourcePath, module, hasCloudStructure ? '' : cloud, 'CHANGELOG.md');
-                const changelogContent = fs.readFileSync(changelogPath).toString();
-                changelogs = changelogs.concat(parseChangelog(module, changelogContent));
-            }
-            
         }
     });
 
-    if (hasCloudStructure) {
-        const changelogPath = path.join(`./.checkout/at${type ? '-'+type : ''}-${cloud}-${branch}/clouds/${cloud}/CHANGELOG.md`);
-        const changelogContent = fs.readFileSync(changelogPath).toString();
-        changelogs = changelogs.concat(parseChangelog(module, changelogContent));
-    }
-}
-
-function getModulesPath() {
-    if (hasCloudStructure) {
-        return `clouds/${cloud}/modules/doc`
-    } else {
-        return 'modules'
-    }
-}
-
-function aliasesHeader (path) {
-    let content = '';
-    if (cloud === 'bigquery') {
-        content = `---
-aliases:
-    - /analytics-toolbox-bq/${path}/
----
-`;
-    } else if (cloud === 'snowflake') {
-        content = `---
-aliases:
-    - /analytics-toolbox-sf/${path}/
----
-`;
-    }
-    return content;
+    const changelogPath = path.join(`./.checkout/${repo}/clouds/${cloud}/CHANGELOG.md`);
+    const changelogContent = fs.readFileSync(changelogPath).toString();
+    changelogs = changelogs.concat(parseChangelog(module, changelogContent));
 }
 
 function updateOverview () {
@@ -125,10 +89,7 @@ function updateReleaseNotes () {
         content += `### ${formatDate(date)}\n\n`;
         const items = changelogs.filter(c => c.date === date);
         for (const item of items) {
-            if (!hasCloudStructure) {
-                content += `#### Module ${item.module}\n\n`;
-            }
-            content += `${item.changes.replace(/Added/g, 'Feature').replace(/### /g, '')}\n\n`;
+            content += `${item.changes.replace(/^Added/gm, 'Feature')}\n\n`;
         }
     }
 
@@ -141,15 +102,15 @@ function updateReleaseNotes () {
 }
 
 function parseChangelog (module, content) {
-    let pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>[^\[]+)/g;
-    if ( hasCloudStructure) {
-        pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[|$))/g;
-    }
+    const pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[|$))/g;
     const output = [];
     const matches = [ ...content.matchAll(pattern) ];
     for (const match of matches) {
-        const { version, date, changes } = match.groups;
-        output.push({ module, version, date, changes: trimChar(trimChar(changes.trim(), '#').trim(), '\n').trim() });
+        let { version, date, changes } = match.groups;
+        changes = trimChar(changes, '\n').trim()
+            .replace(/^####\s/gm, '')
+            .replace(/^###\s/gm, '#### ');
+        output.push({ module, version, date, changes });
     }
     return output;
 }
@@ -184,4 +145,22 @@ function trimChar (string, charToRemove) {
         string = string.substring(0, string.length - 1);
     }
     return string;
+}
+
+function aliasesHeader (path) {
+    let content = '';
+    if (cloud === 'bigquery') {
+        content = `---
+aliases:
+    - /analytics-toolbox-bq/${path}/
+---
+`;
+    } else if (cloud === 'snowflake') {
+        content = `---
+aliases:
+    - /analytics-toolbox-sf/${path}/
+---
+`;
+    }
+    return content;
 }

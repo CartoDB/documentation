@@ -115,6 +115,7 @@ Generates a simple tileset.
 |`max_tile_size_strategy`| Default: `"throw_error"`. A `VARCHAR` that specifies how to apply the limit defined by `max_tile_features` or `max_tile_vertices`. There are four options available:<br/><ul><li>`"drop_features"`: In each tile the features that exceed the limit are dropped. Different fractions of the total features may be dropped in each tile, which on a map can appear as noticeable differences in feature density between tiles.</li><li>`"drop_fraction_as_needed"`: For every zoom level, this process will drop a consistent fraction of features in every tile to make sure all generated tiles are below the limit. Since a constant fraction of the features is dropped for all tiles of a given zoom level, this will in general drop more features in less populated tiles than the the `"drop_features"` strategy.</li><li>`"return_null"`: A row with a NULL data column will be produced for all tiles that exceed the limit.</li><li>`"throw_error"`: The procedure execution will be aborted if any tile exceeds the limit.</li></ul><br/>. For the `drop_` strategies, features will be retained according to the `tile_feature_order` specified.|
 |`max_simplification_zoom`| Default: 11. A `NUMBER` that specifies the maximum zoom level in which the simplification will be carried out.|
 |`coordinates_precision`| Default: 8. A `NUMBER` that indicates the geometry coordinates precision stored in the final GeoJSON tiles. This parameter should be carefully choosen in order to obtain a good trade-off between the tile size and the geometry precision, since an excessive low precision can lead to geometry collapse and excessive high precision can hit some Redshift size limits (64 KB for GeoJSON).|
+|`generate_feature_id`| Default: `true`. A `BOOLEAN` used to add a unique numeric id in the [GeoJSON](https://www.rfc-editor.org/rfc/rfc7946#section-3.2).|
 
 **Example**
 
@@ -160,9 +161,7 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 |`metadata`| Default: `{}`. A JSON object to specify the associated metadata of the tileset. Use this to set the name, description and legend to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0). Other fields will be included in the object extra_metadata.|
 |`properties`| Default: {}. A JSON object that defines the properties that will be included associated with each cell feature. Each property is defined by its name and type (Number, Boolean, String, etc.). Please note that every property different from Number will be casted to String.|
 
-{{% customSelector %}}
 **Examples**
-{{%/ customSelector %}}
 
 ```sql
 CALL carto.CREATE_SPATIAL_INDEX_TILESET(

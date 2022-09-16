@@ -83,6 +83,7 @@ SELECT address, carto.GEOCODE(address) AS geom FROM my_table
 -- Table my_geocoded_table successfully created.
 ```
 
+
 ### GEOCODE_REVERSE
 
 {{% bannerNote type="code" %}}
@@ -114,6 +115,7 @@ This function performs requests to the CARTO Location Data Services API. Redshif
 SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
 -- 254 Broadway, New York, NY 10007, USA
 ```
+
 
 ### GEOCODE_REVERSE_TABLE
 
@@ -210,6 +212,7 @@ CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_col
 -- The table `my-schema.my-table` will be updated
 -- adding the columns: my_geom_column, carto_geocode_metadata.
 ```
+
 
 ### ISOLINE
 

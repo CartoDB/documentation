@@ -2,25 +2,25 @@
 
 echo -e "\nUpdate Analytics Toolbox for BigQuery"
 echo "-------------------------------------"
-CLOUD=bigquery BRANCH=master TARGETPATH=./app/content/analytics-toolbox-bigquery \
+CLOUD=bigquery TARGETPATH=./app/content/analytics-toolbox-bigquery \
 node ./scripts/projects/analytics-toolbox.js
 
 echo -e "\nUpdate Analytics Toolbox for Snowflake"
 echo "--------------------------------------"
-CLOUD=snowflake BRANCH=master TARGETPATH=./app/content/analytics-toolbox-snowflake \
+CLOUD=snowflake TARGETPATH=./app/content/analytics-toolbox-snowflake \
 node ./scripts/projects/analytics-toolbox.js
 
 echo -e "\nUpdate Analytics Toolbox for Redshift"
 echo "-------------------------------------"
-CLOUD=redshift BRANCH=master TARGETPATH=./app/content/analytics-toolbox-redshift \
+CLOUD=redshift TARGETPATH=./app/content/analytics-toolbox-redshift \
 node ./scripts/projects/analytics-toolbox.js
 
 echo -e "\nUpdate Analytics Toolbox for PostgreSQL"
 echo "-------------------------------------"
-CLOUD=postgres BRANCH=master TARGETPATH=./app/content/analytics-toolbox-postgres \
+CLOUD=postgres TARGETPATH=./app/content/analytics-toolbox-postgres \
 node ./scripts/projects/analytics-toolbox.js
 
 echo -e "\nUpdate Analytics Toolbox for Databricks"
 echo "-------------------------------------"
-CLOUD=databricks BRANCH=master TARGETPATH=./app/content/analytics-toolbox-databricks \
+CLOUD=databricks TARGETPATH=./app/content/analytics-toolbox-databricks \
 node ./scripts/projects/analytics-toolbox.js

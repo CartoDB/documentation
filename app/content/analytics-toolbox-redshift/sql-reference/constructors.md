@@ -7,14 +7,14 @@ This module contains functions that create geographies from coordinates or alrea
 ### ST_BEZIERSPLINE
 
 {{% bannerNote type="code" %}}
-carto.ST_BEZIERSPLINE(geog [, resolution] [, sharpness])
+carto.ST_BEZIERSPLINE(linestring [, resolution] [, sharpness])
 {{%/ bannerNote %}}
 
 **Description**
 
 Takes a line as input and returns a curved version by applying a Bezier spline algorithm.
 
-* `geog`: `GEOMETRY` input LineString.
+* `linestring`: `GEOMETRY` input LineString.
 * `resolution` (optional): `INT` time in milliseconds between points. If not specified, the default value of `10000` will be used.
 * `sharpness` (optional): `FLOAT8` a measure of how curvy the path should be between splines. If not specified, the default value of `0.85` will be used.
 
@@ -26,7 +26,7 @@ Takes a line as input and returns a curved version by applying a Bezier spline a
 
 ```sql
 SELECT carto.ST_BEZIERSPLINE(ST_GEOMFROMTEXT('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'));
--- {"type": "LineString", "coordinates": [[-76.091308, 18.427501], [-76.09134585033101, 18.427508082543092], ... 
+-- {"type": "LineString", "coordinates": [[-76.091308, 18.427501], [-76.09134585033101, 18.427508082543092], ...
 ```
 
 
@@ -37,13 +37,13 @@ SELECT carto.ST_BEZIERSPLINE(ST_GEOMFROMTEXT('LINESTRING (-76.091308 18.427501,-
 
 ```sql
 SELECT carto.ST_BEZIERSPLINE(ST_GEOMFROMTEXT('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'), 10000, 0.9);
--- {"type": "LineString", "coordinates": [[-76.091308, 18.427501], [-76.09134541990707, 18.42750717125151], ... 
+-- {"type": "LineString", "coordinates": [[-76.091308, 18.427501], [-76.09134541990707, 18.42750717125151], ...
 ```
 
 ### ST_MAKEELLIPSE
 
 {{% bannerNote type="code" %}}
-carto.ST_MAKEELLIPSE(geog, xSemiAxis, ySemiAxis [, angle] [, units] [, steps])
+carto.ST_MAKEELLIPSE(center, xSemiAxis, ySemiAxis [, angle] [, units] [, steps])
 {{%/ bannerNote %}}
 
 **Description**
@@ -64,12 +64,12 @@ Takes a Point as input and calculates the ellipse polygon given two semi-axes ex
 **Examples**
 
 ```sql
-SELECT carto.ST_MAKEELLIPSE(ST_Point(-73.9385,40.6643), 5, 3);
+SELECT carto.ST_MAKEELLIPSE(ST_POINT(-73.9385,40.6643), 5, 3);
 -- {"type": "Polygon", "coordinates": [[[-73.87922034627275, 40.6643], [-73.88056149301754, 40.67000644486112], ...
 ```
 
 ```sql
-SELECT carto.ST_MAKEELLIPSE(ST_Point(-73.9385,40.6643), 5, 3, -30);
+SELECT carto.ST_MAKEELLIPSE(ST_POINT(-73.9385,40.6643), 5, 3, -30);
 -- {"type": "Polygon", "coordinates": [[[-73.88703173808466, 40.68643711664552], [-73.89195608204625, 40.69086946050236], ...
 ```
 
@@ -101,13 +101,11 @@ Creates a rectangular Polygon from the minimum and maximum values for X and Y.
 
 `GEOMETRY`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
-SELECT carto.ST_MAKEENVELOPE(0,0,1,1);
--- POLYGON ((0 0, 0 1, 1 1, 1 0, 0 0)) 
+SELECT carto.ST_MAKEENVELOPE(0, 0, 1, 1);
+-- POLYGON ((0 0, 0 1, 1 1, 1 0, 0 0))
 ```
 
 ### ST_TILEENVELOPE
@@ -125,11 +123,9 @@ Returns the boundary polygon of a tile given its zoom level and its X and Y indi
 
 **Return type**
 
-`VARCHAR`
+`GEOMETRY`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 SELECT carto.ST_TILEENVELOPE(10, 384, 368);

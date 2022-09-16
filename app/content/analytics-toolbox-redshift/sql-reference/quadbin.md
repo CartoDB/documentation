@@ -44,7 +44,7 @@ Returns the boundary for a given quadbin. We extract the boundary in the same wa
 
 **Return type**
 
-`VARCHAR`
+`GEOMETRY`
 
 **Example**
 
@@ -69,9 +69,7 @@ Returns the center for a given quadbin. The center is defined as the intersectio
 
 `GEOMETRY`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 SELECT carto.QUADBIN_CENTER(5209574053332910079);
@@ -172,9 +170,7 @@ Returns `true` when the given index is valid, `false` otherwise.
 
 `BOOLEAN`
 
-{{% customSelector %}}
 **Examples**
-{{%/ customSelector %}}
 
 ```sql
 SELECT carto.QUADBIN_ISVALID(5209574053332910079);
@@ -235,9 +231,7 @@ Returns all cell indexes and their distances in a **filled square k-ring** cente
 
 `SUPER`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 SELECT carto.QUADBIN_KRING_DISTANCES(5209574053332910079, 1);
@@ -276,7 +270,7 @@ Returns an array of quadbins that intersect with the given geography at a given 
 **Example**
 
 ```sql
-SELECT carto.QQUADBIN_POLYFILL(ST_GeomFromText('POLYGON ((-3.71219873428345 40.413365349070865, -3.7144088745117 40.40965661286395, -3.70659828186035 40.409525904775634, -3.71219873428345 40.413365349070865))'), 17);
+SELECT carto.QUADBIN_POLYFILL(ST_GEOMFROMTEXT('POLYGON ((-3.71219873428345 40.413365349070865, -3.7144088745117 40.40965661286395, -3.70659828186035 40.409525904775634, -3.71219873428345 40.413365349070865))'), 17);
 -- 5265786693164204031
 -- 5265786693163941887
 -- 5265786693153193983
@@ -301,9 +295,7 @@ Returns the resolution of the input quadbin.
 
 `BIGINT`
 
-{{% customSelector %}}
 **Example**
-{{%/ customSelector %}}
 
 ```sql
 SELECT carto.QUADBIN_RESOLUTION(5209574053332910079);
@@ -349,7 +341,7 @@ Returns an array with the children quadbins of a given quadbin for a specific re
 
 **Return type**
 
-`ARRAY`
+`SUPER`
 
 **Example**
 

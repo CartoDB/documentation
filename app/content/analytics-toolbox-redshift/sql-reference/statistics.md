@@ -34,7 +34,9 @@ SELECT carto.GETIS_ORD_QUADBIN(
     ]'),
     3, 'gaussian'
 );
--- {"5266443790415822847":-1.0142799267903513, "5266443803500740607":-0.34633948719670504, "5266443791933898751":1.3606194139870578}
+-- {"index":5266443791933898751,"gi":1.3606194139870578}
+-- {"index":5266443803500740607,"gi":-0.34633948719670504}
+-- {"index":5266443790415822847,"gi":-1.0142799267903513}
 ```
 
 
@@ -91,8 +93,7 @@ This function computes the one tail p-value (upper-tail test) of a given [z-scor
 **Example**
 
 ```sql
-SELECT carto.P_VALUE(-2) as p_value;
-
+SELECT carto.P_VALUE(-2);
 -- 0.9772499371127437
 ```
 

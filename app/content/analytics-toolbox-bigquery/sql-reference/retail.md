@@ -517,7 +517,8 @@ This procedure is the third and final step of the Revenue Prediction analysis wo
 
 **Output**
 
-The procedure will output the `index` and `predicted_revenue_avg` value in the cell, and the same units of the `revenue` column.
+The procedure will output the `index` ,  `predicted_revenue_avg` value in the cell (in the same units of the `revenue` column), and `shap_values`, an array of key value pairs with the shap values of the features for each prediction. It also includes a `baseline_prediction` , which is the expected revenue without considering the impact of any other features.
+
 
 {{% customSelector %}}
 **Example**

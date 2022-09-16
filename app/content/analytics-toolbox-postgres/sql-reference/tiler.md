@@ -51,7 +51,6 @@ Additionally, there is a row in the `data` column identified with `Z=-1` which c
 * `zmax`: maximum zoom level in the tileset.
 * `tilestats`: stats about the feature's properties. In addition to its name (`attribute`) and `type`, it contains `min`, `max`, `average` and `sum`.
 
-
 **Example**
 
 ```sql
@@ -115,6 +114,7 @@ Create a simple tileset from a table, with feature dropping.
 |`max_tile_features`| Default: `0` (disabled). An `INTEGER` that sets the maximum number of features a tile might contain. This limit is applied before `max_tile_size_kb`, i.e., the tiler will first drop as many features as needed to keep this amount, and then continue with the size limits (if required). To configure in which order are features kept, use in conjunction with `tile_feature_order`.|
 |`tile_feature_order`| Default: `""`. A `TEXT` defining the order in which properties are added to a tile. This expects the SQL ORDER BY keyword definition, such as "aggregated_total DESC", the "ORDER BY" part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. As suggestion, we recommend to use `RANDOM()` for points datasets, `ST_LENGTH()` from lines and `ST_AREA()` for polygons.|
 |`max_tile_size_strategy`| Default: `"throw_error"`. A `STRING` that specifies how to apply the limit defined by `max_tile_features`. There are three options available:<br/><ul><li>`"drop_fraction_as_needed"`: For every zoom level, this process will drop a consistent fraction of features in every tile to make sure all generated tiles are below the limit. For this strategy, features will be retained according to the `tile_feature_order` specified.</li><li>`"return_null"`: A row with a NULL data column will be produced for all tiles that exceed the limit.</li><li>`"throw_error"`: The procedure execution will be aborted if any tile exceeds the limit.</li></ul><br/>|
+|`generate_feature_id`| Default: `true`. A `BOOLEAN` used to add a unique numeric id in the [MVT tile](https://github.com/mapbox/vector-tile-spec/tree/master/2.1#42-features).|
 |`metadata`| Default: `{}`. A JSON object to specify the associated metadata of the tileset. Use this to set the name, description and legend to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0). Other fields will be included in the object extra_metadata.|
 |`properties`| Default: `{}`. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below. |
 
@@ -134,8 +134,7 @@ Additionally, there is a row in the `data` column identified with `Z=-1` which c
 * `zmax`: maximum zoom level in the tileset.
 * `tilestats`: stats about the feature's properties. In addition to its name (`attribute`) and `type`, it contains `min`, `max`, `average` and `sum`.
 
-
-**Examples**
+**Example**
 
 ```sql
 CALL carto.CREATE_SIMPLE_TILESET(
@@ -187,9 +186,7 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 Any option left as `NULL` will take its default value if available.
 {{%/ bannerNote %}}
 
-{{% customSelector %}}
 **Examples**
-{{%/ customSelector %}}
 
 ```sql
 CALL carto.CREATE_SPATIAL_INDEX_TILESET(

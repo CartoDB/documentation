@@ -7,41 +7,36 @@ aliases:
 ### July 22, 2022
 
 #### Module lds
-
 Feature
 - Add GEOCODE_REVERSE_TABLE procedure.
 
 ### June 9, 2022
 
 #### Module lds
-
 Feature
 - Add CREATE_ISOLINES procedure.
 
 ### August 11, 2022
 
 #### Module tiler
-
 Changed
 - Unify `extra_metadata` into `metadata` in tiler metadata.
 
 ### July 13, 2022
 
 #### Module data
-
+Feature
 - Add quadbin support to module.
 
 ### July 12, 2022
 
 #### Module tiler
-
 Fixed
 - Fix quoting and letter case in spatial index tiler.
 
 ### July 8, 2022
 
 #### Module tiler
-
 Fixed
 - Fix wrong uppercase in spatial index tiler.
 
@@ -51,7 +46,6 @@ Changed
 ### July 7, 2022
 
 #### Module h3
-
 Fixed
 - Correctly handle large polygons in H3_POLYFILL.
 - Fixed wrong uppercase for quadbin and h3 tile ids
@@ -59,7 +53,6 @@ Fixed
 ### June 24, 2022
 
 #### Module quadbin
-
 Feature
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -80,14 +73,13 @@ Feature
 ### June 23, 2022
 
 #### Module tiler
-
 Changed
 - Add CREATE_SPATIAL_INDEX_TILESET procedure.
 
 ### June 15, 2022
 
 #### Module data
-
+Changed
 - ENRICH_ procedures require all the enrich data query rows to be of the same geometry kind (points/lines/polygons) .
 - Various optimizations for performance and preventing out-of-memory errors
 
@@ -97,21 +89,18 @@ Changed
 ### May 19, 2022
 
 #### Module lds
-
 Changed
 - Add optional `language` parameter to GEOCODE_REVERSE function.
 
 ### May 6, 2022
 
 #### Module data
-
 Changed
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
 
 ### April 28, 2022
 
 #### Module data
-
 Feature
 - Allow using tables as input, not just queries.
 - Add in place enrichment.
@@ -119,28 +108,24 @@ Feature
 ### April 21, 2022
 
 #### Module tiler
-
 Changed
 - Add support for non-uppercase column names
 
 ### April 20, 2022
 
 #### Module tiler
-
 Changed
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
 
 ### April 7, 2022
 
 #### Module transformations
-
 Feature
 - Add ST_BUFFER function.
 
 ### March 25, 2022
 
 #### Module tiler
-
 Changed
 - Run the simple tiler in a single query.
 - Add `fraction_dropped_per_zoom` to the metadata.
@@ -153,21 +138,18 @@ Fixed
 ### March 21, 2022
 
 #### Module transformations
-
 Changed
 - ST_CONCAVEHULL now allows arrays with one/two points as input.
 
 ### February 24, 2022
 
 #### Module tiler
-
 Feature
 - Add CREATE_SIMPLE_TILESET procedure.
 
 ### February 18, 2022
 
 #### Module lds
-
 Feature
 - Add GEOCODE_TABLE procedure.
 - Add GEOCODE function.
@@ -178,7 +160,6 @@ Feature
 ### February 16, 2022
 
 #### Module tiler
-
 Feature
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
@@ -186,7 +167,6 @@ Feature
 ### January 10, 2022
 
 #### Module data
-
 Feature
 - Add DATAOBS_SUBSCRIPTIONS procedure.
 - Add DATABOS_SUBSCRIPTION_VARIABLES procedure.
@@ -197,38 +177,31 @@ Changed
 ### December 15, 2021
 
 #### Module data
-
 Changed
 - Missing subscriptions are reported by name in DATAOBS_ENRICH_* procedures
 
 ### December 10, 2021
 
 #### Module random
-
 Changed
 - ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
 
 ### December 3, 2021
 
 #### Module accessors
-
 Changed
 - Deployment schema "carto" instead of "accessors".
 - Rename ST_ENVELOPE function to ST_ENVELOPE_ARR.
-
 Removed
 - Remove VERSION function.
 
 #### Module constructors
-
 Changed
 - Deployment schema "carto" instead of "constructors".
-
 Removed
 - Remove VERSION function.
 
 #### Module h3
-
 Changed
 - Deployment schema "carto" instead of "h3".
 - Rename ST_ASH3 function to H3_FROMGEOGPOINT.
@@ -245,41 +218,33 @@ Changed
 - Rename KRING function to H3_KRING.
 - Rename KRING_DISTANCES function to H3_KRING_DISTANCES.
 - Rename HEXRING function to H3_HEXRING.
-
 Removed
 - Remove VERSION function.
 
 #### Module measurements
-
 Changed
 - Deployment schema "carto" instead of "measurements".
-
-#Removed
+Removed
 - Remove ST_ANGLE, already present in Snowflake.
 - Remove ST_AZIMUTH, already present in Snowflake.
 - Remove VERSION function.
 
 #### Module placekey
-
 Changed
 - Deployment schema "carto" instead of "placekey".
 - Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
 - Rename PLACEKEY_ASH3 function to PLACEKEY_TOH3.
 - Rename ISVALID function to PLACEKEY_ISVALID.
-
 Removed
 - Remove VERSION function.
 
 #### Module processing
-
 Changed
 - Deployment schema "carto" instead of "processing".
-
 Removed
 - Remove VERSION function.
 
 #### Module s2
-
 Changed
 - Deployment schema "carto" instead of "s2".
 - Rename ID_FROMHILBERTQUADKEY function to S2_FROMHILBERTQUADKEY.
@@ -287,58 +252,46 @@ Changed
 - Rename LONGLAT_ASID function to S2_FROMLONGLAT.
 - Rename ST_ASID function to S2_FROMGEOGPOINT.
 - Rename ST_BOUNDARY function to S2_BOUNDARY.
-
 Removed
 - Remove VERSION function.
 
 #### Module transformations
-
 Changed
 - Deployment schema "carto" instead of "transformations".
-
-Remove
+Removed
 - Remove VERSION function.
 
 #### Module clustering
-
 Changed
 - Deployment schema "carto" instead of "clustering".
-
 Removed
 - Remove VERSION function.
 
 #### Module data
-
 Changed
 - Deployment schema "carto" instead of "data".
-
 Removed
 - Remove VERSION function.
 
 #### Module random
-
 Changed
 - Deployment schema "carto" instead of "random".
-
 Removed
 - Remove VERSION function.
 
 ### November 25, 2021
 
 #### Module clustering
-
 Changed
 - Deployment schema "carto" instead of "clustering".
 - Remove VERSION function.
 
 #### Module data
-
 Changed
 - Deployment schema "carto" instead of "data".
 - Remove VERSION function.
 
 #### Module random
-
 Changed
 - Deployment schema "carto" instead of "random".
 - Remove VERSION function.
@@ -346,7 +299,6 @@ Changed
 ### November 24, 2021
 
 #### Module data
-
 Feature
 - Add DATAOBS_ENRICH_POINTS procedure.
 - Add DATAOBS_ENRICH_POINTS_RAW procedure.
@@ -358,7 +310,6 @@ Feature
 ### November 5, 2021
 
 #### Module data
-
 Changes
 - Fields named `dimension`, `total`, `intersection` and `input_area` are now
   `__carto_dimension`, `__carto_total` and `__carto_intersection` and `__carto_input_area`.
@@ -371,7 +322,6 @@ Fixed
 ### November 4, 2021
 
 #### Module data
-
 Feature
 - Create data module.
 - Add VERSION function.
@@ -385,38 +335,32 @@ Feature
 ### September 22, 2021
 
 #### Module h3
-
 Feature
 - Add KRING_DISTANCES function.
-
 Changed
 - Review HEXRING, KRING functions.
 
 ### September 14, 2021
 
 #### Module s2
-
 Changes
 - Compute ST_BOUNDARY from WKT.
 
 ### August 24, 2021
 
 #### Module h3
-
 Fixed
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
 ### June 2, 2021
 
 #### Module h3
-
 Changed
 - Reduce bundle size for every function.
 
 ### May 26, 2021
 
 #### Module processing
-
 Feature
 - Create processing module.
 - Add ST_VORONOIPOLYGONS function.
@@ -429,14 +373,12 @@ Feature
 ### May 24, 2021
 
 #### Module clustering
-
 Feature
 - Create clustering module.
 - Add VERSION function.
 - Add ST_CLUSTERKMEANS function.
 
 #### Module random
-
 Feature
 - Create random module.
 - Add ST_GENERATEPOINTS function.
@@ -445,7 +387,6 @@ Feature
 ### May 21, 2021
 
 #### Module accessors
-
 Feature
 - Create accessors module.
 - Add ST_ENVELOPE function.
@@ -454,7 +395,6 @@ Feature
 ### May 20, 2021
 
 #### Module constructors
-
 Feature
 - Create constructors module.
 - Add ST_BEZIERSPLINE function.
@@ -464,7 +404,6 @@ Feature
 - Add VERSION function.
 
 #### Module measurements
-
 Feature
 - Create measurements module.
 - Add ST_ANGLE function.
@@ -473,7 +412,6 @@ Feature
 - Add VERSION function.
 
 #### Module transformations
-
 Feature
 - Create transformations module.
 - Add ST_CENTERMEAN function.
@@ -488,7 +426,6 @@ Feature
 ### April 16, 2021
 
 #### Module placekey
-
 Feature
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
@@ -499,7 +436,6 @@ Feature
 ### April 12, 2021
 
 #### Module s2
-
 Feature
 - Create s2 module.
 - Add ID_FROMHILBERTQUADKEY function.
@@ -512,7 +448,6 @@ Feature
 ### April 7, 2021
 
 #### Module h3
-
 Feature
 - Create h3 module.
 - Add ST_ASH3 function.

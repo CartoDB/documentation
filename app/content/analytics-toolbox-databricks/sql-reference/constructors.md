@@ -26,8 +26,8 @@ Creates a `Geometry` representing a bounding box with the given boundaries.
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_MAKEBBOX(-91.8554869, 29.5060349, -91.8382077, 29.5307334)) AS bbox;
--- POLYGON ((-91.8554869 29.5060349, -91.8554869 29.5307334, -91.8382077 29.5307334, -91.8382077 29.5060349, -91.8554869 29.5060349))
+SELECT carto.ST_ASTEXT(carto.ST_MAKEBBOX(-91.85548, 29.50603, -91.83820, 29.53073)) AS bbox;
+-- POLYGON ((-91.85548 29.50603, -91.85548 29.53073, -91.83820 29.53073, -91.8382 29.50603, -91.85548 29.50603))
 ```
 
 
@@ -51,8 +51,8 @@ Creates a `Geometry` representing a bounding box defined by the given `Points`.
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_MAKEBOX2D(carto.ST_MAKEPOINT(-91.8554869, 29.5060349), carto.ST_MAKEPOINT(-91.8382077, 29.5307334))) AS bbox;
--- POLYGON ((-91.8554869 29.5060349, -91.8554869 29.5307334, -91.8382077 29.5307334, -91.8382077 29.5060349, -91.8554869 29.5060349))
+SELECT carto.ST_ASTEXT(carto.ST_MAKEBOX2D(carto.ST_MAKEPOINT(-91.85548, 29.50603), carto.ST_MAKEPOINT(-91.83820, 29.53073))) AS bbox;
+-- POLYGON ((-91.85548 29.50603, -91.85548 29.53073, -91.8382 29.53073, -91.8382 29.50603, -91.85548 29.50603))
 ```
 
 
@@ -76,8 +76,8 @@ Creates a `Point` with an _x_ and _y_ coordinate.
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_MAKEPOINT(-91.8554869, 29.5060349));
--- POINT (-91.8554869 29.5060349)
+SELECT carto.ST_ASTEXT(carto.ST_MAKEPOINT(-91.85548, 29.50603));
+-- POINT (-91.85548 29.50603)
 ```
 
 
@@ -151,6 +151,6 @@ Returns a `Point` with the given coordinate values. This is an OGC alias for st_
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_POINT(-91.8554869, 29.5060349));
--- POINT (-91.8554869 29.5060349)
+SELECT carto.ST_ASTEXT(carto.ST_POINT(-91.85548, 29.50603));
+-- POINT (-91.85548 29.50603)
 ```
