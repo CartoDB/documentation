@@ -101,10 +101,10 @@ developmentTools:
     description: "Build applications with CARTO and Vue.js."
     url: "/vue"
     image: "vue.png"
-  - title: "Mobile SDK"
-    description: "Create custom map applications on Android, iOS, and Windows mobile platforms."
-    url: "https://carto.com/developers/mobile-sdk"
-    image: "mobile-sdk.png"
+  # - title: "Mobile SDK"
+  #   description: "Create custom map applications on Android, iOS, and Windows mobile platforms."
+  #   url: "https://carto.com/developers/mobile-sdk"
+  #   image: "mobile-sdk.png"
 
 dataAndAnalysis:
   - title: "Analytics Toolbox for BigQuery"
@@ -188,3 +188,7 @@ deprecated:
   - title: "Python SDK"
     url: "https://carto.com/developers/python-sdk"
     image: "python-sdk-disabled.png"
+  - title: "Mobile SDK"
+    description: "Create custom map applications on Android, iOS, and Windows mobile platforms."
+    url: "https://carto.com/developers/mobile-sdk"
+    image: "mobile-sdk-disabled.png"
