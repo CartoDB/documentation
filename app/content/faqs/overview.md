@@ -34,6 +34,8 @@
 ##### Analytics Toolbox
 * [What is CARTO’s Analytics Toolbox?](../categories/analytics-toolbox/#what-is-cartos-analytics-toolbox)
 * [How can I use the functions available in the Analytics Toolbox?](../categories/analytics-toolbox/#how-can-i-use-the-functions-available-in-the-analytics-toolbox)
+* [Can I use the Analytics Toolbox from the CARTO Data Warehouse connection?](../categories/analytics-toolbox/#can-i-use-the-analytics-toolbox-from-the-carto-data-warehouse-connection)
+* [In the Analytics Toolbox for BigQuery, are there differences when using it from different GCP regions?](../categories/analytics-toolbox/#in-the-analytics-toolbox-for-bigquery-are-there-differences-when-using-it-from-different-gcp-regions)
 
 ##### Development Tools
 * [What frameworks and libraries can I use for developing custom apps with CARTO?](../categories/development-tools/#what-frameworks-and-libraries-can-i-use-for-developing-custom-apps-with-carto)
