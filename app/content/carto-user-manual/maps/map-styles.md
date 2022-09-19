@@ -71,6 +71,7 @@ The following example shows a short demonstration of how custom breaks allow you
 ![Custom color scale](/img/cloud-native-workspace/maps/custom-color-scale.gif) 
 
 - **Opacity**: Change the transparency of a layer. 1 = opaque, 0 = invisible. You can change the predefined opacity using the *opacity slider* or by directly writting the level of opacity in the *text input*. ![Map style fill opacity](/img/cloud-native-workspace/maps/map_fill_color_opacity.png)
+
 ### Stroke color
 
 When activated, this feature draws outlines around geoshapes. When styling a map layer, the stroke contains the width, color, and opacity for the sides of the geometry. By default, Builder assigns a **predefined stroke color**. You can change it by clicking the *Stroke* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
@@ -80,6 +81,7 @@ When activated, this feature draws outlines around geoshapes. When styling a map
 You can explore additional stroke color features by clicking on the *three dots* icon: 
 
 ![Map style stroke color based on field](/img/cloud-native-workspace/maps/map_stroke_color_based_on.png)
+
 ### Stroke width 
 
 This feature allows you to change the thickness of lines, or to assign a width based on a field from your data sources. You can change the predefined stroke width using the *width slider* or by directly inputting the stroke size in the *text input*.
@@ -97,6 +99,29 @@ You can explore additional stroke width features by clicking the *three dots* ic
     2. By default, Builder assigns a predefined width range. The range slider allows you to set a custom range using a lower and upper threshold for projected stroke width. You can change the predefined stroke width range using the *width range slider* or by directly inputting the lower and upper stroke size in the *text input*.
 	
 	![Map stroke width range slider](/img/cloud-native-workspace/maps/map_stroke_width_range_slider.png)
+
+### Custom marker
+
+For point layers, the _Custom Marker_ setting is available and allows you to set an icon or an image as a marker in your map. 
+
+The [Maki icons collection](https://labs.mapbox.com/maki-icons/) is readily available. 
+
+You can also upload a custom .png or .svg file to be used as marker in the map.
+
+ <p align="center">
+  <img src="/img/cloud-native-workspace/maps/custom_markers.png" />
+</p>
+
+
+Advanced options in this section allow to define a custom marker (from the Maki collection or an uploaded one) based on a categorical value. 
+
+ <p align="center">
+  <img src="/img/cloud-native-workspace/maps/custom_markers_based_on.png"/>
+</p>
+
+
+ There is also an option to rotate the marker based on a numeric column value. The value will be taken as degrees of rotation, taking `0` as the original vertical position of the icon, and rotating clock-wise.
+
 ### Radius
 
 Change the radius of points, or assign radius values based on a field from your dataset(s). You can change the predefined radius using the *radius slider* or by directly writting the radius size in the *text input*.
@@ -108,6 +133,7 @@ You can explore additional radius features by clicking the three dots icon:
 - **Radius based on**: When styling maps, you can assign radius values based on a field from your dataset(s).
 
 Click the *Radius based on* button. Select a field from your dataset to style your layer. In this example, we style our layer radius based on the "population" field.
+
 ### Label
 
 Applying text labels to your data enables you to enhance the typography of your map. While adding labels is optional, they are useful for communicating details with the map viewer. Positive effects of label styling will display legible text and considerate placement of labels on the Map View. In CARTO Builder, the STYLE tab of a selected map layer provides basic label options. 
