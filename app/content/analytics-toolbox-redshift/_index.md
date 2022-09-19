@@ -40,7 +40,7 @@ cascade:
         - title: "quadbin"
         - title: "random"
         - title: "s2"
-        - tile: "statistics"
+        - title: "statistics"
         - title: "tiler"
         - title: "transformations"
     - title: "Release notes"
