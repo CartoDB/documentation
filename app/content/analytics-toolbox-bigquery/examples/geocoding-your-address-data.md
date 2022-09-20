@@ -1,6 +1,6 @@
 ---
 title: "Geocoding your address data"
-description: "We provide an example that showcase how to easily geocode your address data using the Analytics Toolbox LDS module from the BigQuery console and from the CARTO Workspace.."
+description: "We provide an example that showcase how to easily geocode your address data using the Analytics Toolbox LDS module from the BigQuery console and from the CARTO Workspace."
 image: "/img/bq-analytics-toolbox/examples/geocode.png"
 type: examples
 date: "2022-09-20"
