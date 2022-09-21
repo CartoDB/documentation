@@ -114,7 +114,7 @@ The geocoding process could take some minutes, remember that you may be geocodin
 
 
 
-Once the process finishes, you will be able to access your geocoded table, which will have a new column called ‘geom’ including the geographic coordinates of your input data. 
+Once the process finishes, you will be able to access your geocoded table, which will have a new column called "geom" including the geographic coordinates of your input data. 
 
 
 <div style="text-align:center" >
