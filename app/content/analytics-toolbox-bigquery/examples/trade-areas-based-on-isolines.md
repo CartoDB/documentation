@@ -58,7 +58,7 @@ CALL `carto-un`.carto.CREATE_ISOLINES(
 
 
 
-In the query we specify (in this order) the input table, the output table and ‘geom’ as column name for the origin geometry column. We add that we want to calculate the isolines based on 15 minutes walking, fixing ‘mode’ parameter on ‘walk’ and ‘range_value’ parameter on 900 seconds (15 min). Also you need to provide us the url of the API where your account is stored in ‘lds_api_url’ and your token for accessing the different API services in ‘lds_token’ parameter.
+In the query we specify (in this order) the input table, the output table and "geom" as column name for the origin geometry column. We add that we want to calculate the isolines based on 15 minutes walking, fixing "mode" parameter on "walk" and "range_value" parameter on 900 seconds (15 min). Also you need to provide us the url of the API where your account is stored in ‘lds_api_url’ and your token for accessing the different API services in ‘lds_token’ parameter.
 
 *Note:* In order to be able to run the geocoding procedure you need to pass as input the CARTO API url and your LDS Token that can be obtained in the [Developers](https://docs.carto.com/carto-user-manual/developers/carto-for-developers/) section of the CARTO Workspace. 
 
