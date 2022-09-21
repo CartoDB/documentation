@@ -10,6 +10,7 @@ aliases:
 
 You can learn more about Placekey on [their website](https://www.placekey.io/) or in the [Overview section](/spatial-extension-sf/sql-reference/placekey/#placekey) of this documentation.
 
+
 ### PLACEKEY_FROMH3
 
 {{% bannerNote type="code" %}}
@@ -32,6 +33,7 @@ Returns the placekey equivalent to the given H3 index.
 SELECT carto.PLACEKEY_FROMH3('847b59dffffffff');
 -- @ff7-swh-m49
 ```
+
 
 ### PLACEKEY_ISVALID
 
@@ -65,6 +67,7 @@ SELECT carto.PLACEKEY_ISVALID('ff7-swh-m49');
 SELECT carto.PLACEKEY_ISVALID('x');
 -- false
 ```
+
 
 ### PLACEKEY_TOH3
 

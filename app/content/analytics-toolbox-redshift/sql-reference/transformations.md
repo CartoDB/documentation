@@ -4,6 +4,7 @@
 
 This module contains functions that compute geometric constructions, or alter geometry size or shape.
 
+
 ### ST_CENTERMEAN
 
 {{% bannerNote type="code" %}}
@@ -16,7 +17,6 @@ Takes a Feature or FeatureCollection as input and returns the mean center.
 
 * `geom`: `GEOMETRY` for which to compute the mean center.
 
-
 **Return type**
 
 `GEOMETRY`
@@ -27,6 +27,7 @@ Takes a Feature or FeatureCollection as input and returns the mean center.
 SELECT carto.ST_CENTERMEAN(ST_GEOMFROMTEXT('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- POINT (25 27.5)
 ```
+
 
 ### ST_CENTERMEDIAN
 
@@ -51,6 +52,7 @@ SELECT carto.ST_CENTERMEDIAN(ST_GEOMFROMTEXT('POLYGON ((30 10, 40 40, 20 40, 10 
 -- POINT (26.3841869726 19.0088147377)
 ```
 
+
 ### ST_CENTEROFMASS
 
 {{% bannerNote type="code" %}}
@@ -74,6 +76,7 @@ SELECT carto.ST_CENTEROFMASS(ST_GEOMFROMTEXT('POLYGON ((30 10, 40 40, 20 40, 10 
 -- POINT (25.4545454545 26.9696969697)
 ```
 
+
 ### ST_CENTROID
 
 {{% bannerNote type="code" %}}
@@ -95,6 +98,7 @@ Takes any Feature or a FeatureCollection as input and returns its centroid. It i
 ```sql
 SELECT carto.ST_CENTROID(ST_GEOMFROMTEXT('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- POINT (25.4545454545 26.9696969697)
+
 
 ### ST_DESTINATION
 
@@ -126,6 +130,7 @@ SELECT carto.ST_DESTINATION(ST_MakePoint(-3.70325,40.4167), 10, 45);
 SELECT carto.ST_DESTINATION(ST_MakePoint(-3.70325,40.4167), 10, 45, 'miles');
 -- POINT (-3.56862505482 40.5189626778)
 ```
+
 
 ### ST_GREATCIRCLE
 

@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions that compute measurements of distance, area and angles. There are also functions to compute geometry values determined by measurements.
 
+
 ### ST_ANGLE
 
 {{% bannerNote type="code" %}}
@@ -36,6 +37,7 @@ SELECT `carto-os`.carto.ST_ANGLE(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-
 -- 3.933094586038578
 ```
 
+
 ### ST_MINKOWSKIDISTANCE
 
 {{% bannerNote type="code" %}}
@@ -61,5 +63,6 @@ Calculate the Minkowski p-norm distance between two features.
 SELECT `carto-os`.carto.ST_MINKOWSKIDISTANCE([ST_GEOGPOINT(10,10),ST_GEOGPOINT(13,10)],2);
 -- ["0,0.3333333333333333","0.3333333333333333,0"]
 ```
+
 
 {{% euFlagFunding %}}

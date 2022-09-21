@@ -8,6 +8,7 @@ aliases:
 
 You can learn more about quadbins in the [Overview section](/analytics-toolbox-snowflake/overview/spatial-indexes/#quadbin) of the documentation.
 
+
 ### QUADBIN_BBOX
 
 {{% bannerNote type="code" %}}
@@ -34,6 +35,7 @@ SELECT carto.QUADBIN_BBOX(5209574053332910079);
 -- 0.0
 ```
 
+
 ### QUADBIN_BOUNDARY
 
 {{% bannerNote type="code" %}}
@@ -57,6 +59,7 @@ SELECT carto.QUADBIN_BOUNDARY(5209574053332910079);
 -- POLYGON((22.5 0, 22.5 -21.9430455334382, 45 -21.9430455334382, 45 0, 22.5 0))
 ```
 
+
 ### QUADBIN_CENTER
 
 {{% bannerNote type="code" %}}
@@ -79,6 +82,7 @@ Returns the center for a given quadbin. The center is defined as the intersectio
 SELECT carto.QUADBIN_CENTER(5209574053332910079);
 -- POINT(33.75 -11.1784018737118)
 ```
+
 
 ### QUADBIN_FROMGEOGPOINT
 
@@ -104,6 +108,7 @@ SELECT carto.QUADBIN_FROMGEOGPOINT(ST_GEOGPOINT(40.4168, -3.7038), 4);
 -- 5209574053332910079
 ```
 
+
 ### QUADBIN_FROMLONGLAT
 
 {{% bannerNote type="code" %}}
@@ -128,6 +133,7 @@ Returns the quadbin representation for a given level of detail and geographic co
 SELECT carto.QUADBIN_FROMLONGLAT(40.4168, -3.7038, 4);
 -- 5209574053332910079
 ```
+
 
 ### QUADBIN_FROMZXY
 
@@ -158,6 +164,7 @@ SELECT carto.QUADBIN_FROMZXY(4, 9, 8);
 -- 5209574053332910079
 ```
 
+
 ### QUADBIN_ISVALID
 
 {{% bannerNote type="code" %}}
@@ -185,6 +192,7 @@ SELECT carto.QUADBIN_ISVALID(5209574053332910079);
 SELECT carto.QUADBIN_ISVALID(1234);
 -- false
 ```
+
 
 ### QUADBIN_KRING
 
@@ -217,6 +225,7 @@ SELECT carto.QUADBIN_KRING(5209574053332910079, 1);
 -- 5209626829891043327
 -- 5209662014263132159
 ```
+
 
 ### QUADBIN_KRING_DISTANCES
 
@@ -254,6 +263,7 @@ SELECT carto.QUADBIN_KRING_DISTANCES(5209574053332910079, 1);
 The distance of the rings is computed as the [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance).
 {{%/ bannerNote %}}
 
+
 ### QUADBIN_POLYFILL
 
 {{% bannerNote type="code" %}}
@@ -285,6 +295,7 @@ SELECT carto.QUADBIN_POLYFILL(
 -- 5265786693165514751
 ```
 
+
 ### QUADBIN_RESOLUTION
 
 {{% bannerNote type="code" %}}
@@ -307,6 +318,7 @@ Returns the resolution of the input quadbin.
 SELECT carto.QUADBIN_RESOLUTION(5209574053332910079);
 -- 4
 ```
+
 
 ### QUADBIN_SIBLING
 
@@ -331,6 +343,7 @@ Returns the quadbin directly next to the given quadbin at the same zoom level. T
 SELECT carto.QUADBIN_SIBLING(5209574053332910079, 'up');
 -- 5208061125333090303
 ```
+
 
 ### QUADBIN_TOCHILDREN
 
@@ -359,6 +372,7 @@ SELECT carto.QUADBIN_TOCHILDREN(5209574053332910079, 5);
 -- 5214077652960280575
 ```
 
+
 ### QUADBIN_TOPARENT
 
 {{% bannerNote type="code" %}}
@@ -382,6 +396,7 @@ Returns the parent quadbin of a given quadbin for a specific resolution. A paren
 SELECT carto.QUADBIN_TOPARENT(5209574053332910079, 3);
 -- 5205105638077628415
 ```
+
 
 ### QUADBIN_TOZXY
 

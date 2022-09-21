@@ -8,6 +8,7 @@ aliases:
 
 We currently provide procedures to create two types of tilesets: _simple_ and _aggregation_ tilesets, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview](/analytics-toolbox-bigquery/overview/tilesets) section to learn more about tileset types and which procedures to use in each case.
 
+
 ### CREATE_POINT_AGGREGATION_TILESET
 
 {{% bannerNote type="code" %}}
@@ -104,6 +105,7 @@ R'''
 
 In the example above, for all features we would get a property `"new_column_name"` with the number of points that fall in it, the `"most_common_ethnicity"` of those rows and whether there are points whose ethnicity value matches one specific value (`"has_other_ethnicities"`). In addition to this, when there is only one point that belongs to this property (and only in that case) we will also get the column values from the source data: `"name"` and `"address"`.
 
+
 ### CREATE_SIMPLE_TILESET
 
 {{% bannerNote type="code" %}}
@@ -137,17 +139,17 @@ To avoid issues in the process when building the queries that will be executed i
 |`target_tilestats`| Default: `true`. A `BOOLEAN` to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:<br/><ul><li>Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).</li><li>String / Boolean: List of the top 10 most common values and their count.</li></ul>In Simple Tilesets, these statistics are based on the source data.|
 |`tile_extent`| Default: `4096`. A `NUMBER` defining the extent of the tile in integer coordinates as defined by the [MVT specification](https://github.com/mapbox/vector-tile-spec).
 |`tile_buffer`| Default: `16`. A `NUMBER` defining the additional buffer added around the tiles in extent units, which is useful to facilitate geometry stitching across tiles in the renderers.|
-|`max_tile_size_kb`| Default: `1024`. Maximum allowed: `6144`. A `NUMBER` specifying the approximate maximum size for a tile in kilobytes. 
+|`max_tile_size_kb`| Default: `1024`. Maximum allowed: `6144`. A `NUMBER` specifying the approximate maximum size for a tile in kilobytes.
 |`max_tile_size_strategy`| Default: `"throw_error"`. A `STRING` that determines what to do when the maximum size of a tile is reached while it is still processing data. There are three options available:<br/><ul><li>`"return_null"`: The process will return a NULL buffer. This might appear as empty in the map.</li><li>`"throw_error"`: The process will throw an error cancelling the aggregation, so no tiles or table will be generated.</li><li>`"drop_fraction_as_needed"`: For every zoom level, this process will drop a consistent fraction of features in every tile to make sure all generated tiles are below the maximum size set in `max_tile_size_kb.` This could lead to features disappearing at different zoom levels. Features will be dropped according to the `tile_feature_order` parameter, which becomes mandatory when using this strategy.</li></ul>|
 |`max_tile_features`| Default: `0` (disabled). A `NUMBER` that sets the maximum number of features a tile might contain. This limit is applied before `max_tile_size_kb`, i.e., the tiler will first drop as many features as needed to keep this amount, and then continue with the size limits (if required). To configure in which order features are kept, use in conjunction with `tile_feature_order`.|
 |`tile_feature_order`| Default: `""` (disabled). A `STRING` defining the order in which properties are added to a tile. This expects the SQL `ORDER BY` **keyword definition**, such as `"aggregated_total DESC"`, the `"ORDER BY"` part isn't necessary. Note that in aggregation tilesets you can only use columns defined as properties, but in simple feature tilesets you can use any source column no matter if it's included in the tile as property or not. **This is an expensive operation, so it's recommended to only use it when necessary.**|
 |`drop_duplicates`| Default: `false`. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
-|`generate_feature_id`| Default: `true`. A `BOOLEAN` used to add a unique numeric id in the [MVT tile](https://github.com/mapbox/vector-tile-spec/tree/master/2.1#42-features).|
+|`generate_feature_id`| Default: `false`. A `BOOLEAN` used to add a unique numeric id in the [MVT tile](https://github.com/mapbox/vector-tile-spec/tree/master/2.1#42-features).|
 |`metadata`| Default: `{}`. A JSON object to specify the associated metadata of the tileset. Use this to set the name, description and legend to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0). Other fields will be included in the object extra_metadata.|
 |`properties`| Default: `{}`. A JSON object that defines the extra properties that will be included associated to each cell feature. Each property is defined by its name and type (Number, Boolean or String). Check out the examples included below.|
 
 {{% bannerNote type="note" title="tip"%}}
-If `drop_fraction_as_needed` is used, a `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level. Please bear in mind that the exact percentages can be up to 5% higher. 
+If `drop_fraction_as_needed` is used, a `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level. Please bear in mind that the exact percentages can be up to 5% higher.
 {{%/ bannerNote %}}
 
 {{% customSelector %}}
@@ -213,6 +215,7 @@ R'''
 }
 '''
 ```
+
 
 ### CREATE_SPATIAL_INDEX_TILESET
 
@@ -288,8 +291,9 @@ CALL carto.CREATE_SPATIAL_INDEX_TILESET(
 ```
 
 {{% bannerNote type="note" title="warning"%}}
-In case of `source_table` being set as a query, it should be taken into account that (CTEs)[https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte] are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
+In case of `source_table` being set as a query, it should be taken into account that [CTEs](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte) are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
 {{%/ bannerNote %}}
+
 
 ### CREATE_TILESET
 
@@ -304,7 +308,6 @@ Creates a simple tileset. It differs from `carto.CREATE_SIMPLE_TILESET` in that 
 * `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`projectID.dataset.tablename\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`projectID.dataset.tablename\`)</code>).
 * `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectID.dataset.tablename\`</code>. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
 * `options`: `STRUCT<name STRING, description STRING,legend STRING, zoom_min INT64, zoom_max INT64, geom_column_name STRING, zoom_min_column STRING, zoom_max_column STRING, max_tile_size_kb INT64, tile_feature_order STRING, drop_duplicates BOOL, extra_metadata STRING>|NULL` containing the different options. Valid options are described in the table below.
-
 
 | Option | Description |
 | :----- | :------ |
@@ -321,17 +324,16 @@ Creates a simple tileset. It differs from `carto.CREATE_SIMPLE_TILESET` in that 
 |`drop_duplicates`| Default: `false`. A `BOOLEAN` to drop duplicate features in a tile. This will drop only exact matches (both the geometry and the properties are exactly equal). As this requires sorting the properties, which is expensive, it should only be used when necessary.|
 |`extra_metadata`| Default: {}. A JSON object to specify the custom metadata of the tileset.|
 
-
 {{% bannerNote type="note" title="tip"%}}
 Any option left as `NULL` will take its default value. This also applies for geometry type dependant options such as `zoom_min` or `tile_feature_order`.
 {{%/ bannerNote %}}
 
 {{% bannerNote type="note" title="tip"%}}
-A `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level as a result of applying the `drop_fraction_as_needed` strategy. Please bear in mind that the exact percentages can be up to 5% higher. 
+A `fraction_dropped_per_zoom` property will be included in the TileJSON, containing an estimate of the percentage of the features that have been dropped per zoom level as a result of applying the `drop_fraction_as_needed` strategy. Please bear in mind that the exact percentages can be up to 5% higher.
 {{%/ bannerNote %}}
 
 {{% bannerNote type="note" title="warning"%}}
-It should be taken into account that `CREATE_TILESET` will not be executed for any level that reaches more than 10 millions tiles. This threshold is set in order to avoid some BigQuery limitations. This could occur if the input dataset is very sparse or `zoom_max` is quite large. 
+It should be taken into account that `CREATE_TILESET` will not be executed for any level that reaches more than 10 millions tiles. This threshold is set in order to avoid some BigQuery limitations. This could occur if the input dataset is very sparse or `zoom_max` is quite large.
 {{%/ bannerNote %}}
 
 {{% customSelector %}}
@@ -383,7 +385,8 @@ CALL `carto-un`.carto.CREATE_TILESET(
 ```
 
 {{% bannerNote type="note" title="warning"%}}
-In case of `source_table` is set as a query, it should be taken into account that (CTEs)[https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte] are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
+In case of `source_table` is set as a query, it should be taken into account that [CTEs](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte) are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
 {{%/ bannerNote %}}
+
 
 {{% euFlagFunding %}}

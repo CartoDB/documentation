@@ -4,6 +4,7 @@
 
 This module contains functions that create different geometry types from an external format like WKT.
 
+
 ### ST_BOX2DFROMGEOHASH
 
 {{% bannerNote type="code" %}}
@@ -30,6 +31,7 @@ WITH t AS (
 SELECT carto.ST_ASTEXT(carto.ST_BOX2DFROMGEOHASH(geohash, 5)) FROM t;
 -- POLYGON ((-90 11.25, -90 22.5, -67.5 22.5, -67.5 11.25, -90 11.25))
 ```
+
 
 ### ST_GEOMFROMGEOHASH
 
@@ -58,6 +60,7 @@ SELECT carto.ST_ASTEXT(carto.ST_GEOMFROMGEOHASH(geohash, 8)) FROM t;
 -- POLYGON ((-90 11.25, -90 22.5, -67.5 22.5, -67.5 11.25, -90 11.25))
 ```
 
+
 ### ST_GEOMFROMGEOJSON
 
 {{% bannerNote type="code" %}}
@@ -81,6 +84,7 @@ SELECT carto.ST_ASTEXT(carto.ST_GEOMFROMGEOJSON('{"type":"Point","coordinates":[
 -- POINT (-76.0913 18.4275)
 ```
 
+
 ### ST_GEOMFROMTEXT
 
 {{% bannerNote type="code" %}}
@@ -103,6 +107,7 @@ Alias of st_geomFromWKT.
 SELECT carto.ST_ASGEOJSON(carto.ST_GEOMFROMTEXT('POINT(-76.09130 18.42750)'));
 -- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
 ```
+
 
 ### ST_GEOMFROMTWKB
 
@@ -130,6 +135,7 @@ SELECT carto.ST_GEOMFROMTWKB(twkb) FROM t;
 -- 4QgBz/HU1QXwwN6vAQA=
 ```
 
+
 ### ST_GEOMFROMWKB
 
 {{% bannerNote type="code" %}}
@@ -156,6 +162,7 @@ SELECT carto.ST_GEOMFROMWKB(wkb) FROM t;
 -- 4QgBz/HU1QXwwN6vAQA=
 ```
 
+
 ### ST_GEOMFROMWKT
 
 {{% bannerNote type="code" %}}
@@ -179,7 +186,9 @@ SELECT carto.ST_ASGEOJSON(carto.ST_GEOMFROMWKT('POINT(-76.09130 18.42750)'));
 -- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
 ```
 
+
 ### ST_LINEFROMTEXT
+
 {{% bannerNote type="code" %}}
 carto.ST_LINEFROMTEXT(wkt)
 {{%/ bannerNote %}}
@@ -200,6 +209,7 @@ Creates a `LineString` from the given WKT representation.
 SELECT carto.ST_ASGEOJSON(carto.ST_LINEFROMTEXT('LINESTRING(0 0, 0 3, 5 3)'));
 -- {"type":"LineString","coordinates":[[0.0,0.0,0.0],[0.0,3,0.0],[5,3,0.0]]}
 ```
+
 
 ### ST_MLINEFROMTEXT
 
@@ -224,6 +234,7 @@ SELECT carto.ST_ASGEOJSON(carto.ST_MLINEFROMTEXT('MULTILINESTRING((1 1, 3 5), (-
 -- {"type":"MultiLineString","coordinates":[[[1,1,0.0],[3,5,0.0]],[[-5,3,0.0],[-8,-2,0.0]]]}
 ```
 
+
 ### ST_MPOINTFROMTEXT
 
 {{% bannerNote type="code" %}}
@@ -247,6 +258,7 @@ SELECT carto.ST_ASGEOJSON(carto.ST_MPOINTFROMTEXT('MULTIPOINT (10 40, 40 30, 20 
 -- {"type":"MultiPoint","coordinates":[[10,40,0.0],[40,30,0.0],[20,20,0.0],[30,10,0.0]]}
 ```
 
+
 ### ST_MPOLYFROMTEXT
 
 {{% bannerNote type="code" %}}
@@ -269,6 +281,7 @@ Creates a `MultiPolygon` corresponding to the given WKT representation.
 SELECT carto.ST_ASGEOJSON(carto.ST_MPOLYFROMTEXT('MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))'));
 -- {"type":"MultiPolygon","coordinates":[[[[30,20,0.0],[45,40,0.0],[10,40,0.0],[30,20,0.0]]]...
 ```
+
 
 ### ST_POINTFROMGEOHASH
 
@@ -297,6 +310,7 @@ SELECT carto.ST_ASTEXT(carto.ST_POINTFROMGEOHASH(geohash, 5)) FROM t;
 -- POINT (-67.5 22.5)
 ```
 
+
 ### ST_POINTFROMTEXT
 
 {{% bannerNote type="code" %}}
@@ -319,6 +333,7 @@ Creates a `Point` corresponding to the given WKT representation.
 SELECT carto.ST_ASGEOJSON(carto.ST_POINTFROMTEXT('POINT(-76.09130 18.42750)'));
 -- {"type":"Point","coordinates":[-76.0913,18.4275,0.0]}
 ```
+
 
 ### ST_POINTFROMWKB
 
@@ -345,6 +360,7 @@ WITH t AS (
 SELECT carto.ST_POINTFROMWKB(wkb) FROM t;
 -- 4QgBz/HU1QXwwN6vAQA=
 ```
+
 
 ### ST_POLYGONFROMTEXT
 

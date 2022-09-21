@@ -4,6 +4,7 @@
 
 This module contains functions that compute measurements of distance, area and angles. There are also functions to compute geometry values determined by measurements.
 
+
 ### ST_AREA
 
 {{% bannerNote type="code" %}}
@@ -26,6 +27,7 @@ If `Geometry` _g_ is areal, returns the area of its surface in square units of t
 SELECT carto.ST_AREA(carto.ST_MAKEBBOX(0, 0, 2, 2));
 -- 4
 ```
+
 
 ### ST_DISTANCE
 
@@ -51,6 +53,7 @@ SELECT carto.ST_DISTANCE(carto.ST_POINT(0, 0), carto.ST_POINT(0, 5));
 -- 5
 ```
 
+
 ### ST_DISTANCESPHERE
 
 {{% bannerNote type="code" %}}
@@ -75,6 +78,7 @@ SELECT carto.ST_DISTANCESPHERE(carto.ST_POINT(0, 0), carto.ST_POINT(0, 5)) / 100
 -- 555.9753986718438 (distance in km)
 ```
 
+
 ### ST_LENGTH
 
 {{% bannerNote type="code" %}}
@@ -97,6 +101,7 @@ Returns the 2D path length of linear geometries, or perimeter of areal geometrie
 SELECT carto.ST_LENGTH(carto.ST_GEOMFROMWKT('LINESTRING(0 0, 0 3, 5 3)'));
 -- 8
 ```
+
 
 ### ST_LENGTHSPHERE
 

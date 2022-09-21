@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions to perform spatial statistics calculations.
 
+
 ### GETIS_ORD_H3
 
 {{% bannerNote type="code" %}}
@@ -51,6 +52,7 @@ FROM (
     FROM mytable
 )
 ```
+
 
 ### GETIS_ORD_QUADBIN
 
@@ -96,6 +98,7 @@ FROM (
 )
 ```
 
+
 ### GFUN
 
 {{% bannerNote type="code" %}}
@@ -113,6 +116,7 @@ This function computes the [G-function](http://www.css.cornell.edu/faculty/dgr2/
 `ARRAY<STRUCT<distance FLOAT64, gfun_G FLOAT64, gfun_ev FLOAT64>>`
 
 where:
+
 * `distance`: the nearest neighbors distances.
 * `gfun_G`: the empirical G evaluated for each distance in the support.
 * `gfun_ev`: the theoretical Poisson G evaluated for each distance in the support.
@@ -170,8 +174,8 @@ This procedures performs a local least squares regression for every input cell. 
 * `cell_type`: `STRING` spatial index type as 'h3', 'quadbin'.
 * `kring_distance`: `INT64` distance of the neighboring cells whose data will be included in the local regression of each cell.
 * `kernel_function`: `STRING` [kernel function](https://en.wikipedia.org/wiki/Kernel_(statistics)) to compute the spatial weights across the kring. Available functions are: 'uniform', 'triangular', 'quadratic', 'quartic' and 'gaussian'.
-* `fit_intercept `: `BOOL` whether to calculate the interception of the model or to force it to zero if, for example, the input data is already supposed to be centered. If NULL, `fit_intercept` will be considered as `TRUE`.
-* `output_table `: `STRING` name of the output table. It should be a quoted qualified table with project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the target table already exists. If NULL, the result will be returned directly by the query and not persisted.
+* `fit_intercept`: `BOOL` whether to calculate the interception of the model or to force it to zero if, for example, the input data is already supposed to be centered. If NULL, `fit_intercept` will be considered as `TRUE`.
+* `output_table`: `STRING` name of the output table. It should be a quoted qualified table with project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the target table already exists. If NULL, the result will be returned directly by the query and not persisted.
 
 **Output**
 
@@ -201,6 +205,7 @@ CALL `carto-un`.carto.GWR_GRID(
 );
 ```
 
+
 ### KNN
 
 {{% bannerNote type="code" %}}
@@ -219,6 +224,7 @@ This function returns for each point the [_k-nearest neighbors_](https://en.wiki
 `ARRAY<STRUCT<geo GEOGRAPHY, geo_knn GEOGRAPHY, geoid STRING, geoid_knn STRING, distance FLOAT64, knn INT64>>`
 
 where:
+
 * `geo`: the geometry of the considered point.
 * `geo_knn`: the k-nearest neighbor point.
 * `geoid`: the unique identifier of the considered point.
@@ -270,6 +276,7 @@ ORDER BY geoid
 --},
 -- ...
 ```
+
 
 ### LOCAL_MORANS_I_H3
 
@@ -324,6 +331,7 @@ SELECT `carto-un`.carto.LOCAL_MORANS_I_H3(
 )
 ```
 
+
 ### LOCAL_MORANS_I_QUADBIN
 
 {{% bannerNote type="code" %}}
@@ -376,6 +384,7 @@ SELECT `carto-un`.carto.LOCAL_MORANS_I_QUADBIN(
 );
 ```
 
+
 ### LOF
 
 {{% bannerNote type="code" %}}
@@ -393,6 +402,7 @@ This function computes the [Local Outlier Factor](https://en.wikipedia.org/wiki/
 
 `ARRAY<STRUCT<geo GEOGRAPHY, geoid GEOGRAPHY, lof FLOAT64>>`
 where:
+
 * `geo`: the geometry of the considered point.
 * `geoid`: the unique identifier of the considered point.
 * `lof`: the Local Outlier Factor score.
@@ -420,6 +430,7 @@ ORDER BY geoid
 -- {"geo": POINT(2.13967 41.3838), "geoid": "00000003", "lof": 1.1305674032876687}
 -- ...
 ```
+
 
 ### LOF_TABLE
 
@@ -454,6 +465,7 @@ CALL `carto-un`.carto.LOF_TABLE(
 -- The table `'myproject.mydataset.my_output_table` will be created
 -- with an extra column containing the `lof` value.
 ```
+
 
 ### MORANS_I_H3
 
@@ -497,6 +509,7 @@ FROM (
 )
 ```
 
+
 ### MORANS_I_QUADBIN
 
 {{% bannerNote type="code" %}}
@@ -538,6 +551,7 @@ FROM (
     FROM mytable
 )
 ```
+
 
 ### ORDINARY_KRIGING
 
@@ -657,7 +671,6 @@ This procedure uses [Ordinary kriging](https://en.wikipedia.org/wiki/Kriging) to
   * `exponential`: `P0 * (1. - exp(-xi / (P1 / 3.0))) + P2`
   * `spherical`: `P1 * (1.5 * (xi / P0) - 0.5 * (xi / P0)**3) + P2`.
 
-
 {{% customSelector %}}
 **Example**
 {{%/ customSelector %}}
@@ -692,10 +705,7 @@ This function computes the one tail p-value (upper-tail test) of a given z-score
 The [z-score](https://en.wikipedia.org/wiki/Standard_score) is a measure of how many standard deviations below or above the population mean a value is. It gives you an idea of how far from the mean a data point is.
 The [p-value](https://en.wikipedia.org/wiki/P-value) is the probability that a randomly sampled point has a value at least as extreme as the point whose z-score is being tested.
 
-
-
-
-* `z_score`: `FLOAT64` 
+* `z_score`: `FLOAT64`
 
 **Return type**
 
@@ -724,25 +734,23 @@ carto.SMOOTHING_MRF_H3(input, output, index_column, variable_column, options)
 
 This procedure computes a Markov Random Field (MRF) smoothing for a table containing H3 cell indices and their associated values.
 
-This implementation is based on the work of Christopher J. Paciorek: "Spatial models for point and areal data using Markov random fields on a fine grid." Electron. J. Statist. 7 946 - 972, 2013. https://doi.org/10.1214/13-EJS791
+This implementation is based on the work of Christopher J. Paciorek: "Spatial models for point and areal data using Markov random fields on a fine grid." Electron. J. Statist. 7 946 - 972, 2013. <https://doi.org/10.1214/13-EJS791>
 
 {{% bannerNote title="TIP" type="tip" %}}
 if your data is in lat/long format, you can still use this procedure by first converting your points to H3 cell indexes by using the [H3_FROMLONGLAT](../h3/#h3_fromlonglat) function.
 {{%/ bannerNote %}}
 
-
 * `input`: `STRING` name of the source table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`.
-* `output `: `STRING` name of the output table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the table already exists. If NULL, the result will be returned directly by the procedure and not persisted.
+* `output`: `STRING` name of the output table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the table already exists. If NULL, the result will be returned directly by the procedure and not persisted.
 * `index_column`: `STRING` name of the column containing the cell ids.
 * `variable_column`: `STRING` name of the target variable column.
-* `options`: `STRING` JSON string to overwrite the model's default options. If set to NULL or empty, it will use the default values. 
+* `options`: `STRING` JSON string to overwrite the model's default options. If set to NULL or empty, it will use the default values.
   * `closing_distance`: `INT64` distance of closing. It defaults to 0. If strictly positive, the algorithm performs a [morphological closing](https://en.wikipedia.org/wiki/Closing_(morphology)) on the cells by the `closing_distance`, defined in number of cells, before performing the smoothing. No closing is performed otherwise.
   * `output_closing_cell`: `BOOL` controls whether the cells generated by the closing are added to the output. If defaults to `FALSE`.
-  * `lambda`: `FLOAT64` iteration update factor. It defaults to 1.6. For more details, see https://doi.org/10.1214/13-EJS791, page 963.
-  * `iter`: `INT64` number of iterative queries to perform the smoothing. It defaults to 10. Increasing this parameter might help if the `convergence_limit` is not reached by the end of the procedure's execution. Tip: if this limit has ben reached, the status of the second-to-last step of the procedure will throw an error. 
+  * `lambda`: `FLOAT64` iteration update factor. It defaults to 1.6. For more details, see <https://doi.org/10.1214/13-EJS791>, page 963.
+  * `iter`: `INT64` number of iterative queries to perform the smoothing. It defaults to 10. Increasing this parameter might help if the `convergence_limit` is not reached by the end of the procedure's execution. Tip: if this limit has ben reached, the status of the second-to-last step of the procedure will throw an error.
   * `intra_iter`: `INT64` number of iterations per query. It defaults to 50. Reducing this parameter might help if a resource error is reached during the procedure's execution.
-  * `convergence_limit`: `FLOAT64` threshold condition to stop iterations. If this threshold is not reached, then the procedure will finish its execution after the maximum number of iterations (`iter`) is reached. It defaults to 10e-5. For more details, see https://doi.org/10.1214/13-EJS791, page 963. 
-
+  * `convergence_limit`: `FLOAT64` threshold condition to stop iterations. If this threshold is not reached, then the procedure will finish its execution after the maximum number of iterations (`iter`) is reached. It defaults to 10e-5. For more details, see <https://doi.org/10.1214/13-EJS791>, page 963.
 
 **Return type**
 
@@ -775,24 +783,23 @@ carto.SMOOTHING_MRF_QUADBI (input, output, index_column, variable_column, option
 
 This procedure computes a Markov Random Field (MRF) smoothing for a table containing QUADBIN cell indices and their associated values.
 
-This implementation is based on the work of Christopher J. Paciorek: "Spatial models for point and areal data using Markov random fields on a fine grid." Electron. J. Statist. 7 946 - 972, 2013. https://doi.org/10.1214/13-EJS791
+This implementation is based on the work of Christopher J. Paciorek: "Spatial models for point and areal data using Markov random fields on a fine grid." Electron. J. Statist. 7 946 - 972, 2013. <https://doi.org/10.1214/13-EJS791>
 
 {{% bannerNote title="TIP" type="tip" %}}
 if your data is in lat/long format, you can still use this procedure by first converting your points to QUADINT cell indexes by using the [QUADBIN_FROMLONGLAT](../quadbin/#quadbin_fromlonglat) function.
 {{%/ bannerNote %}}
 
 * `input`: `STRING` name of the source table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`.
-* `output `: `STRING` name of the output table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the table already exists.
+* `output`: `STRING` name of the output table. It should be a fully qualified table name including project and dataset: `<project-id>.<dataset-id>.<table-name>`. The process will fail if the table already exists.
 * `index_column`: `STRING` name of the column containing the cell ids.
 * `variable_column`: `STRING` name of the target variable column.
 * `options`: `STRING` JSON string to overwrite the model's default options. If set to NULL or empty, it will use the default values.
   * `closing_distance`: `INT64` distance of closing. It defaults to 0. If strictly positive, the algorithm performs a [morphological closing](https://en.wikipedia.org/wiki/Closing_(morphology)) on the cells by the `closing_distance`, defined in number of cells, before performing the smoothing. No closing is performed otherwise.
   * `output_closing_cell`: `BOOL` controls whether the cells generated by the closing are added to the output. If defaults to `FALSE`.
-  * `lambda`: `FLOAT64` iteration update factor. It defaults to 1.6. For more details, see https://doi.org/10.1214/13-EJS791, page 963.
+  * `lambda`: `FLOAT64` iteration update factor. It defaults to 1.6. For more details, see <https://doi.org/10.1214/13-EJS791>, page 963.
   * `iter`: `INT64` number of iterative queries to perform the smoothing. It defaults to 10. Increasing this parameter might help if the `convergence_limit` is not reached by the end of the procedure's execution. Tip: if this limit has ben reached, the status of the second-to-last step of the procedure will throw an error.
   * `intra_iter`: `INT64` number of iterations per query. It defaults to 50. Reducing this parameter might help if a resource error is reached during the procedure's execution.
-  * `convergence_limit`: `FLOAT64` threshold condition to stop iterations. If this threshold is not reached, then the procedure will finish its execution after the maximum number of iterations (`iter`) is reached. It defaults to 10e-5. For more details, see https://doi.org/10.1214/13-EJS791, page 963.
-
+  * `convergence_limit`: `FLOAT64` threshold condition to stop iterations. If this threshold is not reached, then the procedure will finish its execution after the maximum number of iterations (`iter`) is reached. It defaults to 10e-5. For more details, see <https://doi.org/10.1214/13-EJS791>, page 963.
 
 **Return type**
 
@@ -832,7 +839,7 @@ carto.VARIOGRAM(input, n_bins, max_distance, model)
 
 This function computes the [Variogram](https://en.wikipedia.org/wiki/Variogram) from the input array of points and their associated values.
 
-It returns a STRUCT with the parameters of the variogram, the _x_ values, the _y_ values, the predicted _y_ values and the number of values aggregated per bin. 
+It returns a STRUCT with the parameters of the variogram, the _x_ values, the _y_ values, the predicted _y_ values and the number of values aggregated per bin.
 
 * `input`: `ARRAY<STRUCT<point GEOGRAPHY, value FLOAT64>>` input array with the points and their associated values.
 * `n_bins`: `INT64` number of bins to compute the semivariance.
@@ -846,6 +853,7 @@ It returns a STRUCT with the parameters of the variogram, the _x_ values, the _y
 `STRUCT<variogram_params ARRAY<FLOAT64>, x ARRAY<FLOAT64>, y ARRAY<FLOAT64>, yp ARRAY<FLOAT64>, count ARRAY<INT64>>`
 
 where:
+
 * `variogram_params`: array containing the parameters [P0, P1, P2] fitted to the `model`.
 * `x`: array with the _x_ values used to fit the `model`.
 * `y`: array with the _y_ values used to fit the `model`.

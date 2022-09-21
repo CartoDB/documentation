@@ -4,6 +4,7 @@
 
 On this module are contained functions that create geographies from already existing geographies by computing a prior processing.
 
+
 ### ST_DELAUNAYLINES
 
 {{% bannerNote type="code" %}}
@@ -26,6 +27,7 @@ Calculates the Delaunay triangulation of the points provided. A MultiLineString 
 SELECT carto.ST_DELAUNAYLINES(ST_GEOMFROMTEXT('MULTIPOINT((-70.3894720672732 42.9988854818585),(-71.1048188482079 42.6986831053718),(-72.6818783178395 44.1191152795997),(-73.8221894711314 35.1057463244819))'));
 -- {"type": "MultiLineString", "coordinates": [[[-71.1048188482, 42.6986831054], [-70.3894720673, 42.9988854819], [-73.8221894711, 35.1057463245], [-71.1048188482, 42.6986831054]], ...
 ```
+
 
 ### ST_DELAUNAYPOLYGONS
 
@@ -50,6 +52,7 @@ SELECT carto.ST_DELAUNAYPOLYGONS(ST_GEOMFROMTEXT('MULTIPOINT((-70.3894720672732 
 -- {"type": "MultiPolygon", "coordinates": [[[[-71.1048188482, 42.6986831054], [-70.3894720673, 42.9988854819], [-73.8221894711, 35.1057463245], [-71.1048188482, 42.6986831054]]], ...
 ```
 
+
 ### ST_POLYGONIZE
 
 {{% bannerNote type="code" %}}
@@ -73,6 +76,7 @@ SELECT carto.ST_POLYGONIZE(ST_GEOMFROMTEXT('LINESTRING(-74.5366825512491 43.6889
 -- POLYGON ((-74.5366825512491 43.6889777784079, -70.7632814028801 42.9679602005825, -70.2005131676838 43.8455720129728, -74.5366825512491 43.6889777784079))
 ```
 
+
 ### ST_VORONOILINES
 
 {{% bannerNote type="code" %}}
@@ -85,7 +89,6 @@ Calculates the Voronoi diagram of the points provided. A MultiLineString object 
 
 * `points`: `GEOMETRY` MultiPoint input to the Voronoi diagram.
 
-
 **Return type**
 
 `VARCHAR(MAX)`
@@ -96,6 +99,7 @@ Calculates the Voronoi diagram of the points provided. A MultiLineString object 
 SELECT carto.ST_VORONOILINES(ST_GEOMFROMTEXT('MULTIPOINT((-74.5366825512491 43.6889777784079),(-74.4821382017478 43.3096147774153),(-70.7632814028801 42.9679602005825))'));
 -- {"type": "MultiLineString", "coordinates": [[[-72.563891028, 43.7790206765], [-72.6715241053, 42.6074514117]], [[-72.563891028, 43.7790206765], ...
 ```
+
 
 ### ST_VORONOIPOLYGONS
 

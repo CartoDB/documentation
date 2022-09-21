@@ -4,6 +4,7 @@
 
 This module contains functions used for indexing
 
+
 ### ST_CRSFROMTEXT
 
 {{% bannerNote type="code" %}}
@@ -77,6 +78,7 @@ WITH t AS (
 SELECT carto.ST_ASTEXT(carto.ST_EXTENTTOGEOM(extent)) FROM t;
 -- POLYGON ((0 0, 0 1, 1 1, 1 0, 0 0))
 ```
+
 
 ### GEOMREPROJECT
 
