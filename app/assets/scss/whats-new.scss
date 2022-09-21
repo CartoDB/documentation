@@ -1,0 +1,30 @@
+.whats-new-list {
+  display: flex;
+  flex-direction: column;
+
+  .whats-new-card {
+    margin-bottom: 48px;
+    padding: 0 0 48px 0;
+    border-bottom: 1px solid #efefef;
+
+    .whats-new-card__summary {
+      .date {
+        font-family: "OpenSans", sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: normal;
+        color: #6f777c;
+      }
+      
+      .title {
+        margin-top: 14px;
+      }
+    }
+
+    .whats-new-card__content {
+      img {
+        margin: 36px 0 0 0;
+      }
+    }
+  }
+}

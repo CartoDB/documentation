@@ -1,0 +1,30 @@
+<div class="grid-cell grid-cell--col12 grid-cell--col12--desktop-s grid-cell--col12--mobile whats-new-card">
+  <div class="whats-new-card__content__wrapper">
+    <div class="whats-new-card__summary">
+      <p class='date'>{{ .Params.date | dateFormat "January 1, 2006" }}</p>
+      <h2 class='title'>{{ .Title }}</h2>
+    </div>
+
+    <p>Tags here</p>
+    <!-- TAGS -->
+    {{ $baseDir := .Dir}}
+    {{ $path := path.Join $baseDir "categories" }}
+    {{ if .Params.categories }}
+    <div class="whats-new-card__tags u-mt24">
+      {{ range .Params.categories }}
+      <a href="{{ $path | relURL }}/{{ . | urlize}}" class="title whats-new-tag u-mb4 u-mr4">
+        {{ $icon := printf "%s%s%s" "/img/icons/categories/" . ".png" }}
+        {{ if fileExists (printf "%s%s" "static" $icon) }}
+        <img src="{{ $icon }}" alt="">
+        {{ end }}
+        {{ . }}
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    <div class='whats-new-card__content'>
+      {{.Content}}
+    </div>
+  </div>
+</div>
