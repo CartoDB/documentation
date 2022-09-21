@@ -1,11 +1,10 @@
 ---
 title: "Native support for Spatial Indexes across our platform interfaces for more performant analytics"
 type: whats-new
-date: "2022-01-02"
-# categories:
-#     - easy
-#     - spatial indexes
-#     - out-of-home
+date: "2022-09-15"
+tags:
+  - beta
+  - workspace
 ---
 
 

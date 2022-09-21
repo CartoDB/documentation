@@ -16,11 +16,11 @@
         {{- partial "tutorials-overview" . -}}
       {{ end }}
       
-      <ul class="grid">
-        {{ range $paginator.Pages }}
-          {{ partial "example-summary.html" . }}
+      <div class="whats-new-list">
+        {{ range $post := sort $paginator.Pages "Params.date" "desc" }}
+          {{ partial "whats-new-summary.html" $post }}
         {{ end }}
-      </ul>
+      </div>
 
       {{ if (gt $paginator.TotalPages 1) }}
         {{ partial "paginator.html" (dict "context" . "paginator" $paginator) }}

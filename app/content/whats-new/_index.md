@@ -1,7 +1,7 @@
 ---
 title: What's New
 description: "Build compelling spatial apps using CARTO, React, and deck.gl."
-icon: "/img/icons/carto-react.png"
+icon: "/img/icons/whats-new.png"
 url: whats-new
 type: whats-new
 

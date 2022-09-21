@@ -5,25 +5,26 @@
   <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
     {{- partial "aside-menu.html" . -}}
     <div class="whats-new-grid grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
-
       {{ $dir := absURL .CurrentSection.Dir }}
-      <!-- NOTE: get all tags and pass them to the selector -->
+      {{ $pages := .GetPage "whats-new" }}
       {{ $tags := slice }}
-      {{ range $page := .Pages }}
+      {{ range $page := $pages.Pages }}
         {{ if $page.Params.tags }}
           {{ $tags = $tags | append $page.Params.tags }}
         {{ end }}
       {{ end }}
       {{ partial "tags-select.html"  (dict "tags" ($tags | uniq) "dir" $dir)  }}
 
-      {{ $paginator := .Paginator }}
+
+      {{ $curr := slice .Params.tag }}
+      {{ $paginator := .Paginate (where .Site.Pages "Params.tags" "intersect" $curr) }}
       
       <div class="whats-new-list">
         {{ range $post := sort $paginator.Pages "Params.date" "desc" }}
           {{ partial "whats-new-summary.html" $post }}
         {{ end }}
       </div>
-      
+
       {{ if (gt $paginator.TotalPages 1) }}
         {{ partial "paginator.html" (dict "context" . "paginator" $paginator) }}
       {{ end }}

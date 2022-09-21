@@ -1,11 +1,10 @@
 ---
 title: "Point & Click SQL analyses, and enhanced interactive and cartographic capabilities in Builder"
 type: whats-new
-date: "2022-02-02"
-# categories:
-#     - easy
-#     - spatial indexes
-#     - out-of-home
+date: "2022-02-09"
+tags:
+  - improvement
+  - builder
 ---
 
 
