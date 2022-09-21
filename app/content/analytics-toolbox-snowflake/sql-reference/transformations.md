@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions that compute geometric constructions, or alter geometry size or shape.
 
+
 ### ST_BUFFER
 
 {{% bannerNote type="code" %}}
@@ -38,6 +39,7 @@ SELECT carto.ST_BUFFER(ST_POINT(-74.00, 40.7128), 1000, 10);
 -- { "coordinates": [ [ [ -73.98813543746913, 40.712799392649444 ], ...
 ```
 
+
 ### ST_CENTERMEAN
 
 {{% bannerNote type="code" %}}
@@ -60,6 +62,7 @@ Takes a Feature or FeatureCollection and returns the mean center.
 SELECT carto.ST_CENTERMEAN(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- { "coordinates": [ 26, 24 ], "type": "Point" }
 ```
+
 
 ### ST_CENTERMEDIAN
 
@@ -84,6 +87,7 @@ SELECT carto.ST_CENTERMEDIAN(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20,
 -- { "coordinates": [ 25, 27.5 ], "type": "Point" }
 ```
 
+
 ### ST_CENTEROFMASS
 
 {{% bannerNote type="code" %}}
@@ -106,6 +110,7 @@ Takes any Feature or a FeatureCollection and returns its center of mass using th
 SELECT carto.ST_CENTEROFMASS(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))'));
 -- { "coordinates": [ 25.454545454545453, 26.96969696969697 ], "type": "Point" }
 ```
+
 
 ### ST_CONCAVEHULL
 
@@ -147,6 +152,7 @@ SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.28
 --  { "coordinates": [ -75.833, 39.284 ], "type": "Point" }
 ```
 
+
 ### ST_DESTINATION
 
 {{% bannerNote type="code" %}}
@@ -178,6 +184,7 @@ SELECT carto.ST_DESTINATION(ST_POINT(-3.70325,40.4167), 10, 45, 'miles');
 -- { "coordinates": [ -3.56862505487045, 40.518962677753585 ], "type": "Point" }
 ```
 
+
 ### ST_GREATCIRCLE
 
 {{% bannerNote type="code" %}}
@@ -207,6 +214,7 @@ SELECT carto.ST_GREATCIRCLE(ST_POINT(-3.70325,40.4167), ST_POINT(-73.9385,40.664
 SELECT carto.ST_GREATCIRCLE(ST_POINT(-3.70325,40.4167), ST_POINT(-73.9385,40.6643), 20);
 -- { "coordinates": [ [ -3.7032499999999993, 40.4167 ], ... 
 ```
+
 
 ### ST_LINE_INTERPOLATE_POINT
 

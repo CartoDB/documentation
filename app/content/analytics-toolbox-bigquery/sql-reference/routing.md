@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions that perform routing and path calculations.
 
+
 ### DISTANCE_MAP
 
 {{% bannerNote type="code" %}}
@@ -46,6 +47,7 @@ FROM (
 --  {"weight": "13343.412141298875", "geography": "POINT(-74 40.72)"},
 --  ...]
 ```
+
 
 ### DISTANCE_MAP_FROM_NETWORK
 
@@ -89,6 +91,7 @@ FROM (
 --  ...]
 ```
 
+
 ### DISTANCE_MAP_FROM_NETWORK_TABLE
 
 {{% bannerNote type="code" %}}
@@ -121,6 +124,7 @@ CALL `carto-un`.carto.DISTANCE_MAP_FROM_NETWORK_TABLE(
 
 To generate a network table check out the [`GENERATE_NETWORK_TABLE`](#generate_network_table) procedure.
 
+
 ### FIND_SHORTEST_PATH
 
 {{% bannerNote type="code" %}}
@@ -134,8 +138,8 @@ Takes aggregated LineStrings and their corresponding speed to form a network, a 
 If you are reusing the same network for multiple calls, using the GENERATE_NETWORK function to build to a temporary table or subquery through the function and calling FIND_SHORTEST_PATH_FROM_NETWORK will perform better.
 
 * `linestring_collection`: `ARRAY<STRUCT<geom GEOGRAPHY, speed FLOAT64>>` Aggregated LineStrings and their corresponding speed that form the network.
-* `pointA`: `GEOGRAPHY` Source point. The node of the network nearest to this point will be used as the source point to compute the shortest path.
-* `pointB`: `GEOGRAPHY` Destination point. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
+* `point_a`: `GEOGRAPHY` Source point. The node of the network nearest to this point will be used as the source point to compute the shortest path.
+* `point_b`: `GEOGRAPHY` Destination point. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
 
 **Return type**
 
@@ -161,6 +165,7 @@ FROM (
 -- {"weight": "34271.61998982268", "path": "LINESTRING(-74 40.6, -74 40.72, -73.97 40.72, -73.94 40.72, -73.91 40.72, -73.91 40.84)"}
 ```
 
+
 ### FIND_SHORTEST_PATH_FROM_NETWORK
 
 {{% bannerNote type="code" %}}
@@ -172,8 +177,8 @@ carto.FIND_SHORTEST_PATH_FROM_NETWORK(network, pointA, pointB)
 Takes a network, a source point and a destination point as input. Returns the length and the geometry of the shortest path in terms of weights of links between the node closest to the source point and the node closest to the destination point.
 
 * `network`: `ARRAY<STRUCT<src_idx INT64, src_geo GEOGRAPHY, dest_idx INT64, dest_geo GEOGRAPHY, weight FLOAT64>>` The network from which to compute the shortest path. You can use the result of the `GENERATE_NETWORK` function.
-* `pointA`: `GEOGRAPHY` Source point. The node of the network nearest to this point will be used as the source point to compute the shortest path.
-* `pointB`: `GEOGRAPHY` Destination point. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
+* `point_a`: `GEOGRAPHY` Source point. The node of the network nearest to this point will be used as the source point to compute the shortest path.
+* `point_b`: `GEOGRAPHY` Destination point. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
 
 **Return type**
 
@@ -202,8 +207,9 @@ FROM (
   )
 );
 -- {"weight": "39117.62820259647", "geom": "LINESTRING(-73.91 40.6, -73.91 40.68, -73.91 40.69, -73.92 40.7, ...)",
---  "path": [{"idx": "79", "GEOGRAPHY": "POINT(-73.91 40.6)"}, {"idx": "80", "GEOGRAPHY": "POINT(-73.91 40.68)"}, ...]}
+--  "path": [{"idx": "79", "geography": "POINT(-73.91 40.6)"}, {"idx": "80", "geography": "POINT(-73.91 40.68)"}, ...]}
 ```
+
 
 ### FIND_SHORTEST_PATH_FROM_NETWORK_TABLE
 
@@ -217,9 +223,8 @@ Procedure that takes a network, a source point and a destination point as input.
 
 * `src_fullname`: `STRING` The source table from where the network will be read to compute the shortest path. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). You can use the result of the `GENERATE_NETWORK_TABLE` procedure.
 * `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
-* `pointA`: `STRING` The source geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the source point to compute the shortest path.
-* `pointB`: `STRING` The destination geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
-
+* `point_a`: `STRING` The source geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the source point to compute the shortest path.
+* `point_b`: `STRING` The destination geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
 
 {{% customSelector %}}
 **Example**
@@ -235,6 +240,7 @@ CALL `carto-un`.carto.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE(
 ```
 
 To generate a network table check out the [`GENERATE_NETWORK_TABLE`](#generate_network_table) procedure.
+
 
 ### GENERATE_NETWORK
 
@@ -271,6 +277,7 @@ FROM (
 --  {"src_idx": "1", "src_geo": "POINT(-74 40.72)", "dest_idx": "0", "dest_geo": "POINT(-74 40.6)", "weight": "13343.409628025242"},
 --  ...]
 ```
+
 
 ### GENERATE_NETWORK_TABLE
 
@@ -313,5 +320,6 @@ CREATE TABLE mydataset.linestring_collection_table AS
   WHERE lon+lat<-73.95+40.75 --remove some nodes of the grid
   GROUP BY lat;
 ```
+
 
 {{% euFlagFunding %}}

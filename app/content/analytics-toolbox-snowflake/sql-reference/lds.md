@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions and procedures that make use of location data services, such as geocoding, reverse geocoding and isolines computation.
 
+
 ### CREATE_ISOLINES
 
 {{% bannerNote type="code" %}}
@@ -42,6 +43,7 @@ CALL carto.CREATE_ISOLINES(
 -- with the columns of the input table except `my_geom_column`.
 -- Isolines will be added in the "geom" column.
 ```
+
 
 ### GEOCODE
 
@@ -86,6 +88,7 @@ SELECT ADDRESS, carto.GEOCODE(ADDRESS) AS GEOM FROM my_table
 -- Table my_geocoded_table successfully created.
 ```
 
+
 ### GEOCODE_REVERSE
 
 {{% bannerNote type="code" %}}
@@ -117,6 +120,7 @@ This function performs requests to the CARTO Location Data Services API. Snowfla
 SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
 -- 254 Broadway, New York, NY 10007, USA
 ```
+
 
 ### GEOCODE_REVERSE_TABLE
 
@@ -188,6 +192,7 @@ GRANT OWNERSHIP ON TABLE "my-schema"."my-table" TO ROLE SYSADMIN COPY CURRENT GR
 
 After performing this operation, you will be able to run `GEOCODE_REVERSE_TABLE` without running into privilege issues.
 
+
 ### GEOCODE_TABLE
 
 {{% bannerNote type="code" %}}
@@ -257,6 +262,7 @@ GRANT OWNERSHIP ON TABLE "my-schema"."my-table" TO ROLE SYSADMIN COPY CURRENT GR
 
 After performing this operation, you will be able to run `GEOCODE_TABLE` without running into privilege issues.
 
+
 ### ISOLINE
 
 {{% bannerNote type="code" %}}
@@ -290,6 +296,7 @@ This function performs requests to the CARTO Location Data Services API. Snowfla
 SELECT carto.ISOLINE(ST_MAKEPOINT(-3,40), 'car', 10, 'time');
 -- { "coordinates": [ [ [ -2.999868, 40.001907 ], [ -2.999439, 40.001736 ], [ -2.999096, 40.000706 ], [ -2.998066, 40.000362 ], [ ...
 ```
+
 
 ### LDS_QUOTA_INFO
 

@@ -24,6 +24,7 @@ The Data Observatory Catalog tables (`SPATIAL_CATALOG_DATASETS` and `SPATIAL_CAT
 As a result of this process, each input grid cell will be enriched with the data of the Data Observatory datasets that spatially intersect it. When the input cell intersects with more than one polygon, point, or line of the Data Observatory datasets, the data is aggregated using the aggregation methods specified.
 
 Valid aggregation methods are:
+
 * `SUM`: It assumes the aggregated variable is an [_extensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. population). Accordingly, the value corresponding to the Data Observatory feature intersected is weighted by the fraction of area or length intersected. If the Data Observatory features are points, then a simple sum is performed.
 * `MIN`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
 * `MAX`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
@@ -64,6 +65,7 @@ CALL carto.DATAOBS_ENRICH_GRID(
 -- with column POPULATION_14D9CF55_SUM
 ```
 
+
 ### DATAOBS_ENRICH_GRID_RAW
 
 {{% bannerNote type="code" %}}
@@ -93,6 +95,7 @@ As a result of this process, each input grid cell will be enriched with the data
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
 The array contains OBJECTs with one field for each variable, using the variable slug as the field name. Additional fields will be included with information about the intersection of the geographies:
+
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
@@ -220,6 +223,7 @@ As a result of this process, each input point will be enriched with the data of 
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
 The array contains OBJECTs with one field for each variable, using the variable slug as the field name. Additional fields will be included with information about the intersected enrichment geographies:
+
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
@@ -265,6 +269,7 @@ This procedure enriches a query containing geographic polygons with data from th
 As a result of this process, each input polygon will be enriched with the data from the Data Observatory that spatially intersects it. When the input polygon intersects with more than one data observatory polygon, point or line, the data is aggregated using the aggregation methods specified.
 
 Valid aggregation methods are:
+
 * `SUM`: It assumes the aggregated variable is an [_extensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. population). Accordingly, the value corresponding to the Data Observatory feature intersected is weighted by the fraction of area or length intersected. If the Data Observatory features are points, then a simple sum is performed.
 * `MIN`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
 * `MAX`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
@@ -346,6 +351,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
 The array contains OBJECTs with one field for each variable, using the variable slug as the field name. Additional fields will be included with information about the intersection of the geographies:
+
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
@@ -430,6 +436,7 @@ CALL carto.DATAOBS_ENRICH_POLYGONS_RAW(
 -- __carto_dimension, __carto_intersection and __carto_total.
 ```
 
+
 ### DATAOBS_SUBSCRIPTIONS
 
 {{% bannerNote type="code" %}}
@@ -447,6 +454,7 @@ When calling this procedure, the result shows a list of the DO subscriptions ava
 **Output**
 
 The result is an array of objects with the following fields:
+
 * `dataset_slug` Internal identifier of the DO dataset.
 * `dataset_name` name of the DO dataset.
 * `dataset_country` name of the country the dataset belongs to.
@@ -465,6 +473,7 @@ The result is an array of objects with the following fields:
 CALL carto.DATAOBS_SUBSCRIPTIONS('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
 ```
 
+
 ### DATAOBS_SUBSCRIPTION_VARIABLES
 
 {{% bannerNote type="code" %}}
@@ -482,6 +491,7 @@ When calling this procedure, the result shows a list of the DO subscriptions and
 **Output**
 
 The result is an array of objects with the following fields:
+
 * `variable_slug` unique identifier of the variable. This can be used for enrichment.
 * `variable_name` column name of the variable.
 * `variable_description` description of the variable.
@@ -496,6 +506,7 @@ The result is an array of objects with the following fields:
 CALL carto.DATAOBS_SUBSCRIPTION_VARIABLES('MY_DATAOBS_DB.MY_DATAOBS_SCHEMA', '');
 ```
 
+
 ### ENRICH_GRID
 
 {{% bannerNote type="code" %}}
@@ -509,6 +520,7 @@ This procedure enriches a set of grid cells of one of the supported types (h3, q
 As a result of this process, each input grid cell will be enriched with the data of the enrichment query that spatially intersects it. When the input cell intersects with more than one feature of the enrichment query, the data is aggregated using the aggregation methods specified.
 
 Valid aggregation methods are:
+
 * `SUM`: It assumes the aggregated variable is an [_extensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. population). Accordingly, the value corresponding to the enrichment feature intersected is weighted by the fraction of area or length intersected. If the enrichment features are points, then a simple sum is performed.
 * `MIN`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
 * `MAX`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
@@ -599,6 +611,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column named `__CARTO_ENRICHMENT`. The array contains OBJECTs with one field for each variable. Additional fields will be included with information about the intersection of the geographies:
+
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines and 0 for points.
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
@@ -722,6 +735,7 @@ As a result of this process, each input polygon will be enriched with the data f
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column named `__CARTO_ENRICHMENT`. The array contains OBJECTs with one field for each variable. Additional fields will be included with information about the intersection of the geographies:
+
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
@@ -763,6 +777,7 @@ This procedure enriches a query containing geographic polygons with data from an
 As a result of this process, each input polygon will be enriched with the data from the enrichment query that spatially intersects it. When the input polygon intersects with more than one enrichment polygon, point or line, the data is aggregated using the aggregation methods specified.
 
 Valid aggregation methods are:
+
 * `SUM`: It assumes the aggregated variable is an [_extensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. population). Accordingly, the value corresponding to the enrichment feature intersected is weighted by the fraction of area or length intersected. If the enrichment features are points, then a simple sum is performed.
 * `MIN`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
 * `MAX`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
@@ -845,6 +860,7 @@ Note that GeometryCollection/FeatureCollection geographies are not supported at 
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column named `__CARTO_ENRICHMENT`. The array contains OBJECTs with one field for each variable. Additional fields will be included with information about the intersection of the geographies:
+
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines and 0 for points.
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.

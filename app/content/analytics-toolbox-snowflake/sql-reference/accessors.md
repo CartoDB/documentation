@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions that provide information or transform internal geometries.
 
+
 ### ST_ENVELOPE_ARR
 
 {{% bannerNote type="code" %}}

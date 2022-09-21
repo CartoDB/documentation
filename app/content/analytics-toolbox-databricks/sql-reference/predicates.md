@@ -4,6 +4,7 @@
 
 This module contains functions that return a boolean based on the relation between 2 geometries or its properties.
 
+
 ### ST_CONTAINS
 
 {{% bannerNote type="code" %}}
@@ -31,6 +32,7 @@ WITH t AS (
 SELECT carto.ST_CONTAINS(geom, point) FROM t;
 -- true
 ```
+
 
 ### ST_COVERS
 
@@ -60,6 +62,7 @@ SELECT carto.ST_COVERS(geomA, geomB) FROM t;
 -- true
 ```
 
+
 ### ST_CROSSES
 
 {{% bannerNote type="code" %}}
@@ -87,6 +90,7 @@ WITH t AS (
 SELECT carto.ST_CROSSES(lineA, lineB) FROM t;
 -- true
 ```
+
 
 ### ST_DISJOINT
 
@@ -116,6 +120,7 @@ SELECT carto.ST_DISJOINT(lineA, lineB) AS disjoint FROM t;
 -- false
 ```
 
+
 ### ST_EQUALS
 
 {{% bannerNote type="code" %}}
@@ -143,6 +148,7 @@ WITH t AS (
 SELECT carto.ST_EQUALS(lineA, lineB) FROM t;
 -- true
 ```
+
 
 ### ST_INTERSECTS
 
@@ -172,6 +178,7 @@ SELECT carto.ST_INTERSECTS(lineA, lineB) FROM t;
 -- true
 ```
 
+
 ### ST_OVERLAPS
 
 {{% bannerNote type="code" %}}
@@ -200,6 +207,7 @@ SELECT carto.ST_OVERLAPS(geomA, geomB) FROM t;
 -- true
 ```
 
+
 ### ST_RELATE
 
 {{% bannerNote type="code" %}}
@@ -209,7 +217,6 @@ carto.### ST_RELATE(geomA, geomB)
 **Description**
 
 Returns the DE-9IM 3x3 interaction matrix pattern describing the dimensionality of the intersections between the interior, boundary and exterior of the two geometries.
-
 
 * `geomA`: `Geometry` input geom A.
 * `geomB`: `Geometry` input geom B.
@@ -228,6 +235,7 @@ WITH t AS (
 SELECT carto.ST_RELATE(geomA, geomB) FROM t;
 -- true
 ```
+
 
 ### ST_RELATEBOOL
 
@@ -258,6 +266,7 @@ SELECT carto.ST_RELATEBOOL(geomA, geomB, "212101212") FROM t;
 -- true
 ```
 
+
 ### ST_TOUCHES
 
 {{% bannerNote type="code" %}}
@@ -285,6 +294,7 @@ WITH t AS (
 SELECT carto.ST_TOUCHES(geomA, geomB) FROM t;
 -- true
 ```
+
 
 ### ST_WITHIN
 

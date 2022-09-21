@@ -4,6 +4,7 @@
 
 This module contains functions that compute geometric constructions, or alter geometry size or shape.
 
+
 ### ST_ANTIMERIDIANSAFEGEOM
 
 {{% bannerNote type="code" %}}
@@ -29,6 +30,7 @@ WITH t AS (
 SELECT carto.ST_ASTEXT(carto.ST_ANTIMERIDIANSAFEGEOM(geom)) FROM t;
 -- MULTIPOLYGON (((-180 0, -180 5, -170 5, -170 0, -180 0)), ((180 5, 180 0, 178 0, 178 5, 180 5)))
 ```
+
 
 ### ST_BOUNDARY
 
@@ -56,6 +58,7 @@ SELECT carto.ST_ASTEXT(carto.ST_BOUNDARY(geom)) FROM t;
 -- LINESTRING (0 0, 0 2, 2 2, 2 0, 0 0)
 ```
 
+
 ### ST_BUFFERPOINT
 
 {{% bannerNote type="code" %}}
@@ -82,6 +85,7 @@ SELECT carto.ST_ASTEXT(carto.ST_BUFFERPOINT(carto.ST_POINT(0, 0), 1));;
 -- POLYGON ((0.000009 0, 0.000009 0.0000006, 0.0000089 0.0000011, 0.0000088 0.0000017, ...
 ```
 
+
 ### ST_CENTROID
 
 {{% bannerNote type="code" %}}
@@ -107,6 +111,7 @@ WITH t AS (
 SELECT carto.ST_ASTEXT(carto.ST_CENTROID(geom)) FROM t;
 -- POINT (1 1)
 ```
+
 
 ### ST_CLOSESTPOINT
 
@@ -136,6 +141,7 @@ SELECT carto.ST_ASTEXT(carto.ST_CLOSESTPOINT(geomA, geomB)) FROM t;
 -- POINT (2 2)
 ```
 
+
 ### ST_CONVEXHULL
 
 {{% bannerNote type="code" %}}
@@ -162,6 +168,7 @@ SELECT carto.ST_ASTEXT(carto.ST_CONVEXHULL(geom)) FROM t;
 -- POLYGON ((-5 -5, -5 -1, 3 5, -1 -5, -5 -5))
 ```
 
+
 ### ST_DIFFERENCE
 
 {{% bannerNote type="code" %}}
@@ -170,7 +177,7 @@ carto.ST_DIFFERENCE(geomA, geomB)
 
 **Description**
 
-Return the part of geomA that does not intersect with geomB. 
+Return the part of geomA that does not intersect with geomB.
 
 * `geomA`: `Geometry` input geom A.
 * `geomB`: `Geometry` input geom B.
@@ -189,6 +196,7 @@ WITH t AS (
 SELECT carto.ST_ASTEXT(carto.ST_DIFFERENCE(geomA, geomB)) AS difference FROM t;
 -- POLYGON ((0 0, 0 2, 1 2, 1 1, 2 1, 2 0, 0 0))
 ```
+
 
 ### ST_EXTERIORRING
 
@@ -216,6 +224,7 @@ SELECT carto.ST_ASTEXT(carto.ST_EXTERIORRING(geom)) FROM t;
 -- LINESTRING (0 0, 0 1, 1 1, 1 0, 0 0)
 ```
 
+
 ### ST_IDLSAFEGEOM
 
 {{% bannerNote type="code" %}}
@@ -241,6 +250,7 @@ WITH t AS (
 SELECT carto.ST_ASTEXT(carto.ST_IDLSAFEGEOM(geom)) AS geom FROM t;
 -- MULTIPOLYGON (((-180 0, -180 5, -170 5, -170 0, -180 0)), ((180 5, 180 0, 178 0, 178 5, 180 5)))
 ```
+
 
 ### ST_INTERIORRINGN
 
@@ -268,6 +278,7 @@ WITH t AS (
 SELECT carto.ST_ASTEXT(carto.ST_INTERIORRINGN(geom, 1)) FROM t;
 -- LINESTRING (20 20, 20 30, 30 30, 30 20, 20 20)
 ```
+
 
 ### ST_INTERSECTION
 
@@ -297,6 +308,7 @@ SELECT carto.ST_ASTEXT(carto.ST_INTERSECTION(geomA, geomB)) AS intersection FROM
 -- POLYGON ((1 2, 2 2, 2 1, 1 1, 1 2))
 ```
 
+
 ### ST_SIMPLIFY
 
 {{% bannerNote type="code" %}}
@@ -305,11 +317,11 @@ carto.ST_SIMPLIFY(geom, tolerance)
 
 **Description**
 
-Returns a simplified version of the given `Geometry` using the Douglas-Peucker algorithm. This function does not preserve topology - e.g. polygons can be split, collapse to lines or disappear holes can be created or disappear, and lines can cross. To simplify geometry while preserving topology use ST_SIMPLIFYPRESERVETOPOLOGY. 
+Returns a simplified version of the given `Geometry` using the Douglas-Peucker algorithm. This function does not preserve topology - e.g. polygons can be split, collapse to lines or disappear holes can be created or disappear, and lines can cross. To simplify geometry while preserving topology use ST_SIMPLIFYPRESERVETOPOLOGY.
 
 * `geom`: `Geometry` input geom.
 * `tolerance`: `Double` input distance tolerance.
-double 
+double
 
 **Return type**
 
@@ -327,6 +339,7 @@ SELECT carto.ST_ASTEXT(carto.ST_SIMPLIFY(geom, 0.00001)) AS simplifiedGeom,
 -- POLYGON ((0.0000899 0, 0.0000656 0.0000616, 0 0.0000899, -0.0000616 0.0000656, -0.0000899 0, -0.0000656 -0.0000616, 0 -0.0000899, 0.0000616 -0.0000656, 0.0000899 0)) | 9 | 101
 ```
 
+
 ### ST_SIMPLIFYPRESERVETOPOLOGY
 
 {{% bannerNote type="code" %}}
@@ -337,10 +350,9 @@ carto.ST_SIMPLIFYPRESERVETOPOLOGY(geom, tolerance)
 
 Simplifies a `Geometry` and ensures that the result is a valid geometry having the same dimension and number of components as the input, and with the components having the same topological relationship.
 
-
 * `geom`: `Geometry` input geom.
 * `tolerance`: `Double` input distance tolerance.
-double 
+double
 
 **Return type**
 
@@ -357,6 +369,7 @@ SELECT carto.ST_ASTEXT(carto.ST_SIMPLIFYPRESERVETOPOLOGY(geom, 1)) AS simplified
     carto.ST_NUMPOINTS(geom) AS numPoints FROM t;
 -- POLYGON ((0.0000899 0, 0 0.0000899, -0.0000899 0, 0 -0.0000899, 0.0000899 0)) | 5 | 101
 ```
+
 
 ### ST_TRANSLATE
 

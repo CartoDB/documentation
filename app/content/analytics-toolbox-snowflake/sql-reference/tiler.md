@@ -43,6 +43,7 @@ The value of `aggregation_resolution` sets an upper bound to how many features c
 **Result**
 
 The generated tileset consists of a table with the following columns, where each row represents a tile:
+
 * `Z`: zoom level of the tile.
 * `X`: X-index of the tile (`0` to `2^Z-1`).
 * `Y`: Y-index of the tile (`0` to `2^Z-1`).
@@ -91,6 +92,7 @@ CALL carto.CREATE_POINT_AGGREGATION_TILESET(
 ```
 
 In the example above, for all features we would get a property `"NUM_CITIES"` with the number of points that fall in it and `"POPULATION_SUM"` with the sum of the population in those cities. In addition to this, when there is only one point that belongs to this property (and only in that case) we will also get the column values from the source data in `"CITY_NAME"`.
+
 
 ### CREATE_SIMPLE_TILESET
 

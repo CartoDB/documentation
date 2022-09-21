@@ -4,6 +4,7 @@
 
 You can learn more about quadbins in the [Overview section](/analytics-toolbox-redshift/overview/spatial-indexes/#quadbin) of the documentation.
 
+
 ### QUADBIN_BBOX
 
 {{% bannerNote type="code" %}}
@@ -30,6 +31,7 @@ SELECT carto.QUADBIN_BBOX(5209574053332910079);
 -- 0.0
 ```
 
+
 ### QUADBIN_BOUNDARY
 
 {{% bannerNote type="code" %}}
@@ -53,6 +55,7 @@ SELECT carto.QUADBIN_BOUNDARY(5209574053332910079);
 -- POLYGON ((22.5 -21.9430455334, 22.5 0, 45 0, 45 -21.9430455334, 22.5 -21.9430455334))
 ```
 
+
 ### QUADBIN_CENTER
 
 {{% bannerNote type="code" %}}
@@ -75,6 +78,7 @@ Returns the center for a given quadbin. The center is defined as the intersectio
 SELECT carto.QUADBIN_CENTER(5209574053332910079);
 -- POINT (33.75 -10.9715227667)
 ```
+
 
 ### QUADBIN_FROMGEOGPOINT
 
@@ -100,6 +104,7 @@ SELECT carto.QUADBIN_FROMGEOGPOINT(ST_POINT(40.4168, -3.7038), 4);
 -- 5209574053332910079
 ```
 
+
 ### QUADBIN_FROMLONGLAT
 
 {{% bannerNote type="code" %}}
@@ -124,6 +129,7 @@ Returns the quadbin representation for a given level of detail and geographic co
 SELECT carto.QUADBIN_FROMLONGLAT(40.4168, -3.7038, 4);
 -- 5209574053332910079
 ```
+
 
 ### QUADBIN_FROMZXY
 
@@ -154,6 +160,7 @@ SELECT carto.QUADBIN_FROMZXY(4, 9, 8);
 -- 5209574053332910079
 ```
 
+
 ### QUADBIN_ISVALID
 
 {{% bannerNote type="code" %}}
@@ -181,6 +188,7 @@ SELECT carto.QUADBIN_ISVALID(5209574053332910079);
 SELECT carto.QUADBIN_ISVALID(1234);
 -- false
 ```
+
 
 ### QUADBIN_KRING
 
@@ -213,6 +221,7 @@ SELECT carto.QUADBIN_KRING(5209574053332910079, 1);
 -- 5209609237704998911
 -- 5209662014263132159
 ```
+
 
 ### QUADBIN_KRING_DISTANCES
 
@@ -250,6 +259,7 @@ SELECT carto.QUADBIN_KRING_DISTANCES(5209574053332910079, 1);
 The distance of the rings is computed as the [Chebyshev distance](https://en.wikipedia.org/wiki/Chebyshev_distance).
 {{%/ bannerNote %}}
 
+
 ### QUADBIN_POLYFILL
 
 {{% bannerNote type="code" %}}
@@ -279,6 +289,7 @@ SELECT carto.QUADBIN_POLYFILL(ST_GEOMFROMTEXT('POLYGON ((-3.71219873428345 40.41
 -- 5265786693165514751
 ```
 
+
 ### QUADBIN_RESOLUTION
 
 {{% bannerNote type="code" %}}
@@ -302,6 +313,7 @@ SELECT carto.QUADBIN_RESOLUTION(5209574053332910079);
 -- 4
 ```
 
+
 ### QUADBIN_SIBLING
 
 {{% bannerNote type="code" %}}
@@ -313,7 +325,7 @@ carto.QUADBIN_SIBLING(quadbin, direction)
 Returns the quadbin directly next to the given quadbin at the same zoom level. The direction must be included as an argument and currently only horizontal/vertical movements are allowed.
 
 * `quadbin`: `BIGINT` quadbin to get the sibling from.
-* `direction`: `VARCHAR` <code>'right'|'left'|'up'|'down'</code> direction to move in to extract the next sibling. 
+* `direction`: `VARCHAR` <code>'right'|'left'|'up'|'down'</code> direction to move in to extract the next sibling.
 
 **Return type**
 
@@ -325,6 +337,7 @@ Returns the quadbin directly next to the given quadbin at the same zoom level. T
 SELECT carto.QUADBIN_SIBLING(5209574053332910079, 'up');
 -- 5208061125333090303
 ```
+
 
 ### QUADBIN_TOCHILDREN
 
@@ -353,6 +366,7 @@ SELECT carto.QUADBIN_TOCHILDREN(5209574053332910079, 5);
 -- 5214077652960280575
 ```
 
+
 ### QUADBIN_TOPARENT
 
 {{% bannerNote type="code" %}}
@@ -376,6 +390,7 @@ Returns the parent quadbin of a given quadbin for a specific resolution. A paren
 SELECT carto.QUADBIN_TOPARENT(5209574053332910079, 3);
 -- 5205105638077628415
 ```
+
 
 ### QUADBIN_TOZXY
 
