@@ -11,7 +11,7 @@ categories:
 
 
 In this example, we will geocode a table with some Starbucks address data that we have available in Snowflake. 
-The geocoding process will add a new column to your input table called ‘geom’ with a Point geometry based on the geographic coordinates of the location; which are derived from the location information in your table (e.g. street address, postal code, country, etc.).
+The geocoding process will add a new column to your input table called "geom" (or the name that you choose) with a Point geometry based on the geographic coordinates of the location; which are derived from the location information in your table (e.g. street address, postal code, country, etc.).
 
 {{% bannerNote type="warning" title="warning"%}}
 This function consumes isolines quota. Each call consumes as many units of quota as the number of rows your input table or query has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [LDS_QUOTA_INFO()](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#lds_quota_info) function.
@@ -45,14 +45,16 @@ Once you are all set getting access to the lds module, geocoding your data is as
 
 
 ```sql
-CALL carto.GEOCODE_TABLE('CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE','FULL_ADDRESS','GEOM_TOMTOM', 'US');
+CALL carto.GEOCODE_TABLE(
+    'CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE',
+    'FULL_ADDRESS','GEOM_TOMTOM', 'US');
 -- The table 'CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE' will be updated
 -- adding the columns: geom , carto_geocode_metadata.
 ```
 
 
 
-In this case, we select 'CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE' as input table and “full_address” as address column. We choose the GEOM_TOMTOM as the column name for the geometry column (like it is by default), and we also specify the name of the country based on its ISO 3166-1 alpha-2 code [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). You can refer to the [SQL reference](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#geocode_table) if you need more details about this procedure and its parameters. 
+In this case, we select 'CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE' as input table and “full_address” as address column. We choose the "GEOM_TOMTOM" as the column name for the geometry column, and we also specify the name of the country based on its ISO 3166-1 alpha-2 code [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). You can refer to the [SQL reference](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#geocode_table) if you need more details about this procedure and its parameters. 
 
 As a result of the query, we obtain the input table modified with a new column called "GEOM_TOMTOM" with the geographic coordinates (latitude and longitude) and the "CARTO_GEOCODE_METADATA" column with additional information of the geocoding result in JSON format.
 
