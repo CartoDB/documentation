@@ -6,6 +6,4 @@ type: examples
 category: LDS
 layout: categories/list
 euFlag: true
-aliases:
-    - /analytics-toolbox-rs/examples/categories/LDS/
 ---

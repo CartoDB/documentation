@@ -48,8 +48,8 @@ In order to create the isolines, we will execute the [CREATE_ISOLINES()](https:/
 
 ```sql
 call carto.CREATE_ISOLINES(
-    'select * from carto_dev_data.demo_tables.safegraph_coreplaces_starbucks_ny_geocoded',
-    'carto_dev_data.demo_tables.safegraph_coreplaces_starbucks_ny_geocoded_iso_walk_time',
+    'select * from carto_dev_data.demo_tables.starbucks_ny_geocode',
+    'carto_dev_data.demo_tables.starbucks_ny_geocode_iso_walk_time900',
     'geom_tomtom',
     'walk', 900, 'time'
 );
@@ -79,7 +79,7 @@ Then, on that data source, click on “Add SQL Analysis”.
 
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/bq_isolines1_builder.png" alt="Isolines step 1 CARTO Builder" style="width:100%">
+<img src="/img/rs-analytics-toolbox/examples/rs_isolines1_builder.png" alt="Isolines step 1 CARTO Builder" style="width:100%">
 </div>
 
 
@@ -88,7 +88,7 @@ Select “Trade areas” in the list of available SQL Analysis.
 
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/bq_isolines2_builder.png" alt="Isolines step 2 CARTO Builder" style="width:100%">
+<img src="/img/rs-analytics-toolbox/examples/rs_isolines2_builder.png" alt="Isolines step 2 CARTO Builder" style="width:100%">
 </div>
 
 
@@ -97,7 +97,7 @@ Choose the parameters of your isolines, in this example “walk” mode and 900 
 
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/bq_isolines3_builder.png" alt="Isolines step 3 CARTO Builder" style="width:100%">
+<img src="/img/rs-analytics-toolbox/examples/rs_isolines3_builder.png" alt="Isolines step 3 CARTO Builder" style="width:100%">
 </div>
 
 
@@ -106,7 +106,7 @@ You should choose the location and the name of the output table and click on "cr
 
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/bq_isolines4_builder.png" alt="Isolines step 4 CARTO Builder" style="width:100%">
+<img src="/img/rs-analytics-toolbox/examples/rs_isolines4_builder.png" alt="Isolines step 4 CARTO Builder" style="width:100%">
 </div>
 
 
