@@ -7,12 +7,12 @@ date: "2022-09-20"
 categories:
     - LDS
 ---
-## Geocoding your address data
+## Generating trade areas based on drive/walk-time isolines
 
 
 In this example, we will create isolines around some Starbucks locations in order to estimate their trade areas based on drive-time areas around them. 
 
-This process will generate a new table with the columns of the input table (except the column with the point geometry) plus a new column with the isoline polygon (geom column). 
+This process will generate a new table with the columns of the input table (except the column with the point geometry) plus a new column with the isoline polygon (__iso_geom column). 
 
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -20,7 +20,7 @@ This function consumes isolines quota. Each call consumes as many units of quota
 {{%/ bannerNote %}}
 
 
-### Geocoding from the BigQuery console
+### Create isolines from the BigQuery console
 
 As a module within CARTO’s Analytics Toolbox, the location data services ([lds](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#lds)) capabilities are available as SQL procedures that can be executed directly from your BigQuery console or client of choice after connecting your BigQuery project with your CARTO account. 
 To check whether your Google account or Service Account has access to the LDS module, please execute this query:
@@ -49,18 +49,21 @@ In order to create the isolines, we will execute the [CREATE_ISOLINES()](https:/
 
 ```sql
 CALL `carto-un`.carto.CREATE_ISOLINES(
-   'bqcartodemos.sample_tables.starbucks_ny_geocoded',
-   'bqcartodemos.sample_tables.starbucks_ny_geocoded_iso_walk_time',
+   'bqcartodemos.sample_tables.starbucks_ny_geocode',
+   'bqcartodemos.sample_tables.starbucks_ny_geocoded_iso_walk_time900',
    'geom',
    'walk', 900, 'time',
-   '<put_your_API_URL_here', '<put_your_LDS_Token_here>');
+   '<api_base_url>', '<lds_token>');
 ```
 
 
 
-In the query we specify (in this order) the input table, the output table and "geom" as column name for the origin geometry column. We add that we want to calculate the isolines based on 15 minutes walking, fixing "mode" parameter on "walk" and "range_value" parameter on 900 seconds (15 min). Also you need to provide us the url of the API where your account is stored in ‘lds_api_url’ and your token for accessing the different API services in ‘lds_token’ parameter.
+In the query we specify (in this order) the input table, the output table and "geom" as column name for the origin geometry column. We add that we want to calculate the isolines based on 15 minutes walking, fixing "mode" parameter on "walk" and "range_value" parameter on 900 seconds (15 min). Also you need to provide us the API base url where your account is stored in "api_base_url" and your token for accessing the different API services in "lds_token" parameter.
 
-*Note:* In order to be able to run the geocoding procedure you need to pass as input the CARTO API url and your LDS Token that can be obtained in the [Developers](https://docs.carto.com/carto-user-manual/developers/carto-for-developers/) section of the CARTO Workspace. 
+{{% bannerNote type="note" title="NOTE"%}}
+In order to be able to run the geocoding procedure you need to pass as input the CARTO API url and your LDS Token that can be obtained in the [Developers](https://docs.carto.com/carto-user-manual/developers/carto-for-developers/) section of the CARTO Workspace. 
+{{%/ bannerNote %}}
+
 
 <div style="text-align:center" >
 <img src="/img/bq-analytics-toolbox/examples/lds_token.png" alt="LDS token in the CARTO UI" style="width:100%">

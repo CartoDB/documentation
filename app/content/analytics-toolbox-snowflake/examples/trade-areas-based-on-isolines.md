@@ -7,7 +7,7 @@ date: "2022-09-20"
 categories:
     - LDS
 ---
-## Geocoding your address data
+## Generating trade areas based on drive/walk-time isolines
 
 
 In this example, we will create isolines around some Starbucks locations in order to estimate their trade areas based on drive-time areas around them. 
@@ -20,7 +20,7 @@ This function consumes isolines quota. Each call consumes as many units of quota
 {{%/ bannerNote %}}
 
 
-### Geocoding from the Snowflake console
+### Create isolines from the Snowflake console
 
 As a module within CARTO’s Analytics Toolbox, the location data services ([lds](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#lds)) capabilities are available as SQL procedures that can be executed directly from your Snowflake console or client of choice after connecting your Snowflake project with your CARTO account. 
 To check whether your Snowflake account or Service Account has access to the LDS module, please execute this query:
@@ -48,19 +48,19 @@ In order to create the isolines, we will execute the [CREATE_ISOLINES()](https:/
 
 ```sql
 CREATE TABLE  "CARTO_DEV_DATA"."DEMO_TABLES"."STARBUCKS_NY_GEOCODE_ISO_WALK_TIME900" AS
-SELECT *, "CARTO_DEV_DATA"."CARTO".ISOLINE(GEOM_TOMTOM, 'walk', 900, 'time') as GEOM_ISOLINE
+SELECT *, "CARTO_DEV_DATA"."CARTO".ISOLINE(GEOM, 'walk', 900, 'time') as GEOM_ISOLINE
 FROM "CARTO_DEV_DATA"."DEMO_TABLES"."STARBUCKS_NY_GEOCODE";
 ```
 
 
 
-In the query we specify the output table in CREATE TABLE and next, in the SELECT, we call the ISOLINE() specifying "GEOM_TOMTOM" as column name for the origin geometry column, "mode" parameter on "walk" and "range_value" parameter to 900 seconds (15 min) in order  to calculate the isolines based on 15 minutes walking. Last but not least, we need to use FROM call to specify the input table for the geocoding.
+In the query we specify the output table in CREATE TABLE and next, in the SELECT, we call the ISOLINE() specifying "GEOM" as column name for the origin geometry column, "mode" parameter on "walk" and "range_value" parameter to 900 seconds (15 min) in order  to calculate the isolines based on 15 minutes walking. Last but not least, we need to use FROM call to specify the input table for the geocoding.
 
-As a result of the query we obtain a new table with the name that we have chosen in the second parameter of the procedure. This output table has the same schema as the input one, but adding the “_ISO_GEOM” column with the geometry of the polygon of the isoline that we have calculated.
+As a result of the query we obtain a new table with the name that we have chosen in the second parameter of the procedure. This output table has the same schema as the input one, but adding the “GEOM_ISOLINE” column with the geometry of the polygon of the isoline that we have calculated.
 
 
 <div style="text-align:center" >
-<img src="/img/analytics-toolbox-snowflake/examples/sf_console_isolines_output_table.png" alt="Geocode output table in BQ console" style="width:100%">
+<img src="/img/analytics-toolbox-snowflake/examples/sf_console_isolines_output_table.png" alt="Geocode output table in SF console" style="width:100%">
 </div>
 
 
