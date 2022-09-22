@@ -47,7 +47,7 @@ Once you are all set getting access to the lds module, geocoding your data is as
 ```sql
 CALL carto.GEOCODE_TABLE(
     'CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE',
-    'FULL_ADDRESS','GEOM_TOMTOM', 'US');
+    'FULL_ADDRESS','GEOM', 'US');
 -- The table 'CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE' will be updated
 -- adding the columns: geom , carto_geocode_metadata.
 ```
@@ -56,7 +56,7 @@ CALL carto.GEOCODE_TABLE(
 
 In this case, we select 'CARTO_DEV_DATA.DEMO_TABLES.STARBUCKS_NY_GEOCODE' as input table and “full_address” as address column. We choose the "GEOM_TOMTOM" as the column name for the geometry column, and we also specify the name of the country based on its ISO 3166-1 alpha-2 code [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). You can refer to the [SQL reference](https://docs.carto.com/analytics-toolbox-snowflake/sql-reference/lds/#geocode_table) if you need more details about this procedure and its parameters. 
 
-As a result of the query, we obtain the input table modified with a new column called "GEOM_TOMTOM" with the geographic coordinates (latitude and longitude) and the "CARTO_GEOCODE_METADATA" column with additional information of the geocoding result in JSON format.
+As a result of the query, we obtain the input table modified with a new column called "GEOM" with the geographic coordinates (latitude and longitude) and the "CARTO_GEOCODE_METADATA" column with additional information of the geocoding result in JSON format.
 
 
 <div style="text-align:center" >

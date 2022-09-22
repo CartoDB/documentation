@@ -45,16 +45,18 @@ Once you are all set getting access to the lds module, geocoding your data is as
 
 
 ```sql
-CALL carto.GEOCODE_TABLE('carto_dev_data.demo_tables.starbucks_ny_geocode','full_address','geom_tomtom', 'us');
+CALL carto.GEOCODE_TABLE(
+    'carto_dev_data.demo_tables.starbucks_ny_geocode',
+    'full_address','geom', 'us');
 -- The table 'carto_dev_data.demo_tables.starbucks_ny_geocode' will be updated
 -- adding the columns: geom , carto_geocode_metadata.
 ```
 
 
 
-In this case, we select 'carto_dev_data.demo_tables.starbucks_ny_geocode' as input table and “full_address” as address column. We choose the "geom_tomtom" as the column name for the geometry column, and we also specify the name of the country based on its ISO 3166-1 alpha-2 code [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). You can refer to the [SQL reference](https://docs.carto.com/analytics-toolbox-redshift/sql-reference/lds/#geocode_table) if you need more details about this procedure and its parameters. 
+In this case, we select 'carto_dev_data.demo_tables.starbucks_ny_geocode' as input table and “full_address” as address column. We choose the "geom" as the column name for the geometry column, and we also specify the name of the country based on its ISO 3166-1 alpha-2 code [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). You can refer to the [SQL reference](https://docs.carto.com/analytics-toolbox-redshift/sql-reference/lds/#geocode_table) if you need more details about this procedure and its parameters. 
 
-As a result of the query, we obtain the input table modified with a new column called "geom_tomtom" with the geographic coordinates (latitude and longitude) and the "carto_geocode_metadata" column with additional information of the geocoding result in JSON format.
+As a result of the query, we obtain the input table modified with a new column called "geom" with the geographic coordinates (latitude and longitude) and the "carto_geocode_metadata" column with additional information of the geocoding result in JSON format.
 
 
 <div style="text-align:center" >
