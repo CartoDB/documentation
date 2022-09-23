@@ -4,29 +4,40 @@
 <div class="is-bgWhite is-txtBaseGrey">
   <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
     {{- partial "aside-menu.html" . -}}
-    <div class="whats-new-grid grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
-      {{ $dir := absURL .CurrentSection.Dir }}
-      {{ $pages := .GetPage "whats-new" }}
+    <div class="whats-new-grid grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content relative-posistion">
+      <!-- NOTE: category title -->
+      <!-- <h1 class="title f32 u-mb48">{{ humanize .Params.category }}</h1> -->
+
+      {{ $pages := where .Site.Pages "Section" .Section }}
+      {{ $curr := .Params.tag }}
+
+      {{$whatsnew := .Parent}}
       {{ $tags := slice }}
-      {{ range $page := $pages.Pages }}
+      {{ range $page := $whatsnew.Pages }}
         {{ if $page.Params.tags }}
           {{ $tags = $tags | append $page.Params.tags }}
         {{ end }}
       {{ end }}
-      {{ partial "tags-select.html"  (dict "tags" ($tags | uniq) "dir" $dir)  }}
 
+      {{ $dir := $whatsnew.Dir }}
+      {{ partial "tags-select.html"  (dict "tags" ($tags | uniq) "dir" $dir "current" $curr)  }}
 
       {{ $curr := slice .Params.tag }}
-      {{ $paginator := .Paginate (where .Site.Pages "Params.tags" "intersect" $curr) }}
+      {{ $paginator := .Paginate (where $pages "Params.tags" "intersect" $curr) }}
+
       
       <div class="whats-new-list">
-        {{ range $post := sort $paginator.Pages "Params.date" "desc" }}
-          {{ partial "whats-new-summary.html" $post }}
+        {{ range $paginator.Pages }}
+          {{ partial "whats-new-summary.html" . }}
         {{ end }}
       </div>
 
       {{ if (gt $paginator.TotalPages 1) }}
         {{ partial "paginator.html" (dict "context" . "paginator" $paginator) }}
+      {{ end }}
+
+      {{ if .Page.Params.euFlag }}
+        {{ partial "eu-flag-funding.html"}}
       {{ end }}
     </div>
   </div>
