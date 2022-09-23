@@ -64,13 +64,17 @@ In order for us to assist you with the migration to the new CARTO platform, we w
 
 Yes. For us to be able to actively assist you with the platform migration, we will need you to send us a written authorization with the following text in order to give us the required permissions:
 
-``` text
+{{% bannerNote title="AUTHORIZATION" type="note"%}}
 “I request CARTO to create an additional Editor user in my CARTO organization account on the new platform version.
+
 This Editor user will be only used by the CARTO team to migrate my data from the previous version of CARTO to the new platform ("Migration Services"). 
+
 I also grant CARTO access to my organization account {NAME OF THE ACCOUNT} in the previous platform version of CARTO as part of the Migration Services.
+
 Once the Migration Services are completed, CARTO will hand over the tables created and will remove the additional Editor user created in my CARTO organization account.
+
 CARTO’s team will only have access to the data in my CARTO accounts in order to perform the Migration Services.”
-```
+{{%/ bannerNote %}}
 
 ---
 
