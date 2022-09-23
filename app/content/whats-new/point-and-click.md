@@ -2,6 +2,7 @@
 title: "Point & Click SQL analyses, and enhanced interactive and cartographic capabilities in Builder"
 type: whats-new
 date: "2022-02-09"
+quarter: Q2 2022
 tags:
   - improvement
   - builder

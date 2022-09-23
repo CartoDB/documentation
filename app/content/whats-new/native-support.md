@@ -2,6 +2,7 @@
 title: "Native support for Spatial Indexes across our platform interfaces for more performant analytics"
 type: whats-new
 date: "2022-09-15"
+quarter: Q3 2022
 tags:
   - beta
   - workspace
