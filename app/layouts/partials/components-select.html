@@ -9,16 +9,16 @@
   {{ $dir := .dir }}
   {{ $current := .current }}
   <ul class="select-options">
-    {{ range $tag := .tags }}
-      {{ if $tag }}
-      <li class="select-option {{ if eq $current $tag }}active{{ end }}">
-        <a class="text f12" href="{{ $dir | relURL }}tags/{{ $tag | urlize}}">{{$tag}}</a>
+    {{ range $component := .components }}
+      {{ if $component }}
+      <li class="select-option {{ if eq $current $component }}active{{ end }}">
+        <a class="text f12" href="{{ $dir | relURL }}components/{{ $component | urlize}}">{{$component}}</a>
       </li>
       {{ end }}
     {{ end }}
     {{ if $current }}
       <li class="select-option view-all">
-        <a class="title f12" href="{{ $dir | relURL }}">All Tags</a>
+        <a class="title f12" href="{{ $dir | relURL }}">All components</a>
       </li>
     {{ end }}
   </ul>

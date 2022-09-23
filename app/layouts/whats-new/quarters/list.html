@@ -10,15 +10,15 @@
       {{ $curr := .Params.tag }}
 
       {{$whatsnew := .Parent}}
-      {{ $tags := slice }}
+      {{ $components := slice }}
       {{ range $page := $whatsnew.Pages }}
-        {{ if $page.Params.tags }}
-          {{ $tags = $tags | append $page.Params.tags }}
+        {{ if $page.Params.components }}
+          {{ $components = $components | append $page.Params.components }}
         {{ end }}
       {{ end }}
 
       {{ $dir := $whatsnew.Dir }}
-      {{ partial "tags-select.html"  (dict "tags" ($tags | uniq) "dir" $dir "current" $curr)  }}
+      {{ partial "components-select.html"  (dict "components" ($components | uniq) "dir" $dir "current" $curr)  }}
 
       {{ $currentQuarter := .Params.quarter }}
       {{ $paginator := .Paginate (where $whatsnew.Pages "Params.quarter" "eq" $currentQuarter) }}

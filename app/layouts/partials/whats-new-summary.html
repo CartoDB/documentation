@@ -13,6 +13,11 @@
             <span>{{ $tag }}</span>
           </div>
         {{ end }}
+        {{ range $component := .Params.components }}
+          <div class="tag component">
+            <span>{{ $component }}</span>
+          </div>
+        {{ end }}
       </div>
     {{end}}
 

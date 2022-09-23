@@ -3,8 +3,9 @@ title: "Native support 2"
 type: whats-new
 date: "2022-09-15"
 quarter: Q3 2022
+components:
+  - analytics toolbox
 tags:
-  - beta
   - private beta
 ---
 

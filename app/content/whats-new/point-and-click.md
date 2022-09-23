@@ -3,9 +3,10 @@ title: "Point & Click SQL analyses, and enhanced interactive and cartographic ca
 type: whats-new
 date: "2022-02-09"
 quarter: Q2 2022
+components:
+  - builder
 tags:
   - improvement
-  - builder
 ---
 
 

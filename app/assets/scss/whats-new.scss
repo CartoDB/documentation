@@ -13,7 +13,7 @@
     &:hover {
       background-color: #efefef;
     }
-    
+
     a {
       height: 24px;
     }
@@ -66,6 +66,60 @@
           line-height: 1.33;
           color: #162945;
           text-transform: capitalize;
+        }
+
+        &.component {
+          background-color: white;
+          border: 1px solid $base-grey;
+
+          span {
+            color: $base-grey;
+          }
+        }
+
+        &.beta {
+          background-color: #3969ac;
+          border-color: 1px solid #3969ac;
+
+          span {
+            color: white;
+          }
+        }
+        
+        &.improvement {
+          background-color: #f2b701;
+          border-color: 1px solid #f2b701;
+
+          span {
+            color: white;
+          }
+        }
+        
+        &.fix {
+          background-color: #e73f74;
+          border-color: 1px solid #e73f74;
+
+          span {
+            color: white;
+          }
+        }
+        
+        &.new {
+          background-color: #7f3c8d;
+          border-color: 1px solid #7f3c8d;
+
+          span {
+            color: white;
+          }
+        }
+        
+        &.private.beta {
+          background-color: #11a579;
+          border-color: 1px solid #11a579;
+
+          span {
+            color: white;
+          }
         }
       }
     }
