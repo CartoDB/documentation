@@ -13,12 +13,12 @@
 
 
 ##### Migration to the new platform
-* [Why should I migrate to the new version of the CARTO platform?](../categories/migration-to-the-new-platform/#why-should-i-migrate-to-the-new-version-of-the-CARTO-platform)
-* [Is CARTO going to provide me assistance if I would like to migrate to the new platform?](../categories/migration-to-the-new-platform/#is-CARTO-going-to-provide-me-assistance-if-i-would-like-to-migrate-to-the-new-platform)
+* [Why should I migrate to the new version of the CARTO platform?](../categories/migration-to-the-new-platform/#why-should-i-migrate-to-the-new-version-of-the-carto-platform)
+* [Is CARTO going to provide me assistance if I would like to migrate to the new platform?](../categories/migration-to-the-new-platform/#is-carto-going-to-provide-me-assistance-if-i-would-like-to-migrate-to-the-new-platform)
 * [What type of objects can be migrated between platforms? ](../categories/migration-to-the-new-platform/#what-type-of-objects-can-be-migrated-between-platforms)
-* [Can I migrate my maps from the previous version to the new version of CARTO? ](../categories/migration-to-the-new-platform/#can-i-migrate-my-maps-from-the-previous-version-to-the-new-version-of-CARTO)
+* [Can I migrate my maps from the previous version to the new version of CARTO? ](../categories/migration-to-the-new-platform/#can-i-migrate-my-maps-from-the-previous-version-to-the-new-version-of-carto)
 * [What information will you need to provide to receive assistance with the migration?](../categories/migration-to-the-new-platform/#what-information-will-you-need-to-provide-to-receive-assistance-with-the-migration)
-* [Do I need to provide an authorization for CARTO to work on my platform migration?](../categories/migration-to-the-new-platform/#do-i-need-to-provide-an-authorization-for-CARTO-to-work-on-my-platform-migration)
+* [Do I need to provide an authorization for CARTO to work on my platform migration?](../categories/migration-to-the-new-platform/#do-i-need-to-provide-an-authorization-for-carto-to-work-on-my-platform-migration)
 * [If my data tables are migrated to the CARTO Data Warehouse in the new platform, are there any associated costs with its usage? ](../categories/migration-to-the-new-platform/#if-my-data-tables-are-migrated-to-the-CARTO-data-warehouse-in-the-new-platform-are-there-any-associated-costs-with-its-usage)
 * [Will the platform migration tasks interfere with the standard service?](../categories/migration-to-the-new-platform/#will-the-platform-migration-tasks-interfere-with-the-standard-service)
 
