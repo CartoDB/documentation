@@ -37,8 +37,8 @@ navbar:
         url: /angular
       - name: CARTO + Vue.js
         url: /vue
-      - name: Mobile SDK
-        url: https://carto.com/developers/mobile-sdk
+      # - name: Mobile SDK
+      #   url: https://carto.com/developers/mobile-sdk
   # - name: APIs
   #   subelements:
   #     - name: SQL API
