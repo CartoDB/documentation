@@ -31,7 +31,8 @@ WITH q AS (
 SELECT h3 FROM q, UNNEST(h3) as h3
 ```
 
-<iframe width="100%" height="360px" src="https://gcp-us-east1.app.carto.com/map/2b5c899a-3b76-4335-a0ce-de62e525a4cc?bearing=270"></iframe>
+<iframe width="100%" height="360px" src="https://gcp-us-east1.app.carto.com/map/a3417075-1cee-4d06-9dcc-8f350c4abb7d?bearing=270"></iframe>
+
 
 ## Supported Data Warehouses
 
