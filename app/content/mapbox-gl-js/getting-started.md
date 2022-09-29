@@ -132,16 +132,16 @@ map.addLayer({
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2FydG9kYmluYyIsImEiOiJja202bHN2OXMwcGYzMnFrbmNkMzVwMG5rIn0.Zb3J4JTdJS-oYNXlR3nvnQ';
 
-    async function initialize() {
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
-        center: [-112.125, 36.12],
-        zoom: 12,
-        pitch: 70,
-        bearing: 180
-      });
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y',
+      center: [-112.125, 36.12],
+      zoom: 12,
+      pitch: 70,
+      bearing: 180
+    });
 
+    function initialize() {
       map.on('load', async () => {
         map.addSource('mapbox-dem', {
           'type': 'raster-dem',
@@ -164,22 +164,30 @@ map.addLayer({
           }
         });
 
-        // Add CARTO layer
-        const query = 'SELECT the_geom_webmercator FROM grca_trans_trail_ln';
-        const tilejsonUrl = `https://maps-api-v2.us.carto.com/user/public/carto/sql?source=${query}&format=tilejson&api_key=default_public&rand=3435334`;
+        deck.carto.setDefaultCredentials({
+          apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
+          apiVersion: deck.carto.API_VERSIONS.V3,
+          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+        });
+
+        const { data } =  await deck.carto.fetchLayerData({
+          type: deck.carto.MAP_TYPES.QUERY,
+          source: `SELECT geom FROM cartobq.public_account.grca_trans_trail_ln`,
+          connection: 'bqconn',
+          format: deck.carto.FORMATS.GEOJSON
+        });
+        map.addSource('trails', { 'type': 'geojson', 'data': data });
         map.addLayer({
           'id': 'grca-trail-layer',
           'type': 'line',
-          'source': {
-            'type': 'vector',
-            url: tilejsonUrl
-          },
-          'source-layer': 'default',
+          'source': 'trails',
           'paint': {
             'line-color': 'orange',
             'line-width': 3
           }
         });
+        
+        animate();
       });
     }
 
