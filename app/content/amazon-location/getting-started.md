@@ -176,7 +176,6 @@ If using CARTO 2, you can follow a similar approach but using the TileJSON endpo
         };
       }
 
-
       if (url.indexOf(apiBaseUrl) === 0) {
         // authenticate CARTO requests
         return { url, headers };
