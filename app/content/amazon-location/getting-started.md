@@ -135,11 +135,24 @@ If using CARTO 2, you can follow a similar approach but using the TileJSON endpo
 
     let map;
 
+    const accessTokenCarto = 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c';
+
+    const apiBaseUrl = 'https://gcp-us-east1.api.carto.com';
+    const connectionName = 'bqconn';
+    const tileset = 'cartobq.public_account.eurivers';
+    const mapUrl = `${apiBaseUrl}/v3/maps/${connectionName}/tileset?name=${tileset}&v=3.1&client=amazon-location`;
+    const headers = {Authorization: `Bearer ${accessTokenCarto}`};
+
     // instantiate a Cognito-backed credential provider
     const identityPoolId = "us-east-2:303d12f6-e24e-4571-8a79-66cc7c6a6bdc"; // Cognito Identity Pool ID
     const credentials = new AWS.CognitoIdentityCredentials({
       IdentityPoolId: identityPoolId,
     });
+
+    async function fetchTilejsonUrl(url) {
+      const data = await fetch(url, {headers}).then(r => r.json());
+      return data.tilejson.url[0];
+    }
 
     /**
      * Sign requests made by MapLibre GL JS using AWS SigV4.
@@ -161,6 +174,12 @@ If using CARTO 2, you can follow a similar approach but using the TileJSON endpo
             session_token: credentials.sessionToken,
           }),
         };
+      }
+
+
+      if (url.indexOf(apiBaseUrl) === 0) {
+        // authenticate CARTO requests
+        return { url, headers };
       }
 
       // don't sign
@@ -193,13 +212,14 @@ If using CARTO 2, you can follow a similar approach but using the TileJSON endpo
     }
 
     async function addCartoLayer() {
+      const url = await fetchTilejsonUrl(mapUrl);
       map.addLayer(
         {
           id: 'rivers_carto',
           type: 'line',
           source: {
             type: 'vector',
-            url: 'https://gcp-us-east1.api.carto.com/v3/maps/bqconn/tileset?name=cartobq.public_account.eurivers&access_token=eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c&format=tilejson&client=amazon-location'
+            url
           },
           'source-layer': 'default',
           "paint": {
