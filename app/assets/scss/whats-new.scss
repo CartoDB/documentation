@@ -17,6 +17,31 @@
     a {
       height: 24px;
     }
+
+    &.active {
+      pointer-events: none;
+  
+      a {
+        opacity: 1;
+      }
+    }
+    
+    &.view-all {
+      background-color: $white;
+      border-top: 1px solid #e7e9ec;
+      
+      a {
+        justify-content: left;
+        text-transform: none;
+        text-align: left;
+        color: $base-grey;
+        text-decoration: none;
+      }
+  
+      &:hover a {
+        background-color: #efefef;
+      }
+    }
   }
 }
 
