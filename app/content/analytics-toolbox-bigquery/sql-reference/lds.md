@@ -195,11 +195,6 @@ If you plan to repeat the geocoding process, bear in mind that if you drop colum
 you won't be able to create columns with the same name for a period of time (7 days) because BigQuery reserves the deleted columns names for [_time travel_](https://cloud.google.com/bigquery/docs/time-travel) purposes. So, for example, instead of dropping the `geom` column to re-geocode all rows, update the table and set it to `NULL`.
 {{%/ bannerNote %}}
 
-If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
-{{%/ bannerNote %}}
-
-
-
 **Examples**
 
 ```sql
