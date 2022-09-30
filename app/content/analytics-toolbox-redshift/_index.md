@@ -34,6 +34,7 @@ cascade:
         - title: "Overview"
         - title: "clustering"
         - title: "constructors"
+        - title: "data"
         - title: "lds"
         - title: "placekey"
         - title: "processing"
