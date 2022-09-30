@@ -31,7 +31,7 @@
     const apiBaseUrl = 'https://gcp-us-east1.api.carto.com';
     const connectionName = 'bqconn';
     const tileset = 'cartobq.public_account.nyc_taxi_points_demo_id';
-    const mapUrl = `${apiBaseUrl}/v3/maps/${connectionName}/tileset?name=${tileset}&v=3.1`;
+    const mapUrl = `${apiBaseUrl}/v3/maps/${connectionName}/tileset?name=${tileset}&v=3.1&client=mapbox-gl-js`;
     const headers = {Authorization: `Bearer ${accessTokenCarto}`};
 
     async function fetchTilejsonUrl(url) {
