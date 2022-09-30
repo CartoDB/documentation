@@ -14,6 +14,21 @@ These last few months we have been working on the native support of spatial inde
 
 Leveraging these global grid systems also allows for more effective visualizations, storage and the development of simple and efficient geospatial algorithms, as highlighted in this recent [blogpost](https://carto.com/builder/) on the use of H3.
 
+### Youtube video example
+
+<div class='video-wrapper'>
+  <iframe width="100%" height="420" src="https://www.youtube.com/embed/hnM0YIDFh0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+### Video source example
+
+<div class='video-wrapper'>
+  <video autoplay loop muted playsinline>
+    <source src="https://videos.ctfassets.net/xts27qnup0jr/1eNxL2eaUdegvHUPz4RFid/ae2f98f39b65d73ba8d5a8739f13bd2d/CARTO_for_Site_Selection_Demo__US__.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 Now, [Builder](https://carto.com/builder/) users can load, visualize and process tables, tilesets and results from SQL queries that contain spatial indexes without the need for geometry data. The resulting visualization is then aggregated dynamically at each zoom level, allowing data to be always represented in the most meaningful resolution.
 
 ![](/img/cloud-native-workspace/get-started/login.png)
