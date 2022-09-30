@@ -6,7 +6,13 @@ aliases:
 
 <div class="badges"><div class="advanced"></div></div>
 
-We currently provide procedures to create two types of tilesets: _simple_ and _aggregation_ tilesets, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview](/analytics-toolbox-bigquery/overview/tilesets) section to learn more about tileset types and which procedures to use in each case.
+We currently provide procedures to create the following kind of tilesets:
+* Spatial index tiles (aggregates spatial indexes into tiles at specific resolutions)
+* Geometry-based MVT tiles of two types:
+  + _simple_ tilesets to visualize features individually
+  + _aggregation_ tilesets to generate aggregated point visualizations
+
+Visit the [Overview](/analytics-toolbox-bigquery/overview/tilesets) section to learn more about tileset types and which procedures to use in each case.
 
 
 ### CREATE_POINT_AGGREGATION_TILESET
@@ -19,8 +25,8 @@ carto.CREATE_POINT_AGGREGATION_TILESET(source_table, target_table, options)
 
 Generates a point aggregation tileset.
 
-* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. ``projectID.dataset.tablename``) or a full query contained by parentheses (e.g.<code>(Select * FROM \`projectID.dataset.tablename`)</code>).
-* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form ``projectID.dataset.tablename``. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
+* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. ``project-id.dataset-id.table-name``) or a full query wrapped in parentheses (e.g.<code>(Select * FROM \`project-id.dataset-id.table-name`)</code>).
+* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form ``project-id.dataset-id.table-name``. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
 * `options`: `STRING` containing a valid JSON with the different options. Valid options are described the table below.
 
 | Option | Description |
@@ -28,9 +34,9 @@ Generates a point aggregation tileset.
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
 |`zoom_min`| Default: `0`. A `NUMBER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `0`. A `NUMBER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
-|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then zoom_min will be used). When provided, if its value is greater than `zoom_min`, it will take precedence and be used as the actual minimum.|
+|`zoom_min_column`| Default: `NULL`. It is the column that each row could have to modify its starting zoom. It can be NULL (then `zoom_min` will be used). When provided, if its value is greater than `zoom_min`, it will take precedence and be used as the actual minimum.|
 |`zoom_max_column`| Default: `NULL`. It is the column that each row could have to modify its end zoom level. It can be NULL (then zoom_max will be used). When provided, if its value is lower than `zoom_max`, it will be taken as the real maximum zoom level.|
-|`target_partitions`| Default: `4000`. Max: `4000`. A `NUMBER` that defines the **maximum** amount of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
+|`target_partitions`| Default: `4000`. Max: `4000`. A `NUMBER` that defines the **maximum** number of partitions to be used in the target table. The partition system, which uses a column named `carto_partition`, divides the available partitions first by zoom level and spatial locality to minimize the cost of tile read requests in web maps. Beware that this does not necessarily mean that all the partitions will be used, as a sparse dataset will leave some of these partitions unused. If you are using [BigQuery BI Engine](https://cloud.google.com/bi-engine/docs/overview) consider that it supports a maximum of 500 partitions per table.|
 |`target_tilestats`| Default: `true`. A `BOOLEAN` to determine whether to include statistics of the properties in the metadata. These statistics are based on [mapbox-tilestats](https://github.com/mapbox/mapbox-geostats) and depend on the property type:<br/><ul><li>Number: MIN, MAX, AVG, SUM and quantiles (from 3 to 20 breaks).</li><li>String / Boolean: List of the top 10 most common values and their count.</li></ul>For aggregation tilesets, these statistics refer to the cells at the maximum zoom generated.|
 |`tile_extent`| Default: `4096`. A `NUMBER` defining the extent of the tile in integer coordinates as defined by the MVT spec.
 |`tile_buffer`| Default: `0`. A `NUMBER` defining the additional buffer added around the tiles in extent units, which is useful to facilitate geometry stitching across tiles in the renderers. In aggregation tilesets, this property is currently not available and always `0` as no geometries go across tile boundaries.|
@@ -105,6 +111,9 @@ R'''
 
 In the example above, for all features we would get a property `"new_column_name"` with the number of points that fall in it, the `"most_common_ethnicity"` of those rows and whether there are points whose ethnicity value matches one specific value (`"has_other_ethnicities"`). In addition to this, when there is only one point that belongs to this property (and only in that case) we will also get the column values from the source data: `"name"` and `"address"`.
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Creating aggregation tilesets](/analytics-toolbox-bigquery/examples/creating-aggregation-tilesets/)
+{{%/ bannerNote %}}
 
 ### CREATE_SIMPLE_TILESET
 
@@ -120,8 +129,8 @@ This procedure is the older version of `carto.CREATE_TILESET` and you can achiev
 
 Generates a simple tileset.
 
-* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`projectID.dataset.tablename\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`projectID.dataset.tablename\`)</code>).
-* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectID.dataset.tablename\`</code>. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
+* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`project-id.dataset-id.table-name\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`project-id.dataset-id.table-name\`)</code>).
+* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectI-id.dataset-id.table-name\`</code>. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
 * `options`: `STRING` containing a valid JSON with the different options. Valid options are described the table below.
 
 {{% bannerNote type="note" title="tip"%}}
@@ -216,6 +225,9 @@ R'''
 '''
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Creating simple tilesets](/analytics-toolbox-bigquery/examples/creating-simple-tilesets/)
+{{%/ bannerNote %}}
 
 ### CREATE_SPATIAL_INDEX_TILESET
 
@@ -229,8 +241,8 @@ Creates a tileset that uses a spatial index (H3 and QUADBIN are currently suppor
 
 Aggregated data is computed for all levels between `resolution_min` and `resolution_max`. For each resolution level, all tiles for the area covered by the source table are added, with data aggregated at level `resolution + aggregation resolution`.
 
-* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`projectID.dataset.tablename\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`projectID.dataset.tablename\`)</code>).
-* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectID.dataset.tablename\`</code>. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
+* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`project-id.dataset-id.table-name\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`project-id.dataset-id.table-name\`)</code>).
+* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`project-id.dataset-id.table-name\`</code>. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
 * `options`: `STRING` containing a valid JSON with the different options. Valid options are described the table below.
 | Option | Description |
 | :----- | :------ |
@@ -294,6 +306,9 @@ CALL carto.CREATE_SPATIAL_INDEX_TILESET(
 In case of `source_table` being set as a query, it should be taken into account that [CTEs](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte) are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
 {{%/ bannerNote %}}
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Creating spatial index tilesets](analytics-toolbox-bigquery/examples/creating-spatial-index-tilesets/)
+{{%/ bannerNote %}}
 
 ### CREATE_TILESET
 
@@ -305,8 +320,8 @@ carto.CREATE_TILESET(source_table, target_table, options)
 
 Creates a simple tileset. It differs from `carto.CREATE_SIMPLE_TILESET` in that the procedure performs a previous analysis in order to find automatically the right options for the tileset. It is done by extracting all the properties to be included within the tileset and sampling the data in order to avoid BigQuery limitations. Therefore, only `source_table` and `target_table` are mandatory and `options` can be set to `NULL`.
 
-* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`projectID.dataset.tablename\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`projectID.dataset.tablename\`)</code>).
-* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectID.dataset.tablename\`</code>. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
+* `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`project-id.dataset-id.table-name\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`project-id.dataset-id.table-name\`)</code>).
+* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`project-id.dataset-id.table-name\`</code>. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
 * `options`: `STRUCT<name STRING, description STRING,legend STRING, zoom_min INT64, zoom_max INT64, geom_column_name STRING, zoom_min_column STRING, zoom_max_column STRING, max_tile_size_kb INT64, tile_feature_order STRING, drop_duplicates BOOL, extra_metadata STRING>|NULL` containing the different options. Valid options are described in the table below.
 
 | Option | Description |
@@ -388,5 +403,8 @@ CALL `carto-un`.carto.CREATE_TILESET(
 In case of `source_table` is set as a query, it should be taken into account that [CTEs](https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#simple_cte) are not allowed. Also, the query should be as simple as possible in order to avoid BigQuery limitations about the complexity of the final query.
 {{%/ bannerNote %}}
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Creating simple tilesets](/analytics-toolbox-bigquery/examples/creating-simple-tilesets/)
+{{%/ bannerNote %}}
 
 {{% euFlagFunding %}}

@@ -17,30 +17,30 @@ carto.DATAOBS_ENRICH_GRID(grid_type, input_query, input_index_column, variables,
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadbin) with data from the  Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells are identified by their indices and all must have the same resolution.
+This procedure enriches a query containing grid cell indexes of one of the supported types (H3, Quadbin) with data from the Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells must all have the same resolution.
+
+If the enrich data is indexed by an H3 or Quadbin grid compatible with the input (same grid type and equal or greater resolution), then the enrichment will be performed much more efficiently by matching the index values rather than intersecting associated GEOGRAPHY elements.
 
 As a result of this process, each input grid cell will be enriched with the data of the Data Observatory datasets that spatially intersect it. When the input cell intersects with more than one polygon, point, or line of the Data Observatory datasets, the data is aggregated using the aggregation methods specified.
 
-If the enrich data is indexed by an h3 or quadbin grid compatible with the input (same grid type and equal or greater resolution), then the enrichment will be performed much more efficiently by matching the index values rather than intersecting associated GEOGRAPHY elements.
-
 Valid aggregation methods are:
 
-* `SUM`: It assumes the aggregated variable is an [_extensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. population). Accordingly, the value corresponding to the Data Observatory feature intersected is weighted by the fraction of area or length intersected. If the Data Observatory features are points or grid indices are used, then a simple sum is performed.
+* `SUM`: It assumes the aggregated variable is an [_extensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. population). Accordingly, the value corresponding to the Data Observatory feature intersected is weighted by the fraction of area or length intersected. If the Data Observatory features are points or grid index matching is used, then a simple sum is performed.
 * `MIN`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
 * `MAX`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`.
-* `AVG`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`. However, a [weighted average](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean) is computed, using the intersection areas or lengths as the weight. When the Data Observatory features are points or grid indices are used, a simple average is computed.
+* `AVG`: It assumes the aggregated variable is an [_intensive property_](https://en.wikipedia.org/wiki/Intensive_and_extensive_properties) (e.g. temperature, population density). Thus, the value is not altered by the intersected area/length as it's the case for `SUM`. However, a [weighted average](https://en.wikipedia.org/wiki/Weighted_arithmetic_mean) is computed, using the intersection areas or lengths as the weight. When the Data Observatory features are points or grid index matching is used, a simple average is computed.
 * `COUNT` It computes the number of Data Observatory features that contain the enrichment variable and are intersected by the input geography.
 
 For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_grid_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
-If the enrichment of an input table is to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
 * `grid_type`: `STRING` Type of grid: "h3" or "quadbin".
 * `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce
-   valid grid indices for the selected grid type in a column of the proper type (STRING for h3, and INT64 for quadbin). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well, e.g. `'project-id.dataset-id.table-name'`.
-* `input_index_column`: `STRING` name of a column in the query that contains the grid indices.
+   valid grid indexes for the selected grid type in a column of the proper type (STRING for H3, and INT64 for Quadbin). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well, e.g. `'project-id.dataset-id.table-name'`.
+* `input_index_column`: `STRING` name of a column in the query that contains the grid indexes.
 * `variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug and the aggregation method must be provided. Use `'default'` to use the variable's default aggregation method. Valid aggregation methods are: `SUM`, `AVG`, `MAX`, `MIN`, `COUNT`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY<STRUCT<dataset STRING, expression STRING>>`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY<STRING>`|`NULL` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it. The name of the output table should include project and dataset, e.g. ``['project-id.dataset-id.table-name']`` or ``['project-id.dataset-id.table-name', 'PARTITION BY number']``. If `NULL` the enrichment result is returned. When the output table is the same than the input, the input table will be enriched in place.
@@ -49,6 +49,8 @@ If the enrichment of an input table is to be repeated, please notice that droppi
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
+
+If a new output table is created, it will be clustered by the spatial index to optimize its performance when filtering data by it or using it to join to other grid tables. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -84,6 +86,9 @@ CALL `carto-un`.carto.DATAOBS_ENRICH_GRID(
 -- 'my-project.my-dataset.my-table'.
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
+{{%/ bannerNote %}}
 
 ### DATAOBS_ENRICH_GRID_RAW
 
@@ -93,19 +98,19 @@ carto.DATAOBS_ENRICH_GRID_RAW(grid_type, input_query, input_index_column, variab
 
 **Description**
 
-This procedure enriches a query containing grid cell indices of one of the supported types (h3, quadbin) with data from the Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells are identified by their indices and all must have the same resolution.
+This procedure enriches a query containing grid cell indexes of one of the supported types (H3, Quadbin) with data from the Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment. The cells must all have the same resolution.
 
-As a result of this process, each input grid cell will be enriched with the data of the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input cell will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source cell. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `intersection`, `total`, `dimension`. See the output information for more details.
+As a result of this process, each input grid cell will be enriched with the data from the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input cell will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source geography table. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for more details.
 
-If the enrich data is indexed by an h3 or quadbin grid compatible with the input (same grid type and equal or greater resolution), then the enrichment will be performed much more efficiently by matching the index values rather than intersecting associated GEOGRAPHY elements.
+If the enrich data is indexed by an H3 or Quadbin grid compatible with the input (same grid type and equal or greater resolution), then the enrichment will be performed much more efficiently by matching the index values rather than intersecting associated GEOGRAPHY elements. In this case the additional measure fields are omitted.
 
-If the enrichment of an input table is to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
 * `grid_type`: `STRING` Type of grid: "h3" or "quadbind".
-* `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce valid grid indices for the selected grid type in a column of the proper type (STRING for h3, and INT64 for quadbin). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well, e.g. `'project-id.dataset-id.table-name'`.
-* `input_index_column`: `STRING` name of a column in the query that contains the grid indices.
+* `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce valid grid indexes for the selected grid type in a column of the proper type (STRING for H3, and INT64 for Quadbin). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well, e.g. `'project-id.dataset-id.table-name'`.
+* `input_index_column`: `STRING` name of a column in the query that contains the grid indexes.
 * `variables`: `ARRAY<STRING>`. Variables of the Data Observatory that will be used to enrich the input polygons. For each variable, its slug must be provided. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation.
 * `filters` `ARRAY<STRUCT<dataset STRING, expression STRING>>`. Filters to be applied to the Data Observatory datasets used in the enrichment can be passed here. Each filter is applied to the Data Observatory dataset or geography, identified by its corresponding _slug_, passed in the `dataset` field of the structure. The second field of the structure, `expression`, is an SQL expression that will be inserted in a `WHERE` clause and that can reference any column of the dataset or geography table. Please note that column _names_ (not slugs) should be applied here. The catalog procedures [`DATAOBS_SUBSCRIPTIONS`](#dataobs_subscriptions) and [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find both the column names and the corresponding table slugs.
 * `output`: `ARRAY<STRING>`|`NULL` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it. The name of the output table should include project and dataset, e.g. ``['project-id.dataset-id.table-name']`` or ``['project-id.dataset-id.table-name', 'PARTITION BY number']``. If `NULL` the enrichment result is returned. When the output table is the same than the input, the input table will be enriched in place.
@@ -119,6 +124,8 @@ The array contains STRUCTs with one field for each variable, using the variable 
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
+
+If a new output table is created, it will be clustered by the spatial index to optimize its performance when filtering data by it or using it to join to other grid tables. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -175,7 +182,7 @@ Valid aggregation methods are: `SUM`, `MIN`, `MAX`, `AVG`, and `COUNT`.
 
 For special types of aggregation, the [`DATAOBS_ENRICH_POINTS_RAW`](#dataobs_enrich_points_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -189,6 +196,8 @@ If the enrichment of an input table wants to be repeated, please notice that dro
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
+
+If a new output table is created, it will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -233,9 +242,9 @@ carto.DATAOBS_ENRICH_POINTS_RAW(input_query, input_geography_column, variables, 
 
 This procedure enriches a query containing geographic points with data from the Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment.
 
-As a result of this process, each input point will be enriched with the data of the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input point will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source geography. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `total`, `dimension`. See the output information for more details.
+As a result of this process, each input point will be enriched with the data of the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input point will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source geography table. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `__carto_total`, `__carto_dimension`. See the output information for more details.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -255,6 +264,8 @@ The array contains STRUCTs with one field for each variable, using the variable 
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
 Moreover, another column named `__carto_input_area` will be added containing the area of the input polygon in square meters.
+
+If a new output table is created, it will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -343,7 +354,7 @@ Valid aggregation methods are:
 
 For other types of aggregation, the [`DATAOBS_ENRICH_POLYGONS_RAW`](#dataobs_enrich_polygons_raw) procedure can be used to obtain non-aggregated data that can be later applied any desired custom aggregation.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -357,6 +368,8 @@ If the enrichment of an input table wants to be repeated, please notice that dro
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding slug and including a suffix indicating the aggregation method used.
+
+If a new output table is created, it will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -401,9 +414,9 @@ carto.DATAOBS_ENRICH_POLYGONS_RAW(input_query, input_geography_column, variables
 
 This procedure enriches a query containing geographic polygons with data from the Data Observatory. The user must be subscribed to all the Data Observatory datasets involved in the enrichment.
 
-As a result of this process, each input polygon will be enriched with the data of the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input polygon will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source geography. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `intersection`, `total`, `dimension`. See the output information for more details.
+As a result of this process, each input polygon will be enriched with the data of the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input polygon will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source geography table. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for more details.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -416,7 +429,7 @@ If the enrichment of an input table wants to be repeated, please notice that dro
 
 **Output**
 
-The output table will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
+If a new output table is created, it will contain all the input columns provided in the `input_query` and one extra ARRAY column for each Data Observatory geography containing enrichment variables, named after their corresponding geography slug.
 The array contains STRUCTs with one field for each variable, using the variable slug as the field name. Additional fields will be included with information about the intersection of the geographies:
 
 * `__carto_dimension` dimension of the Data Observatory geography: 2 for areas (polygons), 1 for lines, and 0 for points.
@@ -424,6 +437,8 @@ The array contains STRUCTs with one field for each variable, using the variable 
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the Data Observatory feature.
 
 Moreover, another column named `__carto_input_area` will be added containing the area of the input polygon in square meters.
+
+The output table will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -508,7 +523,7 @@ carto.DATAOBS_SAMPLES(source STRING, filters STRING)
 When calling this procedure, the result shows a list of the DO samples available.
 
 * `source`: `STRING` name of the location where the Data Observatory samples of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
-* `filters`: `STRING` SQL expression to filter the results, e.g. `'category="Housing"'`.
+* `filters`: `STRING` SQL expression to filter the results, e.g. `'dataset_category="Housing"'`.
   And empty string `''` or `NULL` can be used to omit the filtering.
 
 **Output**
@@ -545,7 +560,7 @@ carto.DATAOBS_SUBSCRIPTIONS(source STRING, filters STRING)
 When calling this procedure, the result shows a list of the DO subscriptions available.
 
 * `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
-* `filters`: `STRING` SQL expression to filter the results, e.g. `'category="Housing"'`.
+* `filters`: `STRING` SQL expression to filter the results, e.g. `'dataset_category="Housing"'`.
   And empty string `''` or `NULL` can be used to omit the filtering.
 
 **Output**
@@ -572,6 +587,9 @@ The result is a table with these columns:
 CALL `carto-un`.carto.DATAOBS_SUBSCRIPTIONS('myproject.mydataset', '');
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
+{{%/ bannerNote %}}
 
 ### DATAOBS_SUBSCRIPTION_VARIABLES
 
@@ -584,7 +602,7 @@ carto.DATAOBS_SUBSCRIPTION_VARIABLES(source STRING, filters STRING)
 When calling this procedure, the result shows a list of the DO subscriptions and variables available.
 
 * `source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `project_id.dataset_id` format. If only the `dataset_id` is included, it uses the project `carto-data` by default.
-* `filters`: `STRING` SQL expression to filter the results, e.g. `'type="STRING"'`.
+* `filters`: `STRING` SQL expression to filter the results, e.g. `'variable_type="STRING"'`.
   And empty string `''` or `NULL` can be used to omit the filtering.
 
 **Output**
@@ -607,6 +625,9 @@ The result is a table with one row per variable and these columns:
 CALL `carto-un`.carto.DATAOBS_SUBSCRIPTION_VARIABLES('myproject.mydataset','');
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
+{{%/ bannerNote %}}
 
 ### ENRICH_GRID
 
@@ -616,7 +637,7 @@ carto.ENRICH_GRID(grid_type, input_query, input_index_column, data_query, data_g
 
 **Description**
 
-This procedure enriches a set of grid cells of one of the supported types (h3, quadbin) with data from another enrichment query. The cells are identified by their indices.
+This procedure enriches a query containing grid cell indexes of one of the supported types (H3, Quadbin) with data from another enrichment query that contains geographies, thus effectively transferring geography-based data to an spatial grid.
 
 As a result of this process, each input grid cell will be enriched with the data of the enrichment query that spatially intersects it. When the input cell intersects with more than one feature of the enrichment query, the data is aggregated using the aggregation methods specified.
 
@@ -630,15 +651,15 @@ Valid aggregation methods are:
 
 For other types of aggregation, the [`ENRICH_GRID_RAW`](#enrich_grid_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
-If the enrichment of an input table is to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
 Enrich grid cells with user-provided data.
 
 * `grid_type`: Type of grid: "h3", "quadbin".
-* `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce valid grid indices for the selected grid type in a column of the proper type (STRING for h3, and INT64 for quadbin). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well, e.g. `'project-id.dataset-id.table-name'`.
-* `input_index_column`: `STRING` name of a column in the query that contains the grid indices.
+* `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce valid grid indexes for the selected grid type in a column of the proper type (STRING for H3, and INT64 for Quadbin). It can include additional columns with data associated with the grid cells that will be preserved. A qualified table name can be given as well, e.g. `'project-id.dataset-id.table-name'`.
+* `input_index_column`: `STRING` name of a column in the query that contains the grid indexes.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the cells provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY<STRUCT<column STRING, aggregation STRING>>` with the columns that will be used to enrich the input polygons and their corresponding aggregation method (`SUM`, `AVG`, `MAX`, `MIN`, `COUNT`).
@@ -647,6 +668,8 @@ Enrich grid cells with user-provided data.
 **Output**
 
 The resulting table has all the input columns and one additional column for each variable in `variables`, named with a suffix indicating the aggregation method used.
+
+The output table will be clustered by the spatial index to optimize its performance when filtering data by it or using it to join to other grid tables. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -695,7 +718,7 @@ carto.ENRICH_GRID_RAW(grid_type, input_query, input_index_column, data_query, da
 
 **Description**
 
-This procedure enriches a query containing grid cell indices of one of the supported types (h3, quadbin) with data from another enrichment query.
+This procedure enriches a query containing grid cell indexes of one of the supported types (H3, Quadbin) with data from another enrichment query that contains geographies, thus effectively transferring geography-based data to an spatial grid.
 
 As a result of this process, each input grid cell will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input cell will be returned in an ARRAY column named `__carto_enrichment`. Each array contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for more details.
 
@@ -703,14 +726,14 @@ As a result of this process, each input grid cell will be enriched with the data
 
 * `grid_type`: `STRING` Type of grid: "h3" or "quadbin". A qualified table name can be given as well, e.g. `'project-id.dataset-id.table-name'`.
 * `input_query`: `STRING` query to be enriched (Standard SQL); this query must produce
-   valid grid indices for the selected grid type in a column of the proper type (STRING for h3, and INT64 for quadbin). It can include additional columns with data associated with the grid cells that will be preserved.
-* `input_index_column`: `STRING` name of a column in the query that contains the grid indices.
+   valid grid indexes for the selected grid type in a column of the proper type (STRING for H3, and INT64 for Quadbin). It can include additional columns with data associated with the grid cells that will be preserved.
+* `input_index_column`: `STRING` name of a column in the query that contains the grid indexes.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the cells provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
 * `variables`: `ARRAY<STRING>` of names of the columns in the enrichment query that will be added to the enriched results.
 * `output`: `ARRAY<STRING>`|`NULL` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it. The name of the output table should include project and dataset, e.g. ``['project-id.dataset-id.table-name']`` or ``['project-id.dataset-id.table-name', 'PARTITION BY number']``. If `NULL` the enrichment result is returned. When the output table is the same than the input, the input table will be enriched in place.
 
-If the enrichment of an input table is to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Output**
 
@@ -719,6 +742,8 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_intersection` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the intersection.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
+
+The output table will be clustered by the spatial index to optimize its performance when filtering data by it or using it to join to other grid tables. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -778,7 +803,7 @@ Valid aggregation methods are: `SUM`, `MIN`, `MAX`, `AVG`, and `COUNT`.
 
 For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -792,6 +817,8 @@ If the enrichment of an input table wants to be repeated, please notice that dro
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`, named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
+
+The output table will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -840,7 +867,7 @@ This procedure enriches a query containing geographic points with data from anot
 
 As a result of this process, each input point will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input point will be returned in an ARRAY column named `__carto_enrichment`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `dimension. See the output information for details.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -857,6 +884,8 @@ The output table will contain all the input columns provided in the `input_query
 
 * `__carto_dimension` dimension of the enrichment geography: 2 for areas (polygons), 1 for lines, and 0 for points.
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
+
+The output table will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -918,7 +947,7 @@ Valid aggregation methods are:
 
 For other types of aggregation, the [`ENRICH_POLYGONS_RAW`](#enrich_polygons_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -932,6 +961,8 @@ If the enrichment of an input table wants to be repeated, please notice that dro
 **Output**
 
 The output table will contain all the input columns provided in the `input_query` and one extra column for each variable in `variables`,  named after its corresponding enrichment column and including a suffix indicating the aggregation method used.
+
+The output table will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**
@@ -981,7 +1012,7 @@ This procedure enriches a query containing geographic polygons with data from an
 
 As a result of this process, each input polygon will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input polygon will be returned in an ARRAY column named `__carto_enrichment`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for details.
 
-If the enrichment of an input table wants to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
 
@@ -1001,6 +1032,8 @@ The output table will contain all the input columns provided in the `input_query
 * `__carto_total` area in square meters (for dimension = 2) or length in meters (for dimension = 1) of the enrichment feature.
 
 Moreover, another column named `__carto_input_area` will be added containing the area of the input polygon in square meters.
+
+The output table will be clustered by the geography column to optimize the performance of spatial filters and joins. This is important to visualize the results in a map efficiently. If an SQL clause is included in the `output` parameter this optimization will not be performed.
 
 {{% customSelector %}}
 **Examples**

@@ -2,14 +2,24 @@
 
 ### September 21, 2022
 
+#### All modules
+
+Feature
+
+- Add VERSION_CORE function
+
 #### Accessors
+
 Changed
+
 - Change type returned by ST_X and ST_Y to Double
 
 ### September 20, 2022
 
 #### All modules
+
 Changed
+
 - Set default compression codec to snappy
 
 ### September 16, 2022

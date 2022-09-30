@@ -80,7 +80,9 @@ Creates a `Geometry` from the given GeoJSON.
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_GEOMFROMGEOJSON('{"type":"Point","coordinates":[-76.0913,18.4275,0.0]}'));
+SELECT carto.ST_ASTEXT(
+  carto.ST_GEOMFROMGEOJSON('{"type":"Point","coordinates":[-76.0913,18.4275,0.0]}')
+);
 -- POINT (-76.0913 18.4275)
 ```
 
@@ -278,7 +280,11 @@ Creates a `MultiPolygon` corresponding to the given WKT representation.
 **Example**
 
 ```sql
-SELECT carto.ST_ASGEOJSON(carto.ST_MPOLYFROMTEXT('MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))'));
+SELECT carto.ST_ASGEOJSON(
+  carto.ST_MPOLYFROMTEXT(
+    'MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)),((15 5, 40 10, 10 20, 5 10, 15 5)))'
+  )
+);
 -- {"type":"MultiPolygon","coordinates":[[[[30,20,0.0],[45,40,0.0],[10,40,0.0],[30,20,0.0]]]...
 ```
 
@@ -381,6 +387,10 @@ Creates a `Polygon` corresponding to the given WKT representation.
 **Example**
 
 ```sql
-SELECT carto.ST_ASGEOJSON(carto.ST_POLYGONFROMTEXT('POLYGON((-73.98955 40.71278, -73.98958 40.71299, -73.98955 40.71278))'));
+SELECT carto.ST_ASGEOJSON(
+  carto.ST_POLYGONFROMTEXT(
+    'POLYGON((-73.98955 40.71278, -73.98958 40.71299, -73.98955 40.71278))'
+  )
+);
 -- {"type":"Polygon","coordinates":[[[-73.98955,40.71278,0.0],[-73.98958,40.71299,0.0],[-73.98955,40.71278,0.0]...
 ```

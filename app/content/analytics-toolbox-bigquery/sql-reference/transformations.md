@@ -17,7 +17,7 @@ carto.ST_BUFFER(geog, radius, units, steps)
 
 **Description**
 
-Calculates a Geography buffer for input features for a given radius. Units supported are miles, kilometers, and degrees.
+Calculates a Geography buffer for input features for a given radius, i.e. the area within the given distance of the input. Units supported are miles, kilometers, and degrees.
 
 * `geog`: `GEOGRAPHY` input to be buffered.
 * `radius`: `FLOAT64` distance to draw the buffer (negative values are allowed).
@@ -33,10 +33,20 @@ Calculates a Geography buffer for input features for a given radius. Units suppo
 {{%/ customSelector %}}
 
 ``` sql
-SELECT `carto-os`.carto.ST_BUFFER(ST_GEOGPOINT(-74.00, 40.7128), 1, "kilometers", 10);
--- POLYGON((-73.9881354374691 40.7127993926494 ... 
+SELECT `carto-os`.carto.ST_BUFFER(
+  ST_GEOGPOINT(-74.00, 40.7128),
+  1,
+  "kilometers",
+  10
+);
+-- POLYGON((-73.9881354374691 40.7127993926494 ...
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Bikeshare stations within a San Francisco buffer](/analytics-toolbox-bigquery/examples/bikeshare-stations-within-a-san-francisco-buffer/)
+* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
+* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
+{{%/ bannerNote %}}
 
 ### ST_CENTERMEAN
 
@@ -46,9 +56,9 @@ carto.ST_CENTERMEAN(geog)
 
 **Description**
 
-Takes a Feature or FeatureCollection and returns the mean center.
+Takes a Feature or FeatureCollection and returns the mean center (average of its vertices).
 
-* `geog`: `GEOGRAPHY` feature to be centered.
+* `geog`: `GEOGRAPHY` feature for which to compute the center.
 
 **Return type**
 
@@ -59,10 +69,15 @@ Takes a Feature or FeatureCollection and returns the mean center.
 {{%/ customSelector %}}
 
 ``` sql
-SELECT `carto-os`.carto.ST_CENTERMEAN(ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))"));
+SELECT `carto-os`.carto.ST_CENTERMEAN(
+  ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))")
+);
 -- POINT(25.3890912155939 29.7916831655627)
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [New police stations based on Chicago crime location clusters](/analytics-toolbox-bigquery/examples/new-police-stations-based-on-chicago-crime-location-clusters/)
+{{%/ bannerNote %}}
 
 ### ST_CENTERMEDIAN
 
@@ -72,9 +87,9 @@ carto.ST_CENTERMEDIAN(geog)
 
 **Description**
 
-Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that requires the least total travel from all other points.
+Takes a FeatureCollection of points and computes the median center. The median center is understood as the point that requires the least total travel from all other points.
 
-* `geog`: `GEOGRAPHY` feature to be centered.
+* `geog`: `GEOGRAPHY` feature for which to compute the center.
 
 **Return type**
 
@@ -85,7 +100,9 @@ Takes a FeatureCollection of points and calculates the median center, algorithim
 {{%/ customSelector %}}
 
 ``` sql
-SELECT `carto-os`.carto.ST_CENTERMEDIAN(ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))"));
+SELECT `carto-os`.carto.ST_CENTERMEDIAN(
+  ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))")
+);
 -- POINT(25.3783930513609 29.8376035441371)
 ```
 
@@ -98,7 +115,7 @@ carto.ST_CENTEROFMASS(geog)
 
 **Description**
 
-Takes any Feature or a FeatureCollection and returns its center of mass using this formula: Centroid of Polygon.
+Takes any Feature or a FeatureCollection and returns its center of mass (also known as centroid).
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -111,8 +128,10 @@ Takes any Feature or a FeatureCollection and returns its center of mass using th
 {{%/ customSelector %}}
 
 ``` sql
-SELECT `carto-os`.carto.ST_CENTEROFMASS(ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))"));
--- POINT(25.1730977433239 27.2789529273059) 
+SELECT `carto-os`.carto.ST_CENTEROFMASS(
+  ST_GEOGFROMTEXT("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))")
+);
+-- POINT(25.1730977433239 27.2789529273059)
 ```
 
 
@@ -124,7 +143,7 @@ carto.ST_CONCAVEHULL(geog, maxEdge, units)
 
 **Description**
 
-Takes a set of points and returns a concave hull Polygon or MultiPolygon. In case of a single or a couple of points are passed as input, the function will return that point or a segment respectively.
+Takes a set of points and returns a concave hull Polygon or MultiPolygon. In case that a single or a couple of points are passed as input, the function will return that point or a segment respectively.
 
 * `geog`: `ARRAY<GEOGRAPHY>` input points.
 * `maxEdge`: `FLOAT64`|`NULL` the length (in 'units') of an edge necessary for part of the hull to become concave. If `NULL`the default value `infinity` is used.
@@ -139,12 +158,26 @@ Takes a set of points and returns a concave hull Polygon or MultiPolygon. In cas
 {{%/ customSelector %}}
 
 ``` sql
-SELECT `carto-os`.carto.ST_CONCAVEHULL([ST_GEOGPOINT(-75.833, 39.284),ST_GEOGPOINT(-75.6, 39.984),ST_GEOGPOINT(-75.221, 39.125),ST_GEOGPOINT(-75.521, 39.325)], 100, 'kilometers');
+SELECT `carto-os`.carto.ST_CONCAVEHULL(
+  [
+    ST_GEOGPOINT(-75.833, 39.284),
+    ST_GEOGPOINT(-75.6, 39.984),
+    ST_GEOGPOINT(-75.221, 39.125),
+    ST_GEOGPOINT(-75.521, 39.325)
+  ],
+  100,
+  'kilometers'
+);
 -- POLYGON((-75.68 39.24425, -75.527 39.2045 ...
 ```
 
 ``` sql
-SELECT `carto-os`.carto.ST_CONCAVEHULL([ST_GEOGPOINT(-75.833, 39.284)], 100, 'kilometers');
+SELECT `carto-os`.carto.ST_CONCAVEHULL(
+  [
+    ST_GEOGPOINT(-75.833, 39.284)
+  ],
+  100, 'kilometers'
+);
 -- POINT(-75.833 39.284)
 ```
 
@@ -157,12 +190,12 @@ carto.ST_DESTINATION(startPoint, distance, bearing, units)
 
 **Description**
 
-Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and bearing in degrees. This uses the Haversine formula to account for global curvature.
+Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and a bearing in degrees. This uses the Haversine formula to account for global curvature.
 
 * `origin`: `GEOGRAPHY` starting point.
-* `distance`: `FLOAT64` distance from the origin point.
-* `bearing`: `FLOAT64` ranging from -180 to 180.
-* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees or radians. If `NULL`the default value `kilometers` is used.
+* `distance`: `FLOAT64` distance from the origin point in the units specified.
+* `bearing`: `FLOAT64` counter-clockwise angle from East, ranging from -180 to 180 (e.g. 0 is East, 90 is North, 180 is West, -90 is South).
+* `units`: `STRING`|`NULL` units of length, the supported options are: `miles`, `kilometers`, `degrees` or `radians`. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 
@@ -173,7 +206,12 @@ Takes a Point and calculates the location of a destination point given a distanc
 {{%/ customSelector %}}
 
 ``` sql
-SELECT `carto-os`.carto.ST_DESTINATION(ST_GEOGPOINT(-3.70325,40.4167), 10, 45, "miles");
+SELECT `carto-os`.carto.ST_DESTINATION(
+  ST_GEOGPOINT(-3.70325,40.4167),
+  10,
+  45,
+  "miles"
+);
 -- POINT(-3.56862505487045 40.5189626777536)
 ```
 
@@ -186,7 +224,7 @@ carto.ST_GREATCIRCLE(startPoint, endPoint, npoints)
 
 **Description**
 
-Calculate great circles routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString.
+Calculate great circle routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString.
 
 * `startPoint`: `GEOGRAPHY` source point feature.
 * `endPoint`: `GEOGRAPHY` destination point feature.
@@ -202,9 +240,12 @@ Calculate great circles routes as LineString or MultiLineString. If the start an
 
 ``` sql
 SELECT `carto-os`.carto.ST_GREATCIRCLE(ST_GEOGPOINT(-3.70325,40.4167), ST_GEOGPOINT(-73.9385,40.6643), 20);
--- LINESTRING(-3.70325 40.4167 ... 
+-- LINESTRING(-3.70325 40.4167 ...
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Computing US airport connections and route interpolations](/analytics-toolbox-bigquery/examples/computing-us-airport-connections-and-route-interpolations/)
+{{%/ bannerNote %}}
 
 ### ST_LINE_INTERPOLATE_POINT
 
@@ -218,7 +259,7 @@ Takes a LineString and returns a Point at a specified distance along the line.
 
 * `geog`: `GEOGRAPHY` input line.
 * `distance`: `FLOAT64` distance along the line.
-* `units`: `STRING`|`NULL` units of length, the supported options are: miles, kilometers, degrees and radians. If `NULL`the default value `kilometers` is used.
+* `units`: `STRING`|`NULL` units of length, the supported options are: `miles`, `kilometers`, `degrees` and `radians`. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 
@@ -230,8 +271,11 @@ Takes a LineString and returns a Point at a specified distance along the line.
 
 ``` sql
 SELECT `carto-os`.carto.ST_LINE_INTERPOLATE_POINT(ST_GEOGFROMTEXT("LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)"), 250, 'miles');
--- POINT(-74.297592068938 19.4498107103156) 
+-- POINT(-74.297592068938 19.4498107103156)
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Computing US airport connections and route interpolations](/analytics-toolbox-bigquery/examples/computing-us-airport-connections-and-route-interpolations/)
+{{%/ bannerNote %}}
 
 {{% euFlagFunding %}}

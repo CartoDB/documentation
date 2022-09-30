@@ -6,7 +6,7 @@ aliases:
 
 <div class="badges"><div class="core"></div></div>
 
-This module contains functions that create geographies from coordinates or already existing geographies.
+This module contains functions that create new geographies from coordinates or already existing geographies.
 
 
 ### ST_BEZIERSPLINE
@@ -17,10 +17,11 @@ carto.ST_BEZIERSPLINE(geog [, resolution] [, sharpness])
 
 **Description**
 
-Takes a line and returns a curved version by applying a Bezier spline algorithm.
+
+Takes a line and returns a curved version of it by applying a Bezier spline algorithm. Note that the resulting geography will be a LineString with additional points inserted.
 
 * `geog`: `GEOGRAPHY` input LineString.
-* `resolution` (optional): `INT` time in milliseconds between points. By default `resolution` is `10000`.
+* `resolution` (optional): `INT` total time in milliseconds assigned to the line. By default `resolution` is `10000`. Internal curve vertices are generated in 10 ms increments, so the maximum number of resulting points will be `resolution/10` (close points may be merged resulting in less points). A higher number will increase the accuracy of the result but will increase the computation time and number of points.
 * `sharpness` (optional): `DOUBLE` a measure of how curvy the path should be between splines. By default `sharpness` is `0.85`.
 
 **Return type**
@@ -30,18 +31,33 @@ Takes a line and returns a curved version by applying a Bezier spline algorithm.
 **Examples**
 
 ```sql
-SELECT carto.ST_BEZIERSPLINE(TO_GEOGRAPHY('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'));
--- { "coordinates": [ [ -76.091308, 18.427501 ], [ -76.09134585033101, 18.427508082543092 ], ... 
+SELECT carto.ST_BEZIERSPLINE(
+  TO_GEOGRAPHY(
+    'LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'
+  )
+);
+-- { "coordinates": [ [ -76.091308, 18.427501 ], [ -76.09134585033101, 18.427508082543092 ], ...
 ```
 
 ```sql
-SELECT carto.ST_BEZIERSPLINE(TO_GEOGRAPHY('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'), 10000);
--- { "coordinates": [ [ -76.091308, 18.427501 ], [ -76.09134585033101, 18.427508082543092 ], ... 
+SELECT carto.ST_BEZIERSPLINE(
+  TO_GEOGRAPHY(
+    'LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'
+  ),
+  10000
+);
+-- { "coordinates": [ [ -76.091308, 18.427501 ], [ -76.09134585033101, 18.427508082543092 ], ...
 ```
 
 ```sql
-SELECT carto.ST_BEZIERSPLINE(TO_GEOGRAPHY('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'), 10000, 0.9);
--- { "coordinates": [ [ -76.091308, 18.427501 ], [ -76.09134541990707, 18.42750717125151 ], ... 
+SELECT carto.ST_BEZIERSPLINE(
+  TO_GEOGRAPHY(
+    'LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'
+  ),
+  10000,
+  0.9
+);
+-- { "coordinates": [ [ -76.091308, 18.427501 ], [ -76.09134541990707, 18.42750717125151 ], ...
 ```
 
 
@@ -70,29 +86,32 @@ Takes a Point and calculates the ellipse polygon given two semi-axes expressed i
 
 ```sql
 SELECT carto.ST_MAKEELLIPSE(ST_Point(-73.9385,40.6643), 5, 3);
--- { "coordinates": [ [ [ -73.87922034627275, 40.6643 ], [ -73.88056149301754, 40.67000644486112 ], ... 
+-- { "coordinates": [ [ [ -73.87922034627275, 40.6643 ], [ -73.88056149301754, 40.67000644486112 ], ...
 ```
 
 ```sql
 SELECT carto.ST_MAKEELLIPSE(ST_Point(-73.9385,40.6643), 5, 3, -30);
--- { "coordinates": [ [ [ -73.88715365786175, 40.68678300909311 ], [ -73.89207802212195, 40.691215338152176 ], ... 
+-- { "coordinates": [ [ [ -73.88715365786175, 40.68678300909311 ], [ -73.89207802212195, 40.691215338152176 ], ...
 ```
 
 ```sql
 SELECT carto.ST_MAKEELLIPSE(ST_Point(-73.9385,40.6643), 5, 3, -30, 'miles');
--- { "coordinates": [ [ [ -73.85585757866869, 40.700482895785946 ], [ -73.8637839804274, 40.70761511598624 ], ... 
+-- { "coordinates": [ [ [ -73.85585757866869, 40.700482895785946 ], [ -73.8637839804274, 40.70761511598624 ], ...
 ```
 
 ```sql
 SELECT carto.ST_MAKEELLIPSE(ST_Point(-73.9385,40.6643), 5, 3, -30, 'miles', 80);
--- { "coordinates": [ [ [ -73.85585757866869, 40.700482895785946 ], [ -73.86194538052666, 40.70635901954343 ], ... 
+-- { "coordinates": [ [ [ -73.85585757866869, 40.700482895785946 ], [ -73.86194538052666, 40.70635901954343 ], ...
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [Enrichment of catchment areas for store characterization](/analytics-toolbox-snowflake/examples/enrichment-of-catchment-areas-for-store-characterization/)
+{{%/ bannerNote %}}
 
 ### ST_MAKEENVELOPE
 
 {{% bannerNote type="code" %}}
-carto.ST_MAKEENVELOPE(xmin, ymin, xma, ymax)
+carto.ST_MAKEENVELOPE(xmin, ymin, xmax, ymax)
 {{%/ bannerNote %}}
 
 **Description**

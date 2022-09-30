@@ -4,6 +4,14 @@ aliases:
 ---
 ## Release notes
 
+### September 27, 2022
+
+#### Module tiler
+
+Changed
+
+- Fix bug in `__BUILD_REVENUE_MODEL_DATA_GRID`: Output table now contains `competitor_count`.
+
 ### September 19, 2022
 
 #### Module tiler

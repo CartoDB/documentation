@@ -17,7 +17,7 @@ carto.ST_CLUSTERKMEANS(geog, numberOfClusters)
 
 **Description**
 
-Takes a set of points and partition them into clusters using the k-mean. It uses the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
+Takes a set of points as input and partitions them into clusters using the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
 
 * `geog`: `ARRAY<GEOGRAPHY>` points to be clustered.
 * `numberOfClusters`: `INT64`|`NULL` numberOfClusters that will be generated. If `NULL` the default value `Math.sqrt(<NUMBER OF POINTS>/2)` is used.
@@ -38,5 +38,8 @@ SELECT `carto-un`.carto.ST_CLUSTERKMEANS([ST_GEOGPOINT(0, 0), ST_GEOGPOINT(0, 1)
 -- {cluster: 1, geom: POINT(1 0)}
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+* [New police stations based on Chicago crime location clusters](/analytics-toolbox-bigquery/examples/new-police-stations-based-on-chicago-crime-location-clusters/)
+{{%/ bannerNote %}}
 
 {{% euFlagFunding %}}

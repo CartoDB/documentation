@@ -19,7 +19,7 @@ carto.DISTANCE_MAP(linestring_collection, point)
 
 Takes aggregated LineStrings and their corresponding speed to form a network and a reference point as input. Returns the length of the shortest path in terms of the distance between the node closest to the reference point and each of the nodes of the network.
 
-If you are reusing the same network for multiple calls, using the GENERATE_NETWORK function to build to a temporary table or subquery through the function and calling DISTANCE_MAP_FROM_NETWORK will perform better.
+If you are reusing the same network for multiple calls, using the [`GENERATE_NETWORK`](#generate_network) function to build to a temporary table or subquery through the function and calling [`DISTANCE_MAP_FROM_NETWORK`](#distance_map_from_network) will perform better.
 
 * `linestring_collection`: `ARRAY<STRUCT<geom GEOGRAPHY, speed FLOAT64>>` Aggregated LineStrings and their corresponding speed that form the network.
 * `point`: `GEOGRAPHY` Reference point. The node of the network nearest to this point will be used as the reference point to compute the distance map.
@@ -77,12 +77,12 @@ FROM (
   FROM (
     SELECT ST_MAKELINE(ARRAY_AGG(ST_geogpoint( lon, lat ))) geo, 1. speed
     FROM unnest(GENERATE_ARRAY(-74.00, -73.90, 0.01)) lon, unnest(GENERATE_ARRAY(40.60, 40.85, 0.01)) lat
-    WHERE lon+lat<-73.95+40.75 --remove some nodes of the grid
+    WHERE lon+lat < -73.95+40.75 --remove some nodes of the grid
     GROUP BY lon
     UNION ALL
     SELECT ST_MAKELINE(ARRAY_AGG(ST_geogpoint( lon, lat ))) geo, 1. speed
     FROM unnest(GENERATE_ARRAY(-74.15, -73.87, 0.01)) lon, unnest(GENERATE_ARRAY(40.68, 40.77, 0.01)) lat
-    WHERE lon+lat<-73.95+40.75 --remove some nodes of the grid
+    WHERE lon+lat < -73.95+40.75 --remove some nodes of the grid
     GROUP BY lat
   )
 );
@@ -102,8 +102,8 @@ carto.DISTANCE_MAP_FROM_NETWORK_TABLE(src_fullname, target_fullname_quoted, poin
 
 Procedure that takes a network table and a reference point as input. Returns a table with the cost and geometry of the shortest path in terms of weights of links between the node closest to the reference point and each of the nodes of the network.
 
-* `src_fullname`: `STRING` The source table from where the network will be read. A `STRING` of the form `projectID.dataset.tablename` is expected. The projectID can be omitted (in which case the default one will be used). You can use the result of the `GENERATE_NETWORK_TABLE` procedure.
-* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
+* `src_fullname`: `STRING` The source table from where the network will be read. A `STRING` of the form `project-id.dataset-id.table-name` is expected. The `project-id` can be omitted (in which case the default one will be used). You can use the result of the [`GENERATE_NETWORK_TABLE`](#generate_network_table) procedure.
+* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>project-id.dataset-id.table-name</code> is expected. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
 * `point`: `STRING` The reference geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the reference point to compute the distance map.
 
 **Return type**
@@ -135,7 +135,7 @@ carto.FIND_SHORTEST_PATH(linestring_collection, pointA, pointB)
 
 Takes aggregated LineStrings and their corresponding speed to form a network, a source point and a destination point as input. Returns the length and the geometry of the shortest path in terms of distance between the node closest to the source point and the node closest to the destination point. The geometry of the shortest path is based on a compacted geometry of the network.
 
-If you are reusing the same network for multiple calls, using the GENERATE_NETWORK function to build to a temporary table or subquery through the function and calling FIND_SHORTEST_PATH_FROM_NETWORK will perform better.
+If you are reusing the same network for multiple calls, using the [`GENERATE_NETWORK`](#generate_network) function to build to a temporary table or subquery through the function and calling [`FIND_SHORTEST_PATH_FROM_NETWORK`](#find_shortest_path_from_network) will perform better.
 
 * `linestring_collection`: `ARRAY<STRUCT<geom GEOGRAPHY, speed FLOAT64>>` Aggregated LineStrings and their corresponding speed that form the network.
 * `point_a`: `GEOGRAPHY` Source point. The node of the network nearest to this point will be used as the source point to compute the shortest path.
@@ -221,8 +221,8 @@ carto.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE(src_fullname, target_fullname_quoted
 
 Procedure that takes a network, a source point and a destination point as input. Returns the length and the geometry of the shortest path in terms of weights of links between the node closest to the source point and the node closest to the destination point. It stores the result into a table.
 
-* `src_fullname`: `STRING` The source table from where the network will be read to compute the shortest path. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). You can use the result of the `GENERATE_NETWORK_TABLE` procedure.
-* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
+* `src_fullname`: `STRING` The source table from where the network will be read to compute the shortest path. A `STRING` of the form <code>project-id.dataset-id.table-name</code> is expected. The `project-id` can be omitted (in which case the default one will be used). You can use the result of the [`GENERATE_NETWORK_TABLE`](#generate_network_table) procedure.
+* `target_fullname_quoted`: The resulting table were the result will be stored. A `STRING` of the form <code>project-id.dataset-id.table-name</code> is expected. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
 * `point_a`: `STRING` The source geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the source point to compute the shortest path.
 * `point_b`: `STRING` The destination geogpoint as an SQL evaluable string. The node of the network nearest to this point will be used as the destination point to compute the shortest path.
 
@@ -291,10 +291,10 @@ Procedure that generates a network graph weighted by distance from a table with 
 
 To weight the graph based on a custom speed on each row, use the GENERATE_NETWORK function.
 
-* `src_fullname`: `STRING` The LineStrings table from where the network will be read to compute the shortest path. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used).
-* `target_fullname_quoted`: `STRING` The resulting table where the network will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
+* `src_fullname`: `STRING` The LineStrings table from where the network will be read to compute the shortest path. A `STRING` of the form <code>project-id.dataset-id.table-name</code> is expected. The `project-id` can be omitted (in which case the default one will be used).
+* `target_fullname_quoted`: `STRING` The resulting table where the network will be stored. A `STRING` of the form <code>project-id.dataset-id.table-name</code> is expected. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
 
-This procedure implements the same functionality as the `GENERATE_NETWORK` function, with the only difference that it stores the resulting network into a table. It uses speed 1. by default.
+This procedure implements the same functionality as the [`GENERATE_NETWORK`](#generate_function) function, with the only difference that it stores the resulting network into a table. It uses speed 1.0 by default.
 
 {{% customSelector %}}
 **Example**
