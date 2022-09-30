@@ -128,6 +128,17 @@
       img {
         margin: 36px 0 0 0;
       }
+
+      .video-wrapper {
+        width: 100%;
+        overflow: hidden;
+        margin: 36px 0;
+      
+        video {
+          width: 100%;
+          height: auto;
+        }
+      }
     }
   }
 }
