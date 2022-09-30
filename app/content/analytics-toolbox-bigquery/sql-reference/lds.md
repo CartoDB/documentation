@@ -60,6 +60,12 @@ This will allow you not only to verify that you have the right credentials, the 
 
 {{%/ bannerNote %}}
 
+<-- !order
+GEOCODE_TABLE
+GEOCODE_REVERSE_TABLE
+CREATE_ISOLINES
+LDS_QUOTA_INFO
+-->
 
 ### CREATE_ISOLINES
 
@@ -128,6 +134,11 @@ Reverse-geocodes an input table by adding a column `address` with the address co
 
 If the input table already contains a column with the name defined by `address_column`, only those rows with NULL values will be reverse-geocoded.
 
+{{% bannerNote type="note" %}}
+If you plan to repeat the reverse-geocoding process, bear in mind that if you drop columns from your table
+you won't be able to create columns with the same name for a period of time (7 days) because BigQuery reserves the deleted columns names for [_time travel_](https://cloud.google.com/bigquery/docs/time-travel) purposes. So, for example, instead of dropping the `address_column` column to re-process all rows, update the table and set it to `NULL`.
+{{%/ bannerNote %}}
+
 **Examples**
 
 ```sql
@@ -178,6 +189,16 @@ Geocodes an input table by adding a column `geom` with the geographic coordinate
 * `lds_token`: `STRING` customer's secret token for accessing the LDS API services.
 
 If the input table already contains a geometry column with the name defined by `geom_column`, only those rows with `NULL` values will be geocoded.
+
+{{% bannerNote type="note" %}}
+If you plan to repeat the geocoding process, bear in mind that if you drop columns from your table
+you won't be able to create columns with the same name for a period of time (7 days) because BigQuery reserves the deleted columns names for [_time travel_](https://cloud.google.com/bigquery/docs/time-travel) purposes. So, for example, instead of dropping the `geom` column to re-geocode all rows, update the table and set it to `NULL`.
+{{%/ bannerNote %}}
+
+If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
+
+
 
 **Examples**
 

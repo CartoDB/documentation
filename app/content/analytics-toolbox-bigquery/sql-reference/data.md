@@ -33,7 +33,9 @@ Valid aggregation methods are:
 
 For other types of aggregation, the [`DATAOBS_ENRICH_GRID_RAW`](#dataobs_enrich_grid_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -104,7 +106,9 @@ As a result of this process, each input grid cell will be enriched with the data
 
 If the enrich data is indexed by an H3 or Quadbin grid compatible with the input (same grid type and equal or greater resolution), then the enrichment will be performed much more efficiently by matching the index values rather than intersecting associated GEOGRAPHY elements. In this case the additional measure fields are omitted.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -182,7 +186,9 @@ Valid aggregation methods are: `SUM`, `MIN`, `MAX`, `AVG`, and `COUNT`.
 
 For special types of aggregation, the [`DATAOBS_ENRICH_POINTS_RAW`](#dataobs_enrich_points_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -244,6 +250,7 @@ This procedure enriches a query containing geographic points with data from the 
 
 As a result of this process, each input point will be enriched with the data of the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input point will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source geography table. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `__carto_total`, `__carto_dimension`. See the output information for more details.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
 
 **Input parameters**
@@ -354,7 +361,9 @@ Valid aggregation methods are:
 
 For other types of aggregation, the [`DATAOBS_ENRICH_POLYGONS_RAW`](#dataobs_enrich_polygons_raw) procedure can be used to obtain non-aggregated data that can be later applied any desired custom aggregation.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -416,7 +425,9 @@ This procedure enriches a query containing geographic polygons with data from th
 
 As a result of this process, each input polygon will be enriched with the data of the Data Observatory datasets that spatially intersect it. The variable values corresponding to all intersecting Data Observatory features for a given input polygon will be returned in an ARRAY column. When variables come from multiple Data Observatory geographies, one ARRAY column will be included for each source geography table. Data Observatory geography slugs are used for the names of these columns. Each array contains STRUCTs with one field for each variable (named after the variable slug) and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for more details.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -651,7 +662,9 @@ Valid aggregation methods are:
 
 For other types of aggregation, the [`ENRICH_GRID_RAW`](#enrich_grid_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -733,7 +746,9 @@ As a result of this process, each input grid cell will be enriched with the data
 * `variables`: `ARRAY<STRING>` of names of the columns in the enrichment query that will be added to the enriched results.
 * `output`: `ARRAY<STRING>`|`NULL` containing the name of an output table to store the results and optionally an SQL clause that can be used to partition it. The name of the output table should include project and dataset, e.g. ``['project-id.dataset-id.table-name']`` or ``['project-id.dataset-id.table-name', 'PARTITION BY number']``. If `NULL` the enrichment result is returned. When the output table is the same than the input, the input table will be enriched in place.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Output**
 
@@ -803,7 +818,9 @@ Valid aggregation methods are: `SUM`, `MIN`, `MAX`, `AVG`, and `COUNT`.
 
 For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -867,7 +884,9 @@ This procedure enriches a query containing geographic points with data from anot
 
 As a result of this process, each input point will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input point will be returned in an ARRAY column named `__carto_enrichment`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `dimension. See the output information for details.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -947,7 +966,9 @@ Valid aggregation methods are:
 
 For other types of aggregation, the [`ENRICH_POLYGONS_RAW`](#enrich_polygons_raw) procedure can be used to obtain non-aggregated data that can be later applied to any desired custom aggregation.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
@@ -1012,7 +1033,9 @@ This procedure enriches a query containing geographic polygons with data from an
 
 As a result of this process, each input polygon will be enriched with the data of the enrichment query that spatially intersects it. The variable values corresponding to all intersecting enrichment features for a given input polygon will be returned in an ARRAY column named `__carto_enrichment`. Each array value in this column contains STRUCTs with one field for each variable and additional measure fields `__carto_intersection`, `__carto_total`, `__carto_dimension`. See the output information for details.
 
+{{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
