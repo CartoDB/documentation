@@ -252,6 +252,7 @@ As a result of this process, each input point will be enriched with the data of 
 
 {{% bannerNote type="note" %}}
 If the enrichment of an input table needs to be repeated, please notice that dropping the added columns will generate problems in consecutive enrichments as Bigquery saves those columns during 7 days for time travel purposes. We recommend storing the original table columns in a temporal table, dropping the input table and then recreating the input table from the temporal table.
+{{%/ bannerNote %}}
 
 **Input parameters**
 
