@@ -12,8 +12,9 @@ function selectText(node) {
 function setupCopyButton({ button, code }) {
   button.addEventListener("click", function () {
     try {
-      selectText(code);
+      const selection = selectText(code);
       document.execCommand("copy");
+      selection.removeAllRanges();
     } catch (e) {
       console.log(e);
     }
