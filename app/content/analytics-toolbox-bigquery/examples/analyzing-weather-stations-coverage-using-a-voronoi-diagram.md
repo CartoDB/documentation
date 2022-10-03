@@ -44,8 +44,7 @@ voronoi_polygons AS (
 SELECT ST_AREA(geom) AS area, geom FROM voronoi_polygons
 ```
 
-<iframe height=480px width=100% style='margin-bottom:20px' src="https://team.carto.com/u/agraciano/builder/4eb6e9e6-9552-4bda-9a4e-dc375cc79829/layers#/" title="Weather stations coverage visualization by means of a Voronoi diagram."></iframe>
-
+![](/img/bq-analytics-toolbox/examples/voronoi-weather-stations.png)
 
 Prior to the calculation of the Voronoi diagrams, the weather stations belonging to the New York State are collected from the table `ghcn_d.ghcnd_stations` by filtering them against the state's boundary. This same boundary is also used to clip the resulting Voronoi polygons: since a null bounding box parameter is passed to `ST_VORONOIPOLYGONS`, the polygons otherwise would extend all over the map.
 

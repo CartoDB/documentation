@@ -17,7 +17,7 @@ To get started, let's run a simple example query to cluster a set of points usin
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/tiler/the_tileset_layer_choosing_connection.png" alt="Choosing a connection" style="width:100%">
+<img src="/img/bq-analytics-toolbox/guides/the_tileset_layer_choosing_connection.png" alt="Choosing a connection" style="width:100%">
 </div>
 
 2. Select the second tab _Custom Query (SQL)_ and pick the BigQuery or CARTO Data Warehouse connection that you will use to run the query.
@@ -39,9 +39,8 @@ To get started, let's run a simple example query to cluster a set of points usin
 with clustered_points AS
 (
     SELECT `carto-un`.carto.ST_CLUSTERKMEANS(ARRAY_AGG(geom ignore nulls), 6) AS cluster_arr
-    FROM carto-demo-data.demo_tables.sample_customer_home_locations
+    FROM `carto-demo-data`.demo_tables.sample_customer_home_locations
 )
-
 SELECT cluster_element.cluster, cluster_element.geom AS geom FROM clustered_points, UNNEST(cluster_arr) AS cluster_element
 ```
 

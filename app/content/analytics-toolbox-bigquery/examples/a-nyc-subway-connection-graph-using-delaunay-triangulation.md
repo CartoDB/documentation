@@ -39,7 +39,7 @@ ON ST_INTERSECTS(delaunay_triangles.geom, subways.geom)
 GROUP BY(subways.id)
 ```
 
-<iframe height=480px width=100% style='margin-bottom:20px' src="https://team.carto.com/u/agraciano/builder/042cc9d2-437e-49b4-bd3d-a293ad9123e1/layers#/" title="Delaunay triangulation of the NYC subway stations. The line connections are represented with the color and size of the points."></iframe>
+![](/img/bq-analytics-toolbox/examples/nyc-subway-graph.png)
 
 In the visualization above each subway station is represented by a point whose color and size represent the number of received connections.
 

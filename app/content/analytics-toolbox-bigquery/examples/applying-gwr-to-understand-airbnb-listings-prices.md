@@ -32,7 +32,7 @@ This particular configuration will run a local regression for each H3 grid cell 
 
 The output of our GWR analysis is a table that contains the result of each of these regressions: the coefficients for each of the predictor variables and the intercept. The following map shows the coefficients associated with the number of bedrooms (top) and bathroom (bottom), where darker/brighter areas correspond to lower/higher values:
 
-<iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/fa17dbf3-99b9-4a46-8be7-e52fd5cd0e6f" title="Spatially-varying relationship between Airbnb's listing prices and their number of bedrooms and bathrooms."></iframe>
+![](/img/bq-analytics-toolbox/examples/gwr-airbnb-listings-prices.png)
 
 Positive values indicate a positive association between the Airbnb's listing prices and the presence of bedrooms and bathrooms (conditional on the other) and with larger absolute values indicating a stronger association.
 
