@@ -62,16 +62,16 @@
     Array.from(examples).forEach(example => {
       if (value === 'manual') {
         example.innerHTML = example.innerHTML.replace(
-          /\s<span class="o">`<\/span><span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span><span class="o">`<\/span><span class="p">.<\/span><span class="n">carto<\/span><span class="p">.<\/span>/,
+          /\s<span class="o">`<\/span><span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span><span class="o">`<\/span><span class="p">.<\/span><span class="n">carto<\/span><span class="p">.<\/span>/g,
           ' <span class="n">carto</span><span class="p">.</span>'
         );
       } else {
         example.innerHTML = example.innerHTML.replace(
-          /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/,
+          /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/g,
           `<span class="n">carto</span><span class="o">-</span><span class="n">${value}</span>`
         );
         example.innerHTML = example.innerHTML.replace(
-          /\s<span class="n">carto<\/span><span class="p">.<\/span>/,
+          /\s<span class="n">carto<\/span><span class="p">.<\/span>/g,
           ` <span class="o">\`</span><span class="n">carto</span><span class="o">-</span><span class="n">${value}</span><span class="o">\`</span><span class="p">.</span><span class="n">carto</span><span class="p">.</span>`
         );
       }
