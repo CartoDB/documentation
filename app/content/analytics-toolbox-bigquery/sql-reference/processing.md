@@ -51,8 +51,10 @@ SELECT `carto-os`.carto.ST_DELAUNAYLINES(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [A NYC subway connection graph using Delaunay triangulation](/analytics-toolbox-bigquery/examples/a-nyc-subway-connection-graph-using-delaunay-triangulation/)
 {{%/ bannerNote %}}
+
 
 ### ST_DELAUNAYPOLYGONS
 
@@ -128,8 +130,10 @@ SELECT `carto-os`.carto.ST_POLYGONIZE(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Identifying earthquake-prone areas in the state of California](/analytics-toolbox-bigquery/examples/identifying-earthquake-prone-areas-in-the-state-of-california/)
 {{%/ bannerNote %}}
+
 
 ### ST_VORONOILINES
 
@@ -203,7 +207,9 @@ SELECT `carto-os`.carto.ST_VORONOIPOLYGONS(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Analyzing weather stations coverage using a Voronoi diagram](/analytics-toolbox-bigquery/examples/analyzing-weather-stations-coverage-using-a-voronoi-diagram/)
 {{%/ bannerNote %}}
+
 
 {{% euFlagFunding %}}

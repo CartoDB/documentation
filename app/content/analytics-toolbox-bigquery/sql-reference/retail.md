@@ -8,17 +8,6 @@ aliases:
 
 This module contains procedures to perform analysis to solve specific retail analytics use cases, such as revenue prediction.
 
-<-- !order_files
-BUILD_CANNIBALIZATION_DATA
-CANNIBALIZATION_OVERLAP
-BUILD_REVENUE_MODEL_DATA
-BUILD_REVENUE_MODEL
-PREDICT_REVENUE_AVERAGE
-FIND_WHITESPACE_AREAS
-COMMERCIAL_HOTSPOTS
-FIND_TWIN_AREAS
-GRIDIFY_ENRICH
--->
 
 ### BUILD_CANNIBALIZATION_DATA
 
@@ -81,8 +70,10 @@ CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
 {{%/ bannerNote %}}
+
 
 ### BUILD_REVENUE_MODEL
 
@@ -101,12 +92,12 @@ This procedure is the second step of the Revenue Prediction analysis workflow. I
 
 * `revenue_model_data`: `STRING` table with the revenue model data generated with the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure.
 * `options`: `STRING` JSON string to overwrite the model default options. If set to NULL or empty, it will use the default options. The following fixed options cannot be modified:
-  * MODEL_TYPE: 'BOOSTED_TREE_REGRESSOR'
-  * BOOSTER_TYPE: 'GBTREE'
   * ENABLE_GLOBAL_EXPLAIN: TRUE
   * INPUT_LABEL_COLS: ['revenue_avg']
 
     The following default options can be modified:
+  * MODEL_TYPE: 'BOOSTED_TREE_REGRESSOR'
+  * BOOSTER_TYPE: 'GBTREE'
   * NUM_PARALLEL_TREE: 1
   * TREE_METHOD: 'AUTO'
   * COLSAMPLE_BYTREE: 1
@@ -118,7 +109,7 @@ This procedure is the second step of the Revenue Prediction analysis workflow. I
   * MAX_ITERATIONS: 50
   * DATA_SPLIT_METHOD: 'NO_SPLIT'
 
-    This parameter allows using other options compatible with the model. Check the [model documentation](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#model_option_list) for more information.
+    This parameter allows using other options compatible with the model used. Models currently supported are [LINEAR_REG](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-glm) and [BOOSTED_TREE_REGRESSOR](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-boosted-tree). Check the [model documentation](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#model_option_list) for more information.
 * `output_prefix`: `STRING` destination prefix for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>.<output-prefix>`.
 
 **Output**
@@ -270,8 +261,10 @@ CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
 {{%/ bannerNote %}}
+
 
 ### COMMERCIAL_HOTSPOTS
 
@@ -281,9 +274,9 @@ carto.COMMERCIAL_HOTSPOTS(input, output, index_column, index_type, variable_colu
 
 **Description**
 
-This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or Quadbin grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi* statistic for each cell will be computed by taking into account the neighboring cells within the _k-ring_ of size `kring`.
+This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi\*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or Quadbin grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi\* statistic for each cell will be computed by taking into account the neighboring cells within the _k-ring_ of size `kring`.
 
-Only those cells where the Gi* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi* values.
+Only those cells where the Gi\* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi\* values.
 
 **Input parameters**
 
@@ -291,17 +284,17 @@ Only those cells where the Gi* statistics is significant are returned, i.e., tho
 * `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted.
 * `index_column`: `STRING` name of the column containing the H3 or Quadbin indexes.
 * `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3', or 'quadbin'.
-* `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi* statistic.
+* `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi\* statistic.
 * `variable_weights`: `ARRAY<FLOAT64>` containing the weights associated with each of the variables. These weights can take any value but will be normalized to sum up to 1. If NULL, uniform weights will be considered
-* `kring`: `INT64` size of the _k-ring_ (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi* statistic. If NULL, uniform weights will be considered.
-* `pvalue_thresh`: Threshold for the Gi* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned.
+* `kring`: `INT64` size of the _k-ring_ (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi\* statistic. If NULL, uniform weights will be considered.
+* `pvalue_thresh`: Threshold for the Gi\* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned.
 
 **Output**
 The output will contain the following columns:
 
 * `index`: `STRING` containing the cell index.
-* `combined_gi`: `FLOAT64` with the resulting combined Gi*.
-* `p_value`: `FLOAT64` with the p-value associated with the combined Gi* statistic.
+* `combined_gi`: `FLOAT64` with the resulting combined Gi\*.
+* `p_value`: `FLOAT64` with the p-value associated with the combined Gi\* statistic.
 
 If the output table is not specified when calling the procedure, the result will be returned but it won't be persisted.
 
@@ -340,8 +333,10 @@ CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
 {{%/ bannerNote %}}
+
 
 ### FIND_TWIN_AREAS
 
@@ -417,8 +412,10 @@ CALL `carto-un`.carto.FIND_TWIN_AREAS(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Applying the Twin Areas analysis to find the most similar location in Texas, US to the locations of the top 10 liquor stores in 2019 in Iowa](/analytics-toolbox-bigquery/examples/twin-areas-iowa/)
 {{%/ bannerNote %}}
+
 
 ### FIND_WHITESPACE_AREAS
 
@@ -435,12 +432,10 @@ carto.FIND_WHITESPACE_AREAS(
 )
 {{%/ bannerNote %}}
 
-
 {{% bannerNote type="code" title="FIXME: DUPLICATED FOR COMPARISON" %}}
 carto.FIND_WHITESPACE_AREAS(revenue_model, revenue_model_data, generator_query, aoi_query minimum_revenue, max_results, with_competitors, with_own_stores
 )
 {{%/ bannerNote %}}
-
 
 **Description**
 
@@ -543,8 +538,10 @@ CALL `carto-un`.carto.GRIDIFY_ENRICH(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Applying the Twin Areas analysis to find the most similar location in Texas, US to the locations of the top 10 liquor stores in 2019 in Iowa](/analytics-toolbox-bigquery/examples/twin-areas-iowa/)
 {{%/ bannerNote %}}
+
 
 ### PREDICT_REVENUE_AVERAGE
 

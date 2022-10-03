@@ -3,10 +3,11 @@
 <div class="badges"><div class="advanced"></div></div>
 
 We currently provide procedures to create the following kind of tilesets:
+
 * Spatial index tiles (aggregates spatial indexes into tiles at specific resolutions)
 * Geometry-based MVT tiles of two types:
-  + _simple_ tilesets to visualize features individually
-  + _aggregation_ tilesets to generate aggregated point visualizations
+  * _simple_ tilesets to visualize features individually
+  * _aggregation_ tilesets to generate aggregated point visualizations
 
 
 ### CREATE_POINT_AGGREGATION_TILESET
@@ -234,5 +235,6 @@ CALL carto.CREATE_SPATIAL_INDEX_TILESET(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Creating spatial index tilesets](/analytics-toolbox-postgres/examples/creating-spatial-index-tilesets/)
 {{%/ bannerNote %}}

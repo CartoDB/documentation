@@ -47,8 +47,10 @@ CALL carto.CREATE_ISOLINES(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Generating trade areas based on drive/walk-time isolines](/analytics-toolbox-snowflake/examples/trade-areas-based-on-isolines/)
 {{%/ bannerNote %}}
+
 
 ### GEOCODE
 
@@ -272,8 +274,10 @@ GRANT OWNERSHIP ON TABLE "my-schema"."my-table" TO ROLE SYSADMIN COPY CURRENT GR
 After performing this operation, you will be able to run `GEOCODE_TABLE` without running into privilege issues.
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Geocoding your address data](/analytics-toolbox-snowflake/examples/geocoding-your-address-data/)
 {{%/ bannerNote %}}
+
 
 ### ISOLINE
 

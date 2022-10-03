@@ -112,8 +112,10 @@ SELECT carto.ST_CENTEROFMASS(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20,
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Computing US airport connections and route interpolations](/analytics-toolbox-snowflake/examples/computing-us-airport-connections-and-route-interpolations/)
 {{%/ bannerNote %}}
+
 
 ### ST_CONCAVEHULL
 
@@ -201,7 +203,6 @@ Takes a Point and calculates the location of a destination point given a distanc
 * `bearing`: `DOUBLE` counter-clockwise angle from East, ranging from -180 to 180 (e.g. 0 is East, 90 is North, 180 is West, -90 is South).
 * `units` (optional): `STRING` units of length, the supported options are: `miles`, `kilometers`, `degrees` or `radians`. If `NULL`the default value `kilometers` is used.
 
-
 **Return type**
 
 `GEOGRAPHY`
@@ -250,8 +251,10 @@ SELECT carto.ST_GREATCIRCLE(ST_POINT(-3.70325,40.4167), ST_POINT(-73.9385,40.664
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Computing US airport connections and route interpolations](/analytics-toolbox-snowflake/examples/computing-us-airport-connections-and-route-interpolations/)
 {{%/ bannerNote %}}
+
 
 ### ST_LINE_INTERPOLATE_POINT
 
@@ -284,5 +287,6 @@ SELECT carto.ST_LINE_INTERPOLATE_POINT(TO_GEOGRAPHY('LINESTRING (-76.091308 18.4
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Computing US airport connections and route interpolations](/analytics-toolbox-snowflake/examples/computing-us-airport-connections-and-route-interpolations/)
 {{%/ bannerNote %}}

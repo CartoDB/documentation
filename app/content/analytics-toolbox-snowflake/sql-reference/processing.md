@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions that computes new geographies by processing existing geographies.
 
+
 ### ST_DELAUNAYLINES
 
 {{% bannerNote type="code" %}}
@@ -216,5 +217,6 @@ SELECT carto.ST_VORONOIPOLYGONS(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Analyzing store location coverage using a Voronoi diagram](/analytics-toolbox-snowflake/examples/analyzing-store-location-coverage-using-a-voronoi-diagram/)
 {{%/ bannerNote %}}

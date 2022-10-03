@@ -17,7 +17,6 @@ carto.ST_BEZIERSPLINE(geog [, resolution] [, sharpness])
 
 **Description**
 
-
 Takes a line and returns a curved version of it by applying a Bezier spline algorithm. Note that the resulting geography will be a LineString with additional points inserted.
 
 * `geog`: `GEOGRAPHY` input LineString.
@@ -105,8 +104,10 @@ SELECT carto.ST_MAKEELLIPSE(ST_Point(-73.9385,40.6643), 5, 3, -30, 'miles', 80);
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Enrichment of catchment areas for store characterization](/analytics-toolbox-snowflake/examples/enrichment-of-catchment-areas-for-store-characterization/)
 {{%/ bannerNote %}}
+
 
 ### ST_MAKEENVELOPE
 

@@ -89,8 +89,10 @@ CALL `carto-un`.carto.DATAOBS_ENRICH_GRID(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
 {{%/ bannerNote %}}
+
 
 ### DATAOBS_ENRICH_GRID_RAW
 
@@ -600,8 +602,10 @@ CALL `carto-un`.carto.DATAOBS_SUBSCRIPTIONS('myproject.mydataset', '');
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
 {{%/ bannerNote %}}
+
 
 ### DATAOBS_SUBSCRIPTION_VARIABLES
 
@@ -638,8 +642,10 @@ CALL `carto-un`.carto.DATAOBS_SUBSCRIPTION_VARIABLES('myproject.mydataset','');
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
 {{%/ bannerNote %}}
+
 
 ### ENRICH_GRID
 

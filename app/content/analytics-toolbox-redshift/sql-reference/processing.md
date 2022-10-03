@@ -4,6 +4,7 @@
 
 This module contains functions that computes new geographies by processing existing geographies.
 
+
 ### ST_DELAUNAYLINES
 
 {{% bannerNote type="code" %}}

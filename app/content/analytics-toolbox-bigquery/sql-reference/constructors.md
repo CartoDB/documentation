@@ -39,8 +39,10 @@ SELECT `carto-os`.carto.ST_BEZIERSPLINE(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Identifying earthquake-prone areas in the state of California](/analytics-toolbox-bigquery/examples/identifying-earthquake-prone-areas-in-the-state-of-california/)
 {{%/ bannerNote %}}
+
 
 ### ST_MAKEELLIPSE
 
@@ -104,8 +106,10 @@ SELECT `carto-os`.carto.ST_MAKEENVELOPE(0,0,1,1);
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Identifying earthquake-prone areas in the state of California](/analytics-toolbox-bigquery/examples/identifying-earthquake-prone-areas-in-the-state-of-california/)
 {{%/ bannerNote %}}
+
 
 ### ST_TILEENVELOPE
 
@@ -134,7 +138,9 @@ SELECT `carto-os`.carto.ST_TILEENVELOPE(10,384,368);
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Census areas in the UK within tiles of multiple resolutions](/analytics-toolbox-bigquery/examples/census-areas-in-the-uk-within-tiles-of-multiple-resolutions/)
 {{%/ bannerNote %}}
+
 
 {{% euFlagFunding %}}

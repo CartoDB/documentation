@@ -7,10 +7,11 @@ aliases:
 <div class="badges"><div class="advanced"></div></div>
 
 We currently provide procedures to create the following kind of tilesets:
+
 * Spatial index tiles (aggregates spatial indexes into tiles at specific resolutions)
 * Geometry-based MVT tiles of two types:
-  + _simple_ tilesets to visualize features individually
-  + _aggregation_ tilesets to generate aggregated point visualizations
+  * _simple_ tilesets to visualize features individually
+  * _aggregation_ tilesets to generate aggregated point visualizations
 
 Visit the [Overview](/analytics-toolbox-bigquery/overview/tilesets) section to learn more about tileset types and which procedures to use in each case.
 
@@ -112,8 +113,10 @@ R'''
 In the example above, for all features we would get a property `"new_column_name"` with the number of points that fall in it, the `"most_common_ethnicity"` of those rows and whether there are points whose ethnicity value matches one specific value (`"has_other_ethnicities"`). In addition to this, when there is only one point that belongs to this property (and only in that case) we will also get the column values from the source data: `"name"` and `"address"`.
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Creating aggregation tilesets](/analytics-toolbox-bigquery/examples/creating-aggregation-tilesets/)
 {{%/ bannerNote %}}
+
 
 ### CREATE_SIMPLE_TILESET
 
@@ -226,8 +229,10 @@ R'''
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Creating simple tilesets](/analytics-toolbox-bigquery/examples/creating-simple-tilesets/)
 {{%/ bannerNote %}}
+
 
 ### CREATE_SPATIAL_INDEX_TILESET
 
@@ -307,8 +312,10 @@ In case of `source_table` being set as a query, it should be taken into account 
 {{%/ bannerNote %}}
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Creating spatial index tilesets](analytics-toolbox-bigquery/examples/creating-spatial-index-tilesets/)
 {{%/ bannerNote %}}
+
 
 ### CREATE_TILESET
 
@@ -404,7 +411,9 @@ In case of `source_table` is set as a query, it should be taken into account tha
 {{%/ bannerNote %}}
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Creating simple tilesets](/analytics-toolbox-bigquery/examples/creating-simple-tilesets/)
 {{%/ bannerNote %}}
+
 
 {{% euFlagFunding %}}

@@ -108,8 +108,10 @@ CALL carto.CREATE_ISOLINES(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Generating trade areas based on drive/walk-time isolines](/analytics-toolbox-bigquery/examples/trade-areas-based-on-isolines/)
 {{%/ bannerNote %}}
+
 
 ### GEOCODE_REVERSE_TABLE
 
@@ -216,8 +218,10 @@ CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_col
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Geocoding your address data](/analytics-toolbox-bigquery/examples/geocoding-your-address-data/)
 {{%/ bannerNote %}}
+
 
 ### LDS_QUOTA_INFO
 

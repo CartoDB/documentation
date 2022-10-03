@@ -54,8 +54,10 @@ FROM (
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Identifying amenity hotspots in Stockholm](/analytics-toolbox-bigquery/examples/amenity-hotspots-in-stockholm/)
 {{%/ bannerNote %}}
+
 
 ### GETIS_ORD_QUADBIN
 
@@ -209,8 +211,10 @@ CALL `carto-un`.carto.GWR_GRID(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Applying GWR to understand Airbnb listings prices](/analytics-toolbox-bigquery/examples/applying-gwr-to-understand-airbnb-listings-prices/)
 {{%/ bannerNote %}}
+
 
 ### KNN
 
@@ -516,8 +520,10 @@ FROM (
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Computing the spatial autocorrelation of POIs locations in Berlin](/analytics-toolbox-bigquery/examples/computing-the-spatial-autocorrelation-of-pois-locations-in-berlin/)
 {{%/ bannerNote %}}
+
 
 ### MORANS_I_QUADBIN
 
@@ -702,8 +708,10 @@ CALL `carto-un`.carto.ORDINARY_KRIGING_TABLE(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [Interpolating elevation along a road using kriging](/analytics-toolbox-bigquery/examples/interpolate-elevation-along-a-road/)
 {{%/ bannerNote %}}
+
 
 ### P_VALUE
 
