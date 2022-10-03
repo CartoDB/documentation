@@ -5,7 +5,7 @@ image: "/img/bq-analytics-toolbox/examples/do-quadkey-grid.png"
 type: examples
 date: "2021-08-12"
 categories:
-    - quadkey
+    - quadbin
 aliases:
     - /analytics-toolbox-bq/examples/enriching-a-quadkey-grid-with-population-data-from-the-data-observatory/
 ---

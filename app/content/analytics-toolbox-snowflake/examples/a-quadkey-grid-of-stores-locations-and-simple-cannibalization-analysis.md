@@ -5,7 +5,7 @@ image: "/img/sf-analytics-toolbox/examples/starbucks-usa-quadkey-grid.png"
 type: examples
 date: "2021-10-12"
 categories:
-    - quadkey
+    - quadbin
 aliases:
     - /analytics-toolbox-sf/examples/a-quadkey-grid-of-stores-locations-and-simple-cannibalization-analysis/
 ---

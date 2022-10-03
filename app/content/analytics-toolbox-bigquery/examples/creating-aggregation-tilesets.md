@@ -33,7 +33,6 @@ CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
     {
       "zoom_min": 0,
       "zoom_max": 14,
-      "aggregation_type": "quadkey",
       "aggregation_resolution": 7,
       "aggregation_placement": "cell-centroid",
       "properties":{
@@ -67,7 +66,6 @@ CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
   R'''
     {
       "zoom_max": 16,
-      "aggregation_type": "quadkey",
       "aggregation_resolution": 7,
       "aggregation_placement": "features-centroid",
       "properties":{
@@ -115,7 +113,6 @@ CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
   R'''
     {
       "zoom_max": 6,
-      "aggregation_type": "quadkey",
       "aggregation_resolution": 7,
       "aggregation_placement": "cell",
       "properties":{
