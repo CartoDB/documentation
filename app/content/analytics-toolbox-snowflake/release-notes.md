@@ -20,6 +20,24 @@ Feature
 
 - Add CREATE_ISOLINES procedure.
 
+### October 1, 2022
+
+#### Module lds
+
+Changed
+
+- Rename `LDS_API_URL` to `API_BASE_URL`.
+
+### September 28, 2022
+
+#### Module data
+
+Changed
+
+- Optimize DATAOBS_ENRICH_GRID, DATAOBS_ENRICH_GRID_RAW when the enrich data is a grid compatible with the input.
+- Remove support for s2, geohash in all enrich procedures.
+- Optimize performance of all enrich result tables by ordering or clusterizing them.
+
 ### September 19, 2022
 
 #### Module tiler

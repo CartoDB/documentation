@@ -53,6 +53,11 @@ FROM (
 )
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Identifying amenity hotspots in Stockholm](/analytics-toolbox-bigquery/examples/amenity-hotspots-in-stockholm/)
+{{%/ bannerNote %}}
+
 
 ### GETIS_ORD_QUADBIN
 
@@ -62,10 +67,10 @@ carto.GETIS_ORD_QUADBIN(input, size, kernel)
 
 **Description**
 
-This function computes the Getis-Ord Gi* statistic for each quadbin index in the input array.
+This function computes the Getis-Ord Gi* statistic for each Quadbin index in the input array.
 
 * `input`: `ARRAY<STRUCT<index STRING, value FLOAT64>>` input data with the indexes and values of the cells.
-* `size`: `INT64` size of the quadbin kring (distance from the origin). This defines the area around each index cell that will be taken into account to compute its Gi* statistic.
+* `size`: `INT64` size of the Quadbin _k-ring_ (distance from the origin). This defines the area around each index cell that will be taken into account to compute its Gi* statistic.
 * `kernel`: `STRING` [kernel function](https://en.wikipedia.org/wiki/Kernel_(statistics)) to compute the spatial weights across the kring. Available functions are: uniform, triangular, quadratic, quartic and gaussian.
 
 **Return type**
@@ -205,6 +210,11 @@ CALL `carto-un`.carto.GWR_GRID(
 );
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Applying GWR to understand Airbnb listings prices](/analytics-toolbox-bigquery/examples/applying-gwr-to-understand-airbnb-listings-prices/)
+{{%/ bannerNote %}}
+
 
 ### KNN
 
@@ -340,10 +350,10 @@ carto.LOCAL_MORANS_I_QUADBIN(input, size, decay)
 
 **Description**
 
-This function computes the local Moran's I spatial autocorrelation from the input array of quadbin indexes. It outputs the quadbin `index`, local Moran's I spatial autocorrelation `value`, simulated p value `psim`, Conditional randomization null - expectation `EIc`, Conditional randomization null - variance `VIc`, Total randomization null - expectation `EI`, Total randomization null - variance `VI`, and the quad HH=1, LL=2, LH=3, HL=4.
+This function computes the local Moran's I spatial autocorrelation from the input array of Quadbin indexes. It outputs the Quadbin `index`, local Moran's I spatial autocorrelation `value`, simulated p value `psim`, Conditional randomization null - expectation `EIc`, Conditional randomization null - variance `VIc`, Total randomization null - expectation `EI`, Total randomization null - variance `VI`, and the quad HH=1, LL=2, LH=3, HL=4.
 
 * `input`: `ARRAY<STRUCT<index INT64, value FLOAT64>>` input data with the indexes and values of the cells.
-* `size`: `INT64` size of the quadbin kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `size`: `INT64` size of the Quadbin _k-ring_ (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
 * `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
 * `permutations`: `INT64` number of permutations for the estimation of p-value.
 
@@ -442,8 +452,8 @@ statistics.LOF_TABLE(src_fullname STRING, target_fullname STRING, geoid_column_n
 
 This function computes the [Local Outlier Factor](https://en.wikipedia.org/wiki/Local_outlier_factor) for each point of a specified column and stores the result in an output table along with the other input columns.
 
-* `src_fullname`: `STRING` The input table. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used).
-* `target_fullname`: `STRING` The resulting table where the LOF will be stored. A `STRING` of the form <code>projectID.dataset.tablename</code> is expected. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
+* `src_fullname`: `STRING` The input table. A `STRING` of the form <code>project-id.dataset-id.table-name</code> is expected. The `project-id` can be omitted (in which case the default one will be used).
+* `target_fullname`: `STRING` The resulting table where the LOF will be stored. A `STRING` of the form <code>project-id.dataset-id.table-name</code> is expected. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table in it. The process will fail if the target table already exists.
 * `geoid_column_name`: `STRING` The column name with a unique identifier for each point.
 * `geo_column_name`: `STRING` The column name containing the points.
 * `lof_target_column_name`: `STRING` The column name where the resulting Local Outlier Factor will be stored in the output table.
@@ -509,6 +519,11 @@ FROM (
 )
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Computing the spatial autocorrelation of POIs locations in Berlin](/analytics-toolbox-bigquery/examples/computing-the-spatial-autocorrelation-of-pois-locations-in-berlin/)
+{{%/ bannerNote %}}
+
 
 ### MORANS_I_QUADBIN
 
@@ -518,10 +533,10 @@ carto.MORANS_I_QUADBIN(input, size, decay)
 
 **Description**
 
-This function computes the [Moran's I spatial autocorrelation](https://en.wikipedia.org/wiki/Moran%27s_I) from the input array of quadbin indexes.
+This function computes the [Moran's I spatial autocorrelation](https://en.wikipedia.org/wiki/Moran%27s_I) from the input array of Quadbin indexes.
 
 * `input`: `ARRAY<STRUCT<index INT64, value FLOAT64>>` input data with the indexes and values of the cells.
-* `size`: `INT64` size of the quadbin kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `size`: `INT64` size of the Quadbin _k-ring_ (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
 * `decay`: `STRING` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
 
 **Return type**
@@ -692,6 +707,11 @@ CALL `carto-un`.carto.ORDINARY_KRIGING_TABLE(
 -- ...
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Interpolating elevation along a road using kriging](/analytics-toolbox-bigquery/examples/interpolate-elevation-along-a-road/)
+{{%/ bannerNote %}}
+
 
 ### P_VALUE
 
@@ -732,7 +752,7 @@ carto.SMOOTHING_MRF_H3(input, output, index_column, variable_column, options)
 
 **Description**
 
-This procedure computes a Markov Random Field (MRF) smoothing for a table containing H3 cell indices and their associated values.
+This procedure computes a Markov Random Field (MRF) smoothing for a table containing H3 cell indexes and their associated values.
 
 This implementation is based on the work of Christopher J. Paciorek: "Spatial models for point and areal data using Markov random fields on a fine grid." Electron. J. Statist. 7 946 - 972, 2013. <https://doi.org/10.1214/13-EJS791>
 
@@ -781,7 +801,7 @@ carto.SMOOTHING_MRF_QUADBI (input, output, index_column, variable_column, option
 
 **Description**
 
-This procedure computes a Markov Random Field (MRF) smoothing for a table containing QUADBIN cell indices and their associated values.
+This procedure computes a Markov Random Field (MRF) smoothing for a table containing QUADBIN cell indexes and their associated values.
 
 This implementation is based on the work of Christopher J. Paciorek: "Spatial models for point and areal data using Markov random fields on a fine grid." Electron. J. Statist. 7 946 - 972, 2013. <https://doi.org/10.1214/13-EJS791>
 

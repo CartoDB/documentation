@@ -1,5 +1,21 @@
 ## Release notes
 
+### October 1, 2022
+
+#### Module lds
+
+Changed
+
+- Rename `LDS_API_URL` to `API_BASE_URL`.
+
+### September 21, 2022
+
+#### Module tiler
+
+Fixed
+
+- Fix CREATE_SPATIAL_INDEX_TILESET returning nested UDFs error when detecting the index type.
+
 ### September 19, 2022
 
 #### Module statistics

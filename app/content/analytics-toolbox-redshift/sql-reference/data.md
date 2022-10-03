@@ -15,7 +15,7 @@ carto.ENRICH_POINTS(input_query, input_geography_column, data_query, data_geogra
 
 This procedure enriches a query containing geographic points with data from another query, spatially matching both and aggregating the result.
 
-As a result of this process, each input point will be enriched with the data from the enrichment query that spatially intersects it. When the input point intersects with more than one enrichment polygon, point, or line, the data is aggregated using the aggregation methods specified.
+As a result of this process, each input point will be enriched with the data from the enrichment query that spatially intersects it. When an input point intersects with more than one enrichment polygon, point, or line, the data is aggregated using the aggregation methods specified.
 
 Valid aggregation methods are: `SUM`, `MIN`, `MAX`, `AVG`, and `COUNT`.
 
@@ -25,7 +25,7 @@ For special types of aggregation, the [`ENRICH_POINTS_RAW`](#enrich_points_raw) 
 
 **Input parameters**
 
-* `input_query`: `STRING` query to be enriched. A qualified table name can be given as well, e.g. `'schema.database.table-name'` or `'database.table-name'`.
+* `input_query`: `STRING` query to be enriched. A qualified table name can be given as well, e.g. `'database.schema.table-name'` or `'database.table-name'`.
 * `input_geography_column`: `STRING` name of the GEOGRAPHY column in the query containing the points to be enriched.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
 * `data_geography_column`: `STRING` name of the GEOGRAPHY column provided in the `data_query`.
@@ -94,9 +94,9 @@ For special types of aggregation, the [`ENRICH_POLYGONS_RAW`](#enrich_poLYGONS_r
 **Input parameters**
 
 * `input_query`: `STRING` query to be enriched. A qualified table name can be given as well, e.g. `'schema.database.table-name'` or `'database.table-name'`.
-* `input_geography_column`: `STRING` name of the GEOGRAPHY/GEOGRAPHY column in the query containing the points to be enriched. The input cannot be a GeometryCollection.
+* `input_geography_column`: `STRING` name of the GEOMETRY/GEOGRAPHY column in the query containing the points to be enriched. The input cannot be a GeometryCollection.
 * `data_query`: `STRING` query that contains both a geography column and the columns with the data that will be used to enrich the points provided in the input query.
-* `data_geography_column`: `STRING` name of the GEOGRAPHY/GEOGRAPHY column provided in the `data_query`.
+* `data_geography_column`: `STRING` name of the GEOMETRY/GEOGRAPHY column provided in the `data_query`.
 * `variables`: `STRING` a JSON with a property `variables` containing an array of pairs. The column that will be used to enrich the input points and their corresponding aggregation method. e.g. `{"variables":[["var1","sum"],["var2","count"]]}`
 * `output`: `STRING` containing the name of an output table to store the results e.g. `'database.table-name'`. The resulting table cannot exist before running the procedure.
 

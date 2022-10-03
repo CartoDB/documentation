@@ -4,6 +4,30 @@ aliases:
 ---
 ## Release notes
 
+### October 1, 2022
+
+#### Module lds
+
+Changed
+
+- Rename `LDS_API_URL` to `API_BASE_URL`.
+
+### September 29, 2022
+
+#### Module retail
+
+Changed
+
+- `LINEAR_REG` model is now supported.
+
+### September 27, 2022
+
+#### Module tiler
+
+Changed
+
+- Fix bug in `__BUILD_REVENUE_MODEL_DATA_GRID`: Output table now contains `competitor_count`.
+
 ### September 19, 2022
 
 #### Module tiler

@@ -2,7 +2,7 @@
 
 <div class="badges"><div class="core"></div></div>
 
-This module contains functions that create geographies from coordinates or already existing geographies.
+This module contains functions that create new geographies from coordinates or already existing geographies.
 
 
 ### ST_MAKEBBOX
@@ -27,7 +27,9 @@ Creates a `Geometry` representing a bounding box with the given boundaries.
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_MAKEBBOX(-91.85548, 29.50603, -91.83820, 29.53073)) AS bbox;
+SELECT carto.ST_ASTEXT(
+  carto.ST_MAKEBBOX(-91.85548, 29.50603, -91.83820, 29.53073)
+) AS bbox;
 -- POLYGON ((-91.85548 29.50603, -91.85548 29.53073, -91.83820 29.53073, -91.8382 29.50603, -91.85548 29.50603))
 ```
 
@@ -52,7 +54,12 @@ Creates a `Geometry` representing a bounding box defined by the given `Points`.
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_MAKEBOX2D(carto.ST_MAKEPOINT(-91.85548, 29.50603), carto.ST_MAKEPOINT(-91.83820, 29.53073))) AS bbox;
+SELECT carto.ST_ASTEXT(
+  carto.ST_MAKEBOX2D(
+    carto.ST_MAKEPOINT(-91.85548, 29.50603),
+    carto.ST_MAKEPOINT(-91.83820, 29.53073)
+  )
+) AS bbox;
 -- POLYGON ((-91.85548 29.50603, -91.85548 29.53073, -91.8382 29.53073, -91.8382 29.50603, -91.85548 29.50603))
 ```
 
@@ -127,7 +134,11 @@ Creates a `Polygon` formed by the given `LineString` shell, which must be closed
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_MAKEPOLYGON(carto.ST_GEOMFROMWKT('LINESTRING(75 29,77 29,77 27, 75 29)')));
+SELECT carto.ST_ASTEXT(
+  carto.ST_MAKEPOLYGON(
+    carto.ST_GEOMFROMWKT('LINESTRING(75 29,77 29,77 27, 75 29)')
+  )
+);
 -- POLYGON ((75 29, 77 29, 77 27, 75 29))
 ```
 

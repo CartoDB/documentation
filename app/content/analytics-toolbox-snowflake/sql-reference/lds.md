@@ -23,6 +23,8 @@ This function consumes isolines quota. Each call consumes as many units of quota
 
 Calculates the isolines (polygons) from given origins (points) in a table or query. It creates a new table with the columns of the input table or query except the `geom_column` plus the isolines in the column `geom` (if the input already contains a `geom` column, it will be overwritten). It calculates isolines sequentially in chunks of 100 rows.
 
+Note that The term _isoline_ is used here in a general way to refer to the areas that can be reached from a given origin point within the given travel time or distance (depending on the `range_type` parameter).
+
 * `input`: `VARCHAR` name of the input table or query.
 * `output_table`: `VARCHAR` name of the output table. It will raise an error if the table already exists.
 * `geom_column`: `VARCHAR` column name for the origin geography column.
@@ -44,6 +46,11 @@ CALL carto.CREATE_ISOLINES(
 -- Isolines will be added in the "geom" column.
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Generating trade areas based on drive/walk-time isolines](/analytics-toolbox-snowflake/examples/trade-areas-based-on-isolines/)
+{{%/ bannerNote %}}
+
 
 ### GEOCODE
 
@@ -53,6 +60,8 @@ carto.GEOCODE(address [, country])
 
 {{% bannerNote type="warning" title="warning"%}}
 This function consumes geocoding quota. Each call consumes one unit of quota. Before running, check the size of the data to be geocoded and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
+
+**We recommend using this function only with an input of up to 10 records. In order to geocode larger sets of addresses, we strongly recommend using the [GEOCODE_TABLE](#geocode_table) procedure. Likewise, in order to materialize the results in a table.**
 {{%/ bannerNote %}}
 
 **Description**
@@ -97,6 +106,8 @@ carto.GEOCODE_REVERSE(geom [, language])
 
 {{% bannerNote type="warning" title="warning"%}}
 This function consumes geocoding quota. Each call consumes one unit of quota. Before running, check the size of the data to be reverse geocoded and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
+
+**We recommend using this function only with an input of up to 10 records. In order to reverse-geocode larger sets of locations, we strongly recommend using the [GEOCODE_REVERSE_TABLE](#geocode_reverse_table) procedure. Likewise, in order to materialize the results in a table.**
 {{%/ bannerNote %}}
 
 **Description**
@@ -134,14 +145,14 @@ This function consumes geocoding quota. Each call consumes as many units of quot
 
 **Description**
 
-Reverse-geocodes an input table by adding a column `address` with the address of a given point location. It reverse-geocodes sequentially the table in chunks of 50 rows.
+Reverse-geocodes an input table by adding a column `address` with the address coordinates corresponding to a given point location column. It geocodes sequentially the table in chunks of 50 rows.
 
 * `input_table`: `VARCHAR` name of the table to be reverse-geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add a columns to it to store the geocoding result.
 * `geom_column` (optional): `GEOGRAPHY` column name from the input table that contains the points to be reverse-geocoded. Defaults to `'geom'`.
 * `address_column` (optional): `VARCHAR` name of the column where the computed addresses will be stored. It defaults to `'address'`, and it is created on the input table if it doesn't exist.
 * `language` (optional): `VARCHAR` language in which results should be returned. Defaults to `''`. The effect and interpretation of this parameter depends on the LDS provider assigned to your account.
 
-If the input table already contains an address column with the name specified by the `address_column` parameter, only those rows with NULL values will be reverse-geocoded.
+If the input table already contains an address column with the name specified by the `address_column` parameter, only those rows with NULL values in it will be reverse-geocoded.
 
 **Examples**
 
@@ -205,7 +216,7 @@ This function consumes geocoding quota. Each call consumes as many units of quot
 
 **Description**
 
-Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) of a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 500.
+Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) corresponding to a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 500.
 
 * `input_table`: `VARCHAR` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
 * `address_column`: `VARCHAR` name of the column from the input table that contains the addresses to be geocoded.
@@ -262,6 +273,11 @@ GRANT OWNERSHIP ON TABLE "my-schema"."my-table" TO ROLE SYSADMIN COPY CURRENT GR
 
 After performing this operation, you will be able to run `GEOCODE_TABLE` without running into privilege issues.
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Geocoding your address data](/analytics-toolbox-snowflake/examples/geocoding-your-address-data/)
+{{%/ bannerNote %}}
+
 
 ### ISOLINE
 
@@ -271,11 +287,15 @@ carto.ISOLINE(origin, mode, range, range_type)
 
 {{% bannerNote type="warning" title="warning"%}}
 This function consumes isolines quota. Each call consumes one unit quota. Before running, check the size of the data and make sure you store the result in a table to avoid misuse of the quota. To check the information about available and consumed quota use the function [`LDS_QUOTA_INFO`](#lds_quota_info).
+
+**We recommend using this function only with an input of up to 10 records. In order to calculate isolines for larger sets of locations, we strongly recommend using the [CREATE_ISOLINES](#create_isolines) procedure. Likewise, in order to materialize the results in a table.**
 {{%/ bannerNote %}}
 
 **Description**
 
 Creates an isoline from the provided origin.
+
+Note that The term _isoline_ is used here in a general way to refer to the areas that can be reached from a given origin point within the given travel time or distance (depending on the `range_type` parameter).
 
 * `origin`: `GEOGRAPHY` of the origin of the isoline.
 * `mode`: `VARCHAR` of the type of transport. Supported: 'walk', 'car'.

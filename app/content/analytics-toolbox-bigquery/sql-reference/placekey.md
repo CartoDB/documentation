@@ -19,7 +19,7 @@ carto.PLACEKEY_FROMH3(h3index)
 
 **Description**
 
-Returns the placekey equivalent to the given H3 index.
+Returns the placekey equivalent of the given H3 index.
 
 * `h3index`: `STRING` H3 identifier.
 
@@ -81,7 +81,7 @@ carto.PLACEKEY_TOH3(placekey)
 
 **Description**
 
-Returns the H3 index equivalent to the given placekey.
+Returns the H3 index equivalent of the given placekey.
 
 * `placekey`: `STRING` Placekey identifier.
 
