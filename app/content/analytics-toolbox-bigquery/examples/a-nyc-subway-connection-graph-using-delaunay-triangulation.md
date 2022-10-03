@@ -16,6 +16,7 @@ Providing a good network connection between subway stations is critical to ensur
 
 For this particular example we are choosing the New York city subway stations to build the cited triangulation. The following query will construct the triangulation using the `ST_DELAUNAYLINES` function from the processing module of the Analytics Toolbox.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH data AS (
     SELECT ARRAY(
@@ -27,7 +28,7 @@ delaunay_array AS (
     FROM data
 ),
 delaunay_triangles AS (
-    SELECT geom 
+    SELECT geom
     FROM delaunay_array, UNNEST(nested) AS geom
 )
 
@@ -38,7 +39,7 @@ ON ST_INTERSECTS(delaunay_triangles.geom, subways.geom)
 GROUP BY(subways.id)
 ```
 
-<iframe height=480px width=100% style='margin-bottom:20px' src="https://team.carto.com/u/agraciano/builder/042cc9d2-437e-49b4-bd3d-a293ad9123e1/layers#/" title="Delaunay triangulation of the NYC subway stations. The line connections are represented with the color and size of the points."></iframe>
+![](/img/bq-analytics-toolbox/examples/nyc-subway-graph.png)
 
 In the visualization above each subway station is represented by a point whose color and size represent the number of received connections.
 

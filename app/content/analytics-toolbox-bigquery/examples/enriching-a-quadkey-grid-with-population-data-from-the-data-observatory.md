@@ -5,7 +5,7 @@ image: "/img/bq-analytics-toolbox/examples/do-quadkey-grid.png"
 type: examples
 date: "2021-08-12"
 categories:
-    - quadkey
+    - quadbin
 aliases:
     - /analytics-toolbox-bq/examples/enriching-a-quadkey-grid-with-population-data-from-the-data-observatory/
 ---
@@ -18,6 +18,7 @@ The query performs three main tasks:
 * Creating a quadkey grid of resolution 15 with the total number of supermarkets that fall within each grid cell (`agg_total`).
 * Enriching each grid cell with its population. As the Spatial Features dataset is also available in resolution 15, this enrichment is done simply by performing a join between these two tables. Please note that the Spatial Features dataset uses quadkeys as a grid identifier, so we have to convert these to quadints by using the appropriate function from the Analytics Toolbox.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT
   d.*,
@@ -38,11 +39,11 @@ JOIN (
     `carto-un`.carto.QUADINT_FROMGEOGPOINT(geom, 15) AS qid,
     COUNT(*) AS agg_total
   FROM data
-  GROUP BY qid 
+  GROUP BY qid
   ) d
 ON qid = geoid
 ```
 
-<iframe width="800px" height="400px" src="https://gcp-us-east1.app.carto.com/map/65a4b2ef-6f74-42b8-9d88-09ea19639552"></iframe>
+![](/img/bq-analytics-toolbox/examples/do-quadkey-grid.png)
 
 {{% euFlagFunding %}}

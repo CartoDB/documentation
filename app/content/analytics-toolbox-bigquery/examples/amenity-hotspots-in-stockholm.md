@@ -14,10 +14,10 @@ In this example we are going to identify hotspots of amenity POIs in Stockholm u
 
 The process consists of three simple steps:
 * First, we retrieve all POIs from OpenstreetMaps which belong to the category "amenity".
-* Next, we find the H3 cell of resolution 9 to which each POI belongs and count the number of amenity POIs inside each cell. 
+* Next, we find the H3 cell of resolution 9 to which each POI belongs and count the number of amenity POIs inside each cell.
 * Finally, we call the [GETIS_ORD_H3](../../sql-reference/statistics/#getis_ord_h3) function, which returns the Getis-Ord Gi* statistic for each H3 cell, calculated over <i style="font-style:italic">n_amenity_pois</i> (number of amenity POIs in the cell).
 
-
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH
   stockholm AS (

@@ -21,6 +21,7 @@ In this example, we are going to use CARTO's Analytics Toolbox for BigQuery to e
 
 We will start by defining an area of interest for our study, which in our case is a buffer of 5 km around downtown Honolulu.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
 ```
@@ -29,11 +30,12 @@ SELECT ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
 
 Next, we will find all Pizza Hut restaurants in Honolulu using [OpenStreetMaps's Planet Nodes dataset](https://carto.com/spatial-data-catalog/browser/dataset/osm_nodes_74461e34/), available through CARTO's Data Observatory. An extract of this table containing only the Points of Interest in Honolulu can be found in `cartobq.docs.honolulu_planet_nodes`.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 DECLARE honolulu_buffer GEOGRAPHY;
 -- We use the ST_BUFFER to define a 5 km buffer centered in Honolulu
 SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
+
 SELECT
 tag.value AS brand, geometry,
 FROM
@@ -47,11 +49,12 @@ AND ((tag.value in ("Pizza Hut") AND tag.key = 'brand'))
 
 For our analysis, we will subdivide the area of study into H3 grid cells of resolution 10 using the [H3_POLYFILL](../../sql-reference/h3/#h3_polyfill) function. The result is stored in `cartobq.docs.honolulu_pizza_aos`.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 DECLARE honolulu_buffer GEOGRAPHY;
 -- We use the ST_BUFFER to define a 5 km buffer centered in Honolulu
 SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
+
 CREATE TABLE `cartobq.docs.honolulu_pizza_aos` AS (
    SELECT h3id
    FROM UNNEST(`carto-un`.carto.H3_POLYFILL(honolulu_buffer, 10)) h3id
@@ -60,20 +63,21 @@ CREATE TABLE `cartobq.docs.honolulu_pizza_aos` AS (
 
 ### Enrich area of study
 
-Our customer is interested in looking for areas with a high density of males and females between 15 and 34 years old and that do not have an existing Pizza Hut restaurant nearby. 
+Our customer is interested in looking for areas with a high density of males and females between 15 and 34 years old and that do not have an existing Pizza Hut restaurant nearby.
 
 To perform the demographics analysis, we are going to enrich the H3 grid of our area of interest with a set of population variables from the [ACS Sociodemographics dataset at census block group level](https://carto.com/spatial-data-catalog/browser/dataset/acs_sociodemogr_95c726f9), available for free through our [Data Observatory](https://docs.carto.com/data-observatory). We will make use of the [enrichment capabilities](../../sql-reference/data) of CARTO’s Analytics Toolbox.
 
 First, you need to subscribe to the chosen dataset from the Data Observatory section of the CARTO Workspace. You can follow [this guide](https://docs.carto.com/data-observatory/guides/subscribing-to-public-and-premium-datasets/#public-datasets) to do so.
 
-Once subscribed to the dataset, navigate to the Data Explorer and expand the Data Observatory section. Pick any of your data subscriptions and click on the “Access in” button on the top right of the page. Copy the BigQuery project and dataset from any of the table locations that you see on the screen, as this is where your data subscriptions are. We are going to need this information in the next step. 
+Once subscribed to the dataset, navigate to the Data Explorer and expand the Data Observatory section. Pick any of your data subscriptions and click on the “Access in” button on the top right of the page. Copy the BigQuery project and dataset from any of the table locations that you see on the screen, as this is where your data subscriptions are. We are going to need this information in the next step.
 
 <div style="text-align:center" >
 <img src="/img/bq-analytics-toolbox/guides/the_enrichment_guide_access_in.png" alt="Find the location of your Data Observatory subscriptions" style="width:100%">
 </div>
 
-Now you can go to your BigQuery console and double check that you are correctly subscribed to the dataset of choice by using the [DATAOBS_SUBSCRIPTIONS](../../sql-reference/data/#dataobs_subscriptions) procedure, which takes as input the location of your Data Observatory subscriptions that we found in the previous step. 
+Now you can go to your BigQuery console and double check that you are correctly subscribed to the dataset of choice by using the [DATAOBS_SUBSCRIPTIONS](../../sql-reference/data/#dataobs_subscriptions) procedure, which takes as input the location of your Data Observatory subscriptions that we found in the previous step.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.DATAOBS_SUBSCRIPTIONS('carto-data.ac_yyr4gtk5','');
 ```
@@ -84,12 +88,14 @@ CALL `carto-un`.carto.DATAOBS_SUBSCRIPTIONS('carto-data.ac_yyr4gtk5','');
 
 Next, you can check the list of variables that are available to perform the enrichment using the [DATAOBS_SUBSCRIPTION_VARIABLES](../../sql-reference/data/#dataobs_subscription_variables) procedure. Particularly, we are interested in those variables that contain the word _population_ in the description, so we are going to take advantage of the second input of the procedure, which enables to filter the results.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.DATAOBS_SUBSCRIPTION_VARIABLES('carto-data.ac_yyr4gtk5',"variable_description LIKE '%population%'");
 ```
 
 After selecting the variables of interest, which in our case are the population values for males and females between 15 and 34 years old, we can perform the enrichment using the [DATAOBS_ENRICH_GRID](../../sql-reference/data/#dataobs_enrich_grid) procedure. Please note that the variables are uniquely identified using their _variable slug_. The result of this process can be found in `cartobq.docs.honolulu_pizza_aos_enriched`.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.DATAOBS_ENRICH_GRID
 ('h3',
@@ -97,10 +103,10 @@ R'''
 SELECT * from `cartobq.docs.honolulu_pizza_aos`
 ''',
 'h3id',
-[('female_15_to_17_eb1658f1', 'sum'), ('female_18_to_19_6d791436', 'sum'), ('female_20_f727dc', 'sum'), 
-('female_21_77f0174a', 'sum'), ('female_22_to_24_121a63e5', 'sum'), ('female_25_to_29_a90c21d6', 'sum'), 
-('female_30_to_34_50344313', 'sum'), ('male_15_to_17_8dd9d9ac', 'sum'), ('male_18_to_19_bb6956b', 'sum'), 
-('male_20_5264b51', 'sum'), ('male_21_72217bc7', 'sum'), ('male_22_to_24_74d5e2b8', 'sum'), 
+[('female_15_to_17_eb1658f1', 'sum'), ('female_18_to_19_6d791436', 'sum'), ('female_20_f727dc', 'sum'),
+('female_21_77f0174a', 'sum'), ('female_22_to_24_121a63e5', 'sum'), ('female_25_to_29_a90c21d6', 'sum'),
+('female_30_to_34_50344313', 'sum'), ('male_15_to_17_8dd9d9ac', 'sum'), ('male_18_to_19_bb6956b', 'sum'),
+('male_20_5264b51', 'sum'), ('male_21_72217bc7', 'sum'), ('male_22_to_24_74d5e2b8', 'sum'),
 ('male_25_to_29_cfc3a08b', 'sum'), ('male_30_to_34_36fbc24e', 'sum')],
 NULL,
 ['cartobq.docs.honolulu_pizza_aos_enriched'],
@@ -113,10 +119,11 @@ If you get stuck in any of the steps of this process, please refer to [this guid
 
 We are going to process our resulting enriched table to aggregate all the male and female population variables and store the result into a single column. The result can be found in `cartobq.docs.honolulu_pizza_aos_enriched_sum`.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 DECLARE features ARRAY<STRING>;
 DECLARE query STRING;
- 
+
 -- We get the names of all columns in the enriched table except for ('h3id')
 SET features =
 (
@@ -124,12 +131,12 @@ SET features =
  FROM `cartobq.docs`.INFORMATION_SCHEMA.COLUMNS
  WHERE table_name = 'honolulu_pizza_aos_enriched' AND NOT column_name IN ('h3id')
 );
- 
+
 SET query =
  """ CREATE TABLE `cartobq.docs.honolulu_pizza_aos_enriched_sum` AS (SELECT h3id, """
  || ARRAY_TO_STRING(features, " + ")  ||
  """ AS sum_pop FROM `cartobq.docs.honolulu_pizza_aos_enriched`)""";
- 
+
 -- We execute such query
 EXECUTE IMMEDIATE query;
 ```
@@ -138,10 +145,11 @@ EXECUTE IMMEDIATE query;
 
 In addition to the population, Pizza Hut would like to consider for the analysis the distance to the closest existing Pizza Hut as they would like to avoid cannibalization between their own restaurants. For that, for every cell of our grid we are going to compute the distance to every Pizza Hut restaurant using the [H3_DISTANCE](../../sql-reference/h3/#h3_distance) function, and then keep the minimum value. Please note that these distances are computed as the number of H3 cells of resolution 10 that separate a pair of locations, and therefore are only an approximation. The result can be found in `cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist`.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 DECLARE honolulu_buffer GEOGRAPHY;
 SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
+
 CREATE TABLE `cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist` AS
 (
 WITH t1 AS (
@@ -151,11 +159,11 @@ WITH t1 AS (
  WHERE ST_CONTAINS(honolulu_buffer, geometry)
  AND ((tag.value in ("Pizza Hut") AND tag.key = 'brand'))
   ),
- 
+
 t2 AS (
 SELECT * FROM `cartobq.docs.honolulu_pizza_aos_enriched_sum`
 )
- 
+
 SELECT t2.h3id, ANY_VALUE(t2.sum_pop) AS sum_pop, MIN(`carto-un`.carto.H3_DISTANCE(t2.h3id, t1.h3id)) AS dist
 FROM t1
 CROSS JOIN t2
@@ -172,6 +180,7 @@ In order to identify these locations, we use the [COMMERCIAL_HOTSPOTS](../../sql
 
 As can be seen in the query below, we are using both the `sum_pop` (total population aged 15-34) and `dist` (distance to the closest Pizza Hut) variables to identify our hotspots. These variables are given a weight of 0.7 and 0.3, respectively.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
   'cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist',
@@ -189,10 +198,11 @@ CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
 
 Finally, we are going to extract Pizza Hut's competitors from the `cartobq.docs.honolulu_planet_nodes` table and compute the local outlier factor (using the [LOF](../../sql-reference/statistics/#lof) function) to identify those that are very close to one another and those far from the others. This will give us an additional insight to decide where it would be more interesting to open a new restaurant. The result can be found in `cartobq.docs.honolulu_competitors_lof`.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 DECLARE honolulu_buffer GEOGRAPHY;
 SET honolulu_buffer = ST_BUFFER(ST_GEOGPOINT(-157.852587, 21.304390), 5000);
- 
+
 -- We get all amenities tagged as restaurants or fast_food POIS in Honolulu
 WITH fast_food AS (
  SELECT CAST(id AS STRING) AS id , tag.value, geometry as geom
@@ -201,7 +211,7 @@ WITH fast_food AS (
  WHERE ST_CONTAINS(honolulu_buffer, geometry)
  AND ((tag.value in ('fast_food', 'restaurant') AND tag.key = 'amenity'))
 ),
- 
+
 -- We calculate the Local Outlier Factor in order to identify restaurants without competition.
 lof_output as (
 SELECT `carto-un`.carto.LOF(ARRAY_AGG(STRUCT(id,geom)), 5) as lof FROM fast_food
@@ -211,7 +221,7 @@ SELECT lof.* FROM lof_output, UNNEST(lof_output.lof) AS lof
 
 ### Visual analysis
 
-We can look for suitable new locations for Pizza Hut by plotting all the information of our analysis using a CARTO Builder map. In the map below, we can explore where our target population lives in the context of the identified commercial hotspots and the location of Pizza Hut's competitors: 
+We can look for suitable new locations for Pizza Hut by plotting all the information of our analysis using a CARTO Builder map. In the map below, we can explore where our target population lives in the context of the identified commercial hotspots and the location of Pizza Hut's competitors:
 
 <iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/44d79880-aa02-48ab-9b5d-c6499946e2aa" title="Spatially-varying relationship between Airbnb's listing prices and their number of bedrooms and bathrooms."></iframe>
 
