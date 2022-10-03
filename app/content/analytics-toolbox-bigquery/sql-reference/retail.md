@@ -9,124 +9,6 @@ aliases:
 This module contains procedures to perform analysis to solve specific retail analytics use cases, such as revenue prediction.
 
 
-### BUILD_CANNIBALIZATION_DATA
-
-{{% bannerNote type="code" %}}
-carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
-{{%/ bannerNote %}}
-
-**Description**
-
-This procedure is the first of two from the Cannibalization analysis workflow. It builds the dataset for the existing locations to be used by the procedure [`CANNIBALIZATION_OVERLAP`](#cannibalization_overlap) to estimate the overlap between existing stores and the potentially new ones.
-
-1. For each store location, the urbanity level based on CARTO Spatial Features dataset is retrieved.
-2. For each store location, given the radius specified, the cells of the influence area are found.
-3. All cells are enriched with the specified features from Data Observatory subscriptions (e.g. population, footfall, etc.).
-4. A table with store_id, cell_id, and features values are created.
-
-**Input parameters**
-
-* `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadbin`.
-* `store_query`: `STRING` query with variables related to the stores to be used in the model, including their id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
-* `resolution`: `INT64` level or resolution of the cell grid. Check the available [H3 levels](https://h3geo.org/docs/core-library/restable/) and [Quadbin levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid).
-* `distances`: `ARRAY<FLOAT64>` An array with radiuses in kilometers for each type of urbanity. Sorted from lowest urbanity to highest. Three different types, for Remote/Rural/Low_density_urban - Medium_density_urban - High/Very_High_density_urban locations.
-* do_variables: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore compute the overlap between store locations in the subsequent step of the Cannibalization workflow. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable's default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
-* do_urbanity_index: `STRING` urbanity index variable slug_id in a CARTO Spatial Features subscription from the Data Observatory.
-* do_source: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to NULL or ''.
-* `output_destination`: `STRING` destination  dataset the output tables. It must contain the project and dataset. For example `<my-project>.<my-dataset>`.
-* `output_prefix`: `STRING` prefix for the output table.
-
-**Output**
-
-This procedure will output one table:
-
-* Table containing the store_id, cell_id, distance from store_id (integer) and the values for each Data Observatory feature. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output`.
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
-    --grid_type
-    'h3',
-    --store_query
-    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
-    --resolution
-    8,
-    --distances
-    [5.,3.,1.],
-    --do_variables
-    [('population_f5b8d177','sum')],
-    --do_urbanity_index
-    'urbanity_e1a58891',
-    --do_source
-    '<my-dataobs-project>.<my-dataobs-dataset>',
-    --output_destination
-    '<my-project>.<my-dataset>',
-    --output_prefix
-    'test_cannib'
-);
-```
-
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
-
-* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
-{{%/ bannerNote %}}
-
-
-### CANNIBALIZATION_OVERLAP
-
-{{% bannerNote type="code" %}}
-carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
-{{%/ bannerNote %}}
-
-**Description**
-
-This procedure is the second step of the Cannibalization analysis workflow. It takes as input the generated table from [`CANNIBALIZATION_BUILD_DATA`](#cannibalization_build_data) and the location of the new store, and estimates the overlap of areas and spatial features that the new store would have with the existing stores included into the generated table.
-
-**Input parameters**
-
-* `data_table`: `STRING` Table with columns `store_id`, `cell_id`, `distance` from `store_id` (integer) and the values for each Data Observatory features.
-* `new_locations_query`: `STRING` query with store_id and location of new stores.
-* `do_urbanity_index`: `STRING` urbanity index variable name from the Data Observatory subscriptions.
-* `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
-* `output_destination`: `STRING` destination dataset for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>`.
-* `output_prefix`: `STRING` The prefix for each table in the output destination.
-
-**Output**
-
-This procedure  will output one table:
-
-* Output overlap table which contains the store_id that receives the "cannibalization", store_id that causes the cannibalization, area overlap and features overlap for each Data Observatory features included in the analysis. The output table can be found at the output destination with the name `<output-prefix>_output_overlap`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output_overlap`.
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
-    --data_table
-    '<my-project>.<my-dataset>.output_<suffix from step1>',
-    --new_locations_query
-     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',,
-    --do_urbanity_index
-    'urbanity_e1a58891',
-    --do_source
-    '<my-dataobs-project>.<my-dataobs-dataset>',
-    --output_destination
-    '<my-project>.<my-dataset>',
-    --output_prefix
-    'test_cannib'
-);
-```
-
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
-
-* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
-{{%/ bannerNote %}}
-
-
 ### BUILD_REVENUE_MODEL_DATA
 
 {{% bannerNote type="code" %}}
@@ -372,78 +254,6 @@ CALL `carto-un`.carto.FIND_WHITESPACE_AREAS(
 ```
 
 
-### COMMERCIAL_HOTSPOTS
-
-{{% bannerNote type="code" %}}
-carto.COMMERCIAL_HOTSPOTS(input, output, index_column, index_type, variable_columns, variable_weights, kring, pvalue_thresh)
-{{%/ bannerNote %}}
-
-**Description**
-
-This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi\*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or Quadbin grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi\* statistic for each cell will be computed by taking into account the neighboring cells within the _k-ring_ of size `kring`.
-
-Only those cells where the Gi\* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi\* values.
-
-**Input parameters**
-
-* `input`: `STRING` name of the table containing the input data. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`.
-* `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted.
-* `index_column`: `STRING` name of the column containing the H3 or Quadbin indexes.
-* `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3', or 'quadbin'.
-* `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi\* statistic.
-* `variable_weights`: `ARRAY<FLOAT64>` containing the weights associated with each of the variables. These weights can take any value but will be normalized to sum up to 1. If NULL, uniform weights will be considered
-* `kring`: `INT64` size of the _k-ring_ (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi\* statistic. If NULL, uniform weights will be considered.
-* `pvalue_thresh`: Threshold for the Gi\* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned.
-
-**Output**
-The output will contain the following columns:
-
-* `index`: `STRING` containing the cell index.
-* `combined_gi`: `FLOAT64` with the resulting combined Gi\*.
-* `p_value`: `FLOAT64` with the p-value associated with the combined Gi\* statistic.
-
-If the output table is not specified when calling the procedure, the result will be returned but it won't be persisted.
-
-{{% customSelector %}}
-**Examples**
-{{%/ customSelector %}}
-
-```sql
-CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
-    'project_id.dataset_id.my_input_table',
-    'project_id.dataset_id.my_output_table',
-    'index',
-    'h3',
-    ['feature_0', 'feature_1'],
-    [0.7, 0.3],
-     3,
-     0.01
-)
--- Table project_id.dataset_id.my_output_table will be created.
--- with columns: index, combined_gi, p_value
-```
-
-```sql
-CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
-    'project_id.dataset_id.my_input_table',
-    'project_id.dataset_id.my_output_table',
-    'index',
-    'quadbin',
-    ['feature_0', 'feature_1'],
-    [0.5, 0.5],
-    1,
-    0.05
-);
--- Table project_id.dataset_id.my_output_table will be created.
--- with columns: index, combined_gi, p_value
-```
-
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
-
-* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
-{{%/ bannerNote %}}
-
-
 ### FIND_TWIN_AREAS
 
 {{% bannerNote type="code" %}}
@@ -520,6 +330,196 @@ CALL `carto-un`.carto.FIND_TWIN_AREAS(
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
 
 * [Applying the Twin Areas analysis to find the most similar location in Texas, US to the locations of the top 10 liquor stores in 2019 in Iowa](/analytics-toolbox-bigquery/examples/twin-areas-iowa/)
+{{%/ bannerNote %}}
+
+
+### COMMERCIAL_HOTSPOTS
+
+{{% bannerNote type="code" %}}
+carto.COMMERCIAL_HOTSPOTS(input, output, index_column, index_type, variable_columns, variable_weights, kring, pvalue_thresh)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi\*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or Quadbin grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi\* statistic for each cell will be computed by taking into account the neighboring cells within the _k-ring_ of size `kring`.
+
+Only those cells where the Gi\* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi\* values.
+
+**Input parameters**
+
+* `input`: `STRING` name of the table containing the input data. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`.
+* `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted.
+* `index_column`: `STRING` name of the column containing the H3 or Quadbin indexes.
+* `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3', or 'quadbin'.
+* `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi\* statistic.
+* `variable_weights`: `ARRAY<FLOAT64>` containing the weights associated with each of the variables. These weights can take any value but will be normalized to sum up to 1. If NULL, uniform weights will be considered
+* `kring`: `INT64` size of the _k-ring_ (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi\* statistic. If NULL, uniform weights will be considered.
+* `pvalue_thresh`: Threshold for the Gi\* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned.
+
+**Output**
+The output will contain the following columns:
+
+* `index`: `STRING` containing the cell index.
+* `combined_gi`: `FLOAT64` with the resulting combined Gi\*.
+* `p_value`: `FLOAT64` with the p-value associated with the combined Gi\* statistic.
+
+If the output table is not specified when calling the procedure, the result will be returned but it won't be persisted.
+
+{{% customSelector %}}
+**Examples**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
+    'project_id.dataset_id.my_input_table',
+    'project_id.dataset_id.my_output_table',
+    'index',
+    'h3',
+    ['feature_0', 'feature_1'],
+    [0.7, 0.3],
+     3,
+     0.01
+)
+-- Table project_id.dataset_id.my_output_table will be created.
+-- with columns: index, combined_gi, p_value
+```
+
+```sql
+CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
+    'project_id.dataset_id.my_input_table',
+    'project_id.dataset_id.my_output_table',
+    'index',
+    'quadbin',
+    ['feature_0', 'feature_1'],
+    [0.5, 0.5],
+    1,
+    0.05
+);
+-- Table project_id.dataset_id.my_output_table will be created.
+-- with columns: index, combined_gi, p_value
+```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
+{{%/ bannerNote %}}
+
+
+### BUILD_CANNIBALIZATION_DATA
+
+{{% bannerNote type="code" %}}
+carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is the first of two from the Cannibalization analysis workflow. It builds the dataset for the existing locations to be used by the procedure [`CANNIBALIZATION_OVERLAP`](#cannibalization_overlap) to estimate the overlap between existing stores and the potentially new ones.
+
+1. For each store location, the urbanity level based on CARTO Spatial Features dataset is retrieved.
+2. For each store location, given the radius specified, the cells of the influence area are found.
+3. All cells are enriched with the specified features from Data Observatory subscriptions (e.g. population, footfall, etc.).
+4. A table with store_id, cell_id, and features values are created.
+
+**Input parameters**
+
+* `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadbin`.
+* `store_query`: `STRING` query with variables related to the stores to be used in the model, including their id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
+* `resolution`: `INT64` level or resolution of the cell grid. Check the available [H3 levels](https://h3geo.org/docs/core-library/restable/) and [Quadbin levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid).
+* `distances`: `ARRAY<FLOAT64>` An array with radiuses in kilometers for each type of urbanity. Sorted from lowest urbanity to highest. Three different types, for Remote/Rural/Low_density_urban - Medium_density_urban - High/Very_High_density_urban locations.
+* do_variables: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore compute the overlap between store locations in the subsequent step of the Cannibalization workflow. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable's default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
+* do_urbanity_index: `STRING` urbanity index variable slug_id in a CARTO Spatial Features subscription from the Data Observatory.
+* do_source: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to NULL or ''.
+* `output_destination`: `STRING` destination  dataset the output tables. It must contain the project and dataset. For example `<my-project>.<my-dataset>`.
+* `output_prefix`: `STRING` prefix for the output table.
+
+**Output**
+
+This procedure will output one table:
+
+* Table containing the store_id, cell_id, distance from store_id (integer) and the values for each Data Observatory feature. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output`.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
+    --grid_type
+    'h3',
+    --store_query
+    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
+    --resolution
+    8,
+    --distances
+    [5.,3.,1.],
+    --do_variables
+    [('population_f5b8d177','sum')],
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib'
+);
+```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
+{{%/ bannerNote %}}
+
+
+### CANNIBALIZATION_OVERLAP
+
+{{% bannerNote type="code" %}}
+carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is the second step of the Cannibalization analysis workflow. It takes as input the generated table from [`CANNIBALIZATION_BUILD_DATA`](#cannibalization_build_data) and the location of the new store, and estimates the overlap of areas and spatial features that the new store would have with the existing stores included into the generated table.
+
+**Input parameters**
+
+* `data_table`: `STRING` Table with columns `store_id`, `cell_id`, `distance` from `store_id` (integer) and the values for each Data Observatory features.
+* `new_locations_query`: `STRING` query with store_id and location of new stores.
+* `do_urbanity_index`: `STRING` urbanity index variable name from the Data Observatory subscriptions.
+* `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
+* `output_destination`: `STRING` destination dataset for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>`.
+* `output_prefix`: `STRING` The prefix for each table in the output destination.
+
+**Output**
+
+This procedure  will output one table:
+
+* Output overlap table which contains the store_id that receives the "cannibalization", store_id that causes the cannibalization, area overlap and features overlap for each Data Observatory features included in the analysis. The output table can be found at the output destination with the name `<output-prefix>_output_overlap`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output_overlap`.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
+    --data_table
+    '<my-project>.<my-dataset>.output_<suffix from step1>',
+    --new_locations_query
+     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',,
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib'
+);
+```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
 {{%/ bannerNote %}}
 
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRACH=feature/sc-254424/reorder-lds-functions-in-sql-reference-for
+BRACH=master
 CHECKOUT_DIR=./.checkout
 
 rm -rf $CHECKOUT_DIR
