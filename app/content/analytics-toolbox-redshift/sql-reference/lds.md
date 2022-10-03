@@ -5,6 +5,108 @@
 This module contains functions and procedures that make use of location data services, such as geocoding, reverse geocoding and isolines computation.
 
 
+### GEOCODE_TABLE
+
+{{% bannerNote type="code" %}}
+carto.GEOCODE_TABLE(input_table, address_column [, geom_column] [, country])
+{{%/ bannerNote %}}
+
+{{% bannerNote type="warning" title="warning"%}}
+This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows your input table has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+{{%/ bannerNote %}}
+
+**Description**
+
+Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) corresponding to a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 100 rows.
+
+* `input_table`: `VARCHAR(MAX)` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
+* `address_column`: `VARCHAR(MAX)` name of the column from the input table that contains the addresses to be geocoded.
+* `geom_column` (optional): `VARCHAR(MAX)` column name for the output geometry column. Defaults to `'geom'`.
+* `country` (optional): `VARCHAR(MAX)` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
+
+If the input table already contains a geometry column with the name `geom_column`, only those rows with NULL values in it will be geocoded.
+
+**Examples**
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: geom, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: geom, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: my_geom_column, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', 'my_country');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: my_geom_column, carto_geocode_metadata.
+```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Geocoding your address data](/analytics-toolbox-redshift/examples/geocoding-your-address-data/)
+{{%/ bannerNote %}}
+
+
+### GEOCODE_REVERSE_TABLE
+
+{{% bannerNote type="code" %}}
+carto.GEOCODE_REVERSE_TABLE(input_table [, geom_column] [, address_column] [, language])
+{{%/ bannerNote %}}
+
+{{% bannerNote type="warning" title="warning"%}}
+This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows your input table has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+{{%/ bannerNote %}}
+
+**Description**
+
+Reverse-geocodes an input table by adding a column `address` with the addresses for a given point location column. It geocodes sequentially the table in chunks of 10 rows.
+
+* `input_table`: `VARCHAR(MAX)` name of the table to be reverse-geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
+* `geom_column` (optional): `GEOMETRY` column name for the geometry column that contains the points to be reverse-geocoded. Defaults to `'geom'`.
+* `address_column`: `VARCHAR(MAX)` name of the column where the computed addresses will be stored. It defaults to `'address'`, and it is created on the input table if it doesn't exist.
+* `language` (optional): `VARCHAR(MAX)` language in which results should be returned. Defaults to `''`. The effect and interpretation of this parameter depends on the LDS provider assigned to your account.
+
+If the input table already contains a column with the name `address_column`, only those rows with NULL values in it will be reverse-geocoded.
+
+**Examples**
+
+```sql
+CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table');
+-- The table `my-schema.my-table` with a column `geom` will be updated
+-- adding the column `address`.
+```
+
+```sql
+CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column');
+-- The table `my-schema.my-table` with a column `my_geom_column` will be updated
+-- adding the column `address`.
+```
+
+```sql
+CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column');
+-- The table `my-schema.my-table` with a column `my_geom_column` will be updated
+-- adding the column `my_address_column`.
+```
+
+```sql
+CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column', 'en-US');
+-- The table `my-schema.my-table` with a column `my_geom_column` will be updated
+-- adding the column `my_address_column`.
+-- The addresses will be in the (US) english language, if supported by the account LDS provider.
+```
+
+
 ### CREATE_ISOLINES
 
 {{% bannerNote type="code" %}}
@@ -127,108 +229,6 @@ This function performs requests to the CARTO Location Data Services API. Redshif
 SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
 -- 254 Broadway, New York, NY 10007, USA
 ```
-
-
-### GEOCODE_REVERSE_TABLE
-
-{{% bannerNote type="code" %}}
-carto.GEOCODE_REVERSE_TABLE(input_table [, geom_column] [, address_column] [, language])
-{{%/ bannerNote %}}
-
-{{% bannerNote type="warning" title="warning"%}}
-This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows your input table has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
-{{%/ bannerNote %}}
-
-**Description**
-
-Reverse-geocodes an input table by adding a column `address` with the addresses for a given point location column. It geocodes sequentially the table in chunks of 10 rows.
-
-* `input_table`: `VARCHAR(MAX)` name of the table to be reverse-geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
-* `geom_column` (optional): `GEOMETRY` column name for the geometry column that contains the points to be reverse-geocoded. Defaults to `'geom'`.
-* `address_column`: `VARCHAR(MAX)` name of the column where the computed addresses will be stored. It defaults to `'address'`, and it is created on the input table if it doesn't exist.
-* `language` (optional): `VARCHAR(MAX)` language in which results should be returned. Defaults to `''`. The effect and interpretation of this parameter depends on the LDS provider assigned to your account.
-
-If the input table already contains a column with the name `address_column`, only those rows with NULL values in it will be reverse-geocoded.
-
-**Examples**
-
-```sql
-CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table');
--- The table `my-schema.my-table` with a column `geom` will be updated
--- adding the column `address`.
-```
-
-```sql
-CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column');
--- The table `my-schema.my-table` with a column `my_geom_column` will be updated
--- adding the column `address`.
-```
-
-```sql
-CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column');
--- The table `my-schema.my-table` with a column `my_geom_column` will be updated
--- adding the column `my_address_column`.
-```
-
-```sql
-CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_address_column', 'en-US');
--- The table `my-schema.my-table` with a column `my_geom_column` will be updated
--- adding the column `my_address_column`.
--- The addresses will be in the (US) english language, if supported by the account LDS provider.
-```
-
-
-### GEOCODE_TABLE
-
-{{% bannerNote type="code" %}}
-carto.GEOCODE_TABLE(input_table, address_column [, geom_column] [, country])
-{{%/ bannerNote %}}
-
-{{% bannerNote type="warning" title="warning"%}}
-This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows your input table has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
-{{%/ bannerNote %}}
-
-**Description**
-
-Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) corresponding to a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 100 rows.
-
-* `input_table`: `VARCHAR(MAX)` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
-* `address_column`: `VARCHAR(MAX)` name of the column from the input table that contains the addresses to be geocoded.
-* `geom_column` (optional): `VARCHAR(MAX)` column name for the output geometry column. Defaults to `'geom'`.
-* `country` (optional): `VARCHAR(MAX)` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
-
-If the input table already contains a geometry column with the name `geom_column`, only those rows with NULL values in it will be geocoded.
-
-**Examples**
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table');
--- The table `my-schema.my-table` will be updated
--- adding the columns: geom, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column');
--- The table `my-schema.my-table` will be updated
--- adding the columns: geom, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column');
--- The table `my-schema.my-table` will be updated
--- adding the columns: my_geom_column, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', 'my_country');
--- The table `my-schema.my-table` will be updated
--- adding the columns: my_geom_column, carto_geocode_metadata.
-```
-
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
-
-* [Geocoding your address data](/analytics-toolbox-redshift/examples/geocoding-your-address-data/)
-{{%/ bannerNote %}}
 
 
 ### ISOLINE

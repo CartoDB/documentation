@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install dependencies
+npm i --prefix ./scripts/projects/
+
 echo -e "\nUpdate Analytics Toolbox for BigQuery"
 echo "-------------------------------------"
 CLOUD=bigquery TARGETPATH=./app/content/analytics-toolbox-bigquery \
