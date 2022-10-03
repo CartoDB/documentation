@@ -67,49 +67,57 @@ CREATE_ISOLINES
 LDS_QUOTA_INFO
 -->
 
-### CREATE_ISOLINES
+### GEOCODE_TABLE
 
 {{% bannerNote type="code" %}}
-carto.CREATE_ISOLINES(input, output_table, geom_column, mode, range, range_type, api_base_url, lds_token)
+carto.GEOCODE_TABLE(input_table, address_column, geom_column, country, api_base_url, lds_token)
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
-This function consumes isolines quota. Each call consumes as many units of quota as the number of rows your input table or query has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows of your input table. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) procedure.
 {{%/ bannerNote %}}
 
 **Description**
 
-Calculates the isolines (polygons) from given origins (points) in a table or query. It creates a new table with the columns of the input table or query except the `geom_column` plus the isolines in the column `geom` (if the input already contains a `geom` column, it will be overwritten). It calculates isolines sequentially in chunks of 100 rows.
+Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) of a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 100.
 
-Note that The term _isoline_ is used here in a general way to refer to the areas that can be reached from a given origin point within the given travel time or distance (depending on the `range_type` parameter).
-
-* `input`: `STRING` name of the input table or query.
-* `output_table`: `STRING` name of the output table. It will raise an error if the table already exists.
-* `geom_column`: `STRING` column name for the origin geometry column.
-* `mode`: `STRING` type of transport. Supported: 'walk', 'car'.
-* `range_value`: `INT64` range of the isoline in seconds (for `range_type` 'time') or meters (for `range_type` 'distance').
-* `range_type`: `STRING` type of range. Supported: 'time' (for isochrones), 'distance' (for isodistances).
+* `input_table`: `STRING` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
+* `address_column`: `STRING` name of the column from the input table that contains the addresses to be geocoded.
+* `geom_column` (optional): `STRING` column name for the geometry column. Defaults to `'geom'`. Set to `NULL` to use the default value.
+* `country` (optional): `STRING` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`. Set to `NULL` to use the default value.
 * `api_base_url`: `STRING` url of the API where the customer account is stored.
 * `lds_token`: `STRING` customer's secret token for accessing the LDS API services.
 
-**Example**
+If the input table already contains a geometry column with the name defined by `geom_column`, only those rows with `NULL` values will be geocoded.
+
+{{% bannerNote type="note" %}}
+If you plan to repeat the geocoding process, bear in mind that if you drop columns from your table
+you won't be able to create columns with the same name for a period of time (7 days) because BigQuery reserves the deleted columns names for [_time travel_](https://cloud.google.com/bigquery/docs/time-travel) purposes. So, for example, instead of dropping the `geom` column to re-geocode all rows, update the table and set it to `NULL`.
+{{%/ bannerNote %}}
+
+**Examples**
 
 ```sql
-CALL carto.CREATE_ISOLINES(
-    'my-schema.my-table',
-    'my-schema.my-output-table',
-    'my_geom_column',
-    'car', 60, 'time',
-    'my_api_base_url', 'my_lds_token'
-);
--- The table `my-schema.my-output-table` will be created
--- with the columns of the input table except `my_geom_column`.
--- Isolines will be added in the "geom" column.
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', NULL, NULL, 'my_api_base_url', 'my_lds_token');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: geom, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', NULL, 'my_api_base_url', 'my_lds_token');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: my_geom_column, carto_geocode_metadata.
+```
+
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', 'my_country', 'my_api_base_url', 'my_lds_token');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: my_geom_column, carto_geocode_metadata.
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
 
-* [Generating trade areas based on drive/walk-time isolines](/analytics-toolbox-bigquery/examples/trade-areas-based-on-isolines/)
+* [Geocoding your address data](/analytics-toolbox-bigquery/examples/geocoding-your-address-data/)
 {{%/ bannerNote %}}
 
 
@@ -169,57 +177,49 @@ CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_add
 ```
 
 
-### GEOCODE_TABLE
+### CREATE_ISOLINES
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE_TABLE(input_table, address_column, geom_column, country, api_base_url, lds_token)
+carto.CREATE_ISOLINES(input, output_table, geom_column, mode, range, range_type, api_base_url, lds_token)
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
-This function consumes geocoding quota. Each call consumes as many units of quota as the number of rows of your input table. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) procedure.
+This function consumes isolines quota. Each call consumes as many units of quota as the number of rows your input table or query has. Before running, we recommend checking the size of the data to be geocoded and your available quota using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
 {{%/ bannerNote %}}
 
 **Description**
 
-Geocodes an input table by adding a column `geom` with the geographic coordinates (latitude and longitude) of a given address column. This procedure also adds a `carto_geocode_metadata` column with additional information of the geocoding result in JSON format. It geocodes sequentially the table in chunks of 100.
+Calculates the isolines (polygons) from given origins (points) in a table or query. It creates a new table with the columns of the input table or query except the `geom_column` plus the isolines in the column `geom` (if the input already contains a `geom` column, it will be overwritten). It calculates isolines sequentially in chunks of 100 rows.
 
-* `input_table`: `STRING` name of the table to be geocoded. Please make sure you have enough permissions to alter this table, as this procedure will add two columns to it to store the geocoding result.
-* `address_column`: `STRING` name of the column from the input table that contains the addresses to be geocoded.
-* `geom_column` (optional): `STRING` column name for the geometry column. Defaults to `'geom'`. Set to `NULL` to use the default value.
-* `country` (optional): `STRING` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`. Set to `NULL` to use the default value.
+Note that The term _isoline_ is used here in a general way to refer to the areas that can be reached from a given origin point within the given travel time or distance (depending on the `range_type` parameter).
+
+* `input`: `STRING` name of the input table or query.
+* `output_table`: `STRING` name of the output table. It will raise an error if the table already exists.
+* `geom_column`: `STRING` column name for the origin geometry column.
+* `mode`: `STRING` type of transport. Supported: 'walk', 'car'.
+* `range_value`: `INT64` range of the isoline in seconds (for `range_type` 'time') or meters (for `range_type` 'distance').
+* `range_type`: `STRING` type of range. Supported: 'time' (for isochrones), 'distance' (for isodistances).
 * `api_base_url`: `STRING` url of the API where the customer account is stored.
 * `lds_token`: `STRING` customer's secret token for accessing the LDS API services.
 
-If the input table already contains a geometry column with the name defined by `geom_column`, only those rows with `NULL` values will be geocoded.
-
-{{% bannerNote type="note" %}}
-If you plan to repeat the geocoding process, bear in mind that if you drop columns from your table
-you won't be able to create columns with the same name for a period of time (7 days) because BigQuery reserves the deleted columns names for [_time travel_](https://cloud.google.com/bigquery/docs/time-travel) purposes. So, for example, instead of dropping the `geom` column to re-geocode all rows, update the table and set it to `NULL`.
-{{%/ bannerNote %}}
-
-**Examples**
+**Example**
 
 ```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', NULL, NULL, 'my_api_base_url', 'my_lds_token');
--- The table `my-schema.my-table` will be updated
--- adding the columns: geom, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', NULL, 'my_api_base_url', 'my_lds_token');
--- The table `my-schema.my-table` will be updated
--- adding the columns: my_geom_column, carto_geocode_metadata.
-```
-
-```sql
-CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', 'my_country', 'my_api_base_url', 'my_lds_token');
--- The table `my-schema.my-table` will be updated
--- adding the columns: my_geom_column, carto_geocode_metadata.
+CALL carto.CREATE_ISOLINES(
+    'my-schema.my-table',
+    'my-schema.my-output-table',
+    'my_geom_column',
+    'car', 60, 'time',
+    'my_api_base_url', 'my_lds_token'
+);
+-- The table `my-schema.my-output-table` will be created
+-- with the columns of the input table except `my_geom_column`.
+-- Isolines will be added in the "geom" column.
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
 
-* [Geocoding your address data](/analytics-toolbox-bigquery/examples/geocoding-your-address-data/)
+* [Generating trade areas based on drive/walk-time isolines](/analytics-toolbox-bigquery/examples/trade-areas-based-on-isolines/)
 {{%/ bannerNote %}}
 
 

@@ -1,4 +1,6 @@
 app/_site/
 app/resources/
+node_modules/
 .checkout/
 .DS_Store
+package-lock.json

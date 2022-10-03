@@ -9,138 +9,6 @@ aliases:
 This module contains procedures to perform analysis to solve specific retail analytics use cases, such as revenue prediction.
 
 
-### BUILD_CANNIBALIZATION_DATA
-
-{{% bannerNote type="code" %}}
-carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
-{{%/ bannerNote %}}
-
-**Description**
-
-This procedure is the first of two from the Cannibalization analysis workflow. It builds the dataset for the existing locations to be used by the procedure [`CANNIBALIZATION_OVERLAP`](#cannibalization_overlap) to estimate the overlap between existing stores and the potentially new ones.
-
-1. For each store location, the urbanity level based on CARTO Spatial Features dataset is retrieved.
-2. For each store location, given the radius specified, the cells of the influence area are found.
-3. All cells are enriched with the specified features from Data Observatory subscriptions (e.g. population, footfall, etc.).
-4. A table with store_id, cell_id, and features values are created.
-
-**Input parameters**
-
-* `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadbin`.
-* `store_query`: `STRING` query with variables related to the stores to be used in the model, including their id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
-* `resolution`: `INT64` level or resolution of the cell grid. Check the available [H3 levels](https://h3geo.org/docs/core-library/restable/) and [Quadbin levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid).
-* `distances`: `ARRAY<FLOAT64>` An array with radiuses in kilometers for each type of urbanity. Sorted from lowest urbanity to highest. Three different types, for Remote/Rural/Low_density_urban - Medium_density_urban - High/Very_High_density_urban locations.
-* do_variables: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore compute the overlap between store locations in the subsequent step of the Cannibalization workflow. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable's default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
-* do_urbanity_index: `STRING` urbanity index variable slug_id in a CARTO Spatial Features subscription from the Data Observatory.
-* do_source: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to NULL or ''.
-* `output_destination`: `STRING` destination  dataset the output tables. It must contain the project and dataset. For example `<my-project>.<my-dataset>`.
-* `output_prefix`: `STRING` prefix for the output table.
-
-**Output**
-
-This procedure will output one table:
-
-* Table containing the store_id, cell_id, distance from store_id (integer) and the values for each Data Observatory feature. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output`.
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
-    --grid_type
-    'h3',
-    --store_query
-    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
-    --resolution
-    8,
-    --distances
-    [5.,3.,1.],
-    --do_variables
-    [('population_f5b8d177','sum')],
-    --do_urbanity_index
-    'urbanity_e1a58891',
-    --do_source
-    '<my-dataobs-project>.<my-dataobs-dataset>',
-    --output_destination
-    '<my-project>.<my-dataset>',
-    --output_prefix
-    'test_cannib'
-);
-```
-
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
-
-* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
-{{%/ bannerNote %}}
-
-
-### BUILD_REVENUE_MODEL
-
-{{% bannerNote type="code" %}}
-carto.BUILD_REVENUE_MODEL(revenue_model_data, options, output_prefix)
-{{%/ bannerNote %}}
-
-**Description**
-
-This procedure is the second step of the Revenue Prediction analysis workflow. It creates the model and its description tables from the input model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure). It performs the following steps:
-
-1. Compute the model from the input query and options.
-2. Compute the revenue `model_shap`, `model_stats` tables (see the output description for more details).
-
-**Input parameters**
-
-* `revenue_model_data`: `STRING` table with the revenue model data generated with the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure.
-* `options`: `STRING` JSON string to overwrite the model default options. If set to NULL or empty, it will use the default options. The following fixed options cannot be modified:
-  * ENABLE_GLOBAL_EXPLAIN: TRUE
-  * INPUT_LABEL_COLS: ['revenue_avg']
-
-    The following default options can be modified:
-  * MODEL_TYPE: 'BOOSTED_TREE_REGRESSOR'
-  * BOOSTER_TYPE: 'GBTREE'
-  * NUM_PARALLEL_TREE: 1
-  * TREE_METHOD: 'AUTO'
-  * COLSAMPLE_BYTREE: 1
-  * MAX_TREE_DEPTH: 6
-  * SUBSAMPLE: 0.85
-  * L1_REG: 0
-  * L2_REG: 1
-  * EARLY_STOP: FALSE
-  * MAX_ITERATIONS: 50
-  * DATA_SPLIT_METHOD: 'NO_SPLIT'
-
-    This parameter allows using other options compatible with the model used. Models currently supported are [LINEAR_REG](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-glm) and [BOOSTED_TREE_REGRESSOR](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-boosted-tree). Check the [model documentation](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#model_option_list) for more information.
-* `output_prefix`: `STRING` destination prefix for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>.<output-prefix>`.
-
-**Output**
-
-The procedure will output the following:
-
-1. Model: contains the trained model to be used for the revenue prediction. The name of the model includes the suffix `_model`, for example `<my-project>.<my-dataset>.<output-prefix>_model`.
-2. Shap table: contains a list of the features and their attribution to the model, computed with [`ML.GLOBAL_EXPLAIN`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-global-explain). The name of the table includes the suffix `_model_shap`, for example `<my-project>.<my-dataset>.<output-prefix>_model_shap`.
-3. Stats table: contains the model stats (mean_error, variance, etc.), computed with [`ML.EVALUATE`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-evaluate). The name of the table includes the suffix `_model_stats`, for example `<my-project>.<my-dataset>.<output-prefix>_model_stats`.
-
-To learn more about how to evaluate the results of your model through the concept of _explainability_, refer to [this article](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-xai-overview) (<https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-xai-overview>).
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CALL `carto-un`.carto.BUILD_REVENUE_MODEL(
-    -- Model data
-    '<my-project>.<my-dataset>.<output-prefix>_model_data',
-    -- Options
-    '{"MAX_ITERATIONS": 100}',
-    -- Output destination prefix
-    '<my-project>.<my-dataset>.<output-prefix>'
-);
--- Model `<my-project>.<my-dataset>.<output-prefix>_model` will be created
--- Table `<my-project>.<my-dataset>.<output-prefix>_model_shap` will be created
--- Table `<my-project>.<my-dataset>.<output-prefix>_model_stats` will be created
-```
-
-
 ### BUILD_REVENUE_MODEL_DATA
 
 {{% bannerNote type="code" %}}
@@ -214,128 +82,176 @@ CALL `carto-un`.carto.BUILD_REVENUE_MODEL_DATA(
 ```
 
 
-### CANNIBALIZATION_OVERLAP
+### BUILD_REVENUE_MODEL
 
 {{% bannerNote type="code" %}}
-carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
+carto.BUILD_REVENUE_MODEL(revenue_model_data, options, output_prefix)
 {{%/ bannerNote %}}
 
 **Description**
 
-This procedure is the second step of the Cannibalization analysis workflow. It takes as input the generated table from [`CANNIBALIZATION_BUILD_DATA`](#cannibalization_build_data) and the location of the new store, and estimates the overlap of areas and spatial features that the new store would have with the existing stores included into the generated table.
+This procedure is the second step of the Revenue Prediction analysis workflow. It creates the model and its description tables from the input model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure). It performs the following steps:
+
+1. Compute the model from the input query and options.
+2. Compute the revenue `model_shap`, `model_stats` tables (see the output description for more details).
 
 **Input parameters**
 
-* `data_table`: `STRING` Table with columns `store_id`, `cell_id`, `distance` from `store_id` (integer) and the values for each Data Observatory features.
-* `new_locations_query`: `STRING` query with store_id and location of new stores.
-* `do_urbanity_index`: `STRING` urbanity index variable name from the Data Observatory subscriptions.
-* `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
-* `output_destination`: `STRING` destination dataset for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>`.
-* `output_prefix`: `STRING` The prefix for each table in the output destination.
+* `revenue_model_data`: `STRING` table with the revenue model data generated with the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure.
+* `options`: `STRING` JSON string to overwrite the model default options. If set to NULL or empty, it will use the default options. The following fixed options cannot be modified:
+  * ENABLE_GLOBAL_EXPLAIN: TRUE
+  * INPUT_LABEL_COLS: ['revenue_avg']
+
+    The following default options can be modified:
+  * MODEL_TYPE: 'BOOSTED_TREE_REGRESSOR'
+  * BOOSTER_TYPE: 'GBTREE'
+  * NUM_PARALLEL_TREE: 1
+  * TREE_METHOD: 'AUTO'
+  * COLSAMPLE_BYTREE: 1
+  * MAX_TREE_DEPTH: 6
+  * SUBSAMPLE: 0.85
+  * L1_REG: 0
+  * L2_REG: 1
+  * EARLY_STOP: FALSE
+  * MAX_ITERATIONS: 50
+  * DATA_SPLIT_METHOD: 'NO_SPLIT'
+
+    This parameter allows using other options compatible with the model used. Models currently supported are [LINEAR_REG](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-glm) and [BOOSTED_TREE_REGRESSOR](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-boosted-tree). Check the [model documentation](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#model_option_list) for more information.
+* `output_prefix`: `STRING` destination prefix for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>.<output-prefix>`.
 
 **Output**
 
-This procedure  will output one table:
+The procedure will output the following:
 
-* Output overlap table which contains the store_id that receives the "cannibalization", store_id that causes the cannibalization, area overlap and features overlap for each Data Observatory features included in the analysis. The output table can be found at the output destination with the name `<output-prefix>_output_overlap`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output_overlap`.
+1. Model: contains the trained model to be used for the revenue prediction. The name of the model includes the suffix `_model`, for example `<my-project>.<my-dataset>.<output-prefix>_model`.
+2. Shap table: contains a list of the features and their attribution to the model, computed with [`ML.GLOBAL_EXPLAIN`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-global-explain). The name of the table includes the suffix `_model_shap`, for example `<my-project>.<my-dataset>.<output-prefix>_model_shap`.
+3. Stats table: contains the model stats (mean_error, variance, etc.), computed with [`ML.EVALUATE`](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-evaluate). The name of the table includes the suffix `_model_stats`, for example `<my-project>.<my-dataset>.<output-prefix>_model_stats`.
+
+To learn more about how to evaluate the results of your model through the concept of _explainability_, refer to [this article](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-xai-overview) (<https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-xai-overview>).
 
 {{% customSelector %}}
 **Example**
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
-    --data_table
-    '<my-project>.<my-dataset>.output_<suffix from step1>',
-    --new_locations_query
-     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',,
-    --do_urbanity_index
-    'urbanity_e1a58891',
-    --do_source
-    '<my-dataobs-project>.<my-dataobs-dataset>',
-    --output_destination
-    '<my-project>.<my-dataset>',
-    --output_prefix
-    'test_cannib'
+CALL `carto-un`.carto.BUILD_REVENUE_MODEL(
+    -- Model data
+    '<my-project>.<my-dataset>.<output-prefix>_model_data',
+    -- Options
+    '{"MAX_ITERATIONS": 100}',
+    -- Output destination prefix
+    '<my-project>.<my-dataset>.<output-prefix>'
 );
+-- Model `<my-project>.<my-dataset>.<output-prefix>_model` will be created
+-- Table `<my-project>.<my-dataset>.<output-prefix>_model_shap` will be created
+-- Table `<my-project>.<my-dataset>.<output-prefix>_model_stats` will be created
 ```
 
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
 
-* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
-{{%/ bannerNote %}}
-
-
-### COMMERCIAL_HOTSPOTS
+### PREDICT_REVENUE_AVERAGE
 
 {{% bannerNote type="code" %}}
-carto.COMMERCIAL_HOTSPOTS(input, output, index_column, index_type, variable_columns, variable_weights, kring, pvalue_thresh)
+carto.PREDICT_REVENUE_AVERAGE(index, revenue_model, revenue_model_data)
 {{%/ bannerNote %}}
 
 **Description**
 
-This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi\*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or Quadbin grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi\* statistic for each cell will be computed by taking into account the neighboring cells within the _k-ring_ of size `kring`.
-
-Only those cells where the Gi\* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi\* values.
+This procedure is the third and final step of the Revenue Prediction analysis workflow. It predicts the average revenue of an additional store located in the specified grid cell. It requires as input the model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure) and the trained model (output of the [`BUILD_REVENUE_MODEL`](#build_revenue_model) procedure).
 
 **Input parameters**
 
-* `input`: `STRING` name of the table containing the input data. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`.
-* `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted.
-* `index_column`: `STRING` name of the column containing the H3 or Quadbin indexes.
-* `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3', or 'quadbin'.
-* `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi\* statistic.
-* `variable_weights`: `ARRAY<FLOAT64>` containing the weights associated with each of the variables. These weights can take any value but will be normalized to sum up to 1. If NULL, uniform weights will be considered
-* `kring`: `INT64` size of the _k-ring_ (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi\* statistic. If NULL, uniform weights will be considered.
-* `pvalue_thresh`: Threshold for the Gi\* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned.
+* `index`: `ANY TYPE` cell index where the new store will be located. It can be an H3 or a Quadbin index. For Quadbin, the value should be  `INT64` whereas for H3 the value should be `STRING`. It can also be `'ALL'`, in which case the prediction for all the grid cells of the model data are returned.
+* `revenue_model`: `STRING` the fully qualified `model` name.
+* `revenue_model_data`: `STRING` the fully qualified `model_data` table name.
+* `candidate_data`: `STRING` the fully qualified `candidate_data` table name. It can be set to `NULL`.
+* `stores_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` list with the columns of the `stores_query` and their corresponding aggregation method (`sum`, `avg`, `max`, `min`, `count`) that will be used to enrich the grid cells. It can be set to `NULL`.
 
 **Output**
-The output will contain the following columns:
 
-* `index`: `STRING` containing the cell index.
-* `combined_gi`: `FLOAT64` with the resulting combined Gi\*.
-* `p_value`: `FLOAT64` with the p-value associated with the combined Gi\* statistic.
-
-If the output table is not specified when calling the procedure, the result will be returned but it won't be persisted.
+The procedure will output the `index`,  `predicted_revenue_avg` value in the cell (in the same units of the `revenue` column), and `shap_values`, an array of key value pairs with the shap values of the features for each prediction. It also includes a `baseline_prediction`, which is the expected revenue without considering the impact of any other features.
 
 {{% customSelector %}}
-**Examples**
+**Example**
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
-    'project_id.dataset_id.my_input_table',
-    'project_id.dataset_id.my_output_table',
-    'index',
-    'h3',
-    ['feature_0', 'feature_1'],
-    [0.7, 0.3],
-     3,
-     0.01
-)
--- Table project_id.dataset_id.my_output_table will be created.
--- with columns: index, combined_gi, p_value
+CREATE TABLE '<my-project>.<my-dataset>.<output-prefix>_candidate_data'  AS (SELECT 25 store_area);
+
+CALL `carto-un`.carto.PREDICT_REVENUE_AVERAGE(
+    '862676d1fffffff',
+    '<my-project>.<my-dataset>.<output-prefix>_model',
+    '<my-project>.<my-dataset>.<output-prefix>_model_data',
+    '<my-project>.<my-dataset>.<output-prefix>_candidate_data',
+    [('store_area','sum')]
+);
+-- index, predicted_revenue_avg
 ```
+
+
+### FIND_WHITESPACE_AREAS
+
+{{% bannerNote type="code" %}}
+carto.FIND_WHITESPACE_AREAS(
+    revenue_model,
+    revenue_model_data,
+    generator_query,
+    aoi_query,
+    minimum_revenue,
+    max_results,
+    with_competitors,
+    with_own_stores
+)
+{{%/ bannerNote %}}
+
+{{% bannerNote type="code" title="FIXME: DUPLICATED FOR COMPARISON" %}}
+carto.FIND_WHITESPACE_AREAS(revenue_model, revenue_model_data, generator_query, aoi_query minimum_revenue, max_results, with_competitors, with_own_stores
+)
+{{%/ bannerNote %}}
+
+**Description**
+
+This is a postprocessing step that may be used after completing a Revenue Prediction analysis workflow. It allows you to identify cells with the highest potential revenue (_whitespaces_), while satisfying a series of criteria (e.g. presence of competitors).
+
+It requires as input the model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure) and the trained model (output of the [`BUILD_REVENUE_MODEL`](#build_revenue_model) procedure), as well as a query with points to use as generators for the area of applicability of the model, plus a series of optional filters.
+
+A cell is eligible to be considered a _whitespace_ if it complies with the filtering criteria (minimum revenue, presence of competitors, etc.) and is within the [area of applicability](https://arxiv.org/abs/2005.07939) of the revenue model provided.
+
+**Input parameters**
+
+* `revenue_model`: `STRING` with the fully qualified `model` name.
+* `revenue_model_data`: `STRING` with the fully qualified `model_data` table name.
+* `generator_query`: `STRING` query with the location of a set of generator points as a geography column named `geom`. The algorithm will look for whitespaces in the surroundings of these locations, therefore avoiding offering results in locations that are not of the interest of the user. Good options to use as generator locations are, for instance, the location of the stores and competitors, or a collection of POIs that are known to drive commercial activity to an area.
+* `aoi_query`: `STRING` query with the geography of the area of interest in which to perform the search. May be `NULL`, in which case no spatial filter will be applied.
+* `minimum_revenue`: `FLOAT64` the minimum revenue to filter results by. May be `NULL`, in which case no revenue threshold will be applied.
+* `max_results`: `INT64` of the maximum number of results, ordered by decreasing predicted revenue. May be `NULL`, in which case all eligible cells are returned.
+* `with_own_stores`: `BOOL` specifying whether to consider cells that already have own stores in them. If `NULL`, defaults to `TRUE`.
+* `with_competitors`: `BOOL` specifying whether to consider cells that already have competitors in them. If `NULL`, defaults to `TRUE`.
+
+**Output**
+
+The procedure will output a table of cells with the following columns:
+
+* `index`: identifying the H3, or Quadbin cell.
+* `predicted_revenue_avg`: average revenue of an additional store located in the grid cell.
+* `store_count`: number of own stores present in the grid cell.
+* `competitor_count`: number of competitors present in the grid cell.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
-    'project_id.dataset_id.my_input_table',
-    'project_id.dataset_id.my_output_table',
-    'index',
-    'quadbin',
-    ['feature_0', 'feature_1'],
-    [0.5, 0.5],
-    1,
-    0.05
+CALL `carto-un`.carto.FIND_WHITESPACE_AREAS(
+    '<my-project>.<my-dataset>.<output-prefix>_model',
+    '<my-project>.<my-dataset>.<output-prefix>_model_data',
+    'SELECT geom FROM `<my-project>.<my-dataset>.<generator-table>`',
+    'SELECT geom FROM `<my-project>.<my-dataset>.<area_of_interest_table>`', -- Area of Interest filter
+    10000, -- Minimum predicted revenue filter
+    5, -- Maximum number of results
+    TRUE, -- Whether to include cells with own stores
+    FALSE -- Whether to include cells with competitors
 );
--- Table project_id.dataset_id.my_output_table will be created.
--- with columns: index, combined_gi, p_value
 ```
-
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
-
-* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
-{{%/ bannerNote %}}
 
 
 ### FIND_TWIN_AREAS
@@ -417,70 +333,194 @@ CALL `carto-un`.carto.FIND_TWIN_AREAS(
 {{%/ bannerNote %}}
 
 
-### FIND_WHITESPACE_AREAS
+### COMMERCIAL_HOTSPOTS
 
 {{% bannerNote type="code" %}}
-carto.FIND_WHITESPACE_AREAS(
-    revenue_model,
-    revenue_model_data,
-    generator_query,
-    aoi_query,
-    minimum_revenue,
-    max_results,
-    with_competitors,
-    with_own_stores
-)
-{{%/ bannerNote %}}
-
-{{% bannerNote type="code" title="FIXME: DUPLICATED FOR COMPARISON" %}}
-carto.FIND_WHITESPACE_AREAS(revenue_model, revenue_model_data, generator_query, aoi_query minimum_revenue, max_results, with_competitors, with_own_stores
-)
+carto.COMMERCIAL_HOTSPOTS(input, output, index_column, index_type, variable_columns, variable_weights, kring, pvalue_thresh)
 {{%/ bannerNote %}}
 
 **Description**
 
-This is a postprocessing step that may be used after completing a Revenue Prediction analysis workflow. It allows you to identify cells with the highest potential revenue (_whitespaces_), while satisfying a series of criteria (e.g. presence of competitors).
+This procedure is used to locate hotspot areas by calculating a combined [Getis-Ord Gi\*](../statistics/#getis_ord_h3) statistic using a uniform kernel over several variables. The input data should be in either an H3 or Quadbin grid. Variables can be optionally weighted using the `variable_weights` parameter, uniform weights will be considered otherwise. The combined Gi\* statistic for each cell will be computed by taking into account the neighboring cells within the _k-ring_ of size `kring`.
 
-It requires as input the model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure) and the trained model (output of the [`BUILD_REVENUE_MODEL`](#build_revenue_model) procedure), as well as a query with points to use as generators for the area of applicability of the model, plus a series of optional filters.
-
-A cell is eligible to be considered a _whitespace_ if it complies with the filtering criteria (minimum revenue, presence of competitors, etc.) and is within the [area of applicability](https://arxiv.org/abs/2005.07939) of the revenue model provided.
+Only those cells where the Gi\* statistics is significant are returned, i.e., those above the p-value threshold (`pvalue_thresh`) set by the user. Hotspots can be identified as those cells with the highest Gi\* values.
 
 **Input parameters**
 
-* `revenue_model`: `STRING` with the fully qualified `model` name.
-* `revenue_model_data`: `STRING` with the fully qualified `model_data` table name.
-* `generator_query`: `STRING` query with the location of a set of generator points as a geography column named `geom`. The algorithm will look for whitespaces in the surroundings of these locations, therefore avoiding offering results in locations that are not of the interest of the user. Good options to use as generator locations are, for instance, the location of the stores and competitors, or a collection of POIs that are known to drive commercial activity to an area.
-* `aoi_query`: `STRING` query with the geography of the area of interest in which to perform the search. May be `NULL`, in which case no spatial filter will be applied.
-* `minimum_revenue`: `FLOAT64` the minimum revenue to filter results by. May be `NULL`, in which case no revenue threshold will be applied.
-* `max_results`: `INT64` of the maximum number of results, ordered by decreasing predicted revenue. May be `NULL`, in which case all eligible cells are returned.
-* `with_own_stores`: `BOOL` specifying whether to consider cells that already have own stores in them. If `NULL`, defaults to `TRUE`.
-* `with_competitors`: `BOOL` specifying whether to consider cells that already have competitors in them. If `NULL`, defaults to `TRUE`.
+* `input`: `STRING` name of the table containing the input data. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`.
+* `output`: `STRING` name of the table where the output data will be stored. It should include project and dataset, i.e., follow the format `<project-id>.<dataset-id>.<table-name>`. If NULL, the procedure will return the output but it will not be persisted.
+* `index_column`: `STRING` name of the column containing the H3 or Quadbin indexes.
+* `index_type`: `STRING` type of the input cell indexes. Supported values are 'h3', or 'quadbin'.
+* `variable_columns`: `ARRAY<STRING>` names of the columns containing the variables to take into account when computing the combined Gi\* statistic.
+* `variable_weights`: `ARRAY<FLOAT64>` containing the weights associated with each of the variables. These weights can take any value but will be normalized to sum up to 1. If NULL, uniform weights will be considered
+* `kring`: `INT64` size of the _k-ring_ (distance from the origin). This defines the area around each cell that will be taken into account to compute its Gi\* statistic. If NULL, uniform weights will be considered.
+* `pvalue_thresh`: Threshold for the Gi\* value significance, ranging from 0 (most significant) to 1 (least significant). It defaults to 0.05. Cells with a p-value above this threshold won't be returned.
+
+**Output**
+The output will contain the following columns:
+
+* `index`: `STRING` containing the cell index.
+* `combined_gi`: `FLOAT64` with the resulting combined Gi\*.
+* `p_value`: `FLOAT64` with the p-value associated with the combined Gi\* statistic.
+
+If the output table is not specified when calling the procedure, the result will be returned but it won't be persisted.
+
+{{% customSelector %}}
+**Examples**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
+    'project_id.dataset_id.my_input_table',
+    'project_id.dataset_id.my_output_table',
+    'index',
+    'h3',
+    ['feature_0', 'feature_1'],
+    [0.7, 0.3],
+     3,
+     0.01
+)
+-- Table project_id.dataset_id.my_output_table will be created.
+-- with columns: index, combined_gi, p_value
+```
+
+```sql
+CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
+    'project_id.dataset_id.my_input_table',
+    'project_id.dataset_id.my_output_table',
+    'index',
+    'quadbin',
+    ['feature_0', 'feature_1'],
+    [0.5, 0.5],
+    1,
+    0.05
+);
+-- Table project_id.dataset_id.my_output_table will be created.
+-- with columns: index, combined_gi, p_value
+```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Opening a new Pizza Hut location in Honolulu](/analytics-toolbox-bigquery/examples/opening-a-new-pizza-hut-location-in-honolulu/)
+{{%/ bannerNote %}}
+
+
+### BUILD_CANNIBALIZATION_DATA
+
+{{% bannerNote type="code" %}}
+carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is the first of two from the Cannibalization analysis workflow. It builds the dataset for the existing locations to be used by the procedure [`CANNIBALIZATION_OVERLAP`](#cannibalization_overlap) to estimate the overlap between existing stores and the potentially new ones.
+
+1. For each store location, the urbanity level based on CARTO Spatial Features dataset is retrieved.
+2. For each store location, given the radius specified, the cells of the influence area are found.
+3. All cells are enriched with the specified features from Data Observatory subscriptions (e.g. population, footfall, etc.).
+4. A table with store_id, cell_id, and features values are created.
+
+**Input parameters**
+
+* `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadbin`.
+* `store_query`: `STRING` query with variables related to the stores to be used in the model, including their id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
+* `resolution`: `INT64` level or resolution of the cell grid. Check the available [H3 levels](https://h3geo.org/docs/core-library/restable/) and [Quadbin levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid).
+* `distances`: `ARRAY<FLOAT64>` An array with radiuses in kilometers for each type of urbanity. Sorted from lowest urbanity to highest. Three different types, for Remote/Rural/Low_density_urban - Medium_density_urban - High/Very_High_density_urban locations.
+* do_variables: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore compute the overlap between store locations in the subsequent step of the Cannibalization workflow. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable's default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
+* do_urbanity_index: `STRING` urbanity index variable slug_id in a CARTO Spatial Features subscription from the Data Observatory.
+* do_source: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to NULL or ''.
+* `output_destination`: `STRING` destination  dataset the output tables. It must contain the project and dataset. For example `<my-project>.<my-dataset>`.
+* `output_prefix`: `STRING` prefix for the output table.
 
 **Output**
 
-The procedure will output a table of cells with the following columns:
+This procedure will output one table:
 
-* `index`: identifying the H3, or Quadbin cell.
-* `predicted_revenue_avg`: average revenue of an additional store located in the grid cell.
-* `store_count`: number of own stores present in the grid cell.
-* `competitor_count`: number of competitors present in the grid cell.
+* Table containing the store_id, cell_id, distance from store_id (integer) and the values for each Data Observatory feature. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output`.
 
 {{% customSelector %}}
 **Example**
 {{%/ customSelector %}}
 
 ```sql
-CALL `carto-un`.carto.FIND_WHITESPACE_AREAS(
-    '<my-project>.<my-dataset>.<output-prefix>_model',
-    '<my-project>.<my-dataset>.<output-prefix>_model_data',
-    'SELECT geom FROM `<my-project>.<my-dataset>.<generator-table>`',
-    'SELECT geom FROM `<my-project>.<my-dataset>.<area_of_interest_table>`', -- Area of Interest filter
-    10000, -- Minimum predicted revenue filter
-    5, -- Maximum number of results
-    TRUE, -- Whether to include cells with own stores
-    FALSE -- Whether to include cells with competitors
+CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
+    --grid_type
+    'h3',
+    --store_query
+    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
+    --resolution
+    8,
+    --distances
+    [5.,3.,1.],
+    --do_variables
+    [('population_f5b8d177','sum')],
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib'
 );
 ```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
+{{%/ bannerNote %}}
+
+
+### CANNIBALIZATION_OVERLAP
+
+{{% bannerNote type="code" %}}
+carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure is the second step of the Cannibalization analysis workflow. It takes as input the generated table from [`CANNIBALIZATION_BUILD_DATA`](#cannibalization_build_data) and the location of the new store, and estimates the overlap of areas and spatial features that the new store would have with the existing stores included into the generated table.
+
+**Input parameters**
+
+* `data_table`: `STRING` Table with columns `store_id`, `cell_id`, `distance` from `store_id` (integer) and the values for each Data Observatory features.
+* `new_locations_query`: `STRING` query with store_id and location of new stores.
+* `do_urbanity_index`: `STRING` urbanity index variable name from the Data Observatory subscriptions.
+* `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
+* `output_destination`: `STRING` destination dataset for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>`.
+* `output_prefix`: `STRING` The prefix for each table in the output destination.
+
+**Output**
+
+This procedure  will output one table:
+
+* Output overlap table which contains the store_id that receives the "cannibalization", store_id that causes the cannibalization, area overlap and features overlap for each Data Observatory features included in the analysis. The output table can be found at the output destination with the name `<output-prefix>_output_overlap`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output_overlap`.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
+    --data_table
+    '<my-project>.<my-dataset>.output_<suffix from step1>',
+    --new_locations_query
+     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',,
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib'
+);
+```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Store cannibalization: quantifying the effect of opening new stores on your existing network](/analytics-toolbox-bigquery/examples/store-cannibalization/)
+{{%/ bannerNote %}}
 
 
 ### GRIDIFY_ENRICH
@@ -541,46 +581,6 @@ CALL `carto-un`.carto.GRIDIFY_ENRICH(
 
 * [Applying the Twin Areas analysis to find the most similar location in Texas, US to the locations of the top 10 liquor stores in 2019 in Iowa](/analytics-toolbox-bigquery/examples/twin-areas-iowa/)
 {{%/ bannerNote %}}
-
-
-### PREDICT_REVENUE_AVERAGE
-
-{{% bannerNote type="code" %}}
-carto.PREDICT_REVENUE_AVERAGE(index, revenue_model, revenue_model_data)
-{{%/ bannerNote %}}
-
-**Description**
-
-This procedure is the third and final step of the Revenue Prediction analysis workflow. It predicts the average revenue of an additional store located in the specified grid cell. It requires as input the model data (output of the [`BUILD_REVENUE_MODEL_DATA`](#build_revenue_model_data) procedure) and the trained model (output of the [`BUILD_REVENUE_MODEL`](#build_revenue_model) procedure).
-
-**Input parameters**
-
-* `index`: `ANY TYPE` cell index where the new store will be located. It can be an H3 or a Quadbin index. For Quadbin, the value should be  `INT64` whereas for H3 the value should be `STRING`. It can also be `'ALL'`, in which case the prediction for all the grid cells of the model data are returned.
-* `revenue_model`: `STRING` the fully qualified `model` name.
-* `revenue_model_data`: `STRING` the fully qualified `model_data` table name.
-* `candidate_data`: `STRING` the fully qualified `candidate_data` table name. It can be set to `NULL`.
-* `stores_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` list with the columns of the `stores_query` and their corresponding aggregation method (`sum`, `avg`, `max`, `min`, `count`) that will be used to enrich the grid cells. It can be set to `NULL`.
-
-**Output**
-
-The procedure will output the `index`,  `predicted_revenue_avg` value in the cell (in the same units of the `revenue` column), and `shap_values`, an array of key value pairs with the shap values of the features for each prediction. It also includes a `baseline_prediction`, which is the expected revenue without considering the impact of any other features.
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CREATE TABLE '<my-project>.<my-dataset>.<output-prefix>_candidate_data'  AS (SELECT 25 store_area);
-
-CALL `carto-un`.carto.PREDICT_REVENUE_AVERAGE(
-    '862676d1fffffff',
-    '<my-project>.<my-dataset>.<output-prefix>_model',
-    '<my-project>.<my-dataset>.<output-prefix>_model_data',
-    '<my-project>.<my-dataset>.<output-prefix>_candidate_data',
-    [('store_area','sum')]
-);
--- index, predicted_revenue_avg
-```
 
 
 {{% euFlagFunding %}}
