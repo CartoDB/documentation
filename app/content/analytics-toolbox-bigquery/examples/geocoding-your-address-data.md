@@ -10,7 +10,7 @@ categories:
 ## Geocoding your address data
 
 
-In this example, we will geocode a table with some Starbucks address data that we have available in BigQuery. 
+In this example, we will geocode a table with some Starbucks address data that we have available in BigQuery.
 The geocoding process will add a new column to your input table called "geom" with a Point geometry based on the geographic coordinates of the location; which are derived from the location information in your table (e.g. street address, postal code, country, etc.).
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -20,10 +20,10 @@ This function consumes isolines quota. Each call consumes as many units of quota
 
 ### Geocoding from the BigQuery console
 
-As a module within CARTO’s Analytics Toolbox, the location data services ([lds](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#lds)) capabilities are available as SQL procedures that can be executed directly from your BigQuery console or client of choice after connecting your BigQuery project with your CARTO account. 
+As a module within CARTO’s Analytics Toolbox, the location data services ([lds](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#lds)) capabilities are available as SQL procedures that can be executed directly from your BigQuery console or client of choice after connecting your BigQuery project with your CARTO account.
 To check whether your Google account or Service Account has access to the LDS module, please execute this query:
 
-
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT `carto-un`.carto.VERSION_ADVANCED()
 --Use `carto-un-eu`.carto.VERSION_ADVANCED() if your data is in GCP's EU multi-region
@@ -44,7 +44,7 @@ For this example we will use a table with the Starbucks addresses that can be fo
 
 Once you are all set getting access to the lds module, geocoding your data is as easy as opening your BigQuery console or SQL client and running the [GEOCODE_TABLE()](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#geocode_table) procedure as detailed in the following query:
 
-
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.GEOCODE_TABLE(
 'Bqcartodemos.sample_tables.starbucks_ny_geocode',
@@ -79,7 +79,7 @@ As a result of the query, we obtain the input table modified with a new column c
 
 The Data Explorer offers you a graphical interface that you can use to [geocode your data](https://docs.carto.com/carto-user-manual/data-explorer/geocoding-data/). Let's use it here to reproduce the same use case that we have done from the BigQuery console but from the CARTO Workspace.
 
-You will find the option Geocode table available from the Data Explorer in tables that do not contain any geometry column. To find your table please select the corresponding connection, pick the right dataset/folder and find the table you want to geocode from the collapsible tree. 
+You will find the option Geocode table available from the Data Explorer in tables that do not contain any geometry column. To find your table please select the corresponding connection, pick the right dataset/folder and find the table you want to geocode from the collapsible tree.
 
 
 <div style="text-align:center" >
@@ -99,7 +99,7 @@ In this case, to reproduce the geocoding example that we have done before from a
 
 
 
-Click on “Continue” to proceed to the next step where you can review the summary of the operation that will be performed on your data and confirm it by clicking on “Geocode”. 
+Click on “Continue” to proceed to the next step where you can review the summary of the operation that will be performed on your data and confirm it by clicking on “Geocode”.
 
 
 <div style="text-align:center" >
@@ -117,7 +117,7 @@ The geocoding process could take some minutes, remember that you may be geocodin
 
 
 
-Once the process finishes, you will be able to access your geocoded table, which will have a new column called "geom" including the geographic coordinates of your input data. 
+Once the process finishes, you will be able to access your geocoded table, which will have a new column called "geom" including the geographic coordinates of your input data.
 
 
 <div style="text-align:center" >

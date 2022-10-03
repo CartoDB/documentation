@@ -10,9 +10,9 @@ Once you have created your BigQuery connection in the CARTO Workspace (see [_Get
 You can also run queries from Builder using the Analytics Toolbox for BigQuery from your CARTO Data Warehouse connection. This connection is available and ready-to-use for all CARTO accounts.
 {{%/ bannerNote %}}
 
-The Analytics Toolbox functions are available from the `carto-un` and `carto-un-eu` BigQuery projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data. 
+The Analytics Toolbox functions are available from the `carto-un` and `carto-un-eu` BigQuery projects. These projects are deployed in the US and EU multi-regions, respectively, and you may choose one or the other depending on the location of your data.
 
-To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans) function. 
+To get started, let's run a simple example query to cluster a set of points using the [`ST_CLUSTERKMEANS`](/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans) function.
 
 1. Click on the _Add source from_ button in Builder, that can be found at the bottom left of the screen.
 
@@ -34,6 +34,7 @@ To get started, let's run a simple example query to cluster a set of points usin
 
 4. Copy and paste the following query:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 with clustered_points AS
 (
@@ -44,7 +45,7 @@ with clustered_points AS
 SELECT cluster_element.cluster, cluster_element.geom AS geom FROM clustered_points, UNNEST(cluster_arr) AS cluster_element
 ```
 
-5. Run the query. This query computes five clusters from the points of the `sample_customer_home_locations` table. As a result, each point is assigned a `cluster` ID. 
+5. Run the query. This query computes five clusters from the points of the `sample_customer_home_locations` table. As a result, each point is assigned a `cluster` ID.
 
 6. Style the layer by the `cluster` attribute.
 

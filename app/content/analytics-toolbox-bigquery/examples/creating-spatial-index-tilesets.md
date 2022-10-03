@@ -21,6 +21,7 @@ Population for each cell is stored in a column named `population`. We will use a
 
 The query used to produce the tileset is the following:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
   "carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_quadgrid15_v1_yearly_v2",
@@ -50,6 +51,7 @@ A version of the UK Spatial Features dataset that uses H3 instead of QUADKEYS is
 
 The following query can be used to create a tileset similar to the one described in the example above, but using H3 cells:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_SPATIAL_INDEX_TILESET(
   "carto-data.ac_7xhfwyml.sub_carto_derived_spatialfeatures_gbr_h3res8_v1_yearly_v2",

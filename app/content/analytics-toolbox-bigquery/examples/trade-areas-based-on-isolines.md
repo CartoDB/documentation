@@ -10,9 +10,9 @@ categories:
 ## Generating trade areas based on drive/walk-time isolines
 
 
-In this example, we will create isolines around some Starbucks locations in order to estimate their trade areas based on drive-time areas around them. 
+In this example, we will create isolines around some Starbucks locations in order to estimate their trade areas based on drive-time areas around them.
 
-This process will generate a new table with the columns of the input table (except the column with the point geometry) plus a new column with the isoline polygon (__iso_geom column). 
+This process will generate a new table with the columns of the input table (except the column with the point geometry) plus a new column with the isoline polygon (__iso_geom column).
 
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -22,20 +22,18 @@ This function consumes isolines quota. Each call consumes as many units of quota
 
 ### Create isolines from the BigQuery console
 
-As a module within CARTO’s Analytics Toolbox, the location data services ([lds](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#lds)) capabilities are available as SQL procedures that can be executed directly from your BigQuery console or client of choice after connecting your BigQuery project with your CARTO account. 
+As a module within CARTO’s Analytics Toolbox, the location data services ([lds](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#lds)) capabilities are available as SQL procedures that can be executed directly from your BigQuery console or client of choice after connecting your BigQuery project with your CARTO account.
 To check whether your Google account or Service Account has access to the LDS module, please execute this query:
 
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT `carto-un`.carto.VERSION_ADVANCED()
---Use `carto-un-eu`.carto.VERSION_ADVANCED() if your data is in GCP's EU multi-region
 ```
-
-
 
 The lds module is generally available in the Analytics Toolbox since the “July 26, 2022” version. Please check the [Getting Access](https://docs.carto.com/analytics-toolbox-bigquery/overview/getting-access/) section if you run into any errors when running the query above.
 
-For this example we will use a table with the Starbucks addresses geocoded that can be found in the publicly available `bqcartodemos.sample_tables.starbucks_ny_geocode` . The table contains information about Starbucks stores and a column called ‘geom’ with the geographic coordinates (latitude and longitude) of each location. Around these locations we will create isolines based on 15 minutes walking.  
+For this example we will use a table with the Starbucks addresses geocoded that can be found in the publicly available `bqcartodemos.sample_tables.starbucks_ny_geocode` . The table contains information about Starbucks stores and a column called ‘geom’ with the geographic coordinates (latitude and longitude) of each location. Around these locations we will create isolines based on 15 minutes walking.
 
 
 <div style="text-align:center" >
@@ -44,9 +42,9 @@ For this example we will use a table with the Starbucks addresses geocoded that 
 
 
 
-In order to create the isolines, we will execute the [CREATE_ISOLINES()](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#create_isolines) procedure with the following SQL query: 
+In order to create the isolines, we will execute the [CREATE_ISOLINES()](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/lds/#create_isolines) procedure with the following SQL query:
 
-
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_ISOLINES(
    'bqcartodemos.sample_tables.starbucks_ny_geocode',
@@ -56,12 +54,10 @@ CALL `carto-un`.carto.CREATE_ISOLINES(
    '<api_base_url>', '<lds_token>');
 ```
 
-
-
 In the query we specify (in this order) the input table, the output table and "geom" as column name for the origin geometry column. We add that we want to calculate the isolines based on 15 minutes walking, fixing "mode" parameter on "walk" and "range_value" parameter on 900 seconds (15 min). Also you need to provide us the API base url where your account is stored in "api_base_url" and your token for accessing the different API services in "lds_token" parameter.
 
 {{% bannerNote type="note" title="NOTE"%}}
-In order to be able to run the geocoding procedure you need to pass as input the CARTO API url and your LDS Token that can be obtained in the [Developers](https://docs.carto.com/carto-user-manual/developers/carto-for-developers/) section of the CARTO Workspace. 
+In order to be able to run the geocoding procedure you need to pass as input the CARTO API url and your LDS Token that can be obtained in the [Developers](https://docs.carto.com/carto-user-manual/developers/carto-for-developers/) section of the CARTO Workspace.
 {{%/ bannerNote %}}
 
 
@@ -86,7 +82,7 @@ If you prefer you can create isolines without writing any line of SQL code thank
 
 First of all, you should create a new map and add a source with the table including the locations around which you want to calculate isolines. You can find more details on how to create maps in Builder in the [Maps](https://docs.carto.com/carto-user-manual/maps/introduction/) section of the User Manual.
 
-Then, on that data source, click on “Add SQL Analysis”. 
+Then, on that data source, click on “Add SQL Analysis”.
 
 
 
@@ -123,7 +119,7 @@ You should choose the location and the name of the output table and click on "cr
 
 
 
-As a result of the analysis, we obtain a new table (also added as a data source in our map) with the name that we have chosen in the last step which contains the geometry of the polygons of the isoline that we have calculated. Now we have two layers in our map, the original data with the Starbucks locations and a second layer with the isolines that we have created around each store.  
+As a result of the analysis, we obtain a new table (also added as a data source in our map) with the name that we have chosen in the last step which contains the geometry of the polygons of the isoline that we have calculated. Now we have two layers in our map, the original data with the Starbucks locations and a second layer with the isolines that we have created around each store.
 
 
 <div style="text-align:center" >

@@ -18,6 +18,7 @@ We want are going to create a Point Aggregation Tileset to visualise all the fea
 
 The extra column, `aggregated_total`, is adding a count of the number of buildings that are aggregated into a cell, which in this case are quadkeys made of `z + resolution` tiles, that is, each tile will be subdivided into 4^7 (16384) cells.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
@@ -53,6 +54,7 @@ In this case, we want to visualize an aggregation of the tree census of NYC. Sin
 
 We also want to have access to the status and health of each aggregated cell, so we add some extra properties around that. Finally, as it is a more localized dataset, we want to generate higher zoom levels (16) and when we see individual points we want access to both their official id and their address.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
   R'''(
@@ -79,7 +81,7 @@ CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
         },
         "ok_health": {
           "formula": "countif(health = 'Good' OR health = 'Fair')",
-          "type": "Number"        
+          "type": "Number"
         }
       },
       "single_point_properties": {
@@ -98,6 +100,7 @@ Then we can style our visualization using the properties that we have added:
 
 For this example, we are going to use a [dataset from CARTO's public Data Observatory](https://carto.com/spatial-data-catalog/browser/dataset/wp_population_172b5dfd) to visualize the 2020 world population. We are going to use the already aggregated 1km * 1km grid cells:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_POINT_AGGREGATION_TILESET(
   R'''(

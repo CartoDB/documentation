@@ -26,10 +26,10 @@ As a CARTO Analytics Toolbox module, the Tiler's capabilities are available as S
 
 To check that your Google account or service account has access to the Tiler, try running this query:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT `carto-un`.carto.VERSION_ADVANCED()
---Use `carto-un-eu`.carto.VERSION_ADVANCED() if your data is in GCP's EU multi-region
-``` 
+```
 
 Check the [Getting Access](../../overview/getting-access) section if you run into any errors when running the query above.
 
@@ -37,6 +37,7 @@ Once you are all set getting access to the Tiler, creating a tileset is as easy 
 
 The result will be a tileset with the geometry and total population per blockgroup:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
   R'''
@@ -44,7 +45,7 @@ CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
     SELECT
       d.geoid,
       d.total_pop,
-      g.geom 
+      g.geom
     FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
     JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
       ON d.geoid = g.geoid
@@ -66,6 +67,7 @@ CALL `carto-un`.carto.CREATE_SIMPLE_TILESET(
 
 Creating a tileset by means of `CREATE_SIMPLE_TILESET` can sometimes be cumbersome due to the large amount of parameters that users have to manage. In order to relieve them of this responsibility, we provide a wrapper function in which the tiler configuration is automatically set by performing a previous analysis of the input data. This analysis also serves as a validation step to avoid BigQuery limitations. As a result, the above generated tileset can also be obtained by executing:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_TILESET(
   R'''
@@ -73,7 +75,7 @@ CALL `carto-un`.carto.CREATE_TILESET(
     SELECT
       d.geoid,
       d.total_pop,
-      g.geom 
+      g.geom
     FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
     JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
       ON d.geoid = g.geoid
@@ -86,6 +88,7 @@ CALL `carto-un`.carto.CREATE_TILESET(
 
 or by defining explicitly the options if they are required:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_TILESET(
   R'''
@@ -93,7 +96,7 @@ CALL `carto-un`.carto.CREATE_TILESET(
     SELECT
       d.geoid,
       d.total_pop,
-      g.geom 
+      g.geom
     FROM `carto-do-public-data.usa_acs.demographics_sociodemographics_usa_blockgroup_2015_5yrs_20142018` d
     JOIN `carto-do-public-data.carto.geography_usa_blockgroup_2015` g
       ON d.geoid = g.geoid
@@ -137,7 +140,7 @@ The Data Explorer offers a preview of your tilesets and displays their associate
 You can include tilesets as layers in your maps created with Builder. To do so, you have two options:
 
 * use the _Create map_ option from the tileset preview page in the Data Explorer (see previous screenshot). This action will create a new map with your tileset as a its only layer.
-* adding a layer to an existing map. 
+* adding a layer to an existing map.
 
 For the latter option, you simply need to follow these simple steps:
 
@@ -168,15 +171,15 @@ For the latter option, you simply need to follow these simple steps:
 
 <!--- #### From the CARTO Dashboard
 
-After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata. 
+After connecting your CARTO account to BigQuery, a new _Your Tilesets_ tab will appear in the Data section of your Dashboard. This new tab shows the tilesets available to your account in a specific BigQuery project and dataset and some useful metadata.
 
 ![Your Tilesets](/img/bq-analytics-toolbox/tiler/guides-your-tilesets.png)
 
-Click in one of the tilesets to visualize it using **Map Viewer**. 
+Click in one of the tilesets to visualize it using **Map Viewer**.
 
 ![Tileset Viewer](/img/bq-analytics-toolbox/tiler/guides-viewer-1.png)
 
-Map Viewer uses CARTO for deck.gl's [declarative styling language](../../../deck-gl/guides/style-language), which makes it easier to create data-driven visualizations. 
+Map Viewer uses CARTO for deck.gl's [declarative styling language](../../../deck-gl/guides/style-language), which makes it easier to create data-driven visualizations.
 
 Creating color ramps for data-driven visualizations is straight-forward, using helper functions for different types of classifications. Take a look at the [documentation](https://deck.gl/docs/api-reference/carto/styles) for more information.
 
@@ -198,9 +201,9 @@ Let's create a binned ramp visualization with the `colorBins()` helper function:
 }
 ```
 
-* `attr`: name of the data attribute in your tileset. 
+* `attr`: name of the data attribute in your tileset.
 * `domain`: manual classification breaks. Click on [_Open TileJSON_](https://maps-api-v2.us.carto.com/user/ernestomb/bigquery/tileset?source=cartobq.maps.blockgroup_pop&format=tilejson&api_key=default_public) and find the `quantiles` section, which gives you the breaks for different quantile classifications.
-* `colors`: Use an array of RGBA colors `[ [r, g, b, [a]] ]` , or just pick a [CARTOcolors](https://carto.com/carto-colors) ramp and use its name. 
+* `colors`: Use an array of RGBA colors `[ [r, g, b, [a]] ]` , or just pick a [CARTOcolors](https://carto.com/carto-colors) ramp and use its name.
 
 ![Tileset Viewer II](/img/bq-analytics-toolbox/tiler/guides-viewer-2.png)
 
@@ -224,7 +227,7 @@ Copy the link or the embed code to share or publish the visualization.
 
 ##### Map Viewer
 
-Map Viewer is a new tool for visualizing tilesets directly from the Dashboard. To open Map Viewer, just click on a tileset from 'Your Tilesets' tab in the 'Data' section of the Dashboard. 
+Map Viewer is a new tool for visualizing tilesets directly from the Dashboard. To open Map Viewer, just click on a tileset from 'Your Tilesets' tab in the 'Data' section of the Dashboard.
 
 Map Viewer provides some defaults to help you explore your data, but it's possible to customize the cartography using the [deck.gl styling language](../../../deck-gl/guides/style-language).
 
@@ -242,9 +245,9 @@ As mentioned before, Map Viewer uses deck.gl's style language. For more detailed
 
 **Basemaps**
 
-Map Viewer offers different basemaps for your visualizations. Click on the icon in the top-left corner to show the basemap selector. 
+Map Viewer offers different basemaps for your visualizations. Click on the icon in the top-left corner to show the basemap selector.
 
-*Positron*, *Dark Matter*, and *Voyager* CARTO basemaps are optimized for data visualization and will make your data layer stand out. 
+*Positron*, *Dark Matter*, and *Voyager* CARTO basemaps are optimized for data visualization and will make your data layer stand out.
 
 You can also use Google Maps as basemaps, selecting *Roads* or *Satellite*
 
@@ -256,13 +259,13 @@ You can quickly change some of the properties, like `getFillColor` to modify the
 
 **Color ramps**
 
-Basic styles might be a good option for the most basic maps, but creating more sophisticated, data-driven visualizations is also possible using [helper functions](../../../deck-gl/guides/style-language/#creating-advanced-visualizations) for three different types of visualization: 
+Basic styles might be a good option for the most basic maps, but creating more sophisticated, data-driven visualizations is also possible using [helper functions](../../../deck-gl/guides/style-language/#creating-advanced-visualizations) for three different types of visualization:
 
 * `colorBins` assigns different colors to different buckets in the data range. This is useful for a choropleth visualization where you need to define the breaks of the data and define a color palette.
 * `colorCategories` assigns colors to specific values. This is useful for visualizing categorical data.
 * `colorContinuous` assigns a blended color based on a linear interpolation of values. This is useful for different types of visualizations. This is the one we are going to use for our example.
 
-Replace the `getLineColor` property with the following block to style the rivers depending on their bearing. 
+Replace the `getLineColor` property with the following block to style the rivers depending on their bearing.
 
 ```js
 "getLineColor": {
@@ -283,23 +286,23 @@ Replace the `getLineColor` property with the following block to style the rivers
 
 Let's explain a bit how this function works:
 
-* `"attr"`: Select a property from your tileset that contains the values that you want to use for the styling. In this case, it's `bearing`, which contains the direction in degrees relative to the North in which each river flows. 
-* `"domain"`: In this case, it contains the values that will be used for the interpolation. 
+* `"attr"`: Select a property from your tileset that contains the values that you want to use for the styling. In this case, it's `bearing`, which contains the direction in degrees relative to the North in which each river flows.
+* `"domain"`: In this case, it contains the values that will be used for the interpolation.
 * `"colors"`: This value can be an array of `[r,g,b,[a]]` colors that will be mapped with the values in the domain. The intermediate colors will be assigned based on the linear interpolation of values.
 Another option is using a [CARTOcolors](https://carto.com/carto-colors) palette, by just indicating its name.
 
-Take a look at the result. Can you appreciate how the hydrographic basins stand out, just by assigning different colors to each river's bearing?  
+Take a look at the result. Can you appreciate how the hydrographic basins stand out, just by assigning different colors to each river's bearing?
 
 ![Map Style ramp](/img/bq-analytics-toolbox/tiler/guides-ramp.png)
 
 
 ##### Open TileJSON
 
-At the bottom of the _Map Style_ section, you will find an _Open TileJSON_ button. It will open a new tab with a TileJSON request. The response contains a description of the tileset in TileJSON format, with metadata about: 
-* The URL pattern to retrieve the tiles. 
+At the bottom of the _Map Style_ section, you will find an _Open TileJSON_ button. It will open a new tab with a TileJSON request. The response contains a description of the tileset in TileJSON format, with metadata about:
+* The URL pattern to retrieve the tiles.
 * Zoom range, bounds, and center of the features in the tileset.
 * Information about the layers contained in the tileset.
-* Tilestats with statistic information such as maximum, minimum, average, count, and sum. It also includes a section called `quantiles` that contains the quantile breaks for the properties included, as well as the top 10 categories and their frequency. 
+* Tilestats with statistic information such as maximum, minimum, average, count, and sum. It also includes a section called `quantiles` that contains the quantile breaks for the properties included, as well as the top 10 categories and their frequency.
 
 ##### Copy XYZ URL
 
@@ -315,7 +318,7 @@ This is most useful for loading the tileset with any web-mapping library or desk
 
 The _Share_ section allows the publishing of a tileset. By publishing, we grant **CARTO BigQuery Data Viewer** (`bigquery/dataViewer`) permissions to the associated tileset. By doing so, this map becomes public on the web, and anybody with the URL will be able to see it.
 
-By unpublishing the tileset, we will revoke the permission mentioned above and disable the sharing links. 
+By unpublishing the tileset, we will revoke the permission mentioned above and disable the sharing links.
 
 {{% bannerNote title="Note" %}}
 It can take up to 5 minutes to remove the map from the CDN cache.

@@ -13,10 +13,11 @@ aliases:
 ---
 ## Identifying earthquake-prone areas in the state of California
 
-In this example we are going to use some of the functions included in CARTO's Analytics Toolbox in order to highlight zones prone to earthquakes, using a [BigQuery public dataset](https://console.cloud.google.com/marketplace/product/noaa-public/noaa-earthquakes). 
+In this example we are going to use some of the functions included in CARTO's Analytics Toolbox in order to highlight zones prone to earthquakes, using a [BigQuery public dataset](https://console.cloud.google.com/marketplace/product/noaa-public/noaa-earthquakes).
 
 First we define our region of interest, which in this case is a bounding box enclosing the state of California, using the function `ST_MAKEENVELOPE`. After filtering the earthquake locations with this bounding box, we compute the concave hull polygon enclosing the resulting points using the `ST_CONCAVEHULL` function. For visualization purposes, this polygon is smoothed out by means of the `ST_BEZIERSPLINE` function. Finally, we construct the polygon defining the earthquake-prone area using the `ST_POLYGONIZE` function.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH bounds AS (
     SELECT `carto-un`.carto.ST_MAKEENVELOPE(-126.98746757203217, 31.72298737861544, -118.1856191911019, 40.871240645013735) AS bbox
@@ -31,7 +32,7 @@ data AS (
 bezier_spline AS (
     SELECT `carto-un`.carto.ST_BEZIERSPLINE(
         ST_BOUNDARY(
-        `carto-un`.carto.ST_CONCAVEHULL(ARRAY_AGG(points), 300, "kilometres")), 
+        `carto-un`.carto.ST_CONCAVEHULL(ARRAY_AGG(points), 300, "kilometres")),
         null,
         0.9) AS geom
     FROM data
@@ -39,7 +40,7 @@ bezier_spline AS (
 polygon_array AS (
     SELECT `carto-un`.carto.ST_POLYGONIZE(ARRAY_AGG(geom)) AS geom
     FROM bezier_spline
-) 
+)
 SELECT unnested FROM polygon_array, UNNEST(geom) AS unnested
 ```
 

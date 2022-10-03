@@ -12,7 +12,7 @@ To create a route, we need a network. Let's extract linestrings from New York's 
 
 Be careful, this query scans a lot of data (223GB). You may skip this query by creating directly the `mydataset.liberty_island_linestrings` table from this [Newline-delimited JSON](/img/bq-analytics-toolbox/routing/liberty_island_linestrings_data.json) using this [schema](/img/bq-analytics-toolbox/routing/liberty_island_linestrings_schema.json).
 
-
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CREATE TABLE
   mydataset.liberty_island_linestrings AS
@@ -27,24 +27,26 @@ WHERE
   key = 'highway'
   AND ST_INTERSECTS(geometry,
     --NY Liberty Island Bounding Box:
-    ST_GEOGFROMGEOJSON("""{"type": "Polygon", 
-    "coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158], 
-    [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") ) 
+    ST_GEOGFROMGEOJSON("""{"type": "Polygon",
+    "coordinates": [[[-74.049031, 40.687619], [-74.041713, 40.687619], [-74.041713, 40.692158],
+    [-74.049031, 40.692158], [-74.049031, 40.687619] ]]}""") )
 ```
 
 #### Creating the network from linestrings
 
-Now let's create a compacted network. During this process all nodes with only two links are removed, but total distances between nodes are kept. 
+Now let's create a compacted network. During this process all nodes with only two links are removed, but total distances between nodes are kept.
 
 We are going to use the [`GENERATE_NETWORK_TABLE`](../../sql-reference/routing/#generate_network_table) procedure:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
-CALL `carto-un`.carto.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestrings', 
+CALL `carto-un`.carto.GENERATE_NETWORK_TABLE`('mydataset.liberty_island_linestrings',
 'mydataset.liberty_island_network');
 ```
 
 If you prefer, you can also use the [`GENERATE_NETWORK`](../../sql-reference/routing/#generate_network) function instead, although it requires a slightly more advanced query:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CREATE OR REPLACE TABLE
   `mydataset.liberty_island_network` AS
@@ -65,6 +67,7 @@ FROM
 
 Let's see the difference between the collection of linestrings (in red) and the compacted network (in blue). Compaction reduces drastically the number of nodes and thus links, but it preserves the length of paths between the remaining nodes.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT
     geometry, 0 compacted FROM `mydataset.liberty_island_linestrings`
@@ -81,10 +84,11 @@ SELECT
 
 ### Calculating the shortest path
 
-Let's calculate the shortest path between two points. 
+Let's calculate the shortest path between two points.
 
 You can use the [`FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`](../../sql-reference/routing/#find_shortest_path_from_network_table) procedure:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL
   `carto-un`.carto.FIND_SHORTEST_PATH_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
@@ -96,6 +100,7 @@ CALL
 
 Our you can use the [`FIND_SHORTEST_PATH_FROM_NETWORK`](../../sql-reference/routing/#find_shortest_path_from_network) function, which is a bit trickier than using the procedure:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH
   T AS(
@@ -123,11 +128,12 @@ Here is the result:
 
 ### Calculating a distance map
 
-Given a starting point, we are going to calculate the distances from that point to all the nodes of the network. Then, we are going to visualize the result to identify the destination points that are within a similar distance. 
+Given a starting point, we are going to calculate the distances from that point to all the nodes of the network. Then, we are going to visualize the result to identify the destination points that are within a similar distance.
 
 
 You can use the [`DISTANCE_MAP_FROM_NETWORK_TABLE`](../../sql-reference/routing/#distance_map_from_network_table) procedure:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL
   `carto-un`.carto.DISTANCE_MAP_FROM_NETWORK_TABLE`( "mydataset.liberty_island_network",
@@ -137,6 +143,7 @@ CALL
 
 Or you can use the [`DISTANCE_MAP_FROM_NETWORK`](../../sql-reference/routing/#distance_map_from_network) function, which is a bit trickier than using the procedure:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH
   T AS(

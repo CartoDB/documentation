@@ -11,12 +11,13 @@ aliases:
 ---
 ## Applying GWR to understand Airbnb listings prices
 
-[Geographically Weighted Regression](https://en.wikipedia.org/wiki/Spatial_analysis#Spatial_regression) (GWR) is a statistical regression method that models the local (e.g. regional or sub-regional) relationships between a set of predictor variables and an outcome of interest. Therefore, it should be used in lieu of a global model in those scenarios where these relationships vary spatially. 
+[Geographically Weighted Regression](https://en.wikipedia.org/wiki/Spatial_analysis#Spatial_regression) (GWR) is a statistical regression method that models the local (e.g. regional or sub-regional) relationships between a set of predictor variables and an outcome of interest. Therefore, it should be used in lieu of a global model in those scenarios where these relationships vary spatially.
 
-In this example we are going to analyze the local relationships between Airbnb's listings in Berlin and the number of bedrooms and bathrooms available at these listings using the [GWR_GRID](../sql-reference/statistics/#gwr_grid) procedure. Our input dataset, publicly available from `cartobq.docs.airbnb_berlin_h3_qk`, contains the Airbnb listing's locations in H3 and quadkey cells at different resolutions, their prices, and their number of bedrooms and bathrooms. 
+In this example we are going to analyze the local relationships between Airbnb's listings in Berlin and the number of bedrooms and bathrooms available at these listings using the [GWR_GRID](../sql-reference/statistics/#gwr_grid) procedure. Our input dataset, publicly available from `cartobq.docs.airbnb_berlin_h3_qk`, contains the Airbnb listing's locations in H3 and quadkey cells at different resolutions, their prices, and their number of bedrooms and bathrooms.
 
 We can run our GWR analysis by simply running this query:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.GWR_GRID(
     'cartobq.docs.airbnb_berlin_h3_qk',
@@ -33,7 +34,7 @@ The output of our GWR analysis is a table that contains the result of each of th
 
 <iframe height=800px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/fa17dbf3-99b9-4a46-8be7-e52fd5cd0e6f" title="Spatially-varying relationship between Airbnb's listing prices and their number of bedrooms and bathrooms."></iframe>
 
-Positive values indicate a positive association between the Airbnb's listing prices and the presence of bedrooms and bathrooms (conditional on the other) and with larger absolute values indicating a stronger association. 
+Positive values indicate a positive association between the Airbnb's listing prices and the presence of bedrooms and bathrooms (conditional on the other) and with larger absolute values indicating a stronger association.
 
 We can see that overall, where listings are equipped with more bedrooms and bathrooms, their price is also higher. However, the strength of this association is weaker in some areas: for instance, the number of bedrooms clearly drives higher prices in the city center, while not as much in the outskirts of the city.
 

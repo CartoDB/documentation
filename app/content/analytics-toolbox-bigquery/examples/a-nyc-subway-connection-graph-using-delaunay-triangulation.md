@@ -16,6 +16,7 @@ Providing a good network connection between subway stations is critical to ensur
 
 For this particular example we are choosing the New York city subway stations to build the cited triangulation. The following query will construct the triangulation using the `ST_DELAUNAYLINES` function from the processing module of the Analytics Toolbox.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH data AS (
     SELECT ARRAY(
@@ -27,7 +28,7 @@ delaunay_array AS (
     FROM data
 ),
 delaunay_triangles AS (
-    SELECT geom 
+    SELECT geom
     FROM delaunay_array, UNNEST(nested) AS geom
 )
 
