@@ -65,7 +65,7 @@ function updateModules (type, ignore) {
     if (ignore && ignore.includes(cloud)) {
         return;
     }
-    const repo = `analytics-toolbox${type ? `-${type}` : ''}`;
+    const repo = `analytics-toolbox${type ? `/${type}` : ''}`;
     const sourcePath = path.join('.', '.checkout', repo, 'clouds', cloud, 'modules', 'doc');
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {

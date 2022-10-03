@@ -48,9 +48,9 @@ carto.ST_CENTERMEAN(geog)
 
 **Description**
 
-Takes a Feature or FeatureCollection and returns the mean center.
+Takes a Feature or FeatureCollection and returns the mean center (average of its vertices).
 
-* `geog`: `GEOGRAPHY` feature to be centered.
+* `geom`: `GEOGRAPHY` for which to compute the mean center.
 
 **Return type**
 
@@ -72,9 +72,9 @@ carto.ST_CENTERMEDIAN(geog)
 
 **Description**
 
-Takes a FeatureCollection of points and calculates the median center, algorithimically. The median center is understood as the point that requires the least total travel from all other points.
+Takes a FeatureCollection of points and computes the median center. The median center is understood as the point that requires the least total travel from all other points.
 
-* `geog`: `GEOGRAPHY` feature to be centered.
+* `geog`: `GEOGRAPHY` for which to compute the center.
 
 **Return type**
 
@@ -96,7 +96,7 @@ carto.ST_CENTEROFMASS(geog)
 
 **Description**
 
-Takes any Feature or a FeatureCollection and returns its center of mass using this formula: Centroid of Polygon.
+Takes any Feature or a FeatureCollection and returns its center of mass (also known as centroid).
 
 * `geog`: `GEOGRAPHY` feature to be centered.
 
@@ -111,6 +111,11 @@ SELECT carto.ST_CENTEROFMASS(TO_GEOGRAPHY('POLYGON ((30 10, 40 40, 20 40, 10 20,
 -- { "coordinates": [ 25.454545454545453, 26.96969696969697 ], "type": "Point" }
 ```
 
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Computing US airport connections and route interpolations](/analytics-toolbox-snowflake/examples/computing-us-airport-connections-and-route-interpolations/)
+{{%/ bannerNote %}}
+
 
 ### ST_CONCAVEHULL
 
@@ -120,7 +125,7 @@ carto.ST_CONCAVEHULL(geojsons [, maxEdge] [, units])
 
 **Description**
 
-Takes a set of points and returns a concave hull Polygon or MultiPolygon. In case of a single or a couple of points are passed as input, the function will return that point or a segment respectively.
+Takes a set of points and returns a concave hull Polygon or MultiPolygon. In case that a single or a couple of points are passed as input, the function will return that point or a segment respectively.
 
 * `geojsons`: `ARRAY` array of features in GeoJSON format casted to STRING.
 * `maxEdge` (optional): `DOUBLE` the length (in 'units') of an edge necessary for part of the hull to become concave. By default `maxEdge` is `infinity`.
@@ -133,22 +138,52 @@ Takes a set of points and returns a concave hull Polygon or MultiPolygon. In cas
 **Examples**
 
 ``` sql
-SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING, ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING));
+SELECT carto.ST_CONCAVEHULL(
+  ARRAY_CONSTRUCT(
+    ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING
+  )
+);
 -- { "coordinates": [ [ [ -75.221, 39.125 ], [ -75.833, 39.284 ], [ -75.6, 39.984 ], [ -75.221, 39.125 ] ] ], "type": "Polygon" }
 ```
 
 ``` sql
-SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING, ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING), 100);
+SELECT carto.ST_CONCAVEHULL(
+  ARRAY_CONSTRUCT(
+    ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING
+  ),
+  100
+);
 -- { "coordinates": [ [ [ -75.833, 39.284 ], [ -75.6, 39.984 ], ...
 ```
 
 ``` sql
-SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING, ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING, ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING), 100, 'kilometers');
+SELECT carto.ST_CONCAVEHULL(
+  ARRAY_CONSTRUCT(
+    ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.221, 39.125))::STRING,
+    ST_ASGEOJSON(ST_POINT(-75.521, 39.325))::STRING
+  ),
+  100,
+  'kilometers'
+);
 -- { "coordinates": [ [ [ -75.833, 39.284 ], [ -75.6, 39.984 ], ...
 ```
 
 ``` sql
-SELECT carto.ST_CONCAVEHULL(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(-75.833, 39.284))::STRING, ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING));
+SELECT carto.ST_CONCAVEHULL(
+  ARRAY_CONSTRUCT(
+    ST_ASGEOJSON(
+      ST_POINT(-75.833, 39.284))::STRING,
+      ST_ASGEOJSON(ST_POINT(-75.6, 39.984))::STRING
+    )
+  );
 --  { "coordinates": [ -75.833, 39.284 ], "type": "Point" }
 ```
 
@@ -161,12 +196,12 @@ carto.ST_DESTINATION(startPoint, distance, bearing [, units])
 
 **Description**
 
-Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and bearing in degrees. This uses the Haversine formula to account for global curvature.
+Takes a Point and calculates the location of a destination point given a distance in degrees, radians, miles, or kilometers; and a bearing in degrees. This uses the Haversine formula to account for global curvature.
 
 * `origin`: `GEOGRAPHY` starting point.
-* `distance`: `DOUBLE` distance from the origin point.
-* `bearing`: `DOUBLE` ranging from -180 to 180.
-* `units` (optional): `STRING` units of length, the supported options are: miles, kilometers, degrees or radians. By default `units` is `kilometers`.
+* `distance`: `DOUBLE` distance from the origin point in the units specified.
+* `bearing`: `DOUBLE` counter-clockwise angle from East, ranging from -180 to 180 (e.g. 0 is East, 90 is North, 180 is West, -90 is South).
+* `units` (optional): `STRING` units of length, the supported options are: `miles`, `kilometers`, `degrees` or `radians`. If `NULL`the default value `kilometers` is used.
 
 **Return type**
 
@@ -193,7 +228,7 @@ carto.ST_GREATCIRCLE(startPoint, endPoint [, npoints])
 
 **Description**
 
-Calculate great circles routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString.
+Calculate great circle routes as LineString or MultiLineString. If the start and end points span the antimeridian, the resulting feature will be split into a MultiLineString.
 
 * `startPoint`: `GEOGRAPHY` source point feature.
 * `endPoint`: `GEOGRAPHY` destination point feature.
@@ -207,13 +242,18 @@ Calculate great circles routes as LineString or MultiLineString. If the start an
 
 ``` sql
 SELECT carto.ST_GREATCIRCLE(ST_POINT(-3.70325,40.4167), ST_POINT(-73.9385,40.6643));
--- { "coordinates": [ [ -3.7032499999999993, 40.4167 ], ... 
+-- { "coordinates": [ [ -3.7032499999999993, 40.4167 ], ...
 ```
 
 ``` sql
 SELECT carto.ST_GREATCIRCLE(ST_POINT(-3.70325,40.4167), ST_POINT(-73.9385,40.6643), 20);
--- { "coordinates": [ [ -3.7032499999999993, 40.4167 ], ... 
+-- { "coordinates": [ [ -3.7032499999999993, 40.4167 ], ...
 ```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Computing US airport connections and route interpolations](/analytics-toolbox-snowflake/examples/computing-us-airport-connections-and-route-interpolations/)
+{{%/ bannerNote %}}
 
 
 ### ST_LINE_INTERPOLATE_POINT
@@ -228,7 +268,7 @@ Takes a LineString and returns a Point at a specified distance along the line.
 
 * `geog`: `GEOGRAPHY` input line.
 * `distance`: `DOUBLE` distance along the line.
-* `units` (optional): `STRING` units of length, the supported options are: miles, kilometers, degrees and radians. By default `units` is `kilometers`.
+* `units` (optional): `STRING` units of length, the supported options are: `miles`, `kilometers`, `degrees` and `radians`. By default `units` is `kilometers`.
 
 **Return type**
 
@@ -238,10 +278,15 @@ Takes a LineString and returns a Point at a specified distance along the line.
 
 ``` sql
 SELECT carto.ST_LINE_INTERPOLATE_POINT(TO_GEOGRAPHY('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'), 250);
--- { "coordinates": [ -75.5956489839589, 19.273615818183988 ], "type": "Point" } 
+-- { "coordinates": [ -75.5956489839589, 19.273615818183988 ], "type": "Point" }
 ```
 
 ``` sql
 SELECT carto.ST_LINE_INTERPOLATE_POINT(TO_GEOGRAPHY('LINESTRING (-76.091308 18.427501,-76.695556 18.729501,-76.552734 19.40443,-74.61914 19.134789,-73.652343 20.07657,-73.157958 20.210656)'), 250, 'miles');
--- { "coordinates": [ -74.297592068938, 19.449810710315635 ], "type": "Point" } 
+-- { "coordinates": [ -74.297592068938, 19.449810710315635 ], "type": "Point" }
 ```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Computing US airport connections and route interpolations](/analytics-toolbox-snowflake/examples/computing-us-airport-connections-and-route-interpolations/)
+{{%/ bannerNote %}}
