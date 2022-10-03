@@ -77,6 +77,14 @@ Viewers will see always the version of the map that you last updated.
 
 When sharing your map with other people as viewers (ie: a public map or a map shared with the organization) you can control the final experience for the viewers using the following settings:
 
+- Refresh data sources every _N_: This option will make sure that the data displayed in your map is not older than the time specified in the setting.
+
+{{% bannerNote title="NOTE" type="note"%}}
+Bear in mind that using this option might increase the amount of data processed in your data warehouse, which might have a significant cost associated to it.
+
+The cached objects associated to the data sources in the map will be invalidated, and the SQL queries that were executed to generate them will be executed again.
+{{%/ bannerNote %}}
+
 - Export viewport data: when enabled, viewers will be able to export the data available in the viewport in CSV format. [Read more about exporting data](/carto-user-manual/maps/exporting-data/).
 - Address search bar: use this setting if you want to let viewers use the search bar in the top left to focus the map at a given address. [Read more about searching addresses](http://localhost:1313/carto-user-manual/maps/address-search-bar/).
 - Scroll wheel zoom: when enabled, viewers will be able to use their mouse wheel to zoom in or out.

@@ -1,10 +1,10 @@
-## Add source
+## Data sources
 
-When you open a map, the Layers tab will appear on the left side panel. There you can add data as layers to the map by clicking on *Add source from*, where you can access the contents from your existing data warehouse connections. If you haven’t added a data layer to the map yet, you will see the following page:
-
-![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
+When you open a map, the left panel will appear on the screen. There you can add data sources that will be visualized as map layers. 
 
 ### Data source types
+
+There are different types of data that can be loaded in Builder. Basically, aggregated data sources like grids based on spatial indexes and Simple Features.
 
 #### Aggregated grids
 
@@ -58,6 +58,16 @@ There are some performance and processing cost optimizations that should be appl
 Simple features are defined as a standard which specifies digital storage of geographical data (usually point, line or polygon) with both spatial and non-spatial attributes. 
 
 Most data warehouses support simple features through different data types, such as `geometry` or `geography`. 
+This table shows the current type supported on each data warehouse:
+
+|   |**Geography**|**Geometry**
+|---|---|---|
+|**BigQuery**|✅| Not Supported
+|**CARTO DW**|✅|Not Supported
+|**Redshift**|Not Supported|✅
+|**Snowflake**|✅|[Coming soon](https://docs.snowflake.com/en/sql-reference/data-types-geospatial.html#geometry-data-type)
+|**PostgreSQL**|Not Supported|✅
+|**Databricks**|Not Supported|⚠️ [Beta support](https://docs.carto.com/analytics-toolbox-databricks/overview/getting-started/)
 
 Simple features are widely spread and have been traditionally used by GIS software to store the shape and properties of phenomena that occur on the surface of the Earth.
 
@@ -74,8 +84,12 @@ When loading a table that contains simple features, there is a column name conve
 CARTO expects to find a column named `geom` that will be used to render the features in the map.
 {{%/ bannerNote %}}
 
+### Adding a data sources
+Click on *Add source from*, to access data from your existing data warehouse connections. If you haven’t added a data source to the map yet, you will see the following page:
 
-### Add source from a connection
+![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
+
+#### Add source from a connection
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from one of your connections and click on .
 
@@ -123,7 +137,7 @@ Once the source is renamed, the new name will replace the old one in the data ta
 
 ![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed_widget.png)
 
-### Add source from a custom query
+#### Add source from a custom query
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
 
@@ -263,10 +277,12 @@ To learn more, please visit the Documentation page of the CARTO Analytics Toolbo
 * [Analytics Toolbox for Redshift](/analytics-toolbox-redshift)
 * [Analytics Toolbox for Databricks](/analytics-toolbox-databricks)
 * [Analytics Toolbox for PostgreSQL ](/analytics-toolbox-postgres)
-### Add source from a local or remote file
+
+#### Add source from a local or remote file
 
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
-#### Supported formats
+
+####  Supported formats
 Currently, the import of CSV, KML, KMZ, TAB, GeoJSON, GeoPackage and Shapefiles (in a zip file) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
 
 For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
@@ -339,7 +355,7 @@ Once the data has been imported, the dataset is included in the Builder map tool
 
 ![Map imported remote file](/img/cloud-native-workspace/maps/map_imported_remote_file.png)
 
-### Add source from Data Observatory
+#### Add source from Data Observatory
 
 From the Layers tab, go to the Sources panel and click on *Add source from…*. Go to the "Data Observatory" tab. A new dialog screen will open allowing you to select your subscriptions or samples from one of your connections. Select a subscription or a sample and click on *Add source*.
 
@@ -359,6 +375,20 @@ To learn more about how to visualize your Data Observatory datasets in Builder, 
 
 <!-- Read our [documentation] if you want to learn about the specific permissions CARTO requires. -->
 
+### Refresh a data source
+
+By opening the contextual menu on a data source card, you will find the option to _"Refresh data source"_. 
+
+ <p align="center">
+  <img src="/img/cloud-native-workspace/maps/refresh_datasource.png" />
+</p>
+
+By option will reload the data source and recreate the associated layers. With this option, CARTO will invalidate any previous cached object related to this source and will push a SQL query to the data warehouse to fetch fresh data.
 
 
+{{% bannerNote title="NOTE" type="note"%}}
+Bear in mind that using this option will increase the amount of data processed in your data warehouse, which might have a significant cost associated to it.
+
+The cached objects associated to the data source will be invalidated, and the SQL queries that were executed to generate them will be executed again.
+{{%/ bannerNote %}}
 
