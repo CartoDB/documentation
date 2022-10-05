@@ -64,4 +64,15 @@ Once your table or tileset is selected, you can check the full path of the table
 
 <!-- ![Data Explorer breadcrumbs](/img/cloud-native-workspace/data-explorer/de_the_breadcrumbs.png) -->
 
+{{% bannerNote title="NOTE" type="warning"%}}
+[Partitioned BigQuery tables](https://cloud.google.com/bigquery/docs/partitioned-tables) will fail to preview, since they always require a `WHERE` clause in the query that filters by the column used for the partition.
+
+They can still be loaded in Builder, adding them as a SQL Query source like: 
+```sql
+SELECT * 
+FROM project.dataset.my_partitioned_table 
+WHERE partition_column = 'value'
+```
+
+{{%/ bannerNote %}}
 

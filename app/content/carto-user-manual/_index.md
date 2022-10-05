@@ -18,7 +18,7 @@ cascade:
     - title: "Maps"
       folder:
         - title: "Introduction"
-        - title: "Add source"
+        - title: "Data Sources"
         #- title: "View data table"
         - title: "Map settings"
         - title: "Map styles"

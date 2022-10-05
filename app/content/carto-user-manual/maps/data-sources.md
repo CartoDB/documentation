@@ -46,8 +46,8 @@ But data also **needs to be aggregated**, so Builder will always need you to pic
 
 {{% bannerNote title="NOTE" type="note"%}}
 When loading a table that contains a spatial index, there is a column name convention that should followed to ensure that CARTO can fully support it. 
-* For `H3` ids, the column should be named `h3`
-* For `Quadbin` ids, the column should be named `quadbin`
+* For `H3` ids, the column should be named **`h3`**
+* For `Quadbin` ids, the column should be named **`quadbin`**
 {{%/ bannerNote %}}
 
 
@@ -81,15 +81,15 @@ Find more information about the different methods mentioned above in [this secti
 {{% bannerNote title="NOTE" type="note"%}}
 When loading a table that contains simple features, there is a column name convention that should followed to ensure that CARTO can fully support it. 
 
-CARTO expects to find a column named `geom` that will be used to render the features in the map.
+CARTO expects to find a column named **`geom`** that will be used to render the features in the map.
 {{%/ bannerNote %}}
 
-### Adding a data sources
+### Adding a data source
 Click on *Add source from*, to access data from your existing data warehouse connections. If you haven’t added a data source to the map yet, you will see the following page:
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
 
-#### Add source from a connection
+#### Add source from a table or tileset
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from one of your connections and click on .
 
@@ -98,18 +98,30 @@ From the Layers tab, go to the Sources panel and click on *Add source from...*. 
 ![Add source table](/img/cloud-native-workspace/maps/map_add_source_select_data_source.png)
 
 Once the process is finished, the table or tileset is included in the Builder map as a new layer. The map displays the basemap and the new layer on top. You can add additional layers, or start applying styling and analysis features.
+
+{{% bannerNote title="NOTE" type="warning"%}}
+[Partitioned BigQuery tables](https://cloud.google.com/bigquery/docs/partitioned-tables) will fail, since they always require a `WHERE` clause in the query that filters by the column used for the partition.
+
+If you need to load a BigQuery partitioned table in Builder, the best option is to add them as a SQL Query source like: 
+```sql
+SELECT * 
+FROM project.dataset.my_partitioned_table 
+WHERE partition_column = 'value'
+```
+
+{{%/ bannerNote %}}
 	
 ![Map created](/img/cloud-native-workspace/maps/map_layer_added.png)
 
-Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
+<!-- Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
 
 ![Map source options view data table](/img/cloud-native-workspace/maps/map_source_more_options.png)
 
-<!-- ![Map source options view data table](/img/cloud-native-workspace/maps/map_source_new_options.png) -->
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_new_options.png)
 
 By clicking the *tree dots* icon the Column Context menu will reveal additional options such as: Sort on this column, ascending or descending, Pin the column so you can freeze it in the first position, and copy column data.
 
-![Map table column](/img/cloud-native-workspace/maps/map_table_column.png)
+![Map table column](/img/cloud-native-workspace/maps/map_table_column.png) -->
 
 Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*. When you click the Delete quick action, a dialog will appear allowing you to confirm that you want to delete the selected data source and warning you that it will be affect the layers created with this source.
 
