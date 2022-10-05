@@ -4,6 +4,26 @@ aliases:
 ---
 ## Release notes
 
+### October 5, 2022
+
+#### Module cpg
+
+Feature
+
+- Add `CUSTOMER_SEGMENTATION_ANALYSIS_DATA` procedure.
+- Add `GENERATE_TRADE_AREAS` procedure.
+- Add `RUN_CUSTOMER_SEGMENTATION` procedure.
+
+#### Module lds
+
+Fixed
+
+- CREATE_ISOLINES output is stored in the column `geom` instead of `__iso_geom`.
+
+Changed
+
+- CREATE_ISOLINES output is clustered by geometry.
+
 ### October 1, 2022
 
 #### Module lds

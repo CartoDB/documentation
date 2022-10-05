@@ -20,12 +20,19 @@ Feature
 
 - Add CREATE_ISOLINES procedure.
 
-### October 1, 2022
+### October 4, 2022
 
 #### Module lds
 
 Changed
 
+- CREATE_ISOLINES output is ordered by geometry to be compliant with Snowflake Search Optimization Service.
+
+### September 30, 2022
+
+#### Module lds
+
+Changed
 - Rename `LDS_API_URL` to `API_BASE_URL`.
 
 ### September 28, 2022
