@@ -2,11 +2,53 @@
 aliases:
     - /analytics-toolbox-bq/sql-reference/cpg/
 ---
-# CPG module for BigQuery
+
+## cpg
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
 
 This module contains procedures to perform spatial analysis to solve specific use-cases for the Consumer Packaged Goods (CPG) industry, such as customer segmentation.
+
+
+### GENERATE_TRADE_AREAS
+
+{{% bannerNote type="code" %}}
+carto.GENERATE_TRADE_AREAS(customers_query, method, options, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+This procedure generates the trade areas for each location specified based on the method and the options provided. Four methods are available: `buffer`, `kring-h3`, `kring-quadbin` and `isoline`. For the `isoline` method, the use of this procedure requires providing authorization credentials. Two parameters are needed: api_base_url and lds_token. Both the API Base URL and your LDS Token can be found in the Developers section of the CARTO user interface. Please check the following documentation page for more details: <https://docs.carto.com/carto-user-manual/developers/carto-for-developers/>
+
+**Input parameters**
+
+* `customers_query`: `STRING` query with store id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
+* `method`: `STRING` indicates the method of trade area generation. Four options available: `buffer`, `kring-h3`, `kring-quadbin` and `isoline`. This method applies to all locations provided.
+* `options`: `JSON` A JSON string containing the required parameters for the specified method. For `buffer`: {`buffer`: radius - `FLOT64`}, `kring-h3`:{`resolution`: resolution-`INT64`, `kring`:number of layers - `INT64`}, `kring-quadbin` : {`resolution`: zoom level - `INT64`, `kring`:number of layers - `INT64`}, `isoline` : {`mode`: type of transport. Supported: 'walk', 'car' - `STRING`, `time`: range of the isoline in seconds  - `INT64`, `api_base_url` :  url of the API where the customer account is stored -  `STRING`, `lds_token`: customer's token for accessing the different API services - `STRING`}.
+* `output_prefix`: `STRING` the prefix for each table in the output destination.
+
+**Output**
+
+This procedure will output one table:
+
+* Table containing the `store_id`, `geom`, `method`, `options`. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_trade_areas`.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.GENERATE_TRADE_AREAS(
+    --customers_query
+    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
+    --method
+    'buffer',
+    --options
+    "{'buffer':500.0}",
+    --output_prefix
+    '<my-project>.<my-dataset>.<output-prefix>'
+);
+```
 
 
 ### CUSTOMER_SEGMENTATION_ANALYSIS_DATA
@@ -56,47 +98,6 @@ CALL `carto-un`.carto.CUSTOMER_SEGMENTATION_ANALYSIS_DATA(
     [('var1', 'sum'), ('var2', 'avg')],
     '''SELECT var1, var2, geom FROM `<project>.<dataset>.custom_data`''',
   '<my-project>.<my-dataset>.<output-prefix>'
-);
-```
-
-
-### GENERATE_TRADE_AREAS
-
-{{% bannerNote type="code" %}}
-carto.GENERATE_TRADE_AREAS(customers_query, method, options, output_prefix)
-{{%/ bannerNote %}}
-
-**Description**
-
-This procedure generates the trade areas for each location specified based on the method and the options provided. Four methods are available: `buffer`, `kring-h3`, `kring-quadbin` and `isoline`. For the `isoline` method, the use of this procedure requires providing authorization credentials. Two parameters are needed: api_base_url and lds_token. Both the API Base URL and your LDS Token can be found in the Developers section of the CARTO user interface. Please check the following documentation page for more details: <https://docs.carto.com/carto-user-manual/developers/carto-for-developers/>
-
-**Input parameters**
-
-* `customers_query`: `STRING` query with store id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
-* `method`: `STRING` indicates the method of trade area generation. Four options available: `buffer`, `kring-h3`, `kring-quadbin` and `isoline`. This method applies to all locations provided.
-* `options`: `JSON` A JSON string containing the required parameters for the specified method. For `buffer`: {`buffer`: radius - `FLOT64`}, `kring-h3`:{`resolution`: resolution-`INT64`, `kring`:number of layers - `INT64`}, `kring-quadbin` : {`resolution`: zoom level - `INT64`, `kring`:number of layers - `INT64`}, `isoline` : {`mode`: type of transport. Supported: 'walk', 'car' - `STRING`, `time`: range of the isoline in seconds  - `INT64`, `api_base_url` :  url of the API where the customer account is stored -  `STRING`, `lds_token`: customer's token for accessing the different API services - `STRING`}.
-* `output_prefix`: `STRING` the prefix for each table in the output destination.
-
-**Output**
-
-This procedure will output one table:
-
-* Table containing the `store_id`, `geom`, `method`, `options`. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_trade_areas`.
-
-{{% customSelector %}}
-**Example**
-{{%/ customSelector %}}
-
-```sql
-CALL `carto-un`.carto.GENERATE_TRADE_AREAS(
-    --customers_query
-    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
-    --method
-    'buffer',
-    --options
-    "{'buffer':500.0}",
-    --output_prefix
-    '<my-project>.<my-dataset>.<output-prefix>'
 );
 ```
 
