@@ -65,7 +65,7 @@ In this tutorial we are going to represent the distribution of tree species in t
  
     ![Map style radius](/img/cloud-native-workspace/tutorials/tutorial2_map_change_the_radius.png)
 
-11. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
+11. Go to Widget tab. If you haven't created a widget yet, you will see the following page.
 
     ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_add_new_widget.png)
 
