@@ -69,7 +69,7 @@ In this tutorial we are going to represent the distribution of tree species in t
 
     ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_add_new_widget.png)
 
-12. Click on *New widget* button and select "populated_places".
+12. Click on *New widget* button and select "san_francisco_street_trees".
 
     ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial2_map_widget_select_the_source.png)
 
