@@ -60,13 +60,6 @@ This will allow you not only to verify that you have the right credentials, the 
 
 {{%/ bannerNote %}}
 
-<-- !order
-GEOCODE_TABLE
-GEOCODE_REVERSE_TABLE
-CREATE_ISOLINES
-LDS_QUOTA_INFO
--->
-
 ### GEOCODE_TABLE
 
 {{% bannerNote type="code" %}}
