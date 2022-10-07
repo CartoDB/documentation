@@ -2,7 +2,8 @@
 
 <div class="badges"><div class="core"></div></div>
 
-This module contains functions that provide information or transform internal geometries.
+This module contains functions that provide information about internal geometries.
+
 
 ### ST_COORDDIM
 
@@ -24,8 +25,9 @@ Returns the number of dimensions of the coordinates of `Geometry` _geom_.
 
 ```sql
 SELECT carto.ST_COORDDIM(carto.ST_MAKEPOINTM(1, 2, 3));
--- 3 
+-- 3
 ```
+
 
 ### ST_DIMENSION
 
@@ -50,6 +52,7 @@ SELECT carto.ST_DIMENSION(carto.ST_GEOMFROMWKT("LINESTRING(0 0, 1 1)"));
 -- 1
 ```
 
+
 ### ST_ENVELOPE
 
 {{% bannerNote type="code" %}}
@@ -73,6 +76,7 @@ SELECT carto.ST_ASTEXT(carto.ST_ENVELOPE(carto.ST_GEOMFROMWKT("LINESTRING(1 1, 2
 -- POLYGON ((1 1, 1 3, 2 3, 2 1, 1 1))
 ```
 
+
 ### ST_GEOMETRYN
 
 {{% bannerNote type="code" %}}
@@ -93,9 +97,17 @@ Returns the _n_-th `Geometry` (1-based index) of _geom_ if the `Geometry` is a `
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_GEOMETRYN(carto.ST_GEOMFROMWKT("GEOMETRYCOLLECTION(LINESTRING(1 1, 2 3), POINT(0 4), LINESTRING EMPTY)"), 2));
+SELECT carto.ST_ASTEXT(
+  carto.ST_GEOMETRYN(
+    carto.ST_GEOMFROMWKT(
+      "GEOMETRYCOLLECTION(LINESTRING(1 1, 2 3), POINT(0 4), LINESTRING EMPTY)"
+    ),
+    2
+  )
+);
 -- POINT (0 4)
 ```
+
 
 ### ST_ISCLOSED
 
@@ -120,6 +132,7 @@ SELECT carto.ST_ISCLOSED(carto.ST_GEOMFROMWKT("LINESTRING(1 1, 2 3, 4 3, 1 1)"))
 -- true
 ```
 
+
 ### ST_ISCOLLECTION
 
 {{% bannerNote type="code" %}}
@@ -139,9 +152,14 @@ Returns `true` if _geom_ is a `GeometryCollection`.
 **Example**
 
 ```sql
-SELECT carto.ST_ISCOLLECTION(carto.ST_GEOMFROMWKT("GEOMETRYCOLLECTION(LINESTRING(1 1, 2 3), POINT(0 4)), LINESTRING EMPTY"));
+SELECT carto.ST_ISCOLLECTION(
+  carto.ST_GEOMFROMWKT(
+    "GEOMETRYCOLLECTION(LINESTRING(1 1, 2 3), POINT(0 4)), LINESTRING EMPTY"
+  )
+);
 -- true
 ```
+
 
 ### ST_ISEMPTY
 
@@ -166,6 +184,7 @@ SELECT carto.ST_ISEMPTY(carto.ST_GEOMFROMWKT("LINESTRING EMPTY"));
 -- true
 ```
 
+
 ### ST_ISGEOMFIELD
 
 {{% bannerNote type="code" %}}
@@ -188,6 +207,7 @@ Returns `true` if _geom_ is string containing WKT or WKB representation of a geo
 SELECT carto.ST_ISGEOMFIELD("LINESTRING(1 1, 2 3)");
 -- true
 ```
+
 
 ### ST_ISRING
 
@@ -212,6 +232,7 @@ SELECT carto.ST_ISRING(carto.ST_GEOMFROMWKT("LINESTRING(1 1, 2 3, 4 3, 1 1)"));
 -- true
 ```
 
+
 ### ST_ISSIMPLE
 
 {{% bannerNote type="code" %}}
@@ -234,6 +255,7 @@ Returns `true` if _geom_ has no anomalous geometric points, such as self interse
 SELECT carto.ST_ISSIMPLE(carto.ST_GEOMFROMWKT("LINESTRING(1 1, 2 3, 4 3, 2 3)"));
 -- false
 ```
+
 
 ### ST_ISVALID
 
@@ -258,6 +280,7 @@ SELECT carto.ST_ISVALID(carto.ST_GEOMFROMWKT("POLYGON((0 0, 1 1, 1 2, 1 1, 0 0))
 -- false
 ```
 
+
 ### ST_NUMGEOMETRIES
 
 {{% bannerNote type="code" %}}
@@ -277,9 +300,14 @@ If _geom_ is a `GeometryCollection`, returns the number of geometries. For singl
 **Example**
 
 ```sql
-SELECT carto.ST_NUMGEOMETRIES(carto.ST_GEOMFROMWKT("GEOMETRYCOLLECTION(LINESTRING(1 1, 2 3), POINT(0 4), LINESTRING EMPTY)"));
+SELECT carto.ST_NUMGEOMETRIES(
+  carto.ST_GEOMFROMWKT(
+    "GEOMETRYCOLLECTION(LINESTRING(1 1, 2 3), POINT(0 4), LINESTRING EMPTY)"
+  )
+);
 -- 3
 ```
+
 
 ### ST_NUMPOINTS
 
@@ -304,6 +332,7 @@ SELECT carto.ST_NUMPOINTS(carto.ST_GEOMFROMWKT("LINESTRING(1 1, 2 3, 4 4)"));
 -- 3
 ```
 
+
 ### ST_POINTN
 
 {{% bannerNote type="code" %}}
@@ -324,9 +353,16 @@ If _geom_ is a `LineString`, returns the _n_-th vertex of _geom_ as a `Point`. N
 **Example**
 
 ```sql
-SELECT carto.ST_ASTEXT(carto.ST_POINTN(carto.ST_GEOMFROMWKT("LINESTRING(1 1, 2 3, 4 4, 3 4)"), 3));
+SELECT carto.ST_ASTEXT(
+  carto.ST_POINTN(
+    carto.ST_GEOMFROMWKT(
+      "LINESTRING(1 1, 2 3, 4 4, 3 4)"),
+      3
+    )
+  );
 -- POINT (4 4)
 ```
+
 
 ### ST_X
 
@@ -342,7 +378,7 @@ If _geom_ is a `Point`, return the X coordinate of that point.
 
 **Return type**
 
-`Float`
+`Double`
 
 **Example**
 
@@ -366,7 +402,7 @@ If _geom_ is a `Point`, return the Y coordinate of that point.
 
 **Return type**
 
-`Float`
+`Double`
 
 **Example**
 

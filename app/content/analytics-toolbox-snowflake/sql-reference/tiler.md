@@ -6,7 +6,14 @@ aliases:
 
 <div class="badges"><div class="experimental"></div><div class="advanced"></div></div>
 
-We currently provide procedures to create two types of tilesets: _simple_ and _aggregation_ tilesets, the former to visualize features individually and the latter to generate aggregated point visualizations. Visit the [Overview section](/analytics-toolbox-snowflake/overview/tilesets/) to learn more about tileset types.
+We currently provide procedures to create the following kind of tilesets:
+
+* Spatial index tiles (aggregates spatial indexes into tiles at specific resolutions)
+* Geometry-based tiles of two types:
+  * _simple_ tilesets to visualize features individually
+  * _aggregation_ tilesets to generate aggregated point visualizations
+
+Visit the [Overview section](/analytics-toolbox-snowflake/overview/tilesets/) to learn more about tileset types.
 
 
 ### CREATE_POINT_AGGREGATION_TILESET
@@ -43,12 +50,13 @@ The value of `aggregation_resolution` sets an upper bound to how many features c
 **Result**
 
 The generated tileset consists of a table with the following columns, where each row represents a tile:
+
 * `Z`: zoom level of the tile.
 * `X`: X-index of the tile (`0` to `2^Z-1`).
 * `Y`: Y-index of the tile (`0` to `2^Z-1`).
 * `DATA`: contents of the tile, encoded as a GeoJSON string (a feature collection). It will contain the resulting points (location of the aggregated features) and their attributes (as defined by `properties`).
 
-Additionally, there is a row identified with `Z=-1` which contains metadata about the tileset in the `DATA` column in JSON format. It contains the following properties:
+Additionally, there is a row identified by `Z=-1` which contains metadata about the tileset in the `DATA` column in JSON format. It contains the following properties:
 
 * `bounds`: geographical extents of the source as a string in `Xmin, Ymin, Xmax, Ymax` format.
 * `center`: center of the geographical extents as `X, Y, Z`, where the `Z` represents the zoom level where a single tile spans the whole extents size.
@@ -91,6 +99,7 @@ CALL carto.CREATE_POINT_AGGREGATION_TILESET(
 ```
 
 In the example above, for all features we would get a property `"NUM_CITIES"` with the number of points that fall in it and `"POPULATION_SUM"` with the sum of the population in those cities. In addition to this, when there is only one point that belongs to this property (and only in that case) we will also get the column values from the source data in `"CITY_NAME"`.
+
 
 ### CREATE_SIMPLE_TILESET
 
@@ -150,7 +159,7 @@ Creates a tileset that uses a spatial index (H3 and QUADBIN are currently suppor
 Aggregated data is computed for all levels between `resolution_min` and `resolution_max`. For each resolution level, all tiles for the area covered by the source table are added, with data aggregated at level `resolution + aggregation resolution`.
 
 * `source_table`: `STRING` that can either be a quoted qualified table name (e.g. <code>\`database.schema.tablename\`</code>) or a full query contained by parentheses (e.g.<code>(SELECT * FROM \`database.schema.tablename\`)</code>).
-* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`projectID.dataset.tablename\`</code>. The projectID can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
+* `target_table`: Where the resulting table will be stored. It must be a `STRING` of the form <code>\`project-id.dataset-id.table-name\`</code>. The `project-id` can be omitted (in which case the default one will be used). The dataset must exist and the caller needs to have permissions to create a new table on it. The process will fail if the target table already exists.
 * `options`: `STRING` containing a valid JSON with the different options. Valid options are described the table below.
 | Option | Description |
 | :----- | :------ |
@@ -206,7 +215,7 @@ CALL carto.CREATE_SPATIAL_INDEX_TILESET(
 
 Snowflake treats columns uppercase by default, to set explicit lowercase use the following syntax:
 
-```
+```json
   {
     "spatial_index_column": "quadbin:\\"index\\"",
     "properties": {
@@ -217,3 +226,8 @@ Snowflake treats columns uppercase by default, to set explicit lowercase use the
     }
   }
 ```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [Creating spatial index tilesets](/analytics-toolbox-snowflake/examples/creating-spatial-index-tilesets/)
+{{%/ bannerNote %}}

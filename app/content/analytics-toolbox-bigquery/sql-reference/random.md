@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions to generate random geographies.
 
+
 ### ST_GENERATEPOINTS
 
 {{% bannerNote type="code" %}}
@@ -48,5 +49,6 @@ point_lists AS (
 )
 SELECT points FROM point_lists CROSS JOIN point_lists.points
 ```
+
 
 {{% euFlagFunding %}}

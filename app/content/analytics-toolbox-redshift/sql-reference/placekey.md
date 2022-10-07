@@ -30,6 +30,7 @@ SELECT carto.PLACEKEY_ASH3('@ff7-swh-m49');
 -- 8a7b59dffffffff
 ```
 
+
 ### PLACEKEY_FROMH3
 
 {{% bannerNote type="code" %}}
@@ -52,6 +53,7 @@ Returns the Placekey equivalent to the given H3 index.
 SELECT carto.PLACEKEY_FROMH3('847b59dffffffff');
 -- @ff7-swh-m49
 ```
+
 
 ### PLACEKEY_ISVALID
 

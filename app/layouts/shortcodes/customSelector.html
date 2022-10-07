@@ -28,7 +28,7 @@
   };
 
   function initializeCustomSelector (id) {
-    const isAdvanced = moduleIsAdvanced();
+    const isCore = moduleIsCore();
     const selectors = document.querySelectorAll(`select.custom-select.${id}`);
     if (selectors.length > 0) {
       const selector = selectors[0];
@@ -36,7 +36,7 @@
         if (bigqueryNew()) {
           selector.options[selector.options.length] = new Option(options['manual'], 'manual');
         }
-        if (!isAdvanced) {
+        if (isCore) {
           // carto-os project does not contain advanced modules
           selector.options[selector.options.length] = new Option(options['os'], 'os');
         }
@@ -48,7 +48,7 @@
     createCustomSelector(id);
     const defaultValue = bigqueryNew() ? 'un' : 'os'
     let value = localStorage.getItem(localStorageKey) || defaultValue;
-    if (value === 'os' && isAdvanced) {
+    if (value === 'os' && !isCore) {
       // carto-os project does not contain advanced modules
       value = 'un';
     }
@@ -62,16 +62,16 @@
     Array.from(examples).forEach(example => {
       if (value === 'manual') {
         example.innerHTML = example.innerHTML.replace(
-          /\s<span class="o">`<\/span><span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span><span class="o">`<\/span><span class="p">.<\/span><span class="n">carto<\/span><span class="p">.<\/span>/,
+          /\s<span class="o">`<\/span><span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span><span class="o">`<\/span><span class="p">.<\/span><span class="n">carto<\/span><span class="p">.<\/span>/g,
           ' <span class="n">carto</span><span class="p">.</span>'
         );
       } else {
         example.innerHTML = example.innerHTML.replace(
-          /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/,
+          /<span class="n">carto<\/span><span class="o">-<\/span><span class="n">.*?<\/span>/g,
           `<span class="n">carto</span><span class="o">-</span><span class="n">${value}</span>`
         );
         example.innerHTML = example.innerHTML.replace(
-          /\s<span class="n">carto<\/span><span class="p">.<\/span>/,
+          /\s<span class="n">carto<\/span><span class="p">.<\/span>/g,
           ` <span class="o">\`</span><span class="n">carto</span><span class="o">-</span><span class="n">${value}</span><span class="o">\`</span><span class="p">.</span><span class="n">carto</span><span class="p">.</span>`
         );
       }
@@ -82,9 +82,9 @@
     });
   }
 
-  function moduleIsAdvanced () {
-    const advanced = document.querySelectorAll('.badges .advanced');
-    return advanced.length > 0;
+  function moduleIsCore () {
+    const core = document.querySelectorAll('.badges .core');
+    return core.length > 0;
   }
 
   function domReady (fn) {
@@ -104,7 +104,7 @@
         template += `<span class="custom-option ${id}" data-value="${$(this).attr('value')}">${$(this).html()}</span>`;
       });
       template += '</div></div>';
-      $(this).wrap(`<div class="custom-select-wrapper ${id}"></div>`);
+      $(this).wrap(`<div class="${id}"></div>`);
       $(this).hide();
       $(this).after(template);
     });

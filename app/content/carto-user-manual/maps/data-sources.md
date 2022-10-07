@@ -1,10 +1,10 @@
-## Add source
+## Data sources
 
-When you open a map, the Layers tab will appear on the left side panel. There you can add data as layers to the map by clicking on *Add source from*, where you can access the contents from your existing data warehouse connections. If you haven’t added a data layer to the map yet, you will see the following page:
-
-![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
+When you open a map, the left panel will appear on the screen. There you can add data sources that will be visualized as map layers. 
 
 ### Data source types
+
+There are different types of data that can be loaded in Builder. Basically, aggregated data sources like grids based on spatial indexes and Simple Features.
 
 #### Aggregated grids
 
@@ -46,8 +46,8 @@ But data also **needs to be aggregated**, so Builder will always need you to pic
 
 {{% bannerNote title="NOTE" type="note"%}}
 When loading a table that contains a spatial index, there is a column name convention that should followed to ensure that CARTO can fully support it. 
-* For `H3` ids, the column should be named `h3`
-* For `Quadbin` ids, the column should be named `quadbin`
+* For `H3` ids, the column should be named **`h3`**
+* For `Quadbin` ids, the column should be named **`quadbin`**
 {{%/ bannerNote %}}
 
 
@@ -58,6 +58,16 @@ There are some performance and processing cost optimizations that should be appl
 Simple features are defined as a standard which specifies digital storage of geographical data (usually point, line or polygon) with both spatial and non-spatial attributes. 
 
 Most data warehouses support simple features through different data types, such as `geometry` or `geography`. 
+This table shows the current type supported on each data warehouse:
+
+|   |**Geography**|**Geometry**
+|---|---|---|
+|**BigQuery**|✅| Not Supported
+|**CARTO DW**|✅|Not Supported
+|**Redshift**|Not Supported|✅
+|**Snowflake**|✅|[Coming soon](https://docs.snowflake.com/en/sql-reference/data-types-geospatial.html#geometry-data-type)
+|**PostgreSQL**|Not Supported|✅
+|**Databricks**|Not Supported|⚠️ [Beta support](https://docs.carto.com/analytics-toolbox-databricks/overview/getting-started/)
 
 Simple features are widely spread and have been traditionally used by GIS software to store the shape and properties of phenomena that occur on the surface of the Earth.
 
@@ -71,11 +81,15 @@ Find more information about the different methods mentioned above in [this secti
 {{% bannerNote title="NOTE" type="note"%}}
 When loading a table that contains simple features, there is a column name convention that should followed to ensure that CARTO can fully support it. 
 
-CARTO expects to find a column named `geom` that will be used to render the features in the map.
+CARTO expects to find a column named **`geom`** that will be used to render the features in the map.
 {{%/ bannerNote %}}
 
+### Adding a data source
+Click on *Add source from*, to access data from your existing data warehouse connections. If you haven’t added a data source to the map yet, you will see the following page:
 
-### Add source from a connection
+![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
+
+#### Add source from a table or tileset
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to select a table or a tileset from one of your connections and click on .
 
@@ -84,18 +98,30 @@ From the Layers tab, go to the Sources panel and click on *Add source from...*. 
 ![Add source table](/img/cloud-native-workspace/maps/map_add_source_select_data_source.png)
 
 Once the process is finished, the table or tileset is included in the Builder map as a new layer. The map displays the basemap and the new layer on top. You can add additional layers, or start applying styling and analysis features.
+
+{{% bannerNote title="NOTE" type="warning"%}}
+[Partitioned BigQuery tables](https://cloud.google.com/bigquery/docs/partitioned-tables) will fail, since they always require a `WHERE` clause in the query that filters by the column used for the partition.
+
+If you need to load a BigQuery partitioned table in Builder, the best option is to add them as a SQL Query source like: 
+```sql
+SELECT * 
+FROM project.dataset.my_partitioned_table 
+WHERE partition_column = 'value'
+```
+
+{{%/ bannerNote %}}
 	
 ![Map created](/img/cloud-native-workspace/maps/map_layer_added.png)
 
-Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
+<!-- Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
 
 ![Map source options view data table](/img/cloud-native-workspace/maps/map_source_more_options.png)
 
-<!-- ![Map source options view data table](/img/cloud-native-workspace/maps/map_source_new_options.png) -->
+![Map source options view data table](/img/cloud-native-workspace/maps/map_source_new_options.png)
 
 By clicking the *tree dots* icon the Column Context menu will reveal additional options such as: Sort on this column, ascending or descending, Pin the column so you can freeze it in the first position, and copy column data.
 
-![Map table column](/img/cloud-native-workspace/maps/map_table_column.png)
+![Map table column](/img/cloud-native-workspace/maps/map_table_column.png) -->
 
 Once you have added your datasets to the map, you can always add a new layer or delete the source. Click on the three dots icon and select *Add layer* or *Delete source*. When you click the Delete quick action, a dialog will appear allowing you to confirm that you want to delete the selected data source and warning you that it will be affect the layers created with this source.
 
@@ -123,7 +149,7 @@ Once the source is renamed, the new name will replace the old one in the data ta
 
 ![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed_widget.png)
 
-### Add source from a custom query
+#### Add source from a custom query
 
 From the Layers tab, go to the Sources panel and click on *Add source from...*. A new dialog screen will open allowing you to create your own query or run a SQL analysis to data on your connection. Select an option and click *Add source*.
 
@@ -263,10 +289,12 @@ To learn more, please visit the Documentation page of the CARTO Analytics Toolbo
 * [Analytics Toolbox for Redshift](/analytics-toolbox-redshift)
 * [Analytics Toolbox for Databricks](/analytics-toolbox-databricks)
 * [Analytics Toolbox for PostgreSQL ](/analytics-toolbox-postgres)
-### Add source from a local or remote file
+
+#### Add source from a local or remote file
 
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
-#### Supported formats
+
+####  Supported formats
 Currently, the import of CSV, KML, KMZ, TAB, GeoJSON, GeoPackage and Shapefiles (in a zip file) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
 
 For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
@@ -339,7 +367,7 @@ Once the data has been imported, the dataset is included in the Builder map tool
 
 ![Map imported remote file](/img/cloud-native-workspace/maps/map_imported_remote_file.png)
 
-### Add source from Data Observatory
+#### Add source from Data Observatory
 
 From the Layers tab, go to the Sources panel and click on *Add source from…*. Go to the "Data Observatory" tab. A new dialog screen will open allowing you to select your subscriptions or samples from one of your connections. Select a subscription or a sample and click on *Add source*.
 
@@ -359,6 +387,20 @@ To learn more about how to visualize your Data Observatory datasets in Builder, 
 
 <!-- Read our [documentation] if you want to learn about the specific permissions CARTO requires. -->
 
+### Refresh a data source
+
+By opening the contextual menu on a data source card, you will find the option to _"Refresh data source"_. 
+
+ <p align="center">
+  <img src="/img/cloud-native-workspace/maps/refresh_datasource.png" />
+</p>
+
+By option will reload the data source and recreate the associated layers. With this option, CARTO will invalidate any previous cached object related to this source and will push a SQL query to the data warehouse to fetch fresh data.
 
 
+{{% bannerNote title="NOTE" type="note"%}}
+Bear in mind that using this option will increase the amount of data processed in your data warehouse, which might have a significant cost associated to it.
+
+The cached objects associated to the data source will be invalidated, and the SQL queries that were executed to generate them will be executed again.
+{{%/ bannerNote %}}
 

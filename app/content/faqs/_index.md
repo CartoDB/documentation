@@ -13,6 +13,7 @@ cascade:
     - title: "Categories"
       folder:
         - title: "CARTO Accounts"
+        - title: "Migration to the new platform"
         - title: "Workspace"
         - title: "Builder"
         - title: "Data Observatory"

@@ -38,7 +38,7 @@ When there are a lot of geometries to be included in a tile, CARTO will automati
 
 Builder will show an information message when feature dropping is happening, so you will be aware that some features are missing in the map. 
 
-Widget data is calculated client-side with the data that is included in the tiles. Therefore, they will also be affected by feature dropping, and widgets might not show accurate data at certain zoom levels. An info message will appear in this cases. 
+Widget data is calculated client-side with the data that is included in the tiles. Therefore, they will also be affected by feature dropping, and widgets will be deactivated at certain zoom levels. An info message will appear in these cases. 
 
 #### Tips for medium size datasets performance
 

@@ -4,6 +4,7 @@
 
 This module contains functions that perform clustering on geographies.
 
+
 ### CREATE_CLUSTERKMEANS
 
 {{% bannerNote type="code" %}}
@@ -12,7 +13,7 @@ carto.CREATE_CLUSTERKMEANS(input, output_table, geom_column, number_of_clusters)
 
 **Description**
 
-Takes a set of points as input and partitions them into clusters using the k-means algorithm. Creates a new table with the same columns as `input` plus a `cluster_id` with the cluster index for each of the input features.
+Takes a set of points as input and partitions them into clusters using the k-means algorithm. Creates a new table with the same columns as `input` plus a `cluster_id` column with the cluster index for each of the input features.
 
 * `input`: `VARCHAR` name of the table or literal SQL query to be clustered.
 * `output_table`: `VARCHAR` name of the output table.
@@ -20,7 +21,7 @@ Takes a set of points as input and partitions them into clusters using the k-mea
 * `number_of_clusters`: `INT` number of clusters that will be generated.
 
 {{% bannerNote type="warning" title="warning"%}}
-Keep in mid that due to some restrictions in the Redshift `VARCHAR` size, the maximum number of features (points) allow to be clusterized is around 2500.
+Keep in mid that due to some restrictions in the Redshift `VARCHAR` size, the maximum number of features (points) allow to be clustered is around 2500.
 {{%/ bannerNote %}}
 
 **Examples**
@@ -49,7 +50,7 @@ carto.ST_CLUSTERKMEANS(geog [, numberOfClusters])
 Takes a set of points as input and partitions them into clusters using the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
 
 * `geog`: `GEOMETRY` points to be clustered.
-* `numberOfClusters` (optional): `INT` number of clusters that will be generated. It defaults to `Math.sqrt(<NUMBER OF POINTS>/2)`.
+* `numberOfClusters` (optional): `INT` number of clusters that will be generated. It defaults to the square root of half the number of points (`sqrt(<NUMBER OF POINTS>/2)`).
 
 **Return type**
 

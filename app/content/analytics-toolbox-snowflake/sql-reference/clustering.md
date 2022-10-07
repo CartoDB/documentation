@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions that perform clustering on geographies.
 
+
 ### ST_CLUSTERKMEANS
 
 {{% bannerNote type="code" %}}
@@ -16,7 +17,7 @@ carto.ST_CLUSTERKMEANS(geog [, numberOfClusters])
 
 **Description**
 
-Takes a set of points and partition them into clusters using the k-mean. It uses the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
+Takes a set of points as input and partitions them into clusters using the k-means algorithm. Returns an array of tuples with the cluster index for each of the input features and the input geometry.
 
 * `geojsons`: `ARRAY` points to be clustered.
 * `numberOfClusters` (optional): `INT` numberOfClusters that will be generated. By default `numberOfClusters` is `Math.sqrt(<NUMBER OF POINTS>/2)`.
@@ -42,3 +43,8 @@ SELECT carto.ST_CLUSTERKMEANS(ARRAY_CONSTRUCT(ST_ASGEOJSON(ST_POINT(0, 0))::STRI
 -- {"cluster": 0, "geom": "{\"coordinates\":[5,0],\"type\":\"Point\"}"}
 -- {"cluster": 1, "geom": "{\"coordinates\":[1,0],\"type\":\"Point\"}"}
 ```
+
+{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
+* [New supplier offices based on store locations clusters](/analytics-toolbox-snowflake/examples/new-supplier-offices-based-on-store-locations-clusters/)
+{{%/ bannerNote %}}

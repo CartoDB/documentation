@@ -14,7 +14,7 @@ docker-compose up server
 
 This will start the server locally and you can see the page in http://localhost:1313/
 
-You can also build the page and generate the static files running 
+You can also build the page and generate the static files running
 
 ```
 docker-compose up build

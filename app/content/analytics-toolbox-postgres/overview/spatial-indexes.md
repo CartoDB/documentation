@@ -44,7 +44,7 @@ Quadbin is a hierarchical geospatial index based on the [Bing Maps Tile System](
     </figure>
 </div>
 
-Instead of constructing a grid over a planar projection like Quadkey does, H3 projects from Earth like a sphere to a regular icosahedron, and then lays out hexagonal grid cells on each of its faces.
+Instead of constructing a grid over a planar projection like Quadbin does, H3 projects from Earth like a sphere to a regular icosahedron, and then lays out hexagonal grid cells on each of its faces.
 
 One of the most powerful properties of H3 is that all neighboring hexagons of a particular cell are at an equal distance. This enables fast computation of grid distances between hexagons and neighbouring areas around an index using the [DISTANCE](../../sql-reference/h3/#distance) and [KRING](../../sql-reference/h3/#kring) functions, respectively.
 

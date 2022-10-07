@@ -15,10 +15,11 @@ aliases:
 
 In this example we will showcase how easily we can compute all the paths that interconnect the main four US airports using the Analytics Toolbox.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH data AS(
     SELECT *
-    FROM `carto-do-public-data`.natural_earth.geography_glo_airports_410 
+    FROM `carto-do-public-data`.natural_earth.geography_glo_airports_410
 	WHERE abbrev = 'JFK' OR abbrev = 'LAX'  OR abbrev = 'SEA'  OR abbrev = 'MIA'
 )
 SELECT `carto-un`.carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25) AS geo
@@ -31,17 +32,18 @@ This query first creates all the possible combinations between airports and then
 
 The result is displayed in this visualization. Notice we are not using straight lines to interconnect the different airports, but great circles instead.
 
-<iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/f54fe4b8-fee3-4e2d-a9d1-4f8a632eba71" title="US airports connections."></iframe> 
+<iframe height=480px width=100% style='margin-bottom:20px' src="https://public.carto.com/builder/f54fe4b8-fee3-4e2d-a9d1-4f8a632eba71" title="US airports connections."></iframe>
 
 
 ### Routes interpolation
 
 Now let's put to the test how to perform line interpolations using the `ST_LINE_INTERPOLATE_POINT` function. In this example we will compute the airplane position after taking off from the different airports and travelling a certain distance.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH data AS(
     SELECT *
-    FROM `carto-do-public-data`.natural_earth.geography_glo_airports_410 
+    FROM `carto-do-public-data`.natural_earth.geography_glo_airports_410
 	WHERE abbrev = 'JFK' OR abbrev = 'LAX'  OR abbrev = 'SEA'  OR abbrev = 'MIA'
 )
 SELECT CONCAT(t1.abbrev, " - ", t2.abbrev) as route, `carto-un`.carto.ST_LINE_INTERPOLATE_POINT(`carto-un`.carto.ST_GREATCIRCLE(t1.geom, t2.geom, 25), 500,'kilometers') AS geo

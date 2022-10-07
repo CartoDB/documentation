@@ -21,6 +21,7 @@ The elevation data that will be used as reference to perform the interpolation i
 
 Since the route is straight, we can easily calculate evenly distributed points along the route and use them as the points for which to perform the interpolation. The result can be publicly accessed from `cartobq.docs.kriging_jp_interp_points`.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT
   ST_GEOGPOINT(142.41*p+142.44*(1-p),43.496*p+43.53*(1-p)) point
@@ -33,6 +34,7 @@ FROM
 
 Now let’s use the kriging interpolation stored procedure, [ORDINARY_KRIGING_TABLE](../../sql-reference/statistics/#ordinary_kriging_table) to create a table with the result.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.ORDINARY_KRIGING_TABLE(
          'cartobq.docs.nasadem_jp_extract',

@@ -3,6 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 
+const yaml = require('yaml');
+
 const cloud = process.env.CLOUD || '';
 const targetPath = process.env.TARGETPATH || '';
 
@@ -15,24 +17,65 @@ updateModules('', ['databricks']);
 updateOverview();
 updateReleaseNotes();
 
+function extractMetadata (markdown) {
+    let metadata = {};
+    if (markdown.startsWith('---\n')) {
+        const i = markdown.indexOf('\n---\n',3);
+        if (i >= 0) {
+            metadata = yaml.parse(markdown.slice(4, i));
+        }
+    }
+    return metadata;
+}
+
+function removeMetadata (markdown) {
+    if (markdown.startsWith('---\n')) {
+        const i = markdown.indexOf('\n---\n',3);
+        if (i >= 0) {
+            markdown = markdown.slice(i + 5);
+        }
+    }
+    return markdown;
+}
+
+function sortedFiles (files, metadata) {
+    return files.sort((first, second) => {
+        let first_i = -1;
+        let second_i = -1;
+        let n = 0;
+        if (metadata.order) {
+            n = metadata.order.length;
+            first_i = metadata.order.indexOf(path.parse(first).name);
+            second_i = metadata.order.indexOf(path.parse(second).name);
+        }
+        if (first_i < 0 && !first.startsWith('_')) {
+            first_i = n;
+        }
+        if (second_i < 0 && !second.startsWith('_')) {
+            second_i = n;
+        }
+        if (first_i === second_i) {
+            return first < second ? -1 : first === second ? 0 : +1;
+        }
+        return first_i < second_i ? -1 : +1;
+    });
+}
+
 function updateModules (type, ignore) {
     if (ignore && ignore.includes(cloud)) {
         return;
     }
-    const repo = `analytics-toolbox${type ? `-${type}` : ''}`;
+    const repo = `analytics-toolbox${type ? `/${type}` : ''}`;
     const sourcePath = path.join('.', '.checkout', repo, 'clouds', cloud, 'modules', 'doc');
     const modules = fs.readdirSync(sourcePath);
     modules.forEach(module => {
         const docPath = path.join(sourcePath, module);
         if (fs.existsSync(docPath) && module != 'quadkey' && module != 'geocoding') {
             console.log(`- Update ${module} module`);
-            const files = fs.readdirSync(docPath).filter(f => f.endsWith('.md')).sort((first, second) => {
-                if (first.startsWith('_') || first < second) return -1;
-                if (second.startsWith('_') || first > second) return 1;
-                return 0;
-            });
+            const metadata = extractMetadata(fs.readFileSync(path.join(docPath, '_INTRO.md')).toString());
+            const files = sortedFiles(fs.readdirSync(docPath).filter(f => f.endsWith('.md')), metadata);
             let content = aliasesHeader(`sql-reference/${module}`)
-            content += files.map(f => fs.readFileSync(path.join(docPath, f)).toString()).join('\n\n');
+            content += files.map(f => removeMetadata(fs.readFileSync(path.join(docPath, f)).toString())).join('\n\n');
             if (cloud === 'bigquery') {
                 content += '\n\n{{% euFlagFunding %}}'
             }

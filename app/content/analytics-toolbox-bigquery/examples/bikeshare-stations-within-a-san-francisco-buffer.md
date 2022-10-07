@@ -17,6 +17,7 @@ In this example we are going to showcase how easily we can compute buffers aroun
 
 The following query creates a buffer with a radius of 50 meters around San Francisco's Financial District neighborhood using the `ST_BUFFER` function. The number of steps could be modified in order to make the lines smoother if needed.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT `carto-un`.carto.ST_BUFFER(neighborhood_geom, 50, 'meters', 5) AS geo FROM `bigquery-public-data`.san_francisco_neighborhoods.boundaries WHERE neighborhood = "Financial District"
 ```
@@ -30,6 +31,7 @@ In this visualization you can see the Financial Disctrict (darker blue) and its 
 
 Now let's use the buffer as a way of defining a bigger region around the Financial District of San Francisco and filtering some other geometries.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 SELECT ST_GEOGPOINT(d2.longitude,d2.latitude) AS geo FROM `bigquery-public-data`.san_francisco_neighborhoods.boundaries d1,
 `bigquery-public-data`.san_francisco.bikeshare_stations d2

@@ -48,6 +48,7 @@ cascade:
         - title: "accessors"
         - title: "clustering"
         - title: "constructors"
+        - title: "cpg"
         - title: "data"
         - title: "geohash"
         - title: "h3"

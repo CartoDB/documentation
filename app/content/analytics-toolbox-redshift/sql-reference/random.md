@@ -4,6 +4,7 @@
 
 This module contains functions to generate random geographies.
 
+
 ### ST_GENERATEPOINTS
 
 {{% bannerNote type="code" %}}

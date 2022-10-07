@@ -1,28 +1,44 @@
 ## Release notes
 
+### September 19, 2022
+
+#### Module tiler
+
+Changed
+
+- Set `version` field in tilers metadata compliant with AT version.
+
 ### August 11, 2022
 
 #### Module tiler
+
 Changed
+
 - Unify `extra_metadata` into `metadata` in tiler metadata.
 
 ### July 20, 2022
 
 #### Module tiler
+
 Fixed
+
 - CREATE_SPATIAL_INDEX_TILESET Metadata center is now computed for PostgreSQL as for other providers
 - Improved performance for quadbin tilesets in  `CREATE_SPATIAL_INDEX_TILESET`.
 
 ### July 15, 2022
 
 #### Module tiler
+
 Feature
+
 - Add `CREATE_SPATIAL_INDEX_TILESET` option.
 
 ### June 24, 2022
 
 #### Module quadbin
+
 Feature
+
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
 - Add QUADBIN_CENTER function.
@@ -42,14 +58,18 @@ Feature
 ### June 9, 2022
 
 #### Module tiler
+
 Fixed
+
 - Fix metadata tilestats to include only columns in properties
 - Fix numeric metadata tilestats which were treated as categories
 
 ### April 22, 2022
 
 #### Module tiler
+
 Feature
+
 - Add `max_tile_features` option.
 - Add output table existence early check.
 - Add `throw_error` and `return_null` size strategy.
@@ -60,7 +80,9 @@ Feature
 ### April 7, 2022
 
 #### Module tiler
+
 Feature
+
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
 - Add CREATE_SIMPLE_TILESET procedure.
 

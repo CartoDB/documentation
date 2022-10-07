@@ -11,11 +11,11 @@ categories:
 ## Store cannibalization: quantifying the effect of opening new stores on your existing network
 
 
-Cannibalization is a very common analysis in retail that consists in quantifying the impact of new store openings on existing stores. Depending on the business, the metric/s driving this impact can be different, e.g. population, footfall, or simply the overlapping area covered by the catchment area of two stores. 
+Cannibalization is a very common analysis in retail that consists in quantifying the impact of new store openings on existing stores. Depending on the business, the metric/s driving this impact can be different, e.g. population, footfall, or simply the overlapping area covered by the catchment area of two stores.
 
 The key to quantifying cannibalization is to measure potential losses in the overlapping areas between the catchment area of existing and new stores.
 
-In this example, we’ll show how to run a cannibalization analysis in two simple steps using the [retail module](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/retail/) in CARTO Analytics Toolbox. 
+In this example, we’ll show how to run a cannibalization analysis in two simple steps using the [retail module](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/retail/) in CARTO Analytics Toolbox.
 
 For this analysis we will use [Iowa liquor sales](https://data.iowa.gov/Sales-Distribution/Iowa-Liquor-Sales/m3tr-qhgy) open data available in `bigquery-public-data.iowa_liquor_sales.sales`. In particular, we’ll focus on the area around Waterloo taking a buffer of 30 km around Waterloo city center considering Hy-Vee stores as our customer’s stores (see map at the end of the example).
 
@@ -27,7 +27,7 @@ First, we need to prepare the data for the analysis. To do this, we’ll use the
 1. The type of grid and resolution to be used. Note this is a [spatial index](https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/)-based analysis.
 2. The existing store locations.
 
-3. The size of the catchment area buffer by urbanity type. See the [procedure documentation](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/retail/#build_cannibalization_data) for details on types of urbanity. 
+3. The size of the catchment area buffer by urbanity type. See the [procedure documentation](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/retail/#build_cannibalization_data) for details on types of urbanity.
 *Note* this uses [CARTO global urbanity categories](https://carto.com/blog/building-spatial-model-classify-global-urbanity-levels/) available through the [Spatial Features](https://carto.com/spatial-data-catalog/browser/?category=derived&provider=carto) datasets for which a [subscription](https://docs.carto.com/analytics-toolbox-bigquery/guides/data-enrichment-using-the-data-observatory/) is required.
 
 4. Variables from the [CARTO’s Data Observatory](https://carto.com/data-observatory/) subscriptions we’d like to use to quantify cannibalization. In this case, population. *Note* the variable slug is required which can be obtained [using the Analytics Toolbox](https://docs.carto.com/analytics-toolbox-bigquery/guides/data-enrichment-using-the-data-observatory/) or on your workspace (see image below).
@@ -41,7 +41,7 @@ First, we need to prepare the data for the analysis. To do this, we’ll use the
 
 In our example, we’d like to quantify cannibalization through the population overlap between the new store’s catchment area and the existing ones. Therefore, we run the following query to get the data ready:
 
-
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
  --grid_type
@@ -91,7 +91,7 @@ As a result, the following table contains the information of every cell (spatial
 
 Next, we compute the cannibalization impact of two potential new stores using the [CANNIBALIZATION_OVERLAP](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/retail/#cannibalization_overlap) procedure.
 
-
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
   --data_table: this is the output table of step 1

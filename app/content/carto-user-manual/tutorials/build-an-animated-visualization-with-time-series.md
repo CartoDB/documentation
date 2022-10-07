@@ -65,11 +65,11 @@ In this tutorial we are going to represent the distribution of tree species in t
  
     ![Map style radius](/img/cloud-native-workspace/tutorials/tutorial2_map_change_the_radius.png)
 
-11. Go to Widget tab. If you haven't created a widget yet, you will see the following page:
+11. Go to Widget tab. If you haven't created a widget yet, you will see the following page.
 
     ![Map widgets add new widget](/img/cloud-native-workspace/tutorials/tutorial2_map_add_new_widget.png)
 
-12. Click on *New widget* button and select "populated_places".
+12. Click on *New widget* button and select "san_francisco_street_trees".
 
     ![Map widgets select source](/img/cloud-native-workspace/tutorials/tutorial2_map_widget_select_the_source.png)
 

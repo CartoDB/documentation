@@ -5,10 +5,20 @@ navbar:
   #   url: https://carto.com/help/tutorials/using-builder
   - name: Data Observatory
     url: /data-observatory
-  - name: CARTOframes
-    url: https://carto.com/developers/cartoframes
   - name: Analytics Toolbox
-    url: /analytics-toolbox
+    subelements:
+      - name: Overview
+        url: /analytics-toolbox
+      - name: for BigQuery
+        url: /analytics-toolbox-bigquery/overview/getting-started/
+      - name: for Snowflake
+        url: /analytics-toolbox-snowflake/overview/getting-started/
+      - name: for Redshift
+        url: /analytics-toolbox-redshift/overview/getting-started/
+      - name: for Databricks
+        url: /analytics-toolbox-databricks/overview/getting-started/
+      - name: for PostgreSQL
+        url: /analytics-toolbox-postgres/overview/getting-started/
   - name: Dev tools
     subelements:
       - name: CARTO API
@@ -27,8 +37,8 @@ navbar:
         url: /angular
       - name: CARTO + Vue.js
         url: /vue
-      - name: Mobile SDK
-        url: https://carto.com/developers/mobile-sdk
+      # - name: Mobile SDK
+      #   url: https://carto.com/developers/mobile-sdk
   # - name: APIs
   #   subelements:
   #     - name: SQL API

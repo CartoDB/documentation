@@ -5,17 +5,18 @@ image: "/img/bq-analytics-toolbox/examples/uk-census-areas.png"
 type: examples
 date: "2021-02-12"
 categories:
-    - quadkey
+    - quadbin
     - constructors
 aliases:
     - /analytics-toolbox-bq/examples/census-areas-in-the-uk-within-tiles-of-multiple-resolutions/
 ---
 ## Census areas in the UK within tiles of multiple resolutions
 
-In this example we are going to use the `ST_TILEENVELOPE` function, which returns the bounding geometry of quadkey tile given its 3D coordinates (x, y and resolution), to showcase the extent of quadkey tiles at different resolutions. For this purpose we are using the [United Kingdom census areas dataset](https://carto.com/spatial-data-catalog/browser/geography/drd_output_area_73f0b4a3/) from CARTO's Data Observatory. 
+In this example we are going to use the `ST_TILEENVELOPE` function, which returns the bounding geometry of quadkey tile given its 3D coordinates (x, y and resolution), to showcase the extent of quadkey tiles at different resolutions. For this purpose we are using the [United Kingdom census areas dataset](https://carto.com/spatial-data-catalog/browser/geography/drd_output_area_73f0b4a3/) from CARTO's Data Observatory.
 
 Taking as input the longitude and latitude from a geographic point in the city of London, the resulting map depicts the belonging census areas for different tile resolutions (from 11 to 15 zoom levels).
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH census_data AS (
     SELECT geom, geoid
@@ -34,11 +35,11 @@ quadkey_tiles AS (
 SELECT ANY_VALUE(census.geom) AS area, MAX(index.z) AS level
 FROM quadkey_tiles
 JOIN census_data AS census
-ON 
+ON
 ST_INTERSECTS(`carto-un`.carto.ST_TILEENVELOPE(index.z, index.x, index.y), census.geom)
 GROUP BY census.geoid
 ```
 
-<iframe height=480px width=100% style='margin-bottom:20px' src="https://team.carto.com/u/agraciano/builder/2febc1c3-e3b6-45e1-ab11-9e6dd910a601/layers#/" title="Census areas intersected by the tile envelopes."></iframe>
+![](/img/bq-analytics-toolbox/examples/uk-census-areas.png)
 
 {{% euFlagFunding %}}

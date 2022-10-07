@@ -13,10 +13,10 @@ carto.GETIS_ORD_QUADBIN(input, size, kernel)
 
 **Description**
 
-This function computes the Getis-Ord Gi* statistic for each quadbin index in the input array.
+This function computes the Getis-Ord Gi* statistic for each Quadbin index in the input array.
 
 * `input`: `SUPER` input data with the indexes and values of the cells.
-* `size`: `INT8` size of the quadbin kring (distance from the origin). This defines the area around each index cell that will be taken into account to compute its Gi* statistic.
+* `size`: `INT8` size of the Quadbin _k-ring_ (distance from the origin). This defines the area around each index cell that will be taken into account to compute its Gi* statistic.
 * `kernel`: `VARCHAR` [kernel function](https://en.wikipedia.org/wiki/Kernel_(statistics)) to compute the spatial weights across the kring. Available functions are: uniform, triangular, quadratic, quartic and gaussian.
 
 **Return type**
@@ -34,9 +34,7 @@ SELECT carto.GETIS_ORD_QUADBIN(
     ]'),
     3, 'gaussian'
 );
--- {"index":5266443791933898751,"gi":1.3606194139870578}
--- {"index":5266443803500740607,"gi":-0.34633948719670504}
--- {"index":5266443790415822847,"gi":-1.0142799267903513}
+-- [{"index":5266443791933898751,"gi":1.3606194139870578,"p_value":0.086817058065399522},{"index":5266443803500740607,"gi":-0.34633948719670504,"p_value":0.63545613599515272},{"index":5266443790415822847,"gi":-1.0142799267903513,"p_value":0.84477538488255133}]
 ```
 
 
@@ -51,7 +49,7 @@ carto.MORANS_I_QUADBIN(input, size, decay)
 This function computes the [Moran's I spatial autocorrelation](https://en.wikipedia.org/wiki/Moran%27s_I) from the input array of quadkey indexes.
 
 * `input`: `SUPER` input data with the indexes and values of the cells.
-* `size`: `INT8` size of the quadkey kring (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
+* `size`: `INT8` size of the quadkey _k-ring_ (distance from the origin). This defines the area around each index cell where the distance decay will be applied.
 * `decay`: `VARCHAR` decay function to compute the [distance decay](https://en.wikipedia.org/wiki/Distance_decay). Available functions are: uniform, inverse, inverse_square and exponential.
 
 **Return type**
@@ -71,7 +69,6 @@ SELECT carto.MORANS_I_QUADBIN(
 );
 -- -0.2966571382680862
 ```
-
 
 
 ### P_VALUE
@@ -96,4 +93,3 @@ This function computes the one tail p-value (upper-tail test) of a given [z-scor
 SELECT carto.P_VALUE(-2);
 -- 0.9772499371127437
 ```
-

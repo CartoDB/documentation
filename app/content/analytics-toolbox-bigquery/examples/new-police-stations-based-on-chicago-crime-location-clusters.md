@@ -18,6 +18,7 @@ In this example we are going to use points clustering to analyze where to locate
 
 First, we calculate crime locations clusters using the `ST_CLUSTERKMEANS` function:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH clustered_points AS
 (
@@ -35,6 +36,7 @@ This query takes the crimes samples data, gathers their geometries in order to e
 
 Once we have split the sample of points into clusters, we can easily work with them to calculate their centers, envelopes, concave/convex hulls and other different transformations. In this particular example we are interested in finding the center of the clusters, since that is where we are going to place the police stations. The Analytics Toolbox offers different functions for this task: `ST_CENTERMEAN`, `ST_CENTERMEDIAN` and `ST_CENTEROFMASS`. In this case let's use `ST_CENTERMEDIAN` to calculate the location of the new police stations:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 WITH clustered_points AS
 (

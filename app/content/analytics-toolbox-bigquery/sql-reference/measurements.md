@@ -8,6 +8,7 @@ aliases:
 
 This module contains functions that compute measurements of distance, area and angles. There are also functions to compute geometry values determined by measurements.
 
+
 ### ST_ANGLE
 
 {{% bannerNote type="code" %}}
@@ -16,7 +17,7 @@ carto.ST_ANGLE(startPoint, midPoint, endPoint, mercator)
 
 **Description**
 
-Finds the angle formed by two adjacent segments defined by 3 points. The result will be the (positive clockwise) angle with origin on the startPoint-midPoint segment, or its explementary angle if required.
+Finds the angle formed by two adjacent segments defined by 3 points. The result will be the (positive clockwise) angle with origin on the startPoint-midPoint segment, or its [explementary angle](http://www.amathsdictionaryforkids.com/qr/e/explementaryConjugateAngles.html) if required.
 
 * `startPoint`: `GEOGRAPHY` start Point Coordinates.
 * `midPoint`: `GEOGRAPHY` mid Point Coordinates.
@@ -35,6 +36,7 @@ Finds the angle formed by two adjacent segments defined by 3 points. The result 
 SELECT `carto-os`.carto.ST_ANGLE(ST_GEOGPOINT(-3.70325 ,40.4167), ST_GEOGPOINT(-4.70325 ,10.4167), ST_GEOGPOINT(-5.70325 ,40.4167), false);
 -- 3.933094586038578
 ```
+
 
 ### ST_MINKOWSKIDISTANCE
 
@@ -61,5 +63,6 @@ Calculate the Minkowski p-norm distance between two features.
 SELECT `carto-os`.carto.ST_MINKOWSKIDISTANCE([ST_GEOGPOINT(10,10),ST_GEOGPOINT(13,10)],2);
 -- ["0,0.3333333333333333","0.3333333333333333,0"]
 ```
+
 
 {{% euFlagFunding %}}

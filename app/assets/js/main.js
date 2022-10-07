@@ -5,3 +5,4 @@ require("./floating-panel");
 require("./tutorial");
 require("./codeHighlight");
 require("./fullscreen");
+require("./code-copy");

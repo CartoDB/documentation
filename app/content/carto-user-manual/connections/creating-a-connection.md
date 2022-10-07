@@ -152,36 +152,37 @@ Once you have entered the parameters, you can click the *Connect* button. CARTO 
 
 ### Connection to Databricks
 
-{{% bannerNote title="WARNING" type="tip" %}}
-This connection is in BETA.
+{{% bannerNote title="NOTE" type="note" %}}
+CARTO can connect to a **Databricks SQL Warehouse** or a **Databricks cluster**. In both cases, the connection fully supports **H3 indexes**. 
 
-Please verify you've already [installed](/analytics-toolbox-databricks/overview/installation) the CARTO analytics toolbox in your cluster before following these steps.
+Working with geometries is only supported when connecting to a Databricks cluster and it requires the installation of the **com.carto.analyticstoolbox.core** library (in Beta). Check out the [installation instructions](https://docs.carto.com/analytics-toolbox-databricks/overview/installation) for more information.
 {{%/ bannerNote %}}
 
-You can use CARTO with your data from [Databricks](https://databricks.com).
+CARTO can connect to [Databricks](https://databricks.com) to push down SQL queries that will be executed in your Databricks SQL Warehouse or Databricks cluster.
 
-If you want to create a connection to your Databricks, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
+If you want to create a connection to Databricks, you need to select the Databricks connector in the *New connection* dialog. After you select the connector click the *Setup connection* button.
 
 ![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_first.png)
 
-A dialog will appear informing you that you first need to install carto.analyticstoolbox.core package. Click on *Got it!*  to confirm.
+<!-- A dialog will appear informing you that you first need to install carto.analyticstoolbox.core package. Click on *Got it!*  to confirm.
 
-![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_connect(warning).png)
+![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_connect(warning).png) -->
 
 These are the parameters you need to provide:
 
-- **Name** for your connection: You can register different connections with the Databricks connector. You can use the name to identify the connections.
-- **Server**: Databricks cluster JDBC/ODBC server hostname.
-- **HTTP Path**: Databricks cluster JDBC/ODBC compute resources URL.
-- **Port**: TCP port (443).
-- **Token**: Token for the user account.
-- **Database**: Database your connection will use. This database need to be the one where the [CARTO Analytics Toolbox UDFs have been created](/analytics-toolbox-databricks/overview/installation/). 
+- **Name**: A name to identify this connection across different CARTO interfaces.
+- **Server**: Server host URL of your SQL Warehouse or cluster.
+- **HTTP Path**: HTTP Path of your SQL Warehouse or cluster.
+- **Port**: TCP port that will be used to create the connection.
+- **Token**: A Databricks user token. The connection will inherit permission and access privileges of the user that generates the token.
+<!-- - **Database**: Default database that .  -->
+- **Catalog**: This parameter is needed for connections to SQL Warehouses. Select a Catalog that will be available through this connection.
 
-Please visit the documentation of the Databricks [connection parameters](/analytics-toolbox-databricks/overview/installation/#connection-parameters) to get more information about how to obtain them.
+<!-- Please visit the documentation of the Databricks [connection parameters](/analytics-toolbox-databricks/overview/installation/#connection-parameters) to get more information about how to obtain them. -->
 
 ![Connection setup with Databricks](/img/cloud-native-workspace/connections/the_connections_databricks_parameters.png)
 
-Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Databricks cluster. If everything is OK, your new connection will be registered.
+Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to Databricks, and if everything is OK, your new connection will be registered.
 
 ### IP Whitelisting
 

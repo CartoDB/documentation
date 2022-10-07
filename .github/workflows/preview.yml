@@ -20,8 +20,8 @@ jobs:
 
       - name: Hugo Build
         working-directory: app
-        run: hugo
-
+        run: hugo --baseURL .
+        
       - name: Deploy to firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
