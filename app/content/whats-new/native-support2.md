@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Native support 2"
 type: whats-new
 date: "2022-09-15"
@@ -15,4 +15,4 @@ Leveraging these global grid systems also allows for more effective visualizatio
 
 Now, Builder users can load, visualize and process tables, tilesets and results from SQL queries that contain spatial indexes without the need for geometry data. The resulting visualization is then aggregated dynamically at each zoom level, allowing data to be always represented in the most meaningful resolution.
 
-![Log in Email and password](/img/cloud-native-workspace/get-started/login.png)
+![Log in Email and password](/img/cloud-native-workspace/get-started/login.png) -->
