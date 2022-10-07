@@ -20,6 +20,20 @@ Feature
 
 - Add CREATE_ISOLINES procedure.
 
+### October 7, 2022
+
+#### Module clustering
+
+Feature
+
+- Move ST_CLUSTERKMEANS function to core.
+
+#### Module random
+
+Feature
+
+- Move ST_GENERATEPOINTS function to core.
+
 ### October 4, 2022
 
 #### Module lds
@@ -33,6 +47,7 @@ Changed
 #### Module lds
 
 Changed
+
 - Rename `LDS_API_URL` to `API_BASE_URL`.
 
 ### September 28, 2022

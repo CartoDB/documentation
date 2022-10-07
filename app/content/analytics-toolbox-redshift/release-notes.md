@@ -1,6 +1,21 @@
 ## Release notes
 
-### October 1, 2022
+### October 7, 2022
+
+#### Module clustering
+
+Feature
+
+- Move ST_CLUSTERKMEANS function to core.
+- Move CREATE_CLUSTERKMEANS procedure to core.
+
+#### Module random
+
+Feature
+
+- Move ST_GENERATEPOINTS function to core.
+
+### September 30, 2022
 
 #### Module lds
 

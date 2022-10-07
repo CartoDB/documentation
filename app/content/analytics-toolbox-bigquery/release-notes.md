@@ -4,6 +4,20 @@ aliases:
 ---
 ## Release notes
 
+### October 7, 2022
+
+#### Module clustering
+
+Feature
+
+- Move ST_CLUSTERKMEANS function to core.
+
+#### Module random
+
+Feature
+
+- Move ST_GENERATEPOINTS function to core.
+
 ### October 5, 2022
 
 #### Module cpg
@@ -24,7 +38,7 @@ Changed
 
 - CREATE_ISOLINES output is clustered by geometry.
 
-### October 1, 2022
+### September 30, 2022
 
 #### Module lds
 

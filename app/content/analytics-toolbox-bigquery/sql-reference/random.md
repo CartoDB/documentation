@@ -4,7 +4,7 @@ aliases:
 ---
 ## random
 
-<div class="badges"><div class="advanced"></div></div>
+<div class="badges"><div class="core"></div></div>
 
 This module contains functions to generate random geographies.
 
@@ -44,7 +44,7 @@ WITH blocks AS (
   WHERE g.county_name = 'Sonoma County'
 ),
 point_lists AS (
-  SELECT `carto-un`.carto.ST_GENERATEPOINTS(blockgroup_geom, CAST(total_pop AS INT64)) AS points
+  SELECT `carto-os`.carto.ST_GENERATEPOINTS(blockgroup_geom, CAST(total_pop AS INT64)) AS points
   FROM blocks
 )
 SELECT points FROM point_lists CROSS JOIN point_lists.points

@@ -4,7 +4,7 @@ aliases:
 ---
 ## clustering
 
-<div class="badges"><div class="advanced"></div></div>
+<div class="badges"><div class="core"></div></div>
 
 This module contains functions that perform clustering on geographies.
 

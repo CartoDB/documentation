@@ -4,7 +4,7 @@ aliases:
 ---
 ## clustering
 
-<div class="badges"><div class="advanced"></div></div>
+<div class="badges"><div class="core"></div></div>
 
 This module contains functions that perform clustering on geographies.
 
@@ -31,7 +31,7 @@ Takes a set of points as input and partitions them into clusters using the k-mea
 {{%/ customSelector %}}
 
 ```sql
-SELECT `carto-un`.carto.ST_CLUSTERKMEANS([ST_GEOGPOINT(0, 0), ST_GEOGPOINT(0, 1), ST_GEOGPOINT(5, 0), ST_GEOGPOINT(1, 0)], 2);
+SELECT `carto-os`.carto.ST_CLUSTERKMEANS([ST_GEOGPOINT(0, 0), ST_GEOGPOINT(0, 1), ST_GEOGPOINT(5, 0), ST_GEOGPOINT(1, 0)], 2);
 -- {cluster: 1, geom: POINT(0 0)}
 -- {cluster: 1, geom: POINT(0 1)}
 -- {cluster: 0, geom: POINT(5 0)}
