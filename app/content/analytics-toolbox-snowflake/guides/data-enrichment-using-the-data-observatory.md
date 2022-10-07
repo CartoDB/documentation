@@ -66,7 +66,8 @@ In this particular example we are going to enrich our data with the following va
 
 ### 4. Run the enrichment
 
-The enrichment is performed using the [`DATAOBS_ENRICH_POLYGONS`](../../sql-reference/data/#dataobs_enrich_polygons) procedure of the Analytics Toolbox. Please note that this particular procedure makes use of spatial indexes and does not require the input data to have a geometry column. 
+The enrichment is performed using the [`DATAOBS_ENRICH_POLYGONS`](../../sql-reference/data/#dataobs_enrich_polygons) procedure of the Analytics Toolbox. 
+
 
 The following inputs are needed:
 * The input table to be enriched.
