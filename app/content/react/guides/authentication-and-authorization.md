@@ -19,9 +19,12 @@ With the following changes we're going to make the private application public.
 
 1. Create a token. There are two different ways for creating a token: 
    
-   - You can create a map in Builder with the data sources you want to use in your application and then you make it public by clicking the "Share" button. You can then select the "Developers" tab and copy the map token.
+   - You can create a map in Builder with the data sources you want to use in your application and then you make it public by 
+     - clicking the "Share" button and selecting _'Public'_
+     - clicking on _'Save'_ 
+     - Once saved, you can get a token from the 'Developers' tab by clicking on _'copy the Map token'_.
   
-   ![map-token](/img/react/map-token.png 'Map Token')
+   ![map-token](/img/react/map-token.png 'Map Token') 
 
    - You can make a request to the `Create Token` endpoint from the [CARTO 3 API](https://api-docs.carto.com)
 
