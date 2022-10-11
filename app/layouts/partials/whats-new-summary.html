@@ -1,8 +1,8 @@
 <div class="grid-cell grid-cell--col12 grid-cell--col12--desktop-s grid-cell--col12--mobile whats-new-card">
   <div class="whats-new-card__content__wrapper">
     <div class="whats-new-card__summary">
-      <p class="date">{{ .Params.date.Format "January 2 2006" }}</p>
-      <h2 class="title">{{ .Title }}</h2>
+      <p class="date">{{ .Params.date.Format "January 2, 2006" }}</p>
+      <h2 class="title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
     </div>
 
     <!-- TAGS -->
