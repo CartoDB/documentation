@@ -19,6 +19,9 @@ After that, a new control will appear in the top-left corner of the map, next to
   <img src="/img/cloud-native-workspace/maps/date-filter-picker.png" />
 </p>
 
+{{% bannerNote title="NOTE" type="note"%}}
+If you are working with several data sources with a `date` or `timestamp` attribute, you can add the Date filter to each of them independently, and the Date selector UI will allow you to select a range for each one.
+{{%/ bannerNote %}}
 
 Know that after adding a Date Filter to your table data source, it will be automatically converted to a SQL Query of this kind: 
 
@@ -27,7 +30,7 @@ SELECT * FROM your_original_table
 WHERE time > {{date_from}} AND time < {{date_to}}
 ```
 
-Learn more about how to use the Date filter with custom SQL queries in the section below:
+Learn more about how to use the Date filter with custom SQL queries in the section below.
 
 
 ### Using parameters in your SQL queries
