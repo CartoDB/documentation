@@ -86,9 +86,10 @@ The cached objects associated to the data sources in the map will be invalidated
 {{%/ bannerNote %}}
 
 - Export viewport data: when enabled, viewers will be able to export the data available in the viewport in CSV format. [Read more about exporting data](/carto-user-manual/maps/exporting-data/).
-- Address search bar: use this setting if you want to let viewers use the search bar in the top left to focus the map at a given address. [Read more about searching addresses](http://localhost:1313/carto-user-manual/maps/address-search-bar/).
+- Address search bar: use this setting if you want to let viewers use the search bar in the top left to focus the map at a given address. [Read more about searching addresses](/carto-user-manual/maps/address-search-bar/).
+- Date control: When enabled, viewers of the map will be able to use the date selector to filter the data layers in the map. [Read more about the Date filter](/carto-user-manual/maps/date-filter).
 - Scroll wheel zoom: when enabled, viewers will be able to use their mouse wheel to zoom in or out.
-- Feature selection tool: when enabled, viewers will be able to filter the map using squares, circles, or drawing their own polygons. [Read more about the feature selection tool](http://localhost:1313/carto-user-manual/maps/feature-selection-tool/).
+- Feature selection tool: when enabled, viewers will be able to filter the map using squares, circles, or drawing their own polygons. [Read more about the feature selection tool](/carto-user-manual/maps/feature-selection-tool/).
 - Show performance warnings: checking this option will make warnings regarding performance appear for viewers too, for example, when using large datasets or zooming too far away.
 
 Finally, press "save" to confirm your changes.

@@ -24,6 +24,7 @@ cascade:
         - title: "Map styles"
         - title: "Map view modes"
         - title: "SQL Analyses"
+        - title: "Date Filter"
         - title: "Feature selection tool"
         - title: "Address search bar"
         - title: "Exporting data"
