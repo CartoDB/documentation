@@ -12,8 +12,5 @@ tags:
 Users can now rename the [data sources](/carto-user-manual/maps/data-sources/#data-sources) added to a Builder map; although seemingly a small product addition, this new feature brings a big improvement in terms of user experience for our users.
 
 <div class='video-wrapper'>
-  <video autoplay loop muted>
-    <source src="/video/whats-new/renaming-data-sources-in-builder.mov" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <iframe src="https://player.vimeo.com/video/759208440?h=9576b51762" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </div>

@@ -16,8 +16,5 @@ We are really happy to announce a new release of “CARTO for deck.gl” to allo
 - deck.gl code base is now migrated to TypeScript. This improves the robustness and maintainability of TypeScript apps using deck.gl as well as the deck.gl codebase itself.
 
 <div class='video-wrapper'>
-  <video autoplay loop muted>
-    <source src="/video/whats-new/carto-for-deckgl-8-8.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <iframe src="https://player.vimeo.com/video/759208307?h=1cf5523cb0" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </div>
