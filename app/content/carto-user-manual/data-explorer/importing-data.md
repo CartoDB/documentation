@@ -76,7 +76,7 @@ This method allows you to enter a supported URL file. To import a remote URL, se
 ### Supported formats
 Currently, the import of CSV, GeoJSON, GeoPackage, KML, KMZ, TAB and Shapefiles (in a zip package) with at least two columns is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
 
-For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
+When importing CSV files, CARTO will try to autodetect the geometry column or create the geometries from latitude/longitude columns. Once the geometry column has been created, the column name is kept as geom. The supported column names are: 
 * For *geometry*: `geom,Geom,geometry,the_geom,wkt,wkb`
 * For *latitude*: `latitude,lat,Latitude`
 * For *longitude*: `longitude,lon,Lon,Longitude,lng,Lng`
