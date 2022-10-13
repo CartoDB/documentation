@@ -8,6 +8,8 @@ type: whats-new
 cascade:
   basePath: whats-new
   menu:
+    - title: "All"
+      url: /
     - title: "Q4 2022"
       url: quarters/q4-2022
     - title: "Q3 2022"
