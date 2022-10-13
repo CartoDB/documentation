@@ -1,0 +1,41 @@
+{{ define "main" }}
+{{- partial "header.html" . -}}
+
+<div class="is-bgWhite is-txtBaseGrey">
+  <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
+    {{- partial "aside-menu.html" . -}}
+    <div class="whats-new-grid grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content relative-posistion">
+      {{ $pages := where .Site.Pages "Section" .Section }}
+      {{ $curr := slice .Params.component }}
+      {{ $currentComponent := .Params.component }}
+      
+      {{$whatsnew := .Parent}}
+        {{ $components := slice }}
+        {{ range $page := $whatsnew.Pages }}
+          {{ if $page.Params.components }}
+          {{ $components = $components | append $page.Params.components }}
+        {{ end }}
+      {{ end }}
+      
+      {{ $paginator := .Paginate (where $whatsnew.Pages "Params.components" "intersect" $curr) }}
+
+      {{ $dir := $whatsnew.Dir }}
+      {{ partial "components-select.html"  (dict "components" ($components | uniq) "dir" $dir "current" $currentComponent)  }}
+      
+      <div class="whats-new-list">
+        {{ range $paginator.Pages }}
+          {{ partial "whats-new-summary.html" . }}
+        {{ end }}
+      </div>
+
+      {{ if (gt $paginator.TotalPages 1) }}
+        {{ partial "paginator.html" (dict "context" . "paginator" $paginator) }}
+      {{ end }}
+
+      {{ if .Page.Params.euFlag }}
+        {{ partial "eu-flag-funding.html"}}
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{end}}

@@ -4,24 +4,26 @@
 <div class="is-bgWhite is-txtBaseGrey">
   <div class="container grid u-justify-center u-mt64 u-mb96 u-mt16--tablet u-mb48--tablet">
     {{- partial "aside-menu.html" . -}}
-    <div class="grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
-      <!-- NOTE: category title -->
-      <!-- <h1 class="title f32 u-mb48">{{ humanize .Params.category }}</h1> -->
+    <div class="whats-new-grid grid-cell grid-cell--col7 grid-cell--col10--tablet content__default u-mb96 js-content">
 
-      {{ $curr := slice .Params.category }}
-      {{ $paginator := .Paginate (where .Site.Pages "Params.categories" "intersect" $curr) }}
-
-      <!-- Show overview text on the first page only  -->
-      {{ if not $paginator.HasPrev }}
-        {{- partial "tutorials-overview" . -}}
+      {{ $dir := absURL .CurrentSection.Dir }}
+      <!-- NOTE: get all components and pass them to the selector -->
+      {{ $components := slice }}
+      {{ range $page := .Pages }}
+        {{ if $page.Params.components }}
+          {{ $components = $components | append $page.Params.components }}
+        {{ end }}
       {{ end }}
+      {{ partial "components-select.html"  (dict "components" ($components | uniq) "dir" $dir)  }}
+
+      {{ $paginator := .Paginator }}
       
       <div class="whats-new-list">
         {{ range $post := sort $paginator.Pages "Params.date" "desc" }}
           {{ partial "whats-new-summary.html" $post }}
         {{ end }}
       </div>
-
+      
       {{ if (gt $paginator.TotalPages 1) }}
         {{ partial "paginator.html" (dict "context" . "paginator" $paginator) }}
       {{ end }}
