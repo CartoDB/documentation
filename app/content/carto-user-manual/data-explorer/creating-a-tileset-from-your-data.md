@@ -6,7 +6,7 @@ Creating tilesets is currently available from BigQuery, Snowflake, Redshift and 
 
 To create a tileset from your data, select an available connection and click on a specific table (database/project(s), schemas/datasets and tables) from the collapsible tree.
 
-You can create a tileset by clicking on the *Create tileset* button at the top right of the screen.
+You can create a tileset by clicking on the *Create tileset* button at the top right of the screen. The platform detects automatically if the table is based on lines/polygons, points or spatial indexes and provides the appropriate workflow for each case, leveraging the best function of the tiler available in the Anaytics Toolbox. Let’s see as an example for the case of a polygon-based table step by step:
 
 ![Data Explorer create tileset button](/img/cloud-native-workspace/data-explorer/de_create_the_tileset.png)
 
