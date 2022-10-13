@@ -65,33 +65,17 @@
 
       map = new maplibregl.Map({
         container: "map",
-        center: [-98, 38], 
-        zoom: 4, 
+        center: [-73.96, 40.7167], 
+        zoom: 14, 
         style: mapName,
         transformRequest,
       });
 
       map.addControl(new maplibregl.NavigationControl(), "top-left");
 
-      deck.carto.setDefaultCredentials({
-        accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
-      });
-
-      const deckOverlay = new deck.MapboxOverlay({
-        layers: [
-          new deck.carto.CartoLayer({
-            connection: 'bqconn',
-            type: deck.carto.MAP_TYPES.TABLE,
-            data: `cartobq.public_account.retail_stores`,
-            getLineColor: [255, 255, 255],
-            getFillColor: [238, 77, 90],
-            pointRadiusMinPixels: 6,
-            lineWidthMinPixels: 1
-          }),
-        ],
-      });
-      // OR USE fetchmap???
-
+      const cartoMapId = 'ff6ac53f-741a-49fb-b615-d040bc5a96b8';
+      const {layers} = await deck.carto.fetchMap({cartoMapId});
+      const deckOverlay = new deck.MapboxOverlay({layers});
       map.addControl(deckOverlay);
     }
 
