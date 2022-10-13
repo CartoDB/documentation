@@ -2,7 +2,7 @@
 title: "New analytical functions to run Customer Segmentation use-cases for the CPG industry"
 type: whats-new
 date: "2022-10-06"
-quarter: Q3 2022
+quarter: Q4 2022
 components:
   - analytics toolbox
 tags:
