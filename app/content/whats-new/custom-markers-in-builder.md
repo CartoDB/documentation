@@ -17,5 +17,5 @@ Now users can include [custom icons as markers](https://docs.carto.com/carto-use
 Different markers can also be defined by the values of a categorical column, and can even be rotated based on a numeric value; which enables different use-cases such as rotating an arrow based on azimuth for telecommunication antennas or the wind direction in weather maps.
 
 <div class='video-wrapper'>
-<iframe src="https://player.vimeo.com/video/759208322?h=a7525f3a09" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+<iframe src="https://player.vimeo.com/video/759208322?h=a7525f3a09&autoplay=1&muted=1&autopause=0&loop=1" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </div>
