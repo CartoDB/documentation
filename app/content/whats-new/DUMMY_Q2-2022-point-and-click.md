@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Point & Click SQL analyses, and enhanced interactive and cartographic capabilities in Builder"
 type: whats-new
 date: "2022-02-09"
@@ -37,4 +37,4 @@ Leveraging these global grid systems also allows for more effective visualizatio
 </div>
 Now, [Builder](https://carto.com/builder/) users can load, visualize and process tables, tilesets and results from SQL queries that contain spatial indexes without the need for geometry data. The resulting visualization is then aggregated dynamically at each zoom level, allowing data to be always represented in the most meaningful resolution.
 
-![](/img/cloud-native-workspace/get-started/login.png)
+![](/img/cloud-native-workspace/get-started/login.png) -->
