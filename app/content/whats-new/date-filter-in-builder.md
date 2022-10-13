@@ -24,7 +24,7 @@ Find the Date filter documentation available [here](../../../carto-user-manual/m
 * **Who should start using this feature?**
   The most benefited will be users dealing with large amounts of temporal series data who needs to use a single map to analyze and visualize different moments in time.
 
-Also, the experienced SQL user will find the new placeholder variables most useful for more advanced use cases, like complex aggregations, spatial indexes, etc. Some customers, prospects and partners like Planet or Snowflake have already enjoyed and validated this feature.
+Also, the experienced SQL user will find the new placeholder variables most useful for more advanced use cases, like complex aggregations, spatial indexes, etc. 
 
 <div class='video-wrapper'>
 <iframe src="https://player.vimeo.com/video/759915982?h=383b781e05&autoplay=1&muted=1&autopause=0&loop=1" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
