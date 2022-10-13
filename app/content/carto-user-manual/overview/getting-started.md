@@ -307,7 +307,7 @@ To learn more, please visit the Documentation page of the [CARTO Analytics Toolb
 
 <!-- BigQuery and CARTO Data Warehouse connections. -->
 
-You can create a tileset by clicking on the *Create tileset* button at the top of the screen.
+You can create a tileset by clicking on the *Create tileset* button at the top of the screen. In this example below we are showcasing the workflow for a creating a basic tileset out of a polygon-based table.
 <!-- Please note that this option will only be available for those tables that require a tileset to be visualized entirely due to their size.  -->
 
 ![Data Explorer create tileset button](/img/cloud-native-workspace/data-explorer/de_create_the_tileset.png)
