@@ -13,5 +13,6 @@ cascade:
     - title: "Examples"
       folder:
       - title: "Hello World"
+      - title: "CartoLayer"
     - title: "Whats New"
 ---
