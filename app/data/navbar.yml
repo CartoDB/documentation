@@ -1,4 +1,6 @@
 navbar:
+  - name: What's new
+    url: /whats-new
   - name: User Manual
     url: /carto-user-manual
   # - name: Builder
