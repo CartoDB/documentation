@@ -17,5 +17,5 @@ Note that these functionalities are also enabled from the Data Explorer and Buil
 
 
 <div class='video-wrapper'>
-  <iframe src="https://player.vimeo.com/video/759208385?h=9a87e33028&autoplay=1&muted=1&autopause=0&loop=1" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  <iframe src="https://player.vimeo.com/video/760993303?h=3972c1fb59&autoplay=1&muted=1&autopause=0&loop=1" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </div>
