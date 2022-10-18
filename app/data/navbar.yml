@@ -10,7 +10,7 @@ navbar:
   - name: Analytics Toolbox
     subelements:
       - name: Overview
-        url: /analytics-toolbox
+        url: /analytics-toolbox/about-the-analytics-toolbox/
       - name: for BigQuery
         url: /analytics-toolbox-bigquery/overview/getting-started/
       - name: for Snowflake
