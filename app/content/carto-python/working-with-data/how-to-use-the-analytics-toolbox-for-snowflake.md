@@ -244,8 +244,3 @@ r.to_html(iframe_height = 700)
 ```
 
 ![png](/img/carto-python/sf-notebook/sf_map.png)
-
-To get started creating maps, we recommend the following resources from the documentation:
-* [Guide to create your first map](https://docs.carto.com/carto-user-manual/overview/getting-started/#quickstart-guide-to-create-your-first-map).
-* [Guide to add widgets to a map](https://docs.carto.com/carto-user-manual/maps/map-settings/#widgets).
-* [Step-by-step tutorial](https://docs.carto.com/carto-user-manual/tutorials/build-a-categories-and-bubbles-visualization/) to create a category and bubbles visualization, leveraging different map styles and widgets.

@@ -5,7 +5,7 @@ aliases:
 
 ## How to visualize data from Databricks
 
-This notebook guides the user through the process for connecting to CARTO account and leverage CARTO's Analytics Toolbox and CARTO's integration with Pydeck to be able to perform spatial analytics at scale and create map visualizations from Python notebooks. You can find the original notebook [here](https://github.com/CartoDB/research-public/blob/master/pydeck-carto/How%20to%20access%20CARTO's%20Analytics%20Toolbox%20for%20Databricks%20and%20create%20visualizations%20via%20Python%20notebooks.ipynb).
+This notebook guides the user through the process of connecting to a CARTO account and leverage CARTO’s integrating with Pydeck to be able to visualize data from a Databricks connections using both CARTO and Databricks native support of the H3 spatial index. You can find the original notebook [here](https://github.com/CartoDB/research-public/blob/master/pydeck-carto/How%20to%20access%20CARTO's%20Analytics%20Toolbox%20for%20Databricks%20and%20create%20visualizations%20via%20Python%20notebooks.ipynb).
 
 ### Install dependencies
 
@@ -36,8 +36,6 @@ carto_auth = CartoAuth.from_oauth()
 ### Loading an H3 Layer from a Databricks connection.
 
 CARTO can connect to a Databricks SQL Warehouse or a Databricks cluster to push down SQL queries that will be fully executed in your Databricks environment. In both cases, the connection fully supports H3 indexes, leveraging [Databricks' native capabilities](https://docs.databricks.com/spark/latest/spark-sql/language-manual/sql-ref-functions-builtin.html#h3-geospatial-functions).
-
-By using the examples in this notebook, you're leveraging CARTO APIs from within your Databricks Workspace.
 
 Learn more about how to connect CARTO to Databricks [here](https://docs.carto.com/carto-user-manual/connections/creating-a-connection/#connection-to-databricks).
 
@@ -74,10 +72,5 @@ pdk.Deck(layer, map_style=pdk.map_styles.ROAD, initial_view_state=view_state)
 
 ```
 
-![png](/img/carto-python/databricks-notebook/databricks_map.png)
-
-To get started creating maps, we recommend the following resources from the documentation:
-* [Guide to create your first map](https://docs.carto.com/carto-user-manual/overview/getting-started/#quickstart-guide-to-create-your-first-map).
-* [Guide to add widgets to a map](https://docs.carto.com/carto-user-manual/maps/map-settings/#widgets).
-* [Step-by-step tutorial](https://docs.carto.com/carto-user-manual/tutorials/build-a-categories-and-bubbles-visualization/) to create a category and bubbles visualization, leveraging different map styles and widgets.
+![png](/img/carto-python/databricks-notebook/databricks_mapV3.png)
 

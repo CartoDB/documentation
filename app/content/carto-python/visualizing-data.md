@@ -21,11 +21,11 @@ CARTO provides data-driven out-of-the-box styling functions for colors. Check th
 
 The different functions available are:
 
-- **Color_bins:** Helper function for quickly creating a color bins style. Data values of each attribute are rounded down to the nearest value in the domain and are then styled with the corresponding color.
+- **Color_bins:** Helper function for creating a color bins style. Data values of each attribute are rounded down to the nearest value in the domain and are then styled with the corresponding color.
 
-- **Color_categories:** Helper function for quickly creating a color category style. Data values of each attribute listed in the domain are mapped one to one with corresponding colors in the range.
+- **Color_categories:** Helper function for creating a color category style. Data values of each attribute listed in the domain are mapped one to one with corresponding colors in the color range.
 
-- **Color_continuous:** Helper function for quickly creating a color continuous style. Data values of each field are interpolated linearly across values in the domain and are then styled with a blend of the corresponding color in the range.
+- **Color_continuous:** Helper function for creating a color continuous style. Data values of each field are interpolated linearly across values in the domain and are then styled with a blend of the corresponding color in the range.
 
 
 For more information and details about function parameters, default values etc., please go to the [reference](https://docs.carto.com/carto-python/reference/#stylescolor_bins).

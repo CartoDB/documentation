@@ -19,7 +19,7 @@ Please run the following commands to install pydeck-carto and all other required
 
 
 ```python
-!pip install pydeck-carto geopandas db_dtypes google.cloud.bigquery==2.34.2 -q #Support using GeoPandas for GEOGRAPHY columns since 2.25.0 version 
+!pip install pydeck-carto geopandas db_dtypes -q 
 ```
 
     [K     |████████████████████████████████| 1.0 MB 7.1 MB/s 
@@ -248,8 +248,3 @@ view_state = pdk.ViewState(latitude=34.5, longitude=-118, zoom=8)
 pdk.Deck(layer, map_style=pdk.map_styles.ROAD, initial_view_state=view_state)
 ```
 ![png](/img/carto-python/bq-notebook/bq_map.png)
-
-To get started creating maps, we recommend the following resources from the documentation:
-* [Guide to create your first map](https://docs.carto.com/carto-user-manual/overview/getting-started/#quickstart-guide-to-create-your-first-map).
-* [Guide to add widgets to a map](https://docs.carto.com/carto-user-manual/maps/map-settings/#widgets).
-* [Step-by-step tutorial](https://docs.carto.com/carto-user-manual/tutorials/build-a-categories-and-bubbles-visualization/) to create a category and bubbles visualization, leveraging different map styles and widgets.

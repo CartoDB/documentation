@@ -4,7 +4,7 @@ description: " Set of Python packages to allow data scientists to work with our 
 icon: "/img/icons/carto-python.png"
 
 url: carto-python
-indexPage: "carto-python/overview"
+indexPage: "/carto-python/overview"
 
 cascade:
   basePath: "/carto-python"

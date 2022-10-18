@@ -215,9 +215,6 @@ carto_dw_client.query(f"SELECT * FROM `{output_table_id}` WHERE population_e3a78
 
     
 ![png](/img/carto-python/do-notebook/output_24_0.png)
-
-
-<img src="/img/carto-python/do-notebook/output_24_0.png" alt="png" width="2000000000"/>
     
 
 

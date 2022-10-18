@@ -24,23 +24,23 @@ carto_auth = CartoAuth.from_oauth()
 
 ![png](/img/carto-python/login.png)
 
-After that, it shows you a page that notify that you already have the access (in case of local python environment) or provide you a code to paste in your notebook to authenticate (in case of online notebooks tools like Google Collab or Databricks).
+After that, it shows you a page that notify that you already have the access (in case of local python environment) or it provides you an Access code to copy and paste in your notebook to authenticate with CARTO (e.g. in case of online notebooks tools like Google Collab or Databricks).
 
 ![png](/img/carto-python/copy_clipboard.png)
 
-You can find more technical information about this method, the supported parameters and so one, in the [reference section](https://docs.carto.com/carto-python/reference/#cartoauthfrom_oauth).
+You can find more technical information about this method and the supported parameters in the [reference section](https://docs.carto.com/carto-python/reference/#cartoauthfrom_oauth).
 
 
 ### Credentials file
 
-You can also use a file with M2M credentials to automatically login into your CARTO account. This option is recommended only in the case of automating ETL processes. This authentication option is available for CARTO users with a specific tier of our Enterprise plans (i.e. starting from the Enterprise L plan and above).
+You can also use a file with M2M credentials to automatically login to your CARTO account. This option is recommended only in the case of automating ETL processes. This authentication option is available for CARTO users with a specific tier of our Enterprise plans (i.e. starting from the Enterprise L plan and above).
 
 ```python
 from carto_auth import CartoAuth
 carto_auth = CartoAuth.from_file("./carto-credentials.json")
 ```
 
-You can find more technical information about this method, the supported parameters and so one, in the [reference section](https://docs.carto.com/carto-python/reference/#cartoauthfrom_file).
+You can find more technical information about this method and the supported parameters in the [reference section](https://docs.carto.com/carto-python/reference/#cartoauthfrom_file).
 
 
 ### Example
@@ -57,7 +57,7 @@ carto_auth = CartoAuth.from_oauth()
 access_token = carto_auth.get_access_token()
 ```
 
-If you have Carto DW, we have a specific extension of the carto-auth package to use the Python client for this data warehouse connection . In this case, you can authenticate to CARTO following the commands detailed as follows:
+In case you want to use the CARTO Data Warehouse connection of your account, we have a specific extension of the carto-auth package to use the Python client for this data warehouse connection . In this case, you can authenticate to CARTO following the commands detailed as follows:
 
 ```python
 #load packages and import functions

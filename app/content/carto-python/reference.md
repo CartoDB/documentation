@@ -38,7 +38,7 @@ carto_auth = CartoAuth.from_oauth(
     api_base_url='https://clausa.app.carto.com', 
     cache_filepath='./carto_token.json')
 ```
-
+<hr>
 
 #### CartoAuth.from_file
 
@@ -62,6 +62,7 @@ Create a CartoAuth object using a credentials file to login to the CARTO account
 ```python
 carto_auth = CartoAuth.from_file('carto_credentials.json')
 ```
+<hr>
 
 #### get_access_token
 
@@ -77,7 +78,7 @@ Method to get the token of the current CARTO session.
 carto_auth = CartoAuth.from_oauth()
 access_token = carto_auth.get_access_token()
 ```
-
+<hr>
 
 #### get_carto_dw_client
 
@@ -94,7 +95,7 @@ It requires extra dependencies **carto-auth[carto-dw]** to be installed.
 carto_auth = CartoAuth.from_oauth()
 carto_dw_client = carto_auth.get_carto_dw_client()
 ```
-
+<hr>
 
 #### get_carto_dw_credentials
 
@@ -112,6 +113,7 @@ Get the CARTO Data Warehouse credentials.
 carto_auth = CartoAuth.from_oauth()
 carto_dw_project, carto_dw_token = carto_auth.get_carto_dw_credentials()
 ```
+<hr>
 
 ### pydeck-carto
 
@@ -124,6 +126,7 @@ Add CartoLayer JS bundle to pydeck's custom libraries.
 ```python
 register_carto_layer()
 ```
+<hr>
 
 #### get_layer_credentials
 Get the layer credentials object to gather information from Carto warehouses.
@@ -132,6 +135,7 @@ Get the layer credentials object to gather information from Carto warehouses.
 ```python
 layer_creds = get_layer_credentials(carto_auth)
 ```
+<hr>
 
 #### styles.color_bins
 
@@ -159,6 +163,7 @@ layer = pdk.Layer(
     pickable=True,
 )
 ```
+<hr>
 
 #### styles.color_categories
 
@@ -203,6 +208,7 @@ layer = pdk.Layer(
     pickable=True,
 )
 ```
+<hr>
 
 #### styles.color_continuous
 
@@ -229,3 +235,4 @@ layer = pdk.Layer(
     pickable=True,
 )
 ```
+<hr>

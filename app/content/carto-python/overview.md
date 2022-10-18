@@ -5,10 +5,20 @@ aliases:
 
 ## Overview
 
+{{% bannerNote title="BETA" type="tip" %}}
+These Python packages from CARTO are in Beta stage and they might be subject to changes in the future. 
+{{%/ bannerNote %}}
+
 Python has become one of the most commonly used languages for data science. In order to provide data scientists the ability to interact with CARTO from their most common working interfaces, CARTO provides a set of Python packages to allow data scientists to work with our platform from within Python notebooks; to run analysis, build data pipelines, machine learning processes and other data science workflows. These packages allow users to work with geospatial data in a fully cloud native way without having to leave their Python environment, and taking advantage of all the potential that [Analytics Toolbox](https://docs.carto.com/analytics-toolbox/about-the-analytics-toolbox/) provides to execute advanced spatial analytics in [Spatial SQL](https://carto.com/spatial-sql/) natively within the leading cloud data warehouse platforms.  
+
+
+<div class='video-wrapper'>
+  <iframe src="https://player.vimeo.com/video/761440464?h=2be7fab594&autoplay=1&muted=1&autopause=0&loop=1" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
 
 <br/>
 <br/>
+
 
 CARTO currently provides two open source Python libraries to interact with the platform:
 
