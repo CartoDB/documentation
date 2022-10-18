@@ -38,7 +38,7 @@ conda install -c conda-forge pydeck-carto
 conda install -c conda-forge carto-auth
 ```
 
-### Using it on Jupyter notebook
+### Using it on Jupyter notebooks
 
 In order to use our pydeck-carto package in a Jupyter notebook (or Jupyter lab), it requires that the pydeck package is also properly enabled.
 
