@@ -1,5 +1,5 @@
 ---
-title: "Multiple editors"
+title: "Multiple editor users working on the same map"
 type: whats-new
 date: "2022-10-18"
 quarter: Q4 2022
@@ -9,7 +9,7 @@ tags:
   - private beta
 ---
 
-Collaborating on CARTO maps is finally possible, in asynchronous mode. This is helpful in setups such as production-ready maps, where the original owner might be out of office; or in situations where the data, analysis and cartography are each accomplished by different users. This is how it works
+Collaborating on CARTO maps is finally possible, in asynchronous mode. This is helpful in setups such as production-ready maps, where the original owner might be out of office; or in situations where the data, analysis and cartography are each accomplished by different users. This is how it works:
 
 1. The map owner first needs to **enable collaboration** for that map. 
 2. From that moment, all editors with access to the map will be able to edit it.
