@@ -5,28 +5,14 @@ aliases:
 
 ## Visualizing data
 
-The library pydeck-carto is a wrapper of [pydeck](https://deckgl.readthedocs.io/en/latest/#) very useful to be able to visualize the tables and tilesets available in your cloud data warehouse as map layers within your data science workflows in Python notebooks using the CartoLayer for pydeck. It provides access to the data objects available in the connections created in the CARTO platform, and it allows you to improve your data visualization with color styling functions. It supports visualizing tilesets and leverage our dynamic tiling implementation for medium size datasets too. You can learn more about our techniques for data visualization in [our documentation](https://docs.carto.com/carto-user-manual/maps/performance-considerations/).
+The pydeck-carto package is a wrapper of [pydeck](https://deckgl.readthedocs.io/en/latest/#) that uses the [CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer) to enable visualizing tables and tilesets available in your cloud data warehouses as map layers within your data science workflows in Python notebooks. It provides access to the data available in the connections created in the CARTO platform, and it allows you to build visualizations with several pre-built color styling functions.
 
 
 ### CartoLayer 
 
 CartoLayer renders cloud data from any data warehouse connection established in your CARTO platform (e.g. to Google BigQuery, Snowflake, Redshift, Postgres, and Databricks). It also provides access to data objects in the CARTO Data Warehouse associated with your CARTO account. It’s a Python wrapper over the [CartoLayer in deck.gl](https://deck.gl/docs/api-reference/carto/carto-layer).
 
-Pydeck-carto is a package outside of pydeck, so calling **pydeck_carto.register_carto_layer()** is required to register CartoLayer in pydeck.
-
-
-#### Properties
-
-- **data:** (str) Either a SQL query or a name of dataset/tileset.
-- **type:** (pydeck.types.String) Type of the input data. It can be either QUERY, TABLE or TILESET. pydeck_carto.layer.MapType().
-- **connection:** (pydeck.types.String) Name of the connection registered in the CARTO Workspace. The connection for the CARTO Data Warehouse is already defined as a constant pydeck_carto.layer.CartoConnection().
-- **geo_column:** (pydeck.types.String, optional) Name of the geo_column in the CARTO platform. It also supports spatial indexes (h3, quadbin) pydeck_carto.layer.GeoColumnType().
-- **credentials:** (dict) Defines the app credentials to gather the information from CARTO. It is recommended to use pydeck_carto.get_layer_credentials() to automatically obtain the token from Oauth using the carto-auth package.
-- **aggregation_exp:** (pydeck.types.String, optional) Aggregation SQL expression. Only used for spatial index datasets.
-- **aggregation_res_level:** (int, optional) Aggregation resolution level. Only used for spatial index datasets, defaults to 6 for quadbins, 4 for h3.
-- **on_data_error:** (pydeck.types.Function, optional) Callback called when the request to the CARTO Maps API failed. It is recommended to use with pydeck_carto.get_error_notifier() to display the error in the visualization.
-
-Check the full list of [CartoLayer properties](https://deck.gl/docs/api-reference/carto/carto-layer#properties).
+Pydeck-carto is a package outside of pydeck, so calling **pydeck_carto.register_carto_layer()** is required to register CartoLayer in pydeck. 
 
 
 ### Styling 
@@ -42,14 +28,14 @@ The different functions available are:
 - **Color_continuous:** Helper function for quickly creating a color continuous style. Data values of each field are interpolated linearly across values in the domain and are then styled with a blend of the corresponding color in the range.
 
 
-For more information and details about function parameters, default values etc., please go to the [reference](https://docs.carto.com/carto-python/reference/).
+For more information and details about function parameters, default values etc., please go to the [reference](https://docs.carto.com/carto-python/reference/#stylescolor_bins).
 
 ![png](/img/carto-python/carto-dw-notebook/cartodw_map.png)
 
 
 ### Examples
 
-In this example, we visualize the spatial data with geometries in a map from our data warehouse connection established in our CARTO platform (could be to Google BigQuery, Snowflake, Redshift, Postgres, and Databricks).
+In this example, we visualize the spatial data from two different tables available in a connection created to a database in Snowflake. The same can apply to BigQuery, Redshift, Databricks or a Postgresql-based database.
 
 ```python
 # Register CartoLayer in pydeck
@@ -68,14 +54,13 @@ hexagons = pdk.Layer(
     data = hexagons_query,
     geo_column=pdk.types.String("H3_GEOM"),
     type_=MapType.QUERY,
-    connection=pdk.types.String("my_carto_connection"),
+    connection=pdk.types.String("my_carto_sf_connection"),
     credentials=credentials,
     opacity=0.2,
     stroked=True,
     get_fill_color = color_continuous("DOMINANCE_RATIO", [x/10 for x in range(10)], colors = "Tropic"),
     get_line_color=[0,42,42],
-    line_width_min_pixels=2,
-    on_data_error=get_error_notifier(),
+    line_width_min_pixels=2
     )
 
 points_query = """
@@ -91,15 +76,13 @@ points = pdk.Layer(
     data = points_query,
     geo_column=pdk.types.String("GEOM"),
     type_=MapType.QUERY,
-    connection=pdk.types.String("snowflake"),
+    connection=pdk.types.String("my_carto_sf_connection"),
     credentials=credentials,
     opacity=0.8,
     stroked=True,
     pickable=True,
     point_radius_min_pixels=2,
-    get_fill_color = color_categories("CATEGORY", ["competitors", "crossfit"], colors = "Tropic"),
-    
-    on_data_error=get_error_notifier(),
+    get_fill_color = color_categories("CATEGORY", ["competitors", "crossfit"], colors = "Tropic")
     )
 
 view_state = pdk.ViewState(latitude=33.64, longitude=-117.94, zoom=5)
@@ -116,7 +99,7 @@ r.to_html(iframe_height = 700)
 
 </br>
 
- In this case, you can see spatial data based on points visualized on a map, natively from our CARTO DW.  
+ In this second example, we visualize a point-based table available from the CARTO Data Warehouse connection.  
 
 ```python
 # Register CartoLayer in pydeck
@@ -125,14 +108,13 @@ register_carto_layer()
 # Render CartoLayer in pydeck with color_bins style
 layer = pdk.Layer(
     "CartoLayer",
-    data="SELECT geom, price_num FROM `carto-dw-ac-XXX.shared.01_listings_la_2021_5_reviews`",
+    data="SELECT geom, price_num FROM `shared.01_listings_la_2021_5_reviews`",
     type_=MapType.QUERY,
     connection=CartoConnection.CARTO_DW, 
     credentials=get_layer_credentials(carto_auth),
     point_radius_min_pixels=2.5,
     get_fill_color=color_bins("price_num",[0, 100, 200, 300, 400, 500], "PinkYl"),
-    get_line_color=[0, 0, 0, 100],
-    on_data_error=get_error_notifier(),
+    get_line_color=[0, 0, 0, 100]
 )
 view_state = pdk.ViewState(latitude=34.5, longitude=-118, zoom=8)
 pdk.Deck(layer, map_style=pdk.map_styles.ROAD, initial_view_state=view_state)
@@ -143,7 +125,7 @@ pdk.Deck(layer, map_style=pdk.map_styles.ROAD, initial_view_state=view_state)
 
 </br>
 
-And in this last example, we use the CARTO connection from your Databricks Workspace. This workflow is fully supported H3 indexes and leverage [Databricks' native capabilities](https://docs.databricks.com/spark/latest/spark-sql/language-manual/sql-ref-functions-builtin.html#h3-geospatial-functions) and the CARTO APIs ones. 
+And finally in this third example, we leverage data from a connection between CARTO and Databricks leveraging the native support for the H3 spatial index in both [Databricks](https://docs.databricks.com/spark/latest/spark-sql/language-manual/sql-ref-functions-builtin.html#h3-geospatial-functions) an CARTO platform.
 
 ```python
 # Register CartoLayer in pydeck
@@ -176,4 +158,4 @@ view_state = pdk.ViewState(latitude=49.0, longitude=30.0, zoom=5)
 pdk.Deck(layer, map_style=pdk.map_styles.ROAD, initial_view_state=view_state)
 ```
 
-![png](/img/carto-python/databricks-notebook/databricks_map.png)
+![png](/img/carto-python/databricks-notebook/databricks_mapV3.png)

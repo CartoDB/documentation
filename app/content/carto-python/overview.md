@@ -15,14 +15,17 @@ CARTO currently provides two open source Python libraries to interact with the p
 <br/>
 
 - **[carto-auth:](https://github.com/cartodb/carto-auth)** to provide the user the possibility to authenticate with the CARTO account from a Python notebook, and to get access to the data objects (i.e. tables, tilesets, functions) that are available via the different connections to cloud data warehouses that have been set up in that CARTO account. This also includes access to the resources available via the [CARTO Data Warehouse](https://docs.carto.com/carto-user-manual/connections/carto-data-warehouse/) connection, with access to the functions from the Analytics Toolbox (based on its [implementation for Google BigQuery](https://docs.carto.com/analytics-toolbox-bigquery/overview/getting-started/)). This package includes:
-  - Different methods to authenticate to CARTO via OAuth and via M2M tokens;
-  - Get_carto_dw_client() to use the [Python client for Google BigQuery](https://googleapis.dev/python/bigquery/latest/index.html) to operate with the CARTO Data Warehouse resources (data, tilesets, Analytics Toolbox functions, etc.) 
+  - CARTO Authentication via OAuth and M2M tokens.
+  - Obtaining the access token of the session.
+  - Creating a CARTO DW client to operate with it.
+
+
 
 <br/>
 
 - **[pydeck-carto:](https://github.com/visgl/deck.gl/tree/master/bindings/pydeck-carto)** to be able to visualize the tables and tilesets available in your cloud data warehouse as map layers within your data science workflows in Python notebooks using the [CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer) for [pydeck](https://deckgl.readthedocs.io/en/latest/#): 
-  - It provides access to the data objects available in the [connections](https://docs.carto.com/carto-user-manual/connections/introduction/) created in the CARTO platform;
-  - It supports color styling functions: bins, category, continuous;
+  - It provides access to the data objects available in the [connections](https://docs.carto.com/carto-user-manual/connections/introduction/) created in the CARTO platform.
+  - It supports color styling functions: bins, category, continuous.
   - It supports visualizing tilesets and our dynamic tiling implementation for medium size datasets.
 
 
@@ -30,4 +33,4 @@ CARTO currently provides two open source Python libraries to interact with the p
 <br/>
 
 
-Spatial Data Science workflows in Python often rely on the usage of geopandas in Jupyter notebooks as the de facto standards. Now, users can also integrate CARTO features into these workflows with this set of Python packages, which will save data scientists time and energy spent in switching contexts and working environments. To understand the fundamentals of our packages, in this documentation you will find guides in [Working with data](http://localhost:1313/carto-python/working-with-data) section.
+Spatial Data Science workflows in Python often rely on the usage of geopandas in Jupyter notebooks as the de facto standards. Now, users can also integrate CARTO features into these workflows with this set of Python packages, which will save data scientists time and energy spent in switching contexts and working environments. To understand the fundamentals of our packages, in this documentation you will find guides in [Working with data](http://docs.carto.com/carto-python/working-with-data) section.

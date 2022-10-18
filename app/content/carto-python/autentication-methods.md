@@ -20,6 +20,17 @@ from carto_auth import CartoAuth
 carto_auth = CartoAuth.from_oauth()
 ```
 
+"CartoAuth. from_oauth()" call will open a tab in your browser (or give you a link to access a URL) to login to your CARTO account. 
+
+![png](/img/carto-python/login.png)
+
+After that, it shows you a page that notify that you already have the access (in case of local python environment) or provide you a code to paste in your notebook to authenticate (in case of online notebooks tools like Google Collab or Databricks).
+
+![png](/img/carto-python/copy_clipboard.png)
+
+You can find more technical information about this method, the supported parameters and so one, in the [reference section](https://docs.carto.com/carto-python/reference/#cartoauthfrom_oauth).
+
+
 ### Credentials file
 
 You can also use a file with M2M credentials to automatically login into your CARTO account. This option is recommended only in the case of automating ETL processes. This authentication option is available for CARTO users with a specific tier of our Enterprise plans (i.e. starting from the Enterprise L plan and above).
@@ -29,7 +40,7 @@ from carto_auth import CartoAuth
 carto_auth = CartoAuth.from_file("./carto-credentials.json")
 ```
 
-The carto_auth object will be used to obtain the CartoLayer credentials.
+You can find more technical information about this method, the supported parameters and so one, in the [reference section](https://docs.carto.com/carto-python/reference/#cartoauthfrom_file).
 
 
 ### Example

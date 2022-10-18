@@ -10,7 +10,7 @@ Both CARTO’s Python packages, pydeck-carto and carto-auth are available for in
 
 Pydeck-carto is a wrapper of [pydeck](https://deckgl.readthedocs.io/en/latest/#) to use the [CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer) to visualize data from one of your active data warehouse connections setup on the CARTO platform. Therefore, pydeck is a requirement that it will also have to be installed and it will be installed automatically as a dependency when installing pydeck-carto. 
 
-The carto-auth package provides two types of authentication methods with your CARTO account. Pydeck-carto installs the carto-auth package automatically, but you can also install it independently of pydeck-carto, in case you are not interested in creating visualizations.
+The [carto-auth](https://github.com/cartodb/carto-auth) package provides two types of authentication methods with your CARTO account. Pydeck-carto installs the carto-auth package automatically, but you can also install it independently of pydeck-carto, in case you are not interested in creating visualizations.
 
 ### Via pip
 
@@ -38,9 +38,9 @@ conda install -c conda-forge pydeck-carto
 conda install -c conda-forge carto-auth
 ```
 
-### Using it on Jupyter notebook
+### Using pydeck-carto on a Jupyter notebook
 
-In order to use the library in Jupyter notebook (or Jupyter lab) requires that the pydeck package is also properly enabled.
+In order to use our pydeck-carto package in a Jupyter notebook (or Jupyter lab), it requires that the pydeck package is also properly enabled.
 
 Please follow the latest instructions to enable pydeck for Jupyter [here](https://pydeck.gl/installation.html#enabling-pydeck-for-jupyter)
 

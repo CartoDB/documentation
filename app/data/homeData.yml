@@ -129,7 +129,7 @@ dataAndAnalysis:
     image: "postgres-analytics-toolbox.png"
   - title: "Data Observatory"
     description: "Gain access to thousands of public & premium spatial datasets and save time on gathering, cleaning and analysing data."
-    url: "https://docs.carto.com/data-observatory"
+    url: "/data-observatory"
     image: "data-observatory.png"
  # - title: "CARTOframes"
  #   description: "A Python package for integrating CARTO maps, analysis, and data services into data science workflows."
@@ -137,7 +137,7 @@ dataAndAnalysis:
  #   image: "cartoframes.png"
   - title: "CARTO + Python"
     description: "A set of Python packages to allow data scientists to work with CARTO from Python notebooks"
-    url: "https://docs.carto.com/carto-python/overview/"
+    url: "/carto-python"
     image: "carto-python.png"  
 
 apis:

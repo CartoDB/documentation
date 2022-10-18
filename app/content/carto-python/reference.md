@@ -5,192 +5,227 @@ aliases:
 
 ## Reference
 
-Remind that these two packages are open source, then you can find more information and details in the correspondent repositories of [carto-auth](https://github.com/cartodb/carto-auth)and [pydeck-carto](https://github.com/visgl/deck.gl/tree/master/bindings/pydeck-carto).
+Please note that these two packages are open source and that you can also find more detailed information in the correspondent repositories of both [carto-auth](https://github.com/cartodb/carto-auth) and [pydeck-carto](https://github.com/visgl/deck.gl/tree/master/bindings/pydeck-carto) packages.
 
-### carto_auth
+### carto-auth
 
-#### class CartoAuth
+The carto-auth library provides two types of authentication methods with your CARTO account.
 
-CARTO Authentication object used to gather connect with the CARTO services.
-
-Args: 
-- api_base_url (str, optional): API Base URL for a CARTO account. Default "https: //gcp-us-east1.api.carto.com". 
-- client_id (str, optional): Client id of a M2M application provided by CARTO. 
-- client_secret (str, optional): Client secret of a M2M application provided by CARTO. 
-- cache_filepath (str, optional): File path where the token is stored. Default ".carto_token.json". 
-- use_cache (bool, optional): Whether the stored cached token should be used. Default True. 
-- access_token (str, optional): Token already generated with CARTO. 
-- expires_in (str, optional): Time in seconds when the token will be expired.
-
-How to get the API credentials:
-https: //docs.carto.com/carto-user-manual/developers/carto-for-developers/
-
-**method __init__** 
-
-```python
-__init__(
-    api_base_url='https://gcp-us-east1.api.carto.com',
-    client_id=None,
-    client_secret=None,
-    cache_filepath='.carto_token.json',
-    use_cache=True,
-    access_token=None,
-    expires_in=None
-)
-```
-</br>
-</br>
-
-#### classmethod from_oauth
-
-```python
-from_oauth(
-    api_base_url='https://gcp-us-east1.api.carto.com',
-    cache_filepath='.carto_token.json',
-    use_cache=True,
-    open_browser=True
-)
-```
+#### CartoAuth.from_oauth
 
 Create a CartoAuth object using OAuth with CARTO.
 
-Args:
-- api_base_url (str, optional): Base URL for a CARTO account.
-- Default "https: //gcp-us-east1.api.carto.com".
-- cache_filepath (str, optional): File path where the token is stored. Default ".carto_token.json".
-- use_cache (bool, optional): Whether the stored cached token should be used. Default True.
-- open_browser (bool, optional): Whether the web browser should be opened to authorize a user. Default True.
+**Parameters**
 
-</br>
-</br>
+- **api_base_url** (str, optional): Base URL for a CARTO account.
+- **cache_filepath** (str, optional): File path where the token is stored. Default "home()/.carto-auth/token.json".
+- **use_cache** (bool, optional): Whether the stored cached token should be used. Default True.
+- **open_browser** (bool, optional): Whether the web browser should be opened to authorize a user. Default True.
 
-#### classmethod from_file
+**Return type** 
+
+`CartoAuth`
+
+
+**Examples**
 
 ```python
-from_file(filepath, use_cache=True)
+carto_auth = CartoAuth.from_oauth()
 ```
+
+```python
+carto_auth = CartoAuth.from_oauth(
+    api_base_url='https://clausa.app.carto.com', 
+    cache_filepath='./carto_token.json')
+```
+
+
+#### CartoAuth.from_file
 
 Create a CartoAuth object using a credentials file to login to the CARTO account.
 
-Args: 
-- filepath (str): File path of the CARTO credentials file. 
-- use_cache (bool, optional): Whether the stored cached token should be used. Default True.
+**Parameters**
+- **filepath** (str): File path of the CARTO credentials file. 
+- **use_cache** (bool, optional): Whether the stored cached token should be used. Default True.
 
-Raises: AttributeError If the CARTO credentials file does not contain the following attributes: "client_id", "api_base_url", "client_secret". 
-ValueError If the CARTO credentials file does not contain any attribute value.
+**Return type** 
 
-</br>
-</br>
+`CartoAuth`
 
-#### method get_access_token
-```python
-get_access_token()
-```
-</br>
-</br>
+**Raises**
+- **AttributeError**: If the CARTO credentials file does not contain the following attributes: "client_id", "api_base_url", "client_secret".
+- **ValueError**: If the CARTO credentials file does not contain any attribute value.
 
-#### method get_carto_dw_client
+
+**Example**
 
 ```python
-get_carto_dw_client()
+carto_auth = CartoAuth.from_file('carto_credentials.json')
 ```
 
-Returns a client to query directly the CARTO Data Warehouse.
+#### get_access_token
 
-It requires extra dependencies carto-auth[carto-dw] to be installed.
+Method to get the token of the current CARTO session.
 
-</br>
-</br>
+**Return type** 
 
-#### method get_carto_dw_credentials
+`Str`
+
+**Example**
 
 ```python
-get_carto_dw_credentials() → tuple
+carto_auth = CartoAuth.from_oauth()
+access_token = carto_auth.get_access_token()
 ```
+
+
+#### get_carto_dw_client
+
+Returns a client to query directly the CARTO Data Warehouse using the [BigQuery client](https://googleapis.dev/python/bigquery/latest/generated/google.cloud.bigquery.client.Client.html#google.cloud.bigquery.client.Client).
+
+It requires extra dependencies **carto-auth[carto-dw]** to be installed.
+
+**Return type** 
+
+`Client`
+
+**Example**
+```python
+carto_auth = CartoAuth.from_oauth()
+carto_dw_client = carto_auth.get_carto_dw_client()
+```
+
+
+#### get_carto_dw_credentials
 
 Get the CARTO Data Warehouse credentials.
 
-Returns:
+**Return type** 
 
-- tuple: carto_dw_project, carto_dw_token.
+`tuple`
 
-Raises:
+**Raises**
+- **CredentialsError**: If the API Base URL is not provided.
 
-- CredentialsError: If the API Base URL is not provided.
+**Example**
+```python
+carto_auth = CartoAuth.from_oauth()
+carto_dw_project, carto_dw_token = carto_auth.get_carto_dw_credentials()
+```
 
-</br>
-</br>
+### pydeck-carto
 
-### pydeck_carto
+The pydeck-carto package is a wrapper of [pydeck](https://deckgl.readthedocs.io/en/latest/#) that uses the [CartoLayer](https://deck.gl/docs/api-reference/carto/carto-layer) to enable visualizing tables and tilesets available in your cloud data warehouses as map layers within your data science workflows in Python notebooks. It provides access to the data available in the connections created in the CARTO platform, and it allows you to build visualizations with several pre-built color styling functions.
 
-#### CartoLayer
+#### register_carto_layer
+Add CartoLayer JS bundle to pydeck's custom libraries.
 
-**get_error_notifier()** </br>
-Helper function to get the layer error notifier callback.
-</br>
-</br>
+**Example**
+```python
+register_carto_layer()
+```
 
-**get_layer_credentials(carto_auth)→ dict**</br>
+#### get_layer_credentials
 Get the layer credentials object to gather information from Carto warehouses.
-</br>
-</br>
 
-**register_carto_layer()**</br>
-Add CartoLayer JS bundle to pydeck”s custom libraries.
-</br>
-</br>
+**Example**
+```python
+layer_creds = get_layer_credentials(carto_auth)
+```
 
-**classMapType**
-- QUERY: alias of query
+#### styles.color_bins
 
-- TABLE: alias of table
+Helper function for quickly creating a color bins style.
 
-- TILESET: alias of tileset
+Data values of each attribute are rounded down to the nearest value in the domain and are then styled with the corresponding color.
 
-</br>
-</br>
+**Parameters**
+- **attr** (str): Attribute or column to symbolize by.
+- **domain** (list): Assign manual class break values.
+- **colors** (Union[str, list], optional): Color assigned to each domain value. - str: A valid named CARTOColors palette. - list: Array of colors in RGBA [ [r, g, b, [a]] ]. Default is PurpOr.
+- **null_color** (list, optional): Color for null values. Default is [204, 204, 204].
 
-**classCartoConnection**</br>
-- CARTO_DW: alias of carto_dw
-</br>
-</br>
+**Example**
+```python
+layer = pdk.Layer(
+    "CartoLayer",
+    data="SELECT geom, pct_higher_ed FROM `cartobq.public_account.higher_edu_by_county`",
+    type_=MapType.QUERY,
+    connection=CartoConnection.CARTO_DW,
+    credentials=get_layer_credentials(carto_auth),
+    get_fill_color=color_bins("pct_higher_ed", [0, 20, 30, 40, 50, 60, 70], "PinkYl"),
+    get_line_color=[0, 0, 0, 100],
+    line_width_min_pixels=0.5,
+    pickable=True,
+)
+```
 
-**classGeoColumnType**</br>
-- H3: alias of h3
-- QUADBIN: alias of quadbin
+#### styles.color_categories
 
-</br>
-</br>
+Helper function for quickly creating a color category style.
 
-#### pydeck_carto.styles
+Data values of each attribute listed in the domain are mapped one to one with corresponding colors in the range.
 
+**Parameters**
+- **attr** (str): Attribute or column to symbolize by.
+- **domain** (list): Category list. Must be a valid list of categories.
+- **colors** (Union[str, list], optional): Color assigned to each domain value. - str: A valid named CARTOColors palette. - list: Array of colors in RGBA [ [r, g, b, [a]] ]. Default: PurpOr.
+- **null_color** (list, optional): Color for null values. Default is [204, 204, 204].
+- **others_color** (list, optional): Fallback color for a category not correctly assigned. Default is [119, 119, 119].
 
-**color_bins(attr: str, domain: list, colors: Union[str, list] = 'PurpOr', null_color: list = [204, 204, 204])**
+**Example**
+```python
+layer = pdk.Layer(
+    "CartoLayer",
+    data="SELECT geom, landuse_type FROM `cartobq.public_account.wburg_parcels`",
+    type_=MapType.QUERY,
+    connection=CartoConnection.CARTO_DW,
+    credentials=get_layer_credentials(carto_auth),
+    get_fill_color=color_categories(
+        "landuse_type",
+        [
+            "Multi-Family Walk-Up Buildings",
+            "Multi-Family Elevator Buildings",
+            "Mixed Residential And Commercial Buildings",
+            "Parking Facilities",
+            "1 and 2 Family Buildings",
+            "Commercial and Office Buildings",
+            "Vacant Land",
+            "Public Facilities and Institutions",
+            "Transportation and Utility",
+            "Open Space and Outdoor Recreation",
+            "Industrial and Manufacturing",
+        ],
+        "Bold",
+    ),
+    get_line_color=[0, 0, 0, 100],
+    line_width_min_pixels=0.5,
+    pickable=True,
+)
+```
 
-Parameters:
-- attr (str) – Attribute or column to symbolize by.
-- domain (list) – Assign manual class break values.
-- colors (Union[str, list], optional) – Color assigned to each domain value. - str: A valid named CARTOColors palette. - list: Array of colors in RGBA [ [r, g, b, [a]] ]. Default is PurpOr.
-- null_color (list, optional) – Color for null values. Default is [204, 204, 204].
-</br>
-</br>
+#### styles.color_continuous
 
-**color_categories(attr: str, domain: list, colors: Union[str, list] = 'PurpOr', null_color: list = [204, 204, 204], others_color: list = [119, 119, 119])**
+Helper function for quickly creating a color continuous style.
 
-Parameters:
-- attr (str) – Attribute or column to symbolize by.
-- domain (list) – Category list. Must be a valid list of categories.
-- colors (Union[str, list], optional) – Color assigned to each domain value. - str: A valid named CARTOColors palette. - list: Array of colors in RGBA [ [r, g, b, [a]] ]. Default: PurpOr.
-- null_color (list, optional) – Color for null values. Default is [204, 204, 204].
-- others_color (list, optional) – Fallback color for a category not correctly assigned. Default is [119, 119, 119].
-</br>
-</br>
+Data values of each field are interpolated linearly across values in the domain and are then styled with a blend of the corresponding color in the range.
 
-**color_continuous(attr: str, domain: list, colors: Union[str, list] = 'PurpOr', null_color: list = [204, 204, 204])**
+**Parameters**
+- **attr** (str): Attribute or column to symbolize by.
+- **domain** (list): Attribute domain to define the data range.
+- **colors** (Union[str, list], optional): Color assigned to each domain value. - str: A valid named CARTOColors palette. - list: Array of colors in RGBA [ [r, g, b, [a]] ]. Default is PurpOr.
+- **null_color** (list, optional): Color for null values. Default is [204, 204, 204].
 
-Parameters:
-- attr (str) – Attribute or column to symbolize by.
-- domain (list) – Attribute domain to define the data range.
-- colors (Union[str, list], optional) – Color assigned to each domain value. - str: A valid named CARTOColors palette. - list: Array of colors in RGBA [ [r, g, b, [a]] ]. Default is PurpOr.
-- null_color (list, optional) – Color for null values. Default is [204, 204, 204].
-
+**Example**
+```python
+layer = pdk.Layer(
+    "CartoLayer",
+    data="SELECT geom, value FROM cartobq.public_account.temps",
+    type_=MapType.QUERY,
+    connection=CartoConnection.CARTO_DW,
+    credentials=get_layer_credentials(carto_auth),
+    get_fill_color=color_continuous("value", [70, 75, 80, 85, 90, 95, 100], "Peach"),
+    point_radius_min_pixels=2.5,
+    pickable=True,
+)
+```

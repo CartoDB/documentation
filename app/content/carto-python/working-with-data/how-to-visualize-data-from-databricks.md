@@ -1,11 +1,11 @@
 ---
 aliases:
-    - /carto-python/working-with-data/how-to-use-the-analytics-toolbox-for-databricks
+    - /carto-python/working-with-data/how-to-visualize-data-from-databricks
 ---
 
-## How to access CARTO's Analytics Toolbox for Databricks and create visualizations via Python notebooks
+## How to visualize data from Databricks
 
-This notebook guides the user through the process for connecting to CARTO account and leverage CARTO's Analytics Toolbox and CARTO's integration with Pydeck to be able to perform spatial analytics at scale and create map visualizations from Python notebooks. You can find the original notebook [here](https://docs.carto.com).
+This notebook guides the user through the process for connecting to CARTO account and leverage CARTO's Analytics Toolbox and CARTO's integration with Pydeck to be able to perform spatial analytics at scale and create map visualizations from Python notebooks. You can find the original notebook [here](https://github.com/CartoDB/research-public/blob/master/pydeck-carto/How%20to%20access%20CARTO's%20Analytics%20Toolbox%20for%20Databricks%20and%20create%20visualizations%20via%20Python%20notebooks.ipynb).
 
 ### Install dependencies
 

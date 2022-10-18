@@ -1,9 +1,9 @@
 ---
 aliases:
-    - /carto-python/working-with-data/how-to-access-the-carto-data-warehouse
+    - /carto-python/working-with-data/how-to-work-with-your-data-in-the-carto-data-warehouse
 ---
 
-## How to leverage the CARTO Data Warehouse to use the Analytics Toolbox and to create map visualizations in a Python notebook
+## How to work with your data in the CARTO Data Warehouse
 
 This notebook guides the user through the process for connecting to the CARTO account and leverage CARTO's Analytics Toolbox and CARTO's integration with Pydeck to be able to perform spatial analytics at scale and create map visualizations from Python notebooks. You can find the original notebook [here](https://colab.research.google.com/drive/1Zu2vI9uV-kINp1Nw2MmMYx-j0LQA7dgD?usp=sharing).
 
@@ -199,7 +199,7 @@ register_carto_layer()
 # Render CartoLayer in pydeck with color_bins style
 layer = pdk.Layer(
     "CartoLayer",
-    data="SELECT h3, total_listings FROM `carto-dw-ac-jfjjof5m.shared.listings_from_notebook`",
+    data="SELECT h3, total_listings FROM `shared.listings_from_notebook`",
     type_=MapType.QUERY,
     connection=CartoConnection.CARTO_DW,
     credentials=get_layer_credentials(carto_auth),
