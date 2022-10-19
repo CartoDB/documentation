@@ -208,8 +208,7 @@ hexagons = pdk.Layer(
     stroked=True,
     get_fill_color = color_continuous("DOMINANCE_RATIO", [x/10 for x in range(10)], colors = "Tropic"),
     get_line_color=[0,42,42],
-    line_width_min_pixels=2,
-    on_data_error=get_error_notifier(),
+    line_width_min_pixels=2
     )
 
 points_query = """
