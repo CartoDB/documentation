@@ -43,4 +43,4 @@ CARTO currently provides two open source Python libraries to interact with the p
 <br/>
 
 
-Spatial Data Science workflows in Python often rely on the usage of geopandas in Jupyter notebooks as the de facto standards. Now, users can also integrate CARTO features into these workflows with this set of Python packages, which will save data scientists time and energy spent in switching contexts and working environments. To understand the fundamentals of our packages, in this documentation you will find guides in [Working with data](http://docs.carto.com/carto-python/working-with-data) section.
+Spatial Data Science workflows in Python often rely on the usage of geopandas in Jupyter notebooks as the de facto standards. Now, users can also integrate CARTO features into these workflows with this set of Python packages, which will save data scientists time and energy spent in switching contexts and working environments. To understand the fundamentals of our packages, in this documentation you will find guides in [Working with data](http://docs.carto.com/carto-python/working-with-data/how-to-work-with-your-data-in-the-carto-data-warehouse) section.
