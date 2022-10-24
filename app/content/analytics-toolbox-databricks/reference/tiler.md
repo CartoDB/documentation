@@ -34,7 +34,7 @@ You can execute the H3 Tiler in a databricks notebook (see full example below). 
 
 
 ```scala
-import com.carto.analyticstoolbox.modules.tiler.h3.H3Tiler.create_spatial_index_tileset
+import com.carto.analyticstoolbox.modules.tiler.SpatialTiler.create_spatial_index_tileset
 
 
 // input values
