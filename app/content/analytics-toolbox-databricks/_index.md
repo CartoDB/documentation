@@ -17,7 +17,7 @@ cascade:
     - title: "Guides"
       folder:
         - title: "Working with geospatial data"
-    - title: "SQL Reference"
+    - title: "Reference"
       folder:
         - title: "Overview"
         - title: "accessors"
@@ -27,6 +27,7 @@ cascade:
         - title: "measurements"
         - title: "parsers"
         - title: "predicates"
+        - title: "tiler"
         - title: "transformations"
     - title: "Release notes"
 ---

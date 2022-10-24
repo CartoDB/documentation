@@ -1,5 +1,26 @@
 ## Release notes
 
+### October 18, 2022
+
+#### Module data
+
+Fixed
+
+- Fix enrichment procedures returning inconsistent results for input queries containing `LIMIT`.
+- Fix ST_AREA returning NULL by using ST_SIMPLIFY.
+- Fix inconsistent values resturned because of ST_ENVELOPE.
+
+### October 10, 2022
+
+#### Module data
+
+Feature
+
+- Add DATAOBS_ENRICH_POINTS procedure.
+- Add DATAOBS_ENRICH_POLYGONS procedure.
+- Add DATAOBS_ENRICH_GRID procedure.
+- Add ENRICH_GRID procedure.
+
 ### October 7, 2022
 
 #### Module clustering
@@ -15,7 +36,11 @@ Feature
 
 - Move ST_GENERATEPOINTS function to core.
 
-### September 30, 2022
+### October 1, 2022
+
+#### Module lds
+
+Changed
 
 #### Module lds
 
