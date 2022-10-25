@@ -1,5 +1,13 @@
 ## Release notes
 
+### October 25, 2022
+
+#### Module data
+
+Fixed
+
+- Fix enrichment procedures not working with VARCHAR variables for aggregation types `MIN`, `MAX` and `COUNT`.
+
 ### October 18, 2022
 
 #### Module data
