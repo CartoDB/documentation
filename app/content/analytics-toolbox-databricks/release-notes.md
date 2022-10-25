@@ -8,6 +8,18 @@ Feature
 
 - Add tilestats generation to H3 Tiler
 
+### October 19, 2022
+
+#### All modules
+
+Feature
+
+- Tasks to build installation packages
+
+Changed
+
+- Versioning uses YYYY.MM.DD format based on date now
+
 ### October 10, 2022
 
 #### Tiler

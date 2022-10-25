@@ -4,6 +4,14 @@ aliases:
 ---
 ## Release notes
 
+### October 24, 2022
+
+#### Module processing
+
+Fixed
+
+- Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places
+
 ### October 7, 2022
 
 #### Module clustering
