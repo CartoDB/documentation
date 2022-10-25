@@ -1,5 +1,17 @@
 ## Release notes
 
+### October 19, 2022
+
+#### All modules
+
+Feature
+
+- Tasks to build installation packages
+
+Changed
+
+- Versioning uses YYYY.MM.DD format based on date now
+
 ### September 21, 2022
 
 #### All modules

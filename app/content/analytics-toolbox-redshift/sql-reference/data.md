@@ -59,7 +59,7 @@ CALL carto.DATAOBS_ENRICH_GRID(
 ```
 
 
-### ENRICH_POINTS
+### DATAOBS_ENRICH_POINTS
 
 {{% bannerNote type="code" %}}
 carto.DATAOBS_ENRICH_POINTS(input_query, input_geography_column, variables, filters, variables, output, source)
@@ -132,7 +132,7 @@ CALL carto.carto.DATAOBS_ENRICH_POINTS(
 ```
 
 
-### ENRICH_POINTS
+### DATAOBS_ENRICH_POLYGONS
 
 {{% bannerNote type="code" %}}
 carto.DATAOBS_ENRICH_POLYGONS(input_query, input_geography_column, variables, filters, variables, output, source)
