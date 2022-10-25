@@ -4,8 +4,6 @@
 
 We currently provide support to create H3 tilesets:
 
-Visit the [Overview](/analytics-toolbox-bigquery/overview/tilesets) section to learn more about tilesets.
-
 
 ### create_spatial_index_tileset
 
