@@ -13,7 +13,7 @@ let changelogs = [];
 
 // Execute script
 updateModules('core');
-updateModules('', ['databricks']);
+updateModules('', ['']);
 updateOverview();
 updateReleaseNotes();
 
