@@ -118,6 +118,15 @@
             color: white;
           }
         }
+
+        &.self.hosted {
+          background-color: #a5aa99;
+          border-color: 1px solid #a5aa99;
+
+          span {
+            color: white;
+          }
+        }
         
         &.improvement {
           background-color: #f2b701;
