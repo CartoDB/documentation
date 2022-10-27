@@ -1,5 +1,13 @@
 ## Release notes
 
+### October 24, 2022
+
+#### Tiler
+
+Feature
+
+- Add tilestats generation to H3 Tiler
+
 ### October 19, 2022
 
 #### All modules
@@ -11,6 +19,14 @@ Feature
 Changed
 
 - Versioning uses YYYY.MM.DD format based on date now
+
+### October 10, 2022
+
+#### Tiler
+
+Feature
+
+- Add H3 Tiler
 
 ### September 21, 2022
 
@@ -25,6 +41,12 @@ Feature
 Changed
 
 - Change type returned by ST_X and ST_Y to Double
+
+#### All modules
+
+Feature
+
+- Add VERSION_ADVANCED function
 
 ### September 20, 2022
 
@@ -53,6 +75,14 @@ Changed
 #### Fixed
 
 - Fix the parser tests that had old user function names
+
+#### All modules
+
+Feature
+
+- Add structure for databricks in AT advanced repo
+- Add make rules
+- Add CI/CD workflows
 
 ### September 15, 2022
 
