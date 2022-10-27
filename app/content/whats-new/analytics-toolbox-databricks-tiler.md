@@ -1,5 +1,5 @@
 ---
-title: "H3 Tiler available in the Analytics Toolbox for Databricks"
+title: "Visualize very large datasets based on H3 thanks to our support for spatial index tilesets in Databricks"
 type: whats-new
 date: "2022-10-27"
 quarter: Q4 2022
