@@ -1,5 +1,15 @@
 ### Installation
 
+This guide explains all the steps to install the Analytics Toolbox in your Databricks enviroment.
+
+The CARTO Analytics Toolbox contains two packages:
+* **core**: this is the public and open-source package. 
+* **advanced**: this is a premium package. It contains the Tiler module, that allows to process and visualize very large spatial datasets stored in Databricks.
+
+{{% bannerNote title="NOTE" type="note" %}}
+This guide explains how to install the core package. In order to access the **advanced** features, please contact support@carto.com.
+{{%/ bannerNote %}}
+
 To install the CARTO Analytics Toolbox in your Databricks cluster, follow the instructions below on your Databricks workspace UI:
 
 * Click on _Compute_
