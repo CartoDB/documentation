@@ -18,7 +18,7 @@ cascade:
       folder:
         - title: "Working with geospatial data"
         - title: "Creating and visualizing a tileset"
-    - title: "SQL Reference"
+    - title: "Reference"
       folder:
         - title: "Overview"
         - title: "accessors"
@@ -28,6 +28,7 @@ cascade:
         - title: "measurements"
         - title: "parsers"
         - title: "predicates"
+        - title: "tiler"
         - title: "transformations"
     - title: "Release notes"
 ---

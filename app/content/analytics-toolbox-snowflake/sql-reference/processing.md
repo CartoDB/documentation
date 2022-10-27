@@ -21,11 +21,13 @@ Calculates the Delaunay triangulation of the points provided. An array of linest
 
 * `points`: `ARRAY` array of points in GeoJSON format casted to STRING.
 
+Due to technical limitations of the underlying libraries used, the input points' coordinates are truncated to 5 decimal places in order to avoid problems that happen with close but distinct input points. This limits the precision of the results and can alter slightly the position of the resulting polygons (about 1 meter). This can also result in some points being merged together, so that fewer polygons than expected may result.
+
 **Return type**
 
 `ARRAY`
 
-**Example**
+**Examples**
 
 ``` sql
 SELECT carto.ST_DELAUNAYLINES(
@@ -42,6 +44,21 @@ SELECT carto.ST_DELAUNAYLINES(
 --  "{\"coordinates\":[[-75.521,39.325],[-75.221,39.125],[-75.6,39.984],[-75.521,39.325]],\"type\":\"LineString\"}"
 ```
 
+Note that if some points are very close together (about 1 meter) they may be merged and the result may have fewer lines than expected, for example these four points result in two lines:
+
+```sql
+SELECT carto.ST_DELAUNAYLINES(
+  ARRAY_CONSTRUCT(
+    '{"coordinates":[4.1829523,43.6347910],"type":"Point"}',
+    '{"coordinates":[4.1829967,43.6347137],"type":"Point"}',
+    '{"coordinates":[4.1829955,43.6347143],"type":"Point"}',
+    '{"coordinates":[4.1829321,43.6347500],"type":"Point"}'
+  )
+);
+-- [
+--   "{\"coordinates\":[[4.18293,43.63475],[4.183,43.63471],[4.18295,43.63479],[4.18293,43.63475]],\"type\":\"LineString\"}"
+-- ]
+```
 
 ### ST_DELAUNAYLINES
 
@@ -55,11 +72,13 @@ Calculates the Delaunay triangulation of the points provided. An array of polygo
 
 * `points`: `ARRAY` array of points in GeoJSON format casted to STRING.
 
+Due to technical limitations of the underlying libraries used, the input points' coordinates are truncated to 5 decimal places in order to avoid problems that happen with close but distinct input points. This limits the precision of the results and can alter slightly the position of the resulting polygons (about 1 meter). This can also result in some points being merged together, so that fewer polygons than expected may result.
+
 **Return type**
 
 `ARRAY`
 
-**Example**
+**Examples**
 
 ``` sql
 SELECT carto.ST_DELAUNAYPOLYGONS(
@@ -74,6 +93,22 @@ SELECT carto.ST_DELAUNAYPOLYGONS(
 -- "{\"coordinates\":[[[-75.833,39.284],[-75.521,39.325],[-75.6,39.984],[-75.833,39.284]]],\"type\":\"Polygon\"}",
 -- "{\"coordinates\":[[[-75.833,39.284],[-75.521,39.325],[-75.221,39.125],[-75.833,39.284]]],\"type\":\"Polygon\"}",
 -- "{\"coordinates\":[[[-75.521,39.325],[-75.221,39.125],[-75.6,39.984],[-75.521,39.325]]],\"type\":\"Polygon\"}"
+```
+
+Note that if some points are very close together (about 1 meter) they may be merged and the result may have fewer triangles than expected, for example these four points result in one triangle:
+
+```sql
+SELECT carto.ST_DELAUNAYPOLYGONS(
+  ARRAY_CONSTRUCT(
+    '{"coordinates":[4.1829523,43.6347910],"type":"Point"}',
+    '{"coordinates":[4.1829967,43.6347137],"type":"Point"}',
+    '{"coordinates":[4.1829955,43.6347143],"type":"Point"}',
+    '{"coordinates":[4.1829321,43.6347500],"type":"Point"}'
+  )
+);
+-- [
+--   "{\"coordinates\":[[[4.18293,43.63475],[4.183,43.63471],[4.18295,43.63479],[4.18293,43.63475]]],\"type\":\"Polygon\"}"
+-- ]
 ```
 
 
@@ -128,6 +163,8 @@ Calculates the Voronoi diagram of the points provided. An array of linestrings i
 * `points`: `ARRAY` array of points in GeoJSON format casted to STRING.
 * `bbox` (optional): `ARRAY` clipping bounding box. By default the [-180,-85,180,85] bbox will be used.
 
+Due to technical limitations of the underlying libraries used, the input points' coordinates are truncated to 5 decimal places in order to avoid problems that happen with close but distinct input points. This limits the precision of the results and can alter slightly the position of the resulting lines (about 1 meter). This can also result in some points being merged together, so that fewer lines than input points may result.
+
 **Return type**
 
 `ARRAY`
@@ -165,6 +202,22 @@ SELECT carto.ST_VORONOILINES(
 --  "{\"type\":\"LineString\",\"coordinates\":[[-75.72047348298037,39.63532260219203],[-75.04333534909291,39.716496976360624],[-75.6178875502008,38.854668674698786],[-75.72047348298037,39.63532260219203]]}"
 ```
 
+Note that if some points are very close together (about 1 meter) they may be merged and the result may have fewer lines than points, for example these three points result in two lines
+
+```sql
+SELECT carto.ST_VORONOILINES(
+  ARRAY_CONSTRUCT(
+    '{"coordinates":[4.1829523,43.6347910],"type":"Point"}',
+    '{"coordinates":[4.1829967,43.6347137],"type":"Point"}',
+    '{"coordinates":[4.1829955,43.6347143],"type":"Point"}'
+  ),
+  ARRAY_CONSTRUCT(4.182, 43.634, 4.183, 43.635)
+);
+-- [
+--   "{\"type\":\"LineString\",\"coordinates\":[[4.183,43.634765625],[4.182,43.63414062499997],[4.182,43.635],[4.183,43.635],[4.183,43.634765625]]}",
+--   "{\"type\":\"LineString\",\"coordinates\":[[4.182,43.63414062499997],[4.183,43.634765625],[4.183,43.634],[4.182,43.634],[4.182,43.63414062499997]]}"
+-- ]
+```
 
 ### ST_VORONOIPOLYGONS
 
@@ -178,6 +231,8 @@ Calculates the Voronoi diagram of the points provided. An array of polygons in G
 
 * `points`: `ARRAY` array of points in GeoJSON format casted to STRING.
 * `bbox` (optional): `ARRAY` clipping bounding box. By default the [-180,-85,180,85] bbox will be used.
+
+Due to technical limitations of the underlying libraries used, the input points' coordinates are truncated to 5 decimal places in order to avoid problems that happen with close but distinct input points. This limits the precision of the results and can alter slightly the position of the resulting polygons (about 1 meter). This can also result in some points being merged together, so that fewer polygons than input points may result.
 
 **Return type**
 
@@ -214,6 +269,23 @@ SELECT carto.ST_VORONOIPOLYGONS(
 --  "{\"type\":\"Polygon\",\"coordinates\":[[[-70,41.941670547147794],[-75.04333534909291,39.716496976360624],[-75.72047348298037,39.63532260219203],[-76,39.728365000000004],[-76,45],[-70,45],[-70,41.941670547147794]]]}",
 --  "{\"type\":\"Polygon\",\"coordinates\":[[[-76,37.38389622641511],[-75.6178875502008,38.854668674698786],[-75.04333534909291,39.716496976360624],[-70,41.941670547147794],[-70,35],[-76,35],[-76,37.38389622641511]]]}",
 --  "{\"type\":\"Polygon\",\"coordinates\":[[[-75.72047348298037,39.63532260219203],[-75.04333534909291,39.716496976360624],[-75.6178875502008,38.854668674698786],[-75.72047348298037,39.63532260219203]]]}"
+```
+
+Note that if some points are very close together (about 1 meter) they may be merged and the result may have fewer polygons than points, for example these three points result in two polygons:
+
+```sql
+SELECT carto.ST_VORONOIPOLYGONS(
+  ARRAY_CONSTRUCT(
+    '{"coordinates":[4.1829523,43.6347910],"type":"Point"}',
+    '{"coordinates":[4.1829967,43.6347137],"type":"Point"}',
+    '{"coordinates":[4.1829955,43.6347143],"type":"Point"}'
+  ),
+  ARRAY_CONSTRUCT(4.182, 43.634, 4.183, 43.635)
+);
+-- [
+--  "{\"type\":\"Polygon\",\"coordinates\":[[[4.183,43.634765625],[4.182,43.63414062499997],[4.182,43.635],[4.183,43.635],[4.183,43.634765625]]]}",
+--   "{\"type\":\"Polygon\",\"coordinates\":[[[4.182,43.63414062499997],[4.183,43.634765625],[4.183,43.634],[4.182,43.634],[4.-- 182,43.63414062499997]]]}"
+-- ]
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
