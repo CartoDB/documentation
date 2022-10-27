@@ -32,6 +32,7 @@ Async function that executes a SQL query against [CARTO SQL API](https://carto.c
 | opts                          | <code>Object</code> | Optional. Additional options for the HTTP request, following the [Request](https://developer.mozilla.org/es/docs/Web/API/Request) interface |
 | opts.abortController          | <code>AbortController</code>       | To cancel the network request using [AbortController](https://developer.mozilla.org/en-US/docs/Web/API/AbortController) |
 | opts.format                   | <code>string</code> | Output format to be passed to SQL API (i.e. 'geojson')                             |
+| queryParameters               | <code> QueryParameters (@deck.gl/carto)</code> | SQL query parameters |
 {{%/ tableWrapper %}}
 
 - **Returns**: <code>Object</code> - Data returned from the SQL query execution
