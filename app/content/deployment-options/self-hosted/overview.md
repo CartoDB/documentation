@@ -22,4 +22,4 @@ There are deployment guides available for the major cloud providers:
 
 * [CARTO Self Hosted for AWS](https://docs.google.com/document/d/1Ri5DAG81Rzz145k9YZSeVk6pW-o6vRwkutJZpjdQG5g/export?format=pdf)
 * [CARTO Self Hosted for GCP](https://docs.google.com/document/d/16hVd10TZFPqAd1pP0oErsi0leFmRypJ0Ibyrx0gV06o/export?format=pdf)
-* CARTO Self Hosted for Azure
+* [CARTO Self Hosted for Azure](https://docs.google.com/document/d/11ewOFqQ8HPVE72mFPg54wsvDFLlTTdgha4Abo-PZO1c/export?format=pdf)
