@@ -1,5 +1,9 @@
 ## Creating and visualizing a tileset
 
+{{% bannerNote title="NOTE" type="note" %}}
+The tiler is an advance module only for CARTO users; to get access please contact support@carto.com.
+{{%/ bannerNote %}}
+
 ### Import sample data (optional)
 
 In order to be able to reproduce the following guide, you can optionally import into your Databricks a sample table containing core demographic and environmental data, and POI aggregations by category unified in common geographic H3 support resolution 8.

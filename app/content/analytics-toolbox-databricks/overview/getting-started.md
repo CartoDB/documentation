@@ -14,5 +14,5 @@ The Analytics Toolbox is distributed as a JAR package, available and ready to be
 Visit the [SQL Reference](../../sql-reference/overview) to see the full list of available functions.
 
 {{% bannerNote title="NOTE" type="note" %}}
-The CARTO Analytics Toolbox is only needed to work with geometries. Support for **H3 indexes** is provided natively by Databricks and CARTO and it doesn't require any additional installation.
+The core package of Analytics Toolbox is only needed to work with geometries. Support for **H3 indexes** is provided natively by Databricks and CARTO and it doesn't require any additional installation.
 {{%/ bannerNote %}}
