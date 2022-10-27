@@ -609,6 +609,23 @@ Renders a `<RangeWidget />` component, binded to a source at redux.
 | [props.wrapperProps]       | `Object`      |                  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
 {{%/ tableWrapper %}}
 
+- **Example**:
+
+  In this example, the widget would display the min/max values from the `revenue` column.
+
+  ```js
+  import { RangeWidget } from "@carto/react-widgets";
+  
+  return (
+    <RangeWidget
+      id="revenueRange"
+      title="Revenue"
+      dataSource="storesSourceId"
+      column="revenue"
+    />
+  );
+  ```
+
 
 #### ScatterPlotWidget
 
