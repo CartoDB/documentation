@@ -18,7 +18,6 @@ cascade:
       folder:
         - title: "Working with geospatial data"
         - title: "Creating and visualizing a tileset"
-    - title: "SQL Reference"
     - title: "Reference"
       folder:
         - title: "Overview"
