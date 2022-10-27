@@ -1,5 +1,9 @@
 ## Working with geospatial data in Databricks
 
+{{% bannerNote title="BETA" type="tip" %}}
+The Analytics Toolbox for Databricks is in Beta stage and the API might be subject to changes in the future. 
+{{%/ bannerNote %}}
+
 Databricks doesn't have native support for geospatial data types. That means not being able to store geospatial data as a geometry.
 
 The CARTO Analytics Toolbox for Databricks provides geospatial capabilities through the functions it includes, but most of these functions expect geometry data as input, and return geometry data as output. 

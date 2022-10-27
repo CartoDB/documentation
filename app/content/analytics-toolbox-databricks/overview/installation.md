@@ -1,13 +1,24 @@
 ### Installation
 
-To install the CARTO Analytics Toolbox in your Databricks cluster, follow the instructions below on your Databricks workspace UI:
+This guide explains all the steps to install the Analytics Toolbox in your Databricks enviroment.
+
+The CARTO Analytics Toolbox contains two packages:
+* **core**: this is the public and open-source package. 
+* **advanced**: this is a premium package. It contains the Tiler module, that allows to process and visualize very large spatial datasets stored in Databricks.
+
+{{% bannerNote title="NOTE" type="note" %}}
+This guide explains how to install the core package. In order to access the **advanced** features, please contact support@carto.com.
+{{%/ bannerNote %}}
+
+To install the core package of the Analytics Toolbox in your Databricks cluster, follow the instructions below on your Databricks workspace UI:
 
 * Click on _Compute_
 * Select the cluster where you want to install the Analytics Toolbox
 * Open the _Libraries_ tab
 * Click on _Install new_
 * Select _Maven_ as Library Source
-* Click on _Search Packages_, select _Maven Central_ and look for `carto.analyticstoolbox`; select the latest version and click on _Select_
+* Click on _Search Packages_, select _Maven Central_ and look for `carto.analyticstoolbox`; select the latest version of the one that their "Artifact Id" start as "core_" (the other one is a dependence that this one install under the hood, you do not need to install the package that their "Artefact Id" start with "hiveless").
+* Click on _Select_
 <div style="text-align:center" >
   <img src="/img/databricks-analytics-toolbox/databricks-install-at.png" alt="Install CARTO Analytics Toolbox in your cluster" style="width:100%">
 </div>
