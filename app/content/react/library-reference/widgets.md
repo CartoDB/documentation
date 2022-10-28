@@ -588,6 +588,45 @@ Renders a `<PieWidget />` component, binded to a source at redux. From a data pe
   );
   ```
 
+#### RangeWidget
+
+Renders a `<RangeWidget />` component, binded to a source at redux.
+
+- **Input**
+
+{{% tableWrapper tab="true" overflow-layout="true" %}}
+| Param                  | Type               | Default     | Description                                        |
+| ---------------------- | ------------------ | ----------- | -------------------------------------------------- |
+| props                  | `Object`           |             |                                                    |
+| props.id               | `string`           |             | ID for the widget instance.                        |
+| props.title            | `string`           |             | Title to show in the widget header.                |
+| props.dataSource       | `string`           |             | ID of the data source to get the data from.        |
+| props.column           | `string`           |             | Name of the data source's column to get the data from. |
+| [props.min]            | `number`           |             | (optional) Set this property to use this value as the minimum value instead of calculating it from the dataset. |
+| [props.max]            | `number`           |             | (optional) Set this property to use this value as the maximum value instead of calculating it from the dataset.  |
+| [props.global]         | `bool`             |             | (optional) Enable/disable the viewport filtering in the data fetching |
+| [props.onError]        | `errorCallback` |                | (optional) _errorCallback_: Function to handle error messages from the widget. |
+| [props.wrapperProps]       | `Object`      |                  | (optional) Extra props to pass to [WrapperWidgetUI](https://storybook-react.carto.com/?path=/docs/widgets-wrapperwidgetui--default) |
+{{%/ tableWrapper %}}
+
+- **Example**:
+
+  In this example, the widget would display the min/max values from the `revenue` column.
+
+  ```js
+  import { RangeWidget } from "@carto/react-widgets";
+  
+  return (
+    <RangeWidget
+      id="revenueRange"
+      title="Revenue"
+      dataSource="storesSourceId"
+      column="revenue"
+    />
+  );
+  ```
+
+
 #### ScatterPlotWidget
 
 Renders a `<ScatterPlotWidget />` component, binded to a source at redux. The widget displays the calculations considering just the viewport features. From a data perspective, the ScatterPlotWidget represents two properties/columns in a cartesian chart from a data source to help understand if there is correlation between them.
