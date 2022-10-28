@@ -67,7 +67,7 @@ Action to add a **source** to the store.
 | props.credentials | <code>string</code> |  Credentials for accessing the source                                    |
 | props.connection  | <code>string</code> | Connection name. Used only for CARTO 3.  |
 | props.filtersLogicalOperator | <code>FiltersLogicalOperators</code> | Logical operation to use for combining filters. Can take the values `FiltersLogicalOperators.AND` and `FiltersLogicalOperators.OR`. Default value is `AND`. _Note: this property is only available beginning with v1.3_ |
-| props.queryParameters | <code> QueryParameters (@deck.gl/carto)</code> | SQL query parameters |
+| [props.queryParameters] | <code> QueryParameters (@deck.gl/carto)</code> | Optional. SQL query parameters |
 {{%/ tableWrapper %}}
 
 - **Example**:
