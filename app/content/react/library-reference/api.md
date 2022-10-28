@@ -71,6 +71,7 @@ React hook that allows a more powerful use of CARTO deck.gl layers, creating a s
 | props.source.type  | <code>string</code> |               | Source type. Check available types [here](/deck-gl/reference#type-string)  |
 | props.source.connection  | <code>string</code> |         | Connection name. Required only for CARTO 3.    |
 | props.source.data  | <code>string</code> |               | Table name, tileset name or SQL query.         |
+| props.source.queryParameters | <code> QueryParameters (@deck.gl/carto)</code> | | SQL query parameters |
 | [props.source.credentials] | <code>object</code> |       | (optional) Credentials for accessing the source (check the object props [here](/deck-gl/reference#setdefaultcredentials)).                                                          |
 | [props.layerConfig] | <code>Object</code> |              | (optional) { id, opacity, visible }            |
 | [props.layerConfig.id]    | <code>string</code> |        | (optional) Unique layer ID.                    |
