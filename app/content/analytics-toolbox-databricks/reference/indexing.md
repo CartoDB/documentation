@@ -1,6 +1,6 @@
 ## indexing
 
-<div class="badges"><div class="experimental"><div class="core"></div></div>
+<div class="badges"><div class="experimental"></div><div class="core"></div></div>
 
 This module contains functions used for indexing
 
