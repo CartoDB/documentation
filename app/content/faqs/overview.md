@@ -50,7 +50,7 @@
 ##### Development Tools
 * [What frameworks and libraries can I use for developing custom apps with CARTO?](../categories/development-tools/#what-frameworks-and-libraries-can-i-use-for-developing-custom-apps-with-carto)
 * [Are “CARTO for deck.gl” and “CARTO for React” compatible with the new version of the platform?](../categories/development-tools/#are-carto-for-deckgl-and-carto-for-react-compatible-with-the-new-version-of-the-platform)
-
+* [Does CARTO provide an SDK for the development of Mobile applications?](../categories/development-tools/#does-carto-provide-an-sdk-for-the-development-of-mobile-applications)
 
 ##### Deployment Options
 * [What are the different deployment options for the CARTO platform?](../categories/deployment-options/#what-are-the-different-deployment-options-for-the-CARTO-platform)
