@@ -5,7 +5,7 @@ In this guide we're going to create a simple map that shows the earthquakes in S
 
 #### Creating a map using QueryParameters
 
-First you'll need to create a source that supports query parameters. In this case we are getting all the earthquakes whoses magnitude are between `min: 4` and `max: 5`.
+First you'll need to create a source that supports query parameters. In this case we are getting all the earthquakes from a **bigquery** connection, whoses magnitude are between `min: 4` and `max: 5`.
 
 ```ts
 import { MAP_TYPES } from '@deck.gl/carto';
@@ -43,7 +43,7 @@ const earthquakesLayer = new CartoLayer({
 Now your layer is ready and you can use it in your map, so we're going to create a `<FormulaWidget />` which displays the number of earthquakes in your viewport.
 
 #### Using queryParameters with widgets
-All our widgets are ready to use queryParameters. You just need to pass the `datasource` properly configured (that basically means declaring its `type` as MAP_TYPES.QUERY and adding the corresponding `queryParameters` configuration). After that, you can use any widget as usual, eg:
+All our widgets are ready to use **sources** with queryParameters. You just need to pass the `datasource` properly configured (that basically means declaring its `type` as MAP_TYPES.QUERY and adding the corresponding `queryParameters` configuration). After that, you can use any widget as usual, eg:
 
 ```ts
 <FormulaWidget
