@@ -1,6 +1,6 @@
 ## Query Parameters
 
-You can use QueryParameters to filter your layers at backend side, you can check our [documentation]({{< ref "/deck-gl/reference#queryparameters-depends-on-provider-optional" >}} "About Us") for different providers.
+You can use QueryParameters to filter your layers & widgets at the backend side, using the concept of *parametrized queries* over your sources. You can check our related [deck.gl documentation]({{< ref "/deck-gl/reference#queryparameters-depends-on-provider-optional" >}} "About Us") for different providers.
 In this guide we're going to create a simple map that shows the earthquakes in Spain and allows to filter it by their magnitude.
 
 #### Creating a map using QueryParameters
@@ -10,7 +10,7 @@ First you'll need to create a source that supports query parameters. In this cas
 ```ts
 import { MAP_TYPES } from '@deck.gl/carto';
 
-const sql = 'select * from `carto-demo-data.demo_tables.spain_earthquakes` where magnitude @min and @max';
+const sql = 'select * from `carto-demo-data.demo_tables.spain_earthquakes` where magnitude between @min and @max';
 
 const earthquakesSource = {
   id: 'earthquakes',
@@ -23,7 +23,7 @@ const earthquakesSource = {
 }
 ```
 
-Once you have your source is ready to use you can create your layer using `useCartoLayerProps` hook.
+Once you have your source ready to be used, you can create your layer using `useCartoLayerProps` hook.  
 
 ```ts
 import { CartoLayer } from '@deck.gl/carto';
@@ -40,10 +40,10 @@ const earthquakesLayer = new CartoLayer({
 });
 ```
 
-Your layer is ready and you can use it your map, now we're going to create a `<FormulaWidget />` wich display the number of earthquakes in your viewport.
+Now your layer is ready and you can use it in your map, so we're going to create a `<FormulaWidget />` which displays the number of earthquakes in your viewport.
 
 #### Using queryParameters with widgets
-All our widgets are ready to use queryParameters. You just need to pass the datasource properly configured.
+All our widgets are ready to use queryParameters. You just need to pass the `datasource` properly configured (that basically means declaring its `type` as MAP_TYPES.QUERY and adding the corresponding `queryParameters` configuration). After that, you can use any widget as usual, eg:
 
 ```ts
 <FormulaWidget
@@ -55,13 +55,15 @@ All our widgets are ready to use queryParameters. You just need to pass the data
 ```
 
 #### Filtering with queryParameters using a widget
-We can use widgets to modify and apply filters using queryParameters. We're going to add a `<RangeWidgetUI />` to allows filtering by magnitude. First we need to modify the source to support modify `queryParameters`.
+But the utility of queryParameters is dynamically changing the parametrized values in the app, so now we're gonna use a widget to modify those values (and as a consequence, to apply new backend filters using queryParameters). Here we're going to add a `<RangeWidgetUI />` to allow filtering earthquakes by magnitude.
+
+First we need to prepare the source to support `queryParameters` modification, passing those values as parameters to it.
 
 ```ts
 import { MAP_TYPES } from '@deck.gl/carto';
 
 function useEarthquakeSource([min, max]) {
-  const sql = 'select * from `carto-demo-data.demo_tables.spain_earthquakes` where magnitude @min and @max';
+  const sql = 'select * from `carto-demo-data.demo_tables.spain_earthquakes` where magnitude between @min and @max';
   
   const earthquakesSource = {
     id: 'earthquakes',
