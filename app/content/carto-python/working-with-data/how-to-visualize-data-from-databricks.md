@@ -17,9 +17,7 @@ This notebook guides the user through the process of connecting to a CARTO accou
 
 ```python
 import pydeck as pdk
-from pydeck_carto import register_carto_layer, get_layer_credentials
-from pydeck_carto.layer import MapType, CartoConnection
-from pydeck_carto.styles import color_bins
+import pydeck_carto as pdkc
 from carto_auth import CartoAuth
 ```
 
@@ -42,19 +40,19 @@ Learn more about how to connect CARTO to Databricks [here](https://docs.carto.co
 
 ```python
 # Register CartoLayer in pydeck
-register_carto_layer()
+pdkc.register_carto_layer()
 
 # Render CartoLayer in pydeck
 layer = pdk.Layer(
     "CartoLayer",
     data="hive_metastore.carto_dev_data.derived_spatialfeatures_ukr_h3int_res10_v1_yearly_v2_interpolated",
-    type_=MapType.TABLE,
+    type_=pdkc.MapType.TABLE,
     connection=pdk.types.String("databricksconn_cluster"),
-    credentials=get_layer_credentials(carto_auth),
+    credentials=pdkc.get_layer_credentials(carto_auth),
     aggregation_exp=pdk.types.String("sum(population) as population"),
     aggregation_res_level=5,
     geo_column=pdk.types.String("h3"),
-    get_fill_color=color_bins("population", [1, 10, 100, 1000, 10000, 100000], "SunsetDark"),
+    get_fill_color=pdkc.styles.color_bins("population", [1, 10, 100, 1000, 10000, 100000], "SunsetDark"),
     get_line_color=[0, 0, 0, 80],
     line_width_min_pixels=0.5,
     stroked=True,

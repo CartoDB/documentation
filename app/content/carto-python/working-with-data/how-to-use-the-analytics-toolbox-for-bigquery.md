@@ -19,28 +19,17 @@ Please run the following commands to install pydeck-carto and all other required
 
 
 ```python
-!pip install pydeck-carto geopandas db_dtypes -q 
+!pip install pydeck-carto geopandas db_dtypes -q
 ```
-
-    [K     |████████████████████████████████| 1.0 MB 7.1 MB/s 
-    [K     |████████████████████████████████| 206 kB 78.4 MB/s 
-    [K     |████████████████████████████████| 47 kB 5.2 MB/s 
-    [K     |████████████████████████████████| 77 kB 5.8 MB/s 
-    [K     |████████████████████████████████| 1.0 MB 61.4 MB/s 
-    [K     |████████████████████████████████| 4.7 MB 41.9 MB/s 
-    [K     |████████████████████████████████| 6.3 MB 75.5 MB/s 
-    [K     |████████████████████████████████| 16.7 MB 362 kB/s 
 
 </br>
 
 ```python
 import pydeck as pdk
-import geopandas as gpd
+import pydeck_carto as pdkc
 import pandas as pd
+import geopandas as gpd
 import google.cloud.bigquery as bigquery
-from pydeck_carto import register_carto_layer, get_layer_credentials
-from pydeck_carto.layer import MapType, CartoConnection
-from pydeck_carto.styles import color_bins
 from carto_auth import CartoAuth
 from google.colab import auth
 ```
@@ -73,7 +62,7 @@ After that, we need to set the BigQuery project to future api calls.
 bq_client = bigquery.Client(project='bqcartodemos')
 ```
 
-And then, we can already list datasets, data objects, and even read tables by passing the "table id". In short, we can work with the entire [BigQuery client](https://cloud.google.com/bigquery/docs/reference/libraries). 
+And then, we can already list datasets, data objects, and even read tables by passing the "table id". In short, we can work with the entire [BigQuery client](https://cloud.google.com/bigquery/docs/reference/libraries).
 In this example, we list all tables contained in a specific BigQuery dataset.
 
 
@@ -95,7 +84,7 @@ And we can also show the properties from a table.
 table_id = 'bqcartodemos.sample_tables.01_listings_la_2021_5_reviews'
 
 # Make an API request.
-table = bq_client.get_table(table_id)  
+table = bq_client.get_table(table_id)
 
 # View table properties
 print(f"Got table {table_id}.")
@@ -126,9 +115,9 @@ gdf.head()
 
 
 
-    
+
 ![png](/img/carto-python/bq-notebook/output_14_1.png)
-    
+
 
 
 ### Use Analytics Toolbox functions
@@ -164,7 +153,7 @@ WITH
     h3
 	HAVING COUNT(*) > 3)
 SELECT
-  * 
+  *
 FROM
   aggregated_h3
 """
@@ -179,13 +168,13 @@ gdf_air.head()
 
 
 
-    
+
 ![png](/img/carto-python/bq-notebook/output_17_1.png)
-    
+
 
 
 ### Write a result in a new table on BigQuery
-Once you have the desired result, you might want to store it in a new table in your BigQuery account. Let's see how to do it. 
+Once you have the desired result, you might want to store it in a new table in your BigQuery account. Let's see how to do it.
 
 
 ```python
@@ -207,9 +196,9 @@ gdf_test.head()
 
 
 
-    
+
 ![png](/img/carto-python/bq-notebook/output_20_1.png)
-    
+
 
 
 ### Plot your data in a map
@@ -218,25 +207,24 @@ Using pydeck_carto, you can visualize your data in a map when you are working on
 
 ```python
 # Register CartoLayer in pydeck
-register_carto_layer()
+pdkc.register_carto_layer()
 
 # Render CartoLayer in pydeck with color_bins style
 layer = pdk.Layer(
     "CartoLayer",
     data="SELECT h3, total_listings FROM `bqcartodemos.sample_tables.listings_from_notebook`",
-    type_=MapType.QUERY,
+    type_=pdkc.MapType.QUERY,
     connection=pdk.types.String("ds-connection"), #Use the name of your connection in Carto platform
-    credentials=get_layer_credentials(carto_auth),
+    credentials=pdkc.get_layer_credentials(carto_auth),
     aggregation_exp=pdk.types.String("sum(total_listings) as total_listings"),
     aggregation_res_level=5,
     geo_column=pdk.types.String("h3"),
-    get_fill_color=color_bins("total_listings",[0, 5, 10, 15, 20, 25], "PinkYl"),
+    get_fill_color=pdkc.styles.color_bins("total_listings",[0, 5, 10, 15, 20, 25], "PinkYl"),
     get_line_color=[0, 0, 0, 100],
     line_width_min_pixels=0.5,
     stroked=True,
     extruded=False,
     pickable=True,
-    on_data_error=get_error_notifier()
 )
 
 tooltip = {

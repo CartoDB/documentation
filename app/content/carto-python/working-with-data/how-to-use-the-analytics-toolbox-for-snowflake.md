@@ -10,7 +10,7 @@ This notebook guides the user through the process for connecting to both CARTO a
 The outline of this notebooks is as follows:
 
 * Authentication to CARTO: to be able to use 'CartoLayer' in Pydeck;
-* Authentication to Snowflake (credentials that have access to the database connected to CARTO with the Analytics Toolbox installed)   
+* Authentication to Snowflake (credentials that have access to the database connected to CARTO with the Analytics Toolbox installed)
 * Operations and analysis using Snowpark Python connector and CARTO's Analytics Toolbox
 * Map visualizations with CARTO and Pydeck
 
@@ -29,10 +29,8 @@ The outline of this notebooks is as follows:
 
 ```python
 import pydeck as pdk
+import pydeck_carto as pdkc
 from carto_auth import CartoAuth
-from pydeck_carto import register_carto_layer, get_layer_credentials
-from pydeck_carto.layer import MapType, CartoConnection
-from pydeck_carto.styles import color_continuous, color_categories
 
 
 import os
@@ -70,12 +68,12 @@ CARTO_APP_CREDS_FILE=creds.json
 """)
 
 load_dotenv() #loads env variables in .env file
-    
+
 ```
 
 
 
-We load our Snowflake credentials from the environment with `os` to create a Python connector to Snowpark 
+We load our Snowflake credentials from the environment with `os` to create a Python connector to Snowpark
 
 
 
@@ -102,7 +100,7 @@ sf_client = create_session_object("SFDATABASE","CARTO")
 
 ### Downloading data from Snowflake into a Python dataframe
 
-"Crossfit" is a gym chain located in California. We will be running a location analysis of "Crossfit" venues vs its competitors. 
+"Crossfit" is a gym chain located in California. We will be running a location analysis of "Crossfit" venues vs its competitors.
 
 We use the `h3` module in [CARTO's Analytics Toolbox for Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/overview/getting-started/) to compute the H3 cell of each gym in the "Crossfit" and "Competition" tables, we then join them by h3 id and download the data.
 
@@ -120,7 +118,7 @@ FROM SFDATABASE.CARTO.GYMS_CA_COMPETITION
 GROUP BY h3
 )
 SELECT coalesce(a.h3,b.h3) h3, crossfit_gyms, competition_gyms, CARTO_DEV_DATA.carto.H3_BOUNDARY(coalesce(a.h3,b.h3)) geom
-FROM crossfit_count a FULL OUTER JOIN competition_count b ON a.h3 = b.h3  
+FROM crossfit_count a FULL OUTER JOIN competition_count b ON a.h3 = b.h3
 """
 ```
 
@@ -137,9 +135,9 @@ gyms_df.head()
 ```
 
 
-    
+
 ![png](/img/carto-python/sf-notebook/output_16_0.png)
-    
+
 
 
 
@@ -153,9 +151,9 @@ gyms_df.head()
 ```
 
 
-    
+
 ![png](/img/carto-python/sf-notebook/output_17_0.png)
-    
+
 
 
 ### Uploading a dataframe back to Snowflake
@@ -174,7 +172,7 @@ snowflake_df = sf_client.create_dataframe(total_gyms)
 snowflake_df.write.save_as_table("SFDATABASE.CARTO.GYMS_CA_TOTAL_CENTROID", mode = "overwrite")
 ```
 
-### Visualizing data in Snowflake with the pydeck-carto library 
+### Visualizing data in Snowflake with the pydeck-carto library
 
 Here we visualize the uploaded data in two layers, using the new styling functions and the Analytics Toolbox installed in SF.
 * hexagons: renders the h3 cells with a colour continuos style representing the dominance ratio of crossfit gyms vs total number of gyms
@@ -182,12 +180,12 @@ Here we visualize the uploaded data in two layers, using the new styling functio
 
 
 ```python
-# Note that the attribute name must be cased when passed to the styling functions even though in the query is uncased. 
+# Note that the attribute name must be cased when passed to the styling functions even though in the query is uncased.
 # This is because column names in SF tables are always with capital letters
 # Snowflake
 
 # Register CartoLayer in pydeck
-register_carto_layer()
+pdkc.register_carto_layer()
 
 hexagons_query = """
 SELECT  CARTO_DEV_DATA.carto.H3_BOUNDARY("H3") H3_GEOM,
@@ -195,18 +193,18 @@ SELECT  CARTO_DEV_DATA.carto.H3_BOUNDARY("H3") H3_GEOM,
         FROM SFDATABASE.CARTO.GYMS_CA_TOTAL_CENTROID
         """
 
-credentials = get_layer_credentials(carto_auth)
+credentials = pdkc.get_layer_credentials(carto_auth)
 
 hexagons = pdk.Layer(
     "CartoLayer",
     data = hexagons_query,
     geo_column=pdk.types.String("H3_GEOM"),
-    type_=MapType.QUERY,
+    type_=pdkc.MapType.QUERY,
     connection=pdk.types.String("snowflake"),
     credentials=credentials,
     opacity=0.2,
     stroked=True,
-    get_fill_color = color_continuous("DOMINANCE_RATIO", [x/10 for x in range(10)], colors = "Tropic"),
+    get_fill_color=pdkc.styles.color_continuous("DOMINANCE_RATIO", [x/10 for x in range(10)], colors = "Tropic"),
     get_line_color=[0,42,42],
     line_width_min_pixels=2
     )
@@ -223,14 +221,14 @@ points = pdk.Layer(
     "CartoLayer",
     data = points_query,
     geo_column=pdk.types.String("GEOM"),
-    type_=MapType.QUERY,
+    type_=pdkc.MapType.QUERY,
     connection=pdk.types.String("snowflake"),
     credentials=credentials,
     opacity=0.8,
     stroked=True,
     pickable=True,
     point_radius_min_pixels=2,
-    get_fill_color = color_categories("CATEGORY", ["competitors", "crossfit"], colors = "Tropic")
+    get_fill_color=pdkc.styles.color_categories("CATEGORY", ["competitors", "crossfit"], colors = "Tropic")
     )
 
 view_state = pdk.ViewState(latitude=33.64, longitude=-117.94, zoom=5)

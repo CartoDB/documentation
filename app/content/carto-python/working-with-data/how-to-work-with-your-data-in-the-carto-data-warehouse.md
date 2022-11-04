@@ -28,11 +28,9 @@ Note that in order to install the Python client to access the CARTO Data Warehou
 
 ```python
 import pydeck as pdk
-import geopandas as gpd
+import pydeck_carto as pdkc
 import pandas as pd
-from pydeck_carto import register_carto_layer, get_layer_credentials
-from pydeck_carto.layer import MapType, CartoConnection
-from pydeck_carto.styles import color_bins
+import geopandas as gpd
 from carto_auth import CartoAuth
 ```
 
@@ -52,7 +50,7 @@ carto_dw_client = carto_auth.get_carto_dw_client()
 
 ```python
 #to take the dataset_id in CARTO DW
-datasets = list(carto_dw_client.list_datasets()) 
+datasets = list(carto_dw_client.list_datasets())
 
 if datasets:
     print("Datasets in CARTO Data Warehouse:")
@@ -100,9 +98,9 @@ gdf.head()
 
 
 
-    
+
 ![png](/img/carto-python/carto-dw-notebook/output_13_1.png)
-    
+
 
 
 ### Using functions from the Analytics Toolbox
@@ -137,7 +135,7 @@ WITH
     h3
 	HAVING COUNT(*) > 3)
 SELECT
-  * 
+  *
 FROM
   aggregated_h3
 """
@@ -152,15 +150,15 @@ gdf_air.head()
 
 
 
-    
+
 ![png](/img/carto-python/carto-dw-notebook/output_15_1.png)
-    
+
 
 
 
 ### Uploading the result of our analysis as a new table in our data warehouse
 
-Once you have the desired result, you might want to store it as a new table in your CARTO Data Warehouse. 
+Once you have the desired result, you might want to store it as a new table in your CARTO Data Warehouse.
 
 
 ```python
@@ -183,9 +181,9 @@ gdf_test.head()
 
 
 
-    
+
 ![png](/img/carto-python/carto-dw-notebook/output_18_1.png)
-    
+
 
 
 ### Visualize your data in a map
@@ -194,19 +192,19 @@ Using pydeck-carto, you can visualize your spatial data in a map at any step of 
 
 ```python
 # Register CartoLayer in pydeck
-register_carto_layer()
+pdkc.register_carto_layer()
 
 # Render CartoLayer in pydeck with color_bins style
 layer = pdk.Layer(
     "CartoLayer",
     data="SELECT h3, total_listings FROM `shared.listings_from_notebook`",
-    type_=MapType.QUERY,
+    type_=pdkc.MapType.QUERY,
     connection=CartoConnection.CARTO_DW,
-    credentials=get_layer_credentials(carto_auth),
+    credentials=pdkc.get_layer_credentials(carto_auth),
     aggregation_exp=pdk.types.String("sum(total_listings) as total_listings"),
     aggregation_res_level=5,
     geo_column=pdk.types.String("h3"),
-    get_fill_color=color_bins("total_listings",[0, 5, 10, 15, 20, 25], "PinkYl"),
+    get_fill_color=pdkc.styles.color_bins("total_listings",[0, 5, 10, 15, 20, 25], "PinkYl"),
     get_line_color=[0, 0, 0, 100],
     line_width_min_pixels=0.5,
     stroked=True,
