@@ -1,0 +1,23 @@
+name: Update the AT documentation reference
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The version you want to link this update to, for example 2022-10'
+        required: true
+
+jobs:
+  build_and_preview:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update docs
+        run: |
+          ./scripts/checkout.sh 
+          ./scripts/update.sh
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: Documentation updated automatically for version ${{ github.event.inputs.version }}
+      

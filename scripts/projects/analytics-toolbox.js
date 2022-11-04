@@ -13,7 +13,7 @@ let changelogs = [];
 
 // Execute script
 updateModules('core');
-updateModules('', ['']);
+updateModules('');
 updateOverview();
 updateReleaseNotes();
 
@@ -61,10 +61,8 @@ function sortedFiles (files, metadata) {
     });
 }
 
-function updateModules (type, ignore) {
-    if (ignore && ignore.includes(cloud)) {
-        return;
-    }
+function updateModules (type) {
+    const referenceFolder = cloud === 'databricks' ? 'reference': 'sql-reference'
     const repo = `analytics-toolbox${type ? `/${type}` : ''}`;
     const sourcePath = path.join('.', '.checkout', repo, 'clouds', cloud, 'modules', 'doc');
     const modules = fs.readdirSync(sourcePath);
@@ -74,12 +72,12 @@ function updateModules (type, ignore) {
             console.log(`- Update ${module} module`);
             const metadata = extractMetadata(fs.readFileSync(path.join(docPath, '_INTRO.md')).toString());
             const files = sortedFiles(fs.readdirSync(docPath).filter(f => f.endsWith('.md')), metadata);
-            let content = aliasesHeader(`sql-reference/${module}`)
+            let content = aliasesHeader(`${referenceFolder}/${module}`)
             content += files.map(f => removeMetadata(fs.readFileSync(path.join(docPath, f)).toString())).join('\n\n');
             if (cloud === 'bigquery') {
                 content += '\n\n{{% euFlagFunding %}}'
             }
-            fs.writeFileSync(path.join(targetPath, 'sql-reference', `${module}.md`), content);
+            fs.writeFileSync(path.join(targetPath, referenceFolder, `${module}.md`), content);
             index.push({
                 module,
                 type: type || 'advanced',
@@ -94,7 +92,9 @@ function updateModules (type, ignore) {
 }
 
 function updateOverview () {
-    let content = aliasesHeader(`sql-reference/overview`)
+    const referenceFolder = cloud === 'databricks' ? 'reference': 'sql-reference'
+
+    let content = aliasesHeader(`${referenceFolder}/overview`)
     content += `## Overview
 
 The CARTO Analytics Toolbox's functions are organized in modules based on the functionality they offer. On this page you will find the full list with direct links to their definition.
@@ -119,7 +119,7 @@ The CARTO Analytics Toolbox's functions are organized in modules based on the fu
     }
 
     console.log(`- Update overview`);
-    fs.writeFileSync(path.join(targetPath, 'sql-reference', 'overview.md'), content);
+    fs.writeFileSync(path.join(targetPath, referenceFolder, 'overview.md'), content);
 }
 
 function updateReleaseNotes () {
