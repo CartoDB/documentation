@@ -20,6 +20,7 @@
   <script>
 
     let map;
+    deck.carto.setDefaultCredentials({accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'});
 
     // instantiate a Cognito-backed credential provider
     const identityPoolId = "us-east-2:303d12f6-e24e-4571-8a79-66cc7c6a6bdc"; // Cognito Identity Pool ID
@@ -73,7 +74,6 @@
 
       map.addControl(new maplibregl.NavigationControl(), "top-left");
 
-      deck.carto.setDefaultCredentials({accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'});
       const layer = new deck.carto.CartoLayer({
         id: 'places',
         connection: 'bqconn',
