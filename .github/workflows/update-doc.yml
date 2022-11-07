@@ -15,17 +15,20 @@ jobs:
       - name: checkout analytics-toolbox
         uses: actions/checkout@v3
         with:
-          path: .checkout/
+          path: ./.checkout
           repository: CartoDB/analytics-toolbox
           submodules: recursive
           token: ${{ secrets.CARTO_GITHUB_TOKEN }}
-      - name: Update docs
+      - name: Echo paths docs
         run: 
           echo "$(ls -la)"
           echo "$(ls -la ..)"
+          echo "$(ls -la .checkout)"
           echo "$(pwd)"
           $GITHUB_WORKSPACE
-          ./scripts/update.sh
+      - name: Update docs
+        run: 
+          ./scripts/update.sh          
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
