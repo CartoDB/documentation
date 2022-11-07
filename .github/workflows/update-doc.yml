@@ -19,13 +19,6 @@ jobs:
           repository: CartoDB/analytics-toolbox
           submodules: recursive
           token: ${{ secrets.CARTO_GITHUB_TOKEN }}
-      - name: Echo paths docs
-        run: 
-          echo "$(ls -la)"
-          echo "$(ls -la .checkout)"
-          echo "$(ls -la .checkout/core)"
-          echo "$(pwd)"
-          $GITHUB_WORKSPACE
       - name: Update docs
         run: 
           ./scripts/update.sh          
