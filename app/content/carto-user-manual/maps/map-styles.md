@@ -18,6 +18,12 @@ This is specially useful for combining different types of sources: aggregated da
 
 ![Map style zoom range slider](/img/cloud-native-workspace/maps/slider_visibility_by_zoom.png)
 
+### Resolution
+
+This is only available for [aggregated grids](../data-sources/#aggregated-grids) based on spatial index data.
+
+This slider controls the granularity of the aggregation on each tile, allowing for finer control over the aggregated visualization.
+
 ### Fill color
 
 When activated, features on the map are filled in with colors. By default, Builder assigns a color automatically. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
@@ -37,6 +43,12 @@ You can explore additional fill color features by clicking on the *three dots* i
     1. Click the *Color based on* button. Select a field from your dataset to style your layer. In this example, we style our layer based on the "population" field. 
 
     ![Map style fill color based on field](/img/cloud-native-workspace/maps/map_fill_color_based_on.png)
+
+{{% bannerNote title="NOTE" type="note"%}}
+When working with [**aggregated data sources**](../data-sources/#aggregated-grids), you will need to select an aggregation operation for your columns. 
+
+Connections to **Redshift** clusters don't support aggregation of categorical properties.
+{{%/ bannerNote %}}
 	
 	A color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
 	
