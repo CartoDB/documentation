@@ -5,14 +5,16 @@ on:
     inputs:
       version:
         description: 'The version you want to link this update to, for example 2022-10'
-        required: true
-
+        required: false
+        default: 'undefined'
 jobs:
   build_and_preview:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - name: Update docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.CARTO_GITHUB_TOKEN }}
         run: |
           ./scripts/checkout.sh 
           ./scripts/update.sh
@@ -20,4 +22,5 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           title: Documentation updated automatically for version ${{ github.event.inputs.version }}
+          branch: docs/${{ github.event.inputs.version }}
       
