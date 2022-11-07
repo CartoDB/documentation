@@ -4,6 +4,8 @@
 
 We currently provide support to create H3 tilesets:
 
+Visit the [Overview](/analytics-toolbox-bigquery/overview/tilesets) section to learn more about tilesets.
+
 
 ### create_spatial_index_tileset
 
@@ -31,7 +33,6 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 You can execute the H3 Tiler in a databricks notebook (see full example below). The only mandatory args in options argument is the input resolution.
 
 ```scala
-%scala
 import com.carto.analyticstoolbox.modules.tiler.create_spatial_index_tileset
 
 
