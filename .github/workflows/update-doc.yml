@@ -12,11 +12,15 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+      - name: checkour analytics-toolbox
+        uses: actions/checkout@v3
+        with:
+          path: .checkout
+          repository: CartoDB/analytics-toolbox
+          submodules: recursive
+          token: ${{ secrets.CARTO_GITHUB_TOKEN }}
       - name: Update docs
-        env:
-          GITHUB_TOKEN: ${{ secrets.CARTO_GITHUB_TOKEN }}
         run: |
-          ./scripts/checkout.sh 
           ./scripts/update.sh
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
