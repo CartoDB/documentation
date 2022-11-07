@@ -35,70 +35,31 @@ At this point you will have a basic map with the Rivers Amazon Location map reso
 
 ### Adding data from CARTO
 
-In order to visualize the CARTO tileset, we are going to take advantage of the TileJSON endpoints in the Maps API v3. We just need to provide the endpoint URL through the [`source.url`](https://maplibre.org/maplibre-gl-js-docs/style-spec/sources/) property while calling the [`addLayer`](https://maplibre.org/maplibre-gl-js-docs/api/map/#map#addlayer) method on the map. In the URL we need to provide a token with access to the tileset.
+In order to visualize the CARTO dataset, we are going to use the [`fetchMap`](../../deck-gl/reference/#fetchmap) function to add a map that was previously created in CARTO Builder.
 
 {{% bannerNote title="About CARTO platform versions" %}}
 In this documentation we use the term “CARTO 3” or "Maps API v3" to refer to the latest version of the CARTO platform launched on October 2021, and “CARTO 2” to refer to the previous version. We provide examples for both versions and we add notes when there are differences in the way you need to work with each of them. Note that each platform version has its own set of account credentials.
 {{%/ bannerNote %}}
 
-We are using a public tileset generated using our BigQuery Tiler and we are assigning a different color to each line representing a river, depending on the value of the `bearing` attribute.
-
-```js
-map.addLayer(
-  {
-    id: 'rivers_carto',
-    type: 'line',
-    source: {
-      type: 'vector',
-      url: 'https://gcp-us-east1.api.carto.com/v3/maps/bqconn/tileset?name=cartobq.public_account.eurivers&access_token=eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c&format=tilejson&client=amazon-location'
-    },
-    'source-layer': 'default',
-    "paint": {
-      "line-color": {
-        "property": "bearing",
-        "type": "interval",
-        "stops": [
-          [{"zoom": 0, "value": 0}, "rgba(255, 0, 128, 1)"],
-          [{"zoom": 0, "value": 18}, "rgba(212, 7, 146, 1)"],
-          [{"zoom": 0, "value": 37}, "rgba(212, 7, 146, 1)"],
-          [{"zoom": 0, "value": 56}, "rgba(170, 13, 164, 1)"],
-          [{"zoom": 0, "value": 75}, "rgba(128, 20, 181, 1)"],
-          [{"zoom": 0, "value": 94}, "rgba(85, 26, 199, 1)"],
-          [{"zoom": 0, "value": 113}, "rgba(43, 33, 217, 1)"],
-          [{"zoom": 0, "value": 132}, "rgba(0, 39, 235, 1)"],
-          [{"zoom": 0, "value": 151}, "rgba(3, 72, 217, 1)"],
-          [{"zoom": 0, "value": 170}, "rgba(43, 33, 217, 1)"],
-          [{"zoom": 0, "value": 189}, "rgba(9, 138, 181, 1)"],
-          [{"zoom": 0, "value": 208}, "rgba(12, 170, 164, 1)"],
-          [{"zoom": 0, "value": 227}, "rgba(15, 203, 146, 1)"],
-          [{"zoom": 0, "value": 246}, "rgba(18, 236, 128, 1)"],
-          [{"zoom": 0, "value": 265}, "rgba(58, 197, 128, 1)"],
-          [{"zoom": 0, "value": 284}, "rgba(97, 157, 128, 1)"],
-          [{"zoom": 0, "value": 303}, "rgba(136, 118, 128, 1)"],
-          [{"zoom": 0, "value": 322}, "rgba(176, 79, 128, 1)"],
-          [{"zoom": 0, "value": 341}, "rgba(215, 39, 128, 1)"],
-          [{"zoom": 0, "value": 360}, "rgba(255, 0, 128, 1)"]
-        ]
-      }
-    }
-  }
-);
-```
-
-Finally we need to add the layer to the map after it is loaded:
+By providing your own CARTO map id you can load in any maps you have created in CARTO Builder, with all of the styling preconfigured.
 
 ```js
 async function initializeMap() {
   ...
-  map.on('load', () => {
-    addCartoLayer();
-  })
+  const cartoMapId = 'ff6ac53f-741a-49fb-b615-d040bc5a96b8';
+  const {layers} = await deck.carto.fetchMap({cartoMapId});
+  const deckOverlay = new deck.MapboxOverlay({layers});
 }
 ```
 
-{{% bannerNote title="tip" %}}
-If using CARTO 2, you can follow a similar approach but using the TileJSON endpoints provided by Maps API v2. For example, this a valid URL for retrieving a TileJSON using CARTO 2: `https://maps-api-v2.us.carto.com/user/public/bigquery/tileset?source=cartobq.maps.eurivers&format=tilejson&api_key=default_public&client=amazon-location`
-{{%/ bannerNote %}}
+Finally we need to add the layer to the map:
+
+```js
+async function initializeMap() {
+  ...
+  map.addControl(deckOverlay);
+}
+```
 
 ### All together
 
@@ -125,6 +86,10 @@ If using CARTO 2, you can follow a similar approach but using the TileJSON endpo
     <script src="https://unpkg.com/@aws-amplify/core@3.7.0/dist/aws-amplify-core.min.js"></script>
     <script src="https://unpkg.com/maplibre-gl@1.14.0/dist/maplibre-gl.js"></script>
     <link href="https://unpkg.com/maplibre-gl@1.14.0/dist/maplibre-gl.css" rel="stylesheet" />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://unpkg.com/deck.gl@^8.8.0/dist.min.js"></script>
+    <script src="https://unpkg.com/@deck.gl/carto@^8.8.0/dist.min.js"></script>
   </head>
 
   <body style="margin: 0; padding: 0;">
@@ -179,59 +144,18 @@ If using CARTO 2, you can follow a similar approach but using the TileJSON endpo
 
       map = new maplibregl.Map({
         container: "map",
-        center: [20, 49], 
-        zoom: 4, 
+        center: [-73.96, 40.7167], 
+        zoom: 14, 
         style: mapName,
         transformRequest,
       });
 
       map.addControl(new maplibregl.NavigationControl(), "top-left");
 
-      map.on('load', () => {
-        addCartoLayer();
-      })
-    }
-
-    async function addCartoLayer() {
-      map.addLayer(
-        {
-          id: 'rivers_carto',
-          type: 'line',
-          source: {
-            type: 'vector',
-            url: 'https://gcp-us-east1.api.carto.com/v3/maps/bqconn/tileset?name=cartobq.public_account.eurivers&access_token=eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c&format=tilejson&client=amazon-location'
-          },
-          'source-layer': 'default',
-          "paint": {
-            "line-color": {
-              "property": "bearing",
-              "type": "interval",
-              "stops": [
-                [{"zoom": 0, "value": 0}, "rgba(255, 0, 128, 1)"],
-                [{"zoom": 0, "value": 18}, "rgba(212, 7, 146, 1)"],
-                [{"zoom": 0, "value": 37}, "rgba(212, 7, 146, 1)"],
-                [{"zoom": 0, "value": 56}, "rgba(170, 13, 164, 1)"],
-                [{"zoom": 0, "value": 75}, "rgba(128, 20, 181, 1)"],
-                [{"zoom": 0, "value": 94}, "rgba(85, 26, 199, 1)"],
-                [{"zoom": 0, "value": 113}, "rgba(43, 33, 217, 1)"],
-                [{"zoom": 0, "value": 132}, "rgba(0, 39, 235, 1)"],
-                [{"zoom": 0, "value": 151}, "rgba(3, 72, 217, 1)"],
-                [{"zoom": 0, "value": 170}, "rgba(43, 33, 217, 1)"],
-                [{"zoom": 0, "value": 189}, "rgba(9, 138, 181, 1)"],
-                [{"zoom": 0, "value": 208}, "rgba(12, 170, 164, 1)"],
-                [{"zoom": 0, "value": 227}, "rgba(15, 203, 146, 1)"],
-                [{"zoom": 0, "value": 246}, "rgba(18, 236, 128, 1)"],
-                [{"zoom": 0, "value": 265}, "rgba(58, 197, 128, 1)"],
-                [{"zoom": 0, "value": 284}, "rgba(97, 157, 128, 1)"],
-                [{"zoom": 0, "value": 303}, "rgba(136, 118, 128, 1)"],
-                [{"zoom": 0, "value": 322}, "rgba(176, 79, 128, 1)"],
-                [{"zoom": 0, "value": 341}, "rgba(215, 39, 128, 1)"],
-                [{"zoom": 0, "value": 360}, "rgba(255, 0, 128, 1)"]
-              ]
-            }
-          }
-        }
-      );
+      const cartoMapId = 'ff6ac53f-741a-49fb-b615-d040bc5a96b8';
+      const {layers} = await deck.carto.fetchMap({cartoMapId});
+      const deckOverlay = new deck.MapboxOverlay({layers});
+      map.addControl(deckOverlay);
     }
 
     initializeMap();

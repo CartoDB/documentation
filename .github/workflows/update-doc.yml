@@ -27,4 +27,3 @@ jobs:
         with:
           title: Documentation updated automatically for version ${{ github.event.inputs.version }}
           branch: docs/${{ github.event.inputs.version }}
-      
