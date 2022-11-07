@@ -15,7 +15,7 @@ jobs:
       - name: checkout analytics-toolbox
         uses: actions/checkout@v3
         with:
-          path: ./.checkout
+          path: ./.checkout/analytics-toolbox
           repository: CartoDB/analytics-toolbox
           submodules: recursive
           token: ${{ secrets.CARTO_GITHUB_TOKEN }}
