@@ -1,5 +1,5 @@
 ---
-title: "New features for Spatial Indexes layers"
+title: "Resolution selector and aggregation methods for categorical data in spatial index layers"
 type: whats-new
 date: "2022-11-07"
 quarter: Q4 2022
@@ -19,5 +19,3 @@ Users working with Spatial Indexes data (Quadbin or H3) in Builder have a couple
 <div class='video-wrapper'>
 <iframe src="https://player.vimeo.com/video/768188257?h=ef65945f7f&autoplay=1&muted=1&autopause=0&loop=1" width="100%" height="460" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
 </div>
-
-<!-- <iframe src="https://player.vimeo.com/video/768188257?h=ef65945f7f" width="640" height="351" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> -->
