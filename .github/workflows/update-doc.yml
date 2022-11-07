@@ -22,8 +22,8 @@ jobs:
       - name: Echo paths docs
         run: 
           echo "$(ls -la)"
-          echo "$(ls -la ..)"
           echo "$(ls -la .checkout)"
+          echo "$(ls -la .checkout/core)"
           echo "$(pwd)"
           $GITHUB_WORKSPACE
       - name: Update docs
