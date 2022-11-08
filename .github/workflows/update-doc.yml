@@ -5,19 +5,25 @@ on:
     inputs:
       version:
         description: 'The version you want to link this update to, for example 2022-10'
-        required: true
-
+        required: false
+        default: 'undefined'
 jobs:
   build_and_preview:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+      - name: checkout analytics-toolbox
+        uses: actions/checkout@v3
+        with:
+          path: ./.checkout/analytics-toolbox
+          repository: CartoDB/analytics-toolbox
+          submodules: recursive
+          token: ${{ secrets.CARTO_GITHUB_TOKEN }}
       - name: Update docs
-        run: |
-          ./scripts/checkout.sh 
-          ./scripts/update.sh
+        run: 
+          ./scripts/update.sh          
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
           title: Documentation updated automatically for version ${{ github.event.inputs.version }}
-      
+          branch: docs/${{ github.event.inputs.version }}
