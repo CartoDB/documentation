@@ -1,6 +1,6 @@
 ## Query Parameters
 
-You can use QueryParameters to filter your layers & widgets at the backend side, using the concept of *parametrized queries* over your sources. You can check our related [deck.gl documentation]({{< ref "/deck-gl/reference#queryparameters-depends-on-provider-optional" >}} "About Us") for different providers.
+You can use QueryParameters to filter your layers & widgets at the backend side, using the concept of *parametrized queries* over your sources. You can check our related [deck.gl documentation]({{<link ref "/deck-gl/reference#queryparameters-depends-on-provider-optional" >}} "About Us") for different providers.
 In this guide we're going to create a simple map that shows the earthquakes in Spain and allows to filter it by their magnitude.
 
 #### Creating a map using QueryParameters
