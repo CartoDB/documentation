@@ -116,3 +116,4 @@
 {{ $script := resources.Get "js/main.js" | js.Build "js/hugo/main.js" | minify}}
 <script src="{{ $script.RelPermalink }}"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/asciinema-player@2.6.1/resources/public/js/asciinema-player.min.js"></script>
