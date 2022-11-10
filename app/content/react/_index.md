@@ -21,7 +21,6 @@ cascade:
         - title: "Authentication and Authorization"
         - title: "Basemaps"
         - title: "Look and Feel"
-        - title: "Query parameters"
         - title: "Code Generator"
         - title: "Sample Application"
         - title: "Deployment"
