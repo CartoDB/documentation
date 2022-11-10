@@ -20,7 +20,7 @@ jobs:
 
       - name: Hugo Build
         working-directory: app
-        run: hugo --baseURL .
+        run: hugo --baseURL 'https://cartodb-fb-documentation--pr459-testing-preview-m5jwtz81.web.app/'
         
       - name: Deploy to firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
