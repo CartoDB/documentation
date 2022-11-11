@@ -117,6 +117,9 @@ This procedure is the second step of the Revenue Prediction analysis workflow. I
   * DATA_SPLIT_METHOD: 'NO_SPLIT'
 
     This parameter allows using other options compatible with the model used. Models currently supported are [LINEAR_REG](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-glm) and [BOOSTED_TREE_REGRESSOR](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create-boosted-tree). Check the [model documentation](https://cloud.google.com/bigquery-ml/docs/reference/standard-sql/bigqueryml-syntax-create#model_option_list) for more information.
+
+    Please note that `BOOSTED_TREE_REGRESSOR` is available only on certain regions, as detailed <a href="https://cloud.google.com/bigquery-ml/docs/locations#regional-locations" target="_blank">here</a>.
+
 * `output_prefix`: `STRING` destination prefix for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>.<output-prefix>`.
 
 **Output**
