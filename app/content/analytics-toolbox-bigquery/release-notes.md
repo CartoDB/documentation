@@ -4,29 +4,27 @@ aliases:
 ---
 ## Release notes
 
-### October 24, 2022
+### November 7, 2022
 
-#### Module processing
+#### Module retail
+
+Feature
+
+- Add `FIND_TWIN_AREAS_WEIGHTED` procedure.
+
+### October 26, 2022
+
+#### Module transformations
 
 Fixed
 
-- Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places
+- Fix ST_BUFFER crashing with geographies close to the poles.
 
-### October 7, 2022
+#### Module tiler
 
-#### Module clustering
+Changed
 
-Feature
-
-- Move ST_CLUSTERKMEANS function to core.
-
-#### Module random
-
-Feature
-
-- Move ST_GENERATEPOINTS function to core.
-
-### October 5, 2022
+- Partition tables in spatial index tilesets.
 
 #### Module cpg
 
@@ -45,6 +43,28 @@ Fixed
 Changed
 
 - CREATE_ISOLINES output is clustered by geometry.
+
+### October 24, 2022
+
+#### Module processing
+
+Fixed
+
+- Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places.
+
+### October 7, 2022
+
+#### Module clustering
+
+Feature
+
+- Move ST_CLUSTERKMEANS function to core.
+
+#### Module random
+
+Feature
+
+- Move ST_GENERATEPOINTS function to core.
 
 ### September 30, 2022
 
