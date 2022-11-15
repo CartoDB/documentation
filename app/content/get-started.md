@@ -14,17 +14,18 @@ CARTO is the leading Location Intelligence platform. It enables organizations to
 
 Data Scientists, Developers, and Analysts use CARTO to optimize business processes and predict future outcomes through the power of Spatial Data Science.
 
-Our platform helps you visualize, analyze, and build applications using location data. It is available for both individual users and enterprises. 
+Our platform helps you visualize, analyze, and build applications using location data, natively on your cloud data warehouse platforms. CARTO is available for both individual users and enterprises, in both cloud and self-hosted deployments.
 
+<video height="450" autoplay="" loop="" muted=""> <source src=" https://carto.com/img/home/home-video-explanation.mp4" type="video/mp4"></video>
 
 ### Components of the CARTO platform
 
-Depending on your usage of the CARTO platform, whether it’s for visualization, analysis, or application development, you will be using different components of the platform.
+Depending on your usage of the CARTO platform, whether it’s for visualization, analysis, data access, or application development, you will be using different components of the platform.
 
-{{%sideImage image="/img/get-started/dashboard.png" alt="Dasbhoard"%}}
+{{%sideImage image="/img/get-started/new_workspace.png" alt="Dasbhoard"%}}
 ##### Workspace
 
-Connect to multiple cloud data warehouses and explore your geospatial data. Seamlessly access a wealth of vetted datasets to enhance your geospatial analysis.
+The central location of all your experience with CARTO; connect to multiple cloud data warehouses, explore your geospatial data, geocode your tables, enrich your data with a wealth of vetted datasets to enhance your geospatial analysis, and access the different CARTO tools. 
 
 {{<link href="https://carto.com/signup" target="_blank">}}
   Login or create an account
@@ -34,7 +35,7 @@ Connect to multiple cloud data warehouses and explore your geospatial data. Seam
 {{%sideImage image="/img/get-started/builder.png" alt="Builder"%}}
 ##### Builder
 
-CARTO Builder offers powerful map making, data visualization, and integration with Data Warehouses.
+CARTO Builder offers powerful map making capabilities, interactive data visualizations, collaboration and publication options - everything running natively from your cloud data warehouse.
 
 {{<link href="https://carto.com/builder" target="_blank">}}
   Learn more
@@ -44,14 +45,24 @@ CARTO Builder offers powerful map making, data visualization, and integration wi
 {{%sideImage image="/img/get-started/engine-api.png" alt="Platfrom APIs and libraries"%}}
 ##### Platform APIs and libraries
 
-For the Developer community, we have created a complete library of APIs, frameworks, connectors, and development tools to accelerate the spatial app development process.
+For the Developer community, we have created a complete library of APIs, frameworks, connectors, and development tools to accelerate the spatial app development process. 
 
-{{<link href="/#dev-tools">}}
+{{<link href="https://api-docs.carto.com/" target="_blank">}}
   View all libraries and APIs
 {{</link>}}
 {{%/sideImage%}}
 
 {{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
+##### Analytics Toolbox
+
+The CARTO Analytics Toolbox is a suite of functions and procedures to easily enhance the geospatial capabilities available in the different cloud data warehouses. It contains more than 100 advanced spatial functions, grouped in different modules such as tiler, data, clustering, statistics, etc.
+
+{{<link href="https://docs.carto.com/analytics-toolbox/about-the-analytics-toolbox/" target="_blank">}}
+  Learn more
+{{</link>}}
+{{%/sideImage%}}
+
+<!-- {{%sideImage image="/img/get-started/cartoframes.png" alt="CARTOframes"%}}
 ##### CARTOframes
 
 CARTOframes is a Python package for integrating CARTO maps, spatial analytics, and data services into your data science workflows.
@@ -59,14 +70,14 @@ CARTOframes is a Python package for integrating CARTO maps, spatial analytics, a
 {{<link href="https://carto.com/cartoframes" target="_blank">}}
   Learn more
 {{</link>}}
-{{%/sideImage%}}
+{{%/sideImage%}} -->
 
 {{%sideImage image="/img/get-started/data-observatory.png" alt="Data Observatory"%}}
 ##### Data Observatory
 
-We catalog and distribute thousands of vetted public and premium spatial datasets, covering most global markets. These datasets are available across the different components of CARTO, so you can use them for data enrichment or as additional data layers for your spatial apps and analyses.
+We catalog and distribute thousands of vetted public and premium spatial datasets, covering most global markets. These datasets are available across the different components of CARTO, so you can use them for data enrichment or as additional layers for your spatial apps and analyses. 
 
-{{<link href="https://carto.com/spatial-data-catalog" target="_blank">}}
+{{<link href="https://docs.carto.com/data-observatory/overview/getting-started/" target="_blank">}}
   Explore our Spatial Data Catalog
 {{</link>}}
 {{%/sideImage%}}
@@ -74,7 +85,7 @@ We catalog and distribute thousands of vetted public and premium spatial dataset
 
 ## CARTO for Spatial Analysis
 
-CARTO's Location Intelligence platform lets you store, enrich, analyze, & visualize spatial data to make insightful decisions.
+CARTO’s Location Intelligence platform lets you store, enrich, analyze, & visualize spatial data to make insightful decisions. Our platform extends the geospatial capabilities of the leading cloud data warehouse platform ensuring you can get the most out of your location data.
 
 ### Spatial Analysis with Builder
 
@@ -199,7 +210,7 @@ That's it! The resulting map shows the different clusters of customer locations 
 {{%/ tutorialStep %}}
 {{</interactiveTutorial>}}
 
-### Spatial Analysis with CARTOframes
+<!-- ### Spatial Analysis with CARTOframes
 
 This guide is intended for those who want to start augmenting their data using CARTOframes, our Python library. You can find full guides and examples in the [documentation page](https://carto.com/developers/cartoframes/).
 
@@ -321,7 +332,7 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
 
 
 {{%/ tutorialStep %}}
-{{</interactiveTutorial>}}
+{{</interactiveTutorial>}} -->
 
 ## CARTO for Development
 
@@ -476,6 +487,104 @@ CARTO is an open ecosystem that does not force you to use a specific technology 
 Your application probably provides access to datasets stored in the CARTO database. Please read this [article](/authorization) to understand how authorization is handled and how you can take advantage of CARTO support for the OAuth 2.0 protocol.
 
 When you are interacting with the CARTO platform, you may reach some limits that we put in place to guarantee the performance and prevent abuse. Please read this [article](/limits) to learn more about this.
+
+{{%/ tutorialStep %}}
+
+{{</interactiveTutorial>}}
+
+## Spatial Analysis with the Analytics Toolbox
+
+CARTO’s Analytics Toolbox is a suite of +100 functions and procedures extending the spatial analysis capabilities of your cloud data warehouse platform. The toolbox is organized in modules related to different types of functionalities, such as operating with spatial indexes, creating tilesets out of your large datasets, location data services, geostatistics and much more. 
+
+This guide is intended for those users who want to perform spatial analytics natively in their data warehouse using CARTO’s set of prepared analytical functions. In this guide we will focus on the implementation of the Analytics Toolbox for BigQuery, but this component is also available for Snowflake, Redshift, Databricks and PostgreSQL. 
+
+
+{{<interactiveTutorial>}}
+
+{{% tutorialStep stepName="Intro"%}}
+
+In this example we are going to identify hotspots of amenity POIs in Stockholm using OpenStreetMap data and the [GETIS_ORD_H3](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) function available in the statistics module. POIs can be found in the publicly available `cartobq.docs.osm_pois_stockholm` table (via the CARTO Data Warehouse or a BigQuery connection). We will implement this analysis using the SQL panel available for adding data sources from SQL queries in Builder, but it can also be run directly on your BigQuery console.
+
+![Final map](/img/get-started/at-pois-final-map.png)  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Visualize the POIs"%}}
+
+In order to visualize the OpenStreetMap data that we are using for POIs, you can simply execute the following query:
+
+```sql
+SELECT * FROM cartobq.docs.osm_pois_stockholm WHERE amenity IS NOT NULL
+```
+
+![Visualize pois](/img/get-started/at-visualize-pois.png)  
+
+With Builder, you can use widgets and tooltips in order to explore the data in more detail, as illustrated in the image below.
+
+![Visualize pois with widgets](/img/get-started/at-pois-widgets.png)  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Compute the H3 resolution 9 cell in which each POI falls into"%}}
+
+With the execution of the following query, we run the [H3_FROMGEOGPOINT](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/h3/#h3_fromgeogpoint) method in order to transform and aggregate a point-based dataset into a grid based on the H3 spatial index. 
+
+```sql
+ SELECT h3, CAST(COUNT(*) AS FLOAT64) AS n_amenity_pois,
+ FROM (
+   SELECT `carto-un`.carto.H3_FROMGEOGPOINT(geom, 9) AS h3,
+   FROM cartobq.docs.osm_pois_stockholm
+   WHERE amenity IS NOT NULL )
+ GROUP BY h3
+ ```
+
+In order to visualize the output of this query remember to change the type of geometry in the SQL panel to an H3 index.
+
+![Builder spatial data type](/img/get-started/spatial-data-type.png)  
+
+Then you can style the map layer that gets generated based on the `n_amenity_pois` feature.
+
+![POIs H3 style layer](/img/get-started/at-pois-h3-style-layer.png)  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Compute the Getis-Ord Gi* statistic"%}}
+
+The final result can be obtained by executing the following query, in which we combine both the aggregation of POIs in an H3-based grid and the computation of the [Getis-Ord Gi*](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) statistic for each of the grid cells. This measure tells you where features with either high or low values (of the n_aminity_pois) cluster spatially or not. It’s a good statistic in order to run a hotspot analysis. 
+
+![POIs sql getis ord gi*](/img/get-started/at-pois-sql-getis-ord.png)  
+
+```sql
+WITH
+ stockholm AS (
+ SELECT h3, CAST(COUNT(*) AS FLOAT64) AS n_amenity_pois,
+ FROM (
+   SELECT `carto-un`.carto.H3_FROMGEOGPOINT(geom, 9) AS h3,
+   FROM cartobq.docs.osm_pois_stockholm
+   WHERE amenity IS NOT NULL )
+ GROUP BY h3),
+ 
+ getis_ord AS (
+ SELECT `carto-un`.carto.GETIS_ORD_H3(ARRAY_AGG(STRUCT(h3, n_amenity_pois)),
+     4, 'triangular') AS output
+ FROM stockholm )
+ 
+SELECT unnested.INDEX AS h3, unnested.gi
+FROM getis_ord, UNNEST(getis_ord.output) AS unnested
+```
+
+The results can be explored on a map such as in the example below, where we can use the histogram widget to narrow down the cells with the highest Gi* values, which correspond to the location of the hotspots of amenity POIs in Stockholm.
+
+Remember once again to change the type of geometry in the SQL panel to an H3 index.
+
+![Builder spatial data type](/img/get-started/spatial-data-type.png)  
+
+![POIs map getis ord gi*](/img/get-started/at-pois-map-getis-ord*.png)  
+
+<!-- You can also visualize the result.
+
+<iframe width="860px" height="680px" src="https://clausa.app.carto.com/map/70169237-06b2-4731-89aa-da802f6beebb"></iframe>
+-->
 
 {{%/ tutorialStep %}}
 
