@@ -52,7 +52,7 @@ Once you're happy with the result, simply merge your branch into master and it w
 
 > :warning: Remember to revert the commit if you have added your preview URL in the [preview file](.github/workflows/preview.yml#L23) before merging.
 
-:point_right: `run: hugo --baseURL 'https://cartodb-fb-documentation--pr459-testing-preview-m5jwtz81.web.app/'`
+:point_right: `run: hugo --baseURL .`
 
 
 ## How to create new documentation
