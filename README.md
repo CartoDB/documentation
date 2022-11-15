@@ -38,9 +38,22 @@ To update the reference files run:
 
 ## How to deploy
 
-To deploy into staging you just need to create a Pull Request. Once the Github Action finishes, it will add a comment with the result and the staging url (the url will be valid for 7 days). Each new commit into the PR, will regenerate the staging page.
+### Peview
+
+To deploy into a preview channel you just need to create a Pull Request. Once the Github Action finishes, it will add a comment with the result and the preview url (the url will be valid for 7 days). Each new commit into the PR, will regenerate the staging page.
+
+> :warning: If you need to access any link in the doc, you need to add your preview URL in the [preview file](.github/workflows/preview.yml#L23) and commit this change.
+
+:point_right: e.g. `run: hugo --baseURL 'https://cartodb-fb-documentation--pr459-testing-preview-m5jwtz81.web.app/'`
+
+### Production
 
 Once you're happy with the result, simply merge your branch into master and it will do the deploy to production automatically
+
+> :warning: Remember to revert the commit if you have added your preview URL in the [preview file](.github/workflows/preview.yml#L23) before merging.
+
+:point_right: `run: hugo --baseURL 'https://cartodb-fb-documentation--pr459-testing-preview-m5jwtz81.web.app/'`
+
 
 ## How to create new documentation
 
