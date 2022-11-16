@@ -38,7 +38,7 @@ To update the reference files run:
 
 ## How to deploy
 
-### Peview
+### Staging / Preview
 
 To deploy into a preview channel you just need to create a Pull Request. Once the Github Action finishes, it will add a comment with the result and the preview url (the url will be valid for 7 days). Each new commit into the PR, will regenerate the staging page.
 
