@@ -22,7 +22,7 @@ Our platform helps you visualize, analyze, and build applications using location
 
 Depending on your usage of the CARTO platform, whether it’s for visualization, analysis, data access, or application development, you will be using different components of the platform.
 
-{{%sideImage image="/img/get-started/new_workspace.png" alt="Dasbhoard"%}}
+{{%sideImage image="/img/get-started/workspace-new.png" alt="Dasbhoard"%}}
 ##### Workspace
 
 The central location of all your experience with CARTO; connect to multiple cloud data warehouses, explore your geospatial data, geocode your tables, enrich your data with a wealth of vetted datasets to enhance your geospatial analysis, and access the different CARTO tools. 
@@ -32,7 +32,7 @@ The central location of all your experience with CARTO; connect to multiple clou
 {{</link>}}
 {{%/sideImage%}}
 
-{{%sideImage image="/img/get-started/builder.png" alt="Builder"%}}
+{{%sideImage image="/img/get-started/builder-new.png" alt="Builder"%}}
 ##### Builder
 
 CARTO Builder offers powerful map making capabilities, interactive data visualizations, collaboration and publication options - everything running natively from your cloud data warehouse.
