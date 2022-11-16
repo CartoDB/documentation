@@ -69,8 +69,10 @@ SELECT `carto-os`.carto.ST_DELAUNAYLINES(
 ```
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
+
 * [A NYC subway connection graph using Delaunay triangulation](/analytics-toolbox-bigquery/examples/a-nyc-subway-connection-graph-using-delaunay-triangulation/)
 {{%/ bannerNote %}}
+
 
 ### ST_DELAUNAYPOLYGONS
 
@@ -130,7 +132,6 @@ SELECT `carto-os`.carto.ST_DELAUNAYPOLYGONS(
 );
 -- [ POLYGON((4.18293 43.63475, 4.183 43.63471, 4.18295 43.63479, 4.18293 43.63475)) ]
 ```
-
 
 
 ### ST_POLYGONIZE
