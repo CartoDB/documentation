@@ -496,14 +496,14 @@ When you are interacting with the CARTO platform, you may reach some limits that
 
 CARTO’s Analytics Toolbox is a suite of +100 functions and procedures extending the spatial analysis capabilities of your cloud data warehouse platform. The toolbox is organized in modules related to different types of functionalities, such as operating with spatial indexes, creating tilesets out of your large datasets, location data services, geostatistics and much more. 
 
-This guide is intended for those users who want to perform spatial analytics natively in their data warehouse using CARTO’s set of prepared analytical functions. In this guide we will focus on the implementation of the Analytics Toolbox for BigQuery, but this component is also available for Snowflake, Redshift, Databricks and PostgreSQL. 
+This guide is intended for those users who want to perform spatial analytics natively in their data warehouse using CARTO’s set of prepared analytical functions. In this guide we will focus on the implementation of the [Analytics Toolbox for BigQuery](https://docs.carto.com/analytics-toolbox-bigquery/overview/getting-started/), but this component is also available for [Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/overview/getting-started/), [Redshift](https://docs.carto.com/analytics-toolbox-redshift/overview/getting-started/), [Databricks](https://docs.carto.com/analytics-toolbox-databricks/overview/getting-started/) and [PostgreSQL](https://docs.carto.com/analytics-toolbox-postgres/overview/getting-started/). 
 
 
 {{<interactiveTutorial>}}
 
 {{% tutorialStep stepName="Intro"%}}
 
-In this example we are going to identify hotspots of amenity POIs in Stockholm using OpenStreetMap data and the [GETIS_ORD_H3](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) function available in the statistics module. POIs can be found in the publicly available `cartobq.docs.osm_pois_stockholm` table (via the CARTO Data Warehouse or a BigQuery connection). We will implement this analysis using the SQL panel available for adding data sources from SQL queries in Builder, but it can also be run directly on your BigQuery console.
+In this example we are going to identify hotspots of amenity POIs in Stockholm using OpenStreetMap data and the [GETIS_ORD_H3](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) function available in the [statistics](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/) module. POIs can be found in the publicly available `cartobq.docs.osm_pois_stockholm` table (via the CARTO Data Warehouse or a BigQuery connection). We will implement this analysis using the SQL panel available for [adding data sources from SQL queries](https://docs.carto.com/carto-user-manual/maps/data-sources/#add-source-from-a-custom-query) in [Builder](https://docs.carto.com/carto-user-manual/maps/introduction/), but it can also be run directly on your BigQuery console.
 
 ![Final map](/img/get-started/at-pois-final-map.png)  
 
