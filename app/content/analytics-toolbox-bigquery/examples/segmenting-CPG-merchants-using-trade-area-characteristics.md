@@ -165,7 +165,7 @@ Below we can see the resulting segment assignment table in which we have every m
 An example of the second table, the descriptive statistics for each case/cluster, can be seen below. Each row corresponds to a clustering scenario, a cluster label and the feature name. For each of these tuples, the descriptive statistics are shown. For example, the first 3 columns of the 6th row are: cluster_7, value (cluster label) 1 and horeca_count. This row refers to the scenario with 7 clusters/segments, the 1st cluster of that scenario and for the feature `horeca_count`, the mean value is 233.53, the standard deviation is 53.22, the min value is 141 etc.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_statistics_cluster.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/segmentation_cluster_statistics.png" alt="Preview table trade areas" style="width:100%">
 </div>
 
 And finally the output of the last table, with the metrics to measure the quality of the clustering (namely, [David Bouldin](https://en.wikipedia.org/wiki/Davies%E2%80%93Bouldin_index) index and within sum of squares) is as follows.
