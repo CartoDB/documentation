@@ -27,8 +27,8 @@ Generates a point aggregation tileset.
 | Option | Description |
 | :----- | :------ |
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
-|`zoom_min`| Default: `2`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
-|`zoom_max`| Default: `NULL`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated.|
+|`zoom_min`| Default: `0`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
+|`zoom_max`| Default: `NULL`. An `INTEGER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
 |`aggregation_resolution`| Default: `6`. An `INTEGER` that specifies the resolution of the spatial aggregation.<br/><br/>Aggregation for zoom `z` is based on quadgrid cells at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells, which is the maximum number of resulting features (aggregated) that the tiles will contain..<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
 |`aggregation_placement`| Default: `"cell-centroid"`. A `TEXT` that defines what type of geometry will be used to represent the cells generated in the aggregation, which will be the features of the resulting tileset. There are currently four options:<br/><ul><li>`"cell-centroid"`: Each feature will be defined as the centroid of the cell, that is, all points that are aggregated together into the cell will be represented in the tile by a single point positioned at the centroid of the cell.</li><li>`"cell"`: Each feature will be defined as the entire cell's polygon, thus the final representation in the tile will be a polygon. This provides more precise coordinates but takes more space in the tile and requires more CPU to process it in the renderer.</li><li>`"features-any"`: The aggregation cell will be represented by any random point from the source data contained within it. That is, if 10 points fall inside a cell, the procedure will randomly choose the location of one of them to represent the aggregation cell.</li><li>`"features-centroid"`: The feature will be defined as the centroid (point) of the collection of points within the cell.</li></ul>|
 |`metadata`| Default: `{}`. A JSON object to specify the associated metadata of the tileset. Use this to set the name, description and legend to be included in the [TileJSON](https://github.com/mapbox/tilejson-spec/tree/master/2.2.0). Other fields will be included in the object extra_metadata.|
@@ -111,8 +111,8 @@ Create a simple tileset from a table, with feature dropping.
 | Option | Description |
 | :----- | :------ |
 |`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
-|`zoom_min`| Default: `2`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
-|`zoom_max`| Default: `NULL`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level over this level won't be generated. If not provided, the appropriate maximum zoom level is inferred from the size of the features.|
+|`zoom_min`| Default: `0`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
+|`zoom_max`| Default: `NULL`. An `INTEGER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated. If not provided, the appropriate maximum zoom level is inferred from the size of the features.|
 |`tile_extent`| Default: `4096`. An `INTEGER` defining the extent of the tile in integer coordinates as defined by the MVT spec.
 |`tile_buffer`| Default: `16`. An `INTEGER` defining the additional buffer added around the tiles in extent units, which is useful to facilitate geometry stitching across tiles in the renderers. In aggregation tilesets, this property is currently not available and always `0` as no geometries go across tile boundaries.|
 |`max_tile_size_kb`| Default: `1024`. An `INTEGER` that determines the maximum tile size, in kilobytes, before compression.
@@ -180,8 +180,8 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 * `options`: `TEXT` containing a valid JSON with the different options. Valid options are described the table below.
 | Option | Description |
 | :----- | :------ |
-|`resolution_min`| Default: `2`. An `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
-|`resolution_max`| Default: `15`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`resolution_min`| Default: `0`. An `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
+|`resolution_max`| Default: `0`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
 |`spatial_index_column`| A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (can only be `quadbin` at the moment), and `column_name` being the name of the column in that input table that contains the tile ids. Notice that the spatial index name is case-sensitive. The type of spatial index also defines the type used in the output table, which will be QUADBIN (for spatial index type `quadbin`).|
 |`resolution`| A `NUMBER` defining the resolution of the tiles in the input table.|
 |`aggregation_resolution`| Defaults: `6` for QUADBIN tilesets, `4` for H3 tilesets. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
