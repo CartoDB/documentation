@@ -130,7 +130,7 @@ This table shows the correlation between every pair of features. The `col1` and 
 This table contains the descriptive statistics for each feature. A row corresponds to a feature. The table schema is exactly the same as the one from the [describe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) function of Python Pandas package. Descriptive statistics include those that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_descriptive_statistics_table.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/segmentation_descriptive_table_with_statistics.png" alt="Preview table trade areas" style="width:100%">
 </div>
 
 ### Step 3.- Running the segmentation algorithm
