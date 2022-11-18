@@ -1,7 +1,7 @@
 ---
 title: "Segmenting CPG merchants using trade areas characteristics"
 description: "A key analysis towards understanding your merchants’ potential is to identify the characteristics of their trade areas and to perform an appropriate profiling and segmentation of them."
-image: "/img/bq-analytics-toolbox/examples/pizza-hut-location-in-honolulu.png"
+image: "/img/bq-analytics-toolbox/examples/segmentation_final_map.png"
 type: examples
 date: "2022-11-18"
 categories:
