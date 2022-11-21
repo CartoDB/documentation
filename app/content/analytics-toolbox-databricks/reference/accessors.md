@@ -1,6 +1,6 @@
 ## accessors
 
-<div class="badges"><div class="experimental"></div><div class="core"></div></div>
+<div class="badges"><div class="core"></div></div>
 
 This module contains functions that provide information about internal geometries.
 
