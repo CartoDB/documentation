@@ -325,7 +325,7 @@ In case of `input` being set as a query, it should be taken into account that [C
 
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
 
-* [Creating spatial index tilesets](analytics-toolbox-bigquery/examples/creating-spatial-index-tilesets/)
+* [Creating spatial index tilesets](/analytics-toolbox-bigquery/examples/creating-spatial-index-tilesets/)
 {{%/ bannerNote %}}
 
 
