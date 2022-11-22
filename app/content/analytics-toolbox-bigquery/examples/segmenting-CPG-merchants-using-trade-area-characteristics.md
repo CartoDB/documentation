@@ -53,7 +53,9 @@ is illustrated below. `store_id` is the unique identifier of each location and `
 <img src="/img/bq-analytics-toolbox/examples/segmentation_preview_table_trade_areas.png" alt="Preview table trade areas" style="width:100%">
 </div> -->
 
-<iframe height=700px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/5e9b2fcd-1d66-46cd-a153-b4351166b941"></iframe>
+<div style="text-align:center" >
+<iframe height=650px width=800 style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/5e9b2fcd-1d66-46cd-a153-b4351166b941"></iframe>
+</div>
 
 ### Step 2.- Enriching the trade areas with the desired features for the analysis
 
@@ -208,4 +210,8 @@ And finally the output of the last table, with the metrics to measure the qualit
  -->
 In the map below, the result from the segmentation of the scenario with the 6 clusters can be seen. For a detailed description on how to use the resulting tables and visualization to label clusters based on business terms, please refer to this [blogpost](https://carto.com/blog/trade-area-analysis-cpg-merchants/). 
 
-<iframe height=700px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/a6afdcfd-36c5-48f4-95ec-b2c3fee87718"></iframe>
+<!-- <iframe height=700px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/a6afdcfd-36c5-48f4-95ec-b2c3fee87718"></iframe> -->
+
+<div style="text-align:center" >
+<iframe height=650px width=800 style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/a6afdcfd-36c5-48f4-95ec-b2c3fee87718"></iframe>
+</div>
