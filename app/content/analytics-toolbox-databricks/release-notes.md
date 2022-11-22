@@ -1,10 +1,22 @@
 ## Release notes
 
+### November 1, 2022
+
+#### All modules
+
+New
+
+- Create release workflows
+
+Improvement
+
+- Adapt to Semver
+
 ### October 24, 2022
 
 #### Tiler
 
-Feature
+New
 
 - Add tilestats generation to H3 Tiler
 
@@ -12,11 +24,11 @@ Feature
 
 #### All modules
 
-Feature
+New
 
 - Tasks to build installation packages
 
-Changed
+Improvement
 
 - Versioning uses YYYY.MM.DD format based on date now
 
@@ -24,7 +36,7 @@ Changed
 
 #### Tiler
 
-Feature
+New
 
 - Add H3 Tiler
 
@@ -32,19 +44,19 @@ Feature
 
 #### All modules
 
-Feature
+New
 
 - Add VERSION_CORE function
 
 #### Accessors
 
-Changed
+Improvement
 
 - Change type returned by ST_X and ST_Y to Double
 
 #### All modules
 
-Feature
+New
 
 - Add VERSION_ADVANCED function
 
@@ -52,7 +64,7 @@ Feature
 
 #### All modules
 
-Changed
+Improvement
 
 - Set default compression codec to snappy
 
@@ -60,13 +72,13 @@ Changed
 
 #### All modules
 
-Feature
+New
 
 - Add headers to functions that didn't have
 - Add make rule to publis artifact in local and sonatype
 - Add make rule to check and create headers
 
-Changed
+Improvement
 
 - change makefiles and sbt file to prepare the at advance
 
@@ -78,7 +90,7 @@ Changed
 
 #### All modules
 
-Feature
+New
 
 - Add structure for databricks in AT advanced repo
 - Add make rules
@@ -88,13 +100,13 @@ Feature
 
 #### All modules
 
-Changed
+Improvement
 
 - The XY precission of the TWKBWriter is set to 5.
 
 #### Module formatters
 
-Fixed
+Fix
 
 - Fix the doc of the transformers functions ST_ASLATLONTEXT and ST_ASTEXT.
 
@@ -102,13 +114,13 @@ Fixed
 
 #### Module accessors
 
-Fixed
+Fix
 
 - Fix the bug in ST_COORDDIM that was adding z coordinate to geometries.
 
 #### Module indexing
 
-Fixed
+Fix
 
 - Fix the cast ClassCastException in ST_GEOMREPROJECT.
 
@@ -116,7 +128,7 @@ Fixed
 
 #### All modules
 
-Changed
+Improvement
 
 - Refactor databricks cloud to adapt it to the new cloud structure
 
@@ -124,7 +136,7 @@ Changed
 
 #### Module indexing
 
-Feature
+New
 
 - Add ST_CRSFROMTEXT function.
 - Add ST_EXTENTFROMGEOM function.
@@ -136,25 +148,25 @@ Feature
 
 #### Module formatters
 
-Feature
+New
 
 - Add ST_ASTWKB function.
 
 #### Module parsers
 
-Feature
+New
 
 - Add ST_GEOMFROMWKT function.
 
 #### Module predicates
 
-Feature
+New
 
 - Add ST_COVERS function.
 
 #### Module transformations
 
-Feature
+New
 
 - Add ST_BUFFERPOINT function.
 - Add ST_DIFFERENCE function.
@@ -164,7 +176,7 @@ Feature
 
 #### Module accessors
 
-Feature
+New
 
 - Add ST_COORDDIM function.
 - Add ST_DIMENSION function.
@@ -185,7 +197,7 @@ Feature
 
 #### Module constructors
 
-Feature
+New
 
 - Add ST_MAKEBBOX function.
 - Add ST_MAKEBOX2D function.
@@ -197,7 +209,7 @@ Feature
 
 #### Module formatters
 
-Feature
+New
 
 - Add ST_ASBINARY function.
 - Add ST_ASGEOHASH function.
@@ -212,7 +224,7 @@ Feature
 
 #### Module measurements
 
-Feature
+New
 
 - Add ST_AREA function.
 - Add ST_DISTANCE function.
@@ -222,7 +234,7 @@ Feature
 
 #### Module parsers
 
-Feature
+New
 
 - Add ST_BOX2DFROMGEOHASH function.
 - Add ST_GEOMETRYFROMTEXT function.
@@ -241,7 +253,7 @@ Feature
 
 #### Module predicates
 
-Feature
+New
 
 - Add ST_CONTAINS function.
 - Add ST_CROSSES function.
@@ -256,7 +268,7 @@ Feature
 
 #### Module transformations
 
-Feature
+New
 
 - Add ST_ANTIMERIDIANSAFEGEOM function.
 - Add ST_BOUNDARY function.

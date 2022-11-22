@@ -8,7 +8,7 @@ aliases:
 
 #### Module lds
 
-Feature
+New
 
 - Add GEOCODE_REVERSE_TABLE procedure.
 
@@ -16,15 +16,27 @@ Feature
 
 #### Module lds
 
-Feature
+New
 
 - Add CREATE_ISOLINES procedure.
+
+### November 1, 2022
+
+#### All modules
+
+New
+
+- Create release workflows
+
+Improvement
+
+- Adapt to Semver
 
 ### October 24, 2022
 
 #### Module processing
 
-Fixed
+Fix
 
 - Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places
 
@@ -32,13 +44,13 @@ Fixed
 
 #### Module clustering
 
-Feature
+New
 
 - Move ST_CLUSTERKMEANS function to core.
 
 #### Module random
 
-Feature
+New
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -46,7 +58,7 @@ Feature
 
 #### Module lds
 
-Changed
+Improvement
 
 - CREATE_ISOLINES output is ordered by geometry to be compliant with Snowflake Search Optimization Service.
 
@@ -54,7 +66,7 @@ Changed
 
 #### Module lds
 
-Changed
+Improvement
 
 - Rename `LDS_API_URL` to `API_BASE_URL`.
 
@@ -62,7 +74,7 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - Optimize DATAOBS_ENRICH_GRID, DATAOBS_ENRICH_GRID_RAW when the enrich data is a grid compatible with the input.
 - Remove support for s2, geohash in all enrich procedures.
@@ -72,7 +84,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Set `version` field in tilers metadata compliant with AT version.
 
@@ -80,7 +92,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Unify `extra_metadata` into `metadata` in tiler metadata.
 
@@ -88,7 +100,7 @@ Changed
 
 #### Module data
 
-Feature
+New
 
 - Add quadbin support to module.
 
@@ -96,7 +108,7 @@ Feature
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fix quoting and letter case in spatial index tiler.
 
@@ -104,11 +116,11 @@ Fixed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fix wrong uppercase in spatial index tiler.
 
-Changed
+Improvement
 
 - Use core functions to convert H3 from int to string.
 
@@ -116,7 +128,7 @@ Changed
 
 #### Module h3
 
-Fixed
+Fix
 
 - Correctly handle large polygons in H3_POLYFILL.
 - Fixed wrong uppercase for quadbin and h3 tile ids
@@ -125,7 +137,7 @@ Fixed
 
 #### Module quadbin
 
-Feature
+New
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -147,7 +159,7 @@ Feature
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Add CREATE_SPATIAL_INDEX_TILESET procedure.
 
@@ -155,12 +167,12 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - ENRICH_ procedures require all the enrich data query rows to be of the same geometry kind (points/lines/polygons) .
 - Various optimizations for performance and preventing out-of-memory errors
 
-Changed
+Improvement
 
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
 
@@ -168,7 +180,7 @@ Changed
 
 #### Module lds
 
-Changed
+Improvement
 
 - Add optional `language` parameter to GEOCODE_REVERSE function.
 
@@ -176,7 +188,7 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
 
@@ -184,7 +196,7 @@ Changed
 
 #### Module data
 
-Feature
+New
 
 - Allow using tables as input, not just queries.
 - Add in place enrichment.
@@ -193,7 +205,7 @@ Feature
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Add support for non-uppercase column names
 
@@ -201,7 +213,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
 
@@ -209,7 +221,7 @@ Changed
 
 #### Module transformations
 
-Feature
+New
 
 - Add ST_BUFFER function.
 
@@ -217,12 +229,12 @@ Feature
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Run the simple tiler in a single query.
 - Add `fraction_dropped_per_zoom` to the metadata.
 
-Fixed
+Fix
 
 - Fix empty properties causing errors.
 - Fix `drop_fraction_as_needed` in the simple tiler.
@@ -232,7 +244,7 @@ Fixed
 
 #### Module transformations
 
-Changed
+Improvement
 
 - ST_CONCAVEHULL now allows arrays with one/two points as input.
 
@@ -240,7 +252,7 @@ Changed
 
 #### Module tiler
 
-Feature
+New
 
 - Add CREATE_SIMPLE_TILESET procedure.
 
@@ -248,7 +260,7 @@ Feature
 
 #### Module lds
 
-Feature
+New
 
 - Add GEOCODE_TABLE procedure.
 - Add GEOCODE function.
@@ -260,7 +272,7 @@ Feature
 
 #### Module tiler
 
-Feature
+New
 
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
@@ -269,12 +281,12 @@ Feature
 
 #### Module data
 
-Feature
+New
 
 - Add DATAOBS_SUBSCRIPTIONS procedure.
 - Add DATABOS_SUBSCRIPTION_VARIABLES procedure.
 
-Changed
+Improvement
 
 - Read spatial_catalog tables in source.
 
@@ -282,7 +294,7 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - Missing subscriptions are reported by name in DATAOBS_ENRICH_* procedures
 
@@ -290,7 +302,7 @@ Changed
 
 #### Module random
 
-Changed
+Improvement
 
 - ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
 
@@ -298,7 +310,7 @@ Changed
 
 #### Module accessors
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "accessors".
 - Rename ST_ENVELOPE function to ST_ENVELOPE_ARR.
@@ -309,7 +321,7 @@ Removed
 
 #### Module constructors
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "constructors".
 
@@ -319,7 +331,7 @@ Removed
 
 #### Module h3
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "h3".
 - Rename ST_ASH3 function to H3_FROMGEOGPOINT.
@@ -343,7 +355,7 @@ Removed
 
 #### Module measurements
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "measurements".
 
@@ -355,7 +367,7 @@ Removed
 
 #### Module placekey
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "placekey".
 - Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
@@ -368,7 +380,7 @@ Removed
 
 #### Module processing
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "processing".
 
@@ -378,7 +390,7 @@ Removed
 
 #### Module s2
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "s2".
 - Rename ID_FROMHILBERTQUADKEY function to S2_FROMHILBERTQUADKEY.
@@ -393,7 +405,7 @@ Removed
 
 #### Module transformations
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "transformations".
 
@@ -403,7 +415,7 @@ Removed
 
 #### Module clustering
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "clustering".
 
@@ -413,7 +425,7 @@ Removed
 
 #### Module data
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "data".
 
@@ -423,7 +435,7 @@ Removed
 
 #### Module random
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "random".
 
@@ -435,21 +447,21 @@ Removed
 
 #### Module clustering
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "clustering".
 - Remove VERSION function.
 
 #### Module data
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "data".
 - Remove VERSION function.
 
 #### Module random
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "random".
 - Remove VERSION function.
@@ -458,7 +470,7 @@ Changed
 
 #### Module data
 
-Feature
+New
 
 - Add DATAOBS_ENRICH_POINTS procedure.
 - Add DATAOBS_ENRICH_POINTS_RAW procedure.
@@ -478,7 +490,7 @@ Changes
   Also the column `_carto_enrichment_` is now `__carto_enrichment`.
   This affects all the _raw_ enrichment procedures: `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`.
 
-Fixed
+Fix
 
 - User provided queries can now have columns named `dimension`, `total`, `intersection`, `input_area`, `_nonglobal`, which could have collided previously with internal columns. All internal columns are now prefixed with `__carto_`. This affects all the enrichment procedures: `ENRICH_POINTS`, `ENRICH_POLYGONS`, `ENRICH_GRID`, `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`.
 
@@ -486,7 +498,7 @@ Fixed
 
 #### Module data
 
-Feature
+New
 
 - Create data module.
 - Add VERSION function.
@@ -501,11 +513,11 @@ Feature
 
 #### Module h3
 
-Feature
+New
 
 - Add KRING_DISTANCES function.
 
-Changed
+Improvement
 
 - Review HEXRING, KRING functions.
 
@@ -521,7 +533,7 @@ Changes
 
 #### Module h3
 
-Fixed
+Fix
 
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
@@ -529,7 +541,7 @@ Fixed
 
 #### Module h3
 
-Changed
+Improvement
 
 - Reduce bundle size for every function.
 
@@ -537,7 +549,7 @@ Changed
 
 #### Module processing
 
-Feature
+New
 
 - Create processing module.
 - Add ST_VORONOIPOLYGONS function.
@@ -551,7 +563,7 @@ Feature
 
 #### Module clustering
 
-Feature
+New
 
 - Create clustering module.
 - Add VERSION function.
@@ -559,7 +571,7 @@ Feature
 
 #### Module random
 
-Feature
+New
 
 - Create random module.
 - Add ST_GENERATEPOINTS function.
@@ -569,7 +581,7 @@ Feature
 
 #### Module accessors
 
-Feature
+New
 
 - Create accessors module.
 - Add ST_ENVELOPE function.
@@ -579,7 +591,7 @@ Feature
 
 #### Module constructors
 
-Feature
+New
 
 - Create constructors module.
 - Add ST_BEZIERSPLINE function.
@@ -590,7 +602,7 @@ Feature
 
 #### Module measurements
 
-Feature
+New
 
 - Create measurements module.
 - Add ST_ANGLE function.
@@ -600,7 +612,7 @@ Feature
 
 #### Module transformations
 
-Feature
+New
 
 - Create transformations module.
 - Add ST_CENTERMEAN function.
@@ -616,7 +628,7 @@ Feature
 
 #### Module placekey
 
-Feature
+New
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
@@ -628,7 +640,7 @@ Feature
 
 #### Module s2
 
-Feature
+New
 
 - Create s2 module.
 - Add ID_FROMHILBERTQUADKEY function.
@@ -642,7 +654,7 @@ Feature
 
 #### Module h3
 
-Feature
+New
 
 - Create h3 module.
 - Add ST_ASH3 function.
