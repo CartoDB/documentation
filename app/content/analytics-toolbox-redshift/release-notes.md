@@ -1,10 +1,22 @@
 ## Release notes
 
+### November 1, 2022
+
+#### All modules
+
+New
+
+- Create release workflows
+
+Improvement
+
+- Adapt to Semver
+
 ### October 25, 2022
 
 #### Module data
 
-Fixed
+Fix
 
 - Fix enrichment procedures not working with VARCHAR variables for aggregation types `MIN`, `MAX` and `COUNT`.
 
@@ -12,7 +24,7 @@ Fixed
 
 #### Module data
 
-Fixed
+Fix
 
 - Fix enrichment procedures returning inconsistent results for input queries containing `LIMIT`.
 - Fix ST_AREA returning NULL by using ST_SIMPLIFY.
@@ -22,7 +34,7 @@ Fixed
 
 #### Module data
 
-Feature
+New
 
 - Add DATAOBS_ENRICH_POINTS procedure.
 - Add DATAOBS_ENRICH_POLYGONS procedure.
@@ -33,14 +45,14 @@ Feature
 
 #### Module clustering
 
-Feature
+New
 
 - Move ST_CLUSTERKMEANS function to core.
 - Move CREATE_CLUSTERKMEANS procedure to core.
 
 #### Module random
 
-Feature
+New
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -48,11 +60,11 @@ Feature
 
 #### Module lds
 
-Changed
+Improvement
 
 #### Module lds
 
-Changed
+Improvement
 
 - Rename `LDS_API_URL` to `API_BASE_URL`.
 
@@ -60,7 +72,7 @@ Changed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fix CREATE_SPATIAL_INDEX_TILESET returning nested UDFs error when detecting the index type.
 
@@ -68,13 +80,13 @@ Fixed
 
 #### Module statistics
 
-Changed
+Improvement
 
 - Add p-values in the output of GETIS_ORD_QUADBIN function.
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Set `version` field in tilers metadata compliant with AT version.
 
@@ -82,7 +94,7 @@ Changed
 
 #### Module data
 
-Feature
+New
 
 - Add ENRICH_POLYGONS procedure.
 
@@ -90,7 +102,7 @@ Feature
 
 #### Module data
 
-Feature
+New
 
 - Add ENRICH_POINTS procedure.
 
@@ -98,7 +110,7 @@ Feature
 
 #### Module statistics
 
-Feature
+New
 
 - Add GETIS_ORD_QUADBIN function.
 
@@ -106,7 +118,7 @@ Feature
 
 #### Module s2
 
-Fixed
+Fix
 
 - Fix S2_BOUNDARY inverted coordinates.
 
@@ -114,7 +126,7 @@ Fixed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Unify `extra_metadata` into `metadata` in tiler metadata.
 
@@ -122,7 +134,7 @@ Changed
 
 #### Module statistics
 
-Feature
+New
 
 - Add P_VALUE function.
 
@@ -130,13 +142,13 @@ Feature
 
 #### Module lds
 
-Feature
+New
 
 - Add GEOCODE_REVERSE_TABLE procedure.
 
 #### Module statistics
 
-Feature
+New
 
 - Create statistics module.
 - Add MORANS_I_QUADBIN function.
@@ -145,7 +157,7 @@ Feature
 
 #### Module clustering
 
-Feature
+New
 
 - Add CREATE_CLUSTERKMEANS procedure.
 
@@ -153,7 +165,7 @@ Feature
 
 #### Module quadbin
 
-Changed
+Improvement
 
 - Update functions volatility.
 - QUADBIN_FROMZXY accepting BIGINTs as params instead of INTs.
@@ -162,7 +174,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Improve speed of CREATE_SPATIAL_INDEX_TILESET.
 
@@ -170,7 +182,7 @@ Changed
 
 #### Module quadbin
 
-Changed
+Improvement
 
 - Release SQL version of QUADBIN_TOZXY.
 
@@ -178,7 +190,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Support h3int from CREATE_SPATIAL_INDEX_TILESET.
 
@@ -186,7 +198,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Support quadbin from CREATE_SPATIAL_INDEX_TILESET instead of quadint.
 
@@ -194,7 +206,7 @@ Changed
 
 #### Module quadbin
 
-Feature
+New
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -216,7 +228,7 @@ Feature
 
 #### Module tiler
 
-Feature
+New
 
 - Add CREATE_SPATIAL_INDEX_TILESET procedure.
 
@@ -224,7 +236,7 @@ Feature
 
 #### Module lds
 
-Fixed
+Fix
 
 - Fix chunks in CREATE_ISOLINES.
 
@@ -232,7 +244,7 @@ Fixed
 
 #### Module lds
 
-Changed
+Improvement
 
 - Check if the user has enough credits to execute CREATE_ISOLINES.
 
@@ -240,7 +252,7 @@ Changed
 
 #### Module lds
 
-Feature
+New
 
 - Add CREATE_ISOLINES procedure.
 
@@ -248,7 +260,7 @@ Feature
 
 #### Module lds
 
-Changed
+Improvement
 
 - Add optional `language` parameter to GEOCODE_REVERSE function.
 
@@ -256,7 +268,7 @@ Changed
 
 #### Module tiler
 
-Feature
+New
 
 - Add max_simplification_zoom and coordinates_precision parameters.
 
@@ -264,11 +276,11 @@ Feature
 
 #### Module tiler
 
-Feature
+New
 
 - Add max_tile_size_strategy support for CREATE_SIMPLE_TILESET.
 
-Fixed
+Fix
 
 - Fix tile_feature_order not being taken into account for CREATE_POINT_AGGREGATION_TILESET and CREATE_POINT_AGGREGATION_TILESET.
 
@@ -276,7 +288,7 @@ Fixed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Escape special characters in generated properties.
 
@@ -284,7 +296,7 @@ Fixed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Raise improper qualified tables errors.
 - Limit GeoJSON precision to 6 to comply Redshift VARCHAR size limitations.
@@ -294,7 +306,7 @@ Changed
 
 #### Module tiler
 
-Feature
+New
 
 - Add CREATE_SIMPLE_TILESET procedure.
 
@@ -302,7 +314,7 @@ Feature
 
 #### Module tiler
 
-Feature
+New
 
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
@@ -311,7 +323,7 @@ Feature
 
 #### Module lds
 
-Feature
+New
 
 - Add GEOCODE_TABLE procedure.
 - Add GEOCODE function.
@@ -323,7 +335,7 @@ Feature
 
 #### Module transformations
 
-Fixed
+Fix
 
 - Refactor of internal __ST_GEOMFROMGEOJSON function to avoid UDFs nestig Redshift limitations
 
@@ -331,7 +343,7 @@ Fixed
 
 #### Module constructors
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "constructors".
 
@@ -341,7 +353,7 @@ Removed
 
 #### Module placekey
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "placekey".
 - Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
@@ -354,7 +366,7 @@ Removed
 
 #### Module processing
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "processing".
 
@@ -364,7 +376,7 @@ Removed
 
 #### Module s2
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "s2".
 - Rename HILBERTQUADKEY_FROMID function to S2_TOHILBERTQUADKEY.
@@ -387,7 +399,7 @@ Removed
 
 #### Module transformations
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "transformations".
 
@@ -397,7 +409,7 @@ Removed
 
 #### Module clustering
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "clustering".
 
@@ -407,7 +419,7 @@ Removed
 
 #### Module random
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "random".
 - ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
@@ -420,7 +432,7 @@ Removed
 
 #### Module clustering
 
-Changed
+Improvement
 
 - ST_CLUSTERKMEANS returning an Array.
 
@@ -428,7 +440,7 @@ Changed
 
 #### Module processing
 
-Feature
+New
 
 - Create processing module.
 - Add VERSION function.
@@ -440,7 +452,7 @@ Feature
 
 #### Module transformations
 
-Feature
+New
 
 - Create transformations module.
 - Add VERSION function.
@@ -455,7 +467,7 @@ Feature
 
 #### Module clustering
 
-Feature
+New
 
 - Create clustering module.
 - Add VERSION function.
@@ -463,7 +475,7 @@ Feature
 
 #### Module random
 
-Feature
+New
 
 - Create random module.
 - Add ST_GENERATEPOINTS function.
@@ -473,7 +485,7 @@ Feature
 
 #### Module s2
 
-Feature
+New
 
 - Create s2 module.
 - Add HILBERTQUADKEY_FROMID function.
@@ -495,7 +507,7 @@ Feature
 
 #### Module constructors
 
-Feature
+New
 
 - Create constructors module.
 - Add ST_BEZIERSPLINE function.
@@ -508,7 +520,7 @@ Feature
 
 #### Module placekey
 
-Feature
+New
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.

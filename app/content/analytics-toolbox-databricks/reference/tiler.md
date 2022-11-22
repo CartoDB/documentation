@@ -4,6 +4,8 @@
 
 We currently provide support to create H3 tilesets:
 
+Visit the [Overview](/analytics-toolbox-bigquery/overview/tilesets) section to learn more about tilesets.
+
 
 ### create_spatial_index_tileset
 
@@ -18,8 +20,8 @@ Aggregated data is computed for all levels between `resolution_min` and `resolut
 * `options`: `STRING` containing a valid JSON with the different options. Valid options are described the table below.
 | Option | Description |
 | :----- | :------ |
-|`resolution_min`| Default: `2`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
-|`resolution_max`| Default: `15`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
+|`resolution_min`| Default: `0`. A `NUMBER` that defines the minimum resolution level for tiles. Any resolution level under this level won't be generated.|
+|`resolution_max`| Default: `0`. A `NUMBER` that defines the maximum resolution level for tiles. Any resolution level over this level won't be generated.|
 |`spatial_index_column`| Default: `h3:h3`. A `STRING` in the format `spatial_index_type:column_name`, with `spatial_index_type` being the type of spatial index used in the input table (for now only `h3` is supported), and `column_name` being the name of the column in that input table that contains the tile ids. The type of spatial index also defines the type used in the output table, which will be or H3 (for spatial index type `h3`).|
 |`resolution`| A `NUMBER` defining the resolution of the tiles in the input table. If only the `spatial_index_type` is defined, the column_name will be equal to spatial_index_type, `h3`|
 |`aggregation_resolution`| Default: `4`. A `NUMBER` defining the resolution to use when aggregating data at each resolution level. For a given `resolution`, data is aggregated at `resolution_level + aggregation resolution`.|
