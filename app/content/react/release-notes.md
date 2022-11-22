@@ -1,6 +1,12 @@
 ## Release notes
 
-### v1.3 - July 11, 2022
+### v1.4.7 - November 18th, 2022
+
+- Support for parameterized queries
+- Updated to deck.gl 8.8.17
+- Many bug fixes
+
+### v1.3 - July 11th, 2022
 
 - New BarWidget
 - Support for GeocoderWidget with CARTO 3
@@ -11,7 +17,7 @@
 - Updated sample-app-3 template with new features
 - Minor improvements and bug fixes in the [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md#13) and the [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md#13).
 
-### v1.2 - February 28, 2022
+### v1.2 - February 28th, 2022
 
 - New widgets: feature selection and table
 - Support for tiles using WGS84 coordinates
@@ -20,7 +26,7 @@
 - New CARTO theme for several Material-UI components
 - Minor improvements and bug fixes in the [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md#12) and the [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md#120-2022-03-01).
 
-### v1.1 - October 29, 2021
+### v1.1 - October 29th, 2021
 
 - Integration with CARTO 3 with support for GeoJSON data sources in layers and widgets
 - Base templates for CARTO 3 (JavaScript and TypeScript)
@@ -30,7 +36,7 @@
 - Updated to deck.gl 8.6 for improved performance
 - Minor improvements and bug fixes in the [library](https://github.com/CartoDB/carto-react/blob/master/CHANGELOG.md#11) and the [templates](https://github.com/CartoDB/carto-react-template/blob/master/CHANGELOG.md#110-2021-10-29).
 
-### v1.0 - March 23, 2021
+### v1.0 - March 23rd, 2021
 
 - Base template for CARTO 2
 - Sample app template for CARTO 2
