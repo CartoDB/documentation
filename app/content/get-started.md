@@ -334,6 +334,104 @@ Layer(enriched_aoi_gdf, color_continuous_style('POPCY'))
 {{%/ tutorialStep %}}
 {{</interactiveTutorial>}} -->
 
+### Spatial Analysis with the Analytics Toolbox
+
+CARTO’s Analytics Toolbox is a suite of +100 functions and procedures extending the spatial analysis capabilities of your cloud data warehouse platform. The toolbox is organized in modules related to different types of functionalities, such as operating with spatial indexes, creating tilesets out of your large datasets, location data services, geostatistics and much more. 
+
+This guide is intended for those users who want to perform spatial analytics natively in their data warehouse using CARTO’s set of prepared analytical functions. In this guide we will focus on the implementation of the [Analytics Toolbox for BigQuery](https://docs.carto.com/analytics-toolbox-bigquery/overview/getting-started/), but this component is also available for [Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/overview/getting-started/), [Redshift](https://docs.carto.com/analytics-toolbox-redshift/overview/getting-started/), [Databricks](https://docs.carto.com/analytics-toolbox-databricks/overview/getting-started/) and [PostgreSQL](https://docs.carto.com/analytics-toolbox-postgres/overview/getting-started/). 
+
+
+{{<interactiveTutorial>}}
+
+{{% tutorialStep stepName="Intro"%}}
+
+In this example we are going to identify hotspots of amenity POIs in Stockholm using OpenStreetMap data and the [GETIS_ORD_H3](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) function available in the [statistics](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/) module. POIs can be found in the publicly available `cartobq.docs.osm_pois_stockholm` table (via the CARTO Data Warehouse or a BigQuery connection). We will implement this analysis using the SQL panel available for [adding data sources from SQL queries](https://docs.carto.com/carto-user-manual/maps/data-sources/#add-source-from-a-custom-query) in [Builder](https://docs.carto.com/carto-user-manual/maps/introduction/), but it can also be run directly on your BigQuery console.
+
+![Final map](/img/get-started/at-pois-final-map.png)  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Visualize the POIs"%}}
+
+In order to visualize the OpenStreetMap data that we are using for POIs, you can simply execute the following query:
+
+```sql
+SELECT * FROM cartobq.docs.osm_pois_stockholm WHERE amenity IS NOT NULL
+```
+
+![Visualize pois](/img/get-started/at-visualize-pois.png)  
+
+With Builder, you can use widgets and tooltips in order to explore the data in more detail, as illustrated in the image below.
+
+![Visualize pois with widgets](/img/get-started/at-pois-widgets.png)  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Compute the H3 resolution 9 cell in which each POI falls into"%}}
+
+With the execution of the following query, we run the [H3_FROMGEOGPOINT](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/h3/#h3_fromgeogpoint) method in order to transform and aggregate a point-based dataset into a grid based on the H3 spatial index. 
+
+```sql
+ SELECT h3, CAST(COUNT(*) AS FLOAT64) AS n_amenity_pois,
+ FROM (
+   SELECT `carto-un`.carto.H3_FROMGEOGPOINT(geom, 9) AS h3,
+   FROM cartobq.docs.osm_pois_stockholm
+   WHERE amenity IS NOT NULL )
+ GROUP BY h3
+ ```
+
+In order to visualize the output of this query remember to change the type of geometry in the SQL panel to an H3 index.
+
+![Builder spatial data type](/img/get-started/spatial-data-type.png)  
+
+Then you can style the map layer that gets generated based on the `n_amenity_pois` feature.
+
+![POIs H3 style layer](/img/get-started/at-pois-h3-style-layer.png)  
+
+{{%/ tutorialStep %}}
+
+{{% tutorialStep stepName="Compute the Getis-Ord Gi* statistic"%}}
+
+The final result can be obtained by executing the following query, in which we combine both the aggregation of POIs in an H3-based grid and the computation of the [Getis-Ord Gi*](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) statistic for each of the grid cells. This measure tells you where features with either high or low values (of the n_aminity_pois) cluster spatially or not. It’s a good statistic in order to run a hotspot analysis. 
+
+![POIs sql getis ord gi*](/img/get-started/at-pois-sql-getis-ord.png)  
+
+```sql
+WITH
+ stockholm AS (
+ SELECT h3, CAST(COUNT(*) AS FLOAT64) AS n_amenity_pois,
+ FROM (
+   SELECT `carto-un`.carto.H3_FROMGEOGPOINT(geom, 9) AS h3,
+   FROM cartobq.docs.osm_pois_stockholm
+   WHERE amenity IS NOT NULL )
+ GROUP BY h3),
+ 
+ getis_ord AS (
+ SELECT `carto-un`.carto.GETIS_ORD_H3(ARRAY_AGG(STRUCT(h3, n_amenity_pois)),
+     4, 'triangular') AS output
+ FROM stockholm )
+ 
+SELECT unnested.INDEX AS h3, unnested.gi
+FROM getis_ord, UNNEST(getis_ord.output) AS unnested
+```
+
+The results can be explored on a map such as in the example below, where we can use the histogram widget to narrow down the cells with the highest Gi* values, which correspond to the location of the hotspots of amenity POIs in Stockholm.
+
+Remember once again to change the type of geometry in the SQL panel to an H3 index.
+
+![Builder spatial data type](/img/get-started/spatial-data-type.png)  
+
+![POIs map getis ord gi*](/img/get-started/at-pois-map-getis-ord*.png)  
+
+<!-- You can also visualize the result.
+
+<iframe width="860px" height="680px" src="https://clausa.app.carto.com/map/70169237-06b2-4731-89aa-da802f6beebb"></iframe>
+-->
+
+{{%/ tutorialStep %}}
+
+{{</interactiveTutorial>}}
+
 ## CARTO for Development
 
 Our goal is to make the development of web-based spatial applications as easy as possible. To achieve this, our developer toolkit includes industry-leading visualization, mapping, and application design components, giving developers unparalleled flexibility to create truly beautiful geospatial user experiences on the web and mobile.
@@ -492,100 +590,3 @@ When you are interacting with the CARTO platform, you may reach some limits that
 
 {{</interactiveTutorial>}}
 
-## Spatial Analysis with the Analytics Toolbox
-
-CARTO’s Analytics Toolbox is a suite of +100 functions and procedures extending the spatial analysis capabilities of your cloud data warehouse platform. The toolbox is organized in modules related to different types of functionalities, such as operating with spatial indexes, creating tilesets out of your large datasets, location data services, geostatistics and much more. 
-
-This guide is intended for those users who want to perform spatial analytics natively in their data warehouse using CARTO’s set of prepared analytical functions. In this guide we will focus on the implementation of the [Analytics Toolbox for BigQuery](https://docs.carto.com/analytics-toolbox-bigquery/overview/getting-started/), but this component is also available for [Snowflake](https://docs.carto.com/analytics-toolbox-snowflake/overview/getting-started/), [Redshift](https://docs.carto.com/analytics-toolbox-redshift/overview/getting-started/), [Databricks](https://docs.carto.com/analytics-toolbox-databricks/overview/getting-started/) and [PostgreSQL](https://docs.carto.com/analytics-toolbox-postgres/overview/getting-started/). 
-
-
-{{<interactiveTutorial>}}
-
-{{% tutorialStep stepName="Intro"%}}
-
-In this example we are going to identify hotspots of amenity POIs in Stockholm using OpenStreetMap data and the [GETIS_ORD_H3](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) function available in the [statistics](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/) module. POIs can be found in the publicly available `cartobq.docs.osm_pois_stockholm` table (via the CARTO Data Warehouse or a BigQuery connection). We will implement this analysis using the SQL panel available for [adding data sources from SQL queries](https://docs.carto.com/carto-user-manual/maps/data-sources/#add-source-from-a-custom-query) in [Builder](https://docs.carto.com/carto-user-manual/maps/introduction/), but it can also be run directly on your BigQuery console.
-
-![Final map](/img/get-started/at-pois-final-map.png)  
-
-{{%/ tutorialStep %}}
-
-{{% tutorialStep stepName="Visualize the POIs"%}}
-
-In order to visualize the OpenStreetMap data that we are using for POIs, you can simply execute the following query:
-
-```sql
-SELECT * FROM cartobq.docs.osm_pois_stockholm WHERE amenity IS NOT NULL
-```
-
-![Visualize pois](/img/get-started/at-visualize-pois.png)  
-
-With Builder, you can use widgets and tooltips in order to explore the data in more detail, as illustrated in the image below.
-
-![Visualize pois with widgets](/img/get-started/at-pois-widgets.png)  
-
-{{%/ tutorialStep %}}
-
-{{% tutorialStep stepName="Compute the H3 resolution 9 cell in which each POI falls into"%}}
-
-With the execution of the following query, we run the [H3_FROMGEOGPOINT](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/h3/#h3_fromgeogpoint) method in order to transform and aggregate a point-based dataset into a grid based on the H3 spatial index. 
-
-```sql
- SELECT h3, CAST(COUNT(*) AS FLOAT64) AS n_amenity_pois,
- FROM (
-   SELECT `carto-un`.carto.H3_FROMGEOGPOINT(geom, 9) AS h3,
-   FROM cartobq.docs.osm_pois_stockholm
-   WHERE amenity IS NOT NULL )
- GROUP BY h3
- ```
-
-In order to visualize the output of this query remember to change the type of geometry in the SQL panel to an H3 index.
-
-![Builder spatial data type](/img/get-started/spatial-data-type.png)  
-
-Then you can style the map layer that gets generated based on the `n_amenity_pois` feature.
-
-![POIs H3 style layer](/img/get-started/at-pois-h3-style-layer.png)  
-
-{{%/ tutorialStep %}}
-
-{{% tutorialStep stepName="Compute the Getis-Ord Gi* statistic"%}}
-
-The final result can be obtained by executing the following query, in which we combine both the aggregation of POIs in an H3-based grid and the computation of the [Getis-Ord Gi*](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/statistics/#getis_ord_h3) statistic for each of the grid cells. This measure tells you where features with either high or low values (of the n_aminity_pois) cluster spatially or not. It’s a good statistic in order to run a hotspot analysis. 
-
-![POIs sql getis ord gi*](/img/get-started/at-pois-sql-getis-ord.png)  
-
-```sql
-WITH
- stockholm AS (
- SELECT h3, CAST(COUNT(*) AS FLOAT64) AS n_amenity_pois,
- FROM (
-   SELECT `carto-un`.carto.H3_FROMGEOGPOINT(geom, 9) AS h3,
-   FROM cartobq.docs.osm_pois_stockholm
-   WHERE amenity IS NOT NULL )
- GROUP BY h3),
- 
- getis_ord AS (
- SELECT `carto-un`.carto.GETIS_ORD_H3(ARRAY_AGG(STRUCT(h3, n_amenity_pois)),
-     4, 'triangular') AS output
- FROM stockholm )
- 
-SELECT unnested.INDEX AS h3, unnested.gi
-FROM getis_ord, UNNEST(getis_ord.output) AS unnested
-```
-
-The results can be explored on a map such as in the example below, where we can use the histogram widget to narrow down the cells with the highest Gi* values, which correspond to the location of the hotspots of amenity POIs in Stockholm.
-
-Remember once again to change the type of geometry in the SQL panel to an H3 index.
-
-![Builder spatial data type](/img/get-started/spatial-data-type.png)  
-
-![POIs map getis ord gi*](/img/get-started/at-pois-map-getis-ord*.png)  
-
-<!-- You can also visualize the result.
-
-<iframe width="860px" height="680px" src="https://clausa.app.carto.com/map/70169237-06b2-4731-89aa-da802f6beebb"></iframe>
--->
-
-{{%/ tutorialStep %}}
-
-{{</interactiveTutorial>}}
