@@ -70,8 +70,13 @@ CREATE INDEX nyc_census_blocks_geom_idx
   ON nyc_census_blocks
   USING GIST (geom);
 ```
+For optimal performance, geometries need to be projected into `EPSG:4326` and make sure that the SRID is set for the column. Take a look at the [`ST_Transform`](https://postgis.net/docs/ST_Transform.html) and [`ST_SetSRID`](https://postgis.net/docs/ST_SetSRID.html) functions reference.
 
+##### Redshift
 
+For optimal performance, geometries need to be projected into `EPSG:4326` and make sure that the SRID is set for the column. Take a look at the [`ST_Transform`](https://docs.aws.amazon.com/redshift/latest/dg/ST_Transform-function.html) and [`ST_SetSRID`](https://docs.aws.amazon.com/redshift/latest/dg/ST_SetSRID-function.html) functions reference.
+
+--- 
 For other cloud data warehouses, geospatial clustering and/or similar functionality will eventually be added by their providers.
 
 #### Tips for spatial index tables

@@ -18,6 +18,12 @@ This is specially useful for combining different types of sources: aggregated da
 
 ![Map style zoom range slider](/img/cloud-native-workspace/maps/slider_visibility_by_zoom.png)
 
+### Resolution
+
+This is only available for [aggregated grids](../data-sources/#aggregated-grids) based on spatial index data.
+
+This slider controls the granularity of the aggregation on each tile, allowing for finer control over the aggregated visualization.
+
 ### Fill color
 
 When activated, features on the map are filled in with colors. By default, Builder assigns a color automatically. You can change it by clicking the *Fill* button where the default color is displayed, and then selecting the new predefined color using the *color picker*.
@@ -37,40 +43,47 @@ You can explore additional fill color features by clicking on the *three dots* i
     1. Click the *Color based on* button. Select a field from your dataset to style your layer. In this example, we style our layer based on the "population" field. 
 
     ![Map style fill color based on field](/img/cloud-native-workspace/maps/map_fill_color_based_on.png)
-	
-	A color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
-	
-    ![Map style fill color based on field result](/img/cloud-native-workspace/maps/map_style_fill_color_based_on_result.png)
-	
-    2. By default, Builder assign a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes come in diverging, sequential, and qualitative types.
-	
-	![fill color predefined palette](/img/cloud-native-workspace/maps/map_style_fill_color_based_on_predef_palette.png)
-	
-	<!-- You can also design a **custom palette**. To activate this option, toggle on *custom palette*. Click on each color to pick a new color either by clicking on the color picker or inputting HEX/RGB values. Color steps can be added, removed, or shuffled. 
-	
-    ![Map style fill color custom palette](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_colorpalette_toogle.png)![Map style fill color custom palette.png](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_colorpalette.png)
-	 -->
-    3. Your color is applied to your map as soon as you select the predefined palette.
-    
-    <!-- or *confirm* the choices of customized colors. -->
 
-- **Color scale**: For your color palette, you can choose a quantile, quantize or a custom color scale.
+{{% bannerNote title="NOTE" type="note"%}}
+When working with [**aggregated data sources**](../data-sources/#aggregated-grids), you will need to select an aggregation operation for your columns. 
 
-<!-- ![Map style fill color scale](/img/cloud-native-workspace/maps/map_fill_color_by_scale.png) -->
+Connections to **Redshift** clusters don't support aggregation of categorical properties.
+{{%/ bannerNote %}}
 
-![Map style fill color scale](/img/cloud-native-workspace/maps/map_fill_color_by_new_color_scale.png)
 
-**Quantile**: A quantile color scale is determined by rank. A quantile classification is well suited to linearly distributed data. Each quantile class contains an equal number of features. There are no empty classes or classes with too few or too many values. This can be misleading sometimes, since similar features can be placed in adjacent classes or widely different values can be in the same class, due to equal number grouping.
+A color ramp is applied to our layer, so now we can analyze areas with higher/lower population.
 
-**Quantize**: A quantized color scale is determined by grouping values in discrete increments. It allows to transform an initially continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
+![Map style fill color based on field result](/img/cloud-native-workspace/maps/map_style_fill_color_based_on_result.png)
 
-**Custom**: A custom color scale is determined by arbitrary breaks in the classification. A custom scale is well suited to tweak color ramps, adjusting the values to fine tune the visualizations.
+2. By default, Builder assign a **predefined color palette**. You can change it by clicking the *Fill* button where the default ramp color is displayed, and then selecting the new predefined color palette. Predefined palettes come in diverging, sequential, and qualitative types.
+
+![fill color predefined palette](/img/cloud-native-workspace/maps/map_style_fill_color_based_on_predef_palette.png)
+
+You can also design a **custom palette**. To activate this option, toggle on *custom palette*. Click on each color to pick a new color either by clicking on the color picker or inputting HEX/RGB values. Color steps can be added, removed, or shuffled. 
+
+<!-- ![Map style fill color custom palette](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_colorpalette_toogle.png) -->
+
+![Map style fill color custom palette.png](/img/cloud-native-workspace/maps/map_style_fill_based_on_custom_colorpalette.png)
+
+3. Your color is applied to your map as soon as you select the predefined palette or *confirm* the choices of customized colors.
+
+- **Color scale**: For your color palette, you can choose a quantile, quantize, logarithmic or a custom color scale.
+
+![Map style fill color scale](/img/cloud-native-workspace/maps/map_fill_color_by_scale.png)
+
+* **Quantile**: A quantile color scale is determined by rank. A quantile classification is well suited to linearly distributed data. Each quantile class contains an equal number of features. There are no empty classes or classes with too few or too many values. This can be misleading sometimes, since similar features can be placed in adjacent classes or widely different values can be in the same class, due to equal number grouping.
+
+* **Quantize**: A quantized color scale is determined by grouping values in discrete increments. It allows to transform an initially continuous range into a discrete set of classes. Quantize scales will slice the domain’s extent into intervals of roughly equal lengths.
+
+* **Logarithmic**: A Logarithmic scale based on powers of `10` will be created automatically, based on the number of steps in the selected color palette. Logarithmic scales tend to work well with [**aggregated data sources**](../data-sources/#aggregated-grids), and they will be the default option for them.
+
+* **Custom**: A custom color scale is determined by arbitrary breaks in the classification. A custom scale is well suited to tweak color ramps, adjusting the values to fine tune the visualizations.
 
 The following example shows a short demonstration of how custom breaks allow you to customize a color ramp and the data clasiffications in Builder.
 
 ![Custom color scale](/img/cloud-native-workspace/maps/custom-color-scale.gif) 
 
-- **Opacity**: Change the transparency of a layer. 1 = opaque, 0 = invisible. You can change the predefined opacity using the *opacity slider* or by directly writting the level of opacity in the *text input*. ![Map style fill opacity](/img/cloud-native-workspace/maps/map_fill_color_opacity.png)
+- **Opacity**: Change the transparency of a layer. 1 = opaque, 0 = invisible. You can change the predefined opacity using the *opacity slider* or by directly writting the level of opacity in the *text input*. ![Map style fill opacity](/img/cloud-native-workspace/maps/by_opacity.png)
 
 ### Stroke color
 
