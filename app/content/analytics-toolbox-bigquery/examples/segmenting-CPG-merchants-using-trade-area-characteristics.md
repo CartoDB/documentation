@@ -26,6 +26,7 @@ To start with, the user needs to specify the trade areas of each merchant. This 
 
 Herein, as a method for the trade areas we have selected a `buffer` and we have defined a 500m radius. This will generate a 500m buffer around each location.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.GENERATE_TRADE_AREAS(
   --customer_query;
@@ -85,6 +86,7 @@ GROUP BY a.store_id) c on t.store_id = c.store_id
 
 The function call to build the data and conclude the Step 2 is:
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CUSTOMER_SEGMENTATION_ANALYSIS_DATA(
 -- Select the trade areas of merchants, can be pre-enriched trade areas
@@ -137,6 +139,7 @@ This table contains the descriptive statistics for each feature. A row correspon
 
 In this step, the enriched table from step 2, `cartobq.docs.cpg_product_launch_bay_area_step_2_enrich`, is used for segmenting the different merchants by means of the [KMeans](https://en.wikipedia.org/wiki/K-means_clustering) clustering algorithm. The user needs to define whether Principal Component Analysis (PCA) should be used or not, by specifying the `pca_explainability_factor`. In this case, it is set at 0.9. In addition, the user defines the clustering scenarios to be tested, for example 6 and 7 clusters.
 
+{{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.RUN_CUSTOMER_SEGMENTATION(
 --select the source table of merchants enriched with geospatial characteristics
@@ -159,8 +162,13 @@ The output tables can be found at:
 Below we can see the resulting segment assignment table in which we have every merchant assigned to one cluster. Columns `cluster_6` and `cluster_7` contain the cluster to wich each merchant is assigned to when solving for 6 and 7 clusters, respectively.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_cluster.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/segmentation_clusters.png" alt="Preview table trade areas" style="width:100%">
 </div>
+
+<!-- 
+<div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/examples/segmentation_cluster.png" alt="Preview table trade areas" style="width:100%">
+</div> -->
 
 An example of the second table, the descriptive statistics for each case/cluster, can be seen below. Each row corresponds to a clustering scenario, a cluster label and the feature name. For each of these tuples, the descriptive statistics are shown. For example, the first 3 columns of the 6th row are: cluster_7, value (cluster label) 1 and horeca_count. This row refers to the scenario with 7 clusters/segments, the 1st cluster of that scenario and for the feature `horeca_count`, the mean value is 233.53, the standard deviation is 53.22, the min value is 141 etc.
 
@@ -171,9 +179,13 @@ An example of the second table, the descriptive statistics for each case/cluster
 And finally the output of the last table, with the metrics to measure the quality of the clustering (namely, [David Bouldin](https://en.wikipedia.org/wiki/Davies%E2%80%93Bouldin_index) index and within sum of squares) is as follows.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_david_bouldin_index.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/segmentation_davidbouldin_index.png" alt="Preview table trade areas" style="width:100%">
 </div>
 
+<!-- <div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/examples/segmentation_david_bouldin_index.png" alt="Preview table trade areas" style="width:100%">
+</div>
+ -->
 In the map below, the result from the segmentation of the scenario with the 6 clusters can be seen. For a detailed description on how to use the resulting tables and visualization to label clusters based on business terms, please refer to this [blogpost](https://carto.com/blog/trade-area-analysis-cpg-merchants/). 
 
 <iframe height=700px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/a6afdcfd-36c5-48f4-95ec-b2c3fee87718"></iframe>
