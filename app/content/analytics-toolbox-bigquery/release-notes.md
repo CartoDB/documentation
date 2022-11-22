@@ -8,35 +8,52 @@ aliases:
 
 #### Module retail
 
-Fixed
+Fix
 
 - `__KRING_DECAY_GRID` was aggregating the value of the moving window pivoting index instead of neighbour indexes.
+
+### November 8, 2022
+
+#### Module h3
+
+Improvement
+
+- Add linestrings and points support to function H3_POLYFILL.
 
 ### November 7, 2022
 
 #### Module retail
 
-Feature
+New
 
 - Add `FIND_TWIN_AREAS_WEIGHTED` procedure.
+
+### October 28, 2022
+
+#### Module s2
+
+New
+
+- Add S2_RESOLUTION function.
+- Add S2_TOCHILDREN function.
 
 ### October 26, 2022
 
 #### Module transformations
 
-Fixed
+Fix
 
 - Fix ST_BUFFER crashing with geographies close to the poles.
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Partition tables in spatial index tilesets.
 
 #### Module cpg
 
-Feature
+New
 
 - Add `CUSTOMER_SEGMENTATION_ANALYSIS_DATA` procedure.
 - Add `GENERATE_TRADE_AREAS` procedure.
@@ -44,11 +61,11 @@ Feature
 
 #### Module lds
 
-Fixed
+Fix
 
 - CREATE_ISOLINES output is stored in the column `geom` instead of `__iso_geom`.
 
-Changed
+Improvement
 
 - CREATE_ISOLINES output is clustered by geometry.
 
@@ -56,7 +73,7 @@ Changed
 
 #### Module processing
 
-Fixed
+Fix
 
 - Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places.
 
@@ -64,13 +81,13 @@ Fixed
 
 #### Module clustering
 
-Feature
+New
 
 - Move ST_CLUSTERKMEANS function to core.
 
 #### Module random
 
-Feature
+New
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -78,7 +95,7 @@ Feature
 
 #### Module lds
 
-Changed
+Improvement
 
 - Rename `LDS_API_URL` to `API_BASE_URL`.
 
@@ -86,7 +103,7 @@ Changed
 
 #### Module retail
 
-Changed
+Improvement
 
 - `LINEAR_REG` model is now supported.
 
@@ -94,7 +111,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Fix bug in `__BUILD_REVENUE_MODEL_DATA_GRID`: Output table now contains `competitor_count`.
 
@@ -102,7 +119,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Set `version` field in tilers metadata compliant with AT version.
 
@@ -110,7 +127,7 @@ Changed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Hotfix: set `generate_feature_id` to false by default due a bug in the generation.
 
@@ -118,7 +135,7 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - Optimize DATAOBS_ENRICH_GRID, DATAOBS_ENRICH_GRID_RAW when the enrich data is a grid compatible with the input.
 - Remove support for s2, geohas and quadbinh in all enrich procedures.
@@ -128,13 +145,13 @@ Changed
 
 #### Module s2
 
-Feature
+New
 
 - Add S2_CENTER function.
 
 #### Module retail
 
-Changed
+Improvement
 
 - Return shap_values in PREDICT_REVENUE_AVERAGE.
 
@@ -142,7 +159,7 @@ Changed
 
 #### Module tiler
 
-Feature
+New
 
 - Add `generate_feature_id` parameter in `CREATE_SIMPLE_TILESET`.
 
@@ -150,7 +167,7 @@ Feature
 
 #### Module retail
 
-Changed
+Improvement
 
 - Index parameter admits any type in PREDICT_REVENUE_AVERAGE.
 - Index from revenue_model_data is not casted in PREDICT_REVENUE_AVERAGE to reduce query data processing.
@@ -159,7 +176,7 @@ Changed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fixed bug when parsing zoom columns in geography tilers.
 
@@ -167,7 +184,7 @@ Fixed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Unify `extra_metadata` into `metadata` in tiler metadata.
 
@@ -175,7 +192,7 @@ Changed
 
 #### Module h3
 
-Fixed
+Fix
 
 - Apply make_valid in H3_BOUNDARY.
 
@@ -183,7 +200,7 @@ Fixed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fixed bug in metadata `CREATE_SPATIAL_INDEX_TILESET`.
 
@@ -191,7 +208,7 @@ Fixed
 
 #### Module retail
 
-Changed
+Improvement
 
 - Check fixed model options in BUILD_REVENUE_MODEL procedure.
 
@@ -199,7 +216,7 @@ Changed
 
 #### Module retail
 
-Feature
+New
 
 - Add BUILD_CANNIBALIZATION_DATA procedure.
 - Add CANNIBALIZATION_OVERLAP procedure.
@@ -208,7 +225,7 @@ Feature
 
 #### Module lds
 
-Feature
+New
 
 - Add GEOCODE_TABLE procedure.
 - Add LDS_QUOTA_INFO procedure.
@@ -219,7 +236,7 @@ Feature
 
 #### Module statistics
 
-Changed
+Improvement
 
 - Added HH, LL, LH, HL detection in LOCAL_MORANS_I functions.
 
@@ -227,7 +244,7 @@ Changed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fixed bug when passing multiline input to `CREATE_SPATIAL_INDEX_TILESET`.
 
@@ -235,23 +252,23 @@ Fixed
 
 #### Module data
 
-Feature
+New
 
 - Add quadbin support to module.
 
 #### Module retail
 
-Feature
+New
 
 - Add quadbin support
 
 #### Module tiler
 
-Feature
+New
 
 - Support of quadgrid as alias in `CREATE_POINT_AGGREGATION_TILESET`.
 
-Changed
+Improvement
 
 - Use core functions to convert H3 from int to string.
 
@@ -259,14 +276,14 @@ Changed
 
 #### Module h3
 
-Fixed
+Fix
 
 - Correctly handle large polygons in H3_POLYFILL.
 - Fixed wrong uppercase for quadbin and h3 tile ids
 
 #### Module statistics
 
-Feature
+New
 
 - Add SMOOTHING_MRF_QUADBIN procedure.
 - Add LOCAL_MORANS_I_QUADBIN function.
@@ -276,7 +293,7 @@ Feature
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fixed tablename quoting in BigQuery tiler
 
@@ -284,7 +301,7 @@ Fixed
 
 #### Module retail
 
-Fixed
+Fix
 
 - Fix quadkey support in FIND_WHITESPACE_AREAS
 
@@ -292,7 +309,7 @@ Fixed
 
 #### Module retail
 
-Fixed
+Fix
 
 - Fixing bugs when not providing store variables to BUILD_REVENUE_MODEL_DATA
 
@@ -300,7 +317,7 @@ Fixed
 
 #### Module quadbin
 
-Feature
+New
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -322,13 +339,13 @@ Feature
 
 #### Module data
 
-Fixed
+Fix
 
 - Fix BQ inplace enrichment with uppercase column names.
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Support H3 integer in `CREATE_SPATIAL_INDEX_TILESET`.
 
@@ -336,7 +353,7 @@ Changed
 
 #### Module data
 
-Fixed
+Fix
 
 - Fix order of `__KRING_DECAY` parameters.
 
@@ -344,11 +361,11 @@ Fixed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fix global stats in `CREATE_SPATIAL_INDEX_TILESET`.
 
-Changed
+Improvement
 
 - Check input resolution limits in `CREATE_SPATIAL_INDEX_TILESET`.
 
@@ -356,7 +373,7 @@ Changed
 
 #### Module data
 
-Fixed
+Fix
 
 - Report missing subscription geographies in DATAOBS_ENRICH_ procedures.
 
@@ -364,7 +381,7 @@ Fixed
 
 #### Module data
 
-Fixed
+Fix
 
 - Fix stability issues in GRIDIFY_ENRICH procedure.
 
@@ -372,11 +389,11 @@ Fixed
 
 #### Module retail
 
-Feature
+New
 
 - Add store features and competitors stores features into BUILD_REVENUE_MODEL_DATA procedure.
 
-Fixed
+Fix
 
 - Fixing bugs calling other routines
 
@@ -384,7 +401,7 @@ Fixed
 
 #### Module tiler
 
-Feature
+New
 
 - Add spatial index tileset generator `CREATE_SPATIAL_INDEX_TILESET`.
 
@@ -392,7 +409,7 @@ Feature
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Bug fixing when the geometry early collapse
 
@@ -400,13 +417,13 @@ Fixed
 
 #### Module data
 
-Feature
+New
 
 - Add GRIDIFY_ENRICH procedure.
 
 #### Module retail
 
-Feature
+New
 
 - Add FIND_TWIN_AREAS procedure.
 
@@ -414,7 +431,7 @@ Feature
 
 #### Module data
 
-Feature
+New
 
 - Allow using tables as input, not just queries.
 - Add in place enrichment.
@@ -425,7 +442,7 @@ Feature
 
 #### Module retail
 
-Fixed
+Fix
 
 - Fix BUILD_REVENUE_MODEL_DATA k-ring buffer computation.
 
@@ -433,19 +450,19 @@ Fixed
 
 #### Module transformations
 
-Changed
+Improvement
 
 - ST_CONCAVEHULL now allows arrays with one/two points as input.
 
 #### Module retail
 
-Feature
+New
 
 - Add COMMERCIAL_HOTSPOTS procedure.
 
 #### Module statistics
 
-Feature
+New
 
 - Add SMOOTHING_MRF_H3 procedure.
 - Add SMOOTHING_MRF_QUADKEY procedure.
@@ -454,7 +471,7 @@ Feature
 
 #### Module statistics
 
-Feature
+New
 
 - Add VARIOGRAM function.
 - Add ORDINARY_KRIGING function.
@@ -464,14 +481,14 @@ Feature
 
 #### Module h3
 
-Feature
+New
 
 - Add H3_CENTER function.
 - Add H3_RESOLUTION function.
 
 #### Module retail
 
-Feature
+New
 
 - Add FIND_WHITESPACE_AREAS procedure.
 
@@ -479,7 +496,7 @@ Feature
 
 #### Module retail
 
-Feature
+New
 
 - Remove features importance tables from BUILD_REVENUE_MODEL procedure.
 
@@ -487,12 +504,12 @@ Feature
 
 #### Module statistics
 
-Feature
+New
 
 - Add LOCAL_MORANS_I_H3 function.
 - Add LOCAL_MORANS_I_QUADKEY function.
 
-Changed
+Improvement
 
 - Improve MORANS_I_H3 and MORANS_I_QUADKEY implementation.
 
@@ -500,7 +517,7 @@ Changed
 
 #### Module statistics
 
-Fixed
+Fix
 
 - Replace STDDEV by STDDEV_POP in GETIS_ORD_H3 and GETIS_ORD_QUADKEY.
 
@@ -508,7 +525,7 @@ Fixed
 
 #### Module retail
 
-Feature
+New
 
 - Add BUILD_REVENUE_MODEL_DATA procedure.
 - Add BUILD_REVENUE_MODEL procedure.
@@ -518,7 +535,7 @@ Feature
 
 #### Module accessors
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "accessors".
 
@@ -528,7 +545,7 @@ Removed
 
 #### Module constructors
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "constructors".
 
@@ -538,7 +555,7 @@ Removed
 
 #### Module geohash
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "geohash".
 
@@ -548,7 +565,7 @@ Removed
 
 #### Module h3
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "h3".
 - Rename ST_ASH3 function to H3_FROMGEOGPOINT.
@@ -572,7 +589,7 @@ Removed
 
 #### Module measurements
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "measurements".
 
@@ -583,7 +600,7 @@ Removed
 
 #### Module placekey
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "placekey".
 - Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
@@ -596,7 +613,7 @@ Removed
 
 #### Module processing
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "processing".
 
@@ -606,7 +623,7 @@ Removed
 
 #### Module s2
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "s2".
 - Rename ID_FROMHILBERTQUADKEY function to S2_FROMHILBERTQUADKEY.
@@ -625,7 +642,7 @@ Removed
 
 #### Module transformations
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "transformations".
 
@@ -635,7 +652,7 @@ Removed
 
 #### Module clustering
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "clustering".
 
@@ -645,7 +662,7 @@ Removed
 
 #### Module data
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "data".
 
@@ -655,7 +672,7 @@ Removed
 
 #### Module random
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "random".
 
@@ -665,7 +682,7 @@ Removed
 
 #### Module routing
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "routing".
 
@@ -675,7 +692,7 @@ Removed
 
 #### Module statistics
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "statistics".
 
@@ -685,7 +702,7 @@ Removed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Deployment schema "carto" instead of "tiler".
 
@@ -697,7 +714,7 @@ Removed
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Add support for legacy project names that contain dots or other special characters.
 
@@ -705,7 +722,7 @@ Changed
 
 #### Module statistics
 
-Feature
+New
 
 - Add KNN function.
 - Add GFUN function.
@@ -716,7 +733,7 @@ Feature
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Escape single-quoted properties in the `CREATE_TILESET` metadata when obtaining the geometry type.
 
@@ -724,7 +741,7 @@ Fixed
 
 #### Module statistics
 
-Feature
+New
 
 - Add GWR_GRID function.
 
@@ -732,11 +749,11 @@ Feature
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Use `zoom_min_column` as `zoom_min` and `zoom_max_column` as `zoom_max` when provided.
 
-Changed
+Improvement
 
 - Optimize simplification method instead of the native BigQuery.
 
@@ -744,14 +761,14 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - Fields named `dimension`, `total`, `intersection` and `input_area` are now
   `__carto_dimension`, `__carto_total` and `__carto_intersection` and `__carto_input_area`.
   Also the column `_carto_enrichment_` is now `__carto_enrichment`.
   This affects all the _raw_ enrichment procedures: `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`, `DATAOBS_ENRICH_POINTS_RAW`, `DATAOBS_ENRICH_POLYGONS_RAW`, `DATAOBS_ENRICH_GRID_RAW`.
 
-Fixed
+Fix
 
 - User provided queries can now have columns named `dimension`, `total`, `intersection`, `input_area`, `_nonglobal`, which could have collided previously with internal columns. All internal columns are now prefixed with `__carto_`. This affects all the enrichment procedures: `ENRICH_POINTS`, `ENRICH_POLYGONS`, `ENRICH_GRID`, `DATAOBS_ENRICH_POINTS`, `DATAOBS_ENRICH_POLYGONS`, `DATAOBS_ENRICH_GRID`, `ENRICH_POINTS_RAW`, `ENRICH_POLYGONS_RAW`, `ENRICH_GRID_RAW`, `DATAOBS_ENRICH_POINTS_RAW`, `DATAOBS_ENRICH_POLYGONS_RAW`, `DATAOBS_ENRICH_GRID_RAW`.
 
@@ -759,7 +776,7 @@ Fixed
 
 #### Module data
 
-Changed
+Improvement
 
 - Add `associated_geography_slug` column to `DATAOBS_SUBSCRIPTIONS`.
 - Some column names have changed in `DATAOBS_SUBSCRIPTIONS`:
@@ -771,7 +788,7 @@ Changed
   - `table` is now `dataset_sample_table`.
 - In `DATAOBS_SUBSCRIPTION_VARIABLES`, the column `associated_geography_slug` is now NULL for geography datasets.
 
-Fixed
+Fix
 
 - The output of `DATAOBS_SUBSCRIPTIONS` and `DATAOBS_SUBSCRIPTION_VARIABLES` now omits items that are not Data Observatory products.
 
@@ -779,12 +796,12 @@ Fixed
 
 #### Module data
 
-Fixed
+Fix
 
 - Enrichment results could mix input rows and values, specially for large inputs due
   to multiple evaluation of nondeterministic ROW_NUMBERS expression.
 
-Changed
+Improvement
 
 - New API, with consistent naming of procedures `
 
@@ -792,13 +809,13 @@ Changed
 
 #### Module s2
 
-Changed
+Improvement
 
 - Rename functions ID_FROMUINT64REPR, UINT64REPR_FROMID to follow convention.
 
 #### Module statistics
 
-Feature
+New
 
 - Create statistics module.
 - Add GETIS_ORD_H3 function.
@@ -811,7 +828,7 @@ Feature
 
 #### Module h3
 
-Changed
+Improvement
 
 - Review HEXRING, KRING functions.
 - Change KRING_INDEXED to KRING_DISTANCES.
@@ -820,12 +837,12 @@ Changed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fix support for DATE in `CREATE_TILESET`.
 - Fix naming of internal variables to avoid name collisions.
 
-Feature
+New
 
 - Add `fraction_dropped_per_zoom` in tileset metadata.
 
@@ -846,7 +863,7 @@ Changes
 
 #### Module s2
 
-Fixed
+Fix
 
 - Avoid keeping planar shape in spherical coordinates in ST_BOUNDARY.
 
@@ -862,7 +879,7 @@ Changes
 
 #### Module data
 
-Changed
+Improvement
 
 - DATAOBS_ENRICH_* procedures are now optimized to reduce the amount of data processed by taking advantage of clusterization by geography in the Data Observatory.
 - The `input_id_column` parameter has been removed from the following procedures:
@@ -879,14 +896,14 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - ENRICH_GRID and DATAOBS_ENRICH_GRID procedures take `input_query` and `input_index_column` parameters instead of the `indices` array.
 - DATAOBS_ENRICH_* procedures now report missing subscriptions in a more user-friendly way.
 
 #### Module routing
 
-Changed
+Improvement
 
 - Pass network to JS UDF natively
 - Support custom speed over LineStrings for GENERATE_NETWORK function.
@@ -897,7 +914,7 @@ Changed
 
 #### Module tiler
 
-Fixed
+Fix
 
 - Fix support for TIMESTAMP,DATETIME in CREATE_TILESET and CREATE_SIMPLE_TILESET.
 - Reduce parallelization to skip the recent error: "Not enough resources for query planning - too many subqueries or query is too complex"
@@ -906,7 +923,7 @@ Fixed
 
 #### Module h3
 
-Fixed
+Fix
 
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
@@ -914,7 +931,7 @@ Fixed
 
 #### Module data
 
-Feature
+New
 
 - Add DATAOBS_ENRICH_GRID procedure.
 - Add ENRICH_GRID procedure.
@@ -923,7 +940,7 @@ Feature
 
 #### Module h3
 
-Feature
+New
 
 - Add KRING_INDEXED function.
 
@@ -931,7 +948,7 @@ Feature
 
 #### Module geohash
 
-Feature
+New
 
 - Create geohash module.
 - Add VERSION function.
@@ -939,7 +956,7 @@ Feature
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Checking if the output table exists before running the tiler.
 
@@ -947,7 +964,7 @@ Changed
 
 #### Module data
 
-Changed
+Improvement
 
 - DATAOBS_ENRICH_* procedures take single `source` parameter with default `carto-customers` project.
 
@@ -955,17 +972,17 @@ Changed
 
 #### Module data
 
-Feature
+New
 
 - Add DATAOBS_SAMPLES procedure.
 
-Changed
+Improvement
 
 - DATAOBS_SUBSCRIPTIONS and DATAOBS_SUBSCRIPTION_VARIABLES take single `source` parameter with default `carto-customers` project. Views with `sub_` prefix are supported.
 
 #### Module routing
 
-Feature
+New
 
 - Create routing module.
 - Add GENERATE_NETWORK function.
@@ -982,7 +999,7 @@ Feature
 
 #### Module data
 
-Fixed
+Fix
 
 - Fix DATAOBS_SUBSCRIPTIONS and DATAOBS_SUBSCRIPTION_VARIABLES not working with subscriptions in which the
   provider id contained underscores.
@@ -991,7 +1008,7 @@ Fixed
 
 #### Module tiler
 
-Feature
+New
 
 - Add new automatic tileset generator `CREATE_TILESET`.
 
@@ -999,12 +1016,12 @@ Feature
 
 #### Module data
 
-Feature
+New
 
 - Add DATAOBS_SUBSCRIPTIONS procedure.
 - Add DATAOBS_SUBSCRIPTION_VARIABLES procedure.
 
-Changed
+Improvement
 
 - Change spatial catalog structure using two tables.
 - Improve enrichment procedures:
@@ -1017,7 +1034,7 @@ Changed
 
 #### Module data
 
-Feature
+New
 
 - Create data module.
 - Add VERSION function.
@@ -1034,7 +1051,7 @@ Feature
 
 #### Module s2
 
-Feature
+New
 
 - Add TOKEN_FROMID function.
 - Add ID_FROMTOKEN function.
@@ -1045,7 +1062,7 @@ Feature
 
 #### Module tiler
 
-Changed
+Improvement
 
 - Use semantic versioning.
 - Add `features_count` and `geometry` labels to the tilesets.
@@ -1054,7 +1071,7 @@ Changed
 
 #### Module clustering
 
-Changed
+Improvement
 
 - Change ST_CLUSTERKMEANS returning cluster and geom
 
@@ -1062,7 +1079,7 @@ Changed
 
 #### Module accessors
 
-Feature
+New
 
 - Create accessors module.
 - Add ST_ENVELOPE function.
@@ -1070,7 +1087,7 @@ Feature
 
 #### Module processing
 
-Feature
+New
 
 - Create processing module.
 - Add ST_VORONOIPOLYGONS function.
@@ -1082,7 +1099,7 @@ Feature
 
 #### Module transformations
 
-Feature
+New
 
 - Add ST_CONCAVEHULL function.
 
@@ -1090,7 +1107,7 @@ Feature
 
 #### Module clustering
 
-Feature
+New
 
 - Create clustering module.
 - Add ST_CLUSTERKMEANS function.
@@ -1100,14 +1117,14 @@ Feature
 
 #### Module constructors
 
-Feature
+New
 
 - Add ST_BEZIERSPLINE function.
 - Add ST_MAKEELLIPSE function.
 
 #### Module measurements
 
-Feature
+New
 
 - Create measurements module.
 - Add ST_ANGLE function.
@@ -1116,7 +1133,7 @@ Feature
 
 #### Module transformations
 
-Feature
+New
 
 - Rename module to transformations.
 - Add ST_CENTERMEAN function.
@@ -1136,7 +1153,7 @@ Removed
 
 #### Module constructors
 
-Feature
+New
 
 - Create constructors module.
 - Add ST_MAKEENVELOPE function.
@@ -1147,7 +1164,7 @@ Feature
 
 #### Module transformations
 
-Feature
+New
 
 - Create transformation module.
 - Add ST_BUFFER function.
@@ -1157,7 +1174,7 @@ Feature
 
 #### Module random
 
-Changed
+Improvement
 
 - ST_GENERATEPOINTS now uses a spherically uniform distribution. Previously used to by uniform on projection.
 
@@ -1165,23 +1182,23 @@ Changed
 
 #### Module h3
 
-Changed
+Improvement
 
 - Use hexadecimal as default type instead of int for h3 indexes.
 
-Fixed
+Fix
 
 - Fix ST_BOUNDARY generating error when not able to parse geometry.
 
 #### Module placekey
 
-Changed
+Improvement
 
 - Placekey conversions works with hexadecimal h3 indexes instead of int.
 
 #### Module random
 
-Feature
+New
 
 - Create random module.
 - Add ST_GENERATEPOINTS function.
@@ -1191,7 +1208,7 @@ Feature
 
 #### Module h3
 
-Feature
+New
 
 - Create h3 module.
 - Add ST_ASH3 function.
@@ -1211,7 +1228,7 @@ Feature
 
 #### Module placekey
 
-Feature
+New
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
@@ -1221,7 +1238,7 @@ Feature
 
 #### Module s2
 
-Feature
+New
 
 - Create s2 module.
 - Add ID_FROMHILBERTQUADKEY function.
@@ -1233,7 +1250,7 @@ Feature
 
 #### Module tiler
 
-Feature
+New
 
 - Add QUOTA procedure in order to display the monthly quota and quota available.
 - Implement support for layer name.
@@ -1243,7 +1260,7 @@ Feature
 - Add new `metadada` input parameter to set the properties `name`, `description`, `legends` and also `extra_metadata`.
 - Add `zoom_min_column` and `zoom_max_column` to control the zoom level at which particular features are visible.
 
-Changed
+Improvement
 
 - Change the default and max partition limit to 3999.
 - Make aggregation tilesets to use the quadkey module UDF LONGLAT_ASQUADINTLIST_RESOLUTION in order to generate quadkey aggregations.
@@ -1252,7 +1269,7 @@ Removed
 
 - Removed `zoom_step` option.
 
-Fixed
+Fix
 
 - Fix bug that left empty the generator options in the metadata cell.
 - Fix CREATE_SIMPLE_TILESET failing with single column tables.
@@ -1262,12 +1279,12 @@ Fixed
 
 #### Module tiler
 
-Feature
+New
 
 - Add tileset type to metadata and BigQuery labels.
 - Add the prefix "aggregation_" to aggregation options: type, resolution and placement.
 
-Changed
+Improvement
 
 - Moved to the Advanced Spatial Extension.
 - Change "max_tile_size_strategy" default to "throw_error", matching the other defaults and improve the exception error message in CreatePointAggregationTileset.

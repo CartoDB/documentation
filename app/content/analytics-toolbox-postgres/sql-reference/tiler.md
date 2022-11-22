@@ -26,7 +26,7 @@ Generates a point aggregation tileset.
 
 | Option | Description |
 | :----- | :------ |
-|`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
+|`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geometry column that will be used. It must be of type `GEOMETRY`. |
 |`zoom_min`| Default: `0`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `NULL`. An `INTEGER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated.|
 |`aggregation_resolution`| Default: `6`. An `INTEGER` that specifies the resolution of the spatial aggregation.<br/><br/>Aggregation for zoom `z` is based on quadgrid cells at `z + resolution level`. For example, with resolution `6`, the `z0` tile will be divided into cells that match the `z6` tiles, or the cells contained in the `z10` tile will be the boundaries of the `z16` tiles within them. In other words, each tile is subdivided into `4^resolution` cells, which is the maximum number of resulting features (aggregated) that the tiles will contain..<br/><br/>Note that adding more granularity necessarily means heavier tiles which take longer to be transmitted and processed in the final client, and you are more likely to hit the internal memory limits.|
@@ -110,7 +110,7 @@ Create a simple tileset from a table, with feature dropping.
 
 | Option | Description |
 | :----- | :------ |
-|`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geography column that will be used. It must be of type `GEOGRAPHY`. |
+|`geom_column`| Default: `"geom"`. A `STRING` that marks the name of the geometry column that will be used. It must be of type `GEOMETRY`. |
 |`zoom_min`| Default: `0`. An `INTEGER` that defines the minimum zoom level for tiles. Any zoom level under this level won't be generated.|
 |`zoom_max`| Default: `NULL`. An `INTEGER` that defines the maximum zoom level for tiles. Any zoom level over this level won't be generated. If not provided, the appropriate maximum zoom level is inferred from the size of the features.|
 |`tile_extent`| Default: `4096`. An `INTEGER` defining the extent of the tile in integer coordinates as defined by the MVT spec.
