@@ -4,29 +4,52 @@ aliases:
 ---
 ## Release notes
 
-### October 24, 2022
+### November 15, 2022
 
-#### Module processing
+#### Module retail
 
 Fixed
 
-- Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places
+- `__KRING_DECAY_GRID` was aggregating the value of the moving window pivoting index instead of neighbour indexes.
 
-### October 7, 2022
+### November 8, 2022
 
-#### Module clustering
+#### Module h3
+
+Changed
+
+- Add linestrings and points support to function H3_POLYFILL.
+
+### November 7, 2022
+
+#### Module retail
 
 Feature
 
-- Move ST_CLUSTERKMEANS function to core.
+- Add `FIND_TWIN_AREAS_WEIGHTED` procedure.
 
-#### Module random
+### October 28, 2022
+
+#### Module s2
 
 Feature
 
-- Move ST_GENERATEPOINTS function to core.
+- Add S2_RESOLUTION function.
+- Add S2_TOCHILDREN function.
 
-### October 5, 2022
+### October 26, 2022
+
+#### Module transformations
+
+Fixed
+
+- Fix ST_BUFFER crashing with geographies close to the poles.
+
+#### Module tiler
+
+Changed
+
+- Partition tables in spatial index tilesets.
 
 #### Module cpg
 
@@ -45,6 +68,28 @@ Fixed
 Changed
 
 - CREATE_ISOLINES output is clustered by geometry.
+
+### October 24, 2022
+
+#### Module processing
+
+Fixed
+
+- Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places.
+
+### October 7, 2022
+
+#### Module clustering
+
+Feature
+
+- Move ST_CLUSTERKMEANS function to core.
+
+#### Module random
+
+Feature
+
+- Move ST_GENERATEPOINTS function to core.
 
 ### September 30, 2022
 
