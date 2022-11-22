@@ -58,6 +58,10 @@ CREATE SCHEMA "<my database>".carto;
 -- Give the carto user full access to the carto schema
 GRANT ALL PRIVILEGES ON SCHEMA "<my database>".carto TO ROLE carto_role;
 
+-- Give the carto user permission to use the warehouse
+GRANT OPERATE ON WAREHOUSE COMPUTE_WH TO ROLE CARTO_ROLE;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CARTO_ROLE;
+
 -- Grant usage to public role
 -- Repeat this for any other role that needs to use the toolbox
 GRANT USAGE ON DATABASE "<my database>" TO ROLE public;
