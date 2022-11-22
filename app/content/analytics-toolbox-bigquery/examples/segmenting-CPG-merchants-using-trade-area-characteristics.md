@@ -5,7 +5,7 @@ image: "/img/bq-analytics-toolbox/examples/segmentation_final_map.png"
 type: examples
 date: "2022-11-18"
 categories:
-    - gcp
+    - CPG
 ---
 ## Segmenting CPG merchants using trade areas characteristics
 
