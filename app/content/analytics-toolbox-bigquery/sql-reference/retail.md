@@ -523,4 +523,78 @@ CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
 {{%/ bannerNote %}}
 
 
+### FIND_TWIN_AREAS_WEIGHTED
+
+{{% bannerNote type="code" %}}
+carto.FIND_TWIN_AREAS_WEIGHTED(origin_query, target_query, index_column, weights, max_results, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+Procedure to obtain the twin areas for a given origin location in a target area. The function is similar to the FIND_TWIN_AREAS(#find_twin_areas) where the full description of the method, based on Principal Component Analysis (PCA), can be found [here](https://carto.com/blog/spatial-data-science-site-planning). Herein, no PCA is performed, but the user has the capability to specify weights for the features and check the similarities between origin and target area. The sum of weights must be less than or equal to 1. Not all them need to be defined. The undefined features are set to the remaining value divided by their number to reach 1. In the case where weights are provided, then no PCA takes place, and the features are standardized.
+
+The output twin areas are those of the target area considered to be the most similar to the origin location, based on the values of a set of variables. Only variables with numerical values are supported. Both origin and target areas should be provided in grid format (h3, or quadbin) of the same resolution. We recommend using the [carto.GRIDIFY_ENRICH](../#gridify_enrich) procedure to prepare the data in the format expected by this procedure.
+
+**Input**
+
+* `origin_query`: `STRING` query to provide the origin cell (`index` column) and its associated data columns. No NULL values should be contained in any of the data columns provided. The cell can be an h3, or a quadbin index. For quadbin, the value should be cast to `STRING` (`CAST(index AS STRING)`). Example origin queries are:
+
+    ```sql
+    -- When selecting the origin cell from a dataset of gridified data
+    SELECT * FROM `<project>.<dataset>.<origin_table>`
+    WHERE index_column = <cell_id>
+    ```
+
+    ```sql
+    -- When the input H3 cell ID is inferred from a (longitude, latitude) pair
+    SELECT * FROM `<project>.<dataset>.<origin_table>`
+    WHERE ST_INTERSECTS(`carto-un`.H3_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
+    ```
+
+    ```sql
+    -- When the input quadbin cell ID is inferred from a (longitude, latitude) pair
+    SELECT * FROM `<project>.<dataset>.<origin_table>`
+    WHERE ST_INTERSECTS(`carto-un`.carto.QUADBIN_BOUNDARY(index_column), ST_GEOGPOINT(<longitude>, <latitude>))
+    ```
+
+    ```sql
+    -- When the cell ID is a quadbin and requires to be cast
+    SELECT * EXCEPT(index_column), CAST(index_column AS STRING)
+    FROM `<project>.<dataset>.<origin_table>`
+    ```
+
+* `target_query`: STRING query to provide the target area grid cells (`index` column) and their associated data columns, e.g. `SELECT * FROM <project>.<dataset>.<target_table>`. The data columns should be similar to those provided in the `origin_query`, otherwise the procedure will fail. Grid cells with any NULL values will be excluded from the analysis.
+* `index_column`: `STRING` name of the index column for both the `origin_query` and the `target_query`.
+* `weights`: `ARRAY<STRUCT<name STRING, value FLOAT64>>` the weights on the features. If set to `NULL`, then all features are treated equally. This parameter is considered only if the length of weights is greater or equal than one. The sum of weights must be less than or equal to 1. If less weights than the number of features are provided, then for the undefined features, the remaining 1 - sum(weights) is distributed evenly.
+* `max_results`: `INT64` of the maximum number of twin areas returned. If set to `NULL`, all target cells are returned.
+* `output_prefix`: `STRING` destination and prefix for the output tables. It must contain the project, dataset and prefix: `<project>.<dataset>.<prefix>`.
+
+**Output**
+
+The procedure outputs the following:
+
+* Twin area model, named `<project>.<dataset>.<prefix>_model`. Please note that the model computation only depends on the `target_query` and therefore the same model can be used if the procedure is re-run for a different `origin_query`. To allow for this scenario in which the model is reused, if the output model already exists, it won't be recomputed. To avoid this behavior, simply choose a different `<prefix>` in the `output_prefix` parameter.
+
+* Results table, named `<project>.<dataset>.<prefix>_<origin_index>_results`, containing in each row the index of the target cells (`index_column`) and its associated `similarity_score` and `similarity_skill_score`. The `similarity_score` corresponds to the distance between the origin and target cell taking into account the user defined weights; the `similarity_skill_score` for a given target cell `*t*` is computed as `1 - similarity_score(*t*) / similarity_score(<*t*>)`, where `<*t*>` is the average target cell, computed by averaging each feature for all the target cells. This `similarity_skill_score` represents a relative measure: the score will be positive if and only if the target cell is more similar to the origin than the mean vector data, with a score of 1 meaning perfect matching or zero distance. Therefore, a target cell with a larger score will be more similar to the origin under this scoring rule.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.FIND_TWIN_AREAS_WEIGHTED(
+    -- Input queries
+    '''SELECT * FROM `cartobq.docs.twin_areas_origin_enriched_quadbin` LIMIT 1''',
+    '''SELECT * FROM `cartobq.docs.twin_areas_target_enriched_quadbin`''',
+    -- Twin areas model inputs
+    'quadbin',
+    NULL,
+    NULL,
+    'my-project.my-dataset.my-prefix'
+);
+-- Table `<my-project>.<my-dataset>.<output-prefix>_{ID}_results` will be created
+-- with the column: quadbin, similarity_score, similarity_skill_score
+```
+
+
 {{% euFlagFunding %}}
