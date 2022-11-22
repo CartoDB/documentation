@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
+      - name: Set ref for the checkout
+        if: github.event.inputs.version != 'undefined'
+        run: |
+          echo "REF_NAME=release/${{ github.event.inputs.version }}" >> $GITHUB_ENV
       - name: checkout analytics-toolbox
         uses: actions/checkout@v3
         with:
@@ -19,6 +23,7 @@ jobs:
           repository: CartoDB/analytics-toolbox
           submodules: recursive
           token: ${{ secrets.CARTO_GITHUB_TOKEN }}
+          ref: ${{ env.REF_NAME }}
       - name: Update docs
         run: 
           ./scripts/update.sh          
