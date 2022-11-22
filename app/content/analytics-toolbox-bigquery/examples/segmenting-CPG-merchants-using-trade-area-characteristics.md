@@ -46,8 +46,12 @@ An example of the table produced by the above function, `cartobq.docscpg_product
 is illustrated below. `store_id` is the unique identifier of each location and `geom` is the geometry of the trade area.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_preview_table_trade_areas.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/test5.png" alt="Preview table trade areas" style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/examples/segmentation_preview_table_trade_areas.png" alt="Preview table trade areas" style="width:100%">
+</div> -->
 
 <iframe height=700px width=100% style='margin-bottom:20px' src="https://gcp-us-east1.app.carto.com/map/5e9b2fcd-1d66-46cd-a153-b4351166b941"></iframe>
 
@@ -124,13 +128,21 @@ Examples of the last two tables can be seen below.
 This table shows the correlation between every pair of features. The `col1` and `col2` columns indicate the pair of features, while the column `corr` contains the value of correlation for each pair. It is used to identify relationships amongst the features and whether PCA would benefit the analysis or not.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_correlation_table.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/test6.png" alt="Preview table trade areas" style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/examples/segmentation_correlation_table.png" alt="Preview table trade areas" style="width:100%">
+</div> -->
 
 <u>Descriptive statistics table</u>
 
 This table contains the descriptive statistics for each feature. A row corresponds to a feature. The table schema is exactly the same as the one from the [describe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) function of Python Pandas package. Descriptive statistics include those that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values.
 
+<!-- <div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/examples/test8.png" alt="Preview table trade areas" style="width:100%">
+</div>
+ -->
 <div style="text-align:center" >
 <img src="/img/bq-analytics-toolbox/examples/segmentation_descriptive_table_with_statistics.png" alt="Preview table trade areas" style="width:100%">
 </div>
@@ -162,8 +174,12 @@ The output tables can be found at:
 Below we can see the resulting segment assignment table in which we have every merchant assigned to one cluster. Columns `cluster_6` and `cluster_7` contain the cluster to wich each merchant is assigned to when solving for 6 and 7 clusters, respectively.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_clusters.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/test9.png" alt="Preview table trade areas" style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/examples/segmentation_clusters.png" alt="Preview table trade areas" style="width:100%">
+</div> -->
 
 <!-- 
 <div style="text-align:center" >
@@ -179,8 +195,12 @@ An example of the second table, the descriptive statistics for each case/cluster
 And finally the output of the last table, with the metrics to measure the quality of the clustering (namely, [David Bouldin](https://en.wikipedia.org/wiki/Davies%E2%80%93Bouldin_index) index and within sum of squares) is as follows.
 
 <div style="text-align:center" >
-<img src="/img/bq-analytics-toolbox/examples/segmentation_davidbouldin_index.png" alt="Preview table trade areas" style="width:100%">
+<img src="/img/bq-analytics-toolbox/examples/test10.png" alt="Preview table trade areas" style="width:100%">
 </div>
+
+<!-- <div style="text-align:center" >
+<img src="/img/bq-analytics-toolbox/examples/segmentation_davidbouldin_index.png" alt="Preview table trade areas" style="width:100%">
+</div> -->
 
 <!-- <div style="text-align:center" >
 <img src="/img/bq-analytics-toolbox/examples/segmentation_david_bouldin_index.png" alt="Preview table trade areas" style="width:100%">
