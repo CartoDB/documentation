@@ -2,7 +2,9 @@
 
 ### v1.4.7 - November 18th, 2022
 
+- New RangeWidget
 - Support for parameterized queries
+- Fix issue wrong computations in widgets connected to tilesets
 - Updated to deck.gl 8.8.17
 - Many bug fixes
 
