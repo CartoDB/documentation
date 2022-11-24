@@ -25,7 +25,7 @@ To check whether your Google account or Service Account has access to the LDS mo
 
 
 ```sql
-SELECT "CARTO_DEV_DATA".carto.VERSION_ADVANCED()
+SELECT "CARTO".carto.VERSION_ADVANCED()
 ```
 
 

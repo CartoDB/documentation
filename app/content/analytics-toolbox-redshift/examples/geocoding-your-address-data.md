@@ -32,7 +32,7 @@ SELECT carto_dev_data.carto.VERSION_ADVANCED()
 
 The lds module is generally available in the Analytics Toolbox since the “July 26, 2022” version. Please check the [Getting Access](https://docs.carto.com/analytics-toolbox-redshift/overview/getting-access/) section if you run into any errors when running the query above.
 
-For this example we will use a table with the Starbucks addresses that can be found in the publicly available `bqcartodemos.sample_tables.starbucks_ny_geocode` . The table contains a column called "full_address" that we will use as input for the geocoding process.
+For this example we will use a table with the Starbucks addresses that can be found in the publicly available `carto_dev_data.demo_tables.starbucks_ny_geocode` . The table contains a column called "full_address" that we will use as input for the geocoding process.
 
 
 <div style="text-align:center" >
