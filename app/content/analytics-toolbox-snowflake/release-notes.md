@@ -4,21 +4,17 @@ aliases:
 ---
 ## Release notes
 
-### July 22, 2022
+### November 1, 2022
 
-#### Module lds
-
-New
-
-- Add GEOCODE_REVERSE_TABLE procedure.
-
-### June 9, 2022
-
-#### Module lds
+#### All modules
 
 New
 
-- Add CREATE_ISOLINES procedure.
+- Create release workflows
+
+Improvement
+
+- Adapt to Semver
 
 ### October 24, 2022
 
@@ -83,6 +79,14 @@ Improvement
 Improvement
 
 - Unify `extra_metadata` into `metadata` in tiler metadata.
+
+### July 22, 2022
+
+#### Module lds
+
+New
+
+- Add GEOCODE_REVERSE_TABLE procedure.
 
 ### July 13, 2022
 
@@ -163,6 +167,14 @@ Improvement
 Improvement
 
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
+
+### June 9, 2022
+
+#### Module lds
+
+New
+
+- Add CREATE_ISOLINES procedure.
 
 ### May 19, 2022
 
