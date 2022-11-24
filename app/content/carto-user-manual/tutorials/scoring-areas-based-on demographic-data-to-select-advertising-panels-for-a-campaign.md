@@ -69,11 +69,11 @@ In this example, we will use sociodemographic and income data to identify where 
     )
     -- make h3 geometry layer
     SELECT
-    h3,
-    `carto-un`.carto.H3_BOUNDARY(h3) AS geom
+    geoid,
+    `carto-un`.carto.H3_BOUNDARY(geoid) AS geom
     from study_area, unnest(
         `carto-un`.carto.H3_POLYFILL(study_area.geom,9) 
-    ) as h3
+    ) as geoid
     ```
 
     Remember to replace the location of the county shapefile with the one related to your org.
