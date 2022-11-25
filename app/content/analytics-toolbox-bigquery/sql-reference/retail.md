@@ -191,21 +191,7 @@ CALL `carto-un`.carto.PREDICT_REVENUE_AVERAGE(
 ### FIND_WHITESPACE_AREAS
 
 {{% bannerNote type="code" %}}
-carto.FIND_WHITESPACE_AREAS(
-    revenue_model,
-    revenue_model_data,
-    generator_query,
-    aoi_query,
-    minimum_revenue,
-    max_results,
-    with_competitors,
-    with_own_stores
-)
-{{%/ bannerNote %}}
-
-{{% bannerNote type="code" title="FIXME: DUPLICATED FOR COMPARISON" %}}
-carto.FIND_WHITESPACE_AREAS(revenue_model, revenue_model_data, generator_query, aoi_query minimum_revenue, max_results, with_competitors, with_own_stores
-)
+carto.FIND_WHITESPACE_AREAS(revenue_model, revenue_model_data, generator_query, aoi_query, minimum_revenue, max_results, with_own_stores, with_competitors)
 {{%/ bannerNote %}}
 
 **Description**

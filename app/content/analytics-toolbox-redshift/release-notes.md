@@ -1,5 +1,17 @@
 ## Release notes
 
+### November 1, 2022
+
+#### All modules
+
+New
+
+- Create release workflows
+
+Improvement
+
+- Adapt to Semver
+
 ### October 25, 2022
 
 #### Module data

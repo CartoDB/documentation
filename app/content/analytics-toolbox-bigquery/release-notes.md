@@ -28,6 +28,18 @@ New
 
 - Add `FIND_TWIN_AREAS_WEIGHTED` procedure.
 
+### November 1, 2022
+
+#### All modules
+
+New
+
+- Create release workflows
+
+Improvement
+
+- Adapt to Semver
+
 ### October 28, 2022
 
 #### Module s2
