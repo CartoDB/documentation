@@ -1,6 +1,6 @@
 ---
-title: "Identifying target area for marketing campaign using merchant reviews"
-description: "We find coffee-loving areas to launch a marketing campaign, based on sentiment in merchant reviews."
+title: "Identifying target area for marketing campaign using consumer sentiment data"
+description: "We find coffee-loving areas to launch a marketing campaign, based on consumer sentiment data."
 image: "/img/tutorials/cpg_marketing_area_merchant_reviews.png"
 type: tutorials
 date: "2022-11-25"
@@ -11,11 +11,11 @@ date: "2022-11-25"
 #     - cpg
 ---
 
-## Identifying target area for marketing campaign using merchant reviews
+## Identifying target area for marketing campaign using consumer sentiment data
 
 **Context**
 
-CPG merchants´ reviews can be used not only to understand how consumers perceive the merchant, but also, when observed with similar data from other adjacent merchants, to understand how consumers perceive entire areas. 
+Consumer sentiment data from CPG merchants´ reviews can be used not only to understand how consumers perceive the merchant, but also, when observed with similar data from other adjacent merchants, to understand how consumers perceive entire areas. 
 
 In this tutorial, we will be using sentiment data from [The Data Appeal Company](https://carto.com/spatial-data-catalog/browser/?provider=dataappeal) to identify the areas which we should target for a new marketing campaign of a quality coffee product in Berlin. Specifically we will use the [Main Listing](https://carto.com/spatial-data-catalog/browser/dataset/tdac_placessenti_66e9e87e/) dataset to gather POI, review volume and footfall data, as well as the [Clusters & Topics](https://carto.com/spatial-data-catalog/browser/dataset/tdac_placessenti_705ef6b/) dataset to analyze sentiment for the topic "coffee".
 
@@ -213,7 +213,24 @@ We will then construct spatial indexes to identify the best areas to launch a ca
 
     We can see that few merchants (around 200) in Berlin stand out for coffee sentiment. For a trade spend allocation exercise, we could had chosen to focus trade spend budget on those merchants.
 
-17. Let´s now create a tooltip for each merchant, embedding Google Street view along with the name and coffee sentiment score. Enable the tooltip for the POIs layer, and choose to configure using HTML code. Paste the code below: 
+17. Let´s now create a tooltip for each merchant, to view the name and sentiment of each merchant. Enable the tooltip for the POIs layer, and choose to configure using HTML code. Paste the code below: 
+
+    ```html
+    <div class="CDB-Popup">
+    <dl>
+        <div>
+            <dt>Name</dt>
+            <dd>{{name}}</dd>
+        </div>
+        <div>
+            <dt>Coffee sentiment</dt>
+            <dd>{{poi_coffee_sentiment}}</dd>
+        </div>
+    </dl>
+    </div>
+    ```
+
+    Another interesting use case which can be enabled by the HTML tooltip configurator is embedding Google Street view along with the name and coffee sentiment score. Paste the code below:
 
     ```html
     <div class="CDB-Popup">
