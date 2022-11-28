@@ -24,13 +24,25 @@ docker-compose up build
 
 Some projects have external files to be included in the documentation. Those files, generally the reference files, live in the main source code repository.
 
-To checkout the latest changes run:
+To checkout the latest changes in the remote repository:
 
 ```
 ./scripts/checkout.sh
 ```
 
-To update the reference files run:
+To checkout a certain branch of the documentation:
+
+```
+BRANCH=branch-name ./scripts/checkout.sh
+```
+
+And to review changes to review changes to the `docs/` directory in the Analytics Toolbox repo before publishing, use the **absolute** path to your local folder:
+
+```
+LOCAL_AT_PATH=~/path/to/analytics-toolbox ./scripts/checkout.sh
+```
+
+Once any of these versions is checked out, to update the reference files run:
 
 ```
 ./scripts/update.sh
