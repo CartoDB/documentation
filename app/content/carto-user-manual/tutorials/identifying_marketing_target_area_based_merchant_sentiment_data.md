@@ -34,7 +34,7 @@ We will then construct spatial indexes to identify the best areas to launch a ca
 
     ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_new_map.png)
 
-3. Let´s first import the restaurants and cafes in Berlin, which is the relevant subset of the Data Appeal Main Listing dataset for our tutorial. Navigate to "Add source from:" and select the table "cpg_dataappeal_restaurants_and_cafes_berlin", located under the "demo_tables" folder in the CARTO Data Warehouse connection
+3. Let´s first import the restaurants and cafes in Berlin, which is the relevant subset of the Data Appeal Main Listing dataset for our tutorial. Navigate to "Add source from:" and select the table "dataappeal_restaurants_and_cafes_berlin_cpg", located under the "demo_tables" folder in the CARTO Data Warehouse connection
 
     When the table loads, click on "More options" in the source and "Show data table". Scroll to the right and observe the columns "reviews", "sentiment" and "footfall", which are relevant in our case. Visit the dataset [documentation](https://carto.com/spatial-data-catalog/browser/dataset/tdac_placessenti_705ef6b/) to understand what the variables represent.
 
@@ -42,7 +42,7 @@ We will then construct spatial indexes to identify the best areas to launch a ca
 
    ![Data Appeal Main Listing dataset](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_main_listing_dataset.png)
 
-4. As we mentioned earlier, we are not so much interested in analyzing a general sentiment value. Rather, we are interested to understand sentiment when it comes to the topic coffee. For that, we will import sentiment data for the "coffee" and "kaffee" topics for each POI. This data can be found in the Data Appeal Clusters and Topics dataset, from which we will import a subset filtered only for the relevant topics.Navigate to "Add source from:" and select the table "cpg_dataappeal_clusters_and_topics_berlin", located under the "demo_tables" folder in the CARTO Data Warehouse connection.
+4. As we mentioned earlier, we are not so much interested in analyzing a general sentiment value. Rather, we are interested to understand sentiment when it comes to the topic coffee. For that, we will import sentiment data for the "coffee" and "kaffee" topics for each POI. This data can be found in the Data Appeal Clusters and Topics dataset, from which we will import a subset filtered only for the relevant topics.Navigate to "Add source from:" and select the table "dataappeal_clusters_and_topics_for_coffee_berlin_cpg", located under the "demo_tables" folder in the CARTO Data Warehouse connection.
 
     When the table loads, click on "More options" in the source and "Show data table". Scroll to the right and observe the columns "topic", "polarity" and "opinions_count", which are relevant in our case. Visit the dataset [documentation](https://carto.com/spatial-data-catalog/browser/dataset/tdac_placessenti_66e9e87e/) to understand what the variables represent.
 
