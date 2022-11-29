@@ -8,6 +8,16 @@ menu:
     url: "news-developers"
 ---
 
+### Announcing CARTO for React 1.4.7
+
+##### 2022-11-18
+
+A new version of CARTO for React has been released with the following main highlights:
+
+- Support for parameterized queries. Now, a user can define queries that allow for external parameters to be injected into the query and create more powerful dynamic queries without having to modify the SQL; this, will result in filtering being applied from the backend side to the sources and will be reflected in layers and widgets. For more information, a guide has been included in our documentation and can be accessed here.
+- Several bug fixes including a fix for an issue with wrong computations in widgets connected to tilesets
+- Updated deck.gl to 8.8.17
+
 ### Announcing CARTO for React 1.3 and deck.gl 8.8
 
 ##### 2022-07-11
