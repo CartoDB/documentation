@@ -5,6 +5,263 @@ aliases:
 
 ## Getting access
 
+### Assisted installation from the CARTO Workspace
+{{% bannerNote title="PRIVATE BETA" type="tip" %}}
+campfire
+
+Hi everyone!
+Today I’m very happy to show an important feature that we developed this Quarter and it is hot off the presses.
+
+Thanks to this feature, we will simplifying access to the Analytics Toolbox in our customers’ own data warehouse, and to eliminate the current burden associated with the installation and maintenance of this component of the CARTO platform.
+
+From today, the CARTO admin users of Snowflake organizations have the possibility of installing our Analytics Toolbox in their Data Warehouse via the UI. A new section in CARTO Settings has been added where we provide a specific UI to autonomous Analytics Toolbox installation. 
+This installation mode is currently available in private beta (on production under FF). If you have a client or prospect very interested on it, please let me know in order to add it them.
+
+Let me show a little demo of this process:
+
+————————
+—//next slide pls// let’s go to the next one
+————————
+
+
+Here you can see this new section called "Analytics Toolbox” in the CARTO settings. 
+In this new section, the users will find a list of all the AT installations that they have available and the option to add a new one using the corresponding button.
+
+The first thing to do is to choose the DW (for now it is only available for SF but we hope to add RS soon) and continue. At this point the user is prompted to have a set of pre-configurations done in their SF environment and has a link to a new section in our public documentation where we explain how to prepare all those requirements.
+Once this is done, the user must specify their credentials and continue with the process. 
+Then now the first that the process do is check that this pre-configuration is ready and correct and, after that, allow the user to proceed with the installation.
+
+Then we can continue and, waiting some seconds, the instalatios was completed.
+
+Once we have an installation, we can manage it modifing the credentials if it change or uninstalling the AT as you can see in the video, confirming my choose and waiting few seconds to complete the uninstall proccess. And that's it! That installation is removed from the client data warehouse and also from the list, of course. As easy as that.
+
+Last, but not least, I wanted to show you that within the management of the AT installations, there is also updating it to the last version. As you can see, when the organization doesn't have the last version, we point it out to the admin with this status and, with an easy click and the corresponding confirmation, this user can update all the organization to the last version.
+ Note that this feature is only available for the Admin users in your CARTO organization account.
+{{%/ bannerNote %}}
+
+This guide explains all the steps to install the SQL functions and procedures of the Analytics Toolbox in your Snowflake account.
+The CARTO Analytics Toolbox contains two packages:
+
+* **core:** this is the public and open-source package. It contains all the core GIS functions that complement the GIS native functions available in Snowflake. This module is also available from the [Snowflake Data Marketplace](#marketplace-installation-for-non-carto-customers) for free. 
+* **advanced:** this is a premium package. It contains advanced GIS functions to power high-level GIS analytics in Snowflake.
+
+Note that in order to be able to automatically install the Analytics Toolbox in your Snowflake account, CARTO requires you to run a specific setup so we can proceed with the installation and with the future updates. Please follow the instructions detailed below in order to complete the installation of the Analytics Toolbox for Snowflake.
+
+#### Setup
+
+CARTO requires a specific setup in your Snowflake account to be able to securely install the Analytics Toolbox and then access it from our different platform interfaces. This process must be completed by a user with ACCOUNTADMIN permissions in the Snowflake account. In this process you will need to create the following resources:
+
+* “CARTO” database within your Snowflake account
+* “CARTO” schema in the “CARTO” database
+* “CARTO_ROLE” user role with full USAGE privileges in the “CARTO” database and ALL PRIVILEGES on the “CARTO” schema 
+* “CARTO” user granted with the “CARTO_ROLE” that CARTO will use to perform the installation and maintain future updates
+
+**Create resources**
+
+In order to create the aforementioned resources please copy & paste the following queries in your Snowflake console. 
+
+```sql
+-- Set admin permissions
+USE ROLE ACCOUNTADMIN;
+ 
+-- Create the carto database where the toolbox will be installed
+CREATE DATABASE "CARTO";
+ 
+-- Create the carto schema in the carto database
+CREATE SCHEMA "CARTO"."CARTO";
+ 
+-- Create a carto role for the carto user
+CREATE ROLE CARTO_ROLE;
+ 
+-- Ensure the sysadmin role inherits any privileges the carto role is granted.
+-- Note that this does not grant sysadmin privileges to the carto role
+GRANT ROLE CARTO_ROLE TO ROLE SYSADMIN;
+ 
+-- Create the carto user
+CREATE USER CARTO WITH DEFAULT_ROLE=CARTO_ROLE DEFAULT_WAREHOUSE=COMPUTE_WH PASSWORD='<strong, unique password>';
+ 
+-- Grant the carto role to the carto user
+GRANT ROLE CARTO_ROLE TO USER CARTO;
+ 
+-- Let the carto user see this database
+GRANT USAGE ON DATABASE "CARTO" TO ROLE CARTO_ROLE;
+ 
+-- Give the carto user full access to the carto schema
+GRANT ALL PRIVILEGES ON SCHEMA "CARTO"."CARTO" TO ROLE CARTO_ROLE;
+
+-- Give the carto user permission to use the warehouse
+GRANT OPERATE ON WAREHOUSE COMPUTE_WH TO ROLE CARTO_ROLE;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CARTO_ROLE;
+```
+
+**Grant usage**
+
+In order to make the Analytics Toolbox available to use via the resources you have just created, some permissions should be granted. Please copy & paste the queries below if you want to grant usage of the Analytics Toolbox to all the users in your Snowflake account or amend the query to fulfill your specific user access requirements: 
+
+```sql
+-- Set admin permissions
+USE ROLE ACCOUNTADMIN;
+ 
+-- Grant usage to public role
+-- Apply this for any other role that needs to use the toolbox
+GRANT USAGE ON DATABASE "CARTO" TO ROLE PUBLIC;
+GRANT USAGE ON SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT SELECT ON ALL TABLES IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT SELECT ON FUTURE TABLES IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT SELECT ON ALL VIEWS IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT SELECT ON FUTURE VIEWS IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT USAGE ON ALL FUNCTIONS IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT USAGE ON FUTURE FUNCTIONS IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT USAGE ON ALL PROCEDURES IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+GRANT USAGE ON FUTURE PROCEDURES IN SCHEMA "CARTO"."CARTO" TO ROLE PUBLIC;
+```
+
+**API integration**
+
+CARTO’s Analytics Toolbox for Snowflake uses external lambda functions in Amazon Web Services (AWS) in order to perform requests to our external Location Data Services (LDS) providers for the geocoding and isolines functions in the [LDS module](../../sql-reference/lds/). CARTO provides a specific role to make use of the lambda functions: arn:aws:iam::000955892807:role/CartoFunctionsRole.
+
+Snowflake external functions are required to call the lambda function via an API Gateway. These are the endpoints currently available for CARTO LDS, select the best for your case, depending on the region of your Snowflake account: 
+
+| AWS region | Region name | API Gateway endpoint |
+|------------|-------------|----------------------|
+| Asia Pacific (Tokyo) | ap-northeast-1 | https://d0ril9q8b8.execute-api.ap-northeast-1.amazonaws.com/production/lds |
+| Asia Pacific (Sydney) | ap-southeast-2 | https://wccsrp480l.execute-api.ap-southeast-2.amazonaws.com/production/lds |
+| Europe (Ireland) | eu-west-1 | https://a3g86ayq28.execute-api.eu-west-1.amazonaws.com/production/lds |
+| United States East (N. Virgina) | us-east-1 | https://m0qahrqhei.execute-api.us-east-1.amazonaws.com/production/lds |
+
+{{% bannerNote title="WARNING" type="warning" %}}
+Pay attention to this step and remember that you should choose the best API Gateway endpoint for your case based on the region of your Snowflake account. If you make the configuration using an endpoint and later you want to modify it, you must repeat the whole setup and installation process.
+{{%/ bannerNote %}}
+
+For illustration purposes let’s pick, for example, region “us-east-1”; then, the API Gateway end-point would be: “https://m0qahrqhei.execute-api.us-east-1.amazonaws.com/production/lds”.
+
+To make the connection between Snowflake and the API Gateway, a component called API integration is required. Follow the steps below to create the API integration to be able to use CARTO’s Location Data Services (replacing the API Gateway endpoint with the most suitable one for your Snowflake account):
+
+```sql
+-- Set admin permissions
+USE ROLE ACCOUNTADMIN;
+ 
+-- Create the api integration
+CREATE OR REPLACE API INTEGRATION CARTO_LDS
+  API_PROVIDER = AWS_API_GATEWAY
+  API_AWS_ROLE_ARN = 'arn:aws:iam::000955892807:role/CartoFunctionsRole'
+  ENABLED = TRUE
+  API_ALLOWED_PREFIXES = ('https://m0qahrqhei.execute-api.us-east-1.amazonaws.com/production/lds');
+ 
+-- Grant usage on the api integration
+GRANT USAGE ON INTEGRATION CARTO_LDS TO ROLE PUBLIC;
+```
+
+#### Installation
+{{% bannerNote title="NOTE" type="note" %}}
+These instructions are well tested to install the Analytics Toolbox in a Snowflake account. If you're running into issues, please confirm you've properly run all the Setup steps detailed in the previous sections. For assistance please contact CARTO’s support team at support@carto.com. 
+{{%/ bannerNote %}}
+
+Admin users can install the Analytics Toolbox in Snowflake accounts from the Settings section available in the CARTO Workspace. In Settings, Admins will find a sub-section called “Analytics Toolbox” in which they can see and manage all different installations of the Analytics Toolbox associated with the CARTO account. 
+
+In order to start the installation process of the Analytics Toolbox in your Snowflake account, click on “+ New installation” on the aforementioned area of the Settings section. 
+
+![Analytics Toolbox settins section](/img/analytics-toolbox-snowflake/SF_AT_install_UI1.png)
+
+From the list of the supported cloud data warehouses, select “Snowflake” and click on “Continue”. 
+
+![Analytics Toolbox new installation DW selection](/img/analytics-toolbox-snowflake/SF_AT_install_UI2.png)
+
+The first thing that the installation wizard will ask you is to confirm that you have followed all the necessary steps detailed on the “Setup” section of this documentation. Mainly, the creation of the “carto” database with the “carto” schema, plus a user and a role with the necessary privileges for CARTO to securely connect with your account and perform the installation and future updates of the Analytics Toolbox.
+
+Once you have ensured that your Snowflake account has been configured appropriately, confirm by ticking the box next to the message “I have already completed the setup of my Snowflake account”. 
+
+![Analytics Toolbox new installation](/img/analytics-toolbox-snowflake/SF_AT_install_UI3.png)
+
+In the next step, you should input your Snowflake account name and the password you have associated with the “carto” user. Then, click on “Validate setup” so CARTO can check that we have access to all necessary resources to securely proceed with the Analytics Toolbox installation in your Snowflake account.
+
+![Analytics Toolbox new installation account details](/img/analytics-toolbox-snowflake/SF_AT_install_UI4.png)
+
+During this process CARTO will check that we have access to the “carto” database and schema with the necessary privileges to perform the installation. We also check that we can see the API integration necessary for the Location Data Services procedures (e.g. geocoding, islones, etc.). If you encounter any issues in this step please do not hesitate to contact CARTO’s support team at support@carto.com to receive technical assistance. 
+
+Once we validate that the Snowflake account has been set up successfully, you can click on “Install” in order to start the actual installation of the Analytics Toolbox. 
+
+![Analytics Toolbox setup validation](/img/analytics-toolbox-snowflake/SF_AT_install_UI5.png)
+
+Once you click on Install, the process of installing all functions and procedures in the relevant database will start. Please bear in mind that this process may take several minutes to complete. 
+
+![Analytics Toolbox installation](/img/analytics-toolbox-snowflake/SF_AT_install_UI6.png)
+
+Once the process completes successfully, click on “Done” to go back to the Analytics Toolbox section in Settings.
+
+![Analytics Toolbox installation done](/img/analytics-toolbox-snowflake/SF_AT_install_UI7.png)
+
+Now, you should be able to see your new Analytics Toolbox installation listed with its relevant details and “Available” as its Status. You are now all set to start getting the most out of advanced spatial analytics natively in your Snowflake account! 
+
+![Analytics Toolbox settins section with a new installation register](/img/analytics-toolbox-snowflake/SF_AT_install_UI8.png)
+
+Once you have installed the Analytics Toolbox in your Snowflake account, all connections to Snowflake databases within that account and which have access to the “carto” database and “carto” schema should be able to automatically detect the Analytics Toolbox and make use of it. In that case, you should see in the relevant connection cards in the “Connections” section of the Workspace that the Analytics Toolbox is available.  
+
+![Carto connections with Analytics Toolbox available](/img/analytics-toolbox-snowflake/SF_AT_install_UI9.png)
+
+#### Updates
+
+We are currently actively working on further expanding and improving the Analytics Toolbox, therefore we tend to release a new update of this component approximately every month. When updates become available you will be informed in the Settings section plus in each connection card that is associated with a specific Analytics Toolbox installation.
+
+![Carto connections with Analytics Toolbox updates](/img/analytics-toolbox-snowflake/SF_AT_install_UI10.png)
+
+Admin users can manage the updates of the Analytics Toolbox from the Settings section, in the same area used to perform the installation. Once new updates become available, click on the “Update available” option in the Status column associated with the relevant installation.  
+
+![Analytics Toolbox settings sections with updates in the installations list](/img/analytics-toolbox-snowflake/SF_AT_install_UI11.png)
+
+Please confirm that you would like to proceed with the Analytics Toolbox update in the dialog box that will appear on your screen by clicking on the “Yes, update” button.
+
+![Analytics Toolbox update process confirmation](/img/analytics-toolbox-snowflake/SF_AT_install_UI12.png)
+
+CARTO will use the same credentials provided for that Analytics Toolbox installation and perform the update process on the same resources used during the installation.
+
+![Analytics Toolbox update process](/img/analytics-toolbox-snowflake/SF_AT_install_UI13.png)
+
+Once the update has completed successfully please click on “Done”. You should then see the Analytics Toolbox installation again with “Available” on the Status column.
+
+![Analytics Toolbox update done](/img/analytics-toolbox-snowflake/SF_AT_install_UI14.png)
+
+![Analytics Toolbox settins section with some installations](/img/analytics-toolbox-snowflake/SF_AT_install_UI15.png)
+
+**Change credentials**
+
+If for any reason you need to change the password of the “carto” user that was used for installing the Analytics Toolbox in your account and that will be used also for updating the package, you can do so by selecting “Change credentials” in the relevant Analytics Toolbox installation from the list.
+
+![Analytics Toolbox settins change credentials](/img/analytics-toolbox-snowflake/SF_AT_install_UI16.png)
+
+As all other parameters are fixed, you can only modify the password. Please introduce and confirm the new password associated with the “carto” user and click on “Validate credentials”.
+
+![Analytics Toolbox change credentials screen](/img/analytics-toolbox-snowflake/SF_AT_install_UI17.png)
+
+Next, CARTO will validate that with the new credentials we can check the setup that will be necessary to update the Analytics Toolbox when new versions become available. 
+
+![Analytics Toolbox change credentials validation](/img/analytics-toolbox-snowflake/SF_AT_install_UI18.png)
+
+Once CARTO has validated that everything works well, click on “Save changes”.  
+
+![Analytics Toolbox change credentials done](/img/analytics-toolbox-snowflake/SF_AT_install_UI19.png)
+
+#### Uninstallation
+
+Admin users can uninstall the Analytics Toolbox from Snowflake accounts at any time. In order to do that, you should click on Uninstall from the relevant Analytics Toolbox installation detailed in the Settings section. 
+
+![Analytics Toolbox settins change credentials](/img/analytics-toolbox-snowflake/SF_AT_install_UI16.png)
+
+Next, as this process will be irreversible, we ask you to confirm that you would like to uninstall that specific Analytics Toolbox installation. Click on “Yes, uninstall” to proceed with uninstalling the Analytics Toolbox from your Snowflake account. 
+
+![Analytics Toolbox uninstall confirmation](/img/analytics-toolbox-snowflake/SF_AT_install_UI20.png)
+
+![Analytics Toolbox uninstall done](/img/analytics-toolbox-snowflake/SF_AT_install_UI21.png)
+
+Once the process is complete, you will be taken back to the Analytics Toolbox section of Settings in which the specific installation that you have just removed should not appear anymore.  
+
+![Analytics Toolbox settins section](/img/analytics-toolbox-snowflake/SF_AT_install_UI1.png)
+
+Note that any active Snowflake connection will have stopped having access to the Analytics Toolbox. Therefore, in their connection cards you will be informed that the Analytics Toolbox is not available and that the Admin user should install it. 
+
+![CARTO connections without Analytics Toolbox](/img/analytics-toolbox-snowflake/SF_AT_install_UI22.png)
+
+
 ### Manual installation (for CARTO customers)
 
 This guide explains all the steps to install the SQL functions and procedures of the Analytics Toolbox in your Snowflake database.

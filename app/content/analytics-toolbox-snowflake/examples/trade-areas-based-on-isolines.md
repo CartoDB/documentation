@@ -27,7 +27,7 @@ To check whether your Snowflake account or Service Account has access to the LDS
 
 
 ```sql
-SELECT "CARTO_DEV_DATA".carto.VERSION_ADVANCED()
+SELECT "CARTO".carto.VERSION_ADVANCED()
 ```
 
 
@@ -48,7 +48,7 @@ In order to create the isolines, we will execute the [CREATE_ISOLINES()](https:/
 
 ```sql
 CREATE TABLE  "CARTO_DEV_DATA"."DEMO_TABLES"."STARBUCKS_NY_GEOCODE_ISO_WALK_TIME900" AS
-SELECT *, "CARTO_DEV_DATA"."CARTO".ISOLINE(GEOM, 'walk', 900, 'time') as GEOM_ISOLINE
+SELECT *, "CARTO"."CARTO".ISOLINE(GEOM, 'walk', 900, 'time') as GEOM_ISOLINE
 FROM "CARTO_DEV_DATA"."DEMO_TABLES"."STARBUCKS_NY_GEOCODE";
 ```
 

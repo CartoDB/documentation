@@ -6,8 +6,6 @@ aliases:
 
 Hierarchical grid systems, such as Quadbin, H3, and S2, are an essential tool for analysing large spatial datasets, especially when dealing with data sources in different spatial aggregations. These systems are based on geospatial indexes that provide a direct relationship between grid cells at different resolutions, enabling extremely performant spatial operations.
 
-CARTO's Analytics Toolbox provides access to the most popular spatial indexes libraries through BigQuery [user-defined functions](https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions) (UDFs). These functions are public to everyone and ready to be used on your regular SQL on BigQuery.
-
 <div class="figures-table">
     <figure class="figure">
         <img src="/img/bq-analytics-toolbox/spatial-indexes/quadkeys-microsoft.jpg" alt="Microsoft Quadkeys">

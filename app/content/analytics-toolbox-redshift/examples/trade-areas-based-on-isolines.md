@@ -34,7 +34,7 @@ SELECT carto_dev_data.carto.VERSION_ADVANCED()
 
 The lds module is generally available in the Analytics Toolbox since the “July 26, 2022” version. Please check the [Getting Access](https://docs.carto.com/analytics-toolbox-redshift/overview/getting-access/) section if you run into any errors when running the query above.
 
-For this example we will use a table with the Starbucks addresses geocoded `bqcartodemos.sample_tables.starbucks_ny_geocode` . The table contains information about Starbucks stores and a column called "geom" with the geographic coordinates (latitude and longitude) of each location. Around these locations we will create isolines based on 15 minutes walking.  
+For this example we will use a table with the Starbucks addresses geocoded `carto_dev_data.demo_tables.starbucks_ny_geocode` . The table contains information about Starbucks stores and a column called "geom" with the geographic coordinates (latitude and longitude) of each location. Around these locations we will create isolines based on 15 minutes walking.  
 
 
 <div style="text-align:center" >

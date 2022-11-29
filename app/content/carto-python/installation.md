@@ -25,6 +25,19 @@ pip install pydeck-carto
 pip install carto-auth
 ```
 
+### Via conda
+
+In order to install the packages via conda, you can follow the next Python code:
+
+```python
+#install both packages
+conda install -c conda-forge pydeck-carto
+```
+```python
+#install only carto-auth
+conda install -c conda-forge carto-auth
+```
+
 ### Using it on Jupyter notebooks
 
 In order to use our pydeck-carto package in a Jupyter notebook (or Jupyter lab), it requires that the pydeck package is also properly enabled.
