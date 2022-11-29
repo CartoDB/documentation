@@ -5,9 +5,38 @@ aliases:
 
 ## Getting access
 
-### Automatic installation
+### Assisted installation from the CARTO Workspace
 {{% bannerNote title="PRIVATE BETA" type="tip" %}}
-This installation mode is currently available in private beta. To request access please contact CARTO's support team at support@carto.com. Note that this feature is only available for the Admin users in your CARTO organization account.
+campfire
+
+Hi everyone!
+Today I’m very happy to show an important feature that we developed this Quarter and it is hot off the presses.
+
+Thanks to this feature, we will simplifying access to the Analytics Toolbox in our customers’ own data warehouse, and to eliminate the current burden associated with the installation and maintenance of this component of the CARTO platform.
+
+From today, the CARTO admin users of Snowflake organizations have the possibility of installing our Analytics Toolbox in their Data Warehouse via the UI. A new section in CARTO Settings has been added where we provide a specific UI to autonomous Analytics Toolbox installation. 
+This installation mode is currently available in private beta (on production under FF). If you have a client or prospect very interested on it, please let me know in order to add it them.
+
+Let me show a little demo of this process:
+
+————————
+—//next slide pls// let’s go to the next one
+————————
+
+
+Here you can see this new section called "Analytics Toolbox” in the CARTO settings. 
+In this new section, the users will find a list of all the AT installations that they have available and the option to add a new one using the corresponding button.
+
+The first thing to do is to choose the DW (for now it is only available for SF but we hope to add RS soon) and continue. At this point the user is prompted to have a set of pre-configurations done in their SF environment and has a link to a new section in our public documentation where we explain how to prepare all those requirements.
+Once this is done, the user must specify their credentials and continue with the process. 
+Then now the first that the process do is check that this pre-configuration is ready and correct and, after that, allow the user to proceed with the installation.
+
+Then we can continue and, waiting some seconds, the instalatios was completed.
+
+Once we have an installation, we can manage it modifing the credentials if it change or uninstalling the AT as you can see in the video, confirming my choose and waiting few seconds to complete the uninstall proccess. And that's it! That installation is removed from the client data warehouse and also from the list, of course. As easy as that.
+
+Last, but not least, I wanted to show you that within the management of the AT installations, there is also updating it to the last version. As you can see, when the organization doesn't have the last version, we point it out to the admin with this status and, with an easy click and the corresponding confirmation, this user can update all the organization to the last version.
+ Note that this feature is only available for the Admin users in your CARTO organization account.
 {{%/ bannerNote %}}
 
 This guide explains all the steps to install the SQL functions and procedures of the Analytics Toolbox in your Snowflake account.
