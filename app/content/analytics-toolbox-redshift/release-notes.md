@@ -45,14 +45,14 @@ New
 
 #### Module clustering
 
-New
+Feature
 
 - Move ST_CLUSTERKMEANS function to core.
 - Move CREATE_CLUSTERKMEANS procedure to core.
 
 #### Module random
 
-New
+Feature
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -118,7 +118,7 @@ New
 
 #### Module s2
 
-Fix
+Fixed
 
 - Fix S2_BOUNDARY inverted coordinates.
 
@@ -165,7 +165,7 @@ New
 
 #### Module quadbin
 
-Improvement
+Changed
 
 - Update functions volatility.
 - QUADBIN_FROMZXY accepting BIGINTs as params instead of INTs.
@@ -182,7 +182,7 @@ Improvement
 
 #### Module quadbin
 
-Improvement
+Changed
 
 - Release SQL version of QUADBIN_TOZXY.
 
@@ -206,7 +206,7 @@ Improvement
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -335,7 +335,7 @@ New
 
 #### Module transformations
 
-Fix
+Fixed
 
 - Refactor of internal __ST_GEOMFROMGEOJSON function to avoid UDFs nestig Redshift limitations
 
@@ -343,7 +343,7 @@ Fix
 
 #### Module constructors
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "constructors".
 
@@ -353,7 +353,7 @@ Removed
 
 #### Module placekey
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "placekey".
 - Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
@@ -366,7 +366,7 @@ Removed
 
 #### Module processing
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "processing".
 
@@ -376,7 +376,7 @@ Removed
 
 #### Module s2
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "s2".
 - Rename HILBERTQUADKEY_FROMID function to S2_TOHILBERTQUADKEY.
@@ -399,7 +399,7 @@ Removed
 
 #### Module transformations
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "transformations".
 
@@ -440,7 +440,7 @@ Improvement
 
 #### Module processing
 
-New
+Feature
 
 - Create processing module.
 - Add VERSION function.
@@ -452,7 +452,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Create transformations module.
 - Add VERSION function.
@@ -485,7 +485,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Create s2 module.
 - Add HILBERTQUADKEY_FROMID function.
@@ -507,7 +507,7 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Create constructors module.
 - Add ST_BEZIERSPLINE function.
@@ -520,7 +520,7 @@ New
 
 #### Module placekey
 
-New
+Feature
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.

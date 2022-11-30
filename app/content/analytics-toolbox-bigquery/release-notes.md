@@ -16,7 +16,7 @@ Fix
 
 #### Module h3
 
-Improvement
+Changed
 
 - Add linestrings and points support to function H3_POLYFILL.
 
@@ -44,7 +44,7 @@ Improvement
 
 #### Module s2
 
-New
+Feature
 
 - Add S2_RESOLUTION function.
 - Add S2_TOCHILDREN function.
@@ -53,7 +53,7 @@ New
 
 #### Module transformations
 
-Fix
+Fixed
 
 - Fix ST_BUFFER crashing with geographies close to the poles.
 
@@ -85,7 +85,7 @@ Improvement
 
 #### Module processing
 
-Fix
+Fixed
 
 - Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places.
 
@@ -93,13 +93,13 @@ Fix
 
 #### Module clustering
 
-New
+Feature
 
 - Move ST_CLUSTERKMEANS function to core.
 
 #### Module random
 
-New
+Feature
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -157,7 +157,7 @@ Improvement
 
 #### Module s2
 
-New
+Feature
 
 - Add S2_CENTER function.
 
@@ -204,7 +204,7 @@ Improvement
 
 #### Module h3
 
-Fix
+Fixed
 
 - Apply make_valid in H3_BOUNDARY.
 
@@ -288,7 +288,7 @@ Improvement
 
 #### Module h3
 
-Fix
+Fixed
 
 - Correctly handle large polygons in H3_POLYFILL.
 - Fixed wrong uppercase for quadbin and h3 tile ids
@@ -329,7 +329,7 @@ Fix
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -462,7 +462,7 @@ Fix
 
 #### Module transformations
 
-Improvement
+Changed
 
 - ST_CONCAVEHULL now allows arrays with one/two points as input.
 
@@ -493,7 +493,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Add H3_CENTER function.
 - Add H3_RESOLUTION function.
@@ -547,7 +547,7 @@ New
 
 #### Module accessors
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "accessors".
 
@@ -557,7 +557,7 @@ Removed
 
 #### Module constructors
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "constructors".
 
@@ -567,7 +567,7 @@ Removed
 
 #### Module geohash
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "geohash".
 
@@ -577,7 +577,7 @@ Removed
 
 #### Module h3
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "h3".
 - Rename ST_ASH3 function to H3_FROMGEOGPOINT.
@@ -601,7 +601,7 @@ Removed
 
 #### Module measurements
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "measurements".
 
@@ -612,7 +612,7 @@ Removed
 
 #### Module placekey
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "placekey".
 - Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
@@ -625,7 +625,7 @@ Removed
 
 #### Module processing
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "processing".
 
@@ -635,7 +635,7 @@ Removed
 
 #### Module s2
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "s2".
 - Rename ID_FROMHILBERTQUADKEY function to S2_FROMHILBERTQUADKEY.
@@ -654,7 +654,7 @@ Removed
 
 #### Module transformations
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "transformations".
 
@@ -821,7 +821,7 @@ Improvement
 
 #### Module s2
 
-Improvement
+Changed
 
 - Rename functions ID_FROMUINT64REPR, UINT64REPR_FROMID to follow convention.
 
@@ -840,7 +840,7 @@ New
 
 #### Module h3
 
-Improvement
+Changed
 
 - Review HEXRING, KRING functions.
 - Change KRING_INDEXED to KRING_DISTANCES.
@@ -875,7 +875,7 @@ Changes
 
 #### Module s2
 
-Fix
+Fixed
 
 - Avoid keeping planar shape in spherical coordinates in ST_BOUNDARY.
 
@@ -935,7 +935,7 @@ Fix
 
 #### Module h3
 
-Fix
+Fixed
 
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
@@ -952,7 +952,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Add KRING_INDEXED function.
 
@@ -960,7 +960,7 @@ New
 
 #### Module geohash
 
-New
+Feature
 
 - Create geohash module.
 - Add VERSION function.
@@ -1063,7 +1063,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Add TOKEN_FROMID function.
 - Add ID_FROMTOKEN function.
@@ -1091,7 +1091,7 @@ Improvement
 
 #### Module accessors
 
-New
+Feature
 
 - Create accessors module.
 - Add ST_ENVELOPE function.
@@ -1099,7 +1099,7 @@ New
 
 #### Module processing
 
-New
+Feature
 
 - Create processing module.
 - Add ST_VORONOIPOLYGONS function.
@@ -1111,7 +1111,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_CONCAVEHULL function.
 
@@ -1129,14 +1129,14 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Add ST_BEZIERSPLINE function.
 - Add ST_MAKEELLIPSE function.
 
 #### Module measurements
 
-New
+Feature
 
 - Create measurements module.
 - Add ST_ANGLE function.
@@ -1145,7 +1145,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Rename module to transformations.
 - Add ST_CENTERMEAN function.
@@ -1165,7 +1165,7 @@ Removed
 
 #### Module constructors
 
-New
+Feature
 
 - Create constructors module.
 - Add ST_MAKEENVELOPE function.
@@ -1176,7 +1176,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Create transformation module.
 - Add ST_BUFFER function.
@@ -1194,17 +1194,17 @@ Improvement
 
 #### Module h3
 
-Improvement
+Changed
 
 - Use hexadecimal as default type instead of int for h3 indexes.
 
-Fix
+Fixed
 
 - Fix ST_BOUNDARY generating error when not able to parse geometry.
 
 #### Module placekey
 
-Improvement
+Changed
 
 - Placekey conversions works with hexadecimal h3 indexes instead of int.
 
@@ -1220,7 +1220,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Create h3 module.
 - Add ST_ASH3 function.
@@ -1240,7 +1240,7 @@ New
 
 #### Module placekey
 
-New
+Feature
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
@@ -1250,7 +1250,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Create s2 module.
 - Add ID_FROMHILBERTQUADKEY function.

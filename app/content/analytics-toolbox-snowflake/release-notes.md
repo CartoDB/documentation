@@ -4,6 +4,22 @@ aliases:
 ---
 ## Release notes
 
+### July 22, 2022
+
+#### Module lds
+
+New
+
+- Add GEOCODE_REVERSE_TABLE procedure.
+
+### June 9, 2022
+
+#### Module lds
+
+New
+
+- Add CREATE_ISOLINES procedure.
+
 ### November 1, 2022
 
 #### All modules
@@ -20,7 +36,7 @@ Improvement
 
 #### Module processing
 
-Fix
+Fixed
 
 - Prevent error in ST_VORONOIPOLYGONS, ST_VORONOILINES, ST_VORONOIPOLYGONS, ST_DELAUNAYLINES when points where too close together by rounding input coordinates to 5 decimal places
 
@@ -28,13 +44,13 @@ Fix
 
 #### Module clustering
 
-New
+Feature
 
 - Move ST_CLUSTERKMEANS function to core.
 
 #### Module random
 
-New
+Feature
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -80,14 +96,6 @@ Improvement
 
 - Unify `extra_metadata` into `metadata` in tiler metadata.
 
-### July 22, 2022
-
-#### Module lds
-
-New
-
-- Add GEOCODE_REVERSE_TABLE procedure.
-
 ### July 13, 2022
 
 #### Module data
@@ -120,7 +128,7 @@ Improvement
 
 #### Module h3
 
-Fix
+Fixed
 
 - Correctly handle large polygons in H3_POLYFILL.
 - Fixed wrong uppercase for quadbin and h3 tile ids
@@ -129,7 +137,7 @@ Fix
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -167,14 +175,6 @@ Improvement
 Improvement
 
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
-
-### June 9, 2022
-
-#### Module lds
-
-New
-
-- Add CREATE_ISOLINES procedure.
 
 ### May 19, 2022
 
@@ -221,7 +221,7 @@ Improvement
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_BUFFER function.
 
@@ -244,7 +244,7 @@ Fix
 
 #### Module transformations
 
-Improvement
+Changed
 
 - ST_CONCAVEHULL now allows arrays with one/two points as input.
 
@@ -310,7 +310,7 @@ Improvement
 
 #### Module accessors
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "accessors".
 - Rename ST_ENVELOPE function to ST_ENVELOPE_ARR.
@@ -321,7 +321,7 @@ Removed
 
 #### Module constructors
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "constructors".
 
@@ -331,7 +331,7 @@ Removed
 
 #### Module h3
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "h3".
 - Rename ST_ASH3 function to H3_FROMGEOGPOINT.
@@ -355,7 +355,7 @@ Removed
 
 #### Module measurements
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "measurements".
 
@@ -367,7 +367,7 @@ Removed
 
 #### Module placekey
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "placekey".
 - Rename H3_ASPLACEKEY function to PLACEKEY_FROMH3.
@@ -380,7 +380,7 @@ Removed
 
 #### Module processing
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "processing".
 
@@ -390,7 +390,7 @@ Removed
 
 #### Module s2
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "s2".
 - Rename ID_FROMHILBERTQUADKEY function to S2_FROMHILBERTQUADKEY.
@@ -405,7 +405,7 @@ Removed
 
 #### Module transformations
 
-Improvement
+Changed
 
 - Deployment schema "carto" instead of "transformations".
 
@@ -513,11 +513,11 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Add KRING_DISTANCES function.
 
-Improvement
+Changed
 
 - Review HEXRING, KRING functions.
 
@@ -533,7 +533,7 @@ Changes
 
 #### Module h3
 
-Fix
+Fixed
 
 - Support GEOMETRYCOLLECTION from ST_ASH3_POLYFILL.
 
@@ -541,7 +541,7 @@ Fix
 
 #### Module h3
 
-Improvement
+Changed
 
 - Reduce bundle size for every function.
 
@@ -549,7 +549,7 @@ Improvement
 
 #### Module processing
 
-New
+Feature
 
 - Create processing module.
 - Add ST_VORONOIPOLYGONS function.
@@ -581,7 +581,7 @@ New
 
 #### Module accessors
 
-New
+Feature
 
 - Create accessors module.
 - Add ST_ENVELOPE function.
@@ -591,7 +591,7 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Create constructors module.
 - Add ST_BEZIERSPLINE function.
@@ -602,7 +602,7 @@ New
 
 #### Module measurements
 
-New
+Feature
 
 - Create measurements module.
 - Add ST_ANGLE function.
@@ -612,7 +612,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Create transformations module.
 - Add ST_CENTERMEAN function.
@@ -628,7 +628,7 @@ New
 
 #### Module placekey
 
-New
+Feature
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
@@ -640,7 +640,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Create s2 module.
 - Add ID_FROMHILBERTQUADKEY function.
@@ -654,7 +654,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Create h3 module.
 - Add ST_ASH3 function.

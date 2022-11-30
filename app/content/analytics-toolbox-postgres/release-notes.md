@@ -49,7 +49,7 @@ New
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.

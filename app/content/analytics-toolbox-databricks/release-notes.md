@@ -24,11 +24,11 @@ New
 
 #### All modules
 
-New
+Feature
 
 - Tasks to build installation packages
 
-Improvement
+Changed
 
 - Versioning uses YYYY.MM.DD format based on date now
 
@@ -44,13 +44,13 @@ New
 
 #### All modules
 
-New
+Feature
 
 - Add VERSION_CORE function
 
 #### Accessors
 
-Improvement
+Changed
 
 - Change type returned by ST_X and ST_Y to Double
 
@@ -64,7 +64,7 @@ New
 
 #### All modules
 
-Improvement
+Changed
 
 - Set default compression codec to snappy
 
@@ -72,13 +72,13 @@ Improvement
 
 #### All modules
 
-New
+Feature
 
 - Add headers to functions that didn't have
 - Add make rule to publis artifact in local and sonatype
 - Add make rule to check and create headers
 
-Improvement
+Changed
 
 - change makefiles and sbt file to prepare the at advance
 
@@ -100,13 +100,13 @@ New
 
 #### All modules
 
-Improvement
+Changed
 
 - The XY precission of the TWKBWriter is set to 5.
 
 #### Module formatters
 
-Fix
+Fixed
 
 - Fix the doc of the transformers functions ST_ASLATLONTEXT and ST_ASTEXT.
 
@@ -114,13 +114,13 @@ Fix
 
 #### Module accessors
 
-Fix
+Fixed
 
 - Fix the bug in ST_COORDDIM that was adding z coordinate to geometries.
 
 #### Module indexing
 
-Fix
+Fixed
 
 - Fix the cast ClassCastException in ST_GEOMREPROJECT.
 
@@ -128,7 +128,7 @@ Fix
 
 #### All modules
 
-Improvement
+Changed
 
 - Refactor databricks cloud to adapt it to the new cloud structure
 
@@ -136,7 +136,7 @@ Improvement
 
 #### Module indexing
 
-New
+Feature
 
 - Add ST_CRSFROMTEXT function.
 - Add ST_EXTENTFROMGEOM function.
@@ -148,25 +148,25 @@ New
 
 #### Module formatters
 
-New
+Feature
 
 - Add ST_ASTWKB function.
 
 #### Module parsers
 
-New
+Feature
 
 - Add ST_GEOMFROMWKT function.
 
 #### Module predicates
 
-New
+Feature
 
 - Add ST_COVERS function.
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_BUFFERPOINT function.
 - Add ST_DIFFERENCE function.
@@ -176,7 +176,7 @@ New
 
 #### Module accessors
 
-New
+Feature
 
 - Add ST_COORDDIM function.
 - Add ST_DIMENSION function.
@@ -197,7 +197,7 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Add ST_MAKEBBOX function.
 - Add ST_MAKEBOX2D function.
@@ -209,7 +209,7 @@ New
 
 #### Module formatters
 
-New
+Feature
 
 - Add ST_ASBINARY function.
 - Add ST_ASGEOHASH function.
@@ -224,7 +224,7 @@ New
 
 #### Module measurements
 
-New
+Feature
 
 - Add ST_AREA function.
 - Add ST_DISTANCE function.
@@ -234,7 +234,7 @@ New
 
 #### Module parsers
 
-New
+Feature
 
 - Add ST_BOX2DFROMGEOHASH function.
 - Add ST_GEOMETRYFROMTEXT function.
@@ -253,7 +253,7 @@ New
 
 #### Module predicates
 
-New
+Feature
 
 - Add ST_CONTAINS function.
 - Add ST_CROSSES function.
@@ -268,7 +268,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_ANTIMERIDIANSAFEGEOM function.
 - Add ST_BOUNDARY function.
