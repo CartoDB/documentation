@@ -74,9 +74,9 @@ This method allows you to enter a supported URL file. To import a remote URL, se
 
 ![Data Explorer import remote](/img/cloud-native-workspace/data-explorer/de_import_remote.png)
 ### Supported formats
-Currently, the import of CSV, GeoJSON, GeoPackage, KML, KMZ, TAB and Shapefiles (in a zip package) with at least two columns is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
+Currently, the import of CSV, GeoJSON, GeoPackage, KML, KMZ, TAB and Shapefiles (in a zip package) with at least two columns is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit.
 
-For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
+For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are:
 * For *geometry*: `geom,Geom,geometry,the_geom,wkt,wkb`
 * For *latitude*: `latitude,lat,Latitude`
 * For *longitude*: `longitude,lon,Lon,Longitude,lng,Lng`
@@ -88,7 +88,7 @@ In the *Data Explorer* section of the Workspace, you can view the list of your c
 
 ![Data Explorer quick actions table menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_table_menu.png)
 
-![Data Explorer qjuick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_tileset_menu.png)
+![Data Explorer quick actions tileset menu](/img/cloud-native-workspace/data-explorer/de_the_quick_actions_tileset_menu.png)
 
 If you click the *Delete* quick action, a dialog will appear allowing you to confirm that you want to delete the selected table or tileset. It includes information about data sources, layers, applications and API calls related to the existing dataset that could potentially be affected by the action. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 

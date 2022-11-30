@@ -13,13 +13,13 @@ date: "2022-02-08"
 
 ### Context
 
-Airbnb was founded in 2008 and has already become a very popular service for travellers around the world.
+Airbnb was founded in 2008 and has already become a very popular service for travelers around the world.
 
 Having a better understanding on which are the key variables for listings success could help improving the service, as well as detecting main factors that attract tourism in a certain area.
 
 Users provide both an overall rating and more specific ratings on 6 variables: accuracy, communication, cleanliness, location, check in and value.
 
-In this tutorial we will aim to extract useful insights of what the overall impression of Airbnb users depends on, by relating the overall rating score with different variables (specifically: value, cleanliness and location) while taking into account the geographical neighbours behavior through a Geographically Weighted Regression model.
+In this tutorial we will aim to extract useful insights of what the overall impression of Airbnb users depends on, by relating the overall rating score with different variables (specifically: value, cleanliness and location) while taking into account the geographical neighbors behavior through a Geographically Weighted Regression model.
 
 Additionally, we'll analyze more in-depth the areas where the _location_ score drives the overall rating, and inspect sociodemographic attributes on these by enriching our visualization with data from the Data Observatory.
 
@@ -65,7 +65,7 @@ The dataset used for this training corresponds with [open data from Airbnb](http
 
 #### Exploring Airbnb listings distribution through Spatial Indexes (H3)
 
-We will inspect how Airbnb listings are distributed accross Los Angeles and aggregate the raw data to have a better understanding on how different variables vary geographically within the city.
+We will inspect how Airbnb listings are distributed across Los Angeles and aggregate the raw data to have a better understanding on how different variables vary geographically within the city.
 
 6. Inspect the data from the `01_listings_la_2021_5_reviews` dataset view within the Data Explorer, then click on the _Create map_ button.
 
@@ -166,7 +166,7 @@ Once you've run this query in your Google BigQuery console, feel free to save it
 12. Add a new layer with source ‘Your connection’ and type 'SQL query'. Choose `h3` as the sptial data type. Now use the results of the GWR model with the following query:
 
 ```sql
-SELECT 
+SELECT
   h3_z8 as h3,
   value_vs_price_rating_coef_estimate,
   cleanliness_rating_coef_estimate,

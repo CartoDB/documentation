@@ -1,9 +1,9 @@
 ## Managing user roles
 
-From the *Users* section, you can view the list of users who have access to your organization. You can access the quick actions menu to manage users role by clicking the three point icon in the right hand corner. There are four options available: Make Admin, Make Editor, Make Viewer and Delete. 
+From the *Users* section, you can view the list of users who have access to your organization. You can access the quick actions menu to manage users role by clicking the three point icon in the right hand corner. There are four options available: Make Admin, Make Editor, Make Viewer and Delete.
 
 {{% bannerNote title="NOTE" type="note"%}}
-Bear in mind that the available roles vary depending on the initial role and the Admin role cannot be changed or deleted. 
+Bear in mind that the available roles vary depending on the initial role and the Admin role cannot be changed or deleted.
 {{%/ bannerNote %}}
 
 In the following example, the initial role is *Viewer* and therefore the options are limited to *Admin* and *Editor*:
@@ -26,12 +26,12 @@ If you click the Make Editor quick action, you are providing **Editor** role to 
 
 If you click the Make Viewer quick action, you are providing **Viewer** role to that user. Viewers can only see maps and applications previously shared with them.
 
-If you choose the rol *Viewer* role, a dialog will appear allowing you to confirm that you want to assign the selected email account as viewer role. Click *Yes, assign viewer role* to confirm the changes or click Cancel if you don’t want the changes to be applied.
+If you choose the roll *Viewer* role, a dialog will appear allowing you to confirm that you want to assign the selected email account as viewer role. Click *Yes, assign viewer role* to confirm the changes or click Cancel if you don't want the changes to be applied.
 
 ![Settings assign viewer role](/img/cloud-native-workspace/settings/settings_assign_viewer_role.png)
 ### Deleting User
 
-If you click the Delete user quick action, a dialog will appear allowing you to confirm that you want to delete the user. Click the *Yes, delete* button to confirm the changes or click Cancel if you don’t want the changes to be applied.
+If you click the Delete user quick action, a dialog will appear allowing you to confirm that you want to delete the user. Click the *Yes, delete* button to confirm the changes or click Cancel if you don't want the changes to be applied.
 
 ![Settings delete user organization](/img/cloud-native-workspace/settings/settings_deleting_user_organization.png)
 

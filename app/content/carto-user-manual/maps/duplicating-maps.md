@@ -1,8 +1,8 @@
 ## Duplicating maps
 
-This guide describes how you can duplicate existing maps from CARTO Workspace, the organization area; and also from CARTO Builder, our map editor. 
+This guide describes how you can duplicate existing maps from CARTO Workspace, the organization area; and also from CARTO Builder, our map editor.
 
-Copied maps will always start as `Copy of` plus the original map name, and will always started as private maps for yourself. 
+Copied maps will always start as `Copy of` plus the original map name, and will always started as private maps for yourself.
 
 #### Duplicating a map in Workspace
 
@@ -31,17 +31,11 @@ If you click on the Duplicate map option, a dialog will appear warning you if an
 ![Duplicate map - Data warning](/img/cloud-native-workspace/maps/map_duplicate_warning.png)
 
 {{% bannerNote title="WARNING" type="warning"%}}
-Note that if you duplicate a map with sources that are not sharing with you, the private sources will load with errors and the corresponding layers will not be visible, leaving you the choice of fully removing them or asking for access. This ensures security across data sources, even when making editable map copies between users. 
+Note that if you duplicate a map with sources that are not sharing with you, the private sources will load with errors and the corresponding layers will not be visible, leaving you the choice of fully removing them or asking for access. This ensures security across data sources, even when making editable map copies between users.
 {{%/ bannerNote %}}
 
-<!-- When duplicating a map, you'll receive a warning if any of the sources is not shared with you (eg: a private connection) — You can continue anyway, but the private sources will load with errors and the corresponding layers will not be visible, leaving you the choice of fully removing them or asking for access. 
+<!-- When duplicating a map, you'll receive a warning if any of the sources is not shared with you (eg: a private connection) — You can continue anyway, but the private sources will load with errors and the corresponding layers will not be visible, leaving you the choice of fully removing them or asking for access.
 
 ![Duplicate map - Data warning](/img/cloud-native-workspace/maps/duplicate_warning.png)
 
 This ensures security across data sources, even when making editable map copies between users. -->
-
-
-
-
-
-

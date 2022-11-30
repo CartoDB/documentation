@@ -1,6 +1,6 @@
 ---
 title: "Creating a tileset from a Data Observatory subscription"
-description: "In this tutorial we are going to showcase how to leverage the public data offering from our Data Observatory and use the data from a subscription to build an interactive dashboard in our map-making tool, Builder. In order to build this dashboard we are going to first create a tileset in order to be able to visualize a larger amount of data." 
+description: "In this tutorial we are going to showcase how to leverage the public data offering from our Data Observatory and use the data from a subscription to build an interactive dashboard in our map-making tool, Builder. In order to build this dashboard we are going to first create a tileset in order to be able to visualize a larger amount of data."
 image: "/img/tutorials/canada-sociodemographics.png"
 type: tutorials
 date: "2021-03-12"
@@ -30,11 +30,11 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
    ![DO Spatial data catalog](/img/cloud-native-workspace/tutorials/tutorial9_do_spatial_data_catalog_overview.png)
 
-3. Browse the catalog to find the best spatial datasets to enrich your analysis. With the catalog filters you can explore the different datasets per country of coverage, category, type of license, data providers and placetypes. 
+3. Browse the catalog to find the best spatial datasets to enrich your analysis. With the catalog filters you can explore the different datasets per country of coverage, category, type of license, data providers and placetypes.
 
    ![DO Spatial data catalog filters](/img/cloud-native-workspace/tutorials/tutorial9_do_spatial_data_catalog_filters.png)
 
-4. For this example we are going to look for a dataset in Canada with a public license. In particular we are going to select the dataset from Statistics Canada in the “Demographic” category named “Sociodemographics - Canada (Census Division). 
+4. For this example we are going to look for a dataset in Canada with a public license. In particular we are going to select the dataset from Statistics Canada in the “Demographic” category named “Sociodemographics - Canada (Census Division).
 
    ![DO Spatial data catalog filtered](/img/cloud-native-workspace/tutorials/tutorial9_do_spatial_data_catalog_filtered.png)
 
@@ -46,7 +46,7 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
    ![DO Spatial data catalog map](/img/cloud-native-workspace/tutorials/tutorial9_do_spatial_data_catalog_map.png)
 
-6. As this is a public dataset we can both access the free sample or directly subscribe to the dataset for free. In this case we are going to go ahead with the full subscription. 
+6. As this is a public dataset we can both access the free sample or directly subscribe to the dataset for free. In this case we are going to go ahead with the full subscription.
 
    ![DO Spatial data catalog confirm public subscription](/img/cloud-native-workspace/tutorials/tutorial9_do_catalog_confirm_public_subscription.png)
 
@@ -54,16 +54,16 @@ In this tutorial we are going to showcase how to leverage the public data offeri
 
    ![DO access data](/img/cloud-native-workspace/tutorials/tutorial9_do_the_access_data.png)
 
-8. We have a look at the structure of the dataset to identify what are the main variables we are interseted to analyse. For example: `c0001_t (Population, 2016)`, `c0005_t (Private dwellings occupied by usual residents)`, and `c1677_t (Average value of dwellings)`.
+8. We have a look at the structure of the dataset to identify what are the main variables we are interested to analyze. For example: `c0001_t (Population, 2016)`, `c0005_t (Private dwellings occupied by usual residents)`, and `c1677_t (Average value of dwellings)`.
 
    ![DO view variables](/img/cloud-native-workspace/tutorials/tutorial9_do_the_view_variables.png)
 
-9. Now, we are going to click on *Create* button. Note that the table of this dataset is too large to be loaded entirely in Builder of map creation. For this reason, CARTO offers you two options, either to create a map and add this dataset with the [dynamic tile generation](../../maps/performance-considerations/#medium-size-datasets) or [creating a tileset](../../data-explorer/creating-a-tileset-from-your-data) and then leverage this tileset for building your map. 
+9. Now, we are going to click on *Create* button. Note that the table of this dataset is too large to be loaded entirely in Builder of map creation. For this reason, CARTO offers you two options, either to create a map and add this dataset with the [dynamic tile generation](../../maps/performance-considerations/#medium-size-datasets) or [creating a tileset](../../data-explorer/creating-a-tileset-from-your-data) and then leverage this tileset for building your map.
 
    ![DO table too large](/img/cloud-native-workspace/tutorials/tutorial9_do_warning_table_too_large.png)
 
 {{% bannerNote type="note" title="note" %}}
-Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-your-data-warehouse/" target="_blank">Accesing subscriptions</a> reference documentation for a better understanding of how you can directly access your suscriptions from your data warehoues connected to CARTO. This is currently supported for BigQuery and Snowflake; Redshift and Databricks support is coming soon.
+Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-your-data-warehouse/" target="_blank">Accesing subscriptions</a> reference documentation for a better understanding of how you can directly access your subscriptions from your data warehouse connected to CARTO. This is currently supported for BigQuery and Snowflake; Redshift and Databricks support is coming soon.
 {{%/ bannerNote %}}
 
 10. Click on *Create a tileset*. This will open a new modal screen for you to manage the tileset creation process. The first step is to set the location and name of the output tileset in a directory within the `CARTO Data Warehouse` where the user has write permissions. Once you have completed this configuration, click on *Save here*.
@@ -74,7 +74,7 @@ Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-yo
 
     ![DO create tileset settings](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_the_settings.png)
 
-12. Now it is time to select which columns we want to include in the tileset. In this example we are going to select: `c0001_t (Population, 2016)`, `c0005_t (Private dwellings occupied by usual residents)`, and `c1677_t (Average value of dwellings)`. After selecting the columns we click on *Continue*. 
+12. Now it is time to select which columns we want to include in the tileset. In this example we are going to select: `c0001_t (Population, 2016)`, `c0005_t (Private dwellings occupied by usual residents)`, and `c1677_t (Average value of dwellings)`. After selecting the columns we click on *Continue*.
 
     ![DO create tileset attributes](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_the_attributes.png)
 
@@ -82,7 +82,7 @@ Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-yo
 
     ![DO create tileset confirmation](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_the_confirmation.png)
 
-14. While the tileset creation process is running you can minimize the progress window and continue working in CARTO. 
+14. While the tileset creation process is running you can minimize the progress window and continue working in CARTO.
 
     ![DO create tileset processing panel](/img/cloud-native-workspace/tutorials/tutorial9_do_create_tileset_processing_panel.png)
 
@@ -90,7 +90,7 @@ Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-yo
 
     ![DO processing panel view tileset](/img/cloud-native-workspace/tutorials/tutorial9_do_processing_panel_view_tileset.png)
 
-16. In the Data Explorer, now that we have the tileset created, we click on *Create Map*. 
+16. In the Data Explorer, now that we have the tileset created, we click on *Create Map*.
 
     ![DO tileset created](/img/cloud-native-workspace/tutorials/tutorial9_do_tileset_created.png)
 
@@ -106,7 +106,7 @@ Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-yo
 
     ![DO map layer style](/img/cloud-native-workspace/tutorials/tutorial9_do_map_select_layer_style.png)
 
-20. We can for example style the layer based on the values of the Population field (c0001_t) and select the color palette and opacity that we want for our visualization. 
+20. We can for example style the layer based on the values of the Population field (c0001_t) and select the color palette and opacity that we want for our visualization.
 
     ![DO map fill color based on](/img/cloud-native-workspace/tutorials/tutorial9_do_map_fill_color_based_on_field.png)
 
@@ -132,7 +132,7 @@ Check the <a href="/data-observatory/guides/accessing-your-subscriptions-from-yo
 
     ![DO map basemap google maps positron](/img/cloud-native-workspace/tutorials/tutorial9_do_map_googlemaps_positron.png)
 
-26. Finally we can click on *Share* and modify the privacy settings of our map. We can also make the map public, which can then be accessed online with an associated url. 
+26. Finally we can click on *Share* and modify the privacy settings of our map. We can also make the map public, which can then be accessed online with an associated url.
 
     ![DO map public option](/img/cloud-native-workspace/tutorials/tutorial9_do_map_public_map_options.png)
 

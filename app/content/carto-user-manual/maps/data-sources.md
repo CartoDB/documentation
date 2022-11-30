@@ -1,6 +1,6 @@
 ## Data sources
 
-When you open a map, the left panel will appear on the screen. There you can add data sources that will be visualized as map layers. 
+When you open a map, the left panel will appear on the screen. There you can add data sources that will be visualized as map layers.
 
 ### Data source types
 
@@ -8,20 +8,20 @@ There are different types of data that can be loaded in Builder. Basically, aggr
 
 #### Aggregated grids
 
-Based on Discrete Global Grid (DGG) systems, this kind of data source uses a spatial index (H3 or Quadbin) to reference each cell of the grid. 
-Think of a spatial index as an id that always makes reference to the same portion of the surface on Earth. 
+Based on Discrete Global Grid (DGG) systems, this kind of data source uses a spatial index (H3 or Quadbin) to reference each cell of the grid.
+Think of a spatial index as an id that always makes reference to the same portion of the surface on Earth.
 
 * this portion of the Earth is called a **cell**.
 * the **shape** of the cell depends on the **type of index**. For example, H3 uses hexagons; while Quadbin use squares.
 * the **size** of the cell depends on the **resolution**. The higher the resolution, the smaller the size of the cell.
 
-DGG systems are hierarchical, which means that every cell contains a constant number of smaller cells at a higher resolution: 
+DGG systems are hierarchical, which means that every cell contains a constant number of smaller cells at a higher resolution:
 
 ![Source types H3](/img/cloud-native-workspace/maps/data_source_types_h3.png)
 
 The above is an example of how each H3 cell is sub-divided into smaller cells at higher resolutions.
 
-One of the advantages of working with spatial indexes is that operating with them in data warehouses is way more efficient and cost-effective than computing geometries. They are also smaller in size and help saving storage and reducing the volume of transfered data.
+One of the advantages of working with spatial indexes is that operating with them in data warehouses is way more efficient and cost-effective than computing geometries. They are also smaller in size and help saving storage and reducing the volume of transferred data.
 
 When working with DGGs, Builder will dynamically aggregate your data into cells at a meaningful resolution depending on the current map zoom level. See the animation below for an example:
 
@@ -36,16 +36,16 @@ This is what a table containing H3 indexes looks like, with some additional colu
 |8a0c002e4c0ffff|1093.0|2087.04
 |8a0c002e4caffff|209.0|3098.39
 
-The `h3` column contains the indexes for H3 cells at level 10. That's what we call the _native resolution of the data_. 
+The `h3` column contains the indexes for H3 cells at level 10. That's what we call the _native resolution of the data_.
 
 However, if you load the table in a Builder map and zoom out to a low zoom level, it will be shown at a lower resolution, which means we would actually be visualizing **an aggregated version of our table**. This aggregation will be generated on the fly, using SQL queries that are pushed from CARTO into the data warehouse where the table lives.
 
-The above implies that **hexagons will be aggregated into their parents**: the bigger hexagons that contain them at a lower resolutions. 
+The above implies that **hexagons will be aggregated into their parents**: the bigger hexagons that contain them at a lower resolutions.
 
 But data also **needs to be aggregated**, so Builder will always need you to pick an aggregation method for the data used in the map. This applies to all selectors where you can pick a property for cartography settings, pop-ups and widgets.
 
 {{% bannerNote title="NOTE" type="note"%}}
-When loading a table that contains a spatial index, there is a column name convention that should followed to ensure that CARTO can fully support it. 
+When loading a table that contains a spatial index, there is a column name convention that should followed to ensure that CARTO can fully support it.
 * For `H3` ids, the column should be named **`h3`**
 * For `Quadbin` ids, the column should be named **`quadbin`**
 {{%/ bannerNote %}}
@@ -55,9 +55,9 @@ There are some performance and processing cost optimizations that should be appl
 
 #### Simple features
 
-Simple features are defined as a standard which specifies digital storage of geographical data (usually point, line or polygon) with both spatial and non-spatial attributes. 
+Simple features are defined as a standard which specifies digital storage of geographical data (usually point, line or polygon) with both spatial and non-spatial attributes.
 
-Most data warehouses support simple features through different data types, such as `geometry` or `geography`. 
+Most data warehouses support simple features through different data types, such as `geometry` or `geography`.
 This table shows the current type supported on each data warehouse:
 
 |   |**Geography**|**Geometry**
@@ -74,12 +74,12 @@ Simple features are widely spread and have been traditionally used by GIS softwa
 CARTO supports simple features stored as `geometry` or `geography` in cloud data warehouses. There are different methods to load a data source that contains simple features in a Builder map. These methods ensure the most performance when rendering data on a map, and they're selected automatically based on the type and size of the data source:
 
 * For small data sources, data can be fully loaded at once on the map.
-* For bigger data sources, and also those defined as arbitray SQL queries, data is loaded progressively via vector tiles. The data for these tiles is extracted by pushing down SQL queries to the data warehouse, and they're are requested as you zoom in and out or pan the map. 
+* For bigger data sources, and also those defined as arbitrary SQL queries, data is loaded progressively via vector tiles. The data for these tiles is extracted by pushing down SQL queries to the data warehouse, and they're are requested as you zoom in and out or pan the map.
 
 Find more information about the different methods mentioned above in [this section](../performance-considerations/).
 
 {{% bannerNote title="NOTE" type="note"%}}
-When loading a table that contains simple features, there is a column name convention that should followed to ensure that CARTO can fully support it. 
+When loading a table that contains simple features, there is a column name convention that should followed to ensure that CARTO can fully support it.
 
 CARTO expects to find a column named **`geom`** that will be used to render the features in the map.
 {{%/ bannerNote %}}
@@ -102,18 +102,18 @@ Once the process is finished, the table or tileset is included in the Builder ma
 {{% bannerNote title="NOTE" type="warning"%}}
 [Partitioned BigQuery tables](https://cloud.google.com/bigquery/docs/partitioned-tables) will fail, since they always require a `WHERE` clause in the query that filters by the column used for the partition.
 
-If you need to load a BigQuery partitioned table in Builder, the best option is to add them as a SQL Query source like: 
+If you need to load a BigQuery partitioned table in Builder, the best option is to add them as a SQL Query source like:
 ```sql
-SELECT * 
-FROM project.dataset.my_partitioned_table 
+SELECT *
+FROM project.dataset.my_partitioned_table
 WHERE partition_column = 'value'
 ```
 
 {{%/ bannerNote %}}
-	
+
 ![Map created](/img/cloud-native-workspace/maps/map_layer_added.png)
 
-<!-- Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed. 
+<!-- Once you have added your datasets to the map, you can visualize the data table. Click on the three dots icon, select *Show data table* and your dataset table will be displayed.
 
 ![Map source options view data table](/img/cloud-native-workspace/maps/map_source_more_options.png)
 
@@ -127,7 +127,7 @@ Once you have added your datasets to the map, you can always add a new layer or 
 
 ![Map source options delete source](/img/cloud-native-workspace/maps/map_source_warning_delete.png)
 
-You can also rename a source by clicking on the "Rename" option. 
+You can also rename a source by clicking on the "Rename" option.
 
 ![Map source options view data table](/img/cloud-native-workspace/maps/map_source_more_options.png)
 
@@ -138,7 +138,7 @@ Rename the source and press enter to save your changes.
 ![Map source options rename source](/img/cloud-native-workspace/maps/map_source_renamed.png)
 
 {{% bannerNote type="note" title=""%}}
-Note that you cannot leave a source unnamed. In this case, the last name set will be the default name.  
+Note that you cannot leave a source unnamed. In this case, the last name set will be the default name.
 {{%/ bannerNote %}}
 
 <!-- Note that if you leave the source unnamed, the previous name will be set by default. -->
@@ -175,11 +175,11 @@ Also note that while typing the query, a label will indicate that the SQL Editor
 
 ![Map sqñ panel edited](/img/cloud-native-workspace/maps/map_sql_panel_edited.png)
 
-For BigQuery data sources, when you enter a query in the SQL Editor, a query validator (`dry-run`) verifies the query syntax and provides an estimate of the number of bytes read by the query. You can check out [this documentation page](https://cloud.google.com/bigquery/docs/samples/bigquery-query-dry-run) for more information. 
+For BigQuery data sources, when you enter a query in the SQL Editor, a query validator (`dry-run`) verifies the query syntax and provides an estimate of the number of bytes read by the query. You can check out [this documentation page](https://cloud.google.com/bigquery/docs/samples/bigquery-query-dry-run) for more information.
 
-<!-- In the following examples we are going to use a table accessible via a [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) to show how it works. 
+<!-- In the following examples we are going to use a table accessible via a [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) to show how it works.
  -->
-If the query is valid, then a check mark automatically appears along with the amount of data that the query will process. 
+If the query is valid, then a check mark automatically appears along with the amount of data that the query will process.
 
 ![Map sql panel valid query(bq)](/img/cloud-native-workspace/maps/map_sql_panel_valid_query(bq).png)
 
@@ -203,7 +203,7 @@ You can click on *Cancel* at any time to stop running the query. At this poing, 
 
 ![Map add cancel query](/img/cloud-native-workspace/maps/map_sql_panel_cancelling_query.png)
 
-If you keep the query running and it executes successfully, the table will be included in the Builder map tool as a layer. 
+If you keep the query running and it executes successfully, the table will be included in the Builder map tool as a layer.
 
 Remember, when using running queries that return geometries, you should use an alias in the query to make sure the column that contains the geometry is called `geom`. For example:
 
@@ -213,33 +213,33 @@ SELECT population, geometry as geom FROM demographic_data
 
 #### Use spatial indexes in custom queries
 
-CARTO supports H3 and Quadbin spatial indexes. In order to render a map from a data source that contains a spatial index instead of a geometry, there are some nuances to take into account. 
+CARTO supports H3 and Quadbin spatial indexes. In order to render a map from a data source that contains a spatial index instead of a geometry, there are some nuances to take into account.
 
-First, if you are going to type a query that returns an spatial index (H3 or Quadbin), you should use the spatial data type selector on your SQL Panel to select the type of data that you're working with: 
+First, if you are going to type a query that returns an spatial index (H3 or Quadbin), you should use the spatial data type selector on your SQL Panel to select the type of data that you're working with:
 
 ![Spatial data type selector](/img/cloud-native-workspace/maps/spatial_data_type_selector.png)
 
-* If your query is going to return H3 indexes, select `H3` and make sure the column that contains the H3 indexes is called `h3`. For example: 
+* If your query is going to return H3 indexes, select `H3` and make sure the column that contains the H3 indexes is called `h3`. For example:
 
 ```sql
-SELECT 
+SELECT
   carto.H3_FROMGEOGPOINT(geom, 10) as h3,
   count(*) as num_points
 FROM 10M_points_table
 GROUP BY h3
 ```
 
-* If your query is going to return Quadbin indexes, select `Quadbin` and make sure the column that contains the indexes is called `quadbin`. For example: 
+* If your query is going to return Quadbin indexes, select `Quadbin` and make sure the column that contains the indexes is called `quadbin`. For example:
 
 ```sql
-SELECT 
+SELECT
   carto.QUADBIN_FROMGEOGPOINT(geom, 15) as quadbin,
   count(*) as num_points
 FROM 10M_points_table
 GROUP BY quadbin
 ```
 
-Learn more about using the CARTO Analytics Toolbox to work with spatial indexes [here](../../../analytics-toolbox/about-the-analytics-toolbox/). 
+Learn more about using the CARTO Analytics Toolbox to work with spatial indexes [here](../../../analytics-toolbox/about-the-analytics-toolbox/).
 
 Also, when working with spatial indexes, there are a few important details to take into account in order to optimize performance and reduce the associated computing cost. Learn more about it [here](../performance-considerations/#tips-for-spatial-index-tables).
 
@@ -283,7 +283,7 @@ This query computes five clusters from the points of the `sample_customer_home_l
 ![Map add query](/img/cloud-native-workspace/maps/map_custom-query-analytics-toolbox-clustering.png)
 
 
-To learn more, please visit the Documentation page of the CARTO Analytics Toolbox for each provider: 
+To learn more, please visit the Documentation page of the CARTO Analytics Toolbox for each provider:
 * [Analytics Toolbox for BigQuery](/analytics-toolbox-bigquery) (also valid for the CARTO Data Warehouse)
 * [Analytics Toolbox for Snowflake](/analytics-toolbox-snowflake)
 * [Analytics Toolbox for Redshift](/analytics-toolbox-redshift)
@@ -295,9 +295,9 @@ To learn more, please visit the Documentation page of the CARTO Analytics Toolbo
 CARTO allows to create geospatial tables in an organization's [CARTO Data Warehouse](../../connections/carto-data-warehouse), [BigQuery connection](../../connections/creating-a-connection/#connection-to-bigquery) and [Snowflake connection](../../connections/creating-a-connection/#connection-to-snowflake), by importing files from your computer or via URL. Once a file is imported, the resulting table can be previewed in Data Explorer and used in Builder and external applications to create maps.
 
 ####  Supported formats
-Currently, the import of CSV, KML, KMZ, TAB, GeoJSON, GeoPackage and Shapefiles (in a zip file) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit. 
+Currently, the import of CSV, KML, KMZ, TAB, GeoJSON, GeoPackage and Shapefiles (in a zip file) is supported. The size limit for a single import process is 512MB. Please [get in touch](mailto:support@carto.com) with us if you need a higher limit.
 
-For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are: 
+For CSV files, CARTO will try and autodetect the geometry column or create the geometries from latitude/longitude columns. The supported column names are:
 * For *geometry*: `geom,Geom,geometry,the_geom,wkt,wkb`
 * For *latitude*: `latitude,lat,Latitude`
 * For *longitude*: `longitude,lon,Lon,Longitude,lng,Lng`
@@ -389,7 +389,7 @@ To learn more about how to visualize your Data Observatory datasets in Builder, 
 
 ### Refresh a data source
 
-By opening the contextual menu on a data source card, you will find the option to _"Refresh data source"_. 
+By opening the contextual menu on a data source card, you will find the option to _"Refresh data source"_.
 
  <p align="center">
   <img src="/img/cloud-native-workspace/maps/refresh_datasource.png" />
@@ -403,4 +403,3 @@ Bear in mind that using this option will increase the amount of data processed i
 
 The cached objects associated to the data source will be invalidated, and the SQL queries that were executed to generate them will be executed again.
 {{%/ bannerNote %}}
-

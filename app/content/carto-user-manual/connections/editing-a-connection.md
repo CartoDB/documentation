@@ -6,7 +6,7 @@ In the *Connections* section of the Workspace, you can view the list of your cur
 
 If you click the *Edit* quick action, you will be redirected to a dialog to edit connection parameters. This dialog contains the same form that you filled out when adding the connection, showing the current values.
 
-If you edit the connection parameters and you have a map that changes dinamically based on the underlying dataset, the map will no longer sync if they are not available using the modified connection parameters.
+If you edit the connection parameters and you have a map that changes dynamically based on the underlying dataset, the map will no longer sync if they are not available using the modified connection parameters.
 
 ![Edit connection](/img/cloud-native-workspace/connections/the_connections_edit.png)
 

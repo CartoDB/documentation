@@ -16,12 +16,12 @@ date: "2022-11-25"
 
 **Context**
 
-A common analysis that CPG companies undertake when managing their sales efforts is territory planning. This entails the division of a greater area into territories, assigning sales resources to each territory. This division can often be performed based on an underlying characteristic. For example, the Total Addressable Market (TAM from now on) of each territory can act as the basis for the division of the area, as it would divide the potential fairly. 
+A common analysis that CPG companies undertake when managing their sales efforts is territory planning. This entails the division of a greater area into territories, assigning sales resources to each territory. This division can often be performed based on an underlying characteristic. For example, the Total Addressable Market (TAM from now on) of each territory can act as the basis for the division of the area, as it would divide the potential fairly.
 
-In this tutorial we will perform territory planning for a hypothetical personal care product for men. We divide Pharmacy and supermarket locations in the area of Chicago into territories using [k-means clustering](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans). We then use geospatial data to estimate the TAM of each territory. A similar approach can be followed to understand the TAM of a set of locations pre-allocated into territories. This approach can be used iteratively to balance territories based on TAM. 
+In this tutorial we will perform territory planning for a hypothetical personal care product for men. We divide Pharmacy and supermarket locations in the area of Chicago into territories using [k-means clustering](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans). We then use geospatial data to estimate the TAM of each territory. A similar approach can be followed to understand the TAM of a set of locations pre-allocated into territories. This approach can be used iteratively to balance territories based on TAM.
 
 The geospatial data we use to estimate the TAM are samples from the following datasets:
-* [AGS - Consumer Spending](https://carto.com/spatial-data-catalog/browser/dataset/ags_consumer_sp_65eb589c/) 
+* [AGS - Consumer Spending](https://carto.com/spatial-data-catalog/browser/dataset/ags_consumer_sp_65eb589c/)
 * [AGS - Sociodemographics](https://carto.com/spatial-data-catalog/browser/dataset/ags_sociodemogr_7496195f/)
 
 **Steps to reproduce**
@@ -33,11 +33,11 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
    ![Log in Email and password](/img/cloud-native-workspace/get-started/login_new.png)
 
-2. From the Navigation Menu in the left panel, select Maps. On the top-right corner, select "New map". This should take you to a new instance of a Builder map:   
+2. From the Navigation Menu in the left panel, select Maps. On the top-right corner, select "New map". This should take you to a new instance of a Builder map:
 
     ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_new_map.png)
 
-3. Let´s first create an H3 layer which we will use to calculate the TAM of the area. We limit the H3 layer using the Chicago boundary we have already defined for you
+3. Let's first create an H3 layer which we will use to calculate the TAM of the area. We limit the H3 layer using the Chicago boundary we have already defined for you
 
     Go to "Add source from...", select "Custom query" and run the query below:
 
@@ -49,12 +49,12 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
    ![H3 layer](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_h3_layer.png)
 
-4.  Save the new source as a new table, by clicking on "Create table from query" in the SQL editor. Save in the CARTO Data Warehouse, under the folder "organization data", "shared". Name as "chicago_h3_layer". 
+4.  Save the new source as a new table, by clicking on "Create table from query" in the SQL editor. Save in the CARTO Data Warehouse, under the folder "organization data", "shared". Name as "chicago_h3_layer".
 
     When the operation is finished, rename the source and layer to "Chicago H3 layer".
 
     We have also saved it in the address "cartobq.cpg_territory_planning_map.chicago_h3_layer", so you can also select using a custom query.
-    
+
     Delete all previous sources, leave only "Chicago H3 layer".
 
    ![Chicago H3 layer](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_chicago_h3_layer.png)
@@ -82,9 +82,9 @@ The geospatial data we use to estimate the TAM are samples from the following da
     );
     ```
 
-    Remember to change the table target location to any location you have access to. 
+    Remember to change the table target location to any location you have access to.
 
-    As we have already created the resulting table, let´s load using a custom query
+    As we have already created the resulting table, let's load using a custom query
 
     ```sql
     SELECT * FROM `cartobq.cpg_territory_planning_map.chicago_h3_enriched`
@@ -95,10 +95,10 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     ![Chicago H3 enriched](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_chicago_h3_enriched.png)
 
-6. Let´s now estimate the TAM for each H3 cell, based on the variables we enrched the layer with in the previous step. Run a custom query by pasting the snippet below:
+6. Let's now estimate the TAM for each H3 cell, based on the variables we enrched the layer with in the previous step. Run a custom query by pasting the snippet below:
 
     ```sql
-    SELECT 
+    SELECT
     geoid,
     geom,
     households_sum as households,
@@ -111,12 +111,12 @@ The geospatial data we use to estimate the TAM are samples from the following da
     ```
     The TAM estimation formula calculates the total market spend for personal care products (households_sum * personal_care_products_spending_avg), and multiplies with the fraction representing men between the ages of 30-50 as part of the entire population (assuming this is the target consumer).
 
-7. Save the new source as a new table, by clicking on "Create table from query" in the SQL editor. Save in the CARTO Data Warehouse, under the folder "organization data", "shared". Name as "chicago_h3_enriched_tam". 
+7. Save the new source as a new table, by clicking on "Create table from query" in the SQL editor. Save in the CARTO Data Warehouse, under the folder "organization data", "shared". Name as "chicago_h3_enriched_tam".
 
     When the operation is finished, rename the source and layer to "Personal care product TAM".
 
     We have also saved it in the address "cartobq.cpg_territory_planning_map.chicago_h3_enriched_tam", so you can also select using a custom query.
-    
+
     Delete all previous sources, leave only "Personal care product TAM".
 
    ![Personal care product TAM](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_personal_care_product_tam.png)
@@ -127,7 +127,7 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     We can see that, as expected the TAM is stronger in the city of Chicago, but also in areas located in the north of the city.
 
-9. Let´s now import the all personal care and supermarket stores present in Chicago. We have obtained this sample from [Safegraph](https://carto.com/spatial-data-catalog/browser/dataset/sg_coreplaces_948d1168/), and filtered for "Health and Personal Care Stores" and "Grocery Stores", i.e., where personal care products could be purchased. 
+9. Let's now import the all personal care and supermarket stores present in Chicago. We have obtained this sample from [Safegraph](https://carto.com/spatial-data-catalog/browser/dataset/sg_coreplaces_948d1168/), and filtered for "Health and Personal Care Stores" and "Grocery Stores", i.e., where personal care products could be purchased.
 
     We have made this sample available under "demo data", "demo tables", with the name "safegraph_personal_care_and_supermarkets_chicago_cpg".
 
@@ -137,13 +137,13 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
 10. The next step is to assign a TAM to each merchant, so that we can then cluster all merchants and aggregate the TAM for each cluster.
 
-    To assign a TAM to each merchant, we will divide the TAM of each H3 cell to the merchants included in the cell. 
+    To assign a TAM to each merchant, we will divide the TAM of each H3 cell to the merchants included in the cell.
 
     Begin by intersecting and aggregating the "Personal care product TAM" layer and the "Personal care product merchants" layer, the aggregate should be the count of merchants in each cell. Go to "More Options" of the "Personal care product TAM" layer and select "Add SQL analysis". Select "Intersect and Aggregate" and configure as seen below.
 
     ![TAM merchant count](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_tam_merchant_count.png)
 
-    Run the SQL analysis and rename the layer as "TAM with merchant count". 
+    Run the SQL analysis and rename the layer as "TAM with merchant count".
 
     ![TAM merchant count layer](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_tam_merchant_count_layer.png)
 
@@ -162,17 +162,17 @@ The geospatial data we use to estimate the TAM are samples from the following da
     ```
 
     with this line:
-    
+
     ```sql
     (max(second.total_addressable_market)/max(second.count)) as allocated_addressable_market
     ```
 
-    Run the query. Rename the layer as "Merchants with allocated addressable market". Delete the sources "TAM with merchant count" and "Personal care product merchants". 
+    Run the query. Rename the layer as "Merchants with allocated addressable market". Delete the sources "TAM with merchant count" and "Personal care product merchants".
 
     ![Merchants with tam allocated layer](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_merchants_with_tam_allocated_layer.png)
 
 
-13. Next step, let´s cluster the merchants and create boundaries around them. Run a custom SQL query. In the SQL editor, paste and run the code below.
+13. Next step, let's cluster the merchants and create boundaries around them. Run a custom SQL query. In the SQL editor, paste and run the code below.
 
     ```sql
     WITH __q1 AS (
@@ -191,17 +191,17 @@ The geospatial data we use to estimate the TAM are samples from the following da
     ```
     In this query we use the method [ST_CLUSTERKMEANS](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans) to cluster the merchants into 6 groups, while we use [ST_CONCAVEHULL](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/transformations/#st_concavehull) to create the boundaries around the clusters.
 
-14. Save the new source as a new table, by clicking on "Create table from query" in the SQL editor. Save in the CARTO Data Warehouse, under the folder "organization data", "shared". Name as "territory_boundaries". 
+14. Save the new source as a new table, by clicking on "Create table from query" in the SQL editor. Save in the CARTO Data Warehouse, under the folder "organization data", "shared". Name as "territory_boundaries".
 
     When the operation is finished, rename the source and layer to "Territory boundaries".
 
     We have also saved it in the address "cartobq.cpg_territory_planning_map.territory_boundaries", so you can also select using a custom query.
-    
+
     Delete the source of the previous step, leave only "Territory boundaries".
 
     ![Territory boundaries](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_territory_boundaries.png)
 
-15. Let´s now intersect the boundaries with the merchants, so that we can assign each merchant the territory it belongs to.  
+15. Let's now intersect the boundaries with the merchants, so that we can assign each merchant the territory it belongs to.
 
     Go to "More Options" of the "Merchants with allocated addressable market" layer and select "Add SQL analysis". Select "Intersect and Aggregate" and configure as seen below.
 
@@ -213,23 +213,23 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     ![Merchants styling](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_merchants_styling.png)
 
-16. Let´s also create a tooltip for the layer. Configure as seen below:
+16. Let's also create a tooltip for the layer. Configure as seen below:
 
     ![Merchants tooltip](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_merchants_tooltip.png)
 
-17. Finally, let´s calculate the centroids of merchants within each territory, and aggregate the addressable market of each merchant. 
+17. Finally, let's calculate the centroids of merchants within each territory, and aggregate the addressable market of each merchant.
 
     Go to "More Options" of the "Merchants with allocated addressable market and territory" layer and select "Add SQL analysis". Select "Compute centroids" and configure as seen below.
 
     ![Territory centre](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids.png)
 
-18. Run the analysis. Rename the new layer as "Territory centre". 
+18. Run the analysis. Rename the new layer as "Territory centre".
 
     Style the layer as seen below, making sure the radius depends on the addressable market:
 
     ![Territory centre layer](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids_layer.png)
 
-19. Let´s also create a tooltip for the layer. Configure as seen below:
+19. Let's also create a tooltip for the layer. Configure as seen below:
 
     ![Territory centre tooltip](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids_tooltip.png)
 
@@ -237,7 +237,7 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     ![Dark matter](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_dark_matter.png)
 
-21. Let´s create a couple of widgets to more easily be able to explore the map. First let´s create a widget to filter merchants by sub-category, and a widget to filter by allocated addressable market (note: the filtering action will not update the summation represented by the territory centres)
+21. Let's create a couple of widgets to more easily be able to explore the map. First let's create a widget to filter merchants by sub-category, and a widget to filter by allocated addressable market (note: the filtering action will not update the summation represented by the territory centres)
 
     Go to the widgets tab and create a widget for "Merchants by category", using the "Merchants with allocated addressable market and territory" source. Configure as below:
 
@@ -258,6 +258,3 @@ The geospatial data we use to estimate the TAM are samples from the following da
 15. Finally, we can visualize the result.
 
     <iframe width="800px" height="800px" src="https://clausa.app.carto.com/map/9f5c4e83-7d56-4fbf-a7c5-8b3edbbfd008"></iframe>
-
-
-

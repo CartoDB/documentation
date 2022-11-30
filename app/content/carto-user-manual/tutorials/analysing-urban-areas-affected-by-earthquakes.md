@@ -1,6 +1,6 @@
 ---
 title: "Analysing urban areas affected by earthquakes"
-description: "In this section, we provide a tutorial that showcases how easy it is to perform geospatial analysis operations using CARTO Builder. 
+description: "In this section, we provide a tutorial that showcases how easy it is to perform geospatial analysis operations using CARTO Builder.
 In this example,  we will analyse the total of urban areas affected in Spain by earthquakes over 2021. This type of analysis can be useful to show the general situation of risks threatening a given population in order to be able to plan measures and actions to mitigate their possible negative effects (human, economic and environmental)."
 image: "/img/tutorials/spain_earthquakes_2021.png"
 type: tutorials
@@ -18,9 +18,9 @@ date: "2022-05-09"
 
 **Context**
 
-In this section, we provide a tutorial that showcases how easy it is to perform geospatial analysis operations using CARTO Builder. 
+In this section, we provide a tutorial that showcases how easy it is to perform geospatial analysis operations using CARTO Builder.
 
-In this example,  we will analyse the total of urban areas affected in Spain by earthquakes over 2021. This type of analysis can be useful to show the general situation of risks threatening a given population in order to be able to plan measures and actions to mitigate their possible negative effects (human, economic and environmental)
+In this example,  we will analyze the total of urban areas affected in Spain by earthquakes over 2021. This type of analysis can be useful to show the general situation of risks threatening a given population in order to be able to plan measures and actions to mitigate their possible negative effects (human, economic and environmental)
 
 **Steps To Reproduce**
 
@@ -31,15 +31,15 @@ In this example,  we will analyse the total of urban areas affected in Spain by 
 
    ![Log in Email and password](/img/cloud-native-workspace/get-started/login.png)
 
-2. From the Navigation Menu in the left panel, select Data Explorer. 
+2. From the Navigation Menu in the left panel, select Data Explorer.
 
    ![Menu features data explorer](/img/cloud-native-workspace/tutorials/tutorial1_the_menu_features_data_explorer.png)
 
-3. Select the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection and click on *demo data > demo_tables* from the collapsible tree. 
+3. Select the [CARTO Data Warehouse](../../connections/carto-data-warehouse) connection and click on *demo data > demo_tables* from the collapsible tree.
 
    ![Data Explorer content carto data warehouse](/img/cloud-native-workspace/tutorials/tutorial1_content_carto_dw.png)
 
-4. Select “spain_earthquakes” and explore the preview of the map and the details of the table. 
+4. Select “spain_earthquakes” and explore the preview of the map and the details of the table.
 
    ![Data Explorer map prewiew](/img/cloud-native-workspace/tutorials/tutorial14_de_map_preview.png)
 
@@ -60,7 +60,7 @@ In this example,  we will analyse the total of urban areas affected in Spain by 
   ```
 
 ![Map import select file](/img/cloud-native-workspace/tutorials/tutorial14_map_import_select_file.png)
- 
+
 {{% bannerNote title=Note type="Note" %}}
 When you import a file, the Auto-guessing option is always enabled by default. This option allows you to automatically guess column data types in the imported table.
 {{%/ bannerNote %}}
@@ -73,14 +73,14 @@ When you import a file, the Auto-guessing option is always enabled by default. T
 
     ![Map import confirmation](/img/cloud-native-workspace/tutorials/tutorial14_map_import_the_confirmation.png)
 
-    Once the data has been imported, the dataset is included in the Builder map tool as a new layer. 
+    Once the data has been imported, the dataset is included in the Builder map tool as a new layer.
 
 9. Rename the name of the layers to “Spain earthquakes” and "Urban areas", respectively.
 
    ![Map layers rename](/img/cloud-native-workspace/tutorials/tutorial14_map_second_layer_rename.png)
 
 
-10. Now let´s started with our analysis by clicking on the three dots in the "spain_earthquakes" data source to find the Add SQL Analysis option.  For more details, check the [SQL Analyses](../../maps/sql-analyses/) guide.
+10. Now let's started with our analysis by clicking on the three dots in the "spain_earthquakes" data source to find the Add SQL Analysis option.  For more details, check the [SQL Analyses](../../maps/sql-analyses/) guide.
 
    ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_addsqlanalysis_button.png)
 
@@ -100,7 +100,7 @@ it if you don't need the query.
 
     <!-- ![Map add sql analysis filter by column new layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_filterbycolumn_newlayer.png) -->
 
-14. Now we are going to add a new SQL analysis from the previous one by clicking on the three dots in the "SQL Query 1" data source and selecting the Add SQL Analysis option.  
+14. Now we are going to add a new SQL analysis from the previous one by clicking on the three dots in the "SQL Query 1" data source and selecting the Add SQL Analysis option.
 
     ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_second_addsqlanalysis_button.png)
 
@@ -113,7 +113,7 @@ it if you don't need the query.
     ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_and_aggregate_earthquakes_previewquery.png)
 
 
-    The resulting SQL query will be the initial analysis with the new analysis added. We are analysing earthquakes occurring in 2021 that intersect with urban areas. 
+    The resulting SQL query will be the initial analysis with the new analysis added. We are analyzing earthquakes occurring in 2021 that intersect with urban areas.
 
     ```sql
     WITH __q1 AS (
@@ -150,7 +150,7 @@ it if you don't need the query.
     )
     SELECT * FROM __q4
     ```
-17. Run the analysis, close the SQL editor, disable the layers "Layer 3" and "Spain earthquakes" and rename the new layer to “Spain earthquakes (2021)”. 
+17. Run the analysis, close the SQL editor, disable the layers "Layer 3" and "Spain earthquakes" and rename the new layer to “Spain earthquakes (2021)”.
 
     ![Map add sql analysis button](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_and_aggregate_earthquakes_newlayer.png)
 
@@ -175,7 +175,7 @@ it if you don't need the query.
 
       ![Map add sql analysis intersect and aggregate parameters](/img/cloud-native-workspace/tutorials/tutorial14_map_sqlanalysis_interesect_and_aggregate_parameters_buffer.png)
 
-23. We can also modify the SQL query in order to give the column resulting from the aggregation a more suitable alias. For example, by renaming the default alias `aggregated_value` to `affected_area` and changing the SQL query to: 
+23. We can also modify the SQL query in order to give the column resulting from the aggregation a more suitable alias. For example, by renaming the default alias `aggregated_value` to `affected_area` and changing the SQL query to:
 
     ```sql
         WITH __q1 AS (
@@ -247,7 +247,7 @@ it if you don't need the query.
     SELECT * FROM __q7
     ```
 
-24. Rename this new layer layer (F) as “Spain earthquakes (2021) buffer-intersect” and disable the layer “Spain earthquakes (2021) buffer”. 
+24. Rename this new layer layer (F) as “Spain earthquakes (2021) buffer-intersect” and disable the layer “Spain earthquakes (2021) buffer”.
 
     ![Map add sql analysis intersect and aggregate rename layer](/img/cloud-native-workspace/tutorials/tutorial14_map_analysis_intersect_aggregate_rename_layer.png)
 
@@ -286,11 +286,11 @@ it if you don't need the query.
 Alternatively, we can also persist any of the analyses by clicking on *Create table from query* button at the bottom right  of the SQL Editor. Once the process is finished, the table will be included in the Builder map as a new layer. Check the [Create table from query](../../maps/add-source/#create-a-table-from-query) guide for more information.
 {{%/ bannerNote %}}
 
-32. Go to the *Widget tab*. If you haven’t created a widget yet, you will see the following page:
- 
+32. Go to the *Widget tab*. If you haven't created a widget yet, you will see the following page:
+
     ![Map widgets new widget](/img/cloud-native-workspace/tutorials/tutorial14_map_newwidget.png)
 
-33. Click the *New widget* button and select "SQL Query 2". When you add a widget, it´s always the Formula widget by default, based on a Count operation on the number of features displayed on the map viewport. Rename the widget to “Nº of earthquakes in Spain (2021)”.
+33. Click the *New widget* button and select "SQL Query 2". When you add a widget, it's always the Formula widget by default, based on a Count operation on the number of features displayed on the map viewport. Rename the widget to “Nº of earthquakes in Spain (2021)”.
 
     ![Map widgets formula rename](/img/cloud-native-workspace/tutorials/tutorial14_map_widget_formula_renaming.png)
 
@@ -302,7 +302,7 @@ Alternatively, we can also persist any of the analyses by clicking on *Create ta
 
     ![Map histogram widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_histogram_widget_selectfield.png)
 
-35. We are going to add the last widget. For that, go back to the widget’s list, click on *Add widget* button, select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
+35. We are going to add the last widget. For that, go back to the widget's list, click on *Add widget* button, select “SQL Query 1" and choose the TIME-SERIES widget. We are going to aggregate the data range of the `time` column by months. The histogram widget displays the number of earthquakes in each month over time, allowing you to select and visualize a specific range of data.
 
     ![Map time series widget select field](/img/cloud-native-workspace/tutorials/tutorial14_map_timeseries_widget_selectfield.png)
 
