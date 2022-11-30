@@ -90,7 +90,7 @@ Click *Expand more info* if you need more information about this authentication 
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_allowed_logout_urls(optional)_expand_info.png)
 
-- Allowed Web Origins (Optional): 
+- Allowed Web Origins (Optional):
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_allowed_web_origins(optional).png)
 
@@ -98,7 +98,7 @@ Click *Expand more info* if you need more information about this authentication 
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_allowed_web_origins(optional)_expand_info.png)
 
-- Allowed Origins (CORS) (Optional): 
+- Allowed Origins (CORS) (Optional):
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_allowed_origins_cors(optional).png)
 
@@ -106,7 +106,7 @@ Click *Expand more info* if you need more information about this authentication 
 
 ![Developers application type](/img/cloud-native-workspace/developers/developers_allowed_origins_cors(optional)_expand_info.png)
 
-Click *Save* for saving your changes. 
+Click *Save* for saving your changes.
 
 #### Editing applications
 
@@ -134,7 +134,7 @@ If you are the owner of the application, you will have access to the quick actio
 
 ![Developers application actions](/img/cloud-native-workspace/developers/developers_application_actions.png)
 
-If you click the *Delete* quick action, a dialog will appear so you can confirm that you want to delete the selected applicationn. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
+If you click the *Delete* quick action, a dialog will appear so you can confirm that you want to delete the selected application. Click the *Yes, delete* button to confirm the changes or click *Cancel* if you don't want the changes to be applied.
 
 ![Developers delete application](/img/cloud-native-workspace/developers/developers_deleting_applications.png)
 
@@ -144,7 +144,7 @@ In the *Built applications* section of the Workspace, you will see the list of y
 
 ![Developers list applications](/img/cloud-native-workspace/developers/developers_list_applications.png)
 
-If you hover your mouse over the id, a popup 'Copy ID' will appear, and you can copy the id by clicking on it. Once you have copied the id, a popup will appear indicating that the url has been copied. 
+If you hover your mouse over the id, a popup 'Copy ID' will appear, and you can copy the id by clicking on it. Once you have copied the id, a popup will appear indicating that the url has been copied.
 
 ![Developers application actions copy ID](/img/cloud-native-workspace/developers/developers_application_actions.png)
 
@@ -162,4 +162,3 @@ In this section, you have quick access to different developer toolkits to get st
 ![Developers featured documentation](/img/cloud-native-workspace/developers/developers_featured_documentation.png)
 
 You can click on *View all* button to have access to all <a href="https://docs.carto.com/" target="_blank">CARTO documentation</a>. In these pages, you will find all the resources you need to get the most out of your developments.
-

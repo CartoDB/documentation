@@ -44,7 +44,7 @@ The following features are available in the list of layers of your map in Builde
 
 ### Widgets
 
-This guide describes how to add interactive widgets to your map in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your data and get insights by drilling-down different types of filters that are conected to each other and the map's viewport.
+This guide describes how to add interactive widgets to your map in CARTO Builder. Widgets are embedded within your visualization and do not modify your original data, they simply allow you to explore your data and get insights by drilling-down different types of filters that are connected to each other and the map's viewport.
 
 In the Widgets tab of Builder, you will see the list of your current widgets. If you haven’t created a widget yet, you will see the following page:
 
@@ -52,7 +52,7 @@ In the Widgets tab of Builder, you will see the list of your current widgets. If
 
 <!-- ![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_new_widget.png) -->
 
-Click on *New widget* button to start interacting with your data. When you add a widget, it´s always the Formula widget by default:
+Click on *New widget* button to start interacting with your data. When you add a widget, it's always the Formula widget by default:
 
 ![Map widgets select a source](/img/cloud-native-workspace/maps/map_new_widget_select_source.png)
 
@@ -62,7 +62,7 @@ Click on *New widget* button to start interacting with your data. When you add a
 
 <!-- ![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_bydefault.png) -->
 
-You can access the quick actions menu to manage your widgets by clicking on the “three dots” icon in the top-right corner. There are two options available: Rename and Delete widget. 
+You can access the quick actions menu to manage your widgets by clicking on the “three dots” icon in the top-right corner. There are two options available: Rename and Delete widget.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_options_quickactions.png)
 
@@ -120,7 +120,7 @@ Global mode is not available for widgets linked to static (pre-generated) tilese
 
 {{%/ bannerNote %}}
 
-At this moment, there are six types of widgets available to customize your visualization and enable a richer interaction with your data: 
+At this moment, there are six types of widgets available to customize your visualization and enable a richer interaction with your data:
 - **Formula**: Shows aggregated numerical data from the features in the map's viewport.
 - **Category**: Breaks down the data into categories and shows aggregated values.
 - **Histogram**: Shows the frequency distribution across equal bins in the data range.
@@ -130,21 +130,21 @@ At this moment, there are six types of widgets available to customize your visua
 
 #### Formula Widget
 
-From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze. 
+From Data, choose the operation from the list (`COUNT`, `AVG`, `MAX`, `MIN`, or `SUM`) and select a field from your source dataset that you want to analyze.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_count_operation.png)
 
-From Display options, you can also change the format as the values are displayed and add some notes to your widget. In this example, we aggregate the data by the average total of revenue based on the `revenue` column. 
+From Display options, you can also change the format as the values are displayed and add some notes to your widget. In this example, we aggregate the data by the average total of revenue based on the `revenue` column.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_formula_avg_operation.png)
 
 #### Category Widget
 
-From Data, choose the operation from the list and select a field from your dataset that you want to analyze. 
+From Data, choose the operation from the list and select a field from your dataset that you want to analyze.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_count_operation.png)
 
-From Display options, you can also change the format as the values are displayed and add some notes to your histagram. In this example, we aggregate the average `revenue` on each category from the `storetype` column.
+From Display options, you can also change the format as the values are displayed and add some notes to your histogram. In this example, we aggregate the average `revenue` on each category from the `storetype` column.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_average_operation.png)
 
@@ -156,9 +156,9 @@ Click on the same filters again to deselect them, or click on *Clear* to show al
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_category_selected.png)
 
-The Category widgets display the top five categories of data, based on the Map View of your visualization. The `Other` category groups together the less relevant values that may not be visible from your Map View. 
+The Category widgets display the top five categories of data, based on the Map View of your visualization. The `Other` category groups together the less relevant values that may not be visible from your Map View.
 
-You can manually search for values from the `Other`category by clicking on *Search in "X" elements*, or you can modify the order of how values appear in the category widget. As you zoom or pan the map, the category widget filters change. By doing this, it can help you re-evaluate how your Map View should appear. 
+You can manually search for values from the `Other`category by clicking on *Search in "X" elements*, or you can modify the order of how values appear in the category widget. As you zoom or pan the map, the category widget filters change. By doing this, it can help you re-evaluate how your Map View should appear.
 
 Click on *Search in “X” elements* and then click the box next to the other value(s) to be included. You can type a value, or search through the list of available values.Then click *Apply* to filter the category widget by the selected values, or *Cancel*  if you don’t want the filters to be applied.
 
@@ -179,7 +179,7 @@ Click once on a bucket. Only the features for that specific range will be displa
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_histogram_select_range.png)
 
-For advanced analysis, you can add all widgets in a single map so you can combine your filters and get a better visualisation of your data:
+For advanced analysis, you can add all widgets in a single map so you can combine your filters and get a better visualization of your data:
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_all.png)
 
@@ -189,7 +189,7 @@ From Data, select a field from your source dataset that you want to analyze. The
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_widget.png)
 
-When dragging the pointer over the slider, the features for that specific range of values are displayed on the map. Values get smaller towards the left of the slider and larger towards the right of it. 
+When dragging the pointer over the slider, the features for that specific range of values are displayed on the map. Values get smaller towards the left of the slider and larger towards the right of it.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider.png)
 
@@ -201,15 +201,15 @@ When zoomed in, the map view changes. In this case, the selected range remains t
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_with_slider_zoom.png)
 
-From Display options, you can also manually set custom minimum and maximum values and these will be reflected in the range widget. 
+From Display options, you can also manually set custom minimum and maximum values and these will be reflected in the range widget.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_manually.png)
 
-When you set a minimum or maximum value that it is out of range, the new value will not be reflected in the range widget. 
+When you set a minimum or maximum value that it is out of range, the new value will not be reflected in the range widget.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_manually_outofrange.png)
 
-In this example, it keeps the same minimun value and the grey line reflects those values that are below the range of available data.
+In this example, it keeps the same minimum value and the grey line reflects those values that are below the range of available data.
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_slider_outofrange.png)
 
@@ -217,8 +217,8 @@ This means that there is no data for that specific range in the `revenue` column
 
 ![Map widgets](/img/cloud-native-workspace/maps/map_widget_range_filter_no_data.png)
 
-The following video shows a short demonstration of how range widget allows to filter a map based on precise numeric values. This is particularly useful when you want to do some data preparation, for example to remove edge values. 
- 
+The following video shows a short demonstration of how range widget allows to filter a map based on precise numeric values. This is particularly useful when you want to do some data preparation, for example to remove edge values.
+
 ![Range widget video](/img/cloud-native-workspace/maps/range_widget.gif)
 #### Time-Series Widget
 
@@ -253,7 +253,7 @@ This enables you to click and drag the start and end range of selected data. In 
 
 #### Table Widget
 
-From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select some columns. 
+From Data, select the columns from your source dataset for which you want to display the tabular information. In this example, we select some columns.
 
 ![Map widgets table](/img/cloud-native-workspace/maps/map_widget_table_somecolumns.png)
 
@@ -273,7 +273,7 @@ You can also add several table widgets at the same time in Builder maps. Each on
 
 ### Interactions
 
-The _Interactions_ menu allows to configure different kinds of pop-ups that appear when you click or hover on a map feature. You can customize the content of the pop-up by renaming and formatting the properties, or changing the style (light, dark...) of the window. 
+The _Interactions_ menu allows to configure different kinds of pop-ups that appear when you click or hover on a map feature. You can customize the content of the pop-up by renaming and formatting the properties, or changing the style (light, dark...) of the window.
 
 In the Interactions tab of Builder, you will see the list of your current layers. The pop-ups will be configured individually for each layer. By default, they're deactivated.
 
@@ -319,11 +319,11 @@ At any time, you can close the info panel by clicking on the “X” or you can 
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_reset_the_configuration.png)
 
-You can also customise your popups by adding images or modifying the styling. Let´s show an example of how to edit the HTML of the pop-ups. For this purpose, click on *Switch to HTML mode* button.
+You can also customize your popups by adding images or modifying the styling. Let's show an example of how to edit the HTML of the pop-ups. For this purpose, click on *Switch to HTML mode* button.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_mode_button.png)
 
-A template will be generated to reflect the selected fields, and the appearance of the popup will be the same. Click on *Edit HTML* to start editing. 
+A template will be generated to reflect the selected fields, and the appearance of the popup will be the same. Click on *Edit HTML* to start editing.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_edit_html_button.png)
 
@@ -331,7 +331,7 @@ When you click on *Edit HTML*, a new dialog will appear. You can modify the cont
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_new_dialog.png)
 
-Let´s do some changes in the content, for example, we can add an image and change the background color. Then, click on *Apply changes*.
+Let's do some changes in the content, for example, we can add an image and change the background color. Then, click on *Apply changes*.
 
 ![Map interactions tooltips](/img/cloud-native-workspace/maps/map_interactions_tooltip_html_edited_dialog.png)
 
@@ -363,16 +363,16 @@ It shows the coordinates where you click with the mouse. The coordinates will ap
 
 Legends help you to describe your data on the map and they are a essential for understanding geospatial data visualizations. This guide describes how to add and configure a legend to your map in CARTO Builder.
 
-In the Legend tab of Builder, you will see the list of your current legends. If you haven’t added any layer yet, you will see the following page:
+In the Legend tab of Builder, you will see the list of your current legends. If you haven't added any layer yet, you will see the following page:
 
 ![Map widgets new widget](/img/cloud-native-workspace/maps/map_add_a_legend.png)
 
-Once your data is added as a layer to the map, as explained in this [guide](../../maps/add-source), the legend is automatically generated and it is displayed in a fixed position at the bottom left of the map. 
+Once your data is added as a layer to the map, as explained in this [guide](../../maps/add-source), the legend is automatically generated and it is displayed in a fixed position at the bottom left of the map.
 
 When choosing a style based on a property on your data (check [this section](/carto-user-manual/maps/map-styles/) for more information about it), a legend will be automatically generated based on the type of visualization:
 * Discrete color bins for categories and quantile data classifications.
 * Continuous color ramps for quantize classifications.
-* Proportional symbols for point radius. 
+* Proportional symbols for point radius.
 
 By default, the legend is collapsed so you need to click on the layers icon to expand it.
 
@@ -395,7 +395,7 @@ From "More legend options" you can manage the visibility of each layer and how t
 ![Map legend](/img/cloud-native-workspace/maps/map_legend_tab_moreoptions_activated.png)
 
 You can also select different style options from the Layer style panel to enable different types of legends that can be managed through the Legend tab.
- 
+
 In this example, we style the layer based on the column `store_type`. The legend shows a symbol and a label per category that we can edit from the Legend Tab.
 
 ![Map legend](/img/cloud-native-workspace/maps/map_legend_style_by_color.png)
@@ -420,7 +420,7 @@ Select _CARTO_ in the menu to see different basemap options. They include:
 
 ![Map basemap carto](/img/cloud-native-workspace/maps/map_basemap_CARTO.png)
 
-You can manage the CARTO basemaps layers to hide and show water, buildings, roads, and more. Options include: 
+You can manage the CARTO basemaps layers to hide and show water, buildings, roads, and more. Options include:
 
 - Labels: shows labels for cities, neighborhoods, and so on.
 - Roads: displays a translucent layer of road lines.
@@ -448,7 +448,7 @@ Select _Google Maps_ in the menu to see different basemap options. They include:
 
 Select _Amazon Location_ in the menu to see the options to use a base map from the [Amazon Location Service](https://docs.aws.amazon.com/location/index.html).
 
-To use an Amazon Location maps, you will need to introduce some credentials from your Amazon Location Service account. Lear more about it in [this guide](https://docs.aws.amazon.com/location/latest/developerguide/using-maps.html): 
+To use an Amazon Location maps, you will need to introduce some credentials from your Amazon Location Service account. Lear more about it in [this guide](https://docs.aws.amazon.com/location/latest/developerguide/using-maps.html):
 
 - Cognito Pool ID: Amazon Cognito provides authentication, authorization, and user management for web and mobile apps. You can use Amazon Cognito unauthenticated identity pools with Amazon Location as a way for applications to retrieve temporary, scoped-down AWS credentials. Learn more about how to get a Cognito Pool ID [here](https://docs.aws.amazon.com/location/latest/developerguide/authenticating-using-cognito.html).
 
@@ -456,7 +456,6 @@ To use an Amazon Location maps, you will need to introduce some credentials from
 
 ![Map basemap amazon](/img/cloud-native-workspace/maps/map_basemap_amazon_location.png)
 
-Once you have set the credentials, click on _Apply_. The current configuration will be saved in this map. 
+Once you have set the credentials, click on _Apply_. The current configuration will be saved in this map.
 
 To use another base map from Amazon Location, specify the new credentials and click _Apply_ again. The map will be updated and saved.
-

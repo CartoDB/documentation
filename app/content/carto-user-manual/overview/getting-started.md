@@ -61,14 +61,14 @@ Follow these simple steps to access the CARTO Workspace:
     - Click *Finish*.
 
     ![Form business profile](/img/cloud-native-workspace/get-started/form_business_profile.png)
-	
-    You are ready to start using CARTO! 
+
+    You are ready to start using CARTO!
 
    #### Joining an existing organization
 
    To join an existing organization follow these steps:
 
-    - Choose **Join** an organization or **Request access** to an organization. 
+    - Choose **Join** an organization or **Request access** to an organization.
 
     ![Organization setup detected multiple](/img/cloud-native-workspace/get-started/organization_setup_detected_multiple.png)
 
@@ -140,8 +140,8 @@ The first time that you access the Workspace, you will see a *Welcome* banner wi
 
  ![Welcome banner Homepage first new landing](/img/cloud-native-workspace/get-started/homepage_first_new_landing.png)
 
- From the **"Connect your data warehouse"** banner, you can easily connect your data warehouse(s) to start using CARTO  by clicking on *Create new connection* button. Check the <a href="#quickstart-guide-to-create-your-first-map" target="_blank">Quick guide to connect data and create maps</a> to get started. 
- 
+ From the **"Connect your data warehouse"** banner, you can easily connect your data warehouse(s) to start using CARTO  by clicking on *Create new connection* button. Check the <a href="#quickstart-guide-to-create-your-first-map" target="_blank">Quick guide to connect data and create maps</a> to get started.
+
  After creating your connection, you can also **upload local files** right from the homepage by clicking on *Import your data* button. Check this [guide](../../data-explorer/importing-data/) to start importing your data into your data warehouse.
 
  From **"Whats´new"** section, you will find announcements of new features, interesting articles, and the latest news related to CARTO from our blog. Stay tuned and don't miss out on the latest news!
@@ -214,7 +214,7 @@ You can manage your connections to your data warehouse(s) through different opti
 
 #### Explore your spatial data
 
-The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven’t connected your own data warehouse yet, you will see the provisioned `CARTO data warehouse connection` with access to some demo data.
+The *Data Explorer* section enables you to explore the contents accessible from your connected data warehouse, preview your geospatial tables and tilesets, and start creating maps or tilesets from your data. If you haven't connected your own data warehouse yet, you will see the provisioned `CARTO data warehouse connection` with access to some demo data.
 
 ![Data Explorer carto data warehouse](/img/cloud-native-workspace/data-explorer/de_cartodw_connection.png)
 
@@ -222,7 +222,7 @@ To add your first connection, you can follow the previous <a href="#create-a-con
 
 Once you have added a connection, go back to the *Data Explorer* section, where you will see the list with all of your current connections.
 
-![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connections_list.png) 
+![Data Explorer first connection bigquery](/img/cloud-native-workspace/data-explorer/de_connections_list.png)
 
 Select a connection and start exploring the content (database/project(s), schemas/datasets, and tables) in a collapsible tree.
 
@@ -232,7 +232,7 @@ Click on *Show more...* button if you want to expand the list and visualize more
 
 ![Data Explorer show more](/img/cloud-native-workspace/data-explorer/de_show_more.png)
 
-Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset. 
+Once your table or tileset is selected, you can access a preview of the map and some metadata details of the selected table or tileset.
 
 ![Data Explorer preview map](/img/cloud-native-workspace/data-explorer/de_preview_the_map.png)
 
@@ -242,14 +242,14 @@ Once your table or tileset is selected, you can access a preview of the map and 
 
 ![Data Explorer metadata tab](/img/cloud-native-workspace/data-explorer/de_metadata_tileset_tab.png)
 
-You can create a map by clicking on the *Create map* or *Create a tileset* button on the top to visualize larger volumes of data from a table. This will open the CARTO map-making tool, Builder.  
+You can create a map by clicking on the *Create map* or *Create a tileset* button on the top to visualize larger volumes of data from a table. This will open the CARTO map-making tool, Builder.
 
 #### Create a map
 
 The *Maps* section enables you to create and manage maps in the CARTO Workspace.
 
 From your *Maps* page, click *Create your first map*. This will open the CARTO map-making tool, Builder.
-	
+
    ![Map module](/img/cloud-native-workspace/get-started/the_map_create_first_map.png)
 
 You can also getting some ideas from our sample maps.
@@ -259,8 +259,8 @@ You can also getting some ideas from our sample maps.
 From the *Layers* tab on the left side, you can add data as a map layer from any of your existing data warehouse connections. In this example, we are using the BigQuery connection created in the previous step of this guide. With BigQuery we can use a custom SQL Query to retrieve data, add an entire table, or a tileset.
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_from.png)
-		
-A new dialog will open so you can select your connection and your data source. 
+
+A new dialog will open so you can select your connection and your data source.
 
 ![Add source to your map](/img/cloud-native-workspace/maps/map_add_source_select_connection.png)
 
@@ -269,7 +269,7 @@ In this example we are going to use a table from our BigQuery connection. Select
 ![Add source table](/img/cloud-native-workspace/maps/map_add_source_select_data_source.png)
 
 Once the process is finished, the BigQuery table is included in Builder as a new layer to the map. You can add additional layers, or apply styling and analysis features to the layer that you have just added.
-	
+
 ![Map created](/img/cloud-native-workspace/maps/map_layer_added.png)
 
 CARTO Builder contains many features that guide you through the process of creating a map, changing the styling, and selecting how your data appears rendered on a map. Use the following task list as a guide for some of the main features of CARTO Builder:
@@ -299,11 +299,11 @@ Check this [reference documentation](../../data-explorer/creating-a-tileset-from
 
 <!-- for a better understanding of what a tileset is and how it works, as well as  -->
 
-To learn more, please visit the Documentation page of the [CARTO Analytics Toolbox](/analytics-toolbox/about-the-analytics-toolbox/) for each provider: 
+To learn more, please visit the Documentation page of the [CARTO Analytics Toolbox](/analytics-toolbox/about-the-analytics-toolbox/) for each provider:
 * <a href="/analytics-toolbox-bigquery/overview/tilesets/" target="_blank"> CARTO BigQuery Tiler</a> (also valid for the CARTO Data Warehouse)
 - <a href="/analytics-toolbox-snowflake/overview/tilesets/" target="_blank"> CARTO Snowflake Tiler</a>
-- <a href="/analytics-toolbox-redshift/overview/tilesets/" target="_blank"> CARTO Redshift Tiler</a> 
-- <a href="/analytics-toolbox-postgres/overview/tilesets/" target="_blank"> CARTO PostgreSQL Tiler</a> 
+- <a href="/analytics-toolbox-redshift/overview/tilesets/" target="_blank"> CARTO Redshift Tiler</a>
+- <a href="/analytics-toolbox-postgres/overview/tilesets/" target="_blank"> CARTO PostgreSQL Tiler</a>
 
 <!-- BigQuery and CARTO Data Warehouse connections. -->
 
@@ -370,7 +370,7 @@ In the following sections you will find a collection of resources where you can 
 
 * [subscribe to Data Observatory data](https://docs.carto.com/data-observatory/overview/getting-started/#data-subscriptions),
 * [access and introduce the data in your analysis workflows](https://docs.carto.com/data-observatory/overview/getting-started/#data-access-and-analysis),
-* [visualize it](https://docs.carto.com/data-observatory/overview/getting-started/#data-visualization). 
+* [visualize it](https://docs.carto.com/data-observatory/overview/getting-started/#data-visualization).
 
 You can follow up the steps for the enrichment creation process in the [Enriching data](../../data-explorer/enriching-data) guide.
 
@@ -380,11 +380,11 @@ CARTO Builder allows you to export your data.
 
 To export your data, add a source to the map and click on the *Export viewport data* button.
 
-![Export data button enabled](/img/cloud-native-workspace/maps/map_export_data_button.png) 
+![Export data button enabled](/img/cloud-native-workspace/maps/map_export_data_button.png)
 
 A new dialog screen will open informing you that the resulting CSV files will contain data from the current features in the viewport. Click the *Export data* button to confirm the download of the data or click on *Cancel* if you don’t want to continue exporting.
 
-![Export data dialog](/img/cloud-native-workspace/maps/map_export_data_dialog.png) 
+![Export data dialog](/img/cloud-native-workspace/maps/map_export_data_dialog.png)
 
 The result of the export will be a compressed file containing all visible features in the viewport in csv format.
 
@@ -396,17 +396,17 @@ To make a copy of an existing map from **CARTO Workspace**, go to “Maps” and
 
 ![Recent maps](/img/cloud-native-workspace/get-started/recent_maps_new_options.png)
 
-To make a copy of an existing map from **CARTO Builder**, add data or a title to the map and click on the three-dotted menu in the top right of Builder. 
+To make a copy of an existing map from **CARTO Builder**, add data or a title to the map and click on the three-dotted menu in the top right of Builder.
 
-![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_button.png) 
+![Duplicate map from Builder](/img/cloud-native-workspace/maps/map_duplicate_button.png)
 
-Copied maps will always start as `Copy of` plus the original map name, and will always started as private maps for yourself. 
+Copied maps will always start as `Copy of` plus the original map name, and will always started as private maps for yourself.
 
-When duplicating a map, you'll receive a warning if any of the sources is not shared with you (eg: a private connection) — You can continue anyway, but the private sources will load with errors and the corresponding layers will not be visible, leaving you the choice of fully removing them or asking for access. 
+When duplicating a map, you'll receive a warning if any of the sources is not shared with you (eg: a private connection) — You can continue anyway, but the private sources will load with errors and the corresponding layers will not be visible, leaving you the choice of fully removing them or asking for access.
 
 ![Duplicate map - Data warning](/img/cloud-native-workspace/maps/map_duplicate_warning.png)
 
-This ensures security across data sources, even when making editable map copies between users. 
+This ensures security across data sources, even when making editable map copies between users.
 
 For more details, see [Duplicating maps](../../maps/duplicating-maps).
 
@@ -428,7 +428,6 @@ For more details, see [Deleting maps](../../maps/deleting-maps).
 
 By default all maps you create are set as private. With CARTO you can share your maps with your organization or publish them for anyone with the link.
 
-Once you publish a map, you obtain a URL to share access to the map or HTML code to embed it on a website or blog. You can also get the map token to call the map when developing an application in CARTO. 
+Once you publish a map, you obtain a URL to share access to the map or HTML code to embed it on a website or blog. You can also get the map token to call the map when developing an application in CARTO.
 
 There are different sharing options, like sharing visualizations in a protected way with a map password or controlling how it is displayed using URL parameters.For more details, check the [Publishing and sharing maps](../../maps/publishing-and-sharing-maps) guide.
-

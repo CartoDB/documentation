@@ -15,7 +15,7 @@ When you create a connection, it’s always **private** by default.
 
 To be able to share a connection, go to Sharing options and click on *Change*. A new dialog screen will open allowing you to select who you want to share your connection with:
 
-![Sharing options private](/img/cloud-native-workspace/connections/the_connections_sharing_options_private_default.png) 
+![Sharing options private](/img/cloud-native-workspace/connections/the_connections_sharing_options_private_default.png)
 
 Here you’ll find two different sharing options:
 
@@ -32,7 +32,7 @@ After you have provided the connection parameters, click *Connect*. Then you wil
 
 Once your connection is created, you can create maps using datasets from your data warehouse (navigating to the  *Data Explorer* ).
 
-In the next sections we show how to configure connections to the supported cloud data wharehouses.
+In the next sections we show how to configure connections to the supported cloud data warehouses.
 
 ### Connection to BigQuery
 
@@ -85,7 +85,7 @@ Once you have entered the parameters, you can click the *Connect* button. CARTO 
 
 You can use CARTO with your data in a PostgreSQL-compatible database, including Google Cloud SQL, Amazon Aurora & RDS, and Azure Database for PostgreSQL.
 
-CARTO supports the following PostgreSQL and PostGIS versions: 
+CARTO supports the following PostgreSQL and PostGIS versions:
 * PostgreSQL 12 and higher
 * PostGIS 2.4 and higher
 
@@ -105,6 +105,12 @@ These are the parameters you need to provide:
 ![Connection parameters with PostgreSQL](/img/cloud-native-workspace/connections/the_connections_postgres_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your PostgreSQL server. If everything is OK, your new connection will be registered.
+
+{{% bannerNote type="note" title="NOTE"%}}
+CARTO will try to minimize and reuse the number of connections (sockets) made to the Postgres database. But in some cases the amount of connections can grow rapidly. If you have a strong requirement to control the incoming connections to your database, we recommend to put a proxy like PgBouncer between CARTO and your database.
+
+The connections are only reused if they are going through the same CARTO-PostgreSQL Connection. If you set up many Connections in your organization, the amount of database connections will grow faster.
+{{%/ bannerNote %}}
 
 ### Connection to Amazon Redshift
 
@@ -126,6 +132,12 @@ These are the parameters you need to provide:
 ![Connection parameters with Redshift](/img/cloud-native-workspace/connections/the_connections_redshift_parameters.png)
 
 Once you have entered the parameters, you can click the *Connect* button. CARTO will try to connect to your Redshift cluster. If everything is OK, your new connection will be registered.
+
+{{% bannerNote type="note" title="NOTE"%}}
+CARTO will try to minimize and reuse the number of connections (sockets) made to the Redshift database. But in some cases the amount of connections can grow rapidly. If you have a strong requirement to control the incoming connections to your database, we recommend to put a proxy like PgBouncer between CARTO and your database.
+
+The connections are only reused if they are going through the same CARTO-Redshift Connection. If you set up many Connections in your organization, the amount of database connections will grow faster.
+{{%/ bannerNote %}}
 
 ### Connection to Snowflake
 
@@ -153,7 +165,7 @@ Once you have entered the parameters, you can click the *Connect* button. CARTO 
 ### Connection to Databricks
 
 {{% bannerNote title="NOTE" type="note" %}}
-CARTO can connect to a **Databricks SQL Warehouse** or a **Databricks cluster**. In both cases, the connection fully supports **H3 indexes**. 
+CARTO can connect to a **Databricks SQL Warehouse** or a **Databricks cluster**. In both cases, the connection fully supports **H3 indexes**.
 
 Working with geometries is only supported when connecting to a Databricks cluster and it requires the installation of the **com.carto.analyticstoolbox.core** library (in Beta). Check out the [installation instructions](https://docs.carto.com/analytics-toolbox-databricks/overview/installation) for more information.
 {{%/ bannerNote %}}
@@ -211,17 +223,15 @@ Get this list via <a href="https://workspace-gcp-europe-west1.app.carto.com/meta
 
 
 
-##### 🇯🇵 asia-northeast1 
+##### 🇯🇵 asia-northeast1
 * `34.85.15.12`
 * `35.200.23.186`
 
 Get this list via <a href="https://workspace-gcp-asia-northeast1.app.carto.com/meta" target="_blank">API</a>.
 
 
-##### 🇦🇺 australia-southeast1 
+##### 🇦🇺 australia-southeast1
 * `34.151.87.148`
 * `35.201.15.104`
 
 Get this list via <a href="https://workspace-gcp-australia-southeast1.app.carto.com/meta" target="_blank">API</a>.
-
-

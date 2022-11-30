@@ -12,7 +12,7 @@ When working with traditional geometries, the [CartoLayer](/deck-gl/reference/#c
 
 When working with data using geospatial indices, the layer used for rendering depends on the discrete global grid system used:
 
-- If you are using the `CartoLayer` with data stored as [H3 indices]((https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#h3), the [H3HexagonLayer](https://deck.gl/docs/api-reference/geo-layers/h3-hexagon-layer) is used. 
+- If you are using the `CartoLayer` with data stored as [H3 indices]((https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#h3), the [H3HexagonLayer](https://deck.gl/docs/api-reference/geo-layers/h3-hexagon-layer) is used.
 
 - If you are using it with data stored as [quadbins](https://docs.carto.com/analytics-toolbox-bigquery/overview/spatial-indexes/#quadbin), the [QuadkeyLayer](https://deck.gl/docs/api-reference/geo-layers/quadkey-layer) is used.
 
@@ -33,7 +33,7 @@ This [option](https://deck.gl/docs/api-reference/core/layer#opacity) controls th
 With this [option](https://deck.gl/docs/api-reference/layers/geojson-layer#filled) you indicate if you want to draw filled polygons. It is also used to indicate if you want to draw filled circles when you have point features and the `pointType` is `'circle'`. It is not applicable to line features.
 
 See the [`getFillColor`](#getfillcolor) accessor to understand how to specify the color for your features.
-  
+
 #### `stroked`
 
 This [option](https://deck.gl/docs/api-reference/layers/geojson-layer#stroked) is used to indicate if you want to draw the outline for polygon features. If is also used to indicate if you want to draw the circle outline when you have point features and the `pointType` is `'circle'`. Line features are stroked by default and this option is not applicable to them.
@@ -42,7 +42,7 @@ There are many properties available for controlling the outline features. Please
 
 #### `extruded`
 
-This [option](https://deck.gl/docs/api-reference/layers/geojson-layer#extruded) is used to indicate if you want to extrude the polygon features. It is not applicable to point or line features. 
+This [option](https://deck.gl/docs/api-reference/layers/geojson-layer#extruded) is used to indicate if you want to extrude the polygon features. It is not applicable to point or line features.
 
 See the [Extrusions](#extrusions) section for additional guidelines.
 
@@ -60,27 +60,27 @@ You can use these accessors to create advanced visualizations, including choropl
 
 #### `getFillColor`
 
-This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getfillcolor) is used to specify the fill color in RGBA format for polygon features. It can be used also with point features when the `pointType` is `'circle'`. 
+This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getfillcolor) is used to specify the fill color in RGBA format for polygon features. It can be used also with point features when the `pointType` is `'circle'`.
 
 #### `getLineColor`
 
-This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getlinecolor) is used to specify the color for line features. If the `stroked` property is set to `true`, it can be used also to specify the circle outline color with point features when the `pointType` is `'circle'` and the polygon outline color with polygon features. 
+This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getlinecolor) is used to specify the color for line features. If the `stroked` property is set to `true`, it can be used also to specify the circle outline color with point features when the `pointType` is `'circle'` and the polygon outline color with polygon features.
 
 #### `getLineWidth`
 
-This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getlinewidth) is used to indicate the line width for line features. If the `stroked` property is set to `true`, it can be used also to specify the circle outline width with point features when the `pointType` is `'circle'` and the polygon outline width with polygon features. 
+This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getlinewidth) is used to indicate the line width for line features. If the `stroked` property is set to `true`, it can be used also to specify the circle outline width with point features when the `pointType` is `'circle'` and the polygon outline width with polygon features.
 
 #### `getElevation`
 
-This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getelevation) is used to indicate the elevation of polygon features when `extruded` is set to `true`.  
+This [accessor](https://deck.gl/docs/api-reference/layers/geojson-layer#getelevation) is used to indicate the elevation of polygon features when `extruded` is set to `true`.
 
 ### Highlighting features
 
 The CartoLayer uses vector rendering. This means the feature geometry is available client-side so we can easily know if the user is hovering over a feature and highlight it.
 
-Highlighting requires to set the layer [`pickable`](https://deck.gl/docs/api-reference/core/layer#pickable) property to `true`. You also need to set the [`uniqueIdProperty`](https://deck.gl/docs/api-reference/carto/carto-layer#uniqueidproperty) to the feature property name that allows to identify each feature uniquely. 
+Highlighting requires to set the layer [`pickable`](https://deck.gl/docs/api-reference/core/layer#pickable) property to `true`. You also need to set the [`uniqueIdProperty`](https://deck.gl/docs/api-reference/carto/carto-layer#uniqueidproperty) to the feature property name that allows to identify each feature uniquely.
 
-The color to be used for highlighting is specified using the [`highlightColor`](https://deck.gl/docs/api-reference/core/layer#highlightcolor) property. This property is an [accessor](#accessors): you can specify a color to be used always or you can decide which color to use depending on the feature and current visualization properties. 
+The color to be used for highlighting is specified using the [`highlightColor`](https://deck.gl/docs/api-reference/core/layer#highlightcolor) property. This property is an [accessor](#accessors): you can specify a color to be used always or you can decide which color to use depending on the feature and current visualization properties.
 
 If you set the [`autoHighlight`](https://deck.gl/docs/api-reference/core/layer#autohighlight) property to `true`, the feature hovered will be highlighted with the color specified by the `highlightColor` property.
 
@@ -94,9 +94,9 @@ The content in this section is not applicable to datasets using spatial indices.
 
 {{%/ bannerNote %}}
 
-When working with point features, the `GeoJsonLayer` allows to render the points using circles, icons, and texts, or a combination of them, using the [`pointType`](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtype) property. 
+When working with point features, the `GeoJsonLayer` allows to render the points using circles, icons, and texts, or a combination of them, using the [`pointType`](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtype) property.
 
-Depending on the render mode chosen, the `GeoJsonLayer` uses the [`ScatterplotLayer`](https://deck.gl/docs/api-reference/layers/scatterplot-layer) (circles), the [`IconLayer`](https://deck.gl/docs/api-reference/layers/icon-layer) (icons), and/or the [`TextLayer`](https://deck.gl/docs/api-reference/layers/text-layer) (texts) to perform the actual rendering. 
+Depending on the render mode chosen, the `GeoJsonLayer` uses the [`ScatterplotLayer`](https://deck.gl/docs/api-reference/layers/scatterplot-layer) (circles), the [`IconLayer`](https://deck.gl/docs/api-reference/layers/icon-layer) (icons), and/or the [`TextLayer`](https://deck.gl/docs/api-reference/layers/text-layer) (texts) to perform the actual rendering.
 
 The actual property names might be different in the `GeoJsonLayer` when comparing with the names in the layer used for rendering: for instance, the `getPointRadius` accessor is called `getRadius` in the `ScatterplotLayer`. In this section, we are using the `GeoJsonLayer` property names and we are linking to the specific property documentation in the deck.gl docs site.
 
@@ -108,7 +108,7 @@ When using [circles](https://deck.gl/docs/api-reference/layers/geojson-layer#poi
 
 ##### `getPointRadius`
 
-This accessor is used to indicate the radius for point features. It can be used to create [proportional symbol maps](#proportional-symbol-maps) as shown below. 
+This accessor is used to indicate the radius for point features. It can be used to create [proportional symbol maps](#proportional-symbol-maps) as shown below.
 
 ##### `pointRadiusMinPixels`
 
@@ -138,7 +138,7 @@ You will use this property to specify the icon mapping in the atlas when using p
 
 #### Texts
 
-The third option to style point features is to render [text labels](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtypetext-options). We can specify many properties such as the color, angle, font family or font size. 
+The third option to style point features is to render [text labels](https://deck.gl/docs/api-reference/layers/geojson-layer#pointtypetext-options). We can specify many properties such as the color, angle, font family or font size.
 
 ##### `getText`
 
@@ -156,7 +156,7 @@ Please check the [extrusion](/deck-gl/examples/advanced-examples/extrusion) exam
 
 ### Scales-Classification
 
-If you want to create a choropleth map or a proportional symbol map, you can use absolute scaling or distribute the features in classes. In the first case, the color and/or size of a feature in the map is proportional to the value of some property or combination of properties. In the second case, values are classified according to a classification rule. 
+If you want to create a choropleth map or a proportional symbol map, you can use absolute scaling or distribute the features in classes. In the first case, the color and/or size of a feature in the map is proportional to the value of some property or combination of properties. In the second case, values are classified according to a classification rule.
 
 There are many classification rules that can be used like equal intervals, jenks natural breaks or classification by quantiles. The choice of classification rule depends on the data and has a great impact on the visualization. These rules can be implemented using accessors like `getFillColor` or `getPointRadius` but you need to be able to calculate the thresholds for each class.
 
@@ -185,7 +185,7 @@ layer = new deck.carto.CartoLayer({
     id: 'my-layer',
     connection: 'bqconn',
     type: deck.carto.MAP_TYPES.QUERY,
-    data: 'SELECT geom, name, population FROM cartobq.public_account.populated_places', 
+    data: 'SELECT geom, name, population FROM cartobq.public_account.populated_places',
     getFillColor: d => colorScale(d.properties.population),
     pointRadiusMinPixels: 2.5
 });
@@ -209,15 +209,15 @@ If you are using CARTO 2, there is a set of available [functions](https://carto.
 
 Choropleth maps are created assigning different colors to features representing geographic areas such as countries or neighborhoods. Color assignment depends on the value of some property or a combination of two properties (bivariate choropleth map).
 
-If you have a numeric property, you have two options: you can apply a classification rule as shown above to create classes or bins for your data or you can use absolute scaling and map the values to a color ramp. 
+If you have a numeric property, you have two options: you can apply a classification rule as shown above to create classes or bins for your data or you can use absolute scaling and map the values to a color ramp.
 
 If you already have a string property that represents a categorical or qualitative variable, you can use this property as the class and assign a color to each of the possible property values.
 
 It is important to choose a color palette adequate to the type of choropleth map / variable you are using. We have defined a set of data-driven color schemes called [CARTO Colors](https://carto.com/carto-colors/) that you can use in your choropleth maps.
 
-There is a set of schemes appropriate to represent numeric values from low to high (sequential schemes). We provide another set suitable for visualizing categorical differences in qualitative data (qualitative schemes). Finally, we also have defined diverging schemes for those cases where we have an interesting mid-point when using quantitative data. 
+There is a set of schemes appropriate to represent numeric values from low to high (sequential schemes). We provide another set suitable for visualizing categorical differences in qualitative data (qualitative schemes). Finally, we also have defined diverging schemes for those cases where we have an interesting mid-point when using quantitative data.
 
-In order to create the choropleth map, you can use the [`getFillColor`](#getfillcolor) accessor to provide the color for each feature as shown above in the [Scales/Classification](#scales-classification) section. 
+In order to create the choropleth map, you can use the [`getFillColor`](#getfillcolor) accessor to provide the color for each feature as shown above in the [Scales/Classification](#scales-classification) section.
 
 But you can also take advantage of the [style helpers](https://deck.gl/docs/api-reference/carto/styles) provided in the CARTO for deck.gl module. These helpers make it really easy to implement a choropleth map using numeric bins ([colorBins](https://deck.gl/docs/api-reference/carto/styles#colorbins) helper), qualitative data ([colorCategories](https://deck.gl/docs/api-reference/carto/styles#colorcategories) helper), or using a color ramp to map numeric values ([colorContinuous](https://deck.gl/docs/api-reference/carto/styles#color-continuous) helper).
 
@@ -233,13 +233,13 @@ The content in this section is not applicable to datasets using spatial indices.
 
 {{%/ bannerNote %}}
 
-Proportional symbol maps assign a larger or smaller symbol to features depending on the value of some property. If you use a circle as the symbol, they are sometimes known as bubble maps. 
+Proportional symbol maps assign a larger or smaller symbol to features depending on the value of some property. If you use a circle as the symbol, they are sometimes known as bubble maps.
 
 You can implement this type of maps by using accessors like [`getPointRadius`](#getpointradius) when using circles or [`getIconSize`](#geticonsize) when using icons as the symbol.
 
 You can also combine proportional symbol maps with style helpers that symbolize the features using different colors. For example, we are going to create a map where we represent the population of each country using a bubble map and then assign a different color to each circle depending on the country continent.
 
-In this case we are going to use absolute scaling (no classes/bins) and we are going to assing a different circle radius to each feature based on the `pop_2015` property. In the `getPointRadius` accessor we need to define the formula for calculating the radius for each feature. The maximum symbol size (radius in pixels) is going to be 30 pixels and the radius for each country is going to be proportional to the square root of the population, so we scale it between 0 and 1 using the square root (~27620) of the country with the biggest population (China). We are going to have fixed size symbols that do not scale with the zoom level so we need to define the [`pointRadiusUnits`](https://deck.gl/docs/api-reference/layers/scatterplot-layer#radiusunits) as pixels (by default is meters). 
+In this case we are going to use absolute scaling (no classes/bins) and we are going to assign a different circle radius to each feature based on the `pop_2015` property. In the `getPointRadius` accessor we need to define the formula for calculating the radius for each feature. The maximum symbol size (radius in pixels) is going to be 30 pixels and the radius for each country is going to be proportional to the square root of the population, so we scale it between 0 and 1 using the square root (~27620) of the country with the biggest population (China). We are going to have fixed size symbols that do not scale with the zoom level so we need to define the [`pointRadiusUnits`](https://deck.gl/docs/api-reference/layers/scatterplot-layer#radiusunits) as pixels (by default is meters).
 
 ```javascript
 layer = new deck.carto.CartoLayer({

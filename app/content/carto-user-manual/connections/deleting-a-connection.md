@@ -8,10 +8,8 @@ If you click the *Delete* quick action, a dialog will appear allowing you to con
 
 ![Connection confirmation deletion](/img/cloud-native-workspace/connections/the_connections_delete_confirmation.png)
 
-Please note that if your connection is shared with your organization, the delete option will not be available and you will first need to make the connection private again. 
+Please note that if your connection is shared with your organization, the delete option will not be available and you will first need to make the connection private again.
 
 Once is private nobody except you will have access anymore, but you also need to make sure no other users are still using this connection in their maps before fully deleting it. This is in order to avoid deleting other users maps without warning.
 
 ![Connection confirmation deletion](/img/cloud-native-workspace/connections/the_connections_delete_disabled.png)
-
-

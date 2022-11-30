@@ -15,8 +15,8 @@ date: "2022-07-11"
 
 **Context**
 
-A common use case of the Out-of-home advertising industry is proximity analysis, which allows a user to identify the panels closest or within a certain distance of locations. This is particularly useful when we want to alert pedestrians that there is a store of a brand located close by, or when we want to place the brand in their thoughts as there is a high likelihood they will pass by the store as they walk through the area. 
-In this tutorial we are showcasing an example where we want to find the panels within a 400m radius of Starbucks locations in the New York City area (5 mins walking distance). 
+A common use case of the Out-of-home advertising industry is proximity analysis, which allows a user to identify the panels closest or within a certain distance of locations. This is particularly useful when we want to alert pedestrians that there is a store of a brand located close by, or when we want to place the brand in their thoughts as there is a high likelihood they will pass by the store as they walk through the area.
+In this tutorial we are showcasing an example where we want to find the panels within a 400m radius of Starbucks locations in the New York City area (5 mins walking distance).
 
 **Steps to reproduce**
 
@@ -27,12 +27,12 @@ In this tutorial we are showcasing an example where we want to find the panels w
 
    ![Log in Email and password](/img/cloud-native-workspace/get-started/login.png)
 
-2. From the Navigation Menu in the left panel, select Maps. On the top-right corner, select "New map". This should take you to a new instance of a Builder map:   
+2. From the Navigation Menu in the left panel, select Maps. On the top-right corner, select "New map". This should take you to a new instance of a Builder map:
 
     ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial13_map_new_map_instance.png)
 
 
-3. We will first import all panels for the New York City area. We have already created a dataset for all panels in New York and New Jersey. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection. Run the query below: 
+3. We will first import all panels for the New York City area. We have already created a dataset for all panels in New York and New Jersey. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection. Run the query below:
 
     ```sql
     SELECT * FROM `carto-demo-data.demo_tables.newyork_newjersey_ooh_panels`
@@ -40,7 +40,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
     ```
 
     ![Map load panel layer](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_panels.png)
-   
+
    You will notice that we are looking at panel locations in the NY metropolitan area. Rename the panels layer "NY Panels"
 
 
@@ -80,7 +80,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
         SELECT ROW_NUMBER() OVER() as id, * FROM `carto-demo-data.demo_tables.newyork_newjersey_ooh_panels`
         WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     ),
-    
+
     panels_unique AS(
     SELECT * from(
         SELECT p.* , ROW_NUMBER() OVER (PARTITION BY p.id) as row1
@@ -97,7 +97,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
 
    ![Map keep panels less than 400m from Starbucks1](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_panels_less_than_400m.png)
 
-   
+
 7. To filter the panels by type, we can create a widget. Navigate to the Widgets tab and click on "New widget". Select the last Source we have created and create a new Category widget. Style according to the configuration below.
 
    ![Map Panel type category widget](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_panel_category_widget.png)
@@ -122,7 +122,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
         WHERE ST_INTERSECTS(geom, ST_GEOGFROMTEXT('POLYGON((-74.0217027068138 40.71878617467263,-74.01135742664336 40.76296271079593,-73.96672010421752 40.82326631011446,-73.91943275928496 40.8004687826801,-73.94931256771086 40.76206069582457,-73.96792978048323 40.73763256552792,-73.95601004362105 40.71923951008711,-73.95529121160506 40.64212814693562,-74.03532564640044 40.64323734371749,-74.0217027068138 40.71878617467263))'))
     )
     SELECT  s.street_address, s.open_hours,ST_UNION_AGG(s.geom) AS geom
-    FROM starbucks s, panels p 
+    FROM starbucks s, panels p
     WHERE ST_DWITHIN(p.geom, s.geom, 400)
     GROUP BY 1,2
     ```
@@ -168,7 +168,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
     FROM starbucks s, panels p
     GROUP BY s.geoid
     )
-    
+
     SELECT
     geoid,
     distance,
@@ -190,16 +190,16 @@ In this tutorial we are showcasing an example where we want to find the panels w
 
     ![Map distance tooltip](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_distance_tooltip.png)
 
-14. Final step before we make our concusions, as a basemap please use the Google "Dark matter", as it will allow us to explore the areas of most interest
+14. Final step before we make our conclusions, as a basemap please use the Google "Dark matter", as it will allow us to explore the areas of most interest
 
     ![Map Google dark matter basemap](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_dark_matter_basemap.png)
 
-15. As we can see in our map there are candidates spread across Manhattan and Brooklyn. There is a concentration of candidates in Midtown and Lower Manhattan. There are several insights we can draw from this map but let´s focus on two examples:
+15. As we can see in our map there are candidates spread across Manhattan and Brooklyn. There is a concentration of candidates in Midtown and Lower Manhattan. There are several insights we can draw from this map but let's focus on two examples:
     1) We can see that there are some key candidates close to Midtown East which can act as "Brand awareness" panels because of their close distance to numerous Starbucks in the area.
 
     ![Map insight 1](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_insight1.png)
 
-    2) There are some panels at very close distances to Starbucks locations in the Meatpacking District, which can be used to drive traffic to those stores. 
+    2) There are some panels at very close distances to Starbucks locations in the Meatpacking District, which can be used to drive traffic to those stores.
 
     ![Map insight 2](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_insight2.png)
 
@@ -212,7 +212,3 @@ In this tutorial we are showcasing an example where we want to find the panels w
 16. Finally, we can visualize the result.
 
    <iframe width="800px" height="800px" src="https://gcp-us-east1.app.carto.com/map/a3e312cd-c231-415b-91ca-bb65ebaa91e2"></iframe>
-
-
-
-
