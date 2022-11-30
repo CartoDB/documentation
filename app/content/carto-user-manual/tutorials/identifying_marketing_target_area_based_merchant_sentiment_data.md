@@ -42,7 +42,7 @@ We will then construct spatial indexes to identify the best areas to launch a ca
 
    ![Data Appeal Main Listing dataset](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_main_listing_dataset.png)
 
-4. As we mentioned earlier, we are not so much interested in analyzing a general sentiment value. Rather, we are interested to understand sentiment when it comes to the topic coffee. For that, we will import sentiment data for the "coffee" and "kaffee" topics for each POI. This data can be found in the Data Appeal Clusters and Topics dataset, from which we will import a subset filtered only for the relevant topics.Navigate to "Add source from:" and select the table "dataappeal_clusters_and_topics_for_coffee_berlin_cpg", located under the "demo_tables" folder in the CARTO Data Warehouse connection.
+4. As we mentioned earlier, we are not so much interested in analyzing a general sentiment value. Rather, we are interested in understanding sentiment when it comes to the topic of coffee. For that, we will import sentiment data for the "coffee" and "kaffee" topics for each POI. This data can be found in the Data Appeal Clusters and Topics dataset, from which we will import a subset filtered only for the relevant topics.Navigate to "Add source from:" and select the table "dataappeal_clusters_and_topics_for_coffee_berlin_cpg", located under the "demo_tables" folder in the CARTO Data Warehouse connection.
 
     When the table loads, click on "More options" in the source and "Show data table". Scroll to the right and observe the columns "topic", "polarity" and "opinions_count", which are relevant in our case. Visit the dataset [documentation](https://carto.com/spatial-data-catalog/browser/dataset/tdac_placessenti_66e9e87e/) to understand what the variables represent.
 
@@ -157,7 +157,7 @@ We will then construct spatial indexes to identify the best areas to launch a ca
     FROM quadbin_normalized
     ```
 
-    We normalize all variables and then we create the score by assigning weights to the variables. We assign most weight (0.5) to the coffee sentiment variables, while we divide the rest of the weight to footfall and reviews volume (0.25 each).
+    We normalize all variables and then we create the score by assigning weights to the variables. We assign most weight (0.5) to the coffee sentiment variables, while we divide the rest of the weight to footfall and reviews' volume (0.25 each).
 
     Rename the layer and source to "Index score" and style as seen below. Hide the "Aggregated POIs" layer.
 
@@ -165,7 +165,7 @@ We will then construct spatial indexes to identify the best areas to launch a ca
 
 10. We can see that there are, as expected, a lot of areas of interest in the center, but also some areas in the suburbs. Let's introduce some widgets to explore further.
 
-    Let´s create a histogram filter for the index score, one for coffee sentiment, one for footfall, one for the reviews volume. Go to widgets, and select layer "Index score". Create a widget according to the configuration seen below.
+    Let's create a histogram filter for the index score, one for coffee sentiment, one for footfall, one for the reviews volume. Go to widgets, and select layer "Index score". Create a widget according to the configuration seen below.
 
     ![Index score widget](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_index_score_widget.png)
 
@@ -190,7 +190,7 @@ We will then construct spatial indexes to identify the best areas to launch a ca
 
     ![Index score coffee sentiment height](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_index_score_coffee_sentiment_height.png)
 
-14. To view both layers in separate viewport, click on "Switch to dual map view", and "3D view".
+14. To view both layers in a separate viewport, click on "Switch to dual map view", and "3D view".
 
     In the former viewport, hide the "Index score (coffee sentiment)" layer, in the latter viewport, hide the other two layers.
 
@@ -205,13 +205,13 @@ We will then construct spatial indexes to identify the best areas to launch a ca
 
     ![Index score coffee sentiment tooltip](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_index_score_coffee_sentiment_tooltip.png)
 
-16. We can now see more clearly which are the best areas in Berlin, with the highest index score and coffee sentiment score. Let´s now find the the merchants with the highest coffee sentiment score, to validate that they fall within the identified areas, and to explore the areas using Google Street view API.
+16. We can now see more clearly which are the best areas in Berlin, with the highest index score and coffee sentiment score. Let's now find the merchants with the highest coffee sentiment score, to validate that they fall within the identified areas, and to explore the areas using Google Street view API.
 
     First create a widget, choosing the "POIs with coffee sentiment score" source. Style as below
 
     ![POIs widget](/img/cloud-native-workspace/tutorials/tutorial18_map_cpg_sentiment_merchant_coffee_sentiment_widget.png)
 
-    We can see that few merchants (around 200) in Berlin stand out for coffee sentiment. For a trade spend allocation exercise, we could had chosen to focus trade spend budget on those merchants.
+    We can see that few merchants (around 200) in Berlin stand out for coffee sentiment. For a trade spend allocation exercise, we could have chosen to focus trade spend budget on those merchants.
 
 17. Let's now create a tooltip for each merchant, to view the name and sentiment of each merchant. Enable the tooltip for the POIs layer, and choose to configure using HTML code. Paste the code below:
 

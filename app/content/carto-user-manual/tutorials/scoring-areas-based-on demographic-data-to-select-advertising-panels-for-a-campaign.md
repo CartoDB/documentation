@@ -16,7 +16,7 @@ date: "2022-07-25"
 
 **Context**
 
-A common use case of Out-of-home advertising is goesegmentation. Geosegmentation helps in identifying where target audiences live in or commute through, and in association where panels should be located. This is particularly useful if the goal of the advertising campaign is not necessarily to direct traffic to nearby locations, but rather to maximize the population the panel appeals to.
+A common use case of Out-of-home advertising is geosegmentation. Geosegmentation helps in identifying where target audiences live in or commute through, and in association where panels should be located. This is particularly useful if the goal of the advertising campaign is not necessarily to direct traffic to nearby locations, but rather to maximize the population the panel appeals to.
 
 In this example, we will use sociodemographic and income data to identify where a theoretical target audience for Starbucks is located in New York. We will construct a spatial index score for the panels using the geosegmentation criteria, so that we prioritize panels based on their score.
 
@@ -51,7 +51,7 @@ In this example, we will use sociodemographic and income data to identify where 
 
     ![Map new map instance](/img/cloud-native-workspace/tutorials/tutorial13_map_new_map_instance.png)
 
-6. We will define the overall Area of study and divide into hexagons by running an SQL query. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection:
+6. We will define the overall Area of study and divide it into hexagons by running an SQL query. Select the "Add source from..." at the bottom left of the page. Select the tab named "Custom Query (SQL)", and click on the "CARTO Data Warehouse" connection:
 
    ![Map select new source custom query](/img/cloud-native-workspace/tutorials/tutorial17_map_custom_query.png)
 
@@ -59,7 +59,7 @@ In this example, we will use sociodemographic and income data to identify where 
 
    ![Map new map sql editor](/img/cloud-native-workspace/tutorials/tutorial13_map_new_sql_editor.png)
 
-8. We define the study area and create h3 layer and save the h3 layer as a new table for the study area. For this project, we’re using the greater NYC area as our study area. To define that area we need to select the four polygons representing Brooklyn, Queens, Manhattan and the Bronx, and merge them together.
+8. We define the study area and create the h3 layer and save the h3 layer as a new table for the study area. For this project, we’re using the greater NYC area as our study area. To define that area we need to select the four polygons representing Brooklyn, Queens, Manhattan and the Bronx, and merge them together.
     ```sql
     -- define study area
     WITH study_area AS (
@@ -133,13 +133,13 @@ In this example, we will use sociodemographic and income data to identify where 
 
     Remember to replace the location of the dataset with the one related to your org.
 
-    Style the resulting layer as seen below. As we can see, population of women between 18 and 40 is high in most parts of Ney York metropolitan area, slightly higher in Manhattan East, while as we move away from Kings and Queens population drops.
+    Style the resulting layer as seen below. As we can see, population of women between 18 and 40 is high in most parts of New York metropolitan area, slightly higher in Manhattan East, while as we move away from Kings and Queens population drops.
 
     ![Map new variable consolidated age stats](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_age.png)
 
     You can now delete the previous source and layer and keep the new one, as we will keep building on it.
 
-13. Let's now add variables to represent geographies where the median annual income is above $70,000, and subsequently normalize it. As before, we will write a custom query, but we will run this in the same layer as before, on other words we will perform further analysis on the same layer. Replace the previous query with the query below:
+13. Let's now add variables to represent geographies where the median annual income is above $70,000, and subsequently normalize it. As before, we will write a custom query, but we will run this in the same layer as before, in other words we will perform further analysis on the same layer. Replace the previous query with the query below:
 
     ```sql
     WITH pop_stats AS (
@@ -232,13 +232,13 @@ In this example, we will use sociodemographic and income data to identify where 
 
     ![Map new variable score](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_score_new.png)
 
-    Set the colours to a custom colour scale, as seen below.
+    Set the colors to a custom color scale, as seen below.
 
     ![Map new variable score custom colour](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_new_variable_score_custom_colour_new.png)
 
     Rename the layer to "Audience index score". As we can see the score is highest in Lower Manhattan and Brooklyn, but there are also some interesting areas in Queens and Upper Manhattan.
 
-    You can load the work we have done so far separately, as we have created already this table. You can access it by navigating to the "demo_tables" folder in the Data Explorer, and creating a map using the "newyork_ooh_sample_audience_h3" table. Once you load the table, you can style as above.
+    You can load the work we have done so far separately, as we have already created this table. You can access it by navigating to the "demo_tables" folder in the Data Explorer, and creating a map using the "newyork_ooh_sample_audience_h3" table. Once you load the table, you can style as above.
 
 15. Let's create a tooltip for this layer, so that we can see the score, population and median income within each geography. Navigate to the Interactions section, and enable the tooltip for the latest layer. Configure the tooltip to show values when hovering, and add the variables as below:
 
@@ -260,7 +260,7 @@ In this example, we will use sociodemographic and income data to identify where 
 
     ![Map area of interest panels](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panels.png)
 
-17. We now need to assign a score to each of the panels, to understand which are best located with respect to the audience we have constructed. To do that, we need to take into account a catchment area around all panels, and aggregated the scores of all hexagons overlapping with the defined catchment area. To start, let's create the catchment areas around each panel. In this case we can simulate them as buffers of 500m (roughly a 5min walk).
+17. We now need to assign a score to each of the panels, to understand which are best located with respect to the audience we have constructed. To do that, we need to take into account a catchment area around all panels, and aggregate the scores of all hexagons overlapping with the defined catchment area. To start, let's create the catchment areas around each panel. In this case we can simulate them as buffers of 500m (roughly a 5min walk).
 
     Click on the three dots on the "Area of interest panels" source, and select "Add SQL analysis". Select "Create Buffers" and click on Continue.
 
@@ -271,13 +271,13 @@ In this example, we will use sociodemographic and income data to identify where 
 
     ![Map create panel buffers step 2](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panel_buffers_step2.png)
 
-19. After finishing with the configuration of the analysis, click on "Run SQL analysis". You will see we ow have buffers around each panel.
+19. After finishing with the configuration of the analysis, click on "Run SQL analysis". You will see we that now have buffers around each panel.
 
     Rename the layer "Panel 500m buffers" and shift above the "Audience index score" layer to give prominence. Style as seen below.
 
     ![Map create panel buffers style](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_aoi_panel_buffers_style.png)
 
-20. Next we should intersect the panel buffers with h3 layer to generate an average score for each panel buffer.
+20. Next we should intersect the panel buffers with the h3 layer to generate an average score for each panel buffer.
 
     Click on the three dots on the "Panel 500m buffers" source, and select "Add SQL analysis". Select "Intersect and aggregate" and click on Continue.
 
@@ -289,7 +289,7 @@ In this example, we will use sociodemographic and income data to identify where 
 
     ![Map aggregate score for each panel step 2](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_buffers_score_step2.png)
 
-    Click on "Run SQL analysis". This action will create another layer. Leave layer in its current styling for now. Click on the 3 dots on the right of the new layer and select "Show data table". Explore the table and observe the resulting column for average normalized score.
+    Click on "Run SQL analysis". This action will create another layer. Leave the layer in its current styling for now. Click on the 3 dots on the right of the new layer and select "Show data table". Explore the table and observe the resulting column for average normalized score.
 
      ![Map aggregate score for each panel final](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panel_buffers_score_final.png)
 
@@ -301,7 +301,7 @@ In this example, we will use sociodemographic and income data to identify where 
 
     For more information on the join analysis please visit the page [here](/carto-user-manual/maps/sql-analyses/#add-column-from-second-source).
 
-23. In the resulting dialog box, select the second source as the latest layer we have created, and configure column "full_id" in both tables as the key column as the one we will use to join. On the right hand side, keep all columns from base source, and add column "avg_norm_score" from the second source.
+23. In the resulting dialog box, select the second source as the latest layer we have created, and configure column "full_id" in both tables as the key column as the one we will use to join. On the right hand side, keep all columns from the base source, and add column "avg_norm_score" from the second source.
 
     ![Map join score column into with panels table step 2](/img/cloud-native-workspace/tutorials/tutorial17_map_ooh_geosegmentation_panels_join_score_step2.png)
 

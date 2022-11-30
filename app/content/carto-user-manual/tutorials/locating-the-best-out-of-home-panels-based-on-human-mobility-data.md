@@ -1,6 +1,6 @@
 ---
 title: "Locating the best out-of-home panels using human mobility data"
-description: "In this tutorial we find the Out-Of-Home panels in Madrid that best match the forecasted mobility of a target audience. We visualize mobility using quadints that represent visitor volumes"
+description: "In this tutorial we find the Out-Of-Home panels in Madrid that best match the forecasted mobility of a target audience. We visualize mobility using quadints that represent visitor volumes."
 image: "/img/tutorials/ooh_coverage_analysis.png"
 type: tutorials
 date: "2022-07-20"
@@ -14,8 +14,8 @@ date: "2022-07-20"
 
 **Context**
 
-A common use case of the Out-of-home advertising industry is coverage analysis, which is the identification of the best panels for a campaign based on forecasted  visits of a chosen audience. The use case can be useful both during campaign planning (select panels) and campaign monitoring and otpimization (adjust the panel inventory allocated to the campaign)
-In this tutorial we are showcasing an example where we vizualize forecasted visits of a certain audience on a heatmap, overlay with the point locations of panel inventory, and select the best area to focus on based on the results.
+A common use case of the Out-of-home advertising industry is coverage analysis, which is the identification of the best panels for a campaign based on forecasted  visits of a chosen audience. The use case can be useful both during campaign planning (select panels) and campaign monitoring and optimization (adjust the panel inventory allocated to the campaign)
+In this tutorial we are showcasing an example where we visualize forecasted visits of a certain audience on a heatmap, overlay with the point locations of panel inventory, and select the best area to focus on based on the results.
 
 **Steps to reproduce**
 
@@ -33,7 +33,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
 3. Let's first explore a table which includes data for visits and visitors for different locations in the central part of the Madrid metropolitan area, including the visitors´ sociodemographic characteristics.
 
-    Go to the Data Explorer, in the CARTO Datawarehouse, in the "demo_tables" folder. Click on the "madrid_est_pedestrian_traffic" table, and then "Data Preview" tab. You will see we have a Point geometry dataset visits, visitors and associated sociodemographics, for the weekdays of the first week of the year.
+    Go to the Data Explorer, in the CARTO Data Warehouse, in the "demo_tables" folder. Click on the "madrid_est_pedestrian_traffic" table, and then "Data Preview" tab. You will see we have a Point geometry dataset of visits, visitors and associated sociodemographics, for the weekdays of the first week of the year.
 
     ![Map explore data table](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_visitors_table.png)
 
@@ -48,7 +48,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
     )
     ```
 
-    Using the query above we convert the point geometries in the source table to quadints, so that we can better vizualize the caharacteristics of each geometry. Rename the layer "Pedestrian visitors and visits"
+    Using the query above we convert the point geometries in the source table to quadints, so that we can better visualize the characteristics of each geometry. Rename the layer "Pedestrian visitors and visits".
 
     ![Map define area of study](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_area_of_study.png)
 
@@ -67,12 +67,12 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
     ![Map import pedestrian visitor data](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_pedestrian_visitors.png)
 
 
-6. Next, let's combine the two sources to create an quadint layer with all the information of interest. Click on the 3 dots on the right of the first source we have created (the Area of Study source), selecting "Add SQL analysis". Select "Add columns from second source" and click on Continue.
+6. Next, let's combine the two sources to create a quadint layer with all the information of interest. Click on the 3 dots on the right of the first source we have created (the Area of Study source), selecting "Add SQL analysis". Select "Add columns from second source" and click on Continue.
 
    ![Map select UI analysis to merge two sources](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_merge_tables.png)
 
 
-7. On the left hand side of the analysis box, choose the two data sources and the column "geoid" as the key. On the right hand side keep "geoid" and "geom" as variables from the base source, and add "gender", "age", "income", "visitors" and "log_visitors" as the variables from the second source to add. The configuration can be shown below.
+7. On the left hand side of the analysis box, choose the two data sources and the column "geoid" as the key. On the right hand side, keep "geoid" and "geom" as variables from the base source, and add "gender", "age", "income", "visitors" and "log_visitors" as the variables from the second source to add. The configuration can be shown below.
 
     ![Map select config to merge two sources](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_merge_tables_config.png)
 
@@ -85,12 +85,12 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
     ![Map pedestrian audience](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_pedestrian_audience.png)
 
-9. Let's style the layer so that the colour of each quadbin represents the amount of unique visitors expected in the quadbin for the selected period of time. Style the layer as seen below.
+9. Let's style the layer so that the color of each quadbin represents the amount of unique visitors expected in the quadbin for the selected period of time. Style the layer as seen below.
 
     ![Map pedestrian audience styling](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_pedestrian_audience_styling.png)
 
 
-10. With the current configuration we are vizualzing several quadbins on top of at each location, representing different combinations of audiences. However we will want to narrow down our map to only show data for a target audience when we perform coverage analysis. To do that we will need 3 widgets.
+10. With the current configuration we are visualzing several quadbins on top of each location, representing different combinations of audiences. However we will want to narrow down our map to only show data for a target audience when we perform coverage analysis. To do that we will need 3 widgets.
 
     Go to the widgets tab and select "New widget", followed by the data source.
 
@@ -122,7 +122,7 @@ In this tutorial we are showcasing an example where we vizualize forecasted visi
 
     ![Map panel tooltip](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_panel_tooltip.png)
 
-16. Let's now test our map. Imagine we our audience is men, between the age of 30 and 50, with mid-high to high income. We use the widgets to filter for that audience. In the resulting map below we can see that our audience is mostly located in the north-east of Madrid, where we have a good coverage in terms of panels.
+16. Let's now test our map. Imagine that our audience is men, between the age of 30 and 50, with mid-high to high income. We use the widgets to filter for that audience. In the resulting map below we can see that our audience is mostly located in the north-east of Madrid, where we have good coverage in terms of panels.
 
     ![Map panel audience](/img/cloud-native-workspace/tutorials/tutorial16_map_ooh_coverage_target_audience.png)
 

@@ -95,7 +95,7 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     ![Chicago H3 enriched](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_chicago_h3_enriched.png)
 
-6. Let's now estimate the TAM for each H3 cell, based on the variables we enrched the layer with in the previous step. Run a custom query by pasting the snippet below:
+6. Let's now estimate the TAM for each H3 cell, based on the variables we enriched the layer with in the previous step. Run a custom query by pasting the snippet below:
 
     ```sql
     SELECT
@@ -125,9 +125,9 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     ![Personal care product TAM styled](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_personal_care_product_tam_styled.png)
 
-    We can see that, as expected the TAM is stronger in the city of Chicago, but also in areas located in the north of the city.
+    We can see that, as expected, the TAM is stronger in the city of Chicago, but also in areas located in the north of the city.
 
-9. Let's now import the all personal care and supermarket stores present in Chicago. We have obtained this sample from [Safegraph](https://carto.com/spatial-data-catalog/browser/dataset/sg_coreplaces_948d1168/), and filtered for "Health and Personal Care Stores" and "Grocery Stores", i.e., where personal care products could be purchased.
+9. Let's now import all personal care and supermarket stores present in Chicago. We have obtained this sample from [Safegraph](https://carto.com/spatial-data-catalog/browser/dataset/sg_coreplaces_948d1168/), and filtered for "Health and Personal Care Stores" and "Grocery Stores", i.e., where personal care products could be purchased.
 
     We have made this sample available under "demo data", "demo tables", with the name "safegraph_personal_care_and_supermarkets_chicago_cpg".
 
@@ -221,23 +221,23 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     Go to "More Options" of the "Merchants with allocated addressable market and territory" layer and select "Add SQL analysis". Select "Compute centroids" and configure as seen below.
 
-    ![Territory centre](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids.png)
+    ![Territory center](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids.png)
 
-18. Run the analysis. Rename the new layer as "Territory centre".
+18. Run the analysis. Rename the new layer as "Territory center".
 
     Style the layer as seen below, making sure the radius depends on the addressable market:
 
-    ![Territory centre layer](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids_layer.png)
+    ![Territory center layer](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids_layer.png)
 
 19. Let's also create a tooltip for the layer. Configure as seen below:
 
-    ![Territory centre tooltip](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids_tooltip.png)
+    ![Territory center tooltip](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_centroids_tooltip.png)
 
 20. Hide the layer "Personal care product TAM" and change the basemap to CARTO Dark matter.
 
     ![Dark matter](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_dark_matter.png)
 
-21. Let's create a couple of widgets to more easily be able to explore the map. First let's create a widget to filter merchants by sub-category, and a widget to filter by allocated addressable market (note: the filtering action will not update the summation represented by the territory centres)
+21. Let's create a couple of widgets to more easily be able to explore the map. First let's create a widget to filter merchants by sub-category, and a widget to filter by allocated addressable market (note: the filtering action will not update the summation represented by the territory centers)
 
     Go to the widgets tab and create a widget for "Merchants by category", using the "Merchants with allocated addressable market and territory" source. Configure as below:
 
@@ -247,7 +247,7 @@ The geospatial data we use to estimate the TAM are samples from the following da
 
     ![Addressable market widget](/img/cloud-native-workspace/tutorials/tutorial19_map_territory_planning_addressable_market_widget.png)
 
-22. We are done! We can see that Territories closest to the city centre (territories 0 and 3 in our case) have the largest addressable market, as expected, with territories of 20 and 26 million USD. The territories outside the city centre have addressable markets ranging from 2 to 5 million USD. What we would do as a next setp of the analysis is divide the two territories with the largest addressable markets (territories 0 and 3) to 4 to 5 sub-territories, to balance the value as much as possible. In this way we could create territories with similar values, and based on our sales resources, divide or consolidate further.
+22. We are done! We can see that Territories closest to the city center (territories 0 and 3 in our case) have the largest addressable market, as expected, with territories of 20 and 26 million USD. The territories outside the city center have addressable markets ranging from 2 to 5 million USD. What we would do as a next setup of the analysis is divide the two territories with the largest addressable markets (territories 0 and 3) to 4 to 5 sub-territories, to balance the value as much as possible. In this way we could create territories with similar values, and based on our sales resources, divide or consolidate further.
 
 13. Change the name of the map to "Territory planning for personal care product"
 

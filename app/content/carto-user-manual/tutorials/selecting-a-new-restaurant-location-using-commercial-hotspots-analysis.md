@@ -1,6 +1,6 @@
 ---
 title: "Selecting a new restaurant location with spatial analytics"
-description: "We find the best new location for a specific target demographics using spatial indexes and advanced statistical functions such as Commercial Hotspots."
+description: "We find the best new location for a specific target demographic using spatial indexes and advanced statistical functions such as Commercial Hotspots."
 image: "/img/tutorials/pizza-hut-location-in-honolulu.png"
 type: tutorials
 date: "2022-05-10"
@@ -51,7 +51,7 @@ In-depth content and more technical information regarding the exercise found at 
 
    ![Map define buffer](/img/cloud-native-workspace/tutorials/tutorial13_map_area_of_study_buffer.png)
 
-6. We then extract our current store assets and display on the map. In this example, we will extract Pizza Hut stores from a sample dataset including points of interest in Honolulu (subset of [OpenStreetMaps's Planet Nodes dataset](https://carto.com/spatial-data-catalog/browser/dataset/osm_nodes_74461e34/)). Add a new custom query, as we did in the buffer example, and introduce the query below:
+6. We then extract our current store assets and display them on the map. In this example, we will extract Pizza Hut stores from a sample dataset including points of interest in Honolulu (subset of [OpenStreetMaps's Planet Nodes dataset](https://carto.com/spatial-data-catalog/browser/dataset/osm_nodes_74461e34/)). Add a new custom query, as we did in the buffer example, and introduce the query below:
 
    ```sql
     WITH buffer AS (
@@ -88,7 +88,7 @@ In-depth content and more technical information regarding the exercise found at 
     ````
     Ensure you select the spatial data type of the query as H3, on the top right hand side of the SQL Editor (see image).
 
-    Rename the layer "Polyfill area of study" and reorder the layer to place as the bottom layer.
+    Rename the layer "Polyfill area of study" and reorder the layer to it place as the bottom layer.
 
     ![Map polyfill area of study](/img/cloud-native-workspace/tutorials/tutorial13_map_polyfill_area_of_study.png)
 
@@ -143,7 +143,7 @@ In-depth content and more technical information regarding the exercise found at 
 
     Hide the layer we have just created by clicking on the "eye" icon next to the 3 dots of each layer.
 
-10. In addition to target population, we also want to consider the distance to the closest own store, in order to avoid cannibalization. To do this we calculate the distance of each hexagon to each store, and keep the minimum.
+10. In addition to the target population, we also want to consider the distance to the closest own store, in order to avoid cannibalization. To do this we calculate the distance of each hexagon to each store, and keep the minimum.
 
     ```sql
     CREATE TABLE `cartobq.docs.honolulu_pizza_aos_enriched_sum_wdist` AS
@@ -176,7 +176,7 @@ In-depth content and more technical information regarding the exercise found at 
 
     Rename the layer "Demographics and distance to closest location" and reorder the layer to place below "Own restaurant locations" and "Area of study". Hover over a hexagon to see that there is now one population value and distance value per hexagon (population between 15 and 34, and distance to closest own store).
 
-    Style the hexagons according to the config seen below, applying a gradient palette to represent with darker colour the areas with the lowest population. 
+    Style the hexagons according to the config seen below, applying a gradient palette to represent with darker color the areas with the lowest population. 
 
     ![Map area of study demographics distance to store](/img/cloud-native-workspace/tutorials/tutorial13_map_area_of_study_demographics_distance.png)
 
@@ -199,7 +199,7 @@ In-depth content and more technical information regarding the exercise found at 
     ```sql
     SELECT ST_UNION_AGG(`carto-un`.carto.H3_BOUNDARY(index)) FROM `cartobq.docs.honolulu_pizza_hotspots`
     ```
-    Rename the layer "Proposed restaurant locations" and reorder the layer to place below "Own retsaurant locations" and "Area of study". 
+    Rename the layer "Proposed restaurant locations" and reorder the layer to place below "Own restaurant locations" and "Area of study". 
 
     Style the boundary according to the config seen below.
 

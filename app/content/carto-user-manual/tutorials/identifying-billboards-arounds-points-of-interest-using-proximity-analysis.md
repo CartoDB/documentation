@@ -127,7 +127,7 @@ In this tutorial we are showcasing an example where we want to find the panels w
     GROUP BY 1,2
     ```
 
-    Rename the layer "Starbucks within 400m distance of a panel" and reorder the layer to place as the second layer. Style as seen below.
+    Rename the layer "Starbucks within 400m distance of a panel" and reorder the layer to place it as the second layer. Style as seen below.
 
     ![Map keep Starbucks less than 400m from a panel](/img/cloud-native-workspace/tutorials/tutorial15_map_ooh_proximity_starbucks_less_than_400m.png)
 
