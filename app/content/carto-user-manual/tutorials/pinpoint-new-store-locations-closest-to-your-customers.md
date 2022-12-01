@@ -105,7 +105,7 @@ in `CARTO's Analytics Toolbox` to generate 6 clusters (which is the number of st
 
     ![Map tooltip new tooltip](/img/cloud-native-workspace/tutorials/tutorial5_map_show_tooltip.png)
 
-14. We can change our basemap. Go to Basemaps tab and select “Dark matter” from CARTO.
+14. We can change our basemap. Go to the Basemaps tab and select “Dark matter” from CARTO.
 
     ![Map basemap](/img/cloud-native-workspace/tutorials/tutorial5_map_basemap_dark_carto.png)
 
