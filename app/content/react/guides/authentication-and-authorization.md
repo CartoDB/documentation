@@ -1,8 +1,8 @@
 ## Authentication and Authorization
 
-This guide shows how you can create private and public applications. We can classify the applications in two:
+This guide shows how authentication and authorization work with custom applications. We can classify the applications in two categories:
 
-- Private applications. Requires a login against the CARTO platform.
+- Private applications. Require a login against the CARTO platform.
 
 - Public applications. The user does not need to log into the application. Access to data is provided through a token.
   
@@ -12,7 +12,7 @@ This guide shows how you can create private and public applications. We can clas
 To create a public application, you need to create a token with access to all of the datasets required by the application and introduce the token in the application config (`src/store/initialStateSlice.js`).
 
 {{% bannerNote title="note" %}}
-Because of security reasons the SQL cannot be modified by the user in a private application
+Only the specific tables and specific SQL queries added to the token can be used in the application. If you specify a table, you cannot make an arbitrary query using that table, only add the data source with the type equals to MAP_TYPES.TABLE. If you specify a query, you can use [query parameters](../query-parameters) to specify, for instance, different parameters in the WHERE clause.
 {{%/ bannerNote %}}
 
 With the following changes we're going to make the private application public.
