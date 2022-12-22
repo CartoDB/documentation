@@ -55,11 +55,17 @@ AS
 ```
 
 ##### Snowflake
-The [Search Optimization Service](https://docs.snowflake.com/en/user-guide/search-optimization-service.html#) can help getting faster results when querying geospatial data. In order to profit from this feature, it **needs to be enabled in your Snowflake account**. Additionally, it requires that the table is ordered in a specific way that takes into account the coordinates of each geometry:
+
+Use clustering by the geohash of the GEOGRAPHY column to ensure spatial operations are fast.
 
 ```sql
-CREATE OR REPLACE TABLE POINTS_SORTED
-AS SELECT * FROM POINTS_10M ORDER BY ST_XMIN(geom), ST_YMIN(geom);
+ALTER TABLE table_name CLUSTER BY (ST_GEOHASH(geom));
+```
+
+If your Snowflake edition is Enterprise (or higher), you can get better performance if you enable the [Search Optimization Service](https://docs.snowflake.com/en/user-guide/search-optimization-service.html#). You need to explicitly enable the GEO index on the GEOGRAPHY column. 
+
+```sql
+ALTER TABLE table_name ADD search optimization ON GEO(geom);
 ```
 
 ##### PostgreSQL (with PostGIS)
