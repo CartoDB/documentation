@@ -4,7 +4,23 @@
 
 #### All modules
 
-New
+Fix
+
+- Make cartofante the author and comitter of the release
+
+Improvement
+
+- Adapt to Semver
+
+#### All modules
+
+Feature
+
+- Create release workflows
+
+#### All modules
+
+Feature
 
 - Create release workflows
 
@@ -16,7 +32,7 @@ Improvement
 
 #### Tiler
 
-New
+Feature
 
 - Add tilestats generation to H3 Tiler
 
@@ -24,7 +40,7 @@ New
 
 #### All modules
 
-New
+Feature
 
 - Tasks to build installation packages
 
@@ -36,7 +52,7 @@ Improvement
 
 #### Tiler
 
-New
+Feature
 
 - Add H3 Tiler
 
@@ -44,7 +60,7 @@ New
 
 #### All modules
 
-New
+Feature
 
 - Add VERSION_CORE function
 
@@ -56,7 +72,7 @@ Improvement
 
 #### All modules
 
-New
+Feature
 
 - Add VERSION_ADVANCED function
 
@@ -72,7 +88,7 @@ Improvement
 
 #### All modules
 
-New
+Feature
 
 - Add headers to functions that didn't have
 - Add make rule to publis artifact in local and sonatype
@@ -90,7 +106,7 @@ Improvement
 
 #### All modules
 
-New
+Feature
 
 - Add structure for databricks in AT advanced repo
 - Add make rules
@@ -136,7 +152,7 @@ Improvement
 
 #### Module indexing
 
-New
+Feature
 
 - Add ST_CRSFROMTEXT function.
 - Add ST_EXTENTFROMGEOM function.
@@ -148,25 +164,25 @@ New
 
 #### Module formatters
 
-New
+Feature
 
 - Add ST_ASTWKB function.
 
 #### Module parsers
 
-New
+Feature
 
 - Add ST_GEOMFROMWKT function.
 
 #### Module predicates
 
-New
+Feature
 
 - Add ST_COVERS function.
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_BUFFERPOINT function.
 - Add ST_DIFFERENCE function.
@@ -176,7 +192,7 @@ New
 
 #### Module accessors
 
-New
+Feature
 
 - Add ST_COORDDIM function.
 - Add ST_DIMENSION function.
@@ -197,7 +213,7 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Add ST_MAKEBBOX function.
 - Add ST_MAKEBOX2D function.
@@ -209,7 +225,7 @@ New
 
 #### Module formatters
 
-New
+Feature
 
 - Add ST_ASBINARY function.
 - Add ST_ASGEOHASH function.
@@ -224,7 +240,7 @@ New
 
 #### Module measurements
 
-New
+Feature
 
 - Add ST_AREA function.
 - Add ST_DISTANCE function.
@@ -234,7 +250,7 @@ New
 
 #### Module parsers
 
-New
+Feature
 
 - Add ST_BOX2DFROMGEOHASH function.
 - Add ST_GEOMETRYFROMTEXT function.
@@ -253,7 +269,7 @@ New
 
 #### Module predicates
 
-New
+Feature
 
 - Add ST_CONTAINS function.
 - Add ST_CROSSES function.
@@ -268,7 +284,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_ANTIMERIDIANSAFEGEOM function.
 - Add ST_BOUNDARY function.

@@ -1106,7 +1106,7 @@ CALL `carto-un`.carto.ENRICH_POLYGONS_RAW(
 ### GRIDIFY_ENRICH
 
 {{% bannerNote type="code" %}}
-carto.GRIDIFY_ENRICH(input_query, grid_type, grid_level, do_variables, do_source, custom_query, custom_variables, output))
+carto.GRIDIFY_ENRICH(input_query, grid_type, grid_level, do_variables, do_source, custom_query, custom_variables, kring, decay, output)
 {{%/ bannerNote %}}
 
 **Description**
@@ -1124,7 +1124,9 @@ The enrichment operations performed using Data Observatory data and custom data 
 * `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
 * `custom_query`: `STRING` query that contains a geography column called `geom` and the columns with the custom data that will be used to enrich the grid cells. It can be set to `NULL` or `''`.
 * `custom_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` list with the columns of the `custom_query` and their corresponding aggregation method (`sum`, `avg`, `max`, `min`, `count`) that will be used to enrich the grid cells. It can be set to NULL.
-* `output`: `STRING` containing the name of the output table to store the results of the _gridification_ and the enrichment processes performed by the procedure. The name of the output table should include project and dataset: `project.dataset.table_name`.
+* `kring`: `INT64` size of the kring where the decay function will be applied. This value can be 0, in which case no kring will be computed and the decay function won't be applied.
+* `decay`: `STRING` decay function. Supported values are `uniform`, `inverse`, `inverse_square` and `exponential`. If set to `NULL` or `''`, `uniform` is used by default.
+* `output`: `STRING` containing the name of the output table to store the results of the gridification and the enrichment processes performed by the procedure. The name of the output table should include project and dataset: `project.dataset.table_name`.
 
 **Output**
 
@@ -1156,11 +1158,6 @@ CALL `carto-un`.carto.GRIDIFY_ENRICH(
 -- The table `my-project.my-dataset.my-enriched-table` will be created
 -- with columns: index, population_14d9cf55_sum, var1_sum, var2_sum, var2_max
 ```
-
-{{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
-
-* [Applying the Twin Areas analysis to find the most similar location in Texas, US to the locations of the top 10 liquor stores in 2019 in Iowa](/analytics-toolbox-bigquery/examples/twin-areas-iowa/)
-{{%/ bannerNote %}}
 
 
 {{% euFlagFunding %}}

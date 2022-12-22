@@ -394,7 +394,7 @@ CALL `carto-un`.carto.COMMERCIAL_HOTSPOTS(
 ### BUILD_CANNIBALIZATION_DATA
 
 {{% bannerNote type="code" %}}
-carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, distances, do_variables, do_urbanity_index, do_source, output_destination, output_prefix)
+carto.BUILD_CANNIBALIZATION_DATA(grid_type, store_query, resolution, method, do_variables, do_urbanity_index, do_source, output_destination, output_prefix, options)
 {{%/ bannerNote %}}
 
 **Description**
@@ -411,21 +411,22 @@ This procedure is the first of two from the Cannibalization analysis workflow. I
 * `grid_type`: `STRING` type of the cell grid. Supported values are `h3` and `quadbin`.
 * `store_query`: `STRING` query with variables related to the stores to be used in the model, including their id and location. It must contain the columns `store_id` (store unique id) and `geom` (the geographical point of the store). The values of these columns cannot be `NULL`.
 * `resolution`: `INT64` level or resolution of the cell grid. Check the available [H3 levels](https://h3geo.org/docs/core-library/restable/) and [Quadbin levels](https://docs.microsoft.com/en-us/azure/azure-maps/zoom-levels-and-tile-grid).
-* `distances`: `ARRAY<FLOAT64>` An array with radiuses in kilometers for each type of urbanity. Sorted from lowest urbanity to highest. Three different types, for Remote/Rural/Low_density_urban - Medium_density_urban - High/Very_High_density_urban locations.
-* do_variables: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore compute the overlap between store locations in the subsequent step of the Cannibalization workflow. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable's default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
-* do_urbanity_index: `STRING` urbanity index variable slug_id in a CARTO Spatial Features subscription from the Data Observatory.
-* do_source: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to NULL or ''.
+* `method`: `STRING` indicates the method of trade area generation. Three options available: `buffer`, `kring` and `isoline`. This method applies to all locations provided.
+* `do_variables`: `ARRAY<STRUCT<variable STRING, aggregation STRING>>` variables of the Data Observatory that will be used to enrich the grid cells and therefore compute the overlap between store locations in the subsequent step of the Cannibalization workflow. For each variable, its slug and the aggregation method must be provided. Use `default` to use the variable's default aggregation method. Valid aggregation methods are: `sum`, `avg`, `max`, `min`, `count`. The catalog procedure [`DATAOBS_SUBSCRIPTION_VARIABLES`](#dataobs_subscription_variables) can be used to find available variables and their slugs and default aggregation. It can be set to NULL.
+* `do_urbanity_index`: `STRING`|`NULL` urbanity index variable slug_id in a CARTO Spatial Features subscription from the Data Observatory. If set to `NULL` then the urbanity is not considered and only one `distance`, the first one from the options arguments is being taken into account.
+* `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to NULL or ''.
 * `output_destination`: `STRING` destination  dataset the output tables. It must contain the project and dataset. For example `<my-project>.<my-dataset>`.
 * `output_prefix`: `STRING` prefix for the output table.
+* `options`: `JSON` A JSON string containing the required parameters for the specified method. For `buffer`: {`distances`: [radius km for Remote/Rural/Low_density_urban, radius km for Medium_density_urban, radius km for High/Very_High_density_urban locations] - `ARRAY<FLOT64>`}, `kring`:{`distances`: [number of layers for Remote/Rural/Low_density_urban, number of layers for Medium_density_urban, number of layers for High/Very_High_density_urban locations] - `INT64`} - `ARRAY<INT64>`}, `isoline` : {`mode`: type of transport. Supported: 'walk', 'car' - [type for Remote/Rural/Low_density_urban, type for Medium_density_urban, type for High/Very_High_density_urban locations] `ARRAY<STRING>`, `time`: range of the isoline in seconds  - [seconds for Remote/Rural/Low_density_urban, seconds for Medium_density_urban, seconds for High/Very_High_density_urban locations] `ARRAY<INT64>`, `api_base_url` :  url of the API where the customer account is stored -  `STRING`, `lds_token`: customer's token for accessing the different API services - `STRING`}.
 
 **Output**
 
 This procedure will output one table:
 
-* Table containing the store_id, cell_id, distance from store_id (integer) and the values for each Data Observatory feature. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output`.
+* Table containing the store_id, cell_id, distance from store_id (integer), the values for each Data Observatory feature, method type and parameters for each method. The output table can be found at the output destination with name `<output-prefix>_output`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output`.
 
 {{% customSelector %}}
-**Example**
+**Examples**
 {{%/ customSelector %}}
 
 ```sql
@@ -436,8 +437,8 @@ CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
     --resolution
     8,
-    --distances
-    [5.,3.,1.],
+    --method,
+    'buffer',
     --do_variables
     [('population_f5b8d177','sum')],
     --do_urbanity_index
@@ -447,7 +448,59 @@ CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
     --output_destination
     '<my-project>.<my-dataset>',
     --output_prefix
-    'test_cannib'
+    'test_cannib',
+    --options
+    '{"distances":[5., 3., 1.]}'
+);
+```
+
+```sql
+CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
+    --grid_type
+    'h3',
+    --store_query
+    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
+    --resolution
+    8,
+    --method,
+    'kring',
+    --do_variables
+    [('population_f5b8d177','sum')],
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib',
+    --options
+    '{"distances":[10, 5, 3]}',
+);
+```
+
+```sql
+CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
+    --grid_type
+    'h3',
+    --store_query
+    '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_stores>`''',
+    --resolution
+    8,
+    --method,
+    'isoline',
+    --do_variables
+    [('population_f5b8d177','sum')],
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib',
+    --options
+    '{"modes":[car, car, walk], "distances":[600, 600, 300], "api_base_url":"your url", "lds_token":"your token"}'
 );
 ```
 
@@ -460,7 +513,7 @@ CALL `carto-un`.carto.BUILD_CANNIBALIZATION_DATA(
 ### CANNIBALIZATION_OVERLAP
 
 {{% bannerNote type="code" %}}
-carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, do_urbanity_index, do_source, output_destination, output_prefix)
+carto.CANNIBALIZATION_OVERLAP(data_table, new_locations_query, method, do_urbanity_index, do_source, output_destination, output_prefix, options)
 {{%/ bannerNote %}}
 
 **Description**
@@ -471,10 +524,12 @@ This procedure is the second step of the Cannibalization analysis workflow. It t
 
 * `data_table`: `STRING` Table with columns `store_id`, `cell_id`, `distance` from `store_id` (integer) and the values for each Data Observatory features.
 * `new_locations_query`: `STRING` query with store_id and location of new stores.
-* `do_urbanity_index`: `STRING` urbanity index variable name from the Data Observatory subscriptions.
+* `method`: `STRING` indicates the method of trade area generation. Three options available: `buffer`, `kring` and `isoline`. This method applies to all locations provided.
+* `do_urbanity_index`: `STRING`|`NULL` urbanity index variable name from the Data Observatory subscriptions. If set to `NULL` then the urbanity is not considered and only one `distance`, the first one from the options arguments is being taken into account.
 * `do_source`: `STRING` name of the location where the Data Observatory subscriptions of the user are stored, in `<my-dataobs-project>.<my-dataobs-dataset>` format. If only the `<my-dataobs-dataset>` is included, it uses the project `carto-data` by default. It can be set to `NULL` or `''`.
 * `output_destination`: `STRING` destination dataset for the output tables. It must contain the project, dataset and prefix. For example `<my-project>.<my-dataset>`.
 * `output_prefix`: `STRING` The prefix for each table in the output destination.
+* `options`: `JSON` A JSON string containing the required parameters for the specified method. For `buffer`: {`distances`: [radius km for Remote/Rural/Low_density_urban, radius km for Medium_density_urban, radius km for High/Very_High_density_urban locations] - `ARRAY<FLOT64>`}, `kring`:{`distances`: [number of layers for Remote/Rural/Low_density_urban, number of layers for Medium_density_urban, number of layers for High/Very_High_density_urban locations] - `ARRAY<INT64>`}, `isoline` : {`mode`: type of transport. Supported: 'walk', 'car' - [type for Remote/Rural/Low_density_urban, type for Medium_density_urban, type for High/Very_High_density_urban locations] `ARRAY<STRING>`, `time`: range of the isoline in seconds  - [seconds for Remote/Rural/Low_density_urban, seconds for Medium_density_urban, seconds for High/Very_High_density_urban locations] `ARRAY<INT64>`, `api_base_url` :  url of the API where the customer account is stored -  `STRING`, `lds_token`: customer's token for accessing the different API services - `STRING`}.
 
 **Output**
 
@@ -483,7 +538,7 @@ This procedure  will output one table:
 * Output overlap table which contains the store_id that receives the "cannibalization", store_id that causes the cannibalization, area overlap and features overlap for each Data Observatory features included in the analysis. The output table can be found at the output destination with the name `<output-prefix>_output_overlap`. Overall path `<my-project>.<my-dataset>.<output-prefix>_output_overlap`.
 
 {{% customSelector %}}
-**Example**
+**Examples**
 {{%/ customSelector %}}
 
 ```sql
@@ -491,7 +546,9 @@ CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
     --data_table
     '<my-project>.<my-dataset>.output_<suffix from step1>',
     --new_locations_query
-     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',,
+     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',
+    --method,
+    'buffer',
     --do_urbanity_index
     'urbanity_e1a58891',
     --do_source
@@ -499,7 +556,51 @@ CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
     --output_destination
     '<my-project>.<my-dataset>',
     --output_prefix
-    'test_cannib'
+    'test_cannib',
+    --options
+    '{"distances":[5.0, 3.0, 1.0]}'
+);
+```
+
+```sql
+CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
+    --data_table
+    '<my-project>.<my-dataset>.output_<suffix from step1>',
+    --new_locations_query
+     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',
+    --method,
+    'kring',
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib',
+    --options
+    '{"distances":[10, 5, 3]}'
+);
+```
+
+```sql
+CALL `carto-un`.carto.CANNIBALIZATION_OVERLAP(
+    --data_table
+    '<my-project>.<my-dataset>.output_<suffix from step1>',
+    --new_locations_query
+     '''SELECT store_id, geom, FROM `<project>.<dataset>.<table_name_with_new_stores>`''',
+    --method,
+    'isoline',
+    --do_urbanity_index
+    'urbanity_e1a58891',
+    --do_source
+    '<my-dataobs-project>.<my-dataobs-dataset>',
+    --output_destination
+    '<my-project>.<my-dataset>',
+    --output_prefix
+    'test_cannib',
+    --options
+    '{"modes":[car, car, walk], "distances":[600, 600, 300], "api_base_url":"your url", "lds_token":"your token"}'
 );
 ```
 

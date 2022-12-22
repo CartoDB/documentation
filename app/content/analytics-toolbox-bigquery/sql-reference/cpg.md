@@ -145,4 +145,123 @@ CALL `carto-un`.carto.RUN_CUSTOMER_SEGMENTATION(
 ```
 
 
+### FIND_SIMILAR_LOCATIONS
+
+{{% bannerNote type="code" %}}
+carto.FIND_SIMILAR_LOCATIONS(origin_query, target_query, index_column, pca_explained_variance_ratio, max_results, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+Procedure to obtain the similar locations for a given location (origin) on a set of external variables. These similar locations are selected from a set of candidates (target locations), that can be stores, restaurants, etc. Internally it works just like the [`FIND_TWIN_AREAS`](../retail/#find_twin_areas) function, so please refer to its documentation for further examples and details of the implementation.
+
+The output similar locations are those of the target candidates considered to be the most similar to the origin locations, based on the values of a set of variables. Only variables with numerical values are supported. Both origin and target locations should be uniquely identified by an index column.
+
+This procedure expects to receive features that characterize each of the locations, for which we recommend taking into account:
+
+- [`carto.GENERATE_TRADE_AREAS`](#generate_trade_areas) procedure to generate different types of service areas for both origin and target locations,
+- [`carto.ENRICH_POLYGONS`](../data/#enrich_polygons) or [`carto.DATAOBS_ENRICH_POLYGONS`](../data/#dataobs_enrich_polygons) procedure to enrich the defined trade areas resulting in the format expected for this procedure.
+
+**Input**
+
+- `origin_query`: `STRING` query to provide the origin location (identified with its `index_column` value) and its associated data columns. No `NULL` values should be contained in any of the data columns provided.
+- `target_query`: `STRING` query to provide the target locations (uniquely identified by `index_column`) and their associated data columns, e.g. `SELECT * FROM <project>.<dataset>.<target_table>`. The data columns should be equal to those provided in the `origin_query`, otherwise the procedure will fail. Locations with any `NULL` values will be excluded from the analysis.
+- `index_column`: `STRING` name of the index column for both the `origin_query` and the `target_query`. This index has to uniquely identify each of the individual locations in the queries.
+- `pca_explained_variance_ratio`: `FLOAT64` of the explained variance retained in the PCA analysis. It defaults to 0.9 if set to`NULL`.
+- `max_results`: `INT64` of the maximum number of similar locations returned. If set to `NULL`, all target locations are returned.
+- `output_prefix`: `STRING` destination and prefix for the output tables. It must contain the project, dataset and prefix: `<project>.<dataset>.<prefix>`.
+
+**Output**
+
+The procedure outputs the following:
+
+- Similar locations model, named `<project>.<dataset>.<prefix>_model`. Please note that the model computation only depends on the `target_query` and therefore the same model can be used if the procedure is re-run for a different `origin_query`. To allow for this scenario in which the model is reused, if the output model already exists, it won't be recomputed. To avoid this behavior, simply choose a different `<prefix>` in the `output_prefix` parameter.
+
+- Results table, named `<project>.<dataset>.<prefix>_<origin_index>_results`, containing in each row the index of the target locations (`index_column`) and its associated `similarity_score` and `similarity_skill_score`. The `similarity_score` corresponds to the distance between the origin and target location: the `similarity_skill_score` for a given target locations `*t*` is computed as `1 - similarity_score(*t*) / similarity_score(<*t*>)`, where `<*t*>` is the average target location, computed by averaging each feature for all the target locations. This `similarity_skill_score` represents a relative measure: the score will be positive if and only if the target location is more similar to the origin than the mean vector data, with a score of 1 meaning perfect matching or zero distance. Therefore, a target location with a larger score will be more similar to the origin under this scoring rule.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.FIND_SIMILAR_LOCATIONS(
+    -- Origin location
+    """
+        SELECT * FROM `cartobq.docs.similar_locations_enriched`
+        WHERE location_id = '001'
+    """,
+    -- Target locations (candidates)
+    """
+        SELECT * FROM `cartobq.docs.similar_locations_enriched`
+        WHERE location_id <> '001'
+    """,
+    -- Similar locations model inputs
+    'location_id',
+    0.90,
+    NULL,
+    'my-project.my-dataset.my-prefix'
+);
+-- Table `<my-project>.<my-dataset>.<output-prefix>_{ID}_results` will be created
+-- with the column: location_id, similarity_score, similarity_skill_score
+```
+
+
+### FIND_SIMILAR_LOCATIONS_WEIGHTED
+
+{{% bannerNote type="code" %}}
+carto.FIND_SIMILAR_LOCATIONS_WEIGHTED(origin_query, target_query, index_column, weights, max_results, output_prefix)
+{{%/ bannerNote %}}
+
+**Description**
+
+Procedure to obtain the similar locations for a given location (origin) on a set of weighted external variables. These similar locations are selected from a set of candidates (target locations), that can be stores, restaurants, etc. The function is similar to the [`FIND_SIMILAR_LOCATIONS`](#find_similar_locations), but it includes user-defined weights for the variables. Internally it works just like the [`FIND_TWIN_AREAS_WEIGHTED`](../retail/#find_twin_areas_weighted) function, so please refer to its documentation for further examples and details of the implementation.
+
+The output similar locations are those of the target query considered to be the most similar to the origin location, based on the values of a set of variables. Only variables with numerical values are supported. Both origin and target locations should be uniquely identified by an index column.
+
+This procedure expects to receive features that characterize each of the locations, for which we recommend taking into account:
+
+- [`carto.GENERATE_TRADE_AREAS`](#generate_trade_areas) procedure to generate different types of service areas for both origin and target locations,
+- [`carto.ENRICH_POLYGONS`](../data/#enrich_polygons) or [`carto.DATAOBS_ENRICH_POLYGONS`](../data/#dataobs_enrich_polygons) procedure to enrich the defined trade areas resulting in the format expected for this procedure.
+
+**Input**
+
+- `origin_query`: `STRING` query to provide the origin location (identified with its `index_column` value) and its associated data columns. No `NULL` values should be contained in any of the data columns provided.
+- `target_query`: `STRING` query to provide the target locations (uniquely identified by `index_column`) and their associated data columns, e.g. `SELECT * FROM <project>.<dataset>.<target_table>`. The data columns should be equal to those provided in the `origin_query`, otherwise the procedure will fail. Locations with any `NULL` values will be excluded from the analysis.
+- `index_column`: `STRING` name of the index column for both the `origin_query` and the `target_query`. This index has to uniquely identify each of the individual locations in the queries.
+- `weights`: `ARRAY<STRUCT<name STRING, value FLOAT64>>` the weights on the features. If set to `NULL`, then all features are treated equally. This parameter is considered only if the length of weights is greater or equal than one. The sum of weights must be less than or equal to 1. If less weights than the number of features are provided, then for the undefined features, the remaining 1 - sum(weights) is distributed evenly.
+- `max_results`: `INT64` of the maximum number of similar locations returned. If set to `NULL`, all target locations are returned.
+- `output_prefix`: `STRING` destination and prefix for the output tables. It must contain the project, dataset and prefix: `<project>.<dataset>.<prefix>`.
+
+**Output**
+
+The procedure outputs the following:
+
+- Results table, named `<project>.<dataset>.<prefix>_<origin_index>_results`, containing in each row the index of the target locations (`index_column`) and its associated `similarity_score` and `similarity_skill_score`. The `similarity_score` corresponds to the distance between the origin and target location taking into account the user defined weights; the `similarity_skill_score` for a given target location `*t*` is computed as `1 - similarity_score(*t*) / similarity_score(<*t*>)`, where `<*t*>` is the average target location, computed by averaging each feature for all the target locations. This `similarity_skill_score` represents a relative measure: the score will be positive if and only if the target location is more similar to the origin than the mean vector data, with a score of 1 meaning perfect matching or zero distance. Therefore, a target location with a larger score will be more similar to the origin under this scoring rule.
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+CALL `carto-un`.carto.FIND_SIMILAR_LOCATIONS_WEIGHTED(
+    """
+        SELECT * FROM `cartobq.docs.similar_locations_enriched`
+        WHERE location_id = '001'
+    """,
+    -- Target locations (candidates)
+    """
+        SELECT * FROM `cartobq.docs.similar_locations_enriched`
+        WHERE location_id <> '001'
+    """,
+    -- Similar locations model inputs
+    'location_id',
+    NULL,
+    NULL,
+    'my-project.my-dataset.my-prefix'
+);
+-- Table `<my-project>.<my-dataset>.<output-prefix>_{ID}_results` will be created
+-- with the column: location_id, similarity_score, similarity_skill_score
+```
+
+
 {{% euFlagFunding %}}

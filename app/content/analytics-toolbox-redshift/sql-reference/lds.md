@@ -8,7 +8,7 @@ This module contains functions and procedures that make use of location data ser
 ### GEOCODE_TABLE
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE_TABLE(input_table, address_column [, geom_column] [, country])
+carto.GEOCODE_TABLE(input_table, address_column [, geom_column] [, country] [, options])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -23,6 +23,11 @@ Geocodes an input table by adding a column `geom` with the geographic coordinate
 * `address_column`: `VARCHAR(MAX)` name of the column from the input table that contains the addresses to be geocoded.
 * `geom_column` (optional): `VARCHAR(MAX)` column name for the output geometry column. Defaults to `'geom'`.
 * `country` (optional): `VARCHAR(MAX)` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
+* `options` (optional): `VARCHAR(MAX)` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'defaults' would be applied.
+
+  | Provider | Option | Description |
+  | :----- | :----- | :------ |
+  |`All`|`language`| A `VARCHAR` that specifies the language of the geocoding in RFC 4647 format.|
 
 If the input table already contains a geometry column with the name `geom_column`, only those rows with NULL values in it will be geocoded.
 
@@ -52,6 +57,12 @@ CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_col
 -- adding the columns: my_geom_column, carto_geocode_metadata.
 ```
 
+```sql
+CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_column', 'my_country', '{"language":"en-US"}');
+-- The table `my-schema.my-table` will be updated
+-- adding the columns: my_geom_column, carto_geocode_metadata.
+```
+
 {{% bannerNote type="note" title="ADDITIONAL EXAMPLES"%}}
 
 * [Geocoding your address data](/analytics-toolbox-redshift/examples/geocoding-your-address-data/)
@@ -61,7 +72,7 @@ CALL carto.GEOCODE_TABLE('my-schema.my-table', 'my_address_column', 'my_geom_col
 ### GEOCODE_REVERSE_TABLE
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE_REVERSE_TABLE(input_table [, geom_column] [, address_column] [, language])
+carto.GEOCODE_REVERSE_TABLE(input_table [, geom_column] [, address_column] [, language] [, options])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -76,6 +87,7 @@ Reverse-geocodes an input table by adding a column `address` with the addresses 
 * `geom_column` (optional): `GEOMETRY` column name for the geometry column that contains the points to be reverse-geocoded. Defaults to `'geom'`.
 * `address_column`: `VARCHAR(MAX)` name of the column where the computed addresses will be stored. It defaults to `'address'`, and it is created on the input table if it doesn't exist.
 * `language` (optional): `VARCHAR(MAX)` language in which results should be returned. Defaults to `''`. The effect and interpretation of this parameter depends on the LDS provider assigned to your account.
+* `options` (optional): `VARCHAR(MAX)` containing a valid JSON with the different options. No options are allowed currently, so this value will not be taken into account.
 
 If the input table already contains a column with the name `address_column`, only those rows with NULL values in it will be reverse-geocoded.
 
@@ -110,7 +122,7 @@ CALL carto.GEOCODE_REVERSE_TABLE('my-schema.my-table', 'my_geom_column', 'my_add
 ### CREATE_ISOLINES
 
 {{% bannerNote type="code" %}}
-carto.CREATE_ISOLINES(input, output_table, geom_column, mode, range, range_type)
+carto.CREATE_ISOLINES(input, output_table, geom_column, mode, range, range_type [, options])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -126,11 +138,28 @@ Note that The term _isoline_ is used here in a general way to refer to the areas
 * `input`: `VARCHAR(MAX)` name of the input table or query.
 * `output_table`: `VARCHAR(MAX)` name of the output table. It will raise an error if the table already exists.
 * `geom_column`: `VARCHAR(MAX)` column name for the origin geometry column.
-* `mode`: `VARCHAR(MAX)` type of transport. Supported: 'walk', 'car'.
+* `mode`: `VARCHAR(MAX)` type of transport. The supported modes depends on the provider:
+  * `Here`: 'walk', 'car', 'truck', 'taxi', 'bus' and 'private_bus'.
+  * `Mapbox`: 'walk', 'car' and 'bike'.
+  * `TomTom`: 'walk', 'car', 'bike', 'motorbike', 'truck', 'taxi', 'bus' and 'van'.
 * `range`: `INT` range of the isoline in seconds (for `range_type` 'time') or meters (for `range_type` 'distance').
 * `range_type`: `VARCHAR(MAX)` type of range. Supported: 'time' (for isochrones), 'distance' (for isodistances).
+* `options` (optional): `VARCHAR(MAX)` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'defaults' would be applied.
 
-**Example**
+  | Provider | Option | Description |
+  | :----- | :----- | :------ |
+  |`Here`|`arrival_time`| A `VARCHAR` that specifies the time of arrival. If the value is set, a reverse isoline is calculated. If `"any"` is introduced time-dependent effects will not be taken into account. It cannot be used in combination with `departure_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`Here`|`departure_time`| Default: `"now"`. A `VARCHAR` that specifies the time of departure. If `"any"` is introduced time-dependent effects will not be taken into account. It cannot be used in combination with `arrival_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`Here`|`optimize_for`| Default: `"balanced"`. A `VARCHAR` that specifies how isoline calculation is optimized. Supported: `"quality"` (calculation of isoline focuses on quality, that is, the graph used for isoline calculation has higher granularity generating an isoline that is more precise), `"performance"` (calculation of isoline is performance-centric, quality of isoline is reduced to provide better performance) and `"balanced"` (calculation of isoline takes a balanced approach averaging between quality and performance).|
+  |`Here`|`routing_mode`| Default: `"fast"`. A `VARCHAR` that specifies which optimization is applied during isoline calculation. Supported: `"fast"` (route calculation from start to destination optimized by travel time. In many cases, the route returned by the fast mode may not be the route with the fastest possible travel time. For example, the routing service may favor a route that remains on a highway, even if a faster travel time can be achieved by taking a detour or shortcut through an inconvenient side road) and `"short"` (route calculation from start to destination disregarding any speed information. In this mode, the distance of the route is minimized, while keeping the route sensible. This includes, for example, penalizing turns. Because of that, the resulting route will not necessarily be the one with minimal distance).|
+  |`TomTom`|`departure_time`| Default: `"now"`. A `VARCHAR` that specifies the time of departure. If `"any"` is introduced time-dependent effects will not be taken into account. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`TomTom`|`traffic`| Default: `true`. A `BOOLEAN` that specifies if all available traffic information will be taken into consideration. Supported: `true` and `false`.|
+
+{{% bannerNote type="warning" title="warning"%}}
+Notice that some of the parameters are provider dependant. Before running, we recommend checking your provider using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+{{%/ bannerNote %}}
+
+**Examples**
 
 ```sql
 CALL carto.CREATE_ISOLINES(
@@ -138,6 +167,19 @@ CALL carto.CREATE_ISOLINES(
     'my-schema.my-output-table',
     'my_geom_column',
     'car', 60, 'time'
+);
+-- The table `my-schema.my-output-table` will be created
+-- with the columns of the input table except `my_geom_column`.
+-- Isolines will be added in the "geom" column.
+```
+
+```sql
+CALL carto.CREATE_ISOLINES(
+    'my-schema.my-table',
+    'my-schema.my-output-table',
+    'my_geom_column',
+    'car', 60, 'time',
+    '{"departure_time":"any"}'
 );
 -- The table `my-schema.my-output-table` will be created
 -- with the columns of the input table except `my_geom_column`.
@@ -153,7 +195,7 @@ CALL carto.CREATE_ISOLINES(
 ### GEOCODE
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE(address [, country])
+carto.GEOCODE(address [, country] [, options])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -168,6 +210,11 @@ Geocodes an address into a point with its geographic coordinates (latitude and l
 
 * `address`: `VARCHAR(MAX)` input address to geocode.
 * `country` (optional): `VARCHAR` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`.
+* `options` (optional): `VARCHAR(MAX)` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'defaults' would be applied.
+
+  | Provider | Option | Description |
+  | :----- | :----- | :------ |
+  |`All`|`language`| A `VARCHAR` that specifies the language of the geocoding in RFC 4647 format.|
 
 **Return type**
 
@@ -190,6 +237,11 @@ SELECT carto.GEOCODE('Madrid', 'es');
 ```
 
 ```sql
+SELECT carto.GEOCODE('Madrid', 'es', '{"language":"es-ES"}');
+-- POINT(51.405967078794 20.3365500266832)
+```
+
+```sql
 CREATE TABLE my_schema.my_geocoded_table AS
 SELECT address, carto.GEOCODE(address) AS geom FROM my_table
 -- Table my_geocoded_table successfully created.
@@ -199,7 +251,7 @@ SELECT address, carto.GEOCODE(address) AS geom FROM my_table
 ### GEOCODE_REVERSE
 
 {{% bannerNote type="code" %}}
-carto.GEOCODE_REVERSE(geom [, language])
+carto.GEOCODE_REVERSE(geom [, language] [, options])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -214,6 +266,7 @@ Performs a reverse geocoding of the point received as input.
 
 * `geom`: `GEOMETRY` input point for which to obtain the address.
 * `language` (optional): `VARCHAR(MAX)` language in which results should be returned.
+* `options` (optional): `VARCHAR(MAX)` containing a valid JSON with the different options. No options are allowed currently, so this value will not be taken into account.
 
 **Return type**
 
@@ -234,7 +287,7 @@ SELECT carto.GEOCODE_REVERSE(ST_POINT(-74.0060, 40.7128));
 ### ISOLINE
 
 {{% bannerNote type="code" %}}
-carto.ISOLINE(origin, mode, range, range_type)
+carto.ISOLINE(origin, mode, range, range_type [, options])
 {{%/ bannerNote %}}
 
 {{% bannerNote type="warning" title="warning"%}}
@@ -248,9 +301,26 @@ This function consumes isolines quota. Each call consumes one unit quota. Before
 Calculates the isoline polygon from a given point.
 
 * `origin`: `GEOMETRY` origin point of the isoline.
-* `mode`: `VARCHAR(MAX)` type of transport. Supported: 'walk', 'car'.
+* `mode`: `VARCHAR(MAX)` type of transport. The supported modes depends on the provider:
+  * `Here`: 'walk', 'car', 'truck', 'taxi', 'bus' and 'private_bus'.
+  * `Mapbox`: 'walk', 'car' and 'bike'.
+  * `TomTom`: 'walk', 'car', 'bike', 'motorbike', 'truck', 'taxi', 'bus' and 'van'.
 * `range`: `INT` range of the isoline in seconds (for `range_type` 'time') or meters (for `range_type` 'distance').
 * `range_type`: `VARCHAR(MAX)` type of range. Supported: 'time' (for isochrones), 'distance' (for isodistances).
+* `options` (optional): `VARCHAR(MAX)` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'defaults' would be applied.
+
+  | Provider | Option | Description |
+  | :----- | :----- | :------ |
+  |`Here`|`arrival_time`| A `VARCHAR` that specifies the time of arrival. If the value is set, a reverse isoline is calculated. If `"any"` is introduced time-dependent effects will not be taken into account. It cannot be used in combination with `departure_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`Here`|`departure_time`| Default: `"now"`. A `VARCHAR` that specifies the time of departure. If `"any"` is introduced time-dependent effects will not be taken into account. It cannot be used in combination with `arrival_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`Here`|`optimize_for`| Default: `"balanced"`. A `VARCHAR` that specifies how isoline calculation is optimized. Supported: `"quality"` (calculation of isoline focuses on quality, that is, the graph used for isoline calculation has higher granularity generating an isoline that is more precise), `"performance"` (calculation of isoline is performance-centric, quality of isoline is reduced to provide better performance) and `"balanced"` (calculation of isoline takes a balanced approach averaging between quality and performance).|
+  |`Here`|`routing_mode`| Default: `"fast"`. A `VARCHAR` that specifies which optimization is applied during isoline calculation. Supported: `"fast"` (route calculation from start to destination optimized by travel time. In many cases, the route returned by the fast mode may not be the route with the fastest possible travel time. For example, the routing service may favor a route that remains on a highway, even if a faster travel time can be achieved by taking a detour or shortcut through an inconvenient side road) and `"short"` (route calculation from start to destination disregarding any speed information. In this mode, the distance of the route is minimized, while keeping the route sensible. This includes, for example, penalizing turns. Because of that, the resulting route will not necessarily be the one with minimal distance).|
+  |`TomTom`|`departure_time`| Default: `"now"`. A `VARCHAR` that specifies the time of departure. If `"any"` is introduced time-dependent effects will not be taken into account. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`TomTom`|`traffic`| Default: `true`. A `BOOLEAN` that specifies if all available traffic information will be taken into consideration. Supported: `true` and `false`.|
+
+{{% bannerNote type="warning" title="warning"%}}
+Notice that some of the parameters are provider dependant. Before running, we recommend checking your provider using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+{{%/ bannerNote %}}
 
 **Return type**
 
@@ -264,6 +334,11 @@ This function performs requests to the CARTO Location Data Services API. Redshif
 
 ```sql
 SELECT carto.ISOLINE(ST_POINT(13.37749, 52.51578), 'car', 10, 'time');
+-- POLYGON ((13.377142 52.516537, 13.377399 52.516193, 13.377743 52.51585, 13.377914 52.515335, 13.377743 52.51482, 13.377399 52.51482, 13.376713 52.515507, 13.376541 52.516022, 13.376627 52.516537, 13.376884 52.516708, 13.377142 52.516537))
+```
+
+```sql
+SELECT carto.ISOLINE(ST_POINT(13.37749, 52.51578), 'car', 10, 'time', '{"departure_time":"any"}');
 -- POLYGON ((13.377142 52.516537, 13.377399 52.516193, 13.377743 52.51585, 13.377914 52.515335, 13.377743 52.51482, 13.377399 52.51482, 13.376713 52.515507, 13.376541 52.516022, 13.376627 52.516537, 13.376884 52.516708, 13.377142 52.516537))
 ```
 

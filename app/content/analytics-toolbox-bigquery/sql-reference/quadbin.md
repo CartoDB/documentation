@@ -149,6 +149,32 @@ SELECT `carto-os`.carto.QUADBIN_FROMLONGLAT(40.4168, -3.7038, 4);
 ```
 
 
+### QUADBIN_FROMQUADKEY
+
+{{% bannerNote type="code" %}}
+carto.QUADBIN_FROMQUADKEY(quadkey)
+{{%/ bannerNote %}}
+
+**Description**
+
+Compute a quadbin index from a quadkey.
+
+* `quadkey`: `STRING` Quadkey representation of the index.
+
+**Return type**
+
+`INT64`
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-os`.carto.QUADBIN_FROMQUADKEY('0231001222');
+-- 5233974874938015743
+```
+
+
 ### QUADBIN_FROMZXY
 
 {{% bannerNote type="code" %}}
@@ -429,6 +455,32 @@ Returns the parent (ancestor) Quadbin of a given Quadbin for a specific resoluti
 ```sql
 SELECT `carto-os`.carto.QUADBIN_TOPARENT(5209574053332910079, 3);
 -- 5205105638077628415
+```
+
+
+### QUADBIN_TOQUADKEY
+
+{{% bannerNote type="code" %}}
+carto.QUADBIN_TOQUADKEY(quadbin)
+{{%/ bannerNote %}}
+
+**Description**
+
+Compute a quadkey from a quadbin index.
+
+* `quadbin`: `INT64` Quadbin index.
+
+**Return type**
+
+`STRING`
+
+{{% customSelector %}}
+**Example**
+{{%/ customSelector %}}
+
+```sql
+SELECT `carto-os`.carto.QUADBIN_TOQUADKEY(5233974874938015743);
+-- '0231001222'
 ```
 
 
