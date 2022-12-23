@@ -4,6 +4,36 @@ aliases:
 ---
 ## Release notes
 
+### December 22, 2022
+
+#### Module lds
+
+Improvement
+
+- We have added the possibility to configure more options as parameters when executing the functions to [CREATE_ISOLINES](../../sql-reference/lds/#create_isolines). These new options, which depend on the LDS service provider, allow the user to configure more transportation modes such as truck or bike, the possibility of specifying departure or arrival times allowing the creation of reverse isolines, and other options like different routing modes. Please note that these improvements imply breaking changes with the previous version of the CREATE_ISOLINES functions.
+
+- Added new confidence/relevance metadata to the results of the geocoding functions, [GEOCODE_TABLE](../../sql-reference/lds/#geocode_table) and GEOCODE_REVERSE_TABLE. Please note that these improvements imply breaking changes in the previous version of those functions.
+
+#### Module GCP
+
+#### Module retail
+
+Improvement
+
+- Update in [BUILD_CANNIBALIZATION_DATA](../../sql-reference/retail/#build_cannibalization_data) and [CANNIBALIZATION_OVERLAP](../../sql-reference/retail/#cannibalization_overlap) to support buffer, kring and isoline methods. Please note that these improvements have implied some breaking changes in the aforementioned functions invalidating their previous version.
+
+#### Module retail
+
+Fix
+
+- We have implemented a fix in the weighted averages computation in the [GRIDIFY_ENRICH](../../sql-reference/data/#gridify_enrich) procedure.
+
+#### Module quadbin
+
+New
+
+- Quadbin/quadkey conversion functions have been added to ease the conversion from [quadbin](../../sql-reference/quadbin/) to quadkey and from quadkey to quadbin indexes.
+
 ### November 15, 2022
 
 #### Module retail

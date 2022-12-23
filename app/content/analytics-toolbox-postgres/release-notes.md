@@ -1,5 +1,13 @@
 ## Release notes
 
+### December 22, 2022
+
+#### Module quadbin
+
+New
+
+- Quadbin/quadkey conversion functions have been added to ease the conversion from [quadbin](../../sql-reference/quadbin/) to quadkey and from quadkey to quadbin indexes.
+
 ### November 1, 2022
 
 #### All modules

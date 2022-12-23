@@ -1,5 +1,21 @@
 ## Release notes
 
+### December 22, 2022
+
+#### Module lds
+
+Improvement
+
+- We have added the possibility to configure more options as parameters when executing the functions to [CREATE_ISOLINES](../../sql-reference/lds/#create_isolines). These new options, which depend on the LDS service provider, allow the user to configure more transportation modes such as truck or bike, the possibility of specifying departure or arrival times allowing the creation of reverse isolines, and other options like different routing modes.
+
+- Added new confidence/relevance metadata to the results of the geocoding function [GEOCODE_TABLE](../../sql-reference/lds/#geocode_table). 
+
+#### Module quadbin
+
+New
+
+- Quadbin/quadkey conversion functions have been added to ease the conversion from [quadbin](../../sql-reference/quadbin/) to quadkey and from quadkey to quadbin indexes.
+
 ### November 1, 2022
 
 #### All modules
