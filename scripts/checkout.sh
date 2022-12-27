@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BRANCH=release/2022-12
+BRANCH=main
 CHECKOUT_DIR=./.checkout
 
 rm -rf $CHECKOUT_DIR
