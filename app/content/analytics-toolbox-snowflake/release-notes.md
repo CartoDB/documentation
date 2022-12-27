@@ -4,37 +4,6 @@ aliases:
 ---
 ## Release notes
 
-### July 22, 2022
-
-#### Module lds
-
-Feature
-
-- Add GEOCODE_REVERSE_TABLE procedure.
-
-### June 9, 2022
-
-#### Module lds
-
-Feature
-
-- Add CREATE_ISOLINES procedure.
-
-### December 1, 2022
-
-#### Quadbin
-
-Feature
-
-- Add QUADBIN_FROMQUADKEY function
-- Add QUADBIN_TOQUADKEY function
-
-#### Module lds
-
-Changed
-
-- Add flexible options to the LDS procedures.
-
 ### November 1, 2022
 
 #### All modules

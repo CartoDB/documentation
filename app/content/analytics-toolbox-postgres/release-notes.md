@@ -1,14 +1,5 @@
 ## Release notes
 
-### December 1, 2022
-
-#### Quadbin
-
-Feature
-
-- Add QUADBIN_FROMQUADKEY function
-- Add QUADBIN_TOQUADKEY function
-
 ### November 1, 2022
 
 #### All modules

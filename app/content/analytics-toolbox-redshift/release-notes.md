@@ -1,21 +1,5 @@
 ## Release notes
 
-### December 1, 2022
-
-#### Quadbin
-
-Feature
-
-- Add QUADBIN_FROMQUADKEY function
-- Add QUADBIN_TOQUADKEY function
-
-#### Module lds
-
-Changed
-
-- Add flexible options to the LDS procedures.
-- Add relevance metadata in GEOCODE_TABLE.
-
 ### November 1, 2022
 
 #### All modules

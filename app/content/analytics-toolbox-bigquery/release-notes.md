@@ -4,49 +4,6 @@ aliases:
 ---
 ## Release notes
 
-### December 1, 2022
-
-#### Quadbin
-
-Feature
-
-- Add QUADBIN_FROMQUADKEY function
-- Add QUADBIN_TOQUADKEY function
-
-#### Module lds
-
-Changed
-
-- Add flexible options to the LDS procedures.
-- Add relevance metadata in GEOCODE_TABLE.
-
-#### Module retail
-
-Improvement
-
-- Update BUILD_CANNIBALIZATION_DATA procedure to support `buffer`, `kring` and `isoline` methods.
-- Update CANNIBALIZATION_OVERLAP procedure to support `buffer`, `kring` and `isoline` methods.
-
-#### Module data
-
-Fix
-
-- Fix weighted averages computation in `GRIDIFY_ENRICH` procedure.
-
-#### Module cpg
-
-Feature
-
-- Add SIMILAR_LOCATION functions to the CPG module
-
-### November 29, 2022
-
-#### Module gateway
-
-Feature
-
-- Create gateway module.
-
 ### November 15, 2022
 
 #### Module retail

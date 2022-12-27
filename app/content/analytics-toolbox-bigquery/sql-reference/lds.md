@@ -81,7 +81,7 @@ Geocodes an input table by adding a column `geom` with the geographic coordinate
 * `address_column`: `STRING` name of the column from the input table that contains the addresses to be geocoded.
 * `geom_column` (optional): `STRING` column name for the geometry column. Defaults to `'geom'`. Set to `NULL` to use the default value.
 * `country` (optional): `STRING` name of the country in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Defaults to `''`. Set to `NULL` to use the default value.
-* `options`: `STRING`|`NULL` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'defaults' would be applied.
+* `options`: `STRING`|`NULL` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'default' values would be applied.
 
   | Provider | Option | Description |
   | :----- | :----- | :------ |
@@ -204,25 +204,25 @@ Note that The term _isoline_ is used here in a general way to refer to the areas
 * `input`: `STRING` name of the input table or query.
 * `output_table`: `STRING` name of the output table. It will raise an error if the table already exists.
 * `geom_column`: `STRING` column name for the origin geometry column.
-* `mode`: `STRING` type of transport. The supported modes depends on the provider:
+* `mode`: `STRING` type of transport. The supported modes depend on the provider:
   * `Here`: 'walk', 'car', 'truck', 'taxi', 'bus' and 'private_bus'.
   * `Mapbox`: 'walk', 'car' and 'bike'.
   * `TomTom`: 'walk', 'car', 'bike', 'motorbike', 'truck', 'taxi', 'bus' and 'van'.
 * `range_value`: `INT64` range of the isoline in seconds (for `range_type` 'time') or meters (for `range_type` 'distance').
 * `range_type`: `STRING` type of range. Supported: 'time' (for isochrones), 'distance' (for isodistances).
-* `options`: `STRING`|`NULL` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'defaults' would be applied.
+* `options`: `STRING`|`NULL` containing a valid JSON with the different options. Valid options are described in the table below. If no options are indicated then 'default' values would be applied.
 
   | Provider | Option | Description |
   | :----- | :----- | :------ |
-  |`Here`|`arrival_time`| A `STRING` that specifies the time of arrival. If the value is set, a reverse isoline is calculated. If `"any"` is introduced time-dependent effects will not be taken into account. It cannot be used in combination with `departure_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
-  |`Here`|`departure_time`| Default: `"now"`. A `STRING` that specifies the time of departure. If `"any"` is introduced time-dependent effects will not be taken into account. It cannot be used in combination with `arrival_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`Here`|`arrival_time`| A `STRING` that specifies the time of arrival. If the value is set, a reverse isoline is calculated. If `"any"` is introduced, then time-dependent effects will not be taken into account. It cannot be used in combination with `departure_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`Here`|`departure_time`| Default: `"now"`. A `STRING` that specifies the time of departure. If `"any"` is introduced, then time-dependent effects will not be taken into account. It cannot be used in combination with `arrival_time`. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
   |`Here`|`optimize_for`| Default: `"balanced"`. A `STRING` that specifies how isoline calculation is optimized. Supported: `"quality"` (calculation of isoline focuses on quality, that is, the graph used for isoline calculation has higher granularity generating an isoline that is more precise), `"performance"` (calculation of isoline is performance-centric, quality of isoline is reduced to provide better performance) and `"balanced"` (calculation of isoline takes a balanced approach averaging between quality and performance).|
   |`Here`|`routing_mode`| Default: `"fast"`. A `STRING` that specifies which optimization is applied during isoline calculation. Supported: `"fast"` (route calculation from start to destination optimized by travel time. In many cases, the route returned by the fast mode may not be the route with the fastest possible travel time. For example, the routing service may favor a route that remains on a highway, even if a faster travel time can be achieved by taking a detour or shortcut through an inconvenient side road) and `"short"` (route calculation from start to destination disregarding any speed information. In this mode, the distance of the route is minimized, while keeping the route sensible. This includes, for example, penalizing turns. Because of that, the resulting route will not necessarily be the one with minimal distance).|
-  |`TomTom`|`departure_time`| Default: `"now"`. A `STRING` that specifies the time of departure. If `"any"` is introduced time-dependent effects will not be taken into account. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
+  |`TomTom`|`departure_time`| Default: `"now"`. A `STRING` that specifies the time of departure. If `"any"` is introduced, then time-dependent effects will not be taken into account. Supported: `"any"`, `"now"` and date-time as `"<YYYY-MM-DD>T<hh:mm:ss>"`.|
   |`TomTom`|`traffic`| Default: `true`. A `BOOLEAN` that specifies if all available traffic information will be taken into consideration. Supported: `true` and `false`.|
 
 {{% bannerNote type="warning" title="warning"%}}
-Notice that some of the parameters are provider dependant. Before running, we recommend checking your provider using the [`LDS_QUOTA_INFO`](#lds_quota_info) function.
+Before running, we recommend checking your provider using the [`LDS_QUOTA_INFO`](#lds_quota_info) function. Notice that some of the parameters are provider dependant. Please contact your CARTO representative if you have questions regarding the service provider configured in your organization.
 {{%/ bannerNote %}}
 
 **Examples**
