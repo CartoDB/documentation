@@ -20,7 +20,23 @@ New
 
 #### All modules
 
-New
+Fix
+
+- Make cartofante the author and comitter of the release
+
+Improvement
+
+- Adapt to Semver
+
+#### All modules
+
+Feature
+
+- Create release workflows
+
+#### All modules
+
+Feature
 
 - Create release workflows
 
@@ -50,7 +66,7 @@ Fix
 
 #### Module data
 
-New
+Feature
 
 - Add DATAOBS_ENRICH_POINTS procedure.
 - Add DATAOBS_ENRICH_POLYGONS procedure.
@@ -61,14 +77,14 @@ New
 
 #### Module clustering
 
-New
+Feature
 
 - Move ST_CLUSTERKMEANS function to core.
 - Move CREATE_CLUSTERKMEANS procedure to core.
 
 #### Module random
 
-New
+Feature
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -110,7 +126,7 @@ Improvement
 
 #### Module data
 
-New
+Feature
 
 - Add ENRICH_POLYGONS procedure.
 
@@ -118,7 +134,7 @@ New
 
 #### Module data
 
-New
+Feature
 
 - Add ENRICH_POINTS procedure.
 
@@ -126,7 +142,7 @@ New
 
 #### Module statistics
 
-New
+Feature
 
 - Add GETIS_ORD_QUADBIN function.
 
@@ -150,7 +166,7 @@ Improvement
 
 #### Module statistics
 
-New
+Feature
 
 - Add P_VALUE function.
 
@@ -158,13 +174,13 @@ New
 
 #### Module lds
 
-New
+Feature
 
 - Add GEOCODE_REVERSE_TABLE procedure.
 
 #### Module statistics
 
-New
+Feature
 
 - Create statistics module.
 - Add MORANS_I_QUADBIN function.
@@ -173,7 +189,7 @@ New
 
 #### Module clustering
 
-New
+Feature
 
 - Add CREATE_CLUSTERKMEANS procedure.
 
@@ -222,7 +238,7 @@ Improvement
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -244,7 +260,7 @@ New
 
 #### Module tiler
 
-New
+Feature
 
 - Add CREATE_SPATIAL_INDEX_TILESET procedure.
 
@@ -268,7 +284,7 @@ Improvement
 
 #### Module lds
 
-New
+Feature
 
 - Add CREATE_ISOLINES procedure.
 
@@ -284,7 +300,7 @@ Improvement
 
 #### Module tiler
 
-New
+Feature
 
 - Add max_simplification_zoom and coordinates_precision parameters.
 
@@ -292,7 +308,7 @@ New
 
 #### Module tiler
 
-New
+Feature
 
 - Add max_tile_size_strategy support for CREATE_SIMPLE_TILESET.
 
@@ -322,7 +338,7 @@ Improvement
 
 #### Module tiler
 
-New
+Feature
 
 - Add CREATE_SIMPLE_TILESET procedure.
 
@@ -330,7 +346,7 @@ New
 
 #### Module tiler
 
-New
+Feature
 
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
@@ -339,7 +355,7 @@ New
 
 #### Module lds
 
-New
+Feature
 
 - Add GEOCODE_TABLE procedure.
 - Add GEOCODE function.
@@ -456,7 +472,7 @@ Improvement
 
 #### Module processing
 
-New
+Feature
 
 - Create processing module.
 - Add VERSION function.
@@ -468,7 +484,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Create transformations module.
 - Add VERSION function.
@@ -483,7 +499,7 @@ New
 
 #### Module clustering
 
-New
+Feature
 
 - Create clustering module.
 - Add VERSION function.
@@ -491,7 +507,7 @@ New
 
 #### Module random
 
-New
+Feature
 
 - Create random module.
 - Add ST_GENERATEPOINTS function.
@@ -501,7 +517,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Create s2 module.
 - Add HILBERTQUADKEY_FROMID function.
@@ -523,7 +539,7 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Create constructors module.
 - Add ST_BEZIERSPLINE function.
@@ -536,7 +552,7 @@ New
 
 #### Module placekey
 
-New
+Feature
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
