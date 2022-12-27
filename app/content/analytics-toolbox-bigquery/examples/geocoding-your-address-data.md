@@ -46,13 +46,11 @@ Once you are all set getting access to the lds module, geocoding your data is as
 
 {{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
-CALL `carto-un`.carto.GEOCODE_TABLE(
+CALL `carto-un`.carto.GEOCODE_TABLE('<api_base_url>', '<lds_token>',
 'Bqcartodemos.sample_tables.starbucks_ny_geocode',
-'full_address','geom', 'US',
-'<api_base_url>', '<lds_token>');
-—- The table 'bqcartodemos.sample_tables.starbucks_ny_notgeocoded' will be updated
+'full_address','geom', 'US', NULL);
+-- The table 'bqcartodemos.sample_tables.starbucks_ny_notgeocoded' will be updated
 -- adding the columns: geom , carto_geocode_metadata.
-
 ```
 
 

@@ -4,6 +4,36 @@ aliases:
 ---
 ## Release notes
 
+### December 22, 2022
+
+#### Module lds
+
+Improvement
+
+- We have added the possibility to configure more options as parameters when executing the functions to [CREATE_ISOLINES](../../sql-reference/lds/#create_isolines). These new options, which depend on the LDS service provider, allow the user to configure more transportation modes such as truck or bike, the possibility of specifying departure or arrival times allowing the creation of reverse isolines, and other options like different routing modes. Please note that these improvements imply breaking changes with the previous version of the CREATE_ISOLINES functions.
+
+- Added new confidence/relevance metadata to the results of the geocoding functions, [GEOCODE_TABLE](../../sql-reference/lds/#geocode_table) and GEOCODE_REVERSE_TABLE. Please note that these improvements imply breaking changes in the previous version of those functions.
+
+#### Module GCP
+
+#### Module retail
+
+Improvement
+
+- Update in [BUILD_CANNIBALIZATION_DATA](../../sql-reference/retail/#build_cannibalization_data) and [CANNIBALIZATION_OVERLAP](../../sql-reference/retail/#cannibalization_overlap) to support buffer, kring and isoline methods. Please note that these improvements have implied some breaking changes in the aforementioned functions invalidating their previous version.
+
+#### Module retail
+
+Fix
+
+- We have implemented a fix in the weighted averages computation in the [GRIDIFY_ENRICH](../../sql-reference/data/#gridify_enrich) procedure.
+
+#### Module quadbin
+
+New
+
+- Quadbin/quadkey conversion functions have been added to ease the conversion from [quadbin](../../sql-reference/quadbin/) to quadkey and from quadkey to quadbin indexes.
+
 ### November 15, 2022
 
 #### Module retail
@@ -24,7 +54,7 @@ Improvement
 
 #### Module retail
 
-New
+Feature
 
 - Add `FIND_TWIN_AREAS_WEIGHTED` procedure.
 
@@ -32,7 +62,23 @@ New
 
 #### All modules
 
-New
+Fix
+
+- Make cartofante the author and comitter of the release
+
+#### All modules
+
+Feature
+
+- Create release workflows
+
+Improvement
+
+- Adapt to Semver
+
+#### All modules
+
+Feature
 
 - Create release workflows
 
@@ -44,7 +90,7 @@ Improvement
 
 #### Module s2
 
-New
+Feature
 
 - Add S2_RESOLUTION function.
 - Add S2_TOCHILDREN function.
@@ -65,7 +111,7 @@ Improvement
 
 #### Module cpg
 
-New
+Feature
 
 - Add `CUSTOMER_SEGMENTATION_ANALYSIS_DATA` procedure.
 - Add `GENERATE_TRADE_AREAS` procedure.
@@ -93,13 +139,13 @@ Fix
 
 #### Module clustering
 
-New
+Feature
 
 - Move ST_CLUSTERKMEANS function to core.
 
 #### Module random
 
-New
+Feature
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -157,7 +203,7 @@ Improvement
 
 #### Module s2
 
-New
+Feature
 
 - Add S2_CENTER function.
 
@@ -171,7 +217,7 @@ Improvement
 
 #### Module tiler
 
-New
+Feature
 
 - Add `generate_feature_id` parameter in `CREATE_SIMPLE_TILESET`.
 
@@ -228,7 +274,7 @@ Improvement
 
 #### Module retail
 
-New
+Feature
 
 - Add BUILD_CANNIBALIZATION_DATA procedure.
 - Add CANNIBALIZATION_OVERLAP procedure.
@@ -237,7 +283,7 @@ New
 
 #### Module lds
 
-New
+Feature
 
 - Add GEOCODE_TABLE procedure.
 - Add LDS_QUOTA_INFO procedure.
@@ -264,19 +310,19 @@ Fix
 
 #### Module data
 
-New
+Feature
 
 - Add quadbin support to module.
 
 #### Module retail
 
-New
+Feature
 
 - Add quadbin support
 
 #### Module tiler
 
-New
+Feature
 
 - Support of quadgrid as alias in `CREATE_POINT_AGGREGATION_TILESET`.
 
@@ -295,7 +341,7 @@ Fix
 
 #### Module statistics
 
-New
+Feature
 
 - Add SMOOTHING_MRF_QUADBIN procedure.
 - Add LOCAL_MORANS_I_QUADBIN function.
@@ -329,7 +375,7 @@ Fix
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -401,7 +447,7 @@ Fix
 
 #### Module retail
 
-New
+Feature
 
 - Add store features and competitors stores features into BUILD_REVENUE_MODEL_DATA procedure.
 
@@ -413,7 +459,7 @@ Fix
 
 #### Module tiler
 
-New
+Feature
 
 - Add spatial index tileset generator `CREATE_SPATIAL_INDEX_TILESET`.
 
@@ -429,13 +475,13 @@ Fix
 
 #### Module data
 
-New
+Feature
 
 - Add GRIDIFY_ENRICH procedure.
 
 #### Module retail
 
-New
+Feature
 
 - Add FIND_TWIN_AREAS procedure.
 
@@ -443,7 +489,7 @@ New
 
 #### Module data
 
-New
+Feature
 
 - Allow using tables as input, not just queries.
 - Add in place enrichment.
@@ -468,13 +514,13 @@ Improvement
 
 #### Module retail
 
-New
+Feature
 
 - Add COMMERCIAL_HOTSPOTS procedure.
 
 #### Module statistics
 
-New
+Feature
 
 - Add SMOOTHING_MRF_H3 procedure.
 - Add SMOOTHING_MRF_QUADKEY procedure.
@@ -483,7 +529,7 @@ New
 
 #### Module statistics
 
-New
+Feature
 
 - Add VARIOGRAM function.
 - Add ORDINARY_KRIGING function.
@@ -493,14 +539,14 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Add H3_CENTER function.
 - Add H3_RESOLUTION function.
 
 #### Module retail
 
-New
+Feature
 
 - Add FIND_WHITESPACE_AREAS procedure.
 
@@ -508,7 +554,7 @@ New
 
 #### Module retail
 
-New
+Feature
 
 - Remove features importance tables from BUILD_REVENUE_MODEL procedure.
 
@@ -516,7 +562,7 @@ New
 
 #### Module statistics
 
-New
+Feature
 
 - Add LOCAL_MORANS_I_H3 function.
 - Add LOCAL_MORANS_I_QUADKEY function.
@@ -537,7 +583,7 @@ Fix
 
 #### Module retail
 
-New
+Feature
 
 - Add BUILD_REVENUE_MODEL_DATA procedure.
 - Add BUILD_REVENUE_MODEL procedure.
@@ -734,7 +780,7 @@ Improvement
 
 #### Module statistics
 
-New
+Feature
 
 - Add KNN function.
 - Add GFUN function.
@@ -753,7 +799,7 @@ Fix
 
 #### Module statistics
 
-New
+Feature
 
 - Add GWR_GRID function.
 
@@ -827,7 +873,7 @@ Improvement
 
 #### Module statistics
 
-New
+Feature
 
 - Create statistics module.
 - Add GETIS_ORD_H3 function.
@@ -854,7 +900,7 @@ Fix
 - Fix support for DATE in `CREATE_TILESET`.
 - Fix naming of internal variables to avoid name collisions.
 
-New
+Feature
 
 - Add `fraction_dropped_per_zoom` in tileset metadata.
 
@@ -943,7 +989,7 @@ Fix
 
 #### Module data
 
-New
+Feature
 
 - Add DATAOBS_ENRICH_GRID procedure.
 - Add ENRICH_GRID procedure.
@@ -952,7 +998,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Add KRING_INDEXED function.
 
@@ -960,7 +1006,7 @@ New
 
 #### Module geohash
 
-New
+Feature
 
 - Create geohash module.
 - Add VERSION function.
@@ -984,7 +1030,7 @@ Improvement
 
 #### Module data
 
-New
+Feature
 
 - Add DATAOBS_SAMPLES procedure.
 
@@ -994,7 +1040,7 @@ Improvement
 
 #### Module routing
 
-New
+Feature
 
 - Create routing module.
 - Add GENERATE_NETWORK function.
@@ -1020,7 +1066,7 @@ Fix
 
 #### Module tiler
 
-New
+Feature
 
 - Add new automatic tileset generator `CREATE_TILESET`.
 
@@ -1028,7 +1074,7 @@ New
 
 #### Module data
 
-New
+Feature
 
 - Add DATAOBS_SUBSCRIPTIONS procedure.
 - Add DATAOBS_SUBSCRIPTION_VARIABLES procedure.
@@ -1046,7 +1092,7 @@ Improvement
 
 #### Module data
 
-New
+Feature
 
 - Create data module.
 - Add VERSION function.
@@ -1063,7 +1109,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Add TOKEN_FROMID function.
 - Add ID_FROMTOKEN function.
@@ -1091,7 +1137,7 @@ Improvement
 
 #### Module accessors
 
-New
+Feature
 
 - Create accessors module.
 - Add ST_ENVELOPE function.
@@ -1099,7 +1145,7 @@ New
 
 #### Module processing
 
-New
+Feature
 
 - Create processing module.
 - Add ST_VORONOIPOLYGONS function.
@@ -1111,7 +1157,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_CONCAVEHULL function.
 
@@ -1119,7 +1165,7 @@ New
 
 #### Module clustering
 
-New
+Feature
 
 - Create clustering module.
 - Add ST_CLUSTERKMEANS function.
@@ -1129,14 +1175,14 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Add ST_BEZIERSPLINE function.
 - Add ST_MAKEELLIPSE function.
 
 #### Module measurements
 
-New
+Feature
 
 - Create measurements module.
 - Add ST_ANGLE function.
@@ -1145,7 +1191,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Rename module to transformations.
 - Add ST_CENTERMEAN function.
@@ -1165,7 +1211,7 @@ Removed
 
 #### Module constructors
 
-New
+Feature
 
 - Create constructors module.
 - Add ST_MAKEENVELOPE function.
@@ -1176,7 +1222,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Create transformation module.
 - Add ST_BUFFER function.
@@ -1210,7 +1256,7 @@ Improvement
 
 #### Module random
 
-New
+Feature
 
 - Create random module.
 - Add ST_GENERATEPOINTS function.
@@ -1220,7 +1266,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Create h3 module.
 - Add ST_ASH3 function.
@@ -1240,7 +1286,7 @@ New
 
 #### Module placekey
 
-New
+Feature
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
@@ -1250,7 +1296,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Create s2 module.
 - Add ID_FROMHILBERTQUADKEY function.
@@ -1262,7 +1308,7 @@ New
 
 #### Module tiler
 
-New
+Feature
 
 - Add QUOTA procedure in order to display the monthly quota and quota available.
 - Implement support for layer name.
@@ -1291,7 +1337,7 @@ Fix
 
 #### Module tiler
 
-New
+Feature
 
 - Add tileset type to metadata and BigQuery labels.
 - Add the prefix "aggregation_" to aggregation options: type, resolution and placement.

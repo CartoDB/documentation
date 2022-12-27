@@ -60,6 +60,7 @@ SELECT carto.ST_DELAUNAYLINES(
 -- ]
 ```
 
+
 ### ST_DELAUNAYLINES
 
 {{% bannerNote type="code" %}}
@@ -218,6 +219,7 @@ SELECT carto.ST_VORONOILINES(
 --   "{\"type\":\"LineString\",\"coordinates\":[[4.182,43.63414062499997],[4.183,43.634765625],[4.183,43.634],[4.182,43.634],[4.182,43.63414062499997]]}"
 -- ]
 ```
+
 
 ### ST_VORONOIPOLYGONS
 

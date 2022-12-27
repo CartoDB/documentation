@@ -9,13 +9,13 @@ const cloud = process.env.CLOUD || '';
 const targetPath = process.env.TARGETPATH || '';
 
 const index = [];
-let changelogs = [];
+// let changelogs = [];
 
 // Execute script
 updateModules('core');
 updateModules('');
 updateOverview();
-updateReleaseNotes();
+// updateReleaseNotes();
 
 function extractMetadata (markdown) {
     let metadata = {};
@@ -86,9 +86,9 @@ function updateModules (type) {
         }
     });
 
-    const changelogPath = path.join(`./.checkout/${repo}/clouds/${cloud}/CHANGELOG.md`);
-    const changelogContent = fs.readFileSync(changelogPath).toString();
-    changelogs = changelogs.concat(parseChangelog(module, changelogContent));
+    // const changelogPath = path.join(`./.checkout/${repo}/clouds/${cloud}/CHANGELOG.md`);
+    // const changelogContent = fs.readFileSync(changelogPath).toString();
+    // changelogs = changelogs.concat(parseChangelog(module, changelogContent));
 }
 
 function updateOverview () {
@@ -122,73 +122,73 @@ The CARTO Analytics Toolbox's functions are organized in modules based on the fu
     fs.writeFileSync(path.join(targetPath, referenceFolder, 'overview.md'), content);
 }
 
-function updateReleaseNotes () {
-    let content = aliasesHeader(`release-notes`)
-    content += `## Release notes\n\n`;
+// function updateReleaseNotes () {
+//     let content = aliasesHeader(`release-notes`)
+//     content += `## Release notes\n\n`;
 
-    const dates = [ ...new Set(changelogs.map(c => c.date).sort().reverse()) ];
+//     const dates = [ ...new Set(changelogs.map(c => c.date).sort().reverse()) ];
 
-    for (const date of dates) {
-        content += `### ${formatDate(date)}\n\n`;
-        const items = changelogs.filter(c => c.date === date);
-        for (const item of items) {
-            content += `${item.changes.replace(/^Added/gm, 'Feature')}\n\n`;
-        }
-    }
+//     for (const date of dates) {
+//         content += `### ${formatDate(date)}\n\n`;
+//         const items = changelogs.filter(c => c.date === date);
+//         for (const item of items) {
+//             content += `${item.changes.replace(/^Added/gm, 'Feature')}\n\n`;
+//         }
+//     }
 
-    if (cloud === 'bigquery') {
-        content += '\n\n{{% euFlagFunding %}}'
-    }
+//     if (cloud === 'bigquery') {
+//         content += '\n\n{{% euFlagFunding %}}'
+//     }
 
-    console.log(`- Update release notes`);
-    fs.writeFileSync(path.join(targetPath, 'release-notes.md'), content);
-}
+//     console.log(`- Update release notes`);
+//     fs.writeFileSync(path.join(targetPath, 'release-notes.md'), content);
+// }
 
-function parseChangelog (module, content) {
-    const pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[|$))/g;
-    const output = [];
-    const matches = [ ...content.matchAll(pattern) ];
-    for (const match of matches) {
-        let { version, date, changes } = match.groups;
-        changes = trimChar(changes, '\n').trim()
-            .replace(/^####\s/gm, '')
-            .replace(/^###\s/gm, '#### ');
-        output.push({ module, version, date, changes });
-    }
-    return output;
-}
+// function parseChangelog (module, content) {
+//     const pattern = /\[(?<version>.*)\] - (?<date>[\d\.-]+)(?<changes>(.|\n)+?(?=\#\# \[|$))/g;
+//     const output = [];
+//     const matches = [ ...content.matchAll(pattern) ];
+//     for (const match of matches) {
+//         let { version, date, changes } = match.groups;
+//         changes = trimChar(changes, '\n').trim()
+//             .replace(/^####\s/gm, '')
+//             .replace(/^###\s/gm, '#### ');
+//         output.push({ module, version, date, changes });
+//     }
+//     return output;
+// }
 
-function formatDate (date) {
-    const d = new Date(date);
-    const months = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-    ];
-    const month = months[d.getMonth()];
-    const day = d.getDate();
-    const year = d.getFullYear();
-    return `${month} ${day}, ${year}`;
-}
+// function formatDate (date) {
+//     const d = new Date(date);
+//     const months = [
+//         'January',
+//         'February',
+//         'March',
+//         'April',
+//         'May',
+//         'June',
+//         'July',
+//         'August',
+//         'September',
+//         'October',
+//         'November',
+//         'December'
+//     ];
+//     const month = months[d.getMonth()];
+//     const day = d.getDate();
+//     const year = d.getFullYear();
+//     return `${month} ${day}, ${year}`;
+// }
 
-function trimChar (string, charToRemove) {
-    while (string.charAt(0) === charToRemove) {
-        string = string.substring(1);
-    }
-    while (string.charAt(string.length - 1) === charToRemove) {
-        string = string.substring(0, string.length - 1);
-    }
-    return string;
-}
+// function trimChar (string, charToRemove) {
+//     while (string.charAt(0) === charToRemove) {
+//         string = string.substring(1);
+//     }
+//     while (string.charAt(string.length - 1) === charToRemove) {
+//         string = string.substring(0, string.length - 1);
+//     }
+//     return string;
+// }
 
 function aliasesHeader (path) {
     let content = '';

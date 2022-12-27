@@ -4,11 +4,48 @@ aliases:
 ---
 ## Release notes
 
+### December 22, 2022
+
+#### Module lds
+
+Improvement
+
+- We have added the possibility to configure more options as parameters when executing the functions to [CREATE_ISOLINES](../../sql-reference/lds/#create_isolines). These new options, which depend on the LDS service provider, allow the user to configure more transportation modes such as truck or bike, the possibility of specifying departure or arrival times allowing the creation of reverse isolines, and other options like different routing modes.
+
+- Added new confidence/relevance metadata to the results of the geocoding function [GEOCODE_TABLE](../../sql-reference/lds/#geocode_table). 
+
+#### Module quadbin
+
+New
+
+- Quadbin/quadkey conversion functions have been added to ease the conversion from [quadbin](../../sql-reference/quadbin/) to quadkey and from quadkey to quadbin indexes.
+
+#### Module h3
+
+- The [H3_BOUNDARY](../../sql-reference/h3/#h3_boundary) function for invalid geographies has been fixed.
+
+
 ### November 1, 2022
 
 #### All modules
 
-New
+Fix
+
+- Make cartofante the author and comitter of the release
+
+Improvement
+
+- Adapt to Semver
+
+#### All modules
+
+Feature
+
+- Create release workflows
+
+#### All modules
+
+Feature
 
 - Create release workflows
 
@@ -28,13 +65,13 @@ Fix
 
 #### Module clustering
 
-New
+Feature
 
 - Move ST_CLUSTERKMEANS function to core.
 
 #### Module random
 
-New
+Feature
 
 - Move ST_GENERATEPOINTS function to core.
 
@@ -80,19 +117,11 @@ Improvement
 
 - Unify `extra_metadata` into `metadata` in tiler metadata.
 
-### July 22, 2022
-
-#### Module lds
-
-New
-
-- Add GEOCODE_REVERSE_TABLE procedure.
-
 ### July 13, 2022
 
 #### Module data
 
-New
+Feature
 
 - Add quadbin support to module.
 
@@ -129,7 +158,7 @@ Fix
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -168,14 +197,6 @@ Improvement
 
 - Errors used to be reported with a procedure result message. Now they raise exceptions.
 
-### June 9, 2022
-
-#### Module lds
-
-New
-
-- Add CREATE_ISOLINES procedure.
-
 ### May 19, 2022
 
 #### Module lds
@@ -196,7 +217,7 @@ Improvement
 
 #### Module data
 
-New
+Feature
 
 - Allow using tables as input, not just queries.
 - Add in place enrichment.
@@ -221,7 +242,7 @@ Improvement
 
 #### Module transformations
 
-New
+Feature
 
 - Add ST_BUFFER function.
 
@@ -252,7 +273,7 @@ Improvement
 
 #### Module tiler
 
-New
+Feature
 
 - Add CREATE_SIMPLE_TILESET procedure.
 
@@ -260,7 +281,7 @@ New
 
 #### Module lds
 
-New
+Feature
 
 - Add GEOCODE_TABLE procedure.
 - Add GEOCODE function.
@@ -272,7 +293,7 @@ New
 
 #### Module tiler
 
-New
+Feature
 
 - Create tiler module.
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
@@ -281,7 +302,7 @@ New
 
 #### Module data
 
-New
+Feature
 
 - Add DATAOBS_SUBSCRIPTIONS procedure.
 - Add DATABOS_SUBSCRIPTION_VARIABLES procedure.
@@ -470,7 +491,7 @@ Improvement
 
 #### Module data
 
-New
+Feature
 
 - Add DATAOBS_ENRICH_POINTS procedure.
 - Add DATAOBS_ENRICH_POINTS_RAW procedure.
@@ -498,7 +519,7 @@ Fix
 
 #### Module data
 
-New
+Feature
 
 - Create data module.
 - Add VERSION function.
@@ -513,7 +534,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Add KRING_DISTANCES function.
 
@@ -549,7 +570,7 @@ Improvement
 
 #### Module processing
 
-New
+Feature
 
 - Create processing module.
 - Add ST_VORONOIPOLYGONS function.
@@ -563,7 +584,7 @@ New
 
 #### Module clustering
 
-New
+Feature
 
 - Create clustering module.
 - Add VERSION function.
@@ -571,7 +592,7 @@ New
 
 #### Module random
 
-New
+Feature
 
 - Create random module.
 - Add ST_GENERATEPOINTS function.
@@ -581,7 +602,7 @@ New
 
 #### Module accessors
 
-New
+Feature
 
 - Create accessors module.
 - Add ST_ENVELOPE function.
@@ -591,7 +612,7 @@ New
 
 #### Module constructors
 
-New
+Feature
 
 - Create constructors module.
 - Add ST_BEZIERSPLINE function.
@@ -602,7 +623,7 @@ New
 
 #### Module measurements
 
-New
+Feature
 
 - Create measurements module.
 - Add ST_ANGLE function.
@@ -612,7 +633,7 @@ New
 
 #### Module transformations
 
-New
+Feature
 
 - Create transformations module.
 - Add ST_CENTERMEAN function.
@@ -628,7 +649,7 @@ New
 
 #### Module placekey
 
-New
+Feature
 
 - Create placekey module.
 - Add H3_ASPLACEKEY function.
@@ -640,7 +661,7 @@ New
 
 #### Module s2
 
-New
+Feature
 
 - Create s2 module.
 - Add ID_FROMHILBERTQUADKEY function.
@@ -654,7 +675,7 @@ New
 
 #### Module h3
 
-New
+Feature
 
 - Create h3 module.
 - Add ST_ASH3 function.

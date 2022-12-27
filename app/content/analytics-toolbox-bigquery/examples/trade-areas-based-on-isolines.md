@@ -47,11 +47,11 @@ In order to create the isolines, we will execute the [CREATE_ISOLINES()](https:/
 {{% customSelector %}}𝅺{{%/ customSelector %}}
 ```sql
 CALL `carto-un`.carto.CREATE_ISOLINES(
+   '<api_base_url>', '<lds_token>',
    'bqcartodemos.sample_tables.starbucks_ny_geocode',
    'bqcartodemos.sample_tables.starbucks_ny_geocoded_iso_walk_time900',
    'geom',
-   'walk', 900, 'time',
-   '<api_base_url>', '<lds_token>');
+   'walk', 900, 'time',NULL);
 ```
 
 In the query we specify (in this order) the input table, the output table and "geom" as column name for the origin geometry column. We add that we want to calculate the isolines based on 15 minutes walking, fixing "mode" parameter on "walk" and "range_value" parameter on 900 seconds (15 min). Also you need to provide us the API base url where your account is stored in "api_base_url" and your token for accessing the different API services in "lds_token" parameter.

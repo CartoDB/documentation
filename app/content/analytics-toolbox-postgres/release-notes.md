@@ -1,10 +1,34 @@
 ## Release notes
 
+### December 22, 2022
+
+#### Module quadbin
+
+New
+
+- Quadbin/quadkey conversion functions have been added to ease the conversion from [quadbin](../../sql-reference/quadbin/) to quadkey and from quadkey to quadbin indexes.
+
 ### November 1, 2022
 
 #### All modules
 
-New
+Fix
+
+- Make cartofante the author and comitter of the release
+
+Improvement
+
+- Adapt to Semver
+
+#### All modules
+
+Feature
+
+- Create release workflows
+
+#### All modules
+
+Feature
 
 - Create release workflows
 
@@ -41,7 +65,7 @@ Fix
 
 #### Module tiler
 
-New
+Feature
 
 - Add `CREATE_SPATIAL_INDEX_TILESET` option.
 
@@ -49,7 +73,7 @@ New
 
 #### Module quadbin
 
-New
+Feature
 
 - Add QUADBIN_BBOX function.
 - Add QUADBIN_BOUNDARY function.
@@ -80,7 +104,7 @@ Fix
 
 #### Module tiler
 
-New
+Feature
 
 - Add `max_tile_features` option.
 - Add output table existence early check.
@@ -93,7 +117,7 @@ New
 
 #### Module tiler
 
-New
+Feature
 
 - Add CREATE_POINT_AGGREGATION_TILESET procedure.
 - Add CREATE_SIMPLE_TILESET procedure.
