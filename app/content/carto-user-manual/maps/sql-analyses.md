@@ -11,15 +11,15 @@ After that, you will see a list of analyses compatible with your source. Compati
 
 Check this table to find out which analyses are available for each data warehouse:
 
-|   |**BigQuery**|**CARTO DW**|**Redshift**|**Snowflake**
-|---|---|---|---|---|
-|**Intersect and Aggregate**|✅|✅|✅|
-|**Create buffers**|✅|✅||
-|**Add column from second source**|✅|✅|✅|✅
-|**Filter by column value**|✅|✅|✅|✅
-|**Calculate Centroids**|✅|✅|✅|✅
-|**Clustering K-Means**|✅ (\*)|✅||
-|**Trade Areas**|✅ (\*)|✅|✅ (\*)|✅ (\*)
+|   |**BigQuery**|**CARTO DW**|**Redshift**|**Snowflake**|**PostgreSQL**
+|---|---|---|---|---|---|
+|**Intersect and Aggregate**|✅|✅|✅||✅
+|**Create buffers**|✅|✅|||✅
+|**Add column from second source**|✅|✅|✅|✅|✅
+|**Filter by column value**|✅|✅|✅|✅|✅
+|**Calculate Centroids**|✅|✅|✅|✅|✅
+|**Clustering K-Means**|✅ (\*)|✅|||✅
+|**Trade Areas**|✅ (\*)|✅|✅ (\*)|✅ (\*)|
 
 _(*) Requires the CARTO Analytics Toolbox to be installed_
 
@@ -107,7 +107,7 @@ This analysis will produce a point that represent the centroid of the geometries
 
 ### K-Means Clustering
 
-This analysis uses the [`ST_CLUSTERKMEANS`](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans) function from the CARTO Analytics Toolbox for BigQuery, taking a set of points and finding a defined number of clusters based on the k-means algorithim. It generates a `cluster_no` column that indicates the cluster that each point belongs to.
+This analysis uses the [`ST_CLUSTERKMEANS`](https://docs.carto.com/analytics-toolbox-bigquery/sql-reference/clustering/#st_clusterkmeans) function from the CARTO Analytics Toolbox for BigQuery, or the [`ST_ClusterKMeans()`](https://postgis.net/docs/ST_ClusterKMeans.html) in PostGIS, taking a set of points and finding a defined number of clusters based on the k-means algorithim. It generates a `cluster_no` column that indicates the cluster that each point belongs to.
 
 ![](/img/cloud-native-workspace/maps/k_means_clustering.png)
 
