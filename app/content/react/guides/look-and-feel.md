@@ -14,7 +14,39 @@ There are lots of properties that you can adapt to your needs. Some of the main 
   
 - <code>[breakpoints](https://material-ui.com/customization/breakpoints/)</code>. Support for different screen sizes.
 
-For instance, if you want to change the main color (used for the navigation bar background), you can edit the `App.js` file and add the following instruction before the theme creation:
+We have two different ways to handle the theme creation. As an example, let's change the main color (used for the navigation bar background) and the font family for the application title (`subtitle-1`), using both cases. You can edit the `App.js` file and add the following instruction before the theme creation:
+
+### Using `createCartoTheme` (recommended):
+
+`cartoThemeOptions` needs to be overwritten before `createCartoTheme` is initialized.
+
+#### Changing main color:
+
+```javascript
+...
+import { cartoThemeOptions, createCartoTheme } from '@carto/react-ui';
+...
+cartoThemeOptions.palette.primary.main = "#800000";
+const theme = createCartoTheme();
+...
+```
+
+#### Changing the font family:
+
+```javascript
+...
+import { cartoThemeOptions, createCartoTheme } from '@carto/react-ui';
+...
+cartoThemeOptions.typography.subtitle1.fontFamily = "'Times New Roman'";
+const theme = createCartoTheme();
+...
+```
+
+### Using `cartoThemeOptions`:
+
+`cartoThemeOptions` needs to be overwritten before `createMuiTheme` is initialized.
+
+#### Changing main color:
 
 ```javascript
 ...
@@ -25,7 +57,7 @@ let theme = createMuiTheme(cartoThemeOptions);
 ...
 ```
 
-If you want to change the font family for the application title (`subtitle-1`), you can add the following instruction before the theme creation:
+#### Changing the font family:
 
 ```javascript
 ...

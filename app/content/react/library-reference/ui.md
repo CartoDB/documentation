@@ -8,7 +8,7 @@
 
 A set of UI elements to build CARTO for React applications.
 
-The package includes 2 main elements: a set of values to use a Material UI theme with CARTO brand (`cartoThemeOptions`) + a group of widgets:
+The package includes 2 main elements: a set of values to use a Material UI theme with CARTO brand (`createCartoTheme` and `cartoThemeOptions`) + a group of widgets:
 
 - [`CategoryWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-categorywidgetui--default): to display with horizontal bars a magnitude for each selected category (eg. population sum per country).
 - [`FeatureSelectionWidgetUI`](https://storybook-react.carto.com/?path=/docs/custom-components-featureselectionwidgetui--default): to specify a shape and use it to filter features spatially.
@@ -26,6 +26,28 @@ This package, `@carto/react-ui` contains the user interface components for the w
 To get information about the different properties available for each of the widgets, please access our [Storybook catalogue](https://storybook-react.carto.com/), an interactive tool for documenting our Material UI theme and the additional components we have built.
 
 ### Constants & enums
+
+#### createCartoTheme
+
+Builds the official CARTO Material UI theme. See official doc on theming at [Material UI theming](https://material-ui.com/customization/theming/)
+
+- **Example**:
+
+  ```js
+  import { ThemeProvider } from "@material-ui/core";
+  import { createCartoTheme } from "@carto/react-ui";
+
+  // Theme build
+  const theme = createCartoTheme();
+
+  // ... and its use in the main App component
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      // YOUR APP CONTENT
+    </ThemeProvider>
+  );
+  ```
 
 #### cartoThemeOptions
 
