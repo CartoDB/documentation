@@ -8,6 +8,27 @@ menu:
     url: "news-developers"
 ---
 
+### Announcing CARTO for React 2.0 and 1.5
+
+##### 2023-04-17
+
+Two new versions of CARTO for React have been released: v2.0 and v1.5. The first one is a major release, with a migration to MUI5 & new Design System upgrade, so it has breaking changes. On the other hand, v1.5 is our last version compatible with Material UI 4, and the migration from 1.4 is seamless.
+
+These are the main changes included in v1.5:
+- New comparative widgets: ComparativeFormulaWidgetUI, ComparativeCategoryWidgetUI and ComparativePieWidgetUI (pure UI elements, not automatically connected to map)
+- Bug fixes in several places, especially widgets, googlemaps component and others
+- Performance improvements in FeatureSelectionLayer (aka ‘mask’)
+- Bump to latest deck.gl 8.8.23 & other internal libs
+
+v2.0 contains also:
+- Migration to MUI5 & new Design System upgrade (new colors, fonts, sizes...)
+- New components: Typography, Button, Avatar, AppBar, LabelWithIndicator, PasswordField, SelectField, UploadField, AccordionGroup
+- Many fixes and stability improvements
+- Bump to latest deck.gl >=8.9.6
+- Many improvements in the documentation & Storybook, to make the use by front-end developers much easier
+
+To help migrating to this new 2.x version, further notes are available in this [UPGRADE document](https://github.com/CartoDB/carto-react/blob/master/UPGRADE.md)
+
 ### Announcing CARTO for React 1.4.7
 
 ##### 2022-11-18
