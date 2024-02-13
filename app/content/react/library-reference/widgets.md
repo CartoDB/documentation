@@ -396,11 +396,10 @@ Renders a `<LegendWidget />` component. The widget can display a switch to show 
 | Param                     | Type                | Default       | Description                                         |
 | ------------------------- | ------------------- | ------------- | --------------------------------------------------- |
 | props                     | `Object`            |               |                                                     |
-| [props.className]         | `string`            |               | (optional) Material-UI withStyle class for styling. |
+| [props.title]             | `string`            |               | (optional) Title for the expanded widget.           |
 | [props.customLegendTypes] | `Object.<string, function>` |       | (optional) Object with custom legend types and the components to be used with these types. |
-| [props.customLayerOptions] | `Object.<string, function>` |      | (optional) Object with custom layer options and the components to be used with these options. |  
 | [props.initialCollapsed]  | `bool`              | `false`       | (optional) Indicates whether the widget is initially collapsed or not. |
-| [props.layerOrder]        | `Array<string>`     | `[]`          | Array of layer identifiers. Defines the order of layers in the legend. |
+| [props.layerOrder]        | `Array<string>`     | `[]`          | (optional) Array of layer identifiers. Defines the order of layers in the legend. |
 {{%/ tableWrapper %}}
 
 You can control the legend options through the following properties that must be added to the `layerAttributes` property for the layer in the store:
@@ -410,21 +409,36 @@ You can control the legend options through the following properties that must be
 | ------------- | -------------- | ------------- | -------------------------------------------------------------- |
 | title         | `string`       |               | Layer title                                                    |
 | visible       | `boolean`      | `true`        | Indicates whether the layer is visible by default or not.      |
+| switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown                  |
 | opacity       | `Number`       | `1`           | Initial opacity for the layer.                                 |
 | showOpacityControl | `boolean` | `true`        | Indicates whether the opacity control is shown or not.         |
-| options       | `Array`        |               | Array of keys from the `customLayerOptions` passed to `LegendWidget`. Indicates which of the `customLayerOptions` components to render in the legend for this layer |  
-| switchable    | `boolean`      | `true`        | Indicates whether the layer can be hide/shown                  |
-| legend        | `Object`       |               | Legend properties. Define an empty object `legend: {}` if you just want layer switching capabilities. |
-| legend.type   | `string`       |               | Legend type. Must be one of the types defined in the LEGEND_TYPES enum |
-| legend.attr   | `string`       |               | Attribute used for styling the layer                           |
-| legend.colors | `Array` or `string` |          | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`                                   |
-| legend.labels | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
-|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. Since v1.3, it also accepts an array of `{ value: number; label: string }` to format the values. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps).      |
+| collapsed     | `boolean`      | `false`       | Indicates whether the legend component is collapsed or not.    |
+| collapsible   | `boolean`      | `true`        | Indicates whether the legend component is collapsible or not.  |
+| helperText    | `string`       |               | (optional) Note to show below the legend to add additional explanations. It accepts an html string to show rich text |
+| minZoom       | `number`       |               | (optional) min zoom at which layer is displayed, to add zoom level indications to note. |
+| maxZoom       | `number`       |               | (optional) max zoom at which layer is displayed, to add zoom level indications to note. |
+| legend        | `Object` or `Array` |          | Legend properties. A layer can have one legend or many. Define an empty object `legend: {}` if you just want layer switching capabilities. If `legend` object is not defined, this layer will not be shown in the legend widget. |
+{{%/ tableWrapper %}}
+
+Each `legend` object can define these properties that will be picked up depending on the legend `type`. For more information, check [the type definition file for `LegendWidgetUI`](https://github.com/CartoDB/carto-react/blob/master/packages/react-ui/src/widgets/legend/LegendWidgetUI.d.ts)
+
+{{% tableWrapper tab="true" %}}
+| Param         | Type           | Default       | Description                                                    |
+| ------------- | -------------- | ------------- | -------------------------------------------------------------- |
+| type          | `string`       |               | Legend type. Must be one of the types defined in the `LEGEND_TYPES` enum  |
+| attr          | `string`       |               | (optional) subtitle to show below the legend item toggle when expanded  |
+| select        | `Object`       |               | Configuration object for the options selector |
+| select.label  | `string`       |               | Label to show above the select field |
+| select.value  | `any`          |               | `value` prop of the currently selected `option` for the selector |
+| select.options | `{ label: string; value: any }[]` |  | Group of options for the selector. For each option, the selector will display the `label` field and use the `value` field when selected |
+| colors        | `Array` or `string` |          | Array of colors (RGB arrays) or CARTO colors palette (string). Used for `LEGEND_TYPES.CATEGORY`, `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP` |
+| labels        | `Array`        |               | - Array of `strings` for labels when using `LEGEND_TYPES.CATEGORY` and `LEGEND_TYPES.ICON`. |
+|               |                |               | - Array of `numbers` for `LEGEND_TYPES.BINS` and `LEGEND_TYPES.CONTINUOUS_RAMP`. Since v1.3, it also accepts an array of `{ value: number; label: string }` to format the values. The first and last elements will be used for the labels and the intermediate elements will be used for defining the bins/intervals (for bins ramps) or the colors that we are interpolating (for continuous ramps). |
 |               |                |               | - Array of `[min, max]` numbers for `LEGEND_TYPES.PROPORTION`. |
-| legend.icons  | `Array`        |               | Array of string with icons URLs. Used for `LEGEND_TYPES.ICON`. |
-| legend.note   | `string`       |               | Note to show below th  legend to add additional explanations.  |
-| legend.collapsed | `boolean`   | `false`       | Indicates whether the legend component is collapsed or not.    |
-| legend.collapsible | `boolean` | `true`        | Indicates whether the legend component is collapsible or not.  |
+| icons         | `Array`        |               | Array of string with icons URLs. Used for `LEGEND_TYPES.ICON`. |
+| isStrokeColor | `boolean`      |               | Used in `LEGEND_TYPES.CATEGORY` to indicate if the dots should only show a color border |
+| customMarkers | `string` or `string[]` |       | Used in `LEGEND_TYPES.CATEGORY` to show custom markers instead of color dots. When only a `string` is passed, it will be used as the same marker for all the categories. |
+| maskedMarkers | `boolean`      |               | Used in `LEGEND_TYPES.CATEGORY` to apply the colors in the config to the custom marker(s), using the marker(s) as mask images. |
 {{%/ tableWrapper %}}
 
 
