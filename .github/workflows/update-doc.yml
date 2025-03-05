@@ -9,7 +9,7 @@ on:
         default: 'undefined'
 jobs:
   build_and_preview:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v3
       - name: Set ref for the checkout
