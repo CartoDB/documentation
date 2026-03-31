@@ -2,17 +2,19 @@
 
 You can use widgets in your application to provide advanced functionality for exploring and filtering the information. CARTO for React comes with several widgets out-of-the-box that you can add really easily to your spatial apps:
 
-  - [Bar](#bar-widget)
-  - [Category](#category-widget)
-  - [FeatureSelection](#feature-selection-widget)
-  - [Formula](#formula-widget)
-  - [Geocoder](#geocoder-widget)
-  - [Histogram](#histogram-widget)
-  - [Legend](#legend-widget)
-  - [Pie](#pie-widget)
-  - [ScatterPlot](#scatterplot-widget)
-  - [Table](#table-widget)
-  - [TimeSeries](#timeseries-widget)
+<!-- no toc -->
+- [Bar](#bar-widget)
+- [Category](#category-widget)
+- [FeatureSelection](#feature-selection-widget)
+- [Formula](#formula-widget)
+- [Geocoder](#geocoder-widget)
+- [Histogram](#histogram-widget)
+- [Legend](#legend-widget)
+- [Pie](#pie-widget)
+- [Range](#range-widget)
+- [ScatterPlot](#scatterplot-widget)
+- [Table](#table-widget)
+- [TimeSeries](#timeseries-widget)
 
 The widgets are implemented combining the functionality of three different library packages:
 
@@ -24,7 +26,7 @@ The widgets are implemented combining the functionality of three different libra
 
 We can group the widgets in two main categories:
 
-- Data-driven widgets. These widgets perform calculations on the data sources, including aggregations, and then show the results using different types of charts. The widgets included in this category are: Bar, Category, Formula, Histogram, Pie, Scatterplot, Table and Time-Series.
+- Data-driven widgets. These widgets perform calculations on the data sources, including aggregations, and then show the results using different types of charts. The widgets included in this category are: Bar, Category, Formula, Histogram, Pie, Range, Scatterplot, Table and Time-Series.
 
 - Non data-driven widgets. These widgets provide functionality that does not perform calculations on the data sources. We have the Geocoder widget to provide geocoding functionality, the Legend widget to provide layer selection and legend functionality and the FeatureSelectionWidget to filter features drawing a shape in the map.
 
@@ -37,7 +39,7 @@ The main difference is that widgets in global mode are static, they always show 
 There is also a difference in how they are implemented. Widgets in viewport mode work with the data that has been downloaded for visualization so all the data needed to make the calculations is available locally in the browser. On the other hand, widgets in global mode get the data by performing a SQL query to the data warehouse.
 
 {{% bannerNote title="Warning" %}}
-Global mode is not available for widgets linked to static (pre-generated) tilesets sources, only with dynamic tiling. The main reason for that is that static tilesets are usually created for extremely large datasets (i.e. billions of features) and the SQL query could have a processing time not suitable for an interactive applications. Another reason is that the source table(s) for the tileset might have been updated (or it might not be even available) so the tileset and the widget could potentially show different information.
+Global mode is not available for widgets linked to static (pre-generated) tilesets sources, only with dynamic tiling and GeoJSON sources. The main reason for that is that static tilesets are usually created for extremely large datasets (i.e. billions of features) and the SQL query could have a processing time not suitable for an interactive application. Another reason is that the source table(s) for the tileset might have been updated (or it might not be even available) so the tileset and the widget could potentially show different information.
 {{%/ bannerNote %}}
 
 ### Data sources
@@ -79,6 +81,8 @@ Every data-driven widget provides different functionality so you should consider
 - If you are dealing with data that you need to group by category (string values) like store types before making a calculation, you should use a widget that supports columns with categorical values (`BarWidget`, `CategoryWidget`, `PieWidget`).
 
 - If you are interested in understanding the distribution of numeric column values like store revenues, you should use the `HistogramWidget`.
+
+- If you want to filter your data source specifying an interval for values of a numeric property, you can use the `RangeWidget`.
 
 - If you have a column with timestamp values in your dataset and you want to understand trends or evolution through time, you can use the `TimeSeriesWidget`.
 
@@ -137,6 +141,12 @@ Creates a widget for switching layers on/off and showing legends. The legend rep
 Groups features into categories (column) and executes an operation on another column (`operationColumn`) for each group.
 
 ![Pie Widget](/img/react/pie-widget.png)
+
+### Range widget
+
+Filters the features specifying minimum and maximum values for a numeric property.
+
+![Range Widget](/img/react/range-widget.png)
 
 ### ScatterPlot widget
 
