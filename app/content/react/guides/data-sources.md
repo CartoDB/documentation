@@ -1,6 +1,6 @@
 ## Data Sources
 
-Data sources, abbreviated sources in CARTO for React, are objects that represent the source of the data that is going to be visualized with layers or displayed and filtered with widgets. They need to include spatial information either using traditional geometry/geography representations or geospatial indexes (H3 / Quadbins).
+Data sources, abbreviated `sources` in CARTO for React, are objects that represent the source of the data that is going to be visualized with layers or displayed and filtered with widgets. They need to include spatial information either using traditional geometry/geography representations or geospatial indexes (H3 / Quadbins).
 
 The source objects include the following properties:
 
@@ -90,3 +90,9 @@ dispatch(addSource(updatedSource));
 ```
 
 We need to take into account that the updated source is going to keep the new value for the `data` property as long as we stay in the same view, if we are adding the static source in a `useEffect` hook, as it happens with the automatic code created by the code generator. If we switch to another view and then we come back to the view where we updated the `data` property, the source is going to use again the `data` property value from the .js file.
+
+### Query Parameters
+
+When you define a source, you can specify query parameters so the query executed will be dynamic depending on the value of these parameters. This is another way to implement a dynamic source in an easier way but without being able to change completely the `data` property. It is also useful in order to support dynamic `WHERE` clauses while using public tokens.
+
+For a detailed discussion of query parameters, please take a look at the corresponding [guide](../query-parameters).
