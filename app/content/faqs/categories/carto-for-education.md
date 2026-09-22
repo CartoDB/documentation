@@ -8,6 +8,8 @@
 
 [What is the process for getting a CARTO Student account?](#what-is-the-process-for-getting-a-carto-student-account)
 
+[Can I use the CARTO QGIS Plugin with my Student account?](#can-i-use-the-carto-qgis-plugin-with-my-student-account)
+
 [I am an educator and my course materials use the previous version of CARTO. What can I do?](#i-am-an-educator-and-my-course-materials-use-the-previous-version-of-carto-what-can-i-do)
 
 ---
@@ -104,6 +106,15 @@ This process will connect your GitHub account. Remember you should that URL for 
 To login to your CARTO Student account you'll need to always use this specific URL: https://app.carto.com/students
 
 {{%/ bannerNote %}}
+
+---
+##### Can I use the CARTO QGIS Plugin with my Student account?
+
+The CARTO QGIS Plugin is not currently available for Student accounts.
+
+Student accounts are provisioned through the [GitHub Student Developer Pack](https://education.github.com/pack) and sign in via GitHub at https://app.carto.com/students. The QGIS Plugin login screen doesn’t offer a GitHub sign-in option, and the student login link on that screen opens the CARTO web workspace instead of completing the login inside QGIS.
+
+This is a known limitation and there is no workaround at the moment. In the meantime, you can continue to access your Student account through the CARTO web platform at https://app.carto.com/students.
 
 ---
 ##### I am an educator and my course materials use the previous version of CARTO. What can I do?
