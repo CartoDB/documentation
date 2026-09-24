@@ -286,6 +286,10 @@ CREATE SCHEMA "<my database>".carto;
 -- Give the carto user full access to the carto schema
 GRANT ALL PRIVILEGES ON SCHEMA "<my database>".carto TO ROLE carto_role;
 
+-- Give the carto user permission to use the warehouse
+GRANT OPERATE ON WAREHOUSE COMPUTE_WH TO ROLE CARTO_ROLE;
+GRANT USAGE ON WAREHOUSE COMPUTE_WH TO ROLE CARTO_ROLE;
+
 -- Grant usage to public role
 -- Repeat this for any other role that needs to use the toolbox
 GRANT USAGE ON DATABASE "<my database>" TO ROLE public;
@@ -337,6 +341,10 @@ If you have a previously installed version of the Analytics Toolbox, you can che
 {{%/ bannerNote %}}
 
 To install the functions and procedures of the Analytics Toolbox in the `carto` schema of your database, replace `@@DATABASE@@` with your database in the file `modules.sql`, and run that file in Snowflake. Please note that you must execute this file's commands in the same Worksheet where you executed all the previous statements of this installation guide.
+
+{{% bannerNote type="warning" title="WARNING" %}}
+Make sure that you're using the `CARTO_ROLE` role before executing the installation script `modules.sql` (see `USE ROLE carto_role;` above). Otherwise the functions and procedures will be owned by a different role and it won't be possible to perform automatic updates of the Analytic Toolbox.
+{{%/ bannerNote %}}
 
 You can load the script into a Worksheet by using the dropdown menu on the top right and choosing "Load Script". The "All Queries" check seems to work unreliably with large scripts, so we advice to select all the text instead (just press Control-A or Command-A if using a Mac), then press the "Run" button and confirm you want to execute all the lines.
 
