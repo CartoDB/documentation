@@ -135,7 +135,7 @@ cd $(unzip -Z -1 carto-analytics-toolbox-core-bigquery-latest.zip | head -1)
 sed -e 's!@@BUCKET@@!'"$BUCKET"'!g'  modules.sql > modules_rep.sql
 
 # Copy libs to bucket
-gsutil -m cp -r libs/ gs://$BUCKET/carto/
+gcloud storage cp -r libs/ gs://$BUCKET/carto/
 
 # Install the functions and procedures
 bq --location=$REGION --project_id=$PROJECT query --use_legacy_sql=false --max_statement_results=10000 --format=prettyjson < modules_rep.sql
