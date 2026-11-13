@@ -27,7 +27,7 @@
 <body>
   <div id="map"></div>
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY2FydG9kYmluYyIsImEiOiJja202bHN2OXMwcGYzMnFrbmNkMzVwMG5rIn0.Zb3J4JTdJS-oYNXlR3nvnQ';
+    mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
     const map = new mapboxgl.Map({
       container: 'map',
@@ -68,7 +68,7 @@
         deck.carto.setDefaultCredentials({
           apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
           apiVersion: deck.carto.API_VERSIONS.V3,
-          accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+          accessToken: 'YOUR_CARTO_ACCESS_TOKEN'
         });
 
         const { data } =  await deck.carto.fetchLayerData({

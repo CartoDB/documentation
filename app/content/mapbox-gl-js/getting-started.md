@@ -60,7 +60,7 @@ In this documentation we use the term “CARTO 3” to refer to the latest versi
 deck.carto.setDefaultCredentials({
   apiBaseUrl: 'https://gcp-us-east1.api.carto.com',
   apiVersion: deck.carto.API_VERSIONS.V3,
-  accessToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhIjoiYWNfbHFlM3p3Z3UiLCJqdGkiOiI1YjI0OWE2ZCJ9.Y7zB30NJFzq5fPv8W5nkoH5lPXFWQP0uywDtqUg8y8c'
+  accessToken: 'YOUR_CARTO_ACCESS_TOKEN'
 });
 
 const { data } =  await deck.carto.fetchLayerData({
@@ -130,7 +130,7 @@ map.addLayer({
     <div id="map" style="position: absolute; top: 0; bottom: 0; width: 100%;"></div>
   </body>
   <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY2FydG9kYmluYyIsImEiOiJja202bHN2OXMwcGYzMnFrbmNkMzVwMG5rIn0.Zb3J4JTdJS-oYNXlR3nvnQ';
+    mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
 
     async function initialize() {
       const map = new mapboxgl.Map({
